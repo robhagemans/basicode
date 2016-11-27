@@ -17,7 +17,7 @@ conclusie komen dat (bij track 02) onze presentatrice dwars door haar eigen teks
 heen spreekt. In werkelijkheid staat er op het linker- en rechterspoor een compleet
 andere tekst, die dus afzonderlĳk moet worden afgeluisterd!*
 
-Na de tekst wordt het nog erger: dan volgt het befaamde - keiharde - NOS-
+Na de tekst wordt het nog erger: dan volgt het befaamde – keiharde – NOS-
 cirkelzaaggeluid, zo gevreesd op de radio. Dat is eigenlijk ook niet om naar te luisteren,
 maar om toe te voeren aan uw huiscomputer. Elke huiscomputer slikt het 'geraas'
 omdat het hier gaat om het 'Esperanto’ van Hobbyscoop: de NOS-Basicode taal.
@@ -31,14 +31,14 @@ Hobbyscoop, postbus 1200, 1200 BE  Hilversum.
 Liefst hadden we een zogeheten CD-ROM (Read Only Memory) gemaakt. Op zo'n CD
 hadden alle computerprogramma's geplaatst kunnen worden die Hobbyscoop ooit
 uitgezonden heeft. En dan was dat plaatje nog maar voor een fractie bespeeld geweest.
-Maar bijna niemand heeft nog zo'n apparaat en dus zouden we ons doel - de software
-die wij van onze luisteraars kado krijgen op zo groot mogelijke schaal verspreiden -
+Maar bijna niemand heeft nog zo'n apparaat en dus zouden we ons doel – de software
+die wij van onze luisteraars kado krijgen op zo groot mogelijke schaal verspreiden –
 voorbij zijn geschoten. Joop Niggebrugge van CBS kwam echter met het gouden idee
 om een dubbel-mono CD te maken, waarop dan tenminste tweemaal zo'n 70 minuten
 zou kunnen worden geschreven, meer dan op welke cassette ooit verantwoord zou
 kunnen worden ondergebracht!
 
-Wat u moet doen met deze CD
+> Wat u moet doen met deze CD
 ---------------------------
 
 Huiscomputer-bezitters zal het wel duidelijk zijn wat ze met deze CD kunnen doen. Aan
@@ -57,7 +57,7 @@ Veel succes met deze semi-CD-ROM en de software die erop staat. Mochten er vrage
 zijn, Hobbyscoop heeft een telefonisch spreekuur in Hilversum 035-773015 (alleen op
 maandag van 10-12 uur) en een complete databank waar de meest recente
 computerprogramma's, aanvullingen en programma-gegevens in staan. Bel dan (met
-uw computer en een modem - elke snelheid tot 2400 baud) 035-45395 (dag en nacht).
+uw computer en een modem – elke snelheid tot 2400 baud) 035-45395 (dag en nacht).
 
 Alle programma's die erop staan zijn al eens eerder door de ether (geheel gratis)
 uitgezonden. Als u regelmatig onze uitzendingen opneemt, krijgt u vanzelf een enorme
