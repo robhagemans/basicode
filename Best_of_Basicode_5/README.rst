@@ -18,7 +18,7 @@ heen spreekt. In werkelijkheid staat er op het linker- en rechterspoor een compl
 andere tekst, die dus afzonderlĳk moet worden afgeluisterd!*
 
 Na de tekst wordt het nog erger: dan volgt het befaamde - keiharde - NOS-
-cirkelzaaggeluid. zo gevreesd op de radio. Dat is eigenlijk ook niet om naar te luisteren,
+cirkelzaaggeluid, zo gevreesd op de radio. Dat is eigenlijk ook niet om naar te luisteren,
 maar om toe te voeren aan uw huiscomputer. Elke huiscomputer slikt het 'geraas'
 omdat het hier gaat om het 'Esperanto’ van Hobbyscoop: de NOS-Basicode taal.
 
@@ -37,3 +37,28 @@ voorbij zijn geschoten. Joop Niggebrugge van CBS kwam echter met het gouden idee
 om een dubbel-mono CD te maken, waarop dan tenminste tweemaal zo'n 70 minuten
 zou kunnen worden geschreven, meer dan op welke cassette ooit verantwoord zou
 kunnen worden ondergebracht!
+
+Wat u moet doen met deze CD
+---------------------------
+
+Huiscomputer-bezitters zal het wel duidelijk zijn wat ze met deze CD kunnen doen. Aan
+de hand van de beschrijving van de computer-programmatuur zet men (met CD-speler
+in pauzestand) op een track klaar. Men verbindt de computer rechtstreeks met de CD-
+speler en kiest dan (afhankelijk van het programma dat men wenst) het linker óf
+rechterkanaal. Men moet de kanalen dus beslist afzonderlijk afspelen.
+
+Dat geldt natuurlijk alleen voor de computers die een cassette-aansluiting hebben.
+Sommige computers hebben die niet, zoals de Commodore C-64 of een Sharp MZ-700.
+In dat geval is het noodzakelijk om van de track en het programma dat u wenst, eerst
+een cassette-opname te maken. Verbind ook dan de cassetterecorder met maar één
+kanaal van de CD-speler.
+
+Veel succes met deze semi-CD-ROM en de software die erop staat. Mochten er vragen
+zijn, Hobbyscoop heeft een telefonisch spreekuur in Hilversum 035-773015 (alleen op
+maandag van 10-12 uur) en een complete databank waar de meest recente
+computerprogramma's, aanvullingen en programma-gegevens in staan. Bel dan (met
+uw computer en een modem - elke snelheid tot 2400 baud) 035-45395 (dag en nacht).
+
+Alle programma's die erop staan zijn al eens eerder door de ether (geheel gratis)
+uitgezonden. Als u regelmatig onze uitzendingen opneemt, krijgt u vanzelf een enorme
+verzameling, nuttige programma's.
