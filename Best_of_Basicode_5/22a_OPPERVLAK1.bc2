@@ -1,0 +1,530 @@
+1000 A=1000:GOTO20:REM OPPERVLAK 1
+1010 GOSUB20100
+1100 REM ****> ONDERDELEN <****
+1110 GOSUB2000:REM>INTRO LES
+1120 GOSUB2500:REM>TEKENEN CM2
+1130 GOSUB3000:REM>BEGIN LES
+1140 GOSUB4500:REM>VOORBEELD 1
+1150 GOSUB5000:REM>WERKVOORBEELDEN 1
+1160 GOSUB5500:REM>VOORBEELD 2
+1170 GOSUB6000:REM>WERKVOORBEELDEN 2
+1180 GOSUB7000:REM>OPGAVEN
+1190 GOSUB7500:REM>VERMENIGVULDIGEN
+1200 REM          >MET COMPUTER
+1210 GOSUB8000:REM>EINDE LES
+1220 END
+2000 REM *******> INTRO LES <*******
+2010 GOSUB100
+2020 PRINT"****************************************"
+2030 PRINT"* HET OPPERVLAK VAN RECHTHOEKEN DEEL 1 *"
+2040 PRINT"****************************************":PRINT
+2050 PRINT"In deze les behandelen we het oppervlak":PRINT
+2060 PRINT"van rechthoeken.":PRINT
+2070 W=1:GOSUB10000:PRINT
+2080 PRINT"Na deze les moet je uit de lengte en de":PRINT
+2090 PRINT"breedte het oppervlak van een rechthoek":PRINT
+2100 PRINT"kunnen berekenen."
+2110 W=2:GOSUB10000
+2120 GOSUB100
+2130 PRINT"Om de les te kunnen volgen moet je weten":PRINT
+2140 PRINT"  :dat 1 meter = 10 decimeter,":PRINT
+2150 PRINT"  :dat 1 meter = 100 centimeter,":PRINT
+2160 PRINT"  :dat 1 decimeter = 10 centimeter en":PRINT
+2170 PRINT"  :dat het product van bijvoorbeeld":PRINT
+2180 PRINT"   zeven en drie is: 7 * 3 = 21."
+2190 W=5:GOSUB10000
+2200 GOSUB100
+2210 RETURN
+2220 REM
+2500 REM ******> TEKENEN CM2 <******
+2510 GOSUB100
+2520 PRINT"Teken nu op een kladblaadje eerst een":PRINT
+2530 PRINT"vierkante centimeter.":PRINT
+2540 PRINT"Je moet dat uit het hoofd doen, dus":PRINT
+2550 PRINT"niet een geodriehoek of een liniaal":PRINT
+2560 PRINT"gebruiken.":PRINT:PRINT
+2570 W=6:GOSUB10000:PRINT
+2580 PRINT"Meet nu maar eens op en kijk of je":PRINT
+2590 PRINT"ongeveer de grootte van een cm2 weet."
+2600 W=3:GOSUB10000
+2610 GOSUB100
+2620 PRINT"Als jouw vierkante centimeter te groot"
+2630 PRINT"                                 ,,"
+2640 PRINT"of te klein is, teken er dan nog een":PRINT
+2650 PRINT"die goed is.":PRINT:PRINT
+2660 W=2:GOSUB10000
+2670 PRINT"Dan beginnen we nu aan de les.":PRINT:PRINT
+2680 PRINT"           ****> succes <****"
+2690 W=3:GOSUB10000
+2700 RETURN
+2710 REM
+3000 REM *******> BEGIN LES <*******
+3010 GOSUB100
+3020 PRINT"       ***********************"
+3030 PRINT"       *    het oppervlak    *"
+3040 PRINT"       ***********************":PRINT
+3050 Y1=4:Y2=9
+3060 A$="           xxxxxxxxxxxxxxx"
+3070 GOSUB10200
+3080 VE=11:GOSUB110
+3090 PRINT"Als in de bovenstaande rechthoek een x"
+3100 PRINT",,"
+3110 PRINT"een vierkante centimeter voorstelt; dan":PRINT
+3120 PRINT"is het oppervlak van deze rechthoek :":PRINT
+3130 PRINT"90 vierkante centimeter.":PRINT
+3140 PRINT"Controleer het maar."
+3150 W=6:GOSUB10000
+3160 Y1=11:Y2=23
+3170 A$="                                       "
+3180 GOSUB10200
+3190 PRINT"Dat controleren kan op twee manieren":PRINT
+3200 PRINT"gebeuren.":PRINT
+3210 FORW=1 TO1000:NEXTW
+3220 PRINT"Je kan elke vierkante centimeter in de":PRINT
+3230 PRINT"rechthoek tellen zo als nu gebeurt."
+3240 FORW=1 TO2000:NEXTW
+3250 GOSUB120:VI=VE:T1=1
+3260 HO=30:VE=5:GOSUB110:PRINT"het"
+3270 VE=7:GOSUB110:PRINT"oppervlak"
+3280 VE=9:GOSUB110:PRINT"is"
+3290 FORI=1 TO6
+3300 :FORJ=1 TO15
+3310 :HO=10+J:VE=3+I:GOSUB110
+3320 :PRINT"."
+3330 :HO=32:VE=9:GOSUB110:PRINTT1
+3340 :FORW=1 TO150:NEXTW:T1=T1+1
+3350 :NEXTJ
+3360 NEXTI
+3370 HO=0:VE=VI+2:GOSUB110
+3380 PRINT"Maar het kan ook anders."
+3390 W=1:GOSUB10000
+3400 Y1=4:Y2=23
+3410 A$="                                       "
+3420 GOSUB10200
+3430 Y1=4:Y2=9
+3440 A$="           xxxxxxxxxxxxxxx"
+3450 GOSUB10200
+3460 HO=0:VE=13:GOSUB110
+3470 PRINT"Tel het aantal vierkante centimeters":PRINT
+3480 PRINT"in de lengte."
+3490 W=1:GOSUB10000
+3500 HO=11:VE=11:GOSUB110:PRINT"de lengte is"
+3510 FORI=1 TO15
+3520 :HO=10+I:VE=9:GOSUB110
+3530 :PRINT"."
+3540 :HO=23:VE=11:GOSUB110:PRINTI
+3550 :FORW=1 TO300:NEXTW
+3560 NEXTI
+3570 HO=0:VE=9:GOSUB110:PRINTA$
+3580 HO=15:VE=15:GOSUB110
+3590 PRINT"Dat zijn er dus 15.":PRINT
+3600 W=1:GOSUB10000
+3610 PRINT"En dan het aantal vierkante centimeters":PRINT
+3620 PRINT"in de breedte.";:GOSUB120:VI=VE
+3630 W=1:GOSUB10000
+3640 HO=28:VE=6:GOSUB110:PRINT"de breedte"
+3650 VE=8:GOSUB110:PRINT"  is"
+3660 FORW=1 TO800:NEXTW
+3670 FORI=1 TO6
+3680 :HO=25:VE=3+I:GOSUB110
+3690 :PRINT"."
+3700 :HO=32:VE=8:GOSUB110:PRINTI
+3710 :FORW=1 TO300:NEXTW
+3720 NEXTI
+3730 HO=15:VE=VI:GOSUB110
+3740 PRINT"Dat zijn er dus 6.":PRINT
+3750 W=1:GOSUB10000
+3760 FORI=1 TO6
+3770 :HO=25:VE=3+I:GOSUB110
+3780 :PRINT"x"
+3790 NEXTI
+3800 Y1=13:Y2=23
+3810 A$="                                       "
+3820 GOSUB10200
+3830 VE=14:GOSUB110
+3840 PRINT"Wanneer je dan het product van 15 en 6":PRINT
+3850 PRINT"neemt, vind je ook het oppervlak.":PRINT
+3860 W=2:GOSUB10000
+3870 GOSUB100
+3880 PRINT"Van een rechthoek weten we dus :":PRINT
+3890 PRINT"    ++++++++++++++++++++++++++++++++"
+3900 PRINT"    + oppervlak = lengte x breedte +"
+3910 PRINT"    ++++++++++++++++++++++++++++++++":PRINT
+3920 W=2:GOSUB10000
+3930 PRINT"Voor oppervlak, lengte en breedte":PRINT
+3940 PRINT"gebruiken we SYMBOLEN.":PRINT
+3950 W=3:GOSUB10000:PRINT
+3960 PRINT"Een SYMBOOL is meestal de eerste":PRINT
+3970 PRINT"letter van een woord.":PRINT
+3980 PRINT"Soms is het een hoofdletter en soms is":PRINT
+3990 PRINT"het een kleine letter."
+4000 W=2:GOSUB10000
+4010 GOSUB100
+4020 PRINT"Het symbool voor oppervlak is de":PRINT
+4030 PRINT"hoofdletter A. De eerste letter van het":PRINT
+4040 PRINT"engelse woord AREA.":PRINT
+4050 PRINT:W=2:GOSUB10000
+4060 PRINT"Het symbool voor lengte is de kleine":PRINT
+4070 PRINT"letter l en het symbool voor de breedte":PRINT
+4080 PRINT"is de kleine letter b.":PRINT
+4090 PRINT:W=2:GOSUB10000
+4100 PRINT"Voor het oppervlak van een rechthoek":PRINT
+4110 PRINT"gebruiken we dus de formule:":PRINT
+4120 PRINT"             +++++++++++++"
+4130 PRINT"             + A = l x b +"
+4140 PRINT"             +++++++++++++"
+4150 W=4:GOSUB10000
+4160 RETURN
+4170 REM
+4500 REM ****> VOORBEELD 1 <****
+4510 GOSUB100
+4520 PRINT"Van de rechthoek uit het voorbeeld":PRINT
+4530 PRINT"kunnen we de volgend opgave maken.":PRINT
+4540 W=2:GOSUB10000:PRINT
+4550 PRINT"Gegeven : Van een rechthoek is de lengte"
+4560 PRINT"          15 cm en de breedte 6 cm.":PRINT
+4590 PRINT"Gevraagd: Bereken het oppervlak.":PRINT
+4600 W=5:GOSUB10000:PRINT
+4610 PRINT"De oplossing gaat als volgt :":PRINT
+4620 PRINT"Oplossing: A = l * b":PRINT
+4630 PRINT"           A = 15 cm * 6 cm":PRINT
+4640 PRINT"           A = 90 cm2":PRINT
+4650 W=5:GOSUB10000:PRINT
+4660 PRINT"Neem de opgave en de oplossing over."
+4670 W=8:GOSUB10000
+4680 GOSUB100
+4690 PRINT"Je hebt gezien dat de twee bij cm2 op":PRINT
+4700 PRINT"het scherm wat groot uit valt.":PRINT
+4710 PRINT"Jij schrijft natuurlijk een kleinere.":PRINT
+4720 W=3:GOSUB10000:PRINT
+4730 PRINT"Ook zal het je opgevallen zijn dat in":PRINT
+4740 PRINT"de formules het 'x' teken vervangen is":PRINT
+4750 PRINT"door het '*' teken."
+4760 W=3:GOSUB10000:GOSUB100
+4770 PRINT"We geven twee werk-voorbeelden.":PRINT
+4780 PRINT"Neem van elk voorbeeld eerst de opgave":PRINT
+4790 PRINT"over en maak dan de oplossing.":PRINT
+4800 PRINT"Daarna controleren we of jou oplossing":PRINT
+4810 PRINT"goed is. Neem ook de oplossing over.":PRINT
+4820 W=4:GOSUB10000
+4830 PRINT"Denk er aan dat in een getal met een":PRINT
+4840 PRINT"komma de computer in plaats van de kom-":PRINT
+4850 PRINT"ma een punt moet hebben."
+4860 W=2:GOSUB10000
+4870 RETURN
+4880 REM
+5000 REM ****> WERKVOORBEELDEN 1 <****
+5010 GOSUB100
+5020 PRINT"Druk de wis-toets eens in.":PRINT
+5030 GOSUB210:VB$=IN$
+5040 PRINT"Gegeven : Een tafelblad is 120 cm lang":PRINT
+5050 PRINT"          en 60 cm breed.":PRINT
+5060 PRINT"Gevraagd: Bereken het oppervlak.":PRINT
+5070 PRINT"Neem over en los op.":PRINT
+5080 W=8:GOSUB10000
+5100 GOSUB120:HA=HO:VA=VE
+5110 GOSUB10400:PRINT:PRINT
+5120 BW=VAL("7200"):IFAW=BW THEN5150
+5130 GOSUB10700
+5140 GOTO5100
+5150 GOSUB10600
+5160 PRINT"Oplossing : A = l * b":PRINT
+5170 PRINT"            A = 120 cm * 60 cm":PRINT
+5180 PRINT"            A = 7200 cm2":PRINT
+5200 PRINT"Nog niet, dan overnemen."
+5210 W=4:GOSUB10000
+5220 GOSUB100
+5230 PRINT"Gegeven : Een woonkamer is 6.5 m lang":PRINT
+5240 PRINT"          en 4 m breed.":PRINT
+5250 PRINT"Gevraagd: Bereken het oppervlak.":PRINT
+5260 PRINT"Neem over en los op.":PRINT
+5270 W=8:GOSUB10000
+5290 GOSUB120:HA=HO:VA=VE
+5300 GOSUB10400:PRINT:PRINT
+5310 BW=VAL("26"):IFAW=BW THEN5340
+5320 GOSUB10700
+5330 GOTO5290
+5340 GOSUB10600
+5350 PRINT"Oplossing : A = l * b":PRINT
+5360 PRINT"            A = 6.5 m * 4 m":PRINT
+5370 PRINT"            A = 26 m2":PRINT
+5390 PRINT"Nog niet, dan overnemen."
+5400 W=4:GOSUB10000
+5410 RETURN
+5420 REM
+5500 REM ****> VOORBEELD 2 <****
+5510 GOSUB100
+5520 PRINT"Het laatste voorbeeld gebruiken we om":PRINT
+5530 PRINT"te laten zien hoe we het oppervlak in":PRINT
+5540 PRINT"een andere eenheid kunnen uitrekenen.":PRINT
+5550 PRINT:W=3:GOSUB10000
+5560 PRINT"Gegeven : Een woonkamer is 6.8 m lang":PRINT
+5570 PRINT"          en 4.2 m breed.":PRINT
+5580 PRINT"Gevraagd: Bereken het oppervlak in dm2.":PRINT
+5590 PRINT"Neem de opgave over."
+5600 W=8:GOSUB10000
+5610 GOSUB100
+5620 PRINT"De oplossing gaat als volgt :":PRINT
+5630 PRINT"Oplossing: A = l * b":PRINT
+5640 PRINT"           A = 6.8 m * 4.2 m":PRINT
+5650 PRINT"           A = 68 dm * 42 dm":PRINT
+5660 PRINT"           A = 2856 dm2":PRINT
+5670 W=3:GOSUB10000
+5680 PRINT"Neem de oplossing over.":PRINT:PRINT
+5690 W=5:GOSUB10000
+5700 PRINT"Er komen weer twee werk-voorbeelden.":PRINT
+5710 PRINT"Neem van elk voorbeeld de opgave over.":PRINT
+5720 PRINT:W=2:GOSUB10000
+5730 PRINT"Bereken dan het antwoord.":PRINT
+5740 PRINT"Neem daarna ook de oplossing over.":PRINT
+5750 W=3:GOSUB10000
+5760 RETURN
+5770 REM
+6000 REM *****> WERKVOORBEELDEN 2 <*****
+6010 GOSUB100
+6020 PRINT"Druk de wis-toets nog eens in.":PRINT
+6030 GOSUB210:VB$=IN$
+6040 PRINT"Gegeven : Een siertegel is 80 cm lang":PRINT
+6050 PRINT"          en 40 cm breed.":PRINT
+6060 PRINT"Gevraagd: Bereken het oppervlak in dm2.":PRINT
+6070 PRINT"Neem over en los op.":PRINT
+6080 W=8:GOSUB10000
+6100 GOSUB120:HA=HO:VA=VE
+6110 GOSUB10400:PRINT:PRINT
+6120 BW=VAL("32"):IFAW=BW THEN6160
+6130 IF(AW=.32) OR(AW=320000!) THENPRINT"10 cm = 1 dm !!!"
+6140 GOSUB10700
+6150 GOTO6100
+6160 GOSUB10600
+6170 PRINT"Oplossing : A = l * b":PRINT
+6180 PRINT"            A = 80 cm * 40 cm":PRINT
+6190 PRINT"            A = 8 dm * 4 dm":PRINT
+6200 PRINT"            A = 32 dm2":PRINT
+6220 PRINT"Nog niet, dan overnemen."
+6230 W=4:GOSUB10000
+6240 GOSUB100
+6250 PRINT"Gegeven : Een vel tekenpapier is 5 dm":PRINT
+6260 PRINT"          lang en 4dm breed.":PRINT
+6270 PRINT"Gevraagd: Bereken het oppervlak in m2.":PRINT
+6280 PRINT"Neem over en los op.":PRINT
+6290 W=8:GOSUB10000
+6310 GOSUB120:HA=HO:VA=VE
+6320 GOSUB10400:PRINT:PRINT
+6330 BW=VAL(".2"):IFAW=BW THEN6370
+6340 IFAW=2000 THENPRINT"10 dm = 1m !!!!"
+6350 GOSUB10700
+6360 GOTO6310
+6370 GOSUB10600
+6380 PRINT"Oplossing : A = l * b":PRINT
+6390 PRINT"            A = 5 dm * 4 dm":PRINT
+6400 PRINT"            A = 0.5 m * 0.4 m":PRINT
+6410 PRINT"            A = 0.2 m2.":PRINT:PRINT
+6430 PRINT"Nog niet, dan overnemen."
+6440 W=5:GOSUB10000
+6450 GOSUB100
+6470 PRINT"Je hebt nu genoeg voorbeelden overgeno-":PRINT
+6480 PRINT"men om te weten hoe nette oplossingen":PRINT
+6490 PRINT"er uit moeten zien.":PRINT:PRINT
+6500 W=2:GOSUB10000
+6510 PRINT"Er komen nog vijf opgaven op het":PRINT
+6520 PRINT"scherm.":PRINT
+6530 PRINT"Neem ze over en laat tussen de opgaven":PRINT
+6540 PRINT"voldoende ruimte voor de oplossingen.":PRINT
+6550 PRINT:W=2:GOSUB10000
+6560 PRINT"Ga daarna de opgaven maken.":PRINT
+6570 PRINT"Gebruik de computer als rekenapparaat.":PRINT
+6580 W=2:GOSUB10000
+6590 RETURN
+6600 REM
+7000 REM ******> OPGAVEN <******
+7010 GOSUB100
+7020 PRINT"Opgave 1.":PRINT
+7030 PRINT"Gegeven  :Een plank is 2.5 m lang en"
+7040 PRINT"          0.15 m breed.":PRINT
+7050 PRINT"Gevraagd :Bereken het oppervlak in dm2.":PRINT
+7060 PRINT:W=5:GOSUB10000
+7070 PRINT"Opgave 2.":PRINT
+7080 PRINT"Gegeven  :Een schilderij is 75 cm lang"
+7090 PRINT"          en 44 cm hoog.":PRINT
+7100 PRINT"Gevraagd :Bereken het oppervlak in m2.":PRINT
+7110 W=5:GOSUB10000:GOSUB100
+7120 PRINT"Opgave 3.":PRINT
+7130 PRINT"Gegeven  :Een deur is 2.02 m hoog en"
+7140 PRINT"          0.78 m breed.":PRINT
+7150 PRINT"Gevraagd :Bereken het oppervlak in cm2.":PRINT
+7160 PRINT:W=5:GOSUB10000
+7170 PRINT"Opgave 4.":PRINT
+7180 PRINT"Gegeven  :Op een voetpad liggen in de"
+7190 PRINT"          breedte 4 tegels en in de"
+7200 PRINT"          lengte 25 tegels."
+7210 PRINT"          Elke tegel is 30 cm x 30 cm.":PRINT
+7220 PRINT"Gevraagd :Bereken van het voetpad het  "
+7230 PRINT"          oppervlak in m2"
+7240 W=5:GOSUB10000:GOSUB100
+7250 PRINT"Opgave 5.":PRINT
+7260 PRINT"Gegeven  :De band in een C60 cassette"
+7270 PRINT"          is 90 m lang en 0.4 cm breed.":PRINT
+7280 PRINT"Gevraagd :a. Bereken van de band het"
+7290 PRINT"             oppervlak in cm2."
+7300 PRINT"          b. Bereken van de band het"
+7310 PRINT"             oppervlak in m2.":PRINT
+7320 W=5:GOSUB10000:PRINT
+7330 PRINT"Laat de overgenomen opgaven nu aan de":PRINT
+7340 PRINT"leerkracht zien."
+7350 W=5:GOSUB10000
+7360 RETURN
+7500 REM *****> VERMENIGVULDIGEN <*****
+7510 GOSUB100
+7520 PRINT"  ++++++++++++++++++++++++++++++++++++"
+7530 PRINT"  + vermenigvuldigen met de computer +"
+7540 PRINT"  ++++++++++++++++++++++++++++++++++++  ":PRINT
+7550 PRINT"Als we de computer willen laten uitreke-"
+7560 PRINT"nen hoeveel 2.4 keer 62.5 is, dan typen "
+7570 PRINT"we eerst 'print' in.":PRINT:PRINT
+7580 W=2:GOSUB10000
+7590 PRINT"Inplaats van 'print' mogen we ook het   "
+7600 PRINT"vraagteken intypen.":PRINT
+7610 PRINT"Daarna typen we 2.4 in, dan het maal-":PRINT
+7620 PRINT"teken -dus de ster- en dan 62.5.":PRINT
+7630 W=2:GOSUB10000
+7640 GOSUB100
+7650 PRINT"we hebben dan op het scherm staan:":PRINT:PRINT
+7660 PRINT"print2.4*62.5  of :":PRINT:PRINT
+7670 PRINT"?2.4*62.5 ":PRINT:PRINT
+7680 W=2:GOSUB10000
+7690 PRINT"Drukken we daarna op de invoertoets dan":PRINT
+7700 PRINT"verschijnt het antwoord op het scherm.":PRINT
+7710 REM
+7720 REM
+7730 HO=0:VE=15:GOSUB110
+7740 PRINT"Ga nu de opgaven maken.":PRINT
+7750 PRINT"Laat de oplossingen aan de leerkracht":PRINT
+7760 PRINT"zien."
+7770 W=2:GOSUB10000
+7780 RETURN
+7790 REM
+8000 REM *****> EINDE LES <*****
+8010 GOSUB100
+8020 PRINT"We zijn aan het einde van deze les.":PRINT
+8030 PRINT"De antwoorden van de opgaven worden in":PRINT
+8040 PRINT"de volgende les behandeld.":PRINT:PRINT
+8050 W=2:GOSUB10000
+8060 PRINT"Wie nog tijd over heeft kan les 2 laden":PRINT
+8070 PRINT"en de antwoorden vergelijken.":PRINT
+8080 PRINT"Anders gaan we gewoon de volgende keer":PRINT
+8090 PRINT"verder.":PRINT:PRINT
+8100 W=2:GOSUB10000
+8110 PRINT"  ****** Tot de volgende keer <******"
+8120 RETURN
+8130 REM
+10000 REM *****> SPATIEBALK <*****
+10010 FORW1=1 TOW*10:NEXTW1
+10020 GOSUB120:VI=VE
+10030 VE=23:HO=0:GOSUB110
+10040 PRINT"   ****> Druk op de spatiebalk <**** ";
+10050 GOSUB20000
+10060 GOSUB200:IFIN$="" THEN10060
+10065 :IFIN$<>" " THEN10060
+10070 VE=23:HO=0:GOSUB110
+10080 PRINT"                                      ";
+10090 VE=VI:GOSUB110
+10100 RETURN
+10200 REM *****> RUIMTE MAKEN <*****
+10210 REM
+10220 FORI=0 TOY2-Y1
+10230 HO=0:VE=Y1+I:GOSUB110
+10240 PRINTA$;
+10250 NEXTI
+10260 VE=Y1:GOSUB110
+10270 RETURN
+10400 REM *****> INVOER ANTWOORD <****
+10410 PRINT"Voer het getal in :";
+10420 AW$="":I=0:GOSUB120:HI=HO
+10430 GOSUB210
+10440 IFIN$=CHR$(44) THENIN$="."
+10450 IFIN$=VB$ THEN10490
+10460 IFIN$=CHR$(13) THENAW=VAL(AW$):GOTO10530
+10470 HO=HI+I:GOSUB110:PRINTIN$;:I=I+1
+10480 AW$=AW$+IN$:GOTO10430
+10490 IFI=0 THEN10430
+10500 L=LEN(AW$):AW$=LEFT$(AW$,(L-1)):I=I-1
+10510 HO=HI+I:GOSUB110:PRINT" ";
+10520 GOTO10430
+10530 RETURN
+10540 REM
+10600 REM ***> HET GOEDE ANTWOORD <***
+10610 GOSUB100
+10620 PRINT"Dat is het goede antwoord.":PRINT
+10630 PRINT"Je hebt dus ook staan :":PRINT
+10640 RETURN
+10700 REM *****> FOUT ANTWOORD <*****
+10705 PRINT
+10710 PRINT"Je antwoord is niet juist.":PRINT
+10720 PRINT"Reken het nog eens na.":PRINT
+10730 W=2:GOSUB10000
+10740 Y1=VA:Y2=20
+10745 A$="                                       "
+10750 GOSUB10200
+10760 HO=HA:VE=VA:GOSUB110
+10770 RETURN
+10780 REM
+20000 REM TOETSENBORD BUFFER LEEG
+20010 REM ******> C-64 <*******
+20020 REM POKE 198,0
+20030 REM *****> P-2000T <*****
+20040 REM POKE &H600C,0
+20050 REM *****> IBM PC <******
+20060 REM WHILE INKEY$<>"":WEND
+20070 RETURN
+20080 REM
+20100 REM INSTELLEN MONOCHROOM MONITOR
+20110 REM ******> C-64 <*******
+20120 REM POKE 53280,0:POKE 53281,0
+20130 REM *****> IBM PC <******
+20140 REM COLOR 7,0,0
+20150 REM KLEINE LETTERMODE C-64
+20160 REM POKE 53272,23
+20170 RETURN
+20180 REM
+30000 REM******************************
+30010 REM*                            *
+30020 REM*      OPPERVLAK 1           *
+30030 REM*                            *
+30040 REM* INGEZONDEN DOOR: J.WIELES  *
+30050 REM* HOOFDWAL 68. 01830-30492   *
+30060 REM* 4207 EE GORINCHEM          *
+30070 REM*                            *
+30080 REM* GEMAAKT OP EEN C-64        *
+30090 REM* UITGEPROBEERD OP EEN HZN PC*
+30100 REM* IKLL 1002  -IBM KLOON-     *
+30110 REM*                            *
+30120 REM* TOETSENBORD BUFFERS KUNNEN *
+30130 REM* WORDEN LEEG GEMAAKT DOOR DE*
+30140 REM* REM WEG TE HALEN BIJ REGEL *
+30150 REM* 20020 VOOR C-64            *
+30160 REM* 20040 VOOR P2000T          *
+30170 REM* 20060 VOOR IBM PC          *
+30180 REM*                            *
+30190 REM* MONOCHROME MONITOR INSTEL- *
+30200 REM* LEN DOOR REM WEG TE HALEN  *
+30210 REM* BIJ REGEL                  *
+30220 REM* 20120 EN VOOR C-64         *
+30230 REM* 20150 VOOR IBM PC          *
+30240 REM*                            *
+30250 REM* KLEINE LETTER MODE VOOR    *
+30260 REM* C-64 DOOR REM WEG TE HALEN *
+30270 REM* BIJ REGEL 20160            *
+30280 REM*                            *
+30290 REM* LEESTIJD IN TE STELLEN DOOR*
+30300 REM* FACTOR 10 IN REGEL 10100 TE*
+30310 REM* VERANDEREN.                *
+30320 REM*                            *
+30330 REM* MET DANK AAN DE TWEEDE KLAS*
+30340 REM* LEERLINGEN VAN DE OPENBARE *
+30350 REM* SCHOOL VOOR MAVO TE        *
+30360 REM* GORINCHEM.                 *
+30370 REM*                            *
+30380 REM******************************
+30390 REM
+30400 REM COPYRIGHT NOS HILVERSUM
+

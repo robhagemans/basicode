@@ -1,0 +1,521 @@
+1000 A=1000: GOTO20:REM *BEROEPENORIENTATIE*
+1010 VE=4:HO=0: GOSUB1020: GOTO1032
+1020  GOSUB100: GOSUB110
+1030 PRINTTAB(11);"BEROEPENORIENTATIE":RETURN
+1032 VE=8: GOSUB110:PRINTTAB(18);"door":VE=10: GOSUB110
+1034 PRINTTAB(12);"Mark Rietbergen":VE=12: GOSUB110
+1040 DIMB$(111),V(111),I(111),P(9),S$(9),I$(68,5),A(99)
+1050 FORI=0 TO14:READB$(I):NEXTI
+1060 FORI=1 TO5000:NEXTI:VE=6: GOSUB1020:VE=10
+1070 FORI=0 TO3:VE=VE+2: GOSUB110:PRINTB$(I):NEXTI
+1080 HO=32:VE=23: GOSUB110:PRINT"toets>>";
+1090  GOSUB210:VE=1:HO=0: GOSUB1020
+1100 FORI=4 TO14:VE=VE+2: GOSUB110:PRINTB$(I):NEXTI
+1110 FORI=0 TO111:READB$(I),V(I),I(I):NEXTI: GOTO3280
+1120 HO=32:VE=23: GOSUB110:PRINT"toets>>";: GOSUB210
+1130 I=-1:HO=0
+1140 I=I+1:IFI>99 THEN1330
+1150 IFI<0 THEN1140
+1160  GOSUB100:VE=2: GOSUB110:PRINT" WELK BEROEP VIND JE";
+1170 PRINTTAB(33);100-I:PRINT" HET MEEST AANTREKKELIJK ?"
+1180 VE=6: GOSUB110:PRINT" 1)";B$(I)
+1190 VE=15: GOSUB110
+1200 FORJ=0 TO111:IFV(J)=I+1 THENPRINT" 2)";B$(J): GOTO1220
+1210 NEXTJ
+1220 VE=8: GOSUB110
+1230  GOSUB210:IF(IN$="i") OR(IN$="I") THEN1300
+1240 IF(IN$="c") OR(IN$="C") THENI=I-2: GOTO1140
+1250 IF(IN$<>"1") AND(IN$<>"2") THEN1230
+1260 IFIN$="1" THENA(I)=1: GOTO1140
+1270 IFIN$="c" THENI=I-2: GOTO1140
+1280 IFIN$="2" THENA(I)=2: GOTO1140
+1290  GOSUB210: GOTO1260
+1300  GOSUB110:A=I(I):FORX=0 TO5:PRINT" ";I$(A,X)
+1310 NEXTX:A=I(J):VE=17: GOSUB110
+1320 FORX=0 TO5:PRINT" ";I$(A,X):NEXTX: GOTO1290
+1330  GOSUB100
+1340 FORI=0 TO99:IFA(I)=1 THENA=INT(I/10):P(A)=P(A)+1
+1350 IFA(I)=2 THENA=I-(INT(I/10))*10:P(A)=P(A)+1
+1360 NEXTI
+1400  GOSUB100:VE=1:HO=4: GOSUB110
+1405 PRINTTAB(12);"RESULTATEN"
+1410 VE=6:HO=9: GOSUB110:PRINT" BEROEPSRICHTING";TAB(34);
+1420 PRINT"SCORE":PRINT: GOSUB1430: GOTO1530
+1430 B$(0)=" agrarisch; land- tuin- en bosbouw "
+1440 B$(1)=" natuurwetenschappelijk; technisch "
+1450 B$(2)=" medisch                           "
+1460 B$(3)=" sociaal; onderwijs                "
+1470 B$(4)=" huishoudelijke dienst; horeca     "
+1480 B$(5)=" handel; verkeer                   "
+1490 B$(6)=" administratief                    "
+1500 B$(7)=" sport; politie/militair; brandweer"
+1510 B$(8)=" communicatie; archief; bibliotheek"
+1520 B$(9)=" artistiek; beeldende kunst        ":RETURN
+1530 FORI=0 TO9:PRINTB$(I);:IFP(I)<10 THENPRINT" ";
+1535 PRINTP(I):NEXTI
+1540 PRINTTAB(35);"---":PRINTTAB(35);"100"
+1560 HO=32:VE=23: GOSUB110:PRINT"toets>>";: GOSUB210
+1570  GOSUB100:VE=1:HO=20: GOSUB110:PRINT"RESULTATEN":HO=7
+1580 A$="                  :...:....:....:....:"
+1590 B$="          score-> 1   5    10   15   20"
+1593 C$=" belangstelling-> weinig           veel"
+1595 HO=0:VE=5: GOSUB110:PRINTC$
+1600 VE=6: GOSUB110:PRINTB$:PRINTA$;: GOSUB6050
+1610 FORJ=0 TO9:PRINT:PRINTJ+1;" ";B$(J);TAB(18);
+1620 FORI=1 TOP(J):IFP(J)<>0 THENPRINT"*";
+1630 NEXTI:NEXTJ
+1640 PRINT:PRINTA$:VE=23:HO=0:PRINTB$: GOSUB110
+1650 PRINT" <<terug:T                   V:verder>>"
+1660  GOSUB210:IFIN$="v" THEN1900
+1665 IFIN$="t" THEN1400
+1667  GOTO1660
+1670 REM * HARDCOPY *
+1680  GOSUB1430:SR$="    RESULTATEN": GOSUB350
+1690  GOSUB360: GOSUB360: GOSUB360
+1700 SR$="          BEROEPSRICHTING        SCORE": GOSUB350
+1710  GOSUB360: GOSUB360
+1720 FORI=0 TO9:SR$=B$(I): GOSUB350:SR$=" ": GOSUB350
+1730 IFP(I)<10 THENSR$=" ": GOSUB350
+1740 SR=P(I): GOSUB300: GOSUB350: GOSUB360:NEXTI
+1750 SR$="                                   ---"
+1760  GOSUB350: GOSUB360
+1770 SR$="                                   100"
+1780  GOSUB350: GOSUB360
+1800  GOSUB360: GOSUB360: GOSUB6050
+1810 SR$=C$: GOSUB350: GOSUB360
+1820 SR$=B$: GOSUB350: GOSUB360
+1830 SR$=A$: GOSUB350
+1840 FORI=0 TO9: GOSUB360:SR$=" ": GOSUB350
+1850 SR=I+1: GOSUB300: GOSUB350:SR$="  ": GOSUB350
+1860 SR$=B$(I): GOSUB350:SR$="         "
+1870  GOSUB350:FORJ=1 TOP(I):IFP(I)=0 THEN1890
+1880 SR$="*": GOSUB350
+1890 NEXTJ:NEXTI:SR$=A$: GOSUB360: GOSUB350
+1895  GOSUB360:SR$=B$: GOSUB350: GOSUB360: GOTO1915
+1900 HO=1:VE=23: GOSUB110
+1903 PRINT"    WIL JE EEN PRINTERAFDRUK J/N ?    ": GOSUB210
+1910 IFIN$="j" THEN1680
+1915 HO=3:VE=2: GOSUB100: GOSUB110:PRINT" INFORMATIE OVER";
+1920 PRINT" BEROEPSKEUZE":VE=6: GOSUB110:PRINT" MEER INFO";
+1930 PRINT"RMATIE OVER BEROEPSKEUZE":VE=8: GOSUB110
+1940 PRINT" KUN JE VERKRIJGEN BIJ:":VE=11: GOSUB110
+1950 PRINT"     STICHTING GIB":VE=13: GOSUB110
+1960 PRINT"     BERG EN DALSEWEG 166":VE=15: GOSUB110
+1970 PRINT"     6522 CB NIJMEGEN":VE=17: GOSUB110
+1980 PRINT"     TELEFOON 080-229943":FORI=1 TO10000:NEXTI
+1985 END
+1990 DATA" DIT PROGRAMMA IS BEDOELD VOOR HAVO- EN"
+2000 DATA" VWO-SCHOLIEREN, TER  VASTSTELLING  VAN"
+2010 DATA" DE BELANGSTELLING VOOR BEPAALDE"
+2020 DATA" BEROEPSRICHTINGEN"
+2030 DATA" JE DIENT TELKENS UIT TWEE BEROEPEN HET"
+2040 DATA" BEROEP  TE  KIEZEN DAT  JE  HET  MEEST"
+2050 DATA" INTERESSEERT. (TOETS 1 OF 2)"
+2060 DATA" JE  MOET HIERBIJ  NIET OP  DE GEWENSTE"
+2070 DATA" CAPACITEITEN  OF  OPLEIDING  VOOR  DAT"
+2080 DATA" BEROEP LETTEN."
+2090 DATA" INDIEN JE EEN BEROEP NIET KENT  KUN JE"
+2100 DATA" DOOR OP 'I' TE DRUKKEN MEER INFORMATIE"
+2110 DATA" KRIJGEN. ALS JE JE KEUZE WILT HERZIEN,"
+2120 DATA" KUN JE  -NADAT JE OP 'C' GEDRUKT HEBT-"
+2130 DATA" HET ANTWOORD CORRIGEREN."
+2140 REM *** DATA'S BEROEPEN ***
+2150 DATA" Productiechef kunstmestfabriek",51,49
+2160 DATA" Bedrijfsleider landbouwbedrijf",71,5
+2170 DATA" Hovenier",21,26
+2180 DATA" Chef plantsoenendienst",61,0
+2190 DATA" Tuinbouwconsulent",31,66
+2200 DATA" Stafmedewerker Staatsbosbeheer",200,57
+2210 DATA" Kwaliteitscontroleur zuivelfabriek",81,34
+2220 DATA" Cultuurtechnisch opzichter",41,33
+2230 DATA" Landbouwkundig onderzoeker",11,0
+2240 DATA" Tuinarchitect",91,65
+2250 DATA" Natuurkundig onderzoeker",200,44
+2260 DATA" Chef technische dienst",42,0
+2270 DATA" Arbeidsanalist",62,1
+2280 DATA" Werktuigbouwkundig opzichter",22,0
+2290 DATA" Bedrijfsleider constructiebedrijf",2,5
+2300 DATA" Project technicus",52,51
+2310 DATA" Werkvoorbereider productiebedrijf",72,0
+2320 DATA" Chemisch analist",82,10
+2330 DATA" Tekenaar-constructeur",92,63
+2340 DATA" Stedebouwkundig ontwerper",32,61
+2350 DATA" Operatiekamerassistent",63,46
+2360 DATA" Radiologisch laborant",83,52
+2370 DATA" Orthoptist",43,47
+2380 DATA" Fysiotherapeut",73,19
+2390 DATA" Mondhygienist",200,42
+2400 DATA" EEG-laborant",3,15
+2410 DATA" Verpleegkundige-A",93,0
+2420 DATA" Logopedist",33,36
+2430 DATA" Revalidatie-assistent",53,56
+2440 DATA" Ergotherapeut",13,18
+2450 DATA" Onderwijzer",14,0
+2460 DATA" Creatief therapeut",94,32
+2470 DATA" Kinderverzorgingsdeskundige",84,31
+2480 DATA" Leraar voortgezet onderwijs",54,0
+2490 DATA" Vormingsleider volkshogeschool",200,0
+2500 DATA" Groepsleider (inrichtingswerk)",44,21
+2510 DATA" Reklasseringsambtenaar",74,54
+2520 DATA" Jeugdleider",64,0
+2530 DATA" Maatschappelijk werker",24,37
+2540 DATA" Onderwijskundige schooladviesdienst",4,45
+2550 DATA" Bedrijfsleider kantinedienst",15,5
+2560 DATA" Chef lunchroom grootwinkelbedrijf",85,0
+2570 DATA" Dietist",200,12
+2580 DATA" Voorlichter Consumentenbond",5,0
+2590 DATA" Bedrijfsleider conferentieoord",65,5
+2600 DATA" Hotel manager",75,25
+2610 DATA" Instellingskok",95,0
+2620 DATA" Restauranthouder",55,0
+2630 DATA" Hoofd civiele dienst",35,23
+2640 DATA" Hoofd instellingskeuken",25,24
+2650 DATA" Afdelingschef grootwinkelbedrijf",66,0
+2660 DATA" Exportmanager",76,16
+2670 DATA" Marketingassistent",86,39
+2680 DATA" Verkoopleider",16,67
+2690 DATA" Filiaalleider",36,0
+2700 DATA" Makelaar onroerend goed",0,38
+2710 DATA" Beheerder reisbureau",46,0
+2720 DATA" Verzekeringsinspecteur",6,0
+2730 DATA" Stafmedewerker reisorganisatie",6,58
+2740 DATA" Verkoper/Adviseur buitendienst",26,0
+2750 DATA" Bestuursambtenaar (Overheid)",27,8
+2760 DATA" Statistisch analist",87,60
+2770 DATA" Assistent-accountant",7,3
+2780 DATA" Magazijnmeester",47,0
+2790 DATA" Controller",17,11
+2800 DATA" Belastingconsulent",57,7
+2810 DATA" Correspondent (vreemde talen)",97,0
+2820 DATA" Medewerker afd. juridische zaken",0,41
+2830 DATA" Directiesecretaris",37,13
+2840 DATA" Programmeur",77,50
+2850 DATA" Manegehouder",48,0
+2860 DATA" Sportinstructeur (leger)",98,0
+2870 DATA" Leraar lichamelijke opvoeding",28,0
+2880 DATA" Medewerker sportstichting",68,40
+2890 DATA" Legerofficier",88,0
+2900 DATA" Reserve-officier vlieger",18,0
+2910 DATA" Sportmasseur",,0
+2920 DATA" Inspecteur brandveiligheid",8,29
+2930 DATA" Inspecteur van politie",58,0
+2940 DATA" Sportleider",38,0
+2950 DATA" Technisch publicist",19,62
+2960 DATA" Literatuuronderzoeker",9,35
+2970 DATA" Journalist",79,30
+2980 DATA" Museummedewerker",39,43
+2990 DATA" Hoofd bedrijfsbibliotheek",49,22
+3000 DATA" Assistent bibliothecaris",29,4
+3010 DATA" Documentalist",99,14
+3020 DATA" Stafmedewerker uitgeverij",59,59
+3030 DATA" Tolk/Vertaler",0,64
+3040 DATA" Archiefmedewerker",200,2
+3050 DATA" Reclame-ontwerper",60,53
+3060 DATA" Industrieel vormgever",20,27
+3070 DATA" Mode-ontwerper",80,0
+3080 DATA" Ontwerper textieldessins",70,0
+3090 DATA" Etaleur",90,0
+3100 DATA" Binnenhuisarchitect",10,9
+3110 DATA" Edelsmid",40,0
+3120 DATA" Fotograaf",30,0
+3130 DATA" Grafisch ontwerper",50,20
+3140 DATA" Decor/kostuumontwerper",,0
+3150 DATA" Productiechef conservenfabriek",1,0
+3160 DATA" Elektrotechnicus",12,17
+3170 DATA" Verloskundige",23,68
+3180 DATA" Personeelsfunctionaris",34,48
+3190 DATA" Bedrijfsleider partyservice",45,6
+3200 DATA" Inkoper",56,28
+3210 DATA" Bankemploye",67,0
+3220 DATA" Redactioneel medew. (bedrijfsblad)",69,55
+3230 DATA" Eigenaar sportschool",78,0
+3240 DATA" Voorlichtingsfunctionaris",89,0
+3250 DATA" Beheerder recreatiepark",96,0
+3260 DATA" Kunstschilder",100,0
+3270 REM * EINDE DATA'S *
+3280 I$(0,0)="geen informatie"
+3290 I$(1,0)="-Doet onderzoek naar de manier waarop"
+3300 I$(1,1)="werk efficienter en onder gunstiger"
+3310 I$(1,2)="omstandigheden kan worden verricht"
+3320 I$(2,0)="-Beheert het archief van een bedrijf"
+3330 I$(2,1)="of instelling. Houdt zich bezig met"
+3340 I$(2,2)="het opzoeken en/of terugplaatsen van"
+3350 I$(2,3)="dossiers en publicaties."
+3360 I$(2,4)="-Houdt de administratie bij"
+3370 I$(3,0)="-Voert zelfstandig bepaalde controle-"
+3380 I$(3,1)="werkzaamheden uit m.b.t. de admini-"
+3390 I$(3,2)="stratie van bedrijven of instellingen"
+3400 I$(3,3)="-Assisteert bij het geven van"
+3410 I$(3,4)="financieel/economische adviezen"
+3420 I$(4,0)="-Verzamelt en beheert boeken en tijd-"
+3430 I$(4,1)="schriften en maakt deze via catalogi-"
+3440 I$(4,2)="sering toegankelijk voor de gebruiker"
+3470 I$(5,0)="-Is belast met de dagelijkse leiding"
+3480 I$(5,1)="en organisatie"
+3490 I$(6,0)="-Is belast met de leiding en"
+3500 I$(6,1)="organisatie van een 'partyservice'"
+3510 I$(6,2)="(bedrijf dat recepties e.d. verzorgt)"
+3520 I$(7,0)="-Geeft aan particulieren en bedrijven"
+3530 I$(7,1)="adviezen over belastingzaken"
+3540 I$(7,2)="-Controleert hun belastingaangifte"
+3550 I$(8,0)="-Werkt mee aan de voorbereiding en"
+3560 I$(8,1)="uitvoering van beleidsbepalingen op"
+3570 I$(8,2)="een specifiek terrein"
+3580 I$(9,0)="-Adviseert bij de inrichting van"
+3590 I$(9,1)="interieurs"
+3600 I$(9,2)="-Ontwerpt interieurs"
+3610 I$(9,3)="-Houdt toezicht op de uitvoering"
+3620 I$(10,0)="-Bepaalt in een laboratorium de"
+3630 I$(10,1)="scheikundige samenstelling van stoffen"
+3640 I$(10,2)="-Bepaalt de hoeveelheid daarvan"
+3650 I$(11,0)="-Beheert de financieel-economische"
+3660 I$(11,1)="afdeling van een bedrijf"
+3670 I$(11,2)="-Controleert financiele gegevens"
+3680 I$(11,3)="-Adviseert over het beleid"
+3690 I$(12,0)="-Stelt dieetmenu's samen"
+3700 I$(12,1)="-Geeft leiding aan een dieetkeuken"
+3710 I$(12,2)="-Geeft dieetvoorlichting"
+3720 I$(13,0)="-Doet taalkundig werk zoals notuleren,"
+3730 I$(13,1)="verslaggeving en correspondentie"
+3740 I$(13,2)="-Bereidt vergaderingen voor"
+3750 I$(13,3)="-Geeft leiding aan het secretariaat"
+3760 I$(14,0)="-Leest tijdschriftartikelen, verslagen"
+3770 I$(14,1)="en boeken. Beslist wat er over een"
+3780 I$(14,2)="onderwerp in de documentatie komt"
+3790 I$(14,3)="-Ordent gegevens in een overzichtelijk"
+3800 I$(14,4)="systeem"
+3810 I$(15,0)="-Assisteert specialisten bij het meten"
+3820 I$(15,1)="van de hersenactiviteit"
+3830 I$(15,2)="-Maakt hier met technische apparatuur"
+3840 I$(15,3)="opnamen van"
+3850 I$(15,4)="-Werkt deze gegevens uit"
+3860 I$(16,0)="-Geeft leiding aan de exportafdeling"
+3870 I$(16,1)="van een productie- of handelsbedrijf"
+3880 I$(16,2)="-Onderhandelt over verkooptransacties"
+3890 I$(16,3)="en leveringsvoorwaarden"
+3900 I$(17,0)="-Ontwerpt, berekent en tekent electro-"
+3910 I$(17,1)="technische installaties en apparatuur"
+3920 I$(17,2)="-Geeft leiding bij de bouw hiervan"
+3930 I$(18,0)="-Oefent onopvallend (d.m.v. allerlei"
+3940 I$(18,1)="vormen van creatief bezig zijn) de"
+3950 I$(18,2)="uitgevallen lichamelijke en geeste-"
+3960 I$(18,3)="lijke functies van patienten"
+3970 I$(18,4)="-Bedenkt technische aanpassingen"
+3980 I$(18,5)="voor hun handicap"
+3990 I$(19,0)="-Geeft om lichamelijke afwijkingen"
+4000 I$(19,1)="te voorkomen of te verhelpen houdings-"
+4010 I$(19,2)="of bewegingsoefeningen"
+4020 I$(19,3)="-Masseert patienten"
+4030 I$(19,4)="-Past fysische therapie toe (b.v."
+4040 I$(19,5)="warmtebehandeling, infraroodlicht)"
+4050 I$(20,0)="-Maakt ontwerpen voor vormgeving van"
+4060 I$(20,1)="affiches, folders, boeken en drukwerk"
+4070 I$(20,2)="(o.a. lettertype, bladindeling,"
+4080 I$(20,3)="illustratie etc.)"
+4090 I$(21,0)="-Heeft in een inrichting de directe"
+4100 I$(21,1)="zorg voor mensen die geestelijk of"
+4110 I$(21,2)="lichamelijk gehandicapt zijn of in"
+4120 I$(21,3)="persoonlijke moeilijkheden verkeren"
+4130 I$(22,0)="-Beheert zelfstandig de bedrijfs-"
+4140 I$(22,1)="bibliotheek"
+4150 I$(22,2)="-Bouwt de collectie op"
+4160 I$(22,3)="-Geeft leiding aan het personeel"
+4170 I$(23,0)="-Is verantwoordelijk voor de gang van"
+4180 I$(23,1)="zaken in een groothuishouden"
+4190 I$(23,2)="-Heeft de zorg voor de planning en de"
+4200 I$(23,3)="uitvoering van werkzaamheden op"
+4210 I$(23,4)="technisch en huishoudelijk gebied"
+4220 I$(23,5)="-Geeft leiding aan het personeel"
+4230 I$(24,0)="-Leidt de werkzaamheden in een"
+4240 I$(24,1)="grootkeuken"
+4250 I$(24,2)="-Is verantwoordelijk voor de inkoop"
+4260 I$(24,3)="van voedsel, de menuplanning en de"
+4270 I$(24,4)="bereiding van het voedsel"
+4280 I$(25,0)="-Houdt zich bezig met het plannen"
+4290 I$(25,1)="en coordineren van economische en"
+4300 I$(25,2)="vaktechnische activiteiten binnen het"
+4310 I$(25,3)="hotelbedrijf"
+4320 I$(25,4)="-Geeft leiding aan het personeel"
+4330 I$(26,0)="-Verzorgt de aanleg en het onderhoud"
+4340 I$(26,1)="van tuinen, parken en plantsoenen"
+4350 I$(27,0)="-Ontwerpt modellen voor industriele"
+4360 I$(27,1)="producten zoals servies, ambulances"
+4370 I$(27,2)="telefoontoestellen en radio's etc."
+4380 I$(28,0)="-Is verantwoordelijk voor de inkoop"
+4390 I$(28,1)="van grondstoffen of artikelen van een"
+4400 I$(28,2)="productie- of winkelbedrijf"
+4410 I$(28,3)="-Onderhandelt over de transacties,"
+4420 I$(28,4)="waarbij hij moet letten op kwaliteit,"
+4430 I$(28,5)="prijs en levertijd"
+4440 I$(29,0)="-Controleert en adviseert op het"
+4450 I$(29,1)="terrein van brandpreventie"
+4460 I$(30,0)="-Geeft informatie in -op het publiek"
+4470 I$(30,1)="afgestemde- leesbare taal"
+4480 I$(30,2)="-Schrijft daartoe artikelen voor"
+4490 I$(30,3)="dagbladen, tijdschriften en vakbladen"
+4500 I$(31,0)="-Is belast met de observatie en peda-"
+4510 I$(31,1)="gogische begeleiding van kinderen die"
+4520 I$(31,2)="geestelijk of lichamelijk gehandicapt"
+4530 I$(31,3)="zijn of in persoonlijke moeilijkheden"
+4540 I$(31,4)="verkeren en geeft leiding aan hen die"
+4550 I$(31,5)="de directe zorg voor het kind hebben"
+4560 I$(32,0)="-Leert mensen beter functioneren"
+4570 I$(32,1)="d.m.v. creatieve bezigheden zoals"
+4580 I$(32,2)="handenarbeid, muziek en drama"
+4590 I$(33,0)="-Houdt toezicht op de uitvoering van"
+4600 I$(33,1)="cultuurtechnische werken, zoals"
+4610 I$(33,2)="waterbeheersing en grondwerken, waar-"
+4620 I$(33,3)="onder egaliseren, ophogen en baggeren"
+4630 I$(34,0)="-Draagt zorg voor een constante"
+4640 I$(34,1)="kwaliteit van zuivelproducten"
+4650 I$(34,2)="-Voert chemische controles uit"
+4660 I$(34,3)="-Heeft een taak bij de verbetering of"
+4670 I$(34,4)="ontwikkeling van producten"
+4680 I$(35,0)="-Verzamelt en bestudeert literatuur"
+4690 I$(35,1)="binnen een bepaald vakgebied"
+4700 I$(35,2)="-Maakt uittreksels"
+4710 I$(36,0)="-Oefent patienten met spraakstoor-"
+4720 I$(36,1)="nissen of -afwijkingen"
+4730 I$(36,2)="-Geeft lessen in spraakvorming en"
+4740 I$(36,3)="stemvorming"
+4750 I$(37,0)="-Verleent hulp aan mensen met levens-"
+4760 I$(37,1)="problemen"
+4770 I$(37,2)="-Probeert d.m.v. gesprekken inzicht"
+4780 I$(37,3)="te geven in het probleem om vandaar"
+4790 I$(37,4)="uit tot een oplossing te komen"
+4800 I$(38,0)="-Bemiddelt bij de koop en verkoop of"
+4810 I$(38,1)="bij de huur en verhuur van huizen,"
+4820 I$(38,2)="gebouwen en landerijen"
+4830 I$(38,3)="-Beheert onroerende goederen"
+4840 I$(39,0)="-Assisteert bij het maken van markt-"
+4850 I$(39,1)="analyses"
+4860 I$(39,2)="-Verzamelt en bewerkt statistische"
+4870 I$(39,3)="gegevens"
+4880 I$(40,0)="-Assisteert bij het beheer van sport-"
+4890 I$(40,1)="accomodaties en -materialen"
+4900 I$(40,2)="-Werkt mee aan de organisatie van"
+4910 I$(40,3)="sportactiviteiten"
+4920 I$(40,4)="-Geeft voorlichting over sport en"
+4930 I$(40,5)="recreatie"
+4940 I$(41,0)="-Werkt mee aan de voorbereiding van"
+4950 I$(41,1)="wettelijke regelingen"
+4960 I$(41,2)="-Behandelt juridische aangelegenheden"
+4970 I$(41,3)="-Stelt incidenteel contracten op"
+4980 I$(42,0)="-Geeft tandheelkundige voorlichting"
+4990 I$(42,1)="-Verricht gebitscontroles, verwijdert"
+5000 I$(42,2)="tandsteen en polijst gebitselementen"
+5010 I$(42,3)="-Maakt roentgenfoto's"
+5020 I$(43,0)="-Inventariseert en beschrijft kunst-"
+5030 I$(43,1)="voorwerpen"
+5040 I$(43,2)="-Werkt mee aan de voorbereiding van"
+5050 I$(43,3)="exposities"
+5060 I$(44,0)="-Verricht natuurkundig onderzoek"
+5070 I$(44,1)="-Bedient de apparatuur"
+5080 I$(44,2)="-Verwerkt de verkregen meetgegevens"
+5090 I$(45,0)="-Introduceert nieuwe onderwijskundige"
+5100 I$(45,1)="werkvormen en methoden"
+5110 I$(45,2)="-Verzorgt de practische begeleiding"
+5120 I$(45,3)="hiervan op de scholen"
+5130 I$(46,0)="-Assisteert bij de narcose en operatie"
+5140 I$(46,1)="-Onderhoudt en steriliseert"
+5150 I$(46,2)="instrumenten"
+5160 I$(47,0)="-Oefent patienten met oogafwijkingen"
+5170 I$(47,1)="(b.v. scheelzien)"
+5200 I$(48,0)="-Is verantwoordelijk voor het"
+5210 I$(48,1)="personeelsbeleid"
+5220 I$(48,2)="-Houdt zich bezig met werving,"
+5230 I$(48,3)="selectie, aanstelling, introductie,"
+5240 I$(48,4)="begeleiding en ontslag van personeel"
+5250 I$(49,0)="-Leidt de productie van een kunstmest-"
+5260 I$(49,1)="fabriek in technisch opzicht"
+5270 I$(50,0)="-Vertaalt de rapporten en schema's"
+5280 I$(50,1)="van de systeemontwerper voor het"
+5290 I$(50,2)="gebruik op de computer"
+5300 I$(50,3)="-Beproeft deze en corrigeert zo nodig"
+5310 I$(51,0)="-Is belast met zowel de technische als"
+5320 I$(51,1)="commerciele begeleiding van projecten"
+5330 I$(51,2)="(b.v. bouw- en installatieprojecten)"
+5340 I$(52,0)="-Maakt patienten gereed voor onder-"
+5350 I$(52,1)="zoek en behandeling"
+5360 I$(52,2)="-Bedient de apparatuur bij het maken"
+5370 I$(52,3)="van roentgenfoto's en het toepassen"
+5380 I$(52,4)="van bestralingen en ontwikkelt foto's"
+5390 I$(52,5)="-Houdt de administratie bij"
+5400 I$(53,0)="-Maakt ontwerpen voor diverse"
+5410 I$(53,1)="middelen waarmee reclame gemaakt"
+5420 I$(53,2)="wordt (b.v. advertenties, folders,"
+5430 I$(53,3)="verpakkingsmateriaal en reclamestands)"
+5440 I$(54,0)="-Begeleidt gedetineerden, voorwaar-"
+5450 I$(54,1)="delijk veroordeelden en hen die in"
+5460 I$(54,2)="in vrijheid zijn gesteld"
+5470 I$(54,3)="-Maakt voorlichtingsrapporten over"
+5480 I$(54,4)="delinquenten"
+5490 I$(55,0)="-Kiest de berichten uit die voor"
+5500 I$(55,1)="plaatsing in het bedrijfsblad in"
+5510 I$(55,2)="aanmerking komen"
+5520 I$(55,3)="-Maakt deze voor publicatie geschikt"
+5530 I$(55,4)="-Schrijft artikelen en commentaren"
+5540 I$(56,0)="-Oefent patienten met bewegings-"
+5550 I$(56,1)="stoornissen en houdingsafwijkingen"
+5560 I$(57,0)="-Werkt mee aan de onwikkeling en"
+5570 I$(57,1)="realisering van het bosbouwbeleid"
+5580 I$(58,0)="-Verricht marktonderzoek t.b.v. het"
+5590 I$(58,1)="toerisme"
+5600 I$(58,2)="-Werkt mee aan de realisering van"
+5610 I$(58,3)="reisprogramma's"
+5620 I$(59,0)="-Selecteert aangeboden manuscripten"
+5630 I$(59,1)="en brengt advies uit over een even-"
+5640 I$(59,2)="tuele uitgave"
+5650 I$(59,3)="-Neemt initiatief door te zoeken naar"
+5660 I$(59,4)="onderwerpen die in een boek behandeld"
+5670 I$(59,5)="kunnen worden en trekt een auteur aan"
+5680 I$(60,0)="-Verzamelt statistische gegevens"
+5690 I$(60,1)="-Analyseert deze, geeft de gegevens"
+5700 I$(60,2)="weer in beschrijvingen, grafieken,"
+5710 I$(60,3)="diagrammen en kaarten"
+5720 I$(61,0)="-Ontwerpt plannen voor de"
+5730 I$(61,1)="woonomgeving bij nieuwbouw en voor"
+5740 I$(61,2)="de herinrichting van bestaande"
+5750 I$(61,3)="woonsituaties"
+5760 I$(62,0)="-Verzamelt technische kennis over"
+5770 I$(62,1)="machines en apparaten"
+5780 I$(62,2)="-Verwerkt deze tot leesbare"
+5790 I$(62,3)="publicaties en gebruiksaanwijzingen"
+5800 I$(63,0)="-Maakt ontwerpen, tekeningen en"
+5810 I$(63,1)="berekeningen voor onderdelen van"
+5820 I$(63,2)="machines, gereedschappen en apparatuur"
+5830 I$(64,0)="-Geeft gesproken woorden mondeling"
+5840 I$(64,1)="weer in een andere taal"
+5850 I$(64,2)="-Brengt geschriften uit een of meer"
+5860 I$(64,3)="talen over in een andere taal"
+5870 I$(65,0)="-Adviseert bij de aanleg van tuinen"
+5880 I$(65,1)="-Maakt ontwerpen voor parken, tuinen"
+5890 I$(65,2)="en plantsoenen"
+5900 I$(66,0)="-Geeft zowel vaktechnische als"
+5910 I$(66,1)="bedrijfs-economische voorlichting aan"
+5920 I$(66,2)="aan ondernemers"
+5930 I$(67,0)="-Geeft leiding aan de verkoopafdeling"
+5940 I$(67,1)="van een handels- of productiebedrijf"
+5950 I$(67,2)="-Onderhandelt zelf over grote"
+5960 I$(67,3)="verkooptransacties en bepaalt de"
+5970 I$(67,4)="leveringsvoorwaarden"
+5980 I$(68,0)="-Oefent zelfstandig controle uit op"
+5990 I$(68,1)="het verloop van de zwangerschap"
+6000 I$(68,2)="-Verstrekt de nodige adviezen"
+6010 I$(68,3)="-Verricht de normale verlossing"
+6020 REM * EINDE DATA'S UITLEG *
+6030  GOTO1120
+6040 REM * DATA'S SECTOREN *
+6050 B$(0)=" AGR ":B$(1)=" NWS ":B$(2)=" MED "
+6060 B$(3)=" SOW ":B$(4)=" HK  "
+6070 B$(5)=" HVK ":B$(6)=" ADM ":B$(7)=" SPB "
+6080 B$(8)=" KBA ":B$(9)="ART ":RETURN
+30000 REM  --------------------
+30010 REM  BEROEPENORIENTATIE 
+30020 REM
+30030 REM  DOOR MARK RIETBERGEN
+30040 REM  COMMODORE 64
+30050 REM  DECEMBER 1985 
+30060 REM  --------------------
+30080 REM  COPYRIGHT NOS HILVERSUM
+

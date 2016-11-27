@@ -1,0 +1,30 @@
+10000 REM moduulvoorbeeld 2.1
+10010 REM vertaal  Engels --> Nederlands
+10020 REM bron IN FOCUS 1 les 7 + 8  (Meulenhof)
+10030 REM =====================================
+10040 TS=70
+10050 CK=20:REM 20 kleine letters extra
+10060 DL$="Vertaal in het Nederlands...":REM opdracht
+10070 TL$(2)="Op het speelveld  komen  veel letters"
+10080 TL$(4)="een Engels woord of werkwoord.  Maak "
+10090 TL$(5)="het Nederlandse (werk)woord door met "
+24000 RETURN
+25000 DATA 2
+25010 DATA "birthday","verjaardag","party","feestje"
+25020 DATA "cake","taart","grown-up","volwassen"
+25030 DATA "cheese","kaas","fruit salad","vruchtensalade"
+25040 DATA "much","erg","exactly","eigenlijk"
+25050 DATA "(to) think","denken","(to) move","verplaatsen"
+25060 DATA "chair","stoel","some","enkele"
+25070 DATA "first","eerste","grape","duif"
+25080 DATA "orange",sinaasappel","(to) smell","ruiken"
+25090 DATA "juice","sap","bottle","fles"
+25100 DATA "alcohol","alkohol","neightbour","buurman"
+25110 DATA "(to) sound","klinken","green","groen"
+25120 DATA "messy","rommelig","(to) say","zeggen"
+25130 DATA "skate","schaats","race","wedstrijd"
+25140 DATA "easy","gemakkelijk","every","iedere"
+25150 DATA "sometimes","soms","fat","dik","angry","boos"
+25160 DATA "$$$$$"
+29990 END
+

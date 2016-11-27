@@ -1,0 +1,624 @@
+1000 A=200: GOTO20:REM  Schatzoeker
+1010 REM ruimte voor DEFINTA-T
+1030  GOTO2000
+1040 PRINT"Die kant kunt u niet uit":RETURN
+1050 PRINT"In die richting is het terrein volkomen"
+1060 PRINT"onbegaanbaar":RETURN
+1070 PRINT"Aan die kant is een steile, gladde": GOTO1090
+1080 PRINT"Aan die kant is een gladde, steile"
+1090 PRINT"bergwand":RETURN
+1100 PRINT"In die richting is er een bodemloze,"
+1110 PRINT"onoverbrugbare afgrond":RETURN
+1120 PRINT"Dat gaat niet, u bent nu eenmaal geen"
+1130 PRINT"vogel":RETURN
+1140 PRINT"Nog hoger kunt u niet komen, tenzij u"
+1150 PRINT"zich vleugels aan laat meten":RETURN
+1160 PRINT"Dan zult u toch eerst vliegles moeten"
+1170 PRINT"nemen":RETURN
+1180 PRINT"Dat kan niet, het plafond is hier veel"
+1190 PRINT"te hoog":RETURN
+1200 PRINT"In die richting zijn alleen maar meters"
+1210 PRINT"dikke, keiharde rotsen":RETURN
+1220 PRINT"In die richting ligt China. Maar dan"
+1230 PRINT"moet u wel erg diep graven":RETURN
+1240 PRINT"Die kant kunt u alleen uit als u eerst"
+1250 PRINT"zelf het gat graaft":RETURN
+1260 PRINT"Wilt u echt doodvallen?":RETURN
+1270  GOSUB1280:IFLI=0 THENPRINT"Het is hier pikdonker."
+1272 RETURN
+1280 IF((BL>0) AND((BA(0)=0) OR(BA(0)=NA))) THENLI=1:RETURN
+1290 IF((BT>0) AND((BA(9)=0) OR(BA(9)=NA))) THENLI=1:RETURN
+1300 LI=0:RETURN
+1310 M=0:FORN=0 TO11:IFBA(N)=(VA) THENM=M+1
+1320 NEXTN:RETURN
+1330 M=0:FORN=0 TO11:IFBA(N)=0 THENM=M+1
+1340 NEXTN:RETURN
+1400 FORN=1 TO17:FORM=1 TO200:NEXTM:PRINT".";:NEXTN:RETURN
+1410  GOSUB210:IFASC(IN$)>90 THENIN$=CHR$(ASC(IN$)-32)
+1420 RETURN
+1430 PRINT"<even geduld a.u.b.>";:RETURN
+1440 PRINT"Wilt u hem losmaken (j/n)?": GOSUB1410:RETURN
+1450 PRINT"<druk op een toets>";: GOSUB210:RETURN
+1500 PRINT:IFBA(4)=0 THEN1520
+1510 PRINT"Met de blote handen? Dat zal pijn doen.":RETURN
+1520 IF(VA<>2) AND(VA<>25) AND(VA<>26) AND(VA<>27) THEN1550
+1530 PRINT"U geeft een forse klap, de grond trilt"
+1535  GOSUB1400
+1540 PRINT"en er volgt een enorme instorting.":DO=1:RETURN
+1550 IFVA<>11 THEN1580
+1560 PRINT"Deze ruimte is tegen klappen bestand."
+1570 PRINT"U maakt hoogstens een paar krasjes.":RETURN
+1580 IFVA<>34 THEN1620
+1590 PRINT"U raakt de apparatuur van de professor."
+1600 PRINT"Er sist en borrelt iets";: GOSUB1400
+1610 PRINT"en er volgt een explosie.":DO=1:RETURN
+1620 IFVA<>4 THEN1650
+1630 PRINT"De draak denkt dat u wilt spelen. Hij"
+1640 PRINT"kwispelt met zijn staart als een hondje.":RETURN
+1650 IFVA<>46 THEN1770
+1660 PRINT"U slaat een gat in de tank en daar komt":DR=1
+1670 PRINT"een straal zwarte drab uit. Er klinkt"
+1680 PRINT"een doffe plof";: GOSUB1400:PRINT
+1690 PRINT"De tank scheurt, u gaat onderuit en"
+1700 PRINT"verliest bagage."
+1710 FORN=0 TO10:IFN=9 THEN1730
+1720 IFBA(N)=0 THENBA(N)=101:IFN<>3 THENGW=GW-1
+1730 NEXTN
+1740 IF(BA(11)=0) AND(KV=0) THENBA(11)=101
+1750 FORN=0 TO5:A(VA,N)=0:NEXTN:A(VA,2)=6:A(VA,1)=7:RETURN
+1770 PRINT"Wel ja, sla er op los. Het helpt niets,"
+1780 PRINT"maar misschien lucht het op.":RETURN
+1800  GOSUB1310
+1805 IF(M<>0) OR(VA=24) OR(VA=29) OR(VA=38) THEN1830
+1810 PRINT"Er valt hier niets te pakken.":RETURN
+1830 FORN=0 TO11:IF(N=3) AND(VA=29) THEN1870
+1850 IF((N=8) AND(VA=24)) OR((N=10) AND(VA=38)) THEN1870
+1860 IFBA(N)<>(VA) THEN1990
+1870 PRINT"Wilt u ";L2$(N);BA$(N);" pakken (j/n)?"
+1880  GOSUB1410:IFIN$<>"J" THEN1990
+1890 IF(N=3) AND(VA=29) AND(BA(N)=0) THEN1930
+1900 IF(N=8) AND(VA=24) AND(BA(N)=0) THEN1930
+1910 IF(N=10) AND(VA=38) AND(BA(N)=0) THEN1930
+1920  GOTO1970
+1930 PRINT"U kunt maar een";
+1940 IFN=10 THENPRINT" pakje ";
+1950 PRINTBA$(N):PRINT"tegelijk meenemen.": GOTO1990
+1970 IF(GW<5) OR(N=3) THEN1980
+1975 PRINT"Dat wordt te zwaar.": GOTO1990
+1980 BA(N)=0:PRINT"Ok":IFN<>3 THENGW=GW+1
+1990 NEXTN:RETURN
+2000  GOSUB100: GOSUB18000: GOSUB120:HO=0: GOSUB110
+2010  GOSUB1430: GOSUB18400
+2020 WI=0:DO=0:VA=13:NA=13:DE=0:DR=0:HE=0:HD=0
+2025 LI=0:BL=-50:BT=-40:KV=0:GW=2:U$="U bent ": GOSUB5500
+2030 IFDO=0 THEN GOSUB4010: GOSUB2100: GOTO2030
+2040 IFDO=2 THENEND
+2046 IFDO=3 THEN GOSUB1430: GOSUB18404: GOTO2020
+2050 PRINT:PRINT"Uw naam zal worden toegevoegd aan de"
+2060 PRINT"lijst van hen die niet terugkeerden....":END
+2100 IFCO<6 THENNA=A(VA,CO): GOSUB3400:RETURN
+2110 IFCO<10 THENONCO-5 GOSUB9000,1800,3850,3800:RETURN
+2120 ONCO-9 GOSUB1500,3000,3200,18180:RETURN
+3000  GOSUB1280:IFLI>0 THENPRINT"Het licht is al aan.":RETURN
+3010 IFBA(0)<>0 THEN3100
+3020 IFBL<0 THENBL=-BL: GOTO3230
+3030 PRINT"De batterij is leeg";:IFBA(1)<>0 THEN3060
+3040 PRINT", gelukkig heeft u ":PRINT"een reserve."
+3050 BA(1)=101:BL=50: GOTO3230
+3060 PRINT" en u heeft geen":PRINT"reserve."
+3100 IFBA(9)=0 THEN3120
+3110 PRINT"U heeft niets om licht te maken.":RETURN
+3120 IFBA(10)=0 THEN3160
+3130 PRINT"Om een toorts aan te steken, heeft u"
+3140 PRINT"lucifers nodig.":RETURN
+3160 IFBT<0 THENBT=-BT: GOTO3230
+3170 PRINT"De toorts is al opgebrand.":RETURN
+3200  GOSUB1280:IFLI=0 THENPRINT"Het licht is al uit.":RETURN
+3210 IF(BL>0) AND((BA(0)=0) OR(BA(0)=VA)) THENBL=-BL
+3220 IF(BT>0) AND((BA(9)=0) OR(BA(9)=VA)) THENBT=-BT
+3230 LI=0:PRINT"Ok":RETURN
+3400 IFNA>100 THENNA=NA-100
+3410 N2=INT(NA/7):N1=NA+1-7*N2:N3=INT(N2/7):N2=N2+1-7*N3
+3420 N3=N3+1
+3430 ONN3 GOSUB3440,3450,3460,3470,3480:RETURN
+3440 ONN2 GOSUB3490,3500,3510,3520,3530,3540,3550:RETURN
+3450 ONN2 GOSUB3560,3570,3580,3590,3600,3610,3620:RETURN
+3460 ONN2 GOSUB3630,3640,3650,3660,3670,3680,3300:RETURN
+3490 ONN1 GOSUB4200,4300,4360,4460,4500,4610,4700:RETURN
+3500 ONN1 GOSUB5000,5000,5000,5140,5280,5400,5500:RETURN
+3510 ONN1 GOSUB5560,5600,5600,5600,5650,5680,5720:RETURN
+3520 ONN1 GOSUB5760,5800,5830,5890,5970,5970,5970:RETURN
+3530 ONN1 GOSUB6020,6080,6150,6190,6280,6340,6390:RETURN
+3540 ONN1 GOSUB6440,6500,6550,6600,6650,6700,6700:RETURN
+3550 ONN1 GOSUB6700,6750,6810,6880,6950,7060,7250:RETURN
+3560 ONN1 GOSUB7300,7370,8000,8010,8020,1080,1180:RETURN
+3570 ONN1 GOSUB8040,1200,8060,8090,1070,8130,8150:RETURN
+3580 ONN1 GOSUB8170,1100,8190,1260,8210,8300,8420:RETURN
+3700 IFLI=0 THEN3760
+3710  GOSUB1310:IFM=0 THEN3760
+3720 IFM=1 THENPRINT"Er is hier:"
+3730 IFM>1 THENPRINT"Er zijn hier:"
+3740 FORN=0 TO11
+3741 IF(BA(N)=VA) AND(N=10) THENPRINT"een pakje ";
+3742 IFBA(N)=(VA) THENPRINTL1$(N);BA$(N)
+3750 NEXTN
+3760 IFBL>0 THENBL=BL-1
+3770 IFBT>0 THENBT=BT-1
+3780 RETURN
+3800  GOSUB1330
+3810 IFM=0 THEN3860
+3820 PRINT"U heeft bij u:":FORN=0 TO11
+3830 IFBA(N)=0 THENPRINTL1$(N);BA$(N)
+3840 NEXTN:RETURN
+3850  GOSUB1330:IFM<>0 THEN3870
+3860 PRINT"U heeft niets meer bij u.":RETURN
+3870 FORN=11 TO0 STEP-1:IFBA(N)<>0 THEN4000
+3890 PRINT"Wilt u ";L2$(N);BA$(N):PRINT"neerleggen (j/n)?"
+3900  GOSUB1410:IFIN$<>"J" THEN4000
+3910 IF(N<>11) THEN3960
+3920 IF((BA(2)=0) OR(BA(5)=0) OR(KV=0)) THENKV=0: GOTO3960
+3930 PRINT"U krijgt die kogel niet los zonder"
+3940 PRINT"gereedschap.": GOTO4000
+3960 BA(N)=VA:PRINT"Ok":IFN<>3 THENGW=GW-1
+3970 IF(N=8) AND(VA=24) THENBA(N)=101
+3972 IF(N=10) AND(VA=38) THENBA(N)=101
+3980 IF(N=3) AND(VA=29) THENBA(N)=101
+3990 IF(N=6) AND(WI=1) AND(HD=0) AND(VA=18) THEN GOSUB8700
+4000 NEXTN:RETURN
+4010 PRINT"Wat nu";:INPUTI$:I$=LEFT$(I$+"  ",2)
+4020 IF(I$="NO") OR(I$="no") THENCO=0:RETURN
+4030 IF(I$="OO") OR(I$="oo") THENCO=1:RETURN
+4040 IF(I$="ZU") OR(I$="zu") THENCO=2:RETURN
+4050 IF(I$="WE") OR(I$="we") THENCO=3:RETURN
+4060 IF(I$="OP") OR(I$="op") THENCO=4:RETURN
+4070 IF(I$="NE") OR(I$="ne") THENCO=5:RETURN
+4080 IF(I$="ZO") OR(I$="zo") THENCO=6:RETURN
+4090 IF(I$="PA") OR(I$="pa") THENCO=7:RETURN
+4100 IF(I$="ZE") OR(I$="ze") THENCO=8:RETURN
+4110 IF(I$="BA") OR(I$="ba") THENCO=9:RETURN
+4120 IF(I$="SL") OR(I$="sl") THENCO=10:RETURN
+4130 IF(I$="LA") OR(I$="la") THENCO=11:RETURN
+4140 IF(I$="LU") OR(I$="lu") THENCO=12:RETURN
+4150 IF(I$="HE") OR(I$="he") THENCO=13:RETURN
+4160  GOSUB250: GOSUB120:HO=0:VE=VE-1: GOSUB110: GOTO4010
+4200 NA=VA: GOSUB1040:RETURN
+4300  GOSUB100:PRINTU$;"op een open plek in het bos. Er"
+4320 PRINT"staat hier een zware, oude eik":VA=NA: GOSUB3710
+4330 IFA(VA,5)>100 THENRETURN
+4340 PRINT"Onder de eik woont Kwetal. Hij is niet"
+4350 PRINT"thuis.":RETURN
+4360  GOSUB100:PRINTU$;"hier in de verlaten mijnen van"
+4380 PRINT"Gabor. ":VA=NA: GOSUB1270
+4382 IFLI=0 THEN:A(VA,0)=26: GOTO4450
+4384 PRINT"U kunt hier alle kanten op. ":A(VA,0)=28
+4390 IFA(VA,5)>100 THEN4450
+4400 PRINT:PRINT"Op de muur is een vage plattegrond van"
+4410 PRINT"van deze mijnen. Het ziet er niet erg"
+4420 PRINT"betrouwbaar uit. Alleen lijkt er een"
+4430 PRINT"lange, min of meer rechte gang naar het"
+4440 PRINT"noorden te lopen.";:A(VA,0)=28
+4450 PRINT: GOSUB3700:RETURN
+4460  GOSUB100:PRINTU$;"in de wrakkige woonwagen. De"
+4480 PRINT"bewoner is klaarblijkelijk verhuisd.":VA=NA
+4490  GOSUB3710:RETURN
+4500  GOSUB100:PRINTU$;"in een ruime, lichte grot. Hier"
+4520 PRINT"woont de grote, vuurspuwende draak.":VA=NA
+4530 IFBA(3)<>0 THEN4560
+4540 PRINT"Voor u is de draak erg vriendelijk.":
+4550 FORN=0 TO4:A(VA,N)=57:NEXTN:A(VA,5)=157: GOTO4590
+4560 PRINT"Hij komt vervaarlijk snuivend op u af."
+4570 PRINT"Het is maar beter er vandoor te gaan."
+4580 FORN=0 TO5:A(VA,N)=63:NEXTN
+4590 PRINT"Er is een smalle doorgang naar het"
+4600 PRINT"westen.":A(VA,3)=30: GOSUB3710:RETURN
+4610 IF(BA(2)=0) OR(BA(5)=0) OR(HE=1) THEN4620
+4612 PRINT"U krijgt het hek nooit open zonder"
+4614 PRINT"gereedschap.":RETURN
+4620  GOSUB100:PRINTU$;"op de binnenplaats van"
+4630 PRINT"Gruwelsteen. Er is een poort in het":VA=NA
+4640 PRINT"in het noorden. Verder vertonen de":HE=1
+4650 PRINT"hoge, grauwe muren geen enkele opening."
+4652 PRINT"Wel is er een stenen trap naar het dak."
+4660 IFA(VA,5)>100 THEN4690
+4670 PRINT"In een hoek gaat een steile wenteltrap"
+4680 PRINT"naar beneden."
+4690  GOSUB3710:RETURN
+4700  GOSUB100:IF(VA=45) AND(BA(8)<>45) THEN4820
+4710 PRINTU$;"op de bodem van een hoog gewelf.":VA=NA
+4730  GOSUB1270:IFLI=0 THEN4990
+4740 PRINT"Er gaan bochtige gangen naar het oosten"
+4750 PRINT"en westen. Een lang touw hangt van"
+4760 PRINT"boven in het gewelf tot op de grond. "
+4762 PRINT"Verder is er hier een bodemloze put."
+4770 IFA(NA,5)>100 THEN4990
+4780 IFDE=0 THEN4800
+4790 PRINT"Er is deur open deur naar het noorden.": GOTO4990
+4800 PRINT"Er is een zware deur met een codeslot"
+4810 PRINT"in het noorden.": GOTO4990
+4820 PRINT"Het gewelf is veel te hoog om te":NA=VA
+4830 PRINT"springen. U zult een hulpmiddel moeten"
+4840 IFBA(8)<>0 THENPRINT"zoeken.": GOTO4990
+4850 PRINT"gebruiken."
+4990  GOSUB3700:RETURN
+5000  GOSUB100:PRINTU$;"in de Duistere Doolhof van Doem."
+5040 VA=NA: GOSUB1270:IFLI=0 THEN5130
+5050 PRINT"Er gaan gangen naar alle windstreken";
+5060 IF(VA<>7) OR(A(7,5)>100) THEN5080
+5070 PRINT:PRINT"en er gaat een trap omhoog";
+5080 IF(VA<>8) OR(A(8,5)>100) THEN5100
+5090 PRINT:PRINT"en er gaat een trap omlaag";
+5100 IF(VA<>9) OR(A(9,5)>100) THEN5120
+5110 PRINT:PRINT"en er is een luik in de vloer";
+5120 PRINT"."
+5130  GOSUB3700:RETURN
+5140  GOSUB100:PRINTU$;"in de schatkamer van de"
+5160 PRINT"eeuwige wisseling.":VA=NA:WI=1
+5170  GOSUB1270:IFLI=0 THEN5270
+5180 PRINT"Er is hier een trap naar beneden.":A(9,5)=46
+5210 IFA(VA,5)>100 THEN5270
+5220 PRINT"Op de muur zijn tekeningen aangebracht."
+5230 PRINT"In het oosten de opgaande zon, in het"
+5240 PRINT"zuiden de middagzon en in het westen de"
+5250 PRINT"ondergaande zon."
+5270  GOSUB3700:RETURN
+5280  GOSUB100:IFVA<>35 THEN5360
+5300 PRINT"U wordt opgevangen door een zwaargewa-"
+5310 PRINT"pende opvangcommissie. In afwachting"
+5320 PRINT"van de officiele onvangst wordt u"
+5330 PRINT"ondergebracht in een stevige cel. U"
+5340 PRINT"krijgt bovendien een zware kogel aan"
+5350 PRINT"uw been.":IFBA(11)<>0 THENBA(11)=0:GW=GW+1
+5351 KV=1:IFGW<6 THEN5390
+5352 FORN=0 TO10:IFN=3 THEN5356
+5354 IFBA(N)=0 THENBA(N)=NA:GW=GW-1:N=10
+5356 NEXTN: GOTO5390
+5360 PRINT"U zit in een stevige cel";
+5362 IFBA(11)<>0 THEN5370
+5364 PRINT" met een zware":PRINT"kogel aan het been";
+5370 PRINT".":IFA(NA,5)>100 THEN5390
+5380 PRINT"Er is een gat in de vloer waaruit"
+5382 PRINT"kwalijk riekende dampen opstijgen."
+5390 VA=NA: GOSUB3710:RETURN
+5400  GOSUB100:PRINTU$;"op een smal strand. In het"
+5420 PRINT"noorden en zuiden rijzen steile":VA=NA
+5430 PRINT"bergwanden omhoog. Naar het oosten"
+5440 PRINT"loopt een droge rivierbeding. In het"
+5460 PRINT"westen, in de zee, ligt een klein"
+5470 PRINT"eiland.":IFA(VA,5)>100 THEN5490
+5480 PRINT"Er ligt hier een degelijke roeiboot."
+5490  GOSUB3710:RETURN
+5500  GOSUB100:PRINTU$;"aan de rand van het":VA=NA
+5520 PRINT"Donkere Bomen bos. In het zuiden ligt"
+5530 PRINT"de bewoonde wereld. Een smalle weg"
+5540 PRINT"voert noordwaarts het bos in. Diepe"
+5550 PRINT"wielsporen gaan naar het oosten": GOSUB3710:RETURN
+5560  GOSUB100:PRINTU$;"op een autokerkhof. Op een bord"
+5580 PRINT"staat: SUPER AUTOSLOPERIJ. Er gaan":VA=NA
+5590 PRINT"wielsporen naar het westen.": GOSUB3710:RETURN
+5600 PRINTU$;"verdwaald in het bos."
+5640 VA=NA: GOSUB3710:RETURN
+5650  GOSUB100:PRINT"Het pad verliest zich in het bos."
+5660 IF(WI=1) AND(HD=0) THEN GOSUB8600: GOTO5678
+5670 PRINT"U kunt beter teruggaan."
+5678 VA=NA: GOSUB3710:RETURN
+5680  GOSUB100:PRINTU$;"op een bospad dat in noord-"
+5700 PRINT"zuid richting loopt. Er ligt een witte":VA=NA
+5710 PRINT"steen naast het pad.": GOSUB3710:RETURN
+5720  GOSUB100:PRINT"U komt bij een veld gemene braam-"
+5740 PRINT"struiken terecht. U kunt niet verder.":VA=NA
+5742 PRINT"Iemand heeft hier strikken uitgezet."
+5750  GOSUB3710:RETURN
+5760  GOSUB100:PRINTU$;"bij de noordelijke bosrand."
+5779 PRINT"In het westen ligt een vervallen hut.":VA=NA
+5780 PRINT"Een smal pad gaat noordwaarts de bergen":VA=NA
+5790 PRINT"in.": GOSUB3710:RETURN
+5800  GOSUB100:PRINTU$;"in de vervallen hut. Het is hier"
+5820 PRINT"muf en onbewoonbaar.":VA=NA: GOSUB3710:RETURN
+5830  GOSUB100:PRINT"U kruist hier een droge rivierbedding."
+5850 PRINT"het pad gaat hier noord-zuid, de rivier":VA=NA
+5860 PRINT"stroomde ooit van oost naar west."
+5870  GOSUB3710:RETURN
+5890  GOSUB100:PRINTU$;"bij de ruine van Enggraf. Boven"
+5910 PRINT"poort hangt nog het naargeestige wapen-":VA=NA
+5920 PRINT"schild. Het woord 'ZAZEL' is nog net"
+5930 PRINT"leesbaar. De ruine is kortgeleden nog"
+5940 PRINT"door smokkelaars gebruikt. Nu liggen er"
+5950 PRINT"alleen nog maar een paar lange touwen."
+5960  GOSUB3710:RETURN
+5970 PRINT"U dwaalt door de mijnen van Gabor.":VA=NA
+6010  GOSUB1270: GOSUB3700:RETURN
+6020 IFVA=2 THEN6050
+6040 PRINT"De grot gaat hier over in een mijngang.": GOTO6070
+6050 PRINT"de mijngang gaat hier over in een door"
+6060 PRINT"de natuur gevormde grot."
+6070 VA=NA: GOSUB3710:RETURN
+6080  GOSUB100:PRINTU$;"hier in de groene grot. Er is"
+6100 PRINT"een zachtgroen licht en een aangename":VA=NA
+6110 PRINT"temperatuur. Hier bloeit de zwarte"
+6120 PRINT"bloem van de grauwe spliterwt. De grot"
+6130 PRINT"vernauwt zich naar het zuiden. Er is"
+6140 PRINT"een opening naar het oosten.": GOSUB3710:RETURN
+6150  GOSUB100:PRINTU$;"in de Zwelgvallei. Hier wonen de"
+6154 PRINT"Zwelbasten. Het zijn woeste rovers."
+6156 IFBA(11)=0 THEN6170
+6158 IFVA=29 THENA(NA,3)=29:A(NA,2)=31
+6160 IFVA=36 THENA(NA,2)=36:A(NA,3)=31
+6162 A(NA,0)=31:A(NA,1)=31: GOTO6188
+6170 PRINT"Toch zijn ze altijd bereid een"
+6172 PRINT"ontsnapte collega te helpen. De vallei"
+6173 PRINT"heeft uitgangen naar het westen en"
+6174 PRINT"oosten en er gaat een riool naar het"
+6175 PRINT"zuiden."
+6176 IF(VA<>29) AND(VA<>36) THEN6184
+6177 PRINT"Volgens de Zwelbasten moet u de ooste-"
+6178 PRINT"lijke uitgang hebben, maar ze gaan zelf"
+6180 PRINT"niet mee."
+6184 A(NA,0)=60:A(NA,1)=4:A(NA,2)=36:A(NA,3)=29
+6188 VA=NA: GOSUB3710:RETURN
+6190  GOSUB100:VA=NA
+6210 IFBA(4)=0 THENBA(4)=VA
+6220 FORN=0 TO11:IFBA(N)=0 THENBA(N)=101
+6230 NEXTN:GW=0
+6240 PRINTU$;"nog maar nauwelijks op weg of u"
+6250 PRINT"wordt aangevallen en beroofd."
+6260 PRINT:PRINT"U ligt in de Zwelgvallei. In de rotsen"
+6270 PRINT"in het westen is een opening.": GOSUB3710:RETURN
+6280  GOSUB100:PRINTU$;"op een tweesprong. Er gaan wegen"
+6300 PRINT"naar het oosten, zuiden en westen. In":VA=NA
+6310 PRINT"het noorden staat een wrakke woonwagen."
+6320 PRINT"Op de deur zit een bordje 'WWAGEL'."
+6330  GOSUB3710:RETURN
+6340  GOSUB100:PRINTU$;"bij het einde van een droge"
+6360 PRINT"rivierbedding. In het oosten is een":VA=NA
+6370 PRINT"laboratorium. De rivierbedding ligt"
+6380 PRINT"naar het westen.": GOSUB3710:RETURN
+6390  GOSUB100:PRINTU$;"in het laboratorium van"
+6410 PRINT"professor Sickbock. De geleerde heeft":VA=NA
+6420 PRINT"een proefpersoon nodig voor een"
+6430 PRINT"experiment.": GOSUB3710:RETURN
+6440  GOSUB100:PRINT"U komt voor de poort van het oude Zor."
+6460 PRINT"Deze stad staat bekend om zijn gast-":VA=NA
+6470 PRINT"vrijheid. Het is zo gastvrij dat er nog"
+6480 PRINT"nimmer een gast weer vertrokken is."
+6490  GOSUB3710:RETURN
+6500  GOSUB100:PRINTU$;"in  het hoofdriool van Zor. Het"
+6520 PRINT"riool ligt in noord-zuid richting."
+6530 IFVA=11 THENPRINT"Er is een mangat naar boven."
+6531  GOTO6540
+6532  GOSUB1270
+6540 VA=NA: GOSUB3700:RETURN
+6550  GOSUB100:PRINTU$;"op het dak van Gruwelsteen. Er"
+6570 PRINT"is een trap naar beneden.":VA=NA: GOSUB3710:RETURN
+6600  GOSUB100:PRINT"Het riool komt uit achter een":VA=NA
+6620 PRINT"laboratorium. Er staat een keukenraam"
+6630 PRINT"open. In de vensterbank liggen"
+6640 PRINT"lucifers.": GOSUB3710:RETURN
+6650  GOSUB100:PRINTU$;"aan de rand van de grote, lege"
+6670 PRINT"vlakte. Er is een kruipgangetje naar":VA=NA
+6680 PRINT"het westen. In het noorden schijnt een"
+6690 PRINT"oud fort te liggen.": GOSUB3710:RETURN
+6700  GOSUB100:PRINT"U zwerft over de grote lege vlakte."
+6740 VA=NA: GOSUB3710:RETURN
+6750  GOSUB100:PRINTU$;"bij de poort aan de noordkant"
+6770 PRINT"van Gruwelsteen. De poort is afgesloten":VA=NA
+6780 PRINT"met een zwaar hekwerk.":IFHE=0 THEN6800
+6790 PRINT"Gelukkig is het hek opengebroken."
+6800  GOSUB3710:RETURN
+6810  GOSUB100:PRINTU$;"in de kelder van Gruwelsteen."
+6830 VA=NA:A(VA,1)=0: GOSUB1270:IFLI=0 THEN6870
+6840 PRINT"Er gaat een trap omhoog. In het oosten"
+6860 PRINT"is een smalle nis.":A(VA,1)=45
+6870  GOSUB3700:RETURN
+6880  GOSUB100:PRINT"U staat in een smalle nis.":VA=NA
+6900  GOSUB1270:IFLI=0 THEN6930
+6910 PRINT"In het westen is een kelder. Beneden u"
+6920 PRINT"is een enorm gewelf."
+6930  GOSUB3700:RETURN
+6950  GOSUB100:PRINTU$;"in een laag gewelf.":VA=NA
+6970 IFDR=0 THEN7020
+6980  GOSUB1270:IFLI=0 THEN7050
+6990 PRINT"Er is een open deur naar het zuiden en"
+7000 PRINT"een smalle gang naar het oosten."
+7010 A(VA,1)=7:A(9,5)=110: GOTO7050
+7020 PRINT"Er staat hier een grote metalen tank."
+7030 PRINT"Daarin woont de Grote Droon. Hij heeft"
+7040 PRINT"een hekel aan schatzoekers."
+7050  GOSUB3700:RETURN
+7060  GOSUB100:PRINT"Als u de bosrand nadert komen u een"
+7080 PRINT"paar ongunstig uitziende individuen":VA=NA
+7090 PRINT"tegemoet.":IFHD<>2 THEN7120
+7100 PRINT"Als ze de hond zien gaan ze er rap"
+7110 PRINT"vandoor.": GOTO7240
+7120 IFBA(7)<>0 THEN7160
+7130 PRINT"Ze nemen u met geweld de ";BA$(7)
+7140 PRINT"af, laden hem op een oude auto en gaan"
+7150 PRINT"er vandoor.":BA(7)=101:GW=GW-1: GOTO7240
+7160 PRINT"Ze kijken u dreigend aan maar doen"
+7170 PRINT"nog niets."
+7240  GOSUB3710:RETURN
+7250  GOSUB100:PRINT"U zit hoog in een boom. In het zuiden"
+7270 PRINT"ziet u het Donkere Bomen Bos, in het":VA=NA
+7280 PRINT"noorden de Zwarte Bergen.": GOSUB3710:RETURN
+7300  GOSUB100:PRINT"Daar zit u dan, boven in een boom en"
+7320 PRINT"met aan alle kanten nog meer andere":A(NA,5)=VA
+7330 PRINT"bomen.";:IF(VA<>17) THEN7360
+7340 PRINT" Alleen in het westen lijkt een"
+7350 PRINT"soort open plek te zijn.";
+7360 VA=NA:PRINT: GOSUB3710:RETURN
+7370  GOSUB100:IFBA(7)<>0 THEN7460
+7400 PRINT"U bent geslaagd waar velen voor u"
+7410 PRINT"faalden, u keert terug met de"
+7420 PRINTBA$(7);"."
+7430 PRINT"Nu moet u zelf nog uitmaken wat de"
+7440 PRINTBA$(7);" voor u betekent.":DO=2:RETURN
+7460 PRINT:PRINT"U heeft gefaald,maar......":DO=2
+7470 PRINT"U kunt het gerust nog eens proberen.":PRINT
+7480 PRINT"Wilt u dat (j/n)": GOSUB1410:IFIN$="J" THENDO=3
+7490 RETURN
+8000  GOSUB260:RV=INT(2*(RV+.5)):ONRV GOSUB1120,1160: GOTO8012
+8010  GOSUB260:RV=INT(2*(RV+.5)):ONRV GOSUB1220,1240
+8012 NA=VA:RETURN
+8020 PRINT"U kunt hier niet zwemmen. Er zijn hier"
+8030 PRINT"gevaarlijke stromingen en haaien!":NA=VA:RETURN
+8040 PRINT"Uw boot loopt op een klip en zinkt";:DO=1
+8050  GOSUB1400:RETURN
+8060 PRINT"Een volgende aanval van de zwelbasten":DO=1
+8070 PRINT"overleeft u niet.":RETURN
+8090 PRINT"De professor dwingt u in zijn tijd-":DO=1
+8100 PRINT"machine plaats te nemen. Het experiment"
+8110 PRINT"mislukt en u blijft hangen in een ver"
+8120 PRINT"en grijs verleden.":RETURN
+8130 PRINT"Er zijn hier wel zijriolen, maar die"
+8140 PRINT"zijn veel te klein voor u.":NA=VA:RETURN
+8150 PRINT"Hier is niets te vinden.":RETURN
+8170 PRINT"De draak blaast u met een helhete":DO=1
+8180 PRINT"ademstoot zijn grot uit.":RETURN
+8190 PRINT"U glijdt uit, valt";: GOSUB1400:PRINT:DO=1
+8200 PRINT"en blijft vallen.":RETURN
+8210 PRINT"Te laat! De Grote Droon ontbindt u met":DO=1
+8220 PRINT"zijn quasarstralen.":RETURN
+8300 PRINT"Dan moet eerst het codeslot geopend.":DE=1:NA=VA
+8310 PRINT"Geef de eerste letter: ";: GOSUB1410:PRINTIN$
+8320 IFIN$<>CHR$(90) THENDE=0
+8330 FORN=1 TO9:PRINT"Volgende letter: ";: GOSUB1410:PRINTIN$
+8340 IF(N=1) AND(IN$<>CHR$(65)) THENDE=0
+8350 IF(N=2) AND(IN$<>CHR$(90)) THENDE=0
+8360 IF(N=3) AND(IN$<>CHR$(69)) THENDE=0
+8370 IF(N=4) AND(IN$<>CHR$(76)) THENDE=0
+8380 IF(N=4) AND(DE=1) THENN=9
+8390 NEXTN:IFDE=1 THEN8410
+8400 PRINT"Helaas, verkeerde combinatie.":RETURN
+8410 PRINT"De deur is open.":A(VA,0)=46:RETURN
+8420 PRINT"U verdwaalt in het laboratorium en"
+8430 PRINT"wordt gesnapt door professor Sickbock.": GOTO8090
+8600 PRINT"Er is hier een grote, hongerige hond"
+8610 PRINT"aan een boom vastgebonden. Hij ziet er"
+8620 PRINT"onbetrouwbaar uit."
+8640  GOSUB1440:IFIN$<>"J" THENPRINT"Ok":RETURN
+8650 PRINT"De hond gromt laag maar besluit toch"
+8660 PRINT"een andere maaltijd te zoeken en":HD=1
+8670 PRINT"verdwijnt tussen de bomen.":RETURN
+8700 PRINT"De hond verslindt het konijn (even niet"
+8710 PRINT"kijken) en er komt een dankbare blik in":N=0
+8720 PRINT"zijn ogen.":BA(N)=101: GOSUB1440
+8730 IFIN$<>"J" THENPRINT"Ok":RETURN
+8740 PRINT"De hond loopt het bos in maar blijft"
+8750 PRINT"bij u in de buurt.":HD=2:RETURN
+9000 IF(VA>0) AND(VA<13) AND(A(VA,5)>100) THEN9020
+9002  GOSUB3400
+9010 PRINT"Er is hier niets bijzonders te vinden.":RETURN
+9020 A(VA,5)=A(VA,5)-100
+9030 IFVA<5 THENONVA GOSUB9070,9150,9160,9170:RETURN
+9040 IFVA<9 THENONVA-4 GOSUB9180,9190,9400,9420:RETURN
+9050 ONVA-8 GOSUB9460,9470,9480,9500:RETURN
+9070 PRINT:PRINT"Onder de grote eik woont Kwetal. Hij"
+9080 PRINT"weet de weg in het bos. Volgens hem"
+9090 PRINT"moet u noordwaarts tot de witte steen"
+9100 PRINT"dan westwaarts tot de barre braam-"
+9110 PRINT"struiken en dan weer naar het noorden."
+9120 A(VA,0)=A(VA,0)+1:Q$=CHR$(34)
+9130 PRINTQ$;"Volg bij war de weg van de zon";Q$;", zegt"
+9140 PRINT"hij nog en verdwijnt dan in het bos.":RETURN
+9150  GOSUB1270:IFLI=1 THEN GOSUB4360
+9152 RETURN
+9160 BA(5)=3: GOSUB4460:RETURN
+9170 PRINT"U vindt een kruipgangetje naar het":A(VA,1)=39
+9175 PRINT"oosten.":RETURN
+9180 A(VA,5)=44: GOSUB4610:RETURN
+9190  GOSUB1270:IFLI=1 THEN GOSUB4700:A(VA,0)=68
+9200 RETURN
+9400 IFLI=0 THENA(VA,5)=157: GOSUB3400:RETURN
+9410 A(VA,4)=8:A(8,5)=7: GOSUB3400:RETURN
+9420 IFLI=0 THENA(VA,5)=107: GOSUB3400:RETURN
+9430 A(7,4)=8: GOSUB3400:RETURN
+9440 IFLI=0 THENA(VA,5)=107: GOSUB3400:RETURN
+9450 A(VA,5)=10: GOSUB3400:RETURN
+9460  GOSUB5000:RETURN
+9470  GOSUB5140:RETURN
+9480 PRINT"Een van de vloertegels ligt los."
+9482 PRINT"Onder die tegel blijkt een put te"
+9484 PRINT"te zitten waaruit een adembenemende"
+9486 PRINT"lucht opstijgt.":A(VA,5)=36:RETURN
+9500 PRINT"Achter een lage rots vindt u een"
+9510 PRINT"uitstekende roeiboot."
+9520 A(VA,3)=24:RETURN
+18000 PRINT"          *** SCHATZOEKER ***":PRINT
+18010 PRINT"Aan het begin van dit spel bent u aan"
+18020 PRINT"de rand van het Donkere Bomen Bos, op"
+18030 PRINT"weg naar de Zwarte Bergen. Het doel"
+18040 PRINT"van uw reis is het vinden van de"
+18045 PRINT:PRINT"  ** WISSELSCHAT **.":PRINT
+18050 PRINT"Volgens de oude overleveringen zou"
+18060 PRINT"deze verborgen zijn onder het oude fort"
+18070 PRINT"Gruwelsteen dat aan andere kant van de"
+18080 PRINT"Zwarte Bergen moet liggen. Velen hebben"
+18085 PRINT"voor u geprobeerd om deze schat te"
+18090 PRINT"vinden, maar keerden onverrichter zake"
+18100 PRINT"terug. Anderen keerden in het geheel"
+18110 PRINT"niet terug...........":PRINT
+18120 PRINT"Om zich te verplaatsen, de omgeving te"
+18130 PRINT"onderzoeken, iets te pakken of neer te"
+18140 PRINT"zetten enzovoorts, beschikt u over de"
+18150 PRINT"volgende opdrachten:":PRINT: GOSUB1450
+18180  GOSUB100:PRINT"Lijst van mogelijke opdrachten:"
+18190 PRINT:PRINT" NO = Noord":PRINT" OO = Oost"
+18200 PRINT" ZU = Zuid":PRINT" WE = West"
+18210 PRINT" OP = Op, omhoog":PRINT" NE = Neer, omlaag"
+18220 PRINT" ZO = Zoek, onderzoek de omgeving"
+18230 PRINT" PA = Pak iets":PRINT" ZE = Zet iets neer"
+18240 PRINT" BA = Bagage, dat wat u draagt":PRINT" SL = Sla"
+18250 PRINT" LA = Licht aan":PRINT" LU = Licht uit"
+18260 PRINT" HE = Help, (toont deze opdrachtenlijst)":PRINT
+18280 PRINT"Van alle opdrachten zijn dus de twee"
+18290 PRINT"eerste letters van belang. Zonodig"
+18300 PRINT"vraagt het programma wel om meer"
+18310 PRINT"informatie.":PRINT: GOSUB1450:RETURN
+18400 DIMA(49,5):DIMBA$(11):DIMBA(11)
+18402 DIML1$(11):DIML2$(11)
+18404 RESTORE
+18410 FORM=0 TO49:FORN=0 TO5:READA(M,N):NEXTN:NEXTM
+18420 FORN=0 TO11:READBA$(N):NEXTN
+18440 FORN=0 TO11:READL1$(N):NEXTN
+18450 FORN=0 TO11:READL2$(N):NEXTN
+18460 FORN=0 TO11:READBA(N):NEXTN:RETURN
+18471 DATA0,0,0,0,0,0,18,15,47,16,51,152
+18472 DATA28,32,26,27,57,125,0,0,32,0,0,162
+18473 DATA0,0,0,0,0,0,43,0,0,0,37,152
+18474 DATA0,6,0,6,45,165,7,7,8,7,7,157
+18475 DATA8,7,7,9,55,107,7,7,7,7,7,107
+18476 DATA0,0,0,0,0,107,11,11,11,11,11,111
+18477 DATA54,23,60,53,51,152,1,14,50,16,51,52
+18478 DATA15,16,17,13,51,52,17,16,15,17,49,52
+18479 DATA17,16,17,15,49,52,15,16,17,1,49,52
+18480 DATA17,16,1,15,49,52,18,16,1,20,49,52
+18481 DATA21,19,20,20,49,52,23,15,20,22,48,52
+18482 DATA0,21,0,0,0,0,32,33,21,12,51,52
+18483 DATA56,12,56,56,51,52,27,26,25,27,26,25
+18484 DATA25,26,27,25,26,27,27,26,25,2,26,25
+18485 DATA29,57,2,57,57,57,57,30,28,57,55,57
+18486 DATA31,31,31,29,51,52,58,58,58,29,51,52
+18487 DATA3,35,23,2,51,52,54,34,60,23,51,52
+18488 DATA59,59,59,33,59,59,11,11,11,32,51,52
+18489 DATA30,61,38,61,11,0,66,66,66,66,51,5
+18490 DATA36,64,54,69,51,52,40,41,43,4,51,52
+18491 DATA40,41,40,42,51,52,42,41,42,40,51,52
+18492 DATA40,41,42,39,51,52,41,42,5,40,51,52
+18493 DATA0,45,0,0,5,0,0,0,0,44,0,6
+18494 DATA67,67,67,67,67,67,1,15,13,16,49,52
+18495 DATA66,66,66,66,51,21,66,66,66,66,51,15
+18500 DATA" zaklantaarn"," reserve batterij"," ijzerzaag"
+18510 DATA" zwarte bloem"," houweel"," vijl"," konijn"
+18530 DATA" ** wisselschat **"," touw"," toorts"
+18550 DATA"lucifers"," kogel"
+18560 DATA"een","een","een","een","een roestige","een"
+18570 DATA"een dood","de","een lang","een","","een zware"
+18590 DATA"de","de","de","de","de","de","het","de","het"
+18600 DATA"de","de ","de"
+18610 DATA0,0,26,101,22,101,20,10,101,28,101,101
+30000 REM  SCHATZOEKER 
+30010 REM  P. Kralt 
+30020 REM  Schout Eeuwoutstr. 30
+30030 REM  3195 VZ  PERNIS RT
+30040 REM  COPYRIGHT
+30050 REM  NOS HILVERSUM
+

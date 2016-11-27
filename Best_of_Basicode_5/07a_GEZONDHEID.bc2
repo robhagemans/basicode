@@ -1,0 +1,534 @@
+1000 A=200:GOTO20:REM GEZONDHEID -------
+1010 GOSUB10070:REM VARIABELEN LEEG
+1020 REM Schermhoogte (in SH) en breedte (in SB)
+1030 GOSUB100
+1040 SH=VE+1:PRINT:GOSUB120:IFVE=SH THEN1040
+1050 VE=0:GOSUB110
+1060 SB=HO+1:PRINT" ";:GOSUB120:IFHO=SB THEN1060
+1070 REM TITELPAGINA -------------------
+1080 VE=0:FORHO=0 TOSB:GOSUB110:PRINT"*";:NEXTHO
+1090 HO=SB-1:FORVE=1 TOSH-3:GOSUB110:PRINT"*";:NEXTVE
+1100 VE=SH-2:FORHO=SB TO0 STEP-1:GOSUB110:PRINT"*";:NEXTHO
+1110 HO=0:FORVE=SH-3 TO1 STEP-1:GOSUB110:PRINT"*";:NEXTVE
+1120 VE=1:FORHO=1 TOSB-1:GOSUB110:PRINT"*";:NEXTHO
+1130 HO=SB-2:FORVE=2 TOSH-4:GOSUB110:PRINT"*";:NEXTVE
+1140 VE=SH-3:FORHO=SB-1 TO1 STEP-1:GOSUB110:PRINT"*";:NEXTHO
+1150 HO=1:FORVE=SH-3 TO2 STEP-1:GOSUB110:PRINT"*";:NEXTVE
+1160 VE=SH-19:HO=SB/2-15:GOSUB110
+1170 PRINT"GGGG EEEE ZZZZ OOOO N   N DDD"
+1180 VE=SH-18:GOSUB110:PRINT"G    E       Z O  O NN  N D  D"
+1190 VE=SH-17:GOSUB110
+1200 PRINT"G    EEE    Z  O  O N N N D  D"
+1210 VE=SH-16:GOSUB110:PRINT"G GG E     Z   O  O N  NN D  D"
+1220 VE=SH-15:GOSUB110:PRINT"GGGG EEEE ZZZZ OOOO N   N DDD"
+1230 VE=SH-12:HO=SB/2-8:GOSUB110:PRINT"H  H EEEE  I  DDD"
+1240 VE=SH-11:GOSUB110:PRINT"H  H E     I  D  D"
+1250 VE=SH-10:GOSUB110:PRINT"HHHH EEE   I  D  D"
+1260 VE=SH-9:GOSUB110:PRINT"H  H E     I  D  D"
+1270 VE=SH-8:GOSUB110:PRINT"H  H EEEE  I  DDD"
+1280 VE=SH-5:HO=SB/2-10:GOSUB110
+1290 PRINT"door R.KRUGER - GRAAUW"
+1300 GOSUB250:FORWA=1 TO1000:NEXTWA
+1310 FORI=1 TO30:PRINT:FORWA=1 TO50:NEXTWA:NEXTI
+2000 REM HOOFDMENU ---------------------
+2010 A$="U W  G E Z O N D H E I D"
+2020 GOSUB100:HO=(SB-LEN(A$))/2:VE=0:GOSUB110:PRINTA$
+2030 VE=1:GOSUB110:PRINT"========================"
+2040 A$="HOOFDMENU":HO=(SB-LEN(A$))/2:VE=3:GOSUB110:PRINTA$
+2050 VE=4:GOSUB110:PRINT"---------"
+2060 HO=SB/2-14:VE=6:GOSUB110:PRINT"1 - UITLEG"
+2070 VE=8:GOSUB110:PRINT"2 - ALGEMENE INFORMATIE"
+2080 VE=10:GOSUB110:PRINT"3 - POLSCONTROLE"
+2090 VE=12:GOSUB110:PRINT"4 - UW IDEALE GEWICHT GEPALEN"
+2100 VE=14:GOSUB110:PRINT"5 - TEST UW LEEFGEWOONTEN"
+2110 VE=16:GOSUB110:PRINT"6 - STOPPEN"
+2120 VE=20:GOSUB110:PRINT"UW KEUZE  ";:GOSUB250:GOSUB210
+2130 KZ=VAL(IN$):IF(KZ<1) OR(KZ>6) THEN2120
+2140 ONKZ GOSUB2500,2600,2700,2800,3500,10000:GOTO2000
+2500 REM 1-UITLEG ------------------------
+2510 RESTORE:GOSUB20000:RETURN
+2520 GOSUB100:HO=SB/2-8:VE=0:GOSUB110
+2530 PRINT"1 - U I T L E G";:GOSUB10040:HO=SB/2-8
+2540 VE=1:GOSUB110:PRINT"===============":PRINT:RETURN
+2600 REM 2-ALGEMENE INFORMATIE -----------
+2610 RESTORE:FORK=1 TO60:READB$:NEXTK:GOSUB20000:RETURN
+2620 GOSUB100:HO=SB/2-12:VE=0:GOSUB110
+2630 PRINT"2 - ALGEMENE INFORMATIE";:GOSUB10040:HO=SB/2-12
+2640 VE=1:GOSUB110:PRINT"=======================":PRINT
+2650 RETURN
+2700 REM 3-POLSCONTROLE ------------------
+2710 RESTORE:FORK=1 TO145:READB$:NEXTK:GOSUB20000:RETURN
+2720 GOSUB100:HO=SB/2-8:VE=0:GOSUB110
+2730 PRINT"3 - POLSCONTROLE";:GOSUB10040:HO=SB/2-8:VE=1
+2740 GOSUB110:PRINT"================":PRINT:RETURN
+2800 REM 4-BEREKENING GEWICHT ------------
+2810 RESTORE:FORK=1 TO201:READB$:NEXTK:GOSUB20000
+2820 GOSUB3340:GOSUB250
+2830 HO=0:VE=3:GOSUB110:PRINT"Hoe lang bent U (in meters)";
+2840 INPUTL:IFL<=0 THEN2830
+2850 GOSUB250:HO=0:VE=5:GOSUB110
+2860 PRINT"Wat is Uw gewicht in kg";:INPUTG:IFG<=0 THEN2850
+2870 HO=0:VE=7:GOSUB110:PRINT"Even rekenen"
+2880 FORWA=1 TO500:NEXTWA
+2890 L2=L^2
+2900 G1=20*L2:REM G1=ondergrens
+2910 G2=25*L2:REM G2=bovengrens
+2920 G3=G1-G:REM G3=kg te licht
+2930 G4=G-G2:REM G4=kg te zwaar
+2940 GP=INT((G/L2)*10)/10
+2950 GOSUB3340:HO=SB/2-6:VE=4:GOSUB110
+2960 PRINT"HET RESULTAAT":VE=5:GOSUB110
+2970 PRINT"=============":PRINT
+2980 CT=4:CN=1:SR=GP:GOSUB310
+2990 PRINT"U heeft ";SR$;" gewichtspunten":PRINT
+3000 IF(GP<=17) THEN3050
+3010 IF(GP>17) AND(GP<=20) THEN3100
+3020 IF(GP>20) AND(GP<=25) THEN3130
+3030 IF(GP>25) AND(GP<=27) THEN3150
+3040 IF(GP>27) THEN3180
+3050 CT=4:CN=1:SR=G3:GOSUB310
+3060 PRINT"U bent veel te licht of te mager.":PRINT
+3070 PRINT"Uw moet ";SR$;" kg zwaarder worden.":PRINT
+3080 PRINT"U moet rekening houden met een"
+3090 PRINT"geringere levensverwachting":GOTO3250
+3100 CT=4:CN=1:SR=G3:GOSUB310
+3110 PRINT"U bent wat aan de lichte kant.":PRINT
+3120 PRINT"Er  zou ";SR$;" kg bij kunnen.":GOTO3250
+3130 PRINT"Uw gewicht is goed":PRINT:PRINT"Houden zo !!!"
+3140 GOTO3250
+3150 CT=4:CN=1:SR=G4:GOSUB310
+3160 PRINT"U bent te zwaar, U moet ";SR$;" kg afvallen"
+3170 PRINT"Ga trimmen en let op Uw eetgewoonten":GOTO3250
+3180 CT=4:CN=1:SR=G4:GOSUB310
+3190 PRINT"U bent veel te zwaar, wel ";SR$;" kg."
+3200 PRINT"U moet snel iets aan Uw gewicht gaan"
+3210 PRINT"doen voordat het gevaarlijk wordt."
+3220 PRINT"Doe dit in overleg met Uw arts":PRINT
+3230 PRINT"U moet rekening houden met een"
+3240 PRINT"geringere levensverwachting"
+3250 HO=0:VE=16:GOSUB110:FORI=0 TOSB-2:PRINT"-";:NEXTI:PRINT
+3260 CT=4:CN=2:SR=L:GOSUB310
+3270 PRINT"Bij Uw lengte van ";SR$;" m' past een"
+3280 CT=5:CN=1:SR=G1:GOSUB310:PRINT"ideaal gewicht dat ligt"
+3290 PRINT"tussen de ";SR$;" ";:CT=5:CN=1:SR=G2:GOSUB310
+3300 PRINT"en de ";SR$;" kg"
+3310 PRINT:PRINT"Doe er wat mee en succes !!!!!!"
+3320 FORI=0 TOSB-2:PRINT"-";:NEXTI:PRINT
+3330 GOSUB21000:RETURN
+3340 REM KOP -----
+3350 GOSUB100:HO=SB/2-10:VE=0:GOSUB110
+3360 PRINT"4 - UW IDEALE GEWICHT":VE=1:GOSUB110
+3370 PRINT"=====================":PRINT:RETURN
+3500 REM 5-LEEFGEWOONTEN -----------------
+3510 PT=0:REM AANTAL PUNTEN OP 0
+3520 GOSUB100:GOSUB4020:HO=0:VE=8:GOSUB110
+3530 PRINT"Weet U hoeveel gewichts-punten U":PRINT
+3540 PRINT"heeft gescoord in deel 4 ?":PRINT
+3550 PRINT"Deze heeft U straks nl. nodig.":PRINT
+3560 PRINT"Kies (j/n)";:GOSUB250
+3570 GOSUB210:IF(IN$="J") OR(IN$="j") THEN3600
+3580 IF(IN$="N") OR(IN$="n") THENRETURN
+3590 GOTO3500
+3600 REM LEES VRAGEN, ANTWOORDEN  EN SCORE IN
+3610 RESTORE:FORK=1 TO216:READB$:NEXTK
+3620 READV1$:IFV1$="@" THEN3820
+3630 READV2$,A1$,A2$,A3$,A4$,A1,A2,A3,A4
+3640 REM Vragen beantwoorden.
+3650 GOSUB100:GOSUB4020:HO=4:VE=3:GOSUB110
+3660 PRINT"Kies uit de volgende mogelijkheden:"
+3670 HO=0:VE=6:GOSUB110:PRINTV1$:PRINTV2$
+3680 VE=10:GOSUB110:PRINTA1$
+3690 VE=12:GOSUB110:PRINTA2$
+3700 VE=14:GOSUB110:PRINTA3$
+3710 VE=16:GOSUB110:PRINTA4$
+3720 GOSUB250:VE=19:GOSUB110
+3730 PRINT"Maak Uw keuze:";:GOSUB210
+3740 N=VAL(IN$):IF(N<1) OR(N>4) THEN3720
+3750 IFN=1 THENAN=A1
+3760 IFN=2 THENAN=A2
+3770 IFN=3 THENAN=A3
+3780 IFN=4 THENAN=A4
+3790 PT=PT+AN:VE=19:GOSUB110
+3795 PRINT"Keuze ";N;" = ";AN;" punten."
+3800 VE=21:GOSUB110:PRINT"Nu totaal ";PT;" punten."
+3810 GOSUB21000:GOTO3620
+3820 REM DE RESULTATEN --------------
+3830 GOSUB100:HO=0:VE=3:GOSUB110
+3840 PRINT"U heeft ";PT;" punten.":PRINT
+3850 IF(PT<60) THENGOSUB20000:RETURN
+3860 IF(PT>=60) AND(PT<70) THEN3910
+3870 IF(PT>=70) AND(PT<80) THEN3930
+3880 IF(PT>=80) AND(PT<90) THEN3950
+3890 IF(PT>=90) AND(PT<121) THEN3970
+3900 IF(PT>120) THEN3990
+3910 REM 60=<PT<70
+3920 FORK=1 TO17:READB$:NEXTK:GOSUB20000:RETURN
+3930 REM 70=<PT<80
+3940 FORK=1 TO39:READB$:NEXTK:GOSUB20000:RETURN
+3950 REM 80=<PT<90
+3960 FORK=1 TO56:READB$:NEXTK:GOSUB20000:RETURN
+3970 REM 90=<PT=<120
+3980 FORK=1 TO75:READB$:NEXTK:GOSUB20000:RETURN
+3990 REM PT>120
+4000 FORK=1 TO91:READB$:NEXTK:GOSUB20000:RETURN
+4010 REM KOP
+4020 HO=SB/2-8:VE=0:GOSUB110
+4030 PRINT"5 - LEEFGEWOONTEN":VE=1:GOSUB110
+4040 PRINT"=================":RETURN
+10000 REM STOPPEN ----------------------
+10010 GOSUB100:HO=SB/2-4:VE=10:GOSUB110:PRINT"TOT ZIENS"
+10020 VE=11:GOSUB110:PRINT"========="
+10030 FORI=1 TO5:GOSUB250:NEXTI:END
+10040 REM BLADNUMMER -------------------
+10050 HO=SB-4:GOSUB110:CT=1:CN=0:SR=BL:GOSUB310
+10060 PRINT"Bl.";SR$:RETURN
+10070 REM VARIABELEN LEEG BIJ START ----
+10080 A$="":A1$="":A2$="":A3$="":A4$="":B$="":C$="":IN$=""
+10090 P$="":SR$="":T$="":TK$="":V1$="":V2$="":A1=0
+10100 A2=0:A3=0:A4=0:AN=0:B=0:BL=0:C=0:CN=0:CT=0:E=0:G=0
+10110 G1=0:G2=0:G3=0:G4=0:GP=0:HO=0:I=0:K=0:KZ=0:L=0:L2=0
+10120 N=0:PT=0:R=0:S=0:SB=0:SH=0:SR=0:T=0:VE=0:WA=0:X=0
+10130 RETURN
+20000 REM UITPRINTEN TEKST UIT DATA -----
+20010 TK$="":BL=0:IFKZ=5 THEN20070
+20020 GOSUB100:BL=BL+1
+20030 IFKZ=1 THENGOSUB2520
+20040 IFKZ=2 THENGOSUB2620
+20050 IFKZ=3 THENGOSUB2720
+20060 IFKZ=4 THENGOSUB3340
+20070 IFKZ=5 THENGOSUB4020:HO=0:VE=5:GOSUB110
+20080 T$=RIGHT$(TK$,1)
+20090 S=((T$="*") OR(T$="@") OR(T$="#")) AND(LEN(TK$)<SB)
+20100 T=SB-1:IF(S) OR(LEN(TK$)>=T) THEN20120
+20110 READT$:TK$=TK$+T$:GOTO20080
+20120 IFLEN(TK$)<T THENT=LEN(TK$):GOTO20140
+20130 IFMID$(TK$,T,1)<>" " THENT=T-1:GOTO20130
+20140 B=1:IF(S) THENT=T-1:B=2
+20145 IFT=0 THENTK$="":GOTO20275
+20150 P$=LEFT$(TK$,T):TK$=MID$(TK$,T+B,LEN(TK$))
+20160 IFRIGHT$(P$,1)=" " THENT=T-1
+20170 B=0:FORI=1 TOT
+20180 IFMID$(P$,I,1)=" " THENB=B+1
+20190 NEXTI
+20200 E=0:R=0:C=0:IF(B=0) OR(S) THEN20220
+20210 E=INT((SB-1-T)/B):R=SB-T-1-E*B:B=B-R
+20220 FORI=1 TOT
+20230 C$=MID$(P$,I,1):IFC$<>" " THEN20260
+20240 IFE>0 THENFORX=1 TOE:PRINT" ";:NEXTX
+20250 C=C+1:IF(R>0) AND(C>B) THENPRINT" ";:R=R-1
+20260 PRINTC$;
+20270 NEXTI
+20275 PRINT
+20280 IF((T$="*") OR(T$="@")) AND(TK$="") THEN20300
+20290 GOSUB120:IFVE<SH-2 THEN20080
+20300 GOSUB21000:IFT$<>"@" THEN20020
+20310 RETURN
+21000 REM VOLGEND BLAD -----------------
+21010 GOSUB250:HO=(SB/2)-4:VE=SH-1
+21015 GOSUB110:PRINT"SPATIE >>";
+21020 GOSUB210:IFIN$<>" " THEN21020
+21030 RETURN
+25000 REM DATA 1 - UITLEG --------------
+25010 DATA"WIE VOELT ZICH FIT ?#","#","Fit zijn is je "
+25020 DATA"lekker voelen in je lichaam, je bewust zijn van "
+25030 DATA"je lichaamsenergie die je geregeld en intensief "
+25040 DATA"gebruikt. Hoe kan je lekker fit worden en "
+25050 DATA"blijven? En wie wil ook nog de fitste man of "
+25060 DATA"vrouw van Nederland worden.#","#","Dit programma"
+25070 DATA" is bedoeld om te bekijken hoe het met Uw "
+25080 DATA"gezondheid staat.#","#","Dit is deel 1.#","#"
+25090 DATA"In deel 2 krijgt U wat algemene "
+25100 DATA"informatie over conditie, training enz.#","#"
+25110 DATA"In deel 3 wordt aandacht besteed aan de "
+25120 DATA"polscontrole welke belangrijk is bij de "
+25130 DATA"trainingen.#","#"
+25140 DATA"In deel 4 wordt bekeken hoe Uw gewicht "
+25150 DATA"is ten opzichte van Uw lengte.#","#"
+25160 DATA"In deel 5 wordt bekeken hoe Uw "
+25170 DATA"leefgewoonten zijn. Deze zijn een maat voor "
+25180 DATA"gezondheid en conditie.#","#"
+25190 DATA"Bij dit alles geldt:#","#","#"
+25200 DATA"KOM IN BEWEGING VOOR UW GEZONDHEID#"
+25210 DATA"=== == ======== ==== == ==========#","*"
+25220 DATA"De gegevens voor dit programma zijn met "
+25230 DATA"toestemming van het VNZ ontleend aan het blad "
+25240 DATA"WELZIJN van april 1988 nr.2, een uitgave van:#"
+25250 DATA"#","VNZ (Vereniging Nederlandse Ziekenfondsen)#"
+25260 DATA"afd. Voorlichting en Publiciteit#","#","Postbus "
+25270 DATA"520#","#","3700 AM Zeist#","#","Tel. 03404-88911"
+25280 DATA"*","Dit programma is gemaakt door:#","#","#"
+25290 DATA"R.H.KRUGER#","#","Dorpsstraat 8#","#"
+25300 DATA"4569 AJ Graauw (Zld)#","#","Tel. 01143-475#","@"
+25310 REM DATA 2 - ALGEMENE INFORMATIE -----
+25320 DATA"Zo, nu even heel eerlijk zijn:#","#","Nog "
+25330 DATA"klachten gehad de laatste week ? Wat lage "
+25340 DATA"rugpijn, hoofdpijn, pijn in spieren en "
+25350 DATA"gewrichten van schouders, van knieen en voeten. "
+25360 DATA"En veel onverklaarbare moeheid ?#","#"
+25370 DATA"Ongeveer een derde van onze bevolking heeft "
+25380 DATA"geregeld dergelijke klachten, die in veel "
+25390 DATA"gevallen zijn toe te schrijven aan een te "
+25400 DATA"gering gebruik van het gehele "
+25410 DATA"bewegingsapparaat.#","#"
+25420 DATA"Iemand die niets doet aan regelmatige, "
+25430 DATA"intensieve lichaamsbeweging kan zich "
+25440 DATA"niet fit voelen. In praktisch alle gezinnen "
+25450 DATA"wordt erkend dat de eigen gezondheid "
+25460 DATA"aanzienlijk zou kunnen worden verbeterd "
+25470 DATA"door een andere leefwijze (minder vet eten, niet"
+25480 DATA" roken, zeer matig met alcohol en vooral veel "
+25490 DATA"meer bewegen). Maar, we doen er wel iets aan. "
+25500 DATA"Menigeen drinkt en rookt al wat minder, en zo "
+25510 DATA"langzamerhand besteden we meer aandacht aan de "
+25520 DATA"samenstelling van onze voeding en het "
+25530 DATA"lichaamsgewicht.#","#"
+25540 DATA"HOLLEN OF STILSTAAN#","-------------------#","#"
+25550 DATA"En bewegen? Daarmee is het letterlijk hollen of "
+25560 DATA"stilstaan. Prachtige voornemens om minstens elke"
+25570 DATA" dag een uurtje extra beweging te nemen, blijken"
+25580 DATA" vaak al na een week volstrekt te zijn vergeten."
+25590 DATA" Niet meer dan een half miljoen mensen in ons "
+25600 DATA"land zijn geregeld in een fitnesscentrum bezig. "
+25610 DATA"De gemiddelde Nederlander fietst of wandelt "
+25620 DATA"wekelijks niet meer dan twaalf uur. En de KVLO "
+25630 DATA"(Vereniging van leraren in lichamelijke "
+25640 DATA"opvoeding) is van mening dat ook veel jongeren "
+25650 DATA"tegenwoordig onvoldoende lichaamsbeweging "
+25660 DATA"nemen.#","#","WEDSTRIJDEN EN FEESTJES#"
+25670 DATA"-----------------------#","#"
+25680 DATA"Opnieuw is een poging gewaagd om Nederland toch "
+25690 DATA"enigszins in beweging te krijgen. Veronica is in"
+25700 DATA" 1988 gestart met twaalf Fitraces.#"
+25710 DATA"Fitheidswedstrijden en fitheidsfeestjes werden "
+25720 DATA"maandenlang overal in het land georganiseerd. "
+25730 DATA"De deelnemers, zo'n twaalfhonderd per evenement"
+25740 DATA", ervaarden al snel hoe fijn, verstandig en "
+25750 DATA"zelfs kostenbesparend het is, fit te zijn en te "
+25760 DATA"blijven.#","Wie wil kon op die evenementen "
+25770 DATA"meedoen aan fitraces. Aan het slot van de reeks "
+25780 DATA"moesten die races natuurlijk een winnaar "
+25790 DATA"opleveren. Een superfitte man of vrouw, die als "
+25800 DATA"beloning een week in een zeer luxe fitness-oord"
+25810 DATA" mocht verblijven. Veel onderdelen van zulke "
+25820 DATA"evenementen zijn overigens niet echt inspannend "
+25830 DATA"maar wel leerzaam. De eigen (meestal matige) "
+25840 DATA"conditie wordt onbarmhartig onthuld bij het "
+25850 DATA"testen van de sprongkracht, de knijpkracht, "
+25860 DATA"de reactiesnelheid en het uithoudingsvermogen. "
+25870 DATA"De huidplooimeting brengt aan het licht hoeveel "
+25880 DATA"(overbodig) vet we nog meesjouwen. De bloeddruk "
+25890 DATA"en het cholesterolgehalte in het bloed wordt "
+25900 DATA"gemeten. Kortom, er kan een body-check worden "
+25910 DATA"verkregen die een aardige momentopname geeft "
+25920 DATA"van de eigen prestatiemogelijkheden.#","Alles "
+25930 DATA"was zorgvuldig getest, en begeleid door het "
+25940 DATA"Nationaal Instituut voor Sportgezondheidszorg "
+25950 DATA"(NISGZ), in samenwerking met de bedrijfs "
+25960 DATA"gezondheidsdienst van de PTT en de Nederlandse "
+25970 DATA"Sport Federatie (NSF). In enkele tv-uitzendingen"
+25980 DATA" besteedde Ilona Hofstra (Veronica) ruim "
+25990 DATA"aandacht aan een aantal aspecten van deze "
+26000 DATA"fitfeesten.#","#","Dus: FIT WORDEN EN FIT "
+26010 DATA"BLIJVEN","@"
+26020 REM DATA 3 - POLSSLAG ------------
+26030 DATA"ALLES CONTROLEREN#","-----------------#","#"
+26040 DATA"Ook al schijnen de prestatiemogelijkheden nog "
+26050 DATA"bescheiden, met regelmatige en bepaald niet "
+26060 DATA"overdreven lichaamsbeweging wordt de conditie al"
+26070 DATA" snel verbeterd. De voornaamste veranderingen "
+26080 DATA"treden het eerst op by de spieren. De "
+26090 DATA"spiercellen worden groter en krachtiger, en de "
+26100 DATA"doorbloeding van de spieren verbeterd.#"
+26110 DATA"Het hart gaat zich aan de nieuwe situatie "
+26120 DATA"aanpassen door een vergroting van de capaciteit,"
+26130 DATA" waardoor het wat minder snel hoeft te kloppen.#"
+26140 DATA"Het klinkt allemaal veelbelovend, maar het "
+26150 DATA"gevaar dreigt dat er al meteen veel te intensief"
+26160 DATA" aan het trimmen en joggen wordt geslagen.#"
+26170 DATA"Bij alle inspanningen van enige duur (fietsen, "
+26180 DATA"zwemmen, hardlopen, langlaufen, dansen, "
+26190 DATA"of kanovaren) is het tempo van de hartslag "
+26200 DATA"maatgevend voor de te leveren prestatie.#","#"
+26210 DATA"EN DAT TEMPO, TE METEN AAN DE POLSSLAG, MOET "
+26220 DATA"GEREGELD WORDEN GECONTROLEERD!!#","#"
+26230 DATA"Zonder die polscontrole bestaat het gevaar dat "
+26240 DATA"het hart wordt overbelast. En dat leidt weer "
+26250 DATA"tot een verhoogde kans op een acute hartdood.#"
+26260 DATA"Jaarlijks sterven ongeveer vijftig mensen "
+26270 DATA"aan de gevolgen van een te intensieve "
+26280 DATA"conditietraining. Bij een niet te veeleisende "
+26290 DATA"duurinspanning moet de polsslag tijdens de "
+26300 DATA"prestatie ongeveer 130  slagen per minuut zijn.#"
+26310 DATA"Die waarde geldt voor gezonde mensen tussen 30 "
+26320 DATA"en 60 jaar.#","Boven de 60: trek de leeftyd af "
+26330 DATA"van 180 en de uitkomst is de aan te houden "
+26340 DATA"polsslag ( Dus voor wie 65 jaar is dus 180 - 65 "
+26350 DATA" = 115)#","#","De polsslag opnemen doet U zo:#"
+26360 DATA"#","Ongeveer vijf minuten na het begin van de "
+26370 DATA"inspanning, exact gedurende tien seconden "
+26380 DATA"(nagaan op een horloge met seconden-aanwijzing) "
+26390 DATA"telt U het aantal slagen.#","In die tien "
+26400 DATA"seconden zullen er 21, 22 of 23 kloppingen zijn "
+26410 DATA"wanneer de gewenste waarde van 130 slagen per "
+26420 DATA"minuut is bereikt. Is de polsslag wat lager, "
+26430 DATA"dan kan de inspanning nog iets worden verhoogd.#"
+26440 DATA"#","Dus het advies is :#","#","CONTROLEER BIJ "
+26450 DATA"INSPANNING REGELMATIG UW POLSSLAG.#","@"
+26460 REM DATA 4 - IDEAAL GEWICHT ------
+26470 DATA"U moet eerst Uw juiste lengte opgeven.#","#"
+26480 DATA"Bepaal deze door zonder schoeisel met de rug "
+26490 DATA"tegen de muur of een deurpost te gaan staan.#"
+26500 DATA"#","Sta recht op met de hielen tegen de muur en "
+26510 DATA"laat dan een ander met behulp van een haakse "
+26520 DATA"driehoek of blokhaak een streepje zetten op de "
+26530 DATA"muur.#","#","Meet dan de afstand tussen de "
+26540 DATA"vloer en het streepje in m' (bv 1.70).#","#"
+26550 DATA"Geef verder Uw gewicht zonder kleding op.","@"
+26560 REM DATA 5 - LEEFGEWOONTEN -------
+26570 DATA"A - Hoe lang kijkt U dagelijks TV ?",""
+26580 DATA"1 - Een half uur tot twee uur"
+26590 DATA"2 - Twee uur tot vier uur"
+26600 DATA"3 - Vier uur tot zes uur"
+26610 DATA"4 - Minder dan dertig minuten",8,5,2,10
+26620 DATA"B - Hoeveel tussendoortjes eet U ?",""
+26630 DATA"1 - Vijf tot acht per dag"
+26640 DATA"2 - Drie tot vier per dag","3 - Geen"
+26650 DATA"4 - Een of twee per dag",1,2,3,6
+26660 DATA"C - Hoeveel tijd besteedt U aan"
+26670 DATA"    geestelijke ontspanning ?"
+26680 DATA"1 - Twee tot drie uur per dag"
+26690 DATA"2 - Drie tot zes  uur per dag"
+26700 DATA"3 - Half tot twee uur per dag"
+26710 DATA"4 - Dertig minuten of minder",10,8,6,3
+26720 DATA"D - Hoeveel uur wordt er dagelijks"
+26730 DATA"    gewerkt/gestudeerd ?"
+26740 DATA"1 - Minder dan vier uur per dag"
+26750 DATA"2 - Vier tot acht uur per dag"
+26760 DATA"3 - Acht tot twaalf uur per dag"
+26770 DATA"4 - Twaalf tot achttien uur per dag",6,8,3,1
+26780 DATA"E - Hoeveel gewichts-punten had U"
+26790 DATA"    gescoord ?"
+26800 DATA"1 - 20 tot 25 punten","2 - 26 tot 30 punten"
+26810 DATA"3 - 20 punten of lager"
+26820 DATA"4 - 30 punten of hoger.",15,7,10,1
+26830 DATA"F - Hoeveel uur extra lichamelijke"
+26840 DATA"    beweging neemt U dagelijks ?"
+26850 DATA"1 - Geen enkel"
+26860 DATA"2 - Een half tot anderhalf uur"
+26870 DATA"3 - Twee tot drie uur"
+26880 DATA"4 - Drie tot vier uur.",0,14,10,5
+26890 DATA"G - Hoeveel zout voegt U dagelijks"
+26900 DATA"    aan Uw eten toe ?","1 - Geen toevoeging"
+26910 DATA"2 - Een kleine toevoeging"
+26920 DATA"3 - Een matige toevoeging"
+26930 DATA"4 - Veel toevoeging.",10,3,2,0
+26940 DATA"H - Hoe hoog is Uw bloeddruk ?"
+26950 DATA"    Laat dit eens opmeten"
+26960 DATA"1 - 120/80 of iets lager"
+26970 DATA"2 - 140/80 tot 140/100","3 - 120/80 tot 140/80"
+26980 DATA"4 - 140/100 tot 160/100",10,4,6,1
+26990 DATA"I - Hoeveel glazen alcoholische"
+27000 DATA"    drank drinkt U per dag ?"
+27010 DATA"1 - 6 tot 10 glazen","2 - 2 tot 6  glazen"
+27020 DATA"3 - 10 tot 14 glazen"
+27030 DATA"4 - 0 tot 2 glazen",0,0,0,2
+27040 DATA"J - Hoe doet U de boodschappen ?",""
+27050 DATA"1 - Met de auto","2 - Op de fiets"
+27060 DATA"3 - Lopend","4 - Op de brommer",2,10,12,2
+27070 DATA"K - Hoe lang slaapt U per 24 uur ?",""
+27080 DATA"1 - Ongeveer 6 uur","2 - Ongeveer 8 uur"
+27090 DATA"3 - Ongeveer 10 uur"
+27100 DATA"4 - Ongeveer 12 uur",4,8,1,0
+27110 DATA"L - Welk gerecht krijgt de voorkeur ?",""
+27120 DATA"1 - Koude zalmsalade, toast, boter"
+27130 DATA"2 - Rauwkostsalade"
+27140 DATA"3 - Kabeljauw, aardappels, wortels"
+27150 DATA"4 - Friet, appelmoes en hamburger",8,10,10,3
+27160 DATA"M - Wat wordt door U dagelijks gerookt ?",""
+27170 DATA"1 - Er wordt helemaal niet gerookt"
+27180 DATA"2 - 1  tot 15 stuks","3 - 15 tot 45 stuks"
+27190 DATA"4 - Wel gerookt, voorgoed gestopt",10,0,0,15
+27200 DATA"N - Wat zijn Uw eet gewoonten ?",""
+27210 DATA"1 - 3 x daags op vaste tijden"
+27220 DATA"2 - Wanneer het uitkomt"
+27230 DATA"3 - Hoogstens 2 x per dag"
+27240 DATA"4 - 6 x daags een kleine maaltijd",10,4,3,15,"@"
+27250 REM 60>PT
+27260 DATA"Op praktisch alle tereinen zullen Uw "
+27270 DATA"leefgewoonten drastisch moeten worden "
+27280 DATA"verbeterd. Begin daarmee vandaag nog.#"
+27290 DATA"Pas het volgende lijstje toe:#","#"
+27300 DATA"MINDER:#","#","TV kijken, tussendoortjes, "
+27310 DATA"hard werken, alcohol, autorijden, alles "
+27320 DATA"kritiekloos eten, roken.#","#","MEER:#","#"
+27330 DATA"Extra beweging nemen, afvallen, slapen, water, "
+27340 DATA"thee, fietsen, selectief zijn bij voedselkeus, "
+27350 DATA"op geregelde tijden eten.","@"
+27360 REM 60<=PT<69
+27370 DATA"De conditie is nogal bedroevend.#"
+27380 DATA"De gebruikelijke dagindeling zal bij velen "
+27390 DATA"in deze categorie dringend moeten "
+27400 DATA"worden herzien. En in het algemeen zullen er "
+27410 DATA"wat minder lange dagen moeten worden gemaakt.#"
+27420 DATA"#","Volg de aanwijzingen van het volgende "
+27430 DATA"lijstje op:#","#","MINDER:#","#","Lang werken "
+27440 DATA"of studeren, tussendoortjes nemen, veel minder "
+27450 DATA"zout nemen , roken, alcohol, TV kijken.#","#"
+27460 DATA"MEER:#","#","Ontspanning, steeds geregeld eten,"
+27470 DATA" op uw (goede) gewicht letten, extra beweging "
+27480 DATA"nemen, op de bloeddruk letten, tijdig gaan "
+27490 DATA"slapen.","@"
+27500 REM 69<=PT<79
+27510 DATA"Waar een wil is, is een weg. Maar er moet wel "
+27520 DATA"wat worden gedaan om tot een verstandiger "
+27530 DATA"leefpatroon te komen.#","Probeer alle adviezen "
+27540 DATA"van dit lijstje te volgen.#","#","MINDER:#","#"
+27550 DATA"Tussendoortjes, zout, autorijden, friet en "
+27560 DATA"vlees, zitten, uitgaan.#","#","MEER:#","#"
+27570 DATA"Actieve ontspanning, fietsen en wandelen, "
+27580 DATA"slapen, gevarieerd eten, geregelder eten, "
+27590 DATA"tijdig naar bed.","@"
+27600 REM 79<=PT<89
+27610 DATA"Een uitstekend gemiddelde. Maar toch is er nog "
+27620 DATA"sprake van bewegingsarmoede. Dus het lichaam "
+27630 DATA"wat meer extra activiteiten gunnen. Overdrijf "
+27640 DATA"de prestaties niet en volg een goed fiets- of "
+27650 DATA"loopschema.#","#","MINDER:#","#","zitten, zout "
+27660 DATA"gebruiken, hard werken of studeren, autorijden, "
+27670 DATA"alcohol, slapen, roken.#","#","MEER:#","#"
+27680 DATA"actieve ontspanning of sport, op Uw gewicht "
+27690 DATA"letten, gevarieerder eten, fietsen of wandelen, "
+27700 DATA"op Uw bloeddruk letten, tijdig naar bed en "
+27710 DATA"vroeg op, op geregelde tijden eten.","@"
+27720 REM 90<=PT<=120
+27730 DATA"Een voortreffelijk resultaat. Loop toch eens "
+27740 DATA"het lijstje langs en probeer de genoemde "
+27750 DATA"mogelijkheden tot verdere verbetering op te "
+27760 DATA"volgen#","#","MINDER:#","#","Tv kijken, lang "
+27770 DATA"werken of studeren, zout.#","#","MEER:#","#"
+27780 DATA"Actieve ontspanning, aandacht voor Uw (goede) "
+27790 DATA"gewicht, gevarieerd eten, maaltijden (in kleine "
+27800 DATA"porties), vocht (water,thee) gebruiken.#","@"
+27810 REM PT>120
+27820 DATA"Hier valt nauwelijks meer iets te verbeteren.#"
+27830 DATA"#","U bent in topconditie.#","#","De hoogste "
+27840 DATA"score in deze test is 145 punten.#","#","Dit "
+27850 DATA"is overigens slechts bereikbaar voor supermensen"
+27860 DATA" van wie er hoogstens een dozijn in Nederland "
+27870 DATA"zullen rondtrimmen.#","#","Of is er gespiekt ??"
+27880 DATA"@"
+30000 REM ************************
+30010 REM *     GEZONDHEID       *
+30020 REM *        door:         *
+30030 REM *     R.H.KRUGER       *
+30040 REM *    DORPSSTRAAT 8     *
+30050 REM * 4569 AJ GRAAUW (Zld) *
+30060 REM *   tel. 01143-475     *
+30070 REM *----------------------*
+30080 REM * Gemaakt op een MSX-2 *
+30090 REM *   Philips NMS 8280   *
+30100 REM *                      *
+30110 REM *     April 1988       *
+30120 REM ************************
+30130 REM Copyright NOS Hilversum
+

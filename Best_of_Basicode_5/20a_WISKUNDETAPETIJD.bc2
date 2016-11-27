@@ -1,0 +1,257 @@
+1000 A=600:GOTO20
+1010 GOSUB100:REM Wiskundig bij programma Tapetijd.
+1020 REM EERST SCHERM OPMETEN
+1030 VE=0:FORI=0 TO80:HO=I:GOSUB110
+1040 GOSUB120:IFHO<>I THENHP=I:I=80
+1050 NEXTI:FORI=0 TO40:HO=0:VE=I:GOSUB110
+1060 GOSUB120:IFVE<>I THENVP=I:I=40
+1070 NEXTI
+1080 REM BEGIN PROGRAMMA
+1090 SB$="":KL$="":N=1:N$="1"
+1100 GOSUB100:PRINT"Wiskunde bij programma 'Tapetijd'."
+1110 PRINT:PRINT
+1120 PRINT"Indien U echt ge-interesseerd bent,":PRINT
+1130 PRINT"is printen sterk aan te bevelen!":PRINT
+1220 PRINT:PRINT"Naar Printer (1) of Scherm (2) ";
+1230 GOSUB210:GOSUB100
+1240 IF(IN$<>"1") AND(IN$<>"2") THEN1230
+1250 PT=1:IFIN$="2" THENPT=0:GOTO1330
+1260 PRINT:PRINT:PRINT"Hoeveel letters per regel ";
+1270 INPUTHP
+1280 PRINT:PRINT"Kantlijnbreedte: ";
+1290 INPUTSP:GOSUB1900:KL$=SP$
+1300 HP=HP-SP:IFSP>1 THENHP=HP-SP+2
+1310 PRINT:PRINT"Aantal regels per pagina ";
+1320 INPUTVP
+1330 RT=0:H=0
+1340 RESTORE:READDD$
+1350 SR$=" ":GOSUB20000
+1360 A$=DD$
+1370 SP=INT((HP-LEN(A$))/2):IFPT=1 THENSP=SP-3
+1380 GOSUB1900
+1390 SR$=SP$+A$:GOSUB20000
+1400 A$="":REM PRINT DE DATA
+1410 READBB$
+1420 GOSUB22100
+1430 GOSUB22190
+1440 GOTO1420
+1450 END
+1900 SP$="":FORI=1 TOSP:SP$=SP$+" ":NEXTI:RETURN
+20000 REM AFDRUK SUBROUTINE
+20010 IFSR$="" THENRETURN
+20020 IFPT=1 THEN20060
+20030 PRINTSR$
+20040 RT=RT+1:IFRT=VP-4 THENGOSUB21000
+20050 RETURN
+20060 SR$=KL$+SR$:GOSUB350:GOSUB360:RT=RT+1
+20070 IFRT=VP THENGOSUB22000
+20080 RETURN
+21000 REM SCHERM VOL
+21010 IFRT=0 THENRETURN
+21020 HO=0:VE=VP-1:GOSUB110
+21030 PRINT"<Toets voor verder>";
+21040 GOSUB210:GOSUB100:RT=0:RETURN
+22000 REM PAPIER VOL
+22010 GOSUB100
+22020 PRINT"Zet de printer bovenaan nieuwe pagina"
+22030 PRINT"en druk daarna op een toets."
+22040 GOSUB210:RT=0:GOSUB100
+22050 N=N+1:SR=N:GOSUB300:N$=SR$
+22060 A$=DD$+"          pagina "+N$
+22062 SP=INT((HP-LEN(A$))/2):GOSUB1900
+22064 SR$=SP$+A$:A$=""
+22070 NL=LEN(SR$):GOSUB20060:SR$=""
+22080 SR$=SP$
+22085 SR$=SR$+"-":IFLEN(SR$)<NL THEN22085
+22090 GOSUB20060:SR$=" ":GOSUB20060:RETURN
+22100 IFBB$="$$$$$" THENH=1:GOSUB22190:END
+22110 IFA$<>"" THENA$=A$+" "
+22120 A$=A$+BB$:READBB$
+22130 IFLEFT$(BB$,1)="#" THENH=1:GOTO22180
+22140 IFLEFT$(BB$,1)="." THENH=1:GOTO22180
+22150 IFA$=". " THEN22180
+22160 IFLEFT$(A$,1)="#" THEN22180
+22170 IFLEN(A$)<HP THEN22100
+22180 RETURN
+22190 REM PRINT met aangepaste regellengte
+22200 IFLEFT$(A$,1)="#" THENH=3
+22210 IF(LEFT$(A$,1)<>".") AND(H<3) THEN22260
+22220 LL=LEN(A$):A$=RIGHT$(A$,LL-1)
+22230 IFH<3 THEN22260
+22240 IFPT=0 THENGOSUB21010
+22250 IFPT=1 THENSR$=" ":GOSUB20000
+22260 IFA$=" " THENSR$=A$:A$="":GOSUB20000:GOTO22370
+22270 L=LEN(A$):IF(H=0) AND(L<HP) THEN22370
+22280 IFL<HP THENSR$=A$:A$="":GOSUB20000:GOTO22360
+22290 FORI=HP TO1 STEP-1
+22300 B$=MID$(A$,I,1)
+22310 IFB$=" " THENJ=I:I=1
+22320 NEXTI
+22330 SR$=LEFT$(A$,J-1):A$=RIGHT$(A$,L-J)
+22340 GOSUB20000
+22350 GOTO22270
+22360 IFH=3 THENSR$=" ":GOSUB20000
+22370 H=0:RETURN
+25000 DATA"Wiskunde bij Tapetijd.",". ",". "
+25010 DATA"Het programma -TAPETIJD- is geschreven door:"
+25020 DATA".          C.W.Verhagen"
+25030 DATA".          Travertin 1"
+25040 DATA".          8084 EG 't Harde."
+25050 DATA".          The Netherlands.",". ","Commercieel"
+25060 DATA"gebruik door derden is niet toegestaan.",". "
+25070 DATA". ",".Wiskundige verantwoording:",". "
+25080 DATA". ","Het berekenen van de relatie tussen"
+25090 DATA"de tellerstand en de verbruikte bandtijd"
+25100 DATA"van video- of (cassette)recorder-banden.",". "
+25110 DATA". ","Gebruikte afkortingen:",". "
+25120 DATA".R- straal haspel in cm."
+25130 DATA".S- bandlengte in cm."
+25140 DATA".V- bandsnelheid in cm/s."
+25150 DATA".(In dit voorb. 2.339 cm/s."
+25160 DATA".(Geldt voor VHS videorecorder.)"
+25170 DATA".D- banddikte in cm."
+25180 DATA".BT-bandtellerstand.(394/300*N)"
+25190 DATA".N- aantal omwentelingen van de spoel."
+25200 DATA".(300/394*BT) en ook het aantal termen"
+25210 DATA"van rekenkundige rij (vroeger reeks genoemd)."
+25220 DATA".(300 omwentelingen van de spoel geeft"
+25230 DATA"een tellerstand van 394.) (Op mijn recorder!)"
+25240 DATA".s- seconde(n)."
+25250 DATA".cm-centimeter(s)."
+25260 DATA".E- 1e term rekenkundige rij."
+25270 DATA".L- laatste term rekenkundige rij.",". "
+25271 DATA"Gebruikte formules:",". ",".S=V*T"
+25272 DATA".(Afgelegde weg bij eenparige beweging"
+25273 DATA".Omtrek cirkel = 2 * pi * R"
+25274 DATA".Som = 1/2 * N * (E + L)"
+25275 DATA".(Som van alle termen van een rekenkundige"
+25276 DATA"rij.",". "
+25280 DATA".Berekening bandverbruik op 2 manieren:",". "
+25290 DATA".A. S = V * T = 2.339 cm/s * T s = 2.339 * T cm."
+25300 DATA". ","(2.339 cm/s is de bandsnelheid"
+25310 DATA"van mijn recorder. (Zie handleiding"
+25320 DATA"eigen machine)).",". "
+25330 DATA".B. Via aantal windingen op de"
+25340 DATA"opwikkelspoel van de cassette:",". "
+25350 DATA".Elke omwenteling van de spoel wordt"
+25360 DATA"de straal ervan met D cm vermeerderd of"
+25370 DATA"(verminderd). (D is dan negatief!). Dus:"
+25380 DATA". ",".S = 2*pi*R [1e wikkeling] +"
+25390 DATA"2*pi*(R+D) [2e wikkeling] + ............"
+25400 DATA"+ 2*pi*(R+(N-1)*D) N-e wikkeling."
+25410 DATA". ",".Dit is dus een som van N termen,"
+25420 DATA"die ook als volgt geschreven kan worden:",". "
+25430 DATA".S = 2 * pi * ( R + (R+D) + (R+2*D) +"
+25440 DATA"(R+3*D) + .............. + (R+(N-1)*D) )"
+25450 DATA". ",".of: (haakjes werken)"
+25460 DATA". ",".S = 2 * pi * ( R + R + D + R + 2 * D +"
+25470 DATA"R + 3 * D + ........... + R + (N-1) * D )",". "
+25480 DATA".[Hierin is 2 * pi *",". "
+25490 DATA".R =(R+0*D) ....1e wikkeling."
+25500 DATA".R + 1*D .......2e wikkeling."
+25510 DATA".R + 2*D .......3e wikkeling."
+25520 DATA"................"
+25530 DATA"................"
+25540 DATA".R + (N-1) * D..N-e wikkeling.]",". "
+25550 DATA".Verdere uitwerking:",". "
+25560 DATA".S = 2 * pi * ( N*R + 0*D + 1*D + 2*D +"
+25570 DATA"3*D + ..........+ (N-1)*D )",". "
+25580 DATA".Tussen de haakjes bevindt zich een rekenkundige"
+25590 DATA"rij (reeks) met N termen, beginnende met"
+25600 DATA"0*D en eindigende met (N-1) * D. (Verschil D)."
+25610 DATA". ",".De som van alle termen van een"
+25620 DATA"rekenkundige rij met N termen:",". "
+25630 DATA".som = 1/2 * N * (E + L)",". "
+25640 DATA".( Hierin is:  E=0 en L=(N-1)*D )."
+25650 DATA"( Let op ingevoegde term 0 * D (=0) ).",". "
+25660 DATA".S = 2 * pi * ( N * R + 1/2 * N * (0 +"
+25670 DATA"(N-1) * D) )",". "
+25680 DATA".S = 2 * pi * N * ( R + 1/2 * (N-1) * D )",". "
+25690 DATA".Hierin is:  N = 300/394 * BT (In B invullen.)"
+25700 DATA". ",".Dus:",". ",".A.: S = 2.339 * T",". "
+25710 DATA".( Eenparige beweging: S = V * T )",". "
+25720 DATA".B.: S = 2 * pi * 300/394 * BT *"
+25730 DATA"(R + 1/2 * (300/394 * BT - 1) * D)",". "
+25740 DATA".Of ( 300/394 ) weggelaten:",". " 
+25750 DATA".B1.:S = 2 * pi * BT * R + pi * BT *"
+25760 DATA"(BT - 1) * D",". "
+25770 DATA".Als we deze vergelijkingen B en A uitwerken"
+25780 DATA"krijgen we de exacte band-dikte (D) en"
+25790 DATA"spoel-straal (R). Daarin zijn we echter niet"
+25800 DATA"ge-interesseerd. Als we de correctie-factor"
+25810 DATA"300/394 weglaten, (B1 en A) dan wordt deze"
+25820 DATA"automatisch verwerkt in D en R. Dat worden dan"
+25830 DATA"fictieve (niet werkelijke) waarden. Ze dienen"
+25840 DATA"echter uitsluitend als rekenwaarden en zijn"
+25850 DATA"daarvoor prima bruikbaar. Het voordeel hiervan"
+25860 DATA"is, dat we de verhouding BT:N niet behoeven te"
+25870 DATA"weten. (Die is bij 'front-loaders' trouwens"
+25880 DATA"niet eenvoudig te bepalen).",". "
+25890 DATA".B(1) wordt dan:",". "
+25900 DATA".    S = 2 * pi * BT * R +"
+25910 DATA".            pi * BT * (BT - 1) * D",". "
+25920 DATA".Daarna nemen we b.v. de tellerstand op na:"
+25930 DATA". ",". I : precies 1.5 uur en"
+25940 DATA".II : precies 3 uur.:",". "
+25950 DATA".Dat geeft op mijn machine:",". "
+25960 DATA". I: BT1 = 1201.8"
+25970 DATA".     T1 = 1.5 * 3600 seconden.",". "
+25980 DATA".II: BT2 = 1928.5"
+25990 DATA".     T2 = 3 * 3600 seconden.",". "
+26000 DATA".C.  I in B (B1) en A :",". "
+26010 DATA".B.:  S = 2 * pi * 300/394 * 1201.8 * R + pi"
+26020 DATA"* 300/394 * 1201.8 * (300/394 * 1201.8 - 1) *"
+26030 DATA"D =",". ",".B1.: S = 2 * pi * 1201.8 * R + pi *"
+26040 DATA"1201.8 * (1201.8 - 1) * D =",". "
+26050 DATA".S = 2 * 3.14159265 * 1201.8 * R + 3.14159265 *"
+26060 DATA"1201.8 * (1201.8 -1) * D =",". "
+26070 DATA".S = 7551.1321 * R + 4533699.71 * D ="
+26080 DATA".         2.339 * 1.5 * 3600 (c1)",". "
+26090 DATA".D. II in B (B1) en A :",". "
+26100 DATA".B.:  2 * pi * 300 * 1928.5/394 * R"
+26110 DATA"+ pi * 300 * 1928.5 * (300 * 1928.5/394 - 1)"
+26120 DATA"/394 * D =",". ",".B1.: 2 * pi * 1928.5 * R +"
+26130 DATA"pi * 1928.5 * (1928.5 - 1) * D =",". "
+26140 DATA".  12117.1229 * R + 11677877.2 * D",". "
+26150 DATA".           2.339 * 3 * 3600 (c2)",". "
+26160 DATA".Dit zijn vergelijkingen van de gedaante:",". "
+26170 DATA".Vgl.1:   a1 * x1 + b1 * x2 = c1  en"
+26180 DATA".Vgl.2:   a2 * x1 + b2 * x2 = c2",". "
+26190 DATA".(Hierin is x1 = R  en x2 = D)",". "
+26200 DATA".Voor B en A geldt:",". ",".a1 = 5749.59297"
+26210 DATA".b1 = 2627782.88",".c1 = 12630.6",". "
+26220 DATA".a2 = 9226.23568",".b2 = 6769293.8"
+26230 DATA".c2 = 25261.2",". ",".x1 = R = 1.30274674 cm"
+26240 DATA". ",".x2 = D = 1.95614963E-3 cm",". "
+26250 DATA".Voor B1 en A geldt:",". ",".a1 = 7551.1321"
+26260 DATA".b1 = 4533699.71",".c1 = 12630.6",". "
+26270 DATA".a2 = 12117.1229",".b2 = 11677877.2"
+26280 DATA".c2 = 25261.2",". "
+26290 DATA".(In Vgl.1 en Vgl.2 zijn de determinanten:"
+26300 DATA". ",".D0 = a1 * b2 - a2 * b1"
+26310 DATA".D1 = c1 * b2 - c2 * b1"
+26320 DATA".D2 = a1 * c2 - a2 * c1",". ",".Nu is:"
+26330 DATA". ",".x1 = R = D1/D0 (D0 <> 0)!"
+26340 DATA".x2 = D = D2/D0 (D0 <> 0)!",". "
+26350 DATA".De fictieve waarden voor R en D kunt U nu"
+26360 DATA"zelf gemakkelijk uitrekenen.",". "
+26370 DATA".In B1. en A kunnen we nu T uitrekenen als"
+26380 DATA"BT bekend is:",". ","2 * pi * BT * R +"
+26390 DATA"pi * BT * (BT - 1) * D = 2.339 * T",". "
+26400 DATA".Hierin is:",". ",".T = 2 * pi * BT * R/2.339 +"
+26410 DATA"pi * BT * (BT - 1) * D/2.339",". "
+26420 DATA".[ Een gelijkheid verandert niet als we de"
+26430 DATA"leden links en rechts van het gelijkteken door"
+26440 DATA"het zelfde getal delen ( in dit geval"
+26450 DATA"2.339(=V) ) ].",". ",".Of algemeen:"
+26460 DATA". ",".T = 2 * pi * BT * R/V +"
+26470 DATA"pi * BT * (BT - 1) * D/V.",". "
+26480 DATA".Deze formule geeft ons dus steeds de tijd,"
+26490 DATA"behorende bij een bepaalde tellerstand als"
+26500 DATA"R, D en V bekend zijn. R en D zijn uitgerekend"
+26510 DATA"en V is afhankelijk van recorder en ingestelde"
+26520 DATA"snelheid. Deze wordt in het programma"
+26530 DATA"'Tapetijd' door U opgegeven."
+29990 DATA"$$$$$"
+30000 REM COPYRIGHT NOS HILVERSUM
+

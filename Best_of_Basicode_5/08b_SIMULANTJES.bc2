@@ -1,0 +1,498 @@
+1000 A=2000:GOTO20:REM SIMULANTJES
+1010 REM
+1020 REM ******************************
+1030 REM * SCHERMBREEDTE **************
+1040 REM ******************************
+1050 REM
+1060 GOSUB100
+1061 HO=0:VE=0:PRINT"Een momentje..."
+1070 HM=HO
+1080 GOSUB110:GOSUB120
+1090 IFHM<>HO THEN1110
+1100 HO=HO+1:GOTO1070
+1110 REM
+1120 REM ******************************
+1130 REM * SCHERMHOOGTE ***************
+1140 REM ******************************
+1150 REM
+1160 GOSUB100
+1170 VM=VE
+1180 GOSUB110:GOSUB120
+1190 IFVM<>VE THEN1210
+1200 VE=VE+1:GOTO1170
+1210 REM
+1220 REM ******************************
+1230 REM * HOOFDPROGRAMMA *************
+1240 REM ******************************
+1250 REM
+1260 DIMSP$(HM-1,INT(VM/2))
+1270 FORI=0 TOHM-1:FORJ=0 TOINT(VM/2)
+1280 SP$(I,J)=" "
+1290 NEXTJ:NEXTI
+1300 GOSUB100:PRINT"Instructies (j/n): ";
+1310 INPUTX$
+1320 IF(X$="j") OR(X$="J") THEN1350
+1330 IF(X$="n") OR(X$="N") THEN1360
+1340 GOTO1300
+1350 GOSUB17000:GOSUB210
+1360 GOSUB100:PRINT"Wilt U een"
+1370 PRINT:PRINT"demonstratie van"
+1380 PRINT:PRINT"'WILLEKEURIG'"
+1390 PRINT:PRINT"gedrag (1) of een"
+1400 PRINT:PRINT"demonstratie van"
+1410 PRINT:PRINT"'INTELLIGENT'"
+1420 PRINT:PRINT"gedrag (2): ";
+1430 INPUTX
+1440 IFX=1 THENP2=0:GOTO2000
+1450 IFX=2 THENP2=1:GOTO4000
+1460 GOTO1360
+2000 REM
+2010 REM ******************************
+2020 REM * WILLEKEURIG GEDRAG *********
+2030 REM ******************************
+2040 REM
+2050 GOSUB100:PRINT"Aantal"
+2060 PRINT:PRINT"simulantjes (1-5): ";
+2070 INPUTSQ
+2080 SQ=INT(SQ):IF(SQ<1) OR(SQ>5) THEN2050
+2090 IFSQ>1 THENTR$=" ":GOTO2170
+2100 GOSUB100:PRINT"Wilt U dat het"
+2110 PRINT:PRINT"simulantje een spoor"
+2120 PRINT:PRINT"achterlaat (j/n): ";
+2130 INPUTX$
+2140 IF(X$="j") OR(X$="J") THENTR$=".":GOTO2170
+2150 IF(X$="n") OR(X$="N") THENTR$=" ":GOTO2170
+2160 GOTO2100
+2170 GOSUB100:PRINT"Mogen de simulantjes"
+2180 PRINT:PRINT"(Mag het simulantje)"
+2190 PRINT:PRINT"ook aanvalsgedrag"
+2200 PRINT:PRINT"vertonen (j/n): ";
+2210 INPUTX$
+2220 IF(X$="j") OR(X$="J") THENAG=1:GOTO2250
+2230 IF(X$="n") OR(X$="N") THENAG=0:GOTO2250
+2240 GOTO2170
+2250 GOSUB100:PRINT"Aantal obstakels"
+2260 PRINT:PRINT"( 0 -";INT(HM*VM/10);"): ";
+2270 INPUTAO
+2280 AO=INT(AO):IF(AO<0) OR(AO>INT(HM*VM/10)) THEN2250
+2290 DIMY(SQ,6)
+2300 GOSUB100:GOSUB12000:GOSUB13000
+2310 FORK=1 TOSQ
+2320 GOSUB260:HO=INT(RV*HM)
+2330 GOSUB260:VE=INT(RV*VM/2)
+2340 IFSP$(HO,VE)<>" " THEN2320
+2350 Y(K,0)=HO:Y(K,1)=VE
+2360 GOSUB110:PRINT"*":Y(K,6)=1
+2370 NEXTK
+2380 GS=0:CS=0:F=0:SD=0:GG=0
+2390 HO=0:VE=INT(VM/2)+1:GOSUB110
+2400 IF(SQ>1) OR(AG=1) THENVE=VE+2:GOTO2440
+2410 PRINT"goed   :":VE=VE+1
+2420 GOSUB110:PRINT"contact:":VE=VE+1
+2430 GOSUB110:PRINT"ratio  :"
+2440 IF(AO=0) OR(AG=0) THEN2470
+2450 VE=VE+1:GOSUB110
+2460 PRINT"o=nieuwe obstakels"
+2470 IF(SQ>1) OR(TR$=".") THEN2485
+2475 VE=VE+1:GOSUB110
+2480 PRINT"s=spoor"
+2485 VE=VE+1:GOSUB110
+2490 PRINT"signalen: 1=aan 0=uit"
+2495 VE=VE+1:GOSUB110
+2500 PRINT"e=einde"
+2505 IFF=1 THEN2530
+2510 FORK=1 TOSQ
+2520 ONY(K,6) GOTO2540,2580,2900
+2530 NEXTK:GOTO2510
+2540 REM
+2550 REM *FASE 1 OPERATIES ************
+2560 REM
+2570 GOSUB11000:Y(K,6)=2:GOTO2530
+2580 REM
+2590 REM * FASE 2 OPERATIES ***********
+2600 REM
+2610 HO=Y(K,0):VE=Y(K,1)
+2620 CI=Y(K,4):CJ=Y(K,5):GOSUB10000
+2630 IF(CX$<>" ") OR(CY$<>" ") THEN2870
+2635 IFAG=1 THEN2645
+2640 IF(SD=1) AND(SQ=1) THENGS=GS+1:GOSUB11500
+2645 HO=Y(K,0):VE=Y(K,1):GOSUB110:PRINTTR$
+2650 SP$(HO,VE)=" ":SD=0
+2660 HO=NX:VE=NY:GOSUB110:PRINT"*"
+2670 SP$(HO,VE)="*":Y(K,6)=2
+2680 Y(K,0)=HO:Y(K,1)=VE
+2690 REM
+2700 REM * INVOER VIA TOETSENBORD *****
+2710 REM
+2720 GOSUB200
+2730 IF(IN$="e") OR(IN$="E") THEN19500
+2740 IF(IN$="s") OR(IN$="S") THENTR$="."
+2750 IF(IN$="o") OR(IN$="O") THEN2790
+2760 IFIN$="1" THENGG=1
+2770 IFIN$="0" THENGG=0
+2780 GOTO2530
+2790 IF(AO=0) OR(AG=0) THEN2530
+2800 GOSUB100:GOSUB12000:GOSUB13000
+2830 F=1:GOTO2390
+2870 IFGG=1 THENGOSUB250
+2880 CS=CS+1:SD=1:Y(K,6)=3
+2890 Y(K,2)=NX:Y(K,3)=NY:GOTO2530
+2900 REM
+2910 REM * FASE 3 OPERATIES ***********
+2920 REM
+2930 IFAG=0 THEN2540
+2940 GOSUB260:AC=INT(2*RV)
+2950 IFAC=0 THENY(K,6)=1:GOTO2530
+2960 IFSP$(Y(K,2),Y(K,3))="x" THEN2990
+2980 GOTO3020
+2990 IFGG=1 THENGOSUB250
+3000 HO=Y(K,2):VE=Y(K,3):GOSUB110:PRINT"+"
+3010 Y(K,6)=2:GOTO2530
+3020 HO=Y(K,2):VE=Y(K,3):GOSUB110:PRINT" "
+3030 IFSP$(HO,VE)<>"*" THENSP$(HO,VE)=" ":GOTO3010
+3040 HO=16:VE=INT(VM/2)+2
+3050 FORI=1 TO10
+3060 GOSUB110:PRINT"gedood";
+3070 IFGG=1 THENGOSUB250
+3080 FORJ=1 TO200:NEXTJ
+3090 GOSUB110:PRINT"      ";
+3100 FORJ=1 TO200:NEXTJ:NEXTI
+3110 GOTO3010
+4000 REM
+4010 REM ******************************
+4020 REM * INTELLIGENT GEDRAG *********
+4030 REM ******************************
+4040 REM
+4050 GOSUB100:PRINT"Wilt U dat het"
+4060 PRINT:PRINT"simulantje een spoor"
+4070 PRINT:PRINT"achterlaat (j/n): ";
+4080 INPUTX$
+4090 IF(X$="j") OR(X$="J") THENTR$=".":GOTO4120
+4100 IF(X$="n") OR(X$="N") THENTR$=" ":GOTO4120
+4110 GOTO4050
+4120 GOSUB100:PRINT"Mag het simulantje"
+4130 PRINT:PRINT"ook aanvalsgedrag"
+4140 PRINT:PRINT"vertonen (j/n): ";
+4150 INPUTX$
+4160 IF(X$="j") OR(X$="J") THENAG=1:GOTO4190
+4170 IF(X$="n") OR(X$="N") THENAG=0:GOTO4190
+4180 GOTO4120
+4190 GOSUB100:PRINT"Aantal obstakels"
+4200 PRINT:PRINT"( 0 -";INT(HM*VM/10);"): ";
+4210 INPUTAO
+4220 AO=INT(AO):IF(AO<0) OR(AO>INT(HM*VM/10)) THEN4190
+4230 K=1:DIMXX(AO),YY(AO)
+4240 DIMX(4,4),Z(4,4),AC(4,4),Y(1,5)
+4250 FORM=0 TO4:FORN=0 TO4
+4260 X(M,N)=2:Z(M,N)=2:AC(M,N)=2
+4270 NEXTN:NEXTM
+4280 GOSUB100:GOSUB12000:GOSUB13000
+4290 GOSUB260:HO=INT(RV*HM)
+4300 GOSUB260:VE=INT(RV*VM/2)
+4310 IFSP$(HO,VE)<>" " THEN4290
+4320 Y(1,0)=HO:Y(1,1)=VE
+4330 GOSUB110:PRINT"*"
+4340 GS=0:CS=0:F=0:SD=0:GG=0
+4350 HO=0:VE=INT(VM/2)+1:GOSUB110
+4360 IFAG=1 THENVE=VE+2:GOTO4400
+4370 PRINT"goed   :":VE=VE+1
+4380 GOSUB110:PRINT"contact:":VE=VE+1
+4390 GOSUB110:PRINT"ratio  :"
+4400 VE=VE+1:GOSUB110
+4410 PRINT"signalen: 1=aan 0=uit"
+4420 VE=VE+1:GOSUB110
+4430 PRINT"k=koersverandering"
+4440 VE=VE+1:GOSUB110
+4450 PRINT"p=positieverandering"
+4460 IFAG=1 THEN4490
+4470 VE=VE+1:GOSUB110
+4480 PRINT"u=sporen uitwissen"
+4490 HO=15:VE=INT(VM/2)+2:GOSUB110
+4500 PRINT"e=einde"
+4510 IFTR$="." THEN4530
+4520 VE=VE+1:GOSUB110:PRINT"s=spoor"
+4530 IFF=1 THEN4545
+4540 GOSUB11000:CI=Y(1,4):CJ=Y(1,5)
+4545 HO=Y(1,0):VE=Y(1,1)
+4550 GOSUB10000
+4560 IF(CX$=" ") AND(CY$=" ") THEN4850
+4565 SD=1:CS=CS+1:IFGG=1 THENGOSUB250
+4570 MI=CI+2:MJ=CJ+2
+4580 CI=X(MI,MJ):CJ=Z(MI,MJ):AC=AC(MI,MJ)
+4590 IF(CI<>2) OR(CJ<>2) THEN4650
+4600 IFAG=0 THEN4630
+4610 GOSUB260:AC=INT(2*RV)
+4620 IFAC=1 THENCI=MI:CJ=MJ:GOTO4670
+4630 GOSUB260:CI=INT(5*RV)
+4640 GOSUB260:CJ=INT(5*RV):GOTO4590
+4650 IF(AC=0) OR(AG=0) THEN4740
+4670 IFSP$(NX,NY)="x" THEN4700
+4680 GOTO4720
+4700 HO=NX:VE=NY:GOSUB110:PRINT"+"
+4710 GOTO4735
+4720 HO=NX:VE=NY:GOSUB110:PRINT" "
+4730 SP$(HO,VE)=" "
+4735 HO=Y(1,0):VE=Y(1,1)
+4740 CI=CI-2:CJ=CJ-2
+4750 GOSUB10000
+4760 CI=CI+2:CJ=CJ+2
+4770 IF(CX$=" ") AND(CY$=" ") THEN4830
+4780 CS=CS+1:IFGG=1 THENGOSUB250
+4790 GOTO4600
+4830 X(MI,MJ)=CI:Z(MI,MJ)=CJ:AC(MI,MJ)=AC
+4840 CI=CI-2:CJ=CJ-2
+4850 IF(SD=1) AND(AG=0) THENGS=GS+1:GOSUB11500
+4860 HO=Y(1,0):VE=Y(1,1):GOSUB110:PRINTTR$
+4870 SD=0
+4880 HO=NX:VE=NY:GOSUB110:PRINT"*"
+4890 Y(1,0)=HO:Y(1,1)=VE
+4900 REM
+4910 REM * INVOER VIA TOETSENBORD *****
+4920 REM
+4930 GOSUB200
+4940 IFIN$="1" THENGG=1
+4950 IFIN$="0" THENGG=0
+4960 IF(IN$="s") OR(IN$="S") THENTR$="."
+4970 IF(IN$="e") OR(IN$="E") THEN19500
+4980 IF(IN$="k") OR(IN$="K") THEN4540
+4990 IF(IN$="p") OR(IN$="P") THEN5020
+5000 IF(IN$="u") OR(IN$="U") THEN5090
+5010 GOTO4545
+5020 HO=Y(1,0):VE=Y(1,1):GOSUB110:PRINT" "
+5030 GOSUB260:HO=INT(RV*HM)
+5040 GOSUB260:VE=INT(RV*VM/2)
+5050 IFSP$(HO,VE)<>" " THEN5030
+5060 Y(1,0)=HO:Y(1,1)=VE
+5070 GOSUB110:PRINT"*"
+5080 GOTO4545
+5090 IFAG=1 THEN4545
+5095 TR$=" ":F=1
+5100 GOSUB100:GOSUB12000
+5110 IFAO=0 THEN4350
+5120 FORI=1 TOAO
+5130 HO=XX(I):VE=YY(I):GOSUB110:PRINT"o"
+5140 NEXTI
+5150 GOTO4350
+10000 REM
+10010 REM *****************************
+10020 REM * SENSOR ROUTINE ************
+10030 REM *****************************
+10040 REM
+10050 NX=HO:NY=VE:CX$=" ":CY$=" "
+10060 SI=SGN(CI):SJ=SGN(CJ)
+10070 AI=ABS(CI):AJ=ABS(CJ)
+10080 IFAI=0 THEN10130
+10090 AI=AI-1
+10100 IFSI>0 THENNX=NX+1:GOTO10120
+10110 NX=NX-1
+10120 CX$=SP$(NX,NY)
+10130 IFAJ=0 THEN10180
+10140 AJ=AJ-1
+10150 IFSJ>0 THENNY=NY+1:GOTO10170
+10160 NY=NY-1
+10170 CY$=SP$(NX,NY)
+10180 IF(CX$<>" ") OR(CY$<>" ") THENRETURN
+10190 IF(AI=0) AND(AJ=0) THENRETURN
+10200 GOTO10080
+10500 REM
+10510 REM *****************************
+10520 REM * INSTRUCTIES OP CRT ********
+10530 REM *****************************
+10540 REM
+10550 LS=LEN(S$):W$=""
+10560 FORI=1 TOLS
+10570 W$=W$+MID$(S$,I,1)
+10580 L=L+1
+10590 IF(L>HM-2) AND(MID$(S$,I,1)=" ") THEN10610
+10600 GOTO10620
+10610 VE=VE+2:GOSUB110:L=LEN(W$)
+10620 IFVE>VM-3 THEN10640
+10630 GOTO10670
+10640 HO=0:GOSUB110
+10650 PRINT"Typ een toets in >";
+10660 GOSUB210:GOSUB100:GOSUB120
+10670 IFMID$(S$,I,1)=" " THENPRINTW$;:W$=""
+10680 NEXTI
+10690 RETURN
+11000 REM
+11010 REM *****************************
+11020 REM * BEWEGINGSCODE GENERATOR ***
+11030 REM *****************************
+11040 REM
+11050 GOSUB260:Y(K,4)=INT(5*RV)-2
+11060 GOSUB260:Y(K,5)=INT(5*RV)-2
+11070 IF(Y(K,4)=0) AND(Y(K,5)=0) THEN11050
+11080 RETURN
+11500 REM
+11510 REM *****************************
+11520 REM * SCORE DISPLAY *************
+11530 REM *****************************
+11540 REM
+11550 HO=8:VE=INT(VM/2)+1:GOSUB110
+11560 PRINT"      ";:GOSUB110:PRINTGS:VE=VE+1
+11570 GOSUB110:PRINT"      ";:GOSUB110:PRINTCS
+11580 VE=VE+1:GOSUB110:PRINT"      ";
+11590 RS=INT(100*GS/CS+.5)/100
+11600 GOSUB110:PRINTRS
+11610 RETURN
+12000 REM
+12010 REM *****************************
+12020 REM * GRENS VAN BEWEGINGSRUIMTE *
+12030 REM *****************************
+12040 REM
+12050 FORHO=0 TOHM-1
+12060 VE=INT(VM/2)
+12070 GOSUB110
+12080 SP$(HO,VE)="x":PRINT"x"
+12090 VE=0
+12100 GOSUB110
+12110 SP$(HO,VE)="x":PRINT"x"
+12120 NEXTHO
+12130 FORVE=1 TOINT(VM/2)-1
+12140 HO=0
+12150 GOSUB110
+12160 SP$(HO,VE)="x":PRINT"x"
+12170 HO=HM-1
+12180 GOSUB110
+12190 SP$(HO,VE)="x":PRINT"x"
+12200 NEXTVE
+12210 RETURN
+13000 REM
+13010 REM *****************************
+13020 REM * OBSTAKEL GENERATOR ********
+13030 REM *****************************
+13040 REM
+13050 IFAO=0 THENRETURN
+13060 FORI=1 TOAO
+13070 GOSUB260:HO=INT(RV*HM)
+13080 GOSUB260:VE=INT(RV*VM/2)
+13090 IFSP$(HO,VE)<>" " THEN13070
+13100 IFP2=1 THENXX(I)=HO:YY(I)=VE
+13110 GOSUB110
+13120 SP$(HO,VE)="o":PRINT"o"
+13130 NEXTI
+13140 RETURN
+17000 REM
+17010 REM *****************************
+17020 REM * INSTRUCTIES ***************
+17030 REM *****************************
+17040 REM
+17050 GOSUB100:GOSUB120:L=0
+17060 S$="SIMULANTJES                   ":GOSUB10500
+17070 S$="        Dit programma bestaat uit ":GOSUB10500
+17080 S$="twee deelprogramma's die gebruik ":GOSUB10500
+17090 S$="maken van dezelfde subroutines. In ":GOSUB10500
+17100 S$="beide programma's wordt een veldje ":GOSUB10500
+17110 S$="(de bewegingsruimte) op het ":GOSUB10500
+17120 S$="beeldscherm ontworpen, al of niet ":GOSUB10500
+17130 S$="voorzien van obstakels. In deze ":GOSUB10500
+17140 S$="bewegingsruimte komen dan een of ":GOSUB10500
+17150 S$="meerdere 'wezentjes' (simulantjes) ":GOSUB10500
+17160 S$="te bewegen. Deze simulantjes kunnen ":GOSUB10500
+17170 S$="vluchtgedrag vertonen: zo gauw er ":GOSUB10500
+17180 S$="een object op zijn (of haar?) route ":GOSUB10500
+17190 S$="verschijnt (in de vorm van een ":GOSUB10500
+17200 S$="obstakel, de grens van de ":GOSUB10500
+17210 S$="bewegingsruimte of een ander ":GOSUB10500
+17220 S$="simulantje), moet het simulantje ":GOSUB10500
+17230 S$="vluchten. We zeggen dat het ":GOSUB10500
+17240 S$="simulantje zich in een ":GOSUB10500
+17250 S$="contactsituatie bevindt. Een ":GOSUB10500
+17260 S$="simulantje uit het eerste ":GOSUB10500
+17270 S$="deelprogramma zal een willekeurige ":GOSUB10500
+17280 S$="vluchtreactie genereren en deze ":GOSUB10500
+17290 S$="uitvoeren. Als deze reactie niet ":GOSUB10500
+17300 S$="werkt, wordt weer een willekeurige ":GOSUB10500
+17310 S$="reactie gegenereert, enz. totdat de ":GOSUB10500
+17320 S$="vluchtreactie werkt, d.w.z. het ":GOSUB10500
+17330 S$="simulantje beweegt zich van het ":GOSUB10500
+17340 S$="object weg. Het gedrag van dit ":GOSUB10500
+17350 S$="simulantje is dus volledig random, ":GOSUB10500
+17360 S$="willekeurig of als U wilt DOM! ":GOSUB10500
+17370 S$="Een simulantje uit het tweede ":GOSUB10500
+17380 S$="deelprogramma daarentegen zal, ":GOSUB10500
+17390 S$="wanneer het zich in een ":GOSUB10500
+17400 S$="contactsituatie bevindt, eerst zijn ":GOSUB10500
+17410 S$="geheugen afzoeken. Is dit geheugen ":GOSUB10500
+17420 S$="op de desbetreffende plaats leeg, ":GOSUB10500
+17430 S$="dan gaat het over op willekeurig ":GOSUB10500
+17440 S$="gedrag. Werkt de gegenereerde ":GOSUB10500
+17450 S$="reactie, dan wordt deze opgeslagen ":GOSUB10500
+17460 S$="in het geheugen van het simulantje. ":GOSUB10500
+17470 S$="Naarmate het aantal contactsituaties ":GOSUB10500
+17480 S$="toeneemt, zal het geheugen meer ":GOSUB10500
+17490 S$="gevuld raken en zal het simulantje ":GOSUB10500
+17500 S$="steeds beter kunnen reageren op ":GOSUB10500
+17510 S$="volgende contactsituaties. Het ":GOSUB10500
+17520 S$="gedrag van dit simulantje zouden we ":GOSUB10500
+17530 S$="dus INTELLIGENT kunnen noemen! Een ":GOSUB10500
+17540 S$="goede vergelijking tussen ":GOSUB10500
+17550 S$="willekeurig gedrag en intelligent ":GOSUB10500
+17560 S$="gedrag, kunnen we maken op grond van ":GOSUB10500
+17570 S$="de scores van INDIVIDUELE ":GOSUB10500
+17580 S$="simulantjes die ALLEEN vluchtgedrag ":GOSUB10500
+17590 S$="vertonen in een bewegingsruimte ":GOSUB10500
+17600 S$="ZONDER obstakels. De verhouding ":GOSUB10500
+17610 S$="(ratio) tussen GOED-scores en ":GOSUB10500
+17620 S$="CONTACT-scores schommelt voor ":GOSUB10500
+17630 S$="'willekeurige' simulantjes rond de ":GOSUB10500
+17640 S$=".5. De ratio voor 'intelligente' ":GOSUB10500
+17650 S$="simulantjes schommelt in het begin ":GOSUB10500
+17660 S$="ook rond de .5 (leeg geheugen!) ":GOSUB10500
+17670 S$="maar deze ratio nadert langzaam tot ":GOSUB10500
+17680 S$="1 (het simulantje leert!). Obstakels ":GOSUB10500
+17690 S$="in de bewegingsruimte hebben grote ":GOSUB10500
+17700 S$="invloed op deze ratio. Het bepalen ":GOSUB10500
+17710 S$="van de effecten hiervan, laat ik ":GOSUB10500
+17720 S$="aan U over. De simulantjes kunnen ":GOSUB10500
+17730 S$="naast vluchtgedrag ook aanvalsgedrag ":GOSUB10500
+17740 S$="vertonen. De kans dat een ":GOSUB10500
+17750 S$="simulantje, dat zich in een ":GOSUB10500
+17760 S$="contactsituatie bevindt, een van ":GOSUB10500
+17770 S$="deze reacties vertoont, is 50%. Er ":GOSUB10500
+17780 S$="geldt: obstakels kunnen 'opgevreten' ":GOSUB10500
+17790 S$="worden, de grens van de ":GOSUB10500
+17800 S$="bewegingsruimte kan alleen ":GOSUB10500
+17810 S$="'aangevreten' worden en andere ":GOSUB10500
+17820 S$="simulantjes kunnen tijdelijk ":GOSUB10500
+17830 S$="'gedood' worden. Tot slot: ":GOSUB10500
+17840 S$="via het toetsenbord kunnen, tijdens ":GOSUB10500
+17850 S$="een demonstratie, een of meerdere ":GOSUB10500
+17860 S$="condities gevarieerd worden. VEEL ":GOSUB10500
+17870 S$="SUCCES! Typ een toets in om ":GOSUB10500
+17880 S$="te beginnen. ":GOSUB10500
+17890 RETURN
+19500 REM
+19510 REM *****************************
+19520 REM * EINDE DEMONSTRATIE ********
+19530 REM *****************************
+19540 REM
+19550 GOSUB100:HO=INT(HM/2)-9:VE=INT(VM/2)
+19560 GOSUB110:PRINT"EINDE DEMONSTRATIE"
+19570 HO=0:VE=INT(VM/2)+5:GOSUB110:END
+30000 REM
+30010 REM *****************************
+30020 REM *                           *
+30030 REM *   S I M U L A N T J E S   *
+30040 REM *                           *
+30050 REM *                           *
+30060 REM * EEN BASICODE-II PROGRAMMA *
+30070 REM *                           *
+30080 REM *      ONTWIKKELD DOOR      *
+30090 REM *                           *
+30100 REM *                           *
+30110 REM *    E.A. VAN DER LEEDEN    *
+30120 REM *                           *
+30130 REM *      LISDODDELAAN 40      *
+30140 REM *                           *
+30150 REM *      4143 VH LEERDAM      *
+30160 REM *                           *
+30170 REM *                           *
+30180 REM *       OP EEN CBM-64       *
+30190 REM *                           *
+30200 REM *       DECEMBER 1983       *
+30210 REM *                           *
+30220 REM *****************************
+30230 REM
+30240 REM COPYRIGHT  NOS HILVERSUM
+

@@ -1,0 +1,584 @@
+1000 A=4000:GOTO20:REM ESPERANTO
+1010 NR=0:QQ=0:RV=0:VL=0
+1020 DIMLG$(23)
+1030 DIMW$(20)
+1040 GOSUB1890:GOSUB2730:REM LOGO PRINTEN
+1050 GOSUB100:PRINT"SALUTON !"
+1060 PRINT:PRINT"Met dit programma is het mogelijk"
+1070 PRINT:PRINT"om de beginselen van de internationale"
+1080 PRINT:PRINT"taal ESPERANTO te leren."
+1090 PRINT:PRINT"De basis van het ESPERANTO bestaat"
+1100 PRINT:PRINT"slechts uit 16 regels, en de taal"
+1110 PRINT:PRINT"is geheel regelmatig opgebouwd."
+1120 PRINT:PRINT"Het leren van allerlei rijtjes (denk"
+1130 PRINT:PRINT"bijvoorbeeld aan de Franse of Engelse"
+1140 PRINT:PRINT"onregelmatige werkwoorden of de Duitse"
+1150 PRINT:PRINT"naamvallen) is niet meer nodig."
+1160 GOSUB2730
+1170 GOSUB100
+1180 PRINT"Wilt u de kursus uitprinten?";
+1190 GOSUB210:GOSUB3300
+1200 IFNOT((IN$="J") OR(IN$="N")) THEN1190
+1210 IFIN$="J" THENGOSUB2760
+1220 REM START KURSUS *******
+1230 GOSUB100:PRINT"Esperanto kurso"
+1240 PRINT:PRINT"Met welk onderdeel wilt U beginnen?"
+1250 PRINT
+1260 GOSUB1570:REM KEUZE MOGELIJKHEDEN
+1270 HO=10:VE=23:GOSUB110:PRINT"GEEF UW KEUZE";
+1280 GOSUB210:GOSUB3300
+1290 IFIN$="Z" THENGOSUB100:PRINT"^":PRINT"Gis !":END
+1300 IF(IN$<"A") AND(IN$>"0") THENGOSUB2220:GOTO1230
+1310 IF(IN$<"A") OR(IN$>"Y") THEN1280
+1320 GOSUB1340
+1330 GOTO1230
+1340 READP$:REM ZOEKEN VAN PAGINA
+1350 PA$=P$
+1360 IF(P$="END") THENRESTORE:REM POINTER NAAR BEGIN
+1370 IF(P$<>IN$) THEN1340
+1380 GOSUB1760:REM TOON PAGINA
+1390 REM WACHT OP 'RAMP'
+1400 P1=0:P2=1:IN$="":GOSUB1460
+1410 P1=P1+1:IFP1>16 THENP1=0:GOSUB1460
+1420 GOSUB200:GOSUB3300
+1430 IF(IN$="R") OR(IN$="A") THEN1490
+1440 IF(IN$="M") OR(IN$="P") THEN1490
+1450 GOTO1410
+1460 HO=38:VE=0:GOSUB110:PRINTMID$("RAMP",P2,1);
+1470 P2=P2+1:IFP2>4 THENP2=1
+1480 RETURN
+1490 IF(IN$="P") THENGOSUB3200:RETURN
+1500 IF(IN$="M") THENRETURN
+1510 IF(IN$="R") THENIF(PA$<>"A") THEN1540
+1520 IF(IN$="A") THENIF(PA$<>"Y") THEN1550
+1530 GOTO1390
+1540 IN$=CHR$(ASC(PA$)-1):RESTORE:GOTO1340
+1550 IN$=CHR$(ASC(PA$)+1):GOTO1340
+1560 REM ALLE PAGINA'S
+1570 PRINT"A) Help              R) Werkwoorden II"
+1580 PRINT"B) Het alfabet       S) Voorzetsels"
+1590 PRINT"C) Uitspraak I       T) Woordvorming"
+1600 PRINT"D) Uitspraak II      U) Tagoj, monatoj"
+1610 PRINT"E) Klemtoon,spelling V) Dialogoj 1 & 2"
+1620 PRINT"F) Grammatika        W) Dialogo 3"
+1630 PRINT"G) Pers./bezit. vnw  X) Dialogo 4"
+1640 PRINT"H) Werkwoorden I     Y) Informatie"
+1650 PRINT"I) Lijdend voorwerp  Z) Stop"
+1660 PRINT"J) Wie, wat, waar?   1) Oefening"
+1670 PRINT"K) Voorbeelden"
+1680 PRINT"L) Vragen,ontkenning"
+1690 PRINT"M) Telwoorden I"
+1700 PRINT"N) Telwoorden II"
+1710 PRINT"O) Voorvoegsels"
+1720 PRINT"P) Achtervoegsels I"
+1730 PRINT"Q) Achtervoegsels II"
+1740 RETURN
+1750 REM INLEZEN VAN EEN PAGINA
+1760 GOSUB100:P3=1
+1770 READA$:IFA$="*" THENRETURN
+1780 IF(P3<>1) THENPRINT
+1790 P3=2
+1800 FORA=1 TOLEN(A$):B$=MID$(A$,A,1)
+1810 IF(B$="^") THENGOSUB1850:GOTO1840
+1820 PRINTB$;
+1830 C$=B$
+1840 NEXTA:PRINT:GOTO1770
+1850 GOSUB120:HO=HO-1:VE=VE-1:GOSUB110
+1860 IF(C$="U") OR(C$="u") THENPRINT"-";:GOTO1880
+1870 PRINT"^";
+1880 HO=HO+1:VE=VE+1:GOSUB110:RETURN
+1890 REM LOGO
+1900 LG$(1)=" EEE"
+1910 LG$(2)="E"
+1920 LG$(3)="E   SSS"
+1930 LG$(4)="EE S"
+1940 LG$(5)="E  S   PPP"
+1950 LG$(6)="E   S  P  P"
+1960 LG$(7)=" EEE S P  P EEE"
+1970 LG$(8)="     S PPP E"
+1980 LG$(9)="  SSS  P   E   RRR"
+1990 LG$(10)="       P   EEE R  R"
+2000 LG$(11)="       P   E   R  R  AA"
+2010 LG$(12)="           E   RRR  A  A"
+2020 LG$(13)="            EEERR   A  A N   N"
+2030 LG$(14)="               R R  AAAA NN  N"
+2040 LG$(15)="               R  R A  A N N NTTTTT"
+2050 LG$(16)="                    A  A N  NN  T  "
+2060 LG$(17)="                    A  A N   N  T  OO "
+2070 LG$(18)="                         N   N  T O  O"
+2080 LG$(19)="                         N   N  T O  O"
+2090 LG$(20)="                                T O  O"
+2100 LG$(21)="                                T O  O"
+2110 LG$(22)="                                  O  O"
+2120 LG$(23)="                                   OO"
+2130 GOSUB100
+2140 FORA=23 TO1 STEP-1
+2150 GOSUB2200:PRINTLG$(A):NEXTA
+2160 FORP=1 TO600:NEXTP:HO=20:VE=23
+2170 GOSUB110:GOSUB250:PRINT"PARDONU !"
+2180 FORA=1 TO23:PRINTLG$(A):GOSUB2200:NEXTA
+2190 RETURN
+2200 FORP=1 TO50:NEXTP:RETURN
+2210 REM OEFENING
+2220 IF(IN$>"1") THENRETURN
+2230 ONVAL(IN$) GOSUB2260
+2240 RETURN
+2250 REM WOORDEN OVERHOREN
+2260 FORA=1 TO20:W$(A)="":NEXTA
+2270 GOSUB2580:GOSUB100
+2280 NG=0:D$=""
+2290 FORA=1 TO20
+2300 GOSUB100:PRINT"Vertaal. (nog ";21-A;" woorden)"
+2310 HO=0:VE=10:GOSUB110
+2320 GOSUB260:ID=INT(RV*NR/2)*2
+2330 W$=WO$(ID):GW$=WO$(ID+1):PRINT
+2340 FORB=1 TOA-1:IF(W$(B)=W$) THEND$="DUBBEL"
+2350 NEXTB
+2360 IF(D$="DUBBEL") THEND$="":GOTO2320
+2370 W$(A)=W$
+2380 GOSUB2500:PRINT" ";:INPUTAW$
+2390 IF(RIGHT$(AW$,1)=" ") THENGOSUB2540:GOTO2390
+2400 SR$=AW$:GOSUB3340:AW$=SR$
+2410 IF(AW$<>GW$) THENGOSUB2550
+2420 NEXTA
+2430 PRINT:PRINT:PRINT20-NG;" WOORDEN GOED.":PRINT
+2440 VE=22:HO=0:GOSUB110
+2450 PRINT"Wilt U nog eens proberen?";
+2460 GOSUB210:GOSUB3300
+2470 IF(IN$="J") THEN2260
+2480 IF(IN$<>"N") THEN2460
+2490 RETURN
+2500 FORT=1 TOLEN(W$):C$=MID$(W$,T,1)
+2510 IF(C$="^") THENGOSUB1850:GOTO2530
+2520 PRINTC$;
+2530 NEXTT:RETURN
+2540 AW$=LEFT$(AW$,LEN(AW$)-1):RETURN
+2550 GOSUB250:NG=NG+1:GOSUB120
+2560 HO=22:GOSUB110:PRINTGW$
+2570 FORP4=0 TO250:NEXTP4:RETURN
+2580 REM VULLEN ARRAY MET WOORDEN
+2590 IF(NR<>0) THENRETURN:REM REEDS GEVULD
+2600 GOSUB100:PRINT"EVEN GEDULD ALSTUBLIEFT"
+2610 DIMWO$(200)
+2620 RESTORE
+2630 READA$:IF(A$<>"WOO") THEN2630
+2640 READA$:IF(A$="ENDW") THENRETURN
+2650 VE=10:HO=10:GOSUB110:PRINT50-QQ:QQ=QQ+1
+2660 W$=""
+2670 FORT=1 TOLEN(A$)
+2680 L$=MID$(A$,T,1)
+2690 IF(L$<>" ") THENW$=W$+L$
+2700 IF(L$=" ") THENGOSUB2720
+2710 NEXTT:GOSUB2720:GOTO2640
+2720 WO$(NR)=W$:NR=NR+1:W$="":RETURN
+2730 HO=12:VE=23:GOSUB110:PRINT"PREMU SPACETON";
+2740 GOSUB210:IFIN$<>" " THEN2740
+2750 RETURN
+2760 REM UITPRINTEN V/D CURSUS
+2770 GOSUB100:PRINT"!U kunt de regelafstand van uw"
+2780 PRINT
+2790 PRINT"printer verkleinen !":GOSUB250:GOSUB250
+2800 PRINT:PRINT
+2810 PRINT"De dakjes op de letters staan namelijk"
+2820 PRINT:PRINT"op lege regels, maar hebben niet"
+2830 PRINT:PRINT"zoveel ruimte nodig."
+2840 PRINT:PRINT:PRINT
+2850 PRINT"Druk op de spatiebalk als uw printer"
+2860 PRINT:PRINT"klaar staat."
+2870 GOSUB2730
+2880 PRINT:RESTORE
+2890 FORA=1 TO23:SR$=LG$(A)
+2900 GOSUB350:GOSUB360:NEXTA
+2910 READA$:IF(A$<>"*") THEN2910
+2920 GOSUB3110:IFVL=1 THENRETURN
+2930 READA$:IF(A$<>"*") THEN2960
+2940 GOSUB3110:IFVL=1 THENRETURN
+2950 GOTO2930
+2960 S1$=" ":S2$=" "
+2970 FORT=1 TOLEN(A$)
+2980 CH$=MID$(A$,T,1)
+2990 IF(CH$="^") THENGOSUB3060:GOTO3020
+3000 CO$=CH$
+3010 S1$=S1$+" ":S2$=S2$+CH$
+3020 NEXTT
+3030 SR$=S1$:GOSUB350:GOSUB360
+3040 SR$=S2$:GOSUB350:GOSUB360
+3050 GOTO2930
+3060 IF(CO$="U") OR(CO$="u") THEND$="-":GOTO3080
+3070 D$="^"
+3080 S1$=LEFT$(S1$,LEN(S1$)-1)
+3090 S1$=S1$+D$
+3100 RETURN
+3110 READA$:IFA$="WOO" THENVL=1
+3120 IFVL=1 THENRETURN
+3130 GOSUB360:GOSUB360:READA$
+3140 SR$=A$:GOSUB350:GOSUB360
+3150 S3$=""
+3160 FORA=1 TOLEN(A$):S3$=S3$+"=":NEXTA
+3170 SR$=S3$:GOSUB350:GOSUB360
+3180 RETURN
+3190 REM 1 BLADZIJDE PRINTEN
+3200 GOSUB100:PRINT"Pagina uitprinten?";
+3210 GOSUB210:GOSUB3300
+3220 IF(IN$<>"J") THEN3280
+3230 RESTORE:VL=1
+3240 READA$:IFA$<>P$ THEN3240
+3250 GOSUB3130:REM PRINT TITEL 
+3260 GOSUB2930:REM PRINT BLADZIJDE
+3270 GOSUB250:GOSUB250:GOSUB250
+3280 RETURN
+3290 REM VERANDER KLEINE LETTER IN HOOFLETTER
+3300 IF(IN$<"a") OR(IN$>"z") THENRETURN
+3310 IN$=CHR$(ASC(IN$)-ASC("a")+ASC("A"))
+3320 RETURN
+3330 REM CONVERTEER SR$ NAAR HOOFDLETTERS
+3340 IFSR$="" THENRETURN
+3350 H$=SR$:SR$=""
+3360 FORH=1 TOLEN(H$)
+3370 IN$=MID$(H$,H,1)
+3380 GOSUB3300
+3390 SR$=SR$+IN$
+3400 NEXTH
+3410 RETURN
+25000 DATA"A","HELP","De  kursus is opgebouwd uit een"
+25010 DATA"aantal pagina's. De volgende"
+25020 DATA"opdrachten kunt U gebruiken.",""
+25030 DATA"  R - een pagina terug"
+25040 DATA"  A - een pagina vooruit"
+25050 DATA"  M - terug naar het hoofdmenu"
+25060 DATA"  P - print de huidige pagina"
+25070 DATA"","Deze letters staan rechtsboven."
+25080 DATA"*","B"
+25090 DATA"HET ALFABET"
+25100 DATA"Het ESPERANTO kent 28 letters. De"
+25110 DATA"letters Q,W,X en Y komen niet voor." 
+25120 DATA"Daarentegen heeft het ESPERANTO enige"
+25130 DATA"'dakjesletters' zoals de C^,G^,H^,J^ en S^."
+25140 DATA"Verder kan er op de letter U nog een"
+25150 DATA"boogje komen. Dat zal hier met een"
+25160 DATA"streepje worden aangegeven: U^."
+25170 DATA"Het ESPERANTO kent een fonetische"
+25180 DATA"spelling. Elk woord wordt net zo"
+25190 DATA"uitgesproken als het wordt gespeld."
+25200 DATA "*","C"
+25210 DATA"UITSPRAAK I"
+25220 DATA"ESP-VOORBEELD        ESP-VOORBEELD"
+25230 DATA"A-als A in plAt      G-zachte k,Good"
+25240 DATA "B-als B in Barbara   G^- DZJ,  Gentleman"
+25250 DATA"C- TS als in muTS    H-als H in Help" 
+25260 DATA"C^- TSJ in TSJilpen   H^-als CH in laCHen"
+25270 DATA"D-als in Dek         I- IE als in lIter"
+25280 DATA"E-als in pEt         J-als in Jaar"
+25290 DATA"F-als in Film        J^- ZJ, Journalist"
+25300 DATA"Cendo= tsen-do =Cent"
+25310 DATA"Scienco= s-tsie-en-tso =Wetenschap"
+25320 DATA "*","D"  
+25330 DATA"UITSPRAAK II"
+25340 DATA"ESP-VOORBEELD         ESP-VOORBEELD"
+25350 DATA"K-als in Kaas         S-als in Suiker"
+25360 DATA"L-als in La           S^- SJ in SJouwen"
+25370 DATA"M-als in Min          T-als in Teo"
+25380 DATA"N-als in Non          U- OE als in vOEt"
+25390 DATA "O-als in pot          U^-AU^:AUW, EU^:EEUW" 
+25400 DATA  "P-als in Paal         V- W,als in Water"
+25410 DATA "R-als in RaaR         Z-als in Zaag"  
+25420 DATA "G^ardeno= dzjar-de-no =Tuin"
+25430 DATA"J^au^do= zjauw-do =Donderdag"
+25440 DATA"*","E"
+25450 DATA"KLEMTOON","Wanneer een woord uit meer dan 1"
+25460 DATA"lettergreep bestaat, valt de klemtoon"
+25470 DATA"op de voorlaatste lettergreep."
+25480 DATA"BV. Familio, numero, Afriko, intervjuo." 
+25490 DATA"SPELLING","Dubbele medeklinkers komen niet voor,"
+25500 DATA"tenzij ze een functie hebben."
+25510 DATA"BV. Programo, aparato, intereso"
+25520 DATA"Mallonga(kort) is samengesteld uit"
+25530 DATA"mal (tegenovergestelde) longa (lang)."
+25540 DATA"*","F"
+25550 DATA"GRAMMATIKA"  
+25560 DATA"Het bepaalde lidwoord is LA. La domo."
+25570 DATA"-het huis, la tablo-de tafel"
+25580 DATA"'Een' wordt niet vertaald. Ovo-een ei."
+25590 DATA"Zelfstandige naamwoorden eindigen"
+25600 DATA"op -o, bijvoegelijke nw op -a."
+25610 DATA"Het meervoud wordt aangegeven"
+25620 DATA"met een -j. La pomoj- de appels."
+25630 DATA"VB. La bela libro- het mooie boek."
+25640 DATA"Junaj hundoj- jonge honden."
+25650 DATA"Nigrablanka foto- een zwart-wit foto"
+25660 DATA"*","G"
+25670 DATA"PERSOONLIJKE/BEZITTELIJKE VNW"
+25680 DATA"Mi = ik             Mia = mijn"
+25690 DATA"Vi = jij            Via = jouw" 
+25700 DATA"Li = hij            Lia = zijn"
+25710 DATA"S^i = zij            S^ia = haar"
+25720 DATA"G^i = het, zij, hij  G^ia = zijn, haar"
+25730 DATA"Ni = wij            Nia = ons,onze"
+25740 DATA"Vi = jullie, U      Via = uw, jullie" 
+25750 DATA"Ili = zij           Ilia = hun"
+25760 DATA"Si = zich           Sia =zijn,haar,hun"  
+25770 DATA"Oni = men"
+25780 DATA"*","H" 
+25790 DATA"WERKWOORDEN I","De uitgangen zijn:"
+25800 DATA"-I  onbep. wijs  vidi = zien"
+25810 DATA"-IS verl. tijd   ili vidis = zij zagen"
+25820 DATA"-AS tegenw.tijd  li au^das = hij hoort"
+25830 DATA"-OS toek. tijd   s^i au^dos=zij zal horen"
+25840 DATA"Ezelsbrug: gIsteren, vAndaag, mOrgen."
+25850 DATA"-U  gebied.wijs  foriru! = ga weg!"
+25860 DATA"-US voorw. wijs"
+25870 DATA"Li dormus, se li havus liton."
+25880 DATA"hij zou slapen, als hij een bed had."
+25890 DATA"*","I"
+25900 DATA"HET LIJDEND VOORWERP"
+25910 DATA "Daar in het ESPERANTO de woordvolgorde"
+25920 DATA"vrij is, dient het LV van het onderwerp"
+25930 DATA"te worden onderscheiden door een -N." 
+25940 DATA"Mi trinkas lakton = ik drink melk."
+25950 DATA"S^i vendis s^iajn pomojn."
+25960 DATA"Zij verkocht haar appels."
+25970 DATA"Bonan matenon ! = Goede morgen !"
+25980 DATA"Se mi estus ric^a, mi ac^etus biciklon."
+25990 DATA"Als ik rijk was, zou ik een fiets kopen."
+26000 DATA"*","J"
+26010 DATA"WIE, WAT, WAAR?"
+26020 DATA"Kiu = wie, welke   ;Kia = wat voor een"
+26030 DATA"Kio = wat          ;Kies = wiens, wier"
+26040 DATA"Kie = waar         ;Kial = waarom" 
+26050 DATA "Kiam = wanneer     ;Kiel = hoe","Kiom = hoeveel"
+26060 DATA" K  - vragend,     Kie? - waar?"
+26070 DATA" T  - aanwijzend,  Tie! - daar!"
+26080 DATA" C^  - verzamelend, C^ie  - overal"
+26090 DATA " NEN- ontkennend,  Nenie- nergens"
+26100 DATA"    - onbepaald,   Ie   - ergens"
+26110 DATA "*","K","VOORBEELDEN"  
+26120 DATA"Kiel vi nomig^as? Mia nomo estas Jan."
+26130 DATA"Hoe heet jij? Mijn naam is Jan."
+26140 DATA"Kiu estas tiu. Wie is dat?"
+26150 DATA"Kien vi iras? Mi nenien iras!"
+26160 DATA"Waar ga je heen? Ik ga nergens heen!"  
+26170 DATA"Iu s^telis mian televidilon."
+26180 DATA"Iemand heeft mijn televisie gestolen."
+26190 DATA"Kiel vi fartas? Mi fartas tre bone!"
+26200 DATA"Hoe gaat het ermee? Heel goed!"
+26210 DATA"Kial? Tial!   Waarom? Daarom!"
+26220 DATA"*","L"
+26230 DATA"VRAGEN, ONTKENNING"
+26240 DATA"Een vragende zin begint met C^U."
+26250 DATA"NE wordt gebruikt voor een ontkenning."
+26260 DATA"C^u vi parolas Esperanton?"
+26270 DATA"Spreek jij Esperanto?"
+26280 DATA"C^u vi estas Belgo? Ne, mi estas Anglo."
+26290 DATA"Bent U een Belg? Nee, ik ben Engelsman."
+26300 DATA"C^u tio estas via domo? Jes g^i estas"
+26310 DATA"bela, c^u ne?  Is dat uw huis?"
+26320 DATA"Ja. Het is mooi, niet waar?"    
+26330 DATA"Ne mi parolas,sed.. Niet ik praat,maar"
+26340 DATA"*","M","TELWOORDEN I"
+26350 DATA"0 - Nul   10 - Dek"   
+26360 DATA"1 - Unu   11 - Dek unu    1e - Unua"
+26370 DATA"2 - Du    20 - Dudek      2e - Dua" 
+26380 DATA"3 - Tri   21 - Dudek unu  3e - Tria"
+26390 DATA"4 - Kvar  22 - Dudek du   10e- Deka"
+26400 DATA"5 - Kvin     30 - Tridek"
+26410 DATA"6 - Ses      40 - Kvardek"
+26420 DATA"7 - Sep      100- Cent"
+26430 DATA"8 - Ok       256- Ducent kvindek ses"
+26440 DATA"9 - Nau^      1000- Mil"
+26450 REM LEGE REGEL
+26460 DATA"*","N","TELWOORDEN II"
+26470 DATA"Unue - ten eerste,    due - ten tweede"
+26480 DATA"-OBL- geeft een vermenigvuldiging aan"
+26490 DATA"Kvaroblo - viervoudige."
+26500 DATA"-ON-  geeft een breuk aan."
+26510 DATA"Triono - eenderde, duono - helft"
+26520 DATA"-OP-  voegt samen.","Kvarope - met z'n vieren."
+26530 DATA"Kioma horo estas? Estas la unua."
+26540 DATA"Hoe laat is het? Het is een uur."
+26550 DATA"Dek minus tri plus kvin estas dek du"
+26560 DATA"*","O"
+26570 DATA"VOORVOEGSELS","EKS-  ;geeft aan: ex-, oud-."
+26580 DATA"Eksministro - ex-minister"
+26590 DATA"GE-   ;neemt beide seksen samen." 
+26600 DATA"Gejunuloj - jongeren, gepatroj - ouders"
+26610 DATA"MAL-  ;geeft het tegenovergestelde aan."
+26620 DATA"Maljuna - oud, malgranda - klein"
+26630 DATA"RE-   ;terug-, opnieuw."
+26640 DATA"Revido - weerzien, relegi - herlezen"
+26650 DATA"(Juna-jong,patro-vader,granda-groot)"
+26660 DATA"NB. er zijn nog meer voorvoegsels."
+26670 DATA"*","P"
+26680 DATA"ACHTERVOEGSELS I"
+26690 DATA"-AC^  ;duidt op een ongunstig uiterlijk."
+26700 DATA"Domac^o - krot, au^tac^o - lelijke auto"
+26710 DATA"-AR  ;verzameling als eenheid."
+26720 DATA"arbo-boom, arbaro-bos, s^iparo-vloot"
+26730 DATA"-EBL ;duidt op een mogelijkheid."
+26740 DATA"eble - misschien, legebla - leesbaar"
+26750 DATA"-EG  ;duidt op een vergroting."
+26760 DATA"Malvarma-koud, malvarmega-ijskoud"
+26770 DATA"Vorto-woord, vortarego-dik woordenboek"
+26780 DATA"vento - wind, ventego - storm"
+26790 DATA"*","Q"
+26800 DATA"ACHTERVOEGSELS II","-EJ  ;Duidt op een plaats."
+26810 DATA"Lernejo - school, nag^ejo - zwembad"
+26820 DATA"Lerni - leren, nag^i - zwemmen"
+26830 DATA"-ET  ;duidt op een verkleining."
+26840 DATA"Varmeta - lauw,  dometo - huisje"
+26850 DATA"-IL  ;Instrument, middel"
+26860 DATA"Tranc^i - snijden, tranc^ilo - mes"
+26870 DATA"-IN  ;Duidt op het vrouwelijk geslacht"
+26880 DATA"Patrino - moeder, Knabino - meisje"
+26890 DATA"Knabo - jongen, kokino - hen (kip)"
+26900 DATA"*","R"
+26910 DATA"WERKWOORDEN II"
+26920 DATA"-IG  ;Betekent maken,doen."
+26930 DATA"Rug^igi-roodmaken, purigi-schoonmaken" 
+26940 DATA"-IG^  ;Betekent worden, geraken."
+26950 DATA"Rug^a-rood, rug^ig^i-rood worden,blozen"
+26960 DATA"Over werkwoorden kan nog veel meer"
+26970 DATA"(OVT VVT TT VTT etc.) gezegd worden."
+26980 DATA"Hier slechts een paar voorbeelden."
+26990 REM LEGE REGEL
+27000 DATA"Mi estAS batANTa-ik ben aan het slaan"
+27010 DATA"Mi estAS batATa - ik word geslagen"
+27020 DATA"Mi estIS ridINTa - ik had(!) gelachen"
+27030 DATA"*","S"
+27040 DATA"VOORZETSELS","Al  - aan, naar  De  - van, door"
+27050 DATA"Dum - terwijl    El  - uit"
+27060 DATA"G^is - tot        Krom- behalve"
+27070 DATA"Per - door, per  Por - voor, t.b.v."
+27080 DATA"Pri - over       Sen - zonder"
+27090 DATA"Antau^ - voor     Apud  - nabij"
+27100 DATA"C^e  -(dicht)bij  C^irkau^- rondom" 
+27110 DATA"Ekster- buiten   En    - in" 
+27120 DATA"Inter - tussen   Post  - na, achter"
+27130 DATA"Sub   - onder    Super - boven" 
+27140 DATA"*","T"
+27150 DATA"WOORDVORMING"
+27160 DATA"Door het samenvoegen van woorden en het"
+27170 DATA"gebruik van voor- en achtervoegsels,"
+27180 DATA"kunnen verschillende woorden"
+27190 DATA"gevormd worden. bijvoorbeeld:"
+27200 DATA"festotago - feestdag"
+27210 DATA"koffiepauze - kafpau^zo"
+27220 DATA"bela - mooi, malbela - lelijk"
+27230 DATA"beleta - aardig, belega - prachtig"
+27240 DATA"beligi-verfraaien, belig^i-mooi worden"
+27250 DATA"belaj^o - iets moois"
+27260 DATA"*","U"
+27270 DATA"DAGEN, MAANDEN","La tagoj de la semajno estas:"
+27280 DATA"Lundo(maandag), mardo, merkredo,"
+27290 DATA"j^au^do, vendredo, sabato kaj dimanc^o.",""
+27300 DATA"La sezonoj estas: printempo (lente)"
+27310 DATA "somero, au^tuno kaj vintro."
+27320 DATA"La monatoj estas: Januaro, Februaro"
+27330 DATA"Marto, Aprilo, Majo, Junio, Julio"
+27340 DATA"Au^gusto, Septembro, Oktobro, Novembro"
+27350 DATA"kaj Decembro."
+27360 DATA"*","V"
+27370 DATA"DIALOGOJ 1&2","Kio estas tio?","Tio estas radio."
+27380 DATA"C^u g^i estas nova?"
+27390 DATA"Ne, g^i estas malnova.","--------------"
+27400 DATA"Kiu estas tiu?      (kantisto-zanger)"
+27410 DATA"Tiu estas H. Pano, li estas kantisto."
+27420 DATA"Kia kantisto li estas?"
+27430 DATA"Tre bona. Li kantas tre bone."
+27440 DATA"NB. BONE is een bijwoord."
+27450 DATA"*","W"
+27460 DATA"DIALOGO 3"
+27470 DATA"Bonan tagon.    (goeden dag)"
+27480 DATA"Bonan tagon, sinjoro. Kion mi povas"
+27490 DATA"fari por vi? (povi-kunnen, fari-doen)"
+27500 DATA"Mi perdis mian pluvombrelon (paraplu)."
+27510 DATA"C^u vi g^in vidis? (perdi-verliezen)"
+27520 DATA"Kie vi perdis vian pluvombrelon?"
+27530 DATA"Mi perdis g^in en la stacidomo.(station)"
+27540 DATA"Ne, mi bedau^ras. Mi ne vidis g^in."
+27550 DATA"Dankon. G^is revido. (bedau^ri-betreuren)" 
+27560 DATA"Bonan tagon, sinjoro. (meneer)"
+27570 DATA"*","X"
+27580 DATA"DIALOGO 4","Kiom kostas tiu libro?    (boek)"
+27590 DATA"G^i kostas dudek kvar guldenojn."
+27600 DATA"Bone, mi prenas (neem) g^in."
+27610 DATA"Kaj tiu vortaro - kiom kostas g^i?"
+27620 DATA"Pardonu. Kiu?"
+27630 DATA"Tiu verda (groene) vortaro."
+27640 DATA"Ha, tiu. G^i kostas 67 guldenojn."
+27650 DATA"G^i estas multekosta (duur)."
+27660 DATA"Jes, sed g^i estas tre bona."         
+27670 REM LEGE REGEL
+27680 REM LEGE REGEL
+27690 DATA"*","Y"
+27700 DATA"INFORMATIE.","U kent nu de beginselen van het"
+27710 DATA"Esperanto. Dit is overigens meer dan"
+27720 DATA"U zelf vermoedt." 
+27730 DATA"Voor meer informatie over Esperanto"
+27740 DATA"kunt U zich wenden tot:"
+27750 DATA""
+27760 DATA"* Esperanto-Centrum Nederland,     *"
+27770 DATA"* Riouwstraat 172,                 *"
+27780 DATA"* 2585 HW  Den Haag,               *"
+27790 DATA"* 070- 556677 (Ma-vr 10 tot 15 uur)*"
+27800 DATA"*"
+27810 DATA"WOO"
+27820 DATA"AC^ETI KOPEN AKCEPTI"
+27830 DATA"AANNEMEN AKVO WATER ALTA HOOG"
+27840 DATA"AMIKO VRIEND ARTO"
+27850 DATA"KUNST ATENDI WACHTEN AU^DI HOREN"
+27860 DATA"AU^SKULTI LUISTEREN BESTO DIER BEZONO BEHOEFTE"
+27870 DATA"BILDO PLAAT BIRDO VOGEL C^AMBRO KAMER"
+27880 DATA"DANKO DANK DAU^RI DUREN DECIDI BESLISSEN"
+27890 DATA"DEMANDI VRAGEN DEVI MOETEN DIRI ZEGGEN"
+27900 DATA"DONI GEVEN DORMI SLAPEN EKZEMPLO VOORBEELD"
+27910 DATA"ESPERI HOPEN FACILA MAKKELIJK FENESTRO RAAM"
+27920 DATA"FERMI SLUITEN FESTO FEEST FLORO BLOEM"
+27930 DATA"FORGESI VERGETEN GAZETO KRANT GRUPO GROEP"
+27940 DATA"HAVI HEBBEN HEJME THUIS HELPI HELPEN"
+27950 DATA"HIERAU^ GISTEREN HODIAU^ VANDAAG HORO UUR"
+27960 DATA"INFANO KIND INSTRUI"
+27970 DATA"ONDERWIJZEN INTERESO INTERESSE" 
+27980 DATA"KALKULI REKENEN KANTO LIED KELKA ENIGE"
+27990 DATA"KOLORO KLEUR KOMENCI BEGINNEN KOMPRENI BEGRIJPEN"
+28000 DATA"KONI KENNEN KONTENTA TEVREDEN KRESKI GROEIEN"
+28010 DATA"KUIRI KOKEN KUS^I LIGGEN LABORO WERK LAKTO MELK"
+28020 DATA"LANDO LAND LAVI WASSEN LETERO BRIEF LIBERA VRIJ"
+28030 DATA"LUDO SPEL MANG^I ETEN METI LEGGEN MINUTO MINUUT"
+28040 DATA"MONDO WERELD MORGAU^"
+28050 DATA"MORGEN MORTA DOOD NECESA NODIG" 
+28060 DATA"NOKTO NACHT OFTE"
+28070 DATA"VAAK OKAZI GEBEUREN OPINIO MENING"
+28080 DATA"ORGANIZI ORGANISEREN PACO VREDE PAGI BETALEN"
+28090 DATA"PANO BROOD PAROLI PRATEN PENSI DENKEN PIEDO VOET"
+28100 DATA"POVI KUNNEN PREPARI VOORBEREIDEN PRESKAU^ BIJNA"
+28110 DATA"PROBLEMO PROBLEEM"
+28120 DATA"PROKSIMA DICHTBIJ RAKONTI VERTELLEN"
+28130 DATA"RENKONTI ONTMOETEN RESPONDI ANTWOORDEN"
+28140 DATA"RICEVI ONTVANGEN SCII WETEN SENDI ZENDEN"
+28150 DATA"SERC^I ZOEKEN SIDI ZITTEN SKATOLO DOOS"
+28160 DATA"SKRIBI SCHRIJVEN"
+28170 DATA"TABLO TAFEL TEMPO TIJD TIMO VREES"
+28180 DATA"TRADUKI VERTALEN TRANC^I SNIJDEN TRINKI DRINKEN"
+28190 DATA"ENDW"
+28200 DATA"END"
+32000 REM*********************
+32010 REM*                   *
+32020 REM* ESPERANTO         *
+32030 REM* ONTWIKKELD OP EEN *
+32040 REM* APPLE II.         *
+32050 REM* LAATSTE VERSIE    *
+32060 REM* 20 AUG.   1987    *
+32070 REM* DANK AAN R.CUPERUS*
+32080 REM*                   *
+32090 REM* 100 JAAR ESPERANTO*
+32100 REM* 1887 - 1987       *
+32110 REM*                   *
+32120 REM* JAN VAN DER VLIET *
+32130 REM* R.HOLSTLAAN 512F  *
+32140 REM* 2624 GV  DELFT    *
+32150 REM* TEL. 015-560493   *
+32160 REM*                   *
+32170 REM*********************
+32180 REM
+32190 REM COPYRIGHT NOS HILVERSUM
+

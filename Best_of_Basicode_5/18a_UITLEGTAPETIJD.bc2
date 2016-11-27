@@ -1,0 +1,420 @@
+1000 A=600:GOTO20
+1010 GOSUB100:REM Tapetijd
+1020 VE=0:FORI=0 TO80:HO=I:GOSUB110
+1030 GOSUB120:IFHO<>I THENHP=I:I=80
+1040 NEXTI:FORI=0 TO40:HO=0:VE=I:GOSUB110
+1050 GOSUB120:IFVE<>I THENVP=I:I=40
+1060 NEXTI
+1070 SB$="":KL$="":N=1:N$="1":GOSUB100
+1080 VE=5:GOSUB110:PRINT"Handleiding programma 'Tapetijd'."
+1090 PRINT:PRINT
+1100 PRINT"Printen van deze handleiding":PRINT
+1110 PRINT"is sterk aan te bevelen!":PRINT
+1120 PRINT:PRINT:PRINT:PRINT
+1130 PRINT:PRINT"Naar Printer (1) of Scherm (2) ";
+1140 GOSUB210:GOSUB100
+1150 IF(IN$<>"1") AND(IN$<>"2") THEN1140
+1160 PT=1:IFIN$="2" THENPT=0:GOTO1240
+1170 PRINT:PRINT:PRINT"Hoeveel letters per regel ";
+1180 INPUTHP
+1190 PRINT:PRINT"Kantlijnbreedte: ";
+1200 INPUTSP:GOSUB1900:KL$=SP$
+1210 HP=HP-SP:IFSP>1 THENHP=HP-SP+2
+1220 PRINT:PRINT"Aantal regels per pagina ";
+1230 INPUTVP
+1240 RT=0:H=0
+1250 RESTORE:READDD$
+1260 SR$=" ":GOSUB20000
+1270 A$=DD$
+1280 SP=INT((HP-LEN(A$))/2):IFPT=1 THENSP=SP-3
+1290 GOSUB1900
+1300 SR$=SP$+A$:GOSUB20000
+1310 A$=""
+1320 READBB$
+1330 GOSUB22100
+1340 GOSUB22190
+1350 GOTO1330
+1360 END
+1900 SP$="":FORI=1 TOSP:SP$=SP$+" ":NEXTI:RETURN
+20000 REM
+20010 IFSR$="" THENRETURN
+20020 IFPT=1 THEN20060
+20030 PRINTSR$
+20040 RT=RT+1:IFRT=VP-4 THENGOSUB21000
+20050 RETURN
+20060 SR$=KL$+SR$:GOSUB350:GOSUB360:RT=RT+1
+20070 IFRT=VP THENGOSUB22000
+20080 RETURN
+21000 REM
+21010 IFRT=0 THENRETURN
+21020 HO=0:VE=VP-1:GOSUB110
+21030 PRINT"<Toets voor verder>";
+21040 GOSUB210:GOSUB100:RT=0:RETURN
+22000 REM
+22010 GOSUB100
+22020 PRINT"Zet de printer bovenaan nieuwe pagina"
+22030 PRINT"en druk daarna op een toets."
+22040 GOSUB210:RT=0:GOSUB100
+22050 N=N+1:SR=N:GOSUB300:N$=SR$
+22060 SR$=DD$+"          pagina "+N$
+22062 SP=INT((HP-LEN(SR$))/2):GOSUB1900
+22064 SR$=SP$+SR$
+22070 NL=LEN(SR$):GOSUB20060:SR$=""
+22080 SR$=SP$
+22085 SR$=SR$+"-":IFLEN(SR$)<NL THEN22085
+22090 GOSUB20060:SR$=" ":GOSUB20060:RETURN
+22100 IFBB$="$$$$$" THENH=1:GOSUB22190:END
+22110 IFA$<>"" THENA$=A$+" "
+22120 A$=A$+BB$:READBB$
+22130 IFLEFT$(BB$,1)="#" THENH=1:GOTO22180
+22140 IFLEFT$(BB$,1)="." THENH=1:GOTO22180
+22150 IFA$=". " THEN22180
+22160 IFLEFT$(A$,1)="#" THEN22180
+22170 IFLEN(A$)<HP THEN22100
+22180 RETURN
+22190 REM
+22200 IFLEFT$(A$,1)="#" THENH=3
+22210 IF(LEFT$(A$,1)<>".") AND(H<3) THEN22260
+22220 LL=LEN(A$):A$=RIGHT$(A$,LL-1)
+22230 IFH<3 THEN22260
+22240 IFPT=0 THENGOSUB21010
+22250 IFPT=1 THENSR$=" ":GOSUB20000
+22260 IFA$=" " THENSR$=A$:A$="":GOSUB20000:GOTO22370
+22270 L=LEN(A$):IF(H=0) AND(L<HP) THEN22370
+22280 IFL<HP THENSR$=A$:A$="":GOSUB20000:GOTO22360
+22290 FORI=HP TO1 STEP-1
+22300 B$=MID$(A$,I,1)
+22310 IFB$=" " THENJ=I:I=1
+22320 NEXTI
+22330 SR$=LEFT$(A$,J-1):A$=RIGHT$(A$,L-J)
+22340 GOSUB20000
+22350 GOTO22270
+22360 IFH=3 THENSR$=" ":GOSUB20000
+22370 H=0:RETURN
+25000 DATA"HANDLEIDING TAPETIJD"
+25010 DATA". ","Direct nodige voorzieningen:"
+25020 DATA". ","De regels van 20900 af kunt U"
+25030 DATA"deels verwijderen en de rest"
+25040 DATA"aanpassen aan Uw computer -"
+25050 DATA"printer - combinatie. Zolang dat niet is"
+25060 DATA"gebeurd, zorgt RETURN in regel 21080 voor"
+25070 DATA"voortzetting van het programma. (Echter"
+25080 DATA"zonder printerbesturing!)."
+25090 DATA". ",".De tabellen verschijnen op het scherm:"
+25100 DATA".1.  Of in een (1) lange kolom, of"
+25110 DATA".2.  Zoals ze op papier worden afgedrukt. Dus"
+25120 DATA"bij 80 karakters: 2 schermregels van 40."
+25130 DATA".Dit laatste is practisch omdat we nu in de"
+25140 DATA"laatste regel de eindwaarden van alle kolommen"
+25150 DATA"voor ons hebben. Aan de hand daarvan kunnen we"
+25160 DATA"dan gemakkelijk beslissen, of we de te behalen"
+25170 DATA"maximumwaarde nog willen wijzigen, om een"
+25180 DATA"beter resultaat te verkrijgen."
+25190 DATA".Langzame computers zullen U af en toe even"
+25200 DATA"laten wachten op zichtbare resultaten."
+25210 DATA". ",".Wat doet het programma?"
+25220 DATA". ",".Het programma print op"
+25230 DATA"papier en/of op scherm (in tabellen) het"
+25240 DATA"verband tussen de tellerstand en de"
+25250 DATA"verbruikte bandtijd van een bepaalde"
+25260 DATA"recorder - tape - combinatie. (spoel-,"
+25270 DATA"cassette- of videorecorder), indien"
+25280 DATA"met een teruggespoelde band en een op "
+25290 DATA"0 (nul) gezette bandteller wordt begonnen."
+25300 DATA". "
+25310 DATA".U dient een aantal gegevens in"
+25320 DATA"te voeren die betrekking hebben op:"
+25330 DATA".1. De gebruikte recorder."
+25340 DATA".2. De gebruikte tape."
+25350 DATA".3. De bandsnelheid (in cm/s)."
+25360 DATA". "
+25370 DATA".Verder zo nauwkeurig mogelijk:"
+25380 DATA".1. De (bijna) halve speeltijd."
+25390 DATA".2. De bijbehorende bandtellerstand."
+25400 DATA".3. De (bijna) 'volle' speeltijd."
+25410 DATA".4. De bijbehorende bandtellerstand."
+25420 DATA".5. De tellerstand die we aan het eind"
+25430 DATA".   van de tabellen minstens willen"
+25440 DATA".   halen; b.v. de tellerstand a.h."
+25450 DATA".   einde van de band."
+25460 DATA". "
+25470 DATA".Om de berekening zo scherp mogelijk te"
+25480 DATA"krijgen, bij voorkeur de (bijna)"
+25490 DATA"halve en hele speeltijd zo precies mogelijk"
+25500 DATA"in voeren."
+25510 DATA"Gemakkelijk hierbij is b.v. de stopwatch"
+25520 DATA"van een digitaal horloge."
+25530 DATA"Een keukenwekker kan waarschuwen,"
+25540 DATA"dat het tijdstip van het aflezen van de"
+25550 DATA"teller nadert. Zo kunnen"
+25560 DATA"we gewoon doorgaan met ons werk, totdat"
+25570 DATA"het moment van aflezen is"
+25580 DATA"aangebroken. Mocht U iets te laat zijn met"
+25590 DATA"Uw waarneming, dan vult U zo precies"
+25600 DATA"mogelijk de gemeten tijd en tellerstand"
+25610 DATA"in. De nauwkeurigheid kan dan wat"
+25620 DATA"kleiner zijn, maar niet"
+25630 DATA"zo, dat de tabellen"
+25640 DATA"ongeschikt voor gebruik zouden worden."
+25650 DATA"Een tijdverhouding 1:2 geeft"
+25660 DATA"geen enkele afronding, maar de"
+25670 DATA"verhouding 1:1.03 wel!"
+25680 DATA"Voor een C-90 cassette (2 x 45 min.) nemen"
+25690 DATA"we daarom liefst als opneemmomenten"
+25700 DATA"voor de tellerstand b.v.:22 en 44 min."
+25710 DATA"na de start."
+25720 DATA".Het programma houdt automatisch rekening"
+25730 DATA"met tellerkoppeling aan opwikkel- of"
+25740 DATA"afwikkelhaspel!"
+25750 DATA".Om voor geen enkel merk reclame te maken,"
+25760 DATA"zijn de gegeven voorbeelden 'merkloos'."
+25770 DATA". ",".Voor beginnende programmeurs:"
+25780 DATA".-----------------------------",". "
+25790 DATA".Gebruikte subroutines:",". "
+25800 DATA".20020 Centreren van de tekst."
+25810 DATA".20150 Tekst op zelfde plaats als vorige regel."
+25820 DATA".20190 Presentatie van de data."
+25840 DATA".20350 Veranderen ja of nee."
+25850 DATA".20410 Kop formulier."
+25860 DATA".20510 Kop tabellen."
+25870 DATA".20640 Met ja of nee antwoorden!."
+25880 DATA".20680 Toets ....."
+25890 DATA".20720 RESTORE."
+25900 DATA".20730 Inlezen data."
+25910 DATA".20740 Inlezen overige data."
+25920 DATA".20770 Schermbreedte bepalen."
+25930 DATA".20830 Datanummer niet aanwezig!"
+25940 DATA".21010 80 kar./regel printen."
+25950 DATA".21040 96 kar./regel printen."
+25960 DATA".21070 137 kar./regel printen.",". "
+25970 DATA".Voor de subroutines 100 t/m 360: Zie het"
+25980 DATA"'Basicode-2' boek of de H.C.C. Nieuwsbrieven!"
+25990 DATA". ",".We lopen het programma van begin tot"
+26000 DATA"einde door:",". "
+26010 DATA".1010.....GOSUB 20770:",".H wordt 0 gemaakt."
+26020 DATA"GOSUB 120 vraagt de"
+26030 DATA"huidige positie van de cursor. Na GOSUB 100"
+26040 DATA"is die 0,0: HO=0 en HO=H."
+26050 DATA"Na het printen van 1 spatie wordt HO=1 (De"
+26060 DATA"cursor schuift 1 plaats op!), H wordt met 1"
+26070 DATA"verhoogd, dus ook H=1: HO=H. Dat blijft zo"
+26080 DATA"doorgaan,totdat de laatste spatie op de regel"
+26090 DATA"wordt geprint. Nemen we aan op positie 39."
+26100 DATA"Omdat de cursor nu doorschuift naar de volgende"
+26110 DATA"regel wordt HO=0 en H=39+1=40. Dus HO<>H!"
+26120 DATA"De schermbreedte SB=H=40! (posities 0 t/m 39)."
+26130 DATA".1030.....en vele volgende regels:GOSUB 20020:"
+26140 DATA"De hulpvar. SH wordt bij printen (PT=1) gelijk"
+26150 DATA"gemaakt aan de helft van"
+26160 DATA"(regellengte (KR) - LEN(SR$))."
+26170 DATA"(Bij schermpresentatie is de regellengte = SB)."
+26180 DATA"HO wordt gelijk gemaakt aan SH. Bij het"
+26190 DATA"printen verandert bij elk geplaatst karakter"
+26200 DATA"de waarde van HO, maar de waarde van SH"
+26210 DATA"blijft behouden! Dat komt ons prima van pas,"
+26220 DATA"als we de volgende regel op dezelfde hoogte"
+26230 DATA"willen beginnen als de vorige: GOSUB 20150:"
+26240 DATA"GOSUB120 zorgt er voor, dat de computer weet"
+26250 DATA"op welke regel we bezig zijn (VE). HO=SH, dus"
+26260 DATA"ook de plaats in de regel is nu bekend."
+26270 DATA".1170.....GOSUB 20680:Zie BC-2 boek."
+26280 DATA".1180.....GOSUB 20720: RESTORE zorgt er voor,"
+26290 DATA"dat we de DATA van het begin af gaan lezen."
+26300 DATA".1210-1420.....Via de 'loop' H=1 TO 100 wordt"
+26310 DATA"de DATA ingelezen. (GOSUB 20730: regelnr."
+26320 DATA"wordt met 5 verhoogd en DN,RG$,V,TG$ worden"
+26330 DATA"ingelezen). Voorlopig niet meer. Als H=1 AND"
+26340 DATA"DN=101,dan is bij de eerste keer lezen"
+26350 DATA"DN=101. (DATA-regel 29990): 1400:"
+26360 DATA"Geen DATA aanwezig!"
+26370 DATA".1270.....(H=100) zorgt"
+26380 DATA"er voor, dat we niet verder proberen! (De"
+26390 DATA"'loop' wordt verlaten). In het andere geval"
+26400 DATA"doorloopt DN 1 of meer waarden voordat"
+26410 DATA"DN=101 wordt bereikt: Dan 1260: Einde DATA."
+26420 DATA".1250.....zorgt er voor, dat als 1230 en 1240"
+26430 DATA"'niet waar' zijn, we over 'Einde DATA' naar 1280"
+26440 DATA"springen en via GOSUB 20740 de verdere DATA"
+26450 DATA"inlezen.",".1290.....DN moet DN$ worden. Dat"
+26460 DATA"gaat in Basicode via SR,GOSUB300 en SR$."
+26470 DATA"Deze constructie komen we nog vaker tegen!"
+26480 DATA".1300.....GOSUB 20190 print een set gegevens op"
+26490 DATA"het scherm."
+26500 DATA".1330.....In het oorspr. progr. konden 3"
+26510 DATA"DATA-sets tegelijk op het scherm (80 kar/regel)."
+26520 DATA"Vandaar het onthouden van het DATA-nummer. Ik"
+26530 DATA"heb dat er in gelaten. Als we het nummer weten,"
+26540 DATA"hoeven we nu niet alle DATA te laten passeren,"
+26550 DATA"maar kunnen bij nr. 1 direct met J antwoorden."
+26560 DATA"We kunnen dan direct het gewenste nr. opgeven."
+26570 DATA".1310.....'Is dat wat U zoekt?'"
+26580 DATA".1360.....Als dat niet het geval is: 1420:"
+26590 DATA"Volgende DATA-set (NEXT H). Indien wel, dan:"
+26600 DATA"1410: H=100: We verlaten de 'loop', omdat"
+26610 DATA"we niet verder willen zoeken."
+26620 DATA".1530.....AW$",".1540.....AW. Dus 2 vormen"
+26630 DATA"voor 1 antwoord. Dat is nodig, omdat bij"
+26640 DATA"het aanmaken van DATA 2 maal wordt gecontroleerd"
+26650 DATA"of de ingebrachte gegevens juist zijn."
+26660 DATA"Zo niet, dan wordt de waarde van AW gewijzigd"
+26670 DATA"(regel 3790): AW=3. De ingebrachte gegevens"
+26680 DATA"worden een voor een gepresenteerd (regel 3450):"
+26690 DATA"AW<>2, dus naar 3460. Elk gegeven kan dan al of"
+26700 DATA"niet worden gewijzigd. Als dat is gebeurd, moet"
+26710 DATA"de volgende set gegevens worden ingebracht."
+26720 DATA"AW moet dan weer gelijk worden aan de"
+26730 DATA"oorspronkelijke waarde. Omdat AW$ ongewijzigd is"
+26740 DATA"gebleven, is dat in regel 3810 eenvoudig te"
+26750 DATA"regelen! In regel 4550 ook: AW=3. Hier wordt aan"
+26760 DATA"het eind de waarde niet hersteld, omdat daarna"
+26770 DATA"geen nieuwe DATA meer wordt ingebracht."
+26780 DATA".1680.....Als DN=101 wordt bereikt, zonder dat"
+26790 DATA"het door ons ingevoerde nummer is gevonden,"
+26800 DATA"presenteren we de gegevens nog eens (1180),"
+26810 DATA"anders:",".1690.....De rest van de DATA inlezen."
+26820 DATA"Daardoor maar 1 DATA-regel als eindindicator"
+26830 DATA"nodig (29990). Daarin is alleen 101 belangrijk."
+26840 DATA"De andere 3 zijn nodig om niet 'Out of DATA at"
+26850 DATA"line...' te geraken. (We vragen er 4 (20730),"
+26860 DATA"dus moeten er vier zijn!)."
+26870 DATA".1720-1830.....Een stukje wiskunde, waarop we"
+26880 DATA"(i.v.m. ruimtegebrek) hier niet verder ingaan."
+26890 DATA".1860-2240.....Invoer van gegevens over printer"
+26900 DATA"en papierformaat. De regels 1860,1880,1900 enz."
+26910 DATA"en bijbehorende subroutines aanpassen aan Uw"
+26920 DATA"situatie!",".2250-2300.....Printen? Ja, dan IN=2"
+26930 DATA"en 3120. Zie voor IN: 2950-3200"
+26940 DATA".2390.....Uit het aantal regels per inch en de"
+26950 DATA"papierlengte wordt het aantal regels berekend,"
+26960 DATA"dat beschikbaar is voor de tabellen. (6"
+26970 DATA"voor de kop en 2 om iets ruimte boven en"
+26980 DATA"onder over te houden)."
+26990 DATA".2400.....Elke kolom is 12 karakters breed en 2"
+27000 DATA"spaties tussen de kolommen zijn minimaal nodig."
+27010 DATA"Het mogelijke aantal kolommen (AK) is dus:"
+27020 DATA"Aantal kar. per regel/14. Per kolom zijn AR"
+27030 DATA"tellerstanden mogelijk. In"
+27040 DATA"totaal wordt dat AK*AR tellerstanden. De"
+27050 DATA"stepgrootte wordt dan: INT(BM/(AK*AR)+0.999)."
+27060 DATA"'INT' omdat we met 'hele' stappen werken."
+27070 DATA"+0.999 omdat 'INT' naar beneden afrondt."
+27080 DATA"We bereiken anders de waarde BM niet!"
+27090 DATA"Niet 1 maar 0.999 omdat het kan voorkomen, dat"
+27100 DATA"we aan de hand van de op het scherm getoonde"
+27110 DATA"kolommen besluiten, om BM alsnog de eindwaarde"
+27120 DATA"van de voorlaatste kolom te geven. Als we"
+27130 DATA"dan '+1' hanteren, wordt de stepgrootte"
+27140 DATA"plotseling met 1 verhoogd! Dus als BM/(AK*AR)"
+27150 DATA"een geheel getal oplevert, geeft '+1' een met"
+27160 DATA"1 verhoogde stepgrootte en dat is niet gewenst."
+27170 DATA"Daarom dus '+0.999'."
+27180 DATA".2410-2430.....Het kan voorkomen, dat b.v. bij"
+27190 DATA"stepgrootte 2 de eindwaarde BM niet wordt"
+27200 DATA"bereikt en bij SG=3 deze waarde al in de"
+27210 DATA"voorlaatste kolom wordt gehaald. H=1 TO W"
+27220 DATA"(W=AK) bekijkt de eindwaarden van de kolommen."
+27230 DATA"In kolom 1 is dat AR*SG. In kolom 2 dus"
+27240 DATA"2*AR*SG enz. enz. Als we de kolom tegenkomen die"
+27250 DATA"de waarde BM of meer bereikt, stoppen we en"
+27260 DATA"wordt AK=H en H wordt gelijk W (oude waarde"
+27270 DATA"van AK), omdat we uit de 'loop' willen."
+27280 DATA".2440.....bepaalt de 'hele' 'ruimte' tussen"
+27290 DATA"de kolommen. Bij 3 kolommen 4 'tussenruimtes'"
+27300 DATA"xkxkxkx. Dus wat er van de regel overblijft na"
+27310 DATA"aftrek van AK*12 moeten we delen door (AK+1)."
+27320 DATA".2450-2470.....maken een string van TR spaties"
+27330 DATA".2480.....De op een regel gebruikte plaatsen"
+27340 DATA"zijn: (AK*12)+(AK+1)*TR. Door afronding naar"
+27350 DATA"beneden in regel 2440 houden we de reserveruimte"
+27360 DATA"RR van regel 2480 over. Die gaan we voor de"
+27370 DATA"helft toevoegen aan de kantlijn KL (2490)"
+27380 DATA".2500-2520.....zorgen voor een minimum"
+27390 DATA"kantlijn-breedte bij de diverse schriftsoorten."
+27400 DATA".2530,2540.....maken een string van KL spaties."
+27410 DATA".2560.....Als alle getallen in 1 rij moeten"
+27420 DATA"(LK=1), dan moeten we naar de eindwaarde van de"
+27430 DATA"laatste kolom, dus: 2580. Anders: 2570:"
+27440 DATA"eindwaarde van de eerste kolom. Er komen nog"
+27450 DATA"een paar van dergelijke beslissingen voor."
+27460 DATA".2570-2910.....BT=stepgrootte (SG) TO aantal"
+27470 DATA"regels (AR) * SG step SG: Alle waarden van de"
+27480 DATA"eerste kolom."
+27490 DATA".2590.....A=1 TO aantal kolommen (AK) zorgt"
+27500 DATA"er voor, dat eerst de eerste regels van alle"
+27510 DATA"kolommen worden geprint, dan alle 2e regels enz."
+27520 DATA".2600,2610.....zie 1720-1830."
+27530 DATA".2620.....Aantal uren B (=T/3600)"
+27540 DATA".2630.....Aantal minuten C (=T-aantal uren)"
+27550 DATA".         Uitgedrukt in seconden: T-B*3600"
+27560 DATA".2640.....Aantal seconden E:"
+27570 DATA".E=Tijd (T) - (B uren (1)) - (C minuten (2))"
+27580 DATA".(1) B uren = B*3600 sec."
+27590 DATA".(2) C min. = C*60 sec."
+27600 DATA".C=INT((T-B*3600)/60) (Zie boven)."
+27610 DATA".Dus (2) wordt: INT((T-B*3600)/60)*60"
+27620 DATA".2650-2680.....zorgen ervoor dat de tellerstand"
+27630 DATA"altijd 4 posities inneemt, door voldoende"
+27640 DATA"spaties (H1$) voor het getal te plaatsen."
+27650 DATA".2690.....H$ krijgt er bij: H1$(zie boven) +"
+27660 DATA"SR$(getal als string) + 1 spatie (tussen de"
+27670 DATA"tellerstand en de uren)."
+27680 DATA".2700-2770.....Soortgelijke procedures voor"
+27690 DATA"B,C en E.",".2790.....De waarde van BT in de"
+27700 DATA"volgende kolom wordt bereikt, door aan"
+27710 DATA"BT de eindwaarde van kolom 1 (SG*AR)toe te"
+27720 DATA"voegen. (Zie 2590 hierboven)."
+27730 DATA".2800.....NEXT A: berekening BT,B,C,E volgende"
+27740 DATA"kolommen. H$ groeit hierbij steeds aan, waarbij"
+27750 DATA"steeds de ruimte tussen de kolommen wordt"
+27760 DATA"bijgevoegd. TR$ is 'leeg' (2760) als de laatste"
+27770 DATA"kolom is bereikt, omdat de mogelijkheid bestaat,"
+27780 DATA"dat door de kantlijncorrectie (2500-2520) de"
+27790 DATA"regelbreedte zou worden overschreden. Dan worden"
+27800 DATA"spaties op de volgende regel geprint (!) en dat"
+27810 DATA"zou de tabel verminken!"
+27820 DATA".2810.....zet de kantlijn KL voor de complete"
+27830 DATA"regel.",".2820.....De regel wordt eventueel"
+27840 DATA"geprint.",".2830.....'Reset' H$ en TR$ naar de"
+27850 DATA"beginwaarde",".2850.....'Reset' waarde van"
+27860 DATA"BT weer naar 1e kolom!"
+27870 DATA".2910.....Volgende waarde van BT en herhaling"
+27880 DATA"van 2570-2850.",".2920.....Zet eventueel de"
+27890 DATA"printer uit."
+27900 DATA".2950-3210 zijn makkelijk te volgen. (IF IN=5)"
+27910 DATA"ontbreekt, want als het programma IN=1,2,3 of 4"
+27920 DATA"niet vindt, komt regel 3100 vanzelf als volgende"
+27930 DATA"te voorschijn: END. De rest van het programma"
+27940 DATA"is al gedeeltelijk besproken in het voorgaande."
+27950 DATA"Alleen nog:",".3340.....Als DN=101 wordt"
+27960 DATA"ingelezen, is de opgegeven DATA er niet!"
+27970 DATA".3360.....20740 (3350) verhoogt het regelnummer"
+27980 DATA"met 5 en dat wordt hier weer hersteld, omdat we"
+27990 DATA"de vervanging op de juiste regel willen"
+28000 DATA"beginnen.",".3430.....Het programma levert"
+28010 DATA"automatisch het datanummer. Hiertoe wordt 24990"
+28020 DATA"afgetrokken van het eerste regelnummer van de"
+28030 DATA"DATA-set en gedeeld door 10. 'INT' i.v.m."
+28040 DATA"mogelijke rekenfouten van de computer. (25000"
+28050 DATA"- 24990)/10 behoort 1 te zijn!"
+28060 DATA".4600-4690.....Hier worden de DATA-regels"
+28070 DATA"aangemaakt. In het oorspr. prog. waren er 2,"
+28080 DATA"maar i.v.m. Basicode (60 tekens/regel) werden"
+28090 DATA"dat er 4 (+ een scheidend REM)."
+28100 DATA"RUN start het programma weer."
+28110 DATA".PRINTCHR$(34) maakt van ASCII 34 een"
+28120 DATA"aanhalingsteken, omdat een direct geplaatst"
+28130 DATA"aanhalingsteken voor de computer begin"
+28140 DATA"of eind van een string betekent."
+28150 DATA".25000-25018.....Voorbeeld DATA."
+28160 DATA".30000-30580.....Lijst van gebruikte variabelen."
+29990 DATA"$$$$$"
+30000 REM
+30010 REM C.W.Verhagen
+30020 REM Travertin 1
+30030 REM 8084 EG 't Harde.
+30040 REM The Netherlands.
+30050 REM
+30060 REM 01 - 12 - 1986.
+30070 REM
+30080 REM Copyright: N.O.S. Hilversum.
+

@@ -1,0 +1,419 @@
+1000 A=1500:GOTO20
+1010 GOSUB100:REM ALSWIN-VIERKANT
+1020 REM*******************************
+1030 REM**     DIMENSIONERING        **
+1040 REM*******************************
+1050 DIMHT$(17):DIMHB$(5,3):DIMVK$(17)
+1060 REM*******************************
+1070 REM**     INITIALISERING        **
+1080 REM*******************************
+1090 GOSUB20000
+1100 GOSUB20400
+1110 TE=1
+1150 REM*******************************
+1160 REM**     INFORMATIE-TEKST      **
+1170 REM*******************************
+1180 HO=0:VE=19:GOSUB110
+1190 PRINT"Dit is een 'ALSWIN-VIERKANT'            ";
+1200 PRINT"Wilt u informatie ? (j/n)";
+1210 GOSUB210
+1220 NO=((IN$="n") OR(IN$="N"))
+1230 IF(NO) THEN1490
+1240 HO=0:VE=19:GOSUB110
+1260 PRINT"De banen van het ALSWIN-VIERKANT kunnen ";
+1270 PRINT"in horizontale (cyfers) en vertikale    ";
+1280 PRINT"(letters) richting worden verschoven.   ";
+1290 GOSUB20600
+1300 PRINT"+ betekent naar rechts of naar beneden; ";
+1310 PRINT"- betekent naar links  of naar boven.   ";
+1320 PRINT"Als u daarbij 's' intypt, dan stopt het ";
+1330 PRINT"programma.";
+1340 GOSUB20600
+1350 PRINT"Straks wordt het ALSWIN-VIERKANT        ";
+1360 PRINT"geschud. Het is de bedoeling dat u daar-";
+1370 PRINT"na vier gelijke horizontaal of vertikaal";
+1380 PRINT"gerichte banen weet te vormen.";
+1390 GOSUB20600
+1400 PRINT"Dit althans bij het eerste niveau.      ";
+1410 PRINT"Het programma bevat immers ook nog een  ";
+1420 PRINT"tweede niveau.                          ";
+1430 GOSUB20600
+1440 PRINT"Bij niveau 2 zijn de velden genummerd.  ";
+1450 PRINT"U dient hier uitsluitend horizontaal    ";
+1460 PRINT"gerichte banen te vormen met oplopende  ";
+1470 PRINT"nummering.";
+1480 GOSUB20600
+1490 GOSUB24000
+1500 PRINT"Kies nu uw niveau: (1 of 2) ?";
+1510 REM-------------------------------
+1520 REM--     NIVEAUKEUZE           --
+1530 REM-------------------------------
+1540 GOSUB210
+1550 IF(IN$<>"1") AND(IN$<>"2") THEN1540
+1560 NV=(IN$="2")
+1570 HO=28:VE=19:GOSUB110
+1580 PRINTIN$
+1590 FORX=0 TO200:NEXTX
+1600 IFNV THENGOSUB20240:GOSUB20400
+1610 GOSUB24000
+1620 HO=0:VE=19:GOSUB110
+1630 PRINT"Een moment.....! (18)                   ";
+1650 REM*******************************
+1660 REM**     SCHUDDEN              **
+1670 REM*******************************
+1680 FORXA=0 TO8
+1690 :REM--------------------VERTIKAAL
+1700 :GOSUB260
+1710 :P=(RV>.5):N=(RV<=.5)
+1720 :GOSUB260
+1730 :KM=(5*(INT(4*RV)))+2
+1740 :GOSUB260
+1750 :TV=INT(2*RV)+1
+1760 :FORXB=1 TOTV
+1770 ::GOSUB22000
+1780 :NEXTXB
+1790 :SR=17-(2*XA)
+1800 :GOSUB300
+1810 :HO=17:VE=19:GOSUB110
+1820 :PRINT"(";SR$;") ";
+1830 :REM------------------HORIZONTAAL
+1840 :GOSUB260
+1850 :P=(RV>.5):N=(RV<=.5)
+1860 :GOSUB260
+1870 :RY=(4*(INT(4*RV)))+2
+1880 :GOSUB260
+1890 :TV=INT(2*RV)+1
+1900 :FORXB=1 TOTV
+1910 ::GOSUB21000
+1920 :NEXTXB
+1930 :SR=16-(2*XA)
+1940 :GOSUB300
+1950 :HO=17:VE=19:GOSUB110
+1960 :PRINT"(";SR$;") ";
+1970 NEXTXA
+1980 IF(NO) THEN2080
+2000 REM*******************************
+2010 REM**     VERVOLG INFORMATIE    **
+2020 REM*******************************
+2030 GOSUB20740
+2040 GOSUB20600
+2050 PRINT"Een puinhoop, vindt u niet?             ";
+2060 PRINT"Veel sterkte gewenst met het herstel.   ";
+2070 GOSUB20600:GOTO2100
+2080 GOSUB20740
+2090 GOSUB20600
+2100 GOSUB24000
+2300 REM*******************************
+2310 REM**     ZELF AAN HET WERK     **
+2320 REM*******************************
+2330 GOSUB23500
+2340 HO=0:VE=20:GOSUB110
+2350 PRINT"rij of kolom:.......?";
+2360 GOSUB23000
+2370 IF(IN$="s") OR(IN$="S") THENEND
+2380 HO=0:VE=21:GOSUB110
+2390 PRINT"+ of -:.............?";
+2400 GOSUB23300
+2410 IF(IN$="s") OR(IN$="S") THENEND
+2420 HO=0:VE=22:GOSUB110
+2430 PRINT"aantal velden (1-3).?";
+2440 GOSUB23400
+2450 IF(IN$="s") OR(IN$="S") THENEND
+2460 FORX=0 TO200:NEXTX
+2470 GOSUB24000
+2500 IFRY>0 THENFORXA=1 TOTV:GOSUB21000:NEXTXA
+2510 IFKM>0 THENFORXA=1 TOTV:GOSUB22000:NEXTXA
+2520 GOSUB23500
+2530 IFF THENTE=TE+1:GOTO2340
+2590 REM*******************************
+2600 REM**     KLAAR                 **
+2610 REM*******************************
+2620 GOSUB20740
+2630 GOSUB20600
+2640 IFNV THEN2700
+2650 PRINT"GEWELDIG ! U loste het ALSWIN-VIERKANT  ";
+2660 PRINT"op. Dit kostte u ";TE;" verschuivingen.";
+2670 GOSUB20600
+2680 PRINT"Gefeliciteerd en tot de volgende keer.  ";
+2690 PRINT"Probeert u dan 'ns niveau 2 !":END
+2700 PRINT"FORMIDABEL !                            ";
+2710 PRINT"U loste het tweede niveau van het       ";
+2720 PRINT"ALSWIN-VIERKANT op.                     ";
+2730 PRINT"Dit in ";TE;" keer schuiven.";
+2740 GOSUB20600
+2750 PRINT"U bent nu ook vast in staat een routine ";
+2760 PRINT"te bedenken waarbij uw computer het     ";
+2780 PRINT"karwei zelf weet te klaren.             ";
+2790 GOSUB20600
+2800 PRINT"Als u dit lukt, stuur dan een listing   ";
+2810 PRINT"naar het adres dat u in de remregels    ";
+2820 PRINT"v.a. 30000 aantreft.";
+2830 GOSUB20600
+2840 GOSUB24000
+2850 PRINT"Tot een volgend keer."
+2860 END
+20000 REM******************************
+20010 REM**    INITIALISATIE         **
+20020 REM******************************
+20030 REM------------------------------
+20040 REM--    NIVEAU 1              --
+20050 REM------------------------------
+20060 HT$(1)="I----I----I----I----I"
+20070 HT$(2)="I////I////I////I////I"
+20080 HT$(3)=HT$(2)
+20090 HT$(4)=HT$(2)
+20100 HT$(5)=HT$(1)
+20110 HT$(6)="I####I####I####I####I"
+20120 HT$(7)=HT$(6)
+20130 HT$(8)=HT$(6)
+20140 HT$(9)=HT$(1)
+20150 HT$(10)="I::::I::::I::::I::::I"
+20160 HT$(11)=HT$(10)
+20170 HT$(12)=HT$(10)
+20180 HT$(13)=HT$(1)
+20190 HT$(14)="IxxxxIxxxxIxxxxIxxxxI"
+20200 HT$(15)=HT$(14)
+20210 HT$(16)=HT$(14)
+20220 HT$(17)=HT$(1)
+20230 RETURN
+20240 REM------------------------------
+20250 REM--    NIVEAU 2              --
+20260 REM------------------------------
+20270 HT$(2)=HT$(10)
+20280 HT$(3)="I: 1:I: 2:I: 3:I: 4:I"
+20290 HT$(4)=HT$(2)
+20300 HT$(6)=HT$(2)
+20310 HT$(7)="I: 5:I: 6:I: 7:I: 8:I"
+20320 HT$(8)=HT$(2)
+20330 HT$(11)="I: 9:I:10:I:11:I:12:I"
+20340 HT$(14)=HT$(2)
+20350 HT$(15)="I:13:I:14:I:15:I:16:I"
+20360 HT$(16)=HT$(2)
+20370 CH$=HT$(3)+HT$(7)+HT$(11)+HT$(15)
+20380 RETURN
+20400 REM******************************
+20410 REM**    SCHERMOPBOUW          **
+20420 REM******************************
+20440 HO=12:VE=0:GOSUB110
+20450 PRINT"A    B    C    D";
+20460 HO=6
+20470 FORX=1 TO4
+20480 :VE=(X*4)-1:GOSUB110
+20490 :PRINTX;
+20500 NEXTX
+20510 HO=10
+20520 FORX=1 TO17
+20530 :VE=X:GOSUB110
+20540 :PRINTHT$(X);
+20550 NEXTX
+20560 RETURN
+20600 REM******************************
+20610 REM**    OMBLADEREN            **
+20620 REM******************************
+20630 IN$="":HO=24:VE=23:GOSUB110
+20640 PRINT"< spatiebalk >";
+20650 FORX=0 TO100
+20660 :IFIN$="" THENGOSUB200
+20670 NEXTX
+20680 GOSUB110:PRINT"  spatiebalk  ";
+20690 IFIN$<>"" THEN20740
+20700 FORX=0 TO100
+20710 :IFIN$="" THENGOSUB200
+20720 NEXTX
+20730 IFIN$="" THEN20630
+20740 HO=0:VE=19:GOSUB110
+20750 FORX=0 TO3
+20760 :PRINT"                                        ";
+20770 NEXTX
+20780 PRINT"                                       ";
+20790 GOSUB110
+20800 RETURN
+21000 REM******************************
+21010 REM**    HORIZONTAAL +/-       **
+21020 REM******************************
+21030 IFP THENGOSUB21060:RETURN
+21040 GOSUB21190
+21050 RETURN
+21060 REM------------------------------
+21070 REM--    1 RIJ VERSCHUIVING +  --
+21080 REM------------------------------
+21090 FORX=1 TO5
+21100 :FORY=0 TO2
+21110 ::HB$(X,Y+1)=RIGHT$(HT$(RY+Y),2)+MID$(HT$(RY+Y),2,19)
+21120 ::HT$(RY+Y)=HB$(X,Y+1)
+21130 :NEXTY
+21140 NEXTX
+21150 GOSUB21300
+21160 RETURN
+21190 REM------------------------------
+21200 REM--    1 RIJ VERSCHUIVING -  --
+21210 REM------------------------------
+21220 FORX=1 TO5
+21230 :FORY=0 TO2
+21240 ::HB$(X,Y+1)=MID$(HT$(RY+Y),2,19)+LEFT$(HT$(RY+Y),2)
+21250 ::HT$(RY+Y)=HB$(X,Y+1)
+21260 :NEXTY
+21270 NEXTX
+21280 GOSUB21300
+21290 RETURN
+21300 REM------------------------------
+21310 REM--    MONITOR HORIZONTAAL   --
+21320 REM------------------------------
+21330 FORX=1 TO5
+21340 :FORY=0 TO2
+21350 ::HO=10:VE=RY+Y:GOSUB110
+21360 ::PRINTHB$(X,Y+1);
+21370 :NEXTY
+21380 NEXTX
+21390 FORX=0 TO2
+21400 :HT$(RY+X)=HB$(5,X+1)
+21410 NEXTX
+21420 RETURN
+22000 REM******************************
+22010 REM**    VERTIKAAL +/-         **
+22020 REM******************************
+22030 IFP THENGOSUB22100:RETURN
+22040 GOSUB22300
+22050 RETURN
+22100 REM------------------------------
+22110 REM--    VERTIKAAL+ (INCL. MON.)-
+22120 REM------------------------------
+22130 L=KM-1:R=18-KM
+22140 FORXC=1 TO4
+22150 :FORX=1 TO17
+22160 ::VK$(X)=MID$(HT$(X),KM,4)
+22170 :NEXTX
+22180 :FORX=17 TO2 STEP-1
+22190 ::HT$(X)=LEFT$(HT$(X),L)+VK$(X-1)+RIGHT$(HT$(X),R)
+22200 :NEXTX
+22210 :HT$(1)=HT$(17)
+22230 :FORX=1 TO17
+22240 ::HO=10:VE=X:GOSUB110
+22250 ::PRINTHT$(X);
+22260 :NEXTX
+22270 NEXTXC
+22280 RETURN
+22300 REM------------------------------
+22310 REM--    VERTIKAAL- (INCL. MON.)-
+22320 REM------------------------------
+22330 L=KM-1:R=18-KM
+22340 FORXC=1 TO4
+22350 :FORX=1 TO17
+22360 ::VK$(X)=MID$(HT$(X),KM,4)
+22370 :NEXTX
+22380 :FORX=1 TO16
+22390 ::HT$(X)=LEFT$(HT$(X),L)+VK$(X+1)+RIGHT$(HT$(X),R)
+22400 :NEXTX
+22410 :HT$(17)=HT$(1)
+22430 :FORX=17 TO1 STEP-1
+22440 :HO=10:VE=X:GOSUB110
+22450 ::PRINTHT$(X)
+22460 :NEXTX
+22470 NEXTXC
+22480 RETURN
+23000 REM******************************
+23010 REM**    INPUT                 **
+23020 REM******************************
+23030 REM------------------------------
+23040 REM--    RIJ                   --
+23050 REM------------------------------
+23060 GOSUB210
+23070 IFVAL(IN$)>4 THEN23060
+23080 IF(IN$="s") OR(IN$="S") THENRETURN
+23090 IFVAL(IN$)=0 THENGOSUB23200
+23100 IF(VAL(IN$)=0) AND(KM=0) THEN23060
+23110 RY=(4*(VAL(IN$)-1))+2
+23120 IFRY>0 THENKM=0
+23130 HO=20:VE=20:GOSUB110
+23140 PRINTIN$;
+23150 RETURN
+23200 REM------------------------------
+23210 REM--    KOLOM                 --
+23220 REM------------------------------
+23230 KM=0
+23240 IF(IN$="a") OR(IN$="A") THENKM=2
+23250 IF(IN$="b") OR(IN$="B") THENKM=7
+23260 IF(IN$="c") OR(IN$="C") THENKM=12
+23270 IF(IN$="d") OR(IN$="D") THENKM=17
+23280 RETURN
+23300 REM------------------------------
+23310 REM--    + OF -                --
+23320 REM------------------------------
+23330 GOSUB210
+23340 IF(IN$="s") OR(IN$="S") THENRETURN
+23350 IF(IN$<>"+") AND(IN$<>"-") THEN23330
+23360 P=(IN$="+"):N=(IN$="-")
+23370 HO=20:VE=21:GOSUB110
+23380 PRINTIN$;
+23390 RETURN
+23400 REM------------------------------
+23410 REM--    AANTAL VELDEN         --
+23420 REM------------------------------
+23430 GOSUB210
+23440 IF(IN$="s") OR(IN$="S") THENRETURN
+23450 TV=VAL(IN$)
+23460 IF(TV<1) OR(TV>3) THEN23430
+23470 HO=20:VE=22:GOSUB110
+23480 PRINTIN$;
+23490 RETURN
+23500 REM******************************
+23510 REM**     CONTROLE             **
+23520 REM******************************
+23530 IFNV THENGOSUB23800:RETURN
+23540 REM------------------------------
+23550 REM--     HORIZONTAAL NIVEAU 1 --
+23560 REM------------------------------
+23570 FORY=1 TO3
+23580 :S=Y*4
+23590 :FORX=1 TO3
+23600 ::T=X*5
+23610 ::F=((MID$(HT$(S),T,1))<>(MID$(HT$(S),T+5,1)))
+23620 ::IFF THENX=3:Y=3
+23630 :NEXTX
+23640 NEXTY
+23650 IFNOT(F) THENRETURN
+23660 REM------------------------------
+23670 REM--     VERTIKAAL NIVEAU 1   --
+23680 REM------------------------------
+23690 FORX=1 TO3
+23700 :S=X*4
+23710 :FORY=1 TO3
+23720 ::T=Y*5
+23730 ::F=((MID$(HT$(S),T,1))<>(MID$(HT$(S+4),T,1)))
+23740 ::IFF THENX=3:Y=3
+23750 :NEXTY
+23760 NEXTX
+23770 RETURN
+23800 REM------------------------------
+23810 REM--    NIVEAU 2              --
+23820 REM------------------------------
+23830 F=((HT$(3)+HT$(7)+HT$(11)+HT$(15))<>CH$)
+23840 RETURN
+24000 REM******************************
+24010 REM**    NAAMKAARTJE           **
+24020 REM******************************
+24030 HO=0:VE=19:GOSUB110
+24040 PRINT"                                        ";
+24050 PRINT"                                        ";
+24060 PRINT"                          ALSWIN-       ";
+24070 PRINT"                               VIERKANT.";
+24090 GOSUB110
+24100 RETURN
+30000 REM------------------------------
+30010 REM             **************
+30020 REM           .....
+30030 REM *****    BEDACHT
+30040 REM        EN........
+30050 REM       ...GESCHREVEN
+30060 REM      IN.............
+30070 REM     .....NOS-BASICODE
+30080 REM    DOOR:..............
+30090 REM
+30100 REM      ***************
+30110 REM    * ALBERT SWINKELS *
+30120 REM   *  BOERDERIJWEG 44  *
+30130 REM    * ...3262 CC..... *
+30140 REM     *OUD-BEIJERLAND.*
+30150 REM       *************
+30160 REM COPYRIGHT (C) NOS-HILVERSUM
+

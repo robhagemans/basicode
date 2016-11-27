@@ -1,0 +1,31 @@
+1000 A=20:GOTO20:REM Tekencode-3
+1010 REM Invulprogramma TeCo 3
+1020 GOSUB100:VE=7:HO=0:GOSUB110
+1030 PRINT"U kunt vanaf regel 25000 de data"
+1040 PRINT"invoeren."
+1050 PRINT"Tussen regel 1010 en 24000 kunt u uw"
+1060 PRINT"eigen programma schrijven."
+1070 PRINT"Wis hiervoor eerst regel 1020-1090."
+1080 PRINT"De tekensubroutine begint bij r.24000."
+1090 PRINT:PRINTTAB(10);"VEEL SUCCES!"
+23999 END
+24000 REM >> start tekensubroutine <<
+24010 RESTORE
+24020 READVE,HO
+24030 IFVE=100 THEN24999
+24040 GOSUB110
+24050 PRINT"#":REM evt. ander teken !
+24060 GOTO24020
+24999 RETURN
+25000 REM vanaf deze regel data invoeren
+29999 DATA100,100
+30000 REM ***************************
+30010 REM * Tekencode-3 gemaakt door*
+30020 REM * Walther v.d. Elshout    *
+30030 REM * van Gorkumlaan 151      *
+30040 REM * 5641 WP  Eindhoven      *
+30050 REM * op een AQUARIUS 32K     *
+30060 REM *                         *
+30070 REM * COPYRIGHT NOS HILVERSUM *
+30080 REM ***************************
+

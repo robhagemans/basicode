@@ -1,0 +1,21 @@
+10000 REM Voorbeeldmoduul 1.1
+10010 REM Moeilijke woorden spellen
+10020 REM =========================
+10030 TL$(2)="Op  het scherm  komen kleine  letters"
+10040 TL$(4)="een moeilijk woord. Probeer dit woord"
+10050 TL$(5)="letter voor letter te maken door met "
+10060 TL$(8)="Raak met de * de letters in de juiste"
+10070 DL$="Maak het woord..."
+10080 CK=26:REM  26 kleine letters extra
+24000 RETURN
+25000 DATA 1
+25010 DATA"abonnee","alinea","adellijk","goedendag"
+25020 DATA"goedemiddag","peloton","wandaad","nochthans"
+25030 DATA"alledaags","reuzenkracht","puberteit"
+25040 DATA"inwijden","uitweiden","cilinder","aanwensel"
+25050 DATA"voorwendsel","eikeboom","eikenlaan"
+25060 DATA"carillon","imperiaal","tafereel","geenszins"
+25070 DATA"gezindte","enigszins","chauffeur","zorglijk"
+25080 DATA"$$$$$"
+29990 END
+

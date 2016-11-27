@@ -1,0 +1,507 @@
+1000 A=3500:GOTO20:REM  .  R A A M W E R K .  ****
+1010 ::REM               ===========================
+1020 GOSUB4360:REM    SCHERM OPMETEN / STANDAARDWAARDEN
+1030 GOSUB2810:REM    TOELICHTING
+1040 GOSUB2670:REM    KLASSE
+1050 GOSUB2290:REM    WOORDKEUS/SCHERM VULLEN
+1060 GOSUB2030:REM    SCHERM MAKEN/ eerste drie regels
+1070 GOTO1160:REM    Het SPEL
+1080 :
+1090 REM   Wachtlus  **subroutine**
+1100 REM  =========================
+1110 FORTW=0 TOW:NEXTTW:RETURN
+1120 :
+1130 REM ##############################################
+1140 REM ****   spel   ****
+1150 REM  =================
+1160 GOSUB200:LT$="  "
+1170 TY=TY-1:VE=VT:HO=HT:GOSUB110:PRINTTY;" ";
+1180 VE=VK:HO=HK:GOSUB110:PRINT" ";
+1190 W2$=MID$(W$,LT+1,1)
+1200 IFTY=0 THENFT$="Helaas de tijd is om..":GOTO1530
+1210 GOSUB200:IFIN$="" THENIN$=LT$
+1220 IF(IN$=U$) AND(VK>VB) THENVK=VK-1:GOTO1290
+1230 IF(IN$=D$) AND(VK<VP-1) THENVK=VK+1:GOTO1290
+1240 IF(IN$=L$) AND(HK>0) THENHK=HK-1:GOTO1290
+1250 IF(IN$=L$) AND(HK=0) THENHK=HP:GOTO1290
+1260 IF(IN$=R$) AND(HK<HP) THENHK=HK+1:GOTO1290
+1270 IF(IN$=R$) AND(HK=HP) THENHK=0:GOTO1290
+1280 W=W1:GOSUB1110:REM wachtlus
+1290 VE=VK:HO=HK:GOSUB110:PRINT"*";
+1300 IFWP>0 THENW=WP:GOSUB1110:REM extra pauze
+1310 X=HK:Y=VK-VB:LT$=IN$
+1320 IF(PL$(X,Y)<>W2$) AND(PL$(X,Y)<>"") THEN1500
+1330 IFPL$(X,Y)=W2$ THENGOSUB1650
+1340 IFLT=LEN(W$) THEN1390:REM  woord gemaakt
+1350 GOTO1170
+1360 :
+1370 REM  Woord verzameld 
+1380 REM  ===============
+1390 SC=SC+BE*5+TY+2*LEN(W$):BE=BE+1
+1400 FORT=0 TO2:GOSUB250:NEXTT
+1410 GOSUB1860:REM knipperen
+1420 W=WA:GOSUB1110:REM wachtlus
+1430 FT$=" Volgende opdracht..."
+1440 GOSUB1770:REM  schermschoon vanaf ry VB+1
+1450 GOSUB100
+1460 GOTO1050:REM spel opnieuw
+1470 :
+1480 REM   Verkeerde letter geraakt 
+1490 REM   ========================
+1500 FT$="Jammer, dat was helemaal fout!!"
+1510 REM tijd / verkeerde letter
+1520 FORT=0 TO3:GOSUB250:NEXTT
+1530 SC=SC+LT*2
+1540 VE=VC:HO=HC:GOSUB110:PRINTW1$;
+1550 IFNR=1 THEN1580
+1560 VE=VW:HO=HW:GOSUB110
+1570 PRINTW$;
+1580 GOSUB1770:REM scherm schoon vanaf ry 4
+1590 GOSUB3690:REM ereloge
+1600 GOTO1040:REM volgende spel
+1610 REM ##############################################
+1620 :
+1630 REM   Juiste letter geraakt **subroutine**
+1640 REM  =====================================
+1650 LT=LT+1:VE=VW:HO=HW:GOSUB110
+1660 PRINTLEFT$(W$,LT);
+1670 GOSUB250:VE=VK:HO=HK:W=WA/5
+1680 PL$(X,Y)=""
+1690 FORT=0 TO1
+1700 :GOSUB110:PRINT"#";:GOSUB1110:REM wachtlus
+1710 :GOSUB110:PRINT"%";:GOSUB1110
+1720 NEXTT
+1730 RETURN
+1740 :
+1750 REM  scherm schoon vanaf ry VB+1 (=4)  **subroutine**
+1760 REM  ================================================
+1770 VE=VS:HO=HS:GOSUB110:PRINTSC;:L=LEN(FT$)
+1780 VE=VB:HO=0:GOSUB110
+1790 FORVE=VB TOVP-1:GOSUB110:PRINTWS$;:NEXTVE
+1800 VE=VM:HO=INT(HM-L/2):GOSUB110:PRINTFT$;
+1810 GOSUB3590:REM PL$ leegmaken
+1820 RETURN
+1830 :
+1840 REM   Knipper  **subroutine**
+1850 REM  ========================
+1860 W=2*W1:FORT=0 TO2
+1870 :E$="#":GOSUB1900:GOSUB1110
+1880 :E$=" ":GOSUB1900:GOSUB250:GOSUB1110
+1890 :NEXTT
+1900 IFVK<VP-1 THENVE=VK+1:HO=HK:GOSUB1950
+1910 IFVK>VB THENVE=VK-1:HO=HK:GOSUB1950
+1920 IFHK>0 THENHO=HK-1:VE=VK:GOSUB1950
+1930 IFHK<HP THENHO=HK+1:VE=VK:GOSUB1950
+1940 RETURN
+1950 GOSUB110:PRINTE$;:RETURN
+1960 :
+1970 REM  tekst T$ midden op scherm **subroutine**
+1980 REM  ========================================
+1990 HO=INT((HP-LEN(T$))/2):GOSUB110:RETURN
+2000 :
+2010 REM   Eerste drie regels  **subroutine**
+2020 REM  ===================================
+2030 TY=INT(TS/(3-KL)+LEN(W$)*15-BE*(4-KL)+75)
+2040 VE=0:HO=0:GOSUB110:PRINTDL$;
+2050 VE=1:GOSUB110:PRINT"Klasse: ";KL+1
+2060 HO=HT-5:VE=VT:GOSUB110:PRINT"Tijd: ";
+2070 HO=HS-6:VE=VS:GOSUB110:PRINT"Score: ";
+2080 VE=VS:HO=HS:GOSUB110:PRINTSC;
+2090 HO=HT:VE=VT:GOSUB110:PRINTTY;"   ";
+2100 W=WA*2:GOSUB1110:REM wachtlus
+2110 VE=0:HO=0:GOSUB110:PRINTWS$;
+2120 VE=VC:HO=HC:GOSUB110:PRINTW1$;
+2130 VE=VB-1:HO=0:GOSUB110
+2140 FORT=0 TOHM:PRINT"-";:NEXTT
+2150 :PRINT"+";
+2160 FORT=HM+2 TOHP:PRINT"-";:NEXTT
+2170 VE=VP:HO=1:GOSUB110
+2180 FORT=1 TOHM:PRINT"-";:NEXTT
+2190 :PRINT"+";
+2200 FORT=HM+2 TOHP-1:PRINT"-";:NEXTT
+2210 W=WA:GOSUB1110:REM wachtlus
+2220 W2$="..................................":VE=VC:HO=HC
+2230 IFKL=0 THENGOSUB110:PRINTLEFT$(W2$,LEN(W1$));
+2240 LT=0
+2250 RETURN
+2260 :
+2270 REM Woord kiezen uit data **subroutine**
+2280 REM ====================================
+2290 RESTORE:READNR:GOSUB260
+2300 FORT=1 TO(INT(RV*MD)*NR+1)
+2310 :READW1$
+2320 NEXTT
+2330 W$=W1$:IFNR>1 THENREADW$
+2340 HW=HP-1-LEN(W$):IFNR=3 THENREADDL$
+2350 IFCG>0 THENA=65:MX=26:C=CG:GOSUB2510
+2360 IFCK>0 THENA=97:MX=26:C=CK:GOSUB2510
+2370 IFCC>0 THENA=48:MX=10:C=CC:GOSUB2510
+2380 IFCA>0 THENA=33:MX=90:C=CA:GOSUB2510
+2390 REM letters uit woord W$ op speelveld
+2400 REM =================================
+2410 FORT=1 TOLEN(W$)
+2420 :X$=MID$(W$,T,1):GOSUB2570
+2430 NEXTT
+2440 REM twee keer 6 byzondere tekens op speelveld
+2450 REM =========================================
+2460 FORT=0 TO5:X$=BT$(T):GOSUB2570:GOSUB2570:NEXTT
+2470 RETURN
+2480 :
+2490 REM C extra letters/cijfers kiezen sub/subroutine
+2500 REM =============================================
+2510 FORT=0 TOC
+2520 GOSUB260:X$=CHR$(RV*MX+A):GOSUB2570:NEXTT
+2530 RETURN
+2540 :
+2550 REM   Scherm kiezen en vullen  **sub/subroutine**
+2560 REM   ===========================================
+2570 GOSUB260:X=INT(RV*(HP+1))
+2580 GOSUB260:Y=INT(RV*(VP-VB))
+2590 IFPL$(X,Y)<>"" THEN2570
+2600 IF(X=HK) AND(Y=VK-VB) THEN2570
+2610 PL$(X,Y)=X$
+2620 HO=X:VE=Y+VB:GOSUB110:PRINTX$;
+2630 RETURN
+2640 :
+2650 REM  Klasse indeling   **subroutine**
+2660 REM  ================================
+2670 T$="KIES KLASSE 3 (=EENVOUDIG), 2 OF 1."
+2680 VE=VP-2:HO=0:GOSUB110
+2690 FORT=1 TOHP*3+2
+2700 :PRINT" ";:NEXTT
+2710 VE=VP:GOSUB1990:PRINTT$;:GOSUB200:GOSUB210
+2720 IF(VAL(IN$)<1) OR(VAL(IN$)>3) THEN2710
+2730 KL=VAL(IN$)-1:SC=0:W1$="":W$="":GOSUB100
+2740 WP=0:IFKL=2 THENWP=W1:REM extra wachttijd
+2750 BE=1:REM eerste beurt van nieuw spel
+2760 VK=VM:HK=HM:REM * in het midden
+2770 RETURN
+2780 :
+2790 REM  toelichting     **subroutine**
+2800 REM  ==============================
+2810 GOSUB100
+2820 IFAA=1 THEN2870
+2830 FORT=0 TO20
+2840 :IFVT(T)>VP/2 THENVR=1
+2850 :IFVT(T)>VP-1 THENPRINT"VT(";T;") is te groot":STOP
+2860 NEXTT:AA=1
+2870 FORT=0 TO20:IFTL$(T)="..." THEN2890
+2880 :VE=VT(T)*VR:T$=TL$(T):GOSUB1990:PRINTT$;
+2890 NEXTT
+2900 IFAV=0 THENGOSUB3590:REM PL$() leeg maken
+2910 T$="DRUK OP TOETS VOOR VERVOLG"
+2920 GOSUB3020
+2930 IFAC=0 THENGOSUB3080:REM kiezen stuurtoetsen cursor
+2940 GOSUB3300:REM  cursorbesturing controle
+2950 T$="DRUK op TOETS (of F bij FOUTE KEUZE)"
+2960 GOSUB3020
+2970 IF(IN$="F") OR(IN$="f") THENAC=0:GOTO2930
+2980 RETURN
+2990 :
+3000 REM onderste regel subroutine
+3010 REM =========================
+3020 VE=VP:GOSUB1990:PRINTT$;
+3030 GOSUB200:GOSUB210
+3040 RETURN
+3050 :
+3060 REM kiezen van de cursor- en wistoetsen **subroutine**
+3070 REM ==================================================
+3080 GOSUB100
+3090 T$(0)="CURSOR * BESTUREN:":V(0)=0
+3100 T$(1)="Met welke toets naar boven?":V(1)=4
+3110 T$(2)="Met welke toets naar beneden?":V(2)=6
+3120 T$(3)="Met welke toets naar links?":V(3)=8
+3130 T$(4)="Met welke toets naar rechts?":V(4)=10
+3140 T$(5)="Met welke toets wissen?":V(5)=14
+3150 FORT=0 TO5
+3160 :VE=V(T):T$=T$(T):GOSUB1990
+3170 :PRINTT$;
+3180 :IFT=0 THEN3230
+3190 :GOSUB200:GOSUB210:T$(T)=IN$
+3200 :A=ASC(IN$)
+3210 :IF(A<33) OR(A>126) THENSW$(T-1)="$&":GOTO3230
+3220 :SW$(T-1)=IN$
+3230 NEXTT
+3240 U$=T$(1):D$=T$(2):L$=T$(3):R$=T$(4):WI$=T$(5)
+3250 AC=1:REM toetsen Cursor gekozen
+3260 RETURN
+3270 :
+3280 REM  controle cursorbesturing  **subroutine**
+3290 REM  ========================================
+3300 GOSUB100
+3310 T$(0)="Gekozen STUUR-TOETSEN voor de *"
+3320 T$(1)="($& betekent een bijzondere toets)"
+3330 T$(2)="(bijvoorbeeld pijltjestoetsen)"
+3340 T$(3)="Elke andere toetsaanslag stopt de * !!"
+3350 V(0)=0:V(1)=2:V(2)=3:V(3)=5
+3360 FORT=0 TO3:VE=V(T):T$=T$(T):GOSUB1990:PRINTT$;:NEXTT
+3370 PRINT:PRINT:TB=INT((HP-38)/2):IFTB<1 THENTB=1
+3380 PRINTTAB(TB);"         omhoog: ";SW$(0):PRINT
+3390 PRINTTAB(TB);" links: ";SW$(2);
+3400 PRINT"               rechts: ";SW$(3)
+3410 PRINT
+3420 PRINTTAB(TB);"         omlaag: ";SW$(1):PRINT
+3430 PRINT:PRINTTAB(TB);"karakter wissen (in EreRy) met: ";
+3440 PRINTSW$(4):VE=VP:HO=0:GOSUB110
+3450 IFAR=0 THENGOSUB3500:REM lege Regel maken
+3460 RETURN
+3470 REM
+3480 REM lege regel WS$ maken   **subroutine**
+3490 REM =====================================
+3500 WS$="                                                 "
+3510 WS=LEN(WS$)
+3520 IFHP<WS THENWS$=LEFT$(WS$,HP+1):GOTO3540
+3530 FORT=WS TOHP:WS$=WS$+" ":NEXTT
+3540 AR=1:REM lege Regelvlag
+3550 RETURN
+3560 :
+3570 REM  Scherm PL$() leeg maken **subroutine**
+3580 REM  ======================================
+3590 FORX=0 TOHP
+3600 :FORY=0 TOVP-VB-1
+3610 :PL$(X,Y)=""
+3620 :NEXTY
+3630 NEXTX
+3640 AV=1:REM PL$() is leeg
+3650 RETURN
+3660 :
+3670 REM  ERELOGE    **subroutine**
+3680 REM  =========================
+3690 GOSUB100:GOSUB3930:REM score bijwerken
+3700 VE=0:HO=HG:GOSUB110
+3710 PRINT"E R E - G A L E R I J     klasse ";KL+1
+3720 VE=1:HO=HG-2:GOSUB110
+3730 PRINT"======================================"
+3740 VE=3
+3750 FORT=0 TO4
+3760 :VE=VE+VG:HO=HG:GOSUB110
+3770 :PRINTT+1;:HO=HO+2:GOSUB110
+3780 :PRINT".";:HO=HO+4:GOSUB110
+3790 :PRINTPN(KL,T);:HO=HO+8:GOSUB110
+3800 :PRINTNA$(KL,T);
+3810 NEXTT
+3820 HO=HG:VE=VP-3:GOSUB110
+3830 PRINT"Jouw score was: ";SC;
+3840 T$="SPATIE (=spel) of T (=toelichting)"
+3850 VE=VP:GOSUB1990:PRINTT$;
+3860 GOSUB200:GOSUB210
+3870 IF(IN$<>" ") AND(IN$<>"T") AND(IN$<>"t") THEN3860
+3880 IFIN$<>" " THENGOSUB2810:REM toelichting
+3890 RETURN
+3900 :
+3910 REM   Bijwerken topscores  **sub/subroutine**
+3920 REM   =======================================
+3930 IFSC<=PN(KL,4) THENRETURN
+3940 F=0:N$="":GOSUB200
+3950 FORT=4 TO0 STEP-1
+3960 :IFSC<=PN(KL,T) THEN3990
+3970 :PN(KL,T+1)=PN(KL,T)
+3980 :F=T:NA$(KL,T+1)=NA$(KL,T)
+3990 NEXTT
+4000 PN(KL,F)=SC
+4010 REM   Naam opgeven
+4020 T$(0)="  G e f e l i c i t e e r d !! ":V(0)=1
+4030 T$(1)="Deze superscore geeft je recht":V(1)=3
+4040 T$(2)="op een plaats in de":V(2)=4
+4050 T$(3)=" E R E - G A L E R I J":V(3)=6
+4060 T$(4)="van dit GRIJP-VANG spel!":V(4)=7:V(5)=9
+4070 T$(5)="Typ je naam en druk dan op <RETURN>"
+4080 T$(6)="############################"
+4090 T$(7)="#                          #"
+4100 FORT=0 TO5
+4110 :VE=V(T):T$=T$(T):GOSUB1990:REM  centreren
+4120 :PRINTT$;
+4130 NEXTT
+4140 VE=VN-2:T$=T$(6):GOSUB1990
+4150 HN=HO+4:PRINTT$(6);
+4160 FORT=0 TO2
+4170 :VE=VE+1:GOSUB110:PRINTT$(7);
+4180 NEXTT
+4190 VE=VE+1:GOSUB110:PRINTT$(6)
+4200 GOTO4270
+4210 GOSUB210
+4220 IFIN$=CHR$(13) THENNA$(KL,F)=N$:GOTO4320
+4230 IF(IN$=WI$) AND(LEN(N$)>=1) THENN$=LEFT$(N$,LEN(N$)-1)
+4240 IF(ASC(IN$)>127) OR(ASC(IN$)<32) THEN4270
+4250 IF(IN$=WI$) OR(LEN(N$)>19) THEN4270
+4260 N$=N$+IN$
+4270 N2$="...................."
+4280 N2$=LEFT$(N2$,20-LEN(N$)):IFN2$="." THENN2$=""
+4290 VE=VN:HO=HN:GOSUB110
+4300 PRINTN$;"#";N2$;
+4310 GOTO4210
+4320 GOSUB100:RETURN
+4330 :
+4340 REM SCHERM OPMETEN/DEFAULTWAARDEN **subroutine**
+4350 REM ============================================
+4360 GOSUB100:PRINT:PRINT:PRINT"scherm opmeten"
+4370 PRINT:PRINT"en beginwaarden + DATA-MODULE lezen"
+4380 PRINT:PRINT"ogenblik geduld s.v.p."
+4390 VE=0:FORT=32 TO80:HO=T:GOSUB110:GOSUB120
+4400 :IFHO<>T THENHP=T-1:T=80
+4410 :NEXTT
+4420 HO=0:FORT=14 TO40:VE=T:GOSUB110:GOSUB120
+4430 :IFVE<>T THENVP=T-1:T=40
+4440 :NEXTT
+4450 VB=3:REM eerste regel speelveld
+4460 REM dimensioneren
+4470 DIMPL$(HP,VP-1-VB),NA$(2,5),PN(2,5)
+4480 DIMTL$(20),VT(20),SW$(4),T$(7),V(5),BT$(5)
+4490 REM startnamen in de eregalerij
+4500 T$(0)="SUPER-doorzetter"
+4510 T$(1)="STER-speler":T$(2)="Kampioen(e)"
+4520 FORT=0 TO2
+4530 :FORY=0 TO5
+4540 :NA$(T,Y)=T$(T):PN(T,Y)=10
+4550 :NEXTY
+4560 NEXTT
+4570 REM (HK,VK) = beginpos. * op speelveld
+4580 VK=INT((VP+VB)/2):HK=INT(HP/2):VM=VK:HM=HK
+4590 VW=0:HW=HP-17:REM positie woord bovenaan
+4600 VC=0:HC=3:REM woord dat je moet maken
+4610 VN=INT((VP-9)/2)+9:REM nieuwe naam opgeven
+4620 HG=INT((HP-34)/2):REM erery
+4630 VG=INT((VP-6)/5):REM erery
+4640 HS=20:VS=1:REM positie score
+4650 HT=HP-6:VT=1:REM tydpositie 
+4660 CA=0:CG=0:CK=0:CC=0:REM aantal extra tekens
+4670 BE=1:REM beurt1
+4680 VR=2:MD=0
+4690 FORT=0 TO5:BT$(T)="":NEXTT
+4700 SC=0:LT=0:REM score SC en letterteller LT
+4710 W1=30:WA=300:REM wachttijden spel
+4720 REM TL$() en VT() voor toelichting
+4730 AA=0:AC=0:AR=0:AV=0:REM vlaggen bij toelichting
+4740 TL$(0)="VERZAMEL- met - * - S P E L":VT(0)=0
+4750 TL$(1)="(door S. v.d. Goot)":VT(1)=1
+4760 TL$(2)="Op het speelveld komen letters/cyfers"
+4770 TL$(3)="en een *. Links boven verschijnt dan "
+4780 TL$(4)="een opdracht/woord/som o.i.d.  Maak  "
+4790 TL$(5)="het bijbehorende woord/getal door met"
+4800 TL$(6)="de gekozen cursortoetsen de  *  over "
+4810 TL$(7)="het speelveld te verplaatsen.        "
+4820 TL$(8)="Raak de letters/cijfers in de juiste "
+4830 TL$(9)="volgorde en let op de tijd...        "
+4840 VT(2)=3:VT(3)=4:VT(4)=5:VT(5)=6:VT(6)=7
+4850 VT(7)=8:VT(8)=10:VT(9)=11:REM regelposities
+4860 FORT=10 TO20:TL$(T)="...":VT(T)=0:NEXTT
+4870 TS=150:REM hoeveelheid extra Tyd bij Start
+4880 RESTORE:READNR:NR=INT(NR)
+4890 IF(NR<1) OR(NR>4) THENPRINT"Geen code":STOP
+4900 IFNR<>4 THEN4930
+4910 PRINT"Je moet nog een DATA-MODULE laden"
+4920 PRINT"Lees de aanwijzingen in de UITLEG (BEELDKRANT)"
+4930 READW$:IFLEFT$(W$,2)="$$" THEN4950
+4940 MD=MD+1:GOTO4930
+4950 MD=MD/NR
+4960 DL$="Verzamel......."
+4970 IFNR>1 THENDL$="Maak het antwoord..."
+4980 IFINT(MD)<>MD THENPRINT"DATA niet juist":STOP
+4990 :
+5000 REM VERDERE DATA ENZ STAAN IN APARTE MODULE...
+5010 :
+10000 DATA 4
+30000 REM    Gebruikte variabelen
+30010 REM  ======================
+30020 REM A, ascii waarde cursortoets / basicode-2
+30030 REM AA, vlag controle grootte toelchting
+30040 REM AC, vlag cursor
+30050 REM AR, vlag lege regel
+30060 REM AV, vlag leeg speelveld PL$()
+30070 REM BE, beurt
+30080 REM BT$(), aantal extra tekens, max 6
+30090 REM C, variabele voor exta letters/cijfers CA - CK
+30100 REM CA, geeft aantal extra ASCII tekens
+30110 REM CC, geeft aantal extra Cijfers
+30120 REM CG, geeft aantal extra Grote (hoofd)letters
+30130 REM CK, geeft aantal extra Kleine letters
+30140 REM D$, cursor omlaag / U$, cursor omhoog
+30150 REM DL$, opdracht/DoeL spel, links boven speelveld
+30160 REM L$, cursor links / R$, cursor rechts
+30170 REM WI$, wissen
+30180 REM E$, knipperende tekst
+30190 REM F, lokale hulpvariabele eregalerij
+30200 REM FT$, tekstregel na afloop spel
+30210 REM     H.,V.   horizontale,verticale positie
+30220 REM HC,VC    woord1, W1$ boven speelveld
+30230 REM HG,VG    rangorde in ereGalerij
+30240 REM HK,VK    positie *  op speelveld
+30250 REM HM,VM    midden speelveld
+30260 REM HN,VN    nieuwe naam eregalerij
+30270 REM HO,VE    Basicode-2
+30280 REM HP,VP    maxima scherm in X en Y
+30290 REM HS,VS    score
+30300 REM HT,VT    tijd
+30310 REM HW,VW    reeds gemaakte deel van woord W$
+30320 REM 
+30330 REM IN$, basicode-2
+30340 REM KL, klasse - 1
+30350 REM L$, cursor-naar-links toets
+30360 REM L,  lengte FT$
+30370 REM LT, letternummer van woord W$
+30380 REM LT$, Laatst ingedrukte Toets (IN$)
+30390 REM MD, maximaal aantal woorden(koppels) in DATA
+30400 REM MX, maximale ophoging ASCII
+30410 REM N$, nieuwe naam in eregalerij
+30420 REM N2$, hulpnaam in eregalerij
+30430 REM NA$(kl,nr), namen in ereloge per klasse
+30440 REM NR, =1 bij losse woorden; 2 koppels; 3 combi
+30450 REM PL$(x,y), schermposities die 'bezet' zijn
+30460 REM PN(kl,nr), punten in ereloge per klasse
+30470 REM R$, cursor-naar-rechts toets
+30480 REM RV, basicode-2 random
+30490 REM SC, aantal behaalde punten (score)
+30500 REM SW$(), besturing- + wistoetscode
+30510 REM T, tellertje (lokaal)
+30520 REM T$(), tekstregels in ereloge/toelichting
+30530 REM T$, tekstregel om te centreren
+30540 REM TB, waarde tabulator
+30550 REM TL$(), toelichting regels (max. 20)
+30560 REM TS, starttijd, laag=moeilijk
+30570 REM TW, teller wachtlus
+30580 REM TY, hoeveelheid 'tijd' die nog rest
+30590 REM U$, cursor-omhoog toets
+30600 REM V..  , zie H..
+30610 REM VB, bovenste regel van speelveld
+30620 REM V(), regelnr in ereloge/cursorkeuze
+30630 REM VR, vermenigvuldigingsfactor  VE
+30640 REM VT(), reglnr in toelichting
+30650 REM W, variabele in wachtlus
+30660 REM W1/WA/WP, tellers voor wachtlussen
+30670 REM W$, woord uit DATA dat je moet maken met *
+30680 REM W1$, woord links boven speelveld
+30690 REM W2$, teken/letter/cijfer dat je moet raken met *
+30700 REM WI$, wistoets(delete)
+30710 REM WS$, lege regel met lengte HP
+30720 REM WS, lengte WS$ (nu 49)
+30730 REM WP= W1, voor klasse 3
+30740 REM X$, letter uit het woord / alfabet (lokaal)
+30750 REM X/Y, indices
+30760 REM
+30770 REM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+30780 REM
+30790 REM alle REM's kunnen zondermeer weg, er wordt
+30800 REM niet naar een REM regel gesprongen.
+30810 REM
+30820 REM   *******************************************
+30830 REM   * Bij dit RAAMWERK hoort een DATAMODULE ! *
+30840 REM   *******************************************
+30850 REM
+30860 REM Dit programma is gemaakt op 
+30870 REM een Aster CT-80 en op een
+30880 REM ORIC-Atmos computer.
+30890 REM
+30900 REM  realisatie  juli 1986/ febr. 1987
+30910 REM  idee en uitvoering:
+30920 REM
+30930 REM   Sake van der Goot
+30940 REM   (leraar scheikunde)
+30950 REM   (RSG "Schravenlant" )
+30960 REM       (Schiedam)
+30970 REM
+30980 REM    Ireneplaats 26
+30990 REM    3223 XH Hellevoetsluis
+31000 REM    tel. 01883-16110
+31010 REM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+31020 END
+

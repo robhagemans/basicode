@@ -1,0 +1,476 @@
+1000 A=20000:GOTO20:REM SPEL-SPEL
+1010 G1=0:GOSUB100
+1020 VE=0:HO=3
+1030 FORTE=1 TO23
+1040 :HO=HO+1:VE=VE+1:GOSUB110
+1050 PRINT"spel-spel"
+1060 NEXTTE
+1070 GOSUB2330:GOSUB2330
+1080 GOSUB100
+1090 PRINT:PRINT
+1100 PRINT"hoe heet jij?"
+1110 INPUTNA$
+1120 P=875-1
+1130 REM P MOET VERANDERD WORDEN
+1140 REM WANNEER ER MEER WOORDEN WORDEN
+1150 REM OPGENOMEN
+1160 DIMB$(875),X(875),GP(8),TL(8),GZ(8),Z1$(10),Z2$(10)
+1170 PR=0:TT=0:NK=10:SM=0
+1180 REM NK DIENT ALLEEN VERANDERD TE
+1190 REM WORDEN ALS ER MEER GOED/FOUT
+1200 REM MELDINGEN MOETEN WORDEN
+1210 REM AFGEDRUKT
+1220 FORI=0 TO7
+1230 :GP(I)=0:TL(I)=0:GZ(I)=0
+1240 NEXTI
+1250 GOSUB100
+1260 PRINT"een ogenblik, de woordjes"
+1270 PRINT"worden ingelezen........."
+1280 FORT=0 TOP
+1290 :READC$:READZ
+1300 :B$(T)=C$:X(T)=Z
+1310 :PRINT"*";
+1320 NEXTT
+1330 FORW=1 TONK:REM GOED FOUT MELDINGEN
+1340 :READZ1$(W)
+1350 :READZ2$(W)
+1360 NEXTW
+1370 IN$="":GOSUB100
+1380 PRINT" het programma bestaat uit";T;"woorden"
+1390 PRINT
+1400 PRINT"    ********************************"
+1410 PRINT"    *             menu             *"
+1420 PRINT"    *                              *"
+1430 PRINT"    *  vul de juiste letter        *"
+1440 PRINT"    *  combinatie in               *"
+1450 PRINT"    *                              *"
+1460 PRINT"    *  i of ie -----------------a  *"
+1470 PRINT"    *  ou of au ----------------b  *"
+1480 PRINT"    *  ei of ij ----------------c  *"
+1490 PRINT"    *  v of f of ff ------------d  *"
+1500 PRINT"    *  s of z of ss of zz ------e  *"
+1510 PRINT"    *  g of gg of ch -----------f  *"
+1520 PRINT"    *  d of dt of t ------------g  *"
+1530 PRINT"    *                              *"
+1540 PRINT"    *  score -------------------s  *"
+1550 PRINT"    *  terug naar basic         *  *"
+1560 PRINT"    *  terug naar menu          -  *"
+1570 PRINT"    *                              *"
+1580 PRINT"    *        maak jouw keuze       *"
+1590 PRINT"    ********************************"
+1600 GOSUB210
+1610 IFIN$="a" THENGZ=1:GOTO1710
+1620 IFIN$="b" THENGZ=2:GOTO1720
+1630 IFIN$="c" THENGZ=3:GOTO1730
+1640 IFIN$="d" THENGZ=4:GOTO1740
+1650 IFIN$="e" THENGZ=5:GOTO1750
+1660 IFIN$="f" THENGZ=6:GOTO1760
+1670 IFIN$="g" THENGZ=7:GOTO1770
+1680 IFIN$="s" THEN1780
+1690 IFIN$="*" THENGOSUB100:GOSUB2810:END
+1700 GOTO1370
+1710 F1$="i":F2$="ie":F3$="":F4$="":GOTO1820
+1720 F1$="ou":F2$="au":F3$="":F4$="":GOTO1820
+1730 F1$="ei":F2$="ij":F3$="":F4$="":GOTO1820
+1740 F1$="v":F2$="f":F3$="ff":F4$="":GOTO1820
+1750 F1$="s":F2$="z":F3$="ss":F4$="zz":GOTO1820
+1760 F1$="g":F2$="gg":F3$="ch":F4$="":GOTO1820
+1770 F1$="d":F2$="dt":F3$="t":F4$="":GOTO1820
+1780 IFIN$="s" THENGOSUB2350
+1790 GOTO1370
+1800 :
+1810 REM RANDOM EEN WOORD KIEZEN
+1820 PRINT:PRINT"even wachten"
+1830 IN$=""
+1840 GOSUB260
+1850 B=INT(RV*125+.001)+(GZ-1)*125
+1860 C$=B$(B)
+1870 L=LEN(C$)
+1880 FORT1=1 TOL
+1890 :H2$=MID$(C$,T1,1)
+1900 :IFH2$="(" THENL1=T1-2:T1=L:GOTO1920
+1910 :L1=T1
+1920 NEXTT1
+1930 G$=LEFT$(C$,L1):C$=G$:L=LEN(C$)
+1940 FORS=1 TOL
+1950 :Z=X(B)
+1960 :H$=MID$(C$,S,Z)
+1970 :IFH$=F1$ THENS1=S:S=L:GOTO2010
+1980 :IFH$=F2$ THENS1=S:S=L:GOTO2010
+1990 :IFH$=F3$ THENS1=S:S=L:GOTO2010
+2000 :IFH$=F4$ THENS1=S:S=L:GOTO2010
+2010 NEXTS
+2020 :
+2030 REM OP DE GEVRAAGDE PLAATS PUNTEN INVULLEN
+2040 X=L-Z-S1+1
+2050 L2=LEN(B$(B))-L1
+2060 IFL2<0 THENL2=0
+2069 IFL2=0 THENS5$="":GOTO2080
+2070 S5$=RIGHT$(B$(B),L2)
+2080 S1$=RIGHT$(C$,X)
+2090 S2$=LEFT$(C$,S1-1)
+2100 S3$=".."
+2110 :
+2120 S4$=S2$+S3$+S1$+S5$
+2130 GOSUB100
+2140 IFF3$="" THENPRINT"kies uit ";F1$;" of ";F2$:GOTO2170
+2150 IFF4$="" THEN2280
+2160 PRINT"kies uit ";F1$;", ";F2$;", ";F3$;" of ";F4$
+2170 PRINT"terug naar menu is -":PRINT:PRINT:PRINT
+2180 PRINTS4$:PRINT:PRINT:PRINT
+2190 PRINT
+2200 PRINT"type het juiste woord in"
+2210 PRINT:INPUTK$
+2220 IFK$="-" THENK$="":GOTO1370
+2230 TL(GZ)=TL(GZ)+1
+2240 IFK$=C$ THENPRINT:PRINT:GOSUB2630:GOTO1830
+2250 GOSUB2720
+2260 PRINT
+2270 GOTO1830
+2280 IFF4$="" THEN2300
+2290 GOTO2310
+2300 PRINT"kies uit ";F1$;", ";F2$;" of ";F3$:GOTO2170
+2310 :
+2320 REM TIJDVERTRAGING
+2330 FORTR=0 TO1500:NEXTTR:RETURN
+2340 :
+2350 GOSUB100:PRINT"score":PRINT:PRINT
+2360 TT=0:PR=0
+2370 FORI=1 TO7
+2380 :TT=TT+TL(I)
+2390 :PR=PR+GP(I)
+2400 NEXTI
+2410 IFTT=1 THEN2450
+2420 PRINTNA$",";
+2430 PRINT" er zijn";TT;"vragen gesteld."
+2440 GOTO2460
+2450 PRINTNA$", er is 1 vraag gesteld.":PRINT
+2460 PRINT:PRINT"groep"," goed"," fout"," % (goed)"
+2470 PRINT
+2480 TT=0:PR=0
+2490 FORI=1 TO7
+2500 :TT=TT+TL(I)
+2510 :PR=PR+GP(I)
+2520 :IFTL(I)=0 THENSM=GP(I)*100:GOTO2540
+2530 :SM=INT(GP(I)/TL(I)*10000)/100
+2540 :PRINTCHR$(65+I-1),GP(I),TL(I)-GP(I),SM
+2550 NEXTI
+2560 PRINT:PRINT:PRINT
+2570 PRINT:PRINT:PRINT
+2580 PRINT"sla een toets aan voor terug naar menu"
+2590 GOSUB210
+2600 IFIN$="" THEN2610
+2610 RETURN
+2620 :
+2630 GP(GZ)=GP(GZ)+1
+2640 G2=G1:REM NIET 2* HETZELFDE ZINNETJE TREKKEN
+2650 GOSUB260
+2660 G1=INT(RV*NK+.001):IFG1=0 THEN2650
+2670 IFG2=G1 THEN2650
+2680 PRINTZ1$(G1)
+2690 FORTR=0 TO2:GOSUB2330:NEXTTR
+2700 RETURN
+2710 :
+2720 G2=G1:REM NIET 2* HETZELFDE ZINNETJE TREKKEN
+2730 GOSUB260
+2740 G1=INT(RV*NK+.001):IFG1=0 THEN2730
+2750 IFG2=G1 THEN2730
+2760 PRINT:PRINT:PRINTZ2$(G1)
+2770 PRINT:PRINT"het moet ";C$;" zijn":PRINT
+2780 FORTR=0 TO4:GOSUB2330:NEXTTR
+2790 RETURN
+2800 :
+2810 PRINT"goto 1370 als je toch verder wilt gaan."
+2820 PRINT:PRINT"tot ziens"
+2830 PRINT:PRINT:RETURN
+2840 :
+25000 DATA"nietig",2,"dia",1,"dienaar",2,"prima",1
+25010 DATA"biezen",2,"lieverd",2
+25020 DATA"lichaam",1,"bizon",1,"cider",1,"sieraad",2
+25030 DATA"sigaar",1,"wierook",2,"sigaret",1,"glider",1
+25040 DATA"dievegge",2,"globine",1,"zielig",2,"priegelen",2
+25050 DATA"pierewaaien",2,"mierenhoop",2,"miezerig",2
+25060 DATA"mirakel",1,"liederen",2,"minaret",1,"visioen",1
+25070 DATA"televisie",1,"tiener",2,"tiran",1,"spiegel",2
+25080 DATA"wiegen",2,"liegebeest",2,"wiebelen",2,"vizier",1
+25090 DATA"giechelen",2,"wichelroede",1
+25100 DATA"rivier",1,"biologie",1,"geschiedenis",2
+25110 DATA"visum",1,"spieken",2,"villa",1,"file",1
+25120 DATA"kieviet",2,"kilo",1,"vliegeren",2
+25130 DATA"abrikoos",1,"giro",1,"spieren",2,"idee",1
+25140 DATA"financie",1,"garantie",2
+25150 DATA"junior",1,"juni",1,"januari",1,"lariekoek",2
+25160 DATA"kampioen",1,"spinazie",2
+25170 DATA"sinaasappel",1,"spinazie",1,"viezerik",2
+25180 DATA"minimum",1,"citroen",1
+25190 DATA"andijvie",2,"spiritus",1,"spiraal",1
+25200 DATA"mineralen",1,"piramide",1
+25210 DATA"idioot",1,"pizza",1,"liniaal",1,"piloot",1
+25220 DATA"pion",1,"spion",1
+25230 DATA"amerika",1,"afrika",1,"limonade",1
+25240 DATA"decimeter",1,"millimeter",1
+25250 DATA"militair",1,"minister",1,"ministerie",1
+25260 DATA"machinist",1,"ministerie",2
+25270 DATA"gierigaard",1,"gierigaard",2,"perikelen",1
+25280 DATA"pelikaan",1,"periodiek",1
+25290 DATA"periodiek",2,"miniatuur",1,"cilinder",1
+25300 DATA"cipier",1,"citer",1,"liter",1
+25310 DATA"kritiek",1,"kritiek",2,"kritisch",1,"filiaal",1
+25320 DATA"amfibie",1,"amfibie",2,"notitie",1
+25330 DATA"helikopter",1,"principe",1,"libel",1
+25340 DATA"pagina",1,"nihil",1,"niemendal",2,"direkt",1
+25350 DATA"repetitie",1,"stimulans",1,"adviseur",1
+25360 DATA"margarine",1,"aspirine",1,"bibliotheek",1
+25370 DATA"pikant",1,"crimineel",1,"chinezen",1
+25380 DATA"schielijk",2,"politiek",1,"pierement",2
+25390 DATA"crisis",1,"primula",1,"zwiepen",2,"zigeuner",1
+25400 DATA"primitief",1,"schouder",2,"auto",2,"miauwen",2
+25410 DATA"koud",2,"mouw",2,"vrouw",2,"stout",2,"lauw",2
+25420 DATA"flauw",2,"gebouw",2,"epaulet",2,"pauw",2
+25430 DATA"berouw",2,"nauw",2,"klauw",2,"trouw",2,"touw",2
+25440 DATA"benauwd",2,"zout",2,"goud",2,"gauw",2,"blauw",2
+25450 DATA"schouwburg",2,"goudvis",2,"kabeljauw",2
+25460 DATA"kniekous",2,"kouwen (vogels)",2,"vouwen",2
+25470 DATA"mevrouw",2,"dauw",2,"klauteren",2,"pauze",2
+25480 DATA"kauwen (bijten)",2,"paus",2,"sjouwen",2
+25490 DATA"ouder",2,"soldeerbout",2,"knauwen",2
+25500 DATA"foutloos",2,"hout",2,"woud",2,"kabouter",2
+25510 DATA"pauk",2,"nauwelijks",2,"koukleum",2,"kauwgom",2
+25520 DATA"houweel",2,"houvast",2,"houden",2,"grauw",2
+25530 DATA"schouw",2,"ouderling",2,"onthouden",2,"fraude",2
+25540 DATA"vouwfiets",2,"brouwerij",2,"huishouding",2
+25550 DATA"chauffeur",2,"vertrouwen",2,"landbouw",2
+25560 DATA"jouw",2,"kletskous",2,"journaal",2,"sausje",2
+25570 DATA"knock-out",2,"dinosaurus",2,"astronaut",2
+25580 DATA"poulet",2,"oudsher",2,"beschouwing",2
+25590 DATA"kouseband",2,"verkoudheid",2,"lauwerkroon",2
+25600 DATA"applaus",2,"laurier",2,"springtouw",2,"louter",2
+25610 DATA"australie",2,"augustus",2,"mausoleum",2
+25620 DATA"coureur",2,"restaurant",2,"bouillon",2
+25630 DATA"schout-bij-nacht",2,"enthousiast",2
+25640 DATA"havermout",2,"meervoud",2,"parcours",2
+25650 DATA"nauwkeurig",2,"route",2,"toeschouwer",2
+25660 DATA"poule",2,"prauw (vaartuig)",2,"karbouw",2
+25670 DATA"verstouwen",2,"oerwoud",2,"automaat",2
+25680 DATA"fouilleren",2,"rembours",2,"restaureren",2
+25690 DATA"retourneren",2,"roulatie",2,"roulette",2
+25700 DATA"routine",2,"fauteuil",2,"aula",2,"fauna",2
+25710 DATA"brouwsel",2,"eenvoudig",2,"tournee",2,"douche",2
+25720 DATA"spouwmuur",2,"augurk",2,"audio",2,"trauma",2
+25730 DATA"gauwdief",2,"juffrouw",2,"inhoud",2,"houtworm",2
+25740 DATA"mickey-mouse",2,"trouwring",2,"acoustiek",2
+25750 DATA"ragout",2,"potpourri",2,"auditie",2
+25760 DATA"ijsje",2,"meisje",2,"wijsje",2,"grijs",2
+25770 DATA"vijver",2,"cijfer",2,"sein",2,"pijn",2,"klein",2
+25780 DATA"steil (schuin)",2,"steiger",2,"kijken",2
+25790 DATA"vlijtig",2,"ijverig",2,"fijn",2,"mijn",2
+25800 DATA"peil (water)",2,"pijl (boog)",2,"vijl",2
+25810 DATA"slijpen",2,"rozijn",2,"weifelen",2,"twijfelen",2
+25820 DATA"saucijsje",2,"radijs",2,"spijs",2,"lijst",2
+25830 DATA"rijzen (omhoog)",2,"lijn",2,"paradijs",2
+25840 DATA"reizen (trein)",2,"rijst",2,"patrijs",2
+25850 DATA"teil",2,"mijl",2,"azijn",2,"konijn",2
+25860 DATA"gordijn",2,"latijn",2,"gein",2,"karabijn",2
+25870 DATA"fontein",2,"vlijtig",2,"weide",2,"heide",2
+25880 DATA"lijden (pijn)",2,"leiden (aanvoeren)",2
+25890 DATA"snelheid",2,"pijlsnel",2,"visserslatijn",2
+25900 DATA"keien",2,"wijn",2,"heilig",2,"heimwee",2
+25910 DATA"heipaal",2,"eigenaar",2,"klei",2,"schijnen",2
+25920 DATA"beitel",2,"uitsmijter",2,"beleid",2,"bereik",2
+25930 DATA"andijvie",2,"ravijn",2,"blij",2,"vergelijken",2
+25940 DATA"partij",2,"schrijven",2,"eisen",2,"eiland",2
+25950 DATA"elektriciteit",2,"wijzen",2,"apartheid",2
+25960 DATA"eikel",2,"einde",2,"afwijken",2,"zeilen",2
+25970 DATA"trein",2,"terrein",2,"prijs",2,"bakkeleien",2
+25980 DATA"glijden",2,"batterij",2,"festijn",2,"bijna",2
+25990 DATA"beveiligen",2,"bewijs",2,"bevrijden",2
+26000 DATA"weigeren",2,"bijster",2,"termijn",2,"mijter",2
+26010 DATA"parijs",2,"terwijl",2,"uitbreiden",2,"seizoen",2
+26020 DATA"vrijdag",2,"wedstrijd",2,"enerzijds",2
+26030 DATA"allerlei",2,"scheiding",2,"reiger",2,"bij",2
+26040 DATA"tijger",2,"tijdens",2,"ijzer",2,"prei",2
+26050 DATA"geitje",2,"dikwijls",2,"sprei",2,"stijfkop",2
+26060 DATA"anijs",2,"gelei",2,"marsepein",2,"snijkoek",2
+26070 DATA"ontbijt",2,"zeil",2,"uitgebreid",2,"tapijt",2
+26080 DATA"postelein",2,"kastelein",2,"bedrijf",2
+26090 DATA"magazijn",2,"breiwerk",2,"bijenkorf",2
+26100 DATA"fiets",1,"fee (sprookje)",1,"vee (dieren)",1
+26110 DATA"kever",1,"kieviet",1,"vel (huid)",1,"luifel",1
+26120 DATA"nerveus",1,"wever",1,"vies",1,"evenwicht",1
+26130 DATA"verlies",1,"fel (hard)",1,"oven",1,"offer",2
+26140 DATA"geval",1,"cafe",1,"koffie",2,"fout",1
+26150 DATA"trofee",1,"gevaar",1,"vandaal",1,"tafel",1
+26160 DATA"fit",1,"kijven",1,"vest",1,"vijl",1,"fijn",1
+26170 DATA"feilloos",1,"feest",1,"ongeveer",1,"hoven",1
+26180 DATA"foetsie",1,"fles",1,"fabriek",1,"sfeer",1
+26190 DATA"fier (trots)",1,"vier (getal)",1,"vaal",1
+26200 DATA"vaas",1,"fase",1,"vloot",1,"fraai",1,"film",1
+26210 DATA"fluit",1,"fakkel",1,"kakafonie",1,"offerte",2
+26220 DATA"flamingo",1,"revolver",1,"foto",1,"dovenetel",1
+26230 DATA"flits",1,"vat",1,"forel",1,"vlag",1
+26240 DATA"gevel",1,"griffel",2,"grafiek",1,"ervaren",1
+26250 DATA"ooievaar",1,"olifant",1,"sufferd",2,"visite",1
+26260 DATA"diversen",1,"vlinder",1,"foppen",1
+26270 DATA"effen (gelijk)",2,"centrifuge",1,"schavuit",1
+26280 DATA"advies",1,"veter",1,"flink",1,"vlieger",1
+26290 DATA"vouwen",1,"via",1,"fiat",1,"vakantie",1
+26300 DATA"veilig",1,"vuur",1,"vlo",1,"framboos",1
+26310 DATA"flop",1,"viool",1,"fruit",1,"veer",1,"fuik",1
+26320 DATA"prive",1,"vorst",1,"vuist",1,"folio",1
+26330 DATA"lieverd",1,"lieveling",1,"flauw",1,"bouvier",1
+26340 DATA"vin",1,"file",1,"villa",1,"ravijn",1,"folie",1
+26350 DATA"veulen",1,"advocaat",1,"vervelend",1
+26360 DATA"varken",1,"flat",1,"vos",1,"bravour",1
+26370 DATA"vijftig",1,"fokkerij",1,"varen",1,"slavernij",1
+26380 DATA"vlees",1,"zwavel",1,"teef",1,"vlegel",1
+26390 DATA"euvel",1
+26400 DATA"vrijen",1,"klaver",1,"visioen",1,"fut",1
+26410 DATA"avond",1,"wrevel",1,"griffel",2,"vilt",1
+26420 DATA"brevet",1
+26430 DATA"puzzel",2,"pauze",1,"kassa",2,"kazerne",1
+26440 DATA"seizoen",1,"mazzel",2,"miezerig",1,"museum",1
+26450 DATA"peuzelen",1,"prinses",1,"soes",1,"zoen",1
+26460 DATA"salaris",1,"mausoleum",1,"misschien",2
+26470 DATA"missie",2,"commissaris",2
+26480 DATA"bazelen",1,"briesen",1,"parasol",1,"sip",1
+26490 DATA"boosaardig",1,"bruisen",1,"resoluut",1
+26500 DATA"ezel",1,"wezel",1,"zeepsop",1,"perzik",1
+26510 DATA"sidderaal",1,"visser",2,"safe",1,"ijzig",1
+26520 DATA"elastiek",1,"blazer",1,"pizza",2,"tsaar",1
+26530 DATA"poseren",1,"dressoir",2,"blazoen",1,"bazuin",1
+26540 DATA"massa",2,"kersesap",1,"lozen",1,"ruzie",1
+26550 DATA"enthousiast",1,"crisis",1,"marsepein",1
+26560 DATA"dekzeil",1,"glazuur",1,"deserteur",1,"ozon",1
+26570 DATA"dessert",2,"zool",1,"amazone",1,"besef",1
+26580 DATA"huzaar",1,"garnizoen",1,"bazaar",1,"reserve",1
+26590 DATA"bizon",1,"zebra",1,"bazig",1,"ijzer",1
+26600 DATA"visie",1,"vizier",1,"sul",1,"gezin",1,"alzo",1
+26610 DATA"kassiere",2,"vrijgezel",1,"gesel (zweep)",1
+26620 DATA"chimpansee",1,"blozen",1,"blouse",1,"zeis",1
+26630 DATA"mazelen",1,"grazen",1,"reusachtig",1
+26640 DATA"versieren",1,"doezelig",1,"kozak",1
+26650 DATA"dansen",1,"dezelfde",1,"selectief",1
+26660 DATA"onderzoek",1
+26670 DATA"bezeren",1,"poezelig",1,"ganzen",1,"bonzen",1
+26680 DATA"enigszins",1,"jaloezie",1,"vreselijk",1
+26690 DATA"viezerik",1,"vlezig",1,"huiszoeking",1
+26700 DATA"bezig",1,"krijsen",1,"fez",1,"basis",1
+26710 DATA"gissen",2,"jazz",2,"rozet",1,"limousine",1
+26720 DATA"organisatie",1,"keizer",1,"interessant",2
+26730 DATA"piste",1,"besognes",1,"onderzeeer",1,"sabel",1
+26740 DATA"bloesem",1,"duizend",1,"kiezel",1,"observeren",1
+26750 DATA"satelliet",1,"ritselen",1,"ritssluiting",2
+26760 DATA"explosief",1,"situatie",1,"expressief",2
+26770 DATA"risico",1,"personage",1,"president",1
+26780 DATA"pissebed",2,"absoluut",1
+26790 DATA"lachen",2,"goochelaar",2,"giechelen",2
+26800 DATA"parochie",2,"garantie",1,"gerecht",2
+26810 DATA"pochen (opscheppen)",2
+26820 DATA"lichten",2,"ligstoel",1,"hoogte",1,"oog",1
+26830 DATA"kracht",2,"daglicht",1,"schacht",2,"mager",1
+26840 DATA"kachel",2,"waggelen",2
+26850 DATA"biechten",2,"echt",2,"goor",1,"chaos",2
+26860 DATA"wiegen",1,"wichelroede",2
+26870 DATA"eg",1,"schelden",2,"vergelden",1,"chloor",2
+26880 DATA"galant",1,"chroom",2,"groot",1,"chrysant",2
+26890 DATA"griezelig",1,"garnaal",1,"guit",1,"scheut",2
+26900 DATA"scharnier",2,"kogel",1,"plagen",1,"schuit",2
+26910 DATA"geul",1,"monarch",2,"tegel",1,"bedrag",1
+26920 DATA"evenwicht",2,"bedriegen",1,"vlug",1,"vlucht",2
+26930 DATA"gelach",2
+26940 DATA"tachtig",2,"gedrocht",2,"bedrog",1,"gerucht",2
+26950 DATA"lichaam",2,"gammel",1,"gamel",1,"gnoe",1
+26960 DATA"schoen",2,"dageraad",1,"charitatief",2
+26970 DATA"garen",1,"wigwam",1,"gewicht",2,"trog",1
+26980 DATA"tegenligger",2,"oplegger",2,"oplichter",2
+26990 DATA"krijger",1,"schrijven",2,"wig",1,"logger",2
+27000 DATA"weegschaal",2,"illegaal",1,"noga",1,"toch",2
+27010 DATA"agaat",1,"schaats",2,"gigant",1,"grotesk",1
+27020 DATA"gymnastiek",1,"gorgelen",1,"rochelen",2,"echo",2
+27030 DATA"mongool",1,"aalscholver",2,"monogram",1
+27040 DATA"schipper",2,"grot",1,"eega",1,"echt",2,"toga",1
+27050 DATA"chemie",2,"gems",1,"schimmel",2,"glimmen",1
+27060 DATA"schoeisel",2,"gloeien",1,"oogst",1,"bochel",2
+27070 DATA"grammatica",1,"schildpad",2,"gillen",1
+27080 DATA"gloria",1,"gratie",1,"schrapen",2
+27090 DATA"schuchter",2,"traag",1,"graat",1,"gokken",1
+27100 DATA"schokken",2,"leugen",1,"schutter",2,"grutto",1
+27110 DATA"schoorsteen",2,"biggetjes",2,"schroot",2
+27120 DATA"kuchen",2,"bagger",2,"geschut",2,"schuchter",2
+27130 DATA"brugwachter",2,"heggeschaar",2,"graat (vis)",1
+27140 DATA"hachelijk",2,"kroonluchter",2,"cholera",2
+27150 DATA"paard",1,"baard",1,"maart",1,"vaart",1,"hiaat",1
+27160 DATA"graad (temperatuur)",1,"voort",1,"woord",1
+27170 DATA"ongehoord",1,"poort",1,"strand",1,"verband",1
+27180 DATA"sport",1,"bord",1,"kleed",1,"wond",1
+27190 DATA"gezindte",2,"breedte",2,"lont",1,"rond",1
+27200 DATA"plant",1,"fluit",1,"luid (hard)",1
+27210 DATA"luit (muziekinstr)",1,"boord",1,"gezant",1
+27220 DATA"gezwind",1,"wijdte",2,"grond",1,"soort",1
+27230 DATA"gezond",1,"wand (muur)",1,"handschoen",1
+27240 DATA"want (handschoen)",1,"oogst",1,"ambtenaar",1
+27250 DATA"ginds",1,"pond (gewicht)",1,"veerpont",1
+27260 DATA"ronduit",1,"rondte",2,"spruit",1,"bruid",1
+27270 DATA"spannend",1,"beleefd",1,"fazant",1
+27280 DATA"gereformeerd",1,"hervormd",1,"kreeft",1
+27290 DATA"bejaard",1,"speelkaart",1,"antwoord",1
+27300 DATA"oudtante",2,"labyrint",1
+27310 DATA"reeds",1,"spleet",1,"vuilnisbelt",1
+27320 DATA"raat (bijenkorf)",1,"raadzaam",1,"wedstrijd",1
+27330 DATA"speld",1,"geweld",1,"leed",1,"bekend",1,"pand",1
+27340 DATA"beschroomd",1,"verliefd",1,"parmant",1
+27350 DATA"goedkoop",1,"afgod",1,"grot",1,"abonnement",1
+27360 DATA"beroerd",1,"havermout",1,"skelet",1,"ballet",1
+27370 DATA"invloed",1,"zondvloed",1,"vlot",1,"rundvlees",1
+27380 DATA"spit",1,"buffet",1,"couvert",1,"beleid",1
+27390 DATA"zakgeld",1,"bruidsmeisje",1,"strijdkreet",1
+27400 DATA"veelvraat",1,"yoghurt",1,"omelet",1,"bemind",1
+27410 DATA"begroeid",1,"lidmaatschap",1,"fort",1,"gelid",1
+27420 DATA"bondsrepubliek",1,"blaadje",1,"pad",1
+27430 DATA"sergeant",1,"viezerd",1,"vernuft",1
+27440 DATA"vriendschap",1,"paadje (pad)",1
+27450 DATA"spatbord",1,"brandspuit",1,"bazalt",1
+27460 DATA"windscherm",1,"afgebeeld",1,"inhoud",1
+27470 DATA"nijd",1,"mijt",1,"verwaand",1,"onbesuisd",1
+27480 DATA"houtworm",1,"fret (dier)",1,"buurtfeest",1
+27490 DATA"eensgezind",1,"arend",1,"schildpad",1
+27500 DATA"fervent",1,"verwend",1,"katzwijm",1
+27510 DATA"karpet",1,"parket",1,"plint",1
+27520 DATA"het antwoord is uitstekend"
+27530 DATA"je kunt veel beter"
+27540 DATA"je bent een taalwonder"
+27550 DATA"kom op, geen fouten maken"
+27560 DATA"grote klasse"
+27570 DATA"jij bent een oen"
+27580 DATA"jij lijkt wel de dikke van dale!"
+27590 DATA"jij moet je score een beetje oppoetsen"
+27600 DATA"jij gaat vast en zeker over!"
+27610 DATA"schaam jij je niet?!"
+27620 DATA"je bent een bolleboos"
+27630 DATA"wat jammer nou"
+27640 DATA"je bent een kei"
+27650 DATA"nu schoot je een bok"
+27660 DATA"beter kan het haast niet"
+27670 DATA"kijk in je woordenboek"
+27680 DATA"onwijs gaaf"
+27690 DATA"wat een misser"
+27700 DATA"je hebt jezelf overtroffen"
+27710 DATA"een volgende keer beter"
+30000 REM
+30010 REM SPEL SPEL IS ONTWORPEN DOOR:
+30020 REM FRED KRANENBURG
+30030 REM TOLLENAERSINGEL 8
+30040 REM 2352 JL LEIDERDORP
+30050 REM TEL 071-896308
+30060 :
+30070 REM SPELSPEL IS 17169 BYTES LANG
+30080 :
+30090 REM DIT BASICODE PROGRAMMA IS
+30100 REM GESCHREVEN OP EEN COMMODORE 64
+30110 REM EN IS BEDOELD VOOR DE KLASSEN
+30120 REM 5 T/M 8 VAN DE BASISSCHOOL.
+30130 REM
+30140 REM 1/1/1986
+30150 REM
+30160 REM NOS BASICODE PROGRAMMA
+

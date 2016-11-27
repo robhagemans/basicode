@@ -1,0 +1,505 @@
+1000 A=1000:GOTO20:REM VOLUME 1
+1010 GOSUB20100
+1100 REM ***> ONDERDELEN <***
+1110 GOSUB1200:REM-INLEIDING
+1120 GOSUB3000:REM-BLOK OPBOUWEN
+1130 GOSUB4000:REM-VOORBEELD 1
+1140 GOSUB4400:REM-WERKVOORBEELDEN 1
+1150 GOSUB5000:REM-VOORBEELD 2
+1160 GOSUB5400:REM-WERKVOORBEELDEN 2
+1170 GOSUB6000:REM-VIER OPGAVEN
+1180 GOSUB7000:REM-NAAR EINDE PROGRAMMA
+1190 END
+1200 REM ***> INLEIDING <***
+1210 GOSUB100
+1220 PRINT"         ********************"
+1230 PRINT"         *  volume  deel 1  *"
+1240 PRINT"         ********************":PRINT
+1250 PRINT"Dit programma behandelt het berekenen":PRINT
+1260 PRINT"van het volume van blokken.":PRINT:PRINT
+1270 W=2:GOSUB10000
+1280 PRINT"Na het doorwerken van dit programma zal":PRINT
+1290 PRINT"je geen problemen meer hebben met het":PRINT
+1300 PRINT"maken van volume opgaven.":PRINT
+1310 W=2:GOSUB10000:PRINT
+1320 PRINT"We gaan er vanuit dat je al weet dat:":PRINT
+1330 PRINT"1 m = 10 dm = 100 cm.":PRINT
+1350 W=4:GOSUB10000
+1360 GOSUB100
+1370 GOSUB11000:PRINT:PRINT:PRINT
+1380 PRINT"Bovenstaande figuur moet een ruimteljke":PRINT
+1390 PRINT"tekening van een blok voorstellen.":PRINT
+1400 PRINT"In zo'n tekening kunnen we van het blok":PRINT
+1410 PRINT"de afmetingen aangeven.":PRINT
+1420 W=3:GOSUB10000
+1430 HO=6:VE=11:GOSUB110
+1440 PRINT"de lengte is :    cm"
+1450 FORI=1 TO15
+1460 :HO=7+I:VE=9:GOSUB110:PRINT"."
+1470 :HO=20:VE=11:GOSUB110:PRINTI
+1480 :FORW=1 TO300:NEXTW
+1490 NEXTI
+1500 FORW=1 TO400:NEXTW
+1510 HO=8:VE=9:GOSUB110
+1520 PRINT"***************"
+1530 W=1:GOSUB10000
+1540 HO=27:VE=7:GOSUB110
+1550 PRINT"de breedte"
+1560 HO=27:VE=8:GOSUB110
+1570 PRINT"is :   cm"
+1580 FORI=1 TO4
+1590 :HO=21+I:VE=10-I:GOSUB110:PRINT"."
+1600 :HO=31:VE=8:GOSUB110:PRINTI
+1610 :FORW=1 TO500:NEXTW
+1620 NEXTI
+1630 FORW=1 TO400:NEXTW
+1640 FORI=1 TO4
+1650 :HO=21+I:VE=10-I:GOSUB110:PRINT"*"
+1660 NEXTI
+1670 W=1:GOSUB10000
+1680 HO=28:VE=2:GOSUB110
+1690 PRINT"de hoogte"
+1700 HO=28:VE=3:GOSUB110
+1710 PRINT"is :   cm"
+1720 FORI=1 TO7
+1730 :HO=25:VE=7-I:GOSUB110:PRINT"."
+1740 :HO=32:VE=3:GOSUB110:PRINTI
+1750 :FORW=1 TO400:NEXTW
+1760 NEXTI
+1770 FORW=1 TO400:NEXTW
+1780 FORI=1 TO7
+1790 :HO=25:VE=7-I:GOSUB110:PRINT"*"
+1800 NEXTI
+1810 W=1:GOSUB10000
+1820 Y1=13:Y2=23
+1830 A$="                                       "
+1840 GOSUB10200
+1850 HO=0:VE=14:GOSUB110
+1860 PRINT"Dit blok is dus 15 cm lang,":PRINT
+1870 PRINT"4 cm breed en 7 cm hoog.":PRINT
+1880 PRINT"Neem de figuur over.":PRINT
+1890 W=8:GOSUB10000
+1900 RETURN
+1910 REM
+3000 REM *****> BLOK VULLEN <******
+3010 GOSUB100
+3020 HO=0:VE=6:GOSUB110
+3030 GOSUB11150
+3040 PRINT
+3050 PRINT"Dit figuur is het grondvlak van het":PRINT
+3060 PRINT"blok.":PRINT
+3070 W=2:GOSUB10000
+3080 PRINT"Elke o stelt een kubieke centimeter":PRINT
+3090 PRINT"voor. Er staan 60 cm3 op het grondvlak.":PRINT
+3100 PRINT"Reken maar na met A = l * b."
+3110 W=2:GOSUB10000
+3120 GOSUB100
+3130 HO=0:VE=6:GOSUB110
+3140 GOSUB11150
+3150 PRINT
+3160 PRINT"De hoogte van het grondvlak is 1 cm.":PRINT
+3170 PRINT"Ga na waarom dit zo is.":PRINT
+3180 W=4:GOSUB10000
+3190 PRINT"Het hele blok kan opgebouwd worden uit":PRINT
+3200 PRINT"lagen die dus elk 1 cm hoog zijn.":PRINT
+3210 PRINT"Dit laten we zien."
+3220 W=2::GOSUB10000
+3230 GOSUB100
+3240 FORI=1 TO7
+3250 :HO=0:VE=7-I:GOSUB110
+3260 :GOSUB11250
+3270 :HO=27:GOSUB110:PRINT"-"I
+3280 FORW=1 TO600:NEXTW
+3290 NEXTI
+3300 HO=0:VE=0:GOSUB110
+3310 GOSUB11350
+3320 VE=12:GOSUB110
+3330 PRINT"We hebben 7 lagen van 60 cm3.":PRINT
+3340 PRINT"Dat is totaal 7 * 60 cm3 = 420 cm3.":PRINT
+3350 PRINT"Het volume van het blok is dan 420 cm3."
+3360 W=3:GOSUB10000
+3370 GOSUB100
+3380 PRINT"Van een blok weten nu :":PRINT
+3390 PRINT" ++++++++++++++++++++++++++++++++++++++"
+3400 PRINT" + volume = lengte * breedte * hoogte +"
+3410 PRINT" ++++++++++++++++++++++++++++++++++++++ ":PRINT
+3420 PRINT"Voor volume gebruiken we als symbool de":PRINT
+3430 PRINT"hoofdletter V. Voor lengte, breedte en":PRINT
+3440 PRINT"hoogte de kleine letters l, b en h.":PRINT
+3450 W=4:GOSUB10000
+3460 PRINT"Om het volume te berekenen gebruiken we":PRINT
+3470 PRINT"                +++++++++++++++++"
+3480 PRINT"dus de formule :+ V = l * b * h +"
+3490 PRINT"                +++++++++++++++++"
+3500 W=3:GOSUB10000
+3510 RETURN
+3520 REM
+4000 REM *****> VOORBEELD 1 <******
+4010 GOSUB100
+4020 PRINT"Van ons voorbeeld-blok kunnen we de":PRINT
+4030 PRINT"volgende opgave maken.":PRINT:PRINT
+4040 W=2:GOSUB10000
+4050 PRINT"Geg.  :Van een houten blok is de lengte":PRINT
+4060 PRINT"       15 cm, de breedte is 4 cm en de":PRINT
+4070 PRINT"       hoogte is 7 cm.":PRINT:PRINT
+4080 PRINT"Gevr. :Bereken het volume.":PRINT:PRINT
+4090 PRINT"Neem de opgave over.":PRINT:PRINT
+4100 W=3:GOSUB10000
+4110 PRINT"De oplossing hoort er als volgt uit te":PRINT
+4120 PRINT"zien."
+4130 W=1:GOSUB10000
+4140 GOSUB100
+4150 PRINT"Opl.  :V = l * b * h":PRINT
+4160 PRINT"       V = 15 cm * 4 cm * 7 cm":PRINT
+4170 PRINT"       V = 420 cm3.":PRINT:PRINT
+4180 PRINT"Neem de oplossing over.":PRINT
+4190 W=3:GOSUB10000:PRINT
+4200 PRINT"Er komen nu twee werk-voorbeelden.":PRINT
+4210 PRINT"Neem eerst de eerste opgave over.":PRINT
+4220 PRINT"Lost die opgave op en kontroleer het":PRINT
+4230 PRINT"antwoord.":PRINT
+4240 PRINT"Doe dan de tweede opgave."
+4250 W=2:GOSUB10000
+4260 RETURN
+4270 REM
+4400 REM *****> WERKVOORBEELDEN 1 <*****
+4410 GOSUB100
+4420 PRINT"Druk de wis-toets eens in.":PRINT
+4430 GOSUB210:VB$=IN$
+4440 PRINT"Geg.  :Van een straatsteen is de lengte":PRINT
+4450 PRINT"       2 dm, de hoogte is 0.8 dm en de":PRINT
+4460 PRINT"       breedte is 1 dm.":PRINT:PRINT
+4470 PRINT"Gevr. :Bereken het volume van de steen. ":PRINT
+4480 PRINT"Neem over en los op.":PRINT
+4490 W=3:GOSUB10000
+4500 PRINT"hoeveel dm3 komt er bij jou uit ?":PRINT
+4510 GOSUB120:HA=HO:VA=VE
+4520 GOSUB10400:PRINT
+4530 BW=VAL("1.6"):IFAW=BW THEN4560
+4540 GOSUB10700
+4550 GOTO4510
+4560 GOSUB10600
+4570 PRINT"Opl.  :V = l * b * h":PRINT
+4580 PRINT"       V = 2 dm * 0.8 dm * 1 dm":PRINT
+4590 PRINT"       V = 1.6 dm3.":PRINT:PRINT
+4600 PRINT"Nog niet, dan overnemen."
+4610 W=3:GOSUB10000
+4620 GOSUB100
+4630 PRINT"Geg.  :Van een pak stencil papier is de":PRINT
+4640 PRINT"       lengte 40 cm, de breedte is":PRINT
+4650 PRINT"       30 cm en de hoogte is 25 cm.":PRINT:PRINT
+4660 PRINT"Gevr. :Bereken het volume.":PRINT:PRINT
+4670 PRINT"Neem over en los op.":PRINT
+4680 W=3:GOSUB10000
+4690 PRINT"Hoeveel cm3 komt er bij jou uit ?":PRINT
+4700 GOSUB120:HA=HO:VA=VE
+4710 GOSUB10400:PRINT
+4720 BW=VAL("30000"):IFAW=BW THEN4750
+4730 GOSUB10700
+4740 GOTO4700
+4750 GOSUB10600
+4760 PRINT"Opl.  :V = l * b * h":PRINT
+4770 PRINT"       V = 40 cm * 30 cm * 25 cm":PRINT
+4780 PRINT"       V = 30000 cm3":PRINT:PRINT
+4790 W=2:GOSUB10000
+4800 PRINT"Nog niet, dan overnemen.":PRINT:PRINT
+4810 W=3:GOSUB10000
+4820 RETURN
+4830 REM
+5000 REM ******> VOORBEELD 2 <******
+5010 GOSUB100
+5020 PRINT"Het laatste voorbeeld gebruiken we om":PRINT
+5030 PRINT"je te laten zien hoe we het volume in":PRINT
+5040 PRINT"een andere eenheid kunnen uitrekenen.":PRINT
+5050 W=2:GOSUB10000:PRINT
+5060 PRINT"Geg.  :Van een pak stencil papier is de":PRINT
+5070 PRINT"       lengte 40 cm, de breedte is":PRINT
+5080 PRINT"       30 cm en de hoogte is 25 cm.":PRINT:PRINT
+5090 PRINT"Gevr. :Bereken het volume in dm3.":PRINT:PRINT
+5100 PRINT"Neem de opgave over.":PRINT
+5110 W=3:GOSUB10000
+5120 GOSUB100
+5130 PRINT"De oplossing moet er als volgt uitzien.":PRINT
+5140 PRINT"Opl.  :V = l * b * h":PRINT
+5150 PRINT"       V = 40 cm * 30 cm * 25 cm":PRINT
+5160 PRINT"       V = 4.0 dm * 3.0 dm * 2.5 dm     "
+5170 PRINT"       V = 30 dm3.":PRINT:PRINT
+5180 PRINT"Neem de oplossing over."
+5190 W=3:GOSUB10000
+5200 GOSUB100
+5210 PRINT"Er komen weer twee werk-voorbeelden.":PRINT
+5220 PRINT"Neem van elk voorbeeld de opgave over.  "
+5230 PRINT"Bereken dan het antwoord.":PRINT
+5240 PRINT"Neem als dat nodig is ook weer de":PRINT
+5250 PRINT"goede oplossingen over."
+5260 W=2:GOSUB10000
+5270 RETURN
+5280 REM
+5400 REM ****> WERKVOORBEELDEN 2 <****
+5410 GOSUB100
+5420 PRINT"Druk de wis-toets nog eens in.":PRINT
+5430 GOSUB210:VB$=IN$:GOSUB100
+5440 PRINT"Geg.  :Van een blok beton is de lengte":PRINT
+5450 PRINT"       2 m, de breedte is 1 m en de":PRINT
+5460 PRINT"       hoogte is 0.8 m.":PRINT
+5470 PRINT"Gevr. :Bereken het volume in dm3.":PRINT:PRINT
+5480 PRINT"Neem over en los op.":PRINT
+5490 W=5:GOSUB10000
+5500 PRINT"Hoeveel dm3 komt er bij jou uit ?":PRINT
+5510 GOSUB120:HA=HO:VA=VE
+5520 GOSUB10400:PRINT
+5530 BW=VAL("1600"):IFAW=BW THEN5570
+5540 IF(AW=1.6) OR(AW=1600000!) THENPRINT"1 m = 10 dm."
+5550 GOSUB10700
+5560 GOTO5510
+5570 GOSUB10600
+5580 PRINT"Opl.  :V = l * b * h":PRINT
+5590 PRINT"       V = 2 m * 1 m * 0.8 m":PRINT
+5600 PRINT"       V = 20 dm * 10 dm * 8 dm":PRINT
+5610 PRINT"       V = 1600 dm3":PRINT
+5620 W=1:GOSUB10000
+5630 PRINT"Nog niet, dan overnemen."
+5640 W=3:GOSUB10000
+5650 GOSUB100
+5660 PRINT"Geg.  :Een pakje margarine is 10 cm":PRINT
+5670 PRINT"       lang, 6 cm breed en 5 cm hoog.":PRINT
+5680 PRINT"Gevr. :Bereken het volume in dm3.":PRINT:PRINT
+5690 PRINT"Neem over en los op.":PRINT:PRINT
+5700 W=4:GOSUB10000
+5710 PRINT"Hoeveel dm3 komt er bij jou uit ?":PRINT
+5720 GOSUB120:HA=HO:VA=VE
+5730 GOSUB10400:PRINT
+5740 BW=VAL(".3"):IFAW=BW THEN5780
+5750 IF(AW=.0003) OR(AW=300) THENPRINT"1 cm = 0.1 dm."
+5760 GOSUB10700
+5770 GOTO5720
+5780 GOSUB10600
+5800 W=1:GOSUB10000
+5810 PRINT"Opl.  :V = l * b * h":PRINT
+5820 PRINT"       V = 10 cm * 6 cm * 5 cm":PRINT
+5830 PRINT"       V = 1 dm * 0.6 dm * 0.5 dm":PRINT
+5840 PRINT"       V = 0.3 dm3.":PRINT:PRINT
+5850 W=1:GOSUB10000
+5860 PRINT"Nog niet, dan overnemen."
+5870 W=3:GOSUB10000
+5880 RETURN
+5890 REM
+6000 REM ********> OPGAVEN <********
+6010 GOSUB100
+6020 PRINT"Je hebt nu genoeg voorbeelden overgeno- "
+6030 PRINT"men om te weten hoe nette oplossingen":PRINT
+6040 PRINT"er horen uit te zien.":PRINT:PRINT
+6050 W=3:GOSUB10000
+6060 PRINT"Er komen nog vier opgaven.":PRINT:PRINT
+6070 PRINT"Neem deze opgaven over en laat tussen   "
+6080 PRINT"de opgaven voldoende ruimte vrij om de  "
+6090 PRINT"oplossingen op te schrijven.":PRINT:PRINT
+6100 W=3:GOSUB10000
+6110 PRINT"Ga daarna de opgaven maken.":PRINT
+6120 PRINT"Gebruik de computer als rekenapparaat."
+6130 W=2:GOSUB10000
+6140 GOSUB100
+6150 PRINT"Opgave 1.":PRINT
+6160 PRINT"Geg.  :Een radio cassette recorder is"
+6170 PRINT"       38 cm lang, 10 cm breed en 25 cm"
+6180 PRINT"       hoog.":PRINT
+6190 PRINT"Gevr. :Bereken het volume in dm3.":PRINT:PRINT
+6200 W=3:GOSUB10000
+6210 PRINT"Opgave 2.":PRINT
+6220 PRINT"Geg.  :Van een koelkast is de hoogte"
+6230 PRINT"       165 cm, de breedte is 50 cm en"
+6240 PRINT"       de diepte is 60 cm.":PRINT
+6250 PRINT"Gevr. :Bereken het volume in m3."
+6260 W=3:GOSUB10000
+6270 GOSUB100
+6280 PRINT"Opgave 3.":PRINT
+6290 PRINT"Geg.  :De lengte van een schoenen doos"
+6300 PRINT"       is 3 dm, de breedte is 1.6 dm en"
+6310 PRINT"       de hoogte is 0.9 dm.":PRINT
+6320 PRINT"Gevr. :a. Bereken het volume in cm3."
+6330 PRINT"      :b. Bereken het volume in m3.":PRINT:PRINT
+6340 W=3:GOSUB10000
+6350 PRINT"Opgave 4.":PRINT
+6360 PRINT"Geg.  :De afmetingen van een houten"
+6370 PRINT"       balk zijn :2.5 m bij 2.4 dm bij"
+6380 PRINT"       1.2 dm.":PRINT
+6390 PRINT"Gevr. :a. Bereken het volume in m3"
+6400 PRINT"      :b. Bereken het volume in dm3."
+6410 PRINT"      :c. Bereken het volume in cm3."
+6420 W=3:GOSUB10000
+6430 GOSUB100
+6440 PRINT"Laat de overgenomen opgaven aan je":PRINT
+6450 PRINT"leerkracht zien."
+6460 W=4:GOSUB10000
+6470 HO=0:VE=5:GOSUB110
+6480 PRINT"Ga nu eerst de opgaven maken en laat de":PRINT
+6490 PRINT"oplossingen weer zien.":PRINT:PRINT
+6500 W=8:GOSUB10000
+6510 RETURN
+6520 REM
+7000 REM ******> NAAR EINDE LES <******
+7010 GOSUB100
+7020 PRINT"De oplossing worden in een volgend":PRINT
+7030 PRINT"programma behandeld.":PRINT
+7040 PRINT"Wanneer de opgaven af zijn en er is":PRINT
+7050 PRINT"tijd over, dan kun je dat programma":PRINT
+7060 PRINT"laden.":PRINT:PRINT:PRINT
+7080 W=2:GOSUB10000
+7090 PRINT" *************> succes <*******"
+7100 RETURN
+7110 REM
+10000 REM *****> SPATIEBALK <*****
+10010 FORW1=1 TOW*10:NEXTW1
+10020 GOSUB120:VI=VE
+10030 VE=23:HO=0:GOSUB110
+10040 PRINT"   ****> Druk op de spatiebalk <**** ";
+10050 GOSUB20000
+10060 GOSUB200:IFIN$="" THEN10060
+10065 :IFIN$<>" " THEN10060
+10070 :IFIN$<>" " THEN10060
+10080 VE=23:HO=0:GOSUB110
+10090 PRINT"                                      ";
+10100 VE=VI:GOSUB110
+10110 RETURN
+10120 REM
+10200 REM *****> RUIMTE MAKEN <*****
+10220 FORI=0 TOY2-Y1
+10230 HO=0:VE=Y1+I:GOSUB110
+10240 PRINTA$;
+10250 NEXTI
+10260 VE=Y1:GOSUB110
+10270 RETURN
+10400 REM *****> INVOER ANTWOORD <****
+10410 PRINT"Voer het getal in :";
+10420 AW$="":I=0:GOSUB120:HI=HO
+10430 GOSUB210
+10440 IFIN$=CHR$(44) THENIN$="."
+10450 IFIN$=VB$ THEN10490
+10460 IFIN$=CHR$(13) THENAW=VAL(AW$):GOTO10530
+10470 HO=HI+I:GOSUB110:PRINTIN$;:I=I+1
+10480 AW$=AW$+IN$:GOTO10430
+10490 IFI=0 THEN10430
+10500 L=LEN(AW$):AW$=LEFT$(AW$,(L-1)):I=I-1
+10510 HO=HI+I:GOSUB110:PRINT" ";
+10520 GOTO10430
+10530 RETURN
+10540 REM
+10600 REM ***> HET GOEDE ANTWOORD <***
+10610 GOSUB100
+10620 PRINT"Dat is het goede antwoord.":PRINT
+10630 PRINT"Je hebt dus ook staan :":PRINT
+10640 RETURN
+10700 REM *****> FOUT ANTWOORD <*****
+10710 PRINT
+10720 PRINT"Je antwoord is niet juist.":PRINT
+10730 PRINT"Reken het nog eens na.":PRINT
+10740 W=.1:GOSUB10000
+10750 Y1=VA:Y2=22
+10760 A$="                                       "
+10770 GOSUB10200
+10780 HO=HA:VE=VA:GOSUB110
+10790 RETURN
+10800 REM
+11000 REM ******> BLOK <******
+11005 REM
+11010 PRINT"           ***************"
+11020 PRINT"          *+            **"
+11030 PRINT"         * +           * *"
+11040 PRINT"        ***************  *"
+11050 PRINT"        *  +          *  *"
+11060 PRINT"        *  +          *  *"
+11070 PRINT"        *  +++++++++++*++*"
+11080 PRINT"        * +           * *"
+11090 PRINT"        *+            **"
+11100 PRINT"        ***************"
+11110 REM
+11120 REM
+11130 RETURN
+11140 REM
+11150 REM ******> GRONDVLAK 1 <******
+11155 REM
+11160 PRINT"           ooooooooooooooo"
+11170 PRINT"          ooooooooooooooo"
+11180 PRINT"         ooooooooooooooo"
+11190 PRINT"        ooooooooooooooo"
+11200 REM
+11210 REM
+11220 RETURN
+11250 REM ******> GRONDVLAK 2 <******
+11255 REM
+11260 PRINT"           ooooooooooooooo"
+11270 PRINT"          ooooooooooooooo"
+11280 PRINT"         ooooooooooooooo"
+11290 PRINT"        oooooooooooooo*"
+11300 REM
+11310 REM
+11320 RETURN
+11350 REM ******> BOVENVLAK <******
+11355 REM
+11360 PRINT"           oooooooooooooo*"
+11370 PRINT"          oooooooooooooo*"
+11380 PRINT"         oooooooooooooo*"
+11390 PRINT"        ***************"
+11400 REM
+11410 REM
+11420 RETURN
+20000 REM TOETSENBORD BUFFER LEEG
+20010 REM ******> C-64 <*******
+20020 REM POKE 198,0
+20030 REM *****> P-2000T <*****
+20040 REM POKE &H600C,0
+20050 REM *****> IBM PC <******
+20060 REM WHILE INKEY$<>"":WEND
+20070 RETURN
+20080 REM
+20100 REM INSTELLEN MONOCHROOM MONITOR
+20110 REM ******> C-64 <*******
+20120 REM POKE 53280,0:POKE 53281,0
+20130 REM *****> IBM PC <******
+20140 REM COLOR 7,0,0
+20150 REM KLEINE LETTERMODE C-64
+20160 REM POKE 53272,23
+20170 RETURN
+20180 REM
+30000 REM******************************
+30010 REM*                            *
+30020 REM*      VOLUME 1              *
+30030 REM*                            *
+30040 REM* INGEZONDEN DOOR: J.WIELES  *
+30050 REM* HOOFDWAL 68                *
+30060 REM* 4207 EE GORINCHEM          *
+30070 REM*                            *
+30080 REM* GEMAAKT OP EEN C-64        *
+30090 REM* UITGEPROBEERD OP EEN IBM PC*
+30100 REM* EN EEN P2000T.             *
+30110 REM*                            *
+30120 REM* TOETSENBORD BUFFERS KUNNEN *
+30130 REM* WORDEN LEEG GEMAAKT DOOR DE*
+30140 REM* REM WEG TE HALEN BIJ REGEL *
+30150 REM* 20020 VOOR C-64            *
+30160 REM* 20040 VOOR P2000T          *
+30170 REM* 20060 VOOR IBM PC          *
+30180 REM*                            *
+30190 REM* MONOCHROME MONITOR INSTEL- *
+30200 REM* LEN DOOR REM WEG TE HALEN  *
+30210 REM* BIJ REGEL                  *
+30220 REM* 20120 BIJ C-64             *
+30230 REM* 20150 BIJ IBM PC           *
+30240 REM*                            *
+30250 REM* KLEINE LETTERMODE  VOOR    *
+30260 REM* C-64 DOOR REM WEG TE HALEN *
+30270 REM* BIJ REGEL 20160            *
+30280 REM*                            *
+30290 REM* LEESTIJD IN TE STELLEN DOOR*
+30300 REM* FACTOR 10 IN REGEL 10100 TE*
+30310 REM* VERANDEREN.                *
+30320 REM*                            *
+30330 REM* MET DANK AAN DE TWEEDE KLAS*
+30340 REM* LEERLINGEN VAN DE OPENBARE *
+30350 REM* SCHOOL VOOR MAVO TE        *
+30360 REM* GORINCHEM.                 *
+30370 REM*                            *
+30380 REM******************************
+30390 REM
+30400 REM COPYRIGHT NOS HILVERSUM
+

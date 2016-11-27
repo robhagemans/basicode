@@ -1,0 +1,460 @@
+1000 A=50:GOTO20:REM UITLEG WEERRAPPORTEN
+1010 GOSUB100
+1020 VE=4:HO=5:GOSUB110
+1030 PRINT"Dit programma geeft uitleg van"
+1040 VE=7:HO=13:GOSUB110
+1050 PRINT"WEERRAPPORTEN."
+1060 GOSUB20000:GOSUB3000:REM NAAR INTRODUKTIE
+1070 GOSUB100:PRINT:PRINT:REM HOOFDMENU
+1080 PRINT"Van welke pagina wilt u uitleg?"
+1090 PRINT:PRINT:PRINT"Pagina 4   1."
+1100 PRINT:PRINT"Pagina 5   2."
+1110 PRINT:PRINT"Pagina 6   3."
+1120 PRINT:PRINT:PRINT"Maak uw keuze";:INPUTE
+1125 IF(E<1) OR(E>3) THENGOSUB20050:GOTO1070
+1130 ONE GOTO1140,1380,1590:REM PAG.4.5 EN 6
+1140 GOSUB100:PRINT:REM MENU PAG.4
+1150 PRINT"Pagina 4."
+1160 PRINT:PRINT:PRINT"Voorbeeld."
+1170 PRINT:PRINT
+1180 PRINT"ehvk 25015/25 br      07/ 04 1001"
+1190 PRINT"-1-- -2------ -3---- -4----- -5--"
+1200 PRINT:PRINT
+1210 PRINT"Plaats    1.    Temperaturen   4."
+1220 PRINT"Wind      2.    Luchtdruk      5."
+1230 PRINT"Weer      3."
+1240 PRINT
+1250 PRINT"Pag.5     6.    Pag.6          7."
+1260 PRINT:PRINT"Stoppen   8."
+1270 PRINT:PRINT
+1280 PRINT"Maak uw keuze";:INPUTB
+1290 IF(B=1) THENGOSUB3200:REM NAAR PLAATS
+1300 IF(B=2) THENGOSUB3400:REM NAAR WIND
+1310 IF(B=3) THENGOSUB4500:REM NAAR WEER
+1320 IF(B=4) THENGOSUB10000:REM NAAR TEMP.
+1330 IF(B=5) THENGOSUB10100:REM NAAR LUCHTDRUK
+1340 IF(B=6) THEN1380:REM NAAR PAG.5
+1350 IF(B=7) THEN1590:REM NAAR PAG.6
+1360 IF(B=8) THEN2950:REM NAAR END
+1365 IF(B<1) OR(B>8) THENGOSUB20050
+1370 GOTO1140
+1380 GOSUB100:PRINT:REM MENU PAG.5
+1390 PRINT"Pagina 5"
+1400 PRINT:PRINT:PRINT"Voorbeeld."
+1410 PRINT:PRINT
+1420 PRINT"ehvk 2000 r3000  2cu012 3sc025 7ac120"
+1430 PRINT"-1-- -2-- -3---- -4---- -4---- -4----"
+1440 PRINT:PRINT
+1450 PRINT"Plaats    1.     RVR          3."
+1460 PRINT"Zicht     2.     Bewolking    4."
+1470 PRINT:PRINT
+1480 PRINT"Pag.4     5.     Pag.6        6."
+1490 PRINT:PRINT"stoppen   7."
+1500 PRINT:PRINT:PRINT"Maak uw keuze";:INPUTD
+1510 IF(D=1) THENGOSUB3200:REM NAAR PLAATS
+1520 IF(D=2) THENGOSUB10200:REM NAAR ZICHT
+1530 IF(D=3) THENGOSUB10350:REM NAAR RVR
+1540 IF(D=4) THENGOSUB10450:REM NAAR BEWOLKING
+1550 IF(D=5) THEN1140:REM NAAR PAG.4
+1560 IF(D=6) THEN1590:REM NAAR PAG.6
+1570 IF(D=7) THEN2950:REM NAAR END
+1575 IF(D<1) OR(D>7) THENGOSUB20050
+1580 GOTO1380
+1590 GOSUB100:PRINT:REM MENU PAG.6
+1600 PRINT"Pag.6 De verwachting."
+1610 PRINT"(er worden twee manieren gebruikt.)"
+1620 PRINT:PRINT"---------------------------------------"
+1630 PRINT:PRINT"Bv. eham gradu 5000        1."
+1640 PRINT:PRINT"Bv. ehvk wht wht gradu blu 2."
+1650 PRINT:PRINT"Pag.4                      3."
+1660 PRINT:PRINT"Pag.5                      4."
+1670 PRINT:PRINT"Stoppen                    5."
+1680 PRINT:PRINT:PRINT"Maak uw keuze";:INPUTF
+1690 IF(F=1) THENGOSUB10900:REM NAAR VOORBEELD 1
+1700 IF(F=2) THENGOSUB11220:REM NAAR VOORBEELD 2
+1710 IF(F=3) THEN1140:REM NAAR PAG.4
+1720 IF(F=4) THEN1380:REM NAAR PAG.5
+1730 IF(F=5) THEN2950:REM NAAR END
+1735 IF(F<1) OR(F>5) THENGOSUB20050
+1740 GOTO1590
+2950 GOSUB100:VE=11:HO=15:GOSUB110:REM BEGIN EIND
+2960 PRINT"TOT ZIENS."
+2970 GOSUB20000:REM NAAR TIJDLUS
+2980 GOSUB100
+2990 END
+3000 GOSUB100:PRINT:REM INTRODUKTIE
+3010 PRINT"Op pagina 706 van TELETEKST vindt u een"
+3020 PRINT:PRINT"prima weersverwachting voor de KORTE"
+3030 PRINT:PRINT"termijn."
+3040 PRINT
+3050 PRINT:PRINT"De eerste drie pagina's spreken voor"
+3060 PRINT:PRINT"zich. Dit programma geeft uitleg van de"
+3070 PRINT:PRINT"pagina's 4, 5 en 6 alwaar u de weer-"
+3080 PRINT:PRINT"rapporten vindt."
+3085 PRINT
+3090 PRINT:PRINT"Zo kunt u gemakkelijk het weerbeeld"
+3100 PRINT:PRINT"boven Nederland volgen."
+3110 GOSUB20010:RETURN
+3200 GOSUB100:PRINT:REM PLAATS
+3210 PRINT"Plaatsen, vliegvelden en vliegbases."
+3220 PRINT
+3230 PRINT:PRINT"ehkd De Kooy     ehtw Twente"
+3240 PRINT:PRINT"ehfs Vlissingen  ehdl Deelen"
+3250 PRINT:PRINT"eham Schiphol    ehsb Soesterberg"
+3260 PRINT:PRINT"ehrd Rotterdam   ehvb Valkenburg (Z.H.)"
+3270 PRINT:PRINT"ehgg Eelde       ehgr Gilze Rijen"
+3280 PRINT:PRINT"ehbk Beek (L.)   eheh Eindhoven"
+3290 PRINT:PRINT"ehlw Leeuwarden  ehvk Volkel"
+3300 GOSUB20010:RETURN
+3400 GOSUB100:PRINT:REM WIND
+3410 PRINT"De wind (gemeten op 10 meter hoogte)."
+3420 PRINT:PRINT
+3430 PRINT"voorbeeld 25015/25"
+3450 PRINT:PRINT"----------------------------------------"
+3460 PRINT"250 is de windrichting t.o.v.het noorden"
+3470 PRINT:PRINT"NOORD=360, OOST=090, ZUID=180, WEST=270"
+3480 PRINT:PRINT"----------------------------------------"
+3490 PRINT"15 is de gemiddelde windsnelheid"
+3500 PRINT:PRINT"gemeten in knopen (1 knoop=0,51m/s)."
+3510 PRINT:PRINT"----------------------------------------"
+3520 GOSUB20010:GOSUB100:PRINT
+3530 PRINT"25 is de maximale windsnelheid, gemeten"
+3540 PRINT:PRINT"in de tien minuten voorafgaande aan"
+3550 PRINT:PRINT"het tijdstip van waarneming."
+3560 PRINT:PRINT"(Wordt gegeven als deze 10 knopen of"
+3570 PRINT:PRINT"meer is dan de gem. windsnelheid.)"
+3575 PRINT:PRINT"(00000=windstil, vrb is veranderlijk.)"
+3580 PRINT:PRINT"----------------------------------------"
+3590 PRINT:PRINT
+3600 PRINT"Wilt u de schaal van Beaufort zien(J/N)?"
+3605 GOSUB210
+3610 IF(IN$="j") OR(IN$="J") THENGOSUB3700
+3620 RETURN
+3700 GOSUB100:PRINT:REM BEAUFORT
+3710 PRINT"Beaufortschaal voor de windsnelheid"
+3720 PRINT:PRINT
+3730 PRINT"WINDSTIL."
+3740 PRINT
+3750 PRINT"0     0  - 0.2m/s    < 1knp     < 1km/u"
+3760 PRINT"---------------------------------------"
+3770 PRINT"ZWAKKE WIND."
+3780 PRINT
+3790 PRINT"1     0.3- 1.5m/s   1- 3knp   1-  5km/u"
+3800 PRINT"---------------------------------------"
+3810 PRINT"ZWAKKE WIND."
+3820 PRINT
+3830 PRINT"2     1.6- 3.3m/s   4- 6knp   6- 11km/u"
+3840 PRINT"---------------------------------------"
+3850 PRINT"MATIGE WIND."
+3860 PRINT
+3870 PRINT"3     3.4- 5.4m/s   7-10knp  12- 19km/u"
+3880 PRINT"---------------------------------------"
+3890 GOSUB20010:GOSUB100:PRINT
+3900 PRINT"MATIGE WIND."
+3910 PRINT
+3920 PRINT"4     5.5- 7.9m/s  11-16knp  20- 28km/u"
+3930 PRINT"---------------------------------------"
+3940 PRINT"VRIJ KRACHTIGE WIND."
+3950 PRINT
+3960 PRINT"5     8.0-10.7m/s  17-21knp  29- 38km/u"
+3970 PRINT"---------------------------------------"
+3980 PRINT"KRACHTIGE WIND."
+3990 PRINT
+4000 PRINT"6    10.8-13.8m/s  22-27knp  39- 49km/u"
+4010 PRINT"---------------------------------------"
+4020 PRINT"HARDE WIND."
+4030 PRINT
+4040 PRINT"7    13.9-17.1m/s  28-33knp  50- 61km/u"
+4050 PRINT"---------------------------------------"
+4060 PRINT"STORMACHTIGE WIND."
+4070 PRINT
+4080 PRINT"8    17.2-20.7m/s  34-40knp  62- 74km/u"
+4090 PRINT"---------------------------------------"
+4100 GOSUB20010:GOSUB100:PRINT
+4110 PRINT"STORM."
+4120 PRINT
+4130 PRINT"9    20.8-24.4m/s  41-47knp  75- 88km/u"
+4140 PRINT"---------------------------------------"
+4150 PRINT"ZWARE STORM."
+4160 PRINT
+4170 PRINT"10   24.5-28.4m/s  48-55knp  89-102km/u"
+4180 PRINT"---------------------------------------"
+4190 PRINT"ZEER ZWARE STORM."
+4200 PRINT
+4210 PRINT"11   28.5-32.6m/s  56-63knp 103-117km/u"
+4220 PRINT"---------------------------------------"
+4230 PRINT"ORKAAN."
+4240 PRINT
+4250 PRINT"12       >32.6m/s    >63knp    >117km/u"
+4255 PRINT"---------------------------------------"
+4260 GOSUB20010
+4270 RETURN
+4500 GOSUB100:PRINT:REM WEER
+4510 PRINT"Weer."
+4520 PRINT
+4540 PRINT"In welke groep staat het gezochte weer?"
+4550 PRINT:PRINT"1. fu,hz,po,br,mifg,ts,sq,fc"
+4560 PRINT:PRINT"2. redz,rera,resn rerasn,refzra,resh"
+4570 PRINT:PRINT"3. resnsh,regr,rets,sa,xxsa,drsn,blsn"
+4580 PRINT:PRINT"4. bcfg,fg,fzfg,dz.xxdz.fzdz,xxfzdz"
+4590 PRINT:PRINT"5. ra,xxra,fzra,xxfzra,sn,xxsn"
+4610 PRINT:PRINT"6. sg,pe,rash,xxsh,rasn,xxrasn"
+4615 PRINT:PRINT"7. snsh,xxsnsh,gr,xxgr,tsgr"
+4620 PRINT:PRINT"8. xxts,tssa,xxtsgr"
+4630 PRINT:PRINT
+4640 PRINT"Maak uw keuze";:INPUTC
+4645 IF(C<1) OR(C>8) THENGOSUB20050:GOTO4500
+4650 ONC GOTO4660,4800,4900,5000,6000,7000,8000,9000
+4660 GOSUB100:PRINT
+4700 PRINT:PRINT"fu:      zicht beperkt door rook."
+4710 PRINT:PRINT"hz:      zicht beperkt door heiigheid."
+4730 PRINT:PRINT"po:      zandhoosjes."
+4740 PRINT:PRINT"br:      nevel."
+4750 PRINT:PRINT"mifg:    grondmist."
+4760 PRINT:PRINT"ts:      onweer."
+4770 PRINT:PRINT"sq:      zware windstoten."
+4780 PRINT:PRINT"fc:      hoos."
+4790 GOSUB20010:RETURN
+4800 GOSUB100
+4810 PRINT:PRINT"redz:    motregen.         *"
+4820 PRINT:PRINT"rera:    regen.            *"
+4830 PRINT:PRINT"resn:    motsneeuw/sneeuw. *"
+4840 PRINT:PRINT"rerasn:  regen en sneeuw.  *"
+4850 PRINT:PRINT"refzra:  regen met ijzel.  *"
+4860 PRINT:PRINT"resh:    regenbui.         *"
+4870 PRINT:PRINT
+4880 PRINT" * Niet tijdens de waarneming maar in"
+4885 PRINT"   het afgelopen uur."
+4890 GOSUB20010:RETURN
+4900 GOSUB100
+4910 PRINT:PRINT"resnsh:  sneeuwbui.              *"
+4920 PRINT:PRINT"regr:    hagelbui.               *"
+4930 PRINT:PRINT"rets:    onweer."
+4940 PRINT"        (met of zonder neerslag) *"
+4950 PRINT:PRINT"sa:      zand- of stofstorm."
+4960 PRINT:PRINT"xxsa:    zware zand- of stof storm."
+4970 PRINT:PRINT"drsn:    lage driftsneeuw."
+4980 PRINT:PRINT"blsn:    hoge driftsneeuw."
+4985 PRINT:PRINT
+4990 PRINT" * Niet tijdens de waarneming maar in"
+4991 PRINT"   het afgelopen uur."
+4995 GOSUB20010:RETURN
+5000 GOSUB100
+5010 PRINT:PRINT"bcfg:   mistbanken."
+5020 PRINT:PRINT"fg:     mist(zicht < 1 km)."
+5030 PRINT:PRINT"fzfg:   mist met rijp/ruige rijp."
+5040 PRINT:PRINT"dz:     motregen."
+5050 PRINT:PRINT"xxdz:   dichte motregen."
+5070 PRINT:PRINT"fzdz:   motregen met ijzel."
+5080 PRINT:PRINT"xxfzdz: motregen met ijzel, dicht."
+5090 GOSUB20010:RETURN
+6000 GOSUB100
+6010 PRINT:PRINT"ra:     regen."
+6020 PRINT:PRINT"xxra:   zware regen."
+6030 PRINT:PRINT"fzra:   regen met ijzel."
+6040 PRINT:PRINT"xxfzra: regen met ijzel, zwaar."
+6060 PRINT:PRINT"sn:     sneeuw."
+6070 PRINT:PRINT"xxsn:   zware sneeuw."
+6075 GOSUB20010:RETURN
+7000 GOSUB100
+7010 PRINT:PRINT"sg:     motsneeuw."
+7020 PRINT:PRINT"pe:     ijsregen."
+7030 PRINT:PRINT"rash:   regenbui."
+7040 PRINT:PRINT"xxsh:   zware regenbui."
+7050 PRINT:PRINT"rasn:   bui met regen en sneeuw."
+7060 PRINT:PRINT"xxrasn: bui met regen en sneeuw, zwaar."
+7090 GOSUB20010:RETURN
+8000 GOSUB100
+8010 PRINT:PRINT"snsh:   sneeuwbui."
+8020 PRINT:PRINT"xxsnsh: zware sneeuwbui."
+8030 PRINT:PRINT"gr:     hagelbui."
+8040 PRINT:PRINT"xxgr:   zware hagelbui."
+8050 PRINT:PRINT"tsgr:   onweer met hagel."
+8060 GOSUB20010:RETURN
+9000 GOSUB100
+9010 PRINT:PRINT"xxts:   zwaar onweer."
+9020 PRINT:PRINT"tssa:   onweer met zand- of stofstorm."
+9040 PRINT:PRINT"xxtrgr: zwaar onweer met hagel."
+9050 GOSUB20010:RETURN
+10000 GOSUB100:PRINT:REM TEMPERATUUR
+10010 PRINT"De temperaturen (in graden Celsius)."
+10020 PRINT:PRINT"voorbeeld 07/04"
+10025 PRINT:PRINT"---------------------------------------"
+10030 PRINT:PRINT"07 is de afgeronde temperatuur"
+10040 PRINT"gemeten op 1.5 meter hoogte."
+10045 PRINT:PRINT"---------------------------------------"
+10050 PRINT"04 is de afgeronde dauwpuntstemperatuur."
+10055 PRINT"Dit is de temperatuur waartoe je de"
+10060 PRINT"aanwezige lucht af moet koelen om een"
+10065 PRINT"luchtvochtigheid van 100% (mist)"
+10070 PRINT"te krijgen."
+10073 PRINT:PRINT"(< 0 = - of m )"
+10075 PRINT:PRINT"---------------------------------------"
+10080 GOSUB20010:RETURN
+10100 GOSUB100:PRINT
+10110 PRINT"De luchtdruk (QNH)."
+10120 PRINT:PRINT"Voorbeeld: 1001 (in hpa)."
+10125 PRINT:PRINT"---------------------------------------"
+10130 PRINT:PRINT"Dit is de luchtdruk om de hoogtemeter"
+10135 PRINT
+10140 PRINT"in te stellen. Deze druk is herleid tot"
+10145 PRINT
+10150 PRINT"3 meter boven zeeniveau. Dat is de"
+10155 PRINT
+10160 PRINT"gemiddelde hoogte waarop deze meter"
+10165 PRINT
+10170 PRINT"in een vliegtuig is ingebouwd."
+10175 PRINT:PRINT"---------------------------------------"
+10190 GOSUB20010:RETURN
+10200 GOSUB100:PRINT:REM ZICHT
+10210 PRINT:PRINT"Het zicht."
+10230 PRINT:PRINT"---------------------------------------"
+10240 PRINT:PRINT"Het zicht wordt tot 5 km gegeven in"
+10250 PRINT:PRINT"stappen van 100 meter."
+10260 PRINT:PRINT
+10270 PRINT"Tussen 5 km en 9 km in stappen van 1 km."
+10280 PRINT:PRINT
+10290 PRINT"10 km of meer wordt gemeld als 9999."
+10295 PRINT:PRINT
+10300 PRINT"100m 0100, 7km=7000, <=10km=9999"
+10305 PRINT:PRINT"---------------------------------------"
+10310 GOSUB20010:GOSUB10750:RETURN:REM 10750 NAAR CAVOK
+10350 GOSUB100:PRINT:REM RVR
+10360 PRINT"RVR (runway visual range)."
+10370 PRINT:PRINT"---------------------------------------"
+10380 PRINT:PRINT"De RVR is een gemeten zichtwaarde"
+10390 PRINT:PRINT"bij ontstoken startbaanverlichting."
+10400 PRINT:PRINT"en wordt gegeven in stappen van 100m"
+10410 PRINT:PRINT"tot en met 3km. >3000m=rm3000"
+10420 PRINT:PRINT"---------------------------------------"
+10430 GOSUB20010:RETURN
+10450 GOSUB100:PRINT:REM BEWOLKING
+10460 PRINT"De bewolking."
+10470 PRINT:PRINT"Voorbeeld: 2cu012."
+10480 PRINT:PRINT"---------------------------------------"
+10490 PRINT:PRINT"2 geeft het aantal achtsten aan waarmee"
+10500 PRINT"de hemelkoepel is bedekt."
+10510 PRINT"(4/8=half bewolkt.)"
+10520 PRINT:PRINT"---------------------------------------"
+10530 PRINT"cu is de bewolkingsoort."
+10540 PRINT:PRINT
+10550 PRINT"ci=cirrus(h)       ns=nimbostratus(m)"
+10560 PRINT"cc=cirrocumulus(h) sc=stratocumulus(l)"
+10570 PRINT"cs=cirrostratus(h) st=stratus(l)"
+10580 PRINT"ac=altocumulus(m)  cu=cumulus(l)"
+10590 PRINT"as=altostratus(m)  cb=cumulonimbus(l)"
+10600 PRINT:PRINT"---------------------------------------"
+10610 GOSUB20010:GOSUB100
+10620 PRINT:PRINT"l=lage  m=middelbare  h=hoge bewolking."
+10630 PRINT:PRINT"---------------------------------------"
+10640 PRINT:PRINT"012 is de hoogte waarop deze bewolking"
+10650 PRINT:PRINT"zit en is in feet.(1000ft=p/m 300m)"
+10660 PRINT:PRINT"---------------------------------------"
+10670 PRINT:PRINT"Tussen de grond en 5000ft in"
+10680 PRINT:PRINT"stappen van 100ft."
+10690 PRINT:PRINT"100ft=001, 2400ft=024, 5000ft=050"
+10710 PRINT:PRINT"Boven 5000ft in stappen van 1000ft."
+10720 PRINT:PRINT"7000ft=070, 12000ft=120, 25000ft=250"
+10730 PRINT:PRINT"---------------------------------------"
+10731 GOSUB20010
+10732 GOSUB100:PRINT
+10733 PRINT"9//000, 9//001 enz."
+10734 PRINT:PRINT"---------------------------------------"
+10735 PRINT"9 geeft aan dat de bovenlucht(wolken)"
+10736 PRINT"niet te zien is door mist of sneeuwval."
+10737 PRINT:PRINT"---------------------------------------"
+10738 PRINT"Bv. //001 geeft het vertikale zicht"
+10739 PRINT"in deze mist of sneeuwval in feet."
+10740 GOSUB20010:GOSUB10750:RETURN:REM 10750 NAAR CAVOK
+10750 GOSUB100:PRINT:REM CAVOK
+10760 PRINT"CAVOK"
+10765 PRINT:PRINT"(ceiling and visibility OK)"
+10770 PRINT:PRINT"---------------------------------------"
+10780 PRINT:PRINT"Dit wordt gegeven bij een laagste"
+10790 PRINT:PRINT"wolkenbasis >=5000ft en een zicht"
+10800 PRINT:PRINT">=10 km. indien er geen neerslag,"
+10810 PRINT:PRINT"onweer, grondmist of lage driftsneeuw"
+10820 PRINT:PRINT"wordt waargenomen."
+10830 PRINT:PRINT"---------------------------------------"
+10850 GOSUB20010:RETURN
+10900 GOSUB100:PRINT:REM VOORBEELD 1
+10910 PRINT"Voorbeeld 1.  eham gradu 5000."
+10920 PRINT"              -1-- -2---------"
+10930 PRINT"---------------------------------------"
+10940 PRINT:PRINT"Plaats       1.(zie pag.4 of 5)"
+10950 PRINT:PRINT"Verwachting  2."
+10960 GOSUB20010
+10970 GOSUB100:PRINT
+10980 PRINT"gradu 5000"
+10990 GOSUB11100:RETURN:REM TERMEN UITLEG
+11100 PRINT"---------------------------------------"
+11110 PRINT:PRINT"   GRADU geleidelijk. *"
+11120 PRINT:PRINT"   RAPID snel.        *"
+11130 PRINT:PRINT"   INTER frequent.    *"
+11140 PRINT:PRINT"   TEMPO tijdelijk.   *"
+11150 PRINT:PRINT"   NOSIG geen belangrijke verandering."
+11160 PRINT:PRINT"---------------------------------------"
+11170 PRINT"*"
+11180 PRINT:PRINT"gevolgd door een zicht-, en/of weer-"
+11190 PRINT"en/of bewolkingsgroep,om de verandering"
+11200 PRINT"aan te geven."
+11205 PRINT"(N.v.t bij kleurencode van voorbeeld 2.)"
+11210 GOSUB20010:RETURN
+11220 GOSUB100:PRINT:REM VOORBEELD 2
+11230 PRINT"Voorbeeld 2. ehvk wht wht gradu blu."
+11240 PRINT"             -1-- -2- -3------------"
+11250 PRINT"---------------------------------------"
+11260 PRINT:PRINT"Plaats       1.(zie pag.4 of 5)"
+11270 PRINT:PRINT"Toestand nu  2."
+11280 PRINT:PRINT"Verwachting  3."
+11290 GOSUB20010
+11300 GOSUB100:PRINT
+11310 PRINT"wht wht gradu blu"
+11320 PRINT:PRINT"---------------------------------------"
+11330 PRINT:PRINT"Dit is een 'kleurencode'.Het eerste WHT"
+11340 PRINT:PRINT"geeft de huidige weertoestand aan"
+11350 PRINT:PRINT"en WHT GRADU BLU de verwachting"
+11360 PRINT:PRINT"voor de komende twee uur."
+11370 PRINT:PRINT"Dit is afhankelijk van zicht en/of"
+11380 PRINT:PRINT"5/8 laagste wolkenbasis."
+11390 PRINT:PRINT"---------------------------------------"
+11400 GOSUB20010:GOSUB100:PRINT:REM KLEURENCODE
+11410 PRINT"De kleurencode."
+11415 PRINT:PRINT"red,amber,yellow,green,white en blue."
+11420 PRINT:PRINT"---------------------------------------"
+11430 PRINT"          ZICHT         WOLKENBASIS"
+11440 PRINT
+11450 PRINT"RED   < 0.8km         >=0000ft <0200ft"
+11460 PRINT:PRINT"AMB   >=0.8km <1.6km  >=0200ft <0300ft"
+11470 PRINT:PRINT"YLO   >=1.6km <3.7km  >=0300ft <0700ft"
+11480 PRINT:PRINT"GRN   >=3.7km <5  km  >=0700ft <1500ft"
+11490 PRINT:PRINT"WHT   >=5  km <8  km  >=1500ft <2500ft"
+11500 PRINT:PRINT"BLU   >=8  km         >=2500ft"
+11510 GOSUB20010:GOSUB100:PRINT
+11520 PRINT"De gebruikte termen(bv.GRADU of TEMPO)."
+11530 GOSUB11100:REM NAAR TERMENUITLEG
+11600 RETURN
+20000 FORT=1 TO1500:NEXTT:RETURN
+20010 VE=22:HO=0:GOSUB110
+20020 PRINT">>Druk toets.<<"
+20030 GOSUB210:RETURN
+20050 GOSUB100
+20060 VE=12:HO=5:GOSUB110
+20070 PRINT"Dit was niet een goede keuze!"
+20080 GOSUB250:GOSUB20000:RETURN
+30000 REM
+30010 REM WEERRAPPORTEN IN BASICODE2
+30020 REM
+30030 REM GESCHREVEN OP COMMODORE-64
+30040 REM
+30050 REM BRON CODEBOEK KNMI
+30060 REM
+30070 REM HANS SMEETS
+30080 REM ABDIJLAAN 184
+30090 REM 5401 NP UDEN
+30100 REM 04132-61178
+30110 REM
+30120 REM FEBRUARI 1988
+30130 REM
+30140 REM COPYRIGHT NOS HILVERSUM
+

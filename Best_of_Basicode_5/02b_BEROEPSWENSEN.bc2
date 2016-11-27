@@ -1,0 +1,466 @@
+1000 A=200:GOTO20:REM BEROEPSWENSEN
+1010 REM W1=120:REM wachtlijnaanpassing
+1020 R$="'ENTER'":REM aan te passen
+1030 GOSUB100
+1040 W=0:W1=0
+1400 PRINT"BEROEPSWENSEN.":PRINT
+1410 PRINT"Wil je de handleiding doornemen?":PRINT
+1420 GOSUB1800:GOSUB100:IFIN$="N" THEN2000
+1499 REM -- INLEIDING VOOR GEBRUIKER -- *
+1500 PRINT"HANDLEIDING VOOR DE GEBRUIKER.":PRINT
+1501 PRINT"Dit programma biedt leerlingen van"
+1502 PRINT"14 jaar en ouder de mogelijkheid om"
+1503 PRINT"een beroep te toetsen aan een aantal"
+1504 PRINT"waarden die zij van belang achten."
+1505 PRINT:PRINT"Druk een toets voor vervolg."
+1506 GOSUB1710:GOSUB100
+1507 PRINT"Om dit programma op school te gebruiken"
+1508 PRINT"zonder een aangesloten printer, kun"
+1509 PRINT"je het hierna volgende formulier laten"
+1510 PRINT"printen en daarna vermenigvuldigen."
+1511 PRINT"Daarop kunnen leerlingen dan zelf de"
+1512 PRINT"gegevens overnemen voor nabespreking.":PRINT
+1513 PRINT"Wil je nu een formulier drukken?":GOSUB1800
+1514 SR=0:IFIN$<>"J" THEN1540
+1520 SR$="B E R O E P S W E N S E N.":GOSUB350:GOSUB360
+1521 GOSUB360:SR$="Dit formulier behoort bij":GOSUB350
+1522 SR$="computerprogramma met dezelfde naam.":GOSUB350
+1523 GOSUB360:SR$="Dat programma geeft aan hoe je het "
+1524 GOSUB350:SR$="moet gebruiken.":GOSUB350:GOSUB360
+1525 GOSUB360:SR=SR+1:CT=2:CN=0:GOSUB310
+1526 READA$,B$,C$:IFA$="OP" THENI=0:RESTORE:GOTO1530
+1527 GOSUB350:SR$="... "+A$:GOSUB350:SR$=" "+B$:GOSUB350
+1528 GOTO1525
+1530 GOSUB360:SR$="Mijn naam is ......................."
+1531 GOSUB350:GOSUB360:GOSUB360
+1532 SR$="Meegewerkt heeft ....................":GOSUB350
+1533 GOSUB360:GOSUB360
+1534 SR$="Het beroep .............................":GOSUB350
+1535 SR$="voldoet voor .... % (.... %)":GOSUB350
+1536 I=I+1:IFI<4 THEN1533
+1537 GOSUB360
+1540 GOSUB100:PRINT"Nog een paar opmerkingen.":PRINT
+1541 PRINT"Voor een overzichtelijk geheel is"
+1542 PRINT"uitgegaan van 40 kolommen en 16 regels."
+1543 PRINT
+1544 PRINT"Nog drie aanpassingen zijn gewenst:":PRINT
+1545 PRINT"- In regel 1010 de vertraging."
+1546 PRINT"- In 1020 de naam van de invoertoets."
+1547 PRINT"- In 22000 het woordje 'REM' weghalen"
+1548 PRINT"  als zonder printer wordt gewerkt,"
+1549 PRINT"  anders stopt het programma bij"
+1550 PRINT"  sommige computers.":GOSUB1710:GOSUB100
+1551 PRINT"De zinnen in de dataregels zijn min of"
+1552 PRINT"meer afgestemd op lbo-mavo leerlingen.":PRINT
+1553 PRINT"Deze dataregels kunnen naar wens worden"
+1554 PRINT"aangepast, vermeerderd of verminderd."
+1555 PRINT"Neem als aantal bij voorkeur een"
+1556 PRINT"drievoud + 2."
+1557 PRINT"Het programma past zichzelf aan bij"
+1558 PRINT"andere aantallen.":GOSUB1710:GOSUB100
+1561 PRINT"De gebruiksaanwijzing kan nu worden"
+1562 PRINT"gewist. (geheugenwinst 2,5 Kb!)":PRINT
+1563 PRINT"Er blijft dan een leerlingversie over.":PRINT
+1564 PRINT"Daarna kun je opnieuw starten.":PRINT
+1565 PRINT"Voor verder gebruik kan deze versie"
+1566 PRINT"dan weer worden weggeschreven.":PRINT
+1567 PRINT"WISSEN ? ?":PRINT:GOSUB1800
+1568 PRINT:IFIN$<>"J" THEN1570
+1569 GOSUB100:PRINT"Dan:":PRINT"DELETE1400-1570":PRINT:END
+1570 GOSUB100:PRINT"Dan ......":PRINT:GOSUB1710
+1600 GOTO2000
+1700 FORWW=1 TO(W*W1):NEXTWW:W=3:RETURN
+1710 PRINT:GOSUB120:PRINT"           < T O E T S > ";
+1720 GOSUB210:GOSUB110
+1730 PRINT"                                    ":RETURN
+1799 REM -- ja / nee subroutine --      *
+1800 GOSUB1700:PRINT"Druk op 'J' of 'N' voor ja of nee. ";
+1810 GOSUB210:IF(IN$="J") OR(IN$="N") THENRETURN
+1820 IFIN$="j" THENIN$="J":RETURN
+1830 IFIN$="n" THENIN$="N":RETURN
+1840 GOTO1810
+2000 GOSUB100:PRINT"       B E R O E P S W E N S E N"
+2010 PRINT"       =========================":W=6:GOSUB1700
+2020 VE=4:HO=2:GOSUB110:PRINT"buiten werken?":GOSUB1700
+2030 VE=6:HO=12:GOSUB110:PRINT"andere mensen helpen?"
+2040 VE=9:HO=17:GOSUB110:PRINT"veel verdienen?":GOSUB1700
+2050 VE=11:HO=4:GOSUB110:PRINT"mooie dingen maken?":PRINT
+2060 W=5:GOSUB1700
+2070 PRINT:PRINT"======================================="
+2080 PRINT"   e n   n o g   v e e l   m e e r ?":T=0
+2090 READA$,B$,C$:T=T+1:IFA$<>"OP" THEN2090
+2100 T=T-1:DS=INT(T/3):FT=T-(2*DS):W=5:GOSUB1700
+2110 GOSUB100:PRINT"In dit progamma kun je voor jezelf"
+2120 PRINT:PRINT"vaststellen wat je belangrijk vindt":PRINT
+2130 PRINT"bij het beroep dat je wilt kiezen.":PRINT
+2140 W=9:GOSUB1700:PRINT:PRINT:PRINT
+2150 PRINT"Druk op een toets om verder te gaan.":GOSUB1710
+2160 GOSUB100:PRINT"Maar voor we verder gaan wil ik graag"
+2170 PRINT"je voornaam weten.":PRINT:GOSUB1700:GOSUB4600
+2280 N1$=A$:GOSUB1700:GOSUB100
+2290 PRINT"Kijk eerst nog even.....":GOSUB1700:PRINT
+2300 PRINT"of iemand met je mee wil denken.":PRINT
+2310 PRINT:GOSUB1700
+2320 PRINT"           Twee weten meer dan een.":GOSUB1700
+2330 DIMD$(3,T+1),E$(3,T+1),F$(3,T+1),Z$(3)
+2340 REM ingedeelde strings
+2350 PRINT:PRINT:GOSUB1710:GOSUB1700:GOSUB100
+2380 PRINT"Er volgt nu";T;"keer een zin, waarin een"
+2390 PRINT"wens voor je beroep staat.":GOSUB120:GOSUB1710
+2400 GOSUB110:PRINT:PRINT"Daarbij moet je ook";T;"keer ";
+2410 PRINT"aangeven":PRINT"hoe belangrijk die wens voor je";
+2420 PRINT" is.":GOSUB120:GOSUB1710:GOSUB110:PRINT
+2430 PRINT"Wil je die";T;"zinnen VOORAF even zien?":PRINT
+2440 GOSUB1800
+2450 IFIN$="J" THENGOSUB1700:GOSUB100:GOTO2500
+2460 IFIN$="N" THENGOSUB1700:GOSUB100:GOTO2600
+2499 REM -- overzicht geven --          *
+2500 RESTORE:K=0
+2510 READA$,B$,C$:IFA$="OP" THENGOSUB1710:GOTO2600
+2520 PRINTK+1:PRINTA$:PRINTB$:K=K+1
+2530 IF(K/4)<>INT(K/4) THEN2510
+2540 PRINT:GOSUB1700:GOSUB1710:GOSUB100:GOTO2510
+2599 REM -- i n d e l e n --            *
+2600 GOSUB100:PRINT"Die";T;"zinnen moet je nu in drie"
+2610 PRINT:PRINT"groepen zetten:":W=6:GOSUB1700
+2620 GOSUB1710
+2630 Z$(1)=" BELANGRIJK ":Z$(2)=" MINDER"+Z$(1)
+2640 Z$(3)=" NIET"+Z$(1):PRINT
+2650 PRINT"       ";Z$(1):PRINT
+2660 PRINT"       ";Z$(2):PRINT:PRINT"       ";Z$(3):PRINT
+2670 GOSUB1700:GOSUB1710:GOSUB100
+2730 GOSUB1700:PRINT"    M A A R   P A S   O P  ! ! !"
+2740 PRINT:PRINT:PRINT"    Geen enkel beroep kan voldoen"
+2750 PRINT:PRINT"          aan alle eisen."
+2760 GOSUB1700:PRINT:GOSUB120:GOSUB1710:GOSUB110:PRINT
+2770 PRINT"Als je er in groep 1 of 2 meer zet dan":PRINT
+2780 PRINT"  ";DS;"moet je die later weghalen.":PRINT
+2790 GOSUB1710:GOSUB100:GOSUB1700
+2999 REM -- in groepen zetten ----(+sub-routine-5000)--
+3000 PRINT"Zet de volgende zinnen in de 3 groepen.":PRINT
+3010 PRINT:PRINT"      1.";Z$(1)
+3020 PRINT"      2.";Z$(2)
+3030 PRINT"      3.";Z$(3):RESTORE
+3040 FL=0:FR=0:D=0:E=0:F=0:FORI=1 TOT
+3050 READA$,B$,C$:GOSUB5000:NEXTI
+3060 GOSUB110:GOSUB1700:GOSUB1710
+3100 IFD>DS THENGOSUB4000
+3110 IFD<DS THENGOSUB4020
+3120 IFE>DS THENGOSUB4040
+3130 IFE<DS THENGOSUB4060
+3140 IF(D<DS) OR(E<DS) THEN3100
+3200 GOSUB1700:GOSUB100:PRINT:PRINT"Zo, dat is voor elkaar."
+3210 PRINT:PRINT:PRINT"Je kunt nu even kijken of je met de"
+3220 PRINT:PRINT"indeling tevreden bent.":GOSUB1700
+3230 GOSUB1710:J=0:FORI=1 TO3
+3300 J=J+1:GOSUB100:PRINT"Groep";I;"  ";Z$(I);"zijn:"
+3310 A=D:IFJ=3 THENA=F
+3320 PRINT:GOSUB1700:FORK=1 TOA:PRINTK;F$(J,K):NEXTK
+3330 GOSUB1700:GOSUB1710:NEXTI
+3400 GOSUB1700:GOSUB100
+3410 PRINT"Ben je er tevreden mee?":PRINT:GOSUB1700
+3420 PRINT"(Anders kun je het even overdoen.)":PRINT:PRINT
+3430 GOSUB1800
+3440 IFIN$="J" THEN3500
+3450 IFIN$="N" THENGOSUB1700:GOSUB100:GOTO3490
+3490 PRINT"EVEN OPNIEUW.":PRINT:GOSUB1710:GOSUB100:GOTO3000
+3500 GOSUB1700:GOSUB100:HO=5:VE=5:GOSUB110
+3510 PRINT"DAN KAN NU DEEL TWEE BEGINNEN."
+3520 PRINT:PRINT:W=5:GOSUB1710:GOTO6000
+3900 GOTO6000
+3999 REM -- naar andere groep --        *
+4000 G1=D:G2=E:H1=1:H2=2:GOSUB4400
+4010 D=G1:E=G2:RETURN
+4020 IF(D+E)<DS THEN4060
+4025 G1=D:G2=E:H1=1:H2=2:GOSUB4200
+4030 D=G1:E=G2:RETURN
+4040 G1=E:G2=F:H1=2:H2=3:GOSUB4400
+4050 E=G1:F=G2:RETURN
+4060 G1=E:G2=F:H1=2:H2=3:GOSUB4200
+4070 E=G1:F=G2:RETURN
+4199 REM -- naar hogere groep --        *
+4200 GOSUB1700:GOSUB100:PRINT"In de groep:";Z$(H1)
+4210 PRINT"staan er nu";G1;"dat is";DS-G1;"te weinig!"
+4220 GOSUB1700:GOSUB1710:PRINT"De groep:"Z$(H2)
+4230 PRINT:PRINT"wordt verkort op het scherm gezet.":PRINT
+4240 PRINT"Geef dan aan, welke zin naar de groep":PRINT
+4250 PRINTZ$(H1);"mag.":GOSUB1700:GOSUB1710:GOSUB100
+4260 FORI=1 TO(DS-G1)
+4270 FORJ=1 TOG2:PRINTJ;F$(H2,J):NEXTJ
+4280 PRINT:PRINT"Welke zin mag naar";Z$(H1);"?"
+4290 PRINT"Geef het nummer en druk op ";R$;:GOSUB120
+4300 GOSUB110:PRINT"                  "
+4305 GOSUB110:INPUTA$:IFASC(A$)>57 THEN4300
+4310 IFASC(A$)<49 THEN4300
+4320 A=VAL(A$):IFA>G2 THEN4300
+4330 G1=G1+1:D$(H1,G1)=D$(H2,A):E$(H1,G1)=E$(H2,A)
+4340 F$(H1,G1)=F$(H2,A):FORK=A TOG2:D$(H2,K)=D$(H2,(K+1))
+4350 E$(H2,K)=E$(H2,(K+1)):F$(H2,K)=F$(H2,(K+1)):NEXTK
+4360 G2=G2-1:GOSUB1700:GOSUB100:NEXTI:IFG2=0 THEN4380
+4370 FORJ=1 TOG2:PRINTJ;F$(H2,J):NEXTJ
+4380 GOSUB1700:GOSUB1710:RETURN
+4399 REM -- naar lagere groep --        *
+4400 GOSUB1700:GOSUB100:PRINT"In de groep:";Z$(H1):PRINT
+4410 PRINT"staan er nu";G1;"dat is";G1-DS;"te veel!"
+4420 GOSUB1700:GOSUB1710:PRINT"De groep:";Z$(H1)
+4430 PRINT:PRINT"wordt verkort op het scherm gezet.":PRINT
+4440 PRINT"Geef dan aan, welke zin naar de groep":PRINT
+4450 PRINTZ$(H2);"moet.":GOSUB1700:GOSUB1710:GOSUB100
+4460 FORI=1 TO(G1-DS)
+4470 FORJ=1 TOG1:PRINTJ;F$(H1,J):NEXTJ
+4480 PRINT:PRINT"Welke zin mag naar";Z$(H2);"?"
+4490 PRINT"Geef het nummer en druk op ";R$;:GOSUB120
+4500 GOSUB110:PRINT"                  "
+4505 GOSUB110:INPUTA$:IFASC(A$)>57 THEN4500
+4510 IFASC(A$)<49 THEN4500
+4520 A=VAL(A$):IFA>G1 THEN4500
+4530 G2=G2+1:D$((H1+1),G2)=D$(H1,A):E$((H1+1),G2)=E$(H1,A)
+4540 F$((H1+1),G2)=F$(H1,A):FORK=A TOG1
+4545 D$(H1,K)=D$(H1,(K+1))
+4550 E$(H1,K)=E$(H1,(K+1)):F$(H1,K)=F$(H1,(K+1)):NEXTK
+4560 G1=G1-1:GOSUB1700:GOSUB100:NEXTI
+4570 FORJ=1 TOG1:PRINTJ;F$(H1,J):NEXTJ
+4580 GOSUB1700:GOSUB1710:RETURN
+4599 REM -- invoer van namen --         *
+4600 PRINT:PRINT"Type de naam en druk op ";R$
+4610 PRINT:PRINT"Het is: ";:INPUTA$:PRINT
+4620 PRINT"Je typte ";A$+",":PRINT:PRINT"is dat goed?"
+4630 PRINT:GOSUB1800
+4640 IFIN$="J" THENGOSUB100:RETURN
+4650 IFIN$="N" THENPRINT:PRINT
+4660 GOSUB1700:GOSUB100
+4670 PRINTA$;" is dus niet goed.":PRINT
+4680 PRINT"Hoe is het dan?":PRINT:GOTO4600
+4999 REM -- beroep waarderen --         *
+5000 GOSUB1700:HO=0:VE=8:GOSUB110:FORJ=1 TO7
+5010 PRINT"                                      ":NEXTJ
+5020 GOSUB110:PRINT"Zin";I:PRINT
+5030 FORJ=1 TO(LEN(A$)):PRINTMID$(A$,J,1);:NEXTJ:PRINT
+5040 FORJ=1 TO(LEN(B$)):PRINTMID$(B$,J,1);:X=2.5*3:NEXTJ
+5050 PRINT:PRINT:PRINT"Druk op 1, 2 of 3. ";
+5060 GOSUB210
+5070 IF(IN$<>"1") AND(IN$<>"2") AND(IN$<>"3") THEN5060
+5080 IFIN$="1" THEND=D+1:D$(1,D)=A$:E$(1,D)=B$:F$(1,D)=C$
+5090 IFIN$="2" THENE=E+1:D$(2,E)=A$:E$(2,E)=B$:F$(2,E)=C$
+5100 IFIN$="3" THENF=F+1:D$(3,F)=A$:E$(3,F)=B$:F$(3,F)=C$
+5110 HO=33:VE=(VAL(IN$))+2:GOSUB110
+5120 IFIN$="1" THENPRINT"(";D;")"
+5130 IFIN$="2" THENPRINT"(";E;")"
+5140 IFIN$="3" THENPRINT"(";F;")"
+5150 GOSUB1700:HO=0:VE=8:GOSUB110:FORJ=1 TO7
+5160 PRINT"                                      ":NEXTJ
+5200 RETURN
+5999 REM -- t w e e d e   d e e l --    *
+6000 GOSUB100:PRINT"In dit tweede deel kun je een beroep"
+6010 PRINT:PRINT"opgeven";:GOSUB1700
+6020 PRINT" en dan kijken of dit aan je":PRINT
+6030 PRINT"wensen voldoet.":GOSUB1700:GOSUB1710:GOSUB100
+6040 PRINT"Denkt er iemand met je mee?":GOSUB1700
+6050 PRINT:GOSUB1800
+6060 IFIN$="J" THEN7000
+6070 IFIN$="N" THENGOSUB100:N2$="":GOTO8000
+7000 PRINT:PRINT:PRINT"Hoe is zijn of haar naam?":PRINT
+7010 GOSUB1700
+7020 GOSUB4600:N2$=A$
+8000 GOSUB1700:PRINT"Je moet nu een beroep opgeven.":PRINT
+8010 PRINT"Daarna krijg je alle zinnen uit groep":PRINT
+8020 PRINT"1 en 2 te zien, om dat beroep mee te":PRINT
+8030 PRINT"vergelijken.":GOSUB1700:GOSUB1710:GOSUB100
+8040 PRINT"Type de naam van het beroep in, dat je":PRINT
+8050 PRINT"met je wensen gaat vergelijken.":GOSUB1700:PRINT
+8060 GOSUB4600:BR$=A$
+8099 REM -- beroep toetsen aan wensen-- *
+8100 H=1:XT=0:YT=0
+8110 FORI=1 TOD:GOSUB100
+8120 N=0:PRINT"In de groep";Z$(H);"staat:":PRINT
+8130 PRINTD$(H,I):PRINTE$(H,I):PRINT
+8140 GOSUB1700:PRINT"Voldoet ";BR$
+8150 PRINT"aan deze wens?":GOSUB1700
+8160 GOSUB21000:XT=XT+(2*X/H):IFN2$="" THEN8240
+8199 REM -- mening nr. twee --          *
+8200 N=1:GOSUB110:PRINT"Volgens jou dus ";IN$
+8210 GOSUB1700:VE=VE+2:GOSUB110:PRINT"En wat denkt":VE=VE+2
+8220 GOSUB110:PRINTN2$;" ? ";:GOSUB210:GOSUB21040
+8230 Y=X:YT=YT+(2*Y/H):PRINTIN$:GOSUB1710
+8240 NEXTI:IFH=1 THENH=2:GOTO8110
+8250 XT=INT(XT*100/(6*D)):SR=XT:GOSUB300:XT$=SR$
+8260 YT=INT(YT*100/(6*D)):SR=YT:GOSUB300:YT$=SR$
+8299 REM -- eindoverzicht --            *
+8300 GOSUB1700:GOSUB100:PRINT"          RESULTAAT...."
+8310 IFYT$="0" THENYT$="- ":PRINT:PRINT:PRINT:GOSUB1710:HO=5
+8320 VE=0:GOSUB110:PRINT"Volgens jou voldoet het beroep"
+8330 VE=2:GOSUB110:PRINTBR$:GOSUB1700
+8340 VE=4:GOSUB110:PRINT"voor";XT;"procent aan je wensen."
+8350 GOSUB1700:IFN2$="" THEN8380
+8360 VE=6:GOSUB110:PRINT"Volgens ";N2$
+8370 VE=8:GOSUB110:PRINT"voldoet het voor";YT;"procent."
+8380 VE=10:GOSUB110:W=8:GOSUB1700
+8390 PRINT"Is de printer aangesloten en":VE=12:GOSUB110
+8400 PRINT"wil je de gegevens op papier?":PRINT
+8410 GOSUB1800:IFIN$="J" THENGOSUB22000:GOTO8500
+8420 IFIN$="N" THENVE=VE-2:GOSUB110:FORI=1 TO5
+8430 PRINT"                                   ":NEXTI
+8440 GOSUB110:PRINT"Werk je met een invulformulier?"
+8450 PRINT:GOSUB1800:IFIN$<>"J" THEN8500
+8460 IFFL=1 THENGOSUB100:PRINT"Vul in:":PRINT:GOSUB23120
+8470 GOSUB23000
+8499 REM -- opmerkingen --              *
+8500 GOSUB100:GOSUB1700:GOSUB1710:IFXT>68 THEN8580
+8510 PRINT"Het beroep ";BR$:PRINT
+8520 PRINT"voldoet met";XT;"procent niet zo goed":PRINT
+8530 PRINT"aan je wensen ";N1$+".":GOSUB1700:PRINT
+8540 PRINT"Weet je nog een aardig beroep?":PRINT
+8550 GOSUB1700:PRINT"Vergelijk dat dan ook eens met"
+8560 PRINT:PRINT"met je wensen.":GOSUB1700:GOSUB1710
+8570 GOTO8700
+8580 IFN2$="" THEN8700
+8590 GOSUB100:IFABS(XT-YT)<30 THEN8700
+8600 GOSUB100:PRINT"Julie zijn het niet erg met elkaar"
+8610 PRINT:PRINT"eens ";N1$+"!":PRINT:GOSUB1700:GOSUB1710
+8620 GOSUB100:PRINT"Misschien heeft een van jullie geen"
+8630 PRINT:PRINT"goede kijk op dit beroep.":PRINT:GOSUB1700
+8640 GOSUB1700:PRINT"Je kunt het nog eens samen bekijken"
+8650 PRINT:PRINT"maar vertel elkaar dan steeds":PRINT
+8660 PRINT"waarom je het niet eens bent met":PRINT
+8670 PRINT"wat de ander zegt.":GOSUB1700:GOSUB1710
+8699 REM -- afsluiting of vervolg --    *
+8700 GOSUB100:GOSUB1700
+8710 PRINT"  Wat zullen we verder gaan doen?":GOSUB1700
+8720 PRINT:PRINT:PRINT:GOSUB1700
+8730 PRINT"  1. Je wensen vergelijken met een"
+8740 PRINT"     ander beroep?":PRINT
+8750 PRINT"  2. Alles nog eens opnieuw?":PRINT
+8760 PRINT"  3. Stoppen of iemand anders?":W=5:GOSUB1700
+8770 PRINT:PRINT:PRINT:PRINT"Druk op 1, 2 of 3. ";
+8800 GOSUB210:IFIN$="1" THEN6000
+8810 IFIN$="2" THENGOSUB100:GOTO3000
+8820 IFIN$="3" THEN8860
+8830 GOTO8800
+8860 GOSUB100:PRINT" P R O G R A M M A":PRINT
+8870 PRINT:PRINT"         B E R O E P S W E N S E N.":PRINT
+8880 PRINT:PRINT:PRINT"Wil je het gebruiken?":PRINT
+8890 PRINT"Druk dan op een toets. ";:GOSUB210:RUN
+20999 REM -- beroep waardering geven -- *
+21000 PRINT:PRINT" 1. Ja."
+21010 PRINT" 2. Een beetje."
+21020 PRINT" 3. Nee.":GOSUB1700:HO=18:VE=8
+21030 GOSUB110:PRINT"Druk op 1, 2 of 3. ";:GOSUB210
+21040 IFIN$="1" THENX=2:RETURN
+21050 IFIN$="2" THENX=1:RETURN
+21060 IFIN$="3" THENX=0:RETURN
+21070 IFN=1 THENVE=VE+1:N=0
+21080 GOTO21030
+21999 REM -- uitslag op printer --      *
+22000 REM:GOSUB100:PRINT"GEEN PRINTER!":GOSUB1710:GOTO8300
+22010 IFFP=1 THENGOSUB360:GOTO22150
+22020 SR$="Beroepswensen (resultaten van "+N1$+")."
+22030 GOSUB350:GOSUB360:GOSUB360
+22040 A$="In de onderstaande 2 groepen staan de wensen "
+22050 SR$=A$+"voor mijn toekomstig beroep.":GOSUB350
+22060 GOSUB360:GOSUB360:A$="De belangrijkste staan in "
+22070 SR$=A$+"groep 1, de minder belangrijke in groep 2."
+22080 GOSUB350:GOSUB360:GOSUB360:SR$="In groep 1 staan:"
+22090 GOSUB350:GOSUB360
+22100 FORI=1 TODS:SR$=D$(1,I)+" "+E$(1,I):GOSUB350
+22110 GOSUB360:NEXTI:GOSUB360
+22120 GOSUB360:SR$="In groep 2 staan:":GOSUB350:GOSUB360
+22130 FORI=1 TODS:SR$=D$(2,I)+" "+E$(2,I):GOSUB350
+22140 GOSUB360:NEXTI:GOSUB360
+22150 SR$="Volgens mij voldoet het beroep "+BR$:GOSUB350
+22160 GOSUB360:SR$="voor "+XT$+" % aan mijn wensen. "
+22170 GOSUB350:SR$="(Uitgerekend door de computer.)"
+22180 FP=1:GOSUB350:GOSUB360:GOSUB360:IFN2$="" THENRETURN
+22190 SR$="Volgens "+N2$+" voldoet het voor "+YT$+" %"
+22200 GOSUB350:GOSUB360:GOSUB360:RETURN
+22999 REM -- formulier invullen --      *
+23000 GOSUB100:PRINT"Om het formulier in te vullen laat"
+23010 PRINT"ik eerst de zinnen uit groep 1 zien.":PRINT
+23020 GOSUB1700:PRINT"Zoek op je formulier die zinnen op"
+23030 PRINT"en zet voor deze zinnen: ++ .":PRINT
+23040 GOSUB1700:PRINT"Dan zie je de zinnen uit groep 2."
+23050 PRINT"Zet daar voor: + .":PRINT:GOSUB1710:GOSUB100
+23060 PRINT"GROEP 1.  -";Z$(1);"-":FORI=1 TOD
+23065 PRINTF$(1,I):NEXTI:PRINT
+23070 PRINT"Zoek ze op en zet er ++ voor.":PRINT:GOSUB1710
+23080 GOSUB100:PRINT"GROEP 2.  -";Z$(2);"-"
+23085 FORI=1 TOD:PRINTF$(2,I)
+23090 NEXTI:PRINT:PRINT"Zoek ze op en zet er + voor."
+23100 PRINT:GOSUB1710:GOSUB100:PRINT"Vul je naam, ";
+23110 PRINT"of jullie namen in.":PRINT:PRINT"En dan....."
+23120 PRINT:PRINTBR$;"... ";XT$;"%  (";YT$;"% )"
+23130 FL=1:RETURN
+24999 REM -- data in groepen van 3 --   *
+25000 DATA"Werk dat ik"
+25001 DATA"meestal in de buitenlucht kan doen."
+25002 DATA"Buiten werken."
+25010 DATA"Leiding geven aan anderen"
+25011 DATA"en voor hen het werk organiseren."
+25012 DATA"Leiding geven."
+25020 DATA"Werken in een klein bedrijf, waar"
+25021 DATA"ik iedereen goed ken, ook de baas."
+25022 DATA"In klein bedrijf werken."
+25030 DATA"Werk waarmee ik"
+25031 DATA"flink geld zal kunnen verdienen."
+25032 DATA"Goed verdienen."
+25040 DATA"Werk waarbij ik mensen en kinderen"
+25041 DATA"kan helpen die dat erg nodig hebben."
+25042 DATA"Mensen en kinderen helpen."
+25050 DATA"Werk met veel afwisseling,"
+25051 DATA"dus niet steeds hetzelfde."
+25052 DATA"Afwisselend werk."
+25060 DATA"Werk waarbij ik mezelf kan zijn,"
+25061 DATA"dus niet extra beleefd doen of zoiets."
+25062 DATA"Mezelf kunnen zijn."
+25070 DATA"Werk waarbij niet al te grote"
+25071 DATA"lichamelijke inspanning nodig is."
+25072 DATA"Niet te grote lichaams-inspanning."
+25080 DATA"Werk waarbij ik mijn eigen"
+25081 DATA"baas ben en dus veel zelf kan regelen."
+25082 DATA"Eigen baas zijn."
+25090 DATA"Werk waarvan je duidelijk resultaat"
+25091 DATA"ziet en waar je trots op kunt zijn."
+25092 DATA"Je moet resultaten kunnen zien."
+25100 DATA"Werk waarbij ik in een prettige"
+25101 DATA"en gezellige omgeving kan werken."
+25102 DATA"Prettige werkomgeving."
+25110 DATA"Werk waarbij ik rustig alleen"
+25111 DATA"en ongestoord kan zitten werken."
+25112 DATA"Rustig alleen werken."
+25120 DATA"Werk waarbij"
+25121 DATA"de kans op werkeloosheid klein is."
+25122 DATA"Weinig kans op werkeloosheid."
+25130 DATA"Werk waarbij ik meer met mijn"
+25131 DATA"handen dan met mijn hoofd werk."
+25132 DATA"Meer doe-werk dan denk-werk."
+25140 DATA"Werk waarbij ik meer te maken"
+25141 DATA"heb met mensen dan met dingen"
+25142 DATA"Meer met mensen dan met dingen."
+25150 DATA"Werk waarbij ik mooie dingen kan maken"
+25151 DATA"waar je met genoegen naar kijkt."
+25152 DATA"Mooie dingen maken."
+25160 DATA"Werk waarbij je flink kunt doorgaan,"
+25161 DATA"niet dat nauwkeurige priegelwerk."
+25162 DATA"Geen nauwkeurig priegelwerk."
+25170 DATA"Werk waarbij je zelf iets kunt"
+25171 DATA"verzinnen en het zelf mag uitwerken."
+25172 DATA"Zelf verzinnen en uitwerken."
+25180 DATA"Nauwkeurig en precies werk,"
+25181 DATA"niet zo grof, ruw of slordig."
+25182 DATA"Nauwkeurig werk leveren."
+25190 DATA"Werk dat mensen belangrijk vinden"
+25191 DATA"en dus ook mijzelf belangrijk maakt."
+25192 DATA"Wat mij belangrijk maakt."
+29999 DATA"OP","0","0"
+30000 REM **                         **
+30010 REM **     BEROEPSWENSEN       **
+30020 REM ** Ontworpen op NewBrain,  **
+30030 REM ** vertaald naar Basicode  **
+30040 REM **    op Spectravideo      **
+30050 REM **  door C. Wielemaker     **
+30060 REM **   T.S. Kerkelanden      **
+30070 REM **  Hilversum dec. 1986    **
+30080 REM **                         **
+30090 REM **    copyright N.O.S.     **
+30100 REM **        Hilversum        **
+30110 REM **                         **
+

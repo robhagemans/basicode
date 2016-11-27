@@ -1,0 +1,218 @@
+1000 A=600:GOTO20
+1010 GOSUB100:REM uitleg tekencode
+1020 REM EERST SCHERM OPMETEN
+1030 VE=0:FORI=0 TO80:HO=I:GOSUB110
+1040 GOSUB120:IFHO<>I THENHP=I:I=80
+1050 NEXTI:FORI=0 TO40:HO=0:VE=I:GOSUB110
+1060 GOSUB120:IFVE<>I THENVP=I:I=40
+1070 NEXTI
+1080 REM BEGIN PROGRAMMA
+1090 DIMK$(6)
+1100 SB$="":KL$="":N=1
+1110 GOSUB100:PRINT"TOELICHTING TEKENCODE 1-2-3"
+1111 PRINT"==========================="
+1112 PRINT:PRINT
+1120 PRINT:PRINT"Naar Printer (1) of Scherm (2) ";
+1130 GOSUB210:IF(IN$<>"1") AND(IN$<>"2") THEN1130
+1140 PT=1:IFIN$="2" THENPT=0:GOTO1220
+1150 PRINT:PRINT:PRINT"Hoeveel letters per regel ";
+1160 INPUTHP
+1170 PRINT:PRINT"Kantlijnbreedte: ";
+1180 INPUTSP:GOSUB1900:KL$=SP$
+1190 HP=HP-SP:IFSP>1 THENHP=HP-SP+2
+1200 PRINT:PRINT"Aantal regels per pagina ";
+1210 INPUTVP:VP=VP-6
+1220 RT=0:H=0
+1230 REM PRINT DE KOP
+1240 K$(0)="******************************"
+1250 K$(1)="*     N.O.S.- HOBBYSCOOP     *"
+1260 K$(2)="*  Walther van den Elshout   *"
+1270 K$(3)="*   GEBRUIKERSTOELICHTING    *"
+1280 K$(4)="*     BIJ HET PROGRAMMA      *"
+1290 K$(5)="*         TEKENCODE          *"
+1300 K$(6)="******************************"
+1310 GOSUB100
+1320 SP=INT((HP-30)/2):IFPT=1 THENSP=SP-3
+1330 GOSUB1900
+1340 SR$=" ":GOSUB20000
+1350 FORI=0 TO6:SR$=SP$+K$(I):GOSUB20000:NEXTI
+1360 RESTORE:READDD$
+1370 SR$=" ":GOSUB20000
+1380 A$="BASICODE-2 versie: December 1987"
+1390 SP=INT((HP-LEN(A$))/2):IFPT=1 THENSP=SP-3
+1400 GOSUB1900
+1410 SR$=SP$+A$:GOSUB20000
+1420 SR$=" ":GOSUB20000
+1430 SR$="Zend uw eventuele reacties ":GOSUB20000
+1440 SR$="aan:":GOSUB20000
+1450 SR$=" ":GOSUB20000
+1460 SR$="N.O.S. Hobbyscoop Beeldkrant,":GOSUB20000
+1470 SR$="Postbus 1200,":GOSUB20000
+1480 SR$="1200 BE Hilversum.":GOSUB20000
+1490 A$="":REM PRINT DE OVERIGE DATA
+1500 READBB$
+1510 GOSUB22100
+1520 GOSUB22190
+1530 GOTO1510
+1540 END
+1900 SP$="":FORI=1 TOSP:SP$=SP$+" ":NEXTI:RETURN
+20000 REM AFDRUK SUBROUTINE
+20010 IFSR$="" THENRETURN
+20020 IFPT=1 THEN20060
+20030 PRINTSR$
+20040 RT=RT+1:IFRT=VP-4 THENGOSUB21000
+20050 RETURN
+20060 SR$=KL$+SR$:GOSUB350:GOSUB360:RT=RT+1
+20070 IFRT=VP THENGOSUB22000
+20080 RETURN
+21000 REM SCHERM VOL
+21010 IFRT=0 THENRETURN
+21020 HO=0:VE=VP-1:GOSUB110
+21030 PRINT"<Toets voor verder>";
+21040 GOSUB210:GOSUB100:RT=0:RETURN
+22000 REM PAPIER VOL
+22010 GOSUB100:FORI=1 TO6:GOSUB360:NEXTI
+22020 PRINT"Zet de printer bovenaan nieuwe pagina"
+22030 PRINT"en druk daarna op een toets."
+22040 GOSUB210:RT=0:GOSUB100
+22050 N=N+1:SR=N:GOSUB300:N$=SR$
+22060 SR$="Afl.: "+DD$+", pag. "+N$
+22070 NL=LEN(SR$):GOSUB20060:SR$=""
+22080 SR$=SR$+"-":IFLEN(SR$)<NL THEN22080
+22090 GOSUB20060:SR$=" ":GOSUB20060:RETURN
+22100 IFBB$="$$$$$" THENH=1:GOSUB22190:END
+22110 IFA$<>"" THENA$=A$+" "
+22120 A$=A$+BB$:READBB$
+22130 IFLEFT$(BB$,1)="#" THENH=1:GOTO22180
+22140 IFLEFT$(BB$,1)="." THENH=1:GOTO22180
+22150 IFA$=". " THEN22180
+22160 IFLEFT$(A$,1)="#" THEN22180
+22170 IFLEN(A$)<HP THEN22100
+22180 RETURN
+22190 REM PRINT met aangepaste regellengte
+22200 IFLEFT$(A$,1)="#" THENH=3
+22210 IF(LEFT$(A$,1)<>".") AND(H<3) THEN22260
+22220 LL=LEN(A$):A$=RIGHT$(A$,LL-1)
+22230 IFH<3 THEN22260
+22240 IFPT=0 THENGOSUB21010
+22250 IFPT=1 THENSR$=" ":GOSUB20000
+22260 IFA$=" " THENSR$=A$:A$="":GOSUB20000:GOTO22370
+22270 L=LEN(A$):IF(H=0) AND(L<HP) THEN22370
+22280 IFL<HP THENSR$=A$:A$="":GOSUB20000:GOTO22360
+22290 FORI=HP TO1 STEP-1
+22300 B$=MID$(A$,I,1)
+22310 IFB$=" " THENJ=I:I=1
+22320 NEXTI
+22330 SR$=LEFT$(A$,J-1):A$=RIGHT$(A$,L-J)
+22340 GOSUB20000
+22350 GOTO22270
+22360 IFH=3 THENSR$=" ":GOSUB20000
+22370 H=0:RETURN
+25000 DATA"U I T L E G   T E K E N C O D E"
+25010 DATA"#Deel 1: UITLEGPROGRAMMA TEKENCODE"
+25020 DATA"Beste Hobbyscoopvrienden,"
+25030 DATA". ",". "
+25040 DATA"Het programma 'TEKENCODE' bestaat"
+25050 DATA"uit 3 onderdelen die u apart moet"
+25060 DATA"laden."
+25070 DATA". ","-> de 3 onderdelen zijn:"
+25080 DATA". "
+25090 DATA". ","   1. Uitleg"
+25100 DATA". ","   2. Ontwerp tekencode"
+25110 DATA". ","   3. Invulprogramma"
+25120 DATA". ",". "
+25130 DATA"#1. UITLEGPROGRAMMA"
+25140 DATA"Dit programma is geschreven als"
+25150 DATA"BasiCode beeldkrant en spreekt voor zich."
+25160 DATA"#2. ONTWERP TEKENCODE"
+25170 DATA"Dit is het belangrijkste gedeelte."
+25180 DATA"Het is bedoeld als hulpmiddel bij het"
+25190 DATA"maken van een BasiCode programma waarbij"
+25200 DATA"u gebruik wilt maken van de beperkte"
+25210 DATA"grafische mogelijkheden van BasiCode."
+25220 DATA"Met dit programma ontwerpt u een tekening"
+25230 DATA"op het beeldscherm. De 'VE' en 'HO'-"
+25240 DATA"coordinaten worden in het geheugen"
+25250 DATA"opgeslagen. U kunt ze elk moment in het"
+25260 DATA"programma opvragen en evt. laten printen."
+25270 DATA"Daarna kunt u het programma gewoon"
+25280 DATA"voortzetten via nummer 2 van het"
+25290 DATA"menu zonder dat daarbij gegevens verloren"
+25300 DATA"gaan. De computer tekent dan opnieuw"
+25310 DATA"die coordinaten die u al had."
+25320 DATA"Voor elke coordinaat zet de computer"
+25330 DATA"dit teken: '#'."
+25340 DATA"U kunt dit natuurlijk zelf veranderen."
+25350 DATA"#De besturingscommando's zijn als volgt:"
+25360 DATA". ",". "
+25370 DATA". ","                  Y"
+25380 DATA". ","                  ^"
+25390 DATA". ","              G < + > H"
+25400 DATA". ","                  v"
+25410 DATA". ","                  B"
+25420 DATA". ",". ",". "
+25430 DATA"Ook dit kunt u natuurlijk zelf"
+25440 DATA"aanpassen aan uw eigen wensen."
+25450 DATA"Als u klaar bent met het ontwerp dan"
+25460 DATA"kunt u de 'VE' en 'HO'- coordinaten"
+25470 DATA"opvragen en die later toepassen"
+25480 DATA"in een ander BasiCode programma."
+25490 DATA"De computer laat dus precies dat"
+25500 DATA"zien wat later in DATA-regels moet"
+25510 DATA"worden ingetypt."
+25520 DATA"U kunt hiervoor zelf een programma"
+25530 DATA"ontwerpen of gebruik maken van deel 3"
+25540 DATA"van deze programmareeks."
+25550 DATA"#MOGELIJKHEDEN TIJDENS ONTWERPEN"
+25560 DATA"Behalve de hiervoor beschreven"
+25570 DATA"besturingscommando's kan tijdens het"
+25580 DATA"ontwerpen de volgende commando's worden"
+25590 DATA"gegeven:"
+25600 DATA". ","->S: Nieuw startpunt m.b.v."
+25610 DATA"co-ordinaten invoeren."
+25620 DATA". ","->V: Verplaatsing met de"
+25630 DATA"besturingstoetsen zonder dat de"
+25640 DATA"computer iets tekent."
+25650 DATA". ","->O: Verplaatsing met de"
+25660 DATA"besturingstoetsen waarbij de cursor"
+25670 DATA"het '#' teken zet."
+25680 DATA". ","->W: Wissen m.b.v. de besturingstoetsen"
+25690 DATA"en gegevens uit het geheugen halen."
+25700 DATA". ","->M: Terug naar het hoofdmenu."
+25710 DATA". ","--> de cursor wordt aangegeven door '*'."
+25720 DATA"#NOTA BENE:"
+25730 DATA"Omdat mijn computer, AQUARIUS, slechts"
+25740 DATA"beschikt over een beeldschermbreedte"
+25750 DATA"van 38 karakters, is het programma"
+25760 DATA"ook hiervoor geschreven."
+25770 DATA"Hebt u een computer met meer karakters"
+25780 DATA"per regel, dan kunt u dit zelf"
+25790 DATA"aanpassen."
+25800 DATA"(Zie hiervoor regel 1015 en 1016"
+25810 DATA"in tekencode-2)."
+25820 DATA"Uiteraard kunt u het programma ook"
+25830 DATA"in de oude staat gebruiken wanneer"
+25840 DATA"uw computer minstens 38 karakters per"
+25850 DATA"regel heeft."
+25860 DATA"#3. INVULPROGRAMMA"
+25870 DATA"Met dit programma kunt u toepassen wat"
+25880 DATA"u ontworpen hebt in deel 2."
+25890 DATA"U vult daarvoor de coordinaten in vanaf"
+25900 DATA"regel 25000."
+25910 DATA"U dient de reeks af te sluiten met:"
+25920 DATA"-> DATA 100,100."
+25930 DATA"Dit staat al in regel 29999."
+25940 DATA"#VEEL PROGRAMMEERPLEZIER MET"
+25950 DATA". ",". ",". "
+25960 DATA"        T E K E N C O D E"
+25970 DATA". "
+25980 DATA"        ================="
+25990 DATA". ",". ",". "
+26000 DATA"          Walther van den Elshout"
+26010 DATA". "
+26020 DATA"          van Gorkumlaan 151"
+26030 DATA". "
+26040 DATA"          5641 WP  Eindhoven."
+26050 DATA"$$$$$"
+30000 REM COPYRIGHT NOS HILVERSUM
+

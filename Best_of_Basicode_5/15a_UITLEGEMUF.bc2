@@ -1,0 +1,215 @@
+1000 A=600:GOTO20
+1010 GOSUB100:REM HOBBYSCOOP-KRANT
+1020 REM EERST SCHERM OPMETEN
+1030 VE=0:FORI=0 TO80:HO=I:GOSUB110
+1040 GOSUB120:IFHO<>I THENHP=I:I=80
+1050 NEXTI:FORI=0 TO40:HO=0:VE=I:GOSUB110
+1060 GOSUB120:IFVE<>I THENVP=I:I=40
+1070 NEXTI
+1080 REM BEGIN PROGRAMMA
+1090 DIMK$(6)
+1100 SB$="":KL$="":N=1
+1110 GOSUB100:PRINT"HOBBYSCOOPKRANT"
+1120 PRINT:PRINT"Naar Printer (1) of Scherm (2) ";
+1130 GOSUB210:IF(IN$<>"1") AND(IN$<>"2") THEN1130
+1140 PT=1:IFIN$="2" THENPT=0:GOTO1220
+1150 PRINT:PRINT:PRINT"Hoeveel letters per regel ";
+1160 INPUTHP
+1170 PRINT:PRINT"Kantlijnbreedte: ";
+1180 INPUTSP:GOSUB1900:KL$=SP$
+1190 HP=HP-SP:IFSP>1 THENHP=HP-SP+2
+1200 PRINT:PRINT"Aantal regels per pagina ";
+1210 INPUTVP:VP=VP-6
+1220 RT=0:H=0
+1230 REM PRINT DE KOP
+1240 K$(0)="******************************"
+1250 K$(1)="*                            *"
+1260 K$(2)="*          SPECIALE          *"
+1270 K$(3)="*            N O S           *"
+1280 K$(4)="*      HOBBYSCOOP-KRANT      *"
+1290 K$(5)="*                            *"
+1300 K$(6)="******************************"
+1310 GOSUB100
+1320 SP=INT((HP-30)/2):IFPT=1 THENSP=SP-3
+1330 GOSUB1900
+1340 SR$=" ":GOSUB20000
+1350 FORI=0 TO6:SR$=SP$+K$(I):GOSUB20000:NEXTI
+1360 RESTORE:READDD$
+1370 SR$=" ":GOSUB20000
+1380 A$="Onderwerp: Uitleg"+DD$
+1390 SP=INT((HP-LEN(A$))/2):IFPT=1 THENSP=SP-3
+1400 GOSUB1900
+1410 SR$=SP$+A$:GOSUB20000
+1420 SR$=" ":GOSUB20000
+1430 SR$="Versie van november 1987,":GOSUB20000
+1440 SR$="Samengesteld door PA0DOK.":GOSUB20000
+1450 SR$=" ":GOSUB20000
+1460 SR$="N.O.S. Hobbyscoop":GOSUB20000
+1470 SR$="Postbus 1200,":GOSUB20000
+1480 SR$="1200 BE Hilversum.":GOSUB20000
+1490 A$="":REM PRINT DE OVERIGE DATA
+1500 READBB$
+1510 GOSUB22100
+1520 GOSUB22190
+1530 GOTO1510
+1540 END
+1900 SP$="":FORI=1 TOSP:SP$=SP$+" ":NEXTI:RETURN
+20000 REM AFDRUK SUBROUTINE
+20010 IFSR$="" THENRETURN
+20020 IFPT=1 THEN20060
+20030 PRINTSR$
+20040 RT=RT+1:IFRT=VP-4 THENGOSUB21000
+20050 RETURN
+20060 SR$=KL$+SR$:GOSUB350:GOSUB360:RT=RT+1
+20070 IFRT=VP THENGOSUB22000
+20080 RETURN
+21000 REM SCHERM VOL
+21010 IFRT=0 THENRETURN
+21020 HO=0:VE=VP-1:GOSUB110
+21030 PRINT"<Toets voor verder>";
+21040 GOSUB210:GOSUB100:RT=0:RETURN
+22000 REM PAPIER VOL
+22010 GOSUB100:FORI=1 TO6:GOSUB360:NEXTI
+22020 PRINT"Zet de printer bovenaan nieuwe pagina"
+22030 PRINT"en druk daarna op een toets."
+22040 GOSUB210:RT=0:GOSUB100
+22050 N=N+1:SR=N:GOSUB300:N$=SR$
+22060 SR$="UITLEG "+DD$+", pag. "+N$
+22070 NL=LEN(SR$):GOSUB20060:SR$=""
+22080 SR$=SR$+"-":IFLEN(SR$)<NL THEN22080
+22090 GOSUB20060:SR$=" ":GOSUB20060:RETURN
+22100 IFBB$="$$$$$" THENH=1:GOSUB22190:END
+22110 IFA$<>"" THENA$=A$+" "
+22120 A$=A$+BB$:READBB$
+22130 IFLEFT$(BB$,1)="#" THENH=1:GOTO22180
+22140 IFLEFT$(BB$,1)="." THENH=1:GOTO22180
+22150 IFA$=". " THEN22180
+22160 IFLEFT$(A$,1)="#" THEN22180
+22170 IFLEN(A$)<HP THEN22100
+22180 RETURN
+22190 REM PRINT met aangepaste regellengte
+22200 IFLEFT$(A$,1)="#" THENH=3
+22210 IF(LEFT$(A$,1)<>".") AND(H<3) THEN22260
+22220 LL=LEN(A$):A$=RIGHT$(A$,LL-1)
+22230 IFH<3 THEN22260
+22240 IFPT=0 THENGOSUB21010
+22250 IFPT=1 THENSR$=" ":GOSUB20000
+22260 IFA$=" " THENSR$=A$:A$="":GOSUB20000:GOTO22370
+22270 L=LEN(A$):IF(H=0) AND(L<HP) THEN22370
+22280 IFL<HP THENSR$=A$:A$="":GOSUB20000:GOTO22360
+22290 FORI=HP TO1 STEP-1
+22300 B$=MID$(A$,I,1)
+22310 IFB$=" " THENJ=I:I=1
+22320 NEXTI
+22330 SR$=LEFT$(A$,J-1):A$=RIGHT$(A$,L-J)
+22340 GOSUB20000
+22350 GOTO22270
+22360 IFH=3 THENSR$=" ":GOSUB20000
+22370 H=0:RETURN
+25000 DATA" EMUF 1.7"
+25010 DATA"#UITLEG EMUF 1.7"
+25020 DATA"Dit programma is een nieuwe bewerking van EMUF,"
+25030 DATA"een door vele auteurs vervaardigd programma,"
+25040 DATA"dat bedoeld is om een voorspelling te geven van"
+25050 DATA"de mate van waarschijnlijkheid waarmede,"
+25060 DATA"afhankelijk van het jaargetijde en de"
+25070 DATA"zonneaktiviteit, een radioverbinding tussen"
+25080 DATA"twee stations tot stand kan komen. Dit kan van"
+25090 DATA"belang zijn tussen twee radiozendstations, maar"
+25100 DATA"ook tussen een zend- en een luisterstation."
+25110 DATA".Het programma is herschreven in Basicode, zodat"
+25120 DATA"het op vele computertypen gebruikt kan worden."
+25130 DATA"#GEBRUIK."
+25140 DATA"Als het programma wordt gestart, verschijnt de"
+25150 DATA"vraag naar de positie van het eigen luister- of"
+25160 DATA"zendstation. De breedtegraad is positief voor"
+25170 DATA"het noordelijk halfrond en negatief voor het"
+25180 DATA"zuidelijk halfrond. Voor de lengtegraad geldt,"
+25190 DATA"dat de oosterlengte als een positief getal moet"
+25200 DATA"worden ingegeven."
+25210 DATA".In het programma is de default-waarde: 52 gr"
+25220 DATA"NB en 5 gr OL. In de regels 1070 en 1100 kan dit"
+25230 DATA"worden aangepast aan de omstandigheden van de"
+25240 DATA"gebruiker. Een simpele druk op 'return' voert"
+25250 DATA"dan de gegevens in."
+25260 DATA"#TEGENSTATION."
+25270 DATA"Op een nieuwe pagina wordt de naam van het"
+25280 DATA"tegenstation gevraagd, dit kan bijv. zijn:"
+25290 DATA"New York. Daarvan wordt dan de breedtegraad"
+25300 DATA"gevraagd (hier: 41) en de lengtegraad (dus:-74)."
+25310 DATA"Dan het nummer van de maand: b.v. december, dus"
+25320 DATA"12. Dan komt de invoer van de activiteit van"
+25330 DATA"de zon. Als het 'aantal' zonnevlekken bekend is,"
+25340 DATA"kan dit getal achter 'SSN' worden ingevuld."
+25350 DATA".Indien men dit niet weet en 'return' geeft,"
+25360 DATA"wordt gevraagd naar de 'zonneflux'. Deze moet"
+25370 DATA"dan wel worden ingevoerd."
+25380 DATA"#ZONNEACTIVITEIT."
+25390 DATA"Helaas geeft het nederlandse weerbericht hier"
+25400 DATA"geen uitsluitsel over, maar via de belgische TV"
+25410 DATA"kan men op vrijdagavond om 20u10 op BRT-1 de"
+25420 DATA"'Weerman' in aktie zien, die aan het einde van"
+25430 DATA"zijn bulletin ook de zonneflux opgeeft."
+25440 DATA".Ook is het mogelijk op donderdag naar het"
+25450 DATA"radioprogramma: 'Media Network' van Jonathan"
+25460 DATA"Marks te luisteren (Radio Nederland Wereld"
+25470 DATA"Omroep, b.v. in de 49 meter band, verscheidene"
+25480 DATA"malen herhaald, o.a. om circa 12u00 en om 15u00"
+25490 DATA"UTC, aan het eind van het programma). Daarin"
+25500 DATA"worden ook propagatie verwachtingen gegeven en"
+25510 DATA"de zonneaktiviteit vermeld."
+25520 DATA"Stel dat de zonneflux 105 is, dat geven we dan"
+25530 DATA"in, de computer rekent dan zelf het SSN uit."
+25540 DATA".Eventueel volgt dan nog de vraag, of men het"
+25550 DATA"'lange' dan wel het 'korte pad' wil volgen."
+25560 DATA"Antwoord met 'S' of 'L'. Op de volgende pagina"
+25570 DATA"zien we dan:"
+25580 DATA". "
+25590 DATA".  Route....... New York"
+25600 DATA".  Month....... DECEMBER"
+25610 DATA".  SSN......... 53"
+25620 DATA".  Flux........ 105"
+25630 DATA".  Short path.. 2 hops"
+25640 DATA".  Bearing..... 291 degrees"
+25650 DATA".  Distance.... 5863 kilometers"
+25660 DATA". "
+25670 DATA"De 'bearing' staat voor de antennerichting,"
+25680 DATA"rechtsom gerekend vanaf het noorden."
+25690 DATA"#DE TABEL."
+25700 DATA"Er komt een tabel op het scherm met horizontaal"
+25710 DATA"de tijd in UTC, tussen 0u30 en 23u30. (Let op:"
+25720 DATA"'Add 30 minutes to each UTC'). Op de verticale"
+25730 DATA"as staan getallen tussen 1.8 en 28, deze staan"
+25740 DATA"voor MHz (megaherz). In de tabel komen dan een"
+25750 DATA"aantal streepjes en getallen. De streepjes geven"
+25760 DATA"aan, dat er waarschijnlijk geen verbinding"
+25770 DATA"mogelijk is op dat uur en die frekwentie. De"
+25780 DATA"getallen duiden erop, dat er waarschijnlijk wel"
+25790 DATA"een verbinding mogelijk is: 0= in 0-9%, 1= in"
+25800 DATA"10-19%, enz. tot 9= in 90-99% van de gevallen."
+25810 DATA"#OVERZICHTSTABEL."
+25820 DATA"Een druk op een toets brengt ons naar een"
+25830 DATA"overzichtstabel, waarin voor elke tijd in UTC"
+25840 DATA"(+30 min.) de frekwentie staat, die als hoogst"
+25850 DATA"bruikbare geldt (MUF, maximum usable frequency),"
+25860 DATA"de laagst bruikbare (LUF) en de optimale werk"
+25870 DATA"frekwentie (OWF). UTC is de nieuwe benaming voor"
+25880 DATA"GMT: nederlandse wintertijd -1 uur, zomertijd"
+25890 DATA"-2 uur."
+25900 DATA".De tabellen kunnen worden afgedrukt (P). Met"
+25910 DATA"'C' kan men verder gaan, waarbij het programma"
+25920 DATA"van voren af aan begint om alle variabelen weer"
+25930 DATA"te initialiseren, of men kan met 'Q' stoppen."
+25940 DATA"#BETROUWBAARHEID."
+25950 DATA"In de praktijk blijkt dit programma bruikbare"
+25960 DATA"gegevens te leveren (voor zover propagatie"
+25970 DATA"verwachtingen betrouwbaar kunnen zijn)."
+25980 DATA".In deze laatste versie is de mogelijkheid om"
+25990 DATA"in plaats van het SSN de zonneflux op te geven"
+26000 DATA"toegevoegd om de toepasbaarheid van het"
+26010 DATA"programma te vergroten."
+26020 DATA". "
+26030 DATA"De bewerker."
+26040 DATA"$$$$$"
+30000 REM COPYRIGHT NOS HILVERSUM
+

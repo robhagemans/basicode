@@ -1,0 +1,30 @@
+10000 REM voorbeeld-moduul 2.2 bij RAAMWERK
+10010 REM Chemische symbolen/namen  ELEMENTEN
+10020 REM ===================================
+10030 CG=30:REM 30 extra hoofdletters
+10040 WA=200:W1=50:TS=50
+10050 DL$="Geef de Nederlandse naam ..."
+10060 TL$(0)="C H E M I S C H E  ELEMENTEN"
+10070 TL$(2)="Op het speelveld  komen  hoofdletters"
+10080 TL$(4)="een symbool van een element. Maak dan"
+10090 TL$(5)="de Nederlandse naam ervan door met   "
+24000 RETURN
+25000 DATA 2
+25010 DATA"Na","NATRIUM","C","KOOLSTOF"
+25020 DATA"N","STIKSTOF","H","WATERSTOF"
+25030 DATA"O","ZUURSTOF","F","FLUOR"
+25040 DATA"He","HELIUM","Ne","NEON"
+25050 DATA"Mg","MAGNESIUM","Al","ALUMINIUM"
+25060 DATA"Si","SILICIUM","P","FOSFOR"
+25070 DATA"S","ZWAVEL","Cl","CHLOOR"
+25080 DATA"K","KALIUM","Ca","CALCIUM"
+25090 DATA"Cr","CHROOM","Fe","IJZER"
+25100 DATA"Ni","NIKKEL","Cu","KOPER"
+25110 DATA"Zn","ZINK","Br","BROOM"
+25120 DATA"Ag","ZILVER","Sn","TIN"
+25130 DATA"I","JOOD","Ba","BARIUM"
+25140 DATA"Au","GOUD","Hg","KWIK"
+25150 DATA"Pb","LOOD","U","URAAN"
+25160 DATA"$$$$$"
+29990 END
+

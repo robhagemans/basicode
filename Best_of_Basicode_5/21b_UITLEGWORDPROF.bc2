@@ -1,0 +1,96 @@
+1000 A=100:GOTO20
+1010 GOSUB100:RESTORE
+1020 READX$
+1030 IFX$="#" THEN1190:REM einde
+1040 IFX$<>"*" THEN1070
+1050 GOSUB1100:REM pagina vol
+1060 GOTO1020
+1070 PRINTX$
+1080 GOTO1020
+1090 REM -----
+1100 REM volgende pagina:
+1110 HO=0
+1120 VE=23
+1130 GOSUB110
+1140 PRINT"Toets...";
+1150 GOSUB210
+1160 GOSUB100
+1170 RETURN
+1180 REM -----
+1190 REM finish:
+1200 HO=0
+1210 VE=23
+1220 GOSUB110
+1230 PRINT"Einde uitleg. Succes met WORDPROF.";
+1240 END
+1250 REM -----
+25000 DATA"WORDPROF"
+25010 DATA"--------"
+25020 DATA"",""
+25030 DATA"Het programma Wordprof is een"
+25040 DATA"tekstverwerker met heel behoorlijke"
+25050 DATA"eigenschappen (zeker voor BASIC)."
+25060 DATA"",""
+25070 DATA"Enige uitleg is waarschijnlijk nodig,"
+25080 DATA"maar bewust buiten het programma ge-"
+25090 DATA"houden ivm. geheugenbesparing."
+25100 DATA"",""
+25110 DATA"Het eerste en belangrijkste punt:"
+25120 DATA" Sommige computers zetten tijdens hun"
+25130 DATA" werkzaamheden GEEN cursor in beeld."
+25140 DATA" Dit is beslist wel noodzakelijk voor"
+25150 DATA" Wordprof. Heeft uw machine er geen,"
+25160 DATA" wijzig dan subroutine 210 zodat er"
+25170 DATA" WEL een transparante cursor komt."
+25180 DATA"*"
+25190 DATA"WORDPROF vv"
+25200 DATA"-----------"
+25210 DATA"",""
+25220 DATA"Voordat het programma kan lopen, moet"
+25230 DATA"moet U de vijf subroutines vanaf"
+25240 DATA"regel 20000 maken."
+25250 DATA"In de huishouding krijgen P0 en P1"
+25260 DATA"hun waarden. Pas deze aan uw printer"
+25270 DATA"aan (8940 en 8950)."
+25280 DATA"Als voorbeeld ziet U in de listing"
+25290 DATA"de bedoelde programmadelen (huis-"
+25300 DATA"houding en subr. vanaf 20000) van"
+25310 DATA"de Schneider 6128 met de Star 10X."
+25320 DATA"",""
+25330 DATA"Daarna, bij de eerste loop van het"
+25340 DATA"programma wordt U verzocht drie mini-"
+25350 DATA"male wijzigingen aan te brengen."
+25360 DATA"*"
+25370 DATA"WORDPROF vv"
+25380 DATA"-----------"
+25390 DATA"",""
+25400 DATA"Het programma is dus nu op U afge-"
+25410 DATA"stemd, en U kunt het zo SAVEN."
+25420 DATA"",""
+25430 DATA"De enige uitleg die tijdens de loop"
+25440 DATA"nog nodig zou kunnen zijn is die"
+25450 DATA"over de intik-karakters tijdens de"
+25460 DATA"optie INTIKKEN:"
+25470 DATA""
+25480 DATA"NR$ '#' geeft een nieuwe regel."
+25490 DATA"     bv.: aap#noot#mies##wim#zus#jet"
+25500 DATA"VD$ '*' maakt een dikke regel,"
+25510 DATA"        beeindigen met NR$."
+25520 DATA"     bv.: *HOOFDSTUK 1#"
+25530 DATA"NU$ '{' verstoort de indeling van de"
+25540 DATA"        regel niet bij uitlijnen,"
+25550 DATA"        ook beeindigen met NR$."
+25560 DATA"     bv.: {   tabel1    tabel2#"
+25570 DATA"*"
+25580 DATA"#"
+25590 REM ----------------------
+25600 REM ad WORDPROF
+25610 REM door
+25620 REM RJ Wijmenga
+25630 REM Postbus 27
+25640 REM 9166 ZP Sch'oog
+25650 REM 05195-1630
+25660 REM Februari 1987
+25670 REM ----------------------
+25680 REM NOS BASICODE PROGRAMMA
+

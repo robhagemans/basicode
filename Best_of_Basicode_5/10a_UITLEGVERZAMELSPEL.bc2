@@ -1,0 +1,278 @@
+1000 A=600:GOTO20
+1010 GOSUB100:REM HOBBYSCOOP-KRANT
+1020 REM EERST SCHERM OPMETEN
+1030 VE=0:FORI=0 TO80:HO=I:GOSUB110
+1040 GOSUB120:IFHO<>I THENHP=I:I=80
+1050 NEXTI:FORI=0 TO40:HO=0:VE=I:GOSUB110
+1060 GOSUB120:IFVE<>I THENVP=I:I=40
+1070 NEXTI
+1080 REM BEGIN PROGRAMMA
+1090 DIMK$(6)
+1100 SB$="":KL$="":N=1
+1110 GOSUB100:PRINT"HOBBYSCOOPKRANT"
+1120 PRINT:PRINT"Naar Printer (1) of Scherm (2) ";
+1130 GOSUB210:IF(IN$<>"1") AND(IN$<>"2") THEN1130
+1140 PT=1:IFIN$="2" THENPT=0:GOTO1220
+1150 PRINT:PRINT:PRINT"Hoeveel letters per regel ";
+1160 INPUTHP
+1170 PRINT:PRINT"Kantlijnbreedte: ";
+1180 INPUTSP:GOSUB1900:KL$=SP$
+1190 HP=HP-SP:IFSP>1 THENHP=HP-SP+2
+1200 PRINT:PRINT"Aantal regels per pagina ";
+1210 INPUTVP:VP=VP-6
+1220 RT=0:H=0
+1230 REM PRINT DE KOP
+1240 K$(0)="******************************"
+1250 K$(1)="*     N.O.S.- HOBBYSCOOP     *"
+1260 K$(2)="*        RADIOTEKST          *"
+1270 K$(3)="*    BEELDKRANT MET DAARIN   *"
+1280 K$(4)="*        OPGENOMEN DE        *"
+1290 K$(5)="*  UITLEG VAN 'VERZAMELSPEL' *"
+1300 K$(6)="******************************"
+1310 GOSUB100
+1320 SP=INT((HP-30)/2):IFPT=1 THENSP=SP-3
+1330 GOSUB1900
+1340 SR$=" ":GOSUB20000
+1350 FORI=0 TO6:SR$=SP$+K$(I):GOSUB20000:NEXTI
+1360 RESTORE:READDD$
+1370 SR$=" ":GOSUB20000
+1380 A$="Aflevering no: "+DD$
+1390 SP=INT((HP-LEN(A$))/2):IFPT=1 THENSP=SP-3
+1400 GOSUB1900
+1410 SR$=SP$+A$:GOSUB20000
+1420 SR$=" ":GOSUB20000
+1430 SR$="Zendt uw bijdragen voor onze":GOSUB20000
+1440 SR$="beeldkrant aan:":GOSUB20000
+1450 SR$=" ":GOSUB20000
+1460 SR$="N.O.S. Hobbyscoop Beeldkrant,":GOSUB20000
+1470 SR$="Postbus 1200,":GOSUB20000
+1480 SR$="1200 BE Hilversum.":GOSUB20000
+1490 A$="":REM PRINT DE OVERIGE DATA
+1500 READBB$
+1510 GOSUB22100
+1520 GOSUB22190
+1530 GOTO1510
+1540 END
+1900 SP$="":FORI=1 TOSP:SP$=SP$+" ":NEXTI:RETURN
+20000 REM AFDRUK SUBROUTINE
+20010 IFSR$="" THENRETURN
+20020 IFPT=1 THEN20060
+20030 PRINTSR$
+20040 RT=RT+1:IFRT=VP-4 THENGOSUB21000
+20050 RETURN
+20060 SR$=KL$+SR$:GOSUB350:GOSUB360:RT=RT+1
+20070 IFRT=VP THENGOSUB22000
+20080 RETURN
+21000 REM SCHERM VOL
+21010 IFRT=0 THENRETURN
+21020 HO=0:VE=VP-1:GOSUB110
+21030 PRINT"<Toets voor verder>";
+21040 GOSUB210:GOSUB100:RT=0:RETURN
+22000 REM PAPIER VOL
+22010 GOSUB100:FORI=1 TO6:GOSUB360:NEXTI
+22020 PRINT"Zet de printer bovenaan nieuwe pagina"
+22030 PRINT"en druk daarna op een toets."
+22040 GOSUB210:RT=0:GOSUB100
+22050 N=N+1:SR=N:GOSUB300:N$=SR$
+22060 SR$="Afl. no: "+DD$+", pag. "+N$
+22070 NL=LEN(SR$):GOSUB20060:SR$=""
+22080 SR$=SR$+"-":IFLEN(SR$)<NL THEN22080
+22090 GOSUB20060:SR$=" ":GOSUB20060:RETURN
+22100 IFBB$="$$$$$" THENH=1:GOSUB22190:END
+22110 IFA$<>"" THENA$=A$+" "
+22120 A$=A$+BB$:READBB$
+22130 IFLEFT$(BB$,1)="#" THENH=1:GOTO22180
+22140 IFLEFT$(BB$,1)="." THENH=1:GOTO22180
+22150 IFA$=". " THEN22180
+22160 IFLEFT$(A$,1)="#" THEN22180
+22170 IFLEN(A$)<HP THEN22100
+22180 RETURN
+22190 REM PRINT met aangepaste regellengte
+22200 IFLEFT$(A$,1)="#" THENH=3
+22210 IF(LEFT$(A$,1)<>".") AND(H<3) THEN22260
+22220 LL=LEN(A$):A$=RIGHT$(A$,LL-1)
+22230 IFH<3 THEN22260
+22240 IFPT=0 THENGOSUB21010
+22250 IFPT=1 THENSR$=" ":GOSUB20000
+22260 IFA$=" " THENSR$=A$:A$="":GOSUB20000:GOTO22370
+22270 L=LEN(A$):IF(H=0) AND(L<HP) THEN22370
+22280 IFL<HP THENSR$=A$:A$="":GOSUB20000:GOTO22360
+22290 FORI=HP TO1 STEP-1
+22300 B$=MID$(A$,I,1)
+22310 IFB$=" " THENJ=I:I=1
+22320 NEXTI
+22330 SR$=LEFT$(A$,J-1):A$=RIGHT$(A$,L-J)
+22340 GOSUB20000
+22350 GOTO22270
+22360 IFH=3 THENSR$=" ":GOSUB20000
+22370 H=0:RETURN
+25000 DATA"UITLEG VERZAMELSPEL"
+25010 DATA"#ZELF EEN SPELVARIANT PROGRAMMEREN.."
+25020 DATA"Dit programma is gebaseerd op het in december"
+25030 DATA"uitgezonden DICTEE-SPEL en maakt gebruik van de"
+25040 DATA"merge mogelijkheid van BASICODE bij veel"
+25050 DATA"computers: (Tandy, Apple e.v.a.) Bij het laden"
+25060 DATA"van een BASICODE programma wordt het geheugen"
+25070 DATA"niet (altijd) gewist. Zo kun je met BASICODE"
+25080 DATA"zelfs op de TRS-80 twee programma's mengen."
+25090 DATA". ",".De werkwijze gaat als volgt:"
+25100 DATA".Laad achterelkaar"
+25110 DATA".1     de regels 1 - 1000"
+25120 DATA".2     het BASICODE programma RAAMWERK"
+25130 DATA".3     het programma DATAMODULE",". "
+25140 DATA".Je moet het geheugen NIET wissen na 1 en 2."
+25150 DATA". ",".De combinatie geeft een compleet spel,"
+25160 DATA"want het RAAMWERK is steeds gelijk, maar de"
+25170 DATA"DATAMODULE is voor elk spel anders."
+25180 DATA".Het spel is geschikt voor ELKE computer met"
+25190 DATA"scherm groter dan 37 karakters bij 15 regels."
+25200 DATA".De bedoeling is dat je zelf je eigen MODULE"
+25210 DATA"schrijft. Er zijn vijf modulen als voorbeeld"
+25220 DATA"toegevoegd. Het RAAMWERK is kant en klaar."
+25230 DATA"In dit RAAMWERK staat een toelichting over de"
+25240 DATA"werking en de variabelen (REM)."
+25250 DATA"#De DATAMODULE"
+25260 DATA"De te schrijven datamodule bestaat uit de"
+25270 DATA"volgende onderdelen:",". "
+25280 DATA".1.  regels 10000 - 23999 def. var."
+25290 DATA".2.         24000 RETURN"
+25300 DATA".3.         25000 DATA x (x=1, 2 of 3)"
+25310 DATA".4.  regels 25010 - 29980 data regels"
+25320 DATA".    met als laatste DATA ''$$$$$''"
+25330 DATA".5.         29990 END "
+25340 DATA".6. eventueel regels die ook in het RAAMWERK"
+25350 DATA"staan en die bij het koppelen vervangen worden."
+25360 DATA"#TOELICHTING  DATA-MODULE (zie ook voorbeelden)"
+25370 DATA". ",".1. regels 10000 - 23999",". "
+25380 DATA".In deze regels moet je een aantal variabelen"
+25390 DATA"definieren en mag je andere variabelen"
+25400 DATA"een eigen startwaarde geven.",". "
+25410 DATA"Je MOET definieren:",". "
+25420 DATA".Een of meer van de variabelen C..  Deze"
+25430 DATA"variabelen geven aan hoeveel van welke"
+25440 DATA"tekens extra op het scherm komen."
+25450 DATA"Deze extra tekens zijn nodig als versiering."
+25460 DATA".De eerste letter C staat voor Character."
+25470 DATA".De tweede heeft de volgende betekenis:"
+25480 DATA".G= Groot; K= Klein; C= Cijfer; A= Ascii",". "
+25490 DATA". ",".Voorbeeld: CG=15, betekent 15 extra"
+25500 DATA"Grote letters op het speelveld."
+25510 DATA".           CC=20, geeft 20 extra cijfers."
+25520 DATA". ",".Minstens 1 van deze variabelen C.."
+25530 DATA"moet je definieren.","#VRIJ DEFINIEERBAAR"
+25540 DATA".Soms kan het leuk zijn dat er bijzondere"
+25550 DATA"tekens op het scherm komen."
+25560 DATA"Je kunt dan deze Bijzondere Tekens 2 keer"
+25570 DATA"extra op het speelveld plaatsen door"
+25580 DATA"het definieren van BT( ). De index loopt"
+25590 DATA"van 0 tot 5, er zijn dus 6 mogelijkheden."
+25600 DATA".   Voorbeeld: BT$(0)=''$'', zet 2x een $"
+25610 DATA".              BT$(4)=''='', geeft 2x een  ="
+25620 DATA". "
+25630 DATA".N.B.   ''  betekent aanhalingstekens."
+25640 DATA".De volgende variabelen MAG je (opnieuw)"
+25650 DATA"definieren. Tussen < > staat de standaard"
+25660 DATA"waarde uit het RAAMWERK."
+25670 DATA".  TS=.. <150> de tyd bij start spel."
+25680 DATA".  W1=..<30>: WA=..<300> waarden wachtlus"
+25690 DATA ".  TL$()=''  ?? '' <...>:VT()= <0>"
+25700 DATA".Deze variabelen vervangen de TL$() in de"
+25710 DATA "toelichting van RAAMWERK."
+25720 DATA "De index loopt van 0 t/m 20, alleen de"
+25730 DATA"eerste 10 zijn gedefinieerd in RAAMWERK."
+25740 DATA". Let op TL$(0), TL$(2), TL$(4) en TL$(5),"
+25750 DATA"deze kun je beter WEL opnieuw definieren."
+25760 DATA".De standaardlengte van TL$() is 37 karakters."
+25770 DATA"Eventueel aanvullen met spaties.",". "
+25780 DATA".DL$=''...'',geeft het doel van het spel."
+25790 DATA"In RAAMWERK is dat voor NR=1: <Verzamel..>"
+25800 DATA"en voor NR=2: <Maak het antwoord...>."
+25810 DATA"De NR is de waarde in regel 25000."
+25820 DATA"#GEEN BASICODE"
+25830 DATA"Vanaf regel 20000 - 23999 kun je eventueel"
+25840 DATA"aangeven de waarden dan wel codes van:"
+25850 DATA".Kleur, keyklick, cursor, autorepeat enz."
+25860 DATA".Dit valt buiten het BASICODE-protocol."
+25870 DATA"# 2.  regel 24000"
+25880 DATA"Deze regel heeft de vorm:",". "
+25890 DATA".  24000 RETURN",". "
+25900 DATA"Deze regel geeft het eind van de subroutine"
+25910 DATA"aan. De door jouw gedefinieerde waarden"
+25920 DATA"worden als laatste ingelezen, waarna weer"
+25930 DATA"teruggekeerd wordt naar het hoofdprogramma."
+25940 DATA"# 3.  DATAREGEL 25000 en verder."
+25950 DATA"Deze regel moet van de vorm zijn:",". "
+25960 DATA".25000 DATA x"
+25970 DATA". ",".x is een getal: 1, 2 of 3."
+25980 DATA". ",".De drie gevallen nader bekeken:",". "
+25990 DATA".25000 DATA 1",". "
+26000 DATA".De dataregels 25010 - 29980 bestaan uit losse"
+26010 DATA"woorden die (even) boven het speelveld"
+26020 DATA"verschijnen en daarna letter voor letter"
+26030 DATA"'gemaakt' moeten worden door de juiste letter"
+26040 DATA"met de * aan te raken."
+26050 DATA"De letters van dit woord worden over het scherm"
+26060 DATA"verspreid, samen met de extra letters die je al"
+26070 DATA"gedefinieerd hebt met C.. (rgl 10000 e.v.)"
+26080 DATA".De * wordt over het speelveld verplaatst"
+26090 DATA"door 'sturen' met gekozen 'cursor-toetsen'."
+26100 DATA".Zie voorbeeldmodule 1.1"
+26110 DATA".De laatste regel van dit DATA-blok moet"
+26120 DATA"zijn:",".     regelnr DATA ''$$$$$''"
+26130 DATA"#25000 DATA 2 ",". "
+26140 DATA".De dataregels vanaf 25010 bestaan nu uit"
+26150 DATA"steeds twee gekoppelde woorden of zinnen,"
+26160 DATA"gemakshalve hier genoemd WOORD1 en WOORD2."
+26170 DATA". ",".Voorbeeld: ",". 25010 DATA ''lang'',"
+26180 DATA"''kort'', ''dik'', ''dun''",". "
+26190 DATA".WOORD1 (lang resp. dik) komt erboven te staan"
+26200 DATA"terwijl de letters van WOORD2 (kort resp. dun)"
+26210 DATA"verspreid worden over het speelveld,"
+26220 DATA"alweer samen met de extra leters van C.."
+26230 DATA"Het is de bedoeling dat met de * de letters van"
+26240 DATA"WOORD2 gemaakt worden. In plaats van twee"
+26250 DATA"woorden mag het ook een zin, som o.i.d. zijn."
+26260 DATA".Het gaat hier dus om een combinatie van 2."
+26270 DATA".Je kunt hierbij de variabele DL$ beter wel"
+26280 DATA"definieren: DL$=''Maak het tegengestelde...''"
+26290 DATA".of iets dergelijks. Van dit type zijn drie"
+26300 DATA"voorbeeld-MODULEN gemaakt. (2.1, 2.2 en 2.3)"
+26310 DATA".De laatste regel van dit DATA-blok moet"
+26320 DATA"zijn:",".     regelnr DATA ''$$$$$''"
+26330 DATA"# 25000 DATA 3"
+26340 DATA"De derde mogelijkheid kun je 'ratjetoe'"
+26350 DATA "noemen:",". ",".Voorbeeld van DATAregel:"
+26360 DATA".25010 DATA''WOORD1'',''WOORD2'',","''DOEL''"
+26370 DATA".Hier vormen drie woorden/zinnen/getallen een"
+26380 DATA"combinatie.",". "
+26390 DATA".WOORD1, komt (even) bovenaan het scherm",". "
+26400 DATA".WOORD2, wordt verspreid over het scherm en"
+26410 DATA"moet letter voor letter gemaakt worden.",". "
+26420 DATA".DOEL, is de zin die bij elke opdracht bovenaan"
+26430 DATA"het scherm verschijnt. Zo kun je steeds iets"
+26440 DATA"anders verzinnen. Zie daarvoor de laatste (3.1)"
+26450 DATA"DATAMODULE, een vorm van 'Hersengymnastiek'."
+26460 DATA".De laatste regel van dit DATA-blok moet"
+26470 DATA"zijn:",".     regelnr DATA ''$$$$$''"
+26480 DATA". ",".In plaats van type 3 kun je ook type 2"
+26490 DATA "gebruiken: WOORD1 wordt dan de 'opdracht',"
+26500 DATA"terwijl WOORD2 het te maken antwoord is."
+26510 DATA"DL$=''Maak het antwoord..'' komt dan eerst."
+26520 DATA"Je definieert DL$ dan niet in rgl 10000 e.v."
+26530 DATA"#AFSLUITING DATA-MODULE"
+26540 DATA"De laatste regel van jouw spel is regelnr"
+26550 DATA"29990. deze is natuurlijk:",".  29990 END",". "
+26560 DATA".De voorlaatste rgl MOET zijn ...DATA''$$$$$''"
+26570 DATA".Verwijder eerst de regelnrs 10000 - 29990"
+26580 DATA"voordat je een nieuwe module koppelt aan"
+26590 DATA"het RAAMWERK."
+26600 DATA"# Gewoon MERGEN"
+26610 DATA"Natuurlijk kun je de twee delen ook mengen met"
+26620 DATA"het normale MERGE commando als dit in de BASIC"
+26630 DATA"aanwezig is. Vanaf regel 30000 staan de "
+26640 DATA"beschrijvingen van alle gebruikte variabelen."
+26650 DATA".Veel speel- en programmeerplezier!",". "
+26660 DATA". ",".                      S. van der Goot"
+26670 DATA"$$$$$"
+30000 REM COPYRIGHT NOS HILVERSUM
+

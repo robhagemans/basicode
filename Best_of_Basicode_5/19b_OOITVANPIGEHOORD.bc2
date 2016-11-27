@@ -1,0 +1,526 @@
+1000 A=300:GOTO20:REM * OOIT VAN 'PI' GEHOORD? *
+1010 GOSUB100:VE=2:HO=0:GOSUB110
+1020 N$="":K$="":G$="":N=0:P1=0:R=0:H=0:B=1
+1030 PRINT" *** OOIT VAN 'pi' GEHOORD? ***"
+1040 PRINT"     ----------------------"
+1050 VE=5:GOSUB110
+1060 PRINT" In dit programma kunt U"
+1070 VE=7:GOSUB110
+1080 PRINT" van alles te weten komen"
+1090 VE=9:GOSUB110
+1100 PRINT" over 'pi' "
+1110 VE=11:GOSUB110
+1120 PRINT" en oefenen met formules,"
+1130 VE=13:GOSUB110
+1140 PRINT" waarin 'pi' voorkomt."
+1150 VE=18:GOSUB110
+1160 PRINT"* Zullen we dan maar !*"
+1170 VE=20:GOSUB110
+1180 PRINT" - Druk een toets voor HOOFD-MENU -";
+1190 GOSUB210
+1200 GOSUB100
+1210 VE=2:HO=0:GOSUB110
+1220 PRINT"    *** HOOFD-MENU ***"
+1230 PRINT:PRINT"1.Waar komt het teken 'pi' vandaan?"
+1240 PRINT"2.Benadering van de waarde"
+1250 PRINT"  van 'pi'."
+1260 PRINT"3.Overzicht van de meest"
+1270 PRINT"  gebruikte formules."
+1280 PRINT"4.Wilt U formules toepassen?"
+1290 PRINT"5.Geschiedenis van de"
+1300 PRINT"  benadering van 'pi'."
+1310 PRINT"6.Ezelsbruggetjes om de"
+1320 PRINT"  waarde van 'pi' te onthouden."
+1330 PRINT"7.Literatuur-opgave"
+1340 PRINT"8.Namen-register"
+1350 PRINT"9.Stoppen!"
+1360 VE=22:GOSUB110
+1370 PRINT" ** Welk nummer kiest U? **";
+1380 INPUTN
+1390 ONN GOTO1400,1630,2400,2650,3520,5130,5600,5850,20120
+1400 GOSUB100:VE=2:HO=0:GOSUB110
+1410 PRINT"** Waar komt het teken 'pi' vandaan? **"
+1420 PRINT"   ---------------------------------"
+1430 PRINT:PRINT"'Pi' is de 16e letter  van het"
+1440 PRINT"GRIEKSE alfabet,die gebruikt wordt"
+1450 PRINT"ter aanduiding van de verhouding"
+1460 PRINT"van OMTREK en DIAMETER van de"
+1470 PRINT"CIRKEL.":PRINT
+1480 PRINT"Oorspronkelijk was hiervoor door"
+1490 PRINT"OUGHTRED (1574-1660) gekozen:"
+1500 PRINT" pi/delta,"
+1510 PRINT"waarin 'pi' de eerste letter is"
+1520 PRINT"van het Griekse woord voor 'OMTREK'"
+1530 PRINT"( =rondom-dragen) en waarin"
+1540 PRINT"'delta' de eerste letter is van het"
+1550 PRINT"Griekse woord voor 'MIDDELLIJN'."
+1560 PRINT"Later bleef hiervan alleen"
+1570 PRINT"de 'pi' over."
+1580 IF(N$="N") THEN20000
+1590 VE=22:GOSUB110
+1600 PRINT" * EINDE - DRUK TOETS voor menu. *";
+1610 GOSUB210
+1620 GOTO1200
+1630 GOSUB100
+1640 VE=2:HO=2:GOSUB110
+1650 PRINT"  * Benadering van 'pi' *"
+1660 PRINT"    -------------------  ":PRINT
+1670 PRINT" 'PI' is het maatgetal van de"
+1680 PRINT" omtrek van een cirkel,waarvan"
+1690 PRINT" de middellijn gelijk is aan de"
+1700 PRINT" lengte-eenheid."
+1710 PRINT:PRINT" De OMTREK van een cirkel= 2*'pi'*r"
+1720 PRINT" (r=straal)"
+1730 PRINT:PRINT" 'pi'=halve omtrek van een cirkel"
+1740 PRINT" met straal = 1.  (r=1)"
+1750 PRINT" Deze omtrek ligt in TUSSEN de halve"
+1760 PRINT" omtrek van de IN-geschreven n-hoek"
+1770 PRINT" en de halve omtrek van de"
+1780 PRINT" OM-geschreven n-hoek."
+1790 GOSUB20100
+1800 GOSUB100
+1810 VE=2:HO=2:GOSUB110
+1820 PRINT" Bij de benadering gebruikt men "
+1830 PRINT" de volgende twee FORMULES:"
+1840 PRINT" (waarbij:"
+1850 PRINT" a(n)=de zijde van de IN-geschreven"
+1860 PRINT"                         n-hoek"
+1870 PRINT" en b(n)=de zijde van de OM-geschreven"
+1880 PRINT"                         n-hoek)"
+1890 PRINT"--VERDUBBELINGS-FORMULE --":PRINT
+1900 PRINT"        ---------============"
+1910 PRINT" a(2n)=V 2r^2-r V 4r^2-a(n)^2"
+1920 PRINT:PRINT" bij r=1 en geschikt voor "
+1930 PRINT" de computer wordt dat:"
+1940 PRINT:PRINT" a(2*n)=sqr(2-sqr(4-a(n)^2))"
+1950 GOSUB20100
+1960 VE=2:HO=2:GOSUB110
+1970 PRINT" --FORMULE om de zijde van de"
+1980 PRINT" OM-geschreven n-hoek uit te"
+1990 PRINT" drukken in r en de zijde van de"
+2000 PRINT" IN-geschreven n-hoek:"
+2010 PRINT
+2020 PRINT"                 ------------"
+2030 PRINT" b(n)=2.a(n).r/ V 4r^2-a(n)^2"
+2040 PRINT:PRINT" bij r=1 en geschikt voor "
+2050 PRINT" de computer wordt dat:"
+2060 PRINT:PRINT"b(n)=2*a(n)/(sqr(4-a(n)^2))"
+2070 GOSUB20100
+2080 GOSUB100:VE=2:HO=2:GOSUB110
+2090 PRINT" De halve omtrek van de IN-GESCHREVEN"
+2100 PRINT" n-hoek wordt dan n*a(n)/2."
+2110 PRINT:PRINT" De halve omtrek van de OM-GESCHREVEN"
+2120 PRINT" n-hoek wordt dan n*b(n)/2="
+2130 PRINT:PRINT" n*a(n)/sqr(4-a(n)^2)"
+2140 VE=15:GOSUB110
+2150 PRINT" Het volgende programma geeft"
+2160 PRINT" een overzicht van enige regelmatige"
+2170 PRINT" veelhoeken met 3*2^k zijden."
+2180 GOSUB20100
+2190 GOSUB100:VE=2:HO=2:GOSUB110
+2200 PRINT" ** werkt u op een computer met **"
+2210 PRINT:PRINT"** minstens 25 Kb werkgeheugen?(J/N) **"
+2220 INPUTG$:IF(G$="N") OR(G$="n") THEN2240
+2230 PRINT"O.K.dan gaan we rekenen!":ONB GOTO2260,2270
+2240 PRINT:PRINT"De berekening past niet in uw geheugen!"
+2250 GOSUB20100:GOTO1200
+2260 DIMA(1600):B=2
+2270 PRINT:PRINT" ** Benadering waarde van 'pi' **"
+2280 PRINT" ** 'pi' ligt tussen beide waarden in **":PRINT
+2290 N=6:A(6)=1
+2300 FORI=1 TO8
+2310 P=SQR(4-A(N)^2)
+2320 PRINTN;
+2330 PRINTTAB(8)N*A(N)/2;
+2340 PRINTTAB(20)N*A(N)/P
+2350 N=2*N
+2360 A(N)=SQR(2-P)
+2370 NEXTI
+2380 PRINT:PRINT"* DRUK TOETS *";
+2390 GOSUB210:IF(IN$<>"") THEN1200
+2400 GOSUB100
+2410 VE=2:HO=2:GOSUB110
+2420 PRINT"  *** OVERZICHT FORMULES ***"
+2430 PRINT"      ------------------"
+2440 PRINT:PRINT"- omtrek cirkel = 2*'pi'*r"
+2450 PRINT:PRINT"- oppervlak cirkel = 'pi'*r^2"
+2460 PRINT:PRINT"- zijde IN-geschreven 2*n-hoek:"
+2470 PRINT:PRINT"  a(2*n)=sqr(2-sqr(4-a(n)^2))"
+2480 PRINT:PRINT"- zijde OM-geschreven n-hoek:"
+2490 PRINT:PRINT"  b(n)=2*a(n)/sqr(4-a(n)^2)"
+2500 PRINT:PRINT"- 1 radiaal=180/'pi' graden="
+2510 PRINT:PRINT"  ongeveer:57 gr 17 m 45 sec"
+2520 GOSUB20100
+2530 PRINT:PRINT"- oppervlak bol = 4*'pi'*r^2"
+2540 PRINT:PRINT"- inhoud bol= 4/3 *('pi'*r^3)"
+2550 PRINT:PRINT"- zijdelings opp.cylinder=2*'pi'r*h"
+2560 PRINT:PRINT"- 'pi' = 3.1415926536"
+2570 PRINT:PRINT"- 'pi' = 22/7"
+2580 PRINT:PRINT"   Archimedes:tussen 3 1/7 en 3 10/71"
+2590 PRINT:PRINT"- 'pi' = 4*ATN(1)"
+2600 PRINT:PRINT"     ** tg 45 gr=1        **"
+2610 PRINT:PRINT"     ** ATN(1)=1/4*('pi')radialen **"
+2620 PRINT
+2630 PRINT"*DRUK TOETS*";
+2640 GOSUB210:IF(IN$<>"") THEN1200
+2650 GOSUB100:VE=2:HO=2:GOSUB110
+2660 PRINT"** WILT U FORMULES TOEPASSEN? *"
+2670 PRINT"    --------------------------"
+2680 PRINT:PRINT"* WAT wil U uitrekenen?* "
+2690 PRINT" 1.OMTREK cirkel "
+2700 PRINT:PRINT" 2.OPPERVLAK cirkel"
+2710 PRINT:PRINT" 3.INHOUD cylinder"
+2720 PRINT:PRINT" 4.zijdelings OPPERVLAK van een"
+2730 PRINT"   rechte cirkel-cylinder"
+2740 PRINT:PRINT" 5.OPPERVLAK bol"
+2750 PRINT:PRINT" 6.INHOUD bol"
+2760 PRINT:PRINT" 7.terug naar HOOFD-MENU"
+2770 PRINT:PRINT" 8.STOPPEN"
+2780 P1=3.1415926#
+2790 PRINT:PRINT"GEEF NUMMER van Uw KEUZE.";
+2800 INPUTN
+2810 ONN GOTO2820,2930,3030,3170,3320,3420,1200,32700
+2820 GOSUB100:VE=2:HO=2:GOSUB110
+2830 PRINT" ** OMTREK CIRKEL **"
+2840 PRINT"    -------------"
+2850 PRINT"formule: omtrek cirkel= 2*'pi'*r"
+2860 PRINT
+2870 PRINT" Geef de straal: r ";:INPUTR
+2880 PRINT:PRINT"De OMTREK van een cirkel "
+2890 PRINT"met straal ";R;"=";2*P1*R
+2900 VE=20:GOSUB110:PRINT"* Nog een cirkel-omtrek?(j/n)";
+2910 GOSUB210:IF(IN$="J") OR(IN$="j") THEN2820
+2920 GOTO2650
+2930 GOSUB100:VE=2:HO=2:GOSUB110
+2940 PRINT" ** OPPERVLAK CIRKEL **"
+2950 PRINT"    ----------------"
+2960 PRINT"formule: oppervlak cirkel='pi'*r^2"
+2970 PRINT:PRINT" Geef de straal: r";:INPUTR
+2980 PRINT:PRINT" de OPPERVLAKTE van een cirkel met"
+2990 PRINT" straal ";R;"=";P1*R^2
+3000 VE=20:GOSUB110:PRINT"* Nog een cirkel-oppervlak?(j/n)";
+3010 GOSUB210:IF(IN$="j") OR(IN$="J") THEN2930
+3020 GOTO2650
+3030 GOSUB100:VE=2:HO=2:GOSUB110
+3040 PRINT" ** INHOUD CYLINDER **"
+3050 PRINT"    ---------------"
+3060 PRINT"formule:Inhoud rechte cirkel-cylinder="
+3070 PRINT"        'pi'*r^2*h"
+3080 PRINT:PRINT" Geef de straal: r";:INPUTR
+3090 PRINT" Geef de hoogte: h";:INPUTH
+3100 PRINT:PRINT" De INHOUD van een rechte"
+3110 PRINT" CIRKEL-CYLINDER met straal ";R
+3120 PRINT" en met hoogte ";H;"=";P1*R^2*H""
+3130 VE=20:GOSUB110
+3140 PRINT"* Nog een cylinder-inhoud?(j/n)? *"
+3150 GOSUB210:IF(IN$="J") OR(IN$="j") THEN3030
+3160 GOTO2650
+3170 GOSUB100:VE=2:HO=2:GOSUB110
+3180 PRINT" * Zijdelings OPPERVLAK van *"
+3190 PRINT" * rechte cirkel-cylinder.  *"
+3200 PRINT"   ----------------------"
+3210 PRINT"formule: 2*'pi'*r*h"
+3220 PRINT:PRINT"Geef de straal: r";:INPUTR
+3230 PRINT"Geef de hoogte: h";:INPUTH
+3240 PRINT:PRINT:PRINT"Het ZIJDELINGS-oppervlak van een"
+3250 PRINT"rechte cirkel-cylinder met "
+3260 PRINT"straal ";R;"en met hoogte ";H
+3270 PRINT" = ";2*P1*R*H
+3280 VE=20:GOSUB110
+3290 PRINT"* Nog een zijdelings oppervlak?(j/n)?*"
+3300 GOSUB210:IF(IN$="J") OR(IN$="j") THEN3170
+3310 GOTO2650
+3320 GOSUB100:VE=2:HO=2:GOSUB110
+3330 PRINT" * OPPERVLAK BOL * "
+3340 PRINT"   -------------"
+3350 PRINT"formule: 4*'pi'*r^2"
+3360 PRINT:PRINT"Geef de straal: r";:INPUTR
+3370 PRINT:PRINT"De oppervlakte van de bol"
+3380 PRINT"met straal ";R;"=";4*P1*R^2
+3390 VE=20:GOSUB110:PRINT" * Nog een bol-oppervlak?(j/n) *";
+3400 GOSUB210:IF(IN$="J") OR(IN$="j") THEN3320
+3410 GOTO1200
+3420 GOSUB100:VE=2:HO=2:GOSUB110
+3430 PRINT"* INHOUD BOL *"
+3440 PRINT"   ----------  "
+3450 PRINT"formule: (4/3)*'pi'*r^3"
+3460 PRINT:PRINT"Geef de straal : r";:INPUTR
+3470 PRINT:PRINT"De inhoud van een bol met een straal"
+3480 PRINT"van ";R;"=";(4*P1*R^3)/3
+3490 VE=20:GOSUB110:PRINT" * Nog een bol-inhoud?(j/n) *";
+3500 GOSUB210:IF(IN$="J") OR(IN$="j") THEN3420
+3510 GOTO2650
+3520 GOSUB100:VE=2:HO=2:GOSUB110
+3530 PRINT" * GESCHIEDENIS van de  *"
+3540 PRINT"   * BENADERING van'PI'   *"
+3550 PRINT"   -------------------"
+3560 PRINT:PRINT" Egypte:"
+3570 PRINT" Het oudste rekenkundig geschrift"
+3580 PRINT" dat wij kennen,is tussen 2000 en"
+3590 PRINT" 1700 voor Chr. op papyrus geschreven"
+3600 PRINT" door AHMES."
+3610 PRINT"      -----"
+3620 PRINT:PRINT" Voor 'pi' neemt hij (16/9)*(16/9)="
+3630 PRINT" pi = 3,1604":IF(N$="N") THEN20000
+3640 PRINT"       -------------------"
+3650 PRINT" PTOLEMEUS vindt:"
+3660 PRINT" ---------"
+3670 PRINT" pi= 3.8.30 = 3+8/60+30/3600="
+3680 PRINT" pi= 3.141666":IF(N$="N") THEN20000
+3690 VE=20:GOSUB110
+3700 GOSUB20100
+3710 PRINT" Romeinen:"
+3720 PRINT:PRINT" VITRUVIUS (14 voor Chr.) rekent"
+3730 PRINT" ---------"
+3740 PRINT" de OMTREK van een cirkel met"
+3750 PRINT" een middellijn van 4 voet op "
+3760 PRINT" 12 1/2 voet,waarbij dus 3 1/7"
+3770 PRINT" vervangen is door 3 1/8.":IF(N$="N") THEN20000
+3780 PRINT:PRINT" Hindoes:"
+3790 PRINT:PRINT" ARYA-BHATTA werd geboren in 476 n.Ch."
+3800 PRINT" -----------"
+3810 PRINT" aan de Boven-Ganges.Hij vindt dat"
+3820 PRINT" pi = 3.1416.Volgens een Indisch"
+3830 PRINT" schrijver kwam men tot deze waarde"
+3840 PRINT" door de verhouding 3927/1250"
+3850 PRINT" met behulp van de 384-hoek. "
+3860 IF(N$="N") THEN20000
+3870 GOSUB20100
+3880 PRINT" BHASKARA (rond 1150) geeft voor"
+3890 PRINT" --------"
+3900 PRINT" pi de waarde 22/7 ,maar hij"
+3910 PRINT" gebruikte ook de waarde:"
+3920 PRINT" pi= 754 / 240 =3.141666":IF(N$="N") THEN20000
+3930 PRINT:PRINT" ARCHIMEDES (287-212 voor Chr.)"
+3940 PRINT" ----------"
+3950 PRINT" geboren te Syrakuse,leefde in "
+3960 PRINT" Alexandrie en Sicilie."
+3970 PRINT" Hij gaat uit van een omgeschreven"
+3980 PRINT" zeshoek en vindt m.b.v.omgeschreven"
+3990 PRINT" veelhoeken,dat 'pi'< 3 1/7."
+4000 PRINT" Met behulp van ingeschreven 6n-hoeken"
+4010 PRINT" vindt hij dat 'pi' > 3 10/71."
+4020 PRINT" De verhouding 3 1/7 wordt ook wel "
+4030 PRINT" 'DE VERHOUDING VAN ARCHIMEDES'"
+4040 PRINT" genoemd.Deze is in 2 dec.nauwkeurig."
+4050 IF(N$="N") THEN20000
+4060 GOSUB20100
+4070 PRINT" * LEONARDO van PISA * "
+4080 PRINT" * ( FIBONACCI )     * "
+4090 PRINT"   -----------------"
+4100 PRINT:PRINT" Geboren in 1175 te Pisa."
+4110 PRINT" Hij neemt voor 'pi' de verhouding:"
+4120 PRINT" 'pi' = 864/275 = 3,141818..."
+4130 IF(N$="N") THEN20000
+4140 PRINT:PRINT" * VIETA *"
+4150 PRINT"    -----"
+4160 PRINT" De beroemdste Franse wiskundige van"
+4170 PRINT" de 16e eeuw: 1540-1603."
+4180 PRINT" Hij kwam tot de volgende benadering:"
+4190 PRINT" 2: pi=sqr 1/2  *sqr(1/2+sqr 1/2)*"
+4200 PRINT" *sqr[1/2+sqr(1/2+sqr 1/2)]*..."
+4210 PRINT" Elders zegt Vieta dat"
+4220 PRINT" pi=(18+ sqr(180))/10"
+4230 PRINT" Hijzelf berekende pi in 9 dec."
+4240 IF(N$="N") THEN20000
+4250 GOSUB20100
+4260 PRINT" * ADRIAAN ANTHONISZ *"
+4270 PRINT" * bijgenaamd:METZIUS of METIUS *"
+4280 PRINT"   ----------------------------"
+4290 PRINT" Geboren te Metz.(1527-1607)"
+4300 PRINT:PRINT" Hij stelde voor pi twee grenswaarden:"
+4310 PRINT" 3 15/106 en 3 17/120"
+4320 PRINT" Later maakte hij hieruit een "
+4330 PRINT" gemiddelde:"
+4340 PRINT"      15 + 17     32     16"
+4350 PRINT" pi =3------- = 3--- = 3---=3.1415929.."
+4360 PRINT"      106+120    226    113 "
+4370 PRINT:PRINT" Deze waarde is nauwkeurig in 6 dec."
+4380 IF(N$="N") THEN20000
+4390 GOSUB20100
+4400 PRINT" * WALLIS ( 1616-1703) *"
+4410 PRINT"   -------------------"
+4420 PRINT" Hoogleraar in de meetkunde te Oxford."
+4430 PRINT:PRINT" Hij kwam tot de formule:"
+4440 PRINT" 1/2*pi=2/1*2/3*4/3*4/5*6/5*6/7*8/7*.."
+4450 PRINT:PRINT" Hoe hij hiertoe kwam weet men niet!"
+4460 IF(N$="N") THEN20000
+4470 PRINT:PRINT" * LEIBNIZ (1646-1716) *"
+4480 PRINT"   -----------------------"
+4490 PRINT" Hij gaf een nieuwe afleiding voor de"
+4500 PRINT" reeks,die Gregory gevonden had en"
+4510 PRINT" kwam door x=1 te stellen tot:"
+4520 PRINT" 1/4* pi =1-1/3+1/5-1/7+..."
+4530 PRINT" Deze formule wordt nog naar hem"
+4540 PRINT" genoemd.Als beloning voor zijn"
+4550 PRINT" volharding heeft men in 1840 op zijn"
+4560 PRINT" grafsteen het getal 'pi' in"
+4570 PRINT" 35 decimalen gebeiteld!"
+4580 IF(N$="N") THEN20000
+4590 GOSUB20100
+4600 PRINT" * JOHANN HEINRICH LAMBERT *"
+4610 PRINT"     -----------------------"
+4620 PRINT" geboren:Muhlhausen in de Elzas"
+4630 PRINT" (1728-1777)"
+4640 PRINT" Hij bewees in 1761 pi is ONMEETBAAR"
+4650 IF(N$="N") THEN20000
+4660 PRINT:PRINT" * ADRIEN MARIE LEGENDRE *"
+4670 PRINT"   -------------------"
+4680 PRINT"   (1752 - 1833)"
+4690 PRINT"Hij bewees dat pi*pi ook ONMEETBAAR is"
+4700 IF(N$="N") THEN20000
+4710 PRINT:PRINT" * LINDEMANN *"
+4720 PRINT"   ---------"
+4730 PRINT:PRINT" Hij bewees in 1882 dat"
+4740 PRINT" pi een TRANCENDENT getal is."
+4750 PRINT" (d.w.z.dat 'pi' geen wortel is van "
+4760 PRINT" een hogere-machtsvergelijking met"
+4770 PRINT" meetbare coefficienten.)"
+4780 IF(N$="N") THEN20000
+4790 GOSUB20100
+4800 PRINT" * ADRIAEN van ROOMEN (1561-1625) *"
+4810 PRINT"   ------------------------------"
+4820 PRINT" (meer bekend als:ROMANUS)"
+4830 PRINT" In 1597 bepaalde hij pi in 16 dec."
+4840 PRINT" uit de IN- en OM-geschreven"
+4850 PRINT" regelmatige 2 tot de macht 30 ="
+4860 PRINT" 1073741824- hoek."
+4870 IF(N$="N") THEN20000
+4880 PRINT:PRINT" * LUDOLPH van KEULEN (1540-1610) *"
+4890 PRINT"   ------------------"
+4900 PRINT" Ludolf van CEULEN vond in 1615 een"
+4910 PRINT" benadering in 20 decimalen en in 1621"
+4920 PRINT" in 35 decimalen."
+4930 PRINT" 'pi' werd lang het:"
+4940 PRINT" 'LUDOLPHIAANS GETAL' genoemd."
+4950 PRINT" Hij gebruikte een veelhoek met"
+4960 PRINT" 36893488147419103232 zijden!"
+4970 PRINT" Dat is 2 tot de macht 65."
+4980 IF(N$="N") THEN20000
+4990 GOSUB20100
+5000 PRINT" Later berekende men nog veel meer"
+5010 PRINT"   decimalen(geen praktisch belang):"
+5020 PRINT:PRINT"  1705  SHARP       73 dec."
+5030 PRINT:PRINT"  1706  MACHIN     100 dec."
+5040 PRINT:PRINT"  1794  VEGA       136 dec."
+5050 PRINT:PRINT"  1844  DASE       200 dec."
+5060 PRINT:PRINT"  1853  RUTHERFORD 400 dec."
+5070 PRINT:PRINT"  1873  SHANKS     707 dec."
+5080 IF(N$="N") THEN20000
+5090 VE=22:GOSUB110
+5100 PRINT" * EINDE - DRUK TOETS voor menu.";
+5110 GOSUB210
+5120 GOTO1200
+5130 GOSUB100:VE=2:HO=0:GOSUB110
+5140 PRINT"      * EZELSBRUGGETJES *"
+5150 PRINT"        ---------------"
+5160 PRINT"(VERSJES,waarvan de woorden opvolgend"
+5170 PRINT"zoveel letters bevatten als de cijfers"
+5180 PRINT"van 'pi' eenheden.Gelukkig is eerst"
+5190 PRINT"de 32e decimaal van 'pi' een NUL.)"
+5200 VE=9:GOSUB110:PRINT" pi = 3.141592653589"
+5210 VE=11:GOSUB110:PRINT" VERSJE:"
+5220 VE=13:HO=2:GOSUB110:PRINT"Wie U kent,o getal,"
+5230 PRINT:PRINT"  belangrijk en gepast,leert ook "
+5240 PRINT:PRINT"  and're waarheen ankervast."
+5250 GOSUB20100
+5260 PRINT" Minder eerbiedig is het volgende:"
+5270 PRINT:PRINT" Wie U eens ,o,heeft verzonnen,"
+5280 PRINT:PRINT" in aloude tijden,"
+5290 PRINT:PRINT" was nooit begonnen,"
+5300 PRINT:PRINT" inderdaad spoedig geeindigd,"
+5310 PRINT:PRINT" als hij had voorzien,"
+5320 PRINT:PRINT" welk gezeur de cijfers bien."
+5330 VE=19:HO=2:GOSUB110:PRINT"dat geeft dan:":PRINT
+5340 PRINT" pi = 3.14159265358979323846264"
+5350 GOSUB20100
+5360 PRINT" De FRANSEN onthouden de eerste "
+5370 PRINT" 30 decimalen van 'pi' aldus:"
+5380 VE=7:GOSUB110
+5390 PRINT" Que j'aime a faire connaitre"
+5400 PRINT:PRINT" un nombre utile aux sages,"
+5410 PRINT:PRINT" Immortel Archimede,artiste,ingenieur,"
+5420 PRINT:PRINT" Qui de ton jugement peut priser la"
+5430 PRINT"                          valeur !"
+5440 PRINT:PRINT" Pour moi ton probleme"
+5450 PRINT:PRINT" eut de pareils avantages."
+5460 GOSUB20100
+5470 PRINT" ENGELSE beoefenaars van de wiskunde"
+5480 PRINT" onthouden 'pi' in 11 decimalen met:"
+5490 VE=7:HO=2:GOSUB110
+5500 PRINT"How I wish I could recollect"
+5510 PRINT:PRINT"  of circle round"
+5520 PRINT:PRINT"  the exact relation"
+5530 PRINT:PRINT"  ARCHIMEDE unwound!"
+5540 VE=17:GOSUB110
+5550 PRINT" Voor 1/'pi' = 0.318310 hebben ze:"
+5560 PRINT"                       --"
+5570 PRINT:PRINT"  Can I discover the reciprocal?"
+5580 VE=23:GOSUB110:PRINT"* EINDE - DRUK TOETS voor menu.";
+5590 GOSUB210:GOTO1200
+5600 GOSUB100:VE=2:HO=0:GOSUB110
+5610 PRINT"  * LITERATUUR-OPGAVE *"
+5620 PRINT"    -----------------"
+5630 PRINT:PRINT"VREEMDE WOORDEN IN DE WISKUNDE"
+5640 PRINT"Dr.E.J.Dijksterhuis"
+5650 PRINT"P.Noordhoff N.V.-Groningen-Batavia"
+5660 PRINT:PRINT"LEERBOEK der VLAKKE MEETKUNDE"
+5670 PRINT"Dr.P.Molenbroek"
+5680 PRINT"P.Noordhoff N.V.-Groningen-Batavia"
+5690 PRINT:PRINT"TOETS IN"
+5700 PRINT"Ton Verbaan"
+5710 PRINT"Alg.Dagblad:27-09-1986"
+5720 PRINT:PRINT"LEERBOEK der STEREOMETRIE"
+5730 PRINT"Dr.P.Molenbroek"
+5740 PRINT"P.Noordhoff N.V.-Groningen-Batavia"
+5750 GOSUB20100
+5760 PRINT"VAN PUNT NAAR VIERDE DIMENSIE"
+5770 PRINT"Egmont Colerus / Dr.J.A.A.Verlinden"
+5780 PRINT"H.Nelissen-Amsterdam"
+5790 PRINT:PRINT"BEKNOPTE GESCHIEDENIS der WISKUNDE"
+5800 PRINT"J.Versluys"
+5810 PRINT"A.Versluys-Amsterdam"
+5820 VE=22:GOSUB110
+5830 PRINT"* EINDE - DRUK TOETS voor menu.";
+5840 GOSUB210:GOTO1200
+5850 GOSUB100:VE=2:HO=0:GOSUB110
+5860 N$="N"
+5870 PRINT" * NAMEN-REGISTER *"
+5880 PRINT"  --------------"
+5890 PRINT" 1.Adr.ANTHONISZ.   16.Lindemann"
+5900 PRINT" 2.AHMES            17.MACHIN"
+5910 PRINT" 3.ARCHIMEDES       18.METIUS"
+5920 PRINT" 4.ARYA-BHATTA      19.METZIUS"
+5930 PRINT" 5.BHASKARA         20.PTOLEMEUS"
+5940 PRINT" 6.v.CEULEN         21.ROMANUS"
+5950 PRINT" 7.DASE             22.ROMEINEN"
+5960 PRINT" 8.FIBONACCI        23.v.ROOMEN"
+5970 PRINT" 9.Grieks alfabet   24.RUTHERFORD"
+5980 PRINT"10.HINDOES          25.SHANKS"
+5990 PRINT"11.v.KEULEN         26.SHARP"
+6000 PRINT"12.LAMBERT          27.VEGA"
+6010 PRINT"13.LEGENDRE         28.VIETA"
+6020 PRINT"14.LEIBNIZ          29.VITRUVIUS"
+6030 PRINT"15.LEONARDO v.Pisa  30.WALLIS"
+6040 WN=0:INPUTWN:IFWN=0 THEN6040
+6050 GOSUB100:VE=4:GOSUB110
+6060 ONWN GOTO4260,3560,3930,3790,3880,4880,5000,4070,1430
+6070 ON(WN-9) GOTO3780,4880,4600,4660,4470,4070,4710,5000
+6080 ON(WN-17) GOTO4260,4260,3650,4800,3710,4800,5000,5000
+6090 ON(WN-25) GOTO5000,5000,4140,3720,4400
+20000 VE=22:GOSUB110:PRINT"*DRUK TOETS *";
+20010 GOSUB210:GOSUB100:VE=4:HO=2:GOSUB110
+20020 PRINT"* Nog meer namen? (j/n)*";
+20030 INPUTK$
+20040 IF(K$="J") OR(K$="j") THEN5850
+20050 PRINT:PRINT" - TOT ZIENS ! -":END
+20100 PRINT:PRINT"* DRUK TOETS *";
+20105 GOSUB210:GOSUB100:VE=2:HO=2:GOSUB110
+20110 RETURN
+20120 END
+30000 REM *** GEMAAKT OP C-64    ***
+30010 REM *** H.EYCK - NEER      ***
+30020 REM *** 02-10-1986         ***
+30030 REM
+30040 REM COPYRIGHT NOS HILVERSUM
+

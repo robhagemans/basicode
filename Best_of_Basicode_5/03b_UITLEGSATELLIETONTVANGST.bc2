@@ -1,0 +1,342 @@
+1000 A=600:GOTO20
+1010 GOSUB100:REM HOBBYSCOOP-KRANT
+1020 REM EERST SCHERM OPMETEN
+1030 VE=0:FORI=0 TO80:HO=I:GOSUB110
+1040 GOSUB120:IFHO<>I THENHP=I:I=80
+1050 NEXTI:FORI=0 TO40:HO=0:VE=I:GOSUB110
+1060 GOSUB120:IFVE<>I THENVP=I:I=40
+1070 NEXTI
+1080 REM BEGIN PROGRAMMA
+1090 DIMK$(6)
+1100 SB$="":KL$="":N=1
+1110 GOSUB100:PRINT"TOELICHTING SATELLIETONTVANGST"
+1120 PRINT:PRINT"Naar Printer (1) of Scherm (2) ";
+1130 GOSUB210:IF(IN$<>"1") AND(IN$<>"2") THEN1130
+1140 PT=1:IFIN$="2" THENPT=0:GOTO1220
+1150 PRINT:PRINT:PRINT"Hoeveel letters per regel ";
+1160 INPUTHP
+1170 PRINT:PRINT"Kantlijnbreedte: ";
+1180 INPUTSP:GOSUB1900:KL$=SP$
+1190 HP=HP-SP:IFSP>1 THENHP=HP-SP+2
+1200 PRINT:PRINT"Aantal regels per pagina ";
+1210 INPUTVP:VP=VP-6
+1220 RT=0:H=0
+1230 REM PRINT DE KOP
+1240 K$(0)="******************************"
+1250 K$(1)="*     N.O.S.- HOBBYSCOOP     *"
+1260 K$(2)="*         N.V.CASEMA         *"
+1270 K$(3)="*   GEBRUIKERSTOELICHTING    *"
+1280 K$(4)="*     BIJ HET PROGRAMMA      *"
+1290 K$(5)="*    SATELLIET-ONTVANGST     *"
+1300 K$(6)="******************************"
+1310 GOSUB100
+1320 SP=INT((HP-30)/2):IFPT=1 THENSP=SP-3
+1330 GOSUB1900
+1340 SR$=" ":GOSUB20000
+1350 FORI=0 TO6:SR$=SP$+K$(I):GOSUB20000:NEXTI
+1360 RESTORE:READDD$
+1370 SR$=" ":GOSUB20000
+1380 A$="Versie in BasiCode-2: Oktober '87"
+1390 SP=INT((HP-LEN(A$))/2):IFPT=1 THENSP=SP-3
+1400 GOSUB1900
+1410 SR$=SP$+A$:GOSUB20000
+1420 SR$=" ":GOSUB20000
+1430 SR$="Zend uw eventuele reacties ":GOSUB20000
+1440 SR$="aan:":GOSUB20000
+1450 SR$=" ":GOSUB20000
+1460 SR$="N.O.S. Hobbyscoop Beeldkrant,":GOSUB20000
+1470 SR$="Postbus 1200,":GOSUB20000
+1480 SR$="1200 BE Hilversum.":GOSUB20000
+1490 A$="":REM PRINT DE OVERIGE DATA
+1500 READBB$
+1510 GOSUB22100
+1520 GOSUB22190
+1530 GOTO1510
+1540 END
+1900 SP$="":FORI=1 TOSP:SP$=SP$+" ":NEXTI:RETURN
+20000 REM AFDRUK SUBROUTINE
+20010 IFSR$="" THENRETURN
+20020 IFPT=1 THEN20060
+20030 PRINTSR$
+20040 RT=RT+1:IFRT=VP-4 THENGOSUB21000
+20050 RETURN
+20060 SR$=KL$+SR$:GOSUB350:GOSUB360:RT=RT+1
+20070 IFRT=VP THENGOSUB22000
+20080 RETURN
+21000 REM SCHERM VOL
+21010 IFRT=0 THENRETURN
+21020 HO=0:VE=VP-1:GOSUB110
+21030 PRINT"<Toets voor verder>";
+21040 GOSUB210:GOSUB100:RT=0:RETURN
+22000 REM PAPIER VOL
+22010 GOSUB100:FORI=1 TO6:GOSUB360:NEXTI
+22020 PRINT"Zet de printer bovenaan nieuwe pagina"
+22030 PRINT"en druk daarna op een toets."
+22040 GOSUB210:RT=0:GOSUB100
+22050 N=N+1:SR=N:GOSUB300:N$=SR$
+22060 SR$="Afl.: "+DD$+", pag. "+N$
+22070 NL=LEN(SR$):GOSUB20060:SR$=""
+22080 SR$=SR$+"-":IFLEN(SR$)<NL THEN22080
+22090 GOSUB20060:SR$=" ":GOSUB20060:RETURN
+22100 IFBB$="$$$$$" THENH=1:GOSUB22190:END
+22110 IFA$<>"" THENA$=A$+" "
+22120 A$=A$+BB$:READBB$
+22130 IFLEFT$(BB$,1)="#" THENH=1:GOTO22180
+22140 IFLEFT$(BB$,1)="." THENH=1:GOTO22180
+22150 IFA$=". " THEN22180
+22160 IFLEFT$(A$,1)="#" THEN22180
+22170 IFLEN(A$)<HP THEN22100
+22180 RETURN
+22190 REM PRINT met aangepaste regellengte
+22200 IFLEFT$(A$,1)="#" THENH=3
+22210 IF(LEFT$(A$,1)<>".") AND(H<3) THEN22260
+22220 LL=LEN(A$):A$=RIGHT$(A$,LL-1)
+22230 IFH<3 THEN22260
+22240 IFPT=0 THENGOSUB21010
+22250 IFPT=1 THENSR$=" ":GOSUB20000
+22260 IFA$=" " THENSR$=A$:A$="":GOSUB20000:GOTO22370
+22270 L=LEN(A$):IF(H=0) AND(L<HP) THEN22370
+22280 IFL<HP THENSR$=A$:A$="":GOSUB20000:GOTO22360
+22290 FORI=HP TO1 STEP-1
+22300 B$=MID$(A$,I,1)
+22310 IFB$=" " THENJ=I:I=1
+22320 NEXTI
+22330 SR$=LEFT$(A$,J-1):A$=RIGHT$(A$,L-J)
+22340 GOSUB20000
+22350 GOTO22270
+22360 IFH=3 THENSR$=" ":GOSUB20000
+22370 H=0:RETURN
+25000 DATA"SATELLIETONTVANGST"
+25010 DATA"#SATELLIETONTVANGST"
+25020 DATA"In het programma SATELLIETONTVANGST wordt"
+25030 DATA"uitgerekend hoe de ontvangstresultaten zijn"
+25040 DATA"wanneer een parabolische antenne (een schotel)"
+25050 DATA"gericht wordt op de verschillende satellieten"
+25060 DATA"die hun televisieprogramma's over Nederland"
+25070 DATA"uitstralen. Er spelen een groot aantal factoren"
+25080 DATA"een rol: voor een deel aan zendzijde (het"
+25090 DATA"opstraalstation en de satelliet zelf), voor een"
+25100 DATA"ander deel aan ontvangstzijde (de eigen"
+25110 DATA"schotel), maar ook in het transmissiepad naar"
+25120 DATA"boven (de uplink) en naar beneden (de downlink)."
+25130 DATA".Het programma bevat alle noodzakelijke gegevens"
+25140 DATA"om volledige berekeningen te kunnen maken."
+25150 DATA"Maar de gebruiker kan ook erg gemakkelijk de"
+25160 DATA"waarde van een parameter wijzigen en daarmee"
+25170 DATA"voor zichzelf vaststellen hoe groot de invloed"
+25180 DATA"daarvan op het uiteindelijke ontvangstresultaat"
+25190 DATA"is."
+25200 DATA"#DE OPSTRAALSTATIONS"
+25210 DATA"Een land -of een PTT in een land- dat een kanaal"
+25220 DATA"op een satelliet huurt of koopt, moet in eigen"
+25230 DATA"land voor een zendstation zorgen dat het uit te"
+25240 DATA"zenden programma naar de betreffende satelliet"
+25250 DATA"kan stralen. Zo'n zendstation heet dan ook een"
+25260 DATA"opstraalstation. Maken meerdere landen van EEN"
+25270 DATA"satelliet gebruik, dan worden dus vanuit meer"
+25280 DATA"landen tegelijk signalen naar die ene satelliet"
+25290 DATA"gezonden. In Nederland staat het opstraalstation"
+25300 DATA"in Nederhorst Den Berg, althans voor het"
+25310 DATA"opstralen van televisie- en radioprogramma's."
+25320 DATA".Het maximaal toegestane opgestraalde vermogen"
+25330 DATA"mag onder geen voorwaarde worden overschreden."
+25340 DATA"Er wordt dan ook niet gecompenseerd voor bijv."
+25350 DATA"extra signaalverzwakking in de uplink tengevolge"
+25360 DATA"van een zware regenbui. De sterkte van het"
+25370 DATA"signaal dat in zo'n situatie bij de satelliet"
+25380 DATA"aankomt is dan dus eenvoudig lager."
+25390 DATA"#DE SATELLIETEN"
+25400 DATA"Een satelliet is eigenlijk niets anders dan een"
+25410 DATA"verzameling frequentieverschuivers; bijv.:"
+25420 DATA"de door de satelliet ontvangen signalen op zo'n"
+25430 DATA"14 gigahertz (GHz) worden omgezet naar 11 GHz,"
+25440 DATA"versterkt en uitgezonden naar de aarde. Door"
+25450 DATA"hiervoor sterk bundelende antennes te gebruiken"
+25460 DATA"wordt bereikt dat het signaal slechts op een"
+25470 DATA"klein gedeelte van de aardbol terechtkomt."
+25480 DATA".Satellieten die continu TV-programma's moeten"
+25490 DATA"kunnen uitzenden zijn geostationair, d.w.z. dat"
+25500 DATA"ze op een punt loodrecht boven de evenaar hangen"
+25510 DATA"op een hoogte van bijna 36000 km. De positie van"
+25520 DATA"de satelliet is in principe instabiel; dat"
+25530 DATA"betekent, dat de beheerder van de satelliet er"
+25540 DATA"steeds door kleine koerscorrecties voor moet"
+25550 DATA"zorgen, dat deze op zijn plaats blijft."
+25560 DATA"Dit 'station keeping' gebeurt meestal eens in"
+25570 DATA"de 14 dagen. In de tussentijd drift de"
+25580 DATA"satelliet weer een beetje weg. Gezien vanuit"
+25590 DATA"Nederland bijvoorbeeld beweegt de EUTELSAT 1"
+25600 DATA"(waarop o.a. Sky Channel uitzendt) tussen de"
+25610 DATA"+ en -0.14 graden heen en weer!"
+25620 DATA". ",".Satellieten zenden niet alle met hetzelfde"
+25630 DATA"vermogen uit. Globaal komt het er op neer, dat"
+25640 DATA"een satelliet veel signalen met ieder een gering"
+25650 DATA"vermogen kan uitzenden ofwel slechts enkele"
+25660 DATA"signalen met groot vermogen. Wordt uitgezonden"
+25670 DATA"met groot vermogen, dan kan de ontvanger op"
+25680 DATA"aarde met kleine ontvangschotels uit en"
+25690 DATA"omgekeerd. Een omroepsatelliet als de TV-SAT"
+25695 DATA"zendt met groot vermogen, een"
+25700 DATA"telecommunicatiesatelliet"
+25710 DATA"als de EUTELSAT 1 met klein vermogen en een"
+25720 DATA"satelliet als de ASTRA zit daar tussenin."
+25730 DATA"#HET TRANSMISSIEPAD"
+25740 DATA"Het transmissiepad tussen aarde en satelliet (de"
+25750 DATA"uplink en de downlink) is voor het grootste deel"
+25760 DATA"ideaal. Maar de twee keer dat de atmosfeer wordt"
+25770 DATA"gepasseerd zijn goed te merken! Wanneer daarin"
+25780 DATA"stortbuien voorkomen kan het signaal een stevige"
+25790 DATA"verzwakking oplopen nl. in de orde van 1O tot 15"
+25800 DATA"dB per link! Vooral degenen die in de direkte"
+25810 DATA"omgeving van het opstraalstation wonen treffen"
+25820 DATA"het slecht: een stortbui valt bij hen tegelijk"
+25830 DATA"in uplink en downlink. De regendemping heeft dan"
+25840 DATA"een zogeheten A/A-karakter. Hoe verder men van"
+25850 DATA"het opstraalstation vandaan woont, hoe kleiner"
+25860 DATA"de kans, dat up- en downlink TEGELIJKERTIJD door"
+25870 DATA"zware regendemping worden getroffen. De"
+25880 DATA"regendemping heeft dan een A/B-karakter."
+25890 DATA".Gemiddeld moet in Nederland in de A/B situatie"
+25900 DATA"rekening worden gehouden met 1.2 dB demping."
+25910 DATA"#HET ONTVANGSTATION"
+25920 DATA"De schotel van het ontvangstation is eigenlijk"
+25930 DATA"niets anders dan een parabolisch gevormde"
+25940 DATA"reflector voor de van een satelliet ontvangen"
+25950 DATA"signalen. De werkelijke ontvangantenne is in het"
+25960 DATA"brandpunt van de reflector opgehangen."
+25970 DATA"(N.B.: professionele ontvangstations van"
+25980 DATA"kabelmaatschappijen zijn overigens met een"
+25990 DATA"Cassegrain antenne uitgerust, waarbij het"
+26000 DATA"ontvangen signaal eerst nog via een subreflector"
+26010 DATA"wordt geleid!)"
+26020 DATA".Hoe groter de schotel is, hoe kleiner de"
+26030 DATA"openingshoek daarvan is en hoe nauwkeuriger"
+26040 DATA"de schotel dus moet worden gericht. Ook aan de"
+26050 DATA"stabiliteit bij stormachtig weer worden navenant"
+26060 DATA"hogere eisen gesteld."
+26070 DATA".De ontvangantenne in het brandpunt wordt"
+26080 DATA"meestal LNC (low noise converter) genoemd. Dat"
+26090 DATA"een LNC zo min mogelijk eigen ruis aan het"
+26100 DATA"ontvangen signaal moet toevoegen zal duidelijk"
+26110 DATA"zijn. De LNC zet bovendien het ontvangen signaal"
+26120 DATA"in frequentie om naar een middenfrequentband van"
+26130 DATA"95O tot 175O MHz. Soms zijn twee LNC's nodig:"
+26140 DATA"als namelijk signalen met verschillende"
+26150 DATA"polarisatierichtingen tegelijk moeten worden"
+26160 DATA"ontvangen. In zo'n geval lopen er dus twee"
+26170 DATA"middenfrequentkabels van buiten naar binnen"
+26180 DATA"naar de afstembare ontvanger, die dan natuurlijk"
+26190 DATA"wel van twee (omschakelbare) ingangen moet zijn"
+26200 DATA"voorzien."
+26210 DATA"Een goedkopere oplossing is simpelweg buiten"
+26220 DATA"de LNC een kwartslag te draaien, maar dat"
+26230 DATA"is niet altijd even praktisch uitvoerbaar...."
+26240 DATA".De afstembare ontvanger demoduleert de"
+26250 DATA"FM-gemoduleerde satellietsignalen naar een"
+26260 DATA"video- en audiosignaal. Bij de signalen van de"
+26270 DATA"omroepsatelliet is ook nog een D2-MAC-decoder"
+26280 DATA"nodig, anders hoort of ziet u nog niets!"
+26290 DATA"#DE PARAMETERS"
+26300 DATA"Hierna volgt een beknopte toelichting op de"
+26310 DATA"in het programma voorkomende parameters. Voor"
+26320 DATA"uitgebreide verhandelingen moeten we helaas"
+26330 DATA"naar gedrukte literatuur verwijzen."
+26340 DATA"Het gaat er hier meer om, dat ongeveer duidelijk"
+26350 DATA"is wat de verschillende grootheden voorstellen."
+26360 DATA". "
+26370 DATA".MAXIMALE VIDEOFREQUENTIE: de hoogste"
+26380 DATA"beeldfrequentie die in het uitgezonden signaal"
+26390 DATA"voorkomt. Bij PAL is dat meestal 5 MHz, bij"
+26400 DATA"D2-MAC 5.6 MHz.",". "
+26410 DATA".PP-ZWAAI tgv VIDEO: de zwaai van het"
+26420 DATA"FM-gemoduleerde satellietsignaal uitsluitend"
+26430 DATA"tengevolge van het videosignaal (zonder audio)"
+26440 DATA"in het 'midden' van de pre-emfasekarakteristiek;"
+26450 DATA"meestal 13.5 MHz.",". "
+26460 DATA".BANDBREEDTE HOOGFREQUENT: bandbreedte van het"
+26470 DATA"totale satellietsignaal, gemeten tussen de"
+26480 DATA"-3 dB-punten van de omhullende van het"
+26490 DATA"hoogfrequentspectrum. Momenteel komen voor"
+26500 DATA"27, 30 EN 36 MHz.",". "
+26510 DATA".C/T: zegt iets over de kwaliteit van de uplink,"
+26520 DATA"de downlink of de cascade van die twee.",". "
+26530 DATA".G/T: zegt iets over de kwaliteit van het"
+26540 DATA"satellietontvangstation; hoe hoger dit getal is"
+26550 DATA"hoe beter de ontvangstresultaten zullen zijn."
+26560 DATA". ",".EIRP SATELLIET: het door de satelliet"
+26570 DATA"uitgezonden vermogen in de richting van het"
+26580 DATA"satellietontvangstation.",". "
+26590 DATA".ANTENNETEMPERATUUR: de hoeveelheid thermische"
+26600 DATA"ruis die de LNC ziet aan zijn ingang; afkomstig"
+26610 DATA"van kosmos,schoteloppervlak en omgeving.",". "
+26620 DATA".(MIS)AANPASSING: geeft aan hoe goed het door de"
+26630 DATA"parabool gebundelde signaal in de LNC-ingang"
+26640 DATA"belandt; is maximaal 1.",". "
+26650 DATA".RENDEMENT: zegt iets over de kwaliteit van de"
+26660 DATA"combinatie schotel-LNC; een heel goede waarde"
+26670 DATA"is O.7. Prive-schotels komen meestal niet verder"
+26680 DATA"dan O.5.",".  "
+26690 DATA".FM RUISDREMPEL SATELLIETONTVANGER: hoe beter de"
+26695 DATA"ontvanger, hoe lager dit getal. Een"
+26700 DATA"goede waarde is 7 tot 8 dB, maar meestal is"
+26710 DATA"11 dB meer de realiteit."
+27000 DATA"#HET PROGRAMMA"
+27010 DATA"Uitgaande van de gegevens van opstraalstation,"
+27020 DATA"uplink, satelliet, downlink, LNC en ontvanger"
+27030 DATA"berekent het programma de signaal-ruisverhouding"
+27040 DATA"van het uiteindelijk gedemoduleerde video-"
+27050 DATA"signaal.",".Voor een goed en praktisch ruisvrij"
+27060 DATA"beeld is een S/N nodig van minstens 43 dB."
+27070 DATA"Dit geldt strikt genomen voor PAL gecodeerd"
+27080 DATA"video; daarop is het programma overigens ook"
+27090 DATA"gebaseerd. D2-MAC-gecodeerde signalen vallen"
+27100 DATA"ruim 2 dB beter uit. Hieronder is in een"
+27110 DATA"waarderingsschaal aangegeven hoe een video-"
+27120 DATA"beeld wordt gekwalificeerd bij verschillende"
+27130 DATA"S/N-waarden."
+27140 DATA"# ",".43 dB = goed",".37 dB = redelijk"
+27150 DATA".31 dB = matig",".25 dB = slecht"
+27160 DATA".19 dB = zeer slecht"
+27170 DATA". ",". ",".tabel",".videokwaliteiten"
+27180 DATA"#PROGRAMMA-OPBOUW"
+27190 DATA"Het programma bestaat uit een vrij kort"
+27200 DATA"hoofdprogramma met een groot aantal subroutines."
+27210 DATA"De subroutines staan op regel 2OOOO en volgende."
+27220 DATA"Vanaf regel 27OOO zijn alle gegevens opgenomen"
+27230 DATA"van de opstraalstations tot en met de ontvanger."
+27240 DATA"Het programma begint met het tellen van deze"
+27250 DATA"gegevens en creeert arrays van de juiste"
+27260 DATA"grootte waar vervolgens de gegevens worden"
+27270 DATA"ingelezen. Dat betekent, dat probleemloos"
+27280 DATA"extra gegevens kunnen worden toegevoegd. Hoe"
+27290 DATA"dat moet staat ter plaatse vermeld."
+27300 DATA"#PROGRAMMA RUN"
+27310 DATA"Het programma werkt met keuzemenu's die voor"
+27320 DATA"zichzelf spreken. De pagina lay-out is voor"
+27330 DATA"computers met minder dan 4O horizontale"
+27340 DATA"posities op het beeldscherm anders dan voor die"
+27350 DATA"met 4O en meer posities. De berekeningen die"
+27360 DATA"worden uitgevoerd zijn echter hetzelfde."
+27370 DATA".De nauwkeurigheid van de berekeningen hangt"
+27380 DATA"natuurlijk wel van de rekenprestaties van de"
+27390 DATA"computer zelf af! Die valt helaas nog wel eens"
+27400 DATA"tegen....",".In de programma-run wordt de"
+27410 DATA"mogelijkheid gegeven gegevens te wijzigen."
+27420 DATA"Dat gebeurt NIET in de arrays maar in"
+27430 DATA"buffergeheugens; de oorspronkelijke gegevens"
+27440 DATA"gaan dus niet verloren."
+27450 DATA"# "
+27460 DATA"De 'herhaal'keuze op de resultatenpagina"
+27470 DATA"geeft de mogelijkheid om dezelfde berekening"
+27480 DATA"nogmaals door te lopen met behoud van de"
+27490 DATA"inhoud van de buffergeheugens.",". "
+27500 DATA".De 'opnieuw'keuze op dezelfde pagina start"
+27510 DATA"het programma geheel van voren af aan."
+27520 DATA"#TOT SLOT"
+27530 DATA"......wensen HOBBYSCOOP en de NV CASEMA u een"
+27540 DATA"nuttig en leerzaam gebruik van dit"
+27545 DATA"programma toe!"
+27550 DATA". ",". "
+27560 DATA"$$$$$"
+30000 REM (c) STH/NOS HILVERSUM
+

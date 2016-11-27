@@ -1,0 +1,102 @@
+1000 A=20:GOTO20
+1010 REM Taaltest middenbouw
+1020 REM     HANDLEIDING
+1200 GOSUB100
+1210 PRINT"====================================="
+1220 PRINT"== TAALTEST MIDDENBOUW handleiding =="
+1230 PRINT"====================================="
+1240 PRINT"In dit programma worden leerlingen"
+1250 PRINT"getoetst op hun kennis van de Neder-"
+1260 PRINT"landse taal."
+1270 PRINT"De onderdelen zijn:"
+1280 PRINT"  - meervoudsvormen"
+1290 PRINT"  - werkwoorden T.T."
+1300 PRINT"  - lettergrepen"
+1310 PRINT"  - verkleinwoorden"
+1320 PRINT"  - relatie van het zelfstandig naam-"
+1330 PRINT"    woord met het werkwoord."
+1335 PRINT
+1340 PRINT"Na elk onderdeel worden de resultaten"
+1350 PRINT"op het scherm gegeven."
+1360 PRINT"Omdat aan de meeste computers die op"
+1370 PRINT"basisscholen gebruikt worden geen"
+1380 PRINT"printer is gekoppeld, moet de leer-"
+1390 PRINT"ling zelf zijn resultaten bijhouden"
+1400 PRINT"op een blaadje."
+1410 PRINT"Zo'n blaadje is makkelijk zelf te"
+1420 PRINT"maken. U kunt het ook nu uitprinten."
+1430 PRINT"SCOREFORMULIER UITPRINTEN  <J/N>";
+1440 GOSUB210
+1450 IF(IN$="n") OR(IN$="N") THEN3000
+1460 IF(IN$="j") OR(IN$="J") THEN2000
+1470 GOSUB250:GOTO1440
+2000 REM .... scoreformulier ....
+2010 SR$="+-------------------------------------+"
+2020 GOSUB350:GOSUB360
+2030 SR$="! SCOREFORMULIER TAALTEST middenbouw  !"
+2040 GOSUB350:GOSUB360
+2050 SR$="!-------------------------------------!"
+2060 GOSUB350:GOSUB360
+2070 SR$="!                                     !"
+2080 GOSUB350:GOSUB360
+2090 SR$="! Naam:.............................. !"
+2100 GOSUB350:GOSUB360
+2110 SR$="!                                     !"
+2120 GOSUB350:GOSUB360
+2130 SR$="! Klas/groep:........ Datum:......... !"
+2140 GOSUB350:GOSUB360
+2150 SR$="!-------------------------------------!"
+2160 GOSUB350:GOSUB360
+2170 SR$="! ONDERDEEL    ! AANTAL ! GOED ! FOUT !"
+2180 GOSUB350:GOSUB360
+2190 SR$="!--------------+--------+------+------!"
+2200 GOSUB350:GOSUB360
+2210 LE$="!              !        !      !      !"
+2220 SR$=LE$:GOSUB350:GOSUB360
+2230 SR$="! 1>Meervoudsv.! ...... ! .... ! .... !"
+2240 GOSUB350:GOSUB360
+2250 SR$=LE$:GOSUB350:GOSUB360
+2260 SR$="! 2>Werkw. T.T.! ...... ! .... ! .... !"
+2270 GOSUB350:GOSUB360
+2280 SR$=LE$:GOSUB350:GOSUB360
+2290 SR$="! 3>Lettergrep.! ...... ! .... ! .... !"
+2300 GOSUB350:GOSUB360
+2310 SR$=LE$:GOSUB350:GOSUB360
+2320 SR$="! 4>Verkleinw. ! ...... ! .... ! .... !"
+2330 GOSUB350:GOSUB360
+2340 SR$=LE$:GOSUB350:GOSUB360
+2350 SR$="! 5>Z.N.<->W.W.! ...... ! .... ! .... !"
+2360 GOSUB350:GOSUB360
+2370 SR$="+-------------------------------------+"
+2380 GOSUB350:GOSUB360:GOSUB360
+3000 GOSUB100
+3010 PRINT"====================================="
+3020 PRINT"== TAALTEST MIDDENBOUW handleiding =="
+3030 PRINT"====================================="
+3040 PRINT"Opmerkingen:"
+3050 PRINT"-----------"
+3060 PRINT"             Zorg ervoor dat de let-"
+3070 PRINT"termode in kleine karakters staat."
+3080 PRINT"Alle antwoorden worden anders fout"
+3090 PRINT"gerekend."
+3100 PRINT
+3110 PRINT"             Zeg tegen uw leerlingen"
+3120 PRINT"dat ze de score opschrijven VOORDAT"
+3130 PRINT"ze op de spatiebalk drukken."
+3140 PRINT"Zoniet, dan zijn de resultaten gewist."
+3150 VE=17:HO=0
+3160 GOSUB110
+3170 PRINT"Laad nu 'TAALTEST MIDDENBOUW'"
+3180 PRINT"         -------------------"
+3185 PRINT
+3190 PRINTTAB(15);"Veel succes,"
+3200 PRINTTAB(15);"Walther v.d. Elshout"
+3300 END
+30000 REM ***************************
+30010 REM *       AQUARIUS 32K      *
+30020 REM * Walther van den Elshout *
+30030 REM * van Gorkumlaan 151      *
+30040 REM * 5641 WP  Eindhoven      *
+30050 REM * COPYRIGHT NOS HILVERSUM *
+30060 REM ***************************
+

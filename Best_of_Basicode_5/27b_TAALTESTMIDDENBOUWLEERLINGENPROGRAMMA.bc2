@@ -1,0 +1,358 @@
+1000 A=1000:GOTO20
+1010 REM Taaltest middenbouw
+1015 REM LEERLINGENPROGRAMMA
+1020 DIMA$(100),B$(100)
+1025 FORN=1 TO100:A$(N)="":B$(N)="":NEXTN
+1200 GOSUB100
+1210 PRINT"+-----------------------------------+"
+1220 PRINT"!                                   !"
+1230 PRINT"! D E   G R O T E   T A A L T E S T !"
+1240 PRINT"! ********************************* !"
+1250 PRINT"!            middenbouw             !"
+1260 PRINT"+-----------------------------------+"
+1270 PRINT:PRINT"Hallo, ik ga eens kijken of jij goed"
+1280 PRINT"bent in taal. Ik ga je testen in de"
+1290 PRINT"volgende onderdelen:"
+1295 PRINT
+1300 PRINT"     1. meervoudsvormen"
+1305 PRINT"     2. werkwoorden T.T."
+1310 PRINT"     3. lettergrepen"
+1315 PRINT"     4. verkleinwoorden"
+1320 PRINT"     5. zelfst. naamw. <-> werkwoord"
+1330 PRINT:PRINT"Als een onderdeel klaar is, komen je"
+1340 PRINT"resultaten op het scherm."
+1350 PRINT"Die resultaten schrijf je op het blad"
+1360 PRINT"dat je gekregen hebt."
+1370 PRINT"                       VEEL SUCCES !!"
+1499 GOSUB10000
+2000 GOSUB100:REM MEERVOUD
+2001 GOSUB13000
+2002 PRINT"ONDERDEEL 1"
+2003 PRINT"-------------------------------------"
+2005 GD=0:FT=0:N=0
+2010 PRINT"zet deze woorden in het meervoud"
+2020 PRINT"          goed opletten"
+2030 PRINT"-------------------------------------"
+2040 N=N+1
+2050 READA$(N),B$(N):IFA$(N)="*" THEN2100
+2060 GOTO2040
+2100 FORX=1 TO(N-1)
+2110 VE=10:HO=2
+2115 GOSUB110:PRINT"                                 "
+2120 GOSUB110:PRINTA$(X);" => ";
+2130 INPUTC$
+2140 IFC$=B$(X) THENGOSUB11000
+2150 IFC$<>B$(X) THENGOSUB12000:GOSUB10000
+2155 VE=20:HO=0:GOSUB110
+2156 PRINT"                                     "
+2160 NEXTX
+2300 GOSUB100
+2310 TL$="==de uitslag van de meervoudsvormen=="
+2320 GOSUB15000
+3000 GOSUB100:REM WERKWOORDEN T.T.
+3001 GOSUB13000
+3002 PRINT"ONDERDEEL 2"
+3003 PRINT"-------------------------------------"
+3005 GD=0:FT=0:N=0
+3010 PRINT"typ de werkwoorden in de"
+3020 PRINT"      tegenwoordige tijd"
+3030 PRINT"-------------------------------------"
+3040 N=N+1
+3050 READA$(N),B$(N):IFA$(N)="*" THEN3100
+3060 GOTO3040
+3100 FORX=1 TO(N-1)
+3110 VE=10:HO=0
+3115 GOSUB110:PRINT"                                     "
+3116 PRINT"                                     "
+3120 GOSUB110:PRINTA$(X)
+3130 PRINT" => ";:INPUTC$
+3140 IFC$=B$(X) THENGOSUB11000
+3150 IFC$<>B$(X) THENGOSUB12000:GOSUB10000
+3155 VE=20:HO=0:GOSUB110
+3156 PRINT"                                     "
+3160 NEXTX
+3300 GOSUB100
+3310 TL$="==de uitslag van de werkwoorden  TT=="
+3320 GOSUB15000
+4000 GOSUB100:REM LETTERGREPEN
+4001 GOSUB13000
+4002 PRINT"ONDERDEEL 3"
+4003 PRINT"-------------------------------------"
+4005 GD=0:FT=0:N=0
+4010 PRINT"verdeel deze woorden in lettergrepen."
+4030 PRINT"-------------------------------------"
+4035 PRINT"Bijv.: kwaliteit => kwa-li-teit"
+4037 PRINT"-------------------------------------"
+4040 N=N+1
+4050 READA$(N),B$(N):IFA$(N)="*" THEN4100
+4060 GOTO4040
+4100 FORX=1 TO(N-1)
+4110 VE=10:HO=0
+4115 GOSUB110:PRINT"                                     "
+4120 GOSUB110:PRINTA$(X);" => ";
+4130 INPUTC$
+4140 IFC$=B$(X) THENGOSUB11000
+4150 IFC$<>B$(X) THENGOSUB12000:GOSUB10000
+4155 VE=20:HO=0:GOSUB110
+4156 PRINT"                                     "
+4160 NEXTX
+4300 GOSUB100
+4310 TL$="== de uitslag van de letter-grepen =="
+4320 GOSUB15000
+5000 GOSUB100:REM VERKLEINWOORDEN
+5001 GOSUB13000
+5002 PRINT"ONDERDEEL 4"
+5003 PRINT"-------------------------------------"
+5005 GD=0:FT=0:N=0
+5010 PRINTTAB(7);"typ van deze woorden"
+5020 PRINTTAB(7);"de verkleinwoorden"
+5025 PRINTTAB(7);"bijv.: jas => jasje"
+5030 PRINT"-------------------------------------"
+5040 N=N+1
+5050 READA$(N),B$(N):IFA$(N)="*" THEN5100
+5060 GOTO5040
+5100 FORX=1 TO(N-1)
+5110 VE=10:HO=2
+5115 GOSUB110:PRINT"                                 "
+5120 GOSUB110:PRINTA$(X);" => ";
+5130 INPUTC$
+5140 IFC$=B$(X) THENGOSUB11000
+5150 IFC$<>B$(X) THENGOSUB12000:GOSUB10000
+5155 VE=20:HO=0:GOSUB110
+5156 PRINT"                                     "
+5160 NEXTX
+5300 GOSUB100
+5310 TL$="==de uitslag van de verkleinwoorden=="
+5320 GOSUB15000
+6000 GOSUB100:REM ZELFST.NMW <> WW
+6001 GOSUB13000
+6002 PRINT"ONDERDEEL 5"
+6003 PRINT"-------------------------------------"
+6005 GD=0:FT=0:N=0
+6010 PRINT"De schilder .... schildert."
+6020 PRINT"En wat doen deze mensen ?"
+6030 PRINT"-------------------------------------"
+6040 N=N+1
+6050 READA$(N),B$(N):IFA$(N)="*" THEN6100
+6060 GOTO6040
+6100 FORX=1 TO(N-1)
+6110 VE=10:HO=1:GOSUB110
+6115 PRINT"                                     "
+6120 GOSUB110:PRINTA$(X);" => ";
+6130 INPUTC$
+6140 IFC$=B$(X) THENGOSUB11000
+6150 IFC$<>B$(X) THENGOSUB12000:GOSUB10000
+6155 VE=20:HO=0:GOSUB110
+6156 PRINT"                                     "
+6160 NEXTX
+6300 GOSUB100
+6310 TL$="== uitslag zelfst. naamw. <> werkw.=="
+6320 GOSUB15000
+9000 GOSUB100
+9010 PRINT"Zo, dit is het einde van de test."
+9020 PRINT:PRINT"Ik hoop dat je een beetje tevreden"
+9030 PRINT:PRINT"over jezelf bent !"
+9040 PRINT:PRINT
+9050 PRINT:PRINT"                 TOT ZIENS !!!"
+9060 VE=12:HO=0:GOSUB110
+9070 PRINT"          ::::::::::::::::::::"
+9080 PRINT"          :: W.v.d. Elshout ::"
+9090 PRINT"          :: Januari   1988 ::"
+9100 PRINT"          :: Copyright  NOS ::"
+9110 PRINT"          ::   HILVERSUM    ::"
+9120 PRINT"          ::::::::::::::::::::"
+9125 PRINT
+9130 PRINT:PRINT"ROEP DE VOLGENDE LEERLING EN DRUK OP"
+9135 PRINT"DE"
+9140 GOSUB10000
+9150 RUN
+10000 REM ... SPATIEBALK ...
+10005 VE=22:HO=4:GOSUB110:PRINT"SPATIEBALK"
+10010 GOSUB200
+10020 IFIN$=" " THEN10090
+10030 VE=22:HO=0:GOSUB110
+10040 PRINT"=+=";
+10050 FORWA=1 TO100:NEXTWA
+10060 GOSUB110:PRINT"<x>";
+10070 FORWA=1 TO100:NEXTWA
+10080 GOTO10010
+10090 GOSUB110
+10095 PRINT"                 ":RETURN
+11000 REM .... GOED ROUTINE ....
+11010 GD=GD+1
+11020 VE=20:HO=20:GOSUB110
+11030 PRINT"********"
+11040 VE=21:GOSUB110:PRINT"* goed *"
+11050 VE=22:GOSUB110:PRINT"********"
+11060 FORWA=1 TO3
+11070 VE=21:HO=15:GOSUB110
+11080 PRINT"==>";:GOSUB110
+11090 GOSUB250:PRINT"   ";
+11095 FORY=1 TO20:NEXTY
+11100 NEXTWA
+11110 FORVE=20 TO22:HO=15:GOSUB110
+11120 PRINT"              "
+11130 NEXTVE
+11140 RETURN
+12000 REM .... FOUT ROUTINE ....
+12010 FT=FT+1
+12020 VE=20:HO=20:GOSUB110
+12030 PRINT"********"
+12040 VE=21:GOSUB110:PRINT"* fout *"
+12050 VE=22:GOSUB110:PRINT"********"
+12060 FORWA=1 TO3
+12070 VE=21:HO=15:GOSUB110
+12080 PRINT"==>";:GOSUB110
+12090 GOSUB250:PRINT"   ";:GOSUB250
+12100 NEXTWA
+12110 FORVE=20 TO22:HO=15:GOSUB110
+12120 PRINT"              "
+12130 NEXTVE
+12140 VE=20:HO=0:GOSUB110
+12150 PRINT"Het moet zijn => ";B$(X)
+12160 RETURN
+13000 REM TEKENEN KADER
+13010 VE=6:HO=0:GOSUB110
+13020 PRINT"*************************************"
+13030 VE=16:GOSUB110
+13040 PRINT"*************************************"
+13050 VE=0:HO=0:GOSUB110:RETURN
+15000 REM ..uitslag per onderdeel..
+15010 PRINT"====================================="
+15020 PRINTTL$
+15030 PRINT"====================================="
+15040 PRINT:PRINT:PRINT
+15050 PRINT"aantal woorden: ";N-1
+15060 PRINT:PRINT
+15070 PRINT"aantal goed:    ";GD
+15080 PRINT:PRINT
+15090 PRINT"aantal fout:    ";FT
+15095 PRINT
+15100 PRINT:PRINT"NOTEER DIT GOED OP JE INVULBLAD !!!"
+15105 PRINT
+15110 PRINT"====================================="
+15120 PRINTTL$
+15130 PRINT"====================================="
+15140 GOSUB10000:RETURN
+19999 REM 'vraag','antwoord'
+20000 DATA"heg","heggen","weg","wegen"
+20010 DATA"stad","steden","schip","schepen"
+20020 DATA"stip","stippen","gat","gaten"
+20030 DATA"spat","spatten","glas","glazen"
+20040 DATA"plas","plassen","poes","poezen"
+20050 DATA"vlot","vlotten","bad","baden"
+20060 DATA"graf","graven","straf","straffen"
+20070 DATA"boon","bonen","bon","bonnen"
+20080 DATA"haak","haken","hak","hakken"
+20090 DATA"droom","dromen","drom","drommen"
+20100 DATA"kaas","kazen","klas","klassen"
+20110 DATA"gebod","geboden","verbod","verboden"
+20120 DATA"bocht","bochten","tocht","tochten"
+20130 DATA"zaad","zaden","draad","draden"
+20140 DATA"licht","lichten","plicht","plichten"
+20150 DATA"spreeuw","spreeuwen","schreeuw","schreeuwen"
+20160 DATA"wrat","wratten","schat","schatten"
+20170 DATA"schroef","schroeven","hoef","hoeven"
+20180 DATA"gevecht","gevechten"
+20190 DATA"gerecht","gerechten","*","*"
+21000 REM WERKWOORDEN T.T.
+21010 DATA"De matroos (reizen) ver weg."
+21020 DATA"reist"
+21030 DATA"Oma (snijden) het sneetje door."
+21040 DATA"snijdt"
+21050 DATA"De ober (vegen) over de tafel."
+21060 DATA"veegt"
+21070 DATA"Agnes (kauwen) op de lekkere wafel."
+21080 DATA"kauwt"
+21090 DATA"De schilder (fronsen) zijn voorhoofd."
+21100 DATA"fronst"
+21110 DATA"Johan (horen) de kater miauwen."
+21120 DATA"hoort"
+21130 DATA"De jager (vertrouwen) het niet."
+21140 DATA"vertrouwt"
+21150 DATA"Mieke (huilen), zij heeft verdriet."
+21160 DATA"huilt"
+21170 DATA"De slager (slijpen) de botte messen."
+21180 DATA"slijpt"
+21190 DATA"De man (reinigen) de lege flessen."
+21200 DATA"reinigt"
+21210 DATA"Moeder (braden) de Gelderse worst."
+21220 DATA"braadt"
+21230 DATA"De hoveling (sidderen) voor de vorst."
+21240 DATA"siddert","*","*"
+21250 REM LETTERGREPEN
+21260 DATA"maaltijden","maal-tij-den"
+21270 DATA"ontbijttafel","ont-bijt-ta-fel"
+21280 DATA"boterhammen","bo-ter-ham-men"
+21290 DATA"hagelslag","ha-gel-slag"
+21300 DATA"suikerpot","sui-ker-pot"
+21310 DATA"beschuiten","be-schui-ten"
+21320 DATA"tomatensoep","to-ma-ten-soep"
+21330 DATA"boterjus","bo-ter-jus"
+21340 DATA"poffertjes","pof-fer-tjes"
+21350 DATA"wafeltjes","wa-fel-tjes"
+21360 DATA"kroketten","kro-ket-ten"
+21370 DATA"snijbonen","snij-bo-nen"
+21380 DATA"andijvie","an-dij-vie"
+21390 DATA"radijsjes","ra-dijs-jes"
+21400 DATA"worteltjes","wor-tel-tjes"
+21410 DATA"appelmoes","ap-pel-moes"
+21420 DATA"komkommers","kom-kom-mers"
+21430 DATA"biefstukje","bief-stuk-je"
+21440 DATA"kippebout","kip-pe-bout"
+21450 DATA"havermout","ha-ver-mout"
+21460 DATA"pannekoek","pan-ne-koek"
+21470 DATA"*","*"
+21500 REM VERKLEINWOORDEN
+21510 DATA"jongen","jongetje","band","bandje"
+21520 DATA"boek","boekje","koning","koninkje"
+21530 DATA"radio","radiootje","lint","lintje"
+21540 DATA"letter","lettertje","kleur","kleurtje"
+21550 DATA"foto","fotootje","winkel","winkeltje"
+21560 DATA"stekker","stekkertje","stek","stekje"
+21570 DATA"koffer","koffertje","papier","papiertje"
+21580 DATA"knop","knopje","klok","klokje"
+21590 DATA"kind","kindje","moeder","moedertje"
+21600 DATA"schip","scheepje","blad","blaadje"
+21610 DATA"doos","doosje","golf","golfje"
+21620 DATA"*","*"
+21700 REM ZELFST. NMW <-> WERKWOORD
+21710 DATA"De kok","kookt","De slager","slacht"
+21720 DATA"De jager","jaagt","De smid","smeedt"
+21730 DATA"De danser","danst","De wever","weeft"
+21740 DATA"De visser","vist","De zangeres","zingt"
+21750 DATA"De tekenaar","tekent","De metselaar","metselt"
+21760 DATA"De typiste","typt","De dief","steelt"
+21770 DATA"De bokser","bokst","De lasser","last"
+21780 DATA"De goochelaar","goochelt"
+21790 DATA"De tovenaar","tovert"
+21800 DATA"De leugenaar","liegt"
+21810 DATA"De wandelaar","wandelt"
+21820 DATA"De bedelaar","bedelt"
+21830 DATA"De luisteraar","luistert"
+21840 DATA"De sjouwer","sjouwt","*","*"
+30000 REM===========================
+30010 REM dit programma is makkelijk
+30020 REM aan te passen aan andere
+30030 REM leerstof. Men dient dan de
+30040 REM titelwoorden te veranderen
+30050 REM en de DATA-regels
+30060 REM De rest van het programma
+30070 REM past zich dan automatisch
+30080 REM aan. De DATA-regels werken
+30090 REM a.v.:DATA"vraag","antwoord"
+30100 REM Als afsluiting van een on-
+30110 REM derdeel altijd "*","*" !!!
+30120 REM
+30130 REM ***************************
+30140 REM * TAALTEST middenbouw is  *
+30150 REM * gemaakt door Walther van*
+30160 REM * den Elshout, van Gorkum-*
+30170 REM * laan 151, 5641 WP Eind- *
+30180 REM * hoven; Leerkracht op    *
+30190 REM * basisschool 'de Vorsen- *
+30200 REM * poel' in Boxtel.        *
+30210 REM * AQUARIUS 32K - Jan.1988 *
+30220 REM * COPYRIGHT NOS HILVERSUM *
+30230 REM ***************************
+
