@@ -195,3 +195,36 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (J. Wieles – Gorinchem)        |         | |          | (Jos Leppens – Neerpelt – B)   |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     09  | **Raamwerk toelichting**       |    11.9 | |      09  | **Alswin vierkant**            |    12.3 |
+|         |                                |         | |          |                                |         |
+|         | geeft uitleg over een reeks    |         | |          | een computervariant van        |         |
+|         | programma's die volgt.         |         | |          | de kubus van Rubik.            |         |
+|         |                                |         | |          |                                |         |
+|         | (Sake v.d. Goot                |         | |          |                                |         |
+|         | – Hellevoetsluis)              |         | |          | (Alb. Swinkels – O. Beijerland)|         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     10  | **Raamwerk hoofdpgm.**         |    17.4 | |      10  | **Vademecum**                  |    17.8 |
+|         |                                |         | |          |                                |         |
+|         | basisprogramma dat met         |         | |          | geeft allerhande formules      |         |
+|         | verschillende modules werkt.   |         | |          | voor elektronische knutselaars.|         |
+|         |                                |         | |          |                                |         |
+|         | (Sake v.d. Goot                |         | |          |                                |         |
+|         | – Hellevoetsluis)              |         | |          | (Max Wolff – Tilburg)          |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     11  | **Raamwerk module 1.1**        |     0.8 | |      11  | **Raamwerk module 2.2**        |     1.0 |
+|         |                                |         | |          |                                |         |
+|         | helpt bij het leren spellen    |         | |          | helpt bij het leren van        |         |
+|         | van moeilijke woorden.         |         | |          | symbolen van chemische         |         |
+|         |                                |         | |          | elementen.                     |         |
+|         |                                |         | |          |                                |         |
+|         | (Sake v.d. Goot                |         | |          | (Sake v.d. Goot                |         |
+|         | – Hellevoetsluis)              |         | |          | – Hellevoetsluis)              |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     12  | **Raamwerk module 2.1**        |     1.2 | |      12  | **Raamwerk module 2.3**        |     1.4 |
+|         |                                |         | |          |                                |         |
+|         | is bedoeld voor het leren      |         | |          | oefent de tafels van zeven,    |         |
+|         | vertalen Engels/Nederlands.    |         | |          | acht en negen.                 |         |
+|         |                                |         | |          |                                |         |
+|         | (Sake v.d. Goot                |         | |          | (Sake v.d. Goot                |         |
+|         | – Hellevoetsluis)              |         | |          | – Hellevoetsluis)              |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
