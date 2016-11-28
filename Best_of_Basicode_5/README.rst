@@ -228,3 +228,50 @@ de kómende twintig jaar.
 |         | (Sake v.d. Goot                |         | |          | (Sake v.d. Goot                |         |
 |         | – Hellevoetsluis)              |         | |          | – Hellevoetsluis)              |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     13  | **Raamwerk module 3.1**        |     3.1 | |      13  | **Raamwerk module 1.2**        |     3.4 |
+|         |                                |         | |          |                                |         |
+|         | hersengymnastiek test          |         | |          | leert spelling aan kinderen    |         |
+|         | algemene ontwikkeling.         |         | |          | middels een dictee.            |         |
+|         |                                |         | |          |                                |         |
+|         | (Sake v.d. Goot                |         | |          | (Sake v.d. Goot                |         |
+|         | – Hellevoetsluis)              |         | |          | – Hellevoetsluis)              |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     14  | **Emuf 1.7+ uitleg**           |     8.7 | |      14  | **Valuta**                     |     8.6 |
+|         |                                |         | |          |                                |         |
+|         | uitleg bij 'Maximum            |         | |          | rekent buitenlands geld om naar|         |
+|         | Usable Frequency'.             |         | |          | Nederlands en omgekeerd.       |         |
+|         |                                |         | |          |                                |         |
+|         | (bew. Pieter Vijlbrief         |         | |          | (Hans v. Dongen – Leiden)      |         |
+|         | – Voorhout)                    |         | |          |                                |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     15  | **Emuf hoofdpgm.**             |    10.5 | |      15  | **Kamertje verhuren**          |    11.3 |
+|         |                                |         | |          |                                |         |
+|         | jaargetijde en zonnevlekken    |         | |          | computervariant van het bekende|         |
+|         | beïnvloeden radiogolven.       |         | |          | potlood-en-papier spel.        |         |
+|         |                                |         | |          |                                |         |
+|         | (bew. Pieter Vijlbrief         |         | |          | (Hans v. Dongen – Leiden)      |         |
+|         | – Voorhout)                    |         | |          |                                |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     16  | **Mini-cursus Esperanto**      |    22.0 | |      16  | **Beroepen-oriëntatie**        |    22.6 |
+|         |                                |         | |          |                                |         |
+|         | leert de beginselen van        |         | |          | bepaalt de belangstelling van  |         |
+|         | deze internationale taal.      |         | |          | scholieren voor een            |         |
+|         |                                |         | |          | beroepsrichting.               |         |
+|         |                                |         | |          |                                |         |
+|         | (J. v.d. Vliet – Delft)        |         | |          | (Hans v. Dongen – Leiden)      |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     17  | **Tapetijd inleiding**         |    19.0 | |      17  | **Spel-spel**                  |    19.5 |
+|         |                                |         | |          |                                |         |
+|         | geeft een leidraad bij de      |         | |          | oefent spelling van Nederlandse|         |
+|         | volgende programma's.          |         | |          | woorden d.m.v. spel.           |         |
+|         |                                |         | |          |                                |         |
+|         | (C.W. Verhagen – 't Harde)     |         | |          | (F. Kranenburg – Leiderdorp)   |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     18  | **Tapetijd hoofdpgm.**         |    19.2 | |      18  | **Ooit van Pi gehoord?**       |    19.7 |
+|         |                                |         | |          |                                |         |
+|         | geeft relatie aan tussen       |         | |          | als dat niet het geval is,     |         |
+|         | tellerstand en recorderband.   |         | |          | vertelt dit programma u er     |         |
+|         |                                |         | |          | alles over.                    |         |
+|         |                                |         | |          |                                |         |
+|         | (C.W. Verhagen – 't Harde)     |         | |          | (Harry Eyck – Neer – L)        |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
