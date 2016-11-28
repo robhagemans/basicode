@@ -320,3 +320,46 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (W. v.d. Elshout – Eindhoven)  |         | |          | (Maarten van Gils – Maastricht)|         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     25  | **Tekencode dl.3**             |     0.9 | |      25  | **Taaltest toelichting**       |     3.6 |
+|         |                                |         | |          |                                |         |
+|         | bevat de subroutine voor het   |         | |          | levert uitleg voor het volgende|         |
+|         | afbeelden van de tekening.     |         | |          | educatieve programma.          |         |
+|         |                                |         | |          |                                |         |
+|         | (W. v.d. Elshout – Eindhoven)  |         | |          | (W. v.d. Elshout – Eindhoven)  |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     26  | **Multi-Mastermind**           |    11.4 | |      26  | **Taaltest middenbouw**        |     3.6 |
+|         |                                |         | |          |                                |         |
+|         | geeft een variant die meerdere |         | |          | grote taaltest voor middenbouw |         |
+|         | spelmogelijkheden biedt.       |         | |          | basisonderwijs.                |         |
+|         |                                |         | |          |                                |         |
+|         | (B.P.M. Rintjema – Venray)     |         | |          | (W. v.d. Elshout – Eindhoven)  |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     27  | **Werkwoorden**                |    19.4 | |      27  | **Metselverbanden**            |    20.9 |
+|         |                                |         | |          |                                |         |
+|         | oefent leerlingen in het       |         | |          | leert de samenstelling en      |         |
+|         | vervoegen van werkwoorden.     |         | |          | structuur van steenformaties.  |         |
+|         |                                |         | |          |                                |         |
+|         | (W. v.d. Elshout – Eindhoven)  |         | |          | (J. v.d. Pruik – Leimuiden)    |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     28  | **Schatzoeken**                |    27.0 | |      28  | **Computerhandel**             |    23.8 |
+|         |                                |         | |          |                                |         |
+|         | Nederlandstalige tekst-        |         | |          | spel dat de groothandel in     |         |
+|         | adventure.                     |         | |          | computers simuleert.           |         |
+|         |                                |         | |          |                                |         |
+|         | (P. Kralt – Pernis)            |         | |          | (Sjef Simons – Etten-Leur)     |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     29  | **Gaia**                       |    11.2 | |      29  | **Z-80**                       |    13.4 |
+|         |                                |         | |          |                                |         |
+|         | een simulatie van een aardse   |         | |          | vereenvoudigde simulatie van   |         |
+|         | evolutie-theorie.              |         | |          | deze populaire 8-bits          |         |
+|         |                                |         | |          | processor.                     |         |
+|         |                                |         | |          |                                |         |
+|         | (Pieter Gosselink – Enschede)  |         | |          | (Theo Trum – Oss)              |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     30  | **Reversi**                    |     9.1 | |      30  | **Topografie**                 |     6.6 |
+|         |                                |         | |          |                                |         |
+|         | een computerversie van het     |         | |          | test de kennis van de ligging  |         |
+|         | bekende spel, op 64 vakken.    |         | |          | van steden in Nederland.       |         |
+|         |                                |         | |          |                                |         |
+|         | (J.S. Rosman – Schiedam)       |         | |          | (W. v.d. Elshout – Eindhoven)  |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
