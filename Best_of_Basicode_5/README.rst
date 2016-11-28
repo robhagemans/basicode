@@ -275,3 +275,48 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (C.W. Verhagen – 't Harde)     |         | |          | (Harry Eyck – Neer – L)        |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     19  | **Tapetijd achtergrond**       |    10.6 | |      19  | **Meten met maten**            |    11.0 |
+|         |                                |         | |          |                                |         |
+|         | beschrijft de wiskundige       |         | |          | een educatief programma        |         |
+|         | achtergrond van programma.     |         | |          | voor de basisschool.           |         |
+|         |                                |         | |          |                                |         |
+|         | (C.W. Verhagen – 't Harde)     |         | |          | (W. v.d. Elshout – Eindhoven)  |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     20  | **Etiketten printen**          |     3.3 | |      20  | **Wordprof uitleg**            |     2.8 |
+|         |                                |         | |          |                                |         |
+|         | kleine, maar handige           |         | |          | zorgt dat u de volgende        |         |
+|         | utility voor etiketten maken.  |         | |          | tekstverwerker kunt bedienen.  |         |
+|         |                                |         | |          |                                |         |
+|         | (L. Teunissen – Bavel)         |         | |          | (R.J. Wijmenga                 |         |
+|         |                                |         | |          | – Schiermonnikoog)             |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     21  | **Oppervlak dl.1**             |    18.1 | |      21  | **Wordprof**                   |    18.1 |
+|         |                                |         | |          |                                |         |
+|         | geeft kinderen inzicht in wat  |         | |          | een beperkte tekstverwerker    |         |
+|         | 'oppervlak' eigenlijk is.      |         | |          | in N.O.S.-Basicode.            |         |
+|         |                                |         | |          |                                |         |
+|         | (J. Wieles – Gorinchem)        |         | |          | (R.J. Wijmenga                 |         |
+|         |                                |         | |          | – Schiermonnikoog)             |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     22  | **Oppervlak dl.2**             |    12.5 | |      22  | **Kretologie-generator**       |    12.3 |
+|         |                                |         | |          |                                |         |
+|         | bevat de uitwerking van de     |         | |          | levert prachtige volzinnen     |         |
+|         | opgaven van deel 1.            |         | |          | voor correspondentie en        |         |
+|         |                                |         | |          | toespraken.                    |         |
+|         |                                |         | |          |                                |         |
+|         | (J. Wieles – Gorinchem)        |         | |          | (F.J.W. van Let – Soest        |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     23  | **Tekencode dl.1**             |     7.8 | |      23  | **Muziektheorie**              |     7.7 |
+|         |                                |         | |          |                                |         |
+|         | uitleg van de twee programma's |         | |          | onderwijst het notenschrift aan|         |
+|         | die volgen.                    |         | |          | kinderen van de basisschool.   |         |
+|         |                                |         | |          |                                |         |
+|         | (W. v.d. Elshout – Eindhoven)  |         | |          | (W. v.d. Elshout – Eindhoven)  |         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+|     24  | **Tekencode dl.2**             |     9.8 | |      24  | **Multiple choice test**       |     9.9 |
+|         |                                |         | |          |                                |         |
+|         | biedt hulp bij het maken van   |         | |          | draagt stof aan om uw algemene |         |
+|         | grafische voorstellingen.      |         | |          | ontwikkeling te toetsen.       |         |
+|         |                                |         | |          |                                |         |
+|         | (W. v.d. Elshout – Eindhoven)  |         | |          | (Maarten van Gils – Maastricht)|         |
++---------+--------------------------------+---------+-+----------+--------------------------------+---------+
