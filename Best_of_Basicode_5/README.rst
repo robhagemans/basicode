@@ -128,7 +128,7 @@ de kómende twintig jaar.
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
 | *Links* |                                | *Kbyte* | | *Rechts* |                                | *Kbyte* |
 +=========+================================+=========+=+==========+================================+=========+
-|     01  | **Genetica dl.1**              |    20.1 | |      01  | **Beroepswensen**              |    20.1 |
+|     01  | `Genetica dl.1`_               |    20.1 | |      01  | **Beroepswensen**              |    20.1 |
 |         |                                |         | |          |                                |         |
 |         | toelichting op het genetica-   |         | |          | biedt leerlingen vanaf 14 jaar |         |
 |         | programma dat volgt.           |         | |          | beroepskeuze mogelijkheden.    |         |
@@ -363,3 +363,6 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (J.S. Rosman – Schiedam)       |         | |          | (W. v.d. Elshout – Eindhoven)  |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
+
+
+.. _Genetica dl.1: 01L_Genetica_1.bc2
