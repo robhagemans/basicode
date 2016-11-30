@@ -128,7 +128,7 @@ de kómende twintig jaar.
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
 | *Links* |                                | *Kbyte* | | *Rechts* |                                | *Kbyte* |
 +=========+================================+=========+=+==========+================================+=========+
-|     01  | `Genetica dl.1`_               |    20.1 | |      01  | **Beroepswensen**              |    20.1 |
+|     01  | `Genetica dl.1`_               |    20.1 | |      01  | `Beroepswensen`_               |    20.1 |
 |         |                                |         | |          |                                |         |
 |         | toelichting op het genetica-   |         | |          | biedt leerlingen vanaf 14 jaar |         |
 |         | programma dat volgt.           |         | |          | beroepskeuze mogelijkheden.    |         |
@@ -136,7 +136,7 @@ de kómende twintig jaar.
 |         | (K.G.L. Löhlefink/P. van Tend) |         | |          | (C. Wielemaker – Hilversum)    |         |
 |         |                                |         | |          |                                |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     02  | **Genetica dl.2**              |    15.7 | |      02  | **Satellietontvangst dl.1**    |    15.7 |
+|     02  | `Genetica dl.2`_               |    15.7 | |      02  | `Satellietontvangst dl.1`_     |    15.7 |
 |         |                                |         | |          |                                |         |
 |         | geeft inzicht in de opbouw     |         | |          | legt technische termen van     |         |
 |         | van DNA-moleculen.             |         | |          | volgend programma uit.         |         |
@@ -366,3 +366,6 @@ de kómende twintig jaar.
 
 
 .. _Genetica dl.1: 01L_Genetica_1.bc2
+.. _Beroepswensen: 01R_Beroepswensen.bc2
+.. _Genetica dl.2: 02L_Genetica_2.bc2
+.. _Satellietontvangst dl.1: 02R_Satellietontvangst_1.bc2
