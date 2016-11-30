@@ -186,7 +186,7 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (J. Wieles – Gorinchem)        |         | |          | (E.A. v.d. Leeden – Leerdam)   |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     08  | `Volume dl.2`                  |     8.2 | |      08  | `Poster grafica`_              |     8.1 |
+|     08  | `Volume dl.2`_                 |     8.2 | |      08  | `Poster grafica`_              |     8.1 |
 |         |                                |         | |          |                                |         |
 |         | bevat de uitwerking van de     |         | |          | maakt het mogelijk grote       |         |
 |         | opgaven uit deel 1.            |         | |          | letters op de printer af te    |         |
@@ -371,7 +371,7 @@ de kómende twintig jaar.
 .. _Satellietontvangst dl.1: 02R_Satellietontvangst_1.bc2
 .. _Weerrapporten: 03L_Weerrapporten.bc2
 .. _Satellietontvangst dl.2: 03R_Satellietontvangst_2.bc2
-.. _I.P.O.-Test: 04L_IPO-Test.bc2
+.. _I.P.O.-Test: 04L_IPO_Test.bc2
 .. _Investeringsselectie: 04R_Investeringsselectie.bc2
 .. _Hoofdrekenen: 05L_Hoofdrekenen.bc2
 .. _Bingo '75': 05R_Bingo75.bc2
@@ -395,7 +395,7 @@ de kómende twintig jaar.
 .. _Valuta: 14R_Valuta.bc2
 .. _Emuf hoofdpgm.: 15L_Emuf_hoofdprogramma.bc2
 .. _Kamertje verhuren: 15R_Kamertje_verhuren.bc2
-.. _Mini-cursus Esperanto: 16L_Mini-cursus_Esperanto.bc2
+.. _Mini-cursus Esperanto: 16L_Esperanto.bc2
 .. _Beroepen-oriëntatie: 16R_Beroepen-oriëntatie.bc2
 .. _Tapetijd inleiding: 17L_Tapetijd_inleiding.bc2
 .. _Spel-spel: 17R_Spel-spel.bc2
@@ -419,7 +419,7 @@ de kómende twintig jaar.
 .. _Taaltest middenbouw: 26R_Taaltest_middenbouw.bc2
 .. _Werkwoorden: 27L_Werkwoorden.bc2
 .. _Metselverbanden: 27R_Metselverbanden.bc2
-.. _Schatzoeken: 28L_Schatzoeken.bc2
+.. _Schatzoeken: 28L_Schatzoeker.bc2
 .. _Computerhandel: 28R_Computerhandel.bc2
 .. _Gaia: 29L_Gaia.bc2
 .. _Z-80: 29R_Z-80.bc2
