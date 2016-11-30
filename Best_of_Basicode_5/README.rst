@@ -144,7 +144,7 @@ de kómende twintig jaar.
 |         | (K.G.L. Löhlefink/P. van Tend) |         | |          | (F.J.W. van Let – Soest)       |         |
 |         |                                |         | |          |                                |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     03  | **Weerrapporten**              |    17.8 | |      03  | **Satellietontvangst dl.2**    |    18.5 |
+|     03  | `Weerrapporten`_               |    17.8 | |      03  | `Satellietontvangst dl.2`_     |    18.5 |
 |         |                                |         | |          |                                |         |
 |         | geeft uitleg van de Teletekst- |         | |          | berekent ontvangst-resultaten  |         |
 |         | pagina's over het weer.        |         | |          | van radio- of TV-satellieten.  |         |
@@ -152,7 +152,7 @@ de kómende twintig jaar.
 |         | (Hans Smeets – Uden)           |         | |          | (F.J.W. van Let – Soest)       |         |
 |         |                                |         | |          |                                |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     04  | **I.P.O.-Test**                |    12.5 | |      04  | **Investeringsselectie**       |    12.7 |
+|     04  | `I.P.O.-Test`_                 |    12.5 | |      04  | `Investeringsselectie`_        |    12.7 |
 |         |                                |         | |          |                                |         |
 |         | helpt bij de keuze van een     |         | |          | is een hulpmiddel bij het      |         |
 |         | produkt uit een hele reeks.    |         | |          | doen van investeringen.        |         |
@@ -160,7 +160,7 @@ de kómende twintig jaar.
 |         | (Maarten Leeuwis – Ermelo)     |         | |          | (Hans Timmers – Zoetermeer)    |         |
 |         |                                |         | |          |                                |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     05  | **Hoofdrekenen**               |    14.8 | |      05  | **Bingo '75'**                 |    15.0 |
+|     05  | `Hoofdrekenen`_                |    14.8 | |      05  | `Bingo '75'`_                  |    15.0 |
 |         |                                |         | |          |                                |         |
 |         | is een educatief programma     |         | |          | simuleert het zogenoemde       |         |
 |         | voor de basisschool.           |         | |          | Amerikaanse Bingospel.         |         |
@@ -168,7 +168,7 @@ de kómende twintig jaar.
 |         | (Leo Janssen – Helden)         |         | |          | (Frans Verberkt – Nijmegen)    |         |
 |         |                                |         | |          |                                |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     06  | **Gezondheid**                 |    24.5 | |      06  | **Hout en toepassingen**       |    24.4 |
+|     06  | `Gezondheid`_                  |    24.5 | |      06  | `Hout en toepassingen`_        |    24.4 |
 |         |                                |         | |          |                                |         |
 |         | helpt bij het leiden van       |         | |          | geeft een beschrijving van     |         |
 |         | van een gezond leven.          |         | |          | houtsoorten en hun             |         |
@@ -177,7 +177,7 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (R. Kruger – Graauw Zl)        |         | |          | (J. v.d. Pruik – Leimuiden)    |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     07  | **Volume dl.1**                |    16.5 | |      07  | **Simulantjes**                |    16.2 |
+|     07  | `Volume dl.1`_                 |    16.5 | |      07  | `Simulantjes`_                 |    16.2 |
 |         |                                |         | |          |                                |         |
 |         | geeft kinderen inzicht         |         | |          | zijn wezentjes die intelligent |         |
 |         | in wat "volume" eigenlijk is.  |         | |          | of willekeurig gedrag          |         |
@@ -186,7 +186,7 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (J. Wieles – Gorinchem)        |         | |          | (E.A. v.d. Leeden – Leerdam)   |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     08  | **Volume dl.2**                |     8.2 | |      08  | **Poster grafica**             |     8.1 |
+|     08  | `Volume dl.2`                  |     8.2 | |      08  | `Poster grafica`_              |     8.1 |
 |         |                                |         | |          |                                |         |
 |         | bevat de uitwerking van de     |         | |          | maakt het mogelijk grote       |         |
 |         | opgaven uit deel 1.            |         | |          | letters op de printer af te    |         |
@@ -195,7 +195,7 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (J. Wieles – Gorinchem)        |         | |          | (Jos Leppens – Neerpelt – B)   |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     09  | **Raamwerk toelichting**       |    11.9 | |      09  | **Alswin vierkant**            |    12.3 |
+|     09  | `Raamwerk toelichting`_        |    11.9 | |      09  | `Alswin vierkant`_             |    12.3 |
 |         |                                |         | |          |                                |         |
 |         | geeft uitleg over een reeks    |         | |          | een computervariant van        |         |
 |         | programma's die volgt.         |         | |          | de kubus van Rubik.            |         |
@@ -203,7 +203,7 @@ de kómende twintig jaar.
 |         | (Sake v.d. Goot                |         | |          |                                |         |
 |         | – Hellevoetsluis)              |         | |          | (Alb. Swinkels – O. Beijerland)|         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     10  | **Raamwerk hoofdpgm.**         |    17.4 | |      10  | **Vademecum**                  |    17.8 |
+|     10  | `Raamwerk hoofdpgm.`_          |    17.4 | |      10  | `Vademecum`_                   |    17.8 |
 |         |                                |         | |          |                                |         |
 |         | basisprogramma dat met         |         | |          | geeft allerhande formules      |         |
 |         | verschillende modules werkt.   |         | |          | voor elektronische knutselaars.|         |
@@ -211,7 +211,7 @@ de kómende twintig jaar.
 |         | (Sake v.d. Goot                |         | |          |                                |         |
 |         | – Hellevoetsluis)              |         | |          | (Max Wolff – Tilburg)          |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     11  | **Raamwerk module 1.1**        |     0.8 | |      11  | **Raamwerk module 2.2**        |     1.0 |
+|     11  | `Raamwerk module 1.1`_         |     0.8 | |      11  | `Raamwerk module 2.2`_         |     1.0 |
 |         |                                |         | |          |                                |         |
 |         | helpt bij het leren spellen    |         | |          | helpt bij het leren van        |         |
 |         | van moeilijke woorden.         |         | |          | symbolen van chemische         |         |
@@ -220,7 +220,7 @@ de kómende twintig jaar.
 |         | (Sake v.d. Goot                |         | |          | (Sake v.d. Goot                |         |
 |         | – Hellevoetsluis)              |         | |          | – Hellevoetsluis)              |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     12  | **Raamwerk module 2.1**        |     1.2 | |      12  | **Raamwerk module 2.3**        |     1.4 |
+|     12  | `Raamwerk module 2.1`_         |     1.2 | |      12  | `Raamwerk module 2.3`_         |     1.4 |
 |         |                                |         | |          |                                |         |
 |         | is bedoeld voor het leren      |         | |          | oefent de tafels van zeven,    |         |
 |         | vertalen Engels/Nederlands.    |         | |          | acht en negen.                 |         |
@@ -228,7 +228,7 @@ de kómende twintig jaar.
 |         | (Sake v.d. Goot                |         | |          | (Sake v.d. Goot                |         |
 |         | – Hellevoetsluis)              |         | |          | – Hellevoetsluis)              |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     13  | **Raamwerk module 3.1**        |     3.1 | |      13  | **Raamwerk module 1.2**        |     3.4 |
+|     13  | `Raamwerk module 3.1`_         |     3.1 | |      13  | `Raamwerk module 1.2`_         |     3.4 |
 |         |                                |         | |          |                                |         |
 |         | hersengymnastiek test          |         | |          | leert spelling aan kinderen    |         |
 |         | algemene ontwikkeling.         |         | |          | middels een dictee.            |         |
@@ -236,7 +236,7 @@ de kómende twintig jaar.
 |         | (Sake v.d. Goot                |         | |          | (Sake v.d. Goot                |         |
 |         | – Hellevoetsluis)              |         | |          | – Hellevoetsluis)              |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     14  | **Emuf 1.7+ uitleg**           |     8.7 | |      14  | **Valuta**                     |     8.6 |
+|     14  | `Emuf 1.7+ uitleg`_            |     8.7 | |      14  | `Valuta`_                      |     8.6 |
 |         |                                |         | |          |                                |         |
 |         | uitleg bij 'Maximum            |         | |          | rekent buitenlands geld om naar|         |
 |         | Usable Frequency'.             |         | |          | Nederlands en omgekeerd.       |         |
@@ -244,7 +244,7 @@ de kómende twintig jaar.
 |         | (bew. Pieter Vijlbrief         |         | |          | (Hans v. Dongen – Leiden)      |         |
 |         | – Voorhout)                    |         | |          |                                |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     15  | **Emuf hoofdpgm.**             |    10.5 | |      15  | **Kamertje verhuren**          |    11.3 |
+|     15  | `Emuf hoofdpgm.`_              |    10.5 | |      15  | `Kamertje verhuren`_           |    11.3 |
 |         |                                |         | |          |                                |         |
 |         | jaargetijde en zonnevlekken    |         | |          | computervariant van het bekende|         |
 |         | beïnvloeden radiogolven.       |         | |          | potlood-en-papier spel.        |         |
@@ -252,7 +252,7 @@ de kómende twintig jaar.
 |         | (bew. Pieter Vijlbrief         |         | |          | (Hans v. Dongen – Leiden)      |         |
 |         | – Voorhout)                    |         | |          |                                |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     16  | **Mini-cursus Esperanto**      |    22.0 | |      16  | **Beroepen-oriëntatie**        |    22.6 |
+|     16  | `Mini-cursus Esperanto`_       |    22.0 | |      16  | `Beroepen-oriëntatie`_         |    22.6 |
 |         |                                |         | |          |                                |         |
 |         | leert de beginselen van        |         | |          | bepaalt de belangstelling van  |         |
 |         | deze internationale taal.      |         | |          | scholieren voor een            |         |
@@ -260,14 +260,14 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (J. v.d. Vliet – Delft)        |         | |          | (Hans v. Dongen – Leiden)      |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     17  | **Tapetijd inleiding**         |    19.0 | |      17  | **Spel-spel**                  |    19.5 |
+|     17  | `Tapetijd inleiding`_          |    19.0 | |      17  | `Spel-spel`_                   |    19.5 |
 |         |                                |         | |          |                                |         |
 |         | geeft een leidraad bij de      |         | |          | oefent spelling van Nederlandse|         |
 |         | volgende programma's.          |         | |          | woorden d.m.v. spel.           |         |
 |         |                                |         | |          |                                |         |
 |         | (C.W. Verhagen – 't Harde)     |         | |          | (F. Kranenburg – Leiderdorp)   |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     18  | **Tapetijd hoofdpgm.**         |    19.2 | |      18  | **Ooit van Pi gehoord?**       |    19.7 |
+|     18  | `Tapetijd hoofdpgm.`_          |    19.2 | |      18  | `Ooit van Pi gehoord?`_        |    19.7 |
 |         |                                |         | |          |                                |         |
 |         | geeft relatie aan tussen       |         | |          | als dat niet het geval is,     |         |
 |         | tellerstand en recorderband.   |         | |          | vertelt dit programma u er     |         |
@@ -275,14 +275,14 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (C.W. Verhagen – 't Harde)     |         | |          | (Harry Eyck – Neer – L)        |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     19  | **Tapetijd achtergrond**       |    10.6 | |      19  | **Meten met maten**            |    11.0 |
+|     19  | `Tapetijd achtergrond`_        |    10.6 | |      19  | `Meten met maten`_             |    11.0 |
 |         |                                |         | |          |                                |         |
 |         | beschrijft de wiskundige       |         | |          | een educatief programma        |         |
 |         | achtergrond van programma.     |         | |          | voor de basisschool.           |         |
 |         |                                |         | |          |                                |         |
 |         | (C.W. Verhagen – 't Harde)     |         | |          | (W. v.d. Elshout – Eindhoven)  |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     20  | **Etiketten printen**          |     3.3 | |      20  | **Wordprof uitleg**            |     2.8 |
+|     20  | `Etiketten printen`_           |     3.3 | |      20  | `Wordprof uitleg`_             |     2.8 |
 |         |                                |         | |          |                                |         |
 |         | kleine, maar handige           |         | |          | zorgt dat u de volgende        |         |
 |         | utility voor etiketten maken.  |         | |          | tekstverwerker kunt bedienen.  |         |
@@ -290,7 +290,7 @@ de kómende twintig jaar.
 |         | (L. Teunissen – Bavel)         |         | |          | (R.J. Wijmenga                 |         |
 |         |                                |         | |          | – Schiermonnikoog)             |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     21  | **Oppervlak dl.1**             |    18.1 | |      21  | **Wordprof**                   |    18.1 |
+|     21  | `Oppervlak dl.1`_              |    18.1 | |      21  | `Wordprof`_                    |    18.1 |
 |         |                                |         | |          |                                |         |
 |         | geeft kinderen inzicht in wat  |         | |          | een beperkte tekstverwerker    |         |
 |         | 'oppervlak' eigenlijk is.      |         | |          | in N.O.S.-Basicode.            |         |
@@ -298,7 +298,7 @@ de kómende twintig jaar.
 |         | (J. Wieles – Gorinchem)        |         | |          | (R.J. Wijmenga                 |         |
 |         |                                |         | |          | – Schiermonnikoog)             |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     22  | **Oppervlak dl.2**             |    12.5 | |      22  | **Kretologie-generator**       |    12.3 |
+|     22  | `Oppervlak dl.2`_              |    12.5 | |      22  | `Kretologie-generator`_        |    12.3 |
 |         |                                |         | |          |                                |         |
 |         | bevat de uitwerking van de     |         | |          | levert prachtige volzinnen     |         |
 |         | opgaven van deel 1.            |         | |          | voor correspondentie en        |         |
@@ -306,49 +306,49 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (J. Wieles – Gorinchem)        |         | |          | (F.J.W. van Let – Soest        |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     23  | **Tekencode dl.1**             |     7.8 | |      23  | **Muziektheorie**              |     7.7 |
+|     23  | `Tekencode dl.1`_              |     7.8 | |      23  | `Muziektheorie`_               |     7.7 |
 |         |                                |         | |          |                                |         |
 |         | uitleg van de twee programma's |         | |          | onderwijst het notenschrift aan|         |
 |         | die volgen.                    |         | |          | kinderen van de basisschool.   |         |
 |         |                                |         | |          |                                |         |
 |         | (W. v.d. Elshout – Eindhoven)  |         | |          | (W. v.d. Elshout – Eindhoven)  |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     24  | **Tekencode dl.2**             |     9.8 | |      24  | **Multiple choice test**       |     9.9 |
+|     24  | `Tekencode dl.2`_              |     9.8 | |      24  | `Multiple choice test`_        |     9.9 |
 |         |                                |         | |          |                                |         |
 |         | biedt hulp bij het maken van   |         | |          | draagt stof aan om uw algemene |         |
 |         | grafische voorstellingen.      |         | |          | ontwikkeling te toetsen.       |         |
 |         |                                |         | |          |                                |         |
 |         | (W. v.d. Elshout – Eindhoven)  |         | |          | (Maarten van Gils – Maastricht)|         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     25  | **Tekencode dl.3**             |     0.9 | |      25  | **Taaltest toelichting**       |     3.6 |
+|     25  | `Tekencode dl.3`_              |     0.9 | |      25  | `Taaltest toelichting`_        |     3.6 |
 |         |                                |         | |          |                                |         |
 |         | bevat de subroutine voor het   |         | |          | levert uitleg voor het volgende|         |
 |         | afbeelden van de tekening.     |         | |          | educatieve programma.          |         |
 |         |                                |         | |          |                                |         |
 |         | (W. v.d. Elshout – Eindhoven)  |         | |          | (W. v.d. Elshout – Eindhoven)  |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     26  | **Multi-Mastermind**           |    11.4 | |      26  | **Taaltest middenbouw**        |     3.6 |
+|     26  | `Multi-Mastermind`_            |    11.4 | |      26  | `Taaltest middenbouw`_         |     3.6 |
 |         |                                |         | |          |                                |         |
 |         | geeft een variant die meerdere |         | |          | grote taaltest voor middenbouw |         |
 |         | spelmogelijkheden biedt.       |         | |          | basisonderwijs.                |         |
 |         |                                |         | |          |                                |         |
 |         | (B.P.M. Rintjema – Venray)     |         | |          | (W. v.d. Elshout – Eindhoven)  |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     27  | **Werkwoorden**                |    19.4 | |      27  | **Metselverbanden**            |    20.9 |
+|     27  | `Werkwoorden`_                 |    19.4 | |      27  | `Metselverbanden`_             |    20.9 |
 |         |                                |         | |          |                                |         |
 |         | oefent leerlingen in het       |         | |          | leert de samenstelling en      |         |
 |         | vervoegen van werkwoorden.     |         | |          | structuur van steenformaties.  |         |
 |         |                                |         | |          |                                |         |
 |         | (W. v.d. Elshout – Eindhoven)  |         | |          | (J. v.d. Pruik – Leimuiden)    |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     28  | **Schatzoeken**                |    27.0 | |      28  | **Computerhandel**             |    23.8 |
+|     28  | `Schatzoeken`_                 |    27.0 | |      28  | `Computerhandel`_              |    23.8 |
 |         |                                |         | |          |                                |         |
 |         | Nederlandstalige tekst-        |         | |          | spel dat de groothandel in     |         |
 |         | adventure.                     |         | |          | computers simuleert.           |         |
 |         |                                |         | |          |                                |         |
 |         | (P. Kralt – Pernis)            |         | |          | (Sjef Simons – Etten-Leur)     |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     29  | **Gaia**                       |    11.2 | |      29  | **Z-80**                       |    13.4 |
+|     29  | `Gaia`_                        |    11.2 | |      29  | `Z-80`_                        |    13.4 |
 |         |                                |         | |          |                                |         |
 |         | een simulatie van een aardse   |         | |          | vereenvoudigde simulatie van   |         |
 |         | evolutie-theorie.              |         | |          | deze populaire 8-bits          |         |
@@ -356,7 +356,7 @@ de kómende twintig jaar.
 |         |                                |         | |          |                                |         |
 |         | (Pieter Gosselink – Enschede)  |         | |          | (Theo Trum – Oss)              |         |
 +---------+--------------------------------+---------+-+----------+--------------------------------+---------+
-|     30  | **Reversi**                    |     9.1 | |      30  | **Topografie**                 |     6.6 |
+|     30  | `Reversi`_                     |     9.1 | |      30  | `Topografie`_                  |     6.6 |
 |         |                                |         | |          |                                |         |
 |         | een computerversie van het     |         | |          | test de kennis van de ligging  |         |
 |         | bekende spel, op 64 vakken.    |         | |          | van steden in Nederland.       |         |
@@ -369,3 +369,59 @@ de kómende twintig jaar.
 .. _Beroepswensen: 01R_Beroepswensen.bc2
 .. _Genetica dl.2: 02L_Genetica_2.bc2
 .. _Satellietontvangst dl.1: 02R_Satellietontvangst_1.bc2
+.. _Weerrapporten: 03L_Weerrapporten.bc2
+.. _Satellietontvangst dl.2: 03R_Satellietontvangst_2.bc2
+.. _I.P.O.-Test: 04L_IPO-Test.bc2
+.. _Investeringsselectie: 04R_Investeringsselectie.bc2
+.. _Hoofdrekenen: 05L_Hoofdrekenen.bc2
+.. _Bingo '75': 05R_Bingo75.bc2
+.. _Gezondheid: 06L_Gezondheid.bc2
+.. _Hout en toepassingen: 06R_Hout_en_toepassingen.bc2
+.. _Volume dl.1: 07L_Volume_1.bc2
+.. _Simulantjes: 07R_Simulantjes.bc2
+.. _Volume dl.2: 08L_Volume_2.bc2
+.. _Poster grafica: 08R_Poster_grafica.bc2
+.. _Raamwerk toelichting: 09L_Raamwerk_toelichting.bc2
+.. _Alswin vierkant: 09R_Alswin_vierkant.bc2
+.. _Raamwerk hoofdpgm.: 10L_Raamwerk_hoofdprogramma.bc2
+.. _Vademecum: 10R_Vademecum.bc2
+.. _Raamwerk module 1.1: 11L_Raamwerk_module_1_1.bc2
+.. _Raamwerk module 2.2: 11R_Raamwerk_module_2_2.bc2
+.. _Raamwerk module 2.1: 12L_Raamwerk_module_2_1.bc2
+.. _Raamwerk module 2.3: 12R_Raamwerk_module_2_3.bc2
+.. _Raamwerk module 3.1: 13L_Raamwerk_module_3_1.bc2
+.. _Raamwerk module 1.2: 13R_Raamwerk_module_1_2.bc2
+.. _Emuf 1.7+ uitleg: 14L_Emuf_1_7_uitleg.bc2
+.. _Valuta: 14R_Valuta.bc2
+.. _Emuf hoofdpgm.: 15L_Emuf_hoofdprogramma.bc2
+.. _Kamertje verhuren: 15R_Kamertje_verhuren.bc2
+.. _Mini-cursus Esperanto: 16L_Mini-cursus_Esperanto.bc2
+.. _Beroepen-oriëntatie: 16R_Beroepen-oriëntatie.bc2
+.. _Tapetijd inleiding: 17L_Tapetijd_inleiding.bc2
+.. _Spel-spel: 17R_Spel-spel.bc2
+.. _Tapetijd hoofdpgm.: 18L_Tapetijd_hoofdprogramma.bc2
+.. _Ooit van Pi gehoord?: 18R_Ooit_van_Pi_gehoord.bc2
+.. _Tapetijd achtergrond: 19L_Tapetijd_achtergrond.bc2
+.. _Meten met maten: 19R_Meten_met_maten.bc2
+.. _Etiketten printen: 20L_Etiketten_printen.bc2
+.. _Wordprof uitleg: 20R_Wordprof_uitleg.bc2
+.. _Oppervlak dl.1: 21L_Oppervlak_1.bc2
+.. _Wordprof: 21R_Wordprof.bc2
+.. _Oppervlak dl.2: 22L_Oppervlak_2.bc2
+.. _Kretologie-generator: 22R_Kretologie-generator.bc2
+.. _Tekencode dl.1: 23L_Tekencode_1.bc2
+.. _Muziektheorie: 23R_Muziektheorie.bc2
+.. _Tekencode dl.2: 24L_Tekencode_2.bc2
+.. _Multiple choice test: 24R_Multiple_choice_test.bc2
+.. _Tekencode dl.3: 25L_Tekencode_3.bc2
+.. _Taaltest toelichting: 25R_Taaltest_toelichting.bc2
+.. _Multi-Mastermind: 26L_Multi-Mastermind.bc2
+.. _Taaltest middenbouw: 26R_Taaltest_middenbouw.bc2
+.. _Werkwoorden: 27L_Werkwoorden.bc2
+.. _Metselverbanden: 27R_Metselverbanden.bc2
+.. _Schatzoeken: 28L_Schatzoeken.bc2
+.. _Computerhandel: 28R_Computerhandel.bc2
+.. _Gaia: 29L_Gaia.bc2
+.. _Z-80: 29R_Z-80.bc2
+.. _Reversi: 30L_Reversi.bc2
+.. _Topografie: 30R_Topografie.bc2
