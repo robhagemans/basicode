@@ -28,7 +28,7 @@ for non-commercial purposes.
 This repository contains BASICODE programs from the following sources:
 
 ==========================  ==========  ==================  ==========
-Source                      Medium      Basicode verison    Language
+Source                      Medium      Basicode version    Language
 ==========================  ==========  ==================  ==========
 `The Best of BASICODE 5`_   CD          BASICODE-2          Dutch
 
