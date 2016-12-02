@@ -1,6 +1,8 @@
 The Chip Shop BASICODE 2
 ========================
 
+.. image:: http://www.worldofspectrum.org/pub/sinclair/games-inlays/Rereleases/b/Basicode2(BBCSoftware).jpg
+
 Side A
 ---------------------------------
 1.  APPLE II & IIe 
