@@ -1,6 +1,8 @@
 BASICODE
 ========
 
+.. image:: http://nostalgia8.nl/basicode/plaatjes/zwart1.jpg
+
 BASICODE was developed in 1980 by Dutch broadcaster *NOS* for its hobby-electronics radio programme Hobbyscoop. 
 Its purpose was to enable radio-transmission of software that could be used on the various different 8-bit 
 micro-computers that were popular at the time. 
