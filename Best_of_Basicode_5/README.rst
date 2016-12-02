@@ -2,6 +2,8 @@
 THE BEST OF BASICODE 5
 ######################
 
+.. image:: https://ub.fnwi.uva.nl/computermuseum/pictures/hobbyscoop1.gif
+
 1. Een CD van Hobbyscoop — Waarom?
 ==================================
 
