@@ -24,21 +24,21 @@ Program 1
 
 Program 2
 ---------------------------------
-1.  `WELCOME <01_Welcome.bc2>`
-2.  `WORDGAME <02_Wordgame.bc2>`
-3.  `FACTORS <03_Factors.bc2>`
-4.  `TANK SHOOTING <04_Tank_shooting.bc2>`
-5.  `CHORDS <05_chords.bc2>`
-6.  `YAHTZEE <06_Yahtzee.bc2>`
-7.  `WORDSEARCH <07_Wordsearch.bc2>`
-8.  `CONQUER KONG <08_Conquer_Kong.bc2>`
-9.  `MULTIVIBRATOR <09_Multivibrator.bc2>`
-10. `DIGITAL CLOCK <10_Digital_Clock.bc2>`
-11. `MEZIRAC SQUARES <11_Mezirac_Squares.bc2>`
-12. `DUCK HUNTING <12_Duck_Hunting.bc2>`
-13. `EXACT MASS <13_Exact_Mass.bc2>`
-14. `BELGIAN GAME <14_Belgian_Game.bc2>`
-15. `RADIOACTIVE DECAY <15_Radioactive_Decay.bc2>`
-16. `CAR RACE <16_Car_Race.bc2>`
-17. `TITRATIONS <17_Titrations.bc2>`
-18. `CHRISTIAN HOLIDAYS <18_Christian_Holidays.bc2>`
+1.  `WELCOME <01_Welcome.bc2>`_
+2.  `WORDGAME <02_Wordgame.bc2>`_
+3.  `FACTORS <03_Factors.bc2>`_
+4.  `TANK SHOOTING <04_Tank_shooting.bc2>`_
+5.  `CHORDS <05_chords.bc2>`_
+6.  `YAHTZEE <06_Yahtzee.bc2>`_
+7.  `WORDSEARCH <07_Wordsearch.bc2>`_
+8.  `CONQUER KONG <08_Conquer_Kong.bc2>`_
+9.  `MULTIVIBRATOR <09_Multivibrator.bc2>`_
+10. `DIGITAL CLOCK <10_Digital_Clock.bc2>`_
+11. `MEZIRAC SQUARES <11_Mezirac_Squares.bc2>`_
+12. `DUCK HUNTING <12_Duck_Hunting.bc2>`_
+13. `EXACT MASS <13_Exact_Mass.bc2>`_
+14. `BELGIAN GAME <14_Belgian_Game.bc2>`_
+15. `RADIOACTIVE DECAY <15_Radioactive_Decay.bc2>`_
+16. `CAR RACE <16_Car_Race.bc2>`_
+17. `TITRATIONS <17_Titrations.bc2>`_
+18. `CHRISTIAN HOLIDAYS <18_Christian_Holidays.bc2>`_
