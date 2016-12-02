@@ -1,0 +1,130 @@
+1000 A=500:GOTO20:REM MULTIVIBRATOR
+1010 GOTO6000
+1020 GOSUB100:GOSUB5000
+1030 PRINT"         Astable   multivibrator":PRINT
+1040 GOSUB3000:PRINT:PRINT:GOSUB4000
+1170 GOSUB100:GOSUB5000
+1180 PRINT"  Give the desired duty-cyle for "
+1190 PRINT"  the output at point 3.   This     "
+1200 PRINT"  must be between 50 and 100 %.  "
+1210 HO=3:VE=9:GOSUB110
+1220 PRINT"Duty-cycle in %         ";
+1240 INPUTD
+1250 IFD>0 THEN1280
+1260 PRINT"* Duty-cycle cannot be negative *";
+1270 GOTO1210
+1280 IFD>50 THEN1310
+1290 PRINT"* Duty-cycle must be greater than 50% * ";
+1300 GOTO1210
+1310 IFD<100 THEN1340
+1320 PRINT"* Duty-cycle must be smaller than 100%. ";
+1330 GOTO1210
+1340 D=D/100
+1350 HO=0:VE=10:GOSUB110
+1360 FORI=0 TO1
+1370 PRINT"                                       "
+1380 NEXTI
+1390 PRINT" Enter the desired output"
+1400 PRINT" frequency. It must between"
+1410 PRINT" 0.1 Hz and 100 kHz."
+1420 HO=3:VE=16:GOSUB110
+1430 PRINT"Output frequency in Hz ";
+1450 INPUTF
+1460 IFF>.1 THEN1520
+1470 PRINT"* Choose a frequency higher than 0.1 Hz. "
+1480 GOTO1420
+1490 PRINT"* Frequency cannot be higher than 100 KHz."
+1500 GOTO1420
+1510 GOTO1350
+1520 IFF<10 THENC=.00001:GOTO1560
+1530 IFF<1000 THENC=.000001:GOTO1560
+1540 IFF<100000! THENC=1E-08:GOTO1560
+1550 GOTO1490:REM FREQUENCY TOO HIGH
+1560 PRINT"                                       "
+1570 FORI=0 TO8:PRINT"  Ok";:NEXTI
+1580 K1=LOG(2):K2=1/(K1*F*C)
+1590 RB=K2*(1-D)
+1600 RA=K2-2*RB
+1610 R=RB:GOSUB2000:RB=R1
+1620 R=RA:GOSUB2000:RA=R1
+1630 GOSUB100:GOSUB5000:GOSUB3000
+1640 K$=""
+1650 IFRA>10000 THENR1=RA/1000:K$="kilo-"
+1660 PRINT"R1= ";R1;K$;"ohm"
+1670 K$=" ":R2=RB
+1680 IFRB>10000 THENR2=RB/1000:K$=" kilo-"
+1690 PRINT"R2= ";R2;K$;"ohm"
+1700 PRINT"C= ";C*1000000!;" microfarad"
+1710 PRINT"Frequency= ";1/(K1*(RA+2*RB)*C);" Hz"
+1720 PRINT"Duty cycle= ";100*(RA+RB)/(RA+2*RB);" %";
+1730 GOSUB4000
+1740 GOSUB100:GOSUB5000
+1750 PRINT"Good luck with the construction project!"
+1760 END
+2000 F=0:REM  NOT OUTSIDE LIMIT
+2010 K=0:REM  EXPONENT COUNTER
+2020 IFR<.1 THENF=1:REM TOO SMALL
+2030 IFR>1E+07 THENF=1:REM TOO LARGE
+2040 R1=R
+2050 REM  SEARCH VALUE IN TABLE
+2060 IFR1<=1 THEN2100
+2070 R1=R1/10:REM MOVE COMMA
+2080 K=K+1:REM COUNT
+2090 GOTO2060:REM STILL WITHIN RANGE ?
+2100 B=1:REM POINTER TO ARRAY-BEGIN
+2110 E=25:REM POINTER TO ARRAY-END
+2120 M=INT((B+E)/2):REM POINTER INTO MIDDLE OF AREA
+2130 IFM=B THEN2170
+2140 IFR1=A(M) THEN2200
+2150 IFR1<A(M) THENE=M:GOTO2120
+2160 IFR1>A(M) THENB=M:GOTO2120
+2170 IF(R1-A(B))<(A(E)-R1) THENR1=A(B):GOTO2190
+2180 R1=A(E)
+2190 REM  TAKE NEAREST VALUE
+2200 R1=R1*10^K
+2210 IFR1>10 THENR1=INT(R1+.5)
+2220 RETURN
+3000 PRINT"           +-----------------+"
+3010 PRINT"           !                 !"
+3020 PRINT" +5V-+-----8                 3---OUTPUT"
+3030 PRINT"     !     !       555       !"
+3040 PRINT"     +-----4                 1---+--GND"
+3050 PRINT"     !     !                 !   !"
+3060 PRINT"     !     +--7--------6--2--+   !"
+3070 PRINT"     !        !        !  !      !"
+3080 PRINT"     ! +----+ ! +----+ !  !  !!C !"
+3090 PRINT"     +-! R1 !-+-! R2 !-+--+--!!--+"
+3100 PRINT"       +----+   +----+       !!"
+3110 RETURN
+4000 HO=15:VE=23:GOSUB110:PRINT"\ENTER\...";:GOSUB210
+4010 RETURN
+5000 PRINT:PRINT:PRINT:PRINT:RETURN
+6000 DIMA(25)
+6010 FORI=1 TO25
+6020 READA(I)
+6030 NEXTI
+6040 GOSUB100:GOSUB5000
+6050 PRINT" - - -  THE ELECTRONIC DESIGNER  - - -"
+6060 PRINT
+6070 PRINT"   ****    ***    ***    ***    ***"
+6080 PRINT"   *   *  *   *  *   *  *   *  *   *"
+6090 PRINT"   *   *     *   *   *  *   *  *   *"
+6100 PRINT"   ****     *    *   *  *   *  *   *"
+6110 PRINT"   *       *     *   *  *   *  *   *"
+6120 PRINT"   *      *      *   *  *   *  *   *"
+6130 PRINT"   *      *****   ***    ***    ***"
+6140 PRINT
+6150 PRINT"An astable multivibator using the NE555."
+6160 PRINT:PRINT"This program calculates the resistance"
+6170 PRINT:PRINT"and capacitance values for this circuit:"
+6180 GOSUB4000:GOTO1020
+25000 REM  STANDARD VALUES
+25010 DATA.1,.11,.12,.13,.15,.16,.18,.2
+25020 DATA.22,.24,.27,.3,.33,.36,.39,.43
+25030 DATA.47,.51,.56,.62,.68,.75,.82,.91,1
+30000 REM Translated for the Chip-shop
+30010 REM by Jonathan Marks from an
+30020 REM original program compiled
+30030 REM in the Netherlands.
+30040 REM Now you make one!
+

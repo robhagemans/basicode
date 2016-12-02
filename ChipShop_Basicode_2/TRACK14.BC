@@ -1,0 +1,208 @@
+1000 A=100:GOTO20:REM RADIOACTIVE DECAY
+1010 XM=40:YM=23
+1020 ZM=3:C=XM*YM
+1030 E=1:N=0
+1040 DIMA(XM-E,YM-E)
+1050 P$=".":S$=""
+1060 FORX=E TOXM
+1070 S$=S$+"*":NEXTX
+1090 REM 
+1100 REM *** MENU ***
+1110 GOSUB100
+1120 PRINT"          RADIOACTIVE  DECAY"
+1130 PRINT"          ==================":PRINT
+1140 PRINT"Written by E. Ivens ":PRINT:PRINT
+1150 PRINT"Choose from:":PRINT
+1160 PRINT"1. The Decay experiment.":PRINT
+1170 PRINT"2. Instructions for the student.":PRINT
+1180 PRINT"3. Instructions for the teacher.":PRINT
+1190 PRINT"4. Explanation for the programmer.":PRINT
+1200 PRINT"5. STOP":PRINT:PRINT
+1210 PRINT"Which number ? ";
+1220 GOSUB210:REM Wait for key
+1230 A=VAL(IN$)
+1240 IFA<1 ORA>5 THEN1260
+1250 ONA GOSUB1500,2000,3000,4000,5000
+1260 HO=N:VE=19
+1270 GOSUB110
+1280 PRINT"You must choose 1, 2, 3, 4 or 5 !":PRINT
+1290 GOTO1210
+1490 REM 
+1500 REM *** TEST ***
+1510 GOSUB100
+1520 FORY=N TOYM-E
+1530 HO=0:VE=Y
+1540 GOSUB110
+1550 PRINTS$;
+1560 NEXTY
+1570 HO=ZM:VE=YM
+1580 GOSUB110
+1590 PRINT"One moment please !";
+1600 FORX=N TOXM-E
+1610 FORY=N TOYM-E
+1620 A(X,Y)=E
+1630 NEXTY
+1640 NEXTX
+1650 HO=ZM:VE=YM
+1660 GOSUB110
+1670 PRINTC;"  Press any key ! ";
+1680 GOSUB210:REM GET KEY
+1690 HO=ZM:VE=YM
+1700 GOSUB110
+1710 PRINTC;" Press RETURN to stop";
+1720 GOSUB260:REM RANDOM
+1730 HO=INT(XM*RV)
+1740 GOSUB260:REM RANDOM
+1750 VE=INT(YM*RV)
+1760 IFA(HO,VE)=N THEN1780
+1770 C=C-E
+1780 IFA(HO,VE)=E THEN1800
+1790 C=C-N
+1800 A(HO,VE)=N
+1810 GOSUB110:PRINTP$;
+1820 HO=ZM:VE=YM
+1830 GOSUB110:PRINTC;" ";
+1835 REM MAKE A WAITLOOP HERE
+1840 IFC=N THEN1920
+1850 GOSUB200
+1860 IFIN$="" THEN1720
+1870 IFIN$<>CHR$(13) THEN1720
+1880 HO=ZM:VE=YM
+1890 GOSUB110
+1900 PRINTC;"                       ";
+1910 GOTO1950
+1920 HO=N:VE=YM
+1930 GOSUB110
+1940 PRINT"ALL ATOMS HAVE DECAYED.  ";
+1950 GOSUB6000
+1960 C=XM*YM
+1970 GOTO1100
+1990 REM 
+2000 REM *** STUDENT ***
+2010 GOSUB100
+2020 PRINT"STUDENT   INSTRUCTIONS."
+2030 PRINT"=======================":PRINT
+2040 PRINT"At the start of the test you will":PRINT
+2050 PRINT"see ";C;" stars. Each star represents":PRINT
+2060 PRINT"a radio-active atom which will decay":PRINT
+2070 PRINT"into another atom of lower mass,":PRINT
+2080 PRINT"represented by a point.":PRINT
+2090 PRINT"You cannot predict when the decay":PRINT
+2100 PRINT"will occur.":PRINT
+2110 PRINT"But you can say that after a certain":PRINT
+2120 PRINT"time (THE HALF-LIFE), an average of half"
+2130 PRINT"the original number of atoms":PRINT
+2140 PRINT"will have decayed.";
+2150 GOSUB6000
+2190 REM 
+2200 GOSUB100
+2210 PRINT"You can measure the half-life of":PRINT
+2220 PRINT"our example. Note the time it takes":PRINT
+2230 PRINT"for 900 to become 450, 180 to":PRINT
+2240 PRINT"become 90, etc.":PRINT
+2250 PRINT"The counter at the bottom of the screen":PRINT
+2260 PRINT"displays the number of radio-active":PRINT
+2270 PRINT"atoms left.":PRINT:PRINT
+2280 PRINT"Good luck with the experiment !"
+2290 GOSUB6000
+2300 GOTO1100
+2900 REM 
+3000 REM *** TEACHER ***
+3010 GOSUB100
+3020 PRINT"TEACHER  INSTRUCTIONS"
+3030 PRINT"=====================":PRINT
+3040 PRINT"This program could be used to":PRINT
+3050 PRINT"demonstrate the classic theory of ":PRINT
+3060 PRINT"decay and half-life. Students can"
+3070 PRINT
+3080 PRINT"also measure half-lives.":PRINT
+3090 PRINT"Note that if you repeat the experiment":PRINT
+3100 PRINT"a number of times, it does matter if the"
+3110 PRINT"computer is using random or":PRINT
+3120 PRINT"pseudo-random numbers. In the latter":PRINT
+3130 PRINT"case, the result will always be the ":PRINT
+3140 PRINT"same. You many not want this.";
+3150 GOSUB6000
+3190 REM 
+3200 GOSUB100
+3210 PRINT"The half-life of this program":PRINT
+3220 PRINT"is very dependent on the make of":PRINT
+3230 PRINT"computer. On an APPLE this is about 86s.":PRINT
+3240 PRINT"A shorter constant half-life is not":PRINT
+3250 PRINT"possible in BASICODE.":PRINT
+3260 PRINT"A longer half-life is possible.":PRINT:PRINT
+3270 PRINT"See: Explanation for the programmer."
+3280 GOSUB6000
+3290 GOTO1100
+3900 REM 
+4000 REM *** PROGRAMER ***
+4010 GOSUB100
+4020 PRINT"Explanation for the programmer."
+4030 PRINT"==============================":PRINT
+4040 PRINT"You can make the half-life shorter":PRINT
+4050 PRINT"by replacing the 'GOSUB 110' in lines ":PRINT
+4060 PRINT"1810 and 1830 with your computers own":PRINT
+4070 PRINT"command. Line 1820 is then deleted.":PRINT
+4080 PRINT"The 'GOSUB 260' in lines 1720 and":PRINT
+4090 PRINT"1740 could be changed too.":PRINT
+4100 PRINT"You could change 1850 to GOTO 1730":PRINT
+4110 PRINT"Making the half-life longer is ":PRINT
+4120 PRINT"no problem, either with a waitloop,":PRINT
+4130 PRINT"or by making changes to line 1835.":PRINT
+4140 PRINT"";
+4150 GOSUB6000
+4190 REM 
+4200 GOSUB100
+4210 PRINT"The construction of lines 1760-1790":PRINT
+4220 PRINT"may seem a little confusing.":PRINT
+4230 PRINT"It is necessary to ensure":PRINT
+4240 PRINT"that the half-life does":PRINT
+4250 PRINT"not get steadily shorter."
+4260 PRINT:PRINT
+4270 PRINT"If you have limited computer memory":PRINT
+4280 PRINT"all lines between 2000 to":PRINT
+4290 PRINT"5900 can be erased. The experiment":PRINT
+4300 PRINT"doesn't need these lines.":PRINT
+4310 PRINT"You could also erase the menu."
+4320 GOSUB6000
+4390 REM 
+4400 GOSUB100
+4410 PRINT"This program was written using the":PRINT
+4420 PRINT"BASICODE screen norm, 40 characters by":PRINT
+4430 PRINT"24 lines.":PRINT
+4440 PRINT"If you want to change this":PRINT
+4450 PRINT"change line 1010.":PRINT
+4460 PRINT"Look for:":PRINT
+4480 PRINT"XM = Number of characters per line,":PRINT
+4490 PRINT"YM = Number of lines - 1."
+4500 GOSUB6000
+4510 GOTO1100
+4900 REM 
+5000 REM *** STOP ***
+5010 GOSUB100
+5020 PRINT"Goodbye. Hope you enjoyed it."
+5030 END
+5900 REM 
+6000 REM *** SUBROUTINE ***
+6010 HO=XM-7:VE=YM+E
+6020 GOSUB110
+6030 PRINT"Press>";
+6040 GOSUB210:REM GET KEY
+6050 RETURN
+6900 REM 
+30000 REM -RADIOACTIVE DECAY
+30010 REM THIS VERSION MADE
+30020 REM MADE 12 JANUARY 84
+30030 REM ON AN APPLE II
+30040 REM 
+30050 REM WRITTEN BY
+30170 REM E. IVENS,
+30180 REM SCIENCE TEACHER,
+30190 REM ST. LUDGERCOLLEGE,
+30200 REM VONDELSTRAAT 5,
+30210 REM 7002 AN  DOETINCHEM.
+30220 REM THE NETHERLANDS
+30230 REM
+30240 REM TRANSLATED BY
+30250 REM JONATHAN MARKS
+

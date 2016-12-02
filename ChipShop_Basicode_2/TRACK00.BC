@@ -1,0 +1,105 @@
+1000 A=1000:GOTO20:REM WELCOME TO SIDE 2
+1010 GOSUB100:PRINT"Wait a moment..."
+1020 GOSUB1050:REM MEASURE SCREEN SIZE. 
+1030 DD$=".TEXT":GOSUB1110
+1040 END
+1050 REM SCREEN SIZE MEASUREMENT -
+1060 HO=15:VE=15
+1070 HO=HO+1:HH=HO:GOSUB110:GOSUB120:IFHH=HO THEN1070
+1080 HO=0
+1090 VE=VE+1:VV=VE:GOSUB110:GOSUB120:IFVV=VE THEN1090
+1100 GOSUB100:RETURN
+1110 REM -SEARCH DATA AND PUT ON SCREEN
+1120 RESTORE
+1130 READSR$:IFSR$="." THEN1170
+1140 IFSR$<>DD$ THEN1130
+1150 READSR$:IFLEFT$(SR$,1)="." THEN1170
+1160 GOSUB1180:GOTO1150
+1170 RETURN
+1180 REM -BASICODE-2-TEXT FORMER
+1190 IFSR$="" THENGOSUB1390:RETURN
+1200 IFSR$<>"-" THEN1220
+1210 FORII=4 TOHH:SR$=SR$+"-":NEXTII:VE=VE-1
+1220 IFLEFT$(SR$,1)<>" " THEN1260
+1230 HO=0:IFSR$="  " THENVE=VV:SR$=" "
+1240 IFSR$=" " THENVE=VE+4:GOSUB110:RETURN
+1250 VE=VE+2:GOSUB110:SR$=RIGHT$(SR$,LEN(SR$)-1)
+1260 SR$=SR$+" ":LL=LEN(SR$):SP=1
+1270 FORII=1 TOLL
+1280 IFMID$(SR$,II,1)<>" " THEN1380
+1290 SM$=MID$(SR$,SP,II-SP)
+1300 LM=LEN(SM$):IFLM+HO<HH-1 THEN1320
+1310 HO=0:VE=VE+2:GOSUB110
+1320 GOSUB120:IFVE<VV-3 THEN1340
+1330 GOSUB1390:GOSUB100:GOSUB120
+1340 IFLM<HH THEN1370
+1350 SM$=MID$(SR$,SP,HH-HO-2)
+1360 II=SP+HH-HO-3
+1370 PRINT" ";SM$;:GOSUB120:SP=II+1
+1380 NEXTII:RETURN
+1390 REM -ASK FOR INPUT KEY
+1400 VS=VE:HS=HO:VE=VV-1:HO=0
+1410 GOSUB110
+1420 PRINT"                    ";:FORI=0 TO200:NEXTI
+1430 GOSUB200:IFIN$<>"" THEN1470
+1440 GOSUB110
+1450 PRINT"Press the ENTER key.";:FORI=0 TO200:NEXTI
+1460 GOTO1410
+1470 VE=VS:HO=HS:RETURN
+25000 DATA".TEXT","Welcome!","-"
+25010 DATA"Welcome to the growing group"
+25020 DATA"of Basicode users. On this side of"
+25030 DATA"the cassette are a number of example"
+25040 DATA"programs in the BASICODE standard. You can"
+25050 DATA"try loading them. Check to see if they run."
+25060 DATA"We have chosen a number of programs for"
+25070 DATA"the CHIP SHOP take-away, and we hope"
+25080 DATA" you find them useful.                 "
+25090 DATA"As you should know from Chapter 3,"
+25100 DATA"the BASICODE protocol assumes your"
+25110 DATA"video monitor has a screen size that"
+25120 DATA"consists of 24 lines, each of 40 characters."
+25130 DATA"If your computer screen is smaller than this,"
+25140 DATA"then you may have difficulty running a"
+25150 DATA"program without making a few changes."
+25160 DATA"How much work this involves depends on"
+25170 DATA"the program and the screen size."
+25180 DATA"If your screen size is larger than"
+25190 DATA"24 by 40 you won't need to change anything."
+25200 DATA"There are programs that can measure"
+25210 DATA"the screen size automatically, and"
+25220 DATA"make adjustments accordingly.(This"
+25230 DATA"program is an example!)","  "
+25240 DATA"As with any normal program, if you can't RUN"
+25250 DATA"it, LIST it and check the REM statements."
+25260 DATA"Often the author has put in useful comments."
+25270 DATA"The purpose of BASICODE is to stimulate"
+25280 DATA"interest in home computers."
+25290 DATA"A universal hobby computing standard"
+25300 DATA"has to make some compromises but"
+25310 DATA"thousands of users in Europe are already"
+25320 DATA"using BASICODE, so we know the system works."
+25330 DATA"                                     "
+25340 DATA"If BASICODE makes you treat your computer"
+25350 DATA"as more than a black box, then it has worked."
+25360 DATA"BASICODE programs are transmitted regularly"
+25370 DATA"on the European continent: each Sunday at"
+25380 DATA"1840 GMT on 747 kHz medium wave on Hilversum 2,"
+25390 DATA"and during the <KNOW HOW> programme on"
+25400 DATA"West German TV, WDR-3."
+25410 DATA"  ","Enough talking. Remember BASICODE"
+25420 DATA"doesn't stop with this cassette."
+25430 DATA"Try writing a few programs yourself."
+25440 DATA"For now, best wishes from the BASICODE"
+25450 DATA"developers in The Netherlands."
+25460 DATA"."
+30000 REM
+30010 REM  WELCOME TO SIDE 2
+30020 REM
+30030 REM  SUBROUTINE DEVELOPMENT 
+30040 REM  BY 
+30050 REM  RIEN VAN DONGEN
+30060 REM  ZOETERMEER,HOLLAND
+30070 REM  ADAPTION FOR CHIP-SHOP
+30080 REM  BY JONATHAN MARKS
+
