@@ -4,7 +4,7 @@ The Chip Shop BASICODE 2
 *The A side of this tape ("Program 1") contains translation programs, encoded in the native modulation for each computer,
 while the B side ("Program 2") contains BASICODE programs. Only the latter are included here.*
 
-.. image:: http://robhagemans.github.io/basiocde/Basicode2(BBCSoftware).jpg
+.. image:: http://robhagemans.github.io/basicode/Basicode2(BBCSoftware).jpg
 
 Program 1
 ---------------------------------
