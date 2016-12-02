@@ -27,10 +27,10 @@ Program 2
 1.  `WELCOME <01_Welcome.bc2>`_
 2.  `WORDGAME <02_Wordgame.bc2>`_
 3.  `FACTORS <03_Factors.bc2>`_
-4.  `TANK SHOOTING <04_Tank_shooting.bc2>`_
-5.  `CHORDS <05_chords.bc2>`_
+4.  `TANK SHOOTING <04_Tank_Shooting.bc2>`_
+5.  `CHORDS <05_Chords.bc2>`_
 6.  `YAHTZEE <06_Yahtzee.bc2>`_
-7.  `WORDSEARCH <07_Wordsearch.bc2>`_
+7.  `WORDSEARCH <07_Word_Search.bc2>`_
 8.  `CONQUER KONG <08_Conquer_Kong.bc2>`_
 9.  `MULTIVIBRATOR <09_Multivibrator.bc2>`_
 10. `DIGITAL CLOCK <10_Digital_Clock.bc2>`_
