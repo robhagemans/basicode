@@ -1,7 +1,7 @@
-Michael Wiegand/Manfred u. Heike Fillinger
+Michael Wiegand/Manfred u. Heike Fillinger: Basicode
+====================================================
 
-Basicode
-========
+.. image:: http://robhagemans.github.io/basicode/Basicode-DieKompatibleComputersprache.jpg
 
 Die kompatibele Computersprache
 
