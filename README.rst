@@ -39,6 +39,7 @@ Source                              Medium      Publisher   Basicode version    
 `BASICODE-3`_                       Tape        TROS        BASICODE-3          Dutch
 ==================================  ==========  =========== ==================  ==========
 
+.. _The Best of BASICODE 3: Best_of_Basicode_3/
 .. _The Best of BASICODE 5: Best_of_Basicode_5/
 .. _Chip Shop BASICODE 2: Chip_Shop_Basicode_2/
 .. _Wiegand & Fillinger - Basicode: Wiegand_Fillinger_Basicode_2/
