@@ -1,0 +1,63 @@
+
+1000 A=100:GOTO20:REM vierkanten
+1010 DIMX(20),Y(20),S(20)
+1020 HT=HO:VT=VE
+1030 GOSUB3000:REM UITLEG
+1040 SP=0:CN=0
+1050 PRINT"Tot welke diepte (0-5) ";
+1060 INPUTDI
+1070 GOSUB600:REM grafisch bedrijf
+1080 V=.375*2^(-DI)
+1090 X=.5:Y=.5:S=.375:GOSUB2000
+1100 HO=.937:VE=.956:SR$="=>":GOSUB650
+1110 GOSUB210
+1120 GOSUB100
+1130 PRINT"Nog eentje (J/N) ";
+1140 GOSUB210:PRINTIN$
+1150 IF(IN$<>"n")AND(IN$<>"N") THEN1040
+1160 GOTO950
+2000 IFS<V THENRETURN
+2010 S=S/2:YS=S*4/3
+2020 HO=X+S:VE=Y:GOSUB620
+2030 HO=X:VE=Y+YS:GOSUB630
+2040 HO=X-S:VE=Y:GOSUB630
+2050 HO=X:VE=Y-YS:GOSUB630
+2060 HO=X+S:VE=Y:GOSUB630
+2070 X(SP)=X:Y(SP)=Y-YS:S(SP)=S:SP=SP+1
+2080 X(SP)=X:Y(SP)=Y+YS:S(SP)=S:SP=SP+1
+2090 X(SP)=X-S:Y(SP)=Y:S(SP)=S:SP=SP+1
+2100 X=X+S:GOSUB2000
+2110 SP=SP-1:X=X(SP):Y=Y(SP):S=S(SP):GOSUB2000
+2120 SP=SP-1:X=X(SP):Y=Y(SP):S=S(SP):GOSUB2000
+2130 SP=SP-1:X=X(SP):Y=Y(SP):S=S(SP):GOSUB2000
+2140 RETURN
+3000 GOSUB100
+3010 VE=0:HO=INT(HT/2)-8:GOSUB110
+3020 SR$="VIERKANTEN":GOSUB150
+3030 PRINT:PRINT
+3040 PRINT"Dit programma tekent een vierkant op uw"
+3050 PRINT"scherm. Met elk hoekpunt als middelpunt"
+3060 PRINT"tekent het een kleiner vierkant."
+3070 PRINT"Rond de hoekpunten van elk kleiner"
+3080 PRINT"vierkant gebeurt weer hetzelfde, enz."
+3090 PRINT:PRINT"U kunt zelf opgegeven hoe vaak dit moet"
+3100 PRINT"worden herhaald."
+3110 PRINT:PRINT"Veel kijkgenot !"
+3120 HO=0:VE=VT:GOSUB110
+3130 PRINT"Druk op RETURN voor 't vervolg";
+3140 GOSUB210:IFIN<>13 THEN3140
+3150 GOSUB100
+3160 RETURN
+30000 REM******************************
+30010 REM*                            *
+30020 REM*    V I E R K A N T E N     *
+30030 REM*  is een demonstratie van   *
+30040 REM* de grafische mogelijkheden *
+30050 REM*            in              *
+30060 REM*    B A S I C O D E - 3     *
+30070 REM*                            *
+32000 REM*    Copyright (C) 1986      *
+32010 REM*    Stichting BASICODE      *
+32020 REM*                            *
+32030 REM******************************
+32200 REM TROS-radio dd 861231

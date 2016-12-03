@@ -1,0 +1,76 @@
+
+1000 A=100:GOTO20:REM BOOM VAN PYTHAGORAS
+1010 DIMX(15),Y(15),H(15),V(15),N(15)
+1020 S=0:HT=(HO-22)/2:VT=VE/2
+1030 GOSUB2010
+1040 GOSUB100:HO=HT-3:VE=VT:GOSUB110
+1050 SR$=B$:GOSUB150:PRINT:PRINT
+1060 PRINT"Hoe diep wilt U de boom (0=einde) ";
+1070 INPUTSR:IFSR=0 THEN950
+1080 GOSUB600:CN=0:HO=0:VE=0
+1085 GOSUB300:SR$=B$+", "+SR$+" diep":GOSUB650
+1090 X=.5:HB=.0828125:Y=.73-HB:F=4/3:H=-HB:V=HB
+1100 GOSUB1170
+1110 REM SCREENDUMP
+1120 HO=1-3/32:VE=1-1/23:SR$="=>":GOSUB650
+1130 GOSUB210
+1140 GOTO1040
+1150 REM teken vierkanten
+1170 HO=X+H:VE=F*(Y+V):GOSUB620
+1180 HO=X-V:VE=F*(Y+H):GOSUB630
+1190 HO=X-H:VE=F*(Y-V):GOSUB630
+1200 HO=X+V:VE=F*(Y-H):GOSUB630
+1210 HO=X+H:VE=F*(Y+V):GOSUB630
+1220 P=(H+V)/2:Q=(V-H)/2:IFSR<2 THENRETURN
+1230 X(S)=X+V+P:Y(S)=Y+H-Q:H(S)=P:V(S)=Q:N(S)=SR-1
+1240 S=S+1:X=X+H+P:Y=Y-V-Q:H=-Q:V=P:SR=SR-1
+1250 GOSUB1170
+1260 S=S-1:X=X(S):Y=Y(S):H=H(S):V=V(S):SR=N(S)
+1270 GOTO1170
+2000 REM UITLEG
+2010 GOSUB4000
+2020 PRINT"De STELLING VAN PYTHAGORAS kent u"
+2030 PRINT"misschien nog van de middelbare school."
+2040 PRINT:PRINT"Het ging daarbij over een rechthoekige"
+2050 PRINT"driehoek met tegen elk van de drie"
+2060 PRINT"zijden een vierkant. De BOOM van PYTHA-"
+2070 PRINT"GORAS is daarop gebaseerd. Door telkens"
+2080 PRINT"weer een kleinere driehoek op een vier-"
+2090 PRINT"kant te plaatsen en op elke driehoek"
+2100 PRINT"weer twee vierkanten, ontstaat vanzelf"
+2110 PRINT"een boomstructuur met steeds fijnere"
+2120 PRINT"vertakkingen.":PRINT
+2130 PRINT"U kunt in dit programma zelf opgeven"
+2140 PRINT"hoe vaak een nieuwe driehoek op  een"
+2150 PRINT"vierkant moet worden geplaatst: "
+2160 PRINT"dat is de 'diepte' van de boom."
+2170 PRINT"Probeer het uit voor steeds hogere"
+2180 PRINT"waarden en verbaas u over de fraaie"
+2190 PRINT"structuur !"
+2200 GOSUB3000
+2210 PRINT"Bij een diepte van 8 of meer zult u"
+2220 PRINT"de laatste vierkantjes misschien"
+2230 PRINT"nauwelijks kunnen zien, afhankelijk van"
+2240 PRINT"de resolutie van uw scherm. Bovendien"
+2250 PRINT"kan het dan wel even duren voor de hele"
+2260 PRINT"boom getekend is.":PRINT
+2270 PRINT"Uw geduld wordt echter beloond."
+2280 PRINT:PRINT"Veel kijkgenoegen !"
+3000 HO=0:VE=VT*2:GOSUB110
+3010 SR$="<<return>>":GOSUB150
+3020 GOSUB210:IFIN<>13 THEN3020
+4000 GOSUB100
+4010 B$="De BOOM van PYTHAGORAS"
+4020 SR$=B$:GOSUB150:PRINT:PRINT
+4030 RETURN
+32000 REM******************************
+32010 REM*                            *
+32020 REM* Een grafische demonstratie *
+32030 REM*             in             *
+32040 REM*     B A S I C O D E - 3    *
+32050 REM*                            *
+32060 REM*    Copyright (c) 1986      *
+32070 REM*    Stichting BASICODE      *
+32080 REM*                            *
+32090 REM******************************
+32100 REM TROS dd 860726

@@ -1,0 +1,187 @@
+
+1000 A=3000:GOTO20:REM BASICODE-3 COMPUTER BULLETIN
+1010 RL=HO:SH=VE:PS=0:PL=0:AR=0:LM=0:RF=0:SC=1:DIMRE$(SH)
+1020 GOSUB1680
+1030 BK=1:READRE$
+1040 AK=0:IFBK>LEN(RE$) THEN1030
+1050 AK=AK+1:IFBK+AK>LEN(RE$) THEN1070
+1060 IFMID$(RE$,BK+AK,1)<>" " THEN1050
+1070 WO$=MID$(RE$,BK,AK):BK=BK+LEN(WO$)+1
+1080 IFPL+LEN(WO$)>=RL THEN GOSUB1410
+1090 IFLEFT$(WO$,1)="." THEN1130:REM commando
+1100 GOSUB1620:PL=PL+LEN(WO$)+1
+1110 IF(PL<RL-1)AND(RF=0) THENWO$=" ":GOSUB1620:GOTO1040
+1120 RE$(AL)=RE$(AL)+" ":GOTO1040
+1130 LC$=MID$(WO$,2,1):CO=0
+1140 IFLEN(WO$)>2 THENCO=ASC(MID$(WO$,3,LEN(WO$)-2))-48
+1150 IFLC$<>"F" THEN1200
+1160 REM F=linefeeds
+1170 LF=CO
+1180 GOSUB1410:LF=LF-1:IFLF>0 THEN1180
+1190 GOTO1040
+1200 IFLC$<>"P" THEN1260
+1210 REM P=nieuwe pagina
+1220 IFSC=1 THEN1240
+1230 GOSUB1410:GOSUB1410:GOTO1040
+1240 GOSUB1410:IFAR<>2 THEN1220
+1250 GOTO1040
+1260 IFLC$<>"C" THEN1310
+1270 REM C=centreer rest van de DATA-regel
+1280 RE$=MID$(RE$,BK,LEN(RE$)-BK+1)
+1290 IS=PS+INT((RL-LEN(RE$)-1)/2):GOSUB1590
+1300 PRINTRE$;:RE$="":GOSUB1410:GOTO1040
+1310 IFLC$<>"M" THEN1340
+1320 REM M=linkermarge
+1330 LM=CO:GOTO1040
+1340 IFLC$="E" THEN950
+1350 REM E=einde programma
+1360 IFLC$<>"R" THEN1390
+1370 REM R=reverseprint volgende n woorden
+1380 RF=CO:GOTO1040
+1390 REM
+1400 GOTO1040
+1410 AL=AL+1:RE$(AL)=""
+1420 IFSC=1 THENPRINT
+1430 IFSC=2 THEN GOSUB360:AL=0:RE$(0)=""
+1440 AR=AR+1:IFAR<=SH-SL THEN1570
+1450 IFSC=1 THENPRINT:GOTO1470
+1460 FORI=1 TOSL:GOSUB360:NEXTI:AR=0:GOTO1570
+1470 PRINT"  ";
+1480 SR$="VERVOLG: druk op <return>":GOSUB150
+1490 GOSUB210:IFIN=13 THEN1530
+1500 IFIN<>80 THEN1490
+1510 FORAL=0 TOSH:SR$=RE$(AL):GOSUB350:GOSUB360
+1520 NEXTAL:GOSUB250
+1530 GOSUB100:IS=INT(RL/2)-17:IFIS<0 THENIS=0
+1540 AL=0:RE$(0)="":GOSUB1590
+1550 SR$="BASICODE-3 COMPUTERBULLETIN":GOSUB150
+1560 PRINT:PRINT:AR=2
+1570 PL=LM:IS=LM+PS
+1580 REM subr. PRINT IS spaties
+1590 IFIS<1 THENRETURN
+1600 SR$=" ":GOSUB1650:IS=IS-1:GOTO1590
+1610 REM *** WOORDUITVOER ***
+1620 SR$=WO$:RE$(AL)=RE$(AL)+SR$:IFSC<>1 THEN1660
+1630 IFRF=0 THENPRINTWO$;:RETURN
+1640 GOSUB150:RF=RF-1:PL=PL+5:RETURN
+1650 IFSC=1 THENPRINTSR$;:RETURN
+1660 GOSUB350:RF=0:RETURN
+1670 REM *** INITIALISATIE ***
+1680 GOSUB1530:PRINT:PRINT"Wilt u het bulletin op"
+1690 PRINT:PRINT"   1  Het beeldscherm,"
+1700 PRINT"   2  De printer."
+1710 PRINT:PRINT"Welk nummer kiest u ";
+1720 INPUTSC:IFSC=1 THENSL=2:GOTO1530
+1730 IFSC<>2 THEN1680
+1740 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1750 PRINT"begin van elke regel ";
+1760 INPUTPS
+1770 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1780 PRINT"u op elke regel ";:INPUTRL
+1790 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1800 PRINT"laten overslaan ";:INPUTSL
+1810 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+1820 PRINT"elk blad ";:INPUTSH
+1830 SH=SH+SL:IS=PS:GOTO1590
+25000 DATA"Gegroet, BASICODE-3 vrienden ! .F2 In dit vijfde"
+25010 DATA"bulletin dus zoals beloofd opnieuw vragen van"
+25020 DATA"luisteraars en bijpassende antwoorden. Is er ook"
+25030 DATA"nu geen antwoord op de vraag waar u mee zat?"
+25040 DATA"Geen nood, stuur een briefje naar de TROS als"
+25050 DATA"het met radio te maken heeft of naar de"
+25060 DATA"Stichting BASICODE als het over BASICODE-3 gaat."
+25070 DATA".P .F1 Vraag: Ik heb een door de TROS"
+25080 DATA"uitgezonden BASICODE programma ingelezen maar"
+25090 DATA"het werkt niet. Het stopt bij GOSUB opdrachten"
+25100 DATA"naar regels die er helemaal niet zijn. .F3"
+25110 DATA"Antwoord: U hebt waarschijnlijk gebruik gemaakt"
+25120 DATA"van een BASICODE-2 vertaalprogramma. Daarmee is"
+25130 DATA"BASICODE-3 wel in te lezen maar wilt u een"
+25140 DATA"BASICODE-3 programma ook laten werken dan moet u"
+25150 DATA"echt gebruik maken van een nieuw BASICODE-3"
+25160 DATA"vertaalprogramma. Dat staat op de cassette bij"
+25170 DATA"het BASICODE-3 boek en het geheel ligt in de"
+25180 DATA"boekhandel voor u klaar. Omgekeerd gaat het wel:"
+25190 DATA"met een BASICODE-3 vertaalprogramma kunt u"
+25200 DATA"probleemloos programma's in BASICODE-2 inlezen"
+25210 DATA"en laten werken. Gebruik dus uitsluitend het"
+25220 DATA"nieuwe BASICODE-3 vertaalprogramma voor uw"
+25230 DATA"computer. .P .F1 Vraag: Op mijn Commodore 128"
+25240 DATA"werkt het nieuwe BASICODE-3 vertaalprogramma"
+25250 DATA"voor de Commodore 64 wel. In het boek staat dat"
+25260 DATA"het niet zou werken. .F3 Antwoord: Bedankt voor"
+25270 DATA"dit bericht. Op de C-128 waarop wij het nieuwe"
+25280 DATA"vertaalprogramma probeerden ging het fout."
+25290 DATA"Misschien is de ene computer wat eigenwijzer dan"
+25300 DATA"de andere? .P .F1 Vraag: Gaat de TROS ook de"
+25310 DATA"nieuwe vertaalprogramma's voor BASICODE-3"
+25320 DATA"uitzenden? .F3 Antwoord: Voorlopig niet."
+25330 DATA"Uitzenden van een vertaalprogramma is alleen"
+25340 DATA"interessant voor mensen die de bijbehorende"
+25350 DATA"computer hebben. Voor andere luisteraars is het"
+25360 DATA"verloren zendtijd. Die besteden we liever aan"
+25370 DATA"leuke BASICODE-3 programma's waar iedereen"
+25380 DATA"plezier van heeft. Bovendien geeft het voor"
+25390 DATA"sommige computers flink wat problemen om een"
+25400 DATA"uitgezonden vertaalprogramma goed op te nemen en"
+25410 DATA"in de computer in te lezen. Maar als er"
+25420 DATA"vertaalprogramma's beschikbaar komen voor nieuwe"
+25430 DATA"computers of als er verbeterde versies uitkomen"
+25440 DATA"dan zullen we zeker bekijken of we die dan juist"
+25450 DATA"wel zullen uitzenden. .P .F1 Vraag: Ik leid een"
+25460 DATA"plaatselijke computerclub. Mag ik daar"
+25470 DATA"vertaalprogramma's en BASICODE-3 programma's"
+25480 DATA"verspreiden? .F3 Antwoord: In principe is"
+25490 DATA"verspreiding van een programma alleen toegestaan"
+25500 DATA"door de auteur of met toestemming van de auteur."
+25510 DATA"In veel gevallen zal deze geen bezwaar hebben"
+25520 DATA"tegen kostenloze verspreiding. U dient zich met"
+25530 DATA"uw vraag dus tot de betreffende auteur te"
+25540 DATA"wenden. .F2 Voor wat deze BASICODE Computer"
+25550 DATA"Bulletins betreft is dat de Stichting BASICODE."
+25560 DATA"Deze heeft geen bezwaar tegen verspreiding van"
+25570 DATA"de computerbulletins zolang dat gratis gebeurt"
+25580 DATA"door computerclubs voor hun leden en op"
+25590 DATA"voorwaarde dat de Stichting even een berichtje"
+25600 DATA"krijgt als een club deze bulletins inderdaad"
+25610 DATA"onder haar leden verspreidt. Het adres van de"
+25620 DATA"Stichting BASICODE staat in het BASICODE-3 boek."
+25630 DATA".P .F1 Vraag: Ik heb (nog) geen computer maar"
+25640 DATA"volgens mij klinkt dat geluid van die krolse"
+25650 DATA"papagaai dat jullie uitzenden en dat voor"
+25660 DATA"computergeluid door moet gaan elke week precies"
+25670 DATA"hetzelfde. Hoe zit dat? .F3 Antwoord: Voor"
+25680 DATA"krolse papagaaien klinkt alle mensengeluid ook"
+25690 DATA"precies hetzelfde, ook al beweren die mensen"
+25700 DATA"zelf dat ze allemaal wat anders zeggen. Zo is"
+25710 DATA"het ook met computergeluid. Computers weten er"
+25720 DATA"elke week weer een ander programma van te maken."
+25730 DATA"Het leuke van BASICODE-3 is nu dat datzelfde"
+25740 DATA"geluid, thuis opgenomen op een eenvoudige"
+25750 DATA"cassetterecorder, in bijna alle courante merken"
+25760 DATA"en typen huiscomputers kan worden ingelezen en"
+25770 DATA"verwerkt. Dat is mogelijk dankzij een speciaal"
+25780 DATA"vertaalprogramma voor uw type computer. Een"
+25790 DATA"aantal doorgewinterde hobbyisten heeft ten koste"
+25800 DATA"van weken en weken werk in zijn (of haar!) vrije"
+25810 DATA"uurtjes voor een groot aantal computers zo'n"
+25820 DATA"vertaalprogramma gemaakt. Al die"
+25830 DATA"vertaalprogramma's, tezamen met een boek vol"
+25840 DATA"uitleg, vormen samen het BASICODE-3 pakket dat"
+25850 DATA"in de boekhandel verkrijgbaar is. .P Hebt u"
+25860 DATA"vragen of opmerkingen? .F3 Stuur uw reaktie aan:"
+25870 DATA".M5 .F3 TROS RADIO .F3 Basicode 3 .F3 Postbus"
+25880 DATA"450 .F3 1200 AL  Hilversum .M0 .P Einde van dit"
+25890 DATA"Basicode Computer Bulletin. .P .E"
+30000 REM"****************************"
+30010 REM"*                          *"
+30020 REM"*  BASICODE - 3 Bulletin   *"
+30030 REM"*       Deel - 5           *"
+30040 REM"*                          *"
+30050 REM"*   TROS-Radio 9-8-1986    *"
+30060 REM"*                          *"
+30070 REM"*   Copyright (c) 1986:    *"
+30080 REM"*   Stichting  BASICODE    *"
+30090 REM"*             Eindhoven    *"
+30100 REM"*                          *"
+30110 REM"****************************"

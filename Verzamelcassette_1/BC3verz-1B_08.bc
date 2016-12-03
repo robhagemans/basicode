@@ -1,0 +1,139 @@
+
+1000 A=200:GOTO20:REM Joukowski-vleugel
+1010 P1=3.141592653589
+1020 PRINT"Dit programma tekent een"
+1030 PRINT"vliegtuigvleugel en de"
+1040 PRINT"stroming daaromheen."
+1050 PRINT
+1060 PRINT"De vleugel wordt gemaakt"
+1070 PRINT"door een cirkel te vervormen."
+1080 PRINT"We moeten x en y van het"
+1090 PRINT"middelpunt en de straal"
+1100 PRINT"invoeren."
+1110 PRINT
+1120 PRINT"Lang niet voor alle combinaties"
+1130 PRINT"ontstaat een goede vleugel met"
+1140 PRINT"een goede stroming. Het is de"
+1150 PRINT"kunst door systematisch proberen"
+1160 PRINT"de juiste invoerwaarden te"
+1170 PRINT"vinden."
+1180 PRINT
+1190 PRINT"x van centrum ( -1<x<+1 )";
+1200 INPUTXM
+1210 PRINT"y van centrum ( -1<y<+1 )";
+1220 INPUTYM
+1230 PRINT"straal ( 1<straal<3 )";
+1240 INPUTR1
+1250 REM
+1260 REM  grafisch scherm
+1270 REM  voorgrondkleur
+1280 REM
+1290 GOSUB600:CN=0
+1300 RM=R1+1/R1
+1310 DX=5*RM
+1320 XF=1/DX
+1330 DF=2*P1/180
+1340 REM
+1350 REM  teken de vleugel
+1360 REM
+1370 C0=0
+1380 FORFI=0 TO2*P1 STEPP1/45
+1390 D1=R1*COS(FI)
+1400 D2=R1*SIN(FI)
+1410 X=XM+D1
+1420 Y=YM+D2
+1430 GOSUB1930
+1440 NEXTFI
+1450 REM
+1460 REM  teken de stroomlijnen
+1470 REM
+1480 FORC=1 TO-1 STEP-.4
+1490 C0=0
+1500 FB=.01
+1510 FE=P1-.01
+1520 DF=P1/45
+1530 IFC<0 THEN1550
+1540 GOTO1610
+1550 FB=-FB
+1560 FE=-FE
+1570 DF=-DF
+1580 REM
+1590 REM  teken een stroomlijn
+1600 REM
+1610 FORFI=FB TOFE STEPDF
+1620 F=FI
+1630 GOSUB1810
+1640 NEXTFI
+1650 REM
+1660 REM  klaar met stroomlijn
+1670 REM
+1680 NEXTC
+1690 REM
+1700 REM  klaar met alle lijnen
+1710 REM  wacht op toets
+1720 REM
+1730 GOSUB2080
+1740 REM
+1750 REM  volgende poging
+1760 REM
+1770 GOTO1180
+1780 REM
+1790 REM  subroutine
+1800 REM
+1810 S=SIN(F)
+1820 D=C/S
+1830 R=R1*(D+SQR(D*D+4))/2
+1840 X=R*COS(F)+XM
+1850 Y=R*S+YM
+1860 GOSUB1930:REM  vervorm en teken
+1870 RETURN
+1880 REM
+1890 REM  subroutine voor
+1900 REM  Joukowski vervorming
+1910 REM  en tekenen
+1920 REM
+1930 R=SQR(X^2+Y^2)
+1940 IV=1/R
+1950 SX=(R+IV)*(X/R)*XF+.5
+1960 SY=(R-IV)*(Y/R)*XF+.5
+1970 IF(SX<0)OR(SX>=1) THEN2030
+1980 IF(SY<0)OR(SY>=1) THEN2030
+1990 HO=SX:VE=SY
+2000 IFC0=0 THEN GOSUB620:REM  punt
+2010 IFC0=1 THEN GOSUB630:REM  lijntje
+2020 C0=1
+2030 RETURN
+2040 REM
+2050 REM  subroutine
+2060 REM  wacht op toets
+2070 REM
+2080 HO=.8:VE=.9
+2090 SR$="toets>"
+2100 GOSUB650
+2110 GOSUB210
+2120 GOSUB100
+2130 RETURN
+30000 REM
+30010 REM De oorspronkelijke versie
+30020 REM van dit programma komt
+30030 REM van de vakgroep wiskunde
+30040 REM van de Landbouwuniversiteit
+30050 REM Wageningen.
+30060 REM
+30070 REM Vertaald naar Basicode 3
+30080 REM door
+30090 REM
+32000 REM Pim van Tend
+32010 REM Veldheimweg 8
+32020 REM 6871 CD  RENKUM
+32030 REM
+32040 REM copyright (c) 1986
+32050 REM
+32060 REM Nadere uitleg vindt u in:
+32070 REM
+32080 REM AARDE & KOSMOS Informatica
+32090 REM 1987-1
+32100 REM
+32110 REM Uitg: MENS & WETENSCHAP
+32120 REM Postbus 108
+32130 REM 1270 AC Huizen

@@ -1,0 +1,178 @@
+
+1000 A=200:GOTO20:REM antenne Aerospatiale
+1010 DIMX(7),Y(7),Z(7):REM  skelet
+1020 V3=SQR(3):P1=3.141592653589
+1030 PRINT"Dit programma tekent een fraai"
+1040 PRINT"staaltje van Franse industriele"
+1050 PRINT"vormgeving: een uitvouwbare antenne"
+1060 PRINT"voor gebruik in de ruimte."
+1070 PRINT
+1080 PRINT"De antenne bestaat uit zeven"
+1090 PRINT"vertikale staven en de nodige"
+1100 PRINT"verbindingsstukken."
+1110 PRINT
+1120 PRINT"De invoer is de mate van uitvouwing"
+1130 PRINT"en de plaats vanwaar we willen kijken."
+1140 PRINT
+1150 PRINT"Probeer maar eens uit te zoeken,"
+1160 PRINT"hoe de antenne in elkaar zit."
+1170 GOSUB2420
+1180 PRINT"uitvouwing (0-1) ";
+1190 INPUTA
+1200 PRINT"kijkhoek vanaf pool (0-180) ";
+1210 INPUTF
+1220 PRINT"kijkhoek langs evenaar (0-360) ";
+1230 INPUTT
+1240 PRINT"afstand ( >1 ) ";
+1250 INPUTAF
+1260 REM
+1270 REM  asmaat, aantal namaakpixels
+1280 REM  basicode, omrekening naar
+1290 REM  radialen
+1300 REM
+1310 AM=2:PX=.74:F=F*P1/180:T=T*P1/180
+1320 REM
+1330 REM  skeletpunten
+1340 REM
+1350 AH=.5-.5*SQR(1-A*A)
+1360 X(1)=A:Y(1)=0:Z(1)=.5
+1370 X(2)=A:Y(2)=0:Z(2)=0
+1380 X(3)=.75*A:Y(3)=.25*V3*A:Z(3)=AH
+1390 X(4)=.75*A:Y(4)=-.25*V3*A:Z(4)=AH
+1400 X(5)=.5*A:Y(5)=0:Z(5)=AH
+1410 X(6)=0:Y(6)=0:Z(6)=.5
+1420 X(7)=0:Y(7)=0:Z(7)=0
+1430 GOSUB600:REM  grafisch scherm
+1440 CN=0:REM  voorgrondkleur
+1450 REM
+1460 REM  draai zes maal over
+1470 REM  zestig graden
+1480 REM
+1490 FORRO=1 TO6
+1500 GOSUB1680:REM  tekenen
+1510 GOSUB2020:REM  spiegelen
+1520 GOSUB1680:REM  tekenen
+1530 GOSUB2110:REM  draai verder
+1540 NEXTRO
+1550 REM
+1560 REM  wacht op toets en
+1570 REM  begin opnieuw
+1580 REM
+1590 GOSUB2290
+1600 GOTO1180
+1610 REM
+1620 REM  subroutine
+1630 REM  teken sektor (taartpunt)
+1640 REM
+1650 REM  projekteer en bewaar
+1660 REM  eerste punt (knooppunt)
+1670 REM
+1680 J=1:GOSUB2220
+1690 H1=HO:V1=VE
+1700 REM
+1710 REM  teken vier lijnen
+1720 REM  vanuit knooppunt
+1730 REM
+1740 FORJ=2 TO5
+1750 REM
+1760 REM  teken knooppunt
+1770 REM
+1780 HO=H1:VE=V1
+1790 GOSUB620:REM  teken HO,VE
+1800 REM
+1810 REM  projekteer X,Y,Z(J)
+1820 REM
+1830 GOSUB2220
+1840 GOSUB630:REM  lijn naar HO,VE
+1850 NEXTJ
+1860 REM
+1870 REM  naar midden en
+1880 REM  middenstaaf
+1890 REM
+1900 FORJ=6 TO7
+1910 GOSUB2220:REM  projekteer
+1920 GOSUB630:REM   lijn
+1930 NEXTJ
+1940 REM
+1950 REM  klaar met sektor
+1960 REM
+1970 RETURN
+1980 REM
+1990 REM  subroutine
+2000 REM  spiegel skelet om Z=0
+2010 REM
+2020 FORJ=1 TO7
+2030 Z(J)=-Z(J)
+2040 NEXTJ
+2050 RETURN
+2060 REM
+2070 REM  subroutine
+2080 REM  draai skelet over
+2090 REM  zestig graden
+2100 REM
+2110 FORJ=1 TO7
+2120 X9=.5*X(J)-.5*V3*Y(J)
+2130 Y(J)=.5*V3*X(J)+.5*Y(J)
+2140 X(J)=X9
+2150 NEXTJ
+2160 RETURN
+2170 REM
+2180 REM  subroutine projektie
+2190 REM  in: J (nummer skeletpunt)
+2200 REM  uit: HO, VE
+2210 REM
+2220 Q=AF-X(J)*COS(T)*SIN(F)-Y(J)*SIN(T)*SIN(F)-Z(J)*COS(F)
+2230 Q=AF/Q
+2240 R=Q*PX/AM
+2250 HO=(-X(J)*SIN(T)+Y(J)*COS(T))*R+.5
+2260 VE=-(-X(J)*COS(T)*COS(F))*R*4/3+.5
+2270 VE=VE-(-Y(J)*SIN(T)*COS(F)+Z(J)*SIN(F))*R*4/3
+2280 RETURN
+2290 REM
+2300 REM  wacht op afsluitende toets
+2310 REM
+2320 HO=.85:VE=.9
+2330 SR$="toets"
+2340 GOSUB650:REM  tekst op grafisch
+2350 REM            scherm
+2360 GOSUB210:REM  wacht op toets
+2370 GOSUB100:REM  schoon tekstscherm
+2380 RETURN
+2390 REM
+2400 REM  wacht op toets (tekstscherm)
+2410 REM
+2420 PRINT
+2430 PRINT"toets voor verder >> ";
+2440 GOTO2360
+30000 REM
+30010 REM  literatuur:
+30020 REM
+30030 REM  over de antenne:
+30040 REM  Commercial Space,
+30050 REM  Spring 1986,
+30060 REM  blz. 42-43.
+30070 REM
+30080 REM  over de tekenwijze:
+30090 REM  Aarde en Kosmos,
+30100 REM  7/1985,
+30110 REM  blz. 494.
+30120 REM
+32000 REM
+32010 REM Dit is een
+32020 REM Basicode-3 programma
+32030 REM van
+32040 REM
+32050 REM Pim van Tend
+32060 REM Veldheimweg 8
+32070 REM 6871 CD  RENKUM
+32080 REM
+32090 REM copyright (c) 1986
+32100 REM
+32110 REM Nadere uitleg vindt u in:
+32120 REM
+32130 REM AARDE & KOSMOD Informatica
+32140 REM 1987-1
+32150 REM
+32160 REM uitg: MENS & WETENSCHAP
+32170 REM postbus 108
+32180 REM 1270 AC Huizen

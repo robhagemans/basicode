@@ -1,0 +1,114 @@
+
+1000 A=100:GOTO20:REM  bron in wind
+1010 P1=3.141592653589
+1020 PRINT
+1030 PRINT"Dit programma maakt een"
+1040 PRINT"tekening van de stroming"
+1050 PRINT"die ontstaat, wanneer een"
+1060 PRINT"bron (bijvoorbeeld een"
+1070 PRINT"schoorsteen) iets loost in"
+1080 PRINT"de wind. Deze voorstelling"
+1090 PRINT"geldt alleen dicht bij de bron."
+1100 PRINT
+1110 PRINT"We krijgen de helft van een"
+1120 PRINT"bovenaanzicht te zien."
+1130 PRINT"De bron bevindt zich midden"
+1140 PRINT"onderaan het scherm. De"
+1150 PRINT"wind komt van links. De andere"
+1160 PRINT"helft van de stroming ontstaat"
+1170 PRINT"door spiegelen om de onderrand"
+1180 PRINT"van het scherm. De tekening"
+1200 PRINT"kan ook worden opgevat als"
+1210 PRINT"zijaanzicht."
+1220 PRINT
+1230 PRINT"Toets voor verder>";
+1240 GOSUB210
+1250 CN=0:REM  voorgrondkleur
+1260 GOSUB600:REM  grafisch scherm
+1270 REM
+1280 REM  teken grondlijn
+1290 REM
+1300 HO=0:VE=1-1/VG:GOSUB620
+1310 HO=1-1/HG:GOSUB630
+1320 REM
+1330 REM  schaalfactor
+1340 REM
+1350 SF=50
+1360 REM
+1370 REM  teken 8 stroomlijnen
+1380 REM
+1390 FORI=1 TO8
+1400 READC
+1410 L0=0
+1420 GOSUB1610
+1430 NEXTI
+1440 REM
+1450 REM  teken separatrix
+1460 REM
+1470 C=P1:L0=0:GOSUB1610
+1480 REM
+1490 REM  wacht op toets
+1500 REM
+1510 GOSUB210
+1520 REM
+1530 REM  stop
+1540 REM
+1550 GOTO950
+1560 REM
+1570 REM  subroutine
+1580 REM  teken stroomlijn
+1590 REM  invoer: C
+1600 REM
+1610 FORFI=P1 TOC/10 STEP-P1/135
+1620 S=SIN(FI)
+1630 R=(C-FI)/S
+1640 X=R*COS(FI)
+1650 Y=R*S
+1660 GOSUB1730
+1670 NEXTFI
+1680 RETURN
+1690 REM
+1700 REM  subroutine
+1710 REM  teken punt
+1720 REM
+1730 SX=X*SF+160
+1740 SY=180-Y*SF*3/4
+1750 IF(SX<0)OR(SX>=320) THEN1820
+1760 IF(SY<0)OR(SY>=180) THEN1820
+1770 HO=SX/320
+1780 VE=SY/180
+1790 IFL0=0 THEN GOSUB620:REM  punt
+1800 IFL0=1 THEN GOSUB630:REM  lijntje
+1810 IFC<>P1 THENL0=1
+1820 RETURN
+1830 REM
+1840 REM  dataregels met de
+1850 REM  kengetallen van de
+1860 REM  acht stroomlijnen
+1870 REM
+25000 DATA4.3,3.7,3.3,3
+25010 DATA2.5,2,1.5,0.75
+30000 REM
+30010 REM De oorspronkelijke versie
+30020 REM van dit programma komt
+30030 REM van de vakgroep wiskunde
+30040 REM van de Landbouwuniversiteit
+30050 REM Wageningen.
+30060 REM
+30070 REM Vertaald naar Basicode 3
+30080 REM door
+30090 REM
+32000 REM Pim van Tend
+32010 REM Veldheimweg 8
+32020 REM 6871 CD  RENKUM
+32030 REM
+32040 REM copyright (c) 1986
+32050 REM
+32060 REM Nadere uitleg vindt u in:
+32070 REM
+32080 REM AARDE & KOSMOS Informatica
+32090 REM 1987-2
+32100 REM
+32110 REM Uitg: MENS & WETENSCHAP
+32120 REM Postbus 108
+32130 REM 1270 AC Huizen

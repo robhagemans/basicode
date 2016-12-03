@@ -1,0 +1,219 @@
+
+1000 A=3000:GOTO20:REM BASICODE-3 COMPUTER BULLETIN
+1010 RL=HO:SH=VE:PS=0:PL=0:AR=0:LM=0:RF=0:SC=1:DIMRE$(SH)
+1020 GOSUB1680
+1030 BK=1:READRE$
+1040 AK=0:IFBK>LEN(RE$) THEN1030
+1050 AK=AK+1:IFBK+AK>LEN(RE$) THEN1070
+1060 IFMID$(RE$,BK+AK,1)<>" " THEN1050
+1070 WO$=MID$(RE$,BK,AK):BK=BK+LEN(WO$)+1
+1080 IFPL+LEN(WO$)>=RL THEN GOSUB1410
+1090 IFLEFT$(WO$,1)="." THEN1130:REM commando
+1100 GOSUB1620:PL=PL+LEN(WO$)+1
+1110 IF(PL<RL-1)AND(RF=0) THENWO$=" ":GOSUB1620:GOTO1040
+1120 RE$(AL)=RE$(AL)+" ":GOTO1040
+1130 LC$=MID$(WO$,2,1):CO=0
+1140 IFLEN(WO$)>2 THENCO=ASC(MID$(WO$,3,LEN(WO$)-2))-48
+1150 IFLC$<>"F" THEN1200
+1160 REM F=linefeeds
+1170 LF=CO
+1180 GOSUB1410:LF=LF-1:IFLF>0 THEN1180
+1190 GOTO1040
+1200 IFLC$<>"P" THEN1260
+1210 REM P=nieuwe pagina
+1220 IFSC=1 THEN1240
+1230 GOSUB1410:GOSUB1410:GOTO1040
+1240 GOSUB1410:IFAR<>2 THEN1220
+1250 GOTO1040
+1260 IFLC$<>"C" THEN1310
+1270 REM C=centreer rest van de DATA-regel
+1280 RE$=MID$(RE$,BK,LEN(RE$)-BK+1)
+1290 IS=PS+INT((RL-LEN(RE$)-1)/2):GOSUB1590
+1300 PRINTRE$;:RE$="":GOSUB1410:GOTO1040
+1310 IFLC$<>"M" THEN1340
+1320 REM M=linkermarge
+1330 LM=CO:GOTO1040
+1340 IFLC$="E" THEN950
+1350 REM E=einde programma
+1360 IFLC$<>"R" THEN1390
+1370 REM R=reverseprint volgende n woorden
+1380 RF=CO:GOTO1040
+1390 REM
+1400 GOTO1040
+1410 AL=AL+1:RE$(AL)=""
+1420 IFSC=1 THENPRINT
+1430 IFSC=2 THEN GOSUB360:AL=0:RE$(0)=""
+1440 AR=AR+1:IFAR<=SH-SL THEN1570
+1450 IFSC=1 THENPRINT:GOTO1470
+1460 FORI=1 TOSL:GOSUB360:NEXTI:AR=0:GOTO1570
+1470 PRINT"  ";
+1480 SR$="VERVOLG: druk op <return>":GOSUB150
+1490 GOSUB210:IFIN=13 THEN1530
+1500 IFIN<>80 THEN1490
+1510 FORAL=0 TOSH:SR$=RE$(AL):GOSUB350:GOSUB360
+1520 NEXTAL:GOSUB250
+1530 GOSUB100:IS=INT(RL/2)-17:IFIS<0 THENIS=0
+1540 AL=0:RE$(0)="":GOSUB1590
+1550 SR$="BASICODE-3 COMPUTERBULLETIN":GOSUB150
+1560 PRINT:PRINT:AR=2
+1570 PL=LM:IS=LM+PS
+1580 REM subr. PRINT IS spaties
+1590 IFIS<1 THENRETURN
+1600 SR$=" ":GOSUB1650:IS=IS-1:GOTO1590
+1610 REM *** WOORDUITVOER ***
+1620 SR$=WO$:RE$(AL)=RE$(AL)+SR$:IFSC<>1 THEN1660
+1630 IFRF=0 THENPRINTWO$;:RETURN
+1640 GOSUB150:RF=RF-1:PL=PL+5:RETURN
+1650 IFSC=1 THENPRINTSR$;:RETURN
+1660 GOSUB350:RF=0:RETURN
+1670 REM *** INITIALISATIE ***
+1680 GOSUB1530:PRINT:PRINT"Wilt u het bulletin op"
+1690 PRINT:PRINT"   1  Het beeldscherm,"
+1700 PRINT"   2  De printer."
+1710 PRINT:PRINT"Welk nummer kiest u ";
+1720 INPUTSC:IFSC=1 THENSL=2:GOTO1530
+1730 IFSC<>2 THEN1680
+1740 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1750 PRINT"begin van elke regel ";
+1760 INPUTPS
+1770 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1780 PRINT"u op elke regel ";:INPUTRL
+1790 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1800 PRINT"laten overslaan ";:INPUTSL
+1810 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+1820 PRINT"elk blad ";:INPUTSH
+1830 SH=SH+SL:IS=PS:GOTO1590
+25000 REM BASICODE-3 COMPUTER BULLETIN-9
+25010 DATA".R2 Nieuwe vertaalprogramma's .F2 Enkele weken"
+25020 DATA"geleden is gemeld dat er voor diverse computers"
+25030 DATA"nieuwe vertaalprogramma's beschikbaar zijn. Deze"
+25040 DATA"mededeling heeft in enkele gevallen wat"
+25050 DATA"misverstanden opgeleverd. Daarom komen we daar"
+25060 DATA"nu even op terug. .F2 Een BASICODE-3"
+25070 DATA"vertaalprogramma is een erg ingewikkeld"
+25080 DATA"programma. Toen we pas met BASICODE-2 begonnen"
+25090 DATA"zaten er in die vertaalprogramma's ook de nodige"
+25100 DATA"foutjes en fouten. Toen we met BASICODE-2"
+25110 DATA"stopten en overgingen op BASICODE-3, waren de"
+25120 DATA"vertaalprogramma's voor BASICODE-2 nog steeds"
+25130 DATA"niet allemaal perfect. De bekende fouten en"
+25140 DATA"onvolkomenheden zijn natuurlijk in de nieuwe"
+25150 DATA"versies voor BASICODE-3 weer verholpen, maar"
+25160 DATA"doordat BASICODE-3 veel uitgebreider is dan zijn"
+25170 DATA"voorganger zijn de vertaalprogramma's opnieuw"
+25180 DATA"flink uitgebreid en vaak zelfs helemaal opnieuw"
+25190 DATA"ontwikkeld. Bij zulke gecompliceerde programma's"
+25200 DATA"is het dan ook onvermijdelijk dat er weer een"
+25210 DATA"aantal kleinere en grotere (schoonheids)foutjes"
+25220 DATA"in zitten. Die komen aan het licht dank zij de"
+25230 DATA"reakties van de mensen in het land, dus van u,"
+25240 DATA"waarde computerhobbyist! .P Alle makers van de"
+25250 DATA"vertaalprogramma's gaan bij zo'n reaktie op zoek"
+25260 DATA"naar de reden van het gemelde verschijnsel."
+25270 DATA"Zodoende wordt bijna van maand tot maand het"
+25280 DATA"vertaalprogramma steeds verder verfraaid stapje"
+25290 DATA"voor stapje geperfectioneerd. Telkens als"
+25300 DATA"daartoe gelegenheid is, wordt de cassette die"
+25310 DATA"bij het BASICODE-3 boek hoort voorzien van de"
+25320 DATA"nieuwste versies van de programma's. .F2 Het is"
+25330 DATA"waarschijnlijk niet nodig dat u nu meteen"
+25340 DATA"probeert, zo'n nieuwe versie te pakken te"
+25350 DATA"krijgen. Over een paar maanden is er"
+25360 DATA"ongetwijfeld weer een nog nieuwere versie en zo"
+25370 DATA"kun je aan de gang blijven. Het is al helemaal"
+25380 DATA"niet nodig, opnieuw een BASICODE-3 boek te"
+25390 DATA"kopen. Dat zou te gek zijn! Er zijn"
+25400 DATA"vertaalprogramma's, bijvoorbeeld dat voor de"
+25410 DATA"C-64, waarin tot dusverre zelfs totaal niets"
+25420 DATA"gewijzigd is en in sommige andere programma's"
+25430 DATA"zijn de wijzigingen echt minimaal. .P .R2"
+25440 DATA"Wanneer wel .F2 Wanneer doet u er goed aan, een"
+25450 DATA"nieuwe versie van het voor u  benodigde"
+25460 DATA"vertaalprogramma te bemachtigen. Simpel: als u"
+25470 DATA"ten eerste weet dat in de versie die u hebt"
+25480 DATA"bepaalde fouten zitten en ten tweede u zeker"
+25490 DATA"weet dat er een nieuwere versie is waar die"
+25500 DATA"fouten in verholpen zijn. Hoe komt u dat te"
+25510 DATA"weten? Dat wordt gemeld in het blad van de"
+25520 DATA"gebruikersclub voor uw merk, in de pagina's die"
+25530 DATA"voor uw merk in allerlei bulletin-boards of in"
+25540 DATA"Viditel aanwezig zijn of het wordt gemeld in de"
+25550 DATA"wekelijkse TROS-uitzending of in een bulletin"
+25560 DATA"zoals dit. Zolang die melding er niet is, hoeft"
+25570 DATA"u zich echt niet druk te maken. Als de melding"
+25580 DATA"van een nieuw programma er wel is, wordt daarbij"
+25590 DATA"vermeld hoe u aan een nieuwe versie kunt komen;"
+25600 DATA"meestal zal dat via de gebruikersclub zijn. Het"
+25610 DATA"spreekt welhaast vanzelf, dat u zo'n nieuwe"
+25620 DATA"versie ook kunt overnemen van iemand anders die"
+25630 DATA"hem inmiddels al heeft. .P .R1 Fouten? .F2 Het"
+25640 DATA"is mogelijk dat u denkt dat er een fout in een"
+25650 DATA"vertaalprogramma zit. Het kan dan zijn dat u"
+25660 DATA"daarin gelijk hebt, het kan ook zijn dat u zelf"
+25670 DATA"iets verkeerd doet. Het beste is in zo'n geval,"
+25680 DATA"het probleem eerst eens samen met iemand anders"
+25690 DATA"te bekijken die net zo'n computer heeft als u"
+25700 DATA"zelf. Twee weten meer dan een. Opnieuw is de"
+25710 DATA"gebruikersclub het aangewezen adres. Daar"
+25720 DATA"ontmoet u mensen met dezelfde computer en daar"
+25730 DATA"kunt u ervaringen uitwisselen. Blijkt iedereen"
+25740 DATA"van mening dat er echt een fout in een"
+25750 DATA"vertaalprogramma zit, schrijf dan een briefje"
+25760 DATA"naar de auteur van dat programma en vermeld"
+25770 DATA"daarin zo nauwkeurig mogelijk wat er wanneer en"
+25780 DATA"hoe fout gaat. Hij moet immers precies kunnen"
+25790 DATA"nagaan wat er mis kan zijn. Het juiste adres"
+25800 DATA"vindt u in het BASICODE-3 boek. .P .R2 Het"
+25810 DATA"bulletin .F2 Een goed idee is nooit weg. Robbert"
+25820 DATA"Wethmar uit Lelystad heeft niet alleen een"
+25830 DATA"complete tekstverwerker in BASICODE-3"
+25840 DATA"geschreven, maar heeft er tevens voor gezorgd"
+25850 DATA"dat u met ingang van DIT bulletin de volgende"
+25860 DATA"mogelijkheid erbij hebt gekregen: .F2 Onderaan"
+25870 DATA"elke schermpagina staat steeds dat u met een"
+25880 DATA"druk op RETURN de volgende pagina kunt krijgen."
+25890 DATA"Dat blijft natuurlijk zo. Nieuw is nu dat u op"
+25900 DATA"dat moment in plaats van op RETURN op de letter"
+25910 DATA".R1 P (van Printer) kunt drukken. Als u dat"
+25920 DATA"doet, wordt de pagina die op dat moment op het"
+25930 DATA"scherm staat voor u afgedrukt op de printer."
+25940 DATA"Zorg wel dat de printer is aangesloten en dat"
+25950 DATA"het papier goed staat. Na het uitprinten volgt"
+25960 DATA"een piepje en komt vanzelf de volgende"
+25970 DATA"schermpagina in beeld. Dit speciaal voor"
+25980 DATA"diegenen die niet het hele bulletin op papier"
+25990 DATA"willen zien maar alleen de pagina's die ze"
+26000 DATA"daarvoor speciaal in aanmerking willen laten"
+26010 DATA"komen. .P .R2 Tot besluit .F2 Voor wie het niet"
+26020 DATA"wist: iedereen die een BASICODE-programma heeft"
+26030 DATA"geschreven kan dat op cassette zetten en"
+26040 DATA"insturen naar de TROS. Alle programma's worden"
+26050 DATA"zorgvuldig bekeken en als het even kan worden"
+26060 DATA"alle bruikbare programma's uitgezonden. Iedere"
+26070 DATA"inzender krijgt natuurlijk zijn cassette weer"
+26080 DATA"terug, compleet met een opgave wat er met zijn"
+26090 DATA"programma zal gebeuren. Denk vooral niet dat dat"
+26100 DATA"binnen drie dagen gebeurt maar u krijgt in elk"
+26110 DATA"geval antwoord. .P Alle luisteraars hartelijk"
+26120 DATA"dank voor de medewerking. Als u opmerkingen over"
+26130 DATA"of naar aanleiding van het BASICODE-3 programma"
+26140 DATA"hebt, schrijf even een briefje of een kaartje en"
+26150 DATA"stuur het aan: .M3"
+26160 DATA".F2 **************************"
+26170 DATA".F1 *    TROS-radio          *"
+26180 DATA".F1 *    BASICODE-3          *"
+26190 DATA".F1 *    Postbus  450        *"
+26200 DATA".F1 *    1200 AL Hilversum   *"
+26210 DATA".F1 ************************** .P .E"
+30000 REM"****************************"
+30010 REM"*                          *"
+30020 REM"*  BASICODE - 3 Bulletin   *"
+30030 REM"*       Deel - 9           *"
+30040 REM"*                          *"
+30050 REM"*   TROS-Radio  4-2-1987   *"
+30060 REM"*                          *"
+30070 REM"*   Copyright (c) 1987:    *"
+30080 REM"*   Stichting BASICODE     *"
+30090 REM"*   EINDHOVEN              *"
+30100 REM"*                          *"
+30110 REM"****************************"

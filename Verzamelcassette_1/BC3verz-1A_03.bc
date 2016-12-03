@@ -1,0 +1,315 @@
+
+1000 A=3000:GOTO20:REM BASICODE-3 COMPUTER BULLETIN
+1010 RL=HO:SH=VE:PS=0:PL=0:AR=0:LM=0:RF=0:SC=1:DIMRE$(SH)
+1020 GOSUB1680
+1030 BK=1:READRE$
+1040 AK=0:IFBK>LEN(RE$) THEN1030
+1050 AK=AK+1:IFBK+AK>LEN(RE$) THEN1070
+1060 IFMID$(RE$,BK+AK,1)<>" " THEN1050
+1070 WO$=MID$(RE$,BK,AK):BK=BK+LEN(WO$)+1
+1080 IFPL+LEN(WO$)>=RL THEN GOSUB1410
+1090 IFLEFT$(WO$,1)="." THEN1130:REM commando
+1100 GOSUB1620:PL=PL+LEN(WO$)+1
+1110 IF(PL<RL-1)AND(RF=0) THENWO$=" ":GOSUB1620:GOTO1040
+1120 RE$(AL)=RE$(AL)+" ":GOTO1040
+1130 LC$=MID$(WO$,2,1):CO=0
+1140 IFLEN(WO$)>2 THENCO=ASC(MID$(WO$,3,LEN(WO$)-2))-48
+1150 IFLC$<>"F" THEN1200
+1160 REM F=linefeeds
+1170 LF=CO
+1180 GOSUB1410:LF=LF-1:IFLF>0 THEN1180
+1190 GOTO1040
+1200 IFLC$<>"P" THEN1260
+1210 REM P=nieuwe pagina
+1220 IFSC=1 THEN1240
+1230 GOSUB1410:GOSUB1410:GOTO1040
+1240 GOSUB1410:IFAR<>2 THEN1220
+1250 GOTO1040
+1260 IFLC$<>"C" THEN1310
+1270 REM C=centreer rest van de DATA-regel
+1280 RE$=MID$(RE$,BK,LEN(RE$)-BK+1)
+1290 IS=PS+INT((RL-LEN(RE$)-1)/2):GOSUB1590
+1300 PRINTRE$;:RE$="":GOSUB1410:GOTO1040
+1310 IFLC$<>"M" THEN1340
+1320 REM M=linkermarge
+1330 LM=CO:GOTO1040
+1340 IFLC$="E" THEN950
+1350 REM E=einde programma
+1360 IFLC$<>"R" THEN1390
+1370 REM R=reverseprint volgende n woorden
+1380 RF=CO:GOTO1040
+1390 REM
+1400 GOTO1040
+1410 AL=AL+1:RE$(AL)=""
+1420 IFSC=1 THENPRINT
+1430 IFSC=2 THEN GOSUB360:AL=0:RE$(0)=""
+1440 AR=AR+1:IFAR<=SH-SL THEN1570
+1450 IFSC=1 THENPRINT:GOTO1470
+1460 FORI=1 TOSL:GOSUB360:NEXTI:AR=0:GOTO1570
+1470 PRINT"  ";
+1480 SR$="VERVOLG: druk op <return>":GOSUB150
+1490 GOSUB210:IFIN=13 THEN1530
+1500 IFIN<>80 THEN1490
+1510 FORAL=0 TOSH:SR$=RE$(AL):GOSUB350:GOSUB360
+1520 NEXTAL:GOSUB250
+1530 GOSUB100:IS=INT(RL/2)-17:IFIS<0 THENIS=0
+1540 AL=0:RE$(0)="":GOSUB1590
+1550 SR$="BASICODE-3 COMPUTERBULLETIN":GOSUB150
+1560 PRINT:PRINT:AR=2
+1570 PL=LM:IS=LM+PS
+1580 REM subr. PRINT IS spaties
+1590 IFIS<1 THENRETURN
+1600 SR$=" ":GOSUB1650:IS=IS-1:GOTO1590
+1610 REM *** WOORDUITVOER ***
+1620 SR$=WO$:RE$(AL)=RE$(AL)+SR$:IFSC<>1 THEN1660
+1630 IFRF=0 THENPRINTWO$;:RETURN
+1640 GOSUB150:RF=RF-1:PL=PL+5:RETURN
+1650 IFSC=1 THENPRINTSR$;:RETURN
+1660 GOSUB350:RF=0:RETURN
+1670 REM *** INITIALISATIE ***
+1680 GOSUB1530:PRINT:PRINT"Wilt u het bulletin op"
+1690 PRINT:PRINT"   1  Het beeldscherm,"
+1700 PRINT"   2  De printer."
+1710 PRINT:PRINT"Welk nummer kiest u ";
+1720 INPUTSC:IFSC=1 THENSL=2:GOTO1530
+1730 IFSC<>2 THEN1680
+1740 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1750 PRINT"begin van elke regel ";
+1760 INPUTPS
+1770 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1780 PRINT"u op elke regel ";:INPUTRL
+1790 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1800 PRINT"laten overslaan ";:INPUTSL
+1810 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+1820 PRINT"elk blad ";:INPUTSH
+1830 SH=SH+SL:IS=PS:GOTO1590
+25000 DATA".F2 Hallo BASICODE-VRIENDEN ! .F2 Daar zijn we"
+25010 DATA"weer, nu met het tweede deel van ons BASICODE-3"
+25020 DATA"computerbulletin. In het vorige deel hebben we"
+25030 DATA"de hoofdzaken besproken van de nieuwe grafische"
+25040 DATA"mogelijkheden. In het volgende deel zullen we"
+25050 DATA"het hebben over het werken met bestanden. In dit"
+25060 DATA"deel gaat het over de belangrijkste andere"
+25070 DATA"vernieuwingen in BASICODE-3. .F2 Ook in dit deel"
+25080 DATA"is het echt niet zo uitgebreid als het in het"
+25090 DATA"officiele BASICODE-3 boek staat. Als u het (nog)"
+25100 DATA"niet hebt, loop dan even naar de boekenwinkel en"
+25110 DATA"haal dat BASICODE-3 boek. Het kost f 27,50."
+25120 DATA"Daarin vindt u niet alleen alle details, maar op"
+25130 DATA"de bijbehorende cassette tevens het nieuwe"
+25140 DATA"vertaalprogramma voor uw computer, de"
+25150 DATA"gebruiksaanwijzing daarbij en nog heel veel"
+25160 DATA"andere zaken. .P Dit tweede deel gaat over"
+25170 DATA"GELUID en een aantal minder opvallende maar niet"
+25180 DATA"minder belangrijke nieuwigheden. Eerst het .F2"
+25190 DATA".C GELUID"
+25200 DATA".F2 Voor dit doel hebben we subroutine 400"
+25210 DATA"ingevoerd. Voordat de opdracht .F2"
+25220 DATA".C GOSUB 400"
+25230 DATA".F2 gegeven mag worden moet u in drie variabelen"
+25240 DATA"opgeven wat voor geluid u wilt: .P .F3 in SP de"
+25250 DATA"code voor de gewenste toon .F2 in SD de code"
+25260 DATA"voor de duur van die toon .F2 in SV de code voor"
+25270 DATA"de sterkte .P .F5 Deze drie codes werken als"
+25280 DATA"volgt: .P"
+25290 DATA".C SP : de toonhoogte."
+25300 DATA".F2 Dit is een geheel getal binnen de grenzen"
+25310 DATA"van 0 tot 127 en het geeft de hoogte van de toon"
+25320 DATA"aan. De waarde 60 komt overeen met de zogenaamde"
+25330 DATA"'centrale C', de toonhoogte die een piano geeft"
+25340 DATA"als je op de C bij het slotje drukt. Elke"
+25350 DATA"volgende halve toon is 1 nummertje hoger."
+25360 DATA"Aangezien een octaaf 12 tonen bevat, zal code 72"
+25370 DATA"de volgende C opleveren en code 48 een lagere C."
+25380 DATA"Tonen met erg lage en erg hoge nummers zijn niet"
+25390 DATA"in alle computers mogelijk. .P"
+25400 DATA".C SD : de toonduur."
+25410 DATA".F2 Dit getal geeft aan hoe LANG de toon moet"
+25420 DATA"klinken. Als SD=1 zal de toon 0,1 seconde"
+25430 DATA"klinken. Als SD=10 zal het geluid exact 1"
+25440 DATA"seconde duren. Het verdient aanbeveling, voor SD"
+25450 DATA"alleen gehele getallen te gebruiken, dit omdat"
+25460 DATA"sommige computers eventuele decimalen gewoon"
+25470 DATA"negeren. .P"
+25480 DATA".C SV : het volume."
+25490 DATA".F2 Hoe HARD de toon moet klinken geeft u op in"
+25500 DATA"deze variabele. Als u SV de waarde 0 geeft dan"
+25510 DATA"staat het volume op 0, de toon is dus niet"
+25520 DATA"hoorbaar. Bij SV=15 wordt het geluid op volle"
+25530 DATA"kracht weergegeven. Gemiddelde sterkte wordt bij"
+25540 DATA"SV=7 bereikt. .P De geluids-subroutine wordt pas"
+25550 DATA"beeindigd als de opgegeven toon is afgelopen."
+25560 DATA"Wil men een muziekprogramma maken dan is het"
+25570 DATA"zaak er voor te zorgen dat de volgende aanroep"
+25580 DATA"van de subroutine niet te lang duurt. Anders"
+25590 DATA"krijg je opvallende tikken tussen elke twee"
+25600 DATA"noten. .F2 Het zal duidelijk zijn dat deze"
+25610 DATA"zelfde routine tegelijk kan worden gebruikt als"
+25620 DATA"wachtroutine. Zet SV op 0, de waarde in SP is"
+25630 DATA"nauwelijks van belang, neem maar iets tussen 1"
+25640 DATA"en 127, en zet in SD de gewenste tijd (let op de"
+25650 DATA"0,1 seconde eenheid). .P"
+25660 DATA".C WACHTROUTINE"
+25670 DATA".F2 Zoals vermeld kan de geluidsroutine als"
+25680 DATA"wachtroutine worden gebruikt. Mooier is het als"
+25690 DATA"een wachtroutine ook ophoudt met wachten als de"
+25700 DATA"gebruiker een toets indrukt. Daarvoor dient"
+25710 DATA"subroutine 450. Roep deze aan met in SD de"
+25720 DATA"gewenste wachttijd. Deze tijd wordt weer in 0,1"
+25730 DATA"seconde eenheid opgegeven, dus 3 seconden"
+25740 DATA"wachten wordt bereikt met SD=30. Na de opdracht"
+25750 DATA"GOSUB450 wordt de opgegeven tijd gewacht, tenzij"
+25760 DATA"een toets wordt ingedrukt. In dat geval wordt"
+25770 DATA"het wachten meteen gestopt. Na afloop van deze"
+25780 DATA"wachtroutine kan het programma in drie"
+25790 DATA"variabelen zien wat er gebeurd is. .F2 Als na"
+25800 DATA"afloop SD=0 dan is de volle wachttijd verstreken"
+25810 DATA"en is er dus geen toets ingedrukt. .F2 Als er"
+25820 DATA"wel een toets was ingedrukt staat in SD een"
+25830 DATA"getal groter dan 0, dat overeenkomt met de niet"
+25840 DATA"gebruikte wachttijd. Werd deze routine"
+25850 DATA"aangeroepen met SD=30 (3 seconden) en drukte de"
+25860 DATA"gebruiker na 2 seconden wachten op een toets,"
+25870 DATA"dan zal in SD de waarde 10 worden afgegeven."
+25880 DATA"Tevens zal in de variabelen IN$ en IN worden"
+25890 DATA"opgegeven welke toets er was ingedrukt. De"
+25900 DATA"variabele IN$ is bekend bij BASICODE-2"
+25910 DATA"gebruikers, IN is nieuw. Zie hierna. .P"
+25920 DATA".C ANDERE VERNIEUWINGEN"
+25930 DATA".F2 Zojuist hadden we het over IN. U kende nog"
+25940 DATA"de subroutines 200 en 210 voor invoer vanaf het"
+25950 DATA"toetsenbord? Deze routines gaven meteen resp. na"
+25960 DATA"een toetsindruk op welk toets er was ingedrukt"
+25970 DATA"en dat deden ze door in IN$ de code op te geven."
+25980 DATA"Probleem daarbij was dat sommige computers,"
+25990 DATA"vooral het spul van Commodore, een vrij"
+26000 DATA"eigenzinnige codering voor letters er op na"
+26010 DATA"houden. Bij deze machines is ASC('A') niet 65"
+26020 DATA"zoals meneer ASCII had bedacht, maar komt er als"
+26030 DATA"antwoord 193 te voorschijn. Een normale computer"
+26040 DATA"denkt dat ASC('a')=97 is, Commodore geeft in dit"
+26050 DATA"geval de waarde 65. Dat is lastig. .P In"
+26060 DATA"BASICODE-3 lossen we dit probleem op doordat"
+26070 DATA"deze subroutines, de routines 200 en 210 dus,"
+26080 DATA"maar ook de nieuwe routines 220 en 450 naast de"
+26090 DATA"gebruikelijke code in IN$ nu ook in IN een getal"
+26100 DATA"afleveren. Dat getal is gegarandeerd 65 als er"
+26110 DATA"een toets met opschrift A was ingedrukt,"
+26120 DATA"ongeacht of de hoofdletter of de kleine letter"
+26130 DATA"werd beroerd. De variabele IN heeft in alle"
+26140 DATA"computers een waarde die van 32 tot 95 kan"
+26150 DATA"lopen. .F2 Bovendien kunnen we in IN zien of er"
+26160 DATA"een cursortoets was ingedrukt en ook daarvoor"
+26170 DATA"zijn de codes vastgelegd: .F1 28  = cursor-links"
+26180 DATA".F1 29  = cursor rechts .F1 30  = cursor omlaag"
+26190 DATA".F1 31  = cursor omhoog  en .F1 127 = de"
+26200 DATA"delete/wis-teken/erase toets. .P"
+26210 DATA".C Subroutine 220"
+26220 DATA".F2 Sommige programma's tekenen van alles op het"
+26230 DATA"scherm en onthouden bovendien in eigen"
+26240 DATA"variabelen wat waar op het scherm staat. Dat"
+26250 DATA"kost tijd en geheugenruimte. Voor deze gevallen"
+26260 DATA"kunt u voortaan subroutine 220 aanroepen."
+26270 DATA"Tevoren zet u in in HO en VE een verwijzing naar"
+26280 DATA"een schermpositie en na afloop van de routine"
+26290 DATA"staat in IN de code (32...95) van wat er op die"
+26300 DATA"schermplaats te zien is. .P"
+26310 DATA".C GOSUB 150"
+26320 DATA".F2 De subroutine op regel 250 geeft zoals u"
+26330 DATA"weet een piepgeluid. De bedoeling daarvan is uw"
+26340 DATA"aandacht te trekken. In BASICODE-3 kan een"
+26350 DATA"programma ook visueel uw aandacht trekken. Dat"
+26360 DATA"gebeurt met de nieuwe subroutine 150. Tevoren"
+26370 DATA"zet u in SR$ een bepaalde tekst en dan roept u"
+26380 DATA"deze routine aan. Het gevolg zal zijn dat de"
+26390 DATA"tekst in SR$ in 'reverse field' of in 'inverse"
+26400 DATA"video' (of hoe het heten mag) op het scherm"
+26410 DATA"wordt gezet. In elk geval komt SR$ zo op het"
+26420 DATA"scherm te staan dat het er erg duidelijk uit"
+26430 DATA"springt. Zowel voor als na SR$ worden drie"
+26440 DATA"spaties geprint. .P"
+26450 DATA".C De stoptoets."
+26460 DATA".F2 Het onderwijs maakt nogal veel gebruik van"
+26470 DATA"BASICODE en de kindertjes daar willen soms wel"
+26480 DATA"eens uitproberen wat er gebeurt als je op de"
+26490 DATA"stoptoets drukt. Dat leidt tot extra werk voor"
+26500 DATA"de meester die het toch al zo druk heeft met al"
+26510 DATA"die koters en dus hebben we in BASICODE iets"
+26520 DATA"gedaan om dat op te vangen. Als u FR=1 maakt en"
+26530 DATA"dan GOSUB280 geeft, wordt de stoptoets"
+26540 DATA"uitgeschakeld en kan het kroost van de buren"
+26550 DATA"weer wat minder onheil aanrichten dan tot"
+26560 DATA"dusverre. Na een aanroep van dezelfde subroutine"
+26570 DATA"met FR=0 wordt de stoptoets weer normaal in"
+26580 DATA"bedrijf gesteld. .P"
+26590 DATA".C GOSUB 330"
+26600 DATA".F2 Deze subroutine rommelt wat in SR$. Om"
+26610 DATA"precies te zijn: alle in SR$ voorkomende kleine"
+26620 DATA"letters (onderkast letters) worden veranderd in"
+26630 DATA"hoofdletters (bovenkast letters). Dat kan wel"
+26640 DATA"eens handig zijn, met name als er op die string"
+26650 DATA"moet worden gesorteerd zoals dat bij"
+26660 DATA"bestandsprogramma's wil voorkomen. Met een lusje"
+26670 DATA"BASIC opdrachten en allerlei gedoe met MID$ is"
+26680 DATA"ditzelfde effect ook te bereiken, maar dan duurt"
+26690 DATA"het heel erg lang. In BASICODE-3 zorgt een klein"
+26700 DATA"stukje efficient programma er voor dat het met"
+26710 DATA"GOSUB 330 lekker snel gaat. En dat is leuk"
+26720 DATA"meegenomen nietwaar! .P Dat waren de nieuwe"
+26730 DATA"subroutines. Volgende keer de bestandsroutines"
+26740 DATA"dus. Nog een paar algemene opmerkingen: .F2"
+26750 DATA"Zoals u weet moet elk BASICODE-programma in"
+26760 DATA"regel 1000 een opdracht van de volgende vorm"
+26770 DATA"hebben: .F2 A=500:GOTO20:REM programmanaam .F2"
+26780 DATA"In regel 20 (en volgenden) staan allerlei"
+26790 DATA"opdrachten die er voor zorgen dat BASICODE in uw"
+26800 DATA"computer correct werkt. Over die opdrachten"
+26810 DATA"hoeft u zich niet druk te maken. De laatste"
+26820 DATA"opdracht die daar staat luidt: GOTO1010 en op"
+26830 DATA"die regel gaat uw programma weer verder. Maar"
+26840 DATA"toch... .P"
+26850 DATA".C HO en VE"
+26860 DATA".F2 In die regel 20 wordt wel iets gedaan waar u"
+26870 DATA"plezier van kunt hebben. Op het moment dat uw"
+26880 DATA"programma in regel 1010 verder gaat, staat"
+26890 DATA"namelijk in HO het nummer van de laatste positie"
+26900 DATA"die op een tekstregel mogelijk is en in VE het"
+26910 DATA"nummer van de onderste schermregel. In"
+26920 DATA"BASICODE-3 hoeft u dus niet meer met allerlei"
+26930 DATA"programmatrucs 'op te meten' hoe groot het"
+26940 DATA"scherm is: de maten zijn direct beschikbaar!. .P"
+26950 DATA".C HG en VG"
+26960 DATA".F2 Er gebeurt in deze regel nog wat waar u"
+26970 DATA"plezier van kunt hebben: de variabelen HG en VG"
+26980 DATA"krijgen namelijk als waarde hoeveel beeldpunten"
+26990 DATA"in horizontale (HG) resp. verticale (VG)"
+27000 DATA"richting op het scherm passen. Een handige"
+27010 DATA"programmeur maakt daar gebruik van voor bepaalde"
+27020 DATA"grafische grappen. Kijkt u maar eens in het"
+27030 DATA"sterrenprogramma op de cassette en in het boek"
+27040 DATA"(blz. 85). Daar wordt HG gebruikt om uit te"
+27050 DATA"rekenen wat de coordinaat van de meest rechtse"
+27060 DATA"beeldpunten is en wordt VG gebruikt voor de"
+27070 DATA"stapgrootte van een FOR-NEXT lus. .P Tot ziens"
+27080 DATA"in de derde aflevering van het .F2"
+27090 DATA".C BASICODE-3 computerbulletin"
+27100 DATA".F2 volgende week, dezelfde tijd, dezelfde"
+27110 DATA"zender: .P"
+27120 DATA"Hebt u vragen of opmerkingen? .F2"
+27130 DATA"Stuur uw reaktie aan: .M5 .F3"
+27140 DATA"TROS RADIO .F2"
+27150 DATA"Basicode 3 .F2"
+27160 DATA"Postbus 450 .F2"
+27170 DATA"1200 AL  Hilversum .P .E"
+30000 REM"****************************"
+30010 REM"*                          *"
+30020 REM"*   Uitleg BASICODE - 3    *"
+30030 REM"*       Deel - 2           *"
+30040 REM"*                          *"
+30050 REM"*   TROS-Radio 19-7-1986   *"
+30060 REM"*                          *"
+30070 REM"*   Copyright (c) 1986:    *"
+30080 REM"*   Stichting  BASICODE    *"
+30090 REM"*             Eindhoven    *"
+30100 REM"*                          *"
+30110 REM"****************************"

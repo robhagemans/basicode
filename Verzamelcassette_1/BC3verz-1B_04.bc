@@ -1,0 +1,107 @@
+
+1000 A=100:GOTO20:REM SCHEVE BOOM VAN PYTHAGORAS
+1010 DIMX(25),Y(25),H(25),V(25),N(25)
+1020 S=0:HT=(HO-22)/2:VT=VE/2
+1030 GOSUB2010
+1040 GOSUB100:HO=HT:VE=VT:GOSUB110
+1050 SR$=B$:GOSUB150:PRINT:PRINT
+1060 PRINT"Hoe diep wilt U de boom (0=einde) ";
+1070 INPUTSR:IFSR=0 THEN950
+1080 IFSR>25 THENSR=25
+1090 DY=SR
+1100 PRINT"Hoeveel graden wilt u voor de basishoek"
+1110 PRINT"van de driehoek ";
+1120 INPUTAL:AL=.017453*(45+ABS(45-AL))
+1130 CA=COS(AL):SA=SIN(AL)
+1140 GOSUB600:CN=0:HO=0:VE=0
+1150 GOSUB300:SR$=B$+", "+SR$+" diep":GOSUB650
+1160 HO=0.6:VE=0.041
+1170 SR=AL/.017453:GOSUB300:SR$=SR$+" graden":GOSUB650
+1180 SR=DY
+1190 HB=.18/(AL*(AL+1)):X=.5-HB/2-(AL-.78)/3:Y=.9-AL/4
+1200 F=4/3:H=HB:V=0
+1210 GOSUB1270
+1220 REM ROEP OP DEZE REGEL EVENTUEEL EEN SCREENDUMP OP
+1230 HO=1-3/32:VE=1-1/23:SR$="=>":GOSUB650
+1240 GOSUB210
+1250 GOTO1040
+1260 REM teken vierkanten
+1270 HO=X:VE=F*Y:GOSUB620
+1280 HO=X+H:VE=F*(Y+V):GOSUB630
+1290 HO=X+H+V:VE=F*(Y+V-H):GOSUB630
+1300 HO=X+V:VE=F*(Y-H):GOSUB630
+1310 HO=X:VE=F*Y:GOSUB630
+1320 IF(SR<2)OR(ABS(H)+ABS(V)<3E-3) THENRETURN
+1330 P=X+V:Q=Y-H:R=H*CA+V*SA:T=-H*SA+V*CA
+1340 X(S)=P:Y(S)=Q:H(S)=R*CA:V(S)=T*CA:N(S)=SR-1
+1350 S=S+1
+1360 X=P+R*CA:Y=Q+T*CA:H=-T*SA:V=R*SA:SR=SR-1
+1370 GOSUB1270
+1380 S=S-1:X=X(S):Y=Y(S):H=H(S):V=V(S):SR=N(S)
+1390 GOTO1270
+2000 REM UITLEG
+2010 GOSUB4000
+2020 PRINT"De STELLING VAN PYTHAGORAS kent u"
+2030 PRINT"misschien nog van de middelbare school."
+2040 PRINT:PRINT"Het ging daarbij over een rechthoekige"
+2050 PRINT"driehoek met tegen elk van de drie"
+2060 PRINT"zijden een vierkant. De BOOM van PYTHA-"
+2070 PRINT"GORAS is daarop gebaseerd. Door telkens"
+2080 PRINT"weer een kleinere driehoek op een vier-"
+2090 PRINT"kant te plaatsen en op elke driehoek"
+2100 PRINT"weer twee vierkanten, ontstaat vanzelf"
+2110 PRINT"een boomstructuur met steeds fijnere"
+2120 PRINT"vertakkingen.":PRINT
+2130 PRINT"U kunt in dit programma zelf opgeven"
+2140 PRINT"hoe vaak een nieuwe driehoek op  een"
+2150 PRINT"vierkant moet worden geplaatst: "
+2160 PRINT"dat is de 'diepte' van de boom."
+2170 GOSUB3000
+2180 PRINT"Naast de diepte van de boom kunt u ook"
+2190 PRINT"opgeven welke vorm de tussendriehoek"
+2200 PRINT"moet krijgen. Die vorm wordt opgegeven"
+2210 PRINT"door de grootste scherpe hoek in te"
+2220 PRINT"tikken. Als u daarvoor 45 graden op-"
+2230 PRINT"geeft, ontstaat er natuurlijk een zui-"
+2240 PRINT"ver symmetrische boom. Bij waarde rond"
+2250 PRINT"de 60 graden en een voldoende diepte,"
+2260 PRINT"komt er een plaatje op het scherm dat"
+2270 PRINT"enige gelijkenis vertoont met het zij-"
+2280 PRINT"aanzicht van hersenen.":PRINT
+2290 PRINT"Bij hoeken rond de 80 graden zal er"
+2300 PRINT"een plaatje ontstaan dat veel weg"
+2310 PRINT"heeft van de horens van een ram."
+2320 GOSUB3000
+2330 PRINT"Experimenteert u rustig en neem er de"
+2340 PRINT"tijd voor. Probeer het uit voor steeds"
+2350 PRINT"hogere waarden en verbaas u over de"
+2360 PRINT"fraaie structuren !"
+2370 GOSUB3000
+2380 PRINT"Bij een diepte van 8 of meer zult u"
+2390 PRINT"de laatste vierkantjes misschien"
+2400 PRINT"nauwelijks kunnen zien, afhankelijk van"
+2410 PRINT"de resolutie van uw scherm. Bovendien"
+2420 PRINT"kan het dan wel even duren voor de hele"
+2430 PRINT"boom getekend is.":PRINT
+2440 PRINT"Uw geduld wordt echter beloond."
+2450 PRINT:PRINT"Veel kijkgenoegen !"
+3000 HO=0:VE=VT*2:GOSUB110
+3010 SR$="<<return>>":GOSUB150
+3020 GOSUB210:IFIN<>13 THEN3020
+4000 GOSUB100
+4010 B$="De BOOM van PYTHAGORAS"
+4020 HO=HT-3:VE=0:GOSUB110
+4030 SR$=B$:GOSUB150:PRINT:PRINT
+4040 RETURN
+32000 REM******************************
+32010 REM*                            *
+32020 REM* Een grafische demonstratie *
+32030 REM*             in             *
+32040 REM*     B A S I C O D E - 3    *
+32050 REM*                            *
+32060 REM*    Copyright (c) 1986      *
+32070 REM*    Stichting BASICODE      *
+32080 REM*                            *
+32090 REM******************************
+32100 REM deze versie dd.861118
+32200 REM TROS-radio dd 870107

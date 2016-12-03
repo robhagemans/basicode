@@ -1,0 +1,158 @@
+
+1000 A=100:GOTO20:REM     ** PI **
+1010 V2=INT(VG/2):H2=INT(HG/2):T=0:HB=HO-3
+1020 RD=3.14/180:UW=(HG-(1/HG))/HG:IC=0:GG=0:VB=VE-1:CN=0
+1030 IC$="":RK$="":P$="":T$="":IP=3.14159265
+1040 R=V2*.9:REM   ** STRAAL **
+1050 GOSUB100
+1060 GOSUB6000
+1070 PRINT
+1080 PRINT:PRINT:PRINT"Dit programma bepaalt PI met behulp"
+1090 PRINT"van de RANDOM generator."
+1100 PRINT:PRINT"Hoe gaat dit in zijn werk ?"
+1110 PRINT:PRINT"Neem een cirkel met straal r en om"
+1120 PRINT"de cirkel een vierkant (dus met"
+1130 PRINT"zijde 2*r)."
+1140 PRINT"De oppervlakte van deze cirkel is nu"
+1150 PRINT"PI*r*r en van het vierkant 2*r*2*r="
+1160 PRINT"4*r*r. Als nu willekeurig een punt"
+1170 PRINT"in het vierkant geplaatst wordt,":PRINT
+1180 PRINT"           PI*r*r   PI"
+1190 PRINT"is de kans ------ = --"
+1200 PRINT"            4*r*r   4"
+1210 PRINT:PRINT"dat het punt in de cirkel komt."
+1220 GOSUB5010
+1230 PRINT"Nu krijgen we dus de vergelijking"
+1240 PRINT:PRINT" PI   ic"
+1250 PRINT" -- = --"
+1260 PRINT" 4    t"
+1270 PRINT:PRINT"waarby t het aantal willekeurig ge-"
+1280 PRINT"plaatste punten is en ic het aantal"
+1290 PRINT"punten die er hiervan in de cirkel"
+1300 PRINT"zijn geplaatst."
+1310 PRINT:PRINT"Nu is PI te bepalen door"
+1320 PRINT:PRINT"      4*ic"
+1330 PRINT" PI = ----"
+1340 PRINT"       t"
+1350 GOSUB5010
+1360 PRINT"Dit programma tekent een cirkel met"
+1370 PRINT"eromheen een vierkant."
+1380 PRINT"Hierna worden er willekeurig punten"
+1390 PRINT"in het vierkant geplaatst. De com-"
+1400 PRINT"puter houdt bij hoeveel punten er"
+1410 PRINT"al geplaatst zijn, en hoeveel daarvan"
+1420 PRINT"er in de cirkel zijn gekomen."
+1430 PRINT"Linksboven op het scherm staat het"
+1440 PRINT"aantal geplaatste punten, daarachter"
+1450 PRINT"het aantal punten in de cirkel."
+1460 PRINT"Onderaan wordt de benadering van PI"
+1470 PRINT"(volgens 4*ic/t) geplaatst."
+1480 PRINT:PRINT"Als U een willekeurige toets indrukt"
+1490 PRINT"stopt het programma en toont het U wat"
+1500 PRINT"de maximale afwijking is."
+1510 PRINT:PRINT"Verder wordt er gevraagd wat U verder"
+1520 PRINT"wilt. Als U -verder gaan- indrukt, gaat"
+1530 PRINT"het programma verder met de oorspronk-"
+1540 PRINT"elijke waarden."
+1550 GOSUB5010
+1560 PRINT"Als U -opnieuw beginnen- indrukt,"
+1570 PRINT"begint het programma weer met 1 punt."
+1580 PRINT:PRINT"Het is programma-technisch bijna on-"
+1590 PRINT"mogelijk de vroegere punten opnieuw"
+1600 PRINT"te plaatsen, zodat dit dan ook niet"
+1610 PRINT"gebeurt."
+1620 PRINT:PRINT"Hieronder staat nogmaals wat U op"
+1630 PRINT"het scherm ziet met de daarbij"
+1640 PRINT"gebruikte afkortingen."
+1650 PRINT:PRINT"Punt : aantal geplaatste punten"
+1660 PRINT:PRINT"Cir  : aantal punten die in de cirkel"
+1670 PRINT"       zijn gekomen."
+1680 PRINT:PRINT"PI   : uitkomst van de berekening"
+1690 PRINT"       4*ic/t"
+1700 PRINT:PRINT"VEEL PLEZIER MET DIT PROGRAMMA !!!"
+1710 GOSUB5010
+2000 REM     ** CIRKEL **
+2010 GOSUB600
+2020 HO=(H2+R)/HG:VE=.5:GOSUB620
+2030 FORG=4 TO360 STEP4
+2040 HO=(H2+R*COS(G*RD))/HG
+2050 VE=(V2+R*SIN(G*RD))/VG
+2060 GOSUB630
+2070 NEXTG
+2080 REM     ** VIERKANT **
+2090 HO=(H2+R)/HG:VE=(V2-R)/VG:GOSUB620
+2100 VE=(V2+R)/VG:GOSUB630
+2110 HO=(H2-R)/HG:GOSUB630
+2120 VE=(V2-R)/VG:GOSUB630
+2130 HO=(H2+R)/HG:GOSUB630
+2140 GOSUB5060
+2150 REM     ** PUNTEN WILLEKEURIG TEKENEN **
+2160 GOSUB260
+2170 X=INT(R*(2*RV-1))
+2180 GOSUB260
+2190 Y=INT(R*(2*RV-1))
+2200 IFX*X+Y*Y<=R*R THENIC=IC+1
+2210 HO=(X+H2)/HG:VE=(Y+V2)/VG:GOSUB620
+2220 REM    ** BEREKENEN **
+2230 SR$=T$:HO=.125:VE=0:CN=1:GOSUB650
+2240 T=T+1:SR=T:GOSUB300:T$=SR$
+2250 CN=0:GOSUB650
+2260 SR$=IC$:CN=1:HO=.594:VE=0:GOSUB650
+2270 SR=IC:GOSUB300:IC$=SR$:CN=0:GOSUB650
+2280 SR$=P$:CN=1:VE=.9565:HO=.0625:GOSUB650
+2290 P=4*IC/T
+2300 SR=P:CT=9:CN=7:GOSUB310
+2310 P$=SR$:CN=0:GOSUB650
+2320 GOSUB200:IFIN$<>"" THEN2350
+2330 GOTO2160
+2340 REM    ** AFWIJKING **
+2350 GOSUB100
+2360 GOSUB6000
+2370 PRINT
+2380 PRINT"Er zijn ";T;" punten geplaatst."
+2390 PRINT:PRINT"De benadering van PI = ";P
+2400 PRINT:PRINT"De eerste 8 decimalen van PI zijn ":PRINTIP
+2410 PRINT:PRINT"Dit is een absolute afwijking van"
+2420 AF=ABS(IP-P):PRINTAF
+2430 PRINT:PRINT"Dit is een relatieve afwijking van "
+2440 PRINTAF/(AF+IP)*100;" %"
+2450 PRINT:PRINT"Wat wilt U nu ?"
+2460 PRINT:PRINT"1 Verder gaan"
+2470 PRINT"2 Opnieuw beginnen"
+2480 PRINT"3 stoppen"
+2490 PRINT:PRINT"Geef Uw keuze ";
+2500 GOSUB210
+2510 IFIN=49 THEN2010
+2520 IFIN=50 THENT=0:IC=0:GOTO2010
+2530 IFIN=51 THEN950
+2540 GOTO2500
+5000 REM    ** TOETS **
+5010 HO=HB:VE=VB:GOSUB110
+5020 PRINT"=>"
+5030 GOSUB200:IFIN$="" THEN5030
+5040 GOSUB100:RETURN
+5050 REM   ** TEKST OP HI-RES **
+5060 VE=0:HO=0:SR$="Punt":GOSUB650
+5070 HO=.5:SR$="Cir":GOSUB650
+5080 HO=0:VE=.9565:SR$="PI":GOSUB650
+5090 RETURN
+6000 HO=INT(HB-16)/2:VE=0:GOSUB110
+6010 SR$="BEPALEN VAN PI":GOSUB150
+6020 PRINT
+6030 RETURN
+30000 REM    ****************************
+30010 REM    U KUNT DE STRAAL KLEINER
+30020 REM    MAKEN DOOR IN REGEL 1040 DE
+30030 REM    VARIABELE R KLEINER TE
+30040 REM    MAKEN.
+32000 REM    ****************************
+32010 REM          DOOR RONALD VAN VUGT
+32020 REM          PA3EAH, POSTBUS  160
+32030 REM          5580 AD  WAALRE (NB)
+32040 REM
+32050 REM             GEMAAKT OP EEN
+32060 REM              ZX SPECTRUM
+32070 REM
+32080 REM             JUNI 1986,V1.1
+32090 REM    ****************************
+32100 REM TROS dd 860802

@@ -1,0 +1,99 @@
+
+1000 A=100:GOTO20:REM kromme van Sierpinski
+1010 DIMBW(100)
+1020 HT=HO:VT=VE
+1030 GOSUB2000
+1040 WB=0
+1050 PRINT"Orde 0-5";:INPUTRD
+1060 RD=INT(RD):H=.5^(RD+2)
+1070 H2=H*2
+1080 N=RD:X=.5:Y=.5
+1090 GOSUB600
+1100 GOSUB1510
+1110 VE=.96:HO=.92:SR$="=>":GOSUB650
+1120 GOSUB210
+1130 GOSUB4000
+1140 PRINT"Wilt u er nog een (J/N) ";
+1150 GOSUB210:PRINTIN$
+1160 IF(IN$<>"n")AND(IN$<>"N") THEN1040
+1170 GOTO950
+1500 REM subroutine sierpinski
+1510 IFN>0 THEN1590
+1520 CN=0
+1530 HO=X-H:VE=Y:GOSUB620
+1540 HO=X:VE=Y+H:GOSUB630
+1550 HO=X+H:VE=Y:GOSUB630
+1560 HO=X:VE=Y-H:GOSUB630
+1570 HO=X-H:VE=Y:GOSUB630
+1580 RETURN
+1590 K=2^N*H:BW(WB)=K
+1600 BW(WB+1)=N-1:BW(WB+2)=X+K:BW(WB+3)=Y-K
+1610 BW(WB+4)=N-1:BW(WB+5)=X+K:BW(WB+6)=Y+K
+1620 BW(WB+7)=N-1:BW(WB+8)=X-K:BW(WB+9)=Y+K
+1630 BW(WB+10)=N-1:BW(WB+11)=X-K:BW(WB+12)=Y-K
+1640 WB=WB+13
+1650 Y=BW(WB-1):X=BW(WB-2):N=BW(WB-3):WB=WB-3
+1660 GOSUB1510
+1670 Y=BW(WB-1):X=BW(WB-2):N=BW(WB-3):WB=WB-3
+1680 GOSUB1510
+1690 Y=BW(WB-1):X=BW(WB-2):N=BW(WB-3):WB=WB-3
+1700 GOSUB1510
+1710 Y=BW(WB-1):X=BW(WB-2):N=BW(WB-3):WB=WB-3
+1720 GOSUB1510
+1730 WB=WB-1:K=BW(WB)
+1740 X=X-K:Y=Y+K
+1750 CN=1
+1760 HO=X-H2:VE=Y-H:GOSUB620
+1770 HO=X-H:VE=Y-H2:GOSUB630
+1780 HO=X+H:GOSUB620
+1790 HO=X+H2:VE=Y-H:GOSUB630
+1800 VE=Y+H:GOSUB620
+1810 HO=X+H:VE=Y+H2:GOSUB630
+1820 HO=X-H:GOSUB620
+1830 HO=X-H2:VE=Y+H:GOSUB630
+1840 CN=0:VE=Y-H:GOSUB630
+1850 HO=X-H:VE=Y-H2:GOSUB620
+1860 HO=X+H:GOSUB630
+1870 HO=X+H2:VE=Y-H:GOSUB620
+1880 VE=Y+H:GOSUB630
+1890 HO=X+H:VE=Y+H2:GOSUB620
+1900 HO=X-H:GOSUB630
+1910 RETURN
+2000 REM UITLEG
+2010 GOSUB4000
+2020 PRINT"Deze kromme heeft voor wiskundigen een"
+2030 PRINT"paar bijzondere eigenschappen."
+2040 PRINT"Je kunt op verschillende manieren tot"
+2050 PRINT"een geschikt tekenprogramma komen."
+2060 PRINT:PRINT"Dit programma gebruikt recursie."
+2070 PRINT"Daarbij worden eerst de kleinste vier-"
+2080 PRINT"kantjes getekend en telkens als er vier"
+2090 PRINT"klaar zijn worden ze onderling verbon-"
+2100 PRINT"den. Daarna worden steeds vier groepjes"
+2110 PRINT"met elkaar verbonden tot de hele kromme"
+2120 PRINT"er staat.":PRINT
+2130 PRINT"Het wordt een gesloten kromme met een"
+2140 PRINT"opppervlakte die minder is dan de halve"
+2150 PRINT"schermoppervlakte maar waarvan de"
+2160 PRINT"lengte per orde ongeveer verdubbelt."
+2170 PRINT:PRINT"Begin met orde 1, dan orde 2 en"
+2180 PRINT"ga zo door, dat is het leukst!"
+3000 HO=HT-17:VE=VT:GOSUB110
+3010 SR$="<<return>>":GOSUB150
+3020 GOSUB210:IFIN<>13 THEN3020
+4000 GOSUB100
+4010 HO=INT(HT/2)-13:VE=0:GOSUB110
+4020 B$="Kromme van SIERPINSKI"
+4030 SR$=B$:GOSUB150:PRINT:PRINT
+4040 RETURN
+32000 REM******************************
+32010 REM*                            *
+32020 REM* Een grafische demonstratie *
+32030 REM*             in             *
+32040 REM*     B A S I C O D E - 3    *
+32050 REM*                            *
+32060 REM*    Copyright (c) 1986      *
+32070 REM*    Stichting BASICODE      *
+32080 REM*                            *
+32090 REM******************************
+32100 REM TROS-RADIO dd. 870121

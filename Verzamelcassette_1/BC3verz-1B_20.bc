@@ -1,0 +1,295 @@
+
+1000 A=100:GOTO20:REM functies
+1010 H=HO+1:V=VE+1:H2$="":UW=1-1/HG:ZU=0:CN=0:JN$="ja":S=1
+1020 KX=-7:GX=7:KY=-7:GY=7:VF=1.5:HV=0:H$="":IP=0
+1030 X=956.356:GOSUB20090:AL=AL-1:DIMY(AL),VE(1),HO(1)
+1040 GOSUB100
+1050 SR$="FUNCTIES":GOSUB8040
+1060 VE=5:HO=1:GOSUB110
+1070 PRINT"Geef uw keuze:"
+1080 PRINT:PRINT"  1. Uitleg"
+1090 PRINT:PRINT"  2. Instelmenu"
+1100 PRINT:PRINT"  3. Functie tekenen"
+1110 PRINT:PRINT"  4. Stoppen"
+1120 PRINT:PRINT" Gewenste keuze ";
+1130 INPUTKE:IFKE=4 THEN950
+1140 IF(KE>0)AND(KE<4) THEN1160
+1150 GOSUB250:GOSUB120:HO=0:VE=VE-2:GOSUB110:GOTO1120
+1160 GOSUB100:ONKE GOSUB5000,2010,3010
+1170 GOTO1040
+2000 REM instelmenu
+2010 SR$="INSTELMENU":GOSUB8040
+2020 VE=3:HO=0:GOSUB110:GOSUB8060
+2030 VE=6:GOSUB110:PRINT"  Minimale X-waarde : ";KX
+2040 PRINT:PRINT"  Maximale X-waarde : ";GX
+2050 PRINT:PRINT"  Minimale Y-waarde : ";KY
+2060 PRINT:PRINT"  Maximale Y-waarde : ";GY
+2070 PRINT:PRINT"  Vergrotingsfactor : ";VF
+2080 PRINT:PRINT"  Doorgetrokken lijn: ";JN$
+2090 PRINT:PRINT"  Terug naar hoofdmenu"
+2100 PRINT:PRINT:GOSUB8060:HO=22:VE=6:GOSUB110
+2110 IFVE=18 THEN2360
+2120 GOSUB210:IF(IN=30)OR(IN=31) THEN2190
+2130 IFVE=16 THEN2320
+2140 IF(IN>47)AND(IN<58)OR(IN=45)OR(IN=46) THEN2230
+2150 GOSUB120:IF(HO>22)AND(IN=127) THEN2170
+2160 GOSUB250:GOTO2120
+2170 HO=HO-1:GOSUB110:PRINT" ";:GOSUB110
+2180 H$=LEFT$(H$,LEN(H$)-1):GOTO2120
+2190 IFH$<>"" THEN GOSUB2250
+2200 IF(IN=30)AND(VE<18) THENVE=VE+2:GOSUB110:GOTO2110
+2210 IF(IN=31)AND(VE>6) THENVE=VE-2:GOSUB110:GOTO2120
+2220 GOSUB250:GOTO2120
+2230 IFH$="" THENPRINT"              ";:HO=22:GOSUB110
+2240 PRINTIN$;:H$=H$+IN$:GOTO2120
+2250 HV=VAL(H$):H$=""
+2260 IFVE=6 THENKX=HV
+2270 IFVE=8 THENGX=HV
+2280 IFVE=10 THENKY=HV
+2290 IFVE=12 THENGY=HV
+2300 IFVE=14 THENVF=HV
+2310 HV=0:HO=22:GOSUB110:RETURN
+2320 PRINT"   ";:HO=22:GOSUB110
+2330 IFJN$="ja" THENJN$="nee":GOTO2350
+2340 JN$="ja"
+2350 PRINTJN$;:HO=22:GOSUB110:GOTO2120
+2360 IF(KX>=GX)OR(KY>=GY)AND(KY<>0)OR(VF<=0) THEN2390
+2370 IF(KY=0)AND(GY=0) THENZU=1:RETURN
+2380 ZU=0:RETURN
+2390 VE=20:HO=1:GOSUB110:SR$="FOUTE INVOER":GOSUB150
+2400 GOSUB250:HO=22:VE=6:GOSUB110:GOTO2120
+3000 REM functie tekenen
+3010 WA=ABS(KX-GX)/HG
+3020 IFZU=0 THEN3090
+3030 PRINT"Momentje..."
+3040 FORI=0 TOAL
+3050 FORX=KX TOGX STEPWA
+3060 GOSUB20120:IFY(I)<KY THENKY=Y(I)
+3070 IFY(I)>GY THENGY=Y(I)
+3080 NEXTX:NEXTI
+3090 GOSUB600
+3100 IF(KX<=0)AND(GX>=0) THEN GOSUB8090
+3110 IF(KY<=0)AND(GY>=0) THEN GOSUB8140
+3120 FORI=0 TOAL:FL=0
+3130 FORX=KX TOGX STEPWA
+3140 GOSUB20120
+3150 IF(Y(I)<KY)OR(Y(I)>GY) THEN3230
+3160 VE=ABS(Y(I)/ABS(KY-GY)-GY/ABS(KY-GY))
+3170 IFVE=1 THENVE=UW
+3180 HO=1-ABS(X/ABS(KX-GX)-GX/ABS(KX-GX))
+3190 IFHO=1 THENHO=UW
+3200 IFJN$="nee" THENFL=0
+3210 IFFL=0 THEN GOSUB620:FL=1:GOTO3230
+3220 GOSUB630
+3230 NEXTX:NEXTI:X=KX
+3240 GOSUB250
+3250 HO=0:VE=.96:SR$="*":GOSUB650
+3260 GOSUB200:IFIN$="" THEN3260
+3270 CN=1:GOSUB650:CN=0:SR$=""
+3280 IFIN=77 THEN1040
+3290 IFIN=83 THENS=HG/30-S:GOTO3240
+3300 IFIN=67 THEN GOSUB22080:GOTO3240
+3310 IFIN<>86 THEN3330
+3320 V=1/VF:KX=KX*V:GX=GX*V:KY=KY*V:GY=GY*V:GOTO3090
+3330 IF(IN=28)OR(IN=29) THEN3420
+3340 IF(IN<48)OR(IN>57) THEN3250
+3350 SR$=SR$+IN$:HO=0:GOSUB650
+3360 GOSUB200:IFIN$="" THEN3360
+3370 IF(IN>47)AND(IN<58) THEN3350
+3380 B=IP:IP=VAL(SR$)-1:CN=1:GOSUB650:CN=0
+3390 IF(IP>=0)AND(IP<=AL) THENX=KX:GOTO3240
+3400 SR$="???":GOSUB650:SD=20:GOSUB450
+3410 CN=1:GOSUB650:CN=0:IP=B:GOTO3240
+3420 GOSUB20120:IF(Y(IP)<KY)OR(Y(IP)>GY) THEN GOSUB3760
+3430 GOSUB20120:CN=1:CT=5:SR=X:GOSUB310:CN=0:HO=0:VE=.96
+3440 SR$="X:"+SR$:H$=SR$:GOSUB650:CN=1:SR=Y(IP)
+3450 GOSUB310:CN=0:SR$="Y:"+SR$:HO=.23:GOSUB650
+3460 B=X:FORI=0 TO1
+3470 X=X+I*WA:GOSUB20120
+3480 VE(I)=ABS(Y(IP)/ABS(KY-GY)-GY/ABS(KY-GY))
+3490 HO(I)=1-ABS(X/ABS(KX-GX)-GX/ABS(KX-GX))
+3500 NEXTI:X=B:CN=1
+3510 SD=2:GOSUB450
+3520 IFIN=0 THEN3560
+3530 GOSUB3580
+3540 IF(IN=28)OR(IN=29) THEN3660
+3550 IN=255:GOTO3720
+3560 CN=1-CN:VE=VE(0):HO=HO(0):GOSUB620
+3570 VE=VE(1):HO=HO(1):GOSUB630:GOTO3510
+3580 IFJN$="nee" THEN3610
+3590 CN=0:VE=VE(0):HO=HO(0):GOSUB620
+3600 VE=VE(1):HO=HO(1):GOSUB630:RETURN
+3610 IFCN=1 THEN3640
+3620 CN=1:VE=VE(0):HO=HO(0):GOSUB620:VE=VE(1):HO=HO(1)
+3630 GOSUB630
+3640 CN=0:FORI=0 TO1:VE=VE(I):HO=HO(I):GOSUB620:NEXTI
+3650 RETURN
+3660 IFIN=28 THENX=X-S*WA
+3670 IFIN=29 THENX=X+S*WA
+3680 GOSUB20120:IF(Y(IP)<KY)OR(Y(IP)>GY) THEN3700
+3690 IF(X>KX)AND(X<GX) THEN3720
+3700 IFIN=28 THENX=X+S*WA
+3710 IFIN=29 THENX=X-S*WA
+3720 CN=1:HO=.23:VE=.96:GOSUB650:SR$=H$:HO=0:GOSUB650
+3730 CN=0:IFIN=255 THEN3240
+3740 GOTO3430
+3750 REM startpunt zoeken
+3760 X=X+WA:GOSUB20120
+3770 IF(Y(IP)>=KY)AND(Y(IP)<=GY) THENRETURN
+3780 IFX<GX THEN3760
+3790 HO=8/HG:VE=.96:B=IP:GOTO3400
+5000 SR$="FUNCTIES":GOSUB8030:PRINT:PRINT
+5010 PRINT"Met dit programma kunt U wiskundige"
+5020 PRINT"functies tekenen. Helaas is het niet"
+5030 PRINT"mogelijk om de functies in het draai-"
+5040 PRINT"ende programma in te voeren maar moet"
+5050 PRINT"U, voordat U het programma runt, de"
+5060 PRINT"functies invoeren vanaf regel 20000."
+5070 PRINT"Daar staat ook precies beschreven hoe"
+5080 PRINT"U dit moet verwezenlijken."
+5090 PRINT:PRINT"Om het programma in te stellen voor de"
+5100 PRINT"waarden die U wenst, gaat U naar het"
+5110 PRINT"instelmenu. Hier kunt U de waarden"
+5120 PRINT"instellen door met de cursortoetsen"
+5130 PRINT"naar de waarde te gaan die U wilt ver-"
+5140 PRINT"anderen en daarna de nieuwe waarde in"
+5150 PRINT"te tikken. Om weer naar het hoofdmenu"
+5160 PRINT"te gaan, gaat U met de cursor naar de"
+5170 PRINT"laatste regel."
+5180 GOSUB8190
+5190 PRINT"Als U iets ongeldigs hebt ingetikt,"
+5200 PRINT"verschijnt er in reverse FOUTE INVOER."
+5210 PRINT"Dit kan voorkomen als,":PRINT
+5220 PRINT" 1. minimale x-waarde groter is dan"
+5230 PRINT"    maximale x-waarde"
+5240 PRINT" 2. minimale y-waarde groter is dan"
+5250 PRINT"    maximale y-waarde"
+5260 PRINT" 3. De vergrotingsfactor negatief is"
+5270 PRINT:PRINT"De cursor gaat dan weer naar de boven-"
+5280 PRINT"ste regel, zodat U de fout kunt her-"
+5290 PRINT"stellen."
+5300 PRINT"Op de vraag of U een gestippelde lijn"
+5310 PRINT"wilt, kunt U een willekeurige toets"
+5320 PRINT"indrukken om het antwoord te wijzigen."
+5330 PRINT"Als U voor minimale en maximale y-waar-"
+5340 PRINT"den 0 intikt, worden deze waarden zelf"
+5350 PRINT"uitgerekend. Dit beslaat echter wel"
+5360 PRINT"veel tijd, vooral als U veel functies"
+5370 PRINT"hebt ingevoerd.":GOSUB8190
+5380 PRINT"Als U 'ja' antwoord op de vraag of U"
+5390 PRINT"een doorgetrokken lijn wilt, worden de"
+5400 PRINT"punten bij het tekenen met elkaar ver-"
+5410 PRINT"bonden."
+5420 PRINT:PRINT"Als de grafieken getekend zijn, ver-"
+5430 PRINT"schijnt er in de linkeronderhoek een"
+5440 PRINT"sterretje. U kunt nu verschillende"
+5450 PRINT"commando's geven, door een van de"
+5460 PRINT"onderstaande letters in te tikken,"
+5470 PRINT"C, M, V, S, linker- en rechtercursor-"
+5480 PRINT"toetsen."
+5490 PRINT"De resultaten zijn als volgt,"
+5500 PRINT:PRINT"'C' geeft U een hard-copy, als U ten-"
+5510 PRINT"minste vanaf regel 22080 een hard-copy"
+5520 PRINT"programma hebt geprogrammeerd, zie"
+5530 PRINT"voor uitleg regel 22000 en verder."
+5540 PRINT:PRINT"'M' zorgt ervoor dat er weer naar het"
+5550 PRINT"hoofdmenu gesprongen wordt."
+5560 GOSUB8190
+5570 PRINT"'V' zorgt ervoor dat de functies nog-"
+5580 PRINT"maals getekend worden, alleen nu wor-"
+5590 PRINT"den ze vergroot met de vergrotings-"
+5600 PRINT"factor, die U hebt ingesteld bij het"
+5610 PRINT"instelmenu. Als U hier een getal klei-"
+5620 PRINT"ner dan 1 hebt ingetikt, worden de"
+5630 PRINT"functies natuurlijk verkleind."
+5640 PRINT:PRINT"'S' zorgt ervoor dat U bij het aftas-"
+5650 PRINT"ten (zie aldaar) met grotere sprongen"
+5660 PRINT"tegelijk beweegt. Nogmaals op 'S' druk-"
+5670 PRINT"ken zorgt ervoor dat de oude situatie"
+5680 PRINT"weer geldt."
+5690 PRINT"Deze commando's kunt U alleen geven"
+5700 PRINT"als er een sterretje in de linkeronder-"
+5710 PRINT"hoek staat!"
+5720 PRINT:PRINT"Als U op de linker- of rechtercursor-"
+5730 PRINT"toets drukt, ziet U linksonder de X en"
+5740 PRINT"Y coordinaten van het puntje dat knip-"
+5750 PRINT"pert bij de eerst getekende grafiek."
+5760 GOSUB8190
+5770 PRINT"U kunt dit puntje bewegen met de lin-"
+5780 PRINT"ker- en rechtercursortoetsen. De coor-"
+5790 PRINT"dinaten veranderen uiteraard ook mee."
+5800 PRINT"U kunt dus op een makkelijke manier"
+5810 PRINT"snijpunten van functies en nulpunten"
+5820 PRINT"benaderen. Als U een andere functie"
+5830 PRINT"wilt aftasten, drukt U een willekeu-"
+5840 PRINT"rige toets in. In de linkeronderhoek"
+5850 PRINT"verschijnt weer het sterretje. U kunt"
+5860 PRINT"nu het getal intikken van de functie"
+5870 PRINT"die U wilt gaan aftasten. Als dit een"
+5880 PRINT"ongeldig getal is, verschijnt er '???'"
+5890 PRINT"U kunt nu weer naar het aftasten"
+5900 PRINT"gaan door weer op de cursortoetsen"
+5910 PRINT"te drukken."
+5920 PRINT:PRINT"In het programma zitten al twee voor-"
+5930 PRINT"beeldfuncties, zodat U het programma"
+5940 PRINT"meteen kunt runnen."
+5950 PRINT:PRINT"VEEL PLEZIER MET DIT PROGRAMMA !!!"
+5960 GOSUB8190:RETURN
+8000 GOTO8000
+8010 REM subroutines
+8020 REM
+8030 REM centreren, reverse
+8040 HO=H/2-LEN(SR$)/2-3:VE=0:GOSUB110:GOSUB150:RETURN
+8050 REM lijn op tekstscherm
+8060 FORI=1 TOH:PRINT"-";:NEXTI
+8070 RETURN
+8080 REM y-as
+8090 HO=KX/(KX-GX):IFHO=1 THENHO=UW
+8100 VE=0:GOSUB620:VE=UW:GOSUB630:CN=1:CT=5:SR=GY
+8110 GOSUB310:VE=0:CN=0:GOSUB650:SR=KY:CN=1:GOSUB310
+8120 CN=0:VE=.96:GOSUB650:RETURN
+8130 REM x-as
+8140 VE=1-KY/(KY-GY):IFVE=1 THENVE=UW
+8150 HO=0:GOSUB620:HO=UW:GOSUB630:SR=KX:CN=1:CT=5
+8160 VE=VE+.015:GOSUB310:CN=0:HO=0:GOSUB650:CN=1:SR=GX
+8170 GOSUB310:CN=0:HO=.85:GOSUB650:RETURN
+8180 REM toets
+8190 HO=H-3:VE=V-1:GOSUB110:PRINT"=>";
+8200 GOSUB200:IFIN$="" THEN8200
+8210 GOSUB100:GOSUB8030:PRINT:PRINT:RETURN
+20000 REM******************************
+20010 REM Hier kunt U de functies
+20020 REM plaatsen, eerst geeft U het
+20030 REM aantal functies en daarna 
+20040 REM de functies in een array,
+20050 REM zoals getoond. 
+20060 REM
+20070 REM Laat de RETURNS staan !!!
+20080 REM *****************************
+20090 AL=2:REM aantal functies 
+20100 RETURN
+20110 REM hier komen de functies
+20120 Y(0)=SIN(X)*EXP(-.32*X)
+20130 Y(1)=6*X/SQR(X*X+1)
+20300 RETURN
+22000 REM******************************
+22010 REM Hier kunt u een hard-copy
+22020 REM plaatsen, geschreven voor 
+22030 REM Uw computer. Als U nu op
+22040 REM 'C' drukt als de functies
+22050 REM getekend zijn springt het
+22060 REM programma naar regel 22080.
+22070 REM******************************
+22080 RETURN
+32000 REM**********************
+32010 REM Door Ronald van Vugt
+32020 REM      (PA3EAH)
+32030 REM      Postbus 160  
+32040 REM      5580 AD, Waalre
+32050 REM  
+32060 REM Gemaakt op een 
+32070 REM       Acorn Electron 
+32080 REM       
+32090 REM 20 dec. 1986, V1.1 
+32100 REM********************** 
+32200 REM TROS-RADIO dd 870218
