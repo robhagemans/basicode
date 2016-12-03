@@ -37,6 +37,7 @@ Source                              Medium      Publisher   Basicode version    
 `Chip Shop BASICODE 2`_             Tape        BBC         BASICODE-2          English
 `Wiegand & Fillinger - Basicode`_   Tape        Elektor     BASICODE-2          German
 `BASICODE-3`_                       Tape        TROS        BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 1`_    Tape        TROS        BASICODE-3          Dutch
 ==================================  ==========  =========== ==================  ==========
 
 .. _The Best of BASICODE 3: Best_of_Basicode_3/
