@@ -32,6 +32,7 @@ This repository contains BASICODE programs from the following sources:
 ==================================  ==========  =========== ==================  ==========
 Source                              Medium      Publisher   Basicode version    Language
 ==================================  ==========  =========== ==================  ==========
+`The Best of BASICODE 3`_           Tape        NOS         BASICODE-2          Dutch
 `The Best of BASICODE 5`_           CD          NOS         BASICODE-2          Dutch
 `Chip Shop BASICODE 2`_             Tape        BBC         BASICODE-2          English
 `Wiegand & Fillinger - Basicode`_   Tape        Elektor     BASICODE-2          German
