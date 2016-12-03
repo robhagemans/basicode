@@ -47,5 +47,5 @@ Source                              Medium      Publisher   Basicode version    
 .. _BASICODE-3: Basicode-3/
 .. _BASICODE-3 Verzamelcassette 1: Verzamelcassette_1/
 
-*Many of the above sources additionally contains translation programs, encoded in the native modulation for each computer.
+*Many of the above sources additionally contain translation programs, encoded in the native modulation for each computer.
 These are not included here.*
