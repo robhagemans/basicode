@@ -45,6 +45,7 @@ Source                              Medium      Publisher   Basicode version    
 .. _Chip Shop BASICODE 2: Chip_Shop_Basicode_2/
 .. _Wiegand & Fillinger - Basicode: Wiegand_Fillinger_Basicode_2/
 .. _BASICODE-3: Basicode-3/
+.. _BASICODE-3 Verzamelcassette 1: Verzamelcassette_1/
 
 *Many of the above sources additionally contains translation programs, encoded in the native modulation for each computer.
 These are not included here.*
