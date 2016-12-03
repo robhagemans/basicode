@@ -1,0 +1,485 @@
+
+1000 A=500:GOTO20:REM KORFBAL DEEL 2
+1010 DIMCR$(3),BH(30),BV(30),Z$(7),A$(10),AA(3),S$(10)
+1020 GOSUB10010
+1030 HO=10:VE=3:GOSUB110
+1040 PRINT"K  O  R  F  B  A  L"
+1050 HO=17:VE=6:GOSUB110
+1060 PRINT"door"
+1070 HO=2:VE=10:GOSUB110
+1080 PRINT"Martin van Luijk en Pieter van Dijk"
+1090 HO=14:VE=12:GOSUB110
+1100 PRINT"----------"
+1110 HO=14:VE=14:GOSUB110
+1120 PRINT"----------"
+1130 L$="DRUK OP DE SPATIEBALK  DRUK OP"
+1140 FORI=1 TOLEN(L$)-10
+1150 HO=14:VE=13:GOSUB110
+1160 PRINTMID$(L$,I,10)
+1170 W=0.3:GOSUB10480
+1180 GOSUB200:IFIN$=" " THENI=LEN(L$)-9:GOTO1210
+1190 GOSUB10500:NEXTI
+1200 GOTO1140
+1210 GOSUB100
+1220 HO=13:VE=10:GOSUB110
+1230 PRINT"DEEL II, test"
+1240 Z$(1)="         - TOELICHTING -"
+1250 Z$(2)=" Je krijgt zo direkt 1O meerkeuze-"
+1260 Z$(3)=" vragen te beantwoorden. Je kunt"
+1270 Z$(4)=" steeds kiezen uit 3 antwoorden."
+1280 Z$(5)=" Je hoeft alleen maar op de toets"
+1290 Z$(6)=" te drukken, die volgens jou bij het"
+1300 Z$(7)=" goede antwoord hoort."
+1310 GOSUB10170
+1320 X=1:Y=2:Z=14
+1330 GOSUB10530
+1340 Z$(2)="Je kunt je antwoord nog verbeteren"
+1350 Z$(3)="door op de FOUT-toets te drukken."
+1360 Z$(4)="Dat is toets F."
+1370 Z$(5)="Als je denkt, dat je antwoord goed"
+1380 Z$(6)="is,moet je op de GOED-toets drukken."
+1390 Z$(7)="Dat is toets G."
+1400 GOSUB10170
+1410 X=2:Y=2:Z=14
+1420 GOSUB10530
+1430 Z$(2)="  Soms zijn de vragen erg lang en"
+1440 Z$(3)="  wordt er tussendoor van scherm"
+1450 Z$(4)="  gewisseld."
+1460 Z$(5)="  Door op de HERHAAL-toets te"
+1470 Z$(6)="  drukken (dat is toets H), wordt"
+1480 Z$(7)="  de hele vraag herhaald."
+1490 GOSUB10170
+1500 X=2:Y=2:Z=14
+1510 GOSUB10530
+1520 Z$(1)="VRAAG 1."
+1530 Z$(2)="Hoe groot is een korfbalveld?"
+1540 Z$(3)=" "
+1550 Z$(4)="   1. 2O x 4O meter"
+1560 Z$(5)="   2. 2O x 2O meter"
+1570 Z$(6)="   3. 4O x 4O meter"
+1580 Z$(7)=" "
+1590 GOSUB10170
+1600 H=0:T=1:G$="1":X=2:Y=2:Z=14
+1610 GOSUB10800
+1620 Z$(1)="Een korfbalveld meet"
+1630 Z$(2)="2O x 4O meter en wordt verdeeld in"
+1640 Z$(3)="2 vakken van 2O x 2O meter."
+1650 Z$(4)=" "
+1660 GOSUB11090
+1670 Z$(1)="VRAAG 2."
+1680 Z$(2)=" Je gaat zo meteen 3 korfbalvelden"
+1690 Z$(3)=" zien met de korven erin getekend."
+1700 Z$(4)=" Let goed op!"
+1710 Z$(5)=" De vraag is: bij welk van de"
+1720 Z$(6)=" 3 velden staan de korven op de"
+1730 Z$(7)=" goede plaats?"
+1740 GOSUB10530
+1750 CR$(1)="         (O)   *            (O)"
+1760 CR$(2)="(O)            *            (O)"
+1770 CR$(3)="         (O)   *   (O)"
+1780 GOSUB10170
+1790 FORJ=1 TO3
+1800 K$=CR$(J):GOSUB100:GOSUB10040:GOSUB10120
+1810 HO=2:VE=18:GOSUB110
+1820 PRINT"Dit is veld";J
+1830 GOSUB10170
+1840 NEXTJ
+1850 Z$(2)="Bij welk veld stonden de korven"
+1860 Z$(3)="op de juiste plaats?"
+1870 Z$(4)="   1. Veld 1."
+1880 Z$(5)="   2. Veld 2."
+1890 Z$(6)="   3. Veld 3."
+1900 Z$(7)=" "
+1910 H=-1:T=2:G$="2":GOSUB10800
+1920 IF(IN$="H") OR(IN$="h") THEN1670
+1930 Z$(1)="Antwoord 2 is juist."
+1940 Z$(2)="Ieder vak meet 2O x 2O meter en de kor-"
+1950 Z$(3)="ven staan op 1/3e van de achterlijn."
+1960 Z$(4)="Dat is bijna 7 meter."
+1970 GOSUB11090
+1980 Z$(1)="VRAAG 3."
+1990 Z$(2)="De partij die in vak A verdedigt"
+2000 Z$(3)="staat achter met 4-5. De aanvallers"
+2010 Z$(4)="in vak A hebben balbezit."
+2020 Z$(5)="Een aanvaller uit vak B komt zijn"
+2030 Z$(6)="verdedigers helpen..."
+2040 Z$(7)=" "
+2050 GOSUB10530
+2060 GOSUB10170
+2070 Z$(2)="1. Dat mag alleen, als zijn"
+2080 Z$(3)="   persoonlijke tegenstander ook"
+2090 Z$(4)="   meekomt."
+2100 Z$(5)="2. Dat mag."
+2110 Z$(6)="3. Dat mag niet."
+2120 Z$(7)=" "
+2130 T=3:G$="3":GOSUB10800
+2140 IF(IN$="H") OR(IN$="h") THEN1980
+2150 Z$(1)="Een speler mag nooit"
+2160 Z$(2)="in het andere vak komen."
+2170 Z$(3)=" "
+2180 Z$(4)=" "
+2190 GOSUB11090
+2200 Z$(1)="VRAAG 4."
+2210 Z$(2)="Speler a (met bal)"
+2220 Z$(3)="staat nogal ver"
+2230 Z$(4)="van de korf. Hij"
+2240 Z$(5)="doet enige stappen"
+2250 Z$(6)="naar voren om te"
+2260 Z$(7)="kunnen doelen.."
+2270 ML$="*                    *                *"
+2280 GOSUB100:GOSUB10050
+2290 HO=32:VE=8:GOSUB110:PRINT"(O)"
+2300 GOSUB10540
+2310 HO=23:VE=7:GOSUB110:PRINT"a v"
+2320 CR$(1)="a":CR$(2)=" ":X=23:Y=7:GOSUB10330
+2330 HO=23:VE=7:GOSUB110:PRINT"a"
+2340 Z$(1)="1.Dat lukt niet,   *       VRAAG 4."
+2350 Z$(2)="  want zijn verde-"
+2360 Z$(3)="  diger loopt mee."
+2370 Z$(4)="2.Dat mag, maar "
+2380 Z$(5)="  niet meer dan   "
+2390 Z$(6)="  drie passen.   "
+2400 Z$(7)="3.Dat mag niet.   "
+2410 X=2:Y=2:GOSUB10540
+2420 T=4:G$="3":GOSUB10580
+2430 IF(IN$="H") OR(IN$="h") THEN2200
+2440 IF(IN$="G") OR(IN$="g") THEN2490
+2450 GOSUB100:GOSUB10050
+2460 HO=32:VE=8:GOSUB110:PRINT"(O)"
+2470 GOSUB10540
+2480 HO=23:VE=7:GOSUB110:PRINT"a v":GOTO2410
+2490 GOSUB10760
+2500 Z$(1)="Met de bal mag niet"
+2510 Z$(2)="worden gelopen. Eerst moet de bal"
+2520 Z$(3)="worden overgespeeld en dan pas kan"
+2530 Z$(4)="de speler gaan lopen."
+2540 GOSUB11090
+2550 Z$(1)="VRAAG 5."
+2560 Z$(2)="Een van de jongens, die verdedigen,"
+2570 Z$(3)="glijdt uit. Zijn tegenstander"
+2580 Z$(4)="krijgt de bal en wil doelen."
+2590 Z$(5)="Een meisje, dat daar vlakbij verde-"
+2600 Z$(6)="digt, probeert dat te verhinderen..."
+2610 Z$(7)=" "
+2620 GOSUB10530
+2630 GOSUB10170
+2640 Z$(2)="1. Dat mag niet."
+2650 Z$(3)="2. Dat moet ze natuurlijk doen,"
+2660 Z$(4)="   anders wordt het een doelpunt."
+2670 Z$(5)="3. Ja dat mag. Een jongen mag geen"
+2680 Z$(6)="   meisje verdedigen maar andersom"
+2690 Z$(7)="   mag wel."
+2700 T=5:G$="1":X=2:Y=2:GOSUB10800
+2710 IF(IN$="H") OR(IN$="h") THEN2560
+2720 Z$(1)="Antwoord 1 is juist."
+2730 Z$(2)="Een jongen mag alleen een jongen verde-"
+2740 Z$(3)="digen en een meisje alleen een meisje."
+2750 Z$(4)=" "
+2760 GOSUB11090
+2770 Z$(1)="Welke aanvaller  *         VRAAG 6."
+2780 Z$(2)="mag, als hij in "
+2790 Z$(3)="balbezit is,"
+2800 Z$(4)="NIET doelen?"
+2810 Z$(5)="1. aanvaller 1."
+2820 Z$(6)="2. aanvaller 2."
+2830 Z$(7)="3. aanvaller 3."
+2840 GOSUB100:GOSUB10040
+2850 HO=31:VE=5:GOSUB110:PRINT"1 a"
+2860 HO=34:VE=6:GOSUB110:PRINT"v"
+2870 HO=23:VE=8:GOSUB110:PRINT"2 a  v   (O)"
+2880 HO=31:VE=11:GOSUB110:PRINT"v"
+2890 HO=28:VE=12:GOSUB110:PRINT"3 a"
+2900 X=2:Y=2:GOSUB10540
+2910 H=0:T=6:G$="3":GOSUB10580
+2920 IF(IN$="F") OR(IN$="f") THEN2840
+2930 GOSUB10760
+2940 Z$(1)="De spelers 1 en 2"
+2950 Z$(2)="staan niet 'gedekt' en mogen doelen."
+2960 Z$(3)="Speler 3 staat wel 'gedekt' en mag dus"
+2970 Z$(4)="niet doelen."
+2980 GOSUB11090
+2990 Z$(1)="VRAAG 7."
+3000 Z$(2)="Een aanvaller staat vlak naast de"
+3010 Z$(3)="korf en gooit de bal omhoog om te"
+3020 Z$(4)="scoren. De bal gaat toevallig van"
+3030 Z$(5)="onderaf door de korf en valt dan"
+3040 Z$(6)="door de korf weer naar beneden..."
+3050 Z$(7)=" "
+3060 GOSUB10530
+3070 Z$(2)="1.Dat is goed. De bal is immers"
+3080 Z$(3)="  van bovenaf door de korf gegaan."
+3090 Z$(4)="2.Dat is goed. De bal mag zowel van"
+3100 Z$(5)="  onderaf als bovenaf door de korf."
+3110 Z$(6)="3.Dat is fout. De bal mag alleen"
+3120 Z$(7)="  van bovenaf door de korf."
+3130 GOSUB10170
+3140 GOSUB10530
+3150 H=-1:T=7:G$="3":GOSUB10580
+3160 IF(IN$="H") OR(IN$="h") THEN2990
+3170 IF(IN$="F") OR(IN$="f") THEN3140
+3180 GOSUB10760
+3190 Z$(1)="De bal moet gelijk van"
+3200 Z$(2)="bovenaf door de korf gaan. Als de bal"
+3210 Z$(3)="eerst van onderaf door de korf gaat,"
+3220 Z$(4)="is het doelpunt ongeldig."
+3230 GOSUB11090
+3240 Z$(1)="VRAAG 8."
+3250 Z$(2)="Let op!"
+3260 Z$(3)="De bal gaat uit."
+3270 Z$(4)=" "
+3280 Z$(5)=" "
+3290 Z$(6)=" "
+3300 Z$(7)=" "
+3310 GOSUB100:GOSUB10040
+3320 HO=32:VE=8:GOSUB110:PRINT"(O)"
+3330 HO=26:VE=10:GOSUB110:PRINT"oa"
+3340 HO=31:VE=11:GOSUB110:PRINT"v"
+3350 HO=23:VE=12:GOSUB110:PRINT"v"
+3360 GOSUB10540
+3370 GOSUB10170
+3380 SP$="251125122513251425152516251725182519252025212522"
+3390 HO=24:VE=10
+3400 FORQ=1 TO44 STEP(4):GOSUB110:PRINT"   "
+3410 HO=VAL(MID$(SP$,Q,2)):VE=VAL(MID$(SP$,Q+2,2))
+3420 GOSUB110:PRINT" o "
+3430 W=02:GOSUB10500
+3440 NEXTQ
+3450 GOSUB110:PRINT"  "
+3460 HO=23:FORVE=10 TO12:GOSUB110:PRINT"         "
+3470 NEXTVE
+3480 GOSUB10900
+3490 Z$(2)="Welke speler    "
+3500 Z$(3)="heeft het recht  "
+3510 Z$(4)="om in te gooien"
+3520 Z$(5)="en staat tevens"
+3530 Z$(6)="op de goede"
+3540 Z$(7)="plaats?"
+3550 GOSUB10540
+3560 GOSUB10170
+3570 Z$(2)="1. verdediger 1 "
+3580 Z$(3)="2. aanvaller 2 "
+3590 Z$(4)="3. verdediger 3"
+3600 Z$(5)="               "
+3610 Z$(6)="           "
+3620 Z$(7)="       "
+3630 GOSUB10540
+3640 H=-1:T=8:G$="3":GOSUB10580
+3650 IF(IN$="H") OR(IN$="h") THEN3240
+3660 IF(IN$="F") OR(IN$="f") THENGOSUB10880:GOTO3570
+3670 GOSUB10760
+3680 Z$(1)="Antwoord 3 is juist."
+3690 Z$(2)="Omdat een aanvaller de bal het laatst"
+3700 Z$(3)="heeft aangeraakt, moet een verdediger"
+3710 Z$(4)="inwerpen BUITEN de zijlijn."
+3720 GOSUB11090
+3730 Z$(1)="VRAAG 9."
+3740 Z$(2)="Mieke begint de wedstrijd als"
+3750 Z$(3)="aanvalster in vak A."
+3760 Z$(4)="Bij de stand 7-4 staat zij:"
+3770 Z$(5)="1. als verdedigster in vak A"
+3780 Z$(6)="2. als verdedigster in vak B"
+3790 Z$(7)="3. als aanvalster in vak B"
+3800 H=0:T=9:G$="2":X=2:Y=2:Z=14
+3810 GOSUB10800
+3820 Z$(1)="Na iedere 2 doelpunten"
+3830 Z$(2)="wisselen de spelers van vak. De aanval-"
+3840 Z$(3)="lers worden verdedigers en omgekeerd."
+3850 Z$(4)="Bij stand 7-4 is 5 keer gewisseld."
+3860 GOSUB11090
+3870 Z$(1)="VRAAG 1O."
+3880 Z$(2)="Je ziet direkt"
+3890 Z$(3)="drie keer een"
+3900 Z$(4)="speler over"
+3910 Z$(5)="het veld lopen."
+3920 Z$(6)="Een van de drie"
+3930 Z$(7)="maakt een fout..."
+3940 GOSUB100:GOSUB10040
+3950 GOSUB10990
+3960 GOSUB10540
+3970 CR$(1)="2109201018101709160817071806200621072208"
+3980 CR$="3306340635073608350934"
+3990 CR$(2)=CR$+"10331032103109300831073206"
+4000 CR$(3)="2914301431153117301829182818271727152814"
+4010 BH(1)=22:BV(1)=8:BH(2)=32:BV(2)=6:BH(3)=28:BV(3)=14
+4020 A$(1)="a":A$(2)="v":A$(3)="a"
+4030 AA(1)=40:AA(2)=48:AA(3)=40
+4040 GOSUB10170
+4050 FORP=1 TO3
+4060 GOSUB10300:PRINT" Dit is speler";P
+4070 HO=BH(P):VE=BV(P)
+4080 FORQ=1 TOAA(P) STEP4
+4090 GOSUB110:PRINT" "
+4100 HO=VAL(MID$(CR$(P),Q,2)):VE=VAL(MID$(CR$(P),Q+2,2))
+4110 GOSUB110:PRINTA$(P)
+4120 W=3:GOSUB10500
+4130 NEXTQ
+4140 GOSUB10170
+4150 NEXTP
+4160 Z$(2)="Welke speler  "
+4170 Z$(3)="maakte een   "
+4180 Z$(4)="overtreding?"
+4190 Z$(5)="1. speler 1    "
+4200 Z$(6)="2. speler 2    "
+4210 Z$(7)="3. speler 3      "
+4220 H=-1:T=10:G$="1":X=2:Y=2:Z=14
+4230 GOSUB10540:GOSUB10580
+4240 IF(IN$="H") OR(IN$="h") THEN3870
+4250 IF(IN$="F") OR(IN$="f") THENGOSUB10980:GOTO4230
+4260 GOSUB10760
+4270 Z$(1)="Antwoord 1 is juist."
+4280 Z$(2)="De spelers mogen niet in het andere vak"
+4290 Z$(3)="komen."
+4300 Z$(4)=" "
+4310 GOSUB11090
+4320 LETS=0:FORT=1 TO10
+4330 IFS$(T)="goed" THENS=S+1
+4340 NEXTT
+4350 GOSUB10010
+4360 HO=6:VE=4:GOSUB110
+4370 VR$="vragen ":IFS=1 THENVR$="vraag "
+4380 PRINT"Je hebt";S;VR$;"goed."
+4390 HO=6:VE=6:GOSUB110
+4400 IFS<5 THENPRINT"Neem de stof nog eens door."
+4410 IF(S>5) AND(S<8) THENPRINT"Niet gek voor de 1e keer."
+4420 IF(S>7) AND(S<10) THENPRINT"Dat ging uitstekend!"
+4430 IFS=10 THENPRINT"Dat is een rekord!"
+4440 HO=6:VE=9:GOSUB110
+4450 PRINT"Bedankt voor je medewerking."
+4460 HO=0:VE=20:GOSUB110
+9999 END
+10000 REM ----- VELD -----
+10010 GOSUB100
+10020 ML$="*                                     *"
+10030 GOTO10050
+10040 ML$="*                  *                  *"
+10050 PRINT"***************************************"
+10060 FORI=1 TO15:PRINTML$:NEXTI
+10070 PRINT"***************************************"
+10080 RETURN
+10090 REM
+10100 REM ----- KORVEN -----
+10110 K$="(O)            *            (O)"
+10120 HO=4:VE=8:GOSUB110
+10130 PRINTK$;
+10140 RETURN
+10150 REM
+10160 REM ----- SPATIEBALKROUTINE -----
+10170 REM RETURN:REM DE SPATIEBALK OVERSLAAN
+10180 GOSUB10450:HO=32:VE=22
+10190 L$="SPATIEBALK SPATIE":W=0.8
+10200 FORI=1 TO11
+10210 GOSUB110
+10220 PRINTMID$(L$,I,7)
+10230 GOSUB10480
+10240 GOSUB200:IFIN$=" " THENI=12:W=5
+10250 NEXTI:IFIN$=" " THEN10270
+10260 GOTO10200
+10270 GOSUB110:PRINT"       ":RETURN
+10280 REM
+10290 REM ----- PRINTPOSITIE OP 0,18 -----
+10300 HO=0:VE=18:GOSUB110:RETURN
+10310 REM
+10320 REM ----- SPATIE & KNIPPERROUTINE -----
+10330 L$="SPATIEBALK SPATIE":GOSUB10450
+10340 W=0.02
+10350 FORI=1 TO11
+10360 HO=32:VE=22
+10370 GOSUB110
+10380 PRINTMID$(L$,I,7)
+10390 FORF=1 TO2:HO=X:VE=Y:GOSUB110
+10400 PRINTCR$(F):NEXTF:GOSUB10500
+10410 GOSUB200:IFIN$=" " THENI=11
+10420 NEXTI:IFIN$<>" " THEN10350
+10430 I=12:HO=32:VE=22:GOSUB110:PRINT"       ":RETURN
+10440 REM 
+10450 REM ----- BUFFER LEGEN -----
+10460 FORU=1 TO10:GOSUB200:NEXTU:RETURN
+10465 REM
+10470 REM ----- WACHTLUS -----
+10480 REM HOE GROTER HET GETAL WAARMEE W WORDT
+10490 REM VERMENIGVULDIGD, HOE LANGER DE WACHTTIJD IS.
+10500 FORV=1 TOW*50:NEXTV:RETURN
+10510 REM
+10520 REM ----- NIEUW VELD MET TEKST -----
+10530 GOSUB10010
+10540 HO=X:FORVE=Y TOZ STEP2:GOSUB110
+10550 PRINTZ$(VE/2);:NEXTVE:RETURN
+10560 REM
+10570 REM ANTWOORDINTOETSROUTINE
+10580 HO=1:VE=18
+10590 GOSUB110:PRINT"Kies 1, 2 of 3    "
+10600 IFH<>-1 THEN10630
+10610 HO=1:VE=20:GOSUB110
+10620 PRINT"(of kies H voor herhaling)"
+10630 GOSUB200
+10640 IF((H=-1) AND((IN$="H") OR(IN$="h"))) THENRETURN
+10650 IF(IN$<"1") OR(IN$>"3") THEN10630
+10660 A$=IN$
+10670 HO=1:VE=18
+10680 GOSUB110:PRINT"Je hebt ";IN$;" gekozen."
+10690 HO=1:VE=20:GOSUB110
+10700 PRINT"Druk op G (goed) of F (fout)"
+10710 GOSUB200:IF(IN$="G") OR(IN$="g") THENRETURN
+10720 IF(IN$="F") OR(IN$="f") THENRETURN
+10730 GOTO10710
+10740 REM 
+10750 REM ----- SCORE BIJWERKEN -----
+10760 S$(T)="goed":IFA$<>G$ THENS$(T)="fout"
+10770 RETURN
+10780 REM
+10790 REM ----- VRAAGROUTINE -----
+10800 GOSUB10530
+10810 GOSUB10580
+10820 IF(IN$="H") OR(IN$="h") THENRETURN
+10830 IF(IN$="F") OR(IN$="f") THEN10800
+10840 GOSUB10750:REM SCORE BIJWERKEN
+10850 RETURN
+10860 REM
+10870 REM ----- SUBROUTINE VAN VRAAG 8 -----
+10880 GOSUB100:GOSUB10040
+10890 HO=32:VE=8:GOSUB110:PRINT"(O)"
+10900 HO=24:VE=15:GOSUB110:PRINT"v"
+10910 HO=25:VE=16:GOSUB110:PRINT" a "
+10920 HO=28:VE=17:GOSUB110:PRINT"v"
+10930 HO=24:VE=18:GOSUB110:PRINT"^ ^ ^"
+10940 HO=24:VE=19:GOSUB110:PRINT"1 2 3"
+10950 RETURN
+10960 REM
+10970 REM ----- SUBROUTINE VAN VRAAG 10 -----
+10980 GOSUB100:GOSUB10040
+10990 HO=32:VE=8:GOSUB110:PRINT"(O)"
+11000 HO=22:VE=7:GOSUB110:PRINT"1"
+11010 HO=22:VE=8:GOSUB110:PRINT"a"
+11020 HO=32:VE=5:GOSUB110:PRINT"2"
+11030 HO=32:VE=6:GOSUB110:PRINT"v"
+11040 HO=28:VE=13:GOSUB110:PRINT"3"
+11050 HO=28:VE=14:GOSUB110:PRINT"a"
+11060 RETURN
+11070 REM 
+11080 REM ----- ANTWOORD VAN DE COMPUTER -----
+11090 Z$="Goed"
+11100 IFS$(T)="fout" THENZ$="Fout"
+11110 Z$(1)=Z$+" geantwoord. "+Z$(1)
+11120 REM HO=0:VE=17:GOSUB110:FORS=1TO4
+11130 GOSUB10300:FORS=1 TO4
+11140 PRINT"                                       ":NEXTS
+11150 GOSUB10300:FORR=1 TO4:PRINTZ$(R):NEXTR
+11160 GOSUB10170:RETURN
+11170 REM
+11180 REM
+30000 REM
+30010 REM **** KORFBAL **** DEEL 2 16K
+30020 REM GEMAAKT OP NEWBRAIN COMPUTER
+30030 REM
+30040 REM PIETER VAN DIJK &
+30050 REM MARTIN VAN LUIJK
+30060 REM HNO-SCHOOL "DE SPINBAAN"
+30070 REM WASSENAAR
+30080 REM
+30090 REM VOORJAAR 1984
+30100 REM
+30110 REM
+30120 REM
+30130 REM
+30140 REMCOPYRIGHT
+30150 REMNOS HILVERSUM

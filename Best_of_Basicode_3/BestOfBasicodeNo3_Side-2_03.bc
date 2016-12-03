@@ -1,0 +1,416 @@
+
+1000 A=750:GOTO20:REM ** INSTRUKTEUR
+1005 REM IN 29999 MOET STAAN DATA'.'!!
+1010 DIMA$(3),TT$(3),VV$(3),T$(10)
+1020 READT$(0):GOSUB19500
+1030 FORAD=2 TO11:READT$(AD-1):NEXTAD
+1040 R$="":B$="":T$=".T1":V$=".V1"
+1050 READSR$:IFSR$<>"." THENAD=AD+1:GOTO1050
+1060 SP$="":SL$="-":AC=ABS(ASC("A")-ASC("a"))
+1070 FORI=1 TOHM:SL$=SL$+"-":SP$=SP$+"  ":NEXTI
+1100 REM ** EXPLICATIE
+1110 GOSUB100:GOSUB120:RESTORE
+1115 FORI=1 TOAD:READSR$
+1117 IFSR$=T$ THENI=AD
+1120 NEXTI:IFSR$="." THEN1200
+1130 READSR$:GOSUB10000
+1140 IFNA<>1 THEN1130
+1150 GOSUB11000
+1200 REM ** QUESTIE
+1210 GOSUB100:GOSUB120:RESTORE
+1215 FORI=1 TOAD:READSR$
+1217 IFSR$=V$ THENI=AD
+1220 NEXTI:IFSR$="." THEN9000
+1230 READSR$:GOSUB10000
+1240 IFNA<>1 THEN1230
+1300 REM ** ALTERNATIEVEN
+1310 I=0:M=0
+1320 IFMID$(SR$,2,1)="M" THENM=1
+1330 READSR$:IFLEFT$(SR$,1)="." THEN1500
+1340 A$(I)=SR$
+1350 READTT$(I),VV$(I):I=I+1:GOTO1330
+1500 A1=I-1:IFM=0 THEN1650
+1580 FORII=0 TOA1:IN$=A$(II)
+1590 SR$="  ":IFLEFT$(IN$,1)<>"=" THEN1600
+1595 SR$="=":IN$=RIGHT$(IN$,LEN(IN$)-1)
+1600 SR$=SR$+CHR$(65+II)+" "+IN$
+1615 GOSUB10000
+1620 NEXTII
+1650 SR$="-":GOSUB10000
+1700 REM ** INPUT
+1720 GOSUB19000
+1730 SR$=A$:GOSUB18000:AN$=SR$:L1=LEN(A$)
+1740 IFAN$="?" THEN1100
+1750 IFM=0 THEN2000
+1800 REM ** CONTROLE MC
+1810 A=0:FORK=0 TOA1
+1830 IFAN$<>CHR$(65+K) THEN1850
+1840 A=1:T$="."+TT$(K):V$="."+VV$(K)
+1850 NEXTK
+1860 IFA=1 THEN1100
+1900 SR$=T$(9)+"("+CHR$(65)+"-"+CHR$(65+A1)+")!"
+1930 GOSUB12000:GOTO1720
+2000 REM ** CONTROLE CONSTRUCTED RESP.
+2010 REM ** 1-CORRECT
+2015 C=0
+2020 FORK=0 TOA1
+2030 SR$=A$(K):GOSUB18000:A$(K)=SR$
+2040 IFAN$<>SR$ THEN2060
+2050 T$="."+TT$(K):V$="."+VV$(K):K=99:GOTO2080
+2060 IFLEN(SR$)>L1 THENC=C+1
+2070 IFLEN(SR$)<L1 THENC=C-1
+2080 NEXTK
+2090 IFK>98 THEN1100
+2100 IFC=A1+1 THENSR$=T$(4)+" "+T$(3):GOSUB14000:GOTO2500
+2110 IFC=-A1-1 THENSR$=T$(5)+" "+T$(3):GOSUB14000
+2300 REM ** 2-CORRECT IS PRESENT
+2320 E$=LEFT$(SP$,L1+2):C$=" "+AN$+" "
+2340 FORI=0 TOA1
+2350 L2=LEN(A$(I)):IFL2>L1 THEN2410
+2360 FORJ=2 TOL1-L2+2
+2370 IFMID$(C$,J,L2)<>A$(I) THEN2400
+2380 E$=LEFT$(E$,J-1)+A$(I)+RIGHT$(E$,L1-L2-J+3)
+2390 E$=MID$(E$,2,L1):J=L1-L2+2:I=A1
+2400 NEXTJ
+2410 NEXTI
+2420 IFE$=LEFT$(SP$,L1+2) THEN2500
+2430 SR$=T$(7):GOSUB14000:GOSUB11000:GOTO1200
+2500 REM ** 3-CORRECTE KARAKTERS
+2505 IFL1<3 THEN3500
+2510 SR$=T$(2):GOSUB250:GOSUB12000
+2520 SR$=LEFT$(SP$,L1):F$=SR$:E$=""
+2550 FORI=0 TOA1:E$=E$+" "+A$(I):NEXTI
+2590 L2=LEN(E$)
+2600 FORJ=1 TOL2-1
+2620 C$=MID$(E$,J,2)
+2700 FORK=1 TOL1-1
+2730 IFMID$(AN$,K,2)<>C$ THEN2790
+2740 IFK=1 THENF$=C$+RIGHT$(F$,L1-2):GOTO2790
+2750 IFK=L1-1 THENF$=LEFT$(F$,L1-2)+C$:GOTO2790
+2760 F$=LEFT$(F$,K-1)+C$+RIGHT$(F$,L1-K-1)
+2790 NEXTK
+2810 NEXTJ
+2900 E$=F$
+3000 IFE$<>SR$ THEN4000
+3500 SR$=T$(6)+" "+T$(3):GOSUB14000:GOTO1200
+4000 REM ** CORRECTE LETTERS
+4010 SR$=T$(8):GOSUB14000
+5000 FORI=1 TOL1
+5010 IFMID$(AN$,I,1)=MID$(E$,I,1) THEN5050
+5020 HO=I+1:GOSUB110:PRINT" ";
+5030 VE=VE+3:GOSUB110:PRINTMID$(A$,I,1);
+5040 VE=VE-3:GOSUB110
+5050 NEXTI
+5060 GOSUB11000:GOTO1200
+9000 REM ** END
+9010 GOSUB100:GOSUB120
+9025 SR$=T$(10)
+9030 GOSUB10000:SR$=".":GOSUB10000
+9040 VE=VM-4:HO=0:GOSUB110
+9999 END
+10000 REM ** PRINT ROUTINE
+10010 NA=0:A$=LEFT$(SR$,1)
+10020 IFA$="." THENNA=1:A$=SR$:GOTO10100
+10030 IFSR$=" " THENNA=2:GOTO10100
+10040 IFSR$="  " THENNA=3:GOTO10100
+10050 IFA$=" " THENNA=4:GOTO10090
+10060 IFA$="=" THENNA=5:GOTO10090
+10070 IFSR$="-" THENNA=6:B$=SL$:SR$="":GOTO10080
+10075 IFR$<>"" THENSR$=" "+SR$
+10080 SR$=R$+SR$:GOTO10400
+10090 B$=RIGHT$(SR$,LEN(SR$)-1)
+10100 SR$=R$:GOTO10400
+10400 REM ** CONTINUEER
+10410 IFSR$="" THEN10425
+10420 IF(NA>0) OR(LEN(SR$)>HM-1) THENGOSUB10500:GOTO10400
+10423 R$=SR$
+10425 IFNA=0 THENRETURN
+10430 IFNA=1 THENSR$=A$:RETURN
+10440 IFNA=2 THENVE=VE+1:GOSUB110:RETURN
+10450 IFNA=3 THENGOSUB11000:GOSUB120:RETURN
+10460 R$=B$:IFNA=4 THENRETURN
+10495 VE=VE-1:IFVE<1 THENVE=0
+10498 SR$=B$:GOSUB110
+10500 REM ** PRINT IN FORMAAT
+10501 IFNA<>5 THEN10504
+10502 C=LEN(SR$)+1:R$="":SP=0:IFC>HM+1 THENVE=VE+1
+10503 GOTO10600
+10504 B=LEN(SR$)
+10505 R$="":J=0:K=0:L=0:IFB<=HM+1 THEN10560
+10510 FORI=1 TOHM+2
+10520 IFMID$(SR$,I,1)<>" " THENL=L+1:GOTO10530
+10527 J=J+SGN(INT(L/2)):K=I
+10530 NEXTI:J=J-1
+10540 C=K-1:A=B-K:IFK=0 THENC=HM+1:A=B-C
+10550 R$=RIGHT$(SR$,A):GOTO10590
+10560 FORI=1 TOB
+10570 IFMID$(SR$,I,1)<>" " THENL=L+1:GOTO10580
+10577 J=J+SGN(INT(L/2))
+10580 NEXTI:C=B
+10590 SP=0:IF(J>0) THENSP=(HM-C+2)/(J)
+10595 IFSP>4 THENSP=0
+10600 REM ** SPATIEER
+10610 J=HM-C+1:K=0:L=0:FORI=1 TOC
+10620 C$=MID$(SR$,I,1):PRINTC$;
+10630 IFC$<>" " THENL=L+1:GOTO10670
+10640 K=K+SP*SGN(INT(L/2))
+10650 IFJ<1 THEN10670
+10660 IFK>1 THENPRINT" ";:J=J-1:K=K-1:GOTO10650
+10670 NEXTI
+10700 REM ** INTERLINIE
+10710 VE=VE+2
+10720 IFVE<VM-3+2*INT((NA+0.1)/6) THEN10800
+10740 GOSUB11000:GOSUB120
+10800 SR$=R$:GOSUB110:RETURN
+11000 REM ** PRESS KEY
+11005 IFHO+VE=0 THENRETURN
+11010 FORI=0 TO10:GOSUB200:NEXTI
+11020 SR$=T$(1)+"!":GOSUB12000:GOSUB200
+11030 IFIN$="" THENSR$=T$(1):GOSUB12000:GOTO11020
+11040 IFASC(IN$)<>13 THEN11020
+11050 GOSUB100:RETURN
+12000 REM ** PRINT ONDER
+12010 GOSUB120:B=VE:A=HO:VE=VM-1:HO=0:GOSUB110
+12020 PRINTSR$;LEFT$(SP$,HM*2-LEN(SR$));
+12030 VE=B:HO=A:GOSUB110:RETURN
+14000 REM ** 12000+ATTENTIE
+14010 C$=SR$:GOSUB250:FORI=0 TO5
+14015 SR$=C$+" ":GOSUB12000
+14016 SR$=C$+"!":GOSUB12000
+14020 NEXTI:RETURN
+18000 REM ** ASCII EGALISATOR
+18010 C$="":IFSR$="" THENRETURN
+18030 FORI=1 TOLEN(SR$)
+18040 IN$=MID$(SR$,I,1):B=ASC(IN$)
+18050 IFB>96 THENIN$=CHR$(B-AC)
+18060 C$=C$+IN$
+18070 NEXTI:SR$=C$:RETURN
+19000 REM ** INPUT
+19005 FORA=1 TO10:GOSUB200:NEXTA
+19010 GOSUB120:HO=0:GOSUB110:PRINTSP$;:GOSUB110:A=20
+19020 PRINT"?";:HO=1:A$="  ":J=2:B=VE
+19030 HO=HO+J-1:GOSUB110:PRINT".";:HO=HO-J+1:GOSUB110
+19040 C=HO:PRINTA$;" ";:GOSUB200
+19050 IFIN$<>"" THEN19110
+19060 HO=INT(20-A):VE=VM:GOSUB110:PRINT"-";
+19070 A=A-0.1:IFA>9 THEN19100
+19080 HO=0:GOSUB110:IFA<1 THENRUN
+19090 PRINTINT(A);
+19100 HO=C:VE=B:GOSUB110:GOTO19030
+19110 L=LEN(A$):I=ASC(IN$):C$=""
+19120 IF(I>90) AND(I<65+AC) THEN19030
+19125 IF(I>34) AND(I<39) THEN19190
+19130 IF(I<32) OR(I>90+AC) THEN19280
+19140 IFI=34 THENIN$="'"
+19150 IF(I=32) AND(J=2) THEN19030
+19160 IFJ<L THENC$=RIGHT$(A$,L-J)
+19170 A$=LEFT$(A$,J-1)+IN$+C$:IFJ<58 THENJ=J+1
+19180 GOTO19030
+19190 IFJ<3 THEN19220
+19200 IFI=37 THENK=2:IN$="":GOTO19240
+19210 IFI=35 THENJ=J-1
+19220 IFI<>38 THEN19270
+19230 IN$=" ":K=1
+19240 C$="":IFJ<L+1 THENC$=RIGHT$(A$,L-J+1)
+19250 A$=LEFT$(LEFT$(A$,J-K)+IN$+C$,60-2)
+19260 J=J-K+1:GOTO19030
+19270 IF(J<L) AND(I=36) THENJ=J+1
+19280 IF(I<>13) OR(A$="  ") OR(A$=" ") THEN19030
+19300 A$=RIGHT$(A$,L-1)
+19320 HO=A:VE=B:GOSUB110:SR$="":GOSUB12000:RETURN
+19500 REM ** SCREEN SIZE
+19510 GOSUB100:PRINTT$(0)
+19520 HO=21:VE=15
+19530 HO=HO+1:HM=HO:GOSUB110:GOSUB120:IFHM=HO THEN19530
+19540 HM=HM-1:HO=0
+19550 VE=VE+1:VM=VE:GOSUB110:GOSUB120:IFVM=VE THEN19550
+19560 VM=VM-1
+19570 RETURN
+25000 REM ** DATA
+25010 DATA"Even geduld!"
+25020 DATA"Druk op INVOERtoets"
+25030 DATA"Nauwkeurige kontrole."
+25040 DATA"antwoord","Te kort","Te lang"
+25050 DATA"Fout"
+25060 DATA"Een deel is bruikbaar"
+25070 DATA"BRUIKBARE stukjes blijven staan"
+25080 DATA"Kies een letter: "
+25090 DATA"Veel succes."
+25100 DATA".T1"
+25110 DATA"DE VERTAKTE GEPROGRAMMEERDE INSTRUKTIE","-"
+25120 DATA"Je kunt nu, ZONDER kennis van een"
+25130 DATA"programmeertaal, een instruktie maken.","  "
+25140 DATA" Zo'n instruktie bevat:","  -Uitleg"
+25150 DATA"  -Vragen","  -Antwoorden","  "
+25160 DATA" De HELE instruktie moet in DATA-regels en"
+25170 DATA"tussen aanhalingstekens! (In deze uitleg"
+25180 DATA"vervangen door accenttekentjes.)","  "
+25190 DATA"In antwoorden wordt gezocht naar goede"
+25200 DATA"delen. Dat helpt je bij het zoeken naar"
+25210 DATA"het juiste antwoord."," Met een vraagteken als"
+25220 DATA"antwoord roep je de uitleg terug.","  "
+25230 DATA"Voor verbeteren hebben we andere toetsen"
+25240 DATA"gekozen:"
+25250 DATA"-","=% = uitwissen","=& = tussenvoegen"
+25260 DATA"=# = naar links","=$ = naar rechts"
+25270 DATA"-"," Noteer dit NU!","  "
+25280 DATA".V1"
+25290 DATA"De laatste DATA-regel moet een losse PUNT"
+25300 DATA"bevatten. Typ die DATA-regel eens na:"," "
+25310 DATA"=  25999 DATA'.'"
+25320 DATA".C1"
+25330 DATA"25999 DATA'.'"
+25340 DATA"T2","V2"
+25350 DATA".T2"
+25360 DATA"Omdat een DATA-regel niet meer dan 60 tekens"
+25370 DATA"lang mag zijn, bestaat een blokje tekst vaak"
+25380 DATA"uit meerdere DATA-regels."
+25390 DATA" Voor elk BLOKJE komt een code waarmee de"
+25400 DATA"computer het opzoekt.","  "," Voorbeeld:"
+25410 DATA"  -Uitleg 1 krijgt de code: '.T1'"
+25420 DATA"  -De code '.V7' komt voor vraag 7"," "
+25430 DATA"De punt hoort erbij!"
+25440 DATA".V2"
+25450 DATA"=25230 DATA '.T4','Tekst'"
+25460 DATA"=25240 DATA '.V11','Vraag'"
+25470 DATA"Hier wordt aangeduid:"
+25480 DATA".M2"
+25490 DATA"vraag 4","T201","V2"
+25500 DATA"vraag 11","T3","V3"
+25510 DATA".T201"
+25520 DATA"Voor vragen staat de code '.V'!"
+25530 DATA".T3"
+25540 DATA"Na elke vraag komen de alternatieven."
+25550 DATA"Deze 'mogelijke antwoorden' worden NIET"
+25560 DATA"afgedrukt bij een open vraag (code '.C')"
+25570 DATA"maar WEL bij een meerkeuzevraag (code '.M')."
+25580 DATA".V3"
+25590 DATA"=25700 DATA '.V88','Vraag'"
+25600 DATA"=25720 DATA '.M88','.....'"
+25620 DATA" De alternatieven, die na de code '.M88'"
+25630 DATA"volgen worden"
+25640 DATA".M3"
+25650 DATA"afgedrukt.","T4","V4"
+25660 DATA"niet afgedrukt.","T301","V3"
+25670 DATA".T301"
+25680 DATA"Code '.M' is een afkorting van 'Meerkeuze'."
+25690 DATA" Bij een meerkeuze vraag kies je uit"
+25700 DATA"alternatieven die op het scherm staan."
+25710 DATA".T4"
+25720 DATA"De uitleg en de vraag mogen op een willekeurige"
+25730 DATA"plaats staan."," De ALTERNATIEVEN moeten"
+25740 DATA"DIREKT op de VRAAG volgen!"
+25750 DATA".V4"
+25760 DATA"=25900 DATA '.T5','Uitleg'"
+25770 DATA"=25910 DATA '.V3','Vraag'"
+25780 DATA"=25920 DATA '.C7','Alternatief 1'"
+25800 DATA"Welke code is fout?"
+25810 DATA".M4"
+25820 DATA"'.T5'","T401","V4"
+25830 DATA"'.V3'","T402","V4"
+25840 DATA"'.C7'","T5","V5"
+25850 DATA".T401"
+25860 DATA"ALLEEN de alternatieven moeten direkt na de"
+25870 DATA"vraag staan!"
+25880 DATA".T402"
+25890 DATA"Vragen behoeven NIET op de bijbehorende uitleg"
+25900 DATA"te volgen!"
+25910 DATA".T5"
+25920 DATA"Of je scherm nu 20 of 120 tekens op een regel"
+25930 DATA"kan hebben, de tekst wordt automatisch netjes"
+25940 DATA"afgedrukt.","  "
+25950 DATA"Enkele eenvoudige regels:","-"
+25960 DATA" -Na 1 losse spatie wordt"
+25970 DATA"een extra regel open gelaten."
+25980 DATA" -Een dubbele losse spatie geeft een nieuwe"
+25990 DATA"pagina aan."
+26000 DATA" -Na een los streepje wordt de vorige"
+26010 DATA"regel onderstreept.","  "
+26020 DATA" -Een spatie vooraan de regel zorgt voor een"
+26030 DATA"nieuwe alinea.","De volgende spaties laten de"
+26040 DATA"regel inspringen.","  ","Voor exacte weergave"
+26050 DATA"van tekst kan ook zonder"
+26060 DATA"extra spaties of lege regels afgedrukt worden."
+26070 DATA" Zo'n tekst moet met een '=' beginnen. Daarmee"
+26080 DATA"kan je ook eenvoudige tekeningen maken.","  "
+26090 DATA"=     !"
+26100 DATA"=    /!"
+26110 DATA"=   //!"
+26120 DATA"=  ///!"
+26130 DATA"= ----+"
+26140 DATA"=  ====='"
+26150 DATA"  "
+26160 DATA"Welke vraag en uitleg moeten volgen, staat"
+26170 DATA"ACHTER elk alternatief."
+26180 DATA" Er kan zowel vooruit als achteruit"
+26190 DATA"gesprongen worden."
+26200 DATA".V5"
+26210 DATA"=26010 DATA '.M8'"
+26220 DATA"=26020 DATA 'aap','T9','V9'"
+26230 DATA"=26030 DATA 'noot','T4','V8'"
+26240 DATA"=26040 DATA 'mies','T12','V7'"
+26250 DATA" Ook zonder de vraag kun je afleiden"
+26260 DATA"wat het goede alternatief is."
+26270 DATA".M5"
+26280 DATA"aap" ,"T6","V6"
+26290 DATA"noot","T501","V5"
+26300 DATA"mies","T501","V5"
+26310 DATA".T501"
+26320 DATA"Na het juiste alternatief staat de code voor de:"
+26330 DATA" -volgende uitleg"," -volgende vraag"
+26370 DATA".T6"
+26380 DATA"Bij een open vraag typ je het antwoord geheel"
+26390 DATA"in."," Zo'n antwoord is moeilijk te kontroleren."
+26410 DATA" Vaak wordt een goed bedoeld antwoord"
+26420 DATA"fout gerekend."," Maar dit"
+26430 DATA"programma is erg tolerant!"
+26440 DATA".V6"
+26450 DATA"Welk van de antwoorden, op de vraag 'hoeveel"
+26460 DATA"is 1 plus 1', wordt GEHEEL fout gerekend?"
+26470 DATA".M6"
+26480 DATA"   TwE","T601","V6"
+26490 DATA"dat is 2","T602","V6"
+26500 DATA"acht gedeeld door vier","T7","V7"
+26510 DATA".T601","HoOfD- eN kLeInE LeTtErS MoGeN dOoR"
+26520 DATA"eLkAaR!"
+26530 DATA" Op de spatiebalk leunen geeft"
+26540 DATA"extra spaties! Bij dit programma kunnen"
+26550 DATA"vooraan in het antwoord geen spaties komen."
+26560 DATA" En is een letter vergeten nu zo erg?"
+26570 DATA".T602","Het antwoord is te lang maar het"
+26580 DATA"goede alternatief zit er wel in."
+26590 DATA".T7"
+26600 DATA"Probeer bij de volgende vraag maar eens"
+26610 DATA"wat de computer nog slikt."
+26620 DATA".V7","Wat is de hoofdstad van Noord-Holland?"
+26630 DATA".C7"
+26640 DATA"HAARLEM","T8","V8"
+26650 DATA"AMSTERDAM","T701","V7"
+26660 DATA".T701"
+26670 DATA"Amsterdam is de hoofdstad van Nederland!"
+26680 DATA".T8"
+26690 DATA".V8"
+26700 DATA"Wat wil je nu?"
+26710 DATA".M8"
+26720 DATA"Alles herhalen.","T1","V1"
+26730 DATA"Een instruktie maken.","T9","V9"
+26740 DATA".T9"
+26750 DATA" Om vertaling gemakkelijk te maken staat ALLE"
+26760 DATA"tekst, dus ook de opmerkingen, in DATA."
+26770 DATA" Begin NIET met ALLE regels boven '.T1'"
+26780 DATA"te wissen maar verander eerst eens een vraag."
+26790 DATA" Oh ja, verwijzen naar een NIET bestaande code"
+26800 DATA"laat het programma stoppen."
+26810 DATA".V9"
+26820 DATA"Dit nog eens herhalen?"
+26830 DATA".M9","ja","T9","V9"
+26840 DATA"nee","T99","V99"
+29999 DATA"."
+30000 REM*  'INSTRUKTEUR'  *
+30010 REM*      DOOR:      *
+30020 REM* RIEN VAN DONGEN *
+30030 REM* (C)  07-05-1984 *
+30040 REM* TEL. 079-410625 *
+30050 REM
+30060 REMCOPYRIGHT
+30070 REMNOS HILVERSUM

@@ -1,0 +1,595 @@
+
+1000 A=100:GOTO20:REM FORMULES EN REAKTIES
+1010 REM == HOOFDPROGRAMMA =================================
+1020 GOSUB100
+1030 PRINT"        FORMULES EN REAKTIES"
+1040 PRINT:PRINT"(Druk steeds als je verder wilt, op"
+1050 PRINT:PRINT"RETURN)."
+1060 PRINT:PRINT:PRINT"Dit programma bevat:"
+1070 PRINT:PRINT" 1. Uitleg formules."
+1080 PRINT:PRINT" 2. Oefeningen formules."
+1090 PRINT:PRINT" 3. Uitleg reaktievergelijkingen."
+1100 PRINT:PRINT" 4. Oefeningen kloppend maken."
+1110 PRINT:PRINT" 5. Oefeningen reaktievergelijkingen."
+1120 PRINT:PRINT" 6. Einde."
+1130 PRINT:PRINT"Toets je keuze in (1-6)";
+1140 GOSUB210:AQ=ASC(IN$)
+1150 IF(AQ<49) OR(AQ>54) THEN1140
+1160 K=VAL(IN$)
+1170 ONK GOTO1500,2350,3000,4290,5620,9999
+1500 REM --UITLEG FORMULES-----------------------------
+1510 GOSUB100
+1520 PRINT:PRINT"HET AFLEIDEN VAN FORMULES"
+1530 PRINT:PRINT
+1540 PRINT"Bij het afleiden van de formule van een"
+1550 PRINT:PRINT"samengestelde stof heb je de valenties"
+1560 PRINT:PRINT"nodig."
+1570 PRINT:PRINT"We zullen de theorie met enkele voor-"
+1580 PRINT:PRINT"beelden bespreken."
+1590 GOSUB14000:REM **WACHTEN OP RETURN
+1600 GOSUB100
+1610 PRINT:PRINT"Voorbeeld 1."
+1620 PRINT
+1630 PRINT:PRINT"De formule van de samengestelde stof"
+1640 PRINT:PRINT"van magnesium en zuurstof."
+1650 PRINT:PRINT:PRINT"De valentie van magnesium is 2+."
+1660 PRINT:PRINT"De valentie van zuurstof is 2-."
+1670 PRINT:GOSUB14000
+1680 PRINT:PRINT"We moeten dus kombineren ";
+1690 I$="Mg2+":GOSUB17160:REM **AFDRUKKEN ION
+1700 PRINT" en ";
+1710 I$="O2-":GOSUB17160:PRINT"."
+1720 PRINT
+1730 GOSUB14000:PRINT
+1740 PRINT
+1750 PRINT"Voor elk ";:I$="Mg2+":GOSUB17160:PRINT"-ion ";
+1760 PRINT"is er een ";:I$="O2-"
+1770 GOSUB17160:PRINT"-ion"
+1780 PRINT:PRINT"nodig. Zo is de totale lading 0"
+1790 PRINT:PRINT"De formule is dan MgO."
+1800 GOSUB14000:GOSUB100
+1810 PRINT:PRINT"Het positieve ion staat altijd voorop"
+1820 PRINT:PRINT"in de formule."
+1830 PRINT:PRINT"De ladingen laten we weg in de formule."
+1840 GOSUB14000:GOSUB100
+1850 PRINT"Voorbeeld 2."
+1860 PRINT
+1870 PRINT:PRINT"De formule van de samengestelde stof"
+1880 PRINT:PRINT"van aluminium en chloor."
+1890 GOSUB14000
+1900 PRINT:PRINT:PRINT"De valentie van aluminium is 3+."
+1910 PRINT:PRINT"De valentie van chloor in kombinatie"
+1920 PRINT:PRINT"met een positief ion is 1-."
+1930 PRINT:GOSUB14000
+1940 PRINT:PRINT"We moeten ";
+1950 I$="Al3+":GOSUB17160:PRINT" en ";
+1960 I$="Cl-":GOSUB17160:PRINT" zo kombineren,"
+1970 PRINT:PRINT"dat de totale lading 0 is."
+1980 PRINT:GOSUB14000
+1990 PRINT:PRINT"Voor een ";:I$="Al3+":GOSUB17160
+2000 PRINT"ion zijn er drie ";:I$="Cl-"
+2010 GOSUB17160
+2020 PRINT"ionen"
+2030 PRINT:PRINT"nodig.";
+2040 GOSUB14000
+2050 PRINT" De formule is dus ";
+2060 F$="AlCl3":GOSUB17000:PRINT".";
+2070 GOSUB14000
+2080 GOSUB100
+2090 PRINT:PRINT"Voorbeeld 3."
+2100 PRINT:PRINT"De formule van de samengestelde stof"
+2110 PRINT:PRINT"van aluminium en zuurstof."
+2120 PRINT
+2130 PRINT:PRINT"We moeten nu kombineren ";
+2140 I$="Al3+":GOSUB17160:PRINT" en ";
+2150 I$="O2-":GOSUB17160:PRINT"."
+2160 PRINT:GOSUB14000
+2170 PRINT:PRINT"Als we twee ";:I$="Al3+":GOSUB17160
+2180 PRINT" en drie ";:I$="O2-":GOSUB17160
+2190 PRINT"ionen nemen"
+2200 PRINT:PRINT"hebben we 6+ en 6- ladingen."
+2210 PRINT:PRINT"De totale lading is dan precies 0"
+2220 GOSUB14000
+2230 PRINT:PRINT"De formule is dus ";
+2240 F$="Al2O3":GOSUB17000:PRINT"."
+2250 GOSUB14000
+2260 GOSUB100
+2270 PRINT:PRINT"Nog een opmerking:"
+2280 PRINT:PRINT"Een formule moet zo eenvoudig mogelijk"
+2290 PRINT:PRINT"zijn."
+2300 PRINT
+2310 F$="Pb2O4":GOSUB17000
+2320 PRINT" bijvoorbeeld moet worden ";:F$="PbO2":GOSUB17000
+2330 PRINT".":PRINT
+2340 GOSUB14000
+2350 GOSUB10000:REM ** TYPE-INSTRUKTIE FORMULES
+2360 GOSUB100
+2370 PRINT:PRINT"Dan krijg je nu zes opgaven."
+2380 PRINT:PRINT"Bij elke opgave krijg je twee kansen."
+2390 PRINT:PRINT"SUCCES !!!!!!"
+2400 GOSUB14000
+2500 REM --OEFENING FORMULES----------------------------
+2510 AO=0:REM **AANTAL OPGAVEN
+2520 AG=0:REM **AANTAL GOEDE
+2530 READM$
+2540 AP=0:REM **AANTAL POGINGEN
+2550 IFM$="." THEN2780
+2560 READN$,P$
+2570 AO=AO+1
+2580 GOSUB100
+2590 PRINT:PRINT"Stel de formule op van de samengestelde"
+2600 PRINT:PRINT"stof van: ";
+2610 PRINTM$;" en ";N$
+2620 VE=7:HO=0:GOSUB110
+2630 PRINT" ........";
+2640 HO=2:GOSUB110
+2650 GOSUB19000:REM**INVOER FORMULE
+2660 IF(F$="STOP") OR(F$="stop") THEN9999
+2670 AP=AP+1
+2680 PRINT:PRINT:PRINT
+2690 IFF$<>P$ THEN2710
+2700 PRINT"Goed.":AG=AG+1:GOSUB14000:GOTO2530
+2710 IFAP=2 THEN2740
+2720 PRINT"Niet goed, probeer het nog een keer."
+2730 GOSUB14000:GOTO2580
+2740 PRINT"Het juiste antwoord is: ";
+2750 F$=P$:GOSUB17000:REM **AFDRUKKEN FORMULE
+2760 GOSUB14000
+2770 GOTO2530
+2780 PRINT:PRINT
+2790 PRINT"Van de 6 opgaven heb je er ";AG;" goed."
+2800 IFAO=12 THEN2840
+2810 PRINT:PRINT"Wil je er nog zes maken?"
+2820 GOSUB19500
+2830 IFIN$="J" THEN2530
+2840 IFAG>3 THEN2870
+2850 PRINT:PRINT"Vraag je leraar om hulp."
+2860 GOSUB14000:GOTO9999
+2870 GOSUB100
+2880 PRINT:PRINT"Wat wil je nu gaan doen ?"
+2890 GOTO1070
+3000 REM ---REAKTIES 1 UITLEG-------------------------------
+3010 GOSUB100
+3020 PRINT"       REAKTIEVERGELIJKINGEN"
+3030 PRINT:PRINT"Een reaktievergelijking geeft weer,"
+3040 PRINT
+3050 PRINT"welke stof(fen) reageren en welke"
+3060 PRINT:PRINT"stof(fen) ontstaan."
+3070 GOSUB14000
+3080 PRINT:PRINT"Eerst schrijven we de stof(fen) op, die"
+3090 PRINT:PRINT"reageren, dan een pijl ---> en dan de"
+3100 PRINT:PRINT"stof(fen), die ontstaan.":GOSUB14000
+3110 PRINT:PRINT:PRINT"Een verbindingsreaktie:"
+3120 PRINT:PRINT"   stof 1  +  stof 2   --->  stof 3"
+3130 PRINT:PRINT:PRINT"Een ontledingsreaktie:"
+3140 PRINT:PRINT"   stof 1   --->  stof 2  +  stof 3"
+3150 GOSUB14000
+3160 GOSUB100
+3170 PRINT"Voorbeeld 1"
+3180 PRINT:PRINT"De reaktie tussen magnesium en zwavel."
+3190 PRINT:PRINT:PRINT"Magnesium en zwavel reageren met "
+3200 PRINT:PRINT"elkaar."
+3210 GOSUB14000
+3220 PRINT:PRINT"Dus voor de pijl zetten we Mg en S."
+3230 PRINT:PRINT"  Mg      +       S     --->  ........ "
+3240 GOSUB14000
+3250 PRINT:PRINT"De formule van de samengestelde stof "
+3260 PRINT:PRINT"van magnesium en zwavel is MgS."
+3270 PRINT:PRINT"Na de pijl komt dus MgS."
+3280 GOSUB14000
+3290 PRINT:PRINT"De reaktievergelijking wordt dan:"
+3300 PRINT:PRINT"  Mg      +         S   --->    MgS"
+3310 GOSUB14000
+3320 GOSUB100
+3330 PRINT:PRINT"Voorbeeld 2"
+3340 PRINT:PRINT"De reaktie tussen kalium en chloor"
+3350 PRINT:PRINT"De formules van kalium en chloor zijn "
+3360 PRINT:PRINT"K en ";
+3370 F$="Cl2":GOSUB17000
+3380 PRINT".":GOSUB14000
+3390 PRINT:PRINT"We kunnen dus opschrijven:"
+3400 P$="K":Q$="Cl2":R$=""
+3410 GOSUB18000:REM **AFDRUKKEN VERGELIJKING
+3420 PRINT:GOSUB14000
+3430 PRINT"De formule van de stof die ontstaat"
+3440 PRINT:PRINT"is KCl."
+3450 GOSUB14000
+3460 PRINT:PRINT"De reaktievergelijking wordt:"
+3470 R$="KCl"
+3480 PRINT
+3490 GOSUB18000
+3500 GOSUB14000
+3510 GOSUB100
+3520 PRINT"We hebben dus:"
+3530 GOSUB18000
+3540 GOSUB14000
+3550 PRINT:PRINT"Nu moeten we de vergelijking nog "
+3560 PRINT:PRINT"kloppend maken. Links van de pijl staan"
+3570 PRINT:PRINT"twee Cl-atomen, rechts maar een."
+3580 GOSUB14000
+3590 PRINT:PRINT"We kunnen de aantallen Cl-atomen links"
+3600 PRINT:PRINT"en rechts gelijk maken door voor KCl"
+3610 PRINT:PRINT"een 2 te zetten.":GOSUB14000
+3620 PRINT:PRINT"Druk maar op RETURN, dan gebeurt het."
+3630 PRINT
+3640 GOSUB120:V=VE
+3650 GOSUB14000
+3660 VE=3:HO=30:GOSUB110:PRINT"2"
+3670 VE=V:HO=0:GOSUB110
+3680 GOSUB14000
+3690 PRINT"Maar nu kloppen de aantallen K-atomen"
+3700 PRINT:PRINT"niet. Dat kunnen we verhelpen door voor"
+3710 PRINT:PRINT"K een 2 te zetten.Druk maar op RETURN.";
+3720 GOSUB120:V=VE
+3730 GOSUB14000
+3740 VE=3:HO=1:GOSUB110:PRINT"2"
+3750 VE=V:HO=0:GOSUB110
+3760 GOSUB14000
+3770 GOSUB100
+3780 PRINT:PRINT"Voorbeeld 3."
+3790 PRINT:PRINT"De reaktie tussen aluminium en chloor."
+3800 GOSUB14000
+3810 PRINT:PRINT"De formules van aluminium en chloor"
+3820 PRINT:PRINT"zijn Al en ";
+3830 F$="Cl2":GOSUB17000:PRINT".";
+3840 GOSUB14000
+3850 PRINT" Er ontstaat ";
+3860 F$="AlCl3":GOSUB17000
+3870 PRINT".":GOSUB14000
+3880 PRINT:PRINT"We kunnen dus opschrijven:";
+3890 P$="Al":Q$="Cl2":R$="AlCl3"
+3900 GOSUB18000:GOSUB120:V1=VE-1
+3910 GOSUB14000
+3920 PRINT:PRINT"Voor de pijl staan nu 2 Cl-atomen en"
+3930 PRINT:PRINT"na de pijl drie.";:GOSUB14000
+3940 PRINT" We kunnen de aantallen"
+3950 PRINT:PRINT"gelijk maken door voor ";
+3960 F$="Cl2":GOSUB17000
+3970 PRINT" een 3 te "
+3980 PRINT:PRINT"zetten en voor ";
+3990 F$="AlCl3":GOSUB17000
+4000 PRINT" een 2.";:GOSUB14000:PRINT" Dan hebben"
+4010 PRINT:PRINT"we links en rechts zes Cl-atomen."
+4020 PRINT:PRINT"Druk 2x op RETURN, dan gebeurt het.";
+4030 GOSUB120:V=VE
+4040 GOSUB14000
+4050 VE=V1:HO=14:GOSUB110:PRINT"3"
+4060 GOSUB14000
+4070 HO=30:GOSUB110:PRINT"2"
+4080 VE=V:HO=0:GOSUB110
+4090 GOSUB14000
+4100 GOSUB100
+4110 PRINT"We hebben dus:"
+4120 PRINT
+4130 Q$="3Cl2":R$="2AlCl3"
+4140 GOSUB18000:GOSUB120:V1=VE-1
+4150 GOSUB14000
+4160 PRINT:PRINT
+4170 PRINT"Nu kloppen de aantallen Al-atomen niet"
+4180 PRINT:PRINT"Dat kunnen we verhelpen,door voor Al"
+4190 PRINT:PRINT"een 2 te zetten."
+4200 PRINT:PRINT"Druk maar op RETURN,dan gebeurt het."
+4210 GOSUB120:V=VE
+4220 GOSUB14000
+4230 VE=V1:HO=1:GOSUB110:PRINT"2"
+4240 VE=V:HO=0:GOSUB110
+4250 GOSUB14000
+4260 PRINT
+4270 PRINT"Hiermee is de vergelijking kloppend."
+4280 GOSUB14000
+4290 GOSUB100
+4300 PRINT"Voor we verder gaan, enige opmerkingen:"
+4310 PRINT
+4320 PRINT:PRINT"Bij de volgende opgaven moet je de "
+4330 PRINT:PRINT"reaktievergelijkingen kloppend maken."
+4340 PRINT:PRINT"Je moet voor elke stof een cijfer"
+4350 PRINT:PRINT"zetten. Dat gaat van voor naar achter."
+4360 PRINT:PRINT"Zodra je voor de eerste stof een cijfer"
+4370 PRINT:PRINT"hebt ingetikt, wacht ik bij de tweede."
+4380 GOSUB14000:GOSUB100
+4390 PRINT:PRINT"In plaats van 1 in te toetsen,kun je "
+4400 PRINT:PRINT"op RETURN drukken."
+4410 PRINT:PRINT"Schrijf je antwoorden eerst op."
+4420 PRINT:PRINT"Type een S in als je wilt ophouden."
+4430 PRINT:PRINT"Dan krijg je nu 6 opgaven."
+4440 PRINT:PRINT"Bij elke opgave krijg je twee kansen."
+4450 PRINT:PRINT"SUCCES !!!!!!!"
+4460 REM**DATA-POINTER NAAR JUISTE PLAATS
+4470 FORT=1 TO38:READM$:NEXTT
+4480 GOSUB14000
+4490 GOSUB270
+5000 REM --REAKTIES OEFENINGEN I ------------------------
+5010 AO=0:REM **AANTAL OPGAVEN
+5020 AG=0:REM **AANTAL GOEDE
+5030 READP$
+5040 AP=0:REM ** AANTAL POGINGEN
+5050 IFP$="." THEN5500
+5060 READQ$,R$
+5070 AO=AO+1
+5080 LP=LEN(P$):LQ=LEN(Q$):LR=LEN(R$)
+5090 K$=MID$(P$,2,LP-1)
+5100 L$=MID$(Q$,2,LQ-1)
+5110 M$=MID$(R$,2,LR-1)
+5120 GOSUB100:G=0:REM **AANTAL GOEDE ONDERDELEN
+5130 PRINT:PRINT"Maak de volgende reaktievergelijking"
+5140 PRINT:PRINT"kloppend:"
+5150 VE=6:HO=0:GOSUB110
+5160 PRINT" ........  +  ........  --->  ........"
+5170 HO=3:GOSUB110
+5180 F$=K$:GOSUB17000
+5190 HO=16:GOSUB110
+5200 F$=L$:GOSUB17000
+5210 HO=32:GOSUB110
+5220 F$=M$:GOSUB17000
+5230 AP=AP+1
+5240 HO=2:GOSUB110:GOSUB13000:REM **INVOER HOEVEELHEID
+5250 IF(H$="S") OR(H$="s") THEN9999
+5260 IFH$<>LEFT$(P$,1) THEN5280
+5270 G=G+1:A$="De eerste is goed":GOTO5290
+5280 A$="De eerste is fout"
+5290 HO=15:GOSUB110:GOSUB13000
+5300 IF(H$="S") OR(H$="s") THEN9999
+5310 IFH$<>LEFT$(Q$,1) THEN5330
+5320 G=G+1:B$="De tweede is goed":GOTO5340
+5330 B$="De tweede is fout"
+5340 HO=31:GOSUB110:GOSUB13000
+5350 IF(H$="S") OR(H$="s") THEN9999
+5360 IFH$<>LEFT$(R$,1) THEN5380
+5370 G=G+1:C$="De derde is goed":GOTO5390
+5380 C$="De derde is fout"
+5390 VE=10:HO=0:GOSUB110
+5400 IFG=3 THENPRINT"Helemaal goed":AG=AG+1:GOTO5490
+5410 IF(AP=2) AND(G<3) THEN5470
+5420 PRINT:PRINTA$
+5430 PRINT:PRINTB$
+5440 PRINT:PRINTC$
+5450 PRINT:PRINT"Probeer het nog een keer"
+5460 GOSUB14000:GOTO5120
+5470 PRINT:PRINT"Het juiste antwoord is:"
+5480 GOSUB18000
+5490 GOSUB14000:GOTO5030
+5500 PRINT:PRINT
+5510 PRINT"Van deze 6 opgaven heb je er ";AG;" goed"
+5520 IFAO=12 THEN5560
+5530 PRINT:PRINT"Wil je er nog zes maken (J of N)?"
+5540 GOSUB19500
+5550 IFIN$="J" THEN5020
+5560 IFAG>3 THEN5590
+5570 PRINT:PRINT"Vraag je leraar om hulp"
+5580 GOSUB14000:GOTO9999
+5590 GOSUB100
+5600 PRINT:PRINT"Wat wil je nu gaan doen?":GOTO1060
+5610 REM ** DATAPOINTER NAAR DATA REAKTIES II
+5620 RESTORE
+5630 FORT=1 TO76:READP$:NEXTT
+5640 GOSUB10000:REM**TYPE-INSTRUKTIE
+5650 GOSUB100:PRINT
+5660 PRINT:PRINT"Dan krijg je nu 6 opgaven, waarbij je"
+5670 PRINT:PRINT"alle formules en hoeveelheden zelf moet"
+5680 PRINT:PRINT"bedenken."
+5690 PRINT:PRINT"Schrijf je antwoord eerst op."
+5700 GOSUB14000
+6000 REM -- REAKTIES II OEFENINGEN -----------------------
+6010 GOSUB270
+6020 AO=0
+6030 AG=0:AO=0
+6040 READM$
+6050 IFM$="." THEN6380
+6060 AP=0
+6070 READN$,P$,Q$,R$
+6080 AO=AO+1
+6090 G=0:GOSUB100
+6100 PRINT:PRINT"Geef de vergelijking van de reaktie"
+6110 PRINT:PRINT"tussen ";M$;" en ";N$
+6120 VE=6:HO=0:GOSUB110
+6130 PRINT" ........  +  ........  --->  ........"
+6140 HO=2:GOSUB110
+6150 GOSUB19000:IF(F$="STOP") OR(F$="stop") THEN9999
+6160 IFF$=P$ THENG=G+1:A$="onderdeel 1 is goed":GOTO6180
+6170 A$="onderdeel 1 is fout"
+6180 HO=15:GOSUB110
+6190 GOSUB19000:IF(F$="STOP") OR(F$="stop") THEN9999
+6200 IFF$=Q$ THENG=G+1:B$="onderdeel 2 is goed":GOTO6220
+6210 B$="onderdeel 2 is fout"
+6220 HO=31:GOSUB110
+6230 GOSUB19000:AP=AP+1
+6240 IF(F$="STOP") OR(F$="stop") THEN9999
+6250 IFF$=R$ THENG=G+1:C$="onderdeel 3 is goed":GOTO6270
+6260 C$="onderdeel 3 is fout"
+6270 VE=10:HO=0:GOSUB110
+6280 IFG=3 THENPRINT"Helemaal goed":AG=AG+1:GOTO6370
+6290 IF(AP=2) AND(G<3) THEN6350
+6300 PRINT:PRINTA$
+6310 PRINT:PRINTB$
+6320 PRINT:PRINTC$
+6330 PRINT:PRINT"Probeer het nog een keer"
+6340 GOSUB14000:GOTO6090
+6350 PRINT:PRINT"Het juiste antwoord is "
+6360 GOSUB18000
+6370 GOSUB14000:GOTO6040
+6380 PRINT:PRINT
+6390 PRINT"Van de 6 opgaven heb je er ";AG;" goed"
+6400 IFAO=12 THEN6440
+6410 PRINT:PRINT"Wil je er nog 6 maken?"
+6420 GOSUB19500
+6430 IFIN$="J" THEN6030
+6440 IFAG>3 THEN9999
+6450 PRINT:PRINT"Vraag je leraar om hulp"
+6460 GOSUB14000:GOTO9999
+6470 PRINT:PRINT"Van de 6 opgaven heb je er ";AG;" goed"
+9998 REM ==EINDE HOOFDPROGRAMMA==========================
+9999 PRINT:PRINT:PRINT"Eind programma. Tot ziens.":END
+10000 REM --INSTRUKTIE INTOETSEN FORMULE -----------------
+10010 GOSUB100
+10020 PRINT:PRINT"Voor we aan de opgaven beginnen,"
+10030 PRINT:PRINT"een paar aanwijzingen:"
+10040 PRINT:PRINT
+10050 PRINT" 1. Toets * als de cursor naar beneden"
+10060 PRINT"    moet."
+10070 PRINT:PRINT" 2. Toets < als je een tikfout wilt"
+10080 PRINT"    verbeteren."
+10090 PRINT:PRINT" 3. Zet de SHIFT LOCK-toets 'uit'."
+10100 PRINT:PRINT" 4. Type STOP als je wilt ophouden."
+10110 PRINT:PRINT" 5. Druk na een formule op RETURN."
+10120 PRINT
+10130 PRINT:PRINT"Wil je een formule intoetsen om"
+10140 PRINT:PRINT"te proberen, J of N?"
+10150 GOSUB19500
+10160 IFIN$="N" THENRETURN
+10170 GOSUB100
+10180 PRINT:PRINT"Dus:"
+10190 PRINT:PRINT"cursor omlaag *"
+10200 PRINT:PRINT"tikfout verbeteren <"
+10210 PRINT:PRINT
+10220 PRINT"Probeer eens op de stipjes hieronder"
+10230 PRINT:PRINT"in te toetsen ";:F$="Al2O3":GOSUB17000
+10240 PRINT" of een andere":PRINT:PRINT"formule."
+10250 PRINT:PRINT:PRINT"Druk op RETURN, als je klaar bent."
+10260 PRINT:PRINT
+10270 PRINT" ........";
+10280 GOSUB120:V=VE:HO=2:GOSUB110
+10290 GOSUB19000
+10300 PRINT
+10310 PRINT:PRINT:PRINT"Wil je het nog eens proberen?"
+10320 GOSUB19500
+10330 IFIN$="N" THENRETURN
+10340 HO=0:VE=V:GOSUB110
+10350 FORT=1 TO5:PRINT"                                 "
+10360 NEXTT
+10370 VE=V:GOSUB110
+10380 GOTO10270
+10390 RETURN
+13000 REM --INVOER VAN STOFHOEVEELHEID (1 CIJFER)--------
+13010 GOSUB210
+13020 AQ=ASC(IN$)
+13030 IFAQ=13 THENH$="1":GOTO13070
+13040 IFIN$="S" THEN13060
+13050 IF(AQ<49) OR(AQ>57) THEN13010
+13060 H$=IN$:PRINTH$
+13070 RETURN
+14000 REM --WACHTEN OP RETURN---------------------------
+14010 GOSUB210:IFASC(IN$)<>13 THEN14010
+14020 RETURN
+17000 REM --AFDRUKKEN VAN FORMULES------------------------
+17010 GOSUB120:V=VE
+17020 L=LEN(F$)
+17030 FORT=1 TOL
+17040 H$=MID$(F$,T,1):IFH$="" THENAQ=0:GOTO17060
+17050 AQ=ASC(H$)
+17060 IFLEFT$(F$,1)=" " THENHO=HO+1:GOTO17130
+17070 IFH$="1" THEN17130
+17080 IFT=1 THEN17120
+17090 IF(AQ<48) OR(AQ>57) THEN17110
+17100 VE=V+1
+17110 IFH$="*" THEN17130
+17120 GOSUB110:PRINTH$;:VE=V:HO=HO+1
+17130 NEXTT
+17140 GOSUB110
+17150 RETURN
+17160 REM --AFDRUKKEN VAN IONEN--------------------------
+17170 GOSUB120:V=VE
+17180 L=LEN(I$)
+17190 FORT=1 TOL
+17200 H$=MID$(I$,T,1):AQ=ASC(H$)
+17210 IFT=1 THEN17240
+17220 IF(AQ<>43) AND(AQ<>45) THEN17225
+17222 GOTO17230
+17225 IF(AQ<48) OR(AQ>57) THEN17240
+17230 VE=V-1
+17240 GOSUB110:PRINTH$;:VE=V:HO=HO+1
+17250 NEXTT
+17260 GOSUB110
+17270 RETURN
+18000 REM -- AFDRUKKEN VAN VERGELIJKING-------------
+18010 PRINT
+18020 PRINT:PRINT" .......  +   ........  --->  ........";
+18030 GOSUB120:HO=2:GOSUB110
+18040 F$=P$:GOSUB17000
+18050 HO=15:GOSUB110
+18060 F$=Q$:GOSUB17000
+18070 HO=31:GOSUB110
+18080 F$=R$:GOSUB17000
+18090 PRINT
+18100 RETURN
+19000 REM -- INVOER VAN FORMULE -------------------------
+19010 F$="":V=VE:H=HO
+19020 GOSUB210:AQ=ASC(IN$)
+19030 IF(AQ=13) AND(F$<>"") THEN19160
+19040 IF(IN$<>"*") OR(F$="") THEN19060
+19050 F$=F$+IN$:GOSUB120:VE=V+1:GOSUB110:GOTO19020
+19060 IF(IN$<>"<") OR(F$="") THEN19100
+19070 VE=V+1:HO=H:GOSUB110:PRINT"        "
+19080 VE=V:GOSUB110:PRINT"......"
+19090 GOSUB110:GOTO19010
+19100 IF(AQ<48) OR((AQ>57) AND(AQ<65)) THEN19020
+19110 IF(AQ>122) OR((AQ>90) AND(AQ<97)) THEN19020
+19120 PRINTIN$;:F$=F$+IN$
+19130 IFLEN(F$)=8 THEN19160
+19140 VE=V:HO=HO+1:GOSUB110
+19150 GOTO19020
+19160 RETURN
+19500 REM --WACHTEN OP J OF N----------------------------
+19510 GOSUB210
+19520 IFIN$="j" THENIN$="J"
+19530 IFIN$="n" THENIN$="N"
+19540 IF(IN$<>"J") AND(IN$<>"N") THEN19510
+19550 RETURN
+19750 REM --WACHTEN ------------------------------------
+19760 FORFR=1 TO300*W
+19770 NEXTFR
+19780 RETURN
+25000 REM --DATA FORMULES----------------------------------
+25010 DATA"natrium","chloor","NaCl"
+25020 DATA"magnesium","broom","MgBr*2"
+25030 DATA"aluminium","zwavel","Al*2S*3"
+25040 DATA"ijzer(3+)","zuurstof","Fe*2O*3"
+25050 DATA"kalium","zwavel","K*2S"
+25060 DATA"natrium","stikstof","Na*3N"
+25070 DATA"."
+25080 DATA"lood(2+)","jodium","PbI*2"
+25090 DATA"zilver","zwavel","Ag*2S"
+25100 DATA"borium","zuurstof","B*2O*3"
+25110 DATA"kwik(1+)","zuurstof","Hg*2O"
+25120 DATA"stikstof(5+)","zuurstof","N*2O*5"
+25130 DATA"tin(4+)","chloor","SnCl*4","."
+25140 REM ---DATA REAKTIES I -----------------------------
+25150 DATA"2K","1S","1K2S"
+25160 DATA"2Na","1Cl2","2NaCl"
+25170 DATA"4Na","1O2","2Na2O"
+25180 DATA"4Al","3O2","2Al2O3"
+25190 DATA"1H2","1Cl2","2HCl"
+25200 DATA"2Al","3Br2","2AlBr3"
+25210 DATA"."
+25220 DATA"1N2","3H2","2NH3"
+25230 DATA"2H2","1O2","2H2O"
+25240 DATA"4P","5O2","2P2O5"
+25250 DATA"2Hg","1Cl2","2HgCl"
+25260 DATA"2SO2","1O2","2SO2"
+25270 DATA"4Mn","7O2","2Mn2O7"
+25280 DATA"."
+25290 REM --DATA REAKTIES II----------------------------
+25300 DATA"natrium","chloor","2Na","Cl*2","2NaCl"
+25310 DATA"calcium","zuurstof","2Ca","O*2","2CaO"
+25320 DATA"magnesium","broom","Mg","Br*2","MgBr*2"
+25330 DATA"kalium","zuurstof","4K","O*2","2K*2O"
+25340 DATA"zilver","chloor","2Ag","Cl*2","2AgCl"
+25350 DATA"aluminium","fluor","2Al","3F*2","2AlF*3","."
+25360 DATA"zink","zuurstof","2Zn","O*2","2ZnO"
+25370 DATA"lithium","broom","2Li","Br*2","2LiBr"
+25380 DATA"kwik","zuurstof tot kwik(i)oxide"
+25381 DATA"4Hg","O*2","2Hg*2O"
+25390 DATA"chroom","zwavel tot chroom(iii)oxide"
+25391 DATA"2Cr","3S","Cr*2S*3"
+25400 DATA"waterstof","broom","H*2","Br*2","2HBr"
+25410 DATA"koolstof","zuurstof tot koolmonoxide"
+25411 DATA"2C","O*2","2CO"
+25420 DATA"."
+30000 REM ** EEN PROGRAMMA VAN J.H.JANSEN
+30010 REM ** GRAFISCHE MTS AMSTERDAM
+30020 REM ** CONTACTWEG 36 
+30030 REM ** 1014 AN AMSTERDAM
+30040 REM ** 24-1-1984
+30050 REM ** GEMAAKT OP EEN EXIDY SORCERER
+30060 REM ** IN BASICODE-2 BASIC
+30070 REM
+30080 REM COPYRIGHT NOS HILVERSUM

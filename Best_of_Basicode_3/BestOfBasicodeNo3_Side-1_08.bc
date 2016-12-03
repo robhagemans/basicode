@@ -1,0 +1,502 @@
+
+1000 A=2000:GOTO20:REM*BEREKENEN VAN OPPERV.EN INHOUD
+1010 GOSUB100
+1015 IP=3.1415926535
+1020 PRINT:PRINT"Dit programma berekent de oppervlakte"
+1030 PRINT"van driehoeken, vierkanten enz."
+1040 PRINT:PRINT"Dit programma berekent ook de inhoud"
+1050 PRINT"van kubussen, bol enz."
+1060 PRINT:PRINT"Als je de (O) drukt krijg je de lijst"
+1070 PRINT"van alle figuren waar je de oppervlakte"
+1080 PRINT"van kunt berekenen."
+1090 PRINT:PRINT"Als je de (I) drukt krijg je de lijst"
+1100 PRINT"van alle figuren waar je de inhoud van"
+1110 PRINT"kunt berekenen."
+1120 PRINT:PRINT"Voor vervolg spatiebalk."
+1130 GOSUB210:IFIN$<>" " THEN1130
+1140 GOSUB100
+1150 PRINT:PRINT"Dit programma is zo gemaakt dat waar"
+1160 PRINT"het mogelijk is geen 'return' of "
+1170 PRINT"'enter' hoeft te drukken"
+1180 PRINT:PRINT"Waar gegevens ingevoerd worden, moet"
+1190 PRINT"wel de 'return' of 'enter' gedrukt"
+1200 PRINT"worden."
+1210 PRINT:PRINT"Je kunt nu kiezen uit (O/I)"
+1220 GOSUB9000
+1230 IFIN$="o" THEN1260
+1240 IFIN$="i" THEN4500
+1250 GOTO1210
+1260 GOSUB100
+1270 PRINT" Waar wil je de oppervlakte van weten ?"
+1280 PRINT:PRINT" A=driehoek      B=vierkant"
+1290 PRINT" C=rechthoek     D=parallelogram"
+1300 PRINT" E=trapezium     F=regelmatige n-hoek"
+1310 PRINT" G=cirkel        H=cirkelsektor"
+1320 PRINT" I=ellips        J=cirkelsegment"
+1330 PRINT" K=kubus         L=rechthoekige blok"
+1360 PRINT" M=kegel         N=afgeknotte kegel"
+1370 PRINT" O=cylinder      P=bolsector"
+1380 PRINT" Q=bol           R=bolsegment"
+1385 A=0:B=0:C=0:D=0:E=0:F=0:G=0:H=0:I=0
+1390 PRINT:PRINT" Je kiest voor ?"
+1400 GOSUB9000
+1410 IFIN$="a" THEN1520:REM DRIEHOEK
+1415 IFIN$="b" THEN1660:REM VIERKANT
+1420 IFIN$="c" THEN1760:REM RECHTHOEK
+1425 IFIN$="d" THEN1900:REM PARALLELOGR.
+1430 IFIN$="e" THEN2040:REM TRAPEZIUM
+1435 IFIN$="f" THEN2240:REM REGEL.N-HOEK
+1440 IFIN$="g" THEN2430:REM CIRKEL
+1445 IFIN$="h" THEN2530:REM CIRKELSEK.
+1450 IFIN$="i" THEN2980:REM ELIPS
+1455 IFIN$="j" THEN3120:REM CIRKELSEG.
+1460 IFIN$="k" THEN3370:REM KUBUS
+1465 IFIN$="l" THEN3460:REM RECHTH.BLOK
+1490 IFIN$="m" THEN3620:REM KEGEL
+1495 IFIN$="n" THEN3760:REM AFGEK.KEGEL
+1500 IFIN$="o" THEN3930:REM CYLINDER
+1505 IFIN$="p" THEN4070:REM BOLSEKTOR
+1510 IFIN$="q" THEN4260:REM BOL
+1515 IFIN$="r" THEN4360:REM BOLSEGMENT
+1520 GOSUB100
+1530 PRINT:PRINT" Driehoek"
+1540 PRINT:PRINT" Geef de lengte van de basis in cm."
+1550 INPUTB:IFB<=0 THEN1520
+1560 PRINT:PRINT" Geef de hoogte van de driehoek lood-"
+1570 PRINT" recht op de basis in cm."
+1580 INPUTC:IFC<=0 THEN1520
+1590 D=B/2:E=D*C
+1600 GOSUB100
+1610 PRINT:PRINT" Driehoek"
+1620 PRINT:PRINT" De basis is";B;"cm lang."
+1630 PRINT:PRINT" De hoogte is";C;"cm."
+1640 PRINT:PRINT" De oppervlakte is";E;"cm2."
+1650 GOTO5600
+1660 GOSUB100
+1670 PRINT:PRINT" Vierkant"
+1680 PRINT:PRINT" Geef de lengte van een zijde in cm."
+1690 INPUTB:IFB<=0 THEN1660
+1700 C=B*B
+1710 GOSUB100
+1720 PRINT:PRINT" Vierkant"
+1730 PRINT:PRINT" De lengte van een zijde is";B;"cm."
+1740 PRINT:PRINT" De oppervlakte is";C;"cm2."
+1750 GOTO5600
+1760 GOSUB100
+1770 PRINT:PRINT" Rechthoek"
+1780 PRINT:PRINT" Geef de lengte van de lange zijde in cm"
+1790 INPUTB:IFB<=0 THEN1760
+1800 PRINT:PRINT"Geef de lengte van de korte zijde in cm"
+1810 INPUTC:IFC<=0 THEN1760
+1820 IFB<C THEN1760
+1830 D=B*C
+1840 GOSUB100
+1850 PRINT:PRINT" Rechthoek"
+1860 PRINT:PRINT" De langste zijde is";B;"cm."
+1870 PRINT:PRINT" De kortste zijde is";C;"cm."
+1880 PRINT:PRINT" De oppervlakte is";D;"cm2."
+1890 GOTO5600
+1900 GOSUB100
+1910 PRINT:PRINT" Parallelogram"
+1920 PRINT:PRINT" Geef de lengte van de basis in cm."
+1930 INPUTB:IFB<=0 THEN1900
+1940 PRINT:PRINT" Geef de hoogte loodrecht op de basis"
+1950 PRINT" in cm."
+1960 INPUTC:IFC<=0 THEN1900
+1970 D=B*C
+1980 GOSUB100
+1990 PRINT:PRINT" Parallelogram"
+2000 PRINT:PRINT" De lengte van de basis is";B;"cm."
+2010 PRINT:PRINT" De hoogte is";C;"cm."
+2020 PRINT:PRINT" De oppervlakte is";D;"cm2."
+2030 GOTO5600
+2040 GOSUB100
+2050 PRINT:PRINT" Trapezium"
+2060 PRINT:PRINT" Geef de lengte van de langste evenwij-"
+2070 PRINT" dig lopende zijde in cm."
+2080 INPUTB:IFB<=0 THEN2040
+2090 PRINT:PRINT" Geef de lengte van de kortste evenwij-"
+2100 PRINT" dig lopende zijde in cm."
+2110 INPUTC:IFC<=0 THEN2040
+2120 IFB<C THEN2040
+2130 PRINT:PRINT" Geef de hoogte loodrecht tussen twee"
+2140 PRINT" evenwijdig lopende zijden in cm."
+2150 INPUTD:IFD<=0 THEN2040
+2160 E=.5*(B+C)*D
+2170 GOSUB100
+2180 PRINT:PRINT" Trapezium"
+2190 PRINT:PRINT" De lange zijde is";B;"cm."
+2200 PRINT:PRINT" De korte zijde is";C;"cm."
+2210 PRINT:PRINT" De hoogte is";D;"cm."
+2220 PRINT:PRINT" De oppervlakte is";E;"cm2."
+2230 GOTO5600
+2240 GOSUB100
+2250 PRINT:PRINT" Regelmatige n-hoek"
+2260 PRINT:PRINT" Het aantal hoeken mag niet minder als"
+2270 PRINT" 3 zijn."
+2280 PRINT:PRINT" Geef het aantal hoeken."
+2290 INPUTB:IFB<3 THEN2240
+2300 PRINT:PRINT" Geef de lengte van een zijde in cm."
+2310 INPUTC:IFC<=0 THEN2240
+2320 PRINT:PRINT" Geef de afstand loodrecht op een zijde"
+2330 PRINT" tot het middelpunt (zwaartepunt) in cm."
+2340 INPUTD:IFD<=0 THEN2240
+2350 E=C/2:F=E*D*B
+2360 GOSUB100
+2370 PRINT:PRINT" Regelmatige n-hoek"
+2380 PRINT:PRINT" Het aantal hoeken is";B;"."
+2390 PRINT:PRINT" De lengte van een zijde is";C;"cm."
+2400 PRINT:PRINT" De afstand tot het middelpunt is";D;"cm."
+2410 PRINT:PRINT" De oppervlakte is";F;"cm2."
+2420 GOTO5600
+2430 GOSUB100
+2440 PRINT:PRINT" Cirkel"
+2450 PRINT:PRINT" Geef de straal in cm."
+2460 INPUTB:IFB<=0 THEN2430
+2470 C=IP:D=B*B*C
+2480 GOSUB100
+2490 PRINT:PRINT" Cirkel"
+2500 PRINT:PRINT" De straal is";B;"cm."
+2510 PRINT:PRINT" De oppervlakte is";D;"cm2."
+2520 GOTO5600
+2530 GOSUB100
+2540 PRINT:PRINT" Cirkelsektor"
+2550 PRINT:PRINT" Je kunt kiezen uit 2 mogelijkheden."
+2560 PRINT:PRINT" Bij mogelijkheid A moet je de lengte"
+2570 PRINT" van de kromme lijn en de straal"
+2580 PRINT" opgeven."
+2590 PRINT:PRINT" Bij mogelijkheid B moet je de hoek van"
+2600 PRINT" de sector en de straal opgeven."
+2610 PRINT:PRINT" Je kiest voor mogelijkheid ?"
+2620 GOSUB9000
+2630 IFIN$="a" THEN2660
+2640 IFIN$="b" THEN2840
+2660 GOSUB100
+2670 PRINT:PRINT" Cirkelsektor"
+2680 PRINT:PRINT" Geef de lengte van de kromme lijn "
+2690 PRINT" in cm."
+2700 INPUTB:IFB<=0 THEN2660
+2710 PRINT:PRINT" Geef de straal in cm."
+2720 INPUTC:IFC<=0 THEN2660
+2730 D=B/2:E=D*C
+2740 GOSUB100
+2750 PRINT:PRINT" Cirkelsektor"
+2760 PRINT:PRINT" De lengte van de kromme lijn is";B;"cm."
+2770 PRINT:PRINT" De straal is";C;"cm."
+2780 PRINT:PRINT" de oppervlakte is";E;"cm2."
+2790 GOTO5600
+2840 GOSUB100
+2850 PRINT:PRINT" Cirkelsektor"
+2860 PRINT:PRINT" Geef de hoek van de sector in graden."
+2870 INPUTB:IFB<=0 THEN2840
+2875 IFB>359 THEN2840
+2880 PRINT:PRINT" Geef de straal in cm."
+2890 INPUTC:IFC<=0 THEN2840
+2900 D=IP:E=B/360
+2910 F=E*D*C*C
+2920 GOSUB100
+2930 PRINT:PRINT" Cirkelsektor"
+2940 PRINT:PRINT" De sektor hoek is";B;"graden."
+2950 PRINT:PRINT" De straal is";C;"cm."
+2960 PRINT:PRINT" De oppervlakte is";F;"cm2."
+2970 GOTO5600
+2980 GOSUB100
+2990 PRINT:PRINT" Ellips"
+3000 PRINT:PRINT" Geef de grootste diameter in cm."
+3010 INPUTB:IFB<=0 THEN2980
+3020 PRINT:PRINT" Geef de kleinste diameter in cm."
+3030 INPUTC:IFC<=0 THEN2980
+3040 IFB<C THEN2980
+3050 D=IP:E=B/2:F=C/2
+3060 G=D*E*F
+3070 GOSUB100
+3075 PRINT:PRINT" Ellips"
+3080 PRINT:PRINT" De grootste diameter is";B;"cm."
+3090 PRINT:PRINT" De kleinste diameter is";C;"cm."
+3100 PRINT:PRINT" de oppervlakte is";G;"cm2."
+3110 GOTO5600
+3120 GOSUB100
+3130 PRINT:PRINT" cirkelsegment"
+3140 PRINT:PRINT" Geef de lengte van de kromme lijn"
+3150 PRINT" in cm."
+3160 INPUTB:IFB<=0 THEN3120
+3170 PRINT:PRINT" Geef de lengte van de rechte lijn"
+3180 PRINT" in cm."
+3190 INPUTC:IFC<=0 THEN3120
+3200 IFB<C THEN3120
+3210 PRINT:PRINT" Geef de straal van de cirkel in cm."
+3220 INPUTD:IFD<=0 THEN3120
+3230 PRINT:PRINT" Geef de lengte van de grootste "
+3240 PRINT" afstand tussen de rechte en de krom-"
+3250 PRINT" me lijn, loodrecht op de rechte lijn "
+3260 PRINT" in cm."
+3270 INPUTE:IFE<=0 THEN3120
+3280 F=(D*(B-C)+C*E)/2
+3290 GOSUB100
+3300 PRINT:PRINT" Cirkelsegment"
+3310 PRINT:PRINT" De kromme lijn is";B;"cm."
+3315 PRINT:PRINT" De rechte lijn is";C;"cm."
+3320 PRINT:PRINT" De straal is";D;"cm."
+3330 PRINT:PRINT" De afstand tussen de rechte lijn"
+3340 PRINT" en de kromme lijn is";E;"cm."
+3350 PRINT:PRINT" De oppervlakte is";F;"cm2."
+3360 GOTO5600
+3370 GOSUB100
+3380 PRINT:PRINT" Kubus"
+3390 PRINT:PRINT" Geef de lengte van een ribbe in cm."
+3400 INPUTB:IFB<=0 THEN3370
+3410 C=B*B*6
+3420 GOSUB100
+3425 PRINT:PRINT" Kubus"
+3430 PRINT:PRINT" De lengte van een ribbe is";B;"cm."
+3440 PRINT:PRINT" de oppervlakte is";C;"cm2."
+3450 GOTO5600
+3460 GOSUB100
+3470 PRINT:PRINT" Rechthoekig blok"
+3480 PRINT:PRINT" Geef de lengte in cm."
+3490 INPUTB:IFB<=0 THEN3460
+3500 PRINT:PRINT" Geef de breete in cm."
+3510 INPUTC:IFC<=0 THEN3460
+3520 PRINT:PRINT" Geef de hoogte in cm."
+3530 INPUTD:IFD<=0 THEN3460
+3540 E=B*C*2:F=C*D*2:G=B*D*2:H=E+F+G
+3550 GOSUB100
+3560 PRINT:PRINT" Rechthoekig blok"
+3570 PRINT:PRINT" De lengte is";B;"cm."
+3580 PRINT:PRINT" De breete is";C;"cm."
+3590 PRINT:PRINT" De hoogte is";D;"cm."
+3600 PRINT:PRINT" De oppervlakte is";H;"cm2."
+3610 GOTO5600
+3620 GOSUB100
+3630 PRINT:PRINT" Kegel"
+3640 PRINT:PRINT" Geef de straal van het grondvlak in cm."
+3650 INPUTB:IFB<=0 THEN3620
+3660 PRINT:PRINT" Geef de lengte van de mantel van"
+3670 PRINT" het grondvlak tot de punt in cm."
+3680 INPUTC:IFC<=0 THEN3620
+3690 D=IP:E=D*C*B
+3700 GOSUB100
+3710 PRINT:PRINT" Kegel"
+3720 PRINT:PRINT" De straal is";B;"cm."
+3730 PRINT:PRINT" De hoogte van de wand is";C;"cm."
+3740 PRINT:PRINT" De oppervlakte is";E;"cm2."
+3750 GOTO5600
+3760 GOSUB100
+3770 PRINT:PRINT" Afgeknotte kegel"
+3780 PRINT:PRINT" Geef de straal van het grondvlak in cm"
+3790 INPUTB:IFB<=0 THEN3620
+3800 PRINT:PRINT" Geef de straal van het bovenvlak in cm"
+3810 INPUTC:IFC<=0 THEN3620
+3820 PRINT:PRINT" Geef de lengte van de mantel van het"
+3830 PRINT" grondvlak tot het bovenvlak in cm."
+3840 INPUTD:IFD<=0 THEN3620
+3850 E=IP:G=B+C:F=E*D*G
+3860 GOSUB100
+3870 PRINT:PRINT" Afgeknotte kegel"
+3880 PRINT:PRINT" De straal van het grondvlak is";B;"cm."
+3890 PRINT:PRINT" De straal van het bovenvlak is";C;"cm."
+3900 PRINT:PRINT" De hoogte van de wand is";D;"cm."
+3910 PRINT:PRINT" De oppervlakte is";F;"cm2."
+3920 GOTO5600
+3930 GOSUB100
+3940 PRINT:PRINT" Cylinder(recht of scheef)"
+3950 PRINT:PRINT" Geef de straal van het grondvlak in cm."
+3960 INPUTB:IFB<=0 THEN3930
+3970 PRINT:PRINT" Geef de hoogte van uit het middelpunt"
+3980 PRINT" van het grondvlak in cm."
+3990 INPUTC:IFC<=0 THEN3930
+4000 D=IP:E=2*D*B*C
+4010 GOSUB100
+4020 PRINT:PRINT" Cylinder(recht of scheef)"
+4030 PRINT:PRINT" De straal is";B;"cm."
+4040 PRINT:PRINT" De hoogte is";C;"cm."
+4050 PRINT:PRINT" de oppervlakte is";E;"cm2."
+4060 GOTO5600
+4070 GOSUB100
+4080 PRINT:PRINT" Bolsector"
+4090 PRINT:PRINT" Geef de diameter van de grootste "
+4100 PRINT" cirkel in cm."
+4110 INPUTB:IFB<=0 THEN4070
+4120 PRINT:PRINT" Geef de straal van de bol in cm."
+4130 INPUTC:IFC<=0 THEN4070
+4140 PRINT:PRINT" Geef de hoogte van het bollegedeelte"
+4150 PRINT" loodrecht op de grootste diameter"
+4160 PRINT" in cm."
+4170 INPUTD:IFD<=0 THEN4070
+4180 E=IP:F=(E*C)/2:G=4*D+B:H=F*G
+4190 GOSUB100
+4200 PRINT:PRINT" Bolsector"
+4210 PRINT:PRINT" De diameter is";B;"cm."
+4220 PRINT:PRINT" De straal van de bol is";C;"cm."
+4230 PRINT:PRINT" De hoogte bollegedeelte is";D;"cm."
+4240 PRINT:PRINT" De oppervlakte is";H;"cm2."
+4250 GOTO5600
+4260 GOSUB100
+4270 PRINT:PRINT" Bol"
+4280 PRINT:PRINT" Geef de straal van de bol in cm."
+4290 INPUTB:IFB<=0 THEN4260
+4300 C=IP:F=B*B:E=4*C*F
+4310 GOSUB100
+4320 PRINT:PRINT" Bol"
+4330 PRINT:PRINT" De straal is";B;"cm."
+4340 PRINT:PRINT" De oppervlakte is";E;"cm2."
+4350 GOTO5600
+4360 GOSUB100
+4370 PRINT:PRINT" Bolsegment"
+4380 PRINT:PRINT" Geef de straal van de bol in cm."
+4390 INPUTC:IFC<=0 THEN4360
+4400 PRINT:PRINT" Geef de hoogte van het bollegedeelte"
+4410 PRINT" loodrecht op de grootste diameter"
+4420 PRINT" in cm."
+4430 INPUTD:IFD<=0 THEN4360
+4440 B=IP:E=2*B*C*D
+4450 GOSUB100
+4460 PRINT:PRINT" Bolsegment"
+4470 PRINT:PRINT" De straal is";C;"cm."
+4480 PRINT:PRINT" De hoogte is";D;"cm."
+4490 PRINT:PRINT" De oppervlakte is";E;"cm2."
+4495 GOTO5600
+4500 GOSUB100
+4510 PRINT" Waar wil je de inhoud van weten?"
+4520 PRINT:PRINT" A=kubus        B=afgeknotte kegel"
+4530 PRINT:PRINT" C=kegel        D=cylinder"
+4540 PRINT:PRINT" E=bol          F=bolsektor"
+4550 PRINT:PRINT" G=bolsegment"
+4555 A=0:B=0:C=0:D=0:E=0:F=0:G=0:H=0:I=0
+4560 PRINT:PRINT" Je kiest voor ?"
+4570 GOSUB9000
+4580 IFIN$="a" THEN4650:REM KUBUS
+4590 IFIN$="b" THEN4750:REM AFGEKNOTEKE.
+4600 IFIN$="c" THEN4920:REM KEGEL
+4610 IFIN$="d" THEN5050:REM CYLINDER
+4620 IFIN$="e" THEN5170:REM BOL
+4630 IFIN$="f" THEN5260:REM BOLSEKTOR
+4635 IFIN$="g" THEN5400:REM BOLSEGMENT
+4640 GOTO4500
+4650 GOSUB100
+4660 PRINT:PRINT" Kubus"
+4670 PRINT:PRINT" Geef de lengte van een ribbe in cm."
+4680 INPUTB:IFB<=0 THEN4650
+4690 C=B*B*B
+4700 GOSUB100
+4710 PRINT:PRINT" Kubus"
+4720 PRINT:PRINT" De lengte van een ribbe is";B;"cm."
+4730 PRINT:PRINT" De inhoud is";C;"cm3."
+4740 GOTO5600
+4750 GOSUB100
+4760 PRINT:PRINT" Afgeknotte kegel"
+4770 PRINT:PRINT" Geef de straal van het grondvlak in cm."
+4780 INPUTB:IFB<=0 THEN4750
+4790 PRINT:PRINT" Geef de straal van het bovenvlak in cm."
+4800 INPUTC:IFC<=0 THEN4750
+4810 PRINT:PRINT" Geef de hoogte van de kegel in cm."
+4820 INPUTD:IFD<=0 THEN4750
+4830 E=IP:F=B*B:G=C*C:H=B*C
+4840 I=E/3:J=I*D*(F+G+H)
+4850 GOSUB100
+4860 PRINT:PRINT" Afgeknotte kegel"
+4870 PRINT:PRINT" De straal van het grondvlak is";B;"cm."
+4890 PRINT:PRINT" De straal van het bovenvlak is";C;"cm."
+4895 PRINT:PRINT" De hoogte is";D;"cm."
+4900 PRINT:PRINT" De inhoud is";J;"cm3."
+4910 GOTO5600
+4920 GOSUB100
+4930 PRINT:PRINT" Kegel"
+4940 PRINT:PRINT" Geef de straal van het grondvlak in cm."
+4950 INPUTB:IFB<=0 THEN4920
+4960 PRINT:PRINT" Geef de hoogte van de kegel in cm."
+4970 INPUTC:IFC<=0 THEN4920
+4980 D=IP:E=D/3:F=B*B:G=E*F*C
+5000 GOSUB100
+5010 PRINT:PRINT" Kegel"
+5020 PRINT:PRINT" De straal is";B;"cm."
+5025 PRINT:PRINT" De hoogte is";C;"cm."
+5030 PRINT:PRINT" de inhoud is";G;"cm3."
+5040 GOTO5600
+5050 GOSUB100
+5060 PRINT:PRINT" Cylinder"
+5070 PRINT:PRINT" Geef de straal van het grondvlak in cm."
+5080 INPUTB:IFB<=0 THEN5050
+5090 PRINT:PRINT" Geef de hoogte in cm."
+5100 INPUTC:IFC<=0 THEN5050
+5110 D=IP:E=B*B:F=D*E*C
+5120 GOSUB100
+5130 PRINT:PRINT" Cylinder"
+5140 PRINT:PRINT" De straal is";B;"cm."
+5150 PRINT:PRINT" De hoogte is";C;"cm."
+5160 PRINT:PRINT" De inhoud is";F;"cm3."
+5165 GOTO5600
+5170 GOSUB100
+5180 PRINT:PRINT" Bol"
+5190 PRINT:PRINT" Geef de straal in cm."
+5200 INPUTB:IFB<=0 THEN5170
+5210 C=IP:D=4/3:E=B*B*B:F=D*C*E
+5220 GOSUB100
+5230 PRINT:PRINT" De straal is";B;"cm."
+5240 PRINT:PRINT" De inhoud is";F;"cm3."
+5250 GOTO5600
+5260 GOSUB100
+5270 PRINT:PRINT" Bolsektor"
+5280 PRINT:PRINT" Geef de straal van de bol in cm."
+5290 INPUTB:IFB<=0 THEN5260
+5300 PRINT:PRINT" Geef de hoogte van het bollegedeelte"
+5310 PRINT" in cm."
+5320 INPUTC:IFC<=0 THEN5260
+5330 D=IP:E=2/3:F=B*B:G=E*D*F*C
+5340 GOSUB100
+5350 PRINT:PRINT" Bolsektor"
+5360 PRINT:PRINT" De straal is";B;"cm."
+5370 PRINT:PRINT" De hoogte is";C;"cm."
+5380 PRINT:PRINT" De inhoud is";G;"cm3."
+5390 GOTO5600
+5400 GOSUB100
+5410 PRINT:PRINT" Bolsegment"
+5420 PRINT:PRINT" Geef de straal van de bol in cm."
+5430 INPUTB:IFB<=0 THEN5400
+5440 PRINT:PRINT" Geef de hoogte van het bollegedeelte"
+5450 PRINT" in cm."
+5460 INPUTC:IFC<=0 THEN5400
+5470 D=IP:E=C*C:F=C/3:G=B-F:H=D*E*G
+5480 GOSUB100
+5485 PRINT:PRINT" Bolsegment"
+5490 PRINT:PRINT" De straal is";B;"cm."
+5500 PRINT:PRINT" De hoogte is";C;"cm."
+5510 PRINT:PRINT" De inhoud is";H;"cm3."
+5600 PRINT:PRINT"========================================"
+5610 PRINT" Als je nog meer wilt berekenen "
+5620 PRINT" kies dan uit:"
+5630 PRINT:PRINT" O=oppervlakte  I=inhoud  S=stop"
+5640 PRINT:PRINT" Je kiest ?"
+5650 GOSUB9000
+5660 IFIN$="o" THEN1260
+5670 IFIN$="i" THEN4500
+5680 IFIN$="s" THEN5700
+5690 GOTO5600
+5700 GOSUB100
+5710 HO=3:VE=12:GOSUB110:PRINT"Bedankt en tot ziens."
+5715 HO=3:VE=13:GOSUB110:PRINT"---------------------"
+5720 END
+9000 GOSUB210
+9010 IF(IN$<"A") OR(IN$>"Z") THENRETURN
+9020 IN$=CHR$(ASC(IN$)+ASC("a")-ASC("A"))
+9030 RETURN
+30000 REM*****************************
+30010 REM*                           *
+30020 REM* GEMAAKT OP COMMODORE 64   *
+30030 REM*                           *
+30040 REM* DOOR A. V. BRINK          *
+30050 REM*                           *
+30060 REM* MARYKESTR. 26             *
+30070 REM*                           *
+30080 REM* 6391 NT NIEUWENHAGEN      *
+30090 REM*                           *
+30100 REM* GEHEEL VOLGENS BASICODE 2 *
+30110 REM*                           *
+30120 REM* (C) NOS HILVERSUM         *
+30130 REM*                           *
+30140 REM* 09-04-1984                *
+30150 REM*                           *
+30160 REM*****************************
+30170 REM
+30180 REMCOPYRIGHT
+30190 NOSHILVERSUM

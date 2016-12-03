@@ -1,0 +1,548 @@
+
+1000 A=500:GOTO20:REM *WEET JE WEERTJE*
+1010 DIMWR$(6)
+1020 F=0
+1030 FORI=1 TO6:READWR$(I):NEXTI
+1040 HO=17:TH$="MENU":GOSUB10180
+1050 VE=10:GOSUB110
+1060 PRINT"    Inleiding....................1"
+1070 PRINT"    Vuistregels..................2"
+1080 PRINT"    Weerrympjes en gezegden......3"
+1090 PRINT"    Opstellen weersverwachting...4"
+1100 PRINT"    Weersoverzicht...............5"
+1110 PRINT"    Einde........................6"
+1120 A=6:GOSUB10110
+1130 ONIN-48 GOTO1150,1910,2380,1400,1700,2950
+1140 REM
+1150 REM *INLEIDING <1>*
+1160 REM
+1170 HO=15:TH$="INLEIDING":GOSUB10180
+1180 PRINT"Over niets wordt in ons land meer ge-"
+1190 PRINT"sproken dan 'HET WEER'. En dat is lo-"
+1200 PRINT"gisch omdat ons land,doordat het in de"
+1210 PRINT"gematigde zone aan zee ligt veel ver-"
+1220 PRINT"schillende weertypen kent. Ons weer is"
+1230 PRINT"erg gevarieerd, wisselvallig, zeg maar"
+1240 PRINT"wispelturig. Dat maakt voorspellen er-"
+1250 PRINT"van zo moeilijk, maar ook boeiend.":PRINT
+1260 PRINT"Het leuke van weersvoorspellen is, dat"
+1270 PRINT"het gebeurt met de allermodernste hulp-"
+1280 PRINT"middelen zoals satellieten, radersyste-"
+1290 PRINT"men en computers, door het overbekende"
+1300 PRINT"KNMI in de Bilt."
+1310 GOSUB10060:HO=15:GOSUB10180
+1320 PRINT"Maar ook u kunt nu, m.b.v. dit Basicode"
+1330 PRINT"II programma, 'HET WEER' trachten te "
+1340 PRINT"voorspellen.":PRINT
+1350 PRINT"Maar bedenk wel steeds,dat elke weers-"
+1360 PRINT"voorspelling, altyd een kwestie is van"
+1370 PRINT"kans en nooit van zekerheid."
+1380 PRINT:PRINT"Veel Succes!!!!"
+1390 GOSUB10060:GOTO1040
+1400 REM
+1410 REM *WEERSVERWACHTING <2>*
+1420 REM
+1430 F=1
+1440 GOSUB11700:REM *BEPALEN LUCHTDRUK*
+1450 GOSUB10260:REM *BEPALEN SOORT BEWOLKING*
+1460 GOSUB11490:REM *BEPALEN WINDRICHTING*
+1470 IF(X=17) OR(X=18) OR(X=19) OR(X=20) THEN1550
+1480 RESTORE
+1490 FORI=1 TO6:READA$:NEXTI
+1500 FORI=1 TOT:READNU:NEXTI
+1510 RESTORE
+1520 FORI=1 TONU+102:READA$:NEXTI
+1530 IFRIGHT$(A$,1)<>"+" THEN1550
+1540 READC$:A$=LEFT$(A$,LEN(A$)-1)+C$:GOTO1530
+1550 HO=11:TH$="WEERSVERWACHTING":GOSUB10180
+1560 PRINT"    Wilt u nog iets veranderen?":PRINT
+1570 PRINT"    Luchtdruk/-verandering.......1"
+1580 PRINT"    Soort bewolking..............2"
+1590 PRINT"    Windrichting.................3"
+1600 PRINT"    Niets........................4"
+1610 PRINT"    Terug naar hoofdmenu.........5"
+1620 A=5:GOSUB10110:N=IN
+1630 IFN=52 THEN1700
+1640 IFN=49 THENGOSUB11700
+1650 IFN=50 THENGOSUB10260:T=(X-1)*6+WR:GOTO1470
+1660 IFN=51 THEN1460
+1670 IFN=53 THEN1040
+1680 GOTO1550
+1690 REM
+1700 REM *WEERSOVERZICHT <3>*
+1710 REM
+1720 HO=13:TH$="WEERSOVERZICHT":GOSUB10180
+1730 IFF=1 THEN1760
+1740 GOSUB250:PRINT"              NOG GEEN!"
+1750 FORDL=1 TO250:NEXTDL:GOTO1040
+1760 CT=6:CN=1:SR=P:GOSUB310
+1770 PRINT"BAROMETERSTAND : ";SR$;" mbar"
+1780 PRINT"SOORT BEWOLKING: ";BW$
+1790 PRINT"WINDRICHTING   : ";WR$(WR):PRINT
+1800 PRINT"UITSLAG BAROMETER: ";BT$:PRINT
+1810 PRINT"NADEREND ";B$;"."
+1820 GOSUB120:IFVE<=16 THENPRINT
+1830 PRINT"UITSLAG WOLKEN+WINDRICHTING:":PRINT
+1840 IF(X=17) OR(X=18) OR(X=19) OR(X=20) THEN1860
+1850 GOSUB12040:PRINTA$;".":GOSUB10060:GOTO1550
+1860 IFX=17 THENGOSUB10490
+1870 IFX=18 THENGOSUB10810
+1880 IFX=19 THENGOSUB11270
+1890 IFX=20 THENGOSUB11140
+1900 GOTO1550
+1910 REM
+1920 REM *VUISTREGELS <4>*
+1930 REM
+1940 HO=14:TH$="VUISTREGELS":GOSUB10180
+1950 PRINT"*Westelyke -en noordelyke winden"
+1960 PRINT" brengen doorgaans neeslag en kou.":PRINT
+1970 PRINT"*Oostelyke -en zuidelyke winden zyn"
+1980 PRINT" doorgaans warm en droog.":PRINT
+1990 PRINT"*Wanneer in de zomer de temperatuur"
+2000 PRINT" 's avonds niet daalt is er kans op"
+2010 PRINT" onweer.":PRINT
+2020 PRINT"*Zware avondnevel betekent helder weer"
+2030 PRINT" de volgende dag.":PRINT
+2040 PRINT"*Rustige schapenwolken in de avond zyn"
+2050 PRINT" een teken voor mooi weer."
+2060 GOSUB10060
+2070 HO=14:GOSUB10180
+2080 PRINT"*Stralende zonsopkomst begeleid door"
+2090 PRINT" een licht briesje wyst vaak op ver-"
+2100 PRINT" anderlyk weer.":PRINT
+2110 PRINT"*Gesluierde zonsopgang by windstilte"
+2120 PRINT" belooft een prachtige dag.":PRINT
+2130 PRINT"*By ochtendnevel tydens zeer warme"
+2140 PRINT" dagen is er later op de dag kans op"
+2150 PRINT" onweer.":PRINT
+2160 PRINT"*Snel dryvende schaapjeswolken en hoge"
+2170 PRINT" vederwolken zyn voorboden van slecht"
+2180 PRINT" weer."
+2190 GOSUB10060:HO=14:GOSUB10180
+2200 PRINT"*Optorende stapelwolken met een platte"
+2210 PRINT" bovenkant voorspellen vrywel altyd"
+2220 PRINT" zware buien.":PRINT
+2230 PRINT"*Als de windrichting na een warmte on-"
+2240 PRINT" weer niet verandert, dan treedt er"
+2250 PRINT" veelal een weersverbetering op.":PRINT
+2260 PRINT"*Is de afkoeling tydens een warmte on-"
+2270 PRINT" weer zeer sterk, dan is een langdurige"
+2280 PRINT" periode met neerslag te verwachten"
+2290 PRINT" (landregen).":GOSUB10060:HO=14:GOSUB10180
+2300 PRINT"*Wanneer na gevallen neerslag snelle"
+2310 PRINT" verdamping voorkomt, is een nieuw on-"
+2320 PRINT" weer dezelfde dag niet uitgesloten.":PRINT
+2330 PRINT"*Na motregen komen vaak opklaringen.":PRINT
+2340 PRINT"*In de winter wordt abnormaal zacht"
+2350 PRINT" weer vaak gevolgd door storm.":PRINT
+2360 PRINT"*Yzel betekent doorgaans dooi-inval."
+2370 GOSUB10060:GOTO1040
+2380 REM
+2390 REM *SPREUKEN EN GEZEGDEN <5>*
+2400 REM
+2410 HO=8:TH$="WEERRIJMPJES EN GEZEGDEN":GOSUB10180
+2420 PRINT"We kennen meer dan 300 rympjes,spreek-"
+2430 PRINT"woorden of zo maar volkswysheden over"
+2440 PRINT"het weer. Ieder kent er wel een paar"
+2450 PRINT"waarin hy of zy gelooft.":PRINT
+2460 PRINT"Nu volgen enkele weerrympjes en gezeg-"
+2470 PRINT"den, betreffende weersverschynselen en"
+2480 PRINT"dieren als weersvoorspellers, die min"
+2490 PRINT"of meer WAAR zyn."
+2500 GOSUB10060:HO=10:TH$="WEERSVERSCHIJNSELEN":GOSUB10180
+2510 PRINT"*Morgenrood; water in de sloot"
+2520 PRINT" (vooral in zomer en voorjaar)":PRINT
+2530 PRINT"*Avondrood; mooi weer aan boord"
+2540 PRINT" (volgende dag hetzelfde weertype)":PRINT
+2550 PRINT"*Kring om de zon, water in de ton"
+2560 PRINT" (in de komende 24 uur kan enige regen"
+2570 PRINT" worden verwacht; geen krans)":PRINT
+2580 PRINT"*Een bleke maan kondigt regen aan":PRINT
+2590 PRINT"*Mist, vorst in de kist":PRINT
+2600 GOSUB10060:HO=10:GOSUB10180
+2610 PRINT"*Wind in de nacht, regen in de gracht":PRINT
+2620 PRINT"*Gracht stinkt - regen (geldt ook voor"
+2630 PRINT" gootsteen en kanaal)":PRINT
+2640 PRINT"*Een krimpende wind is een stinkende"
+2650 PRINT" wind (regen te verwachten; naderende"
+2660 PRINT" depressie)"
+2670 GOSUB10060
+2680 HO=6:TH$="DIEREN ALS WEERSVOORSPELLERS":GOSUB10180
+2690 PRINT"*Als de hoenders kakelen lang en goed,"
+2700 PRINT" zal het regenen in overvloed":PRINT
+2710 PRINT"*Meeuwen aan land, storm voor de hand":PRINT
+2720 PRINT"*Plonst en duikelt eend en gans,"
+2730 PRINT" dan is er voor regen een kans":PRINT
+2740 PRINT"*Maakt de spin in 't net een scheur,"
+2750 PRINT" dan klopt de stormwind aan de deur":PRINT
+2760 PRINT"*Schudt de spin 's morgens zyn web,"
+2770 PRINT" dan mag er mooi weer verwacht worden":PRINT
+2780 GOSUB10060:HO=6:GOSUB10180
+2790 PRINT"*Blyft de spin ondanks regen aan het"
+2800 PRINT" web werken, dan komt er snel mooi weer":PRINT
+2810 PRINT"*Als de zwaluwen vliegen hoog,"
+2820 PRINT" dan blyft het weer mooi en droog":PRINT
+2830 PRINT"*Als de zwaluwen vliegen laag,"
+2840 PRINT" dan valt er spoedig regen omlaag":PRINT
+2850 PRINT"*Muggen dansen - mooi weer":PRINT
+2860 PRINT"*Muggen steken - regen"
+2870 GOSUB10060:HO=6:GOSUB10180
+2880 PRINT"*Als de vissen uit het water opspringen"
+2890 PRINT" is er kans op regen":PRINT
+2900 PRINT"*Bok stinkt - regen":PRINT
+2910 PRINT"*Onweersbeestjes in de lucht - onweer":PRINT
+2920 PRINT"*Zyn er in januari al mollen,"
+2930 PRINT" dan laat de winter met zich sollen."
+2940 GOSUB10060:GOTO1040
+2950 REM
+2960 REM *EINDE <6>*
+2970 REM
+2980 GOSUB100
+2990 VE=3:HO=0:GOSUB110
+3000 PRINT"Wie 'ZEKER' wil zyn,"
+3010 PRINT"krijgt met onderstaand nummer Pelleboer"
+3020 PRINT"aan de lyn."
+3030 PRINT"En met P.T.T.'s nul nul drie,"
+3040 PRINT"krygt u het weer van het K.N.M.I."
+3050 PRINT
+3060 PRINT"              **********"
+3070 PRINT"             ************"
+3080 PRINT"             ***  **  ***"
+3090 PRINT"                  **"
+3100 PRINT"                ******"
+3110 PRINT"               **    **"
+3120 PRINT"              ** WEER **"
+3130 PRINT"              ***    ***"
+3140 PRINT"              **********"
+3150 PRINT
+3160 PRINT"TELEFOONNUMMERS:":PRINT
+3170 PRINT"JAN PELLEBOER     : O5907-5907 (TROS)"
+3180 PRINT"WEERBERICHT P.T.T.: 003"
+3190 PRINT
+3200 END
+10000 REM
+10010 REM *ZUIVEREN REGEL*
+10020 REM
+10030 VE=9:GOSUB110:FORI=1 TO60:PRINT" ";:NEXTI
+10040 GOSUB110:RETURN
+10050 REM
+10060 REM *DRUK EEN TOETS IN!*
+10070 REM
+10080 VE=23:HO=8:GOSUB110:PRINT"Druk een toets in!";
+10090 GOSUB210:GOSUB110:PRINT"                  ":RETURN
+10100 REM
+10110 REM *MAAK KEUZE*
+10120 REM
+10130 VE=23:HO=6:GOSUB110:PRINT"Maak uw keuze (1-";A;"): ";
+10140 GOSUB210:IN=ASC(IN$)
+10150 IF(IN<49) OR(IN>49+A-1) THENGOSUB250:GOTO10130
+10160 RETURN
+10170 REM
+10180 REM *TEKST HOOFD*
+10190 REM
+10200 GOSUB100
+10210 FORI=1 TO40:PRINT"*";:NEXTI
+10220 PRINT:PRINT"            WEET JE WEERTJE"
+10230 PRINT:PRINT:FORI=1 TO40:PRINT"*";:NEXTI
+10240 VE=3:GOSUB110:PRINTTH$:VE=7:HO=0:GOSUB110:RETURN
+10250 REM
+10260 REM *BEPALEN SOORT BEWOLKING*
+10270 REM
+10280 HO=8:TH$="BEPALEN SOORT BEWOLKING":GOSUB10180
+10300 VE=9:GOSUB110:T$="Is er sprake van "
+10310 PRINTT$;"NEERSLAG?(J/N)";:GOSUB210
+10320 GOSUB10000
+10330 IF(IN$="N") OR(IN$="n") THEN10510
+10340 PRINTT$;"BUIEN?(J/N)";:GOSUB210
+10350 GOSUB10000
+10360 IF(IN$="N") OR(IN$="n") THEN10470
+10370 PRINT"CUMULONIMBUS <CB>:(BUIENWOLK;0..2 KM)"
+10380 PRINT
+10390 PRINT"CB INCUS: Buienlucht met aambeeld....1"
+10400 PRINT"CB TUBA : Hozenlucht.................2"
+10410 PRINT"CB MAMMA: Met uitstulpingen omlaag...3"
+10420 A=3:GOSUB10100
+10430 IFIN=49 THENX=11:BW$="Cumulonimbus incus"
+10440 IFIN=50 THENX=15:BW$="Cumulonimbus tuba"
+10450 IFIN=51 THENX=16:BW$="Cumulonimbus mamma"
+10460 RETURN
+10470 PRINT"NIMBOSTRATUS <NS>:(REGENLUCHT;2..7 KM)"
+10480 PRINT
+10490 PRINT"Vrywel onafgebroken regen of sneeuw."
+10500 GOSUB10050:X=17:BW$="Nimbostratus":RETURN
+10510 PRINTT$;"EEN LAGE WOLK (0..2 KM)?(J/N)";:GOSUB210
+10520 GOSUB10000
+10530 IF(IN$="N") OR(IN$="n") THEN10850
+10540 PRINTT$;"RANDEN?(J/N)";:GOSUB210
+10550 GOSUB10000
+10560 IF(IN$="N") OR(IN$="n") THEN10790
+10570 PRINTT$;"GOLVEN?(J/N)";:GOSUB210
+10580 GOSUB10000
+10590 IF(IN$="N") OR(IN$="n") THEN10640
+10600 PRINT"STRATOCUMULUS <SC>:(GOLFWOLK)"
+10610 PRINT
+10620 PRINT"Lage ballen of rollen oplossend"
+10630 GOSUB10050:X=4:BW$="Stratocumulus":RETURN
+10640 PRINT"CUMULUS <CU>:(STAPELWOLK)"
+10650 PRINT
+10660 PRINT"CU          : Opbolling en buiigheid"
+10670 PRINT"              worden onderdrukt......1"
+10680 PRINT"CU HUMILUS  : Scherp tegen de blauwe"
+10690 PRINT"              hemel afstekende mooi"
+10700 PRINT"              weer wolken............2"
+10710 PRINT"CU CONGESTUS: Gezwollen stapelwolk in"
+10720 PRINT"              omvang en aantal toe-"
+10730 PRINT"              nemend.................3"
+10740 A=3:GOSUB10100
+10750 IFIN=49 THENX=2:BW$="Cumulus"
+10760 IFIN=50 THENX=1:BW$="Cumulus humilis"
+10770 IFIN=51 THENX=8:BW$="Cumulus congestus"
+10780 RETURN
+10790 PRINT"STRATUS <ST>:(MISTLUCHT)"
+10800 PRINT
+10810 PRINT"Gryze gelykmatige op mist gelykende"
+10820 PRINT"structuurloze wolkenlaag,waaruit motre-"
+10830 PRINT"gen, ysnaalden of motsneeuw kan vallen."
+10840 GOSUB10050:X=18:BW$="Stratus":RETURN
+10850 PRINTT$;"MIDDELHOGE WOLK (2...7 KM)?(J/N)";:GOSUB210
+10860 GOSUB10000
+10870 IF(IN$="N") OR(IN$="n") THEN11180
+10880 PRINTT$;"RANDEN?(J/N)";:GOSUB210
+10890 GOSUB10000
+10900 IF(IN$="N") OR(IN$="n") THEN11100
+10910 PRINT"ALTOCUMULUS <AC>:"
+10920 PRINT
+10930 PRINT"AC             :Schaapjeswolken in ver-"
+10940 PRINT"                schillende lagen by"
+10950 PRINT"                aanhouden rustig weer.1"
+10960 PRINT"AC LENTICULARIS:Lensvormige schapen...2"
+10970 PRINT"AC UNDULATUS   :Morgenrood............3"
+10980 PRINT"AC CASTELLANUS :Kanteelachtige uit-"
+10990 PRINT"                stulpingen of torentjes"
+11000 PRINT"                op vlakke wolkenbasis.4"
+11010 PRINT"AC CASTELLANUS :Chaotische lucht......5"
+11020 PRINT"   EN FLOCCUS"
+11030 A=5:GOSUB10100
+11040 IFIN=49 THENX=3:BW$="Altocumulus"
+11050 IFIN=50 THENX=7:BW$="Altocu. lenticularis"
+11060 IFIN=51 THENX=12:BW$="Altocumulus undalatus"
+11070 IFIN=52 THENX=13:BW$="ALtocumulus castellanus"
+11080 IFIN=53 THENX=14:BW$="Ac castellanus en floc-cus"
+11090 RETURN
+11100 PRINT"ALTOSTRATUS <AS>:(MATGLASLUCHT)":PRINT
+11110 PRINT"Een onscherp begrensde gryze of grys-"
+11120 PRINT"blauwe wolkenlaag, die grote delen v/d"
+11130 PRINT"hemel gelykmatig bedekt."
+11140 PRINT"In het beginstadium kan de zon er nog"
+11150 PRINT"doorheen schynen, zy het met sterk"
+11160 PRINT"verminderde kracht."
+11170 X=20:BW$="Altostratus":GOSUB10050:RETURN
+11180 PRINT"HET IS DUS EEN HOGE WOLK (5..13 KM)"
+11190 GOSUB10050:HO=0:GOSUB10000
+11200 PRINTT$;"RANDEN?(J/N)";:GOSUB210
+11210 GOSUB10000
+11220 IF(IN$="N") OR(IN$="n") THEN11400
+11230 PRINTT$;"RIBBELS?(J/N)";:GOSUB210
+11240 GOSUB10000:IF(IN$="N") OR(IN$="n") THEN11310
+11250 PRINT"CIRROCUMULUS <CC>:(RIBBELTJESWOLK)"
+11260 PRINT
+11270 PRINT"Fyne schaapjes, ronde of langgerekte"
+11280 PRINT"wolken; veelal in golfvormige patronen;"
+11290 PRINT"vaak geribbeld; vry zeldzaam"
+11300 GOSUB10050:X=19:BW$="CIRROCUMULUS":RETURN
+11310 PRINT"CIRRUS <CI>:":PRINT
+11320 PRINT"CI        : Windveren langzaam voort-"
+11330 PRINT"            bewegend..................1"
+11340 PRINT"CI UNCINUS: Windveren in kommavorm of"
+11350 PRINT"            haakjes snel opkomend.....2"
+11360 A=2:GOSUB10100
+11370 IFIN=49 THENX=5:BW$="Cirrus"
+11380 IFIN=50 THENX=9:BW$="Cirrus uncinus"
+11390 RETURN
+11400 PRINT"CIRROSTRATUS <CS>:":PRINT
+11410 PRINT"CS         : Melklucht met halo; kring"
+11420 PRINT"             om de zon of de maan.....1"
+11430 PRINT"CS RADIATUS: Poolbanden of windbomen..2"
+11440 A=2:GOSUB10100
+11450 IFIN=49 THENX=6:BW$="Cirrostratus"
+11460 IFIN=50 THENX=10:BW$="Cirrostratus radiatus"
+11470 RETURN
+11480 REM
+11490 REM *BEPALEN WINDRICHTING*
+11500 REM
+11510 HO=10:TH$="BEPALEN WINDRICHTING":GOSUB10180
+11540 PRINT"HOGE DRUKGEBIED:Met de klok meedraaien-"
+11550 PRINT"                de (ruimende) wind -"
+11560 PRINT"                opklaringen."
+11570 PRINT"LAGE DRUKGEBIED:Tegen de klok indraai-"
+11580 PRINT"                ende (krimpende) wind"
+11590 PRINT"                Wolkenvorming - regen.":PRINT
+11600 PRINT"Bepaal windrichting op wolkenhoogte:":PRINT
+11610 PRINT"    RUIMEND..................1"
+11620 PRINT"    KRIMPEND.................2"
+11630 PRINT"    WEST-KWADRANT(ZW-NW).....3"
+11640 PRINT"    ZUID-KWADRANT(ZO-ZW).....4"
+11650 PRINT"    OOST-KWADRANT(NO-ZO).....5"
+11660 PRINT"    NOORD-KWADRANT(NW-N0)....6"
+11670 A=6:GOSUB10100:PRINTIN$;:WR=IN-48:T=(X-1)*6+WR:RETURN
+11680 WR=IN-48:RETURN
+11690 REM
+11700 REM *LUCHTDRUK/-VERANDERING*
+11710 REM
+11720 HO=8:TH$="LUCHTDRUK/-VERANDERING":GOSUB10180
+11740 VE=9:GOSUB110
+11750 PRINT"Geef de barometerstand in cm kwik of"
+11760 PRINT"in millibar: ";:INPUTP
+11770 IF(P>70) AND(P<80) THENP=P*13.33
+11780 IF(P<933) OR(P>1067) THENGOSUB250:GOTO11720
+11790 IFP<1068 THENBT$="Zeer droog"
+11800 IFP<1033 THENBT$="Broeierig"
+11810 IFP<1020 THENBT$="Mooi"
+11820 IFP<1013 THENBT$="Veranderlyk"
+11830 IFP<1000 THENBT$="Regen of sneeuw"
+11840 IFP<993 THENBT$="Veel regen of sneeuw"
+11850 IFP<984 THENBT$="Storm"
+11860 PRINT:PRINT
+11870 PRINT"Tendens barometer mbar/uur  cm Hg/uur":PRINT
+11880 PRINT"    STIJGEND     O,25-0,5  0,02-0,04..1"
+11890 PRINT"    STIJGEND        1-2    0,08-0,15..2"
+11900 PRINT"    DALEND       O,25-0,5  0,02-0,04..3"
+11910 PRINT"    DALEND          1-2    0,08-0,15..4"
+11920 PRINT"    CONSTANT        0-0       0-0   ..5"
+11930 A=5:GOSUB10100:PRINTIN$
+11940 ON(IN-48) GOTO11950,11960,11990,12000,12020
+11950 B$="HOGEDRUKGEBIED (op middel-langetermyn)":RETURN
+11960 B1$="'TUSSENHOOG'(veroorzaakt tyde- lyke"
+11970 B2$=" weersverbetering;op korte termyn)"
+11980 B$=B1$+B2$:RETURN
+11990 B$="LAGEDRUKGEBIED (op middel-langetermyn)":RETURN
+12000 B$="STORMACHTIGE WEERSITUATIE (in  de zomer onweer)"
+12010 RETURN
+12020 B$="LAGE OF HOGEDRUKGEBIED niet te voorspellen":RETURN
+12030 REM
+12040 REM *AANPASSEN TEKST OP REGEL *
+12050 REM
+12060 B=41:GOTO12120:REM B IS REGELENGTE+1
+12070 IFMID$(A$,B,1)<>" " THENB=B-1:T=T+1:GOTO12070
+12080 V$=LEFT$(A$,B-1)
+12090 IFT=0 THEN12110
+12100 FORI=1 TOT:V$=V$+" ":NEXTI
+12110 A$=V$+RIGHT$(A$,L-B):B=B+40+T
+12120 L=LEN(A$):T=0:IFL>=B THEN12070
+12130 RETURN
+25000 REM
+25010 REM *DATA WINDRICHTINGEN*
+25020 REM
+25030 DATA"Ruimend","Krimpend"
+25040 DATA"West-kwadrant(zw-nw)","Zuid-kwadrant(zo-zw)"
+25050 DATA"Oost-kwadrant(no-zo)","Noord-kwadrant(nw-no)"
+25060 REM
+25070 REM *DATA CIJFERVOLGORDE*
+25080 REM
+25090 DATA 39,36,32,35,34,32,30,27,26,24,22,19,18,14,16,14
+25100 DATA 12,10,9,7,6,4,2,1,79,77,75,75,74,71,69,67,66,63
+25110 DATA 61,59,52,54,57,54,54,52,50,48,45,43,43,40,114
+25120 DATA 112,111,109,107,105,103,101,99,99,98,96,94,92
+25130 DATA 90,89,88,86,84,84,84,82,82,81,133,131,130,129
+25140 DATA 129,128,127,122,126,124,124,122,120,120,120,120
+25150 DATA 120,120,115,117,119,117,116,115
+25160 REM
+25170 REM *DATA WOLKENSCHIJF*
+25180 REM
+25190 DATA"Weinig verandering","Droog,zonniger en's zomers+"
+25200 DATA" warmer","Zonnige perioden; 's zomers broeierig+"
+25210 DATA" warm","Opklaringen, gematigde temperaturen"
+25220 DATA "Eerst droog, later wat minder vast, iets meer +"
+25230 DATA "wind","Gunstig weer","Eerst meer bewolking; +" 
+25240 DATA"droog rustig weer","Weersverbetering;'s zomers+"
+25250 DATA" warmer","Toenemende bewolking; weinig of geen +"
+25260 DATA"regen","Tijdelijk meer bewolking; weinig of gee+"
+25270 DATA"n regen","Weersverbetering vanaf morgen","Afnem+"
+25280 DATA"ende buiigheid, overgang naar wolkenvelden; in +"
+25290 DATA"voorjaar hardnekkig","Geen buien meer; zonniger+"
+25300 DATA", 's zomers warmer","Geen buien meer;'s zomers +"
+25310 DATA"warmer","Geen buien meer, minder wind","Korte +" 
+25320 DATA"tijd beter met zon, spoedig meer wolken en late+"
+25330 DATA"r regen","Afnemende buiigheid; wolkenvelden, in+"
+25340 DATA" voorzomer vaak hardnekkig","'t Blijft mooi en +"
+25350 DATA"zonnig","Blijft mooi en zonnig;'s zomers warmer"
+25360 DATA"Mooi, maar minder zonnig;'s zomers heet","Vanda+"
+25370 DATA"ag mooi, bij windveren en 'schaapjes' morgen re+"
+25380 DATA"gen","Enkele dagen vast en droog weer","Regenja+"
+25390 DATA"s klaar houden; wordt top rafelig; neerslag nab+"
+25400 DATA"ij. Kustgebieden: voor de langste dag vaak droog"
+25410 DATA"Kans op regen- of onweersbui later op de dag. +"
+25420 DATA"Windstoot mogelijk","Kans op bui; in de voor+"
+25430 DATA"zomer in het binnenland, van augustus af ook in+"
+25440 DATA" de kustgebieden","Kans op regen- of onweersbui+"
+25450 DATA", maar bij afplatten wolkentop weersverbetering" 
+25460 DATA"Kans op regenbui, maar bij afplatten wolkentop:+"
+25470 DATA" afnemende bewolking en geen neerslag","Eerst n+"
+25480 DATA"og goed, pas later verslechtering","Toenemende +"
+25490 DATA"bewolking, gevolgd door neerslag of in de zomer+"
+25500 DATA" onweer, vlagerige wind","Toenemende bewolking,+"
+25510 DATA" gevolgd door neerslag, meer wind","Neerslag bi+"
+25520 DATA"nnen 24 uur; meer wind","Regen-,sneeuw- of onwe+"
+25530 DATA"ersstoring","Regen,sneeuw of onweer binnen 24 u+"
+25540 DATA"ur. Hoe feller de kring, hoe meer neerslag en w+"
+25550 DATA"ind","Neerslag binnen 24 uur, meer wind","Regen+"
+25560 DATA" of sneeuw en wind binnen 24 uur","Tijdelijk me+"
+25570 DATA"er bewolking met kleine kans op neerslag","Eers+"
+25580 DATA"t vrij goed, later regen, meer wind uit west to+"
+25590 DATA"t noordwest","Onzeker","Opklaringen, gevolgd do+"
+25600 DATA"or regen en wind","Aanwakkerende wind uit west +"
+25610 DATA"tot zuid, snelle verslechtering","Slechtweer-ge+"
+25620 DATA"bied trekt weg, afnemend buiig, zonniger"
+25630 DATA"Regen of buien","Morgenrood, water in de sloot;+"
+25640 DATA"'s middags onweerskansen in de zomer","Morgenro+"
+25650 DATA"od, water in de sloot","Aanhoudend buiig en wis+"
+25660 DATA"selvallig","Buiig; onweer in de zomer" 
+25670 DATA"Buien 's morgens vroeg; 's middags opklaringen" 
+25680 DATA"Buien;voornamelijk in 't binnenland. Kustgebied+"
+25690 DATA"en in juni en juli vaak aanhoudend zonnig","Ons+"
+25700 DATA"tandvastig; kans op regen-, sneeuw of onweersbui"
+25710 DATA"Geleidelijk minder buien, meer zon, eerst nog w+"
+25720 DATA"inderig","Regen of sneeuw, aanwakkerende wind, +"
+25730 DATA"mogelijk tot storm","Zeer zeldzaam","Neerslag e+"
+25740 DATA"n aanwakkerende wind","Neerslag en aanwakkerend+"
+25750 DATA"e wind. In winter sneeuwbuien","Korte tijd bete+"
+25760 DATA"r, nieuwe storing volgt snel","Toenemende bewol+"
+25770 DATA"king; later neerslag; meer wind","Toenemende be+"
+25780 DATA"wolking; later neerslag","Verder toenemende bew+"
+25790 DATA"olking; neerslag; meer wind","Neerslag en wind"
+25800 DATA"Verslechtering. Hoe sneller de cirri opkomen, h+"
+25810 DATA"oe eerder de neerslag komt","Onstandvastig weer"
+25820 DATA"Onweer snel voorbij, daarna opklaringen" 
+25830 DATA"Grote kans op onweer, heftige regen, windstoten"
+25840 DATA"Snel opkomend zwaar onweer met slagregens en ru+"
+25850 DATA"kwinden","Onweersbuien, mogelijk rukwinden" 
+25860 DATA"Buienlucht. Kans op onweer, hagel en rukwinden.+"
+25870 DATA" Gevaar voor windhoos","Grote kans op onweer me+"
+25880 DATA"t slagregens. Rukwinden!","Zeer grote kans op o+"
+25890 DATA"nweer met wolkbreuk. Rukwinden!"
+25900 DATA"Grote kans op onweer met wolkbreuk. Rukwinden!"
+25910 DATA"Afnemende kans op regen en onweer.Nog windstoten"
+25920 DATA"Kans op onweer; in voorzomer alleen landinwaarts"
+25930 DATA"Voorbode van onweer,meestal in namiddag en avond"
+25940 DATA"Voorbode van onweer binnen ca. 12 uur"
+25950 DATA"Voorbode van onweer binnen ca 12 uur vooral bij+"
+25960 DATA" heet weer","Voorbode van onweer binnen ca 12 u+"
+25970 DATA"ur; in voorzomer alleen boven land"
+30000 REM
+30010 REM *WEET JE WEERTJE*
+30020 REM
+30030 REM GEBASEERD OP DE WOLKENSCHIJF
+30040 REM VAN JAN PELLEBOER
+30050 REM
+30060 REM GEMAAKT OP EEN 32K
+30070 REM BBC-micro  MODEL B
+30080 REM
+30090 REM DATE: APRIL 1984
+30100 REM
+30110 REM FRED BLUME
+30120 REM KON. JULIANASTR. 28
+30130 REM 6271 CC  GULPEN (ZL)
+30140 REM TEL.: 04450-3010
+30150 REM
+30160 REM COPYRIGHT
+30170 REM NOS HILVERSUM

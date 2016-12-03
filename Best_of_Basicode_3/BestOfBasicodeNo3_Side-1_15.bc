@@ -1,0 +1,492 @@
+
+1000 A=500:GOTO20:REM*** TEXTTRAINER
+1010 GOSUB3350:REM***LEES DATA
+1020 GOSUB4000:REM***INTRODUKTIE
+1030 GOSUB100
+1040 HO=8:VE=9:GOSUB110
+1050 PRINT"Wil je de tekst eerst"
+1060 VE=11:GOSUB110
+1070 PRINT"nog eens bekijken ?"
+1080 PRINT:PRINT"           (Ja / Nee) ";
+1090 GOSUB210:IF(IN$="N") OR(IN$="n") THEN1120
+1100 IF(IN$<>"J") AND(IN$<>"j") THEN1090
+1110 GOSUB4390:REM*** TEKST AFDRUKKEN
+1120 GOSUB4670:REM*** AANWIJZINGEN
+1130 REM
+1140 REM*** HOOFDPROGRAMMA ***
+1150 REM
+1160 A=1:T=1:AF=0
+1170 WL=AZ-20
+1180 IFWL<=0 THEN1260
+1190 FORK=1 TOAZ
+1200 ZN(K)=0:NEXTK
+1210 FORK=1 TOWL
+1220 GOSUB260:G=INT(RV*AZ)+1
+1230 IFZN(G)=1 THENK=K-1:GOTO1250
+1240 ZN(G)=1
+1250 NEXTK
+1260 GOSUB100
+1270 PRINT"        I N V U L O E F E N I N G"
+1280 PRINT"======================================="
+1290 HO=0:VE=21:GOSUB110
+1300 PRINT"======================================="
+1310 PRINT
+1320 PRINT"Woord ingevuld? Druk op de INVOERtoets.";
+1330 VE=3:GOSUB110
+1340 Z$=ZN$(T)
+1350 IFZN(T)=1 THENPRINTZ$:GOTO1820
+1360 Z=LEN(Z$)
+1370 LG=0:REM*** ZOEK BEGIN VAN ZIN
+1380 FORI=1 TOZ-3
+1390 IFMID$(Z$,I,3)=" : " THENLG=I+2
+1400 NEXTI
+1410 IFLG=0 THEN1450
+1420 PRINTLEFT$(Z$,LG);
+1430 Z$=RIGHT$(Z$,Z-LG)
+1440 Z=LEN(Z$)
+1450 N=0:REM*** TELLER AANTAL WOORDEN IN ZIN
+1460 FORI=1 TOZ
+1470 IFMID$(Z$,I,1)=" " THENLG(N)=I:N=N+1
+1480 NEXTI
+1490 IFN=0 THENLG(N)=Z
+1500 GOSUB260:NR=INT(RV*N):REM** NR VAN WEG TE LATEN WOORD
+1510 IFNR=0 THENLG=LG(NR):GOSUB5150
+1520 IFNR=0 THEN1670
+1530 ZL$=LEFT$(Z$,LG(NR))
+1540 IFZ-LEN(ZL$)=0 THEN1500
+1550 PRINTZL$;
+1560 Z$=RIGHT$(Z$,Z-LEN(ZL$))
+1570 GOSUB5150
+1580 Z=LEN(Z$)
+1590 FORI=1 TOZ
+1600 T$=MID$(Z$,I,1)
+1610 IF(T$=" ") OR(T$=".") THENLG=I:I=Z:GOTO1660
+1620 IF(T$="?") OR(T$="!") THENLG=I:I=Z:GOTO1660
+1630 IF(T$=":") OR(T$=";") THENLG=I:I=Z:GOTO1660
+1640 IF(T$=")") OR(T$=CHR$(34)) THENLG=I:I=Z:GOTO1660
+1650 LG=I+1
+1660 NEXTI
+1670 V$(T)=LEFT$(Z$,LG-1)
+1680 ZM=LEN(V$(T))
+1690 T$=RIGHT$(V$(T),1)
+1700 IF(T$=",") OR(T$=".") THENV$(T)=LEFT$(V$(T),ZM-1)
+1710 IF(T$="?") OR(T$="!") THENV$(T)=LEFT$(V$(T),ZM-1)
+1720 IF(T$=":") OR(T$=";") THENV$(T)=LEFT$(V$(T),ZM-1)
+1730 IF(T$=")") OR(T$=CHR$(34)) THENV$(T)=LEFT$(V$(T),ZM-1)
+1740 ZM=LEN(V$(T))
+1750 FORJ=1 TOZM
+1760 PRINT".";
+1770 NEXTJ
+1780 IFZ-ZM=0 THENZR$="":GOTO1810
+1790 IFZ-ZM=1 THENZR$=RIGHT$(Z$,1):GOTO1810
+1800 ZR$=RIGHT$(Z$,Z-ZM)
+1810 PRINTZR$
+1820 PRINT
+1830 T=T+1
+1840 IFT>AZ THEN1880
+1850 IFT/9=INT(T/9) THEN1880
+1860 GOTO1340
+1870 REM
+1880 REM*** INVULLEN
+1890 IFZN(A)=1 THEN1960
+1900 A$(A)=""
+1910 HO=HO(A):VE=VE(A):GOSUB110
+1920 FORI=1 TOLEN(V$(A))+1
+1930 GOSUB3060
+1940 NEXTI
+1950 IFA$(A)<>V$(A) THENAF=AF+1
+1960 A=A+1
+1970 IFA>AZ THENGOSUB4980:GOTO2010
+1980 IFA/9=INT(A/9) THENGOSUB4980:GOTO1260
+1990 GOTO1880
+2000 REM
+2010 REM*** SCOREBEREKENING
+2020 IFWL<0 THENWL=0
+2030 SC=AZ-WL-AF
+2040 SC=INT(100*SC/(AZ-WL))/10
+2050 IFSC<1 THENSC=1
+2060 REM*** FOUTENOVERZICHT
+2070 GOSUB100:IFAF=0 THEN2860:REM*** EINDOVERZICHT
+2080 HO=0:VE=2:GOSUB110
+2090 PRINT"Je krijgt nu nog een overzicht van de"
+2100 PRINT:PRINT"fouten die je hebt gemaakt."
+2110 PRINT:PRINT"Je ziet telkens twee regels tekst."
+2120 PRINT:PRINT"De bovenste regel laat zien hoe"
+2130 PRINT:PRINT"de tekst had moeten zijn;"
+2140 PRINT:PRINT"de onderstaande regel geeft de tekst"
+2150 PRINT:PRINT"met jouw antwoord."
+2160 GOSUB4980:GOSUB100
+2170 VE=2:GOSUB110
+2180 PRINT"Vergelijk jouw antwoord met de regel"
+2190 PRINT:PRINT"die erboven staat, want je krijgt zo"
+2200 PRINT:PRINT"meteen de kans om je fouten"
+2210 PRINT:PRINT"te verbeteren."
+2220 PRINT:PRINT
+2230 PRINT:PRINT"We gaan net zo lang door tot alle"
+2240 PRINT:PRINT"fouten zijn verbeterd."
+2250 GOSUB4980:GOSUB100
+2260 PRINT"     F O U T E N O V E R Z I C H T"
+2270 PRINT"======================================="
+2280 HO=0:VE=21:GOSUB110
+2290 PRINT"======================================="
+2300 VE=3:GOSUB110
+2310 FORI=1 TOAZ
+2320 IF(V$(I)="") OR(V$(I)=A$(I)) THEN2430
+2330 PRINTZN$(I)
+2340 PRINTZN$(I)
+2350 HO=HO(I):VE=VE+1:GOSUB110
+2360 FORJ=1 TOLEN(V$(I))
+2370 PRINT".";
+2380 NEXTJ
+2390 GOSUB110
+2400 PRINTA$(I)
+2410 HO=0:VE=VE+2:GOSUB110
+2420 IFVE>16 THENGOSUB4980:GOSUB5070
+2430 NEXTI
+2440 GOSUB4980
+2450 A=1:T=1
+2460 IFAF=0 THEN2860:REM*** EINDOVERZICHT
+2470 AF=0
+2480 REM*** VERBETEREN
+2490 GOSUB100
+2500 HO=0:VE=10:GOSUB110
+2510 PRINT"Je kunt nu je fouten verbeteren."
+2520 GOSUB4980
+2530 GOSUB100
+2540 PRINT"         VERBETEREN VAN FOUTEN"
+2550 PRINT"======================================="
+2560 HO=0:VE=21:GOSUB110
+2570 PRINT"======================================="
+2580 PRINT
+2590 PRINT"Woord ingevuld? Druk op de INVOERtoets.";
+2600 VE=3:GOSUB110
+2610 PRINTZN$(T)
+2620 IFV$(T)<>A$(T) THENGOSUB2680
+2630 HO=0:VE=VE+2:GOSUB110
+2640 T=T+1
+2650 IFT>AZ THEN2730:REM *** INVULLEN
+2660 IFT/9=INT(T/9) THEN2730
+2670 GOTO2610
+2680 HO=HO(T):VE=VE(T):GOSUB110
+2690 FORJ=1 TOLEN(V$(T))
+2700 PRINT".";
+2710 NEXTJ
+2720 RETURN
+2730 REM*** INVULLEN
+2740 IFV$(A)=A$(A) THEN2810
+2750 A$(A)=""
+2760 HO=HO(A):VE=VE(A):GOSUB110
+2770 FORI=1 TOLEN(V$(A))+1
+2780 GOSUB3060
+2790 NEXTI
+2800 IFA$(A)<>V$(A) THENAF=AF+1
+2810 A=A+1
+2820 IFA>AZ THENGOSUB4980:GOTO2060
+2830 IFA/9=INT(A/9) THENGOSUB4980:GOTO2530
+2840 GOTO2740
+2850 REM
+2860 REM*** EINDOVERZICHT
+2870 GOSUB100
+2880 HO=5:VE=11:GOSUB110
+2890 PRINTN$
+2900 VE=14:GOSUB110
+2910 PRINT"S C O R E =  ";SC
+2920 GOSUB4980
+2930 GOSUB100
+2940 HO=3:VE=7:GOSUB110
+2950 PRINT"WAT KIES JE ?"
+2960 VE=10:GOSUB110
+2970 PRINT"1. Dezelfde tekst nog eens oefenen."
+2980 VE=12:GOSUB110
+2990 PRINT"2. Ik hou 't voor gezien. Tot kijk."
+3000 VE=19:GOSUB110
+3010 PRINT"IK KIES: ";
+3020 GOSUB210:IN=VAL(IN$)
+3030 IF(IN<1) OR(IN>2) THEN3020
+3040 ONIN GOTO1160,3050
+3050 GOSUB100:END
+3060 REM*** INVOERCONTROLE
+3070 GOSUB200
+3080 IFIN$="" THENGOSUB3260:GOTO3070
+3090 IFIN$=CHR$(13) THENI=LEN(V$(A))+1:GOTO3140
+3100 IFIN$=BS$ THEN3150
+3110 IFHO=HO(A)+LEN(V$(A)) THEN3070
+3120 PRINTIN$;:HO=HO+1:GOSUB110
+3130 A$(A)=A$(A)+IN$
+3140 RETURN
+3150 REM*** CORRECTIE
+3160 GOSUB120
+3170 HO=HO-1:GOSUB110
+3180 IFHO<=HO(A) THENHO=HO(A):GOSUB110
+3190 PRINT".";
+3200 I=I-1:IFI<1 THENI=1
+3210 GOSUB110
+3220 LA=LEN(A$(A))
+3230 IF(LA=0) OR(LA=1) THENA$(A)="":GOTO3070
+3240 A$(A)=LEFT$(A$(A),LA-1)
+3250 GOTO3070
+3260 REM*** GEEN TOETS INGEDRUKT
+3270 GOSUB120
+3280 IFHO=HO(A)+LEN(V$(A)) THEN3330
+3290 GOSUB110:PRINT" ";
+3300 FORW=1 TO100:NEXTW
+3310 GOSUB110:PRINT".";
+3320 GOSUB110
+3330 RETURN
+3340 REM
+3350 REM***DATA INLEZEN
+3360 GOSUB100
+3370 HO=12:VE=7:GOSUB110
+3380 PRINT"Even geduld .....":PRINT
+3390 VE=9:GOSUB110
+3400 PRINT"Just a minute ..."
+3410 PRINT:PRINT:PRINT
+3420 PRINT"           ******************"
+3430 PRINT"           *                *"
+3440 PRINT"           * Nog    zinnen. *"
+3450 PRINT"           *                *"
+3460 PRINT"           ******************"
+3470 READAZ
+3480 DIMZN$(AZ),A$(AZ),V$(AZ)
+3490 DIMHO(AZ),VE(AZ)
+3500 DIMLG(AZ),ZN(AZ)
+3510 FORI=1 TOAZ
+3520 READZN$(I)
+3530 REM*** TELLER AFDRUKKEN
+3540 HO=17:VE=15:GOSUB110
+3550 PRINT"   ":GOSUB110
+3560 IFAZ-I<10 THENHO=18:GOSUB110
+3570 PRINTAZ-I
+3580 NEXTI
+3590 RETURN
+3600 REM
+4000 REM*** INTRODUKTIE
+4010 GOSUB100
+4020 PRINT"            ***************"
+4030 PRINT"            *             *"
+4040 PRINT"            * TEXTTRAINER *"
+4050 PRINT"            *             *"
+4060 PRINT"            ***************"
+4070 HO=0:VE=10:GOSUB110
+4080 PRINT"Wat is jouw voornaam ";
+4090 INPUTVN$:PRINT
+4100 PRINT"En jouw achternaam   ";
+4110 INPUTAN$
+4120 N$=VN$+" "+AN$
+4130 IFN$=" " THENN$="Anoniem"
+4140 GOSUB100
+4150 PRINT:PRINT"Dit educatieve programma wordt op onze"
+4160 PRINT:PRINT"school vaak gebruikt om leesteksten en"
+4170 PRINT:PRINT"conversaties te oefenen."
+4180 PRINT:PRINT"Het is een invuloefening, waarbij de"
+4190 PRINT:PRINT"computer een aantal woorden uit de"
+4200 PRINT:PRINT"tekst weglaat."
+4210 GOSUB4980:GOSUB100
+4220 PRINT:PRINT"In tegenstelling tot het werkboek op"
+4230 PRINT:PRINT"school kan dit programma eindeloos"
+4240 PRINT:PRINT"gebruikt worden, omdat het telkens"
+4250 PRINT:PRINT"andere woorden uit dezelfde tekst"
+4260 PRINT:PRINT"weglaat."
+4270 PRINT:PRINT"Je krijgt zodoende steeds een nieuwe"
+4280 PRINT:PRINT"invuloefening."
+4290 GOSUB4980:GOSUB100
+4300 PRINT:PRINT"Voordat het programma be-eindigd kan"
+4310 PRINT:PRINT"worden, moeten eerst alle fouten worden"
+4320 PRINT:PRINT"verbeterd."
+4330 PRINT:PRINT"De computer laat je natuurlijk wel"
+4340 PRINT:PRINT"eerst zien welke fouten je hebt"
+4350 PRINT:PRINT"gemaakt."
+4360 GOSUB4980
+4370 RETURN
+4380 REM
+4390 REM*** TEKST AFDRUKKEN
+4400 I=1
+4410 GOSUB100
+4420 PRINT"       T E K S T  B E K I J K E N"
+4430 PRINT"======================================="
+4440 HO=0:VE=21:GOSUB110
+4450 PRINT"======================================="
+4460 VE=3:GOSUB110
+4470 Z$=ZN$(I)
+4480 PRINTZ$:PRINT
+4490 I=I+1
+4500 IFI/9=INT(I/9) THEN4540
+4510 IFI>AZ THEN4540
+4520 GOTO4470
+4530 RETURN
+4540 REM*** SCHERM VOL OF TEKST AF
+4550 VE=23:GOSUB110
+4560 IFI/9=1 THENPRINT"                        V = Verder";
+4570 IFI/9>1 THENPRINT"T = Terug               V = Verder";
+4580 GOSUB210
+4590 IF(IN$="T") OR(IN$="t") THEN4620
+4600 IF(IN$="V") OR(IN$="v") THEN4640
+4610 GOTO4580
+4620 I=INT((I-1)/9-1)*9
+4630 IFI<1 THENI=1
+4640 IFI>AZ THEN4530
+4650 GOTO4410
+4660 REM
+4670 REM*** AANWIJZINGEN
+4680 GOSUB100
+4690 PRINT"LEES DIT GOED VOORDAT JE BEGINT!"
+4700 PRINT"--------------------------------"
+4710 PRINT
+4720 PRINT"* Bij het invullen van de woorden"
+4730 PRINT"  kleine letters gebruiken, maar..."
+4740 PRINT"  een zin begint met 'n hoofdletter!"
+4750 GOSUB4980
+4760 VE=7:GOSUB110
+4770 PRINT"* De puntjes geven aan hoe lang"
+4780 PRINT"  't woord moet zijn, maar pas op:"
+4790 PRINT"  't laatste puntje kan ook wel eens"
+4800 PRINT"  het einde van de zin aangeven."
+4810 GOSUB4980
+4820 VE=12:GOSUB110
+4830 PRINT"* Verbeteren kan zolang je nog niet"
+4840 PRINT"  op de INVOERtoets hebt gedrukt."
+4850 PRINT"  Gebruik de <-- toets om letters"
+4860 PRINT"  'uit te vegen'."
+4870 REMASCII-CODE VOOR DE BACKSPACE
+4880 REMPAS DEZE CODE ZONODIG AAN VOOR
+4890 REMUW EIGEN MERK COMPUTER
+4900 BS$=CHR$(8)
+4910 GOSUB4980
+4920 VE=17:GOSUB110
+4930 PRINT"* Weet je 't woord helemaal niet,"
+4940 PRINT"  druk dan op de INVOERtoets."
+4950 GOSUB4980
+4960 RETURN
+4970 REM
+4980 REM*** DRUK INVOERTOETS
+4990 HO=0:VE=21:GOSUB110
+5000 PRINT"======================================="
+5010 HO=0:VE=23:GOSUB110
+5020 PRINT"Gezien? Druk op de INVOERtoets.        ";
+5030 GOSUB210
+5040 IFIN$<>CHR$(13) THEN5030
+5050 RETURN
+5060 REM
+5070 REM*** DEEL SCHERM SCHOON
+5080 FORVE=3 TO16
+5090 GOSUB110
+5100 PRINT"                                       "
+5110 NEXTVE
+5120 VE=3:GOSUB110
+5130 RETURN
+5140 REM
+5150 REM*** CONTROLE LEFT$(Z$,1)
+5160 ZL$=LEFT$(Z$,1)
+5170 Z1=ZL$="("
+5180 Z2=ZL$=CHR$(34)
+5190 IF(Z1) OR(Z2) THENPRINTZL$;
+5200 IF(Z1) OR(Z2) THENZ$=RIGHT$(Z$,LEN(Z$)-1)
+5210 IF(Z1) OR(Z2) THENLG=LG-1
+5220 GOSUB120
+5230 HO(T)=HO:VE(T)=VE:RETURN
+5240 REM
+25000 REMAANTAL ZINNEN
+25010 DATA78
+25020 REMDATA ZINNEN
+25030 DATA"Werking van de Basicode-2 standaard-"
+25040 DATA"routines."
+25050 DATA"Deze subroutines zijn voor iedere"
+25060 DATA"computer apart geschreven, zodat ze er"
+25070 DATA"voor iedere BASIC anders uit zien."
+25080 DATA"Ze doen echter precies hetzelfde!"
+25090 DATA"GOSUB 100 : Deze subroutine wist het"
+25100 DATA"scherm en plaatst de cursor op de"
+25110 DATA "positie 0,0. (Linksboven op het scherm)"
+25120 DATA"GOSUB 110 : Plaatst de cursor op een"
+25130 DATA"bepaalde plaats op het scherm."
+25140 DATA"De gewenste positie moet bij aanroep"
+25150 DATA"van deze routine staan in de variabelen"
+25160 DATA"HO en VE. HO is de positie op een regel"
+25170 DATA"(0 is uiterst links), VE is het nummer"
+25180 DATA"van de regel. (De bovenste regel van"
+25190 DATA"het scherm heeft nummer 0). In Basicode"
+25200 DATA"is het scherm 40 karakters lang en"
+25210 DATA"24 karakters hoog. Daarom mag HO niet"
+25220 DATA"groter dan 39 en VE niet groter dan 23"
+25230 DATA"zijn. De variabelen HO en VE veranderen"
+25240 DATA"niet van waarde door aanroep van de"
+25250 DATA"subroutine."
+25260 DATA"GOSUB 120 : Geeft de positie van de"
+25270 DATA"cursor op het scherm en zet die in de"
+25280 DATA"variabelen HO en VE. Samen met de"
+25290 DATA"vorige subroutine kunt u bijvoorbeeld"
+25300 DATA"de cursor een of meer regels hoger of"
+25310 DATA"lager zetten."
+25320 DATA"GOSUB 200 : Kijkt of er een toets is"
+25330 DATA"ingedrukt en zet deze toetsaanslag in"
+25340 DATA"de variabele IN$. Als er geen toets is"
+25350 DATA"ingedrukt is IN$ een lege string."
+25360 DATA"GOSUB 210 : Wacht tot er een toets is"
+25370 DATA"ingedrukt en zet dan deze toetsaanslag"
+25380 DATA"in de variabele IN$."
+25390 DATA"GOSUB 250 : Bij de computers die"
+25400 DATA"daarvoor de mogelijkheid hebben geeft"
+25410 DATA"deze aanroep een piepje. De toonhoogte"
+25420 DATA"en -duur zijn niet vastgelegd, zodat de"
+25430 DATA"routine niet geschikt is voor muziek."
+25440 DATA"GOSUB 260 : Geeft een willekeurig getal"
+25450 DATA"in de variabele RV. Dit getal is altijd"
+25460 DATA"kleiner dan 1 en minimaal gelijk aan 0."
+25470 DATA"Zeer nuttig in statistische programma's"
+25480 DATA"en bij spelletjes."
+25490 DATA"GOSUB 270 : Ruimt de variabelenruimte"
+25500 DATA"op en bepaalt hoeveel geheugenruimte er"
+25510 DATA"nog over is. (De variabelen worden niet"
+25520 DATA"gewist!). Het aantal vrije bytes komt"
+25530 DATA"te staan in de variabele FR."
+25540 DATA"GOSUB 300 : Maakt een string SR$ van de"
+25550 DATA"waarde van de variabele SR. De string"
+25560 DATA"bevat geen spaties aan het begin of"
+25570 DATA"einde van het getal, dit in tegenstel-"
+25580 DATA"ling tot het BASIC-statement STR$() wat"
+25590 DATA"bij sommige BASIC-dialecten dat wel"
+25600 DATA"doet. Het statement STR$() is dus in"
+25610 DATA"Basicode-2 verboden."
+25620 DATA"GOSUB 310 : Deze routine levert een"
+25630 DATA"string SR$ die bepaald wordt door de"
+25640 DATA"variabelen CT, CN en SR. SR$ is in"
+25650 DATA"waarde gelijk aan SR en altijd in"
+25660 DATA"fixed-point notatie. De totale lengte"
+25670 DATA"van SR$ bedraagt CT karakters, waarvan"
+25680 DATA"CN karakters na de decimale punt. Als"
+25690 DATA"het getal niet in het opgegeven formaat"
+25700 DATA"past, bestaat SR$ uit CT sterren."
+25710 DATA"Zonodig wordt SR juist afgerond."
+25720 DATA"De variabelen CT, CN en SR worden niet"
+25730 DATA"veranderd door aanroep van de routine."
+25740 DATA"GOSUB 350 : Print SR$ op de printer,"
+25750 DATA"maar sluit de regel nog niet af. U kunt"
+25760 DATA"dus meerdere keren achter elkaar op een"
+25770 DATA"regel printen met deze routine."
+25780 DATA"GOSUB 360 : Sluit de regel op de"
+25790 DATA"printer af en begint op een nieuwe"
+25800 DATA"regel."
+25810 REM
+30000 REM**********************
+30010 REM*                    *
+30020 REM* Harry Engel        *
+30030 REM* mei 1985           *
+30040 REM* S.G. Eysenhegge    *
+30050 REM* VSO - LOM - school *
+30060 REM* Valkstraat 4       *
+30070 REM* 6135 GC  Sittard   *
+30080 REM* 04490 - 22088      *
+30090 REM*                    *
+30100 REM* Persoonlijk adres: *
+30110 REM* Jan Amentstraat 30 *
+30120 REM* 6041 BE  Roermond  *
+30130 REM*                    *
+30140 REM**********************
+30150 REM PAS EERST REGEL 4900 AAN
+30160 REM VOOR UW MERK COMPUTER.
+30170 REM ASCII-CODE VOOR DE BACK-
+30180 REM SPACE-TOETS (<--)
+30190 REM
+30200 REM**********************
+30210 REM
+30220 REMCOPYRIGHT NOS HILVERSUM
