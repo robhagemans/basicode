@@ -29,6 +29,10 @@ Computerbulletin 6                  SB
 Cirkeldiagrammen                    E de Graaf
 =================================== =============
 
+
+KANT B
+------
+
 =================================== =============
 Computerbulletin 7                  SB
 Volksliederen                       P Foliant
