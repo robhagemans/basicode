@@ -1,3 +1,4 @@
+
 1000 A=100:GOTO20:REM TANK SHOOTING
 1010 DIMS(3)
 1080 GOSUB100:HO=11:VE=6:GOSUB110:PRINT"Tank Shooting"
@@ -127,4 +128,3 @@
 30080 REM   Translated for the 
 30090 REM   Chip-Shop, Radio 4
 30100 REM   by Jonathan Marks
-

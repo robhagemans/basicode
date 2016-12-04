@@ -1,3 +1,4 @@
+
 1000 A=2000:GOTO20:REM ** YAHTZEE **
 1010 GOSUB100
 1020 PRINT"This is an electronic  YAHTZEE."
@@ -349,4 +350,3 @@
 30130 REM *   January 1984            *
 30140 REM *                           *
 30150 REM *****************************
-
