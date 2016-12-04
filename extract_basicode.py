@@ -127,7 +127,7 @@ class BasicodeStream(object):
         self.record_num += 1
         self.record_stream = io.BytesIO()
         # xor sum includes STX byte
-        checksum = 0x02
+        checksum = 0x82
         while True:
             try:
                 byte = self.bitstream.read_byte()
@@ -144,7 +144,7 @@ class BasicodeStream(object):
             except EndOfTape as e:
                 logging.warning("%s Unexpected end of tape", timestamp(self.bitstream.counter()))
                 break
-            checksum ^= byte
+            checksum ^= byte ^ 0x80
             if byte == 0x03:
                 break
             c = chr(byte)
@@ -155,7 +155,7 @@ class BasicodeStream(object):
         self.checksum_calculated = checksum
         # read one-byte checksum and report errors
         try:
-            self.checksum_required = self.bitstream.read_byte()
+            self.checksum_required = self.bitstream.read_byte() ^ 0x80
         except (PulseError, FramingError, EndOfTape) as e:
             self.checksum_required = None
             logging.debug("%s Could not read checksum: %s",
