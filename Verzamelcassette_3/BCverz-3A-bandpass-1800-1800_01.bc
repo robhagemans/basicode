@@ -1,0 +1,291 @@
+
+1000 A=3000:GOTO20:REM PUNTENBOEKJE-UITLEG
+1010 RL=HO:SH=VE:PS=0:PL=0:AR=0:LM=0:RF=0:SC=1
+1020 GOSUB1510
+1030 BK=1:READRE$
+1040 AK=0:IFBK>LEN(RE$) THEN1030
+1050 AK=AK+1:IFBK+AK>LEN(RE$) THEN1070
+1060 IFMID$(RE$,BK+AK,1)<>" " THEN1050
+1070 WO$=MID$(RE$,BK,AK):BK=BK+LEN(WO$)+1
+1080 IFPL+LEN(WO$)>=RL THEN GOSUB1270
+1090 IFLEFT$(WO$,1)="." THEN1130:REM commando
+1100 GOSUB1450:PL=PL+LEN(WO$)+1
+1110 IF(PL<RL-1)AND(RF=0) THENWO$=" ":GOSUB1450:GOTO1040
+1120 GOTO1040
+1130 LC$=MID$(WO$,2,1):CO=0
+1140 IFLEN(WO$)>2 THENCO=ASC(MID$(WO$,3,LEN(WO$)-2))-48
+1150 IFLC$<>"F" THEN1200
+1160 REM F=linefeeds
+1170 LF=CO
+1180 GOSUB1270:LF=LF-1:IFLF>0 THEN1180
+1190 GOTO1040
+1200 IFLC$<>"P" THEN1250
+1210 REM P=nieuwe pagina
+1220 IFSC=1 THEN1240
+1230 GOSUB1270:GOSUB1270:GOTO1040
+1240 GOSUB1270:IFAR<>2 THEN1220
+1250 IFLC$="E" THEN950:REM E=einde programma
+1260 GOTO1040
+1270 AL=AL+1
+1280 IFSC=1 THENPRINT
+1290 IFSC=2 THEN GOSUB360:AL=0
+1300 AR=AR+1:IFAR<=SH-SL THEN1400
+1310 IFSC=1 THENPRINT:GOTO1330
+1320 FORI=1 TOSL:GOSUB360:NEXTI:AR=0:GOTO1400
+1330 PRINT"  ";
+1340 SR$="VERVOLG: druk op <return>":GOSUB150
+1350 GOSUB210:IFIN<>13 THEN1350
+1360 GOSUB100:IS=INT(RL/2)-17:IFIS<0 THENIS=0
+1370 AL=0:GOSUB1420
+1380 SR$="UITLEG bij PUNTENBOEKJE":GOSUB150
+1390 PRINT:PRINT:AR=2
+1400 PL=LM:IS=LM+PS
+1410 REM subr. PRINT IS spaties
+1420 IFIS<1 THENRETURN
+1430 SR$=" ":GOSUB1480:IS=IS-1:GOTO1420
+1440 REM *** WOORDUITVOER ***
+1450 SR$=WO$:IFSC<>1 THEN1490
+1460 IFRF=0 THENPRINTWO$;:RETURN
+1470 GOSUB150:RF=RF-1:PL=PL+5:RETURN
+1480 IFSC=1 THENPRINTSR$;:RETURN
+1490 GOSUB350:RF=0:RETURN
+1500 REM *** INITIALISATIE ***
+1510 GOSUB1360:PRINT:PRINT"Wilt u de uitleg op"
+1520 PRINT:PRINT"   1  Het beeldscherm,"
+1530 PRINT"   2  De printer."
+1540 PRINT:PRINT"Welk nummer kiest u ";
+1550 INPUTSC:IFSC=1 THENSL=2:GOTO1360
+1560 IFSC<>2 THEN1510
+1570 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1580 PRINT"begin van elke regel ";
+1590 INPUTPS
+1600 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1610 PRINT"u op elke regel ";:INPUTRL
+1620 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1630 PRINT"laten overslaan ";:INPUTSL
+1640 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+1650 PRINT"elk blad ";:INPUTSH
+1660 SH=SH+SL:IS=PS:GOTO1420
+25000 REM PUNTENBOEKJ-UITLEG
+25010 DATA"PUNTENBOEKJE is een flink programma en voor de"
+25020 DATA"volledige werking gebruikt het nogal wat"
+25030 DATA"geheugenruimte. Het is dus niet geschikt voor"
+25040 DATA"computers met weinig geheugen. Van een diskdrive"
+25050 DATA"voorziene MSX-computers kunnen het beste worden"
+25060 DATA"opgestart met de CTRL-toets ingedrukt; dat"
+25070 DATA"scheelt in geheugen. .F2 Na het starten van het"
+25080 DATA"programma (met een RUN-opdracht) komt er op het"
+25090 DATA"scherm een vraag naar uw drie-lettercode. Neem"
+25100 DATA"bijvoorbeeld de eerste drie letters van uw naam."
+25110 DATA"Deze lettercode wordt gebruikt als er gegevens"
+25120 DATA"op diskette worden opgeslagen. De naam van elk"
+25130 DATA"schijfbestand wordt namelijk opgebouwd uit deze"
+25140 DATA"drielettercode, de naam van de klas en de letter"
+25150 DATA"'p' (van 'punten'). .P Daarna verschijnt het"
+25160 DATA"hoofdmenu. Daarin hebt u de keus uit diverse"
+25170 DATA"mogelijkheden. Bij eerste gebruik, aan het begin"
+25180 DATA"van elk schooljaar dus, dient u te beginnen met"
+25190 DATA"het aanmaken van klassebestanden met daarin"
+25200 DATA"allerlei vaste gegevens per klas en alle namen"
+25210 DATA"van de leerlingen in die klas. Kies daartoe in"
+25220 DATA"het hoofdmenu nummer 7. Nadat een klassebestand"
+25230 DATA"is aangemaakt kunt u het met nummer 5 laten"
+25240 DATA"opslaan op diskette (of cassette) en met nummer"
+25250 DATA"1 weer teruglezen. .F2 Telkens als u een"
+25260 DATA"proefwerk, test of overhoring (of hoe het op uw"
+25270 DATA"school heten mag) hebt gegeven kiest u eerst"
+25280 DATA"voor nummer 1 om de oude gegevens in te lezen en"
+25290 DATA"vervolgens voor nummer 3: nieuwe cijfers"
+25300 DATA"invoeren. De nieuwe punten worden dan toegevoegd"
+25310 DATA"aan de eerder ingevoerde gegevens. Middels"
+25320 DATA"nummer 2 kunt u alle ingevoerde cijfers"
+25330 DATA"raadplegen en met nummer 4 op verschillende"
+25340 DATA"manieren de punten op de printer afdrukken."
+25350 DATA"Eventuele fouten in namen en/of punten verbetert"
+25360 DATA"u via nummer 6. Daarna schrijft u met nummer 5"
+25370 DATA"weer alles naar diskette of cassette. .P Nieuw"
+25380 DATA"klassebestand vormen .F2 Dit dient in principe"
+25390 DATA"slechts eenmaal per schooljaar te gebeuren."
+25400 DATA"Daarbij moet u een zestal globale gegevens"
+25410 DATA"invoeren, gevolgd door de namen van de"
+25420 DATA"leerlingen. De vaste gegevens bestaan uit: .F2"
+25430 DATA"De 'naam' van de klas (max. 3 tekens), uw eigen"
+25440 DATA"naam (max. 15 tekens), uw eigen code (3 tekens),"
+25450 DATA"de vakcode (2 tekens), de naam van de"
+25460 DATA"klassedocent (max. 15 tekens) en tot besluit de"
+25470 DATA"naam van de adjunct of conrector (max. 15"
+25480 DATA"tekens). Bij alle invoer kunt u desgewenst"
+25490 DATA"gebruik maken van kleine letters naast"
+25500 DATA"hoofdletters. .F2 Klassen worden doorgaans met 2"
+25510 DATA"of 3 tekens aangeduid, bestaande uit"
+25520 DATA"hoofdletters en/of cijfers. Aan veel scholen"
+25530 DATA"worden alle docenten intern aangeduid met een"
+25540 DATA"twee- of drielettercode. Dat is wat hierboven"
+25550 DATA"met 'uw eigen code' is bedoeld. Schoolvakken"
+25560 DATA"hebben officieel een aanduiding met 1"
+25570 DATA"hoofdletter plus 1 kleine letter. Gebruik dus"
+25580 DATA"waar nodig de SHIFT-toets om op het juiste"
+25590 DATA"moment hoofdletters c.q. kleine letters te"
+25600 DATA"krijgen. .F2 Na het intikken van deze zes zaken"
+25610 DATA"vraagt het programma of alles correct is. Als u"
+25620 DATA"dan op de 'N' drukt krijgt u de mogelijkheid, de"
+25630 DATA"fouten te verbeteren. Na een druk op de 'J' wil"
+25640 DATA"het programma van alle leerlingen de gegevens"
+25650 DATA"weten. Per leerling kunt u drie dingen intikken:"
+25660 DATA".M2 .F2 de voornaam (max. 10 tekens), .F1 de"
+25670 DATA"achternaam (max. 13 tekens), .F1 een code (max."
+25680 DATA"3 tekens). .M0 .F2 De namen zullen u weinig"
+25690 DATA"problemen geven. Gebruik weer hoofd- en kleine"
+25700 DATA"letters, kort eventuele tussenvoegsels af (dus"
+25710 DATA"bijv. Jan vd Broek). Het derde gegeven, de code,"
+25720 DATA"biedt u de mogelijkheid, in hoogstens 3 tekens"
+25730 DATA"enige extra informatie te laten opnemen. Daarbij"
+25740 DATA"kunt u denken aan gegevens over de"
+25750 DATA"schoolloopbaan van de leerling of gegevens over"
+25760 DATA"de clusterindeling. U kunt de mogelijkheid"
+25770 DATA"ongebruikt laten door bij elke leerling enkel op"
+25780 DATA"RETURN te drukken. .F2 Telkens kunt u aangeven"
+25790 DATA"of uw invoer correct is. Zo niet dan kunt u de"
+25800 DATA"drie gegevens opnieuw intikken. Als alles goed"
+25810 DATA"is drukt u op de RETURN-toets waarna u de"
+25820 DATA"volgende leerling kunt invoeren. Door in plaats"
+25830 DATA"van de voornaam alleen een sterretje in te"
+25840 DATA"tikken geeft u aan dat alle namen ingevoerd zijn"
+25850 DATA"en dat het hoofdmenu terug moet komen. Eventueel"
+25860 DATA"te laat ontdekte fouten moet u even noteren,"
+25870 DATA"deze kunt u later alsnog verbeteren. .P Gegevens"
+25880 DATA"opslaan .F2 Zodra de namen compleet zijn"
+25890 DATA"ingetikt kunt u het beste eerst even alles op"
+25900 DATA"schijf laten opslaan. Kies daartoe in het"
+25910 DATA"hoofdmenu nummer 5. Desgewenst kunt u ook alles"
+25920 DATA"op cassette laten opslaan; dat gebeurt dan"
+25930 DATA"automatisch in BASICODE-formaat. Advies: gebruik"
+25940 DATA"een aparte cassette voor elke aparte klas. .P"
+25950 DATA"Nieuwe cijfers invoeren .F2 Kies nu nummer 3. De"
+25960 DATA"eerste vraag betreft de datum van het proefwerk."
+25970 DATA"Let op het formaat MMDD: eerst het maandnummer,"
+25980 DATA"dan het dagnummer, elk bestaande uit 2 cijfers,"
+25990 DATA"dus 4 cijfers in totaal. Voor 18 november tikt u"
+26000 DATA"dus 1118 in. De volgende vraag betreft het"
+26010 DATA"gewicht. Elk punt heeft zijn eigen"
+26020 DATA"gewichtsfactor, een geheel getal onder de 10. U"
+26030 DATA"zou bijvoorbeeld mondelinge beurten voor 1"
+26040 DATA"kunnen laten tellen, overhoringen voor 2,"
+26050 DATA"grammatica voor 3 en proefwerken voor 4. Een"
+26060 DATA"gewichtsfactor kunt u eventueel later nog"
+26070 DATA"veranderen. .F2 Daarna geeft u voor elke"
+26080 DATA"leerling het punt op. Het programma gaat er van"
+26090 DATA"uit dat uw punten varieren van minstens 1 tot"
+26100 DATA"hoogstens 10 en dat u in maximaal een decimaal"
+26110 DATA"nauwkeurig werkt (dus niet met plussen en"
+26120 DATA"minnen!). De decimale punt moet u daarbij NIET"
+26130 DATA"mee intikken. Als Jantje 6,3 had gescoord tikt u"
+26140 DATA"dus 63 in. Door een minteken (-) in te tikken"
+26150 DATA"geeft u aan dat die leerling dit werk niet heeft"
+26160 DATA"meegemaakt. Door een 'V' (vervallen) in te"
+26170 DATA"tikken geeft u aan dat die leerling niet meer in"
+26180 DATA"deze klas zit. .F2 Na het punt voor de laatste"
+26190 DATA"leerling drukt u op RETURN en komt het hoofdmenu"
+26200 DATA"terug. Schrijf bij voorkeur nu meteen eerst weer"
+26210 DATA"alles naar diskette. .P Cijfers tonen .F2 Met"
+26220 DATA"menukeuze 2 krijgt u alles op het beeldscherm te"
+26230 DATA"zien. De indeling van het scherm spreekt vrijwel"
+26240 DATA"voor zich. Bij elke leerling het volgnummer en"
+26250 DATA"daar achter de tot dat moment ingetikte punten,"
+26260 DATA"wederom zonder de decimale punt. Als kop boven"
+26270 DATA"elke kolom getallen staat van boven naar beneden"
+26280 DATA"het volgnummer van de kolom, de datum en de"
+26290 DATA"gewichtsfactor. Geheel rechts op het scherm"
+26300 DATA"vindt u het gemiddelde waar elke leerling op"
+26310 DATA"staat. .F2 Met een druk op RETURN krijgt u de"
+26320 DATA"volgende 15 (of minder) leerlingen, daarna komt"
+26330 DATA"het hoofdmenu. .F2 Als er meer kolommen punten"
+26340 DATA"zijn ingevoerd dan er op het beeldscherm passen,"
+26350 DATA"meldt het programma dat tevoren en vraagt vanaf"
+26360 DATA"welke kolom u de punten wilt zien. Steeds zal"
+26370 DATA"het getoonde gemiddelde berekend zijn over alle"
+26380 DATA"punten, dus niet over alleen de getoonde punten."
+26390 DATA".P Uitvoer op papier .F2 Menukeuze 4 dient voor"
+26400 DATA"printeruitvoer. U krijgt daarbij keus uit 2"
+26410 DATA"opties. 'A' is voor het afdrukken van een"
+26420 DATA"rapportlijstje, 'B' voor het afdrukken van een"
+26430 DATA"compleet overzicht. .F2 Bij een rapportlijstje"
+26440 DATA"worden alle namen afgedrukt met bij elk het"
+26450 DATA"(eventueel nader afgeronde) gemiddelde. Hoe"
+26460 DATA"wordt afgerond kunt u zelf intikken. Het"
+26470 DATA"programma rondt uiteraard zuiver rekenkundig af."
+26480 DATA"Het is alleszins denkbaar dat u op bepaalde"
+26490 DATA"gronden anders wilt afronden. Op het via de"
+26500 DATA"printer afgedrukte lijstje kunt u dat dan met de"
+26510 DATA"hand veranderen. .F2 Bij keuze 'B' krijgt u een"
+26520 DATA"staatje met bij elke leerling alle deelcijfers"
+26530 DATA"en in 2 decimalen het gemiddelde punt. Bovendien"
+26540 DATA"vindt u op dat staatje bij elke kolom de"
+26550 DATA"gewichtsfactor, de datum, het gemiddelde van die"
+26560 DATA"kolom en de bijbehorende standaarddeviatie. .P"
+26570 DATA"Probleem bij printeruitvoer betreft de"
+26580 DATA"aansturing van de printer. Afhankelijk van uw"
+26590 DATA"merk/type printer dient u enige aanpassingen in"
+26600 DATA"het programma aan te brengen. Dat betreft"
+26610 DATA"veranderingen in de regels 20000 tot 21000. U"
+26620 DATA"dient de juiste codes in te vullen voor begin en"
+26630 DATA"eind van printen in dubbele breedte, printen in"
+26640 DATA"normale PICA-letter en printen in 'condensed'"
+26650 DATA"letter en de juiste codes voor de opvoerhoogte"
+26660 DATA"bij elke regel. De variabele FD bevat de door"
+26670 DATA"het programma gewenste opvoerhoogte in eenheden"
+26680 DATA"van 1/720 inch. 720 is eenvoudig met een deling"
+26690 DATA"om te rekenen tot de eenheden in opvoerhoogte"
+26700 DATA"waarin uw printer werkt. De teksten in de"
+26710 DATA"REM-regels en de handleiding van de printer"
+26720 DATA"bevatten de juiste details. .P Mutaties .F2"
+26730 DATA"Keuze 6 in het hoofdmenu brengt u in het"
+26740 DATA"mutatiemenu. Dit biedt u een flink aantal"
+26750 DATA"mogelijkheden. .F2 Mogelijkheden A t/m E zullen"
+26760 DATA"weinig problemen opleveren. Probeert u ze gewoon"
+26770 DATA"maar uit. In alle gevallen waar op het scherm"
+26780 DATA"een oude waarde wordt weergegeven, kunt u met"
+26790 DATA"enkel een druk op RETURN aangegeven dat die oude"
+26800 DATA"waarde niet hoeft te worden veranderd. .F2 Met"
+26810 DATA"keuze F laat u het gemiddelde overnemen als"
+26820 DATA"cijfers. Er wordt daardoor een kunstmatig extra"
+26830 DATA"proefwerkpunt genoteerd. Bij dat nieuwe punt"
+26840 DATA"dient u natuurlijk weer een datum en een gewicht"
+26850 DATA"op te geven. Het nut hiervan hangt samen met"
+26860 DATA"optie G. Er zijn immers nogal wat scholen waar"
+26870 DATA"bijv. het gemiddelde punt van het eerste"
+26880 DATA"trimester meetelt als proefwerk voor het tweede"
+26890 DATA"trimester. Via keuze F laat u dat gemiddelde"
+26900 DATA"punt invullen en daarna wist u alle andere"
+26910 DATA"punten een voor een uit met optie G. U kunt ook"
+26920 DATA"met optie H alle oude punten het gewicht 0 geven"
+26930 DATA"en ze op die manier onschadelijk maken. .P"
+26940 DATA"Wijzigingen in het programma .F2 Regel 1020"
+26950 DATA"bevat een instelling voor het maximale aantal"
+26960 DATA"leerlingen. Zorg dat hier altijd een reserve van"
+26970 DATA"minstens 1 leerling in zit. In regel 1030 staat"
+26980 DATA"het maximale aantal puntenkolommen. Beide"
+26990 DATA"getallen kunt u naar behoefte aanpassen. Maak ze"
+27000 DATA"niet te overdreven groot want dan riskeert u"
+27010 DATA"geheugenproblemen met uw computer. Behalve deze"
+27020 DATA"twee regels en de eerder genoemde aanpassingen"
+27030 DATA"ten behoeve van de printerbesturing kunt u beter"
+27040 DATA"niet te veel rommelen in het programma: om"
+27050 DATA"ruimte te sparen zit het nogal compact in elkaar"
+27060 DATA"zodat je met elke wijziging de kans loopt dat er"
+27070 DATA"op andere plaatsen dingen verkeerd gaan. Als het"
+27080 DATA"programma u echt niet bevalt, gebruik het dan"
+27090 DATA"liever niet en schrijf zelf een programma dat"
+27100 DATA"wel aan uw wensen voldoet. .P Veel plezier!"
+27110 DATA".P .E"
+32000 REM"******************************"
+32010 REM"*                            *"
+32020 REM"*  UITLEG bij het programma  *"
+32030 REM"*  P U N T E N B O E K J E   *"
+32040 REM"*                            *"
+32050 REM"*   Copyright (c) 1987:      *"
+32060 REM"*     J.G.A. Haubrich        *"
+32070 REM"*           EINDHOVEN        *"
+32080 REM"*                            *"
+32090 REM"******************************"
+32100 REM TROS-RADIO dd 870819

@@ -1,0 +1,133 @@
+
+1000 A=200:GOTO20:REM       HEX/DEC
+1010 SH=VE:SB=HO:VE=0:HO=6:GOSUB110
+1020 DIMA$(3),F(3)
+1030 PRINT"HEX<--->DEC OMZETTING"
+1040 A$="":VE=SH-3:HO=0:GOSUB110
+1050 PRINT"H(ex) of D(ec) of S(top)? ":GOSUB210
+1060 IFIN=83 THEN950:REM S
+1070 IFIN=72 THEN1510:REM H
+1080 REM      ===Dec naar Hex===
+1090 GOSUB100:VE=SH-3:HO=0:GOSUB110
+1100 PRINT"Dec=? "
+1110 INPUTA
+1120 IFA>65535 THEN GOSUB100:GOSUB2010:GOTO1100
+1130 P=INT(A/4096)
+1140 R=A-4096*P
+1150 GOSUB1350
+1160 P=INT(R/256)
+1170 R=R-256*P
+1180 GOSUB1350
+1190 P=INT(R/16)
+1200 GOSUB1350
+1210 P=R-16*P
+1220 GOSUB1350
+1230 GOSUB100:VE=3:HO=6:GOSUB110
+1240 PRINT"DECIMAAL   HEX."
+1250 VE=5:HO=7:GOSUB110
+1260 PRINTA:HO=16:GOSUB110
+1270 PRINTA$
+1280 GOTO1040
+1350 IFP<10 THENA$=A$+CHR$(P+48):RETURN
+1360 IFP<16 THENA$=A$+CHR$(P+ASC("A")-10)
+1370 RETURN
+1500 REM      ===HEX naar DEC===
+1510 B$=""
+1520 GOSUB100:VE=SH-3:HO=0:GOSUB110
+1530 PRINT"Hex=? "
+1540 INPUTB$
+1550 IFLEN(B$)>4 THEN GOSUB2110:GOTO1530
+1560 IF(LEN(B$)<4) THENB$="0"+B$:GOTO1560
+1570 FORI=0 TO3:A$(I)=MID$(B$,I+1,1):NEXTI
+1580 FORI=0 TO3:W=0
+1590 C=ASC(A$(I)):IFC>128 THENC=C-128
+1600 IF(C>96)AND(C<123) THENC=C-32:A$(I)=CHR$(C)
+1610 IF(C<48)OR(C>70) THENW=1:I=3:GOTO1630
+1620 IF(C>57)AND(C<65) THENW=1:I=3:GOTO1630
+1630 NEXTI
+1640 IFNOT(W) THEN1670
+1650 GOSUB100:GOSUB110:PRINT"Dat is geen Hex.!"
+1660 GOSUB2500:GOSUB100:GOSUB110:GOTO1530
+1670 FORI=0 TO3
+1680 C=ASC(A$(I)):IFC>128 THENC=C-128
+1690 K=(C-48)AND(C>47)AND(C<58)
+1700 L=(C-55)AND(C>64)AND(C<71)
+1710 F(I)=K+L
+1720 NEXTI
+1730 D=4096*F(0)+256*F(1)+16*F(2)+F(3)
+1740 GOSUB100:VE=3:HO=6:GOSUB110
+1750 PRINT"Hex.    Decimaal"
+1760 VE=5:HO=6:GOSUB110:REM      PRINTA$
+1770 FORI=0 TO3:PRINTA$(I);:NEXTI
+1780 HO=17:GOSUB110:PRINTD:GOTO1040
+2000 REM      ===INVOER TE HOOG===
+2010 GOSUB100:GOSUB110
+2020 PRINT"Niet hoger dan 65535!"
+2030 GOSUB2500:GOSUB100:GOSUB110
+2040 RETURN
+2100 REM      ===TE VEEL===
+2110 GOSUB100:GOSUB110
+2120 PRINT"Niet meer dan 4 tekens!"
+2130 GOSUB2500:GOSUB100:VE=SH-3:HO=0
+2140 RETURN
+2500 SD=40:GOSUB450
+2510 RETURN
+30000 REM  Dit programma is bedoeld om vlug 16-bit geheugen
+30010 REM  adressen om te zetten van hexadecimaal naar
+30020 REM  decimaal en andersom. De hoogst toegelaten
+30030 REM  invoer is daarom FFFF hex of 65535 dec.
+30040 REM  Regels 1000-1060 kiezen de functie;
+30050 REM  'S' is STOP, 'H' is Hex-->Dec iedere andere toets
+30060 REM  geeft Dec-->Hex.
+30070 REM  1070-1270 D-->H omzetting
+30080 REM  1500-1780 H-->D
+30090 REM  SUBROUTINES
+30100 REM  1350-1360 maakt het Hex resultaat klaar voor
+30110 REM  het scherm.
+30120 REM  2000-2040 signaleert te hoge Dec invoer. Er is
+30130 REM  geen controle dat Dec-invoer numeriek is!
+30140 REM  2100-2140 signaleert Hex in meer dan 4 tekens.
+30150 REM  2500-2510 Duur van scherm meldingen.
+30160 REM  WERKING V/H PROGRAMMA
+30170 REM  Decimaal wordt omgezet door opeen volgende deling
+30180 REM  door machten van 16: 16^3=4096, 16^2=256,
+30190 REM  16^1=16 en 16^0=1 (1120-1210).
+30200 REM  De quotienten worden nagekeken op grootte
+30210 REM  (1350/60); 0-9 wordt zo aangenomen (ASC 48-57)
+30220 REM  10-15 wordt omgezet naar hoofdletters A-F
+30230 REM  (ASC 65-70) en verzameld in A$ (1350/60),
+30240 REM  om tenslotte op het scherm gezet te worden regels
+30250 REM  1220-1260.
+30260 REM  Hex invoer mag 1 tot 4 tekens hebben; kleine
+30270 REM  letters (ASC 97-102) worden omgezet naar
+30280 REM  hoofdletters (ASC 65-70). Invoer met minder dan
+30290 REM  4 tekens wordt van leidende nullen voorzien.
+30300 REM  Niet hexadecimale tekens of meer dan 4 leiden
+30310 REM  tot scherm meldingen en terug-sprong (1650/60)
+30320 REM  en (2100-2140).
+30330 REM  De 4 aangenomen tekens worden dan omgezet naar
+30340 REM  de overeenkomende getallen, opgeslagen in F(0-3)
+30350 REM  en hun decimale waarden berekend door met de
+30360 REM  machten van 16 te vermenigvuldigen. Optellen van
+30370 REM  de resultaten (1730) geeft het eindresultaat D.
+30380 REM  1740-1780 brengt het resultaat naar het scherm
+30390 REM  en springt terug voor de volgende invoer.
+30400 REM
+30410 REM   *******************
+30420 REM   *   HEX<--->DEC   *
+30430 REM   *                 *
+30440 REM   *   BASICODE-3    *
+30450 REM   *    SPECTRUM     *
+30460 REM   *    SEPT 1987    *
+30470 REM   *                 *
+32000 REM   * Copyright 1987: *
+32010 REM   *                 *
+32020 REM   *   LOUIS PAYNE   *
+32030 REM   *    HIGH VIEW    *
+32040 REM   *  SHAWCROSS ROAD *
+32050 REM   *   WEST RUNTON   *
+32060 REM   *      CROMER     *
+32070 REM   *     NORFOLK     *
+32080 REM   *     NR27 9NA    *
+32090 REM   *  GREAT BRITAIN  *
+32100 REM   *******************

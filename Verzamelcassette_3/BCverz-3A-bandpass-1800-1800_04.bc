@@ -1,0 +1,215 @@
+
+1000 A=500:GOTO20:REM planeetbanen/keplerwetten
+1010 PRINT"tekening (0), lijst energie (1) "
+1020 PRINT"of omlooptijd (2)";
+1030 INPUTTE
+1040 REM
+1050 REM  energielijst en omlooptijd
+1060 REM  eigenlijk alleen geldig bij
+1070 REM  Newtonwet (zie hierna)
+1080 REM
+1090 PRINT"tijdstap (aanbevolen 0.02)";
+1100 INPUTS1
+1110 REM
+1120 REM  verkleinen: nauwkeuriger
+1130 REM  niet: snelheid afleesbaar
+1140 REM
+1150 PRINT"tijdstap bij perihelium verkleinen "
+1160 PRINT"(nee=0, ja=1)";
+1170 INPUTTK
+1180 REM
+1190 REM  begin in aphelium
+1200 REM
+1210 PRINT"beginsnelheid (cirkel=1, ellips<1)";
+1220 INPUTVY
+1230 REM
+1240 REM  KL (klein getal) geeft afwijking
+1250 REM  van de klassieke zwaartekrachtswet.
+1260 REM  0.01 is al sterk overdreven
+1270 REM
+1280 PRINT"Newtonwet (0) of Einsteinwet "
+1290 PRINT"(bijvoorbeeld 0.01)";
+1300 INPUTKL:KL=KL*VY*VY
+1310 REM
+1320 REM  voorbereidingen
+1330 REM
+1340 GOSUB2230
+1350 REM
+1360 REM  planeet op de beginpositie
+1370 REM
+1380 X=1
+1390 Y=0
+1400 REM
+1410 REM  beginsnelheid
+1420 REM
+1430 VX=0
+1440 VY=-VY
+1450 REM
+1460 REM  maak de begintijd nul
+1470 REM
+1480 TY=0
+1490 REM
+1500 REM  opgegeven tijdstap => TS
+1510 REM
+1520 TS=S1
+1530 REM
+1540 REM  verklein de stapwaarde
+1550 REM  als daarom gevraagd is
+1560 REM
+1570 IFTK=1 THENTS=S1*SQR(X*X+Y*Y)
+1572 GOSUB200:REM kijk of toets
+1574 IFIN<>0 THEN950:REM stop
+1580 REM
+1590 REM  planeet na een halve tijdstap
+1600 REM
+1610 X1=X+VX*TS*.5
+1620 Y1=Y+VY*TS*.5
+1630 REM
+1640 REM  afstand tot de zon
+1650 REM
+1660 R1=SQR(X1*X1+Y1*Y1)
+1670 REM
+1680 REM  versnelling
+1690 REM
+1700 AX=-X1/R1^3-KL*X1/R1^5
+1710 AY=-Y1/R1^3-KL*Y1/R1^5
+1720 REM
+1730 REM  positie na een hele tijdstap
+1740 REM
+1750 X=X+VX*TS+.5*AX*TS*TS
+1760 Y=Y+VY*TS+.5*AY*TS*TS
+1770 REM
+1780 REM  snelheid na een hele tijdstap
+1790 REM
+1800 VX=VX+AX*TS
+1810 VY=VY+AY*TS
+1820 REM
+1830 REM  desgevraagd omlooptijd bijhouden
+1840 REM
+1850 IFTE=2 THEN2710
+1860 REM
+1870 REM  tekenen (indien gewenst)
+1880 REM
+1890 IFTE=0 THEN GOSUB2580:GOTO2190
+1900 REM
+1910 REM  bewegingsenergie (E Kinetisch)
+1920 REM
+1930 EK=.5*(VX*VX+VY*VY)
+1940 REM
+1950 REM  reken de potentiele energie uit
+1960 REM
+1970 EP=-1/SQR(X*X+Y*Y)
+1980 REM
+1990 REM  PerKoppervlak (impulsmoment)
+2000 REM
+2010 PK=(VX*Y-VY*X)*.5
+2020 REM
+2030 REM  zet op scherm
+2040 REM
+2050 PRINT
+2060 PRINT"E kinetisch  = ";
+2070 PRINTEK
+2080 PRINT"E potentieel = ";
+2090 PRINTEP
+2100 PRINT"E totaal     = ";
+2110 PRINTEK+EP
+2120 PRINT"perkenwetgetal = ";
+2130 PRINTPK
+2140 REM
+2150 REM  volgende tijdstap.
+2160 REM  stoppen alleen vanaf toetsenbord,
+2170 REM  behalve bij omlooptijdberekening
+2180 REM
+2190 GOTO1520
+2200 REM
+2210 REM  subroutine voorbereiding
+2220 REM
+2230 IFTE=1 THENRETURN
+2240 IFTE=2 THENPRINT"even geduld aub":RETURN
+2250 REM
+2260 REM  grafische scherm
+2270 REM
+2280 GOSUB600:CN=0
+2290 REM
+2300 REM  hoogte grafische scherm
+2310 REM
+2320 HT=1
+2330 REM
+2340 REM  overeenkomstige breedte
+2350 REM
+2360 BD=.75
+2370 REM
+2380 REM  grootste coordinaatwaarde
+2390 REM  (in principe 1 laten)
+2400 REM
+2410 UI=1
+2420 REM
+2430 REM  positie van de zon
+2440 REM
+2450 X=0
+2460 Y=0
+2470 REM
+2480 REM  positie zon markeren
+2490 REM
+2500 GOSUB2580
+2510 REM
+2520 REM  klaar met voorbereiding
+2530 REM
+2540 RETURN
+2550 REM
+2560 REM  subroutine punt naar beeldpunt
+2570 REM
+2580 XP=BD*(1+X/UI)*.5
+2590 YP=HT*(1+Y/UI)*.5
+2600 REM
+2610 REM  beeldpunt op scherm.
+2620 REM
+2630 HO=XP:VE=YP:GOSUB620
+2640 REM
+2650 REM  klaar met dit punt
+2660 REM
+2670 RETURN
+2680 REM
+2690 REM  programmadeel omlooptijd
+2700 REM
+2710 TY=TY+TS
+2720 REM
+2730 REM  halve omloop voltooid? Zonee, dan
+2740 REM  doorgaan met de volgende tijdstap
+2750 REM
+2760 IFY<0 THEN1520
+2770 REM
+2780 REM  halve omloop voltooid.
+2790 REM
+2800 TY=TY*2
+2810 REM
+2820 REM  gemiddelde grootste, kleinste afstand
+2830 REM
+2840 A=(1+(-X))/2
+2850 REM
+2860 REM  a^3/tijd^2 op het scherm
+2870 REM
+2880 PRINT
+2890 PRINT"tijd= ";TY
+2900 PRINT"perihelium= ";-X
+2910 PRINT"a^3/tijd^2= ";A^3/TY^2
+2920 PRINT
+2930 PRINT"toets voor einde>";
+2940 GOSUB210:REM  wacht op toets
+2950 REM
+2960 REM  taak volbracht
+2970 REM
+2980 GOTO950
+30000 REM
+30010 REM  dit is een
+30020 REM  Basicode-3 programma
+30030 REM  van
+30040 REM
+32000 REM  Pim van Tend
+32010 REM  Veldheimwg 8
+32020 REM  6871 CD  RENKUM
+32030 REM
+32040 REM  copyright (c) 1987
+32050 REM  Stichting Mens en
+32060 REM  Wetenschap, Huizen NH
+32070 REM TROS-RADIO dd 870909
