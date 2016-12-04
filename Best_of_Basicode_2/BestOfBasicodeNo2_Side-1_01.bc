@@ -1,0 +1,121 @@
+
+1000 A=1000:GOTO20
+1010 REM-VOORBEELD MET TEKST
+1020 GOSUB24500:REM SCHERM OPMETEN
+1030 DD$=".T1":GOSUB24600:REM TEKST1
+1040 DD$=".T2":GOSUB24600:REM TEKST2
+1050 DD$=".T3":GOSUB24600:REM TEKST3
+1060 DD$=".V1":GOSUB24600:REM VRAAG1
+1070 INPUTSR$
+1080 SR=INT(VAL(SR$))
+1090 IF(SR>0) AND(SR<4) THEN2000
+1100 GOTO1060
+2000 ONSR GOTO2100,2200,2300
+2100 DD$=".T1":GOSUB100:VE=0:GOSUB24600:REM  TEKST 1
+2110 GOTO9990
+2200 DD$=".T2":GOSUB24600:REM TEKST2
+2210 GOTO9990
+2300 DD$=".T3":GOSUB24600:REM TEKST3
+9990 SR$="":GOSUB24700
+9999 END
+24500 REM-SCHERM-OPMETEN
+24510 GOSUB100:VE=0:FORI=0 TO80:HO=I:GOSUB110:PRINT"0";
+24520 GOSUB120:IFVE<>0 THENHH=I+1:I=80
+24530 NEXTI:FORI=0 TO80:HO=0:VE=I:GOSUB110:PRINT"0";
+24540 GOSUB120:IFVE<>I THENVV=I:I=80
+24550 NEXTI:GOSUB100:RETURN
+24600 REM-ZOEK-DATA-EN-ZET-OP-SCHERM
+24610 RESTORE
+24620 READSR$:IFSR$="." THEN24660
+24630 IFSR$<>DD$ THEN24620
+24640 READSR$:IFLEFT$(SR$,1)="." THEN24660
+24650 GOSUB24700:GOTO24640
+24660 RETURN
+24700 REM-BASICODE-2-TEKST-VORMER
+24710 IFSR$="" THENGOSUB24900:RETURN
+24720 IFSR$<>"-" THEN24740
+24730 FORII=4 TOHH:SR$=SR$+"-":NEXTII:VE=VE-1
+24740 IF(LEFT$(SR$,1)<>"&") AND(SR$<>"#") THEN24780
+24750 HO=0:IFSR$="#" THENVE=VV:GOSUB24900:GOSUB100:RETURN
+24760 IFSR$="&" THENVE=VE+4:GOSUB110:RETURN
+24770 VE=VE+2:GOSUB110:SR$=RIGHT$(SR$,LEN(SR$)-1)
+24780 SR$=SR$+" ":LL=LEN(SR$):SP=1
+24790 FORII=1 TOLL
+24800 IFMID$(SR$,II,1)<>" " THEN24895
+24810 SM$=MID$(SR$,SP,II-SP)
+24820 LM=LEN(SM$):IFLM+HO<HH-1 THEN24840
+24830 HO=0:VE=VE+2:GOSUB110
+24840 GOSUB120:IFVE<VV-3 THEN24860
+24850 GOSUB24900:GOSUB100:GOSUB120
+24860 IFLM<HH THEN24890
+24870 SM$=MID$(SR$,SP,HH-HO-2)
+24880 II=SP+HH-HO-3
+24890 PRINT" ";SM$;:GOSUB120:SP=II+1
+24895 NEXTII:RETURN
+24900 REM-VRAAG-INVOERTOETS
+24910 VS=VE:HS=HO:VE=(VV-1):HO=0
+24920 GOSUB110
+24930 PRINT"                    ";:FORI=0 TO300:NEXTI
+24940 GOSUB200:IFIN$<>"" THEN24980
+24950 GOSUB110
+24960 PRINT"DRUK OP INVOER-TOETS";:FORI=0 TO300:NEXTI
+24970 GOTO24920
+24980 VE=VS:HO=HS:RETURN
+25000 REM-DATA
+25010 DATA   ".T1"    ,"&BASICODE-2 en TEKST","-" 
+25020 DATA"BASICODE-2 is heel handig"
+25030 DATA"om programma's uit te wisselen tussen "
+25040 DATA "&VERSCHILLENDE computers.","&"
+25050 DATA "&Hoewel de programma's, met het nieuwe"
+25060 DATA"BASICODE-2-PROTOCOL onmiddellijk op ELKE"
+25070 DATA"microcomputer werken, is de afbeelding op"
+25080 DATA"het scherm alleen maar netjes op apparaten"
+25090 DATA"met een scherm van 24 regels met elk 40"
+25100 DATA "karakters."
+25110 DATA ".T2","#","TEKST SUBROUTINE","-" 
+25120 DATA"Met deze subroutine is het mogelijk op elk"
+25130 DATA"scherm, ook op een heel klein of een heel"
+25140 DATA"groot, teksten netjes af te beelden.",""
+25150 DATA "&Deze teksten kunnen uit DATA-regels komen"
+25160 DATA"en mogen ook direkt als string (SR$) naar de"
+25170 DATA"subroutine gestuurd worden."
+25180 DATA "#","Dit werkt als volgt:","-"
+25190 DATA "&-Regels worden opgebouwd uit de aangeboden"
+25200 DATA"strings."
+25210 DATA "&-Regels worden op hele woorden afgebroken."
+25220 DATA "&-Tussen de regels komt een wit-regel."
+25230 DATA  "&-Een zin die met een '&' begint start"
+25240 DATA"op een nieuwe schermregel."
+25250 DATA   "&-Een regel die met een '&' en spaties begint"
+25260 DATA"start op een nieuwe regel en springt in."
+25270 DATA  "&-Met een losse '&' wordt een regel"
+25280 DATA "overgeslagen.","&-Met een losse '#'"
+25290 DATA"wordt overgegaan naar een nieuwe bladzijde."
+25300 DATA "&-Als het scherm vol is gaan we ook over naar"
+25310 DATA "een nieuwe bladzijde.","&-Na een lege string"
+25320 DATA"of voor een nieuwe bladzijde moeten we op de"
+25330 DATA"INVOER-TOETS (RETURN, ENTER, NEW-LINE) drukken."
+25340 DATA "&-Met een LOS streepje (-) geven we aan dat de"
+25350 DATA"VORIGE regel onderstreept moet worden op"
+25360 DATA"regelbreedte."
+25370 DATA ".T3","#","Let eens op hoe een DATA-blok wordt"
+25380 DATA"gekozen."," Door RESTORE kan een zelfde blok"
+25390 DATA"meerdere malen worden gebruikt."
+25400 DATA"Elk DATA-blok begint met een aanwijzer b.v."
+25410 DATA"'.T1', waarbij alleen de punt aan het begin"
+25420 DATA"VERPLICHT is."
+25430 DATA "&Als LAATSTE gegeven komt in de DATA een punt."
+25440 DATA ".V1","#","Welk deel wil je nog eens zien ?","-"
+25450 DATA  "&1 Inleiding","&2 Tekst subroutine","&3 Slot"," "
+25460 DATA"."
+30000 REM NAAR EEN IDEE VAN
+30010 REM RIEN VAN DONGEN
+30020 REM WEIGELIAPARK 25
+30030 REM 2724 RH ZOETERMEER
+30040 REM VOOR TOEPASSING OP
+30050 REM MEERDERE COMPUTERS
+30060 REM BEWERKT DOOR DE
+30070 REM BASICODE REDACTIE
+30080 REM 
+30090 REM COPYRIGHT
+30100 REM NOS HILVERSUM

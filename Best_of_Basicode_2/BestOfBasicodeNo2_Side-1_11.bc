@@ -1,0 +1,105 @@
+
+1000 A=1000:GOTO20
+1010 REM KALAH(A) DOCUMENTATIE
+1020 GOSUB24500:REM SCHERM OPMETEN
+1030 DD$=".T1":GOSUB24600:REM TEKST1
+1040 DD$=".T2":GOSUB24600:REM TEKST2
+1050 DD$=".T3":GOSUB24600:REM TEKST3
+1060 DD$=".V1":GOSUB24600:REM VRAAG1
+1070 INPUTSR$
+1080 SR=INT(VAL(SR$))
+1090 IF(SR>0) AND(SR<4) THEN2000
+1100 GOTO1060
+2000 ONSR GOTO2100,2200,2300
+2100 DD$=".T1":GOSUB100:VE=0:GOSUB24600:REM TEKST 1
+2110 GOTO9990
+2200 DD$=".T2":GOSUB24600:REM TEKST2
+2210 GOTO9990
+2300 DD$=".T3":GOSUB24600:REM TEKST3
+9990 SR$="":GOSUB24700
+9999 END
+24500 REM-SCHERM-OPMETEN
+24510 GOSUB100:VE=0:FORI=0 TO80:HO=I:GOSUB110:PRINT"0";
+24520 GOSUB120:IFVE<>0 THENHH=I+1:I=80
+24530 NEXTI:FORI=0 TO80:HO=0:VE=I:GOSUB110:PRINT"0";
+24540 GOSUB120:IFVE<>I THENVV=I:I=80
+24550 NEXTI:GOSUB100:RETURN
+24600 REM-ZOEK-DATA-EN-ZET-OP-SCHERM
+24610 RESTORE
+24620 READSR$:IFSR$="." THEN24660
+24630 IFSR$<>DD$ THEN24620
+24640 READSR$:IFLEFT$(SR$,1)="." THEN24660
+24650 GOSUB24700:GOTO24640
+24660 RETURN
+24700 REM-BASICODE-2-TEKST-VORMER
+24710 IFSR$="" THENGOSUB24900:RETURN
+24720 IFSR$<>"-" THEN24740
+24730 FORII=4 TOHH:SR$=SR$+"-":NEXTII:VE=VE-1
+24740 IF(LEFT$(SR$,1)<>"&") AND(SR$<>"#") THEN24780
+24750 HO=0:IFSR$="#" THENVE=VV:GOSUB24900:GOSUB100:RETURN
+24760 IFSR$="&" THENVE=VE+4:GOSUB110:RETURN
+24770 VE=VE+2:GOSUB110:SR$=RIGHT$(SR$,LEN(SR$)-1)
+24780 SR$=SR$+" ":LL=LEN(SR$):SP=1
+24790 FORII=1 TOLL
+24800 IFMID$(SR$,II,1)<>" " THEN24895
+24810 SM$=MID$(SR$,SP,II-SP)
+24820 LM=LEN(SM$):IFLM+HO<HH-1 THEN24840
+24830 HO=0:VE=VE+2:GOSUB110
+24840 GOSUB120:IFVE<VV-3 THEN24860
+24850 GOSUB24900:GOSUB100:GOSUB120
+24860 IFLM<HH THEN24890
+24870 SM$=MID$(SR$,SP,HH-HO-2)
+24880 II=SP+HH-HO-3
+24890 PRINT" ";SM$;:GOSUB120:SP=II+1
+24895 NEXTII:RETURN
+24900 REM-VRAAG-INVOERTOETS
+24910 VS=VE:HS=HO:VE=(VV-1):HO=0
+24920 GOSUB110
+24930 PRINT"                    ";:FORI=0 TO300:NEXTI
+24940 GOSUB200:IFIN$<>"" THEN24980
+24950 GOSUB110
+24960 PRINT"DRUK OP INVOER-TOETS";:FORI=0 TO300:NEXTI
+24970 GOTO24920
+24980 VE=VS:HO=HS:RETURN
+25000 REM-DATA
+25010 DATA ".T1","HET KALAH(A) SPEL.","-"
+25020 DATA  "&1. INDELING SPEELVELD.","&Het speelveld bestaat"
+25030 DATA "uit twee rijen van zes bakjes, voor elke speler"
+25040 DATA "een rij.","&Bovendien voor elke speler een 'pot'." 
+25050 DATA "&Elk bakje heeft een nummer van een tot zes."
+25060 DATA "Bij de aanvang van het spel bevat elk bakje zes"
+25070 DATA "steentjes. De 'pot' is echter nog leeg."
+25080 DATA ".T2", "#","SPELREGELS.","-" 
+25090 DATA "&In ons geval spelen we tegen de computer. "
+25100 DATA"Degene, die de beurt heeft kiest een van zijn "
+25110 DATA "bakjes en neemt daar de steentjes uit."
+25120 DATA "Gaande tegen de wijzers van de klok in worden"
+25130 DATA "de steentjes stuk voor stuk in de volgende bakjes"
+25140 DATA "gedeponeerd, ook in de 'pot'. Als het laatste"
+25150 DATA "steentje in de eigen 'pot' terecht komt, mag"
+25160 DATA "men nog een bakje legen en verdelen."
+25170 DATA  "&Als men zelf een leeg bakje heeft en het laatste"
+25180 DATA "steentje komt daarin terecht, dan verhuizen dat"
+25190 DATA "steentje en de steentjes, die zich in het"
+25200 DATA "overeenkomstige bakje van de tegenspeler"
+25210 DATA "bevinden naar de 'pot' van de aan de beurt"
+25220 DATA"zijnde speler."
+25230 DATA".T3","#","PUNTENTELLING.","-"
+25240 DATA "De puntentelling is heel eenvoudig. De winnaar"
+25250 DATA "is de speler die aan het eind van het spel, dat"
+25260 DATA "wil zeggen als ALLE bakjes leeg zijn, de meeste"
+25270 DATA "steentjes in zijn 'pot' heeft verzameld."
+25280 DATA  "&Het vereist een goed spelinzicht om dat te"
+25290 DATA"bereiken. Vooral de kans om meer keren"
+25300 DATA"aaneen te mogen spelen moet worden"
+25310 DATA"uitgebuit!"
+25320 DATA "&Veel SUCCES."
+25330 DATA".V1","#","Wat wilt u nog eens zien:"
+25340 DATA "&1. De indeling van het speelveld." 
+25350 DATA "&2. De spelregels."
+25360 DATA  "&3. De puntentelling."," ","."
+30000 REM 
+30010 REM-BASICODE REDACTIE
+30020 REM
+30030 REM-COPYRIGHT
+30040 REM-NOS HILVERSUM

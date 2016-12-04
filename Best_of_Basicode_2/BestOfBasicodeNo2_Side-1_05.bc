@@ -1,0 +1,190 @@
+
+1000 A=500:GOTO20:REM HOOFDSTEDEN
+1010 GOSUB100
+1020 SF=50:REM SPEED-FACTOR
+1030 PRINT:PRINT:PRINT"  E U R O P A "
+1040 READAL:REM AANTAL LANDEN
+1050 DIMLA$(AL),HS$(AL,3),FL$(AL),AW(3)
+1060 FORI=1 TOAL:LA$(I)="":FL$(I)="":NEXTI
+1070 FORI=1 TOAL
+1080 GOSUB260:RV=1+INT((AL-I+1)*RV):X=0
+1090 X=X+1
+1100 IFLA$(X)="" THENRV=RV-1
+1110 IFRV>0 THEN1090
+1120 READLA$(X)
+1130 FORY=1 TO3:READHS$(X,Y):NEXTY
+1140 NEXTI
+1150 GOSUB100
+1160 PRINT" goed":PRINT"+----+":HO=0
+1170 FORVE=2 TO22:GOSUB110:PRINT"! -  !":NEXTVE
+1180 PRINT"+----+";
+1190 HO=3:CT=2:CN=0
+1200 FORVE=2 TO22 STEP5
+1210 SR=22-VE:GOSUB310
+1220 GOSUB110:PRINTSR$;
+1230 NEXTVE
+1240 HO=7
+1250 FORVE=1 TO20:GOSUB110
+1260 PRINT"!                        !"
+1270 NEXTVE
+1280 FORVE=1 TO21 STEP4
+1290 IFVE=17 THEN1310
+1300 GOSUB110:PRINT"+------------------------+"
+1310 NEXTVE
+1320 VE=3:HO=9:GOSUB110:PRINT"Hoofdsteden van Europa"
+1330 VE=7:GOSUB110:PRINT"Land:"
+1340 VE=11:HO=12:GOSUB110:PRINT"Welke hoofdstad?"
+1350 FORVE=15 TO19 STEP2
+1360 HO=8:GOSUB110:PRINTCHR$((VE+83)/2);".";
+1370 NEXTVE
+1380 VR=0:AG=0
+1390 VR=VR+1
+1400 VE=7:HO=15:GOSUB110:PRINTLA$(VR)
+1410 GOSUB260:AW(1)=1+INT(3*RV)
+1420 AW(2)=AW(1)+1:IFAW(2)>3 THENAW(2)=1
+1430 AW(3)=AW(1)+2:IFAW(3)>3 THENAW(3)=AW(3)-3
+1440 GA=1:IFAW(1)>1 THENGA=5-AW(1)
+1450 FORI=1 TO3
+1460 VE=13+I+I:HO=11:GOSUB110:PRINTHS$(VR,AW(I))
+1470 NEXTI
+1480 AP=0
+1490 VE=22:HO=8:GOSUB110:PRINT"Ik kies nummer: ";
+1500 GOSUB210
+1510 IN=VAL(IN$):IF(IN<1) OR(IN>3) THEN1500
+1520 PRINTIN$;
+1530 FORW=1 TO2*SF:NEXTW
+1540 AP=AP+1
+1550 IF(GA=IN) THEN1770
+1560 REM"**  fout antwoord  **"
+1570 GOSUB250
+1580 IFAP=2 THEN1690
+1590 VE=22:HO=30
+1600 FORI=1 TO10
+1610 GOSUB110:PRINT"    "
+1620 FORW=1 TOSF:NEXTW
+1630 GOSUB110:PRINT"FOUT"
+1640 FORW=1 TOSF:NEXTW
+1650 NEXTI
+1660 VE=22:FORHO=8 TO35:GOSUB110:PRINT" ";:NEXTHO
+1670 FL$(VR)=LA$(VR)
+1680 GOTO1490
+1690 REM"** tweede keer fout **"
+1700 VE=22:FORHO=8 TO35:GOSUB110:PRINT" ";:NEXTHO
+1710 VE=22:HO=8:GOSUB110:PRINT"FOUT...De hoofdstad is ";GA
+1720 FORW=1 TO50*SF:NEXTW
+1730 GOSUB1880
+1740 IFVR=AL THEN1950
+1750 GOTO1390
+1760 REM"**  goed antwoord  **"
+1770 GOSUB1880
+1780 IFAP>1 THEN1820
+1790 VE=22:HO=8:GOSUB110:PRINT"Goed!!! Een punt erbij..."
+1800 VE=22-AG:HO=1:GOSUB110:PRINT"*";
+1810 AG=AG+1
+1820 FORW=1 TO30*SF:NEXTW
+1830 IFAG=21 THEN2110
+1840 IFVR=AL THEN1950
+1850 GOSUB1880
+1860 GOTO1390
+1870 REM"** wis vraag  en antwoorden **"
+1880 VE=7:HO=14:GOSUB110:PRINT"                "
+1890 VE=15:HO=10:GOSUB110:PRINT"               "
+1900 VE=17:HO=10:GOSUB110:PRINT"               "
+1910 VE=19:HO=10:GOSUB110:PRINT"               "
+1920 VE=22:HO=8:GOSUB110:PRINT"                          "
+1930 RETURN
+1940 REM"** einde met teveel fout **"
+1950 GOSUB100
+1960 PRINT:PRINT"Je wist van de 22 landen ";AG;" keer"
+1970 PRINT:PRINT"de goede hoofdstad."
+1980 PRINT:PRINT"Van de volgende landen moet je"
+1990 PRINT"de hoofdstad nog eens leren : "
+2000 PRINT
+2010 FORI=1 TOAL
+2020 IFFL$(I)="" THEN2040
+2030 PRINT"***  ";FL$(I),"  ***"
+2040 NEXTI
+2050 PRINT
+2060 PRINT"Schrijf deze landen even over en"
+2070 PRINT"druk daarna op de toets met 'k' "
+2080 GOSUB210
+2090 GOTO2440
+2100 REM"** einde met weinig fout **"
+2110 GOSUB100
+2120 PRINT:PRINT"Je had van de ";VR;" landen"
+2130 PRINT:PRINT"er ";AG;" goed."
+2140 PRINT:PRINT"Dat is prima van je !!!"
+2150 PRINT:PRINT"Daarom ga ik nu een spelletje met"
+2160 PRINT:PRINT"met je doen."
+2170 PRINT:PRINT
+2180 PRINT"Let op,het gaat zo..."
+2190 PRINT:PRINT
+2200 PRINT:PRINT"Ik neem een getal tussen 0 en 100"
+2210 PRINT"in gedachten,en jij probeert dat"
+2220 PRINT"in zo weinig mogelijk beurten te"
+2230 PRINT"raden. Ik help je daarbij...."
+2240 PRINT:PRINT"Druk op de toets met 'k'"
+2250 GOSUB210
+2260 GOSUB100
+2270 PRINT"Ik heb een getal tussen 1 en 100"
+2280 GOSUB260:GA=INT(100*RV+1)
+2290 AR=0
+2300 PRINT
+2310 PRINT"Welk getal denk je ";:INPUTIN$
+2320 IN=VAL(IN$):IFIN=0 THEN2310
+2330 AR=AR+1
+2340 IF(IN<GA) THEN2520
+2350 IF(IN>GA) THEN2500
+2360 PRINT:PRINT"Niet slecht !!!      Geraden !!!"
+2370 PRINT:PRINT"Je hebt ";AR;" keer geraden"
+2380 PRINT
+2390 PRINT"Wil je nog eens, type dan een 1"
+2400 PRINT"Wil je niet meer, type dan....0"
+2410 PRINT:INPUTIN$
+2420 IFIN$="1" THENPRINT:GOTO2280
+2430 IFIN$<>"0" THEN2390
+2440 GOSUB100:VE=5:HO=0:GOSUB110:PRINT"*************"
+2450 PRINT"*           *"
+2460 PRINT"* Tot Ziens *"
+2470 PRINT"*           *"
+2480 PRINT"*************"
+2490 END
+2500 PRINT"Te hoog......Probeer nog eens !
+2510 GOTO2310
+2520 PRINT"Te laag......Probeer nog eens !"
+2530 GOTO2310
+25000 REM"**  het aantal landen **"
+25010 DATA 21
+25020 REM"** landen en hoofdsteden **"
+25030 DATA"Nederland","Amsterdam","Haarlem","Den Haag"
+25040 DATA"Frankrijk","Parijs","Marseille","Londen"
+25050 DATA"Italie","Rome","Milaan","Napels"
+25060 DATA"Denemarken","Kopenhagen","Oslo","Stockholm"
+25070 DATA"Spanje","Madrid","Lissabon","Marseille"
+25080 DATA"Portugal","Lissabon","Madrid","Marseille"
+25090 DATA"Polen","Warschau","Moskou","Krakau"
+25100 DATA"West-Duitsland","Bonn","Berlijn","Stuttgart"
+25110 DATA"Zwitserland","Bern","Zurich","Geneve"
+25120 DATA"Griekenland","Athene","Konstantinopel","Istanbul"
+25130 DATA"Oost-Duitsland","Berlijn","Leipzig","Bonn"
+25140 DATA "Noorwegen","Oslo","Helsinki","Stockholm"
+25150 DATA "Oostenrijk","Wenen","Neurenberg","Geneve"
+25160 DATA "Belgie","Brussel","Antwerpen","Maastricht"
+25170 DATA "Zweden","Stockholm","Oslo","Hannover"
+25180 DATA "Groot-Brittanie","Londen","Dublin","Liverpool"
+25190 DATA "Hongarije","Boedapest","Boekarest","Warschau"
+25200 DATA "Joegoslavie","Belgrado","Zagreb","Athene"
+25210 DATA "Rusland","Moskou","Leningrad","Warschau"
+25220 DATA "Ierland","Dublin","Reykjavik","Londen"
+25230 DATA "Finland","Helsinki","Stockholm","Belgrado"
+25240 DATA"Luxemburg","Luxemburg","Brussel","Gent"
+30000 REM  EEN PROGRAMMA VAN DE
+30010 REM     BASICODEGROEP
+30020 REM
+30030 REM  GEINSPIREERD OP EEN
+30040 REM  OORSPRONKELIJK PROGRAMMA
+30050 REM         VAN
+30060 REM    JAN HOOGENDOORN
+30070 REM 
+30080 REM COPYRIGHT
+30090 REM NOS HILVERSUM

@@ -1,0 +1,113 @@
+
+1000 A=0:GOTO20:REM brandstofverbruik auto's
+1010 GOSUB100
+1020 DIMIN(5),TX(5),TY(5),N$(5),MI(5),MN(5)
+1030 W$="                                       "
+1040 PRINT
+1050 PRINT"*** benzineverbruik personenauto's ***"
+1060 PRINT
+1070 PRINT"Geef RETURN wanneer u hulp nodig hebt."
+1080 FORI=0 TO5
+1090 READN$(I),MI(I),MN(I)
+1100 NEXTI
+1110 FORX=0 TO5
+1120 HO=0:VE=X+5:GOSUB110
+1130 PRINTN$(X);TAB(22);
+1140 GOSUB120:TX(X)=HO:TY(X)=VE
+1150 INPUTIN$:IN(X)=VAL(IN$)
+1160 IF(IN(X)>=MI(X)) AND(IN(X)<=MN(X)) THENGOSUB1600:GOTO1400
+1170 HO=0:VE=15:GOSUB110
+1180 ONX+1 GOTO1190,1220,1260,1290,1320,1360
+1190 PRINT" : Geef het (ledig) gewicht van het"
+1200 PRINT" : voertuig in kilogram."
+1210 GOTO1380
+1220 PRINT" : Geef uw rijstijl op in een schaal"
+1230 PRINT" : van 1 tot 5, waarbij 1='zeer rustig'"
+1240 PRINT" : en 5='zeer scherp'."
+1250 GOTO1380
+1260 PRINT" : Geef de compressie-verhouding van de"
+1270 PRINT" : motor op, 1:7 is laag, 1:11 is hoog."
+1280 GOTO1380
+1290 PRINT" : Geef de cilinderinhoud van de motor,"
+1300 PRINT" : in cc."
+1310 GOTO1380
+1320 PRINT" : Geef de snelheid in km/u bij 1000"
+1330 PRINT" : toeren per minuut in de hoogste"
+1340 PRINT" : versnelling."
+1350 GOTO1380
+1360 PRINT" : Geef het aantal cilinders van de"
+1370 PRINT" : motor op."
+1380 PRINT" : Antwoord a.u.b. ";MI(X);"...";MN(X);"."
+1390 GOTO1120
+1400 NEXTX
+1410 GOSUB1680
+1420 REM
+1430 REM wijzig gegevens en bereken opnieuw
+1440 REM
+1450 PRINT:PRINT"U kunt de ingevoerde gegevens wijzigen"
+1460 PRINT"en direct de gevolgen daarvan zien."
+1470 PRINT:PRINT"Toets een nieuwe waarde over de oude"
+1480 PRINT"of RETURN om de oude waarde te houden."
+1490 FORI=0 TO5
+1500 HO=TX(I):VE=TY(I):GOSUB110:INPUTIN$:NW=VAL(IN$)
+1510 HO=TX(I)+1:VE=TY(I):GOSUB110
+1520 IFNW=0 THENPRINTIN(I);"    ":GOTO1560
+1530 PRINTNW;"    "
+1540 IF(NW<MI(I)) OR(NW>MN(I)) THEN1500
+1550 IN(I)=NW:GOSUB1680
+1560 NEXTI
+1570 GOTO1490
+1580 END
+1590 REM
+1600 REM wis scherm voor help-tekst
+1610 REM
+1620 HO=0:VE=15:GOSUB110
+1630 PRINTW$:PRINTW$:PRINTW$:PRINTW$
+1640 RETURN
+1650 REM
+1660 REM bereken verbruik
+1670 REM
+1680 RS=5.01-IN(1)
+1690 SV=IN(3)/1000
+1700 KM=1000/IN(4)
+1710 C1=(IN(0)-690-RS*55)/(114+11.86*RS^1.24)
+1720 C0=(14.01-IN(2))^1.74
+1730 C2=(.012*C0+.76)*C1+.053*C0+.96
+1740 C3=C2*(.7+.045*SV)+SV*(SV*.5-.7)-.11
+1750 C4=C3*(.31+.014*KM)+KM*.041-1.1
+1760 SR=C4*(1.33+.085*IN(5))+IN(5)*.165+4.9
+1770 CT=4:CN=1:GOSUB310
+1780 HO=0:VE=12:GOSUB110
+1790 PRINT"Dit voertuig zal voor het afleggen van"
+1800 PRINT"100 km ongeveer ";SR$;" liter benzine"
+1810 PRINT"nodig hebben."
+1820 PRINT:SR=100/SR:GOSUB310
+1830 PRINT"Het verbruik is dus ca. 1 op ";SR$
+1840 RETURN
+25000 DATA "Massa",500,2500
+25010 DATA "Rijstijl",1,5
+25020 DATA "Compressie-verhouding",6,14
+25030 DATA "Cilinder-inhoud",500,5000
+25040 DATA "Totale overbrenging",20,60
+25050 DATA "Aantal cilinders",4,8
+30000 REM Programma voor het globaal bepalen
+30010 REM van het brandstofverbruik van auto's,
+30020 REM uitgaande van de massa, de rijstijl,
+30030 REM en motorgegevens als compressie,
+30040 REM slagvolume, overbrenging en aantal cilinders.
+30050 REM Computer-versie van het nomogram in
+30060 REM het blad AUTO-visie van 23 januari 1982.
+30070 REM
+30080 REM ************************************
+30090 REM *                                  *
+30100 REM * een BASICODE2-programma door     *
+30110 REM *     Peter Maathuis               *
+30120 REM *     Edelsteenweg 15              *
+30130 REM *     2651 SP  Berkel en Rodenrijs *
+30140 REM *                                  *
+30150 REM * gemaakt op een 32K BBC-micro     *
+30160 REM *       (januari 1984)             *
+30170 REM *                                  *
+30180 REM ************************************
+30190 REM
+30200 REM COPYRIGHT  NOS HILVERSUM

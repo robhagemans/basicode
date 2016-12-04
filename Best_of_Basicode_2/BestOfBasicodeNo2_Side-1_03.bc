@@ -1,0 +1,200 @@
+
+1000 A=100:GOTO20:REM BORD VAN GALTON
+1010 DIMNN(50):REM NUMBERS OF BALLS
+1020 GOTO3030:REM EXPLANATIONS
+1030 GOSUB100
+1040 VE=SV/2:HO=(SH-12)/2:GOSUB110:PRINT"Een momentje"
+1050 IFSH>SV+15 THENSH=SV+15
+1060 IFSV>SH-15 THENSV=SH-15
+1070 CC=SH-16:REM POSITIE VAKKEN
+1080 CC=-1+4*INT((CC+1)/4)
+1090 B=0:REM  BALL COUNT
+1100 MX=0:REM MAXIMUM IN VAK
+1110 SM=2*INT(SV/4):REM SCHERMMIDDEN
+1120 IFCC>2*SM THENSH=SH-1:GOTO1040
+1200 REM
+1210 REM"** binomiale verdeling **"
+1220 REM
+1230 NN(1)=100
+1240 FORI=2 TOSM:NN=0
+1250 FORJ=1 TOI-1
+1260 T=NN(J)/2:NN(J)=NN+T:NN=T
+1270 NEXTJ:NN(I)=NN:NEXTI
+1300 REM
+1310 REM"** print bin.verdeling **"
+1320 REM
+1330 GOSUB100
+1340 CT=5:CN=2
+1350 FORI=1 TOSM
+1360 SR=INT(.5+100*NN(I))/100:GOSUB310
+1370 VE=I+I-1:HO=CC+12:GOSUB110:PRINTSR$;
+1380 NN(I)=0
+1390 NEXTI
+1400 REM
+1410 REM"**  print de spijkers  **"
+1420 REM
+1430 MX=0:REM LARGEST NUMBER IN BIN
+1440 FORVE=2 TO2*SM-2
+1450 J=2+2*ABS(VE-SM)
+1460 FORHO=J TOCC STEP4:GOSUB110:PRINT"-";:NEXTHO
+1470 NEXTVE
+1480 VE=SM:HO=0:GOSUB110:PRINT">>"
+1490 FORVE=0 TO2*SM
+1500 HO=CC:GOSUB110:PRINT" ----+";
+1510 IFVE<2*SM THENVE=VE+1:GOSUB110:PRINT"     !";
+1520 NEXTVE
+2000 REM
+2010 REM"** centrale cyclus **"
+2020 REM
+2030 B=B+1:HO=0:VE=0:GOSUB110:PRINT"bal ";B
+2040 VE=SM:HO=0:GOSUB110:PRINT"<O";
+2050 GOSUB110:PRINT">";
+2060 HO=1:REM STARTPOINT
+2070 RC=0:REM VERTICAL STEP
+2080 GOTO2190
+2100 REM
+2110 REM"** bal-rol cyclus **"
+2120 REM
+2130 GOSUB110:PRINT" ";:VE=VE+RC
+2140 GOSUB110:PRINT"O";
+2150 GOSUB110:PRINT" O";
+2160 GOSUB110:PRINT"  O";
+2170 HO=HO+2
+2180 IFHO>CC-1 THEN2330
+2190 RC=-1:GOSUB260:IFRV<.5 THENRC=1
+2200 GOTO2130
+2300 REM
+2310 REM"** bal in vak **"
+2320 REM
+2330 RR=VE+1:NN(RR)=NN(RR)+1
+2340 SR=NN(RR):CT=5:CN=0:GOSUB310
+2350 HO=CC:GOSUB110:PRINTSR$;
+2360 IFNN(RR)>MX THENMX=NN(RR)
+2370 IFB/10<>INT(B/10) THEN2030
+2380 CT=5:CN=2:FORVE=1 TO2*SM-1 STEP2
+2390 SR=INT(NN(VE+1)/B*10000+.5)/100
+2400 GOSUB310
+2410 HO=CC+6:GOSUB110:PRINTSR$;
+2420 NEXTVE
+2430 GOTO2030
+3000 REM
+3010 REM"**  U I T L E G  **"
+3020 REM
+3030 GOSUB100
+3040 VE=2:HO=9:GOSUB110
+3050 PRINT"HOBBYSCOOP"
+3060 VE=5:HO=10:GOSUB110
+3070 PRINT"BASICODE"
+3100 REM
+3110 REM"** bepaal schermgrootte **"
+3120 REM
+3130 SV=14:SH=20
+3140 SV=SV+1
+3150 VE=SV:HO=SH:GOSUB110:GOSUB120
+3160 IFVE=SV THEN3140
+3170 SV=SV-1
+3180 SH=SH+1
+3190 VE=SV:HO=SH:GOSUB110:GOSUB120
+3200 IFHO=SH THEN3180
+3210 SH=SH-1
+3220 HO=0:VE=8:GOSUB110
+3230 PRINT
+3240 PRINT:PRINT"Demonstratie van het"
+3250 PRINT:PRINT"BORD van GALTON"
+3260 PRINT:PRINT:PRINT"Wil je uitleg ?";
+3270 GOSUB210
+3280 IF(IN$="j") OR(IN$="J") THEN3330
+3290 GOTO1030
+3300 REM
+3310 REM"** geef de uitleg **"
+3320 REM
+3330 GOSUB100
+3340 REM RL=AANTAL KARAKTERS PER REGEL
+3350 GOSUB100
+3360 PL=0:AR=0
+3370 READRE$
+3380 IFRE$="***" THEN1030
+3390 BK=1
+3400 IFBK>LEN(RE$) THEN3370
+3410 AK=0
+3420 AK=AK+1
+3430 IFBK+AK>LEN(RE$) THEN3450
+3440 IFMID$(RE$,BK+AK,1)<>" " THEN3420
+3450 WO$=MID$(RE$,BK,AK)
+3460 BK=BK+LEN(WO$)+1
+3470 IFPL+LEN(WO$)>SH THENGOSUB3560
+3480 IFWO$="&" THENWO$="":GOSUB3560:GOTO3520
+3490 IFWO$<>"#" THEN3520
+3500 GOSUB3560:IFAR<>0 THEN3500
+3510 GOTO3400
+3520 PRINTWO$;
+3530 PL=PL+LEN(WO$)+1
+3540 IFPL<=SH THENPRINT" ";
+3550 GOTO3400
+3560 PRINT
+3570 AR=AR+1
+3580 IFAR<SV-1 THEN3640
+3590 PRINT
+3600 PRINT"  VERVOLG: druk op  <RETURN>";
+3610 GOSUB210:IFIN$<>CHR$(13) THEN3610
+3620 AR=0
+3630 GOSUB100
+3640 PL=0
+3650 RETURN
+25000 DATA"Hallo BASICODE-vrienden."
+25010 DATA"& & Dit programma laat je kennis maken met"
+25020 DATA"het BORD VAN GALTON. & & Dat is een bord met"
+25030 DATA"spijkers waarlangs stalen kogels omlaag"
+25040 DATA"rollen. & & Telkens wanneer een kogel tegen"
+25050 DATA"een spijker botst, moet hij kiezen of hij naar"
+25060 DATA"de ene kant of naar de andere kant zal vallen."
+25070 DATA"& Keer op keer komt de bal op een nieuwe spijker"
+25080 DATA"terecht en na verloop van een aantal rijen"
+25090 DATA"spijkers komt hij in een verzamelbak. & &"
+25100 DATA"In welke verzamelbak iedere bal terecht komt"
+25110 DATA"is van het toeval afhankelijk. & &"
+25120 DATA"Wiskundigen noemen de verdeling van de spijkers"
+25130 DATA"over de bakken met een geleerde benaming de:"
+25140 DATA"& & Binomiale verdeling. & &"
+25150 DATA"Dat is hun zaak. Wij bekijken gewoon hoe de bal"
+25160 DATA"rolt. & & Om praktische redenen is op het beeld"
+25170 DATA"het bord een kwartslag gedraaid. De ballen"
+25180 DATA"rollen dus van links naar rechts en kiezen bij"
+25190 DATA"elke spijker uit bovenlangs of onderlangs."
+25200 DATA"& & Geheel rechts in het beeld ziet u drie"
+25210 DATA"kolommen getallen: de eerste kolom geeft voor"
+25220 DATA"elk vak aan hoeveel ballen er in zitten, de"
+25230 DATA"tweede kolom geeft aan hoeveel procent van de"
+25240 DATA"ballen in dat vak terecht is gekomen en de"
+25250 DATA"laatste kolom geeft aan hoeveel procent van de"
+25260 DATA"ballen volgens de wetten van de kansrekening"
+25270 DATA"daar terecht zou moeten komen. & Laat gerust"
+25280 DATA"de ballen een nachtje rollen en de werkelijke"
+25290 DATA"percentages zullen steeds beter kloppen"
+25300 DATA"met de theorie. & &"
+25310 DATA"Dit programma past zich automatisch aan aan"
+25320 DATA"de afmetingen van uw beeldscherm. Dankzij"
+25330 DATA"& & BASICODE-2 & & is dat mogelijk ! & &"
+25340 DATA"Tot slot: de getallen in de tweede kolom, die"
+25350 DATA"dus het percentage ballen vermelden dat in elk"
+25360 DATA"vak terecht is gekomen, worden slechts na"
+25370 DATA"elke tiende bal opnieuw berekend. Dit is zo"
+25380 DATA"gedaan om snelheid te winnen. #"
+25390 DATA"De bewerkers van dit programma en de redaktie"
+25400 DATA"van & &"
+25410 DATA"    N.O.S.-HOBBYSCOOP & &"
+25420 DATA"wensen u veel leerzaam plezier. #"
+25430 DATA"***"
+30000 REM
+30010 REM  BORD VAN GALTON
+30020 REM
+30030 REM  EEN HOBBYSCOOP-PRODUCTIE
+30040 REM
+30050 REM  N.O.S.-HOBBYSCOOP
+30060 REM  POSTBUS 1200
+30070 REM  1200 BE HILVERSUM
+30080 REM
+30090 REM  JUNI 1983
+30100 REM
+30110 REM  COPYRIGHT
+30120 REM  NOS HILVERSUM

@@ -1,0 +1,290 @@
+
+1000 A=100:GOTO20:REM PLATONISCHE LICHAMEN E.A.
+1010 PP=3.14159265:GOSUB5000
+1020 GOSUB100
+1040 PRINT"** Dit programma berekent de inhoud, **"
+1050 PRINT"** ingeschreven en de omschreven     **"
+1060 PRINT"** oppervlakte en de straal van de   **"
+1070 PRINT"** ingeschreven en de omschreven     **"
+1080 PRINT"** cirkel van Platonische lichamen:  **"
+1090 PRINT
+1100 PRINT"1 Tetraeder  (regelmatig  4 vlak)"
+1110 PRINT"2 Hexaeder   (regelmatig  6 vlak,kubus)"
+1120 PRINT"3 Octaeder   (regelmatig  8 vlak)"
+1130 PRINT"4 Dodecaeder (regelmatig 12 vlak)"
+1140 PRINT"5 Icosaeder  (regelmatig 20 vlak)"
+1150 PRINT"6 Bol"
+1160 PRINT:PRINT"De oppervlakten van:"
+1170 PRINT"7 Cirkel       10 Vierkant":PRINT"8 Ellips";
+1180 PRINT"       11 Rechthoek":PRINT"9 Driehoek"
+1190 PRINT:PRINT"De inhoud van:"
+1200 PRINT"12 Rechthoekig prisma":PRINT"13 Cylinder";
+1210 PRINT"    14 Kegel"
+1220 PRINT:PRINT"Maak je keuze (1-14)."
+1230 PRINT"Voor stoppen druk s in.     ";
+1240 INPUTA$
+1250 IF(A$="s") OR(A$="S") THEN6000
+1260 IFA$="1" THEN1410
+1270 IFA$="2" THEN1650
+1280 IFA$="3" THEN1780
+1290 IFA$="4" THEN2040
+1300 IFA$="5" THEN1910
+1310 IFA$="6" THEN2170
+1320 IFA$="7" THEN2350
+1330 IFA$="8" THEN2440
+1340 IFA$="9" THEN2550
+1350 IFA$="10" THEN2660
+1360 IFA$="11" THEN2750
+1370 IFA$="12" THEN2860
+1380 IFA$="13" THEN2990
+1390 IFA$="14" THEN3100
+1400 GOTO1020
+1410 GOSUB100
+1420 PRINT:PRINT"*** Tetraeder ***"
+1430 PRINT:PRINT
+1440 PRINT"Wat is de lengte van 1 ribbe";
+1450 INPUTB
+1460 PRINT"Wat is de lengtemaat";
+1470 INPUTB$
+1480 V=1/12*B*B*B*SQR(2)
+1490 A=B*B*SQR(3)
+1500 C=A/4
+1510 R=1/4*B*SQR(6)
+1520 P=1/12*B*SQR(6)
+1530 PRINT:PRINT
+1540 PRINT"Inhoud                 :";V;B$;"3"
+1550 PRINT"Oppervlakte            :";A;B$;"2"
+1560 PRINT"Oppervlakte 1 vlak     :";C;B$;"2"
+1570 PRINT"Straal omschreven bol  :";R;B$
+1580 PRINT"Straal ingeschreven bol:";P;B$
+1590 PRINT:PRINT:PRINT
+1600 PRINT"l=Lijst andere berekeningen"
+1610 PRINT"s=Stoppen"
+1620 GOSUB210
+1630 IF(IN$="l") OR(IN$="L") THEN1020
+1640 IF(IN$="s") OR(IN$="S") THEN6000
+1645 GOTO1620
+1650 GOSUB100
+1660 PRINT:PRINT"*** Hexaeder ***"
+1670 PRINT:PRINT
+1680 PRINT"Wat is de lengte van 1 ribbe";
+1690 INPUTB
+1700 PRINT"Wat is de lengtemaat";
+1710 INPUTB$
+1720 V=B*B*B
+1730 A=6*B*B
+1740 C=A/6
+1750 R=1/2*B*SQR(3)
+1760 P=1/2*B
+1770 GOTO1530
+1780 GOSUB100
+1790 PRINT:PRINT"*** Octaeder ***"
+1800 PRINT:PRINT
+1810 PRINT"Wat is de lengte van 1 ribbe";
+1820 INPUTB
+1830 PRINT"Wat is de lengtemaat";
+1840 INPUTB$
+1850 V=1/3*B*B*B*SQR(2)
+1860 A=2*B*B*SQR(3)
+1870 C=A/8
+1880 R=1/2*B*SQR(2)
+1890 P=1/6*B*SQR(6)
+1900 GOTO1530
+1910 GOSUB100
+1920 PRINT:PRINT"*** Icosaeder ***"
+1930 PRINT:PRINT
+1940 PRINT"Wat is de lengte van 1 ribbe";
+1950 INPUTB
+1960 PRINT"Wat is de lengtemaat";
+1970 INPUTB$
+1980 V=5/12*B*B*B*(3+SQR(5))
+1990 A=5*B*B*SQR(3)
+2000 C=A/20
+2010 R=1/4*B*SQR(10+2*SQR(3))
+2020 P=1/12*B*(3+SQR(5))*SQR(3)
+2030 GOTO1530
+2040 GOSUB100
+2050 PRINT:PRINT"*** Dodecaeder ***"
+2060 PRINT:PRINT
+2070 PRINT"Wat is de lengte van 1 ribbe";
+2080 INPUTB
+2090 PRINT"Wat is de lengtemaat";
+2100 INPUTB$
+2110 V=1/4*B*B*B*(15+7*SQR(5))
+2120 A=3*B*B*SQR(25+10*SQR(5))
+2130 C=A/12
+2140 R=1/4*B*(1+SQR(5))*SQR(3)
+2150 P=1/20*B*SQR(250+110*SQR(5))
+2160 GOTO1530
+2170 GOSUB100
+2180 PRINT:PRINT"*** Bol ***"
+2190 PRINT:PRINT
+2200 PRINT"Wat is de doorsnede";
+2210 INPUTB
+2220 PRINT"Wat is de lengtemaat";
+2230 INPUTB$
+2240 PRINT:PRINT
+2250 V=PP*B*B*B/6
+2260 A=PP*B*B
+2270 O=PP*B
+2280 C=PP*B*B/4
+2290 PRINT
+2300 PRINT"inhoud               :";V;B$;"3"
+2310 PRINT"Oppervlakte          :";A;B$;"2"
+2320 PRINT"Omtrek               :";O;B$
+2330 PRINT"Oppervlakte doorsnede:";C;B$;"2"
+2340 GOTO1590
+2350 GOSUB100
+2360 PRINT:PRINT"*** Cirkel ***":PRINT
+2370 PRINT"Wat is de straal";
+2380 INPUTR
+2390 PRINT"Wat is de lengtemaat";
+2400 INPUTB$
+2410 X=PP*R*R
+2420 PRINT:PRINT"De oppervlakte is";X;B$;"2"
+2430 GOTO1590
+2440 GOSUB100
+2450 PRINT:PRINT"*** Ellips ***":PRINT
+2460 PRINT"Geef de kleine as";
+2470 INPUTB
+2480 PRINT"Geef de grote as";
+2490 INPUTA
+2500 PRINT"Wat is de lengtemaat";
+2510 INPUTB$
+2520 X=A*B*PP
+2530 PRINT:PRINT"De oppervlakte is";X;B$;"2"
+2540 GOTO1590
+2550 GOSUB100
+2560 PRINT:PRINT"*** Driehoek ***":PRINT
+2570 PRINT"Wat is de basis";
+2580 INPUTB
+2590 PRINT"Wat is de hoogte";
+2600 INPUTA
+2610 PRINT"Wat is de lengtemaat";
+2620 INPUTB$
+2630 X=B*A/2
+2640 PRINT:PRINT"De oppervlakte is";X;B$;"2"
+2650 GOTO1590
+2660 GOSUB100
+2670 PRINT:PRINT"*** Vierkant ***":PRINT
+2680 PRINT"Wat is de zijde";
+2690 INPUTA
+2700 PRINT"Wat is de lengtemaat";
+2710 INPUTB$
+2720 X=A*A
+2730 PRINT:PRINT"De oppervlakte is";X;B$;"2"
+2740 GOTO1590
+2750 GOSUB100
+2760 PRINT:PRINT"*** Rechthoek ***":PRINT
+2770 PRINT"Wat is de lengte";
+2780 INPUTW
+2790 PRINT"Wat is de breedte";
+2800 INPUTL
+2810 PRINT"Wat is de lengtemaat";
+2820 INPUTB$
+2830 X=L*W
+2840 PRINT:PRINT"De oppervlakte is";X;B$;"2"
+2850 GOTO1590
+2860 GOSUB100
+2870 PRINT:PRINT"*** Rechthoekig prisma ***":PRINT
+2880 PRINT"Wat is de hoogte";
+2890 INPUTH
+2900 PRINT"Wat is de breedte";
+2910 INPUTW
+2920 PRINT"Wat is de lengte";
+2930 INPUTL
+2940 PRINT"Wat is de lengtemaat";
+2950 INPUTB$
+2960 X=H*W*L
+2970 PRINT:PRINT"De inhoud is";X;B$;"3"
+2980 GOTO1590
+2990 GOSUB100
+3000 PRINT:PRINT"*** Cilinder ***":PRINT
+3010 PRINT"Wat is de straal";
+3020 INPUTR
+3030 PRINT"Wat is de hoogte";
+3040 INPUTH
+3050 PRINT"Wat is de lengtemaat";
+3060 INPUTB$
+3070 X=PP*H*R*R
+3080 PRINT:PRINT"De inhoud is";X;B$;"3"
+3090 GOTO1590
+3100 GOSUB100
+3110 PRINT:PRINT"*** Kegel ***":PRINT
+3120 PRINT"Wat is de straal van de basis";
+3130 INPUTR
+3140 PRINT"Wat is de hoogte";
+3150 INPUTH
+3160 PRINT"Wat is de lengtemaat";
+3170 INPUTB$
+3180 X=(PP*H*R*R)/3
+3190 PRINT:PRINT"De inhoud is";X;B$;"3"
+3200 GOTO1590
+5000 GOSUB100
+5010 PRINT
+5020 PRINT" **************************************"
+5030 PRINT" *                                    *"
+5040 PRINT" *  Berekeningen voor:                *"
+5050 PRINT" *                                    *"
+5060 PRINT" *    oppervlakte,inhoud en omtrek    *"
+5070 PRINT" *                                    *"
+5080 PRINT" *       met gegeven lengtematen      *"
+5090 PRINT" *                                    *"
+5100 PRINT" *                 van:               *"
+5110 PRINT" *                                    *"
+5120 PRINT" *                                    *"
+5130 PRINT" *                                    *"
+5140 PRINT" *        Platonische lichamen        *"
+5150 PRINT" *                                    *"
+5160 PRINT" *              en andere             *"
+5170 PRINT" *                                    *"
+5180 PRINT" *        meetkundige lichamen        *"
+5190 PRINT" *                                    *"
+5200 PRINT" *                                    *"
+5210 PRINT" **************************************"
+5220 HO=1:VE=23:GOSUB110
+5230 PRINT"Wil je uitleg j/n?";
+5240 GOSUB210
+5250 IF(IN$<>"j") AND(IN$<>"J") THENRETURN
+5260 GOSUB100
+5270 PRINT:PRINT" Als eerste wordt gevraagd de lengte"
+5280 PRINT" van een zijde,en/of de hoogte,en/of"
+5290 PRINT" de breedte,en/of de basis of de assen.":PRINT
+5300 PRINT" Hier wordt er allen maar een getal in-"
+5310 PRINT" gevoerd. Bijv 8.32":PRINT:PRINT
+5320 PRINT" Als de lengtemaat wordt gevraagd,dan"
+5330 PRINT" moet je deze met letters aangeven."
+5340 PRINT" Bijvoorbeeld meter,km,dm of centimeter."
+5350 PRINT" In principe maakt het niet uit wat"
+5360 PRINT" hier komt te staan.":PRINT:PRINT
+5370 PRINT" Als antwoord komt er bijvoorbeeld:"
+5380 PRINT"  Inhoud     :18.27 dm3"
+5390 PRINT"  Oppervlakte: 9.54 dm2"
+5400 HO=1:VE=23:GOSUB110
+5410 PRINT"Druk op een toets voor vervolg.";
+5420 GOSUB210
+5430 RETURN
+6000 GOSUB100
+6010 HO=15:VE=10:GOSUB110
+6020 PRINT"Tot ziens!"
+6030 END
+30000 REM*****************************
+30010 REM*                           *
+30020 REM*   PLATONISCHE  LICHAMEN   *
+30030 REM*                           *
+30040 REM*         EN ANDERE         *
+30050 REM*                           *
+30060 REM*    MEETKUNDIGE FIGUREN    *
+30070 REM*                           *
+30080 REM*                           *
+30090 REM*GEMAAKT OP EEN COMMODORE 64*
+30100 REM*                           *
+30110 REM*     06-01-1984  DOOR:     *
+30120 REM*                           *
+30130 REM*     R.P.VAN DER LEER      *
+30140 REM*     KORHAANSTRAAT 79B     *
+30150 REM*     3083 XJ ROTTERDAM     *
+30160 REM*                           *
+30170 REM*****************************
+30180 REM
+30190 REM COPYRIGHT  NOS HILVERSUM
