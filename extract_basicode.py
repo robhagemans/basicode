@@ -44,6 +44,9 @@ class BasicodeStream(object):
         self.length = 0
         self.filetype = ''
         self.rwmode = ''
+        self.checksum_required = None
+        self.checksum_calculated = None
+        self.errors = 0
 
     def close(self):
         """Finalise the track on the tape stream."""
@@ -93,6 +96,14 @@ class BasicodeStream(object):
         except EndOfTape:
             return c
 
+    def last_checksum(self):
+        """Return checksum for last record read as a tuple (required, calculated)."""
+        return self.checksum_required or -1, self.checksum_calculated or -1
+
+    def last_checksum_passed(self):
+        """Return checksum for last record read as a tuple (required, calculated)."""
+        return (self.checksum_required is not None) and (self.checksum_required == self.checksum_calculated)
+
     def open_read(self):
         """Play until a file record is found."""
         if not self.bitstream.read_leader():
@@ -102,6 +113,7 @@ class BasicodeStream(object):
         self.record_num = 0
         self.record_stream = io.BytesIO()
         self.buffer_complete = False
+        self.errors = 0
         return ' '*8, 'A', 0, 0, 0
 
     def open_write(self, name, filetype, seg, offs, length):
@@ -119,14 +131,18 @@ class BasicodeStream(object):
         while True:
             try:
                 byte = self.bitstream.read_byte()
-            except (PulseError, FramingError) as e:
-                logging.warning("%s Cassette I/O error during read: %s",
-                                timestamp(self.bitstream.counter()), e)
+            except PulseError as e:
+                logging.debug("%s Pulse error", timestamp(self.bitstream.counter()))
                 # insert a zero byte as a marker for the error
                 byte = 0
+                self.errors += 1
+            except FramingError as e:
+                logging.debug("%s %s", timestamp(self.bitstream.counter()), e)
+                # insert a zero byte as a marker for the error
+                byte = 0
+                self.errors += 1
             except EndOfTape as e:
-                logging.warning("%s Cassette I/O error during read: %s",
-                                timestamp(self.bitstream.counter()), e)
+                logging.warning("%s Unexpected end of tape", timestamp(self.bitstream.counter()))
                 break
             checksum ^= byte
             if byte == 0x03:
@@ -136,18 +152,20 @@ class BasicodeStream(object):
             # CR -> CRLF
             if byte == 0x0d:
                 self.record_stream.write('\n')
+        self.checksum_calculated = checksum
         # read one-byte checksum and report errors
         try:
-            checksum_byte = self.bitstream.read_byte()
+            self.checksum_required = self.bitstream.read_byte()
         except (PulseError, FramingError, EndOfTape) as e:
-            logging.warning("%s, Could not read checksum: %s",
+            self.checksum_required = None
+            logging.debug("%s Could not read checksum: %s",
                             timestamp(self.bitstream.counter()), e)
         else:
             # checksum shld be 0 for even # bytes, 128 for odd
-            if checksum_byte is None or checksum^checksum_byte not in (0,128):
-                logging.warning("%s Checksum failed, required: %02x realised: %02x",
+            if self.checksum_required is None or checksum^self.checksum_required not in (0, 128):
+                logging.debug("%s Checksum failed, required: %02x realised: %02x",
                                 timestamp(self.bitstream.counter()),
-                                checksum_byte, checksum)
+                                self.checksum_required, checksum)
         self.record_stream.seek(0)
         self.bitstream.read_trailer()
         self.buffer_complete = True
@@ -384,19 +402,6 @@ class WAVBitStream(TapeBitStream):
         if self.operating_mode == 'w':
             self.write_intro()
         self.switch_mode(mode)
-
-    def __getstate__(self):
-        """Get pickling dict for stream."""
-        return { 'filename': self.filename,
-                 'mode': self.operating_mode,
-                 'counter': self.counter() }
-
-    def __setstate__(self, st):
-        """Initialise stream from pickling dict."""
-        # open for reading to avoid writing intro
-        self.__init__(st['filename'], 'r')
-        self.wind(st['counter'])
-        self.switch_mode(st['mode'])
 
     def switch_mode(self, mode):
         """Switch tape to reading or writing mode."""
@@ -832,9 +837,20 @@ wav_file = sys.argv[1]
 tapestream = BasicodeStream(BasicodeWAVBitStream(wav_file, 'r'))
 trunk = os.path.basename(wav_file).replace('.wav', '')
 
-for track in itertools.count():
-    tapestream.open_read()
-    print 'Found track %d at %s' % (track, timestamp(tapestream.counter()))
-    s = tapestream.read()
-    with open('%s_%02d.bc' % (trunk, track), 'wb') as f:
-        f.write(s)
+try:
+    for track in itertools.count():
+        tapestream.open_read()
+        print '%sProgram (%d)' % (timestamp(tapestream.counter()), track)
+        s = tapestream.read()
+        if not tapestream.errors and tapestream.last_checksum_passed:
+            print '- Pass (checksum %02x)' % tapestream.last_checksum()[0]
+            ext = 'bc'
+        else:
+            print '- Checksum: required %02x calculated %02x' % tapestream.last_checksum()
+            print '- Errors: %d' % tapestream.errors
+            print
+            ext = 'x'
+        with open('%s_%02d.%s' % (trunk, track, ext), 'wb') as f:
+            f.write(s)
+except EndOfTape:
+    pass
