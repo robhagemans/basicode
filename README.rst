@@ -29,10 +29,10 @@ for non-commercial purposes.
 
 This repository contains BASICODE programs from the following sources:
 
-==================================  ==========  =========== ==================  ==========
+==================================  ==========  =========== ==================  ==================
 Source                              Medium      Publisher   Basicode version    Language
-==================================  ==========  =========== ==================  ==========
-`BASICODE-2A`_                      Tape        NOS         BASICODE-2          Dutch
+==================================  ==========  =========== ==================  ==================
+`BASICODE-2A`_                      Tape        NOS         BASICODE-2          English and Dutch
 `The Best of BASICODE 2`_           Tape        NOS         BASICODE-2          Dutch
 `The Best of BASICODE 3`_           Tape        NOS         BASICODE-2          Dutch
 `The Best of BASICODE 5`_           CD          NOS         BASICODE-2          Dutch
@@ -40,7 +40,7 @@ Source                              Medium      Publisher   Basicode version    
 `Wiegand & Fillinger - Basicode`_   Tape        Elektor     BASICODE-2          German
 `BASICODE-3`_                       Tape        TROS        BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 1`_    Tape        TROS        BASICODE-3          Dutch
-==================================  ==========  =========== ==================  ==========
+==================================  ==========  =========== ==================  ==================
 
 .. _BASICODE-2A: Basicode-2a/
 .. _The Best of BASICODE 2: Best_of_Basicode_2/
