@@ -1,3 +1,4 @@
+
 1000 A=20:GOTO20
 1010 REM Taaltest middenbouw
 1020 REM     HANDLEIDING
@@ -99,4 +100,3 @@
 30040 REM * 5641 WP  Eindhoven      *
 30050 REM * COPYRIGHT NOS HILVERSUM *
 30060 REM ***************************
-

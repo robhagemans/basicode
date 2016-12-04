@@ -1,3 +1,4 @@
+
 1000 A=1000:GOTO20:REM * moleculaire genetica
 1010 GOSUB100:REM scherm schoon
 1020 REM * RNA en eiwit maken/mutaties
@@ -574,4 +575,3 @@
 32140 REM
 32150 REM copyright (c) 1987
 32160 REM NOS HILVERSUM
-

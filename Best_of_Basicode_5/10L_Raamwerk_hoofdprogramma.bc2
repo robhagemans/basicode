@@ -1,3 +1,4 @@
+
 1000 A=3500:GOTO20:REM  .  R A A M W E R K .  ****
 1010 ::REM               ===========================
 1020 GOSUB4360:REM    SCHERM OPMETEN / STANDAARDWAARDEN
@@ -504,4 +505,3 @@
 31000 REM    tel. 01883-16110
 31010 REM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 31020 END
-

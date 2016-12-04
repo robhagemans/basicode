@@ -1,3 +1,4 @@
+
 1000 A=200:GOTO20:REM BEROEPSWENSEN
 1010 REM W1=120:REM wachtlijnaanpassing
 1020 R$="'ENTER'":REM aan te passen
@@ -463,4 +464,3 @@
 30090 REM **    copyright N.O.S.     **
 30100 REM **        Hilversum        **
 30110 REM **                         **
-

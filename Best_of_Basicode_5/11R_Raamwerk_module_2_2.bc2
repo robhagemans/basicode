@@ -1,3 +1,4 @@
+
 10000 REM voorbeeld-moduul 2.2 bij RAAMWERK
 10010 REM Chemische symbolen/namen  ELEMENTEN
 10020 REM ===================================
@@ -27,4 +28,3 @@
 25150 DATA"Pb","LOOD","U","URAAN"
 25160 DATA"$$$$$"
 29990 END
-

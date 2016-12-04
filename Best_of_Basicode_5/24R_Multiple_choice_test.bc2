@@ -1,3 +1,4 @@
+
 1000 A=5500:GOTO20
 1010 REM  MCTOETS  (Multiple-choicetest, 10 K)
 1020 T=75:DIML(T),R(T),A$(T),B$(T,4)
@@ -216,4 +217,3 @@
 30080 REM  De Wie-weet-kwis van Hans Fontein (1984)
 30090 REM  Bewerking Basicode  :   Maarten van Gils
 30100 REM  1988  (C)  NOS - Hobbyscoop  (Hilversum)
-

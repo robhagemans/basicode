@@ -1,3 +1,4 @@
+
 1000 A=200:GOTO20:REM   Z80
 1010 REM   
 1020 REM   --INIT--
@@ -498,4 +499,3 @@
 30170 REM   ..............................
 30180 REM 
 30190 REM      Copyright NOS Hilversum
-

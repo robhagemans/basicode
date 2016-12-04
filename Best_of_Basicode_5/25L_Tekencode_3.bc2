@@ -1,3 +1,4 @@
+
 1000 A=20:GOTO20:REM Tekencode-3
 1010 REM Invulprogramma TeCo 3
 1020 GOSUB100:VE=7:HO=0:GOSUB110
@@ -28,4 +29,3 @@
 30060 REM *                         *
 30070 REM * COPYRIGHT NOS HILVERSUM *
 30080 REM ***************************
-

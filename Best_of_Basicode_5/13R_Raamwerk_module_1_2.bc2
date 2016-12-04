@@ -1,3 +1,4 @@
+
 10000 REM DATA-module DICTEE-SPEL
 10010 REM =======================
 10020 REM Reeds uitgezonden 22-12-'86
@@ -70,4 +71,3 @@
 25510 DATA "SIGARETTEN","BARRICADE","ARRIVEREN"
 25520 DATA"$$$$$"
 29990 END
-

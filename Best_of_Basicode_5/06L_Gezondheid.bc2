@@ -1,3 +1,4 @@
+
 1000 A=200:GOTO20:REM GEZONDHEID -------
 1010 GOSUB10070:REM VARIABELEN LEEG
 1020 REM Schermhoogte (in SH) en breedte (in SB)
@@ -531,4 +532,3 @@
 30110 REM *     April 1988       *
 30120 REM ************************
 30130 REM Copyright NOS Hilversum
-

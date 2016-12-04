@@ -1,3 +1,4 @@
+
 10000 REM Voorbeeldmoduul 3.1
 10010 REM    Hersengymnastiek
 10020 REM *********************
@@ -51,4 +52,3 @@
 25390 DATA"$$$$$"
 25400 DATA"$$$$$"
 29990 END
-

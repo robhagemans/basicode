@@ -1,3 +1,4 @@
+
 1000 A=600:GOTO20
 1010 GOSUB100:REM Wiskundig bij programma Tapetijd.
 1020 REM EERST SCHERM OPMETEN
@@ -254,4 +255,3 @@
 26530 DATA"'Tapetijd' door U opgegeven."
 29990 DATA"$$$$$"
 30000 REM COPYRIGHT NOS HILVERSUM
-

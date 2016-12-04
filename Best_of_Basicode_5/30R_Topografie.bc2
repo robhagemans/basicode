@@ -1,3 +1,4 @@
+
 1000 A=400:GOTO20:REM Topografie
 1010 M=20:REM Aantal plaatsen
 1011 DIMA$(M),B$(M),C(M),D(M)
@@ -173,7 +174,7 @@
 23100 VE=23:HO=20:GOSUB110
 23110 PRINT"                 ";
 23120 RETURN
-24000 REM..START TEKENSUBROUTINE..
+24000 REM..start tekensubroutine..
 24010 RESTORE
 24020 READX:READY
 24030 IFX=100 THEN24999
@@ -229,4 +230,3 @@
 30100 REM *                         *
 30110 REM * COPYRIGHT NOS HILVERSUM *
 30120 REM ***************************
-

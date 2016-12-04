@@ -1,3 +1,4 @@
+
 10000 REM Voorbeeldmoduul 1.1
 10010 REM Moeilijke woorden spellen
 10020 REM =========================
@@ -18,4 +19,3 @@
 25070 DATA"gezindte","enigszins","chauffeur","zorglijk"
 25080 DATA"$$$$$"
 29990 END
-

@@ -1,3 +1,4 @@
+
 1000 A=1000:GOTO20:REM tekencode-2
 1010 N=0:MU=1:MD=20:ML=1:MR=37
 1015 REM => MD=aantal regels (20)
@@ -321,4 +322,3 @@
 30070 REM *                        *
 30080 REM *COPYRIGHT NOS  HILVERSUM*
 30090 REM **************************
-

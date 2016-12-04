@@ -1,3 +1,4 @@
+
 10000 REM moduulvoorbeeld 2.1
 10010 REM vertaal  Engels --> Nederlands
 10020 REM bron IN FOCUS 1 les 7 + 8  (Meulenhof)
@@ -27,4 +28,3 @@
 25150 DATA "sometimes","soms","fat","dik","angry","boos"
 25160 DATA "$$$$$"
 29990 END
-
