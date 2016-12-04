@@ -1,0 +1,131 @@
+
+1000 A=200:GOTO20:REM ARABESQUE
+1010 DIMTB(75):MX=0:MY=0:RC=0:F=.75
+1020 CN=0:KM=.104719755:AA=0:BB=0
+1030 GOSUB100:HO=9:VE=12:GOSUB110
+1040 PRINT" EVEN GEDULD...";
+1050 FORN=0 TO75:TB(N)=SIN(N*KM):NEXTN
+1060 HO=5:VE=7:GOSUB110
+1070 SR$="A R A B E S Q U E":GOSUB150
+1080 HO=9:VE=12:GOSUB110
+1090 PRINT"Wil je uitleg ?";
+1100 GOSUB5010
+1110 IFIN=74 THEN GOSUB4010
+1500 REM=== TEKENEN ===
+1510 REM --- eerste figuur ---
+1520 REM AA=BEGIN BB=EINDE Klokminuten
+1530 REM RC=STRAAL MX,MY COORD.MIDDPT
+1540 REM F=verhoudingsfactor y/x
+1550 GOSUB600
+1560 FORN=5 TO60 STEP5
+1570 MX=.5+.31*F*TB(N)
+1580 MY=.5-.31*TB(N+15)
+1590 RC=.18:AA=N+45:BB=N+75
+1600 GOSUB3020
+1610 RC=.119:AA=N+10:BB=N+50:GOSUB3020
+1620 NEXTN
+1630 FORN=10 TO60 STEP10
+1640 MX=.5+.12*F*TB(N)
+1650 MY=.5-.12*TB(N+15)
+1660 RC=.06:AA=N+20:BB=N+40
+1670 GOSUB3020
+1680 NEXTN
+1690 GOSUB5010
+1700 REM --- tweede figuur ---
+1710 GOSUB600
+1720 FORN=3 TO60 STEP3
+1730 MX=.5+.75*F*TB(N)
+1740 MY=.5-.75*TB(N+15)
+1750 RC=.75:AA=N+24:BB=N+36
+1760 GOSUB3020
+1770 NEXTN
+1780 GOSUB5010
+1800 REM --- derde figuur ---
+1810 GOSUB600
+1820 FORN=3 TO60 STEP3
+1830 MX=.5+.24*F*TB(N)
+1840 MY=.5-.24*TB(N+15)
+1850 RC=.25:AA=30+N:BB=30+N
+1860 GOSUB3020
+1870 NEXTN
+1880 GOSUB5010
+1900 REM  --- vierde figuur ---
+1910 GOSUB600:AA=0:BB=0
+1920 FORN=12 TO60 STEP12
+1930 FORRC=0.25 TO0.025 STEP-0.025
+1940 MX=.5+RC*F*TB(N)
+1950 MY=.5-RC*TB(N+15)
+1960 GOSUB3020
+1970 NEXTRC
+1980 NEXTN
+1990 GOSUB5010
+2000 GOTO1550
+3000 REM=== TEKEN CIRKELBOOG ===
+3010 REM --- plot eerste punt ---
+3020 TT=AA:GOSUB3110
+3030 CN=1:GOSUB620:CN=0
+3040 IFBB<=AA THENBB=BB+60
+3050 REM --- maak rest v.d. boog ---
+3060 FORNN=AA TOBB
+3070 TT=NN:GOSUB3110:GOSUB630
+3080 NEXTNN
+3090 RETURN
+3100 REM --- subr.bereken coordin ---
+3110 IFTT>60 THENTT=TT-60:GOTO3110
+3120 HO=MX+F*RC*TB(TT)
+3130 VE=MY-RC*TB(TT+15)
+3140 RETURN
+4000 REM=== UITLEG ===
+4010 GOSUB100
+4020 PRINT:PRINT" Dit programma tekent figuren die"
+4030 PRINT:PRINT" opgebouwd zijn uit cirkelbogen."
+4040 PRINT:PRINT" Telkens als je op een toets"
+4050 PRINT:PRINT" tikt, wordt een figuur op"
+4060 PRINT:PRINT" het scherm getekend."
+4070 PRINT:PRINT" Je kunt zelf nog meer van"
+4080 PRINT:PRINT" die figuren in het programma"
+4090 PRINT:PRINT" zetten. Hoe dat moet kun je"
+4100 PRINT:PRINT" in de listing vinden."
+4110 PRINT:PRINT" JE KUNT HET PROGRAMMA VERLATEN MET S"
+4120 PRINT:PRINT"---> Tik op een toets...";
+4130 GOSUB210:RETURN
+5000 REM=== TEKENING KLAAR ===
+5010 SV=7:SP=100:SD=1:GOSUB400
+5020 GOSUB210:IFIN=83 THEN950
+5030 RETURN
+5040 REM==============================
+30000 REM De subroutine die cirkelbogen
+30010 REM tekent gebruikt de volgende
+30020 REM variabelen:
+30030 REM MX en MY zijn de coordinaten
+30040 REM van het middelpunt v.d.cirkel
+30050 REM RC is de straal van de cirkel
+30060 REM AA is het begin van de boog
+30070 REM BB is het einde van de boog
+30080 REM AA en BB worden opgegeven in
+30090 REM 'klokminuten' dus boven is 0,
+30100 REM rechtsmidden is 15, onder is
+30110 REM 30 , linksmidden is 45 en dan
+30120 REM kan boven ook nog 60 zijn.
+30130 REM Voor een liggende halve cirkel
+30140 REM geldt dus AA=15 en BB=45 en
+30150 REM voor een staande halve cirkel
+30160 REM geldt AA=45 en BB=15.
+30170 REM ALLE HELE WAARDEN VAN 0 - 60
+30180 REM zijn toegestaan.
+30190 REM==============================
+30200 REM Omdat sinus-berekeningen lang
+30210 REM duren wordt een sinustabel
+30220 REM aangelegd in TB(). De tabel
+30230 REM klimt met stappen van 6 graden
+30240 REM zodat de 'cirkels' eigenlijk
+30250 REM 60-hoeken zijn. De cosinus
+30260 REM wordt gevonden als sinus(a+90)
+30270 REM===============================
+30280 REM GEMAAKT OP EEN BBC B COMPUTER
+30290 REM 4 MAART 1987
+30300 REM DOOR
+32000 REM Ch.W.Brederode
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES  LISSE
+32100 REM TROS-RADIO dd 870429

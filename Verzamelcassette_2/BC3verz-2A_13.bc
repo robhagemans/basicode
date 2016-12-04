@@ -1,0 +1,143 @@
+
+1000 A=100:GOTO20:REM partikelsystemen
+1010 HB=HO:VL=VE:SP$=""
+1020 FORI=1 TOHB:SP$=SP$+" ":NEXTI
+1030 MX=25:REM *** aantal partikels *** 
+1040 DIMLD(MX),BX(MX),BY(MX),EX(MX),EY(MX),AX(MX),AY(MX)
+1050 DIMIN(7),SP(7)
+1060 GOSUB100
+1070 SR$="PARTIKELSYSTEMEN":HO=INT(HB/2-11)
+1080 VE=0:GOSUB110:GOSUB150
+1090 PRINT:PRINT:PRINT
+1100 PRINT"Uw kunt kiezen uit:"
+1110 PRINT:PRINT" 1. gras & wind"
+1120 PRINT:PRINT" 2. vuurwerk"
+1130 PRINT:PRINT" 3. tarwe"
+1140 PRINT:PRINT" 4. zelf invoeren"
+1150 PRINT:PRINT" 5. uitleg"
+1160 PRINT:PRINT" 6. stoppen"
+1170 PRINT:PRINT"Geef uw keuze: ";
+1180 GOSUB210:IN=IN-48:IF(IN<1)OR(IN>6) THEN1180
+1190 PRINTIN$
+1200 IFIN=6 THEN950
+1210 IFIN=5 THEN GOSUB2010:GOTO1060
+1220 IFIN=4 THEN GOSUB1570:GOTO1250
+1230 GOSUB1500
+1240 REM *** nieuwe generatie maken ***
+1250 PRINT:PRINT"Momentje...":FORI=1 TOMX
+1260 J=1:GOSUB3050:LD(I)=INT(UI)
+1270 J=2:GOSUB3050:BX(I)=UI
+1280 J=3:GOSUB3050:BY(I)=UI
+1290 J=4:GOSUB3050:EX(I)=UI
+1300 J=5:GOSUB3050:EY(I)=UI
+1310 J=6:GOSUB3050:AX(I)=UI
+1320 J=7:GOSUB3050:AY(I)=UI
+1330 NEXTI
+1340 REM *** tekenen ***
+1350 CN=0:GOSUB600
+1360 FL=1:FORI=1 TOMX:IFLD(I)<=0 THEN1460
+1370 FL=0:LD(I)=LD(I)-1:IFLD(I)=0 THEN1460
+1380 X=BX(I):Y=BY(I):EX(I)=EX(I)+AX(I)
+1390 EY(I)=EY(I)+AY(I):BX(I)=BX(I)+EX(I):BY(I)=BY(I)+EY(I)
+1400 HO=X/300:VE=Y/200:GOSUB3090
+1410 IFF1=1 THEN1460
+1420 GOSUB620
+1430 HO=BX(I)/300:VE=BY(I)/200:GOSUB3090
+1440 IFF1=1 THEN1460
+1450 GOSUB630
+1460 NEXTI:IFFL=0 THEN1360
+1470 HO=.90:VE=.95:SR$="=>":GOSUB650
+1480 GOSUB250:GOSUB210:GOTO1060
+1490 REM *** opgeslagen partikels ***  
+1500 RESTORE:FORI=1 TO7:READSR$:NEXTI
+1510 FORI=1 TO7*IN
+1520 J=I-7*(IN-1):IFJ<0 THENJ=0
+1530 READIN(J),SP(J)
+1540 NEXTI
+1550 RETURN
+1560 REM *** zelf invoeren ***
+1570 GOSUB100:SR$="INVOEREN":HO=INT(HB/2-7)
+1580 VE=0:GOSUB110:GOSUB150:PRINT:PRINT
+1590 PRINT:PRINT"Geef voor elke variabele eerste"
+1600 PRINT"de gemiddelde waarde en vervolgens de"
+1610 PRINT"spreiding.":PRINT:PRINT
+1620 RESTORE:FORI=1 TO7:READSR$:PRINTSR$;
+1630 PRINTRIGHT$(SP$,20-LEN(SR$));
+1640 GOSUB1670:NEXTI:GOSUB120:V=VE
+1650 HO=0:VE=VL-2:GOSUB110:PRINTSP$;
+1660 VE=V:GOSUB110:RETURN
+1670 GOSUB120:H=HO:V=VE:HO=0:VE=VL-2:GOSUB110
+1680 PRINT"Gemiddelde waarde, nu(";IN(I);") ";
+1690 INPUTSR$:IFSR$<>"" THENIN(I)=VAL(SR$)
+1700 HO=H:VE=V:GOSUB110:PRINTIN(I);",";
+1710 SR=IN(I):GOSUB300
+1720 H=H+1+LEN(SR$):HO=0:VE=VL-2
+1730 GOSUB110:PRINTSP$;:GOSUB110
+1740 PRINT"Spreiding, nu(";SP(I);") ";
+1750 INPUTSR$:IFSR$<>"" THENSP(I)=VAL(SR$)
+1760 HO=H:VE=V:GOSUB110:PRINTSP(I):RETURN
+2000 REM *** uitleg ***
+2010 GOSUB2020:GOTO2040
+2020 GOSUB100:SR$="UITLEG":HO=INT(HB/2-6)
+2030 VE=0:GOSUB110:GOSUB150:PRINT:PRINT:RETURN
+2040 PRINT"Onder partikelsystemen verstaat men"
+2050 PRINT"verzamelingen van bewegende deeltjes."
+2060 PRINT"Als deze verzamelingen getekend worden"
+2070 PRINT"mbv. een computer, ontstaan er patro-"
+2080 PRINT"nen die op natuurlijke fenomenen lij-"
+2090 PRINT"ken, zoals kometen, grasgroei, vuur-"
+2100 PRINT"werk, enz. In dit programma zijn al"
+2110 PRINT"drie voorbeelden verwerkt, maar u kunt"
+2120 PRINT"zelf ook de parameters ingeven, zodat"
+2130 PRINT"u nieuwe fenomenen kunt maken."
+2140 PRINT:PRINT"Een deeltje wordt gekenmerkt door:"
+2150 PRINT:PRINT" - de leeftijd"
+2160 PRINT" - de beginpositie"
+2170 PRINT" - de beginverplaatsing"
+2180 PRINT" - de toenamingsverplaatsing"
+2190 PRINT:PRINT"een versnelling in Y-richting simu-"
+2200 PRINT"leert bv. de zwaartekracht."
+2210 GOSUB3010:GOSUB2020
+2220 PRINT"Als een deeltje zich heeft verplaatst"
+2230 PRINT"wordt zijn leeftijd met een verminderd."
+2240 PRINT"Een deeltje sterft als het een leef-"
+2250 PRINT"tijd van nul jaar heeft bereikt of als"
+2260 PRINT"het buiten het scherm is gekomen."
+2270 PRINT:PRINT"U dient naast deze kenmerken ook de"
+2280 PRINT"spreiding op te geven, dwz. als u voor"
+2290 PRINT"de leeftijd 30 hebt gekozen en voor de"
+2300 PRINT"bijbehorende spreiding 10, kan de"
+2310 PRINT"leeftijd liggen tussen 20 en 40."
+2320 PRINT"Dit wordt willekeurig door de computer"
+2330 PRINT"gekozen."
+2340 PRINT:PRINT"Voor de positie van de deeltjes is de"
+2350 PRINT"maximale X-waarde 300 en de maximale"
+2360 PRINT"Y-waarde 200."
+2370 PRINT:PRINT:PRINT"VEEL PLEZIER MET DIT PROGRAMMA!!!"
+2380 GOSUB3010:RETURN
+3000 REM *** toets ***
+3010 HO=HB-7:VE=VL-1:GOSUB110
+3020 PRINT"<toets>";
+3030 GOSUB210:RETURN
+3040 REM *** functie ***
+3050 GOSUB260
+3060 UI=2*SP(J)*(RV-.5)+IN(J)
+3070 RETURN
+3080 REM *** buiten scherm? ***
+3090 F1=0:IF(HO<0)OR(HO>=1) THENF1=1
+3100 IF(VE<0)OR(VE>=1) THENF1=1
+3110 IFF1=1 THENLD(I)=0
+3120 RETURN
+25000 DATA"Leeftijd","Beginpositie X","Beginpositie Y"
+25010 DATA"Beginverplaatsing X","Beginverplaatsing Y"
+25020 DATA"Toenamingsverpl. X","Toenamingsverpl. Y"
+25030 DATA26,10,140,60,160,10,0,2,-8,3,0.3,0,.3,.05
+25040 DATA30,10,140,0,100,0,0,4,-2,4,0,0,0.4,0.1
+25050 DATA30,10,150,55,190,10,.1,.1,-8,3,.01,.01,.3,.05
+32000 REM ****************************    
+32010 REM Door Ronald van Vugt, PA3EAH   
+32020 REM Postbus 160, 5580 AD, Waalre 
+32030 REM 
+32040 REM       v1.1, maart 1987    
+32050 REM ****************************   
+32100 REM TROS-RADIO dd 870429

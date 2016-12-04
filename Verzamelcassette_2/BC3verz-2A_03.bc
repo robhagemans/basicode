@@ -1,0 +1,214 @@
+
+1000 A=200:GOTO20:REM  CHEMIE-FORMULES
+1010 RESTORE:GOSUB100
+1020 MX=100:REM -max.aantal DATAparen-
+1030 DIMNM$(MX),FO$(MX)
+1040 PRINT"FORMULES":PRINT
+1050 REM=== INLEIDING ===
+1060 PRINT"Dit programma vraagt de formules van"
+1070 PRINT"een aantal  chemische  verbindingen."
+1080 PRINT"De antwoorden kunnen worden ingetikt"
+1090 PRINT"zonder speciale  zorg voor de hoogte"
+1100 PRINT"waarop de letters en cijfers  moeten"
+1110 PRINT"komen: dat regelt de computer."
+1120 PRINT"Let wel heel goed op hoofdletters en"
+1130 PRINT"kleine letters !"
+1140 PRINT:PRINT"SUKSES!":PRINT
+1150 PRINT"--->  Tik op de spatiebalk";
+1160 GOSUB210:PRINT:PRINT:PRINT"  'N MOMENTJE"
+1170 REM=== TEL DE DATA ===
+1180 DD=0
+1190 READA$:IFA$<>"*" THENDD=DD+1:GOTO1190
+1200 DD=DD/2:RESTORE
+1210 IFDD>MX THENDD=MX
+1220 REM=== DATA IN ARRAY ===
+1230 FORN=1 TODD
+1240 READA$:NM$(N)=A$
+1250 READA$:FO$(N)=A$
+1260 NEXTN
+1270 GD=0:FO=0:NR=0
+1280 GOSUB260:P=1+RV*DD:REM--rnd.start
+2000 REM=== HOOFDLUS ===
+2010 GOSUB260:P=P+1+RV*3
+2020 IFP>DD THENP=1
+2030 GOSUB600:REM --wis graf.scherm--
+2040 REM=== STEL VRAAG ===
+2050 CN=0:HO=.02:VE=.1
+2060 NR=NR+1:SR=NR:GOSUB300
+2070 SR$=SR$+". Wat is de chemische formule"
+2080 GOSUB650:VE=.15
+2090 SR$="van  "+NM$(P)+" ?"
+2100 GOSUB650
+2110 REM=== INPUT ANTWOORD ===
+2120 VE=.3:AW$="":LA=0
+2130 GOSUB210:IFIN=127 THEN GOSUB3000:GOTO2130
+2140 IFIN$=" " THEN2130
+2150 IFIN=13 THEN2220
+2160 AW$=AW$+IN$:LA=LA+1:HO=HO+.032
+2170 REM --- cijfers lager ---
+2180 VE=.3:IF(IN$>="0")AND(IN$<="9") THENVE=.32
+2190 SR$=IN$:GOSUB650
+2200 VE=.3
+2210 IFIN<>13 THEN2130
+2220 GOSUB3500:REM -- beoordeling --
+2230 HO=.35:VE=.8
+2240 SR$="TIK OP EEN TOETS (S=Stop)":GOSUB650
+2250 GOSUB210:IF(IN$="S")OR(IN$="s") THEN2270
+2260 GOTO2010:REM =====> DOORGAAN
+2270 GOSUB100:PRINT
+2500 REM=== DE UITSLAG TONEN ===
+2510 V$=" VRAGEN"
+2520 IFNR=1 THENV$=" VRAAG"
+2530 PRINT" JE HEBT ";NR;V$;" BEANTWOORD."
+2540 PRINT:PRINT" JE HAD ER ";GD;" GOED"
+2550 PRINT:PRINT" EN ";FO;" FOUT."
+2560 PRINT:PRINT" WIL JE NOG EEN KEER ?";
+2570 GOSUB210:IF(IN$<>"J")AND(IN$<>"j") THEN950
+2580 GOTO1270:REM==> OPNIEUW BEGINNEN
+3000 REM=== SUBR.'DELETE' ===
+3010 IFLA<1 THENRETURN
+3020 SR$=RIGHT$(AW$,1):LA=LA-1:AW$=LEFT$(AW$,LA)
+3030 VE=.3
+3040 IF(SR$>="0")AND(SR$<="9") THENVE=.32
+3060 CN=1:GOSUB650:CN=0:HO=HO-.032:VE=.3
+3070 RETURN
+3500 REM=== SUBR. BEOORDELING ===
+3510 FO=FO+1
+3520 IFAW$="" THENHO=.1:VE=.3:SR$="?":GOSUB650
+3530 IFAW$=FO$(P) THENGD=GD+1:FO=FO-1:GOTO3670
+3540 REM -- antwoord was fout --
+3550 HO=.35:VE=.3:SR$="Dat is niet juist"
+3560 IFAW$<>"" THEN GOSUB650
+3570 VE=.35:SR$="De formule van":GOSUB650
+3580 VE=.4:SR$=NM$(P)+" is":GOSUB650
+3590 VE=.45:LA=LEN(FO$(P))
+3600 FORN=1 TOLA
+3610 SR$=MID$(FO$(P),N,1)
+3620 VE=.45
+3630 IF(SR$>="0")AND(SR$<="9") THENVE=.47
+3640 GOSUB650:HO=HO+.032:VE=.45
+3650 NEXTN
+3660 RETURN
+3670 REM --antwoord was goed --
+3680 VE=.7:SR$="GOED GEDAAN!":GOSUB650
+3690 RETURN
+3700 REM===============================
+25000 DATA"Arseentrioxide","As2O3"
+25010 DATA"IJzerdisulfide","FeS2"
+25020 DATA"Keukenzout","NaCl"
+25030 DATA"Chloor","Cl2"
+25040 DATA"Lithiumchloride","LiCl"
+25050 DATA"Ozon","O3"
+25060 DATA"Magnesiumsulfaat","MgSO4"
+25070 DATA"Loodsulfide","PbS"
+25080 DATA"Natriumwaterstofsulfaat","NaHSO4"
+25090 DATA"IJzer(III)chloride","FeCl3"
+25100 DATA"Salpeterigzuur","HNO2"
+25110 DATA"Kwikoxide","HgO"
+25120 DATA"Koperoxide","CuO"
+25130 DATA"Ammoniumsulfiet","(NH4)2SO3"
+25140 DATA"Stikstofpentoxide","N2O5"
+25150 DATA"Stikstoftrioxide","N2O3"
+25160 DATA"Stikstofdioxide","NO2"
+25170 DATA"Fosforpentoxide","P2O5"
+25180 DATA"Fosfortrioxide","P2O3"
+25190 DATA"IJzertrioxide","Fe2O3"
+25200 DATA"Mangaannitraat","Mn(NO3)2"
+25210 DATA"Natriumhypochloriet","NaClO"
+25220 DATA"Zinksulfiet","ZnSO3"
+25230 DATA"Magnesiumcarbonaat","MgCO3"
+25240 DATA"Ammoniumfosfaat","(NH4)3PO4"
+25250 DATA"Waterstof","H2"
+25260 DATA"Zuurstof","O2"
+25270 DATA"Stikstof","N2"
+25280 DATA"Helium","He"
+25290 DATA"Kooldioxide","CO2"
+25300 DATA"Waterstofperoxide","H2O2"
+25310 DATA"Kaliumchloraat","KClO3"
+25320 DATA"Calciumfluoride","CaF2"
+25330 DATA"Ferrosulfide","FeS"
+25340 DATA"Mangaansulfaat","MnSO4"
+25350 DATA"Monocalciumfosfaat","Ca(H2PO4)2"
+25360 DATA"Dicalciumfosfaat","CaHPO4"
+25370 DATA"Kaliumfosfaat","K3PO4"
+25380 DATA"Natriumsilikaat","Na2SiO3"
+25390 DATA"Natriumbicarbonaat","NaHCO3"
+25400 DATA"Zwaveligzuur","H2SO3"
+25410 DATA"Chloorzuur","HClO3"
+25420 DATA"Chlorigzuur","HClO2"
+25430 DATA"Onderchlorigzuur","HClO"
+25440 DATA"Waterstoffluoride","HF"
+25450 DATA"Waterstofjodide","HI"
+25460 DATA"Waterstofsulfide","H2S"
+25470 DATA"Koolzuur","H2CO3"
+25480 DATA"Kiezelzuur","H2SiO3"
+25490 DATA"Kaliumbromide","KBr"
+25500 DATA"Natriumhydroxide","NaOH"
+25510 DATA"Calciumhydroxide","Ca(OH)2"
+25520 DATA"Magnesiumhydroxide","Mg(OH)2"
+25530 DATA"Aluminiumhydroxide","Al(OH)3"
+25540 DATA"Bariumhydroxide","Ba(OH)2"
+25550 DATA"Ammonia","NH4OH"
+25560 DATA"Kaliumoxide","K2O"
+25570 DATA"Natriumoxide","Na2O"
+25580 DATA"Aluminiumoxide","Al2O3"
+25590 DATA"Siliciumdioxide","SiO2"
+25600 DATA"Zwavelzuur","H2SO4"
+25610 DATA"Kaliumhydroxide","KOH"
+25620 DATA"Zoutzuur","HCl"
+25630 DATA"Fosforzuur","H3PO4"
+25640 DATA"Salpeterzuur","HNO3"
+25650 DATA"Aluminiumsulfaat","Al2(SO4)3"
+25660 DATA"Natriumcarbonaat","Na2CO3"
+25670 DATA"Zinksulfide","ZnS"
+25680 DATA"Bariumnitraat","Ba(NO3)2"
+25690 DATA"Water","H2O"
+25700 DATA"Kopersulfaat","CuSO4"
+25710 DATA"Kaliumpermanganaat","KMnO4"
+25720 DATA"IJzer(II)nitraat","Fe(NO3)2"
+25730 DATA"Loodnitraat","Pb(NO3)2"
+25740 DATA"Zinksulfiet","ZnSO3"
+25750 DATA"Zilvernitraat","AgNO3"
+25760 DATA"Ammoniak","NH3"
+25770 DATA"Calciumoxide","CaO"
+25780 DATA"Cadmiumsulfide","CdS"
+25790 DATA"Magnesiumchloride","MgCl2"
+25800 DATA"*"
+30000 REM============================
+30010 REM Dit programma kan maximaal
+30020 REM 100 paren DATA bevatten, de
+30030 REM laatste DATA regel moet "*"
+30040 REM zijn.
+30050 REM De DATA regels worden door
+30060 REM het programma geteld.
+30070 REM
+30080 REM Meer DATA kan wel als in
+30090 REM regel 1020 MX wordt verhoogd
+30100 REM tot het gewenste aantal.
+30110 REM
+30120 REM Regel 1280 start op een RND
+30130 REM plaats in de DATA
+30140 REM Regel 2010 stapt vandaar met
+30150 REM 0, 1 of 2 regels overslaand
+30160 REM door de DATA en begint weer
+30170 REM vooraan als de laatste DATA
+30180 REM regel is gepasseerd.
+30190 REM
+30200 REM Door in regel 1020 MX lager
+30210 REM te zetten kan ook een DEEL
+30220 REM van de DATA regels worden
+30230 REM ingelezen, bijv MX=30 geeft
+30240 REM alleen vragen overde eerste
+30250 REM dertig regels.
+30260 REM Dit kan nuttig zijn bij een
+30270 REM DATAlijst die in de loop van
+30290 REM het schooljaar geleidelijk
+30310 REM moet worden geleerd.
+30330 REM==============================
+30360 REM GEMAAKT OP EEN BBC B COMPUTER
+30370 REM 12 FEBRUARI 1987
+30380 REM DOOR
+32000 REM Ch.W.Brederode
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES  LISSE
+32100 REM TROS-RADIO dd.870318

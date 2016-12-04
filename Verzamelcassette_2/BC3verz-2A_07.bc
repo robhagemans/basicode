@@ -1,0 +1,395 @@
+
+1000 A=2000:GOTO20:REM ***MULTICODE***
+1010 RL=HO:SH=VE:PS=0:PL=0:AR=0:LM=0:RF=0:SC=1
+1020 AP=.31415926535:SC=1:SL=2:GOSUB1330
+1030 BK=1:READRE$
+1040 AK=0:IFBK>LEN(RE$) THEN1030
+1050 AK=AK+1:IFBK+AK>LEN(RE$) THEN1070
+1060 IFMID$(RE$,BK+AK,1)<>" " THEN1050
+1070 WO$=MID$(RE$,BK,AK):BK=BK+LEN(WO$)+1
+1080 IFPL+LEN(WO$)>=RL THEN GOSUB1270
+1090 IFLEFT$(WO$,1)="." THEN1130
+1100 GOSUB1400:PL=PL+LEN(WO$)+1
+1110 IF(PL<RL-1)AND(RF=0) THENWO$=" ":GOSUB1400:GOTO1040
+1120 GOTO1040
+1130 LC$=MID$(WO$,2,1):CO=0
+1140 IFLEN(WO$)>2 THENCO=ASC(MID$(WO$,3,LEN(WO$)-2))-48
+1150 IFLC$<>"F" THEN1190
+1160 LF=CO
+1170 GOSUB1270:LF=LF-1:IFLF>0 THEN1170
+1180 GOTO1040
+1190 IFLC$<>"P" THEN1220
+1200 GOSUB1270:IFAR<>2 THEN1200
+1210 GOTO1040
+1220 IFLC$="M" THENLM=CO:GOTO1040
+1230 IFLC$="E" THEN950
+1240 IFLC$="R" THENRF=CO:GOTO1040
+1250 IFLC$="G" THEN1440
+1260 GOTO1040
+1270 PRINT
+1280 AR=AR+1:IFAR<=SH-SL THEN1370
+1290 PRINT
+1300 PRINT"  ";
+1310 SR$="VERVOLG: druk op <RETURN>":GOSUB150
+1320 GOSUB210:IFIN<>13 THEN1320
+1330 GOSUB100:IS=INT(RL/2)-17:IFIS<0 THENIS=0
+1340 GOSUB1380
+1350 SR$="*** OVER MULTICODE ***":GOSUB150
+1360 PRINT:PRINT:AR=2
+1370 PL=LM:IS=LM+PS
+1380 IFIS<1 THENRETURN
+1390 SR$=" ":GOSUB1430:IS=IS-1:GOTO1380
+1400 SR$=WO$
+1410 IFRF=0 THENPRINTWO$;:RETURN
+1420 GOSUB150:RF=RF-1:PL=PL+5:RETURN
+1430 PRINTSR$;:RETURN
+1440 GOSUB600
+1450 CN=0:VP=.55:DP=.2:RT=1.5:RR=.2
+1460 FORYC=0 TOVG/23
+1470 HO=0:VE=YC/VG:GOSUB620:HO=1-1/HG:GOSUB630
+1480 NEXTYC
+1490 CN=1
+1500 HO=0:VE=1/VG:SR$="De TRANSDIFTER - schakeling"
+1510 GOSUB650
+1520 CN=0
+1530 HO=.025:VE=VP+.05:SR$="R":GOSUB650
+1540 VE=VP+.10:SR$="C":GOSUB650
+1550 VE=VP+.15:SR$="T":GOSUB650
+1560 GOSUB650
+1570 READCC,XC,YC:IFCC=100 THEN1630
+1580 SR=INT(CC/10):GOSUB300:CS=CC-10*SR
+1590 IFCS>4 THEN1610
+1600 ONCS+1 GOTO2390,1740,1900,1950,2030
+1610 ONCS-4 GOTO2110,2170,2270,2330,2350
+1620 GOTO1570
+1630 HO=.05:VE=VP-.01:SR$="0V":GOSUB650
+1640 VE=VP-.11:SR$="in":GOSUB650
+1650 HO=.025:VE=VP-.483:SR$="+5V":GOSUB650
+1660 HO=.92:VE=VP-.01:SR$="0V":GOSUB650
+1670 VE=VP-.215:SR$="uit":GOSUB650
+1680 VE=VP-.483:SR$="+5V":GOSUB650
+1690 HO=.2:VE=.9:SR$="Toets RETURN voor legenda ..."
+1700 GOSUB650
+1710 GOSUB1320:GOTO1040
+1720 VE=VP-VE/30:GOTO620
+1730 VE=VP-VE/30:GOTO630
+1740 CN=0:HO=(XC+RT)/40:VE=YC:GOSUB1720
+1750 FORA=1 TO20
+1760 HO=(XC+RT*COS(A*AP))/40:VE=YC-RT*SIN(A*AP)
+1770 GOSUB1730
+1780 NEXTA
+1790 HO=(XC-1)/40:VE=YC-1:GOSUB1720
+1800 VE=YC+1:GOSUB1730:HO=(XC+1)/40:GOSUB620
+1810 HO=(XC-1)/40:VE=YC+.5:GOSUB1730
+1820 VE=YC-.5:GOSUB1720
+1830 HO=(XC+1)/40:VE=YC-1:GOSUB1730
+1840 FORV=YC-1 TOYC-.6 STEP.1
+1850 HO=(XC+1)/40:VE=YC-1:GOSUB1720
+1860 HO=(XC+.6)/40:VE=V:GOSUB1730
+1870 NEXTV
+1880 HO=(XC-.5)/40:VE=VP+.15:GOSUB650
+1890 GOTO1570
+1900 HO=(XC-.5)/40:VE=YC:GOSUB1720
+1910 HO=(XC+.5)/40:GOSUB630:VE=YC+3:GOSUB1730
+1920 HO=(XC-.5)/40:GOSUB630:VE=YC:GOSUB1730
+1930 HO=(XC-.5)/40:VE=VP+.05:GOSUB650
+1940 GOTO1570
+1950 HO=XC/40:VE=YC-.5:GOSUB1720
+1960 VE=YC-DP:GOSUB1730:VE=YC+.5:GOSUB1720
+1970 VE=YC+DP:GOSUB1730:HO=(XC-1)/40:GOSUB620
+1980 HO=(XC+1)/40:GOSUB630
+1990 VE=YC-DP:HO=(XC-1)/40:GOSUB1720
+2000 HO=(XC+1)/40:GOSUB630
+2010 HO=(XC-.5)/40:VE=VP+.1:GOSUB650
+2020 GOTO1570
+2030 HO=(XC-.5)/40:VE=YC:GOSUB1720
+2040 HO=(XC-DP)/40:GOSUB630:HO=(XC+.5)/40:GOSUB620
+2050 HO=(XC+DP)/40:GOSUB630:VE=YC-1:GOSUB1720
+2060 VE=YC+1:GOSUB1730
+2070 HO=(XC-DP)/40:VE=YC-1:GOSUB1720
+2080 VE=YC+1:GOSUB1730
+2090 HO=(XC-.5)/40:VE=VP+.1:GOSUB650
+2100 GOTO1570
+2110 HO=(XC-1)/40:VE=YC:GOSUB1720
+2120 HO=(XC+1)/40:GOSUB630
+2130 HO=XC/40:GOSUB620:HO=(XC-1)/40:VE=YC-1:GOSUB1730
+2140 HO=(XC+1)/40:GOSUB630:HO=XC/40:VE=YC:GOSUB1730
+2150 HO=(XC-.5)/40:VE=VP+.15:GOSUB650
+2160 GOTO1570
+2170 HO=(XC-3)/40:VE=YC-.5:GOSUB1720
+2180 VE=YC-1.5:GOSUB1730:HO=(XC+3)/40:GOSUB630
+2190 VE=YC+1.5:GOSUB1730:HO=(XC-3)/40:GOSUB630
+2200 VE=YC+.5:GOSUB1730
+2210 FORA=1 TO10
+2220 HO=(XC-3+.5*SIN(A*AP))/40:VE=YC+.5*COS(A*AP)
+2230 GOSUB1730
+2240 NEXTA
+2250 HO=(XC-.95)/40:VE=VP-(YC+.5)/30:SR$="IC":GOSUB650
+2260 GOTO1570
+2270 HO=(XC+RR)/40:VE=YC:GOSUB1720
+2280 FORA=1 TO20
+2290 HO=(XC+RR*COS(A*AP))/40:VE=YC-RR*SIN(A*AP)
+2300 GOSUB1730
+2310 NEXTA
+2320 GOTO1570
+2330 HO=XC/40:VE=YC:GOSUB1720:READXC,YC
+2340 HO=XC/40:VE=YC:GOSUB1730:GOTO1570
+2350 HO=XC/40:VE=YC:GOSUB1720
+2360 READXC,YC
+2370 FORHO=HO TOXC/40 STEP3/HG
+2380 GOSUB620:NEXTHO:GOTO1570
+2390 FORHO=(XC-.2)/40 TO(XC+.21)/40 STEP1/HG
+2400 VE=YC-.65:GOSUB1720:VE=YC+.65:GOSUB1730
+2410 NEXTHO
+2420 GOTO1570
+25000 REM BASICODE-3 MULTICODE-INFORMATIE
+25010 DATA".R1 MULTICODE .F2 De TROS wordt de laatste tijd"
+25020 DATA"werkelijk overstroomd met uitstekende BASICODE-3"
+25030 DATA"programma's. Helaas kunnen we die niet allemaal"
+25040 DATA"uitzenden. Dat is jammer, heel jammer zelfs. In"
+25050 DATA"de afgelopen maanden hebben we in de studio wel"
+25060 DATA"wat experimenten gedaan met het tegelijk"
+25070 DATA"uitzenden van twee computerprogramma's maar dat"
+25080 DATA"bleek alleen te werken als het tweede programma"
+25090 DATA"achterstevoren werd opgenomen. Voor mensen met"
+25100 DATA"een omkerende autorecorder is dat niet zo'n"
+25110 DATA"probleem, al zien we nog niet iedereen meteen"
+25120 DATA"zijn auto aan de computer aansluiten. Met een"
+25130 DATA"gewone recorder is zo'n achterstevoren opgenomen"
+25140 DATA"programma niet in te lezen. .F2 Daarom zijn we"
+25150 DATA"erg blij met een oplossing die zich bij onze"
+25160 DATA"experimenten met de OPTIMOD eigenlijk bij toeval"
+25170 DATA"heeft aangediend. Door enkele bijzondere"
+25180 DATA"eigenschappen van die OPTIMOD blijkt het zelfs"
+25190 DATA"mogelijk, niet slechts twee maar nog meer"
+25200 DATA"computerprogramma's .R1 tegelijk uit te zenden."
+25210 DATA"Bij gebruik van de middengolf is het wel beperkt"
+25220 DATA"tot twee omdat daar de bandbreedte van het"
+25230 DATA"normale geluidskanaal iets minder dan 5000 Herz"
+25240 DATA"is. Op de FM is een beduidend grotere"
+25250 DATA"bandbreedte binnen handbereik, zodat we daar"
+25260 DATA"liefst vier BASICODE-3 programma's tegelijk"
+25270 DATA"kunnen uitzenden. Als we dan op FM gebruik"
+25280 DATA"kunnen maken van een stereo-zender, verdubbelt"
+25290 DATA"dit meteen en kunnen we u liefst 8 programma's"
+25300 DATA"toesturen in dezelfde tijd waarin we er nu maar"
+25310 DATA"een kunnen uitzenden. .P Hoe werkt dat? .F2 Wat"
+25320 DATA"een feest, tot niet minder dan maximaal 8"
+25330 DATA"BASICODE-3 programma's tegelijkertijd. We hebben"
+25340 DATA"dit systeem de voor de hand liggende naam .R1"
+25350 DATA"MULTICODE gegeven. Hoe werkt dat dan. Laten we"
+25360 DATA"beginnen met u gerust te stellen: het is"
+25370 DATA"absoluut niet nodig om weer nieuwe BASICODE-3"
+25380 DATA"vertaalprogramma's of speciale"
+25390 DATA"vertaalprogramma's voor MULTICODE te kopen. Het"
+25400 DATA"bestaande BASICODE-3 systeem kan zonder probleem"
+25410 DATA"gebruikt worden. Er is wel een maar aan: als u"
+25420 DATA"zonder meer het normale BASICODE-3 systeem"
+25430 DATA"gebruikt, krijgt u natuurlijk geen 8 programma's"
+25440 DATA"in uw computer maar slechts een van die acht. .P"
+25450 DATA"Aan de uitzendkant. .F2 Zoals u waarschijnlijk"
+25460 DATA"weet, bestaat een BASICODE-signaal uit twee"
+25470 DATA"tonen, 1200 Herz en 2400 Herz. Dat blijft zo,"
+25480 DATA"althans voor het basisprogramma. Het via de"
+25490 DATA"zender in de ether te slingeren signaal wordt"
+25500 DATA"voor MULTICODE tevens voorzien van de .R1"
+25510 DATA"gewijzigde tonen van een tweede programma. Dat"
+25520 DATA"tweede programma wordt dan omgezet in tonen van"
+25530 DATA"-1200 Herz en -2400 Herz en die signalen worden"
+25540 DATA"met een fasekwadratuurverschuiving van 104,125"
+25550 DATA"microseconden gesuperponeerd middels een"
+25560 DATA"speciale 'frequency transposer + shifter'. Dit"
+25570 DATA"is in wezen dezelfde techniek als waarmee de TV"
+25580 DATA"de kleursignalen uitzendt: wie een zwartwit TV"
+25590 DATA"heeft, merkt niets van de kleursignalen en wie"
+25600 DATA"een kleuren TV heeft kan die kleuren mee"
+25610 DATA"inschakelen. Het complete signaal van twee"
+25620 DATA"BASICODE-3 programma's tegelijk wordt door u"
+25630 DATA"thuis ontvangen en opgenomen. Het geluid klinkt"
+25640 DATA"wat anders dan u gewend was maar uw computer zal"
+25650 DATA"in principe reageren alsof het tweede signaal"
+25660 DATA"niet aanwezig is. Bij gebruik van FM kan een"
+25670 DATA"derde programma worden uitgezonden middels tonen"
+25680 DATA"van 3600 en 4800 Herz en een vierde gaat dan"
+25690 DATA"zonder probleem op tonen van -3600 en -4800"
+25700 DATA"Herz. .P Aan de ontvangstkant. .F2 Voor dat"
+25710 DATA"tweede (c.q. derde en vierde) programma moet u"
+25720 DATA"thuis iets extras doen. Daarvoor zijn er twee"
+25730 DATA"mogelijkheden. .F2 De eerste is een voor u"
+25740 DATA"misschien wat bewerkelijke oplossing maar het"
+25750 DATA"kost dan ook totaal geen speciale hulpmiddelen."
+25760 DATA"U sluit uw cassetterecorder aan op een gewone"
+25770 DATA"klassieke spoelenrecorder (zo'n ding als de"
+25780 DATA"buurman al jaren in gebruik heeft) en neemt het"
+25790 DATA"signaal daarop over op 9,5 cm per seconde met de"
+25800 DATA"treble-regelaar op maximaal. Vervolgens neemt u"
+25810 DATA"het signaal van de spoelenrecorder weer over op"
+25820 DATA"de cassetterecorder, maar laat bij het afspelen"
+25830 DATA"de spoelenrecorder op dubbele snelheid lopen,"
+25840 DATA"dus op 19 cm en zorgt bovendien dat de"
+25850 DATA"bass-regelaar op minimaal staat. De aldus"
+25860 DATA"ontstane opname legt u in de computerrecorder en"
+25870 DATA"ziedaar, de computer leest nu het tweede"
+25880 DATA"programma in. U kunt het nu vanavond meteen"
+25890 DATA"uitproberen. Voor het derde en vierde programma"
+25900 DATA"lukt dit niet meer, want daarvoor moet u niet"
+25910 DATA"alleen het programma op de zojuist beschreven"
+25920 DATA"manier via dubbele snelheid kopieren maar tevens"
+25930 DATA"de polariteit van de nullen in het signaal"
+25940 DATA"omkeren. Het kan, maar je moet dan een erg"
+25950 DATA"handig technicus zijn. .F2 De andere"
+25960 DATA"mogelijkheid kost een beetje electronica maar"
+25970 DATA"vermijdt het tweemaal overspelen en het"
+25980 DATA"eventueel omkeren van de polariteit van de"
+25990 DATA"nullen. Het door de fasekwadratuurschakeling en"
+26000 DATA"de 'frequency shifter' vervormde signaal moet"
+26010 DATA"namelijk via een transducer worden teruggeshift."
+26020 DATA"Daarvoor is een 'transdifter' nodig. Zo'n"
+26030 DATA"transdifter selecteert uit het uitgezonden"
+26040 DATA"mengsignaal weer het juiste signaal dat"
+26050 DATA"vervolgens in de computer wordt ingevoerd. De"
+26060 DATA"transdifter wordt met enkele eenvoudige"
+26070 DATA"componenten bestuurd, waarbij met een"
+26080 DATA"condensator in serie met een weerstand kan"
+26090 DATA"worden gekozen welk signaal moet worden"
+26100 DATA"uitgeselecteerd. Helaas is zo'n transdifter op"
+26110 DATA"het moment nog niet gemakkelijk te krijgen."
+26120 DATA"Gelukkig hebben we een klein maar uiterst"
+26130 DATA"slagvaardig high-tech bedrijf in het zuiden van"
+26140 DATA"Nederland bereid gevonden, deze transdifters"
+26150 DATA"speciaal voor MULTICODE in grote aantallen te"
+26160 DATA"maken. Laten we eerst eens kijken hoe de"
+26170 DATA"schakeling in elkaar zit; het schema komt zo"
+26180 DATA"dadelijk op het scherm. Neemt u het zorgvuldig"
+26190 DATA"over, compleet met de verwijsnummers eronder. .P"
+26200 DATA".G",7,5,0,8,5,0,36,0,7,36,0,7,5,14,8,5,14,36,14,7
+26210 DATA36,14,7,5,3,8,5,3,7,3,11,8,3,8,9,0,9,2,8,9,4,9,9
+26220 DATA12,9,9,8,9,12,9,14,8,12,0,12,2,7,12,2,7,12,4,8,12
+26230 DATA4,12,6,22,12,6,8,14,0,14,2,7,14,2,7,14,4,8,14,4,14
+26240 DATA6,32,14,6,8,16,0,16,2,7,16,2,7,16,4,8,16,4,16,6,42
+26250 DATA16,6,8,18,0,18,2,7,18,2,7,18,4,8,18,4,18,6,52,18,6
+26260 DATA9,12,3,18,3,0,14,3,8,12,9,12,11,8,14,9,14,11,8,16
+26270 DATA9,16,11,8,18,9,18,11,8,12,11,21,11,8,21,11,21,9,62
+26280 DATA21,6,8,20,6.5,22.25,8.75,8,22.5,8.5,22,9,8,21,6,21
+26290 DATA3,8,21,3,23.5,3,24,24,3,8,24.5,3,25,3,8,25,3,25,6
+26300 DATA16,27,7.5,8,9,6,10.5,6,8,10.5,6,10.5,12,8,10.5,12
+26310 DATA21.5,12,14,22,12,8,22.5,12,25,12,8,25,12,25,9,8,27
+26320 DATA0,27,6,8,27,9,27,14,8,29,0,29,1,33,29,1.5,8,29,2
+26330 DATA29,6,8,29,9,29,11,25,29,12,8,29,12,29,14,31,32,3,8
+26340 DATA33,0,33,2,8,29,3,31,3,8,33,4,33,9,72,33,9,8,33,12
+26350 DATA33,14,8,33,6,36,6,7,36,6,100,0,0
+26360 DATA"Enige technische uitleg. .F2 U had natuurlijk al"
+26370 DATA"geraden dat het IC de transdifter is (voor wie"
+26380 DATA"hem zelf wil aanschaffen: het typenummer is"
+26390 DATA"FOP-1-4). De schakelaar heeft zoals u in het"
+26400 DATA"schema zag precies vier standen. In elke stand"
+26410 DATA"wordt de transdifter via een van vier speciale"
+26420 DATA"weerstanden verbonden met aarde. Met een juiste"
+26430 DATA"weerstandswaarde, gekoppeld met de speciale"
+26440 DATA"condensator C2, wordt de transdifter voorzien"
+26450 DATA"van een referentiegolf. Het opgenomen"
+26460 DATA"radiosignaal wordt vanuit de recorder versterkt"
+26470 DATA"in T1 en via de ontkoppelcondensator C1"
+26480 DATA"doorgegeven aan de transdifter. Het"
+26490 DATA"uitgangssignaal wordt in T3 versterkt en naar de"
+26500 DATA"computer doorgestuurd. De diode en de"
+26510 DATA"condensator C3 dienen voor het op het juiste"
+26520 DATA"niveau instellen van de transdifter. De trimmer"
+26530 DATA"R6 is voor de fijnafregeling van de"
+26540 DATA"referentiegolf. .F2 Doordat de transdifter in"
+26550 DATA"grote aantallen wordt geproduceerd, is de prijs"
+26560 DATA"per stuk uiterst gering. Omdat een van de beste"
+26570 DATA"mensen in ons team een werkloze"
+26580 DATA"Hong-Kong-Chinees is zagen we kans, bij Sociale"
+26590 DATA"Zaken een tewerkstellingssubsidie te krijgen en"
+26600 DATA"bij Ontwikkelingssamenwerking een"
+26610 DATA"buitenlanderssubsidie. Bovendien zag Economische"
+26620 DATA"Zaken zoveel in ons project dat we niet alleen"
+26630 DATA"belastingvrij de gebruikelijke WIR premie"
+26640 DATA"ontvingen, maar tevens een aparte zogenaamde"
+26650 DATA"innovatieinjectie. Dank zij al deze hulp is het"
+26660 DATA"mogelijk geworden, u niet alleen de transdifter"
+26670 DATA"zelf, maar tevens een printplaatje met daarop"
+26680 DATA"reeds de transdifter en de trimmer gemonteerd,"
+26690 DATA"gratis te kunnen leveren. De trimmer is"
+26700 DATA"bovendien reeds exact afgeregeld. Het enige wat"
+26710 DATA"we aan uw zelfwerkzaamheid moeten overlaten is"
+26720 DATA"het aanschaffen en het monteren van de overige"
+26730 DATA"onderdelen. Het geheel wordt gevoed met 5 Volt"
+26740 DATA"die u naar keuze uit uw computer kunt betrekken"
+26750 DATA"of via enkele batterijen kunt verkrijgen. Verder"
+26760 DATA"geldt de nu volgende (voorlopige)"
+26770 DATA"onderdelenlijst: .M1 .P R1  4K7 .F1"
+26780 DATA"R2  precisieweerstand 1200 Ohm, 0.8% .F1"
+26790 DATA"R3  precisie-NTC 1200 Ohm, 0.8% .F1"
+26800 DATA"R4  precisieweerstand 3600 Ohm, 0.4% .F1"
+26810 DATA"R5  precisie-NTC 3600 Ohm, 0.4% .F1"
+26820 DATA"R7  4K7 .F1 C1  74 n tantalyt-condensator .F1"
+26830 DATA"C2  833 pF stikstofgevulde Elco .F1"
+26840 DATA"C3  50 pF .F1"
+26850 DATA"T1 en T3  MCT1241 .F1 T2  negatieve Zenerdiode"
+26860 DATA"-1200 Herz .F1   de 4-standenschakelaar type"
+26870 DATA"SK4/P .P Elke goede electronicazaak kan u aan"
+26880 DATA"deze onderdelen helpen. Het gedeeltelijk"
+26890 DATA"voorgemonteerde printje kunt u bij de TROS"
+26900 DATA"bestellen. Stuur daartoe een envelop naar de"
+26910 DATA"TROS met daarin een van uw naam en adres en een"
+26920 DATA"postzegel van 75 cent voorziene retourenvelop."
+26930 DATA"Wacht even tot u het printje in huis hebt, dat"
+26940 DATA"kan maximaal 4 tot 7 weken duren. Met het"
+26950 DATA"printje ontvangt u namelijk van ons een"
+26960 DATA"duidelijke montageaanwijzing in vier talen"
+26970 DATA"(Nederlands, Engels, Arabisch en Chinees) en een"
+26980 DATA"definitief onderdelenlijstje. U zult er begrip"
+26990 DATA"voor hebben dat met zo iets nieuws tot het"
+27000 DATA"laatste moment wordt geexperimenteerd om de"
+27010 DATA"meest optimale waarden voor alle onderdelen te"
+27020 DATA"vinden. Het is dus mogelijk dat dat definitieve"
+27030 DATA"onderdelenlijstje enkele veranderingen ten"
+27040 DATA"opzichte van bovenstaande lijst bevat. De"
+27050 DATA"complete schakeling dient uiteindelijk te worden"
+27060 DATA"opgenomen in de draad van de recorder naar de"
+27070 DATA"computer, liefst zo dicht mogelijk bij de"
+27080 DATA"recorder. De schakeling kan het beste worden"
+27090 DATA"verpakt in een stukje 80 mm krimpkous van zo'n 5"
+27100 DATA"cm lengte. .P Wanneer beginnen we. .F2 We willen"
+27110 DATA"met uitzendingen in MULTICODE even wachten tot"
+27120 DATA"iedereen de schakeling klaar heeft. Dat betekent"
+27130 DATA"dat we per 1 juni gaan starten. Vanaf dat moment"
+27140 DATA"krijgt u telkens twee BASICODE-3 programma's"
+27150 DATA"tegelijk. Met de schakelaar op weerstand R1"
+27160 DATA"geeft de transdifter het gewone programma door"
+27170 DATA"en met de schakelaar op weerstand R2 krijgt u"
+27180 DATA"het andere. Als we straks overgaan naar FM"
+27190 DATA"krijgt u met de andere twee standen het derde en"
+27200 DATA"het vierde programma. .P Tot besluit. .F2"
+27210 DATA"Alstublieft mensen, belt u ons beslist niet op"
+27220 DATA"met vragen over deze schakeling. Als u het"
+27230 DATA"printje terugkrijgt vindt u in de envelop echt"
+27240 DATA"alles wat u nog moet weten. Voor noodgevallen"
+27250 DATA"openen we daarna een speciaal 06 nummer waarop u"
+27260 DATA"gratis verdere informatie kunt krijgen. Alle"
+27270 DATA"benodigde gegevens krijgt u samen met het"
+27280 DATA"printje thuisgestuurd. .P Overigens, wilt u zelf"
+27290 DATA"een leuk BASICODE-3 programma insturen of"
+27300 DATA"anderszins reageren op onze uitzendingen? Uw"
+27310 DATA"reaktie zijn welkom bij: .M3 .F2"
+27320 DATA"************************** .F1"
+27330 DATA"*    TROS-radio          * .F1"
+27340 DATA"*    BASICODE-3          * .F1"
+27350 DATA"*    Postbus  450        * .F1"
+27360 DATA"*    1200 AL Hilversum   * .F1"
+27370 DATA"************************** .M0 .P .E"
+30000 REM"****************************"
+30010 REM"*                          *"
+30020 REM"*  BASICODE - 3 Bulletin   *"
+30030 REM"*   Speciaal MULTICODE     *"
+30040 REM"*                          *"
+30050 REM"*   TROS-Radio 1-4-1987    *"
+32000 REM"*                          *"
+32010 REM"*   Copyright (c) 1987:    *"
+32020 REM"*   Stichting BASICODE     *"
+32030 REM"*       Eindhoven          *"
+32040 REM"*                          *"
+32050 REM"****************************"
+32060 REM dus ....
