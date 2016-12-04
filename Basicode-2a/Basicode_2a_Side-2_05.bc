@@ -1,0 +1,195 @@
+
+1000 A=100:GOTO20:REM  SIMPLEPAC
+1010 REM  *** MEASURE SCREEN WIDTH
+1011 W$="":SP$="":DX=0:DY=0:HS=0:LM=0:DIMH$(3)
+1020 GOSUB100:HO=0:VE=0
+1025 PRINT"One moment please..."
+1030 HR=HO
+1040 GOSUB110:GOSUB120
+1050 IFHR<>HO THEN1070
+1060 HO=HO+1:GOTO1030
+1070 REM  *** MEASURE SCREEN HEIGHT
+1080 HO=0:VE=0
+1090 VR=VE
+1100 GOSUB110:GOSUB120
+1110 IFVR<>VE THEN1200
+1120 VE=VE+1:GOTO1090
+1200 DIMR$(VR-1):AA=200+HR*(VR+2):GOSUB100
+1205 PRINT"You need to make a change to the program"
+1210 PRINT"first! 'A' in line 1000 has to be at"
+1213 PRINT"least ";AA
+1215 PRINT"When you've completed this change,"
+1217 PRINT"erase lines 1205 to 1217.":STOP
+1220 VE=0:GOSUB11000
+1500 GOSUB9000:SC=0
+2000 GOSUB100:REM  *** READ AND ADAPT MAZE
+2010 RESTORE:HO=0
+2020 FORI=0 TOVR-1
+2030 READA$:L=LEN(A$)
+2040 IFL-2<HR THEN2500:REM  *** INSERT EXTRA SPACES 
+2050 IFL+2>=HR THEN2060
+2053 A$="*"+A$+"*"
+2055 GOTO2550
+2060 A$=MID$(A$,2,L-2)
+2070 L=LEN(A$)
+2080 GOTO2050
+2500 A$=A$+" ":L=LEN(A$)
+2510 IFL+2>HR THEN2550
+2520 A$=" "+A$:L=LEN(A$)
+2530 IFL+2>HR THEN2550
+2540 GOTO2500
+2550 VE=I:GOSUB110:PRINTA$;:R$(I)=A$
+2557 NEXTI:IFVR>21 THEN2560
+2558 R$(VR-1)=R$(0):VE=VR-1:GOSUB110:PRINTR$(0);
+2560 IFLM>0 THEN3000
+2570 FORI=0 TOVR-1:FORJ=1 TOHR
+2580 IFMID$(R$(I),J,1)="." THENLM=LM+10
+2590 NEXTJ:NEXTI:LC=LM
+2600 IFLEN(SP$)+2<LEN(A$) THENSP$=SP$+" ":GOTO2600
+3000 REM  MUNCHER CONTROL
+3005 HO=XH:VE=YH:GOSUB110:PRINT"="
+3010 GOSUB200
+3030 IFIN$=L$ THENDX=-1:DY=0
+3040 IFIN$=R$ THENDX=1:DY=0
+3050 IFIN$=U$ THENDY=-1:DX=0
+3060 IFIN$=B$ THENDY=1:DX=0
+3070 X=XH+DX:Y=YH+DY
+3080 H$=MID$(R$(Y),X+1,1)
+3090 IFH$=M$ THENX=XH:Y=YH:GOTO3150
+3100 IFH$<>"." THEN3170
+3110 SC=SC+10:HO=0:VE=0:GOSUB110:PRINT"Score:";SC
+3120 R$(Y)=LEFT$(R$(Y),X)+" "+MID$(R$(Y),X+2,HR-X-1)
+3125 GOSUB250
+3130 IFSC=LC THENLC=LC+LM:GOTO7000
+3150 REM  PACMAN IS GHOST
+3170 HO=0:VE=YH:GOSUB110:PRINTR$(YH)
+3180 HO=X:VE=Y:GOSUB110:PRINTH$(DX+1):XH=X:YH=Y
+5000 REM  GHOST
+5010 X=XS+RX:Y=YS+RY
+5020 S$=MID$(R$(Y),X+1,1)
+5030 IFS$<>M$ THEN5060
+5040 IFRY=0 THENRY=SGN(YH-YS+A):RX=0:X=XS:GOTO5060
+5050 RX=SGN(XH-XS+A):RY=0:Y=YS
+5060 IFSC<LM THENHO=0:VE=YS:GOSUB110:PRINTR$(YS):GOTO5070
+5065 IFSC>LM+LM THENHO=1:VE=YS:GOSUB110:PRINTSP$
+5070 HO=X:VE=Y:GOSUB110:PRINTG$:YS=Y:XS=X
+5080 IF(X=XH) AND(Y=YH) THEN10000
+5090 GOTO3000
+7000 REM  END ROUTINE
+7010 GOSUB100:VE=1
+7020 S$="You've eaten everything!!!":GOSUB8000
+7030 SR=SC:GOSUB300
+7040 S$="Your score:"+SR$:GOSUB8000
+7050 SR=SC/LM:GOSUB300
+7060 S$="Game number:"+SR$:GOSUB8000
+7070 SR=LC:GOSUB300:S$="Try to reach "+SR$+" points."
+7075 GOSUB8000
+7080 S$="Press SPACEBAR for next game.":GOSUB8000
+7090 GOSUB200:IFIN$<>" " THEN7090
+7100 GOSUB9020:GOTO2000
+8000 L=LEN(S$):HO=0
+8010 FORI=1 TOL
+8020 M$=MID$(S$,I,1)
+8030 IFM$=" " THEN8050
+8035 W$=W$+M$
+8040 NEXTI
+8050 REM  NEW WORD
+8060 IFHO+LEN(W$)>HR THENHO=0:VE=VE+2:GOSUB8500
+8070 GOSUB110:PRINTW$;
+8080 HO=HO+LEN(W$)
+8090 W$=" "
+8100 IFI<L THEN8040
+8110 VE=VE+3:GOSUB8500:RETURN
+8500 REM  TEST TO SEE IF SCREEN IS FULL
+8510 IFVE<VR THENRETURN
+8520 GOSUB210
+8530 GOSUB100:VE=0:HO=0:RETURN
+9000 REM  SET ALL INITIAL VALUES
+9005 REM  HR=.. VR=..
+9010 XH=HR/2-1:YH=1:LC=LM
+9020 XS=INT(HR/2)-1:YS=11:RX=1:RY=0
+9030 H$(0)=">":H$(1)="O":H$(2)="<":G$="#":A=.1:M$="*"
+9999 RETURN
+10000 REM  END GAME
+10010 GOSUB100
+10020 HO=0:VE=1
+10030 S$="Ha! Ha! GOT YOU !!!!!":GOSUB8000
+10040 SR=HS:GOSUB300
+10050 S$="The high score so far is:"+SR$:GOSUB8000
+10060 SR=SC:GOSUB300
+10070 S$="You scored: "+SR$:GOSUB8000
+10080 IFHS>SC THEN10110
+10090 S$="Congratulations. A new record !!!":GOSUB8000
+10100 HS=SC
+10110 S$="Want another game (y/n) ?":GOSUB8000
+10120 GOSUB210
+10130 IF(IN$="y") OR(IN$="Y") THEN1500
+10140 IF(IN$="n") OR(IN$="N") THENGOSUB100:END
+10150 GOTO10120
+11000 REM  START GAME
+11010 S$=" *** SIMPLEPAC ***":GOSUB8000
+11020 S$="This game is simple.":GOSUB8000
+11030 S$="Eat up all the points you see, but..":GOSUB8000
+11040 S$="take care to avoid the monster '#'.":GOSUB8000
+12040 S$="When all points are gone, a new game begins."
+12050 GOSUB8000
+12060 S$="There are 3 levels of skill.":GOSUB8000
+12070 S$="The first game is very easy.":GOSUB8000
+12080 S$="In the second, the monster '#' leaves a trail"
+12090 S$=S$+"in which the points are hidden ."
+12100 GOSUB8000
+12110 S$="The last game is the most difficult."
+12120 GOSUB8000
+12130 S$="In this one '#' erases the maze.":GOSUB8000
+12140 GOSUB8520
+12500 S$="Press the key you will use to move left."
+12510 GOSUB8000:GOSUB210:L$=IN$
+12520 S$="Press the key you will use to move right."
+12530 GOSUB8000:GOSUB210:R$=IN$
+12540 S$="Press the key you will use to move up."
+12550 GOSUB8000:GOSUB210:U$=IN$
+12560 S$="Press the key you will use to move down."
+12570 GOSUB8000:GOSUB210:B$=IN$
+12999 RETURN
+25000 DATA "***************************************"
+25005 DATA "*.......*.......*.....*.......*.......*"
+25010 DATA "*.***.*.*.***.*.*.***.*.*.***.*.*.***.*"
+25020 DATA "*.....*.......*.........*.......*.....*"
+25030 DATA "***.*.*.***.*.*.***.***.*.*.***.*.*.***"
+25040 DATA "*...*.......*.............*.......*...*"
+25050 DATA "*.*.*.***.*.*.***.*.*.***.*.*.***.*.*.*"
+25060 DATA "*.*.......*.......*.*.......*.......*.*"
+25070 DATA "*.*.***.*.*.***.*.*.*.*.***.*.*.***.*.*"
+25080 DATA "*.......*.......*.....*.......*.......*"
+25090 DATA "*.***.*.*.***.*.*.***.*.*.***.*.*.***.*"
+25100 DATA "*.....*.......*...*  ...*.......*.....*"
+25110 DATA "*.***.*.*.***.*.*.***.*.*.***.*.*.***.*"
+25120 DATA "*.......*.......*.....*.......*.......*"
+25130 DATA "*.*.***.*.*.***.*.*.*.*.***.*.*.***.*.*"
+25140 DATA "*.*.......*.......*.*.......*.......*.*"
+25150 DATA "*.*.*.***.*.*.***.*.*.***.*.*.***.*.*.*"
+25160 DATA "*...*.......*.............*.......*...*"
+25170 DATA "***.*.*.***.*.*.***.***.*.*.***.*.*.***"
+25180 DATA "*.....*.......*.........*.......*.....*"
+25190 DATA "*.***.*.*.***.*.*.***.*.*.***.*.*.***.*"
+26000 DATA "*.......*.......*.....*.......*.......*"
+26010 DATA "***************************************"
+26020 DATA "SIMPLEPAC"
+26030 DATA "by: HJ Nootenboom"
+26040 DATA "A Basicode 2 game"
+26050 DATA "================="
+30000 REM  SIMPLEPAC
+30010 REM  HJ NOOTENBOOM
+30020 REM  GOOTSEHOEK 81
+30030 REM  3238 XB ZWARTEWAAL
+30040 REM  THE NETHERLANDS
+30050 REM  USING VIC-20 WITH 11.5K,CBM BASIC V2
+30060 REM  MARCH 1984
+30070 REM  
+30080 REM  THIS PROGRAM WILL WORK ON ANY SCREEN SIZE.
+30090 REM  CHANGE LINE 250 FOR A VERY SHORT 'BEEP'.
+30100 REM  LINE 9005 CAN BE ADJUSTED TO REDUCE MAZE SIZE
+30110 REM 
+30120 REM TRANSLATED FOR 
+30125 REM RADIO NETHERLANDS
+30130 REM BY JONATHAN MARKS.

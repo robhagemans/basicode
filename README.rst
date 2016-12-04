@@ -32,6 +32,8 @@ This repository contains BASICODE programs from the following sources:
 ==================================  ==========  =========== ==================  ==========
 Source                              Medium      Publisher   Basicode version    Language
 ==================================  ==========  =========== ==================  ==========
+`BASICODE-2A`_                      Tape        NOS         BASICODE-2          Dutch
+`The Best of BASICODE 2`_           Tape        NOS         BASICODE-2          Dutch
 `The Best of BASICODE 3`_           Tape        NOS         BASICODE-2          Dutch
 `The Best of BASICODE 5`_           CD          NOS         BASICODE-2          Dutch
 `Chip Shop BASICODE 2`_             Tape        BBC         BASICODE-2          English
@@ -40,6 +42,8 @@ Source                              Medium      Publisher   Basicode version    
 `BASICODE-3 Verzamelcassette 1`_    Tape        TROS        BASICODE-3          Dutch
 ==================================  ==========  =========== ==================  ==========
 
+.. _BASICODE-2A: Basicode-2a/
+.. _The Best of BASICODE 2: Best_of_Basicode_2/
 .. _The Best of BASICODE 3: Best_of_Basicode_3/
 .. _The Best of BASICODE 5: Best_of_Basicode_5/
 .. _Chip Shop BASICODE 2: Chip_Shop_Basicode_2/
