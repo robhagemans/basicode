@@ -40,6 +40,8 @@ Source                              Medium      Publisher   Basicode version    
 `Wiegand & Fillinger - Basicode`_   Tape        Elektor     BASICODE-2          German
 `BASICODE-3`_                       Tape        TROS        BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 1`_    Tape        TROS        BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 2`_    Tape        TROS        BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 3`_    Tape        TROS        BASICODE-3          Dutch
 ==================================  ==========  =========== ==================  ==================
 
 .. _BASICODE-2A: Basicode-2a/
@@ -50,6 +52,8 @@ Source                              Medium      Publisher   Basicode version    
 .. _Wiegand & Fillinger - Basicode: Wiegand_Fillinger_Basicode_2/
 .. _BASICODE-3: Basicode-3/
 .. _BASICODE-3 Verzamelcassette 1: Verzamelcassette_1/
+.. _BASICODE-3 Verzamelcassette 2: Verzamelcassette_2/
+.. _BASICODE-3 Verzamelcassette 3: Verzamelcassette_3/
 
 *Many of the above sources additionally contain translation programs, encoded in the native modulation for each computer.
 These are not included here.*
