@@ -20,8 +20,8 @@ and their computer's cassette player to read the tape. If everything went well, 
 use the program transmitted.
 
 *NOS* started BASICODE transmissions in 1982 on medium wave Dutch radio. Other broadcasters followed suit:
-Dutch broadcasters *NOS* and *TROS*, the British *BBC*, and the East German *Rundfunk der DDR* all at one time
-or another performed regular BASICODE transmissions.
+Dutch broadcasters *NOS* and *TROS*, the British *BBC*, the West German *WDR* and
+the East German *Rundfunk der DDR* all at one time or another performed regular BASICODE transmissions.
 
 While the authors and broadcasters retained copyrights on the programs, they encouraged them to be shared widely
 for non-commercial purposes.
