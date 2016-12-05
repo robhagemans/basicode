@@ -46,7 +46,7 @@ Source                              Medium      Basicode version    Language
 ==================================  ==========  ==================  ==================
 
 .. _BASICODE-2A: Basicode-2a/
-.. _The Best of BASICODE 2: Best_of_Basicode_1/
+.. _The Best of BASICODE 1: Best_of_Basicode_1/
 .. _The Best of BASICODE 2: Best_of_Basicode_2/
 .. _The Best of BASICODE 3: Best_of_Basicode_3/
 .. _The Best of BASICODE 5: Best_of_Basicode_5/
