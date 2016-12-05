@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 import sys
 
 # include the start and end byte

@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 """
 BASICODE audio modulator/demodulator
 
@@ -842,14 +844,15 @@ try:
         tapestream.open_read()
         print '%sProgram (%d)' % (timestamp(tapestream.counter()), track)
         s = tapestream.read()
-        if not tapestream.errors and tapestream.last_checksum_passed:
+        if not tapestream.errors and tapestream.last_checksum_passed():
             print '- Pass (checksum %02x)' % tapestream.last_checksum()[0]
+            print
             ext = 'bc'
         else:
             print '- Checksum: required %02x calculated %02x' % tapestream.last_checksum()
             print '- Errors: %d' % tapestream.errors
             print
-            ext = 'x'
+            ext = 'x%02x'% tapestream.last_checksum()[0]
         with open('%s_%02d.%s' % (trunk, track, ext), 'wb') as f:
             f.write(s)
 except EndOfTape:
