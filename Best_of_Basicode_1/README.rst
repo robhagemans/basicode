@@ -32,10 +32,8 @@ Kant B:
 1. Kasboek
 2. Bankrekening/Finplan
 3. Chequeboek
-4. Uuniverseel print progr.
+4. Universeel print progr.
 5. Jaaroverzicht no. 1
 6. Jaaroverzicht no. 2
 
  Alle rechten voorbehouden NOS-radio Hobbyscoop
-
- 
