@@ -1,0 +1,520 @@
+
+1000 GOSUB3200:GOTO20:REM IHHR/TOEL.2
+1010 N1$="INTEGRALE HUISHOUD-REKENING"
+1020 N2$="TOELICHTING NO.2"
+1030 IFA=0 THENGOSUB3500
+1040 IFKK>1 THENDIMN$(NR)
+1050 IFPT=5 THENGOSUB9200
+1060 GOTO4000
+1800 REM PRINT-ROUTINE
+1810 REM -------------
+1820 IFPT=5 THEN1850
+1830 IFKK=1 THENL$=RT$+L$
+1840 PRINTL$:L$="":GOTO1870
+1850 SR$=RT$+L$:GOSUB350:GOSUB360
+1860 SR$="":L$=""
+1870 RR=RR+1:IFRR=AR THENRR=0:GOTO1890
+1880 RETURN
+1890 IFPT=5 THENGOSUB9500:GOTO1920
+1900 GOSUB3150:IFKK>1 THENGOSUB9600:RETURN
+1910 GOSUB7200:RETURN
+1920 IFKK=1 THENGOSUB7200
+1930 RETURN
+2000 REM AFMETINGEN SCHERM
+2010 REM -----------------
+2020 FORK=1 TO3:GOSUB250:NEXTK
+2030 PRINT:PRINT"Scherm-grootte:"
+2040 PRINT"---------------":GOSUB250
+2050 PRINT"Aantal karakters op een regel: ";:INPUTSB
+2060 IFSB<30 THENSB=30
+2070 GOSUB250
+2080 PRINT"Aantal regels op het scherm  : ";:INPUTSH
+2090 IFSH<16 THENGOSUB2600:GOTO2070
+2100 AR=SH-4:RETURN
+2600 GOSUB250:PRINT"Tenminste 16 regels!":RETURN
+3000 GOSUB100:PRINT" INTEGRALE HUISHOUD-REKENING"
+3010 PRINT" ---------------------------"
+3020 PRINT"      TOELICHTING NO.2"
+3030 PRINT"      ----------------":RETURN
+3100 GOSUB250:PRINT:PRINT"Druk een toets in ...";
+3110 GOSUB210:PRINT:RETURN
+3150 GOSUB250:HO=RT:VE=SH-1
+3155 IFPT=5 THENHO=3
+3160 GOSUB110:PRINT"Druk een toets in ...";
+3170 GOSUB210:PRINT:RETURN
+3200 RESTORE:READN$:SH=16:GOSUB3000:GOSUB15000
+3205 GOSUB3000:PT=0
+3210 PRINT"In dit programma is een tekst-"
+3220 PRINT"verwerker ingebouwd.":PRINT
+3230 PRINT"De min. regellengte is 30 kar."
+3240 PRINT"Met  64  of  meer karakters op"
+3250 PRINT"een  regel  kunt  U  de  tekst"
+3260 PRINT"krijgen in meer kolommen.":PRINT
+3270 PRINT"Zowel op het scherm als op een"
+3280 PRINT"printer.":GOSUB3100:GOSUB3000
+3290 PRINT"Er wordt dan  eerst  per  blad"
+3300 PRINT"een   bestand  aangemaakt  dat"
+3310 PRINT"daarna wordt geprint.":PRINT
+3320 PRINT"Na   uw  antwoorden  wordt  de"
+3330 PRINT"variabelen-ruimte ingesteld en"
+3340 PRINT"later,   zo   nodig,  de  DIM-"
+3350 PRINT"statements.":PRINT:PRINT:GOSUB3100
+3360 GOSUB3000:PRINT"Met: **  CLEAR A:GOTO 1010  **"
+3370 PRINT"op regel 20 moet U  de  vragen"
+3380 PRINT"nog eens beantwoorden.":PRINT
+3390 PRINT"Als  U  problemen  hebt met de"
+3400 PRINT"variabelen-ruimte, verhoog dan"
+3410 PRINT"het getal 200 in REGEL 3870."
+3420 PRINT:PRINT:PRINT:GOSUB3100
+3500 GOSUB3000:PRINT:PRINT"Wat wilt U?":PRINT
+3510 PRINT" 1=VIDEO-PRINTS (op scherm)":PRINT
+3520 PRINT" 2=PRINT-OUTS (met printer)":PRINT
+3530 GOSUB250:PRINT"Uw keuze: ";
+3540 GOSUB210:PRINTIN$:W=VAL(IN$)
+3550 IF(W<1) OR(W>2) THEN3500
+3560 PT=0:RT=0:SH=16:IFW=2 THENPT=5
+3570 IFPT=0 THENGOSUB2000
+3580 IFPT=5 THENGOSUB9000:GOTO3630
+3590 S=INT(SB/32):IFS>1 THEN3670
+3600 KK=1:RL=SB-1:IFRL<30 THENRL=30
+3610 IFRL>50 THENRL=50:RT=INT((SB-RL)/2)
+3620 GOTO3850
+3630 S=INT(BB/32):IFS>1 THEN3670
+3640 KK=1:RL=BB
+3650 IFRL>50 THENRL=50:RT=INT((BB-RL)/2)
+3660 GOTO3850
+3670 IFS>9 THENS=9
+3680 GOSUB250:HO=0:VE=18:GOSUB110
+3690 PRINT"De  tekst  kunt  U  krijgen in"
+3700 PRINT"       ** ";S;" kolommen **":PRINT
+3710 GOSUB250:PRINT"Hoeveel kolommen wilt U? ";
+3720 GOSUB210:PRINTIN$:KK=VAL(IN$)
+3730 IF(KK<1) OR(KK>S) THEN3680
+3740 IFKK>1 THEN3780
+3750 RL=50:IFPT=0 THENRT=INT((SB-RL)/2)
+3760 IFPT=5 THENRT=INT((BB-RL)/2)
+3770 GOTO3850
+3780 RT=2:IFPT=5 THEN3820
+3790 RL=INT((SB-1-(KK-1)*RT)/KK)
+3800 IFRL>50 THENRL=50
+3810 RT=INT((SB-1-KK*RL)/(KK-1)):GOTO3850
+3820 RL=INT((BB-(KK+1)*RT)/KK)
+3825 IFRL<30 THENRL=30:RT=2:GOTO3850
+3830 IFRL>50 THENRL=50
+3840 RT=INT((BB-KK*RL)/(KK+1))
+3850 NR=KK*AR:REM DIM-STATEMENTS
+3860 A=NR*(RL+3):REM VAR.RUIMTE
+3870 A=A+200:REM EXTRA
+3880 PG=16900+1000:IFKK>1 THENPG=PG+A
+3890 CN=0:CT=3:SR=PG/1000:GOSUB310
+3900 GOSUB3000:FORK=1 TO3:GOSUB250:NEXTK
+3910 PRINT:PRINT"Hiervoor   moet   uw  computer"
+3920 PRINT:PRINT"tenminste:   ";SR$;"KB   zijn."
+3930 PRINT:PRINT"Accoord? (J/N): ";
+3940 GOSUB210:PRINTIN$
+3950 IF(IN$="J") OR(IN$="j") THENRETURN
+3960 GOTO3500
+4000 REM TEKSTVERWERKER
+4010 REM --------------
+4020 N=0:E=0:BL=0:RR=0:T=0:UV=1
+4030 LL=KK*RL+(KK-1)*RT
+4040 RT$="":RW$=""
+4050 LR$="                         "
+4055 LR$=LR$+LR$
+4060 LS$="-------------------------"
+4065 LS$=LS$+LS$
+4070 LR$=LEFT$(LR$,RL):LS$=LEFT$(LS$,RL)
+4080 IFLEN(RT$)<RT THENRT$=RT$+" ":GOTO4080
+4200 RESTORE:REM START
+4210 REM ---------------
+4215 READT$:T$=""
+4220 IFKK>1 THENGOSUB9600:GOTO4250
+4230 IFPT=5 THENGOSUB9700
+4240 GOSUB7200
+4250 L$=RW$:RW$="":F$=""
+4260 IFLEN(L$)>=2*RL THEN4400
+4270 IFRIGHT$(L$,3)="999" THEN4400
+4280 READWD$:L$=L$+" "+WD$:WD$=""
+4290 IFLEN(L$)<2*RL THEN4270
+4400 IFLEFT$(L$,1)=" " THENGOSUB4600
+4410 IFL$="999" THENL$=LS$:E=1:GOTO6000
+4420 FL=0:FORI=1 TOLEN(L$):IFFL=1 THEN4440
+4430 IFMID$(L$,I,1)=" " THENGOSUB4700
+4440 NEXTI:FL=0:GOTO4250
+4600 L$=RIGHT$(L$,LEN(L$)-1):RETURN
+4610 L$=LEFT$(L$,LEN(L$)-1):RETURN
+4700 REM SPECIALE CONDITIES
+4710 REM ------------------
+4720 LL$=LEFT$(L$,I-1)
+4730 RL$=RIGHT$(L$,LEN(L$)-I)
+4740 IFRIGHT$(LL$,3)="***" THENL$=LR$:GOTO5000
+4750 IFRIGHT$(LL$,3)="---" THENL$=LS$:GOTO5000
+4760 IFLEFT$(L$,1)="<" THENF$="<":GOTO5040
+4770 IFLEFT$(L$,1)="&" THENF$="&":GOTO5040
+4780 IFRIGHT$(LL$,1)="." THEN5010
+4790 IFRIGHT$(LL$,1)=":" THEN5010
+4800 IFRIGHT$(LL$,1)="!" THEN5010
+4810 IFLEN(LL$)>RL THEN5180
+4820 RETURN
+5000 GOSUB6000:RW$=RL$:FL=1:RETURN
+5010 IFLEN(LL$)>RL THENGOSUB5130:GOTO5030
+5020 L$=LL$:GOTO5000
+5030 L$=LL$:GOSUB5400:GOSUB6000:LL$=RS$:GOTO5010
+5040 F=0:FORJ=2 TOLEN(L$):IFF=1 THEN5070
+5050 IF(MID$(L$,J,1)=">") AND(F$="<") THENP=J:F=1
+5060 IF(MID$(L$,J,1)="&") AND(F$="&") THENP=J:F=1
+5070 NEXTJ:F=0:RL$=RIGHT$(L$,LEN(L$)-P-1)
+5080 L$=LEFT$(L$,P):GOSUB4600:GOSUB4610
+5090 IFF$="&" THENF$="":GOTO5000
+5100 F$="":L=LEN(L$):X$=LEFT$(LS$,L)
+5110 L=INT((RL-L)/2):L$=LEFT$(LR$,L)+L$
+5120 GOSUB6000:L$=LEFT$(LR$,L)+X$:GOTO5000
+5130 F=0:L=LEN(LL$)
+5140 FORJ=L TO1 STEP-1:IFF=1 THEN5160
+5150 IF(MID$(LL$,J,1)=" ") AND(J<=RL) THENP=J:F=1
+5160 NEXTJ:F=0:RS$=RIGHT$(LL$,LEN(LL$)-P)
+5170 LL$=LEFT$(LL$,P-1):RETURN
+5180 GOSUB5130:L$=LL$:GOSUB5400:GOSUB6000
+5190 RW$=RS$+" "+RL$:FL=1:RETURN
+5400 REM UITVULLEN
+5410 REM ---------
+5420 IFLEFT$(L$,1)=" " THENGOSUB4600:GOTO5420
+5430 IFRIGHT$(L$,1)=" " THENGOSUB4610:GOTO5430
+5440 IFRIGHT$(L$,1)="." THENRETURN
+5450 V=RL-LEN(L$):IFV=0 THENRETURN
+5460 AW=0:FORJ=1 TOLEN(L$)
+5470 IFMID$(L$,J,1)=" " THENAW=AW+1
+5480 NEXTJ:SP=0:A$=""
+5490 IFUV>0 THENUV=-1:GOTO5600
+5500 IFUV<0 THENUV=1:GOTO5700
+5600 REM UITVULLEN VANAF LINKS
+5610 REM ---------------------
+5620 FORJ=1 TOLEN(L$)
+5630 Z$=MID$(L$,J,1)
+5640 IFZ$=" " THENGOSUB5800
+5650 A$=A$+Z$:NEXTJ:L$=A$:RETURN
+5700 REM UITVULLEN VANAF RECHTS
+5710 REM ----------------------
+5720 FORJ=LEN(L$) TO1 STEP-1
+5730 Z$=MID$(L$,J,1)
+5740 IFZ$=" " THENGOSUB5800
+5750 A$=Z$+A$:NEXTJ:L$=A$:RETURN
+5800 REM UITVUL-ROUTINE
+5810 REM --------------
+5820 IFV=0 THENRETURN
+5830 SP=INT(V/AW)
+5840 IF(SP*AW)<>V THENSP=SP+1
+5850 IFSP=0 THENZ$=" "
+5860 IFSP=1 THENZ$="  "
+5870 IFSP>1 THENGOSUB5890
+5880 V=V-SP:AW=AW-1:RETURN
+5890 FORK=1 TOSP:Z$=Z$+" ":NEXTK:RETURN
+6000 REM BESTAND AANMAKEN
+6010 REM ----------------
+6020 IFKK=1 THENGOSUB1800:GOTO6120
+6030 IFLEN(L$)<RL THENL$=L$+" ":GOTO6030
+6040 N=N+1:N$(N)=L$:L$=""
+6050 IFE=1 THENNR=N
+6060 HO=2:VE=INT(SH/2):GOSUB110
+6070 PRINT"Totaal ";NR;" regels":VO=VE
+6080 VE=VO+2:GOSUB110
+6090 PRINT"Nu regel: ";N
+6100 IFN=NR THENN=0:GOSUB6200
+6110 RETURN
+6120 IF(E=1) AND(PT=0) THENGOSUB3150
+6130 IFE=1 THEN10000
+6140 RETURN
+6200 REM BESTAND PRINTEN
+6210 REM ---------------
+6220 SP=INT(NR/KK)
+6230 IF(SP*KK)<>NR THENSP=SP+1
+6240 GOSUB7200:FORI=1 TOSP:L$=""
+6250 FORJ=0 TOKK-1:LP=I+J*SP
+6260 IFLP>NR THENL$=L$+LR$:GOTO6280
+6270 L$=L$+N$(LP)+RT$
+6280 NEXTJ:L$=LEFT$(L$,LEN(L$)-RT)
+6290 GOSUB1800:NEXTI
+6300 IF(PT=0) AND(E=1) THENGOSUB3150
+6310 IFE=1 THEN10000
+6320 RETURN
+7200 REM KOPPEN
+7210 REM ------
+7220 BL=BL+1:IFPT=5 THEN7290
+7230 GOSUB100:L1=LEN(N2$):IFL1>(LL-14) THEN7370
+7240 L2=INT((LL-L1)/2):L=LL-L1-L2:SR=BL
+7250 GOSUB300:IFLEN(SR$)<2 THENSR$=" "+SR$
+7260 L$="BL."+SR$:GOSUB7840:L$=N2$+L$:L=LL
+7270 GOSUB7840:GOSUB7600:L$=LEFT$(LS$,L1):L=L1+L2
+7280 GOSUB7840:GOSUB7600:RETURN
+7290 L$=RIGHT$(NP$,LEN(NP$)-8)+", "+DT$
+7300 L=LL-LEN(NN$):GOSUB7840
+7310 L$=NN$+L$:GOSUB7600
+7320 L$=NA$:GOSUB7600:SR=BL:GOSUB300
+7330 L$="blad: "+SR$:L=LL-LEN(NP$):GOSUB7840
+7340 L$=NP$+L$:GOSUB7600:IFKK=1 THENGOSUB7600
+7350 L$=N1$:GOSUB7400:L$=N2$:GOSUB7400
+7360 GOSUB7600:RETURN
+7370 L$=N2$:GOSUB7400:RETURN
+7400 REM CENTREER-ROUTINE
+7410 REM ----------------
+7420 L1=LEN(L$):L2=(LL-L1)/2:L=L1+L2
+7430 GOSUB7840:GOSUB7600:L=L1:GOSUB7860
+7440 L=L1+L2:GOSUB7840:GOSUB7600:RETURN
+7600 REM KOP PRINTEN
+7610 REM -----------
+7620 IFPT=5 THEN7650
+7630 IFKK=1 THENL$=RT$+L$
+7640 PRINTL$:L$="":RETURN
+7650 SR$=RT$+L$:GOSUB350:GOSUB360
+7660 SR$="":L$="":RETURN
+7800 REM OP LENGTE BRENGEN
+7810 REM -----------------
+7820 IFLEN(L$)<L THENL$=L$+" ":GOTO7820
+7830 RETURN
+7840 IFLEN(L$)<L THENL$=" "+L$:GOTO7840
+7850 RETURN
+7860 IFLEN(L$)<L THENL$=L$+"-":GOTO7860
+7870 RETURN
+9000 REM AFMETINGEN BLAD
+9010 REM ---------------
+9020 FORK=1 TO3:GOSUB250:NEXTK
+9030 PRINT:PRINT"Blad-grootte:"
+9040 PRINT"-------------":GOSUB250
+9050 PRINT"Aantal karakters op een regel: ";:INPUTBB
+9060 IFBB<30 THENBB=30
+9070 GOSUB250
+9080 PRINT"Aantal regels op een blad    : ";:INPUTBH
+9090 IFBH<16 THENGOSUB2600:GOTO9070
+9100 AR=BH-8:RETURN
+9200 GOSUB3000:GOSUB250:HO=0:VE=6:GOSUB110
+9210 PRINT"Hebt U een printer? (J/N): ";
+9220 GOSUB210:PRINTIN$
+9230 IF(IN$="N") OR(IN$="n") THEN10000
+9240 FORK=1 TO3:GOSUB250:NEXTK:HO=5:VE=INT(SH/2)
+9250 GOSUB110:PRINT"Zet deze dan nu aan!"
+9260 GOSUB3100:GOSUB3000:HO=9:VE=5
+9270 GOSUB110:PRINT"BRIEFHOOFD"
+9280 GOSUB250:HO=0:VE=8:GOSUB110
+9290 PRINT"Uw naam (+voorl.):":INPUTNN$
+9300 IFNN$="" THEN9280
+9310 GOSUB250:VE=11:GOSUB110
+9320 PRINT"Uw adres ........:":INPUTNA$
+9330 IFNA$="" THEN9310
+9340 GOSUB250:VE=14:GOSUB110
+9350 PRINT"Postcode+Woonpl. :":INPUTNP$
+9360 IFNP$="" THEN9340
+9370 GOSUB250:VE=18:GOSUB110
+9380 PRINT"Datum vandaag (voluit):":INPUTDT$
+9390 IFDT$="" THEN9370
+9400 RETURN
+9500 GOSUB3000:GOSUB250
+9510 HO=10:VE=INT(SH/3):GOSUB110:PRINT"U kunt nu"
+9520 HO=8:VE=VE+2:GOSUB110:PRINT"een nieuw blad"
+9530 HO=10:VE=VE+2:GOSUB110:PRINT"instellen!"
+9540 GOSUB3150
+9550 IF(KK=1) THEN9700
+9600 GOSUB3000:GOSUB250
+9610 HO=6:VE=INT(SH/3):GOSUB110
+9620 PRINT"Bestand formeren":RETURN
+9700 GOSUB3000:GOSUB250
+9710 HO=8:VE=INT(SH/3):GOSUB110
+9720 PRINT"Ik ben bezig!":RETURN
+10000 GOSUB3000:FORI=1 TO3:GOSUB250:NEXTI
+10010 HO=4:VE=SH/2:GOSUB110
+10020 PRINT"Tot de volgende keer!"
+10030 END
+15000 X$="":GOSUB250:HO=2:VE=INT(SH/2):GOSUB110
+15010 PRINT"Uw code: ";:FORI=1 TOLEN(N$)
+15020 GOSUB210:X$=X$+IN$:NEXTI:PRINT
+15030 IFX$=N$ THENRETURN
+15040 GOTO10000
+25000 DATA"1234"
+25010 DATA"<ALGEMENE INFORMATIE> Rond de eeuw- wisseling"
+25020 DATA"moet U iets doen aan de 'DATUM CONVERSIE'-"
+25030 DATA"routine: *** & 010100 ---> 01012000& ***"
+25040 DATA"Overigens is dit een systeem voor 'DOOR DE"
+25050 DATA"EEUWEN HEEN'! *** U kunt dus nog even vooruit."
+25060 DATA"*** <RUBRIEKEN> In de progr's"
+25070 DATA"'Kasboek', 'Bankrek/Finplan' en 'Chequeboek'"
+25080 DATA"moet U uw inkomsten en uitgaven onderbrengen"
+25090 DATA"in rubrieken. Welke dat zijn, dat ziet U"
+25100 DATA"vanzelf. *** Twee rubrieken vereisen enige"
+25110 DATA"toelichting: & Rubr.19 = Kruisp."
+25120 DATA"Kas/Cheques& & Rubr.20 = kruisp. Kas/Bank&"
+25130 DATA"*** Met kruisposten wordt U niet rijker, noch"
+25140 DATA"armer. *** In een integraal Jaar-Overzicht"
+25150 DATA"over alle boeken moet de som over deze posten"
+25160 DATA"'nul' zijn! *** <OPSTARTEN> Na het al dan niet"
+25170 DATA"inlezen van een bestand in Kasboek, Bankrek/FP"
+25180 DATA"en Chequeboek: *** Als het begin- saldo van"
+25190 DATA"Kasboek en/of Bankrek/FP nog op '0' staat,"
+25200 DATA"wordt U verzocht om dit saldo op te geven."
+25210 DATA"*** Daarna wordt het eind-saldo en/of de"
+25220 DATA"totaal- bedragen berekend waarmee U de vorige"
+25230 DATA"keer bent ge-eindigd. *** In het Menu leest U"
+25240 DATA"de datum waarop dat was. *** Bankrek/FP vraagt"
+25250 DATA"nog om de nieuwe totaal- bedragen uit het"
+25260 DATA"Chequeboek, t.w.: &- reeds verrekend en& &- nog"
+25270 DATA"te verrekenen& *** U moet dus altijd eerst uw"
+25280 DATA"Chequeboek bijwerken. *** *** Als U mutaties"
+25290 DATA"wilt inbrengen: *** Steeds wordt gevraagd om"
+25300 DATA"de 'datum vandaag'. *** In Bankrek/FP heeft"
+25310 DATA"dat tot gevolg dat alle Finplan- posten uit"
+25320 DATA"het verleden verschuiven naar de 'datum"
+25330 DATA"vandaag'. *** U kunt ook niet plannen in het"
+25340 DATA"verleden! *** Nadat U mutaties hebt ingebracht,"
+25350 DATA"worden het nieuwe eind-saldo en/of totaal-"
+25360 DATA"bedragen berekend. *** Steeds kunt U uw"
+25370 DATA"bestanden van verschillende kanten bekijken."
+25380 DATA"*** --- Als U geen Bankrekening hebt, maar een"
+25390 DATA"Postrekening, dan kunt U de programma's ter"
+25400 DATA"plaatse wijzigen. *** Hebt U geen Chequeboek?."
+25410 DATA"Betaalt U nooit met een eurocheque, betaal-"
+25420 DATA"cheque, girocheque, of dergelijke?! ***"
+25430 DATA"Dan is het progr Chequeboek niet voor U. Waar"
+25440 DATA"naar bedragen uit het Chequeboek wordt"
+25450 DATA"gevraagd, vult U '0' in! *** --- ***"
+25460 DATA"<KASBOEK> Het progr 'Kasboek' ontvangt met"
+25470 DATA"genoegen uw informatie. *** ---"
+25480 DATA"*** <BANKREK/FINPLAN> Dit programma is twee-"
+25490 DATA"delig: U moet uw inkomsten en uitgaven"
+25500 DATA"eerst plannen via Finplan. Hieraan geeft U"
+25510 DATA"een prioriteit mee (1-9). *** Zodra U van de"
+25520 DATA"bank de afrekening hebt ontvangen, kunt U de"
+25530 DATA"posten in het bestand afrekenen. *** Hierbij"
+25540 DATA"kunt U de gegevens overnemen met '=' of"
+25550 DATA"wijzigen. *** --- *** <CHEQUEBOEK> Dit boek"
+25560 DATA"is twee- delig: Zodra U een cheque hebt"
+25570 DATA"uitgegeven, brengt U de gegevens in het bestand."
+25580 DATA"*** Van het chequenummer neemt U de laatste 4"
+25590 DATA"cijfers. De omschrijving is hier max 14"
+25600 DATA"karakters. *** Nadat U van de bank de afrekening"
+25610 DATA"hebt ontvangen, kunt U de cheques in het"
+25620 DATA"bestand afrekenen. *** Nadat U mutaties hebt"
+25630 DATA"ingebracht, worden de nieuwe totaal- bedragen"
+25640 DATA"berekend. *** Deze worden gevraagd in het"
+25650 DATA"progr Bankrek/Finplan. *** U kunt deze bedragen"
+25660 DATA"ook opvragen door het bestand in te lezen en"
+25670 DATA"direct daarop de run af te breken via 'Einde'."
+25680 DATA"*** *** Bij het afrekenen van cheques doet het"
+25690 DATA"programma het volgende: *** -controleert of"
+25700 DATA"het chequenummer aanwezig is in het bestand."
+25710 DATA"-controleert of de bedragen gelijk zijn."
+25720 DATA"-berekent het verschil in dagen tussen de"
+25730 DATA"uitgifte- datum en de afreken- datum en zet"
+25740 DATA"dit in de kolom 'CRDG'. -verschuift het"
+25750 DATA"chequenummer naar de omschrijving (eerste 4"
+25760 DATA"karakters). -zet afrek no op de plaats van"
+25770 DATA"chequenummer. -verandert het teken van '0'"
+25780 DATA"naar '1'. De overige gegevens blijven gelijk."
+25790 DATA"*** --- *** <SIMULATIE BESTAND> Hier is"
+25800 DATA"voornamelijk de 'RANDOM NUMBER GENERATOR' van"
+25810 DATA"uw computer aan het werk. U blijft in detail"
+25820 DATA"geinformeerd over de vorderingen. *** Ook"
+25830 DATA"kunt U zelf een stukje input aanleveren."
+25840 DATA"Dan kunt U meteen zien hoe het afrekenen van"
+25850 DATA"cheques gebeurt. *** Tussentijds en aan het"
+25860 DATA"einde kunt U een kijkje nemen in het bestand."
+25870 DATA"*** Tenslotte worden het eind-saldo en/of de"
+25880 DATA"totaal- bedragen berekend. Bedenk dan echter"
+25890 DATA"wel dat U van uw computer in 'Kasboek' en"
+25900 DATA"'Bankrek/FP' een begin-saldo van fl 1000,-"
+25910 DATA"kreeg! *** De gegenereerde bestanden kunnen"
+25920 DATA"worden ingelezen in alle programma's van dit"
+25930 DATA"systeem. *** --- *** <FINANC.PLANNING>"
+25940 DATA"Uw periodieke inkomsten en uitgaven (vaste"
+25950 DATA"bedragen) kunt U in dit programma inbrengen."
+25960 DATA"*** U kunt hier ook zien of, en tot hoever,"
+25970 DATA"uw saldo nog toereikend is! (in volgorde van"
+25980 DATA"prioriteiten - of niet!). *** --- ***"
+25990 DATA"<RENTE-BEREKENING> Uit de bestanden van"
+26000 DATA"Bankrek/FP of Integrale Bestanden bestaande"
+26010 DATA"uit een samenvoeging van Bankrek/FP en"
+26020 DATA"Chequeboek, wordt het rentenummer berekend op"
+26030 DATA"basis van 'dag-rente'. *** Daarna geeft U de"
+26040 DATA"percentages Debet- rente en Credit- rente op"
+26050 DATA"waarna de rente- bedragen worden berekend - of"
+26060 DATA"andersom. *** Het bijschrijven van de rente"
+26070 DATA"in uw Bankrek/FP moet U zelf doen. *** Dit is"
+26080 DATA"een informatie- doorvoer- programma, voor het"
+26090 DATA"geval dat de gevraagde periode niet gedekt is"
+26100 DATA"in EEN bestand. *** --- *** <UTILITY NO.1>"
+26110 DATA"Een integraal bestand bestaat uit posten van"
+26120 DATA"boeken van verschillende categorie. *** In"
+26130 DATA"dit programma kunt U: &-bestanden splitsen&"
+26140 DATA"&-bestanden samenvoegen& -het begin-saldo"
+26150 DATA"van uw Kasboek en/of Bankrekening corrigeren."
+26160 DATA"-de totaal- bedragen van het Chequeboek in de"
+26170 DATA"(N+1)-de post van Bankrek/FP corrigeren."
+26180 DATA"*** Iedere combinatie van boeken is mogelijk."
+26190 DATA"*** --- *** <UTILITY NO.2> Hier kunt U in alle"
+26200 DATA"boeken wijzigen: & -Rubriek-nummer&"
+26210 DATA"& -Omschrijving& & -Prioriteit (Bankrek/FP)&"
+26220 DATA"*** Ook een zoek- programma is aanwezig:"
+26230 DATA" -op rubriek-"
+26240 DATA"nummer en omschrijving (of een deel hiervan)."
+26250 DATA"*** Door het inbrengen van een code in de"
+26260 DATA"omschrijving kunt U het aantal rubrieken"
+26270 DATA"aanmerkelijk groter maken!"
+26280 DATA"*** --- *** <Jaar-Overzicht No.1> Periodiek"
+26290 DATA"wilt U wel eens weten, waar uw geld is"
+26300 DATA"gebleven. *** Dan runt U dit programma. Er"
+26310 DATA"wordt dan een bestand aangemaakt voor Jaar-"
+26320 DATA"Overzicht No.2. *** Voor posten uit voorgaande"
+26330 DATA"jaren wordt het begin-saldo bijgesteld! ***"
+26340 DATA"Het programma is goed voor 9999 posten (per"
+26350 DATA"jaar). Dat is ca 450.000 bytes. *** Tenslotte"
+26360 DATA"kunt U een Totaal- Overzicht krijgen"
+26370 DATA"van de ingelezen bestanden."
+26380 DATA"*** --- *** <Jaar-Overzicht no.2> Na het"
+26390 DATA"inlezen van het bestand en na enige"
+26400 DATA"berekeningen staat een spread- sheet gereed"
+26410 DATA"van 21 rijen en 20 kolommen. *** Hieruit"
+26420 DATA"bepaalt U zelf wat, en in welke volgorde,"
+26430 DATA"moet worden geprint, zowel op het scherm"
+26440 DATA"als op een printer. *** --- ***"
+26450 DATA"<UNI-PP-PROGRAMMA> Dit is een informatie-"
+26460 DATA"doorvoer- programma, goed voor 25 mega-"
+26470 DATA"bytes of meer aan bestanden. En dat in een"
+26480 DATA"32K computer! *** Dit programma heeft daar"
+26490 DATA"geen enkel probleem mee! *** U kunt uit een"
+26500 DATA"bestand de gegevens krijgen van 1 post, 1"
+26510 DATA"karakter daaruit, zo U wilt. *** U kunt ook"
+26520 DATA"een lijst krijgen met de gegevens van enige"
+26530 DATA"jaren. *** U kunt hier al uw boeken kwijt,"
+26540 DATA"ook integrale bestanden. *** Na het inlezen"
+26550 DATA"van een bestand wordt het saldo na iedere"
+26560 DATA"post berekend en tussengevoegd. *** Het"
+26570 DATA"enige wat U nog zelf moet doen, is: ***"
+26580 DATA"-bestanden in de goede volgorde inlezen."
+26590 DATA"-af en toe een toets indrukken. -af en"
+26600 DATA"toe een blad wisselen (bij de printer)."
+26610 DATA"*** Uiteraard hebt U een keuze gemaakt"
+26620 DATA"uit de 9 kenmerken die in de strings zijn"
+26630 DATA"opgenomen en de volgorde bepaald waarin"
+26640 DATA"deze moeten worden geprint! *** Als er"
+26650 DATA"voldoende ruimte is, kunt U ook nog in"
+26660 DATA"kolommen printen! *** --- *** Het gaat"
+26670 DATA"hier om uw persoonlijke financien!"
+26680 DATA"Maar dat wist U zeker al?. *** Veel"
+26690 DATA"succes met dit systeem!! ***"
+29990 DATA"999"
+30000 REM
+30010 REM HOBBYSCOOP-BASICODE2
+30020 REM *                  *
+30030 REM * INT.HH-REKENING  *
+30040 REM *  TOELICHTING-2   *
+30050 REM                    *
+30060 REM P INGEZONDEN DOOR
+30070 REM O                  1
+30080 REM S  B.P.M.RINTJEMA  2
+30090 REM T  TUINSTRAAT 13   0
+30100 REM B  5802 AD VENRAY  0
+30110 REM U
+30120 REM S  EIGEN ONTWERP   *
+30130 REM   FEB.84/ITT-2020  *
+30140 REM * NOV.84/APPLE IIE *
+30150 REM *                  *
+30160 REM **** HILVERSUM *****
+30170 REM
+30180 REM COPYRIGHT  NOS - HILVERSUM
