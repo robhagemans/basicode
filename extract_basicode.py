@@ -108,15 +108,16 @@ class BasicodeStream(object):
 
     def open_read(self):
         """Play until a file record is found."""
-        if not self.bitstream.read_leader():
+        sync = self.bitstream.read_leader()
+        if not sync:
             # reached end-of-tape without finding appropriate file
             raise EndOfTape()
-        self.filetype = 'A'
+        self.filetype = 'A' if sync == 0x02 else 'D'
         self.record_num = 0
         self.record_stream = io.BytesIO()
         self.buffer_complete = False
         self.errors = 0
-        return ' '*8, 'A', 0, 0, 0
+        return ' '*8, self.filetype, 0, 0, 0
 
     def open_write(self, name, filetype, seg, offs, length):
         # writing BASICODE not implemented
@@ -125,11 +126,20 @@ class BasicodeStream(object):
     def _fill_record_buffer(self):
         """Read a file from tape."""
         if self.record_num > 0:
-            return False
+            sync = self.bitstream.read_leader()
+            if not sync:
+                # reached end-of-tape without finding appropriate record
+                raise EndOfTape()
+        if self.filetype == 'D':
+            record_num = self.bitstream.read_byte()
+            if record_num != self.record_num:
+                logging.debug('Record number does not match')
         self.record_num += 1
         self.record_stream = io.BytesIO()
         # xor sum includes STX byte
-        checksum = 0x82
+        checksum = 0x82 if self.filetype == 'A' else 0x81^(record_num^0x80)
+        count_bytes = 0
+        closed = False
         while True:
             try:
                 byte = self.bitstream.read_byte()
@@ -147,10 +157,17 @@ class BasicodeStream(object):
                 logging.warning("%s Unexpected end of tape", timestamp(self.bitstream.counter()))
                 break
             checksum ^= byte ^ 0x80
-            if byte == 0x03:
+            if self.filetype == 'A' and byte == 0x03:
                 break
+            if self.filetype == 'D':
+                if count_bytes == 1024:
+                    break
+                elif byte == 0x04:
+                    closed = True
             c = chr(byte)
-            self.record_stream.write(c)
+            if not closed:
+                self.record_stream.write(c)
+            count_bytes += 1
             # CR -> CRLF
             if byte == 0x0d:
                 self.record_stream.write('\n')
@@ -170,7 +187,8 @@ class BasicodeStream(object):
                                 self.checksum_required, checksum)
         self.record_stream.seek(0)
         self.bitstream.read_trailer()
-        self.buffer_complete = True
+        if self.filetype == 'A' or closed:
+            self.buffer_complete = True
         return True
 
     def _flush_record_buffer(self):
@@ -189,7 +207,7 @@ class TapeBitStream(object):
     """Cassette tape bitstream interface."""
 
     # sync byte for IBM PC tapes
-    sync_byte = 0x16
+    sync_bytes = 0x16,
     # intro text
     intro = 'PC-BASIC tape\x1a'
 
@@ -255,7 +273,7 @@ class TapeBitStream(object):
                 # at least 64*8 bits
                 if b is not None and counter >= 512:
                     sync = self.read_byte(skip_start=True)
-                    if sync == self.sync_byte:
+                    if sync in self.sync_bytes:
                         return True
         except EndOfTape:
             return False
@@ -556,8 +574,8 @@ class WAVBitStream(TapeBitStream):
                         self.last_error_bit = None
                         self.dropbit = None
                         sync = self.read_byte(skip_start=True)
-                        if sync == self.sync_byte:
-                            return True
+                        if sync in self.sync_bytes:
+                            return sync
                         else:
                             logging.debug("%s Incorrect sync byte after %d pulses: %02x",
                                           timestamp(self.counter()), counter, sync)
@@ -566,7 +584,7 @@ class WAVBitStream(TapeBitStream):
                                       timestamp(self.counter()), counter, e)
         except (EndOfTape, StopIteration):
             self.read_half = self._gen_read_halfpulse()
-            return False
+            return None
 
 ##############################################################################
 
@@ -607,6 +625,12 @@ class WAVBitStream(TapeBitStream):
 # with 0x84 (i.e., 0x04 EOT). These bytes are included in the checksum.
 # the checksum of a data file always has a 1 in bit 7 due to its structure
 
+# according to the Basicode-3 book, a single 0x04 ends the data file, and therefore data files
+# can't include that byte. In Voelz' version, you could have 0x04 but not
+# a series of 0x04 extending to a 1024-block byte boundary
+# either way, it's a broken design for binary files, even though the 1024-byte block structure
+# was meant to avoid needing a sentinel value.
+
 
 class BasicodeWAVBitStream(WAVBitStream):
     """BASICODE-standard WAV image reader."""
@@ -614,8 +638,8 @@ class BasicodeWAVBitStream(WAVBitStream):
     def __init__(self, filename, mode):
         """Initialise BASICODE WAV-file reader."""
         WAVBitStream.__init__(self, filename, mode)
-        # basicode uses STX as sync byte
-        self.sync_byte = 0x02
+        # basicode uses STX as sync byte for programs, STH for data
+        self.sync_bytes = 0x02, 0x01
         # fix frequencies to Basicode standards, 1200 / 2400 Hz
         # one = two pulses of 417 us; zero = one pulse of 833 us
         # value is cutoff for full pulse
@@ -835,19 +859,25 @@ def butterband_sox(sample_rate, f0, width):
 
 ###############################################################################
 
+#logging.basicConfig(level=logging.DEBUG)
+
 wav_file = sys.argv[1]
 tapestream = BasicodeStream(BasicodeWAVBitStream(wav_file, 'r'))
 trunk = os.path.basename(wav_file).replace('.wav', '')
 
 try:
     for track in itertools.count():
-        tapestream.open_read()
-        print '%sProgram (%d)' % (timestamp(tapestream.counter()), track)
+        _, filetype, _, _, _ = tapestream.open_read()
+        if filetype == 'A':
+            print '%sProgram (%d)' % (timestamp(tapestream.counter()), track)
+            ext = 'bc'
+        else:
+            print '%sData (%d)' % (timestamp(tapestream.counter()), track)
+            ext = 'dat'
         s = tapestream.read()
         if not tapestream.errors and tapestream.last_checksum_passed():
             print '- Pass (checksum %02x)' % tapestream.last_checksum()[0]
             print
-            ext = 'bc'
         else:
             print '- Checksum: required %02x calculated %02x' % tapestream.last_checksum()
             print '- Errors: %d' % tapestream.errors
