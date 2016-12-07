@@ -1,7 +1,7 @@
 NOS Best of Basicode 2
 ===========================
 
-.. image:: http://robhagemans.github.io/basicode/BestOfBasicode2.jpg
+.. image:: http://www.worldofspectrum.org/pub/sinclair/games-inlays/Compilations/BestOfBasicode2.jpg
 
 **Op deze cassette staan computertonen die geschikt zijn voor bijna alle computers.
 Alleen dient u dan te beschikken over een Basicode vertaalprogramma. Dat is er al voor
@@ -9,7 +9,7 @@ zo'n 35 computers. Als u niet weet of het er al voor uw merk computer is, schrij
 het radioprogramma NOS-Hobyscoop, Postbus 1200, 1200 BE in Hilversum.**
 
 
-NOS-Radio/Hobbyscoop-produktie, met dank aan vele, vaste luisteraars.  
+NOS-Radio/Hobbyscoop-produktie, met dank aan vele, vaste luisteraars.
 Uitgave NOS-afd. Communicatie.
 Presentatie: Ingrid Drissen.
 Produktie: Lidy Martin, dr. Pieter Vijlbrief en Hans G. Janssen.
