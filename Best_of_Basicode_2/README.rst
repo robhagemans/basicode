@@ -19,7 +19,7 @@ Kant A met lengte in K-byte:
 
 ============================ =====
  1. Tips voor programmeurs	 6.4
- 2. tekstvoorbeeld  		     4.6
+ 2. Tekstvoorbeeld  		     4.6
  3. Postzegelverzameling	   16.8
  4. Bord van Galton		       5.9
  5. Type-cursus			         5.8
