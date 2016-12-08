@@ -1,0 +1,260 @@
+108, zon 29 nov '87
+
+CURSUS MACHINETAAL MS-DOS DEEL 3
+
+Na twee afleveringen kennen we nu de opbouw
+van de microprocessor, van het geheugen en
+van een programma. In deze derde aflevering
+bekijken we een aantal verschillende
+instructies voor de processor.
+
+VERPLAATSEN
+
+Een van de meestvoorkomende instructies is
+MOV, move (verplaats), waarvan tal van vormen
+bestaan. Een paar voorbeelden:
+
+BF1400       MOV     DI,0014
+B80C02       MOV     AX,020C
+BA1F08       MOV     DX,081F
+
+8CC8         MOV     AX,CS
+
+B409         MOV     AH,09
+
+Hier wordt steeds iets neergezet in een
+aangegeven register. Het verplaatsen gaat
+altijd van rechts naar links, dit in
+tegenstelling tot DOS commando's waarbij de
+invoerfile links staat en de uitvoerfile
+rechts. Zo laadt het eerste commando
+hierboven het getal 14 (hexadecimaal!) naar
+het register DI. In de vierde regel wordt de
+waarde van het codesegment in de accumulator
+gezet. In feite gaat het niet om verplaatsen,
+maar om kopieren: CS behoudt hier zijn
+oorspronkelijke waarde. De regel daarna laat
+zien dat MOV ook kan worden gebruikt voor
+halve registers.
+
+2E          CS:
+8E060701    MOV     ES,[0107]
+
+MOV ES,[0107] laat een zogenaamde indirecte
+verplaatsing zien. Hier wordt niet het getal
+107 in ES geladen, maar het getal dat
+gevonden wordt op adres 107. Normaal zou dat
+adres 107 zijn ten opzichte van het
+datasegment, maar de voorafgaande opdracht
+CS: zorgt er hier voor dat het codesegment
+wordt genomen in plaats van het datasegment.
+ES is een heel en geen half register. Daarom
+worden er twee bytes opgehaald. Volgens de
+inmiddels bekende omkering komt het byte van
+geheugenplaats 107 rechts in ES en het byte
+van plaats 108 links in ES.
+
+A35CF0       MOV [F05C],AX
+
+Deze instructie zet AX weg op het adres F05C.
+
+Er zijn ook ingewikkelder MOV's mogelijk als:
+
+C706C02E7824 MOV WORD PTR [2EC0],2478
+C606C22E01   MOV BYTE PTR [2EC2],01
+8C09         MOV [BX+DI],CS
+8B56F4       MOV DX,[BP-0C]
+8B46EE       MOV AX,[BP-12]
+C60664F001   MOV BYTE PTR [F064],01
+
+In de eerste regel zijn het twee bytes die
+gevuld worden. Een bytepaar wordt een woord
+genoemd en voor de duidelijkheid voegt debug
+WORD toe. In de tweede regel gaat het om
+slechts een byte. De volgende drie
+voorbeelden laten zien dat binnen de
+vierkante haken van de indirecte adressering
+een beetje gerekend kan worden. De laatste
+regel zet een getal op adres F064 zonder
+tussenkomst van een register.
+
+Een eenvoudige manier om de inhoud van twee
+registers te verwisselen is de
+exchange-opdracht:
+
+92           XCHG    DX,AX
+94           XCHG    SP,AX
+
+De bovenste instructie verwisselt AX met DX.
+Dit kan ook met twee halve registers.
+
+DE STACK
+
+Wanneer we een programma bekijken, zien we
+dat ook de instructies PUSH en POP veel
+voorkomen. Deze twee bewerken het
+geheugendeel dat stack of stapel wordt
+genoemd. PUSH legt een byte of woord op de
+stapel, POP neemt het bovenste byte of woord
+van de stapel. De stapel bevindt zich in het
+algemeen in een heel ander deel van het
+geheugen dan waar zich de overige handelingen
+afspelen. Bij gebruik van het debugcommando t
+is het groeien en slinken van de stapel af te
+lezen aan de waarde van de stackpointer SP.
+Met PUSH en POP kunnen we alleen de bovenkant
+van de stapel bereiken. We moeten er zelf op
+letten dat er precies evenveel bytes worden
+gepopt als er gepusht zijn en dat er niet op
+een of andere andere manier in dit
+geheugendeel wordt gerommeld. Stel dat we in
+een programma een tussentijds resultaat
+hebben berekend, dat nu in een van de
+registers staat. Later hebben we dat
+resultaat nog nodig, maar nu willen we het
+register voor iets anders gebruiken. We
+zetten de tussenwaarde dan zolang weg op de
+stack.
+
+Het volgende is een voorbeeld van het
+opbergen van alle vlaggen op de stack:
+
+9C       PUSHF
+doe nu iets waarbij de vlaggen veranderen
+9D       POPF
+de vlaggen staan nu weer in de oude stand
+
+Het volgende voorbeeld brengt via de stack de
+inhoud van CS naar DS:
+
+0E       PUSH    CS
+1F       POP     DS
+
+REKENEN
+
+Een van de hoofdtaken van een computer is
+rekenen en dus zijn er ook daarvoor een
+aantal machinetaalinstructies.
+
+83C2FF   ADD DX,-01
+83C201   ADD DX,+01
+0306D8F2 ADD AX,[F2D8]
+81C25AEF ADD DX,EF5A
+019A6402 ADD [BP+SI+0264],BX
+
+Bovenstaande instructies tellen iets op bij
+DX, AX of bij de aangegeven geheugenplaats.
+De volgende opdrachten trekken iets af van de
+registers:
+
+2B06DCF2 SUB AX,[F2DC]
+2B56EC   SUB DX,[BP-14]
+
+De instructies ADC en SBB zijn er voor
+optellen met onthouden en aftrekken met
+lenen. Hierbij komt een van de vlaggen in het
+spel, de carry-vlag. Verder zijn er een paar
+instructies (DAA, DAS, AAA, AAS, AAM, AAD)
+die het mogelijk maken te rekenen met
+getallen in het tientallig stelsel. Er staan
+dan twee decimale cijfers in een woord. We
+bespreken deze instructies niet verder; wie
+er in de praktijk mee te maken krijgt, heeft
+nu in ieder geval enig idee wat deze zeldzame
+instructies doen.
+
+Wanneer we een register enkel met 1 willen
+vermeerderen of verminderen, kan dat
+eenvoudiger dan met ADD en SUB. We kunnen
+gebruik maken van INCrement en DECrement.
+Denk aan increase en decrease.
+
+42 INC DX (tel 1 bij)
+46 INC SI
+4A DEC DX (trek 1 af)
+
+In de volgende aflevering gaan we verder met
+de instructies voor vermenigvuldigen en
+delen.
+
+Behalve als beeldkrant verschijnt deze cursus
+in afleveringen ook in het tijdschrift Mens
+en Wetenschap (Postbus 108, 1270 AC HUIZEN,
+02152 - 58388).
+
+Deze cursus wordt geschreven door Pim van
+Tend, Veldheimwg 8, 6871 CD RENKUM,
+08373-15358.
+
+BASICODE-2 SUBROUTINES VOOR AMIGA
+
+Peter Hellweg uit Dortmund stuurde ons de
+volgende (voorlopige) versie van de
+Basicode-2 subroutines voor de Commodore
+Amiga. Hier komen ze:
+
+10 GOTO 1000
+20 GOTO 1010
+100 CLS:RETURN
+110 LOCATE ve+2,ho+2:RETURN
+120 ve=CSRLIN:ho=POS(0):RETURN
+200 IN$=INKEY$:RETURN
+211 RETURN
+250 BEEP:RETURN
+260 RV=RND(1):RETURN
+270 FR=FRE(0):RETURN
+SR$=RIGHT$(SR$,LEN(SR$)-1)
+301 RETURN
+THEN 318
+312 SR$ = SR$ + MID$(STR$(1+ABS(SR)
+- INT(ABS(SR)) + .5*10^-CN),3,CN+1)
+GOTO 316
+GOTO 318
+319 RETURN
+350 LPRINT SR$;:RETURN
+360 LPRINT:RETURN
+
+VAN C-64 NAAR AMIGA
+
+Omdat er voor de Amiga nog geen vertaal
+programma bestaat, gebruikt hij een C-64
+om de programma's over te zetten. Hij gaat
+daarbij als volgt te werk: eerst laadt hij
+het Basicode-programma in de C-64. Daarna
+gebruikt hij Exbasic L2 om spaties toe te
+voegen met 'SPACE'. Vervolgens tikt hij in:
+open2,8,2,''programmanaam,s,w''
+cmd2
+list 1000-
+print#2
+close2
+
+De aldus aangemaakte sequentiele file zendt
+hij dan over naar de Amiga met een nul-modem
+kabel. Tenslotte 'MERGE't hij het programma
+met de subroutines tot regel 360.
+
+Volgens Peter werken de meeste programma's
+op deze manier goed. In de Beeldkrant moet
+echter een kleine verandering worden
+aangebracht: verwijder de regels 1020-1070
+en vervang deze door:
+1020 vp=22:hp=75
+
+VERTAALPROGRAMMA GEVRAAGD
+
+Zoals reeds gezegd, gaat het hier om een
+voorlopige versie van de Basicode routines
+voor de Amiga. Bovendien heeft niet iedere
+Amiga bezitter ook een C-64. Een alternatief
+zou het gebruik van een modem zijn: dan kan
+de Amiga de programma's direct uit onze
+Fido-NOS databank (Tel.035-45395) halen.
+Maar ook niet iedereen heeft een modem...
+
+Met andere woorden: wij zouden graag een
+echt VERTAALPROGRAMMA voor de Amiga willen
+hebben! Als U er een (gemaakt) heeft,
+stuur het a.u.b. naar Hobbyscoop, zodat wij
+het kunnen uitzenden. Daarmee doet U vele
+mede Amiga-bezitters een groot plezier!

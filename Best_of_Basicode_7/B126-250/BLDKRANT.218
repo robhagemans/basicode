@@ -1,0 +1,289 @@
+
+218, maa 03 apr '89
+
+PLANPERFECT EN MATHPLAN 2.1
+
+Toepassingen en technieken, door A. van
+Utteren, 256 pag., uitgave Kluwer,
+prijs f64.50, (de losse diskette kost
+nog eens f49.50 excl. verzendkosten).
+Dit boek vertelt alles, wat in de ruim
+500 pagina's tellende nederlandstalige
+handleiding van PLANPERFECT staat, nog
+eens, maar dan iets anders geformuleerd
+en daardoor voor velen misschien wat
+duidelijker. Het behandelt de
+installatie van het programma op de
+computer en de specifieke aspecten van
+een spreadsheet programma. De macro
+faciliteiten komen ook uitvoerig aan de
+orde evenals het maken van grafieken.
+Voor de nog steeds grote groep van
+MathPlan gebruikers heeft dit boek het
+voordeel, dat bij elke Planperfect
+functie ook het MathPlan equivalent
+wordt genoemd. Wat de diskette bevat,
+kunnen wij wederom niet uit eigen
+ervaring vertellen, want wij kregen die
+niet ter recensie aangeboden. Het boek
+lijkt ons geschikt voor medegebruikers
+van het programma op kantoren e.d., die
+zelf over een uitgebreide handleiding
+willen beschikken. Ook als aanvulling
+op de bij het programma geleverde
+handleiding (als iets net iets anders
+wordt gezegd, dringt het beter door),
+is het bruikbaar. (Aldus Pieter
+Vijlbrief)
+
+KOSTBARE RUZIE OVER UNIX-STANDAARD
+
+Serieuze meningsverschillen binnen de
+computer industrie over een
+Unix-standaard leiden naar een
+industriele oorlog, die leveranciers en
+gebruikers veel geld kan gaan kosten.
+Deze mening zijn een aantal
+grootgebruikers toegedaan. Het gaat om
+de Europese Commissie, Lockheed en
+Shell, die allen deelnemen in een
+adviesorgaan ten behoeve van de X/Open
+Group. Dit consortium, waarin grote
+leveranciers zitting hebben, houdt zich
+bezig met de ontwikkeling van
+standaarden. Ook een aantal
+leveranciers heeft een waarschuwende
+vinger opgeheven, waaronder IBM en
+AT&T.
+
+Computer fabrikanten, software
+ontwikkelaars en gebruikers zijn het
+erover eens dat Unix de beste keuze is
+als het gaat om een open standaard
+besturings systeem. Overname van deze
+standaard leidt tot enorme besparingen
+voor gebruikers, die software kunnen
+draaien op elke Unix machine. Ook de
+software ontwikkelaars besparen geld.
+Zij hoeven niet meer programma's te
+schrijven voor een leverancier, die
+weer een iets afwijkend systeem
+verhandelt. Ook wordt Unix steeds vaker
+een essentiele specificatie voor
+overheids contracten wereldwijd.
+
+De tegenstanders van deze ontwikkeling
+zijn Unix International, onder
+aanvoering van AT&T, en de Open
+Software Foundation, onder leiding van
+IBM. Zowel Unix International als de
+Open Software Foundation, die beiden
+een eigen standaard hebben ontwikkeld,
+claimden vorig jaar dat hun standaard
+moest worden verheven tot wereld
+standaard. Eind vorig jaar werd al
+geprobeerd om via gesprekken dit
+probleem op te lossen, maar deze hebben
+tot niets geleid. Inmiddels hebben
+beide partijen te kennen gegeven dat
+zij voorlopig afzien van verdere
+gesprekken. Wel zijn de leden van het
+adviesorgaan van X/Open woedend. Zij
+stellen dat het gebruik van twee Unix
+standaarden voor nog meer verwarring en
+kosten zorgt. 'De rivaliteit tussen
+Unix International en de OSF werkt de
+invoering van open systemen tegen en is
+niet in het belang van de gebruiker,'
+stelt directie-lid Uwe Hartmann van het
+Westduitse Daimler-Benz, een gebruiker.
+Intussen blijven beide partijen hun
+eigen Unix-versie ontwikkelen en
+verwacht wordt dat zij nog dit jaar hun
+eerste produkten op de markt brengen.
+(Uit: Telecom Daily)
+
+HET KNMI
+
+Wie kent ze niet, die mannen van het
+weer, die ons elke dag via radio en
+televisie komen vertellen welk weer...
+of geen weer ons allen te wachten
+staat. Dat bepalen van het weer gaat
+natuurlijk niet met het opsteken van
+een natte vinger, en dan maar raden uit
+welke hoek de wind waait. Er wordt in
+ons Koninklijk weer-instituut gebruikt
+gemaakt van zeer geavanceerde
+apparatuur.
+
+EEN KLEIN STUKJE HISTORIE
+
+In de lente van 1983 begon zich een
+storm te ontwikkelen boven het Engelse
+Kanaal. Omdat de depressie heel klein
+was en zich erg snel verplaatste, was
+de toenmalige apparatuur niet in staat
+om de juiste kracht ervan te kunnen
+bepalen. Al na een paar uur groeide de
+kleine depressie uit tot een
+gigantische storm en de gevolgen
+daarvan liggen ons nog vers in het
+geheugen. Kortom, Nederland werd
+verrast door een plotseling opkomend
+noodweer met enorme windstoten.
+
+SAMENWERKING
+
+De weersvoorspellingen zijn het produkt
+van een zeer groot samenwerkings
+verband tussen diverse organisaties.
+Het overkoepelend orgaan -we hebben het
+daar trouwens een tijdje geleden in de
+Beeldkrant over gehad- is de WMO (World
+Meteorological Organisation) die wordt
+gevormd door bijna alle meteorologische
+stations ter wereld. Deze WMO heeft een
+wereldwijd communicatie- netwerk tot
+stand gebracht, het Global
+Telecommunications System (GTS), voor
+het uitwisselen van gegevens.
+
+Een andere belangrijke organisatie is
+het Europese Centrum voor Medium Range
+Weather Forecast (ECMWF) in Reading,
+Engeland. Het ECMWF is een gezamenlijk
+project van Europese landen, waar
+gewerkt wordt aan een lange termijn
+voorspelling van b.v. 2 tot 6 dagen.
+
+EIGEN SUPERCOMPUTER
+
+Hoewel het ECMWF goed is in het
+voorspellen van het weer op de lange
+termijn, doet men daar niet aan het
+voorspellen van het weer op de korte
+termijn. Deze taken worden waargenomen
+door de nationale weerstations zoals
+b.v. het KNMI in de Bilt. Het KNMI
+voorspelt alleen het weer voor
+Nederland en dan alleen nog op korte
+termijn. Na de volslagen verrassing van
+de storm in 1983 is het KNMI andere
+methodes gaan toepassen bij het
+voorspellen van dergelijke
+weersomstandigheden. Voor deze
+voorspellingen raadpleegt het
+weerstation de gegevens die via
+computers binnenkomen. Tot voor kort
+was het KNMI niet in het bezit van
+eigen computers voor
+weersvoorspellingen. Zij maakten
+gebruik van de gegevens van andere
+Europese weerstations die deze
+apparatuur wel hadden. Om toch ook zelf
+over de gegevens te kunnen beschikken
+is het Koninklijk Nederlands
+Meteorologisch Instituut overgegaan tot
+de aanschaf van dergelijke geavanceerde
+apparatuur. Daaronder valt apparatuur
+die elke drie uur een volledige up-date
+van het weer geeft. Voorheen was dat
+elke twaalf uur. De computer moest wel
+in staat zijn om grote hoeveelheden
+weersinformatie (barometerdruk,
+temperaturen, vochtigheids graden,
+zeespiegel, windsnelheden van diverse
+hoogten, satelliet data, de hoogte van
+het zeewater en de temperatuur van het
+zeewater) te verwerken. Ongeveer 90%
+van deze informatie komt van GTS, en
+wordt in allerlei formaten, tijden en
+frequenties doorgegeven. Inmiddels is
+het KNMI in het bezit van een CONVEX
+supercomputer die voldoet aan de
+behoefte van de Nederlandse
+weersvoorspellingen. Met deze
+supercomputer kan het KNMI nu elke drie
+uur, en met 24 uur vooruit, het weer
+voorspellen. Het resultaat is dat het
+KNMI zich niet meer zal laten verrassen
+door een dergelijke storm als in de
+lente van 1983. (Met dank aan Lidy
+Martin)
+
+MICRO MASTERS HOLLAND
+
+De nationale computer wedstrijd Micro
+Masters Holland wordt dit jaar, na 1
+jaar afwezigheid, voor de vierde keer
+georganiseerd ter gelegenheid van het
+850-jarig bestaan van de stad Emmen. De
+opdrachtgever voor de wedstrijd is de
+Stichting Emmen 850, terwijl de
+wedstrijd in zijn geheel wordt
+gesponsord door de Industriekring
+Emmen. De wedstrijd richt zich op
+scholieren van 15 t/m 18 jaar, op
+studenten aan universiteiten en
+hogescholen en op deelnemers aan zgn.
+'computer thuis' projecten. Micro
+Masters werd in 1985, 1986 en 1987
+georganiseerd in het kader van het INSP
+in opdracht van de Ministeries van
+Onderwijs en Wetenschappen en van
+Economische Zaken. De organisatie
+blijft in handen van Aspeslagh Public
+Relations te Alphen aan den Rijn.
+
+DOELSTELLING
+
+Het doel van de nationale computer
+wedstrijd Micro Masters Holland is om
+jongeren, studenten en
+computerthuiswerkers te stimuleren in
+hun gebruik van en werkzaamheden met
+hun computer. Ze mogen zelfgemaakte
+programma's insturen in de volgende
+categorieen:
+- Educatieve Hard/Software
+- Toepassings Hard/Software
+- Kunstsoftware
+- Computerspellen
+- Beginners categorie voor hen, die
+minder dan 1 jaar computer ervaring
+hebben.
+
+De wedstrijd kent een voorronde in de
+herfst- vakantie in de 12 provincie-
+hoofdsteden in Nederland. De finale
+vindt plaats op 9 december 1989 in
+Emmen. Hieraan zullen circa 100
+finalisten deelnemen.
+
+HOOFDPRIJS
+
+De hoofdprijs van Micro Masters Emmen
+850 bestaat uit een complete Amiga 2000
+computer, samen met nog enkele Amiga
+500 computers. Daarnaast is er nog vele
+andere hard- en software te winnen. De
+totale prijzenpot zal een waarde hebben
+van ongeveer f 50.000,--.
+
+In de eerste helft van april krijgen
+informatica docenten van het middelbaar
+(beroeps) onderwijs en voortgezet
+onderwijs, samen met hogescholen en
+universiteiten een poster toegezonden
+over Micro Masters Emmen 850.
+Geinteresseerden kunnen een informatie
+pakket voor deelname aan de wedstrijd
+opvragen bij: Micro Masters Emmen 850,
+Antwoordnr. 10316 (geen postzegel
+nodig), 2400 WB Alphen aan den Rijn.
+Telefoon: 01720-76955 (alleen tijdens
+kantooruren). De inschrijvings termijn
+sluit op 15 september a.s. Deelname is
+gratis.
+

@@ -1,0 +1,343 @@
+341, maa 10 sep '90
+
+TURBO PASCAL HANDBOEK
+
+Eindredactie: B. van Duuren, Uitgave
+WEKA, ISBN 90-70829-15-0, losbladig,
+prijs f 99,00 voor het Basiswerk en f
+35,00 - f 55,00 per aanvulling (er zijn
+er nu 12).
+Dit zeer dure maar ook erg uitgebreide
+werk is gevat in een aantal ordners
+waarin men de losbladige afleveringen
+kan opbergen. Het begint met het
+zogenaamde 'Basiswerk', een erg
+incomplete cursus in (Turbo)Pascal
+(versie 4), voor de prijs van f99. Het
+kan compleet gemaakt worden door de
+'aanvullingen', die bij abonnement op 8
+of meer daarvan f35 per stuk kosten,
+bij een geringer aantal zijn ze
+duurder. Aanvulling 12 geeft pas
+aanwijzingen voor TurboPascal V 5 en V
+5.5. Ook de listings zijn op diskettes
+verkrijgbaar, uiteraard niet gratis. De
+onderwerpen worden uitvoerig behandeld.
+Men vindt er dingen in die men niet zo
+gauw in de overige literatuur zal
+terugvinden. Zo zag ik o.a. een
+uitvoerig gedocumenteerde universele
+invoerroutine en een uitvoerroutine
+voor het printen van tekst in kolommen.
+Voor zover we uit het basiswerk konden
+beoordelen (meer kregen we niet ter
+recensie toegestuurd), lijkt me dit
+cursusboek alleen aan te bevelen voor
+de echte 'Pascal-Fan', die zijn kennis
+wil verrijken. De gewone hobbyist, die
+iets van Pascal wil te weten komen, is
+beter af met de in vorige Beeldkranten
+besproken boeken.
+
+SUCCESVOL PROGRAMMEREN IN C
+
+op IBM PC's e.d. Een vertaling
+(waarvan?) en ook uitgegeven door WEKA.
+Evenals het Turbo Pascal Handboek
+verkrijgbaar als losbladig werk met
+aanvullingen, zelfde prijsklasse. ISBN
+90-70829-16-9.
+Deze uitgave zou als voordeel hebben
+dat men er een 'Instructie C-Compiler'
+op diskette bij krijgt. Deze compiler
+is zelfs voor een beginner te beperkt.
+Overigens kan natuurlijk elke andere
+goede C compiler worden gebruikt. De
+bijgeleverde compiler is meer als
+voorbeeld bedoeld om de belangstellende
+programmeurs inzicht te doen krijgen in
+de werking van een compiler. Bovendien
+kan hij zichzelf compileren vanuit de
+bijgeleverde broncode. Ook van deze
+uitgave konden we alleen het
+'basiswerk' beoordelen. De opzet lijkt
+niet onaardig. Jammer dat een handige
+index ontbreekt. De prijs is weer
+uitzonderlijk hoog. Voor de hobbyist
+zijn er ook goede standaardwerken over
+het programmeren in C te koop voor een
+fractie van de prijs die men voor dit
+losbladig geheel moet neertellen. Het
+doet vreemd aan in dit soort boeken een
+uitgebreide copyright clausule aan te
+treffen, waarbij 'niets uit deze
+uitgave (mag) worden verveelvoudigd
+en/of openbaar gemaakt door middel van
+druk, fotokopie, microfilm, SOFTWARE,
+of op welke manier dan ook, zonder
+voorafgaande schriftelijke toestemming
+van' (de uitgever). Hoe moet het dan,
+als men het geleerde in praktijk wil
+brengen en daarbij dus delen uit het
+boek in zijn programma's wil overnemen?
+Dat zal een drukke correspondentie
+opleveren, welke toch wel niet zo
+bedoeld zal zijn.
+
+TURBO PASCAL TOEPASSINGEN
+
+door Pim Philipse, 216 pagina's
+inclusief index, uitgave Kluwer, ISBN
+90-201-2379-3, prijs f 39,50.
+Dit boek laat zien dat met de nieuwere
+Turbo Pascal compilers ook grotere
+programma's als DOS-Shells en
+teksverwerkers e.d. zijn te
+programmeren. Ook wordt ruim aandacht
+geschonken aan de in versie 5.5
+aanwezige mogelijkheid tot object
+gericht programmeren (OOP). Men moet
+het boek intensief doorwerken en zal
+daarbij dan zijn kennis van Pascal
+aanzienlijk verrijken. Het is niet
+geschikt voor beginners, maar een
+enigszins gevorderde Pascal programmeur
+zal er zijn voordeel mee kunnen doen.
+
+DESKTOP PUBLISHING MET W.P. 5
+
+door Frank Peetoom, 243 pag., ISBN
+90-201- 2253-3, uitgave Kluwer, prijs f
+54,50.
+Nog niet zo lang geleden moest men voor
+een goede presentatie van tekst gebruik
+maken van uitgebreide DTP pakketten.
+Vanaf versie 5 van WordPerfect is
+echter met behulp van deze
+tekstverwerker ook al veel mogelijk om
+een tekst wat betreft opmaak en
+vormgeving een goede indruk te laten
+maken. Hoe men dit moet doen kan men
+uit dit boek leren. Veel voorbeelden en
+schermafbeeldingen maken een en ander
+duidelijk. Voor mensen, die alles uit
+hun WP5 willen halen, een aanrader.
+
+ZAKBOEKJE DATACOMMUNICATIE
+
+Samengesteld door de N.V. Philips'
+Gloeilampen fabrieken, 103 pag.,
+uitgave Kluwer, ISBN 90-201-2303-3,
+prijs f 24,50.
+De bedoeling van dit boekje is om hen
+die bekend zijn met elementaire
+datacommunicatie van een naslagwerkje
+te voorzien. Door de eenvoudige opzet
+zullen degenen die een dieper inzicht
+nodig hebben ook andere bronnen moeten
+bestuderen. Wat de inhoud betreft, men
+vindt er een overzicht in van
+begrippen, die in de datacommunicatie
+worden gehanteerd, voorzien van een
+zeer beknopte toelichting. In de
+'verklarende woordenlijst' zal men
+vergeefs naar de betekenis van een
+nul-modem zoeken, maar in hoofdstuk 4
+(Interfaces) worden de schakelingen
+voor zowel een asynchrone als een
+synchrone nul-modem gegeven. Ergens
+onder de CCIT aanbevelingen vinden we
+voor V.23: '600/1200 baud modem
+gestandaardiseerd voor gebruik in het
+openbaar geschakelde telefoonnetwerk',
+terwijl het gangbare V.23 modem met de
+snelheden 1200 en 75 baud werkt. Het
+boekje is voor het snel opzoeken van
+half vergeten zaken zeer goed
+bruikbaar, maar voor iemand die als
+leek kennis wil opdoen van
+datacommunicatie is het niet geschikt.
+
+PC-ZAKBOEKJE dBASE IV
+
+door John Viescas, 267 pag., uitgave
+Kluwer, ISBN 90-201-2369-6, prijs f
+24,50.
+Dit werkje is speciaal bedoeld voor
+dBase IV programmeurs en de gevorderde
+dBase IV gebruikers. Het boekje bestaat
+uit drie delen: dBase IV commando's,
+dBase IV functies en SQL- commando's,
+die alfabetisch zijn gerangschikt en
+van een toelichting zijn voorzien. Het
+bevat verder elf appendices met korte
+overzichten van o.a. commando's en
+functies die niet worden ondersteund in
+SQL-modus, commando's die niet worden
+ondersteund in door de gebruiker
+gedefinieerde functies, definitie van
+optionele parameters, datatypes,
+bestands types en bestandsnaam
+extensies, waarden van Inkey(),
+Lastkey() en Readkey(), enz. Een handig
+naslagwerkje voor hen die al met dBase
+IV uit de voeten kunnen en zich snel
+even willen herorienteren.
+
+WERKEN MET WORD (Versie 4)
+
+Gids voor Microsoft Word op de Apple
+Macintosh door Chris Kinata en Gordon
+McComb, 565 pag., uitgave Kluwer, prijs
+f92,50, ISBN 90-201- 2298-3.
+Oorspronkelijke titel: 'Working with
+Word', uitgegeven bij Microsoft Press.
+Het boek bevat een uitgebreide
+handleiding om te leren omgaan met dit
+bekende tekstverwerkings programma.
+Veel schermbeeld reproducties maken een
+en ander zeer duidelijk. De tekst is
+uitstekend verzorgd. Alle mogelijkheden
+van 'Word' komen aan de orde. Mensen
+die alles uit dit tekstverwerkings
+programma willen halen wat erin zit,
+vinden in dit boek een zeer goede
+Nederlandse handleiding.
+
+NORTON COMMANDER (Versie 2.1 en 3.0)
+
+Referentiegids, door Schepers en
+Zoller, 144 pag., uitgave Data Becker
+(Nederlandse vertaling), prijs f32,50,
+ISBN 90-229-3715-1.
+Deze gids is eigenlijk een aanvulling
+op de gids Norton Utilities 4.5, maar
+kan ook zeer goed zelfstandig gebruikt
+worden. De Norton Commander is een
+soort desktop programma, waarin alle
+bewerkingen, die met de Norton
+Utilities mogelijk zijn, in een
+programma zijn samengevoegd. Met deze
+gids, waarin ook de installatie
+procedure duidelijk wordt beschreven,
+zal de soms wat complex lijkende
+structuur een ieder duidelijk worden.
+Het bevat ook een compleet overzicht
+van de commando's die mogelijk zijn.
+Veel schermbeeld plaatjes
+verduidelijken het behandelde.
+
+HANDBOEK LASERPRINTEN
+
+door Louis A.E. Godschalk, 406 pag.,
+uitgave Bruna, prijs f59,90, ISBN
+90-229-7880-X.
+Dit boek voorziet in een behoefte. Het
+geeft uitvoerige informatie over zowel
+de positieve als de negatieve kanten
+van de laserprinter. De positieve zaken
+zijn bekend, zoals het mooie
+letterschrift en de vele lettersoorten,
+waaruit men kan kiezen. Minder positief
+kan worden gesproken over de complexe
+opbouw van het apparaat en de vrij
+moeilijke bediening daarvan. Ook de
+programmering van een laserprinter
+vergt de nodige aandacht. Uit de inhoud
+lichten wij: opbouw en functioneren van
+de printer, interfaces, serieel en
+parallel, kosten van aanschaf en
+gebruik, onderhoud (zowel door de
+gebruiker als uitbesteed), programmeren
+van de laserprinter in PCL, het gebruik
+van de verschillende fonts, PCL-
+macro's, enz. Het boek is toegespitst
+op de printers van Hewlett-Packard, het
+geeft een uitvoerig verslag van de
+bevindingen die met deze printers zijn
+opgedaan. Het verschijnen van deze
+handleiding in de Nederlandse taal zal
+velen welkom zijn.
+
+PC VRAAGBAAK: LOTUS 1-2-3
+
+door Laurent Burlot, 82 pag., uitgave
+Kluwer, prijs f14,90, ISBN
+90-201-2386-6.
+Dit is het eerste deeltje dat wij
+bespreken van de nieuwe reeks van
+Kluwer (PC Vraagbaak), een erg
+voordelige serie compacte naslag
+werkjes. Zij kunnen dienen om snel uit
+de voeten te kunnen met een voor de
+gebruiker nieuw programma, maar ook als
+geheugensteuntje tijdens het gebruik.
+Het is erg goed bruikbaar in de kantoor
+omgeving. In deze serie worden niet
+alle mogelijkheden van de besproken
+programma's doorgenomen, maar juist
+dat, wat nodig is om de meest
+voorkomende handelingen te verrichten.
+Daarmee wordt voorkomen dat men door de
+bomen het bos niet meer ziet, zodat men
+in een korte tijd met het programma aan
+de slag kan. Dit deel gaat over het
+bekende spreadsheet/ database programma
+Lotus 1-2-3, dat tevens over grafische
+mogelijkheden beschikt. Het wordt zowel
+in de zakelijke als in de prive-sfeer
+gebruikt om begrotingen op te stellen,
+prognoses te maken, hypotheken te
+berekenen, financiele analyses uit te
+voeren, enz. Voor mensen, die met dit
+programma moeten werken, een heel
+prettig boekje.
+
+PC VRAAGBAAK: WORDPERFECT 4.2
+
+door Mireille Franchi, 87 pag., uitgave
+Kluwer, prijs f14,90, ISBN
+90-201-2385-8.
+In dit boekje wordt de uitgebreide
+tekstverwerker WordPerfect op een
+praktische wijze besproken. Een
+aanrader voor hen, die in hun
+werkomgeving met dit programma worden
+geconfronteerd en graag een referentie
+gidsje bij de hand willen hebben. Er
+staat meer dan voldoende in voor de
+dagelijkse omgang met WP.
+
+PC VRAAGBAAK: dBASE III PLUS
+
+door Avri Rosenberg, 81 pag., uitgave
+Kluwer, prijs f14,90, ISBN
+90-201-2387-4.
+Zoals bekend, is dBASE een standaard
+voor het opzetten van een database. Ook
+hier geldt weer, dat als men voor het
+eerst met dit programma in aanraking
+komt, men niet goed weet, hoe ermee om
+te gaan. In kort bestek staat in dit
+boek alles, wat men in de dagelijkse
+praktijk nodig heeft. Wil men verder,
+dan zijn er altijd nog de handboeken,
+maar om snel te kunnen beginnen is dit
+boekje meer dan voldoende.
+
+PC VRAAGBAAK: MS-DOS 3.0 t/m 3.3
+
+door Philippe Moreau, 53 pag., uitgave
+Kluwer, prijs f14,90, ISBN
+90-201-2383-1.
+Vrijwel elke PC gebruiker moet wel eens
+wat 'in DOS doen'. De voor de
+dagelijkse praktijk noodzakelijke
+kennis kan men ruimschoots uit dit
+boekje opdoen. Vooral om naderhand het
+geheugen op te frissen is het zeer
+geschikt. Door het handige formaat zijn
+deze Vraagbaak boekjes makkelijk in het
+gebruik. (Aldus onze recensent Pieter
+Vijlbrief)
+

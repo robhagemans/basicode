@@ -1,0 +1,264 @@
+110, zon 6 dec '87
+
+CURSUS MACHINETAAL MS-DOS DEEL 4
+
+De vorige aflevering besloten we met de
+instructies voor optellen en aftrekken. We
+vervolgen met vermenigvuldigen en delen.
+
+VERMENIGVULDIGEN EN DELEN
+
+Voor vermenigvuldigen en delen met rest zijn
+er de instructies MUL, IMUL, DIV EN IDIV. Die
+met een I houden rekening met het teken (dus
+FF = -1 en niet 255 decimaal, FE = -2
+enzovoort). Die zonder I nemen alles
+positief. Om grotere getallen te kunnen
+weergeven, worden de registers DX en AX
+gecombineerd. DX moet dan voor AX worden
+gezet, waarmee we een getal van 8
+hexadecimale cijfers krijgen. Bij de
+toepassingen waar het gebruik van machinetaal
+nuttig is, komen deze ingewikkelde
+instructies gelukkig vrijwel niet voor.
+
+Wat wel vaak voorkomt, is vermenigvuldiging
+met twee en deling door twee. Daarvoor
+bestaan weer heel eenvoudige instructies.
+
+D1E8   SHR   AX,1
+
+SHR schuift de bits in AX een plaatsje naar
+rechts. Om in detail te zien wat dan gebeurt,
+moeten we het hexadecimale getal cijfer voor
+cijfer als bitreeks schrijven. Het
+hexadecimale getal A (10 decimaal) vertalen
+we bijvoorbeeld tot de bitreeks 1010 (8+2),
+het getal 5 tot 0101 (4+1). We schuiven bij
+SHR de reeks van in principe 16 bits een
+plaatsje naar rechts. 1010 wordt 0101 (een
+nul verdwijnt over de rechterrand); het getal
+A wordt 5. Zo komt SHR neer op delen door
+twee, zoals in het tientallig stelsel door
+tien gedeeld wordt, wanneer we een getal een
+plaatsje over de komma naar rechts schuiven.
+Schuiven we een hexadecimaal getal meerdere
+plaatsen naar rechts, dan delen we door 4, 8,
+16 enzovoorts. Dat gaat echter niet via SHR
+AX,5 of iets dergelijks. Zouden we dat met
+debug proberen in te voeren, dan zien we:
+
+-a 105
+0A2D:0105 shr ax,5
+                 ^ Error
+0A2D:0105 mov cl,5
+0A2D:0107 shr ax,cl
+0A2D:0109 ^C
+
+We moeten dus het gewenste aantal malen
+verschuiven in CL zetten. Een andere
+mogelijkheid is een aantal malen SHR AX,1
+onder elkaar. Natuurlijk bestaat er ook SHL
+om met twee te vermenigvuldigen. Deze
+opdrachten nemen weer alle getallen positief.
+Voor getallen met teken zijn er SAR en SAL.
+Andere opdrachten zijn ROR en ROL, waarbij de
+R staat voor roteren. Hierbij schuift het bit
+dat aan de ene kant het register verlaat, aan
+de andere kant weer binnen.
+
+Deze rekenopdrachten zijn allemaal gericht op
+gehele getallen. Grote getallen en getallen
+met een komma kunnen we er niet mee bewerken.
+Een dergelijk getal wordt op een speciale
+manier opgeslagen in een reeks bytes en moet
+bewerkt worden via een subroutine opgebouwd
+met de gewone instructies. In het BASIC
+systeem zitten een groot aantal van
+dergelijke subroutines, maar het zal een hele
+kunst zijn ze te identificeren.
+
+SUBROUTINES
+
+Subroutines worden in machinetaal aangeroepen
+met de CALL opdracht. Net als van
+sprongopdrachten bestaat hiervan een gewone
+en een verre versie:
+
+E8AD0B     CALL 0BEB
+9A09009409 CALL 0994:0009
+
+Het adres waarnaar straks teruggesprongen
+moet worden, komt op de stack te staan, bij
+de verre aanroep met codesegment. Voor de
+terugkeer vanuit de subroutine zijn er
+natuurlijk ook twee verschillende
+instructies:
+
+C3        RET
+(voor terugkeer in de buurt)
+CB        RETF
+(voor terugkeer met een ander codesegment)
+
+RET haalt twee bytes van de stack, RETF vier.
+Omdat het subroutine-mechanisme dezelfde
+stack gebruikt als wijzelf, moeten binnen de
+subroutine de PUSHes precies in evenwicht
+zijn met de POPs. Anders zou het programma
+bij de terugkeer volledig de weg kwijtraken.
+
+DOS FUNCTIES
+
+Een bijzondere vorm van de verre aanroep is
+de interrupt-instructie. Aanroepen van
+Interrupt 21 geven toegang tot
+voorgeprogrammeerde functies van MS-DOS. Het
+volgende stukje programma opent een file:
+
+0A43:0110 BA5C00 MOV DX,005C
+0A43:0113 B40F   MOV AH,0F
+0A43:0115 CD21   INT 21
+
+Gegevens over de file (onder andere de drive
+en de naam) staan in een bepaalde vorm in het
+zogenaamde file control blok, dat hier begint
+op adres 005C, dat we meegeven in het
+register DX. De functie 'file openen' heeft
+nummer 0F, welke waarde voor de aanroep in AH
+geladen moet worden. INT 21 leidt dan tot het
+feitelijke openen, waarbij de diskettedrive
+even zal snorren.
+
+Wanneer bij het starten van een programma
+filenamen worden opgegeven, krijgt de eerste
+(meestal de invoerfile) het begin van een
+file control blok op adres 5C in de
+voorloper. Het file control blok voor de
+tweede (gewoonlijk de uitvoerfile) komt op
+adres 6C. Wanneer echter het eerste blok
+geopend wordt, raakt dit tweede blok
+overschreven. We moeten het dus vooraf
+overbrengen naar een veilig deel van het
+geheugen.
+
+Informatie over de codes voor in AH, over de
+andere dingen die bij de aanroep moeten
+worden meegegeven, en over de dingen die de
+functies teruggeven, is in principe te vinden
+in een appendix van het DOS handboek van de
+computer. Ook aan de opbouw van het file
+control blok is een appendix gewijd. Helaas
+echter schijnen de fabrikanten deze
+informatie steeds minder belangrijk te
+vinden. 'Wie programmeert er nou met
+machinetaal?' De uitleg in de handboeken van
+een paar jaar geleden was veel uitgebreider
+dan die nu is. Er zijn handboeken waarin men
+het hele onderwerp heeft laten vallen. Als uw
+handboek daarbij is, probeer dan iemand te
+vinden, die zijn PC al een paar jaar geleden
+gekocht heeft.
+
+DIVERSE FUNCTIES
+
+Mocht er belangstelling voor zijn, dan kunnen
+we misschien in een extra les nog ingaan op
+de diverse functies.
+
+Bij het doorlopen van een programma met debug
+vragen interrupts om een speciale
+behandeling. Om onduidelijke redenen kunnen
+we er namelijk niet goed met het t-commando
+in afdalen. Wanneer u dat probeert, zult u
+zien dat het programma het spoor bijster
+raakt. Geef daarom bij het bereiken van een
+INT instructie niet t, maar g gevolgd door
+het adres na de INT opdracht. Dat is het
+adres dat u ziet staan plus twee, waarbij u
+rekening moet houden met de eigenaardigheden
+van het hexadecimale stelsel.
+
+Behalve de INT 21 functies van DOS bestaan er
+ook interrupts met andere nummers dan 21.
+Daarmee beginnen we de volgende aflevering.
+
+Behalve als beeldkrant verschijnt deze cursus
+in afleveringen ook in het tijdschrift Mens
+en Wetenschap (Postbus 108, 1270 AC HUIZEN,
+02152 - 58388).
+
+Deze cursus wordt geschreven door Pim van
+Tend, Veldheimwg 8, 6871 CD RENKUM,
+08373-15358.
+
+KLEURIGE TENTOONSTELLING
+
+Van 28 november 1987 tot en met 29 mei 1988
+zal in het Technisch Tentoonstellings Centrum
+TTC in Delft een boeiende tentoonstelling te
+zien zijn over het kleursysteem dat door de
+NOS is ontwikkeld om verf te mengen voor het
+schilderen van televisie decors. De uit
+kleurrijke panelen en educatieve opstellingen
+bestaande tentoonstelling is getiteld 'HET NOS
+KLEURENPALET' en is vervaardigd door de NOS
+medewerker Herman Meijer, die het kleursysteem
+heeft ontwikkeld.
+
+De essentie van het NOS kleurentelevisie
+kleursysteem is dat door het mengen van
+slechts vijf basisverven meer dan 1700
+kleurtinten kunnen worden verkregen. De
+gebruikte basisverven zijn volledig gifvrij
+en voldoen aan de strengste kleurkundige
+eisen.
+
+Een belangrijke voorwaarde bij het maken van
+televisie decors is dat de gebruikte kleuren
+op een zwart-wit toestel zichtbaar zijn in
+grijstonen, die duidelijk van elkaar
+verschillen. Als men niet aan die voorwaarde
+voldoet, kunnen bepaalde gekleurde details
+verloren gaan. Men noemt dit verschijnsel
+het Biesiot effect. Door het gebruik van het
+kleursysteem van Herman Meijer kan men dit
+nadelige effect voorkomen.
+
+OPBOUW TENTOONSTELLING
+
+Aan het begin van de tentoonstelling bevinden
+zich enkele educatieve opstellingen waarmee
+elementaire begrippen duidelijk worden
+gemaakt. De bezoeker kan zelf allerlei
+kleurfenomenen bekijken, zoals het mengen van
+gekleurd glas en de werking van het prisma.
+Tevens wordt ruime aandacht besteed aan de
+problemen die het mengen van verf op basis
+van de drie primaire kleuren magenta-rood,
+citroen-geel en cyaan-blauw met zich mee
+brengt. Het zal dan duidelijk worden welke
+kleuren verf men moet kiezen en hoe de
+kleurencirkel voor het mengen moet worden
+gebruikt. Alle stappen die tijdens de
+ontwikkeling van het NOS kleursysteem zijn
+gemaakt, kan de bezoeker meemaken. Met een
+echte televisie camera kan men zelf het
+Biesiot effect op een zwart-wit toestel
+waarnemen.
+
+De tweede helft van de expositie is gewijd
+aan studies die iedereen die in kleuren is
+geinteresseerd buitengewoon zal boeien.
+Met de kleuren uit het NOS systeem worden
+namelijk de belangrijkste mogelijkheden voor
+het maken van kleurontwerpen gedemonstreerd.
+Hierbij komen ook het maken van kleurklanken,
+kleurreeksen en kleurcomposities aan bod.
+Bovendien wordt aan de hand van voorbeelden
+duidelijk gemaakt hoe men te werk kan gaan om
+kleuren te mengen.
+
+Het Technisch Tentoonstellings Centrum TTC is
+dagelijks geopend van 10 tot 17 uur en op
+zondag van 13 tot 17 uur. Het is gesloten op
+erkende feestdagen. De toegang is gratis.

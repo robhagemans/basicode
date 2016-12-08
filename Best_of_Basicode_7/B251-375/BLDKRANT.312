@@ -1,0 +1,351 @@
+312, maa 23 apr '90
+
+BEELDKRAAKKRANT SPECIAL
+
+Deze Beeldkrant is geheel gewijd aan de
+computersysteem beveiliging
+'Authorizer'. We beginnen met een
+globale beschrijving van dit
+beveiligings concept. Daarna volgt een
+UITNODIGING om in het systeem in te
+breken, compleet met 'krakers
+handleiding'! Als u erin slaagt om de
+Authorizer te kraken, staat u bovendien
+een fraaie beloning te wachten...
+
+AUTHORIZER BIEDT SYSTEEMBEVEILIGING
+
+Computer criminaliteit is tegenwoordig
+geen zeldzaam verschijnsel meer. Steeds
+vaker horen we dat krakers er alweer in
+geslaagd zijn zich via netwerken op
+niet-legitieme wijze toegang te
+verschaffen tot computer systemen. En
+alweer blijken de getroffen
+beveiligings maatregelen slechts een
+dunne barriere te vormen voor deze
+inbraak specialisten. Niet altijd is er
+sprake van kwade bedoelingen. Sommige
+computer krakers vergoelijken hun daad
+als een waarschuwing aan de netwerk
+beheerder. De geslaagde inbraak- poging
+zou aantonen dat het bewuste netwerk
+niet optimaal beveiligd is, zo lichten
+zij hun praktijken toe. Blijft het feit
+dat niet- geautoriseerde gebruikers
+zomaar toegang hebben gekregen tot
+vertrouwelijke gegevens. En dat is iets
+dat iedere netwerk beheerder ten koste
+van alles wil voorkomen.
+
+VERSCHILLENDE MAATREGELEN MOGELIJK
+
+Uiteraard heeft de netwerk beheerder
+verschillende maatregelen genomen om
+ongeoorloofde toegang tot het computer
+netwerk tegen te gaan. Maar helaas
+werken de beveiligings vormen die op de
+markt verkrijgbaar zijn maar zelden
+naar tevredenheid. Sommige beveiligings
+vormen blijken in de praktijk al
+spoedig onvoldoende bescherming te
+kunnen bieden, terwijl een hogere mate
+van beveiliging meestal gepaard gaat
+met meer gebruiks ongemak.
+
+DSS Innovative Electronics is er trots
+op een beveiligings systeem te kunnen
+bieden dat deze nadelen niet lijkt te
+kennen. Het 'Authorizer' concept maakt
+inbreken in uw computer netwerk vrijwel
+onmogelijk en is daarnaast zeer
+gebruikers vriendelijk.
+
+ACCESS CONTROL DEVICE CONCEPT
+
+Vanuit gebruikers oogpunt is het
+Authorizer Access Control Device (ACD)
+concept verrassend eenvoudig. Alles wat
+de gebruiker nodig heeft is een stukje
+hardware ter grootte van een
+luciferdoosje, dat de naam Authorizer
+draagt. Om toegang te krijgen tot de
+beveiligde computer, ook wel
+hostcomputer genoemd, plaatst de
+gebruiker zijn Authorizer in de seriele
+poort van zijn systeem en belt hij de
+hostcomputer. Nauwelijks enkele tellen
+later is de verbinding tussen de
+gebruiker en de beveiligde computer tot
+stand gebracht. Mits de gebruiker door
+de host geidentificeerd kan worden als
+'geautoriseerde' gebruiker.
+
+Van deze identificatie procedure merkt
+de gebruiker hoegenaamd niets. Op het
+moment dat de gebruiker met de
+hostcomputer belt om zich toegang tot
+het systeem te verschaffen, neemt de
+hostcomputer het initiatief. Zonder een
+wachtwoord in te hoeven geven kan de
+geautoriseerde inbeller het systeem
+binnenkomen. Hij hoeft dus niets te
+onthouden. Alles wordt verzorgd door de
+unieke samenwerking tussen de
+Authorizer en de beveiligde computer.
+De verbinding wordt razendsnel tot
+stand gebracht, want de gehele
+identificatie procedure neemt
+nauwelijks tijd in beslag.
+
+BARRICADE VOOR ONGEWENST BEZOEK
+
+Het Authorizer ACD concept werpt een
+onverbrekelijke barricade op voor
+ongeoorloofde gebruikers. Verdere
+beveiliging van het netwerk is niet
+meer nodig. Maar inbouwen van meer
+beveiligings lagen blijft mogelijk.
+Zowel bij huurlijnen als bij openbare
+netwerken kan de host tijdens de
+communicatie regelmatig controles
+uitoefenen met willekeurige getallen.
+Hier merkt de gebruiker niets van. Bij
+onregelmatigheden kan de verbinding
+alsnog worden verbroken. De systeem
+beheerder beslist zelf of en hoe vaak
+hij deze tussentijdse controles wil
+laten uitvoeren, en of hij nog een
+extra beveiligings laag wil aanbrengen
+met behulp van wachtwoorden.
+
+GETALLEN MANIPULATOR
+
+De Authorizer werkt als een getallen
+manipulator. Ingevoerde getallen en
+bewerkte getallen hebben geen directe
+relatie. Het aantal getals combinaties
+bedraagt meer dan zestien miljoen.
+Hierdoor krijgen krakers geen kans meer
+om in het systeem in te breken.
+
+Zodra een gebruiker inbelt, stuurt de
+host een willekeurig getal naar de
+Authorizer van de inbeller. De
+Authorizer antwoordt met een getal dat
+het resultaat is van een bewerking op
+het ontvangen getal en een in de
+Authorizer aanwezig uniek basisgetal.
+Het in de host ontvangen antwoord wordt
+gecontroleerd met behulp van een
+'master Authorizer'. De inbeller is
+vervolgens te identificeren met behulp
+van het in de host bekende basisgetal.
+
+INTERNE BEVEILIGING GOED
+
+De complexe beveiligings routine die
+garant staat voor een zeer hoge mate
+van beveiliging is ook zelf zeer goed
+beveiligd. Na het programmeren van de
+Authorizer wordt een selectielijn, die
+nodig is om de beveiligings routine uit
+te lezen, verbroken. Daardoor is het
+onmogelijk geworden om de inhoud van de
+Authorizer ooit nog uit te lezen.
+
+DSS registreert de basisgetallen van de
+Authorizers niet en kan dus nooit meer
+dezelfde Authorizer produceren, tenzij
+de klant informatie verstrekt over zijn
+basisgetallen. Er kunnen overigens wel
+honderd miljard unieke Authorizers
+worden vervaardigd. Het Authorizer ACD
+concept werkt volledig hardware- en
+software- onafhankelijk. De
+hostcomputer wordt daartoe uitgerust
+met een controller unit. Deze zorgt
+ervoor dat iedere inbeller pas toegang
+krijgt op het moment dat zijn aanvraag
+verwerkt is.
+
+SOFTWARE ROUTINES IN CONTROLLER
+
+De software routines voor de Authorizer
+bevinden zich in de controller. Op het
+moment dat iemand inbelt, neemt de
+controller het initiatief om een
+willekeurig getal naar de Authorizer
+van de aanvrager te sturen. Een master
+Authorizer die zich in de controller
+bevindt krijgt dit getal plus het
+antwoord van de Authorizer aangeboden,
+samen met de in de controller bekende
+basisgetallen. De master Authorizer
+onderzoekt of de inbeller wel of niet
+kan worden geidentificeerd en geeft dit
+aan de controller door.
+
+Tijdens het opstarten van de controller
+zijn alle inkomende lijnen naar de host
+uitgeschakeld. Bij identificatie wordt
+de aanvrager toegelaten tot het host
+systeem. Zodra de controller wordt
+uitgeschakeld, vallen alle verbindingen
+naar de host onmiddellijk weg. De
+controller kan dus de master over het
+totaal worden genoemd. De controller
+neemt tevens het initiatief om tijdens
+de lopende verbindingen verdere
+controles uit te voeren.
+
+EIGEN SOFTWARE
+
+De gebruiker kan de software routines
+die zich in de controller unit bevinden
+ook implementeren op zijn eigen
+systeem. De hiervoor benodigde software
+moet dan speciaal worden geschreven.
+Daarnaast zijn vaak aanpassingen van de
+hardware nodig. De aanschaf van een
+controller unit is dan ook meestal de
+goedkoopste oplossing.
+
+VOORDELEN
+
+Systeembeveiliging met behulp van de
+Authorizer biedt ten opzichte van
+andere beveiligings vormen diverse
+voordelen:
+- De gebruiker hoeft geen software te
+installeren. De controller handelt
+immers het gehele protocol af.
+- De controle routine wordt niet in de
+host, maar in de controller en de
+master Authorizer uitgevoerd. Dit
+voorkomt dat de systeem beheerder
+gebruik kan maken van de informatie.
+Bovendien gaat er op deze manier geen
+kostbare processortijd verloren.
+- De Authorizer is eenvoudig aan te
+brengen bij ieder bestaand systeem.
+- Het Authorizer ACD concept is erg
+gebruikers vriendelijk. De gebruiker
+hoeft niets te onthouden en hij hoeft
+geen communicatie parameters in te
+stellen. De wachttijd totdat de
+verbinding tot stand is gebracht is
+vrijwel nihil. Een aanzienlijke
+verbetering in vergelijking met bij
+voorbeeld de zogeheten terugbel
+beveiligings systemen.
+- De unieke 'security fuse' garandeert
+een hoge mate van beveiliging, waardoor
+de beveiligings routine in de
+Authorizer niet meer is uit te lezen.
+- De specifieke eigenschappen van de
+Authorizer in combinatie met de
+relatief lage kosten maken het
+Authorizer ACD een zeer aantrekkelijk
+concept voor een beveiligings systeem.
+
+Tot zover de globale beschrijving van
+het Authorizer ACD concept.
+
+KRAKERS-HANDLEIDING
+
+Dit document beschrijft de
+noodzakelijke voorbereidingen voor en
+de werking van de demonstratie van
+Access Control. Ten behoeve van deze
+demonstratie is een computer systeem
+als host computer geinstalleerd. De
+gebruiker kan hierop toegang krijgen
+met een terminal, maar alleen door
+middel van een Authorizer.
+
+A) Voorbereidingen
+
+Aan de zijde van de gebruiker moet de
+koppeling van de terminal en de modem
+worden ingesteld op 1200 bps, geen
+pariteit, 8 databits en 1 stopbit. De
+Authorizer moet tussen de modem en de
+terminal geschakeld worden. Niet
+vergeten de voeding aan te zetten!
+
+B) Procedure
+
+Om toegang tot de host computer te
+krijgen moet de volgende procedure
+worden doorlopen:
+1. Bel nummer 08385 - 42392.
+2. Wacht op de carrier, probeer anders
+opnieuw (verbinding verbreken, terug
+naar 1).
+3. De host computer neemt enige
+seconden wachttijd in acht. Gedurende
+deze tijd mag de gebruiker geen invoer
+plegen! Daarna wordt de melding
+'Authorizer' afgedrukt. De Authorizer
+wordt nu geactiveerd, waarna een
+controle met een willekeurig
+invoergetal wordt uitgevoerd.
+4. De controle van de vorige stap heeft
+drie mogelijke uitkomsten:
+- er is geen respons van de Authorizer
+ontvangen. Dit treedt op indien de
+Authorizer niet is aangesloten, of
+indien de Authorizer niet geactiveerd
+werd door een verminking van het
+activerings signaal ('break'). De
+verbinding wordt verbroken met de
+melding: 'not responding! (connection
+broken)'.
+- de Authorizer heeft een verkeerde
+respons gegenereerd; de verbinding
+wordt verbroken. Melding: '... error!
+(connection broken)'.
+- de Authorizer heeft een geldige
+respons gegenereerd; de gebruiker is nu
+ingelogd. Dit wordt gemeld met de tekst
+'Be welcome, user xxx' waarachter de
+geregistreerde naam van de betreffende
+Authorizer afgedrukt wordt. Alleen in
+dit geval wordt verder gegaan met stap
+5.
+5. De gebruiker is nu 'ingelogd' op de
+host computer. Deze zal alle toets
+aanslagen van de gebruiker terugsturen,
+zonder verdere actie.
+6. Indien gedurende vier seconden geen
+toetsen zijn ingedrukt, wordt dat
+gemeld. Indien binnen drie seconden
+daarna nog geen toets wordt ingedrukt,
+wordt de verbinding verbroken.
+
+BELONING
+
+De uitnodiging om het systeem te kraken
+komt van DSS. Wij loven een VVV- of
+CD-bon van f 100,- uit, terwijl ook de
+uitdenkers van het systeem een mooie
+prijs beschikbaar stellen: een Megatel
+Quark/PC+ low power IBM PC compatible
+single board computer met on-board
+video en floppy disk controllers!
+Bovendien zal het bedrijf dan vrijwel
+genoodzaakt zijn om u in dienst te
+nemen...
+Vergeet niet uw visite kaartje met
+eigen identiteit achter te laten!
+
+ADRES
+
+Tot slot het adres van DSS:
+DSS Innovative Electronics
+Accustraat 25
+3903 LX Veenendaal
+Telex 12969 neabbs nl
+Fax 08385-26751
+

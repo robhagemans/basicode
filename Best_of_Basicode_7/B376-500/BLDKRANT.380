@@ -1,0 +1,348 @@
+380, maa 28 jan '91
+
+BEELDKRANT SPECIAL: TELEX
+
+Telex is een wereldwijd beproefd en
+betrouwbaar telecommunicatie systeem
+dat al bijna 60 jaar een belangrijke
+functie inneemt in de wereld van de
+tekstcommunicatie.
+De naam TELEX is een samentrekking van
+'TELeprinter EXchange'. Met een telex
+verbinding kunnen berichten worden
+verzonden die in leesbare vorm bij de
+'ontvanger' direct op papier worden
+afgedrukt. De tekst wordt in de
+apparatuur gecodeerd volgens een
+internationaal vastgestelde norm, het
+internationale telegraaf alfabet nr. 2.
+Aan de ontvangzijde wordt deze codering
+door de apparatuur gedecodeerd en
+vervolgens in leesbaar schrift op
+papier gezet.
+
+RTTY
+
+Ook via radioverbindingen wordt telex
+veel toegepast. Neem bijvoorbeeld
+persagentschappen en meteostations op
+de kortegolf, welke uitzenden in RTTY.
+Dit is een verkorting van Radio
+TeleTYpe. Hoewel tegenwoordig al veel
+met computers gewerkt wordt, is het
+gecodeerde telex signaal nog steeds
+gebaseerd op het principe van de telex.
+Ook in de hobbysfeer is men al vele
+jaren met dit systeem werkzaam en ook
+daar is het nog steeds bij velen
+aktueel.
+
+CODERING
+
+Het telex signaal bestaat in elk geval
+uit 5 code-elementen, welke ieder
+stroomvoerend of stroomloos kunnen
+zijn. Daarmee kunnen dus '2 tot de
+macht 5' = 32 verschillende combinaties
+worden gemaakt (letters, cijfers en
+leestekens). Er is geen onderscheid
+tussen hoofd- en kleine letters.
+Voor het synchroon laten werken van de
+telex machines wordt voor en na elk
+verzonden teken een start- en een
+stopsignaal meegezonden. Het
+startsignaal is altijd stroomloos, het
+stopsignaal altijd stroomvoerend.
+
+TRANSMISSIESNELHEID
+
+Hieronder verstaat men de snelheid
+waarmee de impulsen van de toegepaste
+code op elkaar volgen. Omdat de
+code-elementen niet allemaal gelijk in
+lengte zijn, is overeengekomen dat
+onder 'transmissie snelheid', de
+maximaal optredende snelheid wordt
+verstaan. Deze wordt dus bepaald door
+de duur van het kortste code-element
+dat kan voorkomen.
+
+BAUDOT
+
+Als eenheid van transmissie snelheid is
+gekozen de snelheid van 1 element per
+seconde. Deze is 'Baud' genoemd, naar
+Baudot. Is bijvoorbeeld de duur van het
+kortste code-element 1/A seconde, dan
+is de transmissie snelheid A Baud.
+De transmissie snelheid bepaalt
+voornamelijk de eisen die aan alle
+delen van een telex verbinding gesteld
+moeten worden (zender, relais,
+verbinding, ontvanger, enz.) en is van
+zuiver technisch belang.
+
+SEINSNELHEID
+
+De transmissie snelheid is geen directe
+maat voor de duur van het overbrengen
+van een bericht. Deze duur wordt
+bepaald door de seinsnelheid. Hieronder
+wordt verstaan de snelheid waarmee de
+letters en cijfers, waaruit een bericht
+bestaat, worden overgebracht. Deze
+snelheid is o.a. van de volgende
+factoren afhankelijk:
+1. de transmissie snelheid;
+2. de maximale snelheid die het toestel
+toestaat;
+3. de vaardigheid van de
+telegrafist(e).
+De seinsnelheid wordt uitgedrukt in
+woorden per minuut (wpm).
+
+START/STOP PRINCIPE
+
+De gelijkloop van de telexmachines
+wordt (werd) zoveel mogelijk bevorderd
+door motoren met snelheids- regulateur
+of synchrone motoren toe te passen.
+Omdat ook daarmee geen volkomen
+gelijkloop was te bereiken, heeft men
+een kunstgreep toegepast. Na elk teken
+staat n.l. het ontvang mechanisme van
+de machine even stil tot er weer een
+nieuw teken wordt uitgezonden,
+respectievelijk ontvangen. De snelheids
+verschillen worden zodoende beperkt tot
+die, welke binnen 1 teken kunnen
+voorkomen. Voor dit systeem (start/stop
+principe) is het echter nodig dat de 5
+code- elementen worden voorafgegaan
+door een stroomloos start-element en
+gevolgd door een stroomvoerend
+stop-element. Het ontvang mechanisme
+wordt door het start-element voor 1
+omwenteling vrijgegeven en na
+beeindiging daarvan door het
+stop-element weer tot stilstand
+gebracht.
+
+CODE-OPBOUW
+
+Uitgaand van een transmissie snelheid
+van 50 Baud, bedraagt de tijdsduur van
+1 code-element 1/50 sec = 20 msec. De
+tijdsduur van een start-element is even
+lang als die een code-element. Van het
+stop-element is de tijdsduur 1,5 maal
+die van een code-element, dus 30 msec.
+In totaal duurt een teken 1+5+1,5 = 7,5
+maal 20 msec. = 150 msec (bij 50 Baud).
+Het start/stop principe verlaagt de
+sein snelheid aanzienlijk. Bij een
+transmissie snelheid van 50 Baud is de
+seinsnelheid (50/7,5) maal 60 = 400
+tekens per minuut.
+
+COMBINATIES
+
+Het beschikbare aantal van 32
+combinaties is niet voldoende om alle
+letters, cijfers, leestekens enz. over
+te brengen. Voor de cijfers en
+leestekens heeft men gebruik gemaakt
+van dezelfde combinaties als voor de
+letters. En wel door het voorafgaan van
+de functies 'wisselen van letters naar
+cijfers' of terug 'wisselen van cijfers
+naar letters'. Daarvoor zijn twee
+combinaties nodig. Drie combinaties
+zijn bestemd voor de functies 'spatie',
+'terugloop wagen' (carriage return) en
+'nieuwe regel' (line feed). In totaal
+worden dus 26+2+3 = 31 combinaties
+gebruikt. De 32-ste wordt doorgaans
+niet gebruikt, of alleen voor
+administratieve doeleinden. De
+combinaties 'bel' en 'met wie' worden
+gegeven na voorafgaande 'wisseling naar
+cijfers'.
+
+WOORDSNELHEID VERSUS BAUDRATE
+
+In sommige tabellen van RTTY stations
+wordt de snelheid waarmee wordt
+uitgezonden gegeven in woorden per
+minuut (wpm). Deze snelheid kunnen we
+omrekenen naar de baudrate (bd). Omdat
+we bij deze aanduiding van de
+transmissie snelheid moeten uitgaan van
+een gemiddelde (niet alle woorden zijn
+even lang), nemen we daarvoor het woord
+PARIS. Achter elk woord of cijfergroep
+volgt een spatie, zodat een woord
+gemiddeld uit 6 tekens bestaat. We
+zeiden al dat 1 teken een 'lengte'
+heeft gelijk aan de tijdsduur van 7,5
+code-element. Een woord komt dus
+overeen met de 'lengte' van 6 maal 7,5
+= 45 code-elementen.
+
+OMREKENEN
+
+De woord-snelheid kunnen we nu
+omrekenen met de formule:
+
+  wpm
+-------- x 45 = .. bd
+60 (sec)
+
+Bij 60 wpm is de transmissie snelheid
+45 bd (voor radio zendamateurs op HF).
+Bij 67 wpm is dat 50 bd, bij 100 wpm is
+het 75 bd en bij 133 wpm 100 bd.
+
+Omgekeerd kunnen we de baudrate
+omrekenen met:
+
+   1
+-------- x bd x 45 = .. wpm
+60 (sec)
+
+RTTY ONTVANGST
+
+De stroomvoerende en stroomloze
+elementen van een telex signaal worden
+voor RTTY (radio) uitzendingen in
+principe omgezet in toontjes. Op HF
+gebeurt dat met FSK - Frequency Shift
+Keying; op VHF ook met AFSK - Audio
+Frequency Shift Keying. Dat wil zeggen,
+dat we afwisselend 2 toontjes ontvangen
+in het ritme van de verschillende
+elementen van de telex tekens. Op HF
+wordt uitgezonden in enkelzijband (EZB
+of SSB) zodat we een daarvoor geschikte
+ontvanger zullen moeten gebruiken.
+
+MARK EN SPACE
+
+Is een RTTY station wel 'in de lucht'
+maar zendt het geen telex signalen uit,
+dan noemen we dat het 'MARK' signaal.
+Dat komt overeen met het hiervoor
+aangegeven stroomvoerende element van
+de telex machine.
+We moeten nu onze ontvanger zo
+afstemmen, dat een vaste toon hoorbaar
+is (*). Over de toonhoogte zijn
+afspraken gemaakt, maar daarover
+straks.
+
+Wanneer het RTTY station wel telex
+signalen uitzendt, dan zal een tweede
+toon hoorbaar worden, welke beide
+elkaar afwisselen in het ritme van de
+elementen van de telex tekens. Deze
+tweede toon noemen we SPACE.
+
+Wanneer we nu deze toon-codes met
+behulp van een omzetter, een
+toon-decoder, ook wel telex converter
+genoemd, weer omzetten in
+stroomvoerende en stroomloze elementen
+en dat aan een telex machine of
+computer (met programma) aanbieden, dan
+zullen de oorspronkelijk uitgezonden
+telex tekens op papier of op het scherm
+in leesbaar schrift zichtbaar worden.
+
+(*) Bij FSK wordt de zendfrequentie
+telkens zoveel verschoven dat we met
+EZB ontvangst 2 verschillende tonen
+horen. Bij AFSK blijft de
+zendfrequentie constant, maar worden
+door het zendende station reeds 2 tonen
+uitgezonden.
+
+SHIFT EN TONEN
+
+Het verschil tussen de twee tonen
+noemen we de SHIFT. Deze kan 170, 425
+of 850 Hz bedragen.
+Er kunnen 2 freguenties voor het MARK
+signaal worden gehanteerd, 2125 of 1275
+Hz. Bij een MARK van 2125 worden de
+SPACE frequenties resp. (+ 170) 2295,
+(+ 425) 2550 of (+ 850) 2975 Hz. Is de
+MARK 1275 Hz, dan kan de SPACE 1445,
+1725 of 2125 Hz zijn.
+
+De MARK en SPACE kunnen ook verwisseld
+zijn. Deze toestanden worden NORMAL en
+REVERSE genoemd. Daarover wordt nog
+weleens verschillend gesproken, maar
+met goede afspraken kom je dan een heel
+eind.
+
+INTERNAT. TELEGRAAF ALFABET NR. 2
+
+Nr. Letter Figure Start 1 2 3 4 5 Stop
+ 1    A      -        - + + - - - +
+ 2    B      ?        - + - - + + +
+ 3    C      :        - - + + + - +
+ 4    D               - + - - + - +
+ 5    E      3        - + - - - - +
+ 6    F      !        - + - + + - +
+ 7    G               - - + - + + +
+ 8    H               - - - + - - +
+ 9    I      8        - - + + - - +
+10    J      bel      - + + - + - +
+11    K      (        - + + + + - +
+12    L      )        - - + - - + +
+13    M      .        - - - + + + +
+14    N      ,        - - - + + - +
+15    O      9        - - - - + + +
+16    P      0        - - + + - + +
+17    Q      1        - + + + - + +
+18    R      4        - - + - + - +
+19    S      '        - + - + - - +
+20    T      5        - - - - - + +
+21    U      7        - + + + - - +
+22    V      =        - - + + + + +
+23    W      2        - + + - - + +
+24    X      /        - + - + + + +
+25    Y      6        - + - + - + +
+26    Z      +        - + - - - + +
+27    Carriage Return - - - - + - +
+28    Line Feed       - - + - - - +
+29    Letter Shift    - + + + + + +
+30    Figure Shift    - + + - + + +
+31    Space           - - - + - - +
+32    Not used        - - - - - - +
+
++ = stroomvoerend element
+- = stroomloos element
+
+Mocht uw apparatuur in orde zijn, maar
+is er door atmosferische storing een
+wisseling naar cijfers of naar letters
+gemist tijdens ontvangst, dan kunt u
+met dit alfabet toch weer decoderen.
+Dat is wel even wat werk, maar het zal
+niet meer zijn dan 1 regel.
+
+TOT SLOT
+
+In de publicaties van verenigingen van
+radio zendamateurs is wel het nodige te
+vinden over dit onderwerp, alsmede over
+de (eventueel zelf te bouwen) benodigde
+apparatuur. Met een goed werkende telex
+converter kun je ook TOR, AMTOR en
+NAVTEX decoderen. Veel plezier met
+RADIO en de HOBBY in SCOOP!
+
+Andries Pals (PD0JKQ), IJmuiden.
+

@@ -1,0 +1,239 @@
+88, zon 06 sep '87
+
+ASCII EN CBM (SLOT)
+
+In Beeldkrant 86 gaven we het begin van een
+uitvoerige beschouwing over ASCII, Basicode
+en de CBM-modellen. De toelichting is van
+Thijs Timmerman, die al deze zaken uiteen
+rafelde. De rest van zijn beschouwing (te
+groot zelfs voor een Beeldkrant) volgt
+hierbij en vormt dus een eenheid met krant
+no. 86.
+
+Drie opmerkingen. Krijgt u een krant of
+programma niet geladen omdat het te
+omvangrijk is, gebruik dan het originele
+NOS-Basicode vertaal programma. Sommige
+vertaalprogramma's nemen te veel ruimte in
+het geheugen in beslag en laten het daarom
+niet toe dat er een omvangrijk programma
+bij wordt geladen.
+
+De listings die Thijs geeft komen
+alleen tot zijn recht als ze 80 kolom breed
+worden afgedrukt. Mocht uw scherm dus maar
+40 tekens toelaten draai de krant dan even
+uit op uw printer, gesteld dat die machine
+wel dat aantal tekens aankan.
+Mocht u Beeldkrant 86, met de rest van de
+tekst missen, bel dan even met de NOS-HCC
+databank 035-45395 en vraag hem op in file
+area #1 (Hobbyscoop tekstfiles) of per post
+bij onze postbus. Nu is het woord weer aan
+Thijs:
+
+CONCLUSIE
+
+Concluderend kan en mag gesteld worden naar
+mijn mening dat het gebruik van 'harde' ASCII
+waarden zoveel mogelijk moet worden voorkomen.
+Met 'harde' ASCII waarden bedoel ik
+toewijzingen, berekeningen en testen
+gebasseerd op van te voren door de
+programmeur bepaalde ASCII waarden van
+bepaalde karakters. Ter verduidelijking
+enige voorbeelden :
+
+4500 B=65:U$=CHR$(B):PRINT U$
+4510 B=B+32:L$=CHR$(B):PRINT L$
+4520 GOSUB 210:IN=ASC(IN$):IF (IN<65) OR (IN>90) THEN 4520
+4530 GOSUB 210:IN=ASC(IN$):IF (IN>96) AND (IN<123) THEN IN=IN-32
+4540 IF (IN<65) OR (IN>90) THEN 4530
+4550 GOSUB 210:IN=ASC(IN$):IF (IN=74) OR (IN=106) THEN 4570
+4560 GOTO 4550
+4570 J=74:JU$=CHR$(J):JL$=CHR$(J+32)
+4580 GOSUB 210:IF (IN$<>JU$) AND (IN$<>JL$) THEN 4570
+4590 GOSUB 210:IN=ASC(IN$):IF IN<48 OR IN>57
+THEN 4580
+
+Niet alleen zijn de gebruikte constructie's
+ondoorzichtig en helpen daarmee dus niet de
+programmeur die iets uit de programma's wil
+leren, ook geven zij een verschillend resultaat.
+
+4500/4510: Alle niet Commodore computers
+drukken nu een hoofdletter 'A', gevolgd door
+een kleine letter 'a' af. Een Commodore drukt
+als char.set 1 actief is een kleine letter 'a',
+gevolgd door een quasi hoofdletter 'A' af.
+
+4520: Niet CBM en CBM set 0: alleen
+hoofdletters worden geaccepteerd. CBM set-1:
+alleen kleine letters worden geaccepteerd.
+
+4530: Niet CBM: Kleine letters worden omgezet
+naar hoofdletters en enkel hoofdletters worden
+daarna geaccepteerd. CBM set 0 resp. 1: alleen
+hoofd- resp. kleine letters worden geaccepteerd,
+de codes 97-122 komen nooit direct via het
+toetsenbord binnen.
+
+4550 en 4570: Niet CBM: Alleen de kleine 'j'
+en de grote 'J' worden geaccepteerd. CBM set 0
+resp. 1: alleen de hoofd resp. kleineletter 'J'
+resp. 'j' worden geaccepteerd, de codes 97-122
+en dus ook de code 108 komen nooit direct via
+het toetsenbord binnen en kunnen dus niet
+worden geaccepteerd of afgewezen.
+
+4590: Voor zover mij bekend hebben op alle
+computers waar NOS-Basicode op draait de
+cijfers dezelfde ASCII-code of leveren in ieder
+geval via de subroutines 200 en 210 de juiste
+code. Dit zal dus geen probleem opleveren,
+echter fraai is anders.
+
+OPLOSSING
+
+De oplossing voor het hele probleem is om de
+'harde' ASCII waarden te vervangen door door
+de computer zelf uit te rekenen waarden. Het
+uitrekenen van wat de ASCII waarde is van de
+hoofdletter 'A' doet de programmeur (of wie
+dan ook) niet zelf maar de computer. Dit kan
+heel eenvoudig gerealiseerd worden door
+gebruik te maken van de functie 'ASC'.
+De ASCII waarde van bijvoorbeeld een
+hoofdletter 'A' is dan op een niet Commodore
+computer altijd 65, op een Commodore als
+char.set 0 actief was tijdens het inlezen ook
+65 maar als char.set 1 actief was, 193.
+
+Op deze manier zijn ook de computers geholpen
+die werkelijk (in geen enkele mode) kleine
+letters kennen. Immers door de ASCII waarde te
+laten bepalen door de computer van een hoofd
+en kleine letter 'A' (of elk andere letter) kan
+dit worden vastgesteld. Op dezelfde manier kan
+worden bepaald of het inlezen gebeurde terwijl
+char.set 0 of 1 actief was. Is immers char.set
+0 actief tijdens het inlezen dan verdwijnt het
+verschil tussen hoofd- en kleine letters.
+Daarmee verdwijnt dan ook het verschil in ASCII
+waarde. En een zorgvuldig presentatie,
+gebruikmakend van hoofd- en kleine letters wordt
+teniet gedaan. Dit heeft ook konsekwenties voor
+programma's met namen (bekende nederlanders),
+zinnen (spreekwoorden en gezegden), scheikundige
+symbolen (formules & reacties) en natuurlijk
+normale tekst met hoofd- en kleine letters
+(zoals de Beeldkrant).
+
+De volgende mutaties in de programma's
+'Spelling' en 'Duitse naamvallen' zorgen ervoor
+dat deze programma's correct blijven werken op
+Commodore computers en op alle niet-Commodore
+computers en de bedoeling van de auteur met
+het programma mijns inziens behouden blijft.
+
+SPELLING
+
+1900 gosub 210:e=asc(in$):lc=asc("a")-asc("A")
+1905 IF (IN$>="a") and (in$<="z")then e=e-lc
+2110 if(e<asc("A")) or(e>asc("Z"))then2100
+1220 e=asc(right$(s$,1))
+1225 if(e=asc("S")) or(e=asc("T")) thenb=asc("T")
+1230 if(e=asc("H")) or(e=asc("K"))thenb=asc("T")
+1235 if(e=asc("P")) thenb=asc("T")
+1210 b=asc("D"):reads$:ifj>40 thenw$(j)=s$+"EN"
+1710 gosub1900:if(e<>asc("J")) and(e<>asc("N")) then1710
+6020 gosub1700:print:ife=asc("J") then6200
+6130 gosub1600:b=5: gosub1800:ife=asc("J")then6100
+6270 gosub1600:b=2:ife=asc("J") then6200
+6360 nextg: gosub1600:b=2:ife=asc("J")then6300
+6460 nextg: gosub1600:f=1:ife=asc("J")then6400
+
+DUITSE NAAMVALLEN
+
+22630 lc=asc("a")-asc("A")
+22635 zn$=chr$(asc(left$(t$,1))-lc)+right$(t$,ts-2)
+22750 lc=asc("a")-asc("A"):t$="":forts=1 tolen(s$)
+22760 m$=mid$(s$,ts,1)
+22770 if(m$>="A") and(m$<="Z") thenm$=chr$(asc(m$)+lc)
+22780 t$=t$+m$:nextts
+
+Onderstaande 4 regels laten de overigens zeer
+fraaie lay-out van 'Duitse naamvallen' tot
+zijn recht komen, ook op de 'computers'
+(Basic's) die een spatie voor (en door de
+Commodore-Basic zelfs na!) een getal afdrukken.
+Regel 5 ondervangt een foutje dat optreedt na
+keuze '2' bij de printers. Met het verwijderen
+van regel 1050 en het tussenvoegen van regel
+20055 (regel 6) wordt voorkomen dat -altijd-
+eerst de uitleg wordt gegeven en niet het menu
+van waar de uitleg ook te bereiken is.
+
+21250 sr=l+1:gosub300
+21255 print;sr$;"env:";tab(8+le);vb$(x*3+y,0);
+22675 sr=w+1:gosub300
+22680 print;sr$;". ";nv$(xx*3+yy,w*3);" ";bn$;
+20960 gosub360:in$="":return
+20055 readt$:ift$<>"%." then20055
+
+Verantwoording: Deze verhandeling had ook
+beperkt kunnen blijven tot het constateren
+van het probleem, maar de bedoeling ervan
+was juist om ook enige achtergrond informatie
+te verschaffen. Thijs Timmerman. (In de
+programma regels vindt u om begrijpelijke
+redenen (dataregels) geen aanhalings tekens
+maar deze tekens: ''. Mocht u het programma
+willen gebruiken dan moet u deze nog even
+omzetten in aanhalings tekens - red).
+
+'FLATMAN' VAN PHILIPS
+
+Op de Funkaustellung in Berlijn bleek
+bij Philips ook een mini-TV te zien
+te zijn. Collega Jonathan Marks
+(Engelse afdeling Radio Nederland)
+schrijft daarover:
+The Dutch Philips concern will
+launch a new pocket colour TV with a
+7.5 centimeter screen by the end of the
+year, starting in North America.
+Japanese manufacturers already have
+pocket TV's on the market, one brand
+managing to coin the term 'Watchman'.
+Two million were sold in the USA last
+year, although the picture quality of
+most colour models is very crude. The
+current pocket TV's use a different
+method of making the picture to
+conventional TV's. Instead of
+high-voltage electron guns, low voltage
+liquid crystal displays have been used.
+But whereas the crystals are ideal for
+things like watch displays, they don't
+normally react fast enough to follow
+the movement in a television picture.
+This delay leads to a fuzzy picture and
+resulting poor definition. Philips say
+they've solved the problem by
+implanting a matrix of several thousand
+active transistors in the tiny Liquid
+crystal screen. These control small
+points of the screen individually,
+dramatically increasing the contrast
+and definition. The problem has been to
+ensure high reliability of the
+transistors. The price of the new
+pocket TV's will be around 400 US
+dollars. Philips is currently investing
+some 50 million dollars into developing
+the flat TV screen. Some of the
+experienced gained in making the small
+flat screen TV can also be applied to
+the large screen of the future.

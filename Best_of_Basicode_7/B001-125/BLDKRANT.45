@@ -1,0 +1,219 @@
+45, zon 02 nov 1986
+
+ONTVANGST PROBLEMEN?
+
+De uitzendingen op zondagavond komen uitstekend
+door, bericht Jan Bredenbeek, maar dat valt te
+verwachten op zo'n afstand: Hilversum. De
+middengolfzenders, die 's avonds met een
+vermogen van 400 kWatt draaien, staan in de
+Flevopolder. Jan heeft echter nog meer
+opmerkingen: krijg je overigens geen klachten
+van mensen die last hebben van storende KTV's?
+(KTV=kleuren televisie). Dat is juist in de
+avonduren het ergst. Bij mij zit er dan ook
+altijd een brom op het signaal. Niet dat mijn
+computer daar last van heeft... Ik ben blij je
+te kunnen vertellen dat de ontvangst zondagavond
+perfect was. De beide Basicode programma's zijn
+zonder problemen ingelezen in mijn MSX machine.
+Het tijdstip van uitzending is een hele
+verbetering. Ga zo door. Aldus Hans Otten uit
+Hoevelaken. Paul Schaake heeft ook geen
+problemen. Hij schrijft: de Basicode programma's
+van Radio 5 deze zondagavond goed ontvangen te
+Noordwijk (ZH) bij DIRECTE inlezing in mijn C64.
+Blijkbaar koppelt Paul zijn computer aan de
+radio. Een beetje riskant, als er iets misgaat
+met de doorgifte... Maar mogelijk laat hij
+tegelijk een bandje meelopen, voor het geval
+dat. Het NOS-lab is bezig de brieven van de
+luisteraars die er niet in slagen Basicode in
+te lezen op de late avond te analyseren. U
+hoort daar nog over.
+
+IDIOOM VARIANTEN
+
+Paul de Greeff uit Bakel meldt dat de ontvangst
+van Radio 5 altijd perfekt is, al moet hij er
+voor naar zolder. Hij is van plan Basicode te
+demonstreren op de jaarlijkse deomstratiedag
+in de Triorex lts te Helmond, Keizerin Marialn
+2 tussen 12 en 18 uur. Hij vindt Idioom
+Varianten van 14 okt niet helemaal geschikt
+voor zijn cbm-64. Je moet steeds de shift-toets
+indrukken, zegt hij, en vooral niet te vergeten
+die weer los te laten als je de spatiebalk
+gebruikt of 'Return'. Daarom schrijft hij
+uitvoerig over een aanpassing die hij bedacht
+heeft. Zet 'Gosub 21000' achter de regels 1820,
+1990, 2160, 2330, 2500, 2670, 2840, 3010, 3180,
+3350, 3520, 3690. Eventueel met een nieuw
+regelnummer in verband met de lengte van de
+programmaregels in Basicode. Voeg dan toe:
+
+PROGRAMMAATJE
+
+21000 rem 'subroutine noodzakelijk cbm-64'
+21020 l=len(w$):for t=1 to l
+21030 a=asc(mid$(w$,t))
+21040 if a=32 then q$=+' ':next
+21045 if a>90 then q$=+chr$(a):next
+21050 q$=q$+ chrs$(a+128):next
+21060 w$=q$: q$='';return
+Opmerking:
+Het '-teken is in werkelijkheid een aanhalings
+teken. Met de toegevoegde routine komt de
+hoofdletter, die bij het zelfstandig naamwoord
+in het Duits een belangrijke rol speelt, beter
+tot zijn recht. Bedankt Paul, misschien kun je
+een wat beter vertaalprogramma schrijven,
+dat dit allemaal opvangt bij de Commodore?
+
+PLANETARIUM AMSTERDAM
+
+Het Planetarium Amsterdam maakt zich klaar
+voor de kerstvakantie. Tot 7 december is er
+een programma met 'Ontdekkingen in het
+zonnestelsel' en op 10, 13, 14 december en de
+kerstvakantie van 20 dec t/m 4 januari loopt
+het programma 'De ster van Bethlehem'. Voorts
+wordt tot 30 november een expositie gehouden
+over 'ESO's kijk op de Zuidelijke sterrenhemel'
+en van 1 dec t/m 4 jan 'Ruimtekunst van KIJK
+illustratoren'. Het planetarium ligt in het
+Gaasperpark in Amsterdam-Zuidoost, vlakbij de
+metrohalte Gaasperplas/Weesp. Men geeft ook
+curssusen. Meer daarover via 020-963622 of
+963484.
+
+SPECTRUM BOEKEN
+
+HCC-redactrice Lucie Blom las dezer dagen een
+aantal boeken over de Spectrum voor ons. Haar
+bevindingen volgen hier:
+
+LEREN PROGRAMMEREN ZX SPECTRUM+ (EN ZX SPECTRUM),
+BOEK 1 EN 2 door Ian Graham, uitgave Kluwer.
+Beide boeken geven een uitstekende aanzet tot
+het werken met de Spectrum. In het eerste boek
+o.a. het opstellen van de apparatuur en uitleg
+over de computer. Vervolgens diverse oefeningen
+met graphics, beweging en effecten. Alles wordt
+duidelijk uitgelegd en vergezeld van beeldscherm
+afdrukken. Het aardige van dit boek is dat een
+beginnende Spectrum gebruiker al snel leuke
+resultaten op zijn/haar scherm ziet.
+
+In het tweede boek wordt o.a. sorteren, zoeken
+en het maken van diagrammen behandeld. D.m.v. een
+spelprogramma wordt een handleiding gegeven over
+het maken van eigen programma's. Ook hier weer
+rijkelijk veel beeldscherm afdrukken en leuke
+resultaten. Beide boeken aanbevolen voor de
+beginnende Spectrum-liefhebber. Elk van de
+boeken kost f 28,25
+
+WERKEN MET DE ZX MICRODRIVE
+
+Kluwer software reeks. prijs: f 33,50
+Met Interface-1 en een of meer microdrives
+opent men al meer mogelijkheden voor de
+Spectrum. De interface kan gebruikt worden
+om een printer of modem aan te sturen. Tevens
+kan een netwerk met meerdere Spectrums gemaakt
+worden. De microdrives geven een ruimere
+opslagmogelijkheid. In dit boek wordt
+uitvoerig ingegaan op de mogelijkheden van
+Interface-1 en de microdrive. Daarnaast geeft
+het een aantal programma's, zoals een stream
+overzicht, een programmalijst, een CATalogue
+en een database. Tenslotte nog enkele
+machinetaal routines en de mogelijkheid om
+eigen Basic-commando's toe te voegen. De vraag
+is of dit boek niet te laat komt. Er zijn
+inmiddels diskdrives voor de Spectrum die
+bijna evenveel kosten als de Interface-1 met
+microdrive. Voor de huidige bezitters van een
+microdrive is het een aardig boek met een aantal
+nuttige programma's.
+
+BASICODE OP ATARI-ST?
+
+Peter van Zanten suggereert dat er best Basicode
+gemaakt kan worden op de Atari-ST. Hij schrijft:
+op de machine is het mogelijk onder CP/M te
+werken. Er bestaat een reeks vertaalprogramma's
+naar NOS-Basicode voor CP/M-machines. In
+principe zou dus de Atari op die manier mee
+kunnen doen. Punt is echter dat wel een discdrive
+beschikbaar is, echter geen cassette recorder,
+aldus Peter. Maar dat is met alle CP/M
+machines zo. Het vertaalprogramma op schijf
+laat de computer naar een lijntje van de
+printerpoort kijken. Daar moet een kabeltje
+voor gemaakt worden dat naar de cassette
+recorder loopt. We wachten met spanning.
+
+PACKET-RADIO EN RCD
+
+De PTT-Radio Comtrole Dienst heeft in het
+zogenaamde Klein Amateur Overleg een reaktie
+gegeven op de inhoud van Beeldkrant 42 van
+Hobbyscoop die op 19 oktober is uitgezonden.
+Een verslagje hierover van Jan Willem PA0JWU
+leert: de RCD heeft middels een uitdraai de
+Beeldkrant vernomen dat er plannen zijn om een
+packetradio station op te richten, dat deel zal
+uitmaken van een landelijk netwerk van
+packetstations. Dit station zal worden gekoppeld
+aan een computer, die eveneens is gekoppeld aan
+de Fido-databank. Middels deze opzet kunnen de
+radio zendamateurs files opvragen en
+boodschappen doorgeven.
+
+DOELSTELLINGEN VOORBIJ?
+
+De RCD vindt dat deze vorm van uitzendingen
+weinig meer te doen hebben met de doelstellingen
+van het radio zendamateurisme. Tenslotte wordt
+het amateurstation, ingericht als packet radio
+station, uitsluitend als middel gebruikt en niet
+voor het doen van onderzoekingen. Daarnaast
+bestaat de mogelijkheid, dat de uitzendingen
+informatie bevatten van en aan derden, hetgeen
+volgens de machtigings voorwaarden niet is
+toegestaan. De RCD zal dit onderwerp in het
+eerstvolgend Klein Amateur Overleg, dat gepland
+is op 11 februari 1987, op de agenda plaatsen
+en verzoekt de verenigingen hierover een
+standpunt in te nemen. Een afschrift van de
+uitdraai van de betrefnende Beeldkrant is
+staande de vergadering uitgereikt. Hierbij
+natuurlijk ook het verzoek aan de leden van
+de verenigingen om hun besturen te ondersteunen
+in het vormen van een standpunt betreffende
+deze zaak. U kunt hiervoor de sekretarissen
+van de betreffende verenigingen benaderen of
+schrijven naar Hobbyscoop. We zijn benieuwd,
+we hebben kennelijk wel iets losgemaakt.
+
+OLIVETTI GEBRUIKERS
+
+Halverwege deze maand is de Olivetti g.g.
+opgericht. Het bestuur is al op maximale
+sterkte aanwezig. Secretaris is Majel Migo. De
+gebruikersgroep zal zich voornamelijk gaan
+toespitsen op informatie, opleidingen en het
+verkrijgen van kortingen. De eerste gebruikersdag
+is op 10 januari 1987 in school De Bron Vader
+Rijndreef 7 te Utrecht. Uiteraard zal de g.g.
+ook op de HCC dagen aanwezig zijn en wel op
+stand J2112. Aangezien de Olivetti g.g. een van
+de grotere moet kunnen worden, verzoekt het
+bestuur alle gebruikers van deze computer het
+rode kaartje uit de HCC-nieuwsbrief in te
+vullen om lid te worden. Het voorlopige
+correspondentie adres is Jac. Bellamyhove 10
+2717 WN Zoetermeer. Men kan ook zijn
+boodschappen achterlaten op Fido Zoetermeer.

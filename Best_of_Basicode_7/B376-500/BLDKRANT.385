@@ -1,0 +1,305 @@
+385, maa 18 feb '91
+
+CORRECTIES BELASTINGPROGRAMMA 1990
+
+Dankzij de oplettendheid van enkele
+kritische luisteraars zijn twee
+schoonheids foutjes in het Belasting
+programma aan het licht gekomen. In
+beide gevallen worden hierdoor de
+oudere gebruikers getroffen, terwijl
+het programma dit jaar juist met hen
+speciaal rekening houdt.
+
+In deel 1 wordt aan de belasting
+plichtige met inkomsten uit vroegere
+arbeid, bij vraag 3, een aftrek
+toegekend van 406 gulden terwijl dit
+bedrag 481 gulden zou moeten zijn. Dit
+probleem kan worden verholpen door het
+verbeteren van regel 3660. Deze moet
+luiden:
+3660 A6=INT((481*HP/12)+.99)
+
+In deel 2 is een fout geslopen in de
+berekening van het verschuldigde bedrag
+van gebruikers die in 1990 65 jaar oud
+werden. Dit kan worden verbeterd door
+het aanpassen van regel 16020. Deze
+moet luiden:
+16020 X2=(X2-1)/12:IF(X1=3) THEN
+B(1)=.184
+
+De hier genoemde foutjes hebben geen
+enkele invloed op de goede werking van
+het Belasting programma indien u niet
+behoort tot de groep oudere belasting
+plichtigen. De verbeteringen hoeven dan
+alleen te worden aangebracht als u van
+plan bent het programma ook aan anderen
+door te geven.
+
+HERHALING BELASTINGPROGRAMMA
+
+Omdat een aantal trouwe luisteraars,
+als gevolg van carnaval en de krokus
+vakantie, de uitzendingen van 11 en 13
+februari hebben gemist, hebben we
+besloten het hele Belasting programma
+op 11 maart nogmaals uit te zenden.
+Natuurlijk zijn dan de eerder genoemde
+verbeteringen in het programma
+verwerkt. (met dank aan de auteur Chris
+Bouws)
+
+VIRUSSEN IN JAPAN
+
+In Japan zijn eind vorig jaar
+verschillende computer virussen
+ontdekt, die schadelijker en sterker
+schijnen te zijn dan voorgaande
+versies. Computer gebruikers worden
+gedwongen om tegenmaatregelen te nemen.
+De Universiteit van Waseda, een van
+Japan's meest vooruit- strevende
+onderwijs instituten, heeft bekend
+gemaakt dat in haar rekencentrum ruim
+honderd IBM personal computers
+aangetast waren door de virussen. De
+pc's die aangetast waren toonden
+plotseling niet meer de kleuren die
+gespecificeerd waren. Bovendien stopten
+diverse applicaties plotseling vanzelf,
+zodat het onmogelijk was de pc's te
+gebruiken.
+
+Ook het concern Fujitsu werd vorig jaar
+diverse malen geplaagd door computer
+virussen. Fujitsu heeft besloten
+drastische maatregelen te nemen tegen
+dergelijke virussen. Zo heeft het
+bedrijf een vaccinatie- programma tegen
+meer dan 50 in de wereld bekende
+virussen. Omdat het programma alleen
+maar werkt tegen bekende virussen en
+omdat er constant nieuwe virussen
+worden gesignaleerd, is men van plan om
+elk jaar een nieuwe versie uit te
+brengen.
+
+Verder heeft het Japanse Ministerie van
+Posterijen en Telecommunicatie een
+commissie gevormd die moet onderzoeken
+hoe de preventie tegen computer
+virussen, die binnenkomen via netwerken
+(Bulletin Boards!), aangepakt kan
+worden. Men verwacht volgende maand met
+een eindrapport te komen. (Uit: de
+Muurkrant)
+
+VIDEOTEX IN OPMARS
+
+Videotex, het informatie systeem dat
+indirect via steeds meer kabelnetten en
+direct via modem/telefoon verbindingen
+te benaderen is, is bezig aan zijn
+definitieve doorbraak. Jarenlang was
+het sukkelen met videotex. Viditel, de
+databank van de PTT, werd niet echt een
+succes en het aantal abonnees bleef dan
+ook sterk achter bij de verwachtingen.
+Nu echter de techniek het gebruik van
+videotex heel wat eenvoudiger heeft
+gemaakt, is dit medium niet meer stuk
+te krijgen.
+
+De informatie leveranciers en bedrijven
+die de afgelopen jaren stevig hebben
+geinvesteerd in videotex, moeten nog
+steeds met flinke verliezen rekening
+houden. Maar desondanks ziet het met
+het electronische medium heel wat beter
+uit dan enkele jaren geleden.
+
+NIEUW BLAD: VIDEOTEX MAGAZINE
+
+De bundeling die onlangs plaatsvond
+tussen de twee belangrijkste videotex
+diensten Videotex Nederland en ComNet
+heeft geresulteerd in de uitgave van
+een gezamenlijk blad: Videotex
+Magazine. Het is een kwartaal
+tijdschrift dat in zijn geheel is
+gewijd aan alle vormen van videotex.
+Het magazine geeft vooral veel
+informatie over ComNet en de diensten
+die in ComNet oproepbaar zijn. Verder
+zit achterin het magazine een
+videotexGIDS. Hierin staan alle
+diensten vermeld, die oproepbaar (of
+aankiesbaar) zijn via de inmiddels
+bekende telefoonnummers van Videotex
+Nederland, ComNet, Telepad en Viditel.
+
+In het eerste nummer komt onder meer
+'futuroloog' Rudolf Das aan het woord,
+die ingaat op de veranderingen binnen
+de massacommunicatie en het gebruik van
+computers hierbij. Hij schetst in die
+bijdrage het steeds schriller wordende
+contrast met de derde wereld-landen die
+nog lang niet aan dit soort
+voorzieningen toe zijn.
+
+Videotex Magazine is in de losse
+verkoop verkrijgbaar voor een kleine 7
+gulden. De oplage van dit eerste nummer
+is 60.000 exemplaren, en alle ComNet
+leden (met een toegangs nummer) hebben
+het blad -als het goed is- al in de bus
+gekregen. (Haagsche Courant - de
+Muurkrant)
+
+TURBO PASCAL VERSIE 6.0
+
+Recentelijk is de Amerikaanse firma
+Borland met versie 6.0 van de object
+georienteerde programmeertaal Turbo
+Pascal uitgekomen. Volgens Borland
+maken wereldwijd zo'n twee miljoen
+programmeurs gebruik van de Turbo
+Pascal compiler. Met de nieuwe versie
+6.0 kunnen nog snellere applicaties
+worden gemaakt, aldus Borland directeur
+P. Kahn. Tesamen met de nieuwe versie
+6.0 zullen ook een 25-tal Pascal-boeken
+op de markt komen ter ondersteuning.
+
+Versie 6.0 kent een aantal
+uitbreidingen ten opzichte van de
+vorige 5.5 versie. Zo ondersteunt 6.0
+nu vensters, pull down-menu's en
+muisbesturing. Verder heeft de nieuwe
+versie een Macintosh-achtige bestands
+bewerker met dialoog vensters en knip
+en plak functies.
+
+In de VS kost de standaard versie rond
+de 150 dollar. Een uitgebreide
+professionele versie (met commandolijn
+editor en een object georienteerde
+debugger) kost 300 dollar. Upgrades
+vanuit de vorige versie gaan in de VS
+respectievelijk 70 en 100 dollar
+kosten.
+Turbo Pascal 6.0 is beschikbaar voor
+IBM-achtige pc's en draait onder MS-DOS
+vanaf versie 2.0. (Uit: de Muurkrant)
+
+MINUSCULE LASERS
+
+Onderzoekers van het IBM-laboratorium
+in Zurich zijn erin geslaagd maar
+liefst twintigduizend lasertjes aan te
+brengen op een schijf van vijf
+centimeter. Elk lasertje is slechts een
+fractie van een millimeter lang. Deze
+ontwikkeling schept mogelijkheden om
+halfgeleider lasers op economische
+wijze in grote aantallen te produceren.
+Kleine lasers worden gebruikt om
+compact disks af te tasten, tekst af te
+drukken bij laserprinters, gegevens weg
+te schrijven op optische platen en
+informatie te verzenden over glasvezel
+kabels.
+
+TOEPASSINGEN GOEDKOPER
+
+De onderzoekers van IBM verwachten dat
+dankzij hun nieuwe techniek in dezelfde
+tijd meer lasers geproduceerd kunnen
+worden. De prijs per stuk wordt
+gehalveerd en een groter percentage zal
+aan de kwaliteits eisen voldoen. Lasers
+met een afmeting van een halve tot een
+millimeter kunnen nu worden opgenomen
+in chips, die zo optische en
+elektronische verwerking combineren.
+
+KRISTALGROEI
+
+De lasers zijn vervaardigd uit
+kristallen van aluminium gallium
+arsenide (AlGaAs). Men laat deze
+kristallen atoomlaag voor atoomlaag
+groeien, waarbij de optische
+eigenschappen nauwkeurig kunnen worden
+bijgestuurd. Tijdens de groei kan men
+andere elementen toevoegen om de
+elektronische eigenschappen te regelen.
+
+SPIEGELOPSLUITING
+
+Voor een laser zijn altijd twee
+spiegels nodig, waartussen licht kan
+worden opgesloten. Vroeger moest voor
+elke laser een halfgeleider kristal
+gekloofd worden. Bij het nieuwe proces
+van IBM maakt men gebruik van etsen. Zo
+worden groeven van 0,2 millimeter diep
+aangebracht in een halfgeleider plak.
+Deze worden voorzien van reflecterend
+materiaal. Wanneer een elektrisch
+signaal door de halfgeleider wordt
+gestuurd, kan laserwerking ontstaan.
+
+INFRAROOD
+
+De laserstraling ligt in het infrarode
+gebied, tussen 830 en 850 nanometer.
+Deze golflengte wordt tegenwoordig alom
+gebruikt om gegevens te lezen en te
+schrijven. Het vermogen ligt tussen 30
+en 40 milliwatt en de bron heeft een
+diameter van slechts 0,04 millimeter.
+Fotodioden en andere componenten om de
+werking van de lasers te controleren
+zijn op dezelfde plak aangebracht!
+Uiteindelijk wordt de plak versneden
+tot afzonderlijke laserchips.
+
+OPTO-ELEKTRONICA
+
+Volgens dezelfde etstechniek kan men op
+de plak ook holle en bolle spiegeltjes
+aanbrengen om de baan van de
+laserbundels af te buigen. De
+onderzoekers zijn verder van plan de
+lasers te combineren met lenzen en
+reflectoren. Dit is een tussenstap om
+te komen tot snelle opto-elektronische
+chips. (Persbericht IBM, bewerkt door
+Pim van Tend)
+
+DEMONSTRATIE DTP MET ATARI
+
+Op donderdag 21 en vrijdag 22 februari
+organiseert Atari Benelux in Nieuwegein
+DeskTop Publishing en Electronic
+Publishing dagen. Ze worden gehouden in
+hotel Mercure van 10-16 uur. De
+ontwikkelingen die er getoond worden op
+gebied van hard- en software hebben te
+maken met koppeling van de computer
+systemen aan Linotronic zetmachines,
+netwerken voor STe en TT, hoge
+resolutie grafische kaarten, diverse
+DTP paketten waaronder Calamus,
+tekstverwerkers, integratie van CAD in
+DTP, integratie van MIDI in DTP en
+beeldverwerking met pakketten zoals
+Retouche. De presentatie is bedoeld
+voor diegenen die professioneel bezig
+zijn met de Atari in het zakenleven.
+

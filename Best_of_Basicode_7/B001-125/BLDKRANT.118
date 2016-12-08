@@ -1,0 +1,272 @@
+118, woe 07 jan '88
+
+UoSAT-OSCAR 11
+
+Nadat de programmatuur in de boordcomputer
+van OSCAR 11 eind november was vastgelopen,
+leek het erop dat het kommando station geen
+kontrole meer over de satelliet kon krijgen.
+Het heeft veel moeite gekost weer nieuwe
+programmatuur in de boordcomputer geladen te
+krijgen. Na uitgebreide tests bleek dat men
+de satelliet op 16 december weer helemaal
+onder kontrole had. Het normale gebruiks
+schema zal nu weer kunnen worden hervat.
+
+FUJI-OSCAR 12
+
+Het gebruiksschema van OSCAR 12 voor de
+eerste weken van 1988 is als volgt gepland:
+
+mode JA van 07-1 0042 UTC tot 08-1 0150 UTC
+mode JA van 10-1 0002 UTC tot 11-1 0109 UTC
+
+In de periode van 1523 tot 1720 UTC op 14
+januari wordt de nieuwe telemetrie
+programmatuur weer door het Japanse
+kommando station in de boordcomputer van OSCAR
+12 gebracht. Daardoor wordt de telemetrie in
+mode JD elke 2 sekonden uitgezonden in plaats
+van elke minuut. In deze periode zal mode JD
+alleen in bedrijf zijn als digipeater, dus
+niet als mailbox. In volgende perioden zal
+mode JD wel weer als mailbox beschikbaar zijn:
+mode JD van 14-1 1929 UTC tot 15-1 1229 UTC,
+mode JD van 16-1 1335 UTC tot 17-1 1242 UTC.
+In alle tussenliggende perioden zal de
+satelliet geheel uitgeschakeld zijn om de
+batterij de gelegenheid te geven op te laden.
+Tijdens mode JD bedrijf is de zender steeds
+afwisselend twee uur aan en twee uur uit.
+Aan het begin van een mode JD periode begint
+de eerste periode waarin de zender twee uur
+aan staat. Rapporten van ontvangen telemetrie
+van OSCAR 12 zijn steeds welkom bij JJ1ZUT
+van de JARL. Deze rapporten kunnen eventueel
+worden doorgegeven naar JJ1ZUT via de mode
+JD mailbox van OSCAR 12.
+
+RADIO SPOETNIK 10/11
+
+Sinds begin november is mode AK van RS11
+steeds in bedrijf geweest, terwijl RS10 steeds
+uitgeschakeld is gebleven. Ook de ROBOT van
+RS11 was voortdurend beschikbaar. De
+navigatie satelliet KOSMOS 1861, die zich
+samen met RS10/11 in dezelfde satelliet
+behuizing bevindt, blijkt nog als reserve
+satelliet beschouwd te worden, en is dan ook
+gewoonlijk uitgeschakeld. De VHF zender van
+de navigatie satelliet veroorzaakt storingen
+in de mode A apparatuur van RS10/11. Zolang
+de KOSMOS nog buiten bedrijf kan worden
+gehouden is mode A van RS10/11 zeer goed
+bruikbaar. Daar wil men zoveel mogelijk van
+profiteren, dus daarom wordt voorlopig vaak
+gebruik gemaakt van deze mode. Zodra de
+navigatie satelliet volledig in gebruik
+genomen gaat worden is men gedwongen mode K
+en mode T van RS10/11 te gaan gebruiken.
+Volgens een publikatie uit Duitsland zijn de
+lineaire relais stations van RS10/11 vrij
+geavanceerd. De 40 kHz brede doorlaatband van
+de relais stations blijkt te bestaan uit 10
+segmenten van elk 4 kHz. Elk segment beschikt
+daarbij over een eigen AVR, zodat een te
+sterk station in een van de segmenten slechts
+een gedeelte van 4 kHz kan beinvloeden, in
+plaats van de hele doorlaatband zoals bij
+andere satellieten. Overigens blijkt in de
+praktijk dat niet de ontvanger maar de
+downlink zender wordt teruggeregeld.
+Als bijvoorbeeld mode A en mode K
+tegelijkertijd in bedrijf zijn, dan blijkt
+een sterk uplink signaal op 15 m ook de
+uplink signalen van 2 m te beinvloeden.
+Verder moet het voor kommando stations
+mogelijk zijn de totale bandbreedte van elk
+relais station van 40 kHz terug te schakelen
+naar 24 kHz of zelfs 16 kHz. Dit is in de
+praktijk echter nog niet waargenomen.
+
+AMSAT-PHASE 3C
+
+De nieuwe satelliet Phase 3C heeft de
+testperiode in november en december goed
+doorstaan. Als onderdeel van het
+testprogramma heeft men de satelliet goed
+uitgebalanceerd tijdens de 'spin balance
+test'. Het stabiliseren van de stand van de
+satelliet in de ruimte zal namelijk gebeuren
+door de satelliet om zijn as te laten
+roteren. Tijdens dit roteren moet dan geen
+'gewobbel' optreden. De satelliet Phase 3C,
+die na zijn lancering officieel AMSAT-OSCAR
+13 zal gaan heten, kan binnenkort worden
+overgedragen aan de Europese ruimtevaart
+organisatie ESA. In Frankrijk wordt de
+satelliet dan verder getest en voorbereid
+op zijn lancering vanaf de ESA lanceerbasis
+bij Kourou, Frans Guyana, Zuid-Amerika.
+
+Volgens de laatste plannen moet de lancering
+van Phase 3C met de eerste ARIANE 4 raket
+plaatsvinden op 24 maart 1988. Tijdens
+diezelfde ARIANE vlucht moeten de
+weersatelliet METEOSAT P2 en de kommunikatie
+satelliet PANAMSAT in een baan om de aarde
+worden gebracht. In de periode rond de
+lancering zal AMSAT wereldwijde lanceer
+informatie netten organiseren op vele amateur
+frekwenties, zodat iedereen alle aktiviteiten
+direkt kan volgen. Ook zullen verscheidene
+AMSAT vertegenwoordigers bij de lancering in
+Kourou aanwezig zijn en dan via amateur
+stations met FY7 roepnamen ooggetuige
+verslagen leveren van de gebeurtenissen
+op de ESA lanceerbasis.
+
+PACSAT
+
+Al jaren bestaat bij AMSAT-NA het plan om
+een packet radio satelliet, PACSAT, te bouwen
+en lanceren. Om allerlei redenen is er tot nu
+toe weinig terecht gekomen van die plannen.
+In november is echter besloten om op korte
+termijn toch een PACSAT te bouwen, omdat er
+nu reele lanceer mogelijkheden voor blijken
+te bestaan. Een prototype wordt nu al
+gebouwd. Men rekent op een lancering in 1988
+of 1989. Veel hangt echter af van de
+beschikbare financien.
+
+HAMSAT en Nico PA0DLO wensen iedereen een
+voorspoedig nieuwjaar.
+
+TESTBEELD NEDERLAND 3
+
+De televisiezenders voor Nederland 3
+die al gereed zijn, kunnen sinds maandag
+4 januari het testbeeld van deze
+zender ontvangen.
+Deze proefuitzendingen zijn bedoeld
+om handelaren en installateurs in de
+gelegenheid te stellen ontvangers
+en antenne installaties af te stemmen
+en aan te passen voor de ontvangst
+van de programma's van het derde
+televisienet.
+De uitzendingen vinden plaats op
+werkdagen van 08.45 - 17.00 uur.
+
+Het testbeeld is herkenbaar aan de tekst
+'PTT NED. 3'. Het testbeeld zal worden
+afgewisseld door technische informatie
+over zenders en ontvangstmogelijkheden.
+Via de geluidskanalen wordt standaard
+het programma van radio 5 meegezonden.
+Bezitters van televisie toestellen die
+geschikt zijn voor het weergeven van
+twee geluidskanalen kunnen kiezen uit
+het programma van Radio 1 en Radio 5.
+
+De zenders die vanaf 4 januari het
+testbeeld gaan uitzenden zijn Smilde
+(kanaal 44), Roermond (kanaal 34),
+Lopik (kanaal 30), Markelo (kanaal 51),
+Wieringermeer (kanaal 42) en de hulpzenders
+Slenaken (kanaal 32) en Wijk aan Zee
+(kanaal 21). De zenders Goes en Arnhem
+zijn nog in aanbouw. Op het moment
+van gereedkomen, zullen ook die
+het testbeeld gaan uitzenden. Dit zal
+in ieder geval voor April '88 zijn.
+
+ZENDERS IN STEREO
+
+Naast de zender Lopik zijn nu ook de
+zenders Arnhem, Goes en Wieringermeer
+geschikt om het geluid van Nederland 1
+in stereo uit te zenden.
+De andere zenders voor Nederland 1
+zullen daartoe pas in staat zijn, als
+de bestaande zendapparatuur is vervangen.
+Die operatie hoopt de PTT rond 1990
+te voltooien.
+Nederland 2 kan al in stereo worden
+ontvangen. Het zenderpark voor het
+derde net wordt eveneens direct geschikt
+voor stereogeluid.
+
+De twee geluidskanalen bieden ook de
+mogelijkheid om bij bepaalde
+televisie programma's gelijktijdig twee
+talen uit te zenden. De bezitter van een
+stereotelevisie kan dan kiezen uit de
+oorspronkelijke of de nagesynchroniseerde
+taal.
+
+HORIZON OVER 'DAT'
+
+Het bekende NOS zusterprogramma Horizon
+zendt uit op dinsdag 12 januari. Het TV
+programma besteedt dan aandacht aan de
+D.A.T. recorder en onder meer de copy
+protectie. De dag daarop (woensdag de 13e)
+zal Hobbyscoop eveneens terug komen op de
+leverbaarheid van zowel DAT-recorders als
+CD-Video spelers. Beide soorten machines
+zouden volgens overijverige importeurs al
+geleverd worden in 1987. Maar dat is er
+niet van gekomen.
+Horizon laat voorts film materiaal zien
+van een van de nieuw ontdekte manen van
+Uranus: Miranda. Daarnaast aandacht voor
+de concentratie mogelijkheden van de mens,
+bijv. in een lawaaierige omgeving. Tenslotte
+een bij TNO gefilmd verslag over EMP, de
+enorme magnetische puls die vrijkomt bij de
+ontploffing van een kernbom en die alle
+radio's, TV's en elektronische apparatuur
+in een klap buiten bedrijf zou stellen.
+Militaire apparatuur moet tegen zo'n puls
+bestand zijn. TNO heeft een proefbaan voor
+EMP metingen.
+
+ONTVANGST BASICODE PROGRAMMA'S
+
+Soms zijn de programma's die we op de
+zondagavond via de middengolf uitzenden
+moeilijk inleesbaar voor bepaalde computers,
+wanneer de header (aanlooptoon) een laag
+niveau heeft. Daarom kregen we van Frans
+Verberkt uit Nijmegen de tip, om het
+programma nogmaals op te nemen op een ander
+bandje, maar dan veel harder. Vaak lukt het
+dan alsnog om het programma in te lezen.
+
+Dit kan bovendien nuttig zijn voor computers
+die problemen hebben met fase verschuiving.
+Op het gekopieerde bandje staat het
+programma dan soms in tegenfase, zodat het
+toch nog kan worden ingelezen.
+
+HERHALING VERTAALPROGRAMMA C-16
+
+Op woensdag 23 december 1987 zonden we een
+Basicode-2 vertaalprogramma uit voor de
+Commodore computers C-16, C-116 en Plus/4.
+Helaas hebben deze machines bij het werken
+met cassette veel last van fase
+verschuivingen. De auteur van het programma,
+Arwin Vosselman uit Mijdrecht, had daarom
+voorspeld dat het in ongeveer 50% van de
+gevallen fout zou gaan. Volgens de reacties
+van de C(1)16 en Plus/4 gebruikers bleek dit
+inderdaad te kloppen.
+
+Daarom zullen we op woensdag 27 januari a.s.
+het vertaalprogramma opnieuw uitzenden, maar
+dan in tegenfase. We hopen dat het dan bij
+veel mensen alsnog goed zal gaan. Ook horen
+we weer graag uw reacties op deze herhaling.

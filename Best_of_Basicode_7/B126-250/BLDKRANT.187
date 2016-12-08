@@ -1,0 +1,322 @@
+187, maa 28 nov '88
+
+EDUCATIEVE SOFTWARE
+
+Enige tijd geleden hield Ben Ros, voorzitter
+van de HCC Onderwijs Gebruikers Groep, een
+lezing over het maken van educatieve software.
+Aangezien veel Hobbyscoop luisteraars,
+waaronder docenten op basisscholen, educatieve
+programma's in Basicode schrijven, zal deze
+lezing voor hen interessant zijn, want zij
+bevatte vele belangrijke aanwijzingen.
+Hier volgt een kleine samenvatting ervan.
+
+Educatieve software is programmatuur die
+specifiek geschreven is voor het onderwijs,
+en die is bedoeld ter ondersteuning van de
+lessen. Men hanteert vaak de Engelse
+termen 'courseware' en C.A.L. (computer
+assisted learning), ook wel C.A.I. (computer
+assisted instruction) genoemd. Het
+Nederlandse equivalent hiervan is C.O.O.
+(computer ondersteund onderwijs).
+
+PLAN MAKEN
+
+Een educatief programma schrijven is niet
+makkelijk, en in zekere zin zelfs gevaarlijk:
+je kunt bv. veel verknallen met een programma
+bedoeld voor de basisschool.
+
+Daarom is het belangrijk om het schrijven
+van een dergelijk programma goed voor te
+bereiden, want het komt overeen met het
+voorbereiden van een les! In beide gevallen
+is het nodig om eerst een plan te maken.
+Hierbij zijn twee aspecten belangrijk: het
+onderwerp en de doelgroep.
+
+1) ONDERWERP
+
+Hier volgen enige adviezen:
+- neem iets waar je verstand van hebt
+- neem iets wat zinvol is
+- neem een ONDERDEEL binnen een vak, liefst
+zo klein mogelijk
+
+2) DOELGROEP
+
+Stel jezelf hierbij de volgende vragen:
+- voor wie is het programma bedoeld?
+- welke leeftijd of 'groep'? (basisschool)
+- welk schooltype?
+- op welk niveau?
+
+MODEL VAN GELDER
+
+Bij het schrijven van een educatief programma
+kan hetzelfde model worden gehanteerd als bij
+het voorbereiden van een les. In de onderwijs
+wereld wordt vaak het 'model van Gelder'
+gebruikt. Dit ziet er globaal als volgt uit:
+
+A. DOELSTELLING
+Wat zijn de beoogde eindtermen, m.a.w. wat
+moet een leerling, na afloop, weten?
+
+B. BEGINSITUATIE
+Wat wordt een leerling al geacht te weten
+voordat hij/zij begint met het programma?
+
+C. LEERPROCES
+Geef een omschrijving van de leerINHOUD.
+Dit is in feite de kern van het programma.
+De programmeur kan bij de presentatie van
+de inhoud een keus doen uit verschillende
+didactische werkvormen. We komen hier later
+nog op terug.
+
+D. EVALUATIE
+Hoe is de lesstof overgekomen? Om dit na te
+gaan, is controle nodig. Deze kan zowel
+TIJDENS als NA het programma plaatsvinden.
+
+FEEDBACK
+
+Belangrijk in elke onderwijs situatie is
+het geven van FEEDBACK: hoe reageer je op het
+leergedrag van de leerling, bv. hoe beloon je
+zijn/haar goede antwoorden? Dit kan grofweg
+op drie verschillende manieren gebeuren:
+PASSIEF: bv. door te vragen 'hoe heet je?' of
+door antwoorden als 'goed zo!' en 'kan beter'.
+ACTIEF: bv. als een som goed is gemaakt, mag
+de leerling een spelletje spelen.
+INTERACTIEF: bv. na een aantal goed gemaakte
+sommen mag de leerling naar een hoger niveau.
+
+WERKVORMEN
+
+Zoals reeds gezegd, kan de docent c.q.
+programmeur de leerinhoud van het programma
+op diverse manieren aan de leerling aanbieden.
+Daarbij kan hij/zij onder andere kiezen uit de
+volgende 'didactische werkvormen':
+
+* DRILL AND PRACTICE:
+oefenen van reeds opgedane kennis.
+
+* GEPROGRAMMEERDE INSTRUCTIE:
+gericht op het overbrengen van nieuwe kennis
+en inzicht. Voorbeeld: het aanbieden van
+leerstof in de vorm van vraag/antwoord.
+
+* ONDERZOEKEN (INQUIRY):
+de leerlingen communiceren met een grote
+gegevens verzameling (databank), maar de
+leerling moet ZELF zoeken, ZELF vragen
+stellen aan het systeem.
+
+* SIMULATIES:
+doel hiervan is het verschaffen van inzicht
+in processen uit de werkelijkheid.
+
+* SPEL:
+bevat meestal een element van competitie.
+Ook bv. 'adventure games' vallen hieronder.
+Doel: op de juiste wijze vragen stellen.
+
+TRUUKS EN TIPS
+
+Tot slot een aantal handige tips en andere
+zaken waar je op moet letten.
+- De inhoud moet passen bij de doelgroep.
+- Geef goede feedback.
+- Maak software zo, dat het interessant is
+voor de leerling.
+- Het programma moet zelfstandig door de
+leerling te gebruiken zijn.
+- Geef duidelijke aanwijzingen voor zowel
+leraar als leerling.
+- Zorg voor een goede dosering van de
+leerstof. Geef niet teveel informatie ineens
+per scherm.
+- Maak het programma 'leerling-proof'.
+- Zorg ervoor dat de leerling het programma
+niet voortijdig kan stoppen.
+- Hanteer een consequent gebruik van de
+toetsen voor een bepaald doel.
+- Het programma moet makkelijk te starten
+zijn voor de leerling.
+- Kan een leerling informatie terugroepen?
+(bv. van onderdeel 4 naar onderdeel 1).
+- Zijn de teksten duidelijk?
+- Gebruik het beeldscherm effectief.
+- Zet vragen en teksten steeds op dezelfde
+plaats op het scherm.
+- GEEN TAALFOUTEN in het programma!
+- Is er voldoende tijd om een vraag te
+beantwoorden?
+- Geproduceerde geluidjes mogen niet
+hinderlijk zijn voor de mede klasgenoten.
+- Geef RESULTATEN na afloop.
+- Zorg voor een duidelijke handleiding bij
+of in het programma. Geef indien mogelijk
+een didactische verantwoording. Geef een
+schatting vwb de duur v/d programma sessie.
+- Probeer het programma eerst uit! Laat het
+bv. 'proefdraaien' door je eigen kinderen.
+
+DANKWOORD
+
+Graag willen wij dhr. Ben Ros bedanken voor
+het verlenen van toestemming om een
+samenvatting van zijn lezing in de beeldkrant
+af te drukken. We hopen dat veel Basicode
+programmeurs er hun voordeel mee zullen doen.
+
+PHILIPS VERVANGT PC NETSNOEREN
+
+Door Philips is geconstateerd dat bij de
+fabricage van de losse netsnoeren bij alle
+personal computers uit de NMS-9100, P-3100 en
+P-3200 serie en de P5040 tekstverwerker een
+fout kan zijn gemaakt, waardoor deze netsnoeren
+niet voldoen aan de door Philips als normaal
+beschouwde veiligheids eisen.
+
+Om alle risico's uit te sluiten heeft Philips
+besloten deze snoeren te vervangen. Daarom
+verzoekt Philips gebruikers van een personal
+computer uit een van de betreffende series de
+losse netsnoeren om te ruilen bij een van de
+service centra van Philips of de losse snoeren
+kosteloos op te sturen, waarna een nieuw
+exemplaar zal worden toegestuurd.
+
+PC-MEERJARENPLAN USSR
+
+De produktie van personal computers in de
+Sovjet-Unie zal in het komende jaar stijgen met
+250 procent. De cijfers voor telecommunicatie
+zijn een stuk somberder: de gestelde doelen
+uit het vorige vijfjarenplan worden nauwelijks
+gehaald.
+
+De assemblage en produktie van gespecialiseerde
+PC's en het ontwerpen van programmatuur zal
+worden verzorgd door een tiental joint ventures
+met Westerse computer bedrijven. Deze nemen ook
+het technisch onderhoud van deze apparaten voor
+hun rekening.
+Dat beeld voor het jaar 1989 schetst Joeri
+Masljoekov, voorzitter van het Staatsplanbureau
+Gosplan, kandidaat-lid van het Politbureau en
+gewezen voorzitter van de machtige Militair
+Industriele Commissie. Volgens de cijfers van
+Masljoekov zijn op het ogenblik omstreeks
+tweehonderd cooperaties bezig met het ontwerpen
+en produceren van software voor allerlei
+toepassingen. Tevens neemt de technische
+computerservice op contractbasis een hoge
+vlucht in de sovjet-economie. In de
+werktuigbouw bijvoorbeeld zal binnen twee jaar
+meer dan 60 procent van de computer
+dienstverlening op deze basis plaatsvinden.
+'Wij naderen nu praktisch het stadium,'
+schrijft Masljoekov, 'dat in de Sovjet-Unie
+personal computers en de computer techniek
+in het algemeen op grote schaal worden
+geproduceerd en op alle terreinen ook hun
+toepassing vinden.'
+
+RUSSISCHE TELECOMMUNICATIE SOMBERDER
+
+Volgens de cijfers van Gosplan ziet het er een
+stuk somberder uit voor de communicatie sector.
+Hier reiken de gestelde doelen niet verder dan
+uitbreiding van het aantal telefoon
+aansluitingen in de Sovjet-Unie en televisie
+met meer kanalen. Eind 1989 moeten 27 van 100
+huishoudens telefoon hebben; een bescheiden
+verhoging tegenover de 25,5 die het huidige
+vijfjaren-plan als doel had gesteld. Rond
+dezelfde tijd moet 90 procent van de bevolking
+twee televisiekanalen kunnen ontvangen.
+
+De streefcijfers die Masljoekov noemde met
+betrekking tot de telefoon moeten worden gezien
+tegen de achtergrond van de gegevens van het
+Staatscomit voor de Statistiek. Dit meldde
+onlangs voor de huidige situatie dat per 1
+oktober 1988 29,8 miljoen telefoon toestellen
+zijn aangesloten (op een bevolking van bijna
+200 miljoen). De dienstverlening van de Sovjet
+PTT wordt bovendien steeds slechter. Volgens
+de uitkomst van een onderzoek was slechts 39
+procent van de postkantoren in de steden en 26
+procent van die in de dorpen open voor 9 uur 's
+ochtends, en was 57 procent van de onderzochte
+kantoren voor 6 uur 's avonds al weer dicht -
+meest ook weer in de dorpen. Ook de
+dienstverlening op zaterdag en zondag was
+minimaal. (Uit: Telecom Daily)
+
+MISBRUIK OPTIMOD
+
+Onlangs werd in het tijdschrift RB Elektronica
+Magazine de volgende ingezonden brief
+afgedrukt:
+
+Geachte mevrouw/mijnheer,
+Wat mij opvalt als ik naar FM radio 3 luister
+is, dat het HiFi geluid wordt aangetast door
+het gebruik van een Optimod. Het geluid is dan
+-althans zo ervaar ik het- vervormd. Er treedt
+bij langdurig luisteren zogenaamde 'luister
+moeheid' op. Maar is de luisteraar wel gebaat
+bij dit 'opgeblazen' geluid?
+Ik heb geschreven naar het NOB (Nederlands
+Omroep produktie Bedrijf), AVRO, TROS, Veronica
+en NCRV. Alleen van de eerst genoemde en laatst
+genoemde heb ik antwoord gekregen. Zij schreven
+dat het gebruik van de Optimod wordt
+overgelaten aan de programma makers. Zij kunnen
+ervoor kiezen of zij al dan niet gebruik maken
+van dit 'technisch vernuft'. Er is echter geen
+onderzoek gedaan bij de belangrijkste partij:
+de luisteraar. Misschien kunt u wel iets
+bereiken?
+
+Op deze brief van Leo Hermus uit Sleeuwijk werd
+door de RB redactie als volgt geantwoord:
+Wij hebben reeds meerdere klachten ontvangen
+over de gebrekkige geluids kwaliteit van radio
+3 uitzendingen. Navraag bij Hans G. Janssen,
+programma maker bij de NOS, leverde de volgende
+reactie op: ''Niet alleen de Optimod, maar ook
+het gebruik van andere apparatuur, in het
+bijzonder zogenaamde 'limiters', zorgen er voor
+dat het geluid op de radio verandert van
+klankkleur. Veel producers en presentatoren,
+deejee's zo u wilt, vinden dat hun stemgeluid
+voller en daarmee aangenamer klinkt met deze
+goochel apparatuur. Persoonlijk ben ik er
+evenmin een voorstander van, maar ja...
+Nu komt het inderdaad voor dat niet alleen
+bij het gesproken woord maar ook tijdens
+uitzendingen deze apparatuur wordt gebruikt.
+Vele HiFi liefhebbers zijn daar niet erg
+content mee. Maar wat deze zaak betreft zijn
+we volledig overgelaten aan de smaak van de
+producer. De apparatuur is aanwezig en kan in
+sommige gevallen zeker z'n nut hebben, maar
+zoals het apparatuur betaamt: zij kan gebruikt
+en misbruikt worden. Een oplossing voor dit
+probleem kan ik niet aandragen. Misschien is
+veel klagen een mogelijkheid, of wellicht is
+dit een onderwerp om eens in een uitzending
+van NOS Hobbyscoop te behandelen, en voorwaar:
+daarbij zal de Optimod echt niet gebruikt
+worden...''

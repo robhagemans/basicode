@@ -1,0 +1,336 @@
+270, maa 20 nov '89
+
+BUGS GEVONDEN IN I486 CHIP
+
+Er zitten een paar gemene bugs in de
+i486 chip van Intel. Het mankement in
+de coprocessor kwam aan het licht bij
+sinus- en tangens- bewerkingen. Intel
+heeft inmiddels een nieuwe versie van
+de i486 in produktie. Door de
+vertraging in chipproduktie zullen
+diverse EISA-computers die gebaseerd
+zijn op de i486 enkele maanden later op
+de markt verschijnen.
+
+De bugs werden voor het eerst
+geconstateerd door Compaq. 'Kort
+geleden ontdekten wij tijdens een
+compatibiliteits test dat er problemen
+ontstonden bij floating-point
+bewerkingen met de i486-processor',
+aldus Bob Beach, manager bij Compaq.
+
+FUNCTIONELE FOUTEN
+
+Aanvankelijk reageerde Intel
+luchthartig op de geconstateerde
+mankementen. Het bedrijf stelde dat de
+meeste zakelijke applicaties geen
+hinder van deze bugs ondervinden. Intel
+doelt hierbij met name op het gebruik
+in lokale netwerken en database-
+servers.
+
+Maar inmiddels heeft Intel erkend dat
+het om wezenlijk functionele fouten
+gaat. Daarop heeft men dan ook besloten
+een nieuwe versie van de chip te
+leveren. De produktie van de oude
+versie is stopgezet en inmiddels is
+begonnen met de produktie van de nieuwe
+chip. Volgens Bill Rash, directeur
+marketing bij Intel, zullen de nieuwe
+chips voor het eind van deze maand
+beschikbaar zijn. (Uit: Computerworld)
+
+IBM OP ZAKFORMAAT?
+
+Volgens Computable gaat ook IBM de
+eerste stap zetten op de markt voor
+personal computers op zakformaat. Onder
+de naam 5499 Online Note zou het
+concern een uit Japan afkomstige
+zakcomputer gaan leveren. Die zou
+gebruik maken van de 80C186 processor,
+IC-geheugen kaarten om programma's in
+te lezen en data op te slaan. In Japan
+zou het apparaat het equivalent van
+1400 dollar kosten. Het systeem heeft
+640 Kb aan boord en kent een monochrome
+LCD-scherm met een oplossend vermogen
+van 640 bij 400 beeldpunten. Het
+systeem werkt op batterijen die drie
+uur mee zouden gaan (te weinig). De
+Online Note is ontwikkeld en gebouwd
+door Ricoh.
+
+Nu al zijn er drie agenda computers: de
+Psion-organiser, de Sharp 7000 en de
+7500 van Casio. Prijzen allemaal rond
+de f 700.- Alleen Atari heeft een
+MS-DOS achtige in de betaalbare reeks:
+de Portfolio. Deze kost f 949.- Er zijn
+inschuifkaarten voor communicatie en
+extra geheugen voor te krijgen.
+Ingebouwd zijn ook allerlei programma's
+die handig zijn voor op reis, zoals een
+agenda, een adressenboek, een onkosten
+en kilometer registratie (in een
+spreadsheet) en dergelijke. Hij is zo
+groot als een pocketbook en weegt een
+paar honderd gram.
+
+SUPERMAINFRAME OP KOMST
+
+Control Data heeft een nieuwe
+supermainframe aangekondigd met een
+tweemaal zo grote capaciteit als de
+Cyber 990, tot dusver de snelste
+machine van deze fabrikant. Tegelijk
+wordt een nieuw 'disk array subsysteem'
+gelanceerd. Control Data sloot een
+overeenkomst met Mips Computer Systems
+uit Sunnyvale, Californie voor de
+uitwisseling van technologische kennis.
+
+De nieuwe Cyber kan 27 miljoen
+instructies per seconde verwerken. Het
+gaat om een luchtgekoelde machine die
+gebruik maakt van hoogwaardige
+geintegreerde schakelingen (ECL
+gate-array chips) met 14.000 poorten
+met behulp van de zogenaamde Emitter
+Coupled Logic technologie.
+
+Control Data spreekt bij het nieuwe
+produkt van een supermainframe, omdat
+het de eigenschappen van zowel een
+supercomputer als een mainframe heeft.
+
+Het nieuwe Disk Array Subsysteem (DAS)
+biedt bijna acht maal de overdrachts
+snelheid en vier maal de opslag
+capaciteit van zijn voorganger.
+
+De overeenkomst met Mips heeft
+betrekking op de ontwikkeling van een
+nieuwe op RISC technologie gebaseerde
+computer, die zal worden afgestemd op
+specifieke toepassingen. (Uit:
+Computerworld)
+
+BANKBILJETTEN IN 3D
+
+Johan Enschede & Zonen gaat onze
+bankbiljetten met behulp van een nieuw
+litho-systeem drukken. Hiertoe heeft
+het bedrijf ontwerp-software van Dalim
+gekocht, in combinatie met het 3D
+super- werkstation XD88/30 van
+Tektronix.
+
+Litho-systemen worden gebruikt bij de
+voorbereiding die aan de uiteindelijke
+drukgang voorafgaat. Het bijzondere van
+dit nieuwe systeem is dat het in elke
+lithografische functie voorziet.
+
+Het Dalim-programma, dat in standaard-
+omvang bestaat uit bijna anderhalf
+miljoen Fortran regels, is voor de
+toepassing bij het drukken van geld en
+andere waardepapieren nog aanzienlijk
+uitgebreid met software die bij Joh.
+Enschede in eigen beheer is ontwikkeld.
+(Uit: Automatisering Gids)
+
+COMPUTERSYSTEEM VOOR GRENSBEWAKING
+
+Raet gaat voor het ministerie van
+Justitie het Project Automatisering
+Schiphol bouwen. Met dit systeem wordt
+de grensbewaking verbeterd.
+
+Het internationale personenvervoer is
+in de laatste decennia explosief
+gegroeid. Onder invloed van '1992' is
+besloten om aan de buitengrenzen van
+Europa -Schiphol en de Rotterdamse
+haven- de controle te verscherpen. Dat
+heeft gevolgen voor de werkdruk van de
+grensbewakers. Het met de hand
+doorpluizen van dossiers zou
+onaanvaardbare rijen bij de
+douane-balies opleveren.
+
+GEFASEERDE UITVOERING
+
+Het vier miljoen gulden kostende
+Project Automatisering Schiphol (PAS)
+gaat bijdragen aan een efficiente
+grensbewaking. PAS is opgebouwd uit
+drie onderdelen. De informatie- balie,
+het bureau Falsificaten en het bureau
+Uitzettingen zullen als eerste
+geautomatiseerd worden. Het bureau
+Grensbewaking van de Rivierpolitie
+Rotterdam komt als laatste aan de
+beurt. Men verwacht dat het project
+eind 1990 gerealiseerd zal zijn.
+
+PROEFPROJECT
+
+Voor Justitie moet dit proefproject
+uitwijzen hoe automatisering in de
+toekomst moet worden aangepakt. Onder
+het bewind van oud-minister Korthals
+Altes is vorig jaar een groot aantal
+ontwikkelingen stopgezet. Deze dreigden
+ofwel te mislukken ofwel fors uit te
+lopen op de geplande begroting. Gekozen
+is voor het opzetten van
+overzichtelijke en niet te grote
+projecten. Via (data)koppelingen wordt
+PAS gekoppeld aan systemen van de
+Directie Vreemdelingenzaken (DVZ).
+
+IN- EN UITREISCONTROLE
+
+Het omvangrijkste deel van PAS is de
+opbouw van een systeem voor de
+informatiebalie. Hierin wordt zowel
+inreis- als uitreis- controle
+vastgelegd. Iemand die Nederland
+verlaat wordt gecontroleerd op
+openstaande verplichtingen aan de
+Nederlandse Staat. Dit onderdeel van
+PAS is opgebouwd uit niet minder dan
+180 programma's. Het bureau
+Falsificatie krijgt jaarlijks een
+veelheid aan nep- paspoorten onder
+ogen. Het uit 50 programma's opgebouwde
+onderdeel vergemakkelijkt de recherche-
+werkzaamheden. (Uit: Automatisering
+Gids)
+
+DELFTS BLAUW
+
+De dienstregeling van de Nederlandse
+Spoorwegen zit natuurlijk al lang in de
+computer. Voor de gewone reiziger was
+deze echter niet benaderbaar afgezien
+van een korte tijd -in de beginjaren
+van Viditel- dat het bestand daarin
+ontsloten werd en het mogelijk was een
+reis te plannen. Heden ten dage zou
+zo'n reisplanner via een videotext
+systeem nog niet de ideale oplossing
+zijn. Verspreiding van de
+dienstregeling op floppy, zoals het
+relatie- geschenk van het Centrum Voor
+Informatie- verwerking, is -gezien de
+penetratiegraad van MS-DOS systemen-
+een veel betere methode.
+
+Hoewel alles wat in de huidige versie
+van de reisplanner staat ook in het
+spoorboekje te vinden is, zijn er wel
+degelijk extra voordelen aan verbonden.
+Zo is bijvoorbeeld de vergissing dat
+treinen op de bewuste reisdag niet
+rijden (zon- en feestdagen ed.)
+uitgesloten. Ook wordt de overstap
+drempel verlaagd doordat van het scherm
+direct de tijden en overstap plaats(en)
+zijn af te lezen en zo rode overstap-
+en blauwe doorgaande verbinding-
+aanduidingen (zoals in het spoorboekje)
+ontbreken.
+
+Het belangrijkste voordeel is echter
+het combineren en inpassen van treinen
+in de gewenste route, als een directe
+verbinding (met 0 overstappen)
+ontbreekt. In het spoorboekje wil nog
+wel eens een trein van een hoofdtraject
+staan aangegeven die aansluiting geeft
+op een ander hoofdtraject (lange
+afstanden). Een voorbeeld hiervan is
+Enschede - Rotterdam CS (70) die
+aansluit op Amsterdam CS - Rotterdam CS
+- Vlissingen. Hiervan staan dan nog
+enkel de grote stations aangegeven en
+lang niet alle. In het bewuste
+voorbeeld staan alleen Amersfoort en
+Utrecht CS vermeld. Andere plaatsen en
+de niet lange afstanden trajecten met
+bijbehorende plaatsen veroorzaken
+derhalve eindeloos bladeren. Voor de
+snelste verbinding van Delft naar
+Hilversum No(s)ord bijvoorbeeld is veel
+bladerwerk nodig : DT RT UT HVS HVSN,
+DT GV ASD HVSN of via DT LD UT HVSN.
+Minimaal toch nog zo'n 4 tabellen.
+
+Met de huidige treindienst, die bestaat
+uit sneltrein (Intercity) en stoptrein,
+is een reisplanner al een allerhandigst
+hulpmiddel. Met de toekomstige
+treindienst, die vervat is in Rail 21
+'Sporen naar een nieuwe eeuw', met
+daarin de Eurocity/ Intercity, het
+InterRegio snelnet en het Agglo-/
+regionet zal een computer ondersteunde
+reisplanner onontbeerlijk zijn...
+[WOEF]
+
+HOBBYSCOOP NIET OP HCC-DAGEN
+
+Van lange termijn planning is bij
+NOS-radio geen sprake meer. Sinds de
+nieuwe directie optreedt is de toekomst
+van Hobbyscoop onzeker. Dat is helaas
+de reden dat voor het eerst sinds de
+HCC-dagen gehouden worden Hobbyscoop
+niet met een stand zal zijn
+vertegenwoordigd.
+
+Er zijn wel plannen te over. Een nieuw
+en zeer snel Basicode vertaal programma
+voor de PC ligt in het verschiet. Deze
+super-update kan echter door de interne
+strubbelingen ook niet snel worden
+verwezenlijkt.
+
+Als u nog mee wil doen aan onze opstel
+wedstrijd: 'Schrijf een leuke of gekke
+herinnering op die te maken heeft met
+Hobbyscoop', dan is het nu wel de
+gelegenheid. Wie weet, misschien
+bestaat het toch vrij unieke radio
+programma over enige tijd wel niet
+meer. U kunt een prachtige telefoon,
+een pennenset of een VVV-bon winnen met
+een anekdote die op Hobbyscoop slaat.
+
+En sorry voor onze afwezigheid op de
+HCC dagen.....
+
+KNIPUITBON TELETEKST DECODER
+
++++++++++++++++++++++++++
++   NOS - HOBBYSCOOP    +
++ Inl teletekst decoder +
++                       +
++   Postbus  1200       +
++  1200  BE  HILVERSUM  +
++++++++++++++++++++++++++
+
+Met behulp van bovenstaande bon kunt u,
+geheel vrijblijvend, nadere informatie
+aanvragen over de Teletekst Decoder van
+Komfa. De decoder zal tijdens de
+HCC-dagen in Utrecht gedemonstreerd
+worden op een van de C.U.C.-stands.
+

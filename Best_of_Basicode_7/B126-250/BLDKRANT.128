@@ -1,0 +1,270 @@
+128, zon 21 feb '88
+
+AMSAT-OSCAR 10
+
+Begin februari bleek dat alle systemen aan
+boord van OSCAR 10 helemaal uitvielen zodra
+de satelliet in de schaduw van de aarde kwam.
+Zo kwam de satelliet op 6 februari in een
+ongedefinieerde toestand terecht, waarbij het
+mode B relais uitgeschakeld was en het General
+Beacon zinloze PSK-signalen uitzond. Gelukkig
+reageerde de boordcomputer toch weer op een
+reset-kommando van een van de kommando
+stations. Daardoor kwamen de boordsystemen
+weer in de normale rusttoestand, waarbij het
+mode B relais is ingeschakeld en het baken
+alleen maar een ongemoduleerde draaggolf
+uitzendt. Uit een en ander bleek dat de
+batterij in de satelliet niet in staat was
+veel lading vast te houden. AMSAT heeft
+daarop besloten dat OSCAR 10 vanaf 7
+februari helemaal niet meer mag worden
+gebruikt. Vermoedelijk zal de energie
+voorziening in de satelliet begin mei weer
+voldoende op sterkte komen om mode B opnieuw
+in gebruik te kunnen nemen. OSCAR 10 komt nu
+zo'n 50 minuten per omloop in de schaduw van
+de aarde. Begin mei zal dit zijn
+teruggelopen tot 30 minuten per omloop.
+
+UoSAT-OSCAR 11
+
+De nieuwe programmatuur voor de Digitalker
+spraaksynthesizer in OSCAR 11 blijkt prima
+te werken. Tijdens de internationale
+Noordpool Ski-expeditie, vanaf begin maart,
+zal de Digitalker van OSCAR 11 elke 2
+minuten in bedrijf zijn om informatie te
+geven over de positie van de ski-ers.
+
+FUJI-OSCAR 12
+
+Vanaf midden februari is het gebruiksschema
+voor OSCAR 12 als volgt gepland:
+mode JA van 20-2 0827 UTC tot 22-2 0435 UTC.
+Op 25 februari wordt tussen 0355 en 0557 UTC
+de speciale telemetrie programmatuur in de
+boordcomputer geladen, die wordt gebruikt bij
+mode JD bedrijf. In die periode is mode JD
+alleen in bedrijf als digipeater. Vervolgens
+luidt het gebruiksschema als volgt:
+mode JD van 25-2 1005 UTC tot 26-2 0706 UTC,
+mode JD van 27-2 0815 UTC tot 28-2 0720 UTC,
+mode JD van  1-3 0531 UTC tot  2-3 0436 UTC,
+mode JD van  3-3 0545 UTC tot  4-3 0451 UTC,
+mode JD van  5-3 0153 UTC tot  6-3 0301 UTC.
+Daarna is mode JA weer in bedrijf gedurende
+enkele dagen. Alle telemetrie rapporten zijn
+welkom bij de JARL.
+
+AMSAT-Phase 3C
+
+Het ziet er nu naar uit dat de lancering van
+ARIANE 401, vlucht V22, met onder andere
+Phase 3C aan boord, niet zal plaatsvinden
+voor 1 juni 1988. Phase 3C is helemaal gereed
+voor verscheping. Veel hangt af van de
+volgende ARIANE lancering, vlucht V21, in de
+avond van 4 maart. Hierbij moet een ARIANE 3
+raket twee kommunikatie satellieten in een
+hoge elliptische baan brengen.
+
+NADERE INFORMATIE OVER RUDAK
+
+De 24 cm uplink ontvanger zal over een bereik
+van +/- 7,5 kHz scannen, op zoek naar uplink
+signalen. Men hoeft dus geen rekening te
+houden met korrektie van doppler verschuiving.
+Dit scannen gebeurt met een snelheid van 120
+ms per scan. Voor het detekteren en
+demoduleren van een ontvangen signaal heeft
+het systeem zo'n 100 ms nodig. Hiermee zal
+men rekening moeten houden bij het instellen
+van de TNC (AXDELAY). De optimale waarde zal
+worden doorgegeven door RUDAK zelf maar zal
+waarschijnlijk niet veel afwijken van de
+waarde die gewoonlijk wordt gebruikt bij de
+'aardse' packet radio verbindingen. Omdat de
+gebruikers van RUDAK elkaar niet kunnen horen
+is hier sprake van een echt ALOHA
+kommunikatie systeem. Dit betekent onder
+andere dat het maximale rendement van het
+kanaal 18 % bedraagt. Daarom heeft men
+gekozen voor een 6 maal hogere uplink
+transmissie snelheid (2400 Bits/s) dan de
+downlink snelheid (400 Bits/s). Overigens
+kan, voor speciale toepassingen, de downlink
+snelheid worden omgeschakeld naar 1200
+Bits/s met NRZI codering, zodat de downlink
+dan compatible is met de downlink van mode
+JD van OSCAR 12. Gewoonlijk zullen de
+gebruikers 2400 Bits/s BPSK signalen naar
+RUDAK zenden op 24 cm en 400 Bits/s Bi-Phase
+PSK signalen ontvangen op 70 cm. De downlink
+signalen zullen veel lijken op de PSK
+signalen die door de bakenzenders van OSCAR
+10 werden uitgezonden, toen zijn
+boordcomputer nog goed funktioneerde.
+
+POLAIRE SKI-EXPEDITIE
+
+De expeditie start rond 1 maart vanaf Kaap
+Arktichesky op het eiland Severnaya Zemlya
+en moet 90 tot 100 dagen later eindigen bij
+Kaap Columbia op Ellesmere Island. De tocht
+gaat over een afstand van 1730 km, eerst 980
+km van Rusland naar de noordpool en dan 750
+km van de pool naar Canada. Het is een
+wetenschappelijke expeditie waarbij allerlei
+experimenten op vele terreinen worden
+uitgevoerd. Alle apparatuur en materialen
+worden meegenomen door de ski-ers. Zes maal
+tijdens de tocht zullen levensmiddelen worden
+'gedropped' door vliegtuigen. Alleen in
+noodgevallen zullen de vliegtuigen landen.
+De kommunikatie wordt verzorgd met amateur
+radio apparatuur.
+
+WEERSATELLIETEN
+
+Op 30 januari is de nieuwe Russische
+weersatelliet METEOR 2-17 gelanceerd. Zijn
+Catalogusnummer is 18820 en zijn
+internationale aanduiding is 88-005A. De
+satelliet bevindt zich in eenzelfde soort
+baan als zijn voorgangers en zendt APT
+beelden uit op 137,300 MHz. (Aldus PA0DLO).
+
+PTT VOORJAARS-EXAMEN
+
+De voorjaarsexamens 1988: radiotechniek en
+voorschriften 1 en 2 worden op 13 april 1988
+te Utrecht afgenomen. Opnemen en seinen van
+morsetekens met snelheden van 8 en 12 woorden
+per minuut worden in de periode van 16 mei
+tot 26 mei 1988 te Utrecht afgenomen.
+Aanmelden voor de voorjaarsexamens is
+mogelijk tijdens werkdagen tot 1 februari
+1988. Het aanmelden dient telefonisch te
+geschieden bij het examen-sekretariaat voor
+radiozendamateurs te Groningen, tel. 050 -
+608029. De aanmeldingen worden schriftelijk
+bevestigd waarbij de kandidaten tevens het
+desbetreffende examenprogramma en de
+machtigings voorwaarden krijgen toegezonden.
+Via dit telefoonnummer kunnen desgewenst
+nadere inlichtingen worden verstrekt.
+De kosten voor deelneming aan een der
+examens bedragen fl 62.50.
+
+WEGEN INFORMATIE MODULE
+
+De afgelopen weken zijn in vijftien
+wegrestaurants zuilen geplaatst met daarin
+een groot beeldscherm voor WIM (Wegen
+Informatie Module), een geheel Nederlandse
+vinding. De informatie voor Wim wordt
+geleverd door KNMI, ANWB en de Algemene
+Verkeerscentrale Driebergen. De informatie
+wordt via een centrale computer doorgegeven
+aan de diverse wegrestaurants. De
+programmatuur voor dit systeem is geheel in
+C geschreven met in de terminals Basic
+programma's. Vanuit de centrale Rijsbergen-
+Hazeldonk aan de snelweg Breda- Antwerpen
+wordt alle informatie verzameld en direct
+doorgegeven aan de terminals. Transmissie
+snelheid is 1200 baud, daarbij gebruik
+makend van kieslijnen die rechtstreeks
+aangesloten zijn.
+
+Vanuit de centrale kan men per zuil de
+beelden selecteren en in een caroussel
+plaatsen. Omdat de beelden via Cept-normen
+zijn opgebouwd ontstaat er een mooi beeld.
+Doordat er buffers in dit systeem zijn
+ingebouwd kan men bij storingen direct
+zien waar de problemen zich voordoen en
+zonodig ingrijpen.
+
+Binnen enkele maanden hoopt men tachtig
+van deze zuilen geplaatst te hebben.
+De ANWB zal de zuilen ook gaan gebruiken
+voor de bekende oproepen voor vakantiegangers.
+Met Verkeer en Waterstaat wordt overlegd
+hoe op de verkeersborden een aanduiding kan
+worden geplaatst waar de informatiepunten
+gevestigd zijn.
+
+STERRENGIDS 1988
+
+Vijftig jaar geleden verscheen de eerste
+Sterrengids. In het voorwoord schrijft de
+toenmalige voorzitter van de NVWS,
+Dr. J. van der Bilt, dat de gids bedoeld
+is om hen 'die liefde voor de sterrenkunde
+gevoelen en belang stellen in de wondere
+pracht van de nachtelijke hemel en de
+veelheid der waar te nemen verschijnselen,
+een nauwgezette gids' te zijn. Ditzelfde
+geldt nog steeds en dus ook voor deze
+nieuwe Sterrengids.
+
+De gids is door de jaren heen wel sterk
+veranderd. Er staat veel meer informatie
+in en de sterrenkaartjes en foto's
+zijn talrijker.
+In de Sterrengids 1988 wordt speciaal
+aandacht besteed aan:
+- de sterrenhemel op het zuidelijk halfrond
+- de ster Wega, standaard A-type met
+planeetsysteem?
+- de beroemde supernova 1987A
+- het waarnemen met het blote oog
+- het tekenen van de maan
+Ook kunt U in de gids vinden:
+- tips voor het waarnemen en fotograferen
+van verschijnselen.
+- grote, ronde sterrenkaarten voor iedere
+maand
+- informatie over de Zon, de Maan, alle
+planeten, tientallen planetoiden, te
+verwachten kometen, meteoorzwermen etc.
+
+Bestelwijze Sterrengids 1988: in de winkel
+te koop voor f 34,50 of door overmaking van
+dit bedrag op giro 3191545 t.n.v. Stichting
+De Koepel in Utrecht, onder vermelding
+van Sterrengids '88.
+
+ADVERTENTIES
+
+In Beeldkrant 100 schreven we dat we van plan
+waren om NIET-COMMERCIELE advertenties in de
+Beeldkrant te gaan opnemen. Bij deze krijgt U
+alvast een voorproefje. Graag uw reacties,
+zowel vraag als aanbod, naar: Postbus 1200,
+1200 BE Hilversum. Ook horen we graag van U
+of dit initiatief U bevalt.
+
+KORTE-GOLF ONTVANGER
+
+Marcel Rohrs biedt een korte-golf ontvanger
+aan, type National HRO, ongeveer 40 jaar oud.
+Het is een zeer mooi ding, met voeding en
+authentieke veldsterkte meter. De vraagprijs
+bedraagt 225 gulden. Bel Marcel, 030-761085.
+Ook heeft hij een CBM 128 te koop. Hiervan is
+de vraagprijs 500 gulden.
+
+SATELLIET TV-SET
+
+Lion Keezer biedt een complete Satelliet TV
+set ter overname aan, bestaande uit een
+draaibare schotel 1,5. + 1,7bd LNC, TUNER,
+alsmede voet en polarmount. Alles bij elkaar
+vraagt hij hiervoor f2900,-. Bel 02523-75436
+of 06-5211631, of schrijf naar Postbws 99,
+2211 AB Noordwijkerhout. Tevens gevraagd:
+Atari 1040stf software ter ruiling.

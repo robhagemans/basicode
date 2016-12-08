@@ -1,0 +1,259 @@
+94, woe 30 sep '87
+
+SPREEKUUR
+
+Voor wie het nog niet wist: op maandagochtend
+houden we spreekuur. U kunt ons dan bereiken
+op 035-773015. Dat nummer is alleen bruikbaar
+van 10-12 uur. Daarna gaat het weer op slot,
+dus houdt u zich alstublieft aan die tijden.
+
+De R-5000 ontvangertest die we publiceerden
+was geheel in het Engels gesteld, dat is waar.
+Maar het ging nog om een model uit een
+voorserie. Er was een meneer die zich erg
+opwond over het feit dat de test niet in het
+Nederlands was. Jammer maar helaas. Het
+ontbreekt ons aan tijd om zo'n verhaal van
+onze onvolprezen collega Jonathan Marks van de
+Wereldomroep te vertalen. Bovendien ging het
+slechts om een niet definitieve versie van de
+ontvanger. Een winkelapparaat is in ons bezit.
+En over ongeveer een maand valt de test - gewoon
+gesproken - te verwachten. Wist u overigens dat
+alle tunes die wij gebruiken door Jonathan
+Marks bedacht zijn?
+
+AMSAT-OSCAR 10
+
+Eind september bereikt de zonnehoek voor OSCAR
+10 de ongunstigste waarde. De zonnepanelen
+ontvangen dan ook vrijwel geen zonlicht,
+zodat alle systemen in de satelliet helemaal
+uitgevallen zijn. In oktober en november wordt
+de zonnehoek geleidelijk weer beter. Men hoopt
+dat het energie systeem in de satelliet eind
+november weer voldoende op sterkte is gekomen
+om het mode B relais station opnieuw in gebruik
+te kunnen nemen gedurende enkele maanden.
+
+UoSAT-OSCAR 11
+
+Op donderdag 17 september heeft de UoSAT-unit
+van de University of Surrey nieuwe
+programmatuur voor het Digital Communications
+Experiment in de boordcomputer van OSCAR 11
+geladen tijdens een passage over Europa. De
+gebruikers van het DCE hebben nu extra
+mogelijkheden gekregen. De nieuwe programmatuur
+zal nog enkele weken worden getest, vooral
+tijdens passages over Europa. Men moet er
+daarom op rekenen dat OSCAR 11 regelmatig zal
+afwijken van zijn normale gebruiksschema.
+
+FUJI-OSCAR 12
+
+Omdat het energie voorzienings systeem in OSCAR
+12 onder gedimensioneerd is raakt de satelliet
+al gauw overbelast. De zonnepanelen blijken
+te weinig energie te leveren om de batterij
+voldoende opgeladen te houden. Het mode JD
+systeem, dat de meeste energie verbruikt, kan
+daarom niet langdurig ingeschakeld worden
+gehouden. Midden september moest dan ook
+regelmatig worden afgeweken van het geplande
+gebruiksschema. Men vreest dat dit wel vaker
+zal moeten gebeuren. Overigens zijn er in Japan
+toch al moeilijkheden rond de commando stations
+als gevolg van menings verschillen tussen JAMSAT
+en de JARL. Daardoor is het vaak onduidelijk
+wat er nu wel of niet gaat gebeuren met OSCAR
+12. Hopelijk zijn deze 'politieke' problemen
+spoedig opgelost.
+Inmiddels worden in Japan voorbereidingen
+getroffen voor de lancering van het tweede
+vluchtmodel van JAS 1, dat parallel met het
+eerste vluchtmodel, nu OSCAR 12, is gebouwd.
+Deze JAS 1B is in feite een exakte kopie van
+OSCAR 12. In verband met de power budget
+problemen van OSCAR 12 wil men nu toch eerst
+de nodige verbeteringen aanbrengen in JAS 1B,
+voordat deze satelliet kan worden gelanceerd
+in februari 1989.
+
+RADIO SPOETNIK 10/11
+
+In augustus en september is vrijwel steeds
+mode AK van RS10 in bedrijf geweest. Volgens
+UA3CR zullen voorlopig het gebruik van mode
+AK en de bijbehorende ROBOT's nog wel zo
+doorgaan in verband met allerlei proeven van
+de Russische commando stations. Het gebruik
+van mode T is dus voorlopig niet te verwachten
+en er is ook nog geen vast gebruiksschema.
+RS5 en RS7 zijn nu buiten bedrijf.
+
+AMSAT-PHASE 3C
+
+De lancering van ARIANE vlucht V19 op 16
+september is een groot sukses geworden. Deze
+ARIANE 3 raket bracht twee communicatie
+satellieten in een geo stationaire baan om
+de aarde: ECS 4 en AUSSAT K3. Na deze geslaagde
+lancering wil de ESA weer acht of negen
+ARIANE's per jaar gaan lanceren. In de
+komende maanden zijn de vluchten V20 en V21
+te verwachten. Als zich hierbij geen
+problemen voordoen kan vlucht V22, de eerste
+testvlucht van een ARIANE 4, worden uitgevoerd
+in de eerste week van februari 1988.
+Bij deze vlucht van ARIANE 401 moeten drie
+satellieten in een geo-stationaire baan om de
+aarde worden gebracht: Meteosat-P2, AMSAT-Phase
+3C en Panamsat.
+In september is in AMSAT kringen de lanceer
+campagne voor de nieuwe AMSAT-Phase 3C
+gestart. Dit betekent onder andere dat in
+verscheidene publikaties artikelen over Phase
+3C zullen verschijnen. Ook wil AMSAT door
+middel van het Phase 3C verzekerings projekt
+geld gaan inzamelen waarmee de satelliet kan
+worden verzekerd. Details hierover zal AMSAT
+spoedig publiceren.
+Van AMSAT-DL komen de volgende, voorlopige,
+gegevens over al de relais stations in
+AMSAT-Phase 3C. Het mode B relais station, dat
+veel lijkt op dat van OSCAR 10, heeft de
+uplink frekwenties tussen 435,425 en 435,575
+MHz en de downlink frekwenties tussen 145,825
+en 145,975 MHz. Het daarbij behorende General
+Beacon komt op 145,8125 MHz en het Engineering
+Beacon op 145,975 MHz. Mode JL is een combinatie
+van een mode L relais en een of zelfs twee mode
+J relais stations. Mode L heeft de uplink
+frekwenties tussen 1269,325 en 1269,575 MHz en
+de downlink frekwenties tussen 435,725 en
+435,975 MHz. Het mode L General Beacon zit op
+435,650 MHz en het Engineering Beacon op
+435,675 MHz. Tegelijk met mode L kan mode J
+in bedrijf zijn. In principe zitten de uplink
+frekwenties van mode J tussen 145,820 en
+145,860 MHz maar eventueel kan men ook gebruik
+gaan maken van de band tussen 144,440 en
+144,480 MHz. De mode J downlink frekwenties
+vindt men tussen 435,930 en 435,970 MHz, dus
+overlappend met mode L. Al deze lineaire
+relais stations zijn inverterend, dus LSB in
+de uplink geeft USB in de downlink. Het niet
+lineaire mode S relais station is eigenlijk
+bedoeld voor het relayeren van een enkel
+FM-signaal. Het mode S uplinkbandje zit tussen
+435,610 en 435,640 MHz en het downlink bandje
+tussen 2400,695 en 2400,725 MHz. Het
+bijbehorende mode S baken komt op 2400,640
+MHz. De digitale RUDAK-repeater krijgt
+waarschijnlijk als uplink frekwentie 1269,725
+MHz en als downlink frekwentie 435,725 MHz en
+is zo'n 15 kHz breed.
+
+BALLONVLUCHTEN
+
+Ballonvluchten met amateur-radio:
+-De ballonvlucht van PA0SON vanuit Nijmegen
+op 27 september is een groot sukses geworden.
+De ATV-beelden en 2 m signalen waren in
+Nederland, Belgie en Duitsland goed te
+ontvangen.
+-De Engelse AMSAT-UK ballonvlucht, met 2 m
+apparatuur aan boord, is gepland op 5 of 6
+oktober. Aldus onze nijvere en accurate
+correspondent Nico PA0DLO.
+
+VLIEGVEILIGHEID
+
+Sinds kort is er een nieuw vliegveiligheids
+magazine op de markt. Dit magazine is een
+initiatief van de Stichting Vliegveiligheid.
+Medewerking aan dit nieuwe blad wordt
+verleend door de Rijks Luchtvaart Dienst,
+het Korps Rijkspolitie, Dienst Luchtvaart
+en de Koninklijke Nederlandse Vereniging
+voor Luchtvaart.
+Het nieuwe blad heeft tot doel door
+middel van actuele informatie bij te
+dragen tot een grotere vliegveiligheid
+in de ruimste zin van het woord. Het
+magazine is alleen via de uitgever te
+bestellen: Uitgeverij Novum, postbus
+101, 3870 CC Hoevelaken. Telefoon
+03495 - 37222.
+
+HIFI VIDEO GIDS
+
+De nieuwe 'Welke' is uit. Het blad besteedt
+enorm veel aandacht aan Hifi, TV en
+Video. De 'Welke' gids is een wegwijzer
+bij aankoop van duurzame produkten. Het
+blad geeft een massa aan informatie in de
+vorm van adviezen, ideeen en een zo breed
+mogelijk overzicht van wat er zoal te koop is.
+Wat deze gids niet doet is een bepaald
+merk aan- of afraden. In het nieuwste nummer
+wordt b.v. aandacht besteed aan de DAT
+(digital audio taperecorder: al in gebruik
+bij Hobbyscoop). Verder Compact-disc spelers,
+tuners en ontvangers, maar ook hoe u extra
+zuinig kunt zijn op uw oude grammofoonplaten
+en welk pick-up element uw platen met
+zachtheid behandelt. Niet alleen de nieuwste
+apparatuur krijgt dus de volle aandacht.
+De prijs van de nieuwste 'Welke' gids is
+f 4,95.
+
+TEST CD'S
+
+Philips is op de markt gekomen met een
+drietal CD-platen waarmee men de belangrijkste
+elektrische parameters van elk type
+CD-speler kan testen. De testplaten zijn
+vooral bestemd voor service-technici
+apparaatbouwers en fervente hobbyisten.
+De testplaat SBC 421 bevat audiofrequenties
+met verschillende geluidssterkten, waarmee
+men alle functies van een cd-speler
+kan testen. De plaat kan echter ook als
+signaalbron worden gebruikt voor het
+controleren van hi-fi apparatuur en het
+beoordelen van het akoestisch gedrag
+van luidspreker systemen. Zo biedt de
+plaat de mogelijkheid de aansluiting van
+het linker- en rechterkanaal op
+juistheid te controleren en een aantal
+belangrijke parameters te meten.
+Voorbeelden hiervan zijn de harmonische
+vervorming, de signaal/ruis-verhouding,
+de frequentie doorlaat, de overspraak
+tussen links en rechts, de vervorming
+door intermodulatie, de faselineariteit
+en natuurlijk het toerental. Afgezien
+van een signaal voor 'rose ruis', zijn
+alle signalen op de plaat digitaal opgenomen,
+zodat men een hoge meet nauwkeurigheid
+kan bereiken.
+Van de dubbel-CD SBC426 en SBC426A bevat
+de eerstgenoemde plaat signalen voor het
+afregelen van het laser-uitgangs signaal
+en de hoogte van de draaitafel, maar ook
+voor het controleren van de de-emfase
+schakeling. Op de andere plaat, die in
+principe hetzelfde is, zijn bovendien
+krassen, stofdeeltjes en vingerafdrukken
+gesimuleerd. Deze zijn zo gedimensioneerd
+dat ze geen hoorbare gevolgen mogen hebben.
+De onderbrekingen - de krassen - lopen
+in lengte op van 400 tot 900 /um, terwijl
+de stofdeeltjes worden gepresenteerd door
+zwarte stippen met een diameter van 300
+tot 800 /um. De platen zijn niet goedkoop:
+enige honderden guldens. Te verkrijgen via
+Philips technische dienst.

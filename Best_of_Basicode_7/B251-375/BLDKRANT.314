@@ -1,0 +1,300 @@
+314, maa 30 apr '90
+
+MIKROSYSTEEM
+
+(universeel in- en uitvoersysteem),
+door Henk Scholten, deel 1. Uitgave
+Elektuur, 234 pag., ISBN 9070160722,
+prijs f 49,50.
+Niet altijd beschikken, vooral de
+oudere, computers over een universeel
+I/O systeem, waarmede het contact met
+de buitenwereld kan worden onderhouden.
+Een PC doet dit via de parallelle
+Centronics poort of via de seriele RS
+232 poort. Maar er zijn nog genoeg
+systemen die daarover niet kunnen
+beschikken. Daaronder kan men ook de
+toch al wat modernere MSX computers
+rekenen, die niet over een ingebouwde
+seriele uitgang beschikken. En er zijn
+er nog meer. Daar moet wat aan gedaan
+worden. Mikrosysteem (R) wil hierin
+voorzien. Het bestaat uit een
+busdefinitie, busbuffers om de meest
+uiteenlopende microcomputers te kunnen
+aansluiten en een aantal in- en
+uitvoerkaarten. Daarmede kunnen de
+meeste, zowel analoge als digitale, in-
+en uitvoer- funkties worden
+gerealiseerd.
+
+Het boek begint met een inleiding, hoe
+het met de verschillende systemen
+werkt. Daarbij wordt aandacht gewijd
+aan computers, die met een CPU van de
+8080, Z80, 6800(0) of 6502 reeksen zijn
+uitgerust. We noemen o.a. de IBM-PC en
+AT en klonen, de MSX, de Atari ST, de
+Commodore VIC-20 en C-64, de Acorn BBC
+en Electron, de Sinclair ZX 81, ZX
+Spectrum en QL, de Tandy Color
+computer, de Amstrad CPC, etc. Het zou
+te ver voeren om de opbouw van het I/O
+systeem hier verder te bespreken. Wel
+moet worden opgemerkt, dat veel
+zelfwerkzaamheid vereist wordt.
+Gegevens over de hardware en de
+software worden in ruime mate
+aangedragen. Het lijkt me niet direkt
+geschikt voor de absolute beginneling,
+maar voor de serieuze knutselaar is het
+een uiterst nuttig boek, daar het de
+mogelijkheid opent om vanuit een groot
+aantal computers te communiceren met
+een grote verscheidenheid aan
+signaalgevers en -verwerkers. Dit
+eerste deel beschrijft hoe de computer
+geschikt gemaakt kan worden voor het
+ontvangen en het verzenden van de
+signalen, die o.a. kunnen worden
+verwerkt door de in deel 2 beschreven
+schakelingen. Het eerste deel is echter
+ook zelfstandig te gebruiken. Nadere
+informatie is te vinden in het
+Microlink Bulletin Board, tel.
+038-223345 op 300/1200/2400 Bd, 8N1
+(V21/V22/V22bis). (Met dank aan Pieter
+Vijlbrief)
+
+PC-TOOLS VERSIE 6.0
+
+De nieuwste versie (6.0) van een van de
+meest populaire software programma's
+voor microcomputers, PC-Tools, wordt
+door het bedrijf 06-Software als eerste
+in Nederland uitgeleverd. Het programma
+beschikt over een groot aantal nieuwe
+faciliteiten, waaronder een
+automatische schijfreparatie module.
+Daarnaast bevat het programma
+uitgebreide back-up mogelijkheden met
+specifieke tapestreamer aansturing, een
+krachtige bestandszoeker en
+ondersteuning van faxkaarten. Tevens is
+PC-Tools uitgebreid met een verbindings
+mogelijkheid met schootcomputers
+(LapLink) en een verbeterde
+interfacing. Vooral de reparatie
+mogelijkheden zijn in het nieuwe pakket
+uitgebreid. Met het commando Diskfix
+worden schijven automatisch nagekeken
+en gerepareerd. Deze functie is zeer
+krachtig; in minder dan zes seconden
+worden bijvoorbeeld op een 32 Mb schijf
+meer dan duizend controles uitgevoerd.
+(Uit: Computerworld)
+
+MS-DOS MET CYRILLISCH SCHRIFT
+
+Microsoft heeft versie 4.01 van het
+besturings systeem MS-DOS nu ook in het
+Russisch op de markt gebracht. Het is
+de eerste keer dat Microsoft een eigen
+produkt in het Russisch vertaalt. Een
+internationaal team van software-
+deskundigen, waaronder leden van het
+Russisch/ Amerikaanse bedrijf Dialogue,
+hebben het besturings systeem uitgerust
+met het Cyrillisch schrift. Het
+programma is tevens voorzien van
+Cyrillische fonts. Amerikaanse bronnen
+binnen Microsoft melden dat het bedrijf
+overweegt ook bepaalde applicatie
+pakketten op de Russische markt te
+brengen. Over welk pakket besprekingen
+plaatsvinden is niet meegedeeld. (Uit:
+Computerworld)
+
+PC VOOR BLINDEN
+
+Tijdens de onlangs gehouden
+manifestatie 'Leven en Handicap 1990'
+werd een PC voor blinden gepresenteerd.
+Dit hulpmiddel bestaat uit een
+draagbare PC die verbonden is met een
+zogenaamde 'navigator', een machine die
+computertaal omzet in braille. Boven op
+de navigator bevindt zich een 40
+karakters brede blindenstrip die het de
+blinde gebruiker mogelijk maakt alle
+tekst en aanwijzingen op het computer
+beeldscherm in braille te volgen.
+
+Op dit moment is het apparaat te leen
+via het GAK voor blinden die
+ingeschreven zijn in de invaliden
+wetgeving. (Uit: Computable)
+
+MILIEUPRIJS
+
+Op 10 april j.l. tijdens de Milieubeurs
+in Arnhem werd door de provincie
+Gelderland de eerste milieuprijs
+uitgereikt aan Digital Equipment Parts
+Center in Nijmegen. Digital krijgt de
+prijs vanwege de milieucampagne die
+sinds september 1989 in het bedrijf
+wordt gevoerd. De campagne resulteerde
+onder meer in de aanschaf van een
+nieuwe wasmachine die computer-
+onderdelen met water en zeep kan
+schoonmaken in plaats van met milieu-
+onvriendelijke stoffen, en het
+beschikbaar stellen van bedrijfs
+fietsen voor intern verkeer. Het
+instellen van de milieuprijs is bedoeld
+om de milieuzorg in het bedrijfsleven
+te stimuleren. (Uit: Computable)
+
+MODERNISERING PS/2 LIJN IBM
+
+Met zes modellen breidt IBM de PS/2
+reeks aan de bovenkant uit. Om de
+computers veelzijdiger te maken zijn de
+nieuwste typen ook voorzien van Small
+Computer System Interfaces (SCSI),
+waarmee allerlei veeleisende
+randapparatuur kan worden aangesloten.
+IBM doet dat door een nieuw ontworpen
+SCSI adapterkaart die op de Micro
+Channel (MCA) bus van de firma past.
+
+De nieuwe PS/2-ers zijn vloermodellen.
+Er worden vier nieuwe versies van de
+PS/2 model 80/386 en twee versies van
+PS/2 model 65-SX uitgebracht. Ze zijn
+voorzien van zeer snelle vaste schijven
+(toegangstijd tot 12,5 milli seconde)
+met een capaciteit tot 320 Mb. In elk
+systeem is plaats voor vier vaste
+schijven. De daarmee te bereiken
+capaciteit maakt ze onder andere zeer
+geschikt als server in een lokaal
+netwerk, als technisch werkstation en
+voor CAD/CAM en Desk Top Publishing
+toepassingen.
+
+16- EN 32-BIT SCSI-BUS
+
+Op de nieuwe 16-bit Micro Channel
+SCSI-bus kunnen zeven verschillende
+randapparaten worden aangesloten, zoals
+printers, plotters, vaste schijven en
+CD-ROM schijven. Van de MCA adapters
+voor SCSI gebruik zijn twee versies
+beschikbaar: een 16-bit en een 32-bit
+versie. De 16-bit SCSI adapter heeft
+een verwerkings snelheid van 8,3
+Megabyte per seconde. De 32-bit Micro
+Channel SCSI adapter met cache heeft
+een 512 Kb buffer geheugen. Dat zorgt
+ervoor dat het systeem geheugen geheel
+gebruikt kan worden voor het draaien
+van de toepassing. Deze adapter heeft
+een verwerkings snelheid van 16,6 Mb
+per seconde.
+
+Voor deze beide adapters is DOS 3.3 of
+hoger of het OS/2 Operating System
+nodig. AIX ondersteuning (Unix in de
+IBM-versie) zal in een toekomstige
+versie voorzien zijn. De nu
+aangekondigde PS/2 modellen zijn
+allemaal uitgerust met de 16-bit SCSI
+adapter. Zowel de 16-bit als de 32-bit
+SCSI adapter kan ook worden toegepast
+in de bestaande PS/2 modellen met Micro
+Channel Architectuur. De 32-bit
+adapterkaart is beschikbaar als een
+extra.
+
+65-SX MODELLEN
+
+De 65-SX modellen zijn ontworpen rond
+de 16 MHz 80386SX microprocessor van
+Intel en hebben 2 Mb RAM aan boord. Het
+geheugen kan worden uitgebreid tot 16
+Mb. Net als bij model 80 zijn er acht
+posities voor uitbreidings kaarten,
+waarvan er een gebruikt wordt door de
+SCSI adapter. De vier modellen van de
+PS/2 model 80 hebben de complete
+32-bits 386 besturings chip. Standaard
+beschikken ze over 4 Mb RAM, dat kan
+worden uitgebreid tot 16 Mb.
+
+CD-ROM
+
+Steeds belangrijker voor de PS/2-reeks
+is de CD-ROM eenheid. Het is een
+invoereenheid voor het inlezen van
+informatie die op CD wordt aangeleverd.
+Juist dankzij de SCSI aansluiting wordt
+de grote stroom informatie van CD-ROMs
+toegankelijk. De CD-ROM wordt in
+toenemende mate gebruikt voor de
+toegang tot grote bestanden die veel
+geraadpleegd en weinig gewijzigd
+worden, zoals woordenboeken,
+jurisprudentie, encyclopedieen,
+handleidingen voor programmeurs en
+medische handboeken.
+
+DRAAGBARE PS/2 P70
+
+De PS/2 model P70-031 is de derde
+draagbare uitvoering van de PS/2 model
+P70. Het systeem beschikt over een 16
+MHz 80386 processor en 2 Mb geheugen.
+De 30 Mb vaste schijf heeft een
+gemiddelde toegangstijd van 19
+milliseconden. Het systeem is voorzien
+van een VGA plasma beeldscherm dat 16
+tinten weergeeft. Er kan ook een extern
+kleuren beeldscherm op worden
+aangesloten. De PS/2 model P70-031
+heeft twee Micro Channel aansluitingen
+en weegt 8,8 kilo.
+
+TIENDE EUROPE SOFTWARE BEURS
+
+De beurs Europe Software vindt van 29
+tot en met 31 mei plaats in de
+Jaarbeurs te Utrecht. De organisatoren
+hebben dit jaar -de beurs wordt voor de
+tiende keer georganiseerd- gekozen voor
+een thematische opzet.
+
+Aandachts gebieden die onder meer aan
+de orde zullen komen zijn relationele
+database systemen, netwerken en het
+besturings systeem Unix. Daarnaast
+wordt aandacht geschonken aan
+specifieke branche- automatisering bij
+onder andere banken en in de
+gezondheidszorg.
+
+Het totale expositie programma bestaat
+uit systeemsoftware, toepassings
+programmatuur, specifieke
+branche-software, cad/cam systemen,
+hardware in combinatie met software,
+programmatuur diensten, computer-
+service en voorlichting. De
+organisatoren verwachten dat ruim 200
+bedrijven aan de beurs zullen
+deelnemen. Naast inzendingen uit
+Europese landen hebben ook Amerikaanse
+leveranciers ingeschreven.
+

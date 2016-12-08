@@ -1,0 +1,289 @@
+160, zon 3 juli '88
+
+MINICURSUS PRATEN MET FIDO-NOS DEEL 2
+
+Vandaag het tweede en laatste deel van deze
+mini-cursus. De auteur Pieter Vijlbrief
+behandelt hierin het feitelijke contact met
+onze databank, en geeft aan waar je als
+beginnend gebruiker overal op moet letten.
+
+FIDO-NOS
+
+Nu wordt het tijd om het eens 'in het echt' te
+gaan proberen. Zet het modem in de stand, die
+door de databank wordt herkend: 300 Bd,
+75/1200 Bd (Viditel instelling), 1200 Bd of
+2400 Bd en stel ook het programma daarop in.
+Bel nu: 035-45395 en wacht op de fluittoon.
+Als het al niet automatisch is gebeurd, dan nu
+het modem overschakelen van 'telefoon' naar
+'modem'. Daarna een paar keer op de return
+(=enter) toets drukken om FIDO te laten weten
+op welke baudrate hij zich moet instellen. Als
+alles goed gaat komt nu het introductie scherm
+in beeld. (Als u later wat meer geroutineerd
+bent, kunt u dit met 'CTRL-C' onderbreken om
+tijd te winnen). Dan wordt gevraagd:
+Your FIRST name: (uw voornaam:)
+Antwoord dan met NOS <return>
+Dan volgt: Your LAST name: (uw achternaam:)
+Antwoord dan met HOBBYSCOOP <return>
+De computer vraagt dan: Nos Hobbyscoop (Y,n):
+Antwoord dan met Y <return>
+Dan komt: Wait..... en Password:
+Geef dan als Password: BASICODE <return>
+U heet dus Nos Hobbyscoop en heeft een
+codewoord 'Basicode'. Dit geeft u toegang tot
+FIDO-NOS (op de andere FIDO's werkt dit niet!)
+en u kunt daar nu enige tijd rondsnuffelen.
+Allereerst krijgt u een uitgebreid bulletin te
+zien, dat later ook kan worden bekort met
+'CTRL-C'. Dan volgen de 'Main Commands'.
+
+DE COMMANDO's
+
+MAIN Commands
+M)sg-Section       F)ile-Section
+G)oodbye           A)ns-Questionaire
+B)ulletin          C)hange
+U)ser-List         E)ditorial
+V)ersion
+
+Door het intikken van de eerste letter van
+het commando (en return) bepaalt men zijn
+keuze. Met E van editorial komt er een
+uitgebreid overzicht van Fido op het scherm.
+Wilt u lid worden van de HCC, druk dan op de
+A, wilt u het introductie bulletin nog eens
+zien, dan moet u B indrukken. De C kunt u
+beter met rust laten en achter de U staan alle
+geregistreerde gebruikers van dit Fido. De V
+levert weinig interessants op, maar de G moet
+u altijd gebruiken als u op een nette manier
+de verbinding met Fido wilt opheffen. Laten we
+beginnen met M <return>.
+
+HET BERICHTENGEBIED
+
+FIDO-NOS komt dan terug met:
+Msg Area #1: Hobbyscoop radio
+berichtengebied, maar het kan ook een van de
+andere gebieden zijn. U kunt er 7 bekijken,
+maar eerst moet u de vraag beantwoorden:
+Want to check for mail? (Y,n):
+Aangezien u toch geen post verwacht,
+antwoordt u met N <return>, er komt dan een
+nieuw menu:
+
+HET MESSAGE AREA MENU
+
+A)rea-Change  L)ist headers  R)ead
+E)nter        I)ndex         G)oodbye
+M)ain-menu
+Msg: A L R E I G M or ? for Help:
+
+Als u A <return> ingeeft, dan krijgt u een
+lijst te zien van de beschikbare berichten
+gebieden. U kunt dan met een nummer (en
+return) uw keuze bepalen. U kunt dit iets
+sneller doen, door commando's te combineren.
+Geeft u in het begin al: A 12 (return), dan
+komt u direct in het Teleac berichtengebied.
+
+BERICHTEN LEZEN
+
+Bij het openen van een berichtengebied wordt
+vermeld, hoeveel berichten er aanwezig zijn.
+Met het commando R 5 <return> begint men te
+lezen bij bericht nummer 5 (vergeet de spatie
+tussen de R en het nummer niet!). Het volgende
+bericht verschijnt met N <return> (van Next).
+Als u genoeg berichten gezien heeft, kunt u
+stoppen met Q <return> (van Quit). Vergeet dit
+nooit, anders gebeuren er vreemde dingen.
+
+OVERZICHT VAN ONDERWERPEN
+
+Met L 1 <return> krijgt u een overzicht van
+alle 'Koppen' van de berichten, zodat u snel
+kunt zien, of er iets interessants voor u
+bijzit. Zoja, dan zijn die te lezen met R
+'nummer' <return>.
+
+ZOEKEN NAAR EEN ONDERWERP
+
+Met I 'sleutelwoord' <return> kunt u het
+gebied snel doornemen op zoek naar een bepaald
+onderwerp of een persoon. Zoekt u bijv. iets
+over Basicode, type dan: I basicode <return>
+en er wordt naar dat onderwerp gezocht in de
+koppen van de berichten. Deze komen dan op het
+scherm. Noteer de nummers en met R 'nummer'
+<return> kunt u ze dan rustig bekijken.
+
+INGEVEN VAN BERICHTEN
+
+Als u na Q <return> weer in het Menu bent,
+kunt u met E <return> een bericht ingeven, dat
+bestemd is voor een bepaalde persoon of voor
+iedereen. Let er dan goed op, dat de naam van
+de geadresseerde goed is gespeld (eventueel
+tevoren de Userlist raadplegen!), anders wordt
+het bericht waarschijnlijk nooit gelezen. Maak
+hier alleen gebruik van, als u werkelijk iets
+zinnigs heeft mede te delen!
+
+KIEZEN VAN EEN ANDER GEBIED
+
+Ga eerst met Q <return> naar het Menu en dan
+met A 'nummer' <return> naar een ander gebied.
+Dit is ook te combineren met Q A 'nummer'
+<return>. Wilt u echter overgaan naar het
+bestanden gebied, geef dan Q M F <return> om
+via het hoofdmenu naar het bestandengebied te
+gaan, of als u bijvoorbeeld naar het
+Hobbyscoop programma gebied wilt, geef dan Q M
+F A 3 <return>, vergeet de spaties tussen de
+afzonderlijke commando's niet!
+
+HET BESTANDENGEBIED
+
+Of zoals dat heet 'File Area'. Er zijn ook
+weer 7 'areas' beschikbaar. '1' Bevat de
+Hobbyscoop tekst files (o.a. de Beeldkranten),
+'2': Radio Netherlands Files, '3': Basicode
+programmagebied, enz. Een overzicht krijgt u
+via A <return>, net als in het
+berichtengebied. U kunt met F <return> zien
+welke bestanden er in het gebied aanwezig
+zijn. Staat er iets interessants bij, dan kunt
+u hem op het scherm krijgen met T 'naam' (van
+type) <return>, de naam precies zo spellen als
+in de lijst staat. Als het goed gaat, stopt de
+presentatie als het scherm vol is en gaat met
+een 'Y' weer verder. Vaak heeft uw
+communicatie programma de mogelijkheid om de
+printer te laten meelopen. Als alles is
+getoond, komt er weer een keuzemenu.
+
+DOWNLOADEN
+
+Als uw programma er geschikt voor is, kunt u
+bestanden in uw computer laden en eventueel
+opslaan op schijf of tape. Met D <return> van
+download krijgt u het keuzemenu met manieren
+waarop dit moet gebeuren. Als uw programma
+geen bijzondere voorzieningen kent, kies dan A
+<return> van Ascii. Beter gaat het met XMODEM
+of KERMIT e.d., omdat dan op fouten wordt
+gecontroleerd. Wilt u alle finesses van FIDO
+leren kennen, haal dan uit file-area '5' de
+file FIDOUSER.NED binnen (27 kB groot), het
+is een gebruiksaanwijzing voor FIDO.
+
+BASICODE PROGRAMMA'S LADEN
+
+Heeft u een bepaald programma gemist, dan kunt
+u het op de beschreven manier uit file-area
+'3' binnenhalen. U moet er dan wel zelf de
+voor uw computer geldende subroutines voor
+zetten. Soms zult u die moeten intikken, maar
+mogelijk kunt u 'mergen'. Voor PC gebruikers
+geldt, dat het ingelezen programma ook moet
+worden voorzien van voor PC-basic verplichte
+spaties, daarvoor bestaat een programma
+(CONVERT.EXE). Kijk ook in file area '3' en
+'5' naar informatie over subroutines.
+
+UPLOADEN
+
+Als gastgebruiker kunt u alleen een berichtje
+in het message gebied zetten, echter u kunt
+geen bestanden in Fido zetten. Dit gaat wel,
+als u HCC-lid bent en met uw eigen naam en
+codewoord kunt inloggen. Na controle van uw
+lidmaatschapsnummer krijgt u dan een 'hoger
+privilege', u mag dan meer.
+
+FIDO VERLATEN
+
+Bent u in het berichtengebied, dan moet u
+eerst met Q <return> terug naar het gewone
+commando niveau en dan kunt u met G <return>
+van 'goodbye' Fido verlaten. Bent u in het
+file gebied, dan is G <return> voldoende. Doe
+dit altijd op deze manier, dan weet Fido
+zeker, dat hij de verbinding met u kan
+opheffen.
+
+TENSLOTTE
+
+In deze uit twee delen bestaande minicursus is
+een beknopte handleiding gegeven voor het
+'Praten met FIDO-NOS'. Al doende leert men,
+probeer verbinding te krijgen met onze
+databank, maar de belangstelling is zeer
+groot. Vaak zult u de in-gesprek toon horen.
+Wij wensen u veel succes toe! (bedankt Pieter!)
+
+SOFTWARE BESPREKING PLANPERFECT
+
+Wij ontvingen op de Hobbyscoop redaktie een
+demonstratie-kopie van het in het nederlands
+vertaalde spreadsheet programma PLANPERFECT 3.0
+ter bespreking. Voor iemand, die regelmatig
+met de Wordperfect tekstverwerker te maken
+heeft, is dit programma uitermate geschikt,
+omdat het, voor zover van toepassing, dezelfde
+functietoetsen in combinatie eventueel met de
+Alt, Shift of Control-toets gebruikt als de
+tekstverwerker, zodat men gauw thuis is in de
+bediening van dit programma. Bovendien laat
+het zich goed combineren met teksten, die met
+behulp van Wordperfect zijn gemaakt en
+omgekeerd kunnen ook in de tekstverwerker
+gedeelten uit het spreadsheet worden
+opgenomen. Het totale werkblad beslaat, als
+voldoende geheugen beschikbaar is, 256
+kolommen en 8192 rijen. Het programma is door
+iedereen te gebruiken, die met spreadsheets
+moet werken, maar toch vooral gericht op de
+professionele gebruiker, mede gezien de vrij
+forse prijs, die ervoor moet worden betaald.
+De bijgeleverde (nederlandse) handleiding is
+zeer uitvoerig. De Index wijst goed de weg. De
+hoofdstukken bevatten telkens een samenvatting
+die vooral dient om snel het behandelde in het
+geheugen terug te roepen. Een duidelijk
+overzicht van de toepassings mogelijkheden is
+in de handleiding opgenomen. Op de zeven
+diskettes, waarop het programma wordt
+aangeleverd, treft men drivers aan voor een
+groot assortiment printers en plotters, maar
+ook kan men aan de hand van het uitvoerige
+manual, zelf elke willekeurige printer
+installeren. Alle gebruikelijke (grafische-)
+beeldschermen worden ondersteund. Zoals men
+van een product uit de 'stal' van Wordperfect
+kan verwachten, kan de tekst op vele manieren
+naar eigen wens worden afgedrukt. De gegevens
+zijn uitwisselbaar, behalve met Wordperfect,
+ook met spreadsheet programma's, zoals
+Mathplan 2.1, Lotus 1-2-3 en kunnen eveneens
+als een dBase- en DIF-bestand of als een DOS-
+tekstbestand worden opgeslagen. Op deze plaats
+zou het te ver voeren alle eigenschappen van
+dit mooie spreadsheet programma uitvoerig op
+te sommen. Kort samengevat, het werkt op een
+MS-DOS (versie 2.0 of hoger) computer met
+minimaal 256 kB RAM (of 320 kB als u van plan
+bent bit-mapped graphics te gebruiken). Bij
+voorkeur gebruike men een groter geheugen!
+Verder dient men te beschikken over twee disk-
+drives, waarvan er een een vaste schijf of een
+RAM-disk mag zijn. Voor een Single-User versie
+bedraagt de prijs f 995.-- excl. BTW. Tevens
+werd aangekondigd, dat een bijbehorende
+database, DataPerfect ook zal worden geleverd.
+(met dank aan Pieter Vijlbrief).

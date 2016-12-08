@@ -1,0 +1,361 @@
+477, maa 24 feb '92
+
+WINDOWS EN WINDOWS-NT EERDER KLAAR
+
+Midden tweede kwartaal '92 moet er een
+nieuwe Windows versie zijn, heeft
+Microsoft beloofd. Versie 3.1 gaat hij
+heten en hij wordt de opvolger van de
+succesvolle, eerste 3.0 versie waarvan
+zo'n 9 miljoen pakketten zijn verkocht
+in '91. Hij maakt nauwelijks meer
+gebruik van DOS. Windows, dat begonnen
+is als een grafische werkomgeving,
+ontwikkelt zich meer en meer tot een
+compleet Operating System. En dat is
+waarachtig niet toevallig. Microsoft
+voelt de hete adem van concurrent IBM
+in de nek, die van plan is rond maart
+met OS/2 2.0 te komen. Dit is een
+wezenlijk verbeterde DOS, die alle
+mogelijkheden haalt uit moderne PC's,
+met microprocessors als de Intel i286,
+i386 en i486.
+
+OS/2 is ooit begonnen als een
+samenwerkings project met Microsoft.
+Die besloot echter op een dag dat de
+grafische werkomgeving Windows eerder
+door het publiek zou worden
+geaccepteerd en liet op slag OS/2
+vallen. Uit de nu naar buiten gebrachte
+cijfers en feiten blijkt dat topman
+Bill Gates (de op een na rijkste man
+ter wereld inmiddels) zeer
+waarschijnlijk de voor zijn bedrijf
+juiste strategie heeft uitgezet.
+
+STANDAARD
+
+Er zijn in korte tijd 5000 programma's
+voor deze werkomgeving gemaakt,
+waardoor Windows een feitelijke
+standaard is geworden. Om die situatie
+uit te buiten heeft men bij Microsoft
+besloten om alles wat met Windows te
+maken heeft voorrang te geven. Daardoor
+komt de wezenlijk verbeterde Windows
+3.1 versie nu al halverwege het 2e
+kwartaal van dit jaar uit.
+
+Er zijn dus alle redenen voor 's
+werelds grootste software bureau om van
+Windows 3.1 een gelikte, zwaar geteste
+versie te maken, die minder problemen
+gaat geven dan de vorige, meer gedurfde
+versie. Hij moet dan ook sneller zijn
+en men heeft voorspeld dat hij nog weer
+gebruikers vriendelijker zal zijn.
+
+'REAL MODE' EXIT
+
+De grote verbeteringen zijn het gevolg
+van het besluit om de 'real mode' te
+laten vallen. De real mode kon alleen
+worden benut door gewone, kleine XT's
+computers, die toch al vaak niet
+voldoende geheugen aan boord hebben of
+te weinig grafische mogelijkheden. Al
+konden ze Windows 3.0 wel draaien, dan
+nog bleek men alleen over het fraaie
+grafisch uiterlijk ervan te kunnen
+beschikken. Verder werd de computer er
+alleen maar tergend langzaam van en dus
+onbruikbaar.
+
+Microsoft heeft de nutteloosheid van de
+XT-mode ingezien en Windows 3.1 alleen
+ingericht voor computers met een i286
+of beter computerhart en flink wat
+geheugen. Deze microprocessors kennen
+een wezenlijk ander geheugenbeheer dan
+de XT-machines. Als gevolg daarvan
+heeft men de complexe overschakeling
+tussen beide systemen uit Windows
+verwijderd. Dat geeft een aanzienlijke
+prestatie verbetering en een reeks
+problemen minder.
+
+FRAAIE FILE MANAGER
+
+Ook andere belangrijke verbeteringen
+zijn aangebracht. De file manager, het
+programma onderdeel waarmee men de
+harddisk onderhoudt, documenten wist of
+kopieert, oogt beter en werkt
+aanzienlijk makkelijker. Een kijkje in
+Word for Windows 2.0 (van Microsoft
+zelf) of in Norton's Desktop toont hoe
+een en ander eruit gaat zien. Slepen
+van programma's of groepen van de ene
+naar de andere directory is een
+peuleschil, net als bij de Apple Mac.
+
+TRAPLOZE LETTERS
+
+Ook de Printmanager en het hele afdruk
+proces zal wezenlijk anders worden. Dit
+heeft te maken met de nieuwe letters
+die in Windows zijn opgenomen: Outline
+letters, van het 'True Type' type. Deze
+fonts zien er zowel op het scherm als
+op de printer erg goed uit. Ze zijn ook
+traploos te gebruiken van pakweg 4 tot
+128 punts, een soort krantekop letters.
+
+Verder gebruikt men nu een betrekkelijk
+eenvoudig programma voor het aansturen
+van de printer. Het is ook niet meer
+nodig om eerst een tekstverwerker te
+openen om een document te kunnen
+printen. In de file manager module zit
+nu een 'print document' commando.
+Daarnaast kan men het document gewoon
+naar het printer-ikoon slepen. De
+print-module doet de rest, buiten alle
+andere programmatuur om.
+
+MULTI-MEDIA EN GELUID
+
+Toegevoegd zijn ook nieuwe programma
+modules voor toekomstige ontwikkelingen
+op multimedia- en geluidsgebied. Het is
+nog niet helemaal duidelijk wat deze
+nieuwe modules gaan doen. Wel is helder
+dat men een 'Key caps' programma
+toevoegt, waarmee men uit het alfabet
+weinig gebruikte letters of tekens kan
+selecteren. Voorts een 'object
+packager': een iconen-editor, zodat men
+het scherm helemaal naar eigen inzicht
+kan inrichten. Bij dit alles is ook het
+uiterlijk van Windows onder handen
+genomen. Bevallen de kleuren of
+patronen niet, dan kan men die
+eventueel ook naar eigen inzicht
+wijzigen.
+
+CTRL-ALT-DELETE
+
+Het befaamde 'als niets meer helpt
+commando' is afgevangen. Er komt een
+DOS-scherm waarin nuchter wordt
+geconstateerd dat deze fameuze
+toetscombinatie is gebruikt. 'Geen
+goede manier om een programma te
+beeindigen', waarschuwt het scherm. Met
+Esc komt men weer terug in de module
+van Windows waarmee men bezig was, met
+Enter sluit men alleen die toepassing
+die eventueel vastgelopen was en kan
+men rustig verder werken met Windows.
+'Unrecoverable Application Error', een
+nogal gevreesde mededeling, moet
+voortaan wegblijven en helemaal de
+kreet die verzoekt om eerst maar alles
+te sluiten, op te bergen op schijf (als
+dat nog kan) en de computer opnieuw te
+starten omdat hij instabiel is
+geworden!
+
+NIET WACHTEN MET WINDOWS
+
+Niemand hoeft overigens op het
+verschijnen van de nieuwe versie te
+wachten. Iedereen kan nu vast aan het
+bestaande pakket wennen: sinds 1
+februari worden alle 3.0 aankopen
+gratis door Microsoft vervangen door
+3.1, zodra deze versie gereed is in de
+loop van dit jaar. Het nieuwe Setup
+programma maakt daarbij zorgeloos
+installeren mogelijk. Maar bedenk wel
+dat u een grotere computer nodig hebt,
+met een i286 of (liefst) een hogere
+processor. 2 Mb is het minimum aan
+geheugen, 4 Mb is beter bij versie 3.0.
+Verder geldt: VGA is toch wel minimaal
+vereist. (Hans G. Janssen)
+
+HANDLEIDING VENTURA PUBLISHER 3.0
+
+Auteur   : Miriam van der Have
+Uitgever : Pim Oets (460 pag.)
+ISBN     : 90-72260-21X
+Prijs    : f 69,- (Bfr 1380)
+
+Of ik die 38 blz. per uur haal weet ik
+niet, maar ook mijn treinreizen
+kenmerken zich door boeken lezen.
+Vooral zo'n boek als dit maakt geheid
+coupe- discussies los. Waarom ik VP
+gebruik, WP kan dat toch ook allemaal?
+Ja, je kunt de Tour de France ook op
+een Sparta-zonder fietsen. In Ventura
+Publisher (VP) kun je niet
+tekstverwerken of tekenen, maar het is
+een programma waarmee je vooraf
+ingetikte teksten en vooraf getekende
+plaatjes kunt samenvoegen tot een
+gelikt boek of magazine. Met haast
+oneindige mogelijkheden kan de tekst
+worden opgemaakt. Zo kun je onder
+andere lettertype, witruimten, koppen,
+voetnoten, kopteksten, voetteksten en
+lijnen definieren. En dat niet zo
+ongeveer, maar exact op de punt
+nauwkeurig. Ook kan VP inhoudsopgaven
+en indices fabriceren. Plaatjes worden
+keurig netjes uitgesneden en tussen (of
+door) de tekst geplaatst. Al deze
+eigenschappen maken het voor een
+argeloze beginner al gauw een bos
+waarin de bomen niet meer te zien zijn.
+Deze handleiding vormt een uitstekende
+start om de bomen weer te zien.
+
+DRIE DELEN
+
+Het boek beschrijft de GEM-versie van
+VP versie 3.0 en is onderverdeeld in 3
+delen: een les-deel, typografie, en een
+naslagwerk.
+
+In het eerste deel wordt met
+stap-voor-stap aanwijzingen de globale
+werking van VP uitgelegd. De
+fundamenten van VP, zoals de frames en
+tags, worden geintroduceerd. Daarbij
+wordt dankbaar gebruik gemaakt van de
+bij VP meegeleverde voorbeeld-
+bestanden.
+
+TYPOGRAFIE
+
+In het typografie-deel wordt de
+beginner wegwijs gemaakt met de
+achtergrond van Desktop Publishing
+(DTP), het drukkerij-wereldje. Wist je
+trouwens dat het A0-formaat 1 vierkante
+meter is? Ook vak-idote zaken als 5
+soorten spaties, 3 soorten streepjes en
+6 maateenheden komen aan de orde.
+Gelukkig is er de appendix met
+verklarende woorden. Handig is dat een
+aantal algemeen geldende regels uit het
+drukkers bestaan worden uitgelegd, die
+bij het opmaken een beetje houvast
+(muisvast) geven.
+
+Alles verder over alinea's, het
+uitvullen, aanpassen van
+regelafstanden, interlinies en het
+afbreken van woorden. Dat is overigens
+ook niet altijd eenvoudig. Wat dacht je
+van het woord zijkanaal? Dat kan worden
+zij-kanaal, maar ook zijk-anaal. Aan
+een aantal zaken mocht best een extra
+krabbeltje worden gewijd, zoals het
+user-afbreek bestand. Het wordt alleen
+even aangestipt. VP-grapjes als de
+extra grote letter aan het begin van
+een verhaal, opsomming-stippen en de
+ongelofelijke mogelijkheden met de kop-
+en voet-teksten worden aan de hand van
+voorbeelden bekeken.
+
+SCHAAR EN LIJM
+
+Ook de illustraties, zeer belangrijk
+voor een publicatie, worden opgevoerd.
+Ze kunnen worden onderscheiden in
+zogenaamde bitmap en vector plaatjes.
+Die laatste vormen geen probleem voor
+VP. Alle soorten lijnfiguren kunnen
+worden geladen. Het probleem zit 'm in
+die bitmap plaatjes, meestal worden
+daarin veel kleuren of grijstinten
+gebruikt. VP kent daarvoor speciale
+dither methoden om de prenten af te
+drukken. Maar als het om professioneel
+drukwerk gaat, geeft het boek de wijze
+raad om, bij het invoegen van zwart-wit
+foto's, dit gewoon te doen met de
+ouderwetse schaar-lijm combinatie.
+
+Tot slot van het typografie- boekdeel
+komt het verwerken van een complete
+publicatie aan bod. Het combineren van
+losse hoofdstukken, aanmaken en
+aanpassen van indices en de
+inhoudsopgave, en tenslotte afdrukken
+wordt duidelijk gemaakt.
+
+NASLAGWERK
+
+In het derde en laatste deel,
+naslagwerk, worden alle menu's en
+dialogen van de GEM- versie beschreven.
+Alle opties worden stuk voor stuk
+behandeld. Zeer handig, omdat de
+help-mogelijkheid in de GEM-versie
+nauwelijks soelaas biedt. Een krachtig
+en ingewikkeld hulpmiddel, de
+formule-editor, vormt een hoofdstuk
+apart. De opdrachten en speciale codes
+worden weergegeven in tabellen, en de
+opties worden uitgelegd. Goed werk voor
+de wis- en natuurkundigen onder ons.
+
+CONCLUSIE
+
+Het boek is bij uitstek geschikt voor
+de beginner die met Ventura meer
+aandacht wil besteden aan het uiterlijk
+van zijn/haar scriptie of verenigings
+blaadje. Telkens neemt Miriam je weer
+aan het handje om stap voor stap VP
+zover te krijgen dat het doet wat je
+wilt. Daarbij worden geregeld handige
+tips gegeven. De bulk in het boek
+draait om de (snelle) GEM-versie van
+VP. De verschillen met de
+Windows-versie worden telkens in de
+zijlijn of in een aparte alinea
+behandeld. Wel moet je altijd VP in de
+aanslag hebben, sommige zaken worden
+wel uitgelegd, maar je moet het gewoon
+uitproberen, wil je het echt snappen.
+Ook het naslagwerk is prima verzorgd.
+Als je in VP een menu-keuze niet snapt,
+sla je gewoon de bladzijde open die
+daarover gaat en je hebt gelijk
+verwijzingen naar elders in het boek.
+
+De wat gevorderden, die een goed
+naslagwerk zoeken, doen er beter aan
+nog wat verder in de kast van de
+boekenshop te kijken. Zo komen de
+voorbereidingen in de tekstverwerker
+niet ter sprake. Je kunt namelijk van
+te voren al een aantal zaken in de
+tekstverwerker voorbereiden, zoals
+koppen (@tag = ). Dingen als Bold,
+Italics en ankers worden niet
+behandeld en staan ook niet in een
+appendix. Al met al een goede
+handleiding VP, compleet met cursusje
+DTP, en niet echt duur.
+
+Cees Mechielsen
+

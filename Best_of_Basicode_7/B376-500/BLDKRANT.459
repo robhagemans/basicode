@@ -1,0 +1,316 @@
+459, maa 09 dec '91
+
+DATACOMMUNICATIE VOOR BEGINNERS (1)
+
+Wie voor het eerst op communicatie-
+avontuur gaat, krijgt het niet
+makkelijk. Het heeft meestal heel wat
+voeten in de aarde voordat men
+'ingelogd' is en informatie uit een BBS
+kan binnenhalen. Om de beginnende modem
+gebruikers het leven wat makkelijker te
+maken, publiceerde het tijdschrift
+PC-Active in de november-uitgave
+(nummer 32) een verhelderend artikel,
+waarin de belangrijkste begrippen op
+het gebied van datacommunicatie uiteen
+worden gezet. De PC-Active redactie
+verleende ons toestemming het artikel
+in de Beeldkrant over te nemen. Vanwege
+de lengte zal dat in drie delen
+gebeuren. Vandaag deel 1, met daarin
+aandacht voor o.a. baudrates, half- en
+full- duplex verbindingen en het begrip
+pariteit.
+
+INLEIDING
+
+Datacommunicatie heeft de laatste jaren
+een hoge vlucht genomen. Via modem en
+telefoonlijn kan men rondkijken in
+databanken, elektronisch winkelen en
+thuisbankieren. Het uitwisselen van
+gegevens via bulletin boards, de
+zogeheten E-mail, is uitgegroeid tot
+een belangrijk alternatief voor een
+brief of telefoontje. Via de
+elektronische post kunnen zelfs hele
+programma's worden binnengehaald. Er
+bestaan tegenwoordig honderden goede en
+volwaardige BBS-en die informatie over
+allerlei onderwerpen bevatten.
+
+Het aansluiten van de pasverworven
+modem op de seriele poort is meestal
+niet zo moeilijk; de meeste moderne
+PC-modems zijn zelfs intern, als kaart,
+en hebben die seriele poort al
+ingebouwd zitten. Het installeren van
+het communicatie- programma is ook niet
+moeilijk, maar voordat er iets als:
+
+CONNECT 1200
+
+op het scherm verschijnt, moeten er nog
+heel wat hindernissen worden genomen.
+Als beide computers niet gelijk zijn
+afgestemd, is er geen zinnige
+communicatie mogelijk. Daarover gaat
+dit artikel, waarmee we hopen u op weg
+te helpen. Wat begrip omtrent zaken
+zoals baudrate, pariteits-bits en
+bestands protocollen geeft u een
+vliegende start. Maar ook als u al een
+modem met succes gebruikt is het
+prettig om te weten wat nu de
+verschillen tussen de diverse
+mogelijkheden precies inhouden.
+
+KRAAKJES OP DE LIJN
+
+Het telefoonnetwerk is ontworpen voor
+het overbrengen van de menselijke stem,
+niet voor het overdragen van
+gedigitaliseerde informatie. Wanneer we
+informatie versturen via de
+telefoonlijn, kunnen we er nooit
+helemaal zeker van zijn dat deze ook
+foutloos zal worden ontvangen. Er moet
+dus een soort foutbewaking
+plaatsvinden, waarbij fouten in de
+informatie overdracht worden
+gedetecteerd - en zo mogelijk ook
+gecorrigeerd.
+
+Bij het overzenden van tekst kan het
+gebeuren dat er door ruis of door een
+storing op de telefoonlijn vreemde
+tekens op het scherm verschijnen of een
+stuk tekst helemaal wegvalt. Nu is
+tekst meestal wel te reconstrueren. Het
+is vaak meteen duidelijk waar de
+foutjes zijn opgetreden. Als we er
+niets meer van kunnen bakken, kunnen we
+de verzender vragen een gewraakte zin
+via een gewone spraaklijn nog eens voor
+te lezen of een bepaald fragment nog
+eens te verzenden. Maar met een
+programma ligt dat anders: 1 enkel fout
+bitje kan het totaal ruineren. Het
+programma draait niet meer of, erger
+nog, schijnbaar goed. Proberen de fout
+te achterhalen in lange reeksen
+hexadecimale getallen is een ware
+crime, zo niet geheel onmogelijk.
+Daarom zijn er methodes bedacht om te
+voorkomen dat er bij het verzenden van
+bestanden fouten insluipen.
+
+BAUDRATE
+
+Communicatie met andere systemen brengt
+de nodige configuratie- perikelen met
+zich mee. Voordat er een verbinding tot
+stand kan worden gebracht, zal de
+gebruiker worden gevraagd parameters
+als aantal databits, stopbits, baudrate
+en pariteit in te stellen. Een van de
+eerste zaken waarover beide partijen
+het eens moeten worden, is de snelheid
+waarop gewerkt gaat worden. Deze wordt
+de baudrate genoemd, naar de Franse
+onderzoeker Baudot.
+
+In het gewone telefoonverkeer is er
+voor het versturen van informatie
+slechts 1 lijn beschikbaar. De acht
+bits waaruit elke byte bestaat kunnen
+niet tegelijk worden verstuurd, maar
+zullen eerst in een lange reeks achter
+elkaar geplaatst moeten worden. Daar
+zorgt de seriele poort in de PC voor.
+De modem zet de bitreeks om in toontjes
+(analoge signalen) die over de lijn
+worden verstuurd. Dit proces wordt
+moduleren genoemd. Men zegt ook wel dat
+het signaal op een draaggolf wordt
+gezet. Bij het ontvangen van informatie
+worden de toontjes weer teruggezet in
+digitale bitreeksen, wat demoduleren
+wordt genoemd. Het woord 'modem' is een
+afkorting van modulatie/ demodulatie.
+De snelheid waarmee informatie over de
+lijn kan worden verstuurd, hangt af van
+de kwaliteit van modem en verbinding.
+De snelheid waarmee de toontjes elkaar
+opvolgen wordt uitgedrukt in bits per
+seconde of baud. Bij 1200 bits per
+seconde worden er 120 tekens verstuurd:
+een teken van zeven of acht bits, een
+start- en een stopbit en eventueel een
+pariteitsbit. We komen hierop straks
+terug.
+
+De kwaliteit van modems is zo vooruit
+gegaan dat 2400 baud goed blijkt te
+werken. De oude 300 baud standaard
+komen we bijna niet meer tegen, 1200
+baud is tegenwoordig wel het minimum.
+Een BBS beschikt vaak over auto- detect
+modems, die zich aanpassen bij de
+modem- snelheid van de opbeller. Een
+modem wordt meestal aangeduid met de
+maximale snelheid die hij aankan. Veel
+modems zijn geschikt voor de snelheden
+300, 1200 en 2400 baud, ook wel
+aangegeven met de CCITT normen V21, V22
+en V22bis. Een speciale baudsnelheid
+wordt gehanteerd door Videotex
+systemen. Hierbij kan worden ontvangen
+op 1200 baud en worden verstuurd op 75
+baud of omgekeerd. Dit systeem wordt
+ook wel V23 genoemd.
+
+VERWARRING
+
+De term baud wordt vaak in plaats van
+bits per seconde gebruikt, maar beide
+drukken toch niet precies hetzelfde
+uit. Met bits per seconde (bps) drukken
+we de datasnelheid uit. De baudrate is
+de modulatie- snelheid, het aantal maal
+dat de draaggolf verandert. Wanneer de
+modem voor elk aangeboden bit 1 element
+over de transmissielijn stuurt zijn
+beide gelijk. Het is echter mogelijk
+meerdere bits in 1 element te coderen
+en dus te versturen. De datasnelheid is
+dan hoger dan de modulatie- snelheid.
+Of er meer bits in een element passen
+hangt af van de modulatie techniek. Bij
+fase-modulatie bijvoorbeeld kan elk
+element twee bits bevatten. Zo kunnen
+bij een baudrate van 600 toch 1200 bits
+per sec. worden verstuurd. Met
+quad-amplitude modulatie kunnen er
+zelfs 2400 bps worden verzonden.
+
+Amerikaanse modems werken volgens de
+Bell normen en zijn niet met de CCITT
+normen uitwisselbaar; deze Bell modems
+werken met andere draaggolf
+frequenties. Sommige modems beschikken
+echter over de optie om Bell tonen te
+genereren.
+
+HALF- EN FULL-DUPLEX
+
+De telefoonlijn kan op verschillende
+manieren worden gebruikt. Bij de oude
+half-duplex verbindingen maakte men
+beurtelings gebruik van 1 lijn. We
+moeten hierbij denken aan verbindingen
+waarbij de partijen steeds 'over'
+moeten zeggen, alvorens de ander aan
+het woord te laten. Bij full-duplex
+dataverkeer hoeven de stations niet op
+elkaar te wachten als ze iets te
+versturen hebben. Beide partijen staan
+tegelijk op de lijn. De beschikbare
+frequentieband wordt daartoe opgedeeld
+in twee kanalen, waarbij elke partij
+zijn eigen frequentie heeft. Zo is het
+mogelijk tegelijk in twee richtingen te
+werken. Bij een 1200 baud full-duplex
+verbinding zendt het station dat de
+verbinding heeft opgeroepen op 1200
+Hertz in het lage kanaal en ontvangt
+het op 2400 Hertz in het hoge kanaal.
+Het andere station zendt dan natuurlijk
+op 2400 Hertz en ontvangt juist op 1200
+Hertz.
+
+Half-duplex brengt lange turn-around
+tijden met zich mee; de kanalen moeten
+steeds worden omgeschakeld van zenden
+naar ontvangen en omgekeerd. Oudere
+modems kunnen vaak op lage snelheid in
+full-duplex mode werken, maar moeten
+voor de hogere snelheden terugvallen
+naar half-duplex. Dergelijke modems
+zijn in feite niet meer van deze tijd:
+zoiets moet men gewoon vervangen. Met
+de huidige prijzen is dat eigenlijk ook
+geen bezwaar. Moderne protocollen
+werken full-duplex. Bij full-duplex
+hoeft niet te worden gewacht totdat een
+pakket binnen is, gecheckt en al of
+niet in orde gemeld, waarop de zender
+dan weer het volgende pakket kan
+versturen.
+
+ECHOPLEX
+
+Bij een full-duplex verbinding kan
+echoplex worden gebruikt. Hierbij wordt
+elk verzonden teken door het ontvangen
+station terug gestuurd. Het kan dan
+worden vergeleken met het eerder
+verzonden teken. Met echoplex kan de
+gebruiker bij het intoetsen van tekens
+direct constateren of het teken goed is
+aangekomen. In het communicatie-
+programma moet de 'local echo' dan
+worden uitgeschakeld, omdat anders de
+tekens dubbel op het scherm
+verschijnen. Een bezwaar van deze
+methode is dat er ook op de terugweg
+iets mis kan gaan, hetgeen overbodige
+fouten geeft. Ook echoplex is een
+tegenwoordig achterhaalde techniek.
+Gelukkig maar, want een transmissie
+kost op die manier wel twee keer zoveel
+tijd. Alleen bij verbindingen met grote
+computers wil men dit nog wel eens
+tegenkomen.
+
+PARITEIT
+
+De pariteit is in de computerwereld een
+veel gebruikt principe om de
+integriteit van data te bewaken. De PC
+gebruikt het bijvoorbeeld om intern het
+RAM-geheugen te controleren. Naast elke
+acht bits per byte wordt er nog een
+negende bit bijgehouden, dat een
+controle op die byte vormt. Het
+principe is in wezen eenvoudig. Bij de
+meest gebruikte even pariteit telt de
+computer alle enen die in een byte zijn
+opgeslagen. Als de som even is, dan
+wordt het pariteits bit 0. Is het
+resultaat van de optelling oneven, dan
+wordt het pariteits bit 1.
+
+Wanneer de gegevens worden teruggelezen
+wordt opnieuw het pariteits bit
+berekend en vergeleken met de
+opgeslagen waarde. Mochten die twee
+niet overeen komen, dan geeft het
+systeem een foutmelding en moet worden
+herstart. Het gevreesde 'Parity error -
+System halted'. Zo wordt voorkomen dat
+er met verminkte gegevens wordt
+gewerkt.
+
+Ook bij het uitwisselen van gegevens
+tussen computers kan de pariteit worden
+gebruikt. De zendende partij geeft dan
+met elk teken een extra
+foutcontrole-bit mee. De gevolgen bij
+een gevonden fout zijn echter minder
+rigoreus; de computer slaat niet op
+slot.
+
+(wordt vervolgd)
+

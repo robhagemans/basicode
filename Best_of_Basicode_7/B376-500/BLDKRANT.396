@@ -1,0 +1,302 @@
+396, maa 25 mrt '91
+
+MICROSOFT GAME SHOP
+
+door Michel Halverson en David Rygmyr,
+met Microsoft QuickBASIC Interpreter en
+bijbehorende software (4 diskettes),
+490 pag., uitgave Microsoft, prijs
+f99,--.
+Men gaat in eerste instantie uit van
+een aantal in QuickBasic (verder te
+noemen: QB) geprogrammeerde spelletjes,
+voorzien van (CGA) graphics, die in
+veel opzichten kunnen worden gewijzigd
+en worden aangepast aan de smaak van de
+gebruiker. Om de wijzigingen te kunnen
+doorvoeren, moet men natuurlijk wel de
+weg weten te vinden in QB. Dit noodt
+tot het bestuderen daarvan. Samen met
+het meegeleverde boek 'LEARN BASIC NOW'
+zal dat zeker te doen zijn. Want het
+boek vormt tevens een leergang voor het
+programmeren in QB. Het is, uiteraard,
+heel vakkundig opgezet. Als men het
+boek doorwerkt en de voorbeeld
+programma's bestudeert (ze zijn
+hoofstuks gewijs op de bijgeleverde
+diskettes te vinden), zal men
+uiteindelijk aardig in QB kunnen
+programmeren.
+
+Waarom QB? Bij de software, die vaak
+met een PC wordt meegeleverd, treft men
+ook een Basic aan, meestal zal dit
+Basica of GWBasic zijn. Deze Basics
+zijn heel aardig, maar er kunnen nog
+meer mogelijkheden aan worden
+toegevoegd. Dat is o.a. in QB gedaan,
+waardoor het een krachtig stuk
+gereedschap is geworden, waarmee bijna
+alles te programmeren is, wat men zou
+wensen. Maar QB kan, in zijn volledige
+versie, nog meer, het kan de
+programma's compileren tot zelfstandig
+werkende eenheden, die het gelijktijdig
+in het geheugen hebben van de Basic,
+waarin ze werden gemaakt, overbodig
+maakt. Daardoor kunnen de zelfstandig
+geworden programma's ook makkelijk bij
+anderen draaien. En vaak boekt men
+daarbij ook een aanzienlijke winst in
+de snelheid waarmee ze worden
+uitgevoerd, omdat niet steeds het
+programma regel voor regel door de
+Basic interpreter moet worden
+geinterpreteerd, voordat het kan worden
+uitgevoerd. Nu past evenwel een
+waarschuwing met betrekking tot het
+besproken leer-pakket. De QB die erbij
+wordt geleverd is niet de complete
+versie, compileren kan hij niet. Hij
+werkt dus gewoon als een interpreter.
+Voor studiedoeleinden is dit geen enkel
+bezwaar. De gemaakte programma's laten
+zich zonder meer in QB versie 4.5
+compileren, als men het complete
+programma aanschaft.
+
+De meegeleverde software, bestemd voor
+gebruik op een MS-DOS machine, bestaat,
+behalve uit de QB interpreter (QBI) en
+de voorbeeld programma's uit het boek,
+nog uit de QBI Express, waarmee men
+snel het gebruik van QBI leert en van
+de QBI Advisor, een hulpprogramma dat
+tijdens het programmeren kan worden
+aangeroepen en dat dan elke opdracht en
+funktie van QB uitlegt, zodat, als men
+voldoende Engels kent en over een IBM
+computer of een van zijn 'kloons'
+beschikt, dit pakket een goed
+hulpmiddel is om snel thuis te raken in
+een moderne Basic. Ook wordt een
+utility 'MSHERC.COM' bijgeleverd, om
+het mogelijk te maken met PC's voorzien
+van een Hercules videokaart toch ook de
+QB plaatjes, zij het monochroom, te
+kunnen afbeelden.
+
+C VOOR BASIC PROGRAMMEURS
+
+door Pim Philipse, 264 pag., uitgave
+Kluwer, ISBN 90-201-2429-3, prijs
+f39,50. Een diskette met de programma's
+uit dit boek is als extra te bestellen
+voor f29,50 + porto.
+Dit boekwerk is bedoeld voor mensen die
+bekend zijn met Basic, maar toch graag
+zich zouden bekwamen in een taal die in
+hun ogen professioneler van opzet is.
+Men heeft dan van C gehoord en van de
+voordelen die daaraan zouden kleven.
+Het is daarmee mogelijk programma's te
+maken die, eenmaal gecompileerd, voor
+wat betreft snelheid en compactheid
+vrijwel niet onderdoen voor programma's
+die in Assembler zijn geschreven. Dat
+lokt velen aan, en niet ten onrechte.
+
+Het boekwerk dat wij hier bespreken
+maakt het mogelijk, uitgaande van een
+programma dat in Basic is geschreven,
+hetzelfde programma in C over te
+zetten. Het biedt namelijk voor elke
+Basic instructie een tegenhanger in C.
+Het boek begint met een systematische
+inleiding in het programmeren in C aan
+de hand van eenvoudige voorbeelden.
+Daarbij wordt ook het gebruik van
+grafische opdrachten onder ogen gezien.
+Als men de beginselen door heeft, wordt
+in hoofdstuk 4 overgegaan tot het
+omzetten van Basic programma's in C.
+Het boek richt zich niet op een bepaald
+C-dialect. Het probeert het mogelijk te
+maken elke voorhandige C compiler te
+gebruiken. Als dat nodig is, volgen na
+een 'algemeen' voorbeeld ook de
+aanwijzingen voor TurboC en QuickC.
+
+Voor hen, die nog helemaal niet bekend
+zijn met het programmeren in een andere
+taal dan in Basic, zal het op het
+eerste gezicht tegenvallen dat een
+Basic programma van maar een paar
+regels uitgroeit tot meer dan een
+pagina typewerk in C. Maar het
+uiteindelijk resultaat, het
+gecompileerde, dus zelfstandig
+draaiende C-programma is stukken korter
+(en sneller) dan het Basic
+programmaatje samen met de voor het
+'runnen' noodzakelijke Basic
+interpreter. In het boek zijn de Basic
+termen alfabetisch gerangschikt, zodat
+het opzoeken van de 'vertaling in C'
+erg eenvoudig is. Als men, al doende,
+thuis raakt in C, zal men behoefte
+hebben aan een samenvatting van die
+taal, speciaal voor de toepassing op
+een PC. Hoofdstuk 5 biedt: 'Een kleine
+C-syntax'. Tenslotte bevat hoofdstuk 6
+een typisch in C geschreven programma
+voor het berekenen van autokosten, dat
+duidelijk laat zien hoe een in deze
+taal geschreven programma in elkaar
+moet zitten. Als men het boek intensief
+bestudeert, zal men daarna goed met C
+uit de voeten kunnen en met behulp van
+de opgedane kennis ook zijn weg weten
+te vinden in de specifieke
+C-literatuur.
+
+GEBRUIKERSHANDBOEK dBASE IV
+
+(met versie 1.1), door Douglas Hergert,
+672 pag., van Microsoft Press,
+Nederlandse vertaling uitgegeven bij
+Kluwer, ISBN 90-201-2422-6, f79,50.
+Voor gebruikers, die al redelijk thuis
+zijn in dit database programma, is het
+toch handig de beschikking te hebben
+over een handboek waarin alle
+mogelijkheden van het programma op een
+rijtje staan, waar nodig voorzien van
+praktische voorbeelden en van eventuele
+waarschuwingen, waar men in het gebruik
+speciaal op moet letten. Het boek is
+overzichtelijk opgebouwd en van
+duidelijke scherm afbeeldingen
+voorzien. Het is alfabetisch van opzet,
+zodat men snel de beschrijving kan
+vinden van een onderwerp. Daar de
+auteur ook al handboeken voor dBASE III
+en III-plus op zijn naam heeft staan,
+kan men er van uitgaan, dat men
+vakkundig wordt voorgelicht. Ook wordt
+uitvoerig aandacht besteed aan de voor
+dBASE IV unieke faciliteiten:
+'Structured Query Language' (SQL) en
+'Query By Example' (QBE). Voor ervaren
+dBASE IV gebruikers is dit boek
+werkelijk een onontbeerlijk naslagwerk.
+(met dank aan Pieter Vijlbrief)
+
+HET GROTE BESTANDSCONVERSIE BOEK
+
+Het Grote Bestands Conversie Boek dat
+Data Becker onlangs heeft laten
+verschijnen is echt bedoeld voor de
+meer ervaren (doorgewinterde, zo u
+wilt) computer gebruiker. Het gaat
+vergezeld van een diskette voor de
+bestands conversie en kan voor
+geinteresseerden een oplossing bieden
+bij de uitwisseling van programma
+files. Het geeft de beschrijving en
+achtergronden van populaire
+programma's, waarbij men is aangelopen
+tegen de diverse beperkingen van
+gebruik van pakketten door elkaar.
+Ikzelf ben weliswaar tevreden over
+programma's als dBase III+ en WP 5.0,
+die ik regelmatig gebruik, maar dat
+komt ook omdat iedereen in mijn
+omgeving die programma's benut. Wanneer
+er uitstapjes worden ondernomen naar
+pakketten als Ability Plus en Framework
+(programma's die een tekstverwerker,
+database, spreadsheet e.d. combineren)
+en die bij veel andere mensen populair
+zijn om hun vele mogelijkheden en
+uniforme manier van bedienen, kom ik in
+de moeilijkheden. Vandaar mijn
+interesse voor bestands conversie.
+
+POPULAIRE PAKKETTEN
+
+Het boek behandelt de bestands
+conversie van enkele populaire
+pakketten. Dit zijn dBase, MS Multiplan
+3.0, Lotus 1-2-3 versie 2.01, MS Excel
+versie 2.1, MS Chart versie 3.0, Lotus
+Freelance Plus versie 2.01, MS Word
+4.0/5.0, Desktop publishing met Aldus
+PageMaker 3.0 en Xerox Ventura
+Publisher 2.0. Per pakket worden in
+paragrafen de mogelijkheden van
+conversie met de pakketten en enkele
+andere populaire programma's
+weergegeven.
+
+De eerste zes bladzijden geven een
+minuscule beschrijving van de populaire
+programma's die men gebruikt, waarna in
+een kijkje achter de schermen uitleg
+wordt gegeven over de diverse bestands
+formaten en formatterings kenmerken die
+de beschreven programma's onder meer
+gebruiken.
+
+PROEF OP DE SOM
+
+Ik heb gebruik gemaakt van WP 5.0,
+dBase III+ en Framework II om de
+beschrijvingen in de praktijk te
+testen. Allereerst gaat men dieper in
+op de twee ASCII formaten waarmee veel
+wordt gewerkt. Bij het boek wordt ook
+een programma geleverd dat de twee
+(Delimited en SDF) converteert naar
+elkaars forma(a)t. Verder worden het
+Sylk-format van Microsoft behandeld en
+het IBM-format Dca/Rft. Dit alles is
+echt noodzakelijk om verder te kunnen
+met de materie.
+
+Het echte conversie-werk is, als je de
+beschrijvingen op de voet volgt,
+kinderlijk eenvoudig. Men begeleidt je
+steeds aan de hand van een voorbeeld
+bestandje. Uitgebreider kan het bijna
+niet. Nergens heb ik moeilijkheden
+ondervonden, behalve toen ik probeerde
+om in Quattro (staat niet beschreven)
+een dBase bestand te laden volgens de
+beschrijving van Lotus 1-2-3. Dit lukte
+niet exact op dezelfde manier, maar
+enig puzzelen bracht toch uitkomst.
+
+GOEDE POGING VAN DATA BECKER
+
+Data Becker heeft met dit boek een
+goede poging ondernomen om de
+beginnende 'converteerder' op weg te
+helpen. De inleiding en de onderdelen
+die de diverse programma's behandelen
+laten niets aan duidelijkheid te wensen
+over en je kan meteen aan het werk. Als
+je aan een programma als WP of dBase
+gehecht bent geraakt hoef je niets meer
+onnodig over te typen. Kortom, een leuk
+boek dat je kennis weer vergroot over
+de 'insides' in de programma's. Er is
+echter wel enige basiskennis voor
+vereist. Het grote Bestands Conversie
+boek (incl. diskette), dat wordt
+uitgegeven door Data Becker Nederland,
+kost f69,90. ISBN: 90-229-3694-5. Met
+dank aan Wouter Fontaine, student
+Bedrijfs Informatica.
+

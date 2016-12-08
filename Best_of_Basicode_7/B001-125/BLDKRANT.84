@@ -1,0 +1,237 @@
+84, zon 16 aug '87
+
+MSX SOFTWARE
+
+Niet vaak bespreken we software in de Beeldkrant
+maar we troffen in DISKIT, een uitgave van
+FILOSOFT een zo waardevolle utility aan, dat we
+u daarvan gaarne op de hoogte stellen. De schijf
+bevat een serie handige programma's om MSX
+diskettes te manipuleren. Het is geheel menu
+gestuurd. Het opvragen van, al of niet
+gesorteerde, directories is mogelijk, evenals
+het kopieren van gehele schijven of enkele
+files. Ook kan men sectoren uitlezen.
+Men kan ook op de schijf zelf gegevens wijzigen
+of per ongeluk gewiste programma's terughalen.
+Dit alles vereist wel een gedegen inzicht in de
+indeling van MSX diskettes, maar daarbij helpt
+de uitstekende handleiding, die op zichzelf de
+aanschaf al waard is. Met Philips dubbelzijdige
+diskdrives kan het voorkomen, dat het programma
+de schijf niet herkend, maar het commando: 'P',
+dat uitvoerige informatie over de diskette
+indeling levert, helpt ons over dit probleem
+heen. Prijs van deze nuttige diskette: f 69.-.
+
+MSX KINDERBOEK
+
+MSX Basic voor kinderen, door H.C. de Heer,
+uitgave STARK TEXEL. (In twee deeltjes).
+Voor jonge kinderen is hierin een uitleg te
+vinden van de MSX computer en het programmeren
+in Basic. De engelse termen worden in het
+Nederlands vertaald en dat is wel het grootste
+voordeel van dit boekje boven andere eenvoudige
+handleidingen voor Basic. Aardige programma's
+worden geleidelijk opgebouwd en besproken.
+De prijs: circa f 24.75 per deeltje.
+
+MSX-2 Toepassingshandboek, A.C.J. Groeneveld,
+142 pagina's, uitgave Stark Texel. Prijs:
+f 29.75.
+De bekende auteur van MSX boeken heeft in dit
+deeltje een 16-tal handige programma'tjes
+verzameld. O.a. treffen we bestandsprogramma's,
+grafische programma's, geluids programma's en
+schijf- en cassette utilities aan. Aardig om te
+hebben.
+
+MSX HANDBOEK
+
+Handboek MSX, door T.Sato e.a., 545 pag., uitg.
+Kluwer, prijs f 79.50. Dit is de Nederlandse
+vertaling van The Complete MSX Programmers
+Guide, het MSX standaard werk.
+Alles betreffende de MSX(1) is in dit
+boek te vinden, tot en met de hooks en de
+BIOS-entries. Voor de machinetaal programmeur
+onmisbaar. Ook bevat het een uitgebreide
+bespreking van de MSX-Basic. De Nederlandse
+vertaling maakt dit werk beter toegankelijk.
+Een heel goed boek!
+
+MSX2 Zakboekje, door Wessel Akkermans, uitg.
+Stark Texel. 255 pag. Prijs f 27.75.
+Dit boek vormt een prachtige aanvulling op
+het voorgaande boek, maar is ook op zich
+zelf uitstekend bruikbaar. Het bevat veel
+gegevens, zowel voor Basic als machinetaal
+programmeurs. Voor het eerst troffen wij
+een beschrijving van de indeling van MSX
+DOS schijven aan. Ook staan er handige
+utilities in. Het aanschaffen zeker waard.
+
+INLEIDING MACHINETAAL
+
+Een heel goede inleiding tot het programmeren
+in Assembler (speciaal met de ZEN Assembler)
+troffen we aan in het boek: Starting Machine
+Code on the MSX, door G.P. Ridley, uitg. KUMA,
+prijs: f 39.50. In dit (Engelse) boek staat
+een zeer duidelijke bespreking van de Z-80
+instructies. Deze worden verklaard aan de hand
+van goede voorbeeld programma's. Zonder meer
+geschikt voor MSX-1 bezitters, die aangewezen
+zijn op de (cassette georienteerde) ZEN
+assembler. Samen met het volgende boek ook
+heel goed bruikbaar op een MSX-2.
+
+MSX(2) Basic en machinetaal, de afstand
+overbrugd, door W. Duzijn, 240 pagina's,
+prijs f 32.50.
+Dit boek maakt de Basic programmeur die over
+wil stappen naar Assembler vertrouwd met het
+programmeren in machine taal uitgaande van de
+bekende Basic instrukties. Assembler instukties
+worden met behulp van Basic testprogramma's
+verhelderd en konkreet gemaakt. Uitgaande van
+de bekende kreten, kunnen gemakkelijk de juiste
+BIOS adressen worden gevonden. Een zeer goed
+boek.
+
+MERGEN & APPENDEN OP CBM
+
+Thijs Timmerman schreef een handleiding inzake
+het 'mergen' en 'appenden' op CBM computers
+naar aanleiding van vele vragen die daarover
+kwamen in zijn club, op FIDO en per brief. Hij
+schrijft: 'mergen' of 'appenden' van twee
+program-files aan elkaar gaat als volgt:
+
+C64 COMPUTER
+
+Op de zero-page locaties #43 en #44 ($2B en
+$2C) staat in 'normaal' low/high-byte notatie
+het adres waarop het huidige Basic programma
+start. Normaal start het Basic programma
+op #2049 ($0801). In #43 staat derhalve $01 en
+op #44 staat $08. Op dat adres #2049 - waar het
+Basic programma dus begint - staat de low-byte
+en een plaats verder de high-byte van het
+adres waar de volgende programmaregel netzo
+begint. In de volgende twee adressen staat in
+low/high-byte notatie het regelnummer van de
+betrefende regel. In de bytes hierna staat de
+regelinhoud waarbij opgemerkt kan worden dat
+alle basic-keywords zijn getokenised. Een woord
+als RESTORE neemt intern dus maar 1 byte in.
+
+Even terzijde/terloops: dit is, samen met de
+opslagwijze van het regelnummer (maar 2 bytes),
+de voornaamste reden waarom NOS-Basicode
+programma's na (bij de C64: tijdens) het inlezen
+slinken. In NOS-Basicode-formaat staan de Basic
+keywords (alsmede de regelnrs) voluit in letters
+resp. cijfers, dit omdat niet elke computer voor
+bv. RESTORE hetzelfde token aanhoudt.
+
+Elke regel wordt tenslotte afgesloten met een
+zgn. 'null'. Direct hierachter start de volgende
+regel op exact dezelfde wijze als hiervoor is
+beschreven. Weer als eerste de zgn. 'link' waar
+de volgende regel start, het regelnr, de regel
+inhoud en weer afgesloten door een 'null'.
+De truuk van de 'link' is nu dat de computer
+hierdoor heel snel door het programma van regel
+naar regel kan springen. Moet er door een LIST,
+GOTO, THEN of GOSUB opdracht ergens naar een
+regel worden gegaan dan 'springt' de computer
+van 'link' naar 'link' totdat de juiste regel
+wel of niet is gevonden.
+Ook is via de link zo te bepalen of de laatste
+regel van het programma is bereikt. Afspraak is
+dat in dat geval de link als waarde $0000 heeft.
+Om die reden is elk Basic-programma nog eens
+2 bytes langer.
+
+De variabelen - die direct na het programma
+starten - kunnen dus ook pas 2 bytes 'verder'
+beginnen. Dit startadres wordt aangegeven door
+de zero-page-adressen #45 en #46 ($2D en $2E).
+Een program-file kan nu achter een al reeds in
+het geheugen aanwezig programma worden
+gekoppeld door de waarde uit het variabelen
+startadres ($2D,$2E) te verlagen met 2 en die
+waarde te plaatsen in het programma startadres
+($2B,$2C). Een volgende LOAD operatie zal het
+programma nu keurig vanaf die ($2B,$2C) plaats
+wegzetten en vervolgens de 'links' keurig aan
+de nieuwe situatie aanpassen. Door nu het Basic
+startadres weer op de originele (initiele)
+waarde te zetten zal een compleet programma
+worden verkregen.
+
+C128 COMPUTER
+
+Intern in de C128 is het een en ander wat
+anders georganiseerd. Het Basic programma start
+hier normaliter op #7169 ($1C01), is er echter
+een grafisch scherm actief dan wordt het
+complete programma 9 KB opgeschoven. Het
+startadres wordt in dat geval #16384 ($4000).
+Dit start-adres wordt bijgehouden in de
+zero-page locaties #45 en #46 ($2D,$2E).
+
+Omdat het totale geheugen van de C128 (128 KB)
+wordt verdeeld over twee 64 KB banken en men
+bank 0 heeft bestemd als Basic programma gebied
+en bank 1 voor variabelen opslag geeft de
+pointer 'begin variabele geheugen' niet tevens
+een indicatie over 'einde basic programma'.
+Door het - relatief - hoge start adres in bank
+0 van het Basic programma (#7169) blijft er
+dus nog maar 57 KB over voor programmatuur.
+Omdat enkele systeem pointers ook nog een
+plaatsje moeten hebben bovenin het geheugen,
+gaan er nog eens 256 bytes vanaf. Netto vrij
+voor Basic programmatuur zijn 58111 bytes =
+56.75 KB.
+
+Er is echter in de C128 een speciaal 'Basic
+programma eindadres' locatie #4624 en #4625
+($1210,$1211) voor dit doel gereserveerd.
+Ook hier wordt weer het adres aangegeven
+direct na de 'link'. Om dus een programma
+achter het al reeds in het geheugen aanwezige
+programma te mergen moet dus de 'Basic
+programma startadres' worden gevuld met het
+'Basic-programma eind-adres' minus 2. In het
+'harde' Basic-taaltje ziet het er dan zo uit:
+
+C64: VOOR HET LADEN
+A=PEEK(46)*256+PEEK(45)-2:POKE 44,A/256:
+POKE 43,A-PEEK(44)*256
+
+C64: NA HET LADEN
+POKE 44,8:POKE 43,1
+
+C128: VOOR HET LADEN
+A=PEEK(4625)*256+PEEK(4624)-2:POKE 46,
+A/256:POKE 45,A-PEEK(46)*256
+
+C128: NA HET LADEN
+(zonder geactiveerd grafisch scherm):
+POKE 46,28:POKE 45,1
+
+C128: NA HET LADEN
+(met geactiveerd grafisch scherm):
+POKE 46,64:POKE 45,1
+
+VERANTWOORDING
+
+Deze verhandeling had ook beperkt kunnen
+blijven tot bovenstaande - direct mode -
+regels. Dat zou echter niet in het belang
+zijn van de bedoeling om ook enige
+achtergrond informatie te verschaffen.

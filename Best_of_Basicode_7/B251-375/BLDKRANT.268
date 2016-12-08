@@ -1,0 +1,392 @@
+268, maa 13 nov '89
+
+BEELDKRANT SPECIAL: NETWERKEN
+
+Enige tijd geleden troffen we in het
+tijdschrift TNO Magazine een
+interessant artikel aan over
+computernetwerken, die steeds
+belangrijker worden in onze moderne
+maatschappij, waarin de snelle
+uitwisseling van informatie een
+sleutelrol vervult.
+
+In de nu volgende samenvatting van het
+artikel zal met name aandacht worden
+besteed aan ontwerp, beheer en
+beveiliging van netwerken, alsmede aan
+het belang van standaardisatie.
+
+INLEIDING
+
+Het gebruik van computernetwerken door
+bedrijven en in wetenschappelijke
+kringen neemt hand over hand toe. De
+mogelijkheden die netwerken bieden voor
+het uitwisselen van gegevens worden op
+steeds grotere schaal gebruikt. Zo
+heeft het Instituut voor Toegepaste
+Informatica recentelijk het TNO
+Zuidpolder netwerk aangesloten op het
+landelijke SURFnet. Met behulp van dat
+net kan men via de daaraan gekoppelde
+netwerken zoals b.v. EARN en ARPA de
+hele wereld bereiken.
+
+Met het ontstaan van grote netwerken
+groeit ook het inzicht dat het
+computernetwerk als een systeem op zich
+moet worden gezien. Een systeem
+waarvoor een goed ontwerp nodig is om
+het optimaal te laten werken, en waar
+randvoorwaarden als beheer en
+beveiliging goed moeten worden
+ingevuld.
+
+Voor een goede integratie zijn
+standaards nodig. Wat een gebruiker
+zich voorstelt bij het woord
+'computernetwerk' hangt af van de
+toepassing waarmee hij bekend is. Voor
+de een is dit het terminal netwerk voor
+de grote mainframe computer, voor de
+ander het informatie- netwerk van de
+bank, voor weer een ander het
+PC-netwerk op kantoor.
+
+GEBRUIKSMOGELIJKHEDEN
+
+Een aantal van de gebruiksmogelijkheden
+van een netwerk zijn de volgende:
+- terminal-switching;
+- bestandsoverdracht tussen computers;
+- electronic mail;
+- computervergaderen en
+gemeenschappelijk gebruik van
+randapparaten, zoals printers en
+plotters.
+
+Deze verschillende wijzen van gebruik
+stellen verschillende eisen aan het
+netwerk, op het gebied van respons,
+transport capaciteit, betrouwbaarheid
+en veiligheid. De netwerken die op de
+markt verkrijgbaar zijn, zijn veelal
+geoptimaliseerd voor bepaalde vormen
+van gebruik. Het datatransport is in
+principe hetzelfde voor al deze vormen
+van communicatie. De functionaliteit
+wordt bepaald door de software. Er is
+een trend naar meer universele
+netwerken die in principe in staat zijn
+uiteenlopende functies te vervullen.
+
+FABRIKANTEN
+
+Veel computerfabrikanten leveren een
+eigen netwerk- architectuur. De
+eigenschappen van die architectuur zijn
+afgestemd op wat de fabrikant ziet als
+de belangrijkste behoeften van de
+klant, maar ook op de eigenschappen van
+de computers van die fabrikant. De
+verschillen zijn soms erg groot. Enkele
+voorbeelden van deze eigen netwerk-
+architecturen zijn IBM-SNA,
+Digital-DNA, Novell Netware. Deze
+fabrikant-eigen architecturen zijn voor
+een computergebruiker vaak afdoende. De
+koppeling van vreemde computersystemen
+kan echter grote problemen opleveren.
+De fabrikant zal dit minder als een
+nadeel zien: het netwerk houdt de klant
+gevangen. Er is behoefte aan een
+onafhankelijke, algemeen toepasbare
+standaard voor computernetwerken.
+
+OSI
+
+Modelvorming bij de ISO (International
+Standard Organisation) heeft het OSI
+(Open Systems Interconnection) model
+opgeleverd. Dit model verdeelt de
+communicatie- functies over zeven
+lagen. Iedere laag bouwt voort op de
+functies van de onderliggende lagen, en
+voegt daar iets aan toe. Het aantal van
+zeven is overigens arbitrair. Het
+zouden er evengoed zes of acht kunnen
+zijn. Het is een kwestie welke functies
+worden samengenomen.
+
+In de praktijk blijkt het OSI model
+goed bruikbaar bij de analyse van
+datacommunicatie- systemen. ISO heeft
+tevens standaarden vastgesteld voor de
+invulling van de lagen van het OSI
+model. Voor de onderste lagen werden
+enkele geschikte bestaande typen
+netwerk- hardware tot standaard
+verheven. De protocollen voor de hogere
+lagen zijn door ISO ontwikkeld.
+
+Implementaties van de ISO protocollen
+zijn nu beschikbaar voor verschillende
+computer- systemen. De meeste grote
+computerfabrikanten hebben verklaard
+zich te zullen conformeren aan de ISO
+standaards, en gaan ISO produkten
+leveren naast hun eigen
+netwerkprodukten. Sommige fabrikanten
+nemen een dubbelzinnige houding aan
+tegenover de nieuwe netwerk-
+standaarden. Zij hebben een
+klantenkring te verliezen die nu het
+eigen netwerk gebruiken.
+
+NETWERKBEHEER
+
+Het doel van netwerkbeheer is het
+garanderen van de goede werking van het
+netwerk. Vaak wordt daarbij allereerst
+aan het opsporen van storingen gedacht.
+De taken voor netwerkbeheer zijn onder
+te verdelen in 5 categorieen: storingen
+verhelpen en vroegtijdig constateren,
+kostenregistratie, prestatiebeheer,
+configuratiebeheer en
+beveiligingsbeheer.
+
+Of een organisatie zich het belang van
+hetnetwerkbeheer voldoende realiseert,
+hangt af van de bedrijfscultuur. Bij
+organisaties die kleinere
+computersystemen gebruiken, is beheer
+van computersystemen vaak onvoldoende
+ontwikkeld. Een klein netwerk heeft
+maar weinig toezicht nodig om te
+blijven werken. Naarmate het groeit,
+neemt de complexiteit echter sterk toe,
+en daarmee de kans op en de gevolgen
+van mogelijke storingen. De inspanning
+die men moet steken in netwerkbeheer
+hangt af van de risico's die
+netwerkproblemen opleveren. Als de
+organisatie geheel afhankelijk is van
+het netwerk voor haar functioneren,
+kunnen de gevolgen van netwerkproblemen
+desastreus zijn. Om dit risico te
+ondervangen kan een herziening van de
+organisatie rondom computergebruik en
+netwerken nodig zijn.
+
+OSI MODEL
+
+Het OSI model verdeelt de
+datacommunicatie functies over 7 lagen:
+
+APPLICATION - Levert service in een
+vorm die direct bruikbaar is voor
+applicatieprogramma's.
+
+PRESENTATION - Zet data om van de
+standaard representatie op het netwerk
+naar de representatie die de applicatie
+nodig heeft, en omgekeerd.
+
+SESSION - Bouwt logische verbindigen
+tussen systemen op, beheert de logische
+verbindingen tussen systemen.
+
+TRANSPORT - Zorgt voor een betrouwbaar,
+transparant transport van data tussen
+twee systemen. Bewaakt de integriteit
+van de data.
+
+NETWORK - Bepaalt de te volgen weg voor
+eenheden informatie door het netwerk.
+
+DATA LINK - Zorgt voor overdracht
+tussen eenheden van informatie naar het
+andere einde van de fysieke verbinding.
+Detecteert fouten op de fysieke
+verbinding.
+
+PHYSICAL - Zendt bits over fysiek
+medium. Codeert de bits in elektrische
+signalen.
+
+Iedere laag communiceert door middel
+van een protocol met zijn gelijke in
+een ander systeem. Voor de communicatie
+wordt gebruik gemaakt van de diensten
+van de onderliggende lagen. Een
+communicatielaag werkt samen met
+dezelfde laag in het andere systeem om
+extra functies te kunnen bieden aan de
+laag erboven. De laag heeft alleen
+interfaces met de direct erboven en de
+direct eronder liggende lagen.
+
+Deze strenge scheiding maakt het
+mogelijk software voor het uitvoeren
+van de functies in de verschillende
+lagen onafhankelijk van elkaar te
+ontwikkelen. De hierbij benodigde
+specificaties zijn de protocoldefinitie
+en de interfaces naar de hogere en
+lagere lagen.
+
+GEREEDSCHAPPEN
+
+De beschikbare gereedschappen voor
+netwerkbeheer verschillen sterk van het
+ene netwerk tot het andere. De middelen
+voor beheer zijn echter niet vanaf het
+begin opgenomen in de ISO standaarden
+voor netwerk systemen. Wel ontwikkelt
+ISO nu standaarden om een uniforme
+functionaliteit en gebruikers-
+interface voor de netwerk- beheerder te
+bieden. Communicatie- protocollen
+worden ontwikkeld om de netwerk
+apparatuur ook op beheersniveau te
+laten samenwerken.
+
+BEVEILIGING
+
+Informatie heeft bescherming nodig.
+Computer- beveiliging richt zich op het
+voorkomen van misbruik of verminking
+van de opgeslagen informatie. Dit kan
+gebeuren door zowel kwade opzet als
+door ongelukken of fouten van
+gebruikers. Met de invoering van
+computer netwerken wordt het
+beveiligings probleem complexer. In de
+beveiliging spelen veel onderdelen van
+het netwerk een rol. Er is een
+diepgaand inzicht in het functioneren
+van het netwerk nodig om in te zien,
+hoe de interactie van verschillende
+systemen de veiligheid beinvloedt. Vaak
+wordt bij beveiliging alleen gedacht
+aan fysieke of systeem- technische
+maatregelen. De procedures en de
+organisatie zijn echter ook van groot
+belang voor een goede beveiliging. De
+invoering van het computernetwerk maakt
+een meer formele benadering van
+computergebruik noodzakelijk.
+
+SYSTEEMKEUZE
+
+De keuze van een netwerksysteem is niet
+eenvoudig voor de gebruiker, en heeft
+een grote invloed op de toekomst van
+zijn bedrijf. De keuze gaat tussen de
+eigen netwerk- architecturen van
+computerfabrikanten en de netwerken
+volgens internationale standaarden.
+
+ONTWERP
+
+Indien er al een operationeel netwerk
+is, zal een migratieplan gemaakt moeten
+worden, vooral als het gekozen netwerk
+sterk afwijkt van de bestaande
+situatie. Het ontwerp van een
+computernetwerk moet worden
+voorafgegaan door een analyse van de
+informatie- stromen en de
+automatiserings- situatie van de
+organisatie. De analyse brengt de
+informatiebehoefte en de bestaande
+invulling daarvan in kaart. Hierop
+wordt het netwerkontwerp gebaseerd.
+
+Het netwerk moet de wegen bieden
+waarover de gewenste communicatie kan
+plaatsvinden. Een goede keuze en
+ontwerp leveren een netwerk op dat
+optimaal is afgestemd op de
+organisatie. Daarbij is een strategie
+voor de verdere ontwikkeling van het
+netwerk van belang. Onafhankelijk,
+degelijk advies is hierbij van
+essentieel belang. Gezien de directe
+belangen kan men van een computer-
+leverancier geen onafhankelijkheid
+verwachten.
+
+APPLICATIES
+
+Steeds meer software- pakketten krijgen
+het karakter van netwerk-applicaties.
+Ze maken gebruik van het netwerk zonder
+dat de gebruiker zelf het netwerk hoeft
+te bestuderen. Dit verbetert de
+gebruikers vriendelijkheid. De
+gebruiker is er zich niet meer van
+bewust of zijn data zich op zijn eigen
+systeem bevindt, of op een ander
+systeem op het netwerk. Dit heeft
+tevens implicaties voor de beveiliging:
+een goede netwerk- applicatie mag de
+bestaande beveiligings maatregelen niet
+aantasten. Standaarden voor de
+applicatielaag zullen de ontwikkeling
+van netwerk -applicaties eenvoudiger
+maken.
+
+SNELLE NETWERKEN
+
+De techniek zal steeds snellere lokale
+netwerken aanbieden. Een voorbeeld is
+FDDI, een ontwerp voor een netwerk dat
+met snelheden van 100 Mbit/s over
+glasvezel verbindingen werkt.
+Dergelijke snelheden zijn nodig bij de
+overdracht van zeer grote hoeveelheden
+data in korte tijd, b.v. in geval van
+digitale beelden. Het is echter niet
+waarschijnlijk dat zeer snelle
+netwerken spoedig algemeen toegepast
+gaan worden. Veel gebruikers hebben nog
+geen toepassingen die dergelijke
+snelheden vereisen, en hebben nog jaren
+lang genoeg aan b.v. de 10 Mbit/s van
+Ethernet of de 4 Mbit/s van IBM Token
+Ring.
+
+TOEKOMSTPERSPECTIEF
+
+Het netwerkgebruik zal zowel in
+kwalitatieve als in kwantitatieve zin
+toenemen. Bedrijven zullen koppelingen
+naar de netwerken van hun
+handelspartners maken, zowel voor
+elektronische handelscorrespondentie
+als voor het uitwisselen van produkt
+gegevens. Openbare datanetwerken spelen
+hierbij een belangrijke rol. Gebruikers
+zullen steeds meer flexibiliteit en
+functionaliteit van hun interne netwerk
+verwachten.
+
+CONCLUSIE
+
+Er zal een sterke ontwikkeling te zien
+zijn op het gebied van middelen en
+methoden voor netwerkbeheer en netwerk
+beveiliging. De ISO standaarden voor
+netwerkbeheer zullen binnen enkele
+jaren beschikbaar zijn. De behoefte aan
+deze standaarden blijkt uit het aanbod
+aan implementaties van voorlopige
+versies van deze standaarden. De
+beschikbaarheid van een volwassen
+beheers systeem zal de acceptatie van
+netwerken volgens de ISO standaarden
+sterk bevorderen.
+

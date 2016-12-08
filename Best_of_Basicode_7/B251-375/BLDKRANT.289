@@ -1,0 +1,311 @@
+289, woe 24 jan '90
+
+LANCERING AMATEURSATELLIETEN
+
+De lanceerdatum voor de ARIANE vlucht
+V35, met onder andere de vier MicroSats
+en twee UoSATs aan boord, is weer een
+paar maal verschoven. In verband met
+een probleem met een magnetische
+bandrecorder in de Franse SPOT-2
+aardobservatie satelliet leek het
+noodzakelijk de lancering twee weken
+uit te stellen. De bandrecorder moest
+worden vervangen. Deze reparatie-aktie
+verliep echter probleemloos, zonder dat
+er enige schade werd aangericht aan de
+zes amateur satellieten. Aanvankelijk
+dacht men dat de lancering niet voor 24
+januari kon plaatsvinden maar later
+koos men toch voor 21 januari. Het
+lanceervenster op 21 januari was tussen
+0135 en 0145 UTC. Het aftellen verliep
+zeer voorspoedig en er waren geen
+technische problemen. Korte tijd voor
+het openen van het lanceervenster
+verslechterde het weer echter snel: er
+verscheen een tropische regenbui met
+onweer boven de ESA lanceerbasis bij
+Kourou in Frans Guyana. Zes minuten
+voor het lanceer tijdstip werd het
+aftellen gestopt. Tegen het eind van
+het lanceervenster begon het weliswaar
+enigszins op te klaren maar niet
+voldoende om de lancering door te
+kunnen laten gaan. Men besloot een
+nieuwe lanceer poging te ondernemen op
+22 januari, weer tussen 0135 en 0145
+UTC. De aanwezige AMSAT
+vertegenwoordigers zorgden er intussen
+voor dat de batterijen in de vier
+MicroSats goed opgeladen bleven. Zoals
+we afgelopen maandag reeds berichtten,
+was de lancering op 22 jan. een
+volledig succes.
+
+UOSATS
+
+De zes amateur satellieten zullen zo
+spoedig mogelijk ingeschakeld worden
+door kommando stations. Aanvankelijk
+zullen ze vooral telemetrie uitzenden,
+zodat de toestand aan boord van de
+satellieten kan worden gekontroleerd.
+Daarna zal veel nieuwe programmatuur in
+de boordcomputers moeten worden
+geladen. UoSAT D en E zullen
+aanvankelijk 1200 Baud AFSK telemetrie
+uitzenden, waarbij de 70 cm zenders
+elke 60 sekonden in- en uitschakelen
+onder besturing van de tweede (Z80)
+boordcomputer. De twee UoSATs zullen
+vervolgens tijdelijk gebruik maken van
+speciale FORTH programmatuur voor tests
+en standregeling voordat hun
+gravitatie- gradient stabilisatie-
+staaf wordt uitgeschoven. UoSAT D en
+UoSAT E zullen, net als hun voorgangers
+OSCAR 9 en OSCAR 11, een
+gestabiliseerde stand moeten krijgen,
+waarbij de onderzijde van de satelliet
+steeds naar het aardoppervlak blijft
+gericht.
+
+MICROSATS
+
+LUSAT, de Argentijnse MicroSat, heeft
+naast een packet radio systeem een
+onafhankelijke bakenzender met
+telemetrie- systeem aan boord. Dit
+telemetrie- systeem bevat 8 kanalen. De
+bakenzender zendt op 437,125 MHz met
+een uitgangs vermogen van ongeveer 0,5
+watt.
+
+De packet radio telemetrie- en
+bulletin- uitzendingen van DOVE kunnen
+direkt worden meegeschreven met een
+normale TNC. De gebruikers van packet
+radio systemen in de andere satellieten
+zullen echter speciale PC-programmatuur
+in hun computer moeten gebruiken,
+waarbij de TNC in KISS-mode werkt, om
+verbindingen te kunnen maken. Deze
+programmatuur is nog in ontwikkeling.
+(Aldus Nico Janssen, PA0DLO)
+
+MUSEUM VOOR ZENDAMATEURISME
+
+Enige tijd geleden is te Budel
+opgericht de 'Stichting De WS-19'.
+Initiatiefnemer is dhr. C. Moerman,
+PA0VYL. Het doel van de stichting is
+een overzicht te geven van de
+ontwikkeling van het radio-
+zendamateurisme in Nederland.
+
+De stichting ontleent haar naam aan de
+bekende Britse zend-ontvanger uit de
+tweede wereld- oorlog, de Wireless Set
+No. 19. Het zal niet het beste
+radioapparaat uit die tijd zijn, het
+bekendste is het zeker wel.
+In de jaren was voor veel radio-
+zendamateurs de WS-19 de basis voor hun
+experimenten. In talloze varianten is
+dit apparaat omgebouwd naar de
+specifieke wensen van de amateur.
+
+Er zijn plannen een museum in te
+richten. De basis voor dit museum is de
+prive verzameling van C. Moerman. Een
+groot aantaal zenders- ontvangers plus
+toebehoren en documentatie alsmede een
+hoeveelheid radio-amateur literatuur is
+in handen van de stichting gegeven. Aan
+een passend onderkomen voor het museum
+wordt gewerkt.
+
+VLIEGTUIG SATELLIET COMMUNICATIE
+
+Racal Avionics en Honeywell in Engeland
+hebben afspraken gemaakt over de
+ontwikkeling en produktie van
+communicatie satelliet systemen voor de
+burgerluchtvaart (SATCOM). Beide
+bedrijven zijn al enkele jaren bezig
+met de ontwikkeling van het Satfone
+enkel-kanaals telefoonsysteem per
+satelliet. De Gulfstream IV vliegtuigen
+en de Boeings 747 van British Airways
+zijn hiermee uitgerust. Het maakt het
+mogelijk om rechtstreeks uit het
+vliegtuig te bellen bijv. via de
+Inmarsat satelliet.
+
+Satcom maakt het luchtreizigers
+mogelijk gewoon tijdens de vlucht over
+de hele wereld te bellen, te faxen of
+data communicatie te plegen. De
+verbinding kan zowel in de cockpit als
+in de cabine tot stand worden gebracht.
+
+Beide maatschappijen hebben een Arinc
+systeem ontwikkeld voor toepassing in
+de luchtvaart zelf. Daarmee zouden via
+satelliet allerlei vluchtgegevens
+automatisch kunnen worden overgeseind.
+Racal Avionics is een onderdeel van de
+Racal Electronics groep met als
+specialisatie het produceren van
+communicatie en navigatie systemen
+zowel voor de luchtvaart als op
+vliegvelden. Honeywell zal vooral aan
+de verkoopkant initiatieven nemen.
+
+PROBLEMEN METEOSAT-4
+
+De meteorologische organisatie Eumetsat
+laat weten dat de oudere Meteosat-3
+weer in gebruik zal worden genomen,
+wegens storingen in de Meteosat-4. Het
+geostationaire Meteosat systeem levert
+de weerbeelden en wolkenfoto's die het
+KNMI onder meer gebruikt voor het
+'filmpje' van bewegende weerbeelden.
+Deze komen van de laatst gelanceerde,
+meest geavanceerde Meteosat-4. De
+satelliet heeft echter een storing
+ontwikkeld waarbij in oktober en
+november fouten in de afbeeldingen
+ontstonden. ESA heeft deze fouten
+onderzocht maar kan nog geen verklaring
+geven. Feit is dat meer testmateriaal
+nodig is en waarvoor de reguliere
+uitzendingen zo vaak zullen onderbroken
+moeten worden dat Met-4 niet meer
+bruikbaar is voor normale dienst.
+
+SATELLIET TERUGHALEN
+
+Daarom is besloten Meteosat-3 weer te
+gaan gebruiken. Deze stond echter
+tijdelijk al op een positie 50 graden
+westerlengte, ergens boven Brazilie, om
+met name het gebied van de Atlantische
+Ocean te observeren. Hij zal nu
+langzaam moeten terugdriften naar een
+positie op 1 graad West boven de Golf
+van Guinee bij Afrika, waar Meteosat-4
+ook staat, op 0 graden precies. Aan
+deze manoevre is op 21 dec. begonnen.
+Rond 21 januari zal hij op die positie
+zijn aangekomen en op de 24e om 9:00
+UTC zal hij weer in dienst worden
+genomen. De laatste beelden van 4
+zullen de 24e om 7:30 en 8:00 UTC
+worden verzonden.
+
+ANTENNE NIET VERDRAAIEN
+
+De meeste richtantennes en ook schotels
+hebben wel zo'n brede bundel dat beide
+satellieten op het moment van overname
+in beeld zijn. Zelfs met schotels tot
+4,5 meter doorsnee verwacht Eumetsat
+geen problemen. De frekwenties op 1691
+en 1694.5 blijven gehandhaafd. Ook het
+uitzend schema blijft in grote trekken
+eender.
+
+Van Meteosat-3 is bekend dat hij nog
+steeds last heeft van problemen met de
+elektronische verdeling van de
+zendenergie over de diverse antennes
+tijdens het draaien. Dat geeft op
+sommige momenten een verlies van 3 dB
+in de uitgezonden energie, wat voor de
+meeste ontvang stations wel valt op te
+vangen.
+
+ONDERZOEK AAN MET-4
+
+Meteosat-4 zal een dag na de overname
+van zijn taken op transport gezet
+worden naar 10,5 West. Rond 13 februari
+zal de satelliet daar zijn aangeland,
+waarna een uitgebreid testprogramma zal
+worden uitgevoerd op de kunstmaan. Met
+name heeft men belangstelling voor de
+slechte prestaties van het zogenaamde
+Synchronisation and Imaging Channel
+(SIC) dat verstoringen van grijswaarden
+op de weerfoto's geeft. Op dit moment
+is het niet bekend wanneer de satelliet
+weer operationeel zal worden. ESA hoopt
+er het beste van. Wel kosten deze
+manoeuvres nogal wat 'brandstof'
+waarmee de levensduur van beide
+Meteosat's flink bekort wordt.
+
+CURSUS STERRENKUNDE
+
+Stichting 'De Koepel' organiseert dit
+voorjaar weer haar geliefde cursus
+'inleiding sterrenkunde'. Het is een
+cursus voor iedereen (jong en oud) die
+belangstelling heeft voor de hemel
+verschijnselen en de geheimen van het
+heelal. Er komen onderwerpen aan de
+orde als de Maan, de Zon als meest
+nabije ster, de planeten Mercurius tot
+en met Pluto met de fraaie opnamen
+gemaakt door de ruimtesonden Mariner,
+Pioneer, Viking en Voyager. Uiteraard
+komen ook de sterren aan bod in al hun
+soorten en stadia van ontwikkeling.
+Sterrenstelsels en geheimzinnige
+onderwerpen als het ontstaan van het
+uitdijend heelal, quasars en zwarte
+gaten ontbreken evenmin.
+
+Men krijgt uitleg over het zelf
+bestuderen van de sterrenhemel en over
+teleskopen die geschikt zijn over de
+amateur. Er is een speciale les gewijd
+aan ruimtevaart en ruimte onderzoek,
+met o.a. aandacht voor de Nederlandse
+astronomische satellieten. Ook is er
+een rondleiding op de sterrenwacht, en
+bij helder weer is er dan gelegenheid
+om met een teleskoop waarnemingen te
+doen.
+
+Docenten van de cursus zijn
+vakastronomen en gevorderde amateurs,
+leden van de Nederlandse Vereniging
+voor Weer- en Sterrenkunde.
+
+CURSUSGEGEVENS
+
+De cursus begint op maandag 12 februari
+en wordt gehouden op de Sterrenwacht
+Sonnenborgh, Zonnenburg 2, in het
+centrum van Utrecht. Er zijn elf
+lessen, meestal op maandagavond van
+19.30 uur tot omstreeks 21.15 uur. De
+laatste les is op 14 mei.
+
+De kosten voor deelname bedragen
+f100,-- per persoon. Daarbij is
+inbegrepen een uitgebreide syllabus en
+ander documentatie- materiaal.
+
+Als u belangstelling heeft, schrijf of
+bel dan naar stichting 'De Koepel',
+Sterrenwacht 'Sonnenborgh', Zonnenburg
+2, 3512 NL Utrecht, tel. 030-311360 (ma
+t/m vr 9.30-16.30 uur). Ieder jaar weer
+raakt de cursus volgeboekt, dus tijdig
+inschrijven!
+

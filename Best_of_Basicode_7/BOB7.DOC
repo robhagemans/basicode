@@ -1,0 +1,253 @@
+     Best Of Basicode 7 pakket.
+
+     Nu het NOS  radioprogramma  SCOOP  (voorheen  HOBBYSCOOP)  ophoudt te
+     bestaan is ter completering van de serie "Best Of Basicode", editie 7
+     uitgebracht.  Met het einde van  SCOOP is er ook een eind gekomen aan
+     de uitzending van de BASICODE-2  programmatuur en niet te vergeten de
+     basicode BEELDKRANT.
+
+     Een gelegenheid om  bij wijze van afscheid een complete collectie van
+     ALLE door  SCOOP in de afgelopen jaren uitgezonden beeldkranten samen
+     te stellen.
+
+     Met de  aanschaf van  dit pakket bent  U in het bezit gekomen van een
+     uniek  beeldkrant archief, dat start met beeldkrant nr.1, uitgezonden
+     op 4 dec 1985, en eindigt met de afscheids beeldkrant nummer  528 van
+     maandag 28 september 1992.
+
+     Bovendien is het pakket voorzien van het  programma  BOB7.EXE waarmee
+     de gearchiveerde beeldkranten op  een uiterst eenvoudige wijze kunnen
+     worden uitgepakt, gelezen, geprint en als tekstbestand opgeslagen.
+   
+   -----------------------------------------------------------------------
+
+   INFO INSTALL.    (hard-disk installatie)
+
+     Als U het BOB7 pakket vanaf Uw harde schijf wilt gaan gebruiken, kunt
+     U met  behulp van het programma  INSTALL  alle benodigde bestanden op
+     de harde schijf laten installeren.
+
+     U kunt door een letter op te geven de harde schijf selecteren, waarop
+     BOB7 moet komen.
+
+     b.v.   B>install c
+
+     Install zal dan het hele pakket  direct op deze drive in de directory
+     \BOB7  gaan installeren. Tijdens de installatie ziet U wat er gebeurt
+     en zal er steeds naar de juiste flop worden gevraagd.
+     Er wordt automatisch bepaald  of het pakket op DD / HD floppen staat.
+
+   -----------------------------------------------------------------------
+
+   INFO BOB7.EXE    (lees-programma)
+
+     Met behulp van dit programma kunt U de BOB7 kranten op een eenvoudige
+     wijze  uitpakken, lezen, printen en als tekstbestand opslaan.
+
+     Op elk scherm in het programma vindt  U de  nodige informatie over de
+     toetsen waarmee  de diverse  opties kunnen worden gekozen,  zodat het
+     gebruik geen problemen zal opleveren.
+
+     Het uitpakprogramma  LHA.EXE is nodig om de beeldkranten  leesbaar te
+     maken  want om alle bestanden op 4 DD / 2 HD floppen te krijgen  zijn
+     de kranten "ingepakt" in vijf bestanden.
+     Informatie over LHA verderop in deze tekst bij INFO LHA211.EXE.
+     
+   Start.  (zie ook extra mogelijkheden)
+
+     Eerst krijgt  U een  openingsscherm  te zien  met  de vraag of U info
+     wilt.  De info bestaat uit  2 schermen  met een beknopt overzicht van
+     de mogelijkheden.   Afbreken kan op elk moment in het programma.
+
+     Na de  intro kan in het  keuzescherm  eerst een disk / bestand worden
+     geselecteerd.  Welke kranten  op welke disk  (of in  welk bestand) te
+     vinden zijn, ziet U op het scherm.
+     Na een disk / bestands keus kan het Beeldkrant nummer worden ingetikt.
+
+     Er kan  ook direct een krantnummer worden  opgegeven.  Na bevestiging
+     met <ENTER> wordt - als het juiste bestand nog niet is geselecteerd -
+     een zelf-selectie uitgevoerd, waarna weer bevestigd moet worden.
+
+   Index.
+     Als U krant nr. 777 kiest zal BOB7 het index-bestand BOB7.CAT inladen
+     en op het scherm zetten.  Zo kunt U een selectie maken uit de nummers
+     200 t/m 528.  Er is helaas geen index van de eerste 200 beeldkranten.
+
+     De bestanden waarin de beeldkranten ingepakt  zijn opgeborgen, moeten
+     wel in de directory staan van waaruit het  programma is gestart.  Als
+     dit niet het  geval is kan  BOB7 de archief-bestanden niet vinden. Om
+     toch op de juiste drive \ directory terecht te komen kan met toets F9
+     tijdelijk  naar  DOS  worden  gegaan.  Als dan de beeldkrant archief-
+     bestanden met  het commando  DIR op het scherm komen, kunt U met EXIT
+     terug naar het programma.
+
+     Het uitpakprogramma  LHA.EXE moet ook in  deze directory staan of het
+     moet door DOS in het opgegeven pad te vinden zijn.
+
+     Als er al een beeldkrant met het gekozen nummer "uitgepakt" voorkomt,
+     wordt dit gemeld.  Gevraagd wordt  of de krant moet worden ingeladen.
+     Zo ja, dan hoeft BOB7 niet in een  archief-bestand te  gaan zoeken en
+     is de krant sneller ingeladen.
+
+     Als er een uitgepakte  krant voorkomt  en U wilt hetzelfde nummer uit
+     het archief lezen, zal BOB7 de bestaande krant een andere naam moeten
+     geven i.v.m. overschrijven door LHA.  BLDKRANT.* wordt dan BL_KRANT.*
+     Na de vraag of dit akkoord is, wordt  de  beeldkrant uit  het archief
+     gehaald en bewerkt.
+
+     Komt  de krant  niet op schijf voor, dan laat  BOB7 het archiverings-
+     programma  LHA zoeken en uitpakken,  waarna de uitgepakte krant wordt
+     ingeladen en bewerkt.
+
+     Nadat  de krant op 76 karakters per regel is omgevormd, ziet U hem op
+     Uw scherm.  Nu heeft  U de  mogelijkheid  om met de pijltoetsen in de
+     krant te "bladeren".
+
+   Opties:
+
+    F1  Printen.
+        Geeft de mogelijkheid de krant te  printen zoals  hij op Uw scherm
+        staat. U kunt instellen hoeveel regels  U op een pagina wilt laten
+        printen.   Pagina's worden vanzelfsprekend voorzien van een kop en
+        een pagina-nummer.
+        Als  U  "0"  regels opgeeft, wordt er  aan ‚‚n  stuk door geprint.
+        Printen kan worden afgebroken met de toetsen Alt-S.
+
+    F2  Opslaan.
+        U kunt een pad  opgeven  naar  de  drive \ directory  waarin  U de
+        ingeladen beeldkrant wilt opslaan.  Eventuele fouten worden gemeld
+        en U kunt steeds corrigeren zonder dat de ingelezen krant verloren
+        gaat. Als geen pad wordt opgegeven gaat de krant naar de standaard
+        drive \ directory. (zie extra mogelijkheden.)
+
+    F3  Volgende.
+        Met  deze toets wordt -na de vraag of U inderdaad een andere krant
+        wilt lezen- het  geheugen  leeggemaakt en komt U weer in het keuze
+        gedeelte van het programma terecht. U kunt dan een volgende beeld-
+        krant kiezen.
+
+    F9  DOS tijdelijk.
+        Als  U tijdens  het gebruik van het programma even naar  DOS wilt,
+        kan dat met deze toets.  Als U terug wilt naar het programma, moet
+        U  EXIT  intikken.  Een al ingelezen beeldkrant blijft tijdens het
+        uitstapje naar DOS gewoon bewaard.
+
+    F10 Stop.
+        Deze optie spreekt voor zich.
+
+   Foutmeldingen.
+     Bij alle functies  van BOB7.EXE worden eventuele  fouten onder op het
+     scherm gemeld.  U krijgt  informatie over  de oorzaak  van de fout en
+     aanwijzingen om de  fout te  corrigeren zonder dat de ingelezen krant
+     verloren gaat.
+
+   Tenslotte.
+     Om aan te sluiten op de  BASICODE-2 BEELDKRANT  traditie is  BOB7.EXE
+     volledig  zwart / wit gehouden.
+
+   -----------------------------------------------------------------------
+   EXTRA MOGELIJKHEDEN. (parameter)
+
+   ACTUELE drive \ directory.
+
+     Bij het werken vanaf diskette moet U er rekening mee houden dat BOB7
+     gebruik maakt van z.g. hulpbestanden.  De disk mag dus niet schrijf-
+     beveiligd zijn en moet voldoende ruimte hebben.   (ca. 12 Kb)
+
+     Wilt U niet dat er op de BOB7 schijf geschreven wordt, dan kunt U een
+     ander pad voor de hulpbestanden opgeven.
+
+     b.v.  B>BOB7 /A:\
+
+     Op deze wijze kiest U voor de  disk in drive A  als opslagplaats voor
+     de hulpbestanden en A:\ is tevens het actuele pad.  Dit betekent, dat
+     de beeldkranten  - bij de optie "Opslaan" - ook naar deze  drive  A:\
+     worden gezet, tenzij U een ander pad opgeeft.
+
+   TIP  ramdrive.
+
+     Als U de snelheid  van het uitpakken / bewerken wilt verhogen, kunt U
+     een RAM drive gebruiken voor de hulp-bestanden.
+     Een  klein gedeelte  van het geheugen wordt door  DOS gereserveerd en
+     ingericht alsof het een drive met diskette is.
+
+     U maakt een ramdrive  aan door  de onderstaande commando regel  op te
+     nemen in het bestand CONFIG.SYS
+
+         device = ramdrive.sys 16   of   device = vdisk.sys 16
+
+     De naam  RAMDRIVE of  VDISK is afhankelijk  van Uw  DOS versie en het
+     getal 16 bepaalt de grootte n.l. 16 Kb.
+
+     Na een reset ziet  U op het scherm welke letter deze  RAM drive heeft
+     en kunt U BOB7 starten met deze letter als drive-parameter.
+
+   TIP  bob-7 batch bestand.
+
+     U kunt het  steeds opnieuw moeten  opgeven  van de parameter omzeilen
+     door BOB7.EXE vanuit een BATCH-bestand te starten.
+     Het maken van  zo'n bestand kan met een  tekstverwerker worden gedaan
+     of direct vanaf de DOS prompt.
+
+     Voorbeeld voor het maken van BOB-7.BAT:
+
+               B>copy con bob-7.bat
+               bob7 /a:\
+               ^Z                            (^Z = Ctrl-Z of toets F6)
+                       1 File(s) copied
+               B>
+
+     U kunt nu BOB7.EXE m‚t parameter starten met   B>bob-7
+
+   -----------------------------------------------------------------------
+
+   INFO LHA211.EXE               LHA version 2.11
+                                 Copyright (c) Haruyasu Yoshizaki, 1988-91
+
+     Het op diskette  1  meegeleverde  LHA.EXE is het  "uitpak-programma".
+     Het complete LHA211 pakket staat op een van de andere diskettes.
+
+     LHA211.EXE is een zelf-uitpakkend  programma waarin naast LHA.EXE ook
+     complete uitleg aanwezig is.
+
+     de bestanden zijn:    LHA.HLP
+                           LHA.EXE
+                           LHA211.DOC
+                           HISTORY.ENG
+
+     Om het geheel uit  te pakken kunt U het  programma starten, waarna op
+     het scherm informatie wordt gegeven over het uitpakken naar een drive
+     of een directory.
+
+   -----------------------------------------------------------------------
+
+   INFO BOB7KEY.COM.
+
+     Dit hulpprogramma  kan in een  BATCH-bestand de cursor op een door de
+     parameters  bepaalde plaats  neerzetten en een  toets binnenhalen met
+     een errorlevel.
+
+     De toets  (gevolgd door <ENTER>) moet juist zijn, anders volgt er een
+     "piep" en is de cursor weer op de oorspronkelijke plek terug.
+
+     Voor diegene die het in een eigen  BATCH-bestand  wil gaan gebruiken,
+     is hier de betekenis van de parameters:
+
+     bob7key 1122ab
+
+             11       = cursor positie vertikaal   01 t/m 24
+               22     = cursor positie horizontaal 01 t/m 79
+                 ab   = toetsen die worden geaccepteerd (U_case mag ook)
+
+                 a      geeft errorlevel 0
+                  b     geeft errorlevel 1
+
+   -----------------------------------------------------------------------
+
+     We hopen dat  U veel  genoegen  zult  beleven aan dit toch wel unieke
+     Best Of Basicode 7 pakket.
+
+     Het team van NOS SCOOP.
+
+     Samenstelling beeldkranten : Joop Engels
+     Software                   : Luut Looyenga

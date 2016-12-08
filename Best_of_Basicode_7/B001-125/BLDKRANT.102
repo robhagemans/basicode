@@ -1,0 +1,205 @@
+102, zon 08 nov '87
+
+HORIZON OVER SUPERGELEIDING
+
+In het NOS-TV programma Horizon zal dinsdag
+17 nov het begrip 'supergeleiding' aan de orde
+komen. Supergeleiding is het transport van
+stroom(pjes) door materialen die voor
+elektriciteit geen enkele weerstand meer
+bieden: er zijn dus ook geen verliezen
+meer. Tot voor kort kon supergeleiding bij
+gebruikelijke stroomgeleiders slechts
+worden bereikt bij temperaturen die zeer
+dicht bij het absolute nulpunt lagen, d.i.
+in de buurt van -270 graden Celcius. Koeling
+tot dat punt is echter een ongelofelijke
+dure zaak en alleen in grote laboratoria
+mogelijk.
+Het onderzoek naar supergeleiding is echter
+in een 'stroom'versnelling terecht gekomen
+sinds men ontdekt heeft dat ook keramische
+materialen plotseling als geleider optreden
+bij een temperatuur die veel hoger ligt:
+-200 tot -178 graden Celcius. Die techniek
+is veelbelovend, bijv. voor het ontwerpen
+van de 'verliesvrije computer', maar nog
+meer voor het transport van grote hoeveelheden
+stroom, zoals dat nu gebeurt via kabels aan
+hoogspannings masten.
+
+LCD KLEUREN-TV'S
+
+Voorts toont Horizon kleuren-TV'tjes met LCD
+schermen, zoals die volgend jaar ook in
+Nederland op de markt zullen komen. Met
+behulp van een SSB-ontvanger maakt men voorts
+het principe van een apparaatje duidelijk
+waarmee je je stem zwaarder kunt laten klinken.
+Het apparaat kan dienen om bij vreemden de
+indruk te wekken dat er een man in huis is,
+terwijl in feite een alleen wonende dame de
+telefoon aanneemt. Het apparaat kan ook (via
+de telefoon) blaffen, zodat het lijkt of er
+een hond aanwezig is: veiligheidshalve dus.
+
+De Personal Writer is een toepassing op de
+Apple Mac die handschrift omzet in ASCII
+tekens. Er is 2 Mb geheugen en een harde
+schijf voor nodig. En tenslotte toont Horizon
+een kruissing tussen een windmolen, vlieger
+en helicopter die ook nog stroom op kan wekken.
+Horizon wordt uitgezonden op Ned 2 om 20:20.
+Presentatrice is onder meer Nelleke van 't
+Krogt, ook de presentatrice van Hobbyscoop
+van vanavond. (zie ook agenda).
+
+MEER WIJZIGINGEN VERTAALPGM PLUS/4
+
+In Beeldkrant 100 stonden wat aanwijzingen
+voor het aanpassen van de C-64 subroutines
+naar de Plus/4. Volgens dhr T Eusterbrock
+uit Assen moeten er echter meer regels
+worden veranderd dan de reeds genoemde.
+In de subroutines voor de C-64 dienen de
+volgende regels aangepast te worden:
+
+  5 SCNCLR:COLOR0,6:COLOR1,1:COLOR4,6
+100 SCNCLR:RETURN
+120 HO = PEEK(200) + 256*PEEK(201) - 3072
++ PEEK(202)
+250 VOL8:SOUND1,600,20:RETURN
+350 OPEN4,4,7: PRINT#4,SR$;: CLOSE4:
+RETURN
+360 OPEN4,4,7:PRINT#4:CLOSE4:RETURN
+
+De veranderingen in de regels 350 en 360
+gelden eveneens voor de C-64. Dhr Eusterbrock
+gebruikt dit vertaal programma als apart
+programma en MERGE-t dit met het Basicode
+programma vanaf regel 1000. Onze speciale
+dank voor deze aanvulling.
+
+ZENITH BUNDELT WINDOWS/386
+
+Zenith Data Systems levert vanaf december
+standaard Microsoft Windows/386 bij de Z-386
+personal computer. Windows/386, een nieuwe
+versie van Microsoft's populaire grafische
+interface, is ontwikkeld om in combinatie met
+het MS-DOS besturings systeem de uitgebreide
+mogelijkheden van computers met een 80386
+microprocessor volledig te ondersteunen.
+
+Windows/386 maakt op de Z-386 computer
+multitasking mogelijk. Het kan namelijk
+gelijktijdig verschillende applicaties
+uitvoeren en op het scherm zichtbaar maken,
+zonder dat ze herschreven moeten worden.
+De gebruiker kan bv. een applicatie 'in de
+achtergrond' uitvoeren en zelf 'op de
+voorgrond' bezig zijn met een andere
+toepassing. De mogelijkheden worden echter
+beperkt door de totaal beschikbare geheugen
+capaciteit van de computer.
+Windows/386 vereist het gebruik van MS-DOS
+3.X als besturings systeem, en is toepasbaar
+in combinatie met vaste magneetschijven, de
+EGA, VGA of hogere video standaards.
+Voor meer informatie: Zenith Data Systems,
+Utrechtseweg 370, 3731 GE De Bilt, tel:
+030-765844
+
+COMMODORE KLEURENPRINTER
+
+Commodore Nederland lanceert een nieuwe
+printer die ook kleuren aankan. Het apparaat
+heet MPS 1500 C en is zowel voor de C-64/128
+serie als voor de PC's van het merk geschikt.
+Volgens persberichten zou hij 40 kleuren
+kunnen produceren. De printsnelheid loopt
+uiteen, afhankelijk van de gewenste afdruk
+kwaliteit: van 120 tekens per seconde tot
+25 t.p.s. bij NLQ-niveau. De printer gaat
+f 1199.- excl btw kosten.
+De MPS 1500C is bi-directioneel en heeft
+een 9-pens printkop. Grafisch print hij
+slechts een kant op. Hij kent de lettertypen
+Pica, Elite, Micro, Condensed, Pica compressed,
+vet, vergroot, dubbele aanslag, superschrift,
+subschrift en onderstreept. Het lint is zwart
+normaal. Met een vierkleuren lint kan men
+kleuren mengen. De printer wordt standaard
+gestuurd met Centronic parallel, maar er is
+met een seriele interface (extra) te krijgen.
+
+GRAFISCHE DUMP OP MSX-2
+
+Bij het gebruik van sommige programma's op de
+MSX-2 worden er afbeeldingen op bepaalde schermen
+gevormd, die men best zou willen afdrukken op een
+printer als daartoe de mogelijkheid aanwezig was.
+Een voorbeeld vormt het programma 'Digisat', dat
+o.a. op screen 5 mooie wolkenfoto's afbeeldt, of
+het nieuwe programma Videographics, waarmee o.a.
+videobeelden op screen 8 worden geplaatst.
+Met een grafische MSX printer is het dan mogelijk
+een afdruk op papier te maken. Maar niet iedereen
+beschikt over zo'n printer. Als men echter een
+Epson of een daarop gelijkende printer heeft, die
+voor het maken van 'double density bit-image'
+afbeeldingen het commando Esc-L (enz.) kent, dan
+heeft men goede kans, dat met de door ons te
+verstrekken programma's het ook zal lukken.
+Wij wilden namelijk afdrukken maken van screen 5
+en ontwikkelden daarvoor eerst een basic routine,
+die echter ruim 55 minuten nodig heeft om een
+afbeelding van screen 5 te maken. Daarom werd een
+programma in assembler gemaakt, die hetzelfde
+doet, maar nu is alleen de snelheid van de
+printer bepalend voor de benodigde tijd. Onze
+Epson RX-80 speelt het in twee en een halve
+minuut klaar. Nu dat eenmaal lukte, konden we
+niet nalaten ook voor screen 8 een dergelijk
+programma te maken. Daarmee zijn dan videobeelden
+uit te printen. Ook zelf vervaardigde tekeningen,
+die op screen 8 terecht komen, kunnen worden
+afgedrukt. Dat gebeurt dan in negen grijstinten.
+Elk 'pixel' op het scherm wordt namelijk door
+acht puntjes op het papier afgebeeld (4x2) en
+daarmede kunnen dus 0-8 ofwel 9 zwartingen worden
+afgebeeld.
+
+PROGRAMMATUUR IN FIDO
+
+In file area #5 van het NOS-FIDO zijn
+deze programma's opgenomen en mogen door een
+ieder vrijelijk worden gebruikt onder het NOS
+motto: 'door hobbyisten voor hobbyisten'.
+Onder PRSCRN-9 staan drie programma's voor screen
+5, n.l. een Basic programma, een sourcelisting
+van het assembler programma en een in Basicvorm
+gevat machinetaal programma. Hetzelfde geldt voor
+PRSCRN#8, dat screen 8 afbeeldt. Met behulp van
+de sourcelisting kan men zelf eventueel nog
+aanpassingen maken voor de eigen printer. Het is
+ons zelfs gelukt, uitgaande van deze programma's,
+de VW 0020 printer te bewegen grafische plaatjes
+te printen. De oorspronkelijke trage Basic
+programma's zijn opgenomen om het principe van
+onze printmethode te verduidelijken. In een van
+de SRC-listings blijkt een klein typefoutje voor
+te komen: er staat HL,MESG1 en dat moet zijn:
+LD HL,MESG1 maar dat is wel duidelijk.
+Als men op een MSX-2 de Zen assembler gebruikt,
+kan men veel profijt ervan hebben, als men een
+zes letterige titel invoert: b.v.:
+SET TITTLE 'Disk ?
+Dit zorgt ervoor, dat bij voorkomend onvoorzien
+resetten van de computer gewacht wordt op een
+commando voordat het opnieuw opstarten plaats
+vindt. (In dit geval: Shift indrukken en vast
+houden en dan op de spatie drukken: opstarten
+zonder ingeschakelde diskdrives). Men is dan het
+reeds gedane werk niet kwijt! (ZEN weer starten
+met het USR(0) commando). Aldus Pieter Vijlbrief.

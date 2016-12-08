@@ -1,0 +1,312 @@
+254, maa 02 okt '89
+
+NIEUWE FIDO-VERSIE IN DATABANK
+
+Sinds dinsdag 19 september j.l. is de
+databank van NOS-Hobbyscoop (tel.
+035-45395) vernieuwd: het BBS, dat tot
+nu met Fido versie 11w werkte, is
+overgegaan op de nieuwe versie 12p. Een
+en ander is gerealiseerd dankzij de
+deskundige hulp van Fido-sysop en
+zendamateur Ron Goossen uit Apeldoorn
+(PE1HIZ). Bedankt, Ron!
+
+Wat is er zoal veranderd ten opzichte
+van de oude versie 11w? We zullen de
+gewijzigde kommando's nu gaan
+toelichten, verdeeld over de drie
+gebieden die Fido kent: het hoofdgebied
+(MAIN), de berichtengebieden (MESSAGES)
+en de bestandsgebieden (FILES). Verder
+zijn de HELP-functies in de nieuwe
+Fido-versie uitgebreider geworden.
+
+MAIN GEBIED
+
+Het kommando B)ulletins geeft nu een
+lijst van beschikbare bulletins (1 tot
+maximaal 99), dit afhankelijk van het
+aantal bulletins dat door de sysop erin
+is gezet. Je kunt dus nu kiezen uit de
+diverse onderwerpen die je interessant
+lijken.
+
+Bij het kommando C)hange zijn de opties
+Q)uit en S)ave verdwenen, deze zijn
+vervangen door een <RETURN>.
+
+Het kommando U)ser-list is gewijzigd in
+L)ist-Callers.
+
+MESSAGE GEBIEDEN
+
+In de MESSAGE gebieden hoef je niet
+meer de 'R' van R)ead in te toetsen
+voor het lezen van berichten. Je kunt
+direkt het nummer van de boodschap
+intoetsen of <RETURN> voor de
+eerst-volgende.
+
+Het kommando T)o-you zoekt het
+berichten- gebied af naar boodschappen
+welke aan jou gericht zijn. Fido zoekt
+echter vanaf het laatste bericht dat je
+gelezen hebt.
+
+Het kommando C)ontinuous geeft je de
+gelegenheid de berichten zonder
+onderbreking over je scherm te laten
+scrollen. Een pauze kun je inlassen met
+CTRL-S.
+
+Het kommando U)pdate-Msg. Daarmee kun
+je een bericht, welke je b.v. een week
+geleden ingegeven hebt, wijzigen.
+Uiteraard geldt dit alleen voor de
+berichten die je zelf hebt ingetoetst.
+
+FILE GEBIEDEN
+
+Over de kommando's in de
+bestandsgebieden valt weinig nieuws te
+melden. Het gebruik en het resultaat
+ervan zijn nagenoeg het zelfde
+gebleven. Wel is er voor het naar je
+toe halen (downloaden) van een
+programma een bestands- overdrachts-
+protocol bijgekomen, nl. Zmodem. Dit
+nieuwe protocol werkt veel sneller dan
+bv. Xmodem of Kermit. Het is natuurlijk
+wel nodig dat je kommunikatie programma
+eveneens over dit protocol beschikt!
+
+Het kommando S)tatistics geeft nu een
+wat kompleter beeld van je persoonlijke
+gegevens.
+
+HELP FUNCTIES
+
+Bij alle gebieden is hulp beschikbaar.
+Geef je in een gebied het kommando '?',
+dan krijg je wat algemene informatie
+over dat gebied (Main, File of Message
+gebied) en de kommando's.
+
+Wil je echter specifieke informatie
+over een kommando, dan dien je de
+letter van het kommando gevolgd door
+een '?' in te toetsen. Bijvoorbeeld
+'C?' in het MAIN gebied geeft dus info
+over het C)hange kommando.
+
+VRAGEN?
+
+Mocht je na deze kleine verklaring van
+wijzigingen ten opzichte van versie 11w
+nog vragen hebben, dan kan je deze
+altijd via een bericht aan de sysop
+stellen.
+
+De nieuwe Fido-versie is nog niet
+helemaal vrij van 'bugs'. Het is dus
+mogelijk dat je vreemde dingen
+tegenkomt. Mocht dat inderdaad het
+geval zijn, zet dan een berichtje aan
+de sysop in message-gebied 3. In elk
+geval: veel plezier met deze nieuwe
+versie...
+
+FAX-BEELDEN OP DE PC, DEEL 1
+
+Onze MSX- en MS-DOS specialist Pieter
+Vijlbrief vervaardigde voor Hobbyscoop
+een overzicht van de mogelijkheden om
+fax-beelden die worden uitgezonden via
+de radio, te decoderen en vervolgens
+zichtbaar te maken met behulp van een
+computer. In deze Beeldkrant volgt nu
+het eerste deel van zijn artikel,
+waarin met name een uiteenzetting wordt
+gegeven over wat er zoal op de radio te
+'zien' is.
+
+DE RADIO
+
+Men kan de radio gebruiken om muziek of
+gesproken woord te beluisteren. Op de
+kortegolf kan men het nieuws uit verre
+landen vernemen. Tussen de verstaanbare
+stations door horen we echter ook
+allerlei piepjes en fluitjes. Sommigen
+worden dan nieuwsgierig naar wat er met
+die vreemde signalen wordt overgeseind.
+Behalve morseseinen, die men op het
+gehoor kan leren ontcijferen, zijn er
+ook andere piepjes.
+
+TELEX
+
+Sommige stations zenden berichten uit
+door middel van Telex of Telex Over
+Radio (TOR). Met behulp van speciale
+schakelingen kan men Telex berichten
+ontcijferen. Voor de buitenstaander
+zijn deze meestal geheel niet
+interessant. Vaak zelfs zijn ze
+gecodeerd en dus niet leesbaar. Beelden
+zijn veel begrijpelijker. Daarom wekken
+de stations die FAX signalen uitzenden
+onze belangstelling.
+
+BEELDEN VIA DE RADIO
+
+In dit artikeltje willen we een korte
+samenvatting geven van hetgeen zoal op
+de radio 'te zien' is en op welke wijze
+men dit zichtbaar kan maken. Het klinkt
+de niet ingewijden misschien wat vreemd
+in de oren: plaatjes op de radio, maar
+ze zijn er wel degelijk. Evenals
+computerprogramma's (Basicode) via de
+radio kunnen worden uitgezonden, kunnen
+er ook facsimile beelden mee worden
+overgebracht (FAX).
+
+VERSCHENEN ARTIKELTJES
+
+In de diverse amateurbladen zijn
+daarover uitvoerige technische
+artikelen te vinden. De meest
+uitvoerige reeks troffen we aan in het
+Radio Amateur Magazine (RAM). Kijkt u
+maar eens in de nummers 76, 77, 79, 80,
+82, 84, 88 en 95 (na te bestellen bij
+RAM B.V. te Zandvoort). Als u werkelijk
+in het onderwerp geinteresseerd raakt,
+raden we u aan deze artikeltjes te
+bestuderen.
+
+OVERZICHT VAN DE ARTIKELTJES IN RAM
+
+Nr 76 bevat een overzicht van te
+beluisteren signalen via satellieten.
+Nr 77 en 79 gaan over de satellietbanen
+en geven een apparatuur overzicht.
+Nr 80 en 82 behandelen voornamelijk de
+antennes en frekwenties.
+Nr 84 bespreekt de modulatiemethode,
+die de weersatellieten gebruiken (APT)
+en enkele ontvangers voor 137 MHz.
+Nr 88 en 95 bevatten testen van enkele
+decoders.
+
+WAT IS ER ZOAL TE ZIEN?
+
+Het bekendst zijn de mooie
+wolken-foto's, die we vaak in het
+TV-journaal kunnen bewonderen. Deze
+worden uitgezonden door rond de aarde
+draaiende satellieten, waarvan er
+enkelen zelfs (schijnbaar) stil staan
+en dus altijd vanuit dezelfde
+gezichtshoek naar de aarde kijken (b.v.
+de METEOSAT). De door deze satellieten
+uitgezonden beelden zijn de gehele dag
+te ontvangen met behulp van een
+schotelantenne en een ontvanger die
+voor de gebruikte zeer korte
+golflengten geschikt is.
+
+POLAIRE SATELLIETEN
+
+Deze cirkelen ongeveer in N-Z (of Z-N)
+richting rond de aarde en zijn slechts
+te ontvangen als ze voor ons boven de
+horizon komen. De ontvangstapparatuur
+hiervoor is veel eenvoudiger van
+uitvoering en aan de antenne behoeft
+men ook geen hoge eisen te stellen.
+Hieronder vallen o.a. de NOAA
+kunstmanen, die uitzenden op ongeveer
+137 MHz.
+
+SATELLIETBAANBEREKENING
+
+Om precies te weten, wanneer deze
+satellieten overkomen en dus te
+ontvangen zijn, zenden wij regelmatig
+de (bijgewerkte) 'baanberekenings-
+programma's' uit. Daarmede zijn de
+overkomst tijden precies te berekenen.
+
+ANDERE BEELDEN
+
+Op het gebied van de weerkunde zijn nog
+veel meer beelden te ontvangen. Op de
+langegolf op 134.2 kHz vinden we
+Offenbach Meteo, die de gehele dag
+weerkaarten uitzendt maar ook beelden
+van de Meteosat laat zien. En op de
+kortegolf is b.v. Bracknell Meteo uit
+Engeland te horen (o.a. op 4782 kHz)
+met ook allerlei meteorologische
+kaarten.
+
+PERSFOTO'S
+
+Op 139.0 kHz is DPA uit Frankfurt te
+ontvangen. Dit station zendt regelmatig
+persfoto's uit, die we de volgende dag
+vaak in de diverse dagbladen zien
+afgedrukt. Vooral bij bijzondere
+gebeurtenissen kan de ontvangst van
+deze beelden interessant zijn.
+
+EEN KLEINE GREEP
+
+Natuurlijk is in het bovenstaande
+slechts een klein gedeelte opgesomd van
+wat op de lange, korte en zeer korte
+golven te horen (zien) is. Ook nog niet
+genoemd zijn de SSTV (Slow Scan TV) en
+FAX beelden, die radioamateurs
+uitzenden.
+
+DE BEELDEN ZICHTBAAR MAKEN
+
+Om deze beelden te kunnen zien, is
+behalve een goede
+communicatie-ontvanger, die voor de
+gebruikte frekwenties geschikt is en
+voor de FAX beelden ook stations die in
+'enkelzijband' uitzenden kan ontvangen,
+ook decodeer- apparatuur nodig. Er zijn
+in Nederland verscheidene firma's die
+zich daarin specialiseren. Behalve bij
+sommige leveranciers van amateur radio
+spullen, kunnen de apparaten worden
+bewonderd bij firma's als Doeven (in
+Hoogeveen), COMSAT (in Velp bij
+Arnhem), Jacobs Electronics (in Breda)
+en van Dijken (in Groningen), die zich
+speciaal op dit gebied bewegen. (Zie de
+advertentie- pagina's in de
+amateurbladen).
+
+DE DECODEERAPPARATUUR
+
+Er zijn prachtige toestellen te koop,
+die achter de ontvanger geschakeld, in
+staat zijn de beelden op een monitor of
+een printer zichtbaar te maken. Men
+moet er dan wel rekening mee houden,
+dat de manier, waarop de beelden worden
+uitgezonden, nogal kan verschillen. De
+apparatuur moet dus omschakelbaar zijn.
+De prijzen liggen tussen de twee- en
+drieduizend gulden (en hoger). Helaas
+zijn de kantoor-faxen niet bruikbaar
+voor ons doel.
+(Met dank aan Pieter Vijlbrief)
+

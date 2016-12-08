@@ -1,0 +1,350 @@
+353, maa 15 okt '90
+
+TEST: NEC P60/P70 24-NAALDS PRINTER
+
+Printers zijn nou typisch van die
+apparaten waar je geen gezeur mee moet
+hebben. Gewoon lint verwisselen en
+afdrukken. Maar liefst wel met de
+nodige extra mogelijkheden, voor als
+dat eens nodig is. De NEC P60 en P70
+bleken prima aan dat ideaal te voldoen.
+
+De matrix printer technologie
+ontwikkelt zich nog altijd. De 9-naalds
+matrix printers hebben weliswaar de
+langste tijd gehad, maar de 24-naalds
+printers blijken steeds beter en
+veelzijdiger te worden. De afdruk
+kwaliteit van de topklasse machines is
+weliswaar nog niet zo mooi als die van
+een laser printer, maar de resultaten
+komen een aardig eind in de buurt.
+Laser printers mogen dan 'the state of
+the art' zijn, in aanschaf en onderhoud
+zijn de matrix printers stukken
+goedkoper. Bovendien zijn de
+naald-printers vaak flexibeler.
+
+PAPIERFORMATEN
+
+De NEC P70 is een mooi voorbeeld van
+een moderne matrix printer. In
+tegenstelling tot een laser printer kan
+het apparaat met een grote
+verscheidenheid aan papier formaten
+overweg. Het apparaat is voorzien van
+een brede wagen, waardoor - met de
+sheetfeeder - bijvoorbeeld ook op
+A4-velletjes in landscape orientatie
+(op zijn kant) geprint kan worden.
+Jammer genoeg past A3 weer net niet,
+zoals bij alle overige printers. De
+machine heeft tevens een parkeerstand
+waardoor er afwisselend op
+kettingpapier en losse vellen afgedrukt
+kan worden, zonder eerst de printer te
+moeten ombouwen. Niet enkel in
+prestaties mag de P70 er zijn. Het
+apparaat heeft weliswaar een kunststof
+behuizing, maar is zeer solide. De P70
+weegt dan ook (zonder de optionele
+sheetfeeder) niet minder dan dertien
+kilo.
+
+LETTERTYPES
+
+Voor op de printer vinden we het
+bedienings paneel. Via dit paneel is
+een groot aantal standaard instellingen
+in te voeren. Om te beginnen is er al
+keus uit acht lettertypes. Behalve de
+Courier - de schrijfmachine letter -
+zijn er Prestige Elite, ITC Souvenir,
+Times PS, Helvetica PS en Bold PS,
+alsmede Quick en Draft Gothic. De PS
+types hebben proportioneel schrift, de
+andere lettertypes zijn in
+verschillende pitches af te drukken. De
+tekenbreedte varieert van 10 tot 20
+tekens per inch. Bij een tekenbreedte
+van 20 karakters per inch is een
+regellengte van 272 tekens te bereiken.
+Voor het afdrukken van spreadsheets,
+die vaak in 'landscape' moeten worden
+afgedrukt, is de P70 dan ook zeer
+geschikt. (Dit kan ook op de P60 mits
+men beschikt over SideWays of bv.
+Windows).
+
+De lettertypes Quick Gothic en Draft
+Gothic, waarin zeer snel kan worden
+afgedrukt, lenen zich het best voor
+kladwerk of het printen van adressen.
+De andere lettertypes kunnen voor het
+serieuze werk worden ingezet. In de
+letter quality stand bieden deze types
+correspondentie kwaliteit. De P70 biedt
+de mogelijkheid het aantal interne
+fonts nog uit te breiden met extra
+fonts. Daartoe dient er een fontcard in
+een slot op de voorzijde van de printer
+gestoken te worden. Er zijn acht
+fontcards verkrijgbaar, waaronder een
+met barcodes!
+
+PRINTER-INSTELLINGEN
+
+Via de Menu-toets kunnen alle mogelijke
+printer instellingen ingevoerd en
+zichtbaar worden gemaakt. Behalve zaken
+als paginalengte, regeldichtheid, de
+vorm van de nul en het lettertype bij
+het opstarten kan er een nationale
+tekenset worden gekozen. De machine
+heeft achttien extra tekensets. Voor
+een groot aantal talen zijn zo de
+speciale karakters of diakritische
+tekens - de accenten - af te drukken.
+Daarnaast heeft het paneel nog enkele
+toetsen voor het besturen van het
+kettingpapier en de losse vellen. Met
+de 'Tear paper' toets b.v. wordt het
+papier precies zover doorgevoerd dat
+het kan worden afgescheurd, waarna het
+na acht seconden automatisch terugkeert
+naar de bovenkant van de volgende
+bladzijde. De 'pitch indicator', een
+twee-cijferig display waarin de
+ingestelde tekenbreedte wordt
+aangegeven, wordt ook gebruikt voor het
+melden van fouten als 'PO' voor 'paper
+out'. De pitch-keuze toets doet ook
+dienst bij het ingeven van menu-opties.
+Op het apparaat troffen we geen
+dipswitches meer aan. Van die akelige
+schakelaartjes lijken we nu eindelijk
+verlost te zijn.
+
+BESTURINGSCOMMANDO'S
+
+De P70 kent een zeer groot aantal
+besturings commando's. Naast de bekende
+commando's voor de pagina opmaak en de
+lettertypes kent de machine ook
+geavanceerde opdrachten voor het
+instellen van verticale tabstops,
+repeterende tabs, het positioneren van
+de printkop en het herhalen van blokken
+tekst. Heel fraai is ook de
+feed-backwards bij kettingpapier. De
+mogelijkheid letters op dubbele hoogte
+af te beelden was voor ons geheel
+nieuw.
+
+Dan is er natuurlijk nog een groot
+aantal grafische commando's om met
+verschillende dichtheden afbeeldingen
+te drukken. Het grafisch aansturen
+vanuit BASIC of een andere taal lijkt
+ons echter geen pretje. Op een
+eenvoudige 9-naalds printer is dit al
+een tijdrovend karweitje. Op zo'n
+printer kost elke kolom nog maar een
+byte, terwijl er op een 24-naalds
+printer voor elke kolom al drie bytes
+moeten worden gedefinieerd. Hetzelfde
+probleem komt ook kijken bij de
+download-set. Dit is een kleine
+tekenset die men naar eigen inzicht kan
+ontwerpen en die naast de bestaande
+tekenset kan worden gebruikt. Men kan
+er bijv. Russische letters of
+wiskundige symbolen in zetten.
+
+BUFFER
+
+De printer heeft een grote buffer. Deze
+bedraagt maar liefst 80 Kb. Bij gebruik
+van een download-set is dat iets
+minder, maar nog altijd een
+respectabele 48 Kb. Een ruime
+printerbuffer kan erg nuttig zijn, want
+als de computer het af te drukken
+bestand eenmaal in de buffer heeft
+gezet, kan er meteen worden
+doorgewerkt. Zo'n buffer is ook sneller
+dan het 'printen op de achtergrond',
+waarbij de computer steeds even tijd
+vrij moet maken om een stukje bestand
+te versturen.
+
+SNELHEID
+
+Het is moeilijk een uitspraak te doen
+over de snelheid van de printer. Er
+zijn zo veel lettertypes en stijlen,
+die allemaal op een andere snelheid
+worden afgedrukt, dat men niet kan
+volstaan met EEN cijfer. NEC claimt een
+snelheid van 300 tekens per seconde in
+de stand Draft Gothic. In de
+letter-quality stand valt de snelheid
+terug tot 87 tekens per sec. bij 10 cpi
+(characters per inch). De ervaring
+heeft ons de vuistregel gegeven dat men
+circa 30 procent van de door de
+fabrikant opgegeven snelheid mag
+aftrekken. In de cijfers is b.v. geen
+rekening gehouden met de regelopvoer.
+Waar dit overdrijven is begonnen weten
+we niet, maar geen enkele fabrikant kan
+meer een reele snelheid opgeven, want
+dan zou zijn printer slecht afsteken
+bij de anderen.
+
+MINDER GELUID
+
+Wat het geluid betreft beweert NEC een
+reductie van 40 pct gerealiseerd te
+hebben. Ten opzichte waarvan staat er
+niet bij. Bij gebrek aan een
+decibelmeter konden we slechts op ons
+gehoor afgaan. Maar de redactie-oren
+waren het er over eens: het
+geluidsniveau van de printer is
+beduidend lager dan gemiddeld. De
+meeste matrix printers doen denken aan
+tandarts boren. De P70 snerpt wel, maar
+het geluid is niet zodanig dat er geen
+gesprek meer bij is te voeren. Bij het
+maken van een grafische afbeelding
+maakt de machine overigens wat meer
+lawaai en laat dan nogal 'huilende'
+toontjes horen. Voor situaties waar het
+geluid beperkt dient te blijven
+beschikt de P70 over de zogenaamde
+Quiet mode. In deze mode wordt de
+snelheid gehalveerd, waardoor de lawaai
+overlast aanzienlijk minder wordt.
+
+SHEETFEEDER
+
+De meegeleverde half-automatische
+sheetfeeder is eigenlijk niet meer dan
+een papiersteun, die ook dienst kan
+doen als papier geleider. De
+automatische sheetfeeder is een
+optioneel attribuut. Bij gebruik ervan
+wordt het papier automatisch vanuit een
+magazijn in de printer gevoerd en na
+het afdrukken in een opvang steun
+verzameld. Dit kan zowel 'face down'
+(bedrukte zijde naar beneden) als 'face
+up' (bedrukte zijde naar boven)
+gebeuren. De P70 biedt zelfs de
+mogelijkheid een sheetfeeder met twee
+magazijnen te gebruiken. Het kleine
+broertje van de P70, de minder brede
+P60, heeft slechts ruimte voor een
+magazijn.
+
+RESULTATEN
+
+Nadat de juiste driver was
+geinstalleerd, kwam in WP 5.0 de tekst
+al snel goed uit de printer rollen. Ook
+ingemonteerde afbeeldingen zagen er
+heel aardig uit. De grafieken uit
+Harvard vielen in eerste instantie
+nogal tegen. De lijnen waren rafelig en
+de tekst bleek te golven. Een
+telefoontje naar NEC wees spoedig uit
+dat de printer bij het afdrukken van
+grafische afbeeldingen unidirectioneel
+moet werken: een kwestie van
+configureren dus. Nadat we de machine
+via het frontpaneel op eenzijdig
+grafisch printen hadden gezet, zagen de
+lijnen er voortreffelijk uit. Tenslotte
+hebben we vanuit BASIC nog een aantal
+lettertypes en stijlen laten afdrukken.
+Dit verliep allemaal naar behoren, maar
+het beviel ons minder dat de zachte
+reset, die alle instellingen terug op
+standaard zet, ook steeds -althans bij
+gebruik van losse vellen- een
+pagina-opvoer verzorgde. (Inmiddels is
+ook voor Windows 3.0 een printer-driver
+verschenen die een goede interface met
+dit grafische programma verzorgt -
+snel! red.)
+
+CONCLUSIE
+
+De P70 (evenals zijn A-4 broertje P60)
+is een allround printer waarmee men
+alle kanten uit kan. In de goede zin
+van het woord dan, want de machines
+zijn erg veelzijdig. Het aantal
+lettertypes en stijlen is erg groot. In
+de LQ-stand ogen de lettertjes fraai.
+De draft-stand is minder mooi, maar
+sneller. Door de grote verscheidenheid
+aan lettertypes en afdruk snelheden kan
+de machine worden ingezet bij het
+bedrukken van facturen, etiketten en
+enveloppen, maar ook voor
+correspondentie die beslist
+briefkwaliteit vereist is de nieuwe
+Pinwriter reeks goed geschikt.
+
+Het apparaat munt uit in bedienings
+gemak. Het is duidelijk dat NEC zijn
+oor goed bij de gebruiker te luisteren
+heeft gelegd. Veel kleine ergernisjes
+die we van andere printers kennen zijn
+bij deze machine verdwenen.
+De printers hebben kleine ingebouwde
+handigheidjes die het werken ermee heel
+prettig maken. Een voorbeeld is het
+even uitwerpen van een ketting
+formulier om dit af te scheuren, waarna
+het papier weer op de juiste plek wordt
+gepositioneerd.
+Ook de documentatie is uitstekend
+verzorgd. In de doos troffen we een
+fraai uitgevoerd Engels handboek aan.
+Daarnaast is er nog een Nederlandstalig
+en veel uitgebreider naslagwerk met
+talrijke voorbeelden.
+De P70 heeft veel optionele
+accessoires. Behalve de sheetfeeders is
+er een trekkende tractor papierdoorvoer
+van onderuit, een seriele interface en
+een (niet geteste) kleurenkit, die
+blijkens de bijgeleverde afdrukken
+fenomenale kleuren kan geven.
+Het maximale oplossend vermogen van de
+printer is 360 bij 360 inch, hoger dan
+dat van een laser printer, althans
+anders.
+
+PRIJZEN EN INFORMATIE
+
+De prijs van de NEC P60 bedraagt
+f2295,-. De P70 kost f2895,-. (prijzen
+excl. BTW). Verdere informatie is
+verkrijgbaar bij: NEC Business Systems,
+Karspeldreef 2, 1101 CJ Amsterdam-ZO,
+tel. 020-919901.
+
+Deze test, die werd uitgevoerd door
+Hans Niepoth, is (met toestemming)
+overgenomen uit PC-Active nr. 20. Bij
+dit maandelijks verschijnend
+tijdschrift wordt een gratis MS-DOS
+diskette met programmatuur geleverd.
+Voor nadere informatie: PC-Active,
+Postbus 61264, 1005 HG Amsterdam.
+

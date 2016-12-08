@@ -1,0 +1,343 @@
+437, maa 16 sep '91
+
+MAGNETISCH OPTISCHE DISC
+
+In Beeldkrant 435 berichtte Hans
+Beekhuyzen over de nieuwe Sony Mini
+Disc. De techniek die daarin wordt
+toegepast is afgeleid van een computer
+techniek: de magnetisch optische disc.
+Dit schijfgeheugen wordt onder andere
+gebruikt in de Akai DD-1000 digitale
+recorder/ editor voor opname en montage
+van muziek, op het niveau van CD (44,1
+kHz) en DAT (48 kHz).
+
+Alweer sinds enige tijd zijn voor
+digitale montage zogenaamde 'harddisc
+editors' op de markt. Het grote
+voordeel is de enorm snelle
+toegangstijd, waardoor monteren zeer
+snel gaat. Daarnaast werken harddisc
+editors 'non-destructief': het
+originele materiaal wordt niet
+veranderd, zodat er altijd een weg
+terug is. Het grote nadeel van harddisc
+editors is de in- en uitlaadtijd. Harde
+schijven zijn nu eenmaal niet zonder
+meer uit de machine te halen. Een
+oplossing hiervoor zou de magnetisch
+optische disc kunnen zijn.
+
+TECHNIEK
+
+Een Magnetisch Optische Disc (MOD) is
+een relatief dik schijfje kunststof
+waarin een magnetisch materiaal is
+verwerkt dat afhankelijk van de
+polariteit wel of niet 'donker' is. Het
+systeem is enigszins vergelijkbaar met
+de LCD displays van horloges. Daar
+filteren vloeibare kristallen licht
+uit, wanneer onder het kristal een
+stroompje loopt. Bij de MOD werkt men
+met magnetisch materiaal dat zo is
+samengesteld dat het alleen van
+polariteit kan veranderen als het tot
+hoge temperatuur wordt verwarmd. In een
+MOD drive vind je dan ook een laser die
+voor de warmte zorgt en een
+'elektromagneet' die voor het eventuele
+'ompolen' zorgt. Door deze aanpak is de
+MOD behoorlijk ongevoelig voor
+magnetische velden, in tegenstelling
+tot een gewone analoge geluidsband.
+Alleen een combinatie van hoge
+temperatuur en een sterk magnetisch
+veld kan de informatie beschadigen.
+
+MOD drives hebben echter ook een
+nadeel: ze zijn -vergeleken met harde
+schijven- relatief traag. Normale harde
+schijven kunnen de verschillende
+informatieblokken op de schijf binnen
+15 milliseconde (ms) vinden, MOD drives
+doen daar 95 ms over. En wanneer dat
+alleen maar zou betekenen dat het
+starten 80 ms langer zou duren, dan zou
+er natuurlijk niets aan de hand zijn.
+Maar zo eenvoudig is het leven niet. Op
+computer schijven, en dus ook op de
+MOD, staan bestanden vaak verspreid
+over de schijf. De leeskop dient dan
+ook uiterst snel van het ene spoor naar
+het andere te kunnen springen.
+
+SPOREN EN SECTOREN
+
+Om te begrijpen hoe de MOD werkt moeten
+we eerst even kijken hoe een computer
+schijf (zoals de MOD) wordt beschreven.
+Alle computer schijven worden
+onderverdeeld in sporen en sectoren.
+Sporen zijn vergelijkbaar met de
+groeven op een vinylplaat, met EEN
+groot verschil: een plaat heeft maar 1
+groef die langzaam naar het midden van
+de plaat gaat. Computer schijven
+bevatten een groot aantal 'groeven' die
+naast elkaar liggen. Elke groef eindigt
+in zichzelf en vormt dus een cirkel op
+de schijf. De drive stapt elke keer een
+spoortje verder, zodra dat nodig is.
+Elk spoor is bovendien verdeeld in een
+aantal sectoren. Het aantal sectoren
+per spoor is afhankelijk van het
+betreffende systeem. Zo heeft een 3,5
+inch IBM-floppy 80 sporen en,
+afhankelijk van de capaciteit (720 kb
+of 1,44 Mb) 9 of 18 sectoren. De MOD in
+de hierboven genoemde Akai DD-1000
+heeft 18.751 sporen per kant en 17
+sectoren per spoor (en 1024 bytes per
+sector).
+
+GAATJES VULLEN
+
+Computerschijven (floppy's, harde
+schijven en MOD's) worden in beginsel
+net zo beschreven als bijvoorbeeld
+geluidsband. De eerste data worden
+geschreven op spoor 1 en als die vol is
+wordt vervolgd op spoor 2. Wordt er
+echter een stukje informatie als
+overbodig beschouwd, dan blijft bij
+band weinig anders over dan dat stukje
+band eruit te knippen. Bij de DAT
+recorder kan met een skip-ID een stukje
+opname worden overgeslagen. Maar in
+beide gevallen wordt het overtollig
+geworden stukje band niet opnieuw
+gebruikt. Bij een computerschijf gaat
+dat anders, want doordat de schrijfkop
+uiterst snel alle plaatsen op de schijf
+kan bereiken, kan die ruimte wel worden
+opgevuld, om vervolgens weer naar het
+'eind' te springen als het gat vol is.
+Als gevolg hiervan is er nooit
+nutteloze ruimte op de schijf, maar zal
+tijdens het lezen de kop razendsnel van
+het ene spoor naar het andere spoor
+moeten kunnen springen om de diverse
+delen van een bestand bij elkaar te
+'sprokkelen'. Doet de drive er te lang
+over, dan ontstaat er een gat in de
+datastroom. Door een buffer (cache) te
+gebruiken kunnen 'gaten' in de
+datastroom worden opgevangen. Is echter
+het gat groter dan de capaciteit van de
+buffer, dan zal ook na de buffer een
+gat in de datastroom komen, en dat is
+bij muziek redelijk vervelend.
+
+FAT
+
+Om te weten waar wat staat op de
+schijf, houdt het besturings systeem
+een inhouds opgave bij. In computer
+termen heet dat een File Allocation
+Table, kortweg FAT. In die FAT zijn de
+namen van de bestanden opgenomen, plus
+een lijstje van de plaatsen op de
+schijf waar die bestanden staan. Wordt
+de disc voor de eerste keer gebruikt,
+dan moet het besturings systeem eerst
+zo'n (lege) lijst aanmaken. Bovendien
+wordt dan gelijk gekeken of er soms
+stukjes op de schijf beschadigd zijn.
+Ook daarvan wordt een lijstje op de
+schijf geschreven, zodat die slechte
+stukjes (bad sectors) niet abusievelijk
+worden gebruikt, want dat zou
+dataverlies tot gevolg hebben.
+
+SOORTEN EN MATEN
+
+Bij computer floppy's bestaan een
+aantal formaten: 8, 5.25, 3.5, 3 en 2
+inch. De hoeveelheid data die ze kunnen
+bevatten is afhankelijk van de drive en
+het besturings systeem waarop ze
+gebruikt worden. Dat zorgt er ook voor
+dat floppy's die beschreven zijn op een
+Atari of Apple niet zonder meer op een
+IBM PC kunnen worden gelezen. Maar
+omdat het om de softwarematige
+invulling van dezelfde hardware gaat,
+kan vaak met een apart te laden
+programmaatje toch in andere formaten
+worden gelezen en geschreven. Bij MOD
+drives is er (in ieder geval voor de
+5.25 inch versie) een ISO standaard.
+ISO staat voor International Standard
+Organisation, een overkoepelende
+organisatie van nationale
+standaardisatie bureau's. Binnen deze
+norm is nauwkeurig vastgelegd op welke
+manier de bits op de schijf komen.
+Daarmee lijkt gewaarborgd dat MOD's
+uitgewisseld kunnen worden tussen MOD
+recorders van verschillende
+fabrikanten. Dit hoeft echter absoluut
+niet het geval te zijn. Er is dan wel
+vastgelegd hoe de bits op de schijf
+komen, maar niet wat de bits voor
+moeten stellen. Dit is te vergelijken
+met het uitwisselen van tekstbestanden
+tussen de ene tekstverwerker en de
+andere. Of MIDI bestanden tussen de ene
+MIDI programmatuur en de andere. Het
+kan goed gaan, het hoeft echter niet.
+
+Hans Beekhuyzen. (Uit: Pro-Audio
+Magazine, juli/augustus 1991)
+
+HET NIEUWE GIROTEL OFF-LINE PROGRAMMA
+
+Ervaringen van een tobbende
+thuisbankier
+
+De Postbank N.V. verdient een prijs, al
+weet ik nog niet welke naam ik de
+trofee moet geven. Misschien is 'De
+Lachende Lintworm' wel een goeie. Ik
+moet in elk geval bekennen dat ik van
+de ene verbazing in de andere ben
+gevallen, sinds PTT Post mij de
+nieuwste versie van het off-line
+programma van Girotel bezorgde.
+Daarvoor leefde ik in de (misschien
+naieve) veronderstelling dat een nieuwe
+versie van een computer programma vaak
+beter is dan de oude. Nu weet ik beter:
+het nieuwe Girotel programma is tien
+keer onhandiger dan het oude. De enige
+die tevreden kan zijn is PTT Telecom.
+Want de telefoon rekening van de
+thuisbankier zal lekker oplopen.
+
+Sinds een jaar ben ik abonnee van
+Girotel. Vraag me niet waarom, want dan
+moet ik onthullen dat ik het ook niet
+weet. Voor f5,00 per maand bekijk ik
+een paar keer per week de toestand van
+mijn girorekening. Dat is een volkomen
+overbodige handeling, omdat ik dezelfde
+gegevens wekelijks per post toegestuurd
+krijg. Verder betaal ik per maand een
+stuk of drie rekeningen via mijn
+computer, terwijl het toch beduidend
+voordeliger is om die betaal opdrachten
+even in de brievenbus te gooien.
+Kortom: misschien is Girotel voor
+sommige mensen de handigste vinding van
+de 20ste eeuw, voor mij is het gewoon
+speelgoed.
+
+Het off-line programma is ontworpen om
+de gecomputeriseerde thuisbankier
+kosten te besparen. Hij kan immers van
+tevoren allerlei handelingen uitvoeren,
+waardoor de verbinding met de Girotel
+computer korter kan duren. Het 'oude'
+off-line programma voldeed in dat
+opzicht goed. Je kon van tevoren betaal
+opdrachten maken en vervolgens deed de
+computer de rest: hij belde de Girotel
+computer, haalde het saldo en de
+mutaties op, verzond de betaal opdracht
+en verbrak de verbinding. De
+elektronische handtekening (de
+TAN-code) werd desgewenst automatisch
+ingevoerd. Je had er geen omkijken
+naar.
+Maar bij het nieuwe off-line programma
+is dat gemak verdwenen. Om de reklame
+voor een bakmiddel te citeren: 'Je moet
+er bij blijven voor het beste
+resultaat.' Sterker nog: het programma
+zeurt voortdurend om aandacht. Het
+telefoonnummer van de Girotel computer
+wordt niet meer automatisch gekozen en
+als het nummer in gesprek is, geeft het
+programma het op, omdat de
+redial-functie ontbreekt. Wel
+verschijnt de mysterieuze mededeling:
+'FC05: nummer in gesprek'. FC Utrecht
+ken ik, maar FC05? Nooit van gehoord.
+
+Wie een uiterst simpele opdracht tot
+betaling wil geven, moet vreemde en
+ingewikkelde toeren uithalen. Eerst zet
+je de naam en het gironummer van de
+crediteur in het 'crediteurenboek'.
+Daarna bel je met de Girotel computer,
+die uitzoekt of de naam en het nummer
+kloppen. Je verbreekt de verbinding en
+maakt een betalings opdracht, die je
+vervolgens weer in een 'zendbestand'
+moet zetten. Dan bel je opnieuw met
+Girotel en je geeft opdracht het
+zendbestand te lezen. De computer
+vraagt dan om twee TAN-codes van zes
+cijfers. Die moeten met de hand worden
+ingevoerd, want in het nieuwe programma
+ontbreekt de mogelijkheid om dat
+automatisch te laten doen. Wie dan ook
+nog de mutaties op zijn rekening wil
+opvragen, moet Girotel een nieuwe
+opdracht geven. Datzelfde geldt voor
+het bekijken van het saldo. Het is
+bovendien niet meer mogelijk om dat
+saldo in je eigen computer op te slaan
+en dat betekent dat je pen en papier
+bij de hand moet houden. Het is me een
+raadsel welke diepere gedachte daar nu
+weer achter zit.
+
+Natuurlijk is het off-line programma
+ook op een aantal punten verbeterd. Zo
+is het bijvoorbeeld nu mogelijk om
+accept-giro's te betalen. Jammer genoeg
+is de ruimte voor mededelingen zo
+klein, dat je bij een overschrijving
+van de postgiro naar een bank
+onherroepelijk ruimte te kort komt. Het
+im- en exporteren van de gegevens is
+een nieuwe mogelijkheid en dat zal
+ongetwijfeld heel handig zijn voor
+mensen die kas- en andere boeken
+bijhouden. Verder is het programma in
+kleur uitgevoerd, maar daar staat
+tegenover dat muis-besturing niet kan.
+Wie trouwens voor de eerste keer via
+het nieuwe programma met Girotel belt,
+kan zijn ogen maar moeilijk geloven.
+Girotel maakt van versie 3.00 meteen
+een nieuwe versie en verbreekt de
+verbinding. Met andere woorden: het
+schijfje dat de abonnees thuis krijgen
+bevat een verouderde versie. Humor of
+schraapzucht?
+
+In een toelichting schrijft Girotel dat
+het off-line programma volledig is
+herzien, 'mede op basis van suggesties
+van Girotel abonnees'. Rare abonnees
+heeft Girotel. Of zouden het allemaal
+liefhebbers van 'adventures' zijn? Ik
+stop hier mijn klaagzang, want ik moet
+nog even een paar giro's op de
+brievenbus doen.
+Henk van Hoorn.
+

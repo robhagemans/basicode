@@ -1,0 +1,340 @@
+463, maa 23 dec '91
+
+DATACOMMUNICATIE VOOR BEGINNERS (3)
+
+Dit is het derde en laatste deel van
+onze mini-serie over datacommunicatie,
+gebaseerd op een artikel uit het
+tijdschrift PC-Active. In deze
+slot-aflevering o.a. aandacht voor
+'sliding windows', MNP, diverse
+praktische tips en een bijlage over de
+'gelaagde opbouw' van datacommunicatie.
+
+SLIDING WINDOWS
+
+De windowing varianten hebben een
+optimistische kijk op datacommunicatie.
+De zender wacht hierbij niet op
+goedkeuring, maar gaat door met het
+versturen van blokken tot hij een NAK
+ontvangt. Voor het geval er iets fout
+gaat, worden in het geheugen van de
+computer steeds een aantal blokken
+bewaard. Als er een fout is opgetreden,
+dan vist de zender dit blok snel uit
+het geheugen en stuurt het blok
+nogmaals. De blokken in het geheugen
+schuiven onder de transmissie steeds
+een plaatsje op. In het Nederlands
+wordt deze techniek aangeduid met
+'schuivende vensters'.
+
+Zmodem bijvoorbeeld is een nieuw en
+snel protocol dat met schuivende
+vensters werkt. Het kan meerdere
+bestanden ineens versturen en past CRC
+toe. Naam, datum en grootte van de
+bestanden kunnen worden uitgewisseld.
+Als de verbinding wordt verbroken
+tijdens het verzenden van een bestand
+met Zmodem kan, wanneer de verbinding
+is hersteld, het versturen van een
+bestand worden hervat op het punt van
+afbreken. Ook WXmodem is een
+full-duplex Xmodem variant, die werkt
+met schuivende vensters.
+
+MNP
+
+Een andere mogelijkheid, MNP (Microcom
+Network Protocol), is oorspronkelijk
+geen protocol op datalink niveau, maar
+op circuitlink niveau. Het werd in de
+hardware van de modem ingebakken en was
+dan ook altijd van kracht. Het meest
+toegepaste MNP-protocol is MNP-5, dat
+bovendien realtime datacompressie
+toepast. Onder dit protocol hoeven
+grote over te zenden bestanden niet
+eerst met ARC- of ZIP- programma's te
+worden gecomprimeerd. Het nuttig effect
+ervan schijnt onder MNP zelfs nadelig
+te zijn. Sommige modems zijn zo slim
+dat ze zelf ontdekken dat ze een reeds
+gecomprimeerd bestand verwerken en
+schakelen zelf de compressie uit.
+Overigens, MNP is tegenwoordig ook vaak
+al in de communicatie- software
+opgenomen. Een niet-MNP modem kan dan
+toch volgens de MNP-standaard werken,
+met een wel op MNP voorbereid modem of
+een gewoon modem, dat vergelijkbare
+software gebruikt. Zo is ook MNP in
+feite een software-protocol geworden,
+met behoud van de voordelen die het
+biedt.
+
+Een protocol dat de laatste tijd opgang
+maakt is het Janus protocol. Met een
+Janus protocol kan men tegelijkertijd
+bestanden verzenden en ontvangen.
+Hetzelfde geldt voor Bimodem.
+
+TERMINAL-EMULATIE
+
+Het communicatie programma kan ons ook
+nog vragen een terminal- instelling te
+kiezen. Als we verbinding hebben met
+een BBS zijn we als het ware te gast
+bij een hostcomputer. Onze computer
+dient een bepaald type terminal na te
+doen. Welk type moet worden ge-emuleerd
+hangt af van het host-systeem.
+Gebruikelijke typen terminals zijn
+VT100, TTY of BBS-ANSI. Het systeem
+weet dan bijvoorbeeld hoe het de
+toetsenbordcodes moet interpreteren en
+of het grafische tekens kan versturen
+en kleur kan gebruiken. Ook kan vaak de
+plek waar informatie op het scherm
+wordt gezet worden bestuurd, zodat men
+schermen kan maken die veel meer lijken
+op wat we gewend zijn uit een gewone
+toepassing, zoals een tekstverwerker.
+
+CARRIAGE RETURN EN LINE FEED
+
+Sommige computers geven aan het eind
+van een regel alleen een CR-teken: een
+Carriage Return. Dit houdt in dat de
+ontvangende computer de cursor naar het
+begin van de regel zal sturen en daar
+de volgende tekens afdrukt. De laatst
+ontvangen regel wordt dan overschreven.
+De meeste communicatie- programma's
+bieden daarom de mogelijkheid een
+LF-teken (Line Feed, regel-opvoer) aan
+het CR-teken toe te voegen. Hierdoor
+komt de volgende tekst op een nieuwe
+regel terecht. Omgekeerd kan er bij
+zenden ook een regel- opvoer worden
+toegevoegd. Wordt er op het scherm
+steeds een regel overgeslagen, dan
+voeren beide partijen een Line Feed op
+en moet u de extra regel-opvoer
+uitzetten.
+
+TOONTJES OF PULSJES
+
+Als u een Hayes-compatible modem heeft
+en het lukt niet de modem zelf vanuit
+de 'dial directory' te laten bellen,
+dan kan het zijn dat uw modem en de
+telefoon centrale elkaar niet
+begrijpen. Het gaat dan om een conflict
+tussen Pulse Tone en Dial Tone. Sommige
+centrales werken nog met de oude puls-
+treintjes, de nieuwere werken met
+kiestonen. Welke instelling moet worden
+gekozen hangt dus af van de centrale
+waarop u bent aangesloten. Heeft u een
+toestel met kiesschijf en hoort u het
+relais in de modem niet ratelen, dan
+staat deze ingesteld op kiestonen.
+Heeft uw programma niet de mogelijkheid
+tussen beide te kiezen, dan moet u
+zoeken naar het menu waarin Hayes
+init-strings kunnen worden opgegeven.
+De reeks ATDP staat dan voor Dial
+Pulse, ATDT voor Dial Tone.
+
+TEN SLOTTE
+
+Datacommunicatie is niet meer iets voor
+wereldvreemde computerfreaks. Iedereen
+kan een BBS bellen. Bij
+datacommunicatie zijn echter wel goede
+afspraken nodig, anders loopt de zaak
+hopeloos spaak. Zo'n afspraak noemen we
+een protocol. Daarin worden onder meer
+het aantal databits en de overdrachts
+snelheid vastgelegd. Een verkeerd
+gekozen baudrate leidt steevast tot een
+onzinnige tekenbrij op het scherm.
+Daarnaast bestaan er foutcorrectie-
+protocollen. Deze zijn niet overbodig,
+want bij communicatie via het
+telefoonnet gaat er vaak iets mis. Deze
+protocollen bundelen de gegevens in
+pakketjes en voegen er een
+controle-getal aan toe.
+Datacommunicatie is in feite
+pakketpost.
+
+Het oorspronkelijke Xmodem berekende
+een simpele checksum die na elk blok
+werd verzonden. Latere protocollen
+werken met de veel betrouwbaarder
+cyclische redundantie- controles, de
+zogenaamde 16-bits CRC's. Nog preciezer
+zijn de 32-bits CRC's.
+
+Het downloaden van bestanden uit BBS-en
+is een populair tijdverdrijf geworden.
+Er is veel leuke public domain
+programmatuur te vinden alsmede goede,
+overigens niet gratis shareware. Het
+leuke van shareware is dat men een
+programma op de proef kan stellen
+voordat men besluit het te kopen.
+
+De meeste bestanden in een BBS zijn
+gecomprimeerd (ge-ARCt of ge-ZIPt).
+Hierdoor nemen ze minder ruimte op de
+harde schijven en worden de kosten bij
+het binnenhalen gedrukt. Voordat u op
+programmajacht gaat, moet u dus over
+een aantal compressie- en decompressie-
+programma's als PKARC, PKZIP of LHARC
+beschikken. Vaak worden deze door het
+BBS zelf aangeboden. Maak zo mogelijk
+altijd gebruik van de nieuwste
+protocollen als Zmodem. Veel BBS-en
+geven de keus uit 7-bits data plus
+pariteit of 8-bits data zonder
+pariteit. Kies dan altijd voor 8-bits
+data, want bij 7-bits data kunnen
+meestal geen programma- bestanden
+worden binnengehaald.
+
+Einde artikel.
+
+BIJLAGE: DENKEN IN LAGEN
+
+Datacommunicatie lijkt ingewikkelder
+dan het eigenlijk is. Maar als men
+eenmaal weet dat er diverse lagen zijn,
+dan is het opeens een stuk
+overzichtelijker. Zonder ons al te veel
+aan te trekken van de officiele
+benamingen zullen we daarom proberen
+die lagen-structuur even kort uit te
+leggen.
+
+Laten we beginnen op het onderste
+niveau: de fysieke verbinding. De
+telefoonlijn, waarop met veel gepiep de
+data worden uitgewisseld. Wat die
+piepjes precies inhouden, daar hoeven
+we ons gelukkig niet druk om te maken,
+want dat handelt het tweede niveau (de
+beide modems) wel voor ons af. Maar we
+moeten op dit niveau wel zorgen dat een
+aantal zaken, zoals baudrate, aan beide
+kanten gelijk is.
+
+Die modems op hun beurt praten niet
+alleen met elkaar, maar ook met de
+seriele poorten. En op dat derde niveau
+wordt het al complexer. Onder andere
+omdat ook die seriele poorten een
+baudrate kennen, die echter niet altijd
+gelijk aan die van het modem hoeft te
+zijn. Dat is gelukkig meestal wel zo,
+zodat we slechts EEN keer een baudrate
+hoeven op te geven (aan de seriele
+poort), die dan door het modem wordt
+overgenomen. Maar als we bijvoorbeeld
+een Videotex- standaard willen
+gebruiken, is er sprake van
+verschillende zend- en ontvang-
+snelheden, zoals we al hebben
+uitgelegd. De seriele poort van een PC
+is daar niet voor ontworpen, daar is de
+ontvang-snelheid altijd dezelfde als de
+zendsnelheid, zodat de modem die
+snelheid alsnog moet aanpassen.
+'Interspeeder' heet dat.
+Tussen modem en seriele poort (op dat
+derde niveau dus) zijn er nog wel meer
+zaken af te handelen. Zo zijn er
+verschillende manieren om die twee met
+elkaar in de pas te houden. Zo'n
+'handshake' kan zowel middels de
+software als via de hardware worden
+opgelost. Niet voor niets telde die
+seriele verbinding oorspronkelijk 25
+verschillende pennen, waarop allerlei
+hulpsignalen werden doorgegeven!
+Gelukkig is dat tegenwoordig
+aanzienlijk simpeler geworden: bijna
+altijd worden alle handshakes in de
+software afgehandeld en worden er van
+al die lijnen slechts drie gebruikt:
+data in, data uit en aarde. Zeker als
+modem en seriele poort samen op 1
+insteekkaart gebouwd zijn, wat
+tegenwoordig heel gebruikelijk is,
+heeft men op dat derde niveau verder
+weinig te zoeken.
+
+Op het vierde niveau krijgen we
+eindelijk de echte communicatie in
+beeld. Daar komen uiteindelijk de
+verzonden bytes beschikbaar en kunnen
+ze als tekens op ons scherm
+verschijnen. Als ze tenminste niet
+bedoeld waren als besturingstekens voor
+ons communicatie- programma. Daarin kan
+bv. de afspraak gelden dat een bepaald
+byte betekent dat het scherm gewist
+moet worden. De terminal- emulatie, met
+andere woorden.
+
+Overigens, op het vijfde niveau (de
+bestands overdrachts protocollen) moet
+datzelfde teken weer anders worden
+ge-interpreteerd, want dan heeft het
+niets met de schermbesturing te maken,
+maar dient het gewoon door het protocol
+te worden verwerkt.
+
+Akelig ingewikkeld? Ach, dat valt wel
+mee. Meestal zal men met deze materie
+slechts heel zelden te maken krijgen.
+Het is alleen wel verdraaid handig om
+al die lagen in het achterhoofd te
+hebben als er iets niet helemaal goed
+gaat. Dan kan een beetje inzicht in
+deze structuur helpen om het probleem
+snel te localiseren en op te lossen.
+
+Einde bijlage.
+
+NEDERLANDS NET NIEUWS
+
+Degenen die meer te weten willen komen
+over datacommunicatie verwijzen we nog
+even naar nummer 29 (nov. 1991) van het
+elektronische datacommunicatie-
+maandblad Nederlands Net Nieuws. Dit is
+een 'special' voor beginners, die werd
+samengesteld ter gelegenheid van de
+HCC-dagen 1991. Met name wordt aandacht
+besteed aan: het kopen en installeren
+van een modem, berichten- en
+bestandsgebieden in een BBS,
+datacommunicatie- programma's en veel
+gestelde vragen op dit gebied.
+
+Alle tot nu toe verschenen nummers van
+het Nederlands Net Nieuws kunt u
+'downloaden' bij het NNN-BBS (tel.
+03480-24801), SoftwareBoss (tel.
+079-317774), Delmare (tel. 01720-43983)
+en vele andere BBS-en in Nederland,
+waaronder ook onze eigen Fido-NOS
+databank, 21 uur per dag telefonisch
+bereikbaar via 035-245395.
+

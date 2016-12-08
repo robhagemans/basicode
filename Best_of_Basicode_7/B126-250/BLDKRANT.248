@@ -1,0 +1,386 @@
+
+248, woe 13 sep '89
+
+BEELDKRANT SPECIAL: DIGITALE RADIO
+
+Fred van Let, hoofd Technische Dienst
+van Nederland's grootste Kabeltelevisie
+maatschappij CASEMA, stuurde ons een
+interessante verhandeling over een
+nieuwe ontwikkeling op het gebied van
+radio-omroep: digitale radioprogramma's
+die per satelliet worden uitgezonden.
+Het is een nogal technisch verhaal,
+maar we hopen dat het enigszins
+begrijpelijk voor u is.
+
+INLEIDING
+
+Digitale geluidsoverdracht voor de
+consument vindt tot nu toe voornamelijk
+plaats met behulp van de Compact Disc.
+Digitaal geluid is mede hierdoor tot
+een fenomeen geworden dat steeds
+bredere lagen van de bevolking
+aanspreekt en dat bij de consumenten-
+elektronica industrie HET trefwoord is
+geworden in reclamemateriaal en bij de
+presentatie van nieuwe apparatuur. Maar
+wat is eigenlijk digitaal geluid en
+waarvoor is het te gebruiken?
+
+De opname van een akoestische
+gebeurtenis (= geluid!) gebeurt ook in
+deze techniek als gebruikelijk met een
+microfoon. Het hiermee verkregen
+analoge elektrische signaal kan
+vervolgens in een digitaal signaal
+worden omgezet. Daartoe wordt om de
+zoveel tijd (bijvoorbeeld 20 a 30
+microseconden) de spanning van het
+analoge signaal op dat moment omgezet
+in een binair getal, een getal dus dat
+uit nullen en enen bestaat. Naar
+getallen kun je echter niet luisteren,
+dus voordat zo'n signaal aan het eind
+van de keten weer te beluisteren is,
+moeten die digitale getallen weer
+worden terugomgezet in spanningen en
+moeten de ontbrekende signaalspanningen
+worden geinterpoleerd.
+
+Er zijn vele redenen om dit
+ingewikkelde proces uit te voeren;
+belangrijk is o.a. het handhaven van de
+geluidskwaliteit op geluidsdragers
+(plaat, tape). Hierdoor met name is de
+Compact Disc zo'n groot succes
+geworden. De mogelijkheid om geluid
+hierop digitaal vast te leggen heeft de
+thuis reproduceerbare geluidskwaliteit
+aanmerkelijk verbeterd. Dat dit
+uberhaupt mogelijk is, is niet in het
+minst te danken aan de miniaturisering
+van elektronische en mechanische
+componenten, maar ook aan het
+introduceren van nieuwe technieken,
+zoals LASER-aftasting.
+
+'Digitale techniek' is echter voor de
+consument het toverwoord, en het is dan
+ook niet zo verwonderlijk dat die
+consument naast de CD-speler ook
+eigenlijk een digitale radio zou willen
+hebben. Vooral voor de liefhebbers van
+klassieke muziek zou daarmee de
+'overall' geluidskwaliteit significant
+worden verbeterd, maar ook in de
+pop(ulaire) muziek worden de maatstaven
+verlegd.
+
+DE DIGITALE STUDIO
+
+In studio's van omroepen en platen-
+maatschappijen wordt al langere tijd
+met digitaal geluid gewerkt. De kreet
+'digitale opname' is al een begrip
+geworden. Wie echter over 'digitaal'
+praat moet daarbij ook de norm
+vermelden. Voor het digitale
+geluidskanaal zijn twee variabele
+grootheden van belang: ten eerste de
+aftastfrequentie, die tenminste twee
+maal zo hoog moet zijn als de hoogste
+geluidsfrequentie die men wil
+registreren en ten tweede het per
+aftastwaarde beschikbare aantal bits
+dat de dynamiekomvang bepaalt die het
+systeem kan overdragen.
+
+In de professionele geluidsstudio's op
+de hele wereld lijkt de standaard
+aftastfrequentie 48 kHz te worden. Voor
+een Compact Disc is de aftastfrequentie
+daarentegen 44,1 kHz. Door 'code
+omzetters' is integratie van CD-spelers
+in (omroep)studio's echter goed
+mogelijk gebleken. Minder
+eensgezindheid is er met betrekking tot
+het aantal bits per aftastwaarde (n)
+dat wordt gebruikt om het dynamisch
+bereik te definieren. De dynamiek (D)
+wordt uitgedrukt in dB's. In eerste
+benadering geldt het volgende: D = (6xn
++ 2) dB. Dit is de maximaal mogelijke
+dynamiek van een systeem; hiervan
+moeten helaas nog wel wat dB's worden
+afgetrokken om tot praktisch bruikbare
+waarden te komen:
+- eigen fouten A/D omzetter
+                                2 dB
+- oversturingsreserve
+  (head room)                  10 dB
+- fouten door kwantiserings-
+  ruis (CCIR 468/3)            12 dB
+- minimale ruisafstandreserve
+  (foot room)                  20 dB
+                               -----
+                      Totaal   44 dB
+
+Uitgaande van 16 bits per aftastwaarde
+(n=16) zoals voor een CD gebruikelijk
+is, blijft dus een praktisch toepasbare
+dynamiek over van 54 dB. Dit is ook
+genoeg, want het blijkt dat normale
+geluidsopnamen slechts zelden een
+grotere dynamiek kennen dan 50 dB.
+Toch worden soms in geluidsstudio's
+waar 'moederopnamen met maximale
+kwaliteit' wordt gevraagd, 18 of 20
+bits per aftastwaarde gehanteerd. Maar
+voor omroepdoeleinden lijkt de reele
+standaard 48 kHz, 16 bits te zijn
+geworden en dat is ook voldoende.
+
+HET TRANSMISSIEKANAAL
+
+Het gebruiken van de bestaande
+transmissiewegen voor de radio-omroep
+voor de verspreiding van digitaal audio
+zit er eigenlijk niet in: al helemaal
+afgezien van lange-, midden- en korte
+golf, zou hoogstens nog over de FM band
+gedacht kunnen worden. Dit is in
+Duitsland nog wel onderzocht, maar
+bleek in combinatie met de daarin
+aanwezige (analoge) FM radiosignalen
+tot onacceptabele resultaten te leiden.
+Dat betekent dat digitale radio-omroep
+via satellietkanalen moet geschieden,
+want andere radiobanden zijn in de
+ether niet beschikbaar.
+In Kabelnetten daarentegen kan WEL de
+frequentieruimte voor digiradio worden
+gevonden. Het digiradio signaal
+doorloopt dan in het satelliettraject
+en het kabeltraject heel verschillende
+transmissiewegen met elk hun specifieke
+eigenschappen.
+
+Er is veel onderzoek gedaan om er voor
+te zorgen dat het in de studio
+opgewekte en gedigitaliseerde
+programmamateriaal met zo min mogelijk
+verslechtering deze hele weg kan
+afleggen en dus met optimale kwaliteit
+thuis kan worden ontvangen. Met name
+het satelliettraject heeft er toe
+geleid dat in het digiradio signaal een
+stevige bescherming tegen mogelijke
+transmissiefouten is opgenomen: daar
+moet namelijk worden gerekend met een
+BER (Burst Error Ratio) van 1x10E-3.
+Optimaal bleek een combinatie van
+foutcorrectie en foutherkenning met
+daaropvolgende interpolatie. Hiervoor
+wordt een 63/44 BCH-code gebruikt (BCH
+= Base, Chanduri, Hocquenghem) waarin
+dus met bloklengtes van 63 bits wordt
+gewerkt, te verdelen in 4x11 bits
+nuttige informatie en 19 bits voor
+foutherkenning en -correctie. De
+nuttige informatie (het audio dus)
+wordt met 32 kHz 16 bits lineair
+afgetast en met behulp van een
+schaalfactor tot 14 significante bits
+omgevormd. Omdat als modulatievorm is
+gekozen voor vier-fasen PSK (Phase
+Shift Keying) worden twee
+signaalstromen gevormd waarin elk acht
+stereoprogramma's worden ondergebracht
+die aan de orthogonale ingangen van de
+QPSK modulator worden toegevoerd.
+
+De twee signaalstromen kennen beide
+dezelfde structuur: de stromen A en B
+zijn opgedeeld in zogeheten ramen. Per
+raam zijn er steeds aanwezig een 11
+bits lang synchronisatiewoord,
+vervolgens de 11 hoogwaardige bits van
+de 14 bits aftastwaarden van telkens
+twee stereoprogramma's en de steeds 19
+beschermingsbits hiervan; bovendien een
+informatiebit voor zender- en
+programmasoort- herkenning, de 4x3 niet
+beschermde laagwaardige bits van de
+audiokanalen, de schaalfactor en
+tenslotte nog vijf bits voor nog nader
+te bepalen extra informatie-
+overdracht. Omdat in Kabelnetten
+zogeheten burstfouten kunnen optreden
+is ook nog interleaving (interpolatie)
+toegepast: BCH-blokken die de
+aftastwaarden van een bepaald
+stereokanaal zijn toebedeeld, hebben
+een afstand van tenminste 250 bits en
+zijn daardoor beschermd tegen relatief
+langdurige storingen.
+
+Tenslotte nog een laatste detail: het
+door de satelliet uitgezonden signaal
+alsmede het door de Kabel
+getransporteerde signaal moeten om
+technische redenen gemiddeld altijd
+hetzelfde vermogen, resp. gelijkmatige
+spectrale verdeling bezitten. Dit is
+niet automatisch het geval bij pauzes
+in de programma's of bij constante
+geluidssignalen. Daarom wordt het
+digitale signaal 'gescrambled' om aan
+de bovenvermelde technische eisen te
+voldoen. Dat gebeurt met een
+pseudo-random reeks die in zender en
+ontvanger synchroon moeten lopen.
+
+Voor een diepgaande behandeling van al
+deze technieken wordt naar de
+vakliteratuur over dit onderwerp
+verwezen.
+
+TRANSMISSIE DOOR DE KABEL
+
+Zoals gezegd is er in de Kabel genoeg
+ruimte om digitale radiosignalen onder
+te brengen. Belangrijk is uiteraard om
+over de keuze van de toe te passen
+frequentieband internationaal tot
+afstemming te komen. Bovendien moet
+deze keuze in Nederland de instemming
+hebben van de Radio Controle Dienst.
+Last but not least moet uiteraard ook
+de apparatuur in Kabeltelevisie netten
+geschikt zijn om digitale radiosignalen
+te verwerken en door te geven aan de
+aansluitdozen van abonnees.
+
+De bandbreedte van een pakket met 16
+digitale stereo radioprogramma's is
+zo'n 14 MHz. Dat is evenveel als de
+benodigde bandbreedte van twee
+televisiekanalen.
+
+In Nederland is het vooral
+kabelexploitant NV CASEMA geweest die
+zich met de voorbereiding en
+introduktie van digiradio op haar
+Kabelnetten heeft beziggehouden.
+Uitgangspunten waren dat:
+- tenminste twee pakketten van 16
+stereo digiradio programma's elk
+moesten kunnen worden gedistribueerd;
+- in de Kabelnetten zo min mogelijk
+frequentieruimte mocht worden
+opgeofferd;
+- de signalen voor iedere abonnee op
+uiterst eenvoudige wijze ter
+beschikking moesten kunnen worden
+gesteld;
+- de kwaliteit van de digitaal
+uitgezonden programma's onverkort
+gehandhaafd bleef;
+- door iedere abonnee gebruik moest
+kunnen worden gemaakt van digiradio's
+die standaard bij de radio- en
+TV-handel te koop zijn.
+
+Dit alles heeft geresulteerd in de
+volgende oplossing: het digiradio
+signaal is beschikbaar op de
+radio-aansluiting van de aansluitdoos.
+De twee pakketten hebben nominale
+frequenties van 118 en 132 MHz. De
+digiradio's zijn veelal voorzien van
+een 'doorlus mogelijkheid' met een
+reeds aanwezige (AM/)FM-tuner; dit is
+dus net zo eenvoudig als de combinatie
+videorecorder/ TV-toestel.
+
+DE DIGIRADIO
+
+Hoe de digiradio er uit gaat zien is
+natuurlijk sterk afhankelijk van de
+fabrikant: er zijn zeer luxueuze, maar
+ook uiterst eenvoudige apparaten
+denkbaar. De simpelste versie die
+denkbaar is behoeft niet meer te
+bevatten dan een up/down toets, waarmee
+door het pakket van 16 radioprogramma's
+wordt gestapt. Aan de andere kant
+kunnen in een luxe versie voorzieningen
+worden aangebracht voor:
+- pakketkeuze
+- directe programmakeuze
+- directe keuze van een programmasoort
+- gescheiden volumeregeling voor spraak
+en muziek
+- uitgebreid display met o.a. stations-
+informatie
+- afstandsbediening
+- etc.
+
+Kortom: mogelijkheden voor elk budget,
+want de prijsstelling zal vergelijkbaar
+zijn met die van CD-spelers.
+
+SAMENVATTING
+
+Gedigitaliseerd geluid is heden ten
+dage door de reeds wijd verbreide
+Compact Disc gemeengoed geworden.
+Hierdoor is bij de consument een nieuw
+kwaliteits bewustzijn ontstaan.
+Verbetering van de kwaliteit van de
+bekende AM- en FM-radiosignalen is om
+technische redenen onmogelijk.
+
+Digitale radio via satelliet en Kabel
+is de enige mogelijkheid om in de
+nabije toekomst de geluidskwaliteit op
+het door de consument gewenste niveau
+te brengen. Die toekomst is nu begonnen
+in Arnhem, waar de Kabel als eerste in
+Nederland door CASEMA is voorzien van
+een digiradio pakket. De digiradio zelf
+is gloednieuw: de produktie is nog maar
+net in gang gezet. Ook in Duitsland en
+in Zwitserland is digiradio zeer
+onlangs geintroduceerd.
+
+De eerste digitale radio's in Nederland
+zijn vanaf september in het Kabelnet te
+Arnhem te beluisteren. Omdat onze
+nationale industrie verwacht eerst over
+enkele maanden digiradio's volop te
+kunnen leveren, maken CASEMA en Philips
+in Arnhem proefopstellingen bij de
+CASEMA vestiging en zo mogelijk bij de
+Arnhemse radio- en televisiehandel.
+Daardoor zal de Arnhemse abonnee alvast
+een voorproefje kunnen nemen van de
+unieke radio-ontvangstmogelijkheid. Een
+nieuw radiotijdperk breekt aan!
+
+Ir. F.J.W. van Let, NV CASEMA,
+Hoofd Afdeling Technische Dienst.
+
+NASCHRIFT
+
+Binnenkort zal de CASEMA vestiging in
+Arnhem werkende exemplaren van de
+digiradio's voor geinteresseerd publiek
+ter beschikking hebben.
+Het adres van deze vestiging is:
+Van Oldenbarneveldstraat 97,
+6828 AL Arnhem.
+Tel. 085-459213
+

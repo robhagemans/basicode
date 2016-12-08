@@ -1,0 +1,325 @@
+352, maa 15 okt '90
+
+NIEUWE MSX-TEKSTVERWERKER: TED
+
+Wij kregen ter beoordeling toegestuurd
+TED versie 2.51, een uitstekend
+tekstverwerkings programma voor de
+MSX-2, uitgebracht in het kader van de
+JOS-TEL Multiple Sclerose Aktie. Het
+programma is reeds enige tijd in
+ontwikkeling en uitgegroeid tot een
+volwaardige tekstverwerker. De
+programmeur, M.J. Vriend, heeft dit
+programma voor de Aktie ter beschikking
+gesteld. Van de f50.--, waarvoor men
+het programma kan bestellen, komt
+f40.-- ten bate van de Nederlandse
+Multiple Sclerose Stichting en de rest
+dient om de kosten van de diskette, de
+porto en het MS BBS JOS-TEL TTY te
+dekken. Bestellingen op giro 2827142
+t.n.v. Jos de Boer, Warns. De
+programmatuur wordt, voorzien van de
+naam van de koper ter beveiliging tegen
+ongeoorloofd gebruik, op een 3.5 inch
+enkelzijdige diskette afgeleverd.
+
+WAT DOET TED?
+
+De naam staat voor Tekst EDitor. Het
+kan op een MSX-2 onder MSX-DOS (1 of 2)
+gebruikt worden voor het vervaardigen
+van brieven (o.a. mailmerge is
+mogelijk), maar eveneens voor het
+aanmaken van bron-bestanden
+(source-files) voor Pascal, C,
+Assembler en ook voor Basic. Het mooie
+is, dat men op aparte diskettes
+daarvoor speciaal aangepaste TED's kan
+opslaan om direkt met de goede
+instellingen van tab's, kantlijnen enz.
+te kunnen werken. Want TED is op alle
+mogelijke manieren aan de eigen wensen
+aan te passen. Op de geleverde diskette
+staat een duidelijke, ruim 30 pagina's
+tellende, handleiding. Het programma
+beschikt over uitgebreide mogelijkheden
+om de tekst te manipuleren. Ook kunnen
+naar eigen inzicht bepaalde
+toets-combinaties geprogrammeerd
+worden, zodat snel de vereiste
+stuurcodes voor de printer in de tekst
+kunnen worden opgenomen. De
+mogelijkheden zijn zo uitgebreid, dat
+de Beeldkrant te weinig ruimte biedt om
+alles te vermelden. Het beste resultaat
+wordt bereikt op een MSX-2 in
+combinatie met een MSX printer. Maar
+ook een niet-MSX printer kan goed
+gebruikt worden als men de printer
+driver van TED daarvoor aanpast.
+Conclusie: TED is een van de betere
+tekstverwerkings programma's voor de
+MSX en spotgoedkoop rechtmatig te
+verkrijgen.
+
+MEMORY MAPPER EN MEMORY MANAGER
+
+TED werkt ook samen met de Memory
+Mapper en vanaf versie 2.51 ook met de
+nieuwe Memory Manager die door het MSX
+Computer Magazine is uitgebracht als
+public domain software en ook uit de
+'FIDO-NOS' databank (file area 5) is te
+downloaden met behulp van een modem. Op
+deze wijze is al het geheugen, met
+inbegrip van eventuele uitbreidings
+cartridges en het ongebruikte deel van
+het video-geheugen, te benutten voor
+opslag van tekst.
+
+PRINTERBUFFER
+
+Op de TED diskette staat ook PB.COM,
+een printerbuffer, die ook samen met
+andere programma's, kan worden
+gebruikt. Het verblijft (op de
+achtergrond) in het geheugen en leidt
+alle printer uitvoer naar een buffer,
+waaruit de printer dan van data wordt
+voorzien. Het voordeel is, dat tijdens
+het printen de computer gewoon
+beschikbaar blijft voor verder gebruik.
+
+MULTIPLE SCLEROSE AKTIE
+
+Allereerst, wat is Multiple Sclerose of
+zoals het meestal wordt aangeduid: MS?
+Het is een slepende ziekte, die
+ongeveer een op de duizend jonge
+volwassenen treft, waarbij het
+zenuwstelsel wordt aangetast, hetgeen
+tot uiting komt in een geleidelijke
+aantasting van het bewegings apparaat,
+waardoor men uiteindelijk in een
+rolstoel terecht komt. Tot nu toe is er
+nog geen behandelings methode bekend,
+hoewel er allerwege naar wordt gezocht.
+Voor dit onderzoek is veel geld nodig.
+Belangrijk is ook een goede
+voorlichting en hulpverlening aan de
+lijders aan deze ziekte en het bieden
+van kontakt mogelijkheden dicht bij
+huis. Voor dit alles zet de Nederlandse
+Multiple Sclerose Stichting te Den Haag
+zich in. Ook JOS-TEL draagt zijn
+steentje hieraan bij door regelmatig de
+opbrengsten van TED en andere
+programma's aan de landelijke Stichting
+over te maken. Door de aanschaf van TED
+steunt men dus het goede doel.
+
+MS BBS JOS-TEL TTY
+
+Op het telefoonnummer 05149-1837 is dit
+BBS te bereiken (300, 1200, 2400 Bd en
+ook 75/1200 Bd, in Terminal mode),
+maandag t/m donderdag van 21.00 tot
+7.30 u., vrijdag en zaterdag van 20.00
+tot 12.00 u. en zondag van 20.00 tot
+7.30 u.). Uit dit BBS zijn voor MSX en
+PC geschikte programma's tegen geringe
+betaling te downloaden. De opbrengst
+gaat weer naar de Nederlandse MS
+Stichting. (met dank aan Pieter
+Vijlbrief)
+
+ATARI VERLAAGT PRIJZEN
+
+Atari heeft met ingang van deze maand
+de prijzen voor alle computers in de ST
+serie drastisch verlaagd, met
+percentages tussen de 20 en 30 procent.
+Dit geldt zowel voor de machines die
+veel voor thuisgebruik worden ingezet
+als voor de grotere Mega ST's voor
+zakelijk gebruik. Ook de 'Portfolio'
+vestzak PC kon als gevolg van goede
+verkoop resultaten in prijs worden
+verlaagd.
+
+De meest opvallende prijsverlaging
+betreft die van de 'gewone' 1040STfm.
+Deze computer met een werkgeheugen van
+1 Megabyte zal in de winkel net onder
+de 1000 gulden gaan kosten. Dit is
+inclusief BTW, maar zonder de
+bijbehorende monochrome (paperwhite)
+monitor, waarvan de prijs f 350,-
+(incl. BTW) bedraagt.
+De prijs van de Portfolio is verlaagd
+naar f 649,-. Een geheugen kaartje van
+64 Kb voor deze kleine computer gaat f
+219,- kosten.
+Ook de Mega ST's dalen flink in prijs:
+een Mega ST2 (2 Megabyte) gaat van f
+3200 naar f 2399 (25%) en een Mega ST4
+(4 Megabyte) daalt zelfs met ruim 30%,
+van f 4295 naar f 2990 (beide prijzen
+incl. BTW en monitor).
+
+TELEMETING IN DEN HAAG
+
+Het Haagse GEB gaat nog dit jaar
+proeven nemen met Tele-meting, dat is
+het op afstand opnemen van
+meterstanden. Dit gebeurt door middel
+van een signaal dat via het
+elektriciteits net wordt verstuurd naar
+de meter bij de klant. In de toekomst
+kunnen met dit systeem ook apparaten
+aan en uit worden geschakeld. De proef
+-die wordt gedaan bij enkele grote
+afnemers van het GEB- trekt
+internationaal de aandacht. (Bron:
+Radio West, 8-10-1990)
+
+ENERGIE-BESPARING IN EG-VERBAND
+
+Volgens EG-commissaris Antonio Cardoso
+e Cunha kan alleen al door zuiniger en
+doelmatiger met energie om te gaan het
+energie verbruik met 12 procent
+verminderen. Ook het milieu zou daar
+wel bij varen. Er zou 15 pct minder CO2
+worden geloosd. De EG-Commissie wil de
+komende vijf jaar circa 77,5 miljoen
+gulden uittrekken voor een programma
+'Save' om Europeanen te leren zuiniger
+te zijn met energie, zo zei de
+Portugese commissaris voor energie
+zaken. Volgens hem is de belangstelling
+om energie te besparen afgenomen. De
+Golfcrisis bewijst echter opnieuw de
+noodzaak ervan.
+
+EG-NORMEN NODIG
+
+In het kader van 'Save' moeten er
+EG-normen komen voor de bouwnijverheid,
+elektrische huishoudelijke apparaten en
+de transport sector. Om te beginnen
+stelt de Commissie voor een Europese
+energienorm voor verwarmings ketels in
+te voeren. Verder zouden energie
+besparende investeringen financieel
+moeten worden aangemoedigd. Die
+verdienen zichzelf terug. Voor een
+groot bedrijf of een grote organisatie
+is ook een 'energie manager' een
+belangrijke stap voorwaarts, zo zei
+Cardoso e Cunha. (Bron: ANP)
+
+DIOXINE-ARME VUILVERBRANDING
+
+Over tien a vijftien jaar zal er geen
+dioxine meer komen uit de pijp van de
+vuilverbrandings installatie, zegt Ir.
+Verbeek van TNO.
+In de strijd tegen de uitstoot van
+dioxine heeft men gekeken naar het punt
+waar dioxine ontstaat bij de
+verbranding van afval in de
+installatie. Uit dit onderzoek bleek
+dat de dioxine ontstaat bij het
+afkoelen van de rookgassen tussen de
+400 en 200 graden Celsius. Door met een
+vliegas filter de rookgassen te
+filteren bij een temperatuur van 600
+graden Celsius kan de dioxine niet
+ontstaan. Met deze methode kan de
+uitstoot van dioxine met een faktor 10
+tot 100 verkleind worden en kan men het
+laatste restje dioxine wegvangen met
+een simpel en goedkoop rookgas filter.
+Binnen een jaar hoopt men deze methode
+uit te testen op een proef installatie.
+Maar het zal nog zeker 10 a 15 jaar
+duren voordat de eerste dioxine-arme
+vuilverbrandings installaties zullen
+worden gebouwd. (met dank aan Johan
+Dibbets)
+
+TOKAMAK HETE-FUSIE REACTOR
+
+Onderzoekers van de Princeton
+universiteit in de Amerikaanse staat
+New Jersey hebben vorige week gemeld
+dat hun experimentele hete-fusie
+Tokamak reactor zover is dat deze meer
+energie voortbrengt dan verbruikt. Maar
+zij waarschuwen dat het nog tientallen
+jaren kan duren voordat kernfusie
+lonend wordt. In de Tokamak
+proefreactor, een project dat in de
+afgelopen 15 jaar een miljard dollar
+heeft gekost, worden nu deuterium
+atomen gebruikt, maar in 1993 gaat men
+verder experimenteren met deuterium en
+tritium atomen.
+
+Hete kernfusie staat overigens geheel
+los van de 'koude' fusie die
+onderzoekers van de universiteit van
+Utah vorig jaar zeiden te hebben
+bereikt, tot grote scepsis in de
+internationale wetenschappelijke
+wereld. (Bron: ANP)
+
+ULYSSES OP WEG
+
+Vanuit de space shuttle Discovery is op
+zaterdag 6 oktober de zonneverkenner
+Ulysses gelanceerd (zie ook Beeldkrant
+349). Kort nadat de Ulysses uit het
+laadruim van de shuttle was weggedreven
+werd de Inertial Upper Stage (IUS)
+aangezet om hem richting Jupiter te
+stuwen. Bij Jupiter zal hij een
+'slinger' van de zwaartekracht krijgen,
+waarna hij bijna loodrecht op de
+planeetbanen komt te staan, om
+vervolgens over beide polen van de Zon
+te vliegen.
+
+De lancering van de Ulysses was echter
+niet het enige doel van missie STS-41.
+De astronauten hielden zich ook bezig
+met de studie van brandende materialen.
+Het is voor de eerste maal dat in een
+shuttle dergelijk onderzoek wordt
+gedaan. Verder werd nog een test
+uitgevoerd met een robot die met
+gesproken commando's kan worden
+bestuurd. De stemgeluiden van de
+bemannings leden zijn op Aarde
+opgeslagen in het geheugen van de
+robot, die van elke astronaut zo'n 30
+commando's kan verstaan. Die commando's
+(zoals 'stop', 'omhoog', 'zoom' e.d.)
+worden gebruikt om de camera's aan
+boord van de shuttle te besturen. Nu
+blijkt echter dat het stemgeluid van de
+astronauten is veranderd, zodat de
+robot doof is voor de commando's. Het
+is de eerste maal dat dit verschijnsel
+opgemerkt wordt.
+
+De vijfdaagse vlucht is op woensdag 10
+oktober succesvol afgesloten met de
+veilige terugkeer van de shuttle op
+aarde. De volgende vlucht is gepland
+voor begin november. (aldus Yvo
+Krijgsman)
+

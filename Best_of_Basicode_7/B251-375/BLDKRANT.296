@@ -1,0 +1,306 @@
+296, maa 26 feb '90
+
+CODE3 (DEEL2)
+
+In Beeldkrant 295 van maandag 19
+februari j.l. verscheen deel 1 van
+Pieter Vijlbriefs beschouwing rond
+CODE3, een computerprogramma dat
+allerlei radiosignalen kan decoderen.
+Vandaag het tweede en laatste deel.
+
+BOEKEN OP DIT GEBIED
+
+Heel plezierig is het om te weten waar
+men moet luisteren om bepaalde stations
+te horen. Hiervoor is het boek van
+Klingenfuss: 'Guide to utility
+stations', 8ste editie (december 1989),
+ISBN 3-924509-90-5, een uitstekende
+gids. Het 'Radioteletype code manual',
+10de editie, ISBN 3-924509-10-7, van
+dezelfde auteur, geeft een overzicht
+van de soorten signalen die worden
+gebruikt om berichten over te brengen.
+Niet beslist nodig, maar voor degenen
+die Engels kunnen lezen erg plezierig
+als aanvulling op bovengenoemde
+artikelen serie. Deze uitgaven zijn bij
+de vakhandel te verkrijgen of
+rechtstreeks te bestellen bij
+Klingenfuss in Tuebingen.
+
+WAT IS ER TE HOREN/ZIEN ?
+
+In de 'Guide' staan lijsten met
+stations, behalve volgens hun
+frekwentie ook gegroepeerd naar type:
+FAX stations, Meteo stations, maar ook
+Persagentschappen, etc. Vooral deze
+laatsten zijn interessant. De meeste
+landen geven hun persberichten behalve
+in de landstaal ook in de moderne
+talen: Frans, Duits en Engels. Is het
+niet fantastisch rechtstreeks de krant
+mee te kunnen lezen uit China, Taiwan,
+Frankrijk, Duitsland, Polen, Hongarije,
+Albanie, Roemenie, Rusland, Italie
+Tsjecho-Slovakije, Turkije, Israel,
+Egypte en Iran, om er maar een paar te
+noemen? Men kan de tekst van het scherm
+lezen of, door een simpele toetsdruk,
+het bericht ook naar de printer sturen.
+De berichten zijn meestal niet
+versluierd en zonder meer goed
+leesbaar.
+
+MAAR ER IS NOG MEER
+
+Voor specifiek in het weer
+geinteresseerden is het mogelijk de
+NAVTEX weerberichten te lezen en
+weerkaartjes uit verschillende landen
+duidelijk op het scherm zichtbaar te
+maken of op de printer af te drukken.
+Zelfs persfoto's, die door sommige
+persagentschappen worden uitgezonden,
+zijn te zien. Ook het berichten verkeer
+van scheep- en luchtvaart, voor zover
+niet gecodeerd, kan worden gevolgd.
+Zelfs berichten uitwisseling van
+ambassades en politiediensten uit
+verschillende landen kan worden
+bekeken, veelal zijn deze berichten in
+code, zodat ze niet leesbaar zijn, of
+in de landstaal, die men meestal niet
+beheerst.
+
+WAT HEEFT MEN BESLIST NODIG ?
+
+Het hele gebeuren staat of valt met de
+kwaliteit van de gebruikte ontvanger.
+Deze moet behoorlijk stabiel en goed
+selectief zijn en enkelzijband signalen
+kunnen ontvangen. Vooral is het erg
+prettig, als behalve de korte golf ook
+de zeer lange golven van 100 tot 150
+kHz (3000 - 2000 meter) kunnen worden
+beluisterd. Daar zijn namelijk
+interessante pers- een meteodiensten te
+horen. Voor NAVTEX ontvangst moet men
+op 518 kHz kunnen afstemmen. Op de
+korte golven vindt men veel
+persbureau's, scheepvaart, luchtvaart
+en andere diensten.
+
+KORT OVERZICHT VAN DE SIGNALEN
+
+Voor de kenners volgt hier een
+overzicht van de soorten signalen:
+Packet Radio AX25, F7B (tweekanaals
+Frequency Division Multiplex) in
+diverse vormen (sommige persbureau's,
+vooral op de lange golf), Autospec,
+Dup-Arq (Artrac), Baudot (meeste
+persbureau's), Ascii, Sitor (ook
+Amtor), ook in allerlei varianten
+(ARQ-S, ARQ-SWE, ARQ-E en ARQ-E3), Time
+Division Multiplex M2 en M4, FEC (ook
+FEC-A en FEC-S), Morse, Facsimile, Hell
+en als optie: Piccolo. Een volledige
+beschrijving van een en ander zou hier
+te ver voeren, zie daarvoor de RAM
+nummers 98-100, waarin alles zeer
+uitvoerig wordt behandeld.
+
+HULPPROGRAMMA'S
+
+Het CODE3 software pakket bevat een
+uitgebreid assortiment hulpprogramma's,
+waarmede men de seinsnelheid en de
+juiste afstemming kan vaststellen en
+ook, van nog onbekende signalen, vaak
+het type signaal kan ontrafelen om het
+daarna leesbaar te kunnen weergeven.
+Men kan zelfs een stuk tekst in
+onverwerkte vorm bitsgewijs op disk
+opslaan en later weer terugroepen voor
+nadere analyse! De oscilloscoop optie
+is bijzonder handig bij dit analyseren,
+maar ook bij het afstemmen van
+smalbandige pulsvormige signalen.
+Trouwens tijdens het luisteren/lezen
+kan men door een toetsdruk tijdelijk
+een afstembalk op het scherm krijgen om
+de juiste afstemming te controleren.
+Door een druk op een niet in gebruik
+zijnde toets (in de handleiding staat
+'Leertaste') verdwijnt die balk weer
+direkt. Als men eenmaal de smaak te
+pakken krijgt, zal men deze
+hulpprogramma's zeker leren waarderen.
+Daarnaast zijn diverse analyse
+programma's beschikbaar, die men echter
+wel moet leren begrijpen en bedienen!
+
+IS NU ALLES TE DECODEREN ?
+
+Nee, dat zeker niet. De in Chinese,
+Russische, Hebreeuwse of Arabische
+tekens uitgezonden teksten kunnen niet
+worden weergegeven. Hoogstens kan met
+tabellen uit Klingenfuss' Code Manual
+iets worden ontcijferd, maar dat is
+niet makkelijk uitvoerbaar. En de in
+codevorm uitgezonden berichten zijn
+alleen te lezen als men de code kent,
+dus door degenen waarvoor de berichten
+bestemd zijn. Maar er blijft genoeg
+over dat wel leesbaar en nog
+interessant is ook, vooral in de
+bewogen tijden die wij nu meemaken. Om
+de signalen, voor zover mogelijk, op
+het gehoor te leren onderkennen, kan
+men gebruik maken van de
+code-cassettebandjes van RAM of van
+Klingenfuss. Deze zijn echter niet
+leesbaar met CODE3, daar de toonhoogte
+niet geheel overeenkomt met de
+center-frekwentie van 1750 Hz. Maar men
+weet dan toch ongeveer, naar welke
+signalen men moet zoeken. Daarnaast
+zijn nog vele andere signalen te horen,
+waarvoor (nog) geen decoderings
+programma's aanwezig zijn. Maar aan
+CODE3 wordt voortdurend verder gewerkt,
+dus wie weet wat de toekomst ons nog te
+bieden heeft. Wij houden u op de
+hoogte. (Aldus Pieter Vijlbrief)
+
+SOYUZ-TM8 VEILIG GELAND
+
+Op 19 febr. 1990 te 0436UTC maakte de
+S-TM8 een zachte landing op 50 KM van
+de stad Arkalyk in Kazakhstan. De
+kosmonauten Viktorenko en Serebrov
+maken het uitstekend. De landing vond
+plaats 1 u. voordat MIR voor het eerst
+overkwam. Aan boord van dit station
+zetten Solovyov en Balandin het werk
+voort.
+
+Op 17 febr. zijn zowel de S-TM8 als de
+S-TM9 uitgebreid beproefd. Vikt. en
+Ser. waren tijdens MIR oml. 22938
+(0738UT) hoorbaar op de 121.750 mc.
+Tijdens de overkomst hier werd de
+Chayka, de boordcomputer, getest.
+Tijdens de overkomst in MIR oml. 22940
+liep ook de 121.750 mc weer mee, nu
+vanuit de S-TM9, waar Solovyov en
+Balandin het handbesturings systeem
+uitprobeerden. Deze laatste controle
+bevestigt, dat Sol. en B. binnenkort
+hun S-TM9 over zullen zetten van de
+Kvant-1 (Module-E) achterste poort naar
+de voorste axiale poort van het
+doorgangs compartiment (P.Kh.O.). Dit
+omkoppelen is een vaste procedure: de
+S-TM9 moet, indien onverhoopt nodig,
+fungeren als 'reddingssloep' voor de
+bemanning en daarom dichterbij zijn.
+
+SOYUZ-TM9 OMGEKOPPELD
+
+Op 21 febr. '90 rond 0400UTC werd de
+Soyuz-TM9 overgezet van Kvant-1 naar de
+voorste poort van de doorgangs sectie.
+MIR was toen in oml. 22998 en kwam
+slechts even boven onze oostelijke
+horizon tussen 0356 en 0359UTC
+(elevatie minder dan 1 Gr.). Toch was
+de S-TM9 te horen op 121.750mc, terwijl
+Solovyov rapporteerde hoe de S-TM9 op
+de voorste koppelpoort aanvloog.
+Solovyov en Balandin maakten dus even
+(ong. 20 min.) een autonome vlucht.
+Onduidelijk was of het gehele station
+180 gr. werd gedraaid of dat de S-TM9
+rond het station vloog.
+
+Tijdens de volgende overkomst (in oml.
+22999, 0528UTC) waren de kosmonauten
+weer aan boord van het MIR station en
+te horen op 143.625 mc. Zij waren bezig
+met het conserveren van de Soyuz-TM9
+(systemen uitschakelen, toegangs luiken
+beveiligen, drukcontroles, etc.). De
+achterste koppelpoort van de Kvant-1
+(Module-E) is dus nu klaar voor de
+ontvangst van het volgende vrachtschip:
+de Progress-M3. De lancering van dit
+ruimteschip valt te verwachten op 27
+febr., rendez-vous met MIR op 1 maart.
+(Ontleend aan MIR radioverkeer op 22
+febr. 1990, oml. 23017, 0917UTC)
+Chris v.d. Berg, NL-9165/A-UK3202
+
+KNAUW VOOR RUIMTEVAART
+
+De Europese ruimtevaart heeft een
+lelijke knauw gekregen door de mislukte
+lancering van de 36-vlucht van Ariane.
+In de nacht van donderdag op vrijdag
+explodeerde de eerste trap van de
+Ariane 44L (grote configuratie) na een
+vlucht van 1 minuut en 40 seconden. De
+raket bevond zich toen op een hoogte
+van 9 kilometer en had 10 km afgelegd
+vanaf het lancerings platform in Kourou
+(Frans Guyana).
+Als gevolg van deze totaal onverwachte
+explosie is het hele lanceer programma
+van Arianespace, de commerciele Franse
+maatschappij die ontstaan is uit ESA,
+het Europese Ruimtevaart Agentschap,
+stilgelegd. Men vermoedt dat er een
+mankement heeft gezeten in een van de
+vier brandstof tanks.
+
+AL EENS EERDER
+
+Het lanceer programma werd al eens
+eerder gestopt. Toen ging het om een
+falende derde trap van de raket. Na de
+hervatting zo'n twee jaar geleden
+verliep het lanceren vlekkeloos tot
+vorige week.
+Bij de explosie kwamen giftige dampen
+vrij. De bewoners van Kourou werd
+aangeraden binnen te blijven. V-36 had
+twee Japanse kunstmanen aan boord: de
+communicatie satelliet Superbird 1B en
+de Direct Broadcasting satelliet BS-2X,
+die door de Japanse NOS, NHK zou worden
+gebruikt. De schade -met lancerings
+kosten en dergelijke- beloopt zo'n 500
+miljoen gulden.
+
+ATLANTIS WEER NIET GELANCEERD
+
+De lancering van het Amerikaanse
+ruimteveer Atlantis vanaf de basis Cape
+Canaveral is door de NASA voor de
+vijfde keer op rij afgeblazen. Stonden
+eerst technische gebreken en ziekte
+onder de bemanning de vlucht in de weg,
+vandaag stond er een iets te harde wind
+en was de lucht boven de basis te
+bewolkt. De NASA heeft gezegd dat
+vannacht de zesde poging wordt
+ondernomen. Zoals inmiddels bekend moet
+het veer een spionage satelliet in een
+baan om de aarde brengen, om de Sovjet
+Unie op naleving van verdragen te
+controleren.
+

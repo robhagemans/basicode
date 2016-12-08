@@ -1,0 +1,262 @@
+165, zon 11 sep '88
+
+UoSAT D en UoSAT E
+
+De bouwers van OSCAR 9 en OSCAR 11 in de
+University of Surrey zijn al enige tijd bezig
+geweest met de ontwikkeling van een nieuwe
+amateur satelliet: UoSAT C. Deze satelliet zou
+eind 1988 of begin 1989 moeten worden
+gelanceerd met een Delta-raket van de NASA. In
+verband met vertragingen in het lanceerschema
+van de NASA, heeft de UoSAT unit besloten een
+lanceermogelijkheid met een ARIANE van de ESA
+te aksepteren. In 1989 moet SPOT 2 worden
+gelanceerd met een ARIANE 4 raket. Daarbij
+wordt voor het eerst de ARIANE Structure for
+Auxiliary Payloads (ASAP) toegepast. Deze
+structuur maakt het mogelijk een aantal
+kleinere satellieten een goedkope lanceer
+mogelijkheid te bieden. Er moeten nu zes
+amateur satellieten worden gelanceerd, samen
+met SPOT 2: UoSAT D, UoSAT E, en de Microsats
+A, B, C en D. De kleinere UoSAT D en E
+bevatten de systemen die in UoSAT C hadden
+moeten komen. UoSAT C, die nu in 1990 of 1991
+gelanceerd moet worden met een Delta-raket
+vanaf Cape Canaveral, zal nieuwe systemen gaan
+bevatten die nog niet gedefinieerd zijn.
+
+MICROSATS
+
+De Microsats zijn kleine, kompakte amateur
+satellieten die in Noord- en Zuid-Amerika
+worden gebouwd: een packet radio satelliet
+(PACSAT) van AMSAT-NA, een packet radio
+satelliet (LUSAT) van AMSAT-Argentina, DOVE
+(Brazil Peacetalker) van BRAMSAT en een
+satelliet met een CCD-kamera van het Center
+for Aerospace Technology (CAST) van het Weber
+State College in Ogden, Utah. Ook TAPR en ARRL
+zijn betrokken bij de bouw van de vier
+Microsats. Deze satellieten zijn zeer klein en
+licht. Ze zijn vrijwel kubusvormig met een
+ribbe van slechts 23 cm en wegen minder dan 10
+kg. Ze bestaan uit een stapel modules, met aan
+de buitenzijde zonnepanelen en antennes. Enkele
+modules zijn hetzelfde in alle satellieten,
+zoals de voedings module en de boordcomputer
+module. Bij de ARIANE 4 vlucht (waarschijnlijk
+vlucht V34 in juni 1989) worden de 7
+satellieten in een polaire, zon-synchrone baan
+gebracht. De baanhoogte moet ongeveer 810 km
+worden en de baanhelling 98,7 graden.
+(Met dank aan Nico Janssen, PA0DLO).
+
+BESPREKING VAN BOEKEN VOOR DE PC
+
+PC PRIVE, Het opstapje voor public domain
+software gebruikers, door W.H.M. van Dreumel,
+205 pag., uitg. Stark-Texel, prijs f 29,50.
+Door de vele PC-PRIVE projekten worden velen
+met de computer geconfronteerd, terwijl ze
+eigenlijk niet weten wat ze er mee aan moeten
+vangen. Vaak worden er enkele pakketten
+'public domain' software bijgeleverd, meestal
+zonder een al te duidelijke handleiding.
+
+DE DREMPEL OVER
+
+Dit boekje wil deze mensen over de drempel
+helpen. Na een korte inleiding over de
+hardware en de verkrijgbaarheid van goedkope,
+doch legale software, worden diverse
+programma's op een grondige wijze besproken.
+Als men het boekje naast de computer legt, kan
+men aan de hand daarvan geheel vertrouwd raken
+met de diverse soorten software. Om een indruk
+te geven, wat wordt behandeld, volgt hier een
+verkorte opsomming van wat we zoal aantroffen.
+
+TEKSTVERWERKING en SPREADSHEET
+
+Allereerst: Tekstverwerking. Dit wordt
+besproken aan de hand van PC-WRITE, dat
+regelmatig met de aanschaf van een PC wordt
+meegeleverd. Als men de 8 'zittingen' en het
+'tenslotte' heeft doorgewerkt, kan men verder
+goed met het programma overweg. Iets
+dergelijks geldt ook voor de behandeling van
+het spreadsheet aan de hand van MicroCalc, dat
+met behulp van duidelijke voorbeelden wordt
+uitgelegd.
+
+ZAKAGENDA en SECRETARESSE
+
+Met PC-YEARBOOK wordt het gebruik van de
+computer als zakagenda getoond. PC-WINDOW is
+een voorbeeld van een 'resident', dat wil
+zeggen: altijd in het geheugen aanwezig,
+programma, dat als een secretaresse, allerlei
+zaken voor ons kan bijhouden, zoals het
+waarschuwen dat het tijd is voor een bepaalde
+afspraak, het maken van notities tussendoor,
+en dergelijke.
+
+KAARTENBAK en TEKENPROGRAMMA'S, enz.
+
+Ook de kaartenbak is niet vergeten. Aan de
+hand van PC-FILE wordt het gebruik daarvan
+uitvoerig doorgenomen. Ook komen verschillende
+tekenprogramma's aan de orde, zoals DANCAD3D,
+waarmede men kan ontwerpen en tekenen.
+Bovendien worden vele PC-foefjes besproken,
+zoals het manipuleren met geluidjes, het
+gebruik van de CTRL-ALT toets combinatie en de
+verschillende manieren om de schijfinhoud te
+tonen. Ook wordt ruime aandacht gewijd aan
+'kunstmatige intelligentie'. Het boek bevat
+trouwens nog veel meer wetenswaardigheden,
+zoals een uitvoerige adreslijst van
+gebruikersclubs, een software overzicht en een
+lijst van veel gevraagde computerboeken. Dit
+boek is, mede gezien de prijs, zeer zeker aan
+te bevelen voor de beginnende PC gebruiker.
+
+PC DISK voor iedereen (1),
+
+Bestandsprogramma's in GW-BASIC, door Wessel
+Akkermans, 286 pag., uitg. Stark-TEXEL, prijs
+f 39.50.
+Dit boek gaat over het gebruik van de
+schijveneenheid in de PC voor het opslaan van
+gegevens (=Bestanden). Dit kan zowel
+sequentieel (dus: op volgorde) als random-
+access (d.w.z 'door elkaar'). Op dit verschil
+wordt uitvoerig ingegaan evenals op de manier,
+waarop de bestanden op de schijven zijn
+vastgelegd.
+
+VOORKENNIS
+
+Er wordt uitvoerig ingegaan op het werken met
+disk-basic, d.w.z met dat gedeelte van GW-
+BASIC, dat gebruikt wordt om gegevens op de
+schijven te zetten of ervan af te halen.
+Verondersteld wordt, dat de lezer al eens een
+eenvoudig basic programmaatje zelf heeft
+geschreven en dus bekend is met de beginselen
+van BASIC.
+
+VOORBEELDPROGRAMMA's
+
+Aan de hand van een groot aantal voor-
+beeldprogramma's wordt aangetoond, op welke
+wijze een bestandsprogramma kan worden
+opgebouwd, dat voor een specifiek doel
+geschikt moet zijn. Men maakt kennis met de
+speciaal op de schijfeenheden betrekking
+hebbende basic-commando's.
+
+CONTROLEFUNKTIES
+
+Er wordt aandacht geschonken aan het inbouwen
+van voor bestandsprogramma's zo belangrijke
+controle op de juiste invoer van gegevens en
+aan daarbij behorende foutmeldingen, zowel van
+de in BASIC ingebouwde foutkodes als de door
+de programmeur zelf aangebrachte kodes.
+
+SORTEERFUNKTIE
+
+Bij het bewerken van sequentiele bestanden
+wordt ook ruim aandacht besteed aan het
+sorteren van de gegevens binnen dat bestand,
+zowel door middel van de in MS-DOS ingebouwde
+routine als met behulp van eigen routines.
+
+BESTANDEN CONVERTEREN
+
+Wanneer men aan een reeds bestaand bestand
+extra gegevens wil toevoegen, waaraan men
+tevoren niet heeft gedacht, behoeft dat niet
+te resulteren in het overtikken van alle reeds
+aanwezige gegevens. Vaak is het mogelijk om
+een programma te schrijven, die deze klus voor
+u klaart. Ook hiervan is een voorbeeld
+gegeven.
+
+LEZEN EN BESCHRIJVEN VAN EEN BESTAND
+
+Het vullen en uitlezen van een bestand komt
+uiteraard ook uitvoerig aan de orde. Als men
+het boek goed heeft doorgewerkt, kan men
+inderdaad met bestanden 'lezen en schrijven',
+waardoor men in staat is een bestandsprogramma
+naar eigen behoefte samen te stellen.
+
+LEERBOEK, VRAGEN EN ANTWOORDEN
+
+Het is duidelijk dat het hier om een echt
+leerboek gaat. Elk hoofdstuk wordt besloten
+met een aantal vragen, die betrekking hebben
+op de behandelde stof, terwijl men aan het
+einde van het boek een uitvoerige bespreking
+van de juiste antwoorden aantreft.
+
+APPENDICES
+
+In de aanhangsels vindt men de ASCII-kodes, de
+specifieke Disk BASIC statements en funkties
+en een lijst van de fout-kodes, terwijl het
+boek besloten wordt met een uitgebreid
+trefwoorden register.
+Het lezen en bestuderen van dit boek wordt
+aanbevolen aan hen, die serieus willen leren
+programmeren en daarbij ook de disk routines
+willen leren beheersen. (Deze recensie werd,
+zoals gebruikelijk, verzorgd door onze MS-DOS
+kenner Pieter Vijlbrief. Bedankt, Pieter!)
+
+KLEINE CORRECTIE
+
+In Beeldkrant 161 van 17-8 j.l. stond een
+aankondiging van 'Computers in Onderwijs',
+een tentoonstelling annex seminar die van 30
+november t/m 2 december gehouden zullen worden
+in de Irenehal van de Utrechtse Jaarbeurs.
+In dit bericht waren enige foutjes geslopen,
+die we bij deze zullen rechtzetten: nadere
+inlichtingen zijn verkrijgbaar bij mevrouw F.
+Engelberts, Bakkenist Spits en Co. Organisatie
+Adviseurs, Amsterdam, tel. 020- 763666.
+
+NIEUWE UITZENDTIJD HOBBYSCOOP
+
+Zondag 2 oktober wordt het zendschema weer
+door elkaar gegooid op de Hilversumse zenders.
+Hobbyscoop maakt daar dankbaar gebruik van
+door het Basicode- en computerblok op een
+gunstiger tijdstip uit te gaan zenden. Vanaf
+oktober verplaatsen wij de uitzending naar de
+maandagavond van 21.35 tot 22.00 uur. Twee
+voordelen: meer zendtijd en uitzenden vroeger
+op de avond betekent minder last van fading.
+
+-----------------------------
+Aan: Hobbyscoop - NOS-radio
+betreft aanvraag sticker
+Postbus 1200
+1200 BE HILVERSUM
+-----------------------------
+
+Plak dit adres op een envelop en stop daarin
+een aan uzelf geadresseerde en gefrankeerde
+(dus met een postzegel erop) tweede envelop.
+Per omgaande ontvangt u dan de sticker met de
+nieuwe tijden. We blijven WEL uitzenden op
+Radio 5 omdat dit niet anders kan (dus 1008
+kHz op de middengolf). Voor alle duidelijkheid:
+de uitzendtijd van ons FM-stereo programma op
+de woensdag (van 19.02 tot 19.30 uur via Radio
+1 en 2) blijft onveranderd.

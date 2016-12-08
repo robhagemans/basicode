@@ -1,0 +1,248 @@
+197, woe 4 jan '89
+
+SAMENWERKING MET NOS-TELETEKST
+
+Dankzij technische verbeteringen van het
+Teletekst systeem is er ruimte gekomen om
+i.s.m. NOS-Hobbyscoop te experimenteren met
+software. Helaas is het nog niet zo dat men
+programma's uit Teletekst kan downloaden.
+Wel kan men nu de Hobbyscoop programma's die
+via de middengolf worden uitgezonden
+controleren. Dat gaat als volgt in zijn werk.
+
+Stel: men heeft een programma van de maandag
+uitzending (Hobbyscoop Radio 5 middengolf
+1008 kHz 21:35 - 22:00 uur) met enige storing
+binnen gekregen. Dan ontstaat 'error in line
+2030, 7020 en 30000' om maar wat te noemen.
+Het programma moet dan worden verbeterd op de
+volgende manier: men kiest Teletekst pagina
+420. Het programma wordt dan zichtbaar, zijhet
+dat alle programma regels achter elkaar zijn
+doorgeschreven om ruimte te besparen. Om
+onderscheid te maken tussen de opeenvolgende
+regels zijn ze verschillend in kleur,
+afwisselend blauw en geel.
+
+Wacht tot de (wissel)pagina voorstaat waarop
+de programmaregel is afgebeeld waar u een
+foutmelding bij krijgt. Een indeling van de
+programma regels staat op de eerste pagina
+van 420. Zet het Teletekst TV-toestel zonodig
+op pauze, voor meer leestijd. Neem de juiste
+tekst in de programmaregel over en zoek
+daarna de pagina waarmee u eventueel nog meer
+kunt verbeteren.
+
+Als u alle fouten op die manier uit uw
+programma heeft gehaald kunt u onze Basicode
+programmatuur foutloos aan de praat krijgen.
+Geen enkel programma hoeft dus meer te
+worden afgeschreven omdat er onherstelbare
+fouten inzitten, dankzij Teletekst.
+
+Mocht het programma geheel onherstelbaar zijn
+overgekomen dan kunt u het ook altijd nog uit
+onze databank halen met behulp van een modem
+en een communicatie programma. Het telefoonnr.
+is 035 - 45395. Beeldkranten zullen we niet op
+Teletekst zetten, alleen Basicode programma's.
+We hopen dat de nieuwe dienst verlening door
+u wordt gewaardeerd. Schrijf ons erover!
+
+SPREEKUUR GEWIJZIGD
+
+Met ingang van 1 januari is het spreekuur van
+Hobbyscoop verplaatst naar de VRIJDAG. U kunt
+ons bellen van 10 tot 12 uur 's morgens op
+telefoon nummer 035-773015. Natuurlijk kunt u
+ook altijd schrijven naar Postbus 1200, 1200
+BE in Hilversum.
+
+NIEUWE ZENDTIJDEN EN/OF ZENDERS
+
+Sinds 1 januari is er wat betreft de tijden
+en de zenders waarop de Hobbyscoop uitzendingen
+plaatsvinden het een en ander veranderd:
+- op WOENSDAG zijn we van 19.02 tot 19.30 uur
+te beluisteren, maar alleen nog in MONO via
+Radio 1 (middengolf en regionale FM-zenders).
+- nieuw is onze mini-uitzending op DONDERDAG,
+in STEREO van 19.50 tot 20.00 uur op Radio 2.
+- de MAANDAG-uitzending van 21.35 tot 22.00
+uur via Radio 5 blijft onveranderd. Deze is
+te horen via de zenders Flevoland (1008 kHz)
+en Hulsberg (891 kHz).
+
+OVERZICHT RADIO-KANALEN
+
+--------------------------------------------
+Radio              1       2       3       4
+--------------------------------------------
+FM               MHz     MHz     MHz     MHz
+--------------------------------------------
+Amsterdam       94.3
+Den Haag        88.4
+Goes           101.9    87.9    95.0    99.8
+Haarlem         97.6
+Hoogezand       97.5
+Hulsberg        95.3    92.1   103.9    98.7
+Irnsum          88.6
+Lelystad       102.1
+Loon op Zand    98.2
+Lopik          100.7    92.6    96.8    98.9
+Losser          89.4
+Markelo         95.6    91.4    96.2    98.4
+Megen           89.1
+Mierlo          91.9
+Roermond       100.3    88.2    90.9    94.5
+Rotterdam                       93.4
+Roosendaal      95.4
+Ruurlo          90.4
+Smilde          90.8    88.0    91.8    94.8
+Ugchelen       103.5
+Wieringermeer   93.9    87.7    89.8    92.2
+Zwollerkerspel  99.4
+--------------------------------------------
+AM               kHz             kHz
+--------------------------------------------
+Flevoland        747             675
+Hulsberg        1251
+--------------------------------------------
+
+AMSAT-OSCAR 10
+
+Deze satelliet bevindt zich in de eerste
+maanden van 1989 kontinu in het zonlicht.
+Zolang de hoek tussen de zon en de zonnepanelen
+een goede waarde heeft zal er voldoende energie
+aan boord zijn voor normaal bedrijf. Het mode
+B relaisstation van OSCAR 10 mag voorlopig dan
+ook normaal gebruikt worden tijdens de gehele
+omlopen. Misschien moeten in de loop van
+februari weer beperkingen worden opgelegd als
+de energievoorziening in de satelliet in
+gevaar komt.
+
+AMSAT-OSCAR 13
+
+De kommando stations van OSCAR 13 zijn nu
+begonnen de stand van deze satelliet in de
+ruimte te wijzigen met behulp van zijn
+magnetorquers. In de nieuwe stand moet de
+lengtegraad van de satellietstand 180 graden
+worden en de breedtegraad 0 graden. Dit
+betekent dat de antennes van OSCAR 13 precies
+naar het middelpunt van de aarde zijn gericht
+op het moment waarop de satelliet het hoogste
+punt van zijn elliptische baan passeert.
+
+Het aangepaste gebruiksschema voor OSCAR 13
+voor de periode van 6 januari tot 13 maart
+luidt: mode B van mean anomaly phase 3 tot 100
+en van phase 150 tot 240, mode JL van phase 100
+tot 150 en alle relais stations uitgeschakeld
+van phase 240 tot 3. Begin maart moet de stand
+van de satelliet weer worden gewijzigd om een
+geschikte hoek tussen de zon en de zonnepanelen
+te handhaven. Daarna moet het gebruiksschema
+weer worden aangepast. In de periode van 13
+maart tot 3 mei is het volgende schema voor
+OSCAR 13 gepland: mode B van phase 100 tot 150
+en van phase 210 tot 0, mode JL van phase 150
+tot 210 en alle relais stations uitgeschakeld
+van phase 0 tot 100. Het mode S relais zal
+regelmatig in bedrijf zijn in de perioden
+waarin de antennes optimaal naar de aarde zijn
+gericht. Voor informatie over mode S bedrijf
+en over eventuele afwijkingen van het
+gebruiksschema kan men het beste luisteren
+naar de CW-, RTTY- of PSK-uitzendingen van de
+bakens van OSCAR 13.
+
+AMATEUR RADIO VANUIT MIR
+
+Op 19 december heeft Mousa, U2MIR, zijn laatste
+verbindingen gemaakt in de 2 meterband vanuit
+het Russische ruimtestation MIR. Hij meldde
+daarbij dat de amateur apparatuur in MIR blijft
+en later opnieuw gebruikt zal worden door
+andere kosmonauten. Mousa Manarov, Vladimir
+Titov en Jean-Loup Chretien zijn op 21 december
+teruggekeerd naar de aarde in SOYUZ-TM 6. In
+verband met problemen met de programmering van
+de boordcomputer van hun ruimtevaartuig moesten
+zij de landing na twee omlopen vertraging
+uitvoeren met handbesturing. De huidige
+bemanning in MIR, bestaande uit Aleksandr
+Volkov, Sergei Krykalov en Valeri Polyakov,
+blijft in de ruimte tot eind april. Zij moeten
+dan opgevolgd worden door Viktorenko en
+Serebrov, die tot oktober in MIR blijven
+werken. Mousa, U2MIR, heeft een paar honderd
+verbindingen gemaakt in de 2 meterband tijdens
+zijn verblijf in MIR. Vladimir, U1MIR, en
+Valeri, U3MIR, zijn veel minder aktief geweest.
+Sinds het vertrek van Mousa en Vladimir is
+alleen Valeri, U3MIR, nog een keer gehoord op
+145,550 MHz. Er is helaas niet veel amateur
+aktiviteit van Valeri te verwachten. Bovendien
+schijnt hij nauwelijks Engels te spreken.
+Het is niet duidelijk wat er van de nieuwe
+bemanningsleden te verwachten is. Voor zover
+bekend is er nog geen nieuwe zendontvanger
+meegekomen met het ruimtevrachtschip PROGRESS
+39, dat op 26 december aan MIR aankoppelde.
+
+ZRO TESTS
+
+Sinds enkele jaren organiseert AMSAT-NA een
+soort kontest via amateur satellieten die tot
+doel heeft gebruikers in de gelegenheid te
+stellen de kwaliteit van hun grondstation en
+van hun operating practice te testen en te
+optimaliseren. Deze kontest, die aanvankelijk
+via OSCAR 10 plaatsvond en nu alleen via OSCAR
+13, heet The ZRO Memorial Technical Achievement
+Award Program (afgekort ZRO Test) en is genoemd
+naar K2ZRO. Op een afgesproken tijdstip zendt
+een ZRO Test Control Station op een bepaalde
+frekwentie via OSCAR 13 numerieke codegroepen
+uit met steeds afnemend vermogen. De eerste
+codegroep wordt uitgezonden met een zodanig
+uplink vermogen dat het downlink signaal even
+sterk is als het General Beacon. Dit heet dan
+nivo 0. De volgende groepen worden uitgezonden
+met steeds weer 3 dB minder uplink vermogen.
+Dat zijn dan de nivo's 1, 2, 3 enzovoort. De
+ontvangende stations moeten nu proberen zoveel
+mogelijk codegroepen op te nemen. Als men nivo
+0 heeft kunnen opnemen, kan men al het ZRO Test
+Certificate aanvragen bij AMSAT-NA. Voor elk
+extra nivo, waarvan men bewezen heeft dat men
+dit heeft kunnen ontvangen, is een extra
+sticker beschikbaar. De ZRO Tests worden steeds
+gehouden op tijdstippen waarop de stand van de
+satelliet en zijn antennes zodanig is dat alle
+luisteraars binnen het bereik van de satelliet
+gelijke kansen hebben. Voorlopig vinden alleen
+ZRO Tests plaats via mode B van OSCAR 13. De
+gebruikte downlink frekwentie is 145,840 MHz
+en alle uitzendingen van het ZRO Test Control
+Station vinden plaats met telegrafie (CW) met
+een snelheid van 10 woorden per minuut. De
+volgende vier ZRO Tests zijn nu gepland op 14
+januari om 1600 UTC, 4 februari om 1530 UTC,
+25 februari om 1500 UTC en 4 maart om 0700 UTC.
+Iedereen wordt uitgenodigd deel te nemen aan
+deze ZRO Tests.
+
+AMATEUR SATELLIET NET
+
+Alle geinteresseerden zijn welkom bij het
+Nederlandstalig Amateur Satelliet Net, dat
+wekelijks wordt gehouden vanuit de regio
+Eindhoven op zondagavond om 2200 uur lokale
+tijd met FM op 144,800 MHz.
+(Met dank aan Nico Janssen, PA0DLO)

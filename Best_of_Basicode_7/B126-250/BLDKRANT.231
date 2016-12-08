@@ -1,0 +1,311 @@
+
+231, woe 17 mei '89
+
+RADIO SPOETNIKS
+
+Volgens het RS-kommandostation RS3A in
+Moskou werkt het mode A relaisstation
+van RS10 sinds 4 mei zonder beperking
+van het uitgangs vermogen van elk van
+de sub-bandjes van de doorlaatband.
+Zoals bekend kan de doorlaatband van
+elk relaisstation in RS10 en RS11
+worden opgedeeld in 10 sub-bandjes van
+elk 4 kHz. Het totale uitgangs vermogen
+van het mode A relais is nu 5 W.
+
+Hoewel vorig jaar bekend werd gemaakt
+dat de nieuwe RS12 en RS13 satelliet
+systemen in de zomer van 1989
+gelanceerd zouden worden, is er nu nog
+helemaal geen informatie bekend over
+hoe het er nu mee staat. De twee nieuwe
+systemen, die veel lijken op RS10/11,
+moeten weer in een KOSMOS navigatie
+satelliet worden ingebouwd. Deze
+satelliet moet een van de huidige
+navigatie satellieten op gaan volgen,
+zodra die uitvalt. De lancering van de
+nieuwe KOSMOS is daarom afhankelijk van
+het gedrag van de huidige navigatie
+satellieten. Het is nog onbekend
+wanneer een opvolger nodig is.
+
+MICROSATS
+
+De bouw van de vier MicroSats in
+Boulder, Colorado, nadert de
+voltooiing. In april zijn alle
+zonnecellen aangebracht op de
+honingraat panelen, waarna alle
+bedrading is aangesoldeerd. De
+definitieve versies van alle
+zender-modules worden opgebouwd. Na
+enige bewerkingen zijn alle batterijen
+in hun behuizingen gelijmd. De
+definitieve versie van de boordcomputer
+is eind april ingebouwd in de eerste
+MicroSat. De eerste van vier transport-
+kisten is in april ontvangen bij
+AMSAT-NA. Deze kisten worden gebruikt
+voor het transport van de satellieten
+naar Kourou, Frans Guyana, vanwaar ze
+gelanceerd worden. Hoewel de lancering
+officieel nog op het programma staat
+voor deze zomer, rekent men toch op een
+lanceerdatum in oktober of november.
+
+UoSAT D en UoSAT E
+
+Parallel aan de bouw van de vier
+MicroSats in de USA worden de twee
+nieuwe UoSATs opgebouwd in de
+University of Surrey in Engeland. Deze
+UoSAT D en UoSAT E moeten samen met de
+vier MicroSats worden gelanceerd met
+een ARIANE raket van de ESA.
+
+De eerste zonnepanelen zijn onlangs
+opgebouwd en voorzien van
+Gallium-Arsenide zonnecellen. Er wordt
+veel aandacht besteed aan het thermisch
+ontwerp van de satellieten, zodat de
+elektronika geen grote temperatuur
+variaties moet ondergaan. Dit vergroot
+de levensduur. De behuizingen van de
+satellieten zijn eind april voltooid en
+worden naar Toulouse in Frankrijk
+gebracht om ze te passen aan de ASAP
+koppelmechanismen (ARIANE Structure for
+Auxiliary Payloads). Het prototype van
+het Packet Communications Experiment
+(PCE) van UoSAT D is geheel getest. De
+CPU in het PCE bevat een 80C186
+microprocessor. Het berichten geheugen
+bevat 4 MByte CMOS RAM. Het PCE
+prototype gaat nu naar de USA waar het
+Quadron qCF multi-tasking operating
+system getest gaat worden in het PCE.
+
+JAS 1B
+
+De lancering van JAS 1B, de opvolger
+van FUJI OSCAR 12, is gepland voor
+februari 1990. Hij moet dan samen met
+de Japanse Maritieme Observatie
+Satelliet 1B (MOS 1B) worden gelanceerd
+met een twee-traps H1 raket vanaf het
+Tanegashima Space Centre. Als gevolg
+van de opgetreden problemen met OSCAR
+12, heeft men een aantal wijzigingen
+aangebracht aan JAS 1B. Om de energie
+voorziening in de satelliet te
+verbeteren heeft men hem iets groter
+gemaakt, zodat er meer zonnecellen
+konden worden aangebracht tegen de
+buitenzijde. Bovendien is men nu
+gebruik gaan maken van Gallium-Arsenide
+zonnecellen in plaats van Silicium
+zonnecellen, zodat het rendement van de
+zonnepanelen is verbeterd. Kort na de
+lancering moeten de zonnepanelen van
+JAS 1B dan ook zo'n 11 W kunnen
+genereren, tegen ongeveer 6,5 W bij
+OSCAR 12. Met deze kapaciteit kunnen de
+boordcomputer en al het geheugen dan
+ook kontinu in bedrijf blijven, ook als
+de satelliet eenderde van de tijd in de
+schaduw van de aarde doorbrengt.
+
+WIJZIGINGEN
+
+De afmetingen van JAS 1B zijn 440 bij
+440 bij 470 mm, dus hij is iets groter
+dan OSCAR 12. Hij weegt ongeveer even
+veel als OSCAR 12, namelijk zo'n 50 kg.
+Er zijn ook enkele wijzigingen
+aangebracht aan de antennes. Voor de
+ontvangst van de uplink signalen wordt
+een ring-turnstile gebruikt die veel
+minder richtings gevoelig is. Verder
+zullen de mode JA en mode JD zenders in
+JAS 1B gebruik maken van dezelfde
+turnstile zendantenne. Alle zend- en
+ontvangst- frekwenties van JAS 1B zijn
+overigens dezelfde als die van OSCAR
+12.
+
+ZON-SYNCHRONE BAAN
+
+De MOS 1B satelliet wordt door de H1
+raket in een zon-synchrone baan
+gebracht op een hoogte van 900 km en
+met een baanhelling van 99 graden. Deze
+baan is echter niet ideaal voor JAS 1B.
+Om elke omloop meer tijd in de zon te
+kunnen doorbrengen zou JAS 1B in een
+iets hogere baan moeten komen. De
+satelliet beschikt echter niet over een
+eigen raketmotor. Daarom denkt men
+erover JAS 1B, na het loskoppelen van
+MOS 1B, naar een hogere baan te brengen
+met behulp van de overgebleven
+brandstof in de tweede trap van de H1
+raket. Daarmee zou het apogeum van de
+baan van JAS 1B te verhogen zijn tot
+zo'n 1200 km. Dat zou tot gevolg hebben
+dat de satelliet een gedeelte van elk
+jaar kontinu in de zon kan verblijven,
+terwijl de schaduw perioden tijdens de
+rest van het jaar dan minder lang
+duren. (Met dank aan Nico, PA0DLO)
+
+RUIMTEZIEKTE OP AARDE
+
+Drie Europese astronauten zijn er voor
+het eerst in geslaagd op aarde
+ruimteziekte op te wekken. De nieuwe
+methode werd ontwikkeld door Wubbo
+Ockels en zijn Westduitse collega's
+Reinhard Furrer en Ernst Messerschmid,
+de drie wetenschappelijke astronauten
+van de D-1 Spacelab ruimtevlucht uit
+1985. De methode houdt in dat zij zich
+gedurende zeer lange tijd in een
+centrifuge lieten rondslingeren.
+
+In ruimtevaart kringen is men er niet
+eerder in geslaagd ruimteziekte op
+aarde op te wekken. De nieuwe methode
+biedt volgens de astronauten voor het
+eerst gelegenheid om inzicht te krijgen
+in de oorzaak van het complex van
+verschijnselen dat ruimteziekte wordt
+genoemd.
+
+Op het Nederlands Lucht- en Ruimtevaart
+Geneeskundig Centrum in Soesterberg
+stelde het drietal zich anderhalf uur
+lang bloot aan een centrifugale kracht
+die drie keer zo groot was als de
+aardse zwaartekracht. Na afloop hadden
+alle drie de astronauten sensaties die
+sterk afweken van het soort
+duizeligheid na een ritje in een
+draaimolen, of van gewone vormen van
+bewegings ziekte zoals zee- of
+wagenziekte.
+De astronauten herkenden hun symptomen
+duidelijk als die waaronder ze hadden
+geleden tijdens hun D-1 Spacelab
+ruimtevlucht. Lichaams bewegingen, met
+name als ook het hoofd bewoog, riepen
+sterk misselijk makende illusies op,
+waarbij hun volledige visuele wereld
+leek te bewegen. De symptomen bleven
+meer dan zes uur aanhouden, veel langer
+dan men nodig heeft om te herstellen
+van gewone bewegings ziekte.
+
+Het gehele onderzoek project was een
+gemeenschappelijke onderneming van
+wetenschappers afkomstig van het
+Nederlands Lucht- en Ruimtevaart
+Geneeskundig Centrum, het Instituut
+voor Zintuig fysiologie TNO, de Vrije
+Universiteit van Amsterdam, de
+Universiteit van Amsterdam en de
+Technische Universiteit Delft. Het
+project werd gefinancierd door de
+Stichting Ruimtevaart Onderzoek
+Nederland (SRON).
+
+HANDBOEK VOOR SCANNERS
+
+Het meest uitgebreide en telkens verder
+uitgewerkte scannerboek is het al jaren
+verschijnende 'Handboek voor Scanners',
+uitgegeven door Klove Elektronics in
+Heerhugowaard. Het wordt als vanouds
+geredigeerd door Hans Maas uit Boxtel
+en kost f 16,95. Het is meestal via de
+elektronica handel te verkrijgen.
+De jongste versie is alweer de 9-de
+druk. Er zijn - sinds de 1-ste druk van
+het voorjaar van 1981 - zo'n 60.000
+ervan over de toonbank gegaan. In de
+nieuwste druk zijn alle communicatie
+kanalen opnieuw gecontroleerd en door
+de toegenomen ether-drukte is het
+aantal pagina's van het boek opgelopen
+tot 64.
+
+MARIFOON & BRANDWEER
+
+In het boek alle verbindingen van
+politie, brandweer en GGD. Overal staan
+begeleidende teksten zodat men snel
+thuis kan raken in de terminologie.
+Speciaal het scheepvaart verkeer
+(marifoon) krijgt voor liefhebbers
+ditmaal de volle aandacht. Er is een
+speciale pagina opgenomen over het het
+nieuwe scheepvaart begeleidend systeem
+in de Rotterdamse haven. Verder zijn er
+gegevens over waardetransporten. Zoals
+altijd drukt het handboek een regionale
+indeling van politie, brandweer en
+particuliere diensten af.
+Het handboek is ook telefonisch te
+bestellen bij Klove onder nummer
+02207-42574. Het bedrijf heeft de gids
+jaren geleden gestart in verband met
+het feit dat men ook kristallen voor
+scanners maakt.
+
+VIDEO IN GIDS
+
+De fotobranche is steeds vaker tevens
+het distributie kanaal voor video. Dat
+merk je ook aan de bladen en gidsen op
+dat gebied. De 'Welke Gids', die over
+tal van onderwerpen wordt gepubliceerd,
+heeft nu twee gidsen die aandacht aan
+video besteden, namelijk de HiFi- en
+Video Gids en de Fotocamera & Portable
+Video Gids.
+
+Onlangs verscheen de laatstgenoemde
+gids weer. Als alle gidsen van de Welke
+reeks kost hij f 4,95 in de kiosk.
+'Fotocamera' besteedt ook veel aandacht
+aan kleinbeeld camera's en verzorgt
+daarbij fraaie overzichten. Kleinbeeld
+camera's zijn er volgens de gids
+eigenlijk hoofdzakelijk in twee
+soorten: de compact camera's, in hoge
+mate geautomatiseerd en de
+alleskunners, de spiegelreflex camera.
+Een ander hoofdstuk gaat over
+objectieven, de ogen van de camera die
+in een zeer grote verscheidenheid zijn
+te krijgen.
+
+Na hoofdstukken over flitsers,
+macrofotografie en het zelf vergroten
+en afdrukken, schakelt de gids over op
+portable video. Helaas is dat hoofdstuk
+niet zo erg actueel, nu voor de wat
+betere opnamen Super-VHS beschikbaar
+is. In het overzicht gaat de gids daar
+nauwelijks op in. Mogelijk omdat men
+denkt dat het gemiddelde huisgezin -
+het meest geliefkoosde onderwerp - zich
+zo'n vooralsnog duur apparaat niet zal
+willen of kunnen veroorloven. Voor
+kwaliteits werk, dat gemonteerd moet
+worden net als vroeger de super-8
+filmpjes, moet S-VHS toch serieus
+overwogen worden. Wat betreft het
+fotogedeelte hebben we geen kritiek.
+

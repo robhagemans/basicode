@@ -1,0 +1,329 @@
+69, zon 10 mei '87
+
+SATELLIET NIEUWS
+
+PA0DLO bericht ons het volgende over kunstmanen:
+Begin mei was OSCAR 10 nog niet hersteld van
+de periode met zeer ongunstige zonnehoek. Het
+General Beacon op 2 meter, dat alleen maar een
+ongemoduleerde draaggolf uitzendt, was erg zwak,
+terwijl zijn frekwentie vrij onstabiel was. Ook
+het mode B relais funktioneerde nog niet naar
+behoren. Blijkbaar is de batterij in de
+satelliet nog niet voldoende opgeladen. De
+satelliet is dan ook nog niet beschikbaar voor
+de gebruikers tot minstens 16 mei. Voordat
+AMSAT het mode B relais wil vrijgeven voor
+algemeen gebruik, wil men er eerst zeker van
+zijn dat het energie-systeem in de satelliet
+weer geheel op krachten is. Helaas zijn er
+helemaal geen telemetrie-gegevens meer
+beschikbaar uit de satelliet. Daarom moeten de
+kommando-stations allerlei experimenten
+uitvoeren met de satelliet om zijn 'gezondheids
+toestand' te kunnen vaststellen. Zodra AMSAT
+de satelliet weer kan vrijgeven voor algemeen
+gebruik zal het mode B relais waarschijnlijk
+voorlopig beschikbaar komen tussen de mean
+anomaly phasen 30 en 220. De spinmodulatie zal
+rond phase 50 minimaal zijn, omdat de antennes
+van de satelliet dan het best naar de aarde
+zijn gericht. Nadat de satelliet is vrijgegeven
+voor gebruik wordt men wel dringend verzocht
+uitsluitend zeer lage uplink vermogens toe te
+passen om de energie voorziening in de
+satelliet niet te zwaar te belasten. OSCAR 10
+komt nu elke omloop gedurende 28 minuten in de
+schaduw van de aarde. Deze schaduw perioden
+treden op rond de perigeum passages. De duur
+van de schaduw perioden neemt in de loop van
+het jaar geleidelijk toe tot een maximum van
+101 minuten per omloop rond Kerstmis.
+
+UoSAT-OSCAR 11
+
+De nieuwe standregel programmatuur in de boord
+computer van OSCAR 11 werkt uitstekend. De
+rotatie-as van de satelliet wordt altijd binnen
+6 graden vertikaal gehouden. Dat betekent dat
+de CCD-kamera en alle antennes altijd naar de
+aarde gericht blijven. Op woensdagen is OSCAR
+11 de hele dag beschikbaar voor edukatieve
+doeleinden. Tussen 0000 en 1400 UTC zendt de
+satelliet dan telemetrie uit, afwisselend met
+de DIGITALKER spraaksynthesizer en met 1200
+Baud ASCII. Tussen 1400 en 2400 UTC wordt dan
+steeds Whole Orbit Data uitgezonden, dus
+telemetrie die gedurende een hele omloop is
+verzameld in de satelliet. G3YJO, van het UoSAT
+team, heeft onlangs in Pakistan geholpen bij
+het opzetten van twee nieuwe UoSAT grond
+stations: AP2PUL en AP2SUP. Deze stations gaan
+onder andere deelnemen aan de proeven met het
+Digital Communications Experiment in OSCAR 11,
+zodat er spoedig weer enkele gateway
+mogelijkheden bijkomen.
+
+FUJI-OSCAR 12
+
+De Japanse kommando stations van OSCAR 12 zijn
+nog steeds bezig met het implementeren en
+testen van de programmatuur die packet radio
+verbindingen via het mode JD relais mogelijk
+moeten maken. Er zijn echter steeds weer
+komplikaties die vertragingen veroorzaken.
+Een interface-probleem tussen de hardware en
+software in de satelliet blijkt er de oorzaak
+van te zijn dat bepaalde AX25-frames, die door
+de satelliet worden uitgezonden, soms een
+foutieve CRC bevatten. Men kan dit konstateren
+door de frames te kontroleren met de TNC in de
+monitor-mode. Een ander probleem is dat het
+power budget van OSCAR 12 flink negatief is,
+vooral als mode JD in bedrijf is. Dit betekent
+dus dat de elektrische systemen in de satelliet
+veel meer energie nodig hebben dan het energie
+voorzienings systeem kan leveren. In de praktijk
+komt het er dan op neer dat vooral mode JD nooit
+langdurig in bedrijf kan worden gehouden, omdat
+de batterij dan vrij snel leeg zou lopen. Gezien
+de beperkte ruimte, die voor OSCAR 12
+beschikbaar werd gesteld in de lanceerraket,
+mocht de satelliet niet erg groot worden. Hoewel
+de buiten-oppervlakken van de satelliet vrijwel
+geheel bedekt zijn met zonnecellen, blijkt de
+hoeveelheid elektrische energie, die door de
+cellen wordt geleverd, niet voldoende te zijn.
+Daar komt nog bij dat het rendement van de
+zonnecellen, zoals ook te verwachten was, nu
+iets is afgenomen ten opzichte van de eerste
+weken na de lancering. Hopelijk kan men een
+geschikte oplossing vinden voor alle problemen,
+zodat de mode JD mailbox toch redelijk bruikbaar
+zal worden. JAS-1B, de kopie van OSCAR 12, die
+men over enkele jaren ook wil lanceren, krijgt
+uiteraard met dezelfde problemen te maken.
+Misschien kunnen die problemen toch nog worden
+voorkomen zonder al te ingrijpende wijzigingen.
+
+BALLONVLUCHT
+
+SA-AMSAT blijft in Zuid-Afrika experimenteren
+met lineaire relaisstations, zoals die later
+eventueel in amateursatellieten kunnen worden
+gebruikt. Op 16 mei wil men in Zuid-Afrika
+weer een ballon oplaten met daaraan een mode
+A relais-station (2 m naar 10 m). De ballon
+voor deze BACAR-vlucht komt uit Japan.
+
+AMSAT-Phase III-C
+
+Bij de ESA zijn helaas problemen ontstaan
+bij het testen van nieuwe motor-ontstekings
+apparatuur voor de derde trap van de Ariane.
+Daarbij zijn zelfs twee motoren voor een derde
+trap verloren gegaan. Een en ander heeft tot
+gevolg dat verdere vertragingen zullen optreden
+in het lanceerprogramma van de Ariane's. In
+AMSAT-kringen rekent men er niet meer op dat
+Phase III-C nog in 1987 gelanceerd kan worden.
+Phase III-C moet samen met Meteosat-P2 en
+Panamsat worden gelanceerd met Ariane vlucht
+401, de eerste testvlucht van een Ariane 4.
+Eerst zijn er echter nog twee andere Ariane
+vluchten gepland: V19 en V20. Phase III-C
+bevindt zich nu in West-Duitsland, waar nog
+laatste verbeteringen aan de satelliet worden
+aangebracht, nu men daar toch de tijd voor
+heeft.
+
+TELEAC BASISROUTINES
+
+Ing. Peter van Tilburg zei voor de radio
+cursus van Teleac Structuur in Basic het
+volgende: In hoofdstuk 5 van het cursusboek
+wordt aandacht besteed aan een hele reeks
+basisroutines. Het is niet verwonderlijk dat
+als eerste het sorteren aan bod komt. Het is
+namelijk een bewerking die we in de praktijk
+dikwijls nodig hebben en die meestal
+verantwoordelijk is voor een belangrijk
+gedeelte van de tijd dat de computer bezig is
+met verwerking.
+
+In de praktijk wordt veelal onderscheid gemaakt
+tussen intern sorteren en extern sorteren. Bij
+intern sorteren zijn de gegevens opgeborgen in
+het interne geheugen van de computer. Om een
+universele routine te kunnen definieren, wordt
+aangenomen dat er gebruikt wordt gemaakt van
+arrays. Bij extern sorteren zijn de gegevens
+opgeslagen op een extern geheugen. Denk b.v.
+aan een sequentieel georganiseerd ledenbestand
+dat gesorteerd moet worden op naam of adres.
+
+Zoals de toepassing mede bepaalt welke
+programmeertaal we kunnen gebruiken, is het
+afhankelijk van de te sorteren gegevens welke
+routine we het beste kunnen gebruiken. Bij de
+keuze spelen de volgende factoren een
+belangrijke rol:
+1 Is er sprake van interne of externe
+sortering? Hoewel we nog zullen zien dat
+routines voor interne sortering meestal ook
+gebruikt kunnen worden om gegevens op een
+extern geheugen te sorteren, zijn er door de
+aard van de bewerkingen die verricht moeten
+worden, diverse routines speciaal ontwikkeld
+voor extern sorteren.
+2 Wat is het aantal gegevens dat we moeten
+sorteren. Het zal duidelijk zijn dat het pas
+loont om een efficientere en daardoor meestal
+ook meer ingewikkelde routine te gebruiken
+wanneer het aantal te sorteren getallen
+aanzienlijk is.
+3 Vertoont het gegeven waarop gesorteerd
+moet worden al enige ordening binnen het
+array of bestand? Er zijn namelijk sorteer
+routines die dat signaleren en het aantal te
+verrichten vergelijkingen daarop afstemmen.
+Andere routines verrichten altijd een vooraf
+te bepalen, alleen van het aantal gegevens
+afhankelijk, aantal bewerkingen.
+
+Om een juiste sorteerroutine te kunnen kiezen,
+moeten we ook op de hoogte zijn van de
+performance ofwel prestatievermogen van de
+verschillende routines. Hoewel het in eerste
+instantie natuurlijk gaat om de tijd die nodig
+is om de reeks te sorteren, wordt het prestatie
+vermogen van een sorteerroutine gewoonlijk
+uitgedrukt in het aantal vergelijkingen dat de
+routine uitvoert. Daarbij wordt meestal dan
+nog onderscheid gemaakt tussen het gemiddeld
+aantal vergelijkingen en het aantal
+vergelijkingen in de worst-case. Met dat
+laatste wordt de situatie bedoeld waarbij de
+routine het meeste werk moet verrichten. We
+trachten nu een relatie te leggen tussen het
+aantal te sorteren getallen en het aantal
+vergelijkingen. We zullen eerst eens kijken
+naar de routines die in het boek worden
+behandeld.
+
+Het aantal te sorteren getallen zullen we
+steeds N noemen. Ongeacht of de rij al enige
+ordening ondervind, is het aantal
+vergelijkingen in de eerste sorteerroutine
+altijd gelijk aan (N-1)*(N-1). In dit geval
+kun je dus moeilijk spreken van een worst-case.
+
+Ook de tweede sorteerroutine voert een vast
+aantal vergelijkingen uit. Dat aantal is hier
+echter gelijk aan 0.5*N*(N-1).
+
+In de derde routine is het aantal
+vergelijkingen in het slechtste geval in ieder
+geval tenminste gelijk aan 0.5*N*(N-1). Maar
+omdat er in de (N-1)de doorgang nog een
+wisseling plaats kan vinden, is het mogelijk dat
+er nog een N-de doorgang nodig is, waarin
+geconstateerd wordt dat alles goed staat
+omdat er geen verwisseling meer heeft plaats
+gevonden. Het aantal vergelijkingen in deze
+doorgang is dan steeds N-2. Dit brengt het
+aantal vergelijkingen in de worst-case op
+0.5*N*(N-1)+N-2. Deze routine kan dus soms
+slechter zijn dan de vorige!
+
+Het aantal vergelijkingen kan in een concreet
+geval echter veel lager zijn, wanneer de rij
+al enige ordening vertoont. Hoewel met wat
+gevorderde wiskunde kennis zeker een relatie
+te vinden is tussen het aantal getallen en het
+gemiddeld aantal vergelijkingen, kunnen we ons
+hiervan met behulp van simulatie snel en
+relatief gemakkelijk een beeld vormen. Via een
+programma dat we alle mogelijke combinaties van
+volgorden laten onderzoeken. De resultaten
+daarvan:
+
+N aant    totaal aant   gemidd      aant
+mogelijke|vergelijkingen|aant | vergelijkingen
+combinaties         vergelijkingen|worst-case
+
+3    6        20        3.33          4
+4   24       158        6.58          8
+5  120      1286       10.72         13
+6  720     11342       15.75         19
+7 5760    109406       18.99         23
+
+Uit deze tabel blijkt dat het gemiddeld aantal
+vergelijkingen ongeveer 17% lager ligt dan in
+de worst-case situatie. Nog interessanter is
+een vergelijking met de resultaten van de
+vorige routine:
+
+N  gemiddeld aantal         gemiddeld aantal
+    vergelijkingen           vergelijkingen
+       routine 2                routine 3
+
+3          3                        3.33
+4          6                        6.58
+5         10                       10.72
+6         15                       15.75
+7         21                       18.99
+
+Deze tabel geeft aan dat bij het sorteren
+van minder dan 7 getallen we gemiddeld met
+de derde routine nog meer vergelijkingen
+moeten uitvoeren. Deze routine is pas bij het
+sorteren van tenminste 7 getallen voordeliger,
+met name wanneer de reeks al voor een groot
+gedeelte is gesorteerd. Denk hierbij b.v. aan
+een reeks die al eerder is gesorteerd, maar
+waar intussen enige wijzigingen op zijn
+uitgevoerd of waar enige waarden aan zijn
+toegevoegd.
+
+Hoewel de routines in het boek in eerste
+instantie bestemd zijn voor interne sortering,
+kunnen we ze - met enige aanpassing - ook
+gebruiken voor het sorteren van gegevens die
+zich op het achtergrondgeheugen bevinden.
+We moeten in dat geval onderscheid maken
+tussen de situatie dat het mogelijk de
+inhoud van het gehele bestand in een keer in
+het interne geheugen te plaatsen, en de
+situatie dat het bestand groter is dan het
+werkgeheugen. In het eerste geval lezen we de
+gegevens uit het bestand in en bergen deze op
+in een of meerdere arrays. Nadat we deze arrays
+hebben gesorteerd, schrijven we de inhoud
+daarvan weer terug naar het externe geheugen.
+We hebben dan een nieuw, gesorteerd, bestand.
+Indien een record uit meerdere gegevens bestaat,
+moeten we er wel aan denken in de wisselroutine
+ook alle gegevens mee te wisselen.
+
+Het wordt moeilijker wanneer het bestand groter
+is dan het werkgeheugen. Neem bijvoorbeeld het
+geval dat het bestand 200 Kb groot is, terwijl
+in het werkgeheugen nog maar 55 Kb ruimte
+beschikbaar is. In dat geval kunnen we toch de
+interne sorteerroutines gebruiken, wanneer we
+als volgt te werk gaan:
+
+We lezen steeds een vierde gedeelte van het
+bestand in, sorteren het en schrijven het
+resultaat weg naar een hulpbestand. Wanneer we
+dan tenslotte vier hulp bestanden van ieder
+50 Kb groot hebben, kunnen we het originele
+bestand verwijderen. De volgende stap bestaat
+uit het samenvoegen van twee gesorteerde hulp
+bestanden tot een bestand. Door dit eenvoudige
+proces twee keer uit te voeren, hebben we
+uiteindelijk twee nieuwe hulpbestanden van ieder
+100 Kb. Tenslotte voegen we deze twee bestanden
+nog samen en hebben dan uiteindelijk het
+gewenste, gesorteerde bestand.

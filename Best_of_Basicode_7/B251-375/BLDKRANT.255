@@ -1,0 +1,301 @@
+255, maa 02 okt '89
+
+FAX-BEELDEN OP DE PC, DEEL 2
+
+In Beeldkrant 254 zonden wij het eerste
+deel uit van Pieter Vijlbrief's artikel
+over het ontvangen van fax-beelden. In
+het nu volgende tweede en laatste deel
+gaat Pieter nader in op de hardware die
+nodig is om de fax-beelden op een
+computer zichtbaar te maken, en doet
+hij verslag van zijn ervaringen op dit
+gebied.
+
+VIA DE COMPUTER
+
+Wij van Hobbyscoop en ook u, die dit
+leest, zijn natuurlijk sterk
+geinteresseerd in wat de computer op
+dit gebied voor ons kan doen. De firma
+COMSAT is hier destijds uit hobbyisme
+mee begonnen en maakte een interface
+voor de Commodore-64 met bijpassende
+software (Digisat). Toen later de
+MSX(-2) verscheen, werd ook hier een
+aanpassing voor gemaakt. Dit leverde al
+vrij goede beelden op tegen een
+schappelijke prijs.
+
+DE PC
+
+Nu de IBM-klonen langzaam maar zeker de
+computermarkt (ook voor de hobbyisten)
+gaan beheersen, heeft COMSAT op
+professionele basis ook voor dit type
+computer een Digisat interface en
+programmatuur ontwikkeld. Voor bedragen
+beneden de 300 gulden kan men zijn PC
+geschikt maken voor het decoderen van
+radio- beelden.
+
+EEN ADDERTJE ONDER HET GRAS
+
+Er schuilt echter een addertje onder
+het gras. De in de computer aanwezige
+video-kaart spreekt een geducht woordje
+mee. Op de Commodore en de MSX werd
+gewoon gebruik gemaakt van de aanwezige
+mogelijkheden en dat leverde redelijke
+tot goede beelden op. De PC geeft
+echter nogal wat problemen.
+
+VERSCHILLENDE VIDEOKAARTEN
+
+Het beeld uit een PC komt op de monitor
+via een 'video-kaart'. Deze kan een
+monochrome (een-kleurige) of een
+kleurenkaart zijn. Men moet minstens
+beschikken over een CGA-kaart maar
+liever over een EGA en nog beter over
+een VGA kaart. Het probleem zit hem in
+de contrast-weergave.
+
+'GRIJSTINTEN' OP EEN PC
+
+Met de weergave van grijstinten is het
+op een PC slecht gesteld. Wit (en
+kleur) kan normaal gesproken maar in
+twee helderheids trappen worden
+weergegeven: helder en half-helder.
+Deze worden dan als aparte kleuren
+beschouwd. De oplossing bleek te zijn
+om kleurschakeringen toe te passen. Hoe
+meer kleuren er tegelijkertijd actief
+kunnen zijn, hoe meer helderheids
+verschillen er kunnen worden
+nagebootst.
+
+CGA (Color Graphics Adapter)
+
+Deze videokaart is in staat een beeld
+van max. 640 bij 200 beeldpuntjes te
+vormen in vier kleuren die tegelijk
+actief kunnen zijn. (Of 320 bij 200
+beeldpuntjes in 16 kleuren, maar dat
+zou voor ons doel te grof zijn). Het
+resultaat is toch nog een vrij
+grofstoffelijk beeld met een zeer
+matige contrastweergave. Het kan veel
+beter.
+
+EGA (Extended Graphics Adapter)
+
+Met deze videokaart kan een beeld van
+640 bij 350 beeldpuntjes worden
+weergegeven in 16 kleuren die gekozen
+zijn uit een palet van 64 kleuren. Het
+beeld ziet er al wat beter uit, maar de
+kleuren doen erg 'hard' aan. Het
+plaatje ziet er vreemd gekleurd uit.
+
+VGA (Video Graphics Array)
+
+Met deze nieuwe ontwikkeling is het
+mogelijk een veel scherper en
+contrastrijker beeld te krijgen.
+Normaal kan het een beeld van 640 bij
+480 beeldpuntjes schrijven, maar ook
+kan men desgewenst zelfs een beeld van
+800 bij 600 beeldpuntjes gebruiken,
+beiden in 16 kleuren uit een palet van
+256000 tinten. Voor de hoogste
+resolutie is het dan wel noodzakelijk,
+dat men beschikt over een VGA adapter
+die een VGA multisync monitor
+aanstuurt. De kleurweergave is door een
+andere techniek veel beter geworden.
+
+ANALOOG BEELDSCHERM
+
+CGA en EGA sturen het beeldscherm
+digitaal aan (het alles of niets
+principe, om het eenvoudig uit te
+drukken). Bij VGA kunnen 16 kleuren in
+veel meer helderheids variaties
+(analoog) worden weergegeven, waardoor
+er een veel betere contrastweergave
+mogelijk is. Het levert dan ook een
+heel fraai beeld op. Zelfs is het
+mogelijk een scala van 16 grijstinten
+op het scherm te zetten.
+
+SPECIALE MONITOR VOOR VGA
+
+Dit brengt met zich mee dat de
+gebruikte kleurenmonitor dit alles aan
+moet kunnen. Zoals al opgemerkt: voor
+de grootste scherpte is een multisync
+monitor vereist. De prijs is daarnaar.
+Al met al wordt het een nogal kostbare
+aangelegenheid. Er is echter ook een
+monochrome monitor leverbaar, die de
+kleurverschillen naar grijstinten
+vertaalt. Deze is aanzienlijk
+goedkoper.
+
+TIMER MOGELIJKHEID
+
+Bij ontvangst van de Meteosat
+satelliet, die op vaste tijden beelden
+van ons continent uitzendt, is het
+mogelijk om het uur of halve uur
+automatisch een beeld in het geheugen
+vast te leggen, zes in totaal, die dan
+later als een filmpje kunnen worden
+afgespeeld. Bewegingen van het
+wolkenpatroon kunnen dan worden
+bestudeerd.
+
+WEERGAVE VAN PERSFOTO'S
+
+Op een CGA of EGA kleurenscherm zijn de
+persfoto's niet om aan te zien door de
+vele (valse) kleuren, die op een
+weerfoto nog wel acceptabel overkomen.
+Het genoemde monochrome scherm biedt
+hier de oplossing. Bij VGA kan voor
+zwart-wit weergave worden gekozen.
+
+WEERGAVE VAN METEO-KAARTEN
+
+De bekende hoge en lage druk lijntjes
+(isobaren) en de warmte en koude
+fronten zijn echter ook onder EGA wel
+duidelijk zichtbaar te maken als men
+een palet in alleen zwart en wit opzet.
+Dit is mogelijk met de palet-editor.
+
+TE VERWACHTEN ONTWIKKELINGEN
+
+Er wordt hard gewerkt aan verbeteringen
+van het Digisat systeem. Er is een
+interface in ontwikkeling, die de
+beelden automatisch synchroniseert,
+zodat de afbeelding altijd goed op het
+scherm past. Ook wordt overwogen de
+monochrome grafische Hercules
+videokaart te benutten voor weergave
+van weerkaarten.
+
+METEOROLOGISCHE KAARTEN
+
+Ook wordt er aan gewerkt de uitgebreide
+weerkaarten van de meteo stations in
+hun geheel vast te leggen, zodat er
+naderhand zowel in de links-rechts als
+de boven-beneden richting doorheen kan
+worden 'gescrolld'.
+
+PRINTEN VAN DE BEELDEN
+
+Het op papier printen van de PC-beelden
+kan alleen door middel van een niet in
+Digisat opgenomen screendump programma,
+dat dan resident in het geheugen van de
+computer moet zijn opgenomen. (Voor de
+MSX is een door ons ontwikkeld
+printprogramma reeds aanwezig).
+
+WENSEN VAN HOBBYSCOOP
+
+Wij van Hobbyscoop zouden nog graag
+zien, dat de met de timer opgenomen
+beelden ook automatisch op schijf
+worden vastgelegd, zodat een overzicht
+van meer dan zes beelden mogelijk
+wordt. In verband hiermede is eigenlijk
+ook een precies lopende klok op de
+interface-kaart vereist. De
+computerklok is niet altijd nauwkeurig
+genoeg! Ook zou het mogelijk moeten
+zijn, de zelfgemaakte kleur-paletten
+onder een naam op schijf te bewaren,
+zodat men ofwel een zo goed mogelijk
+kleurpatroon voor wolkenfoto's of een
+zuivere zwart-wit weergave voor
+weerkaarten kan kiezen zonder eerst
+weer een palet te moeten maken. Dit
+geldt speciaal bij gebruik van een EGA
+kleurenkaart. De nu reeds geboden
+mogelijkheid dienaangaande is te
+beperkt. Ook zou de te gebruiken
+kleurinstelling reeds met het
+instelmenu moeten kunnen worden
+gekozen, zoals nu al in het MSX
+programma mogelijk is.
+
+ONZE ERVARINGEN
+
+We hebben geruime tijd met Digisat
+geexperimenteerd. Op een MSX-2 kunnen
+met behulp van dit systeem reeds zeer
+mooie plaatjes worden ontvangen, zowel
+van de NOAA weersatellieten als van de
+FAX stations. De MSX beeldkwaliteit is
+daarvoor zeker geschikt als men de
+hoogste resolutie kiest (512
+beeldpunten met 16 kleuren per lijn en
+z.g. interlace: daarbij worden twee
+beelden, een halve lijn ten opzichte
+van elkaar verschoven, tegelijk
+weergegeven, zodat het beeldscherm 512
+bij 424 beeldpuntjes toont).
+
+ERVARINGEN OP DE PC
+
+Als men slechts beschikt over een
+beperkte kleuren weergave (CGA of zelfs
+EGA), is, gezien de kosten-prestatie
+verhouding, gebruik van een MSX-2,
+zoals hierboven beschreven, een betere
+keus. We hopen, dat voor de hobbyist
+deze mogelijkheid nog leverbaar zal
+blijven. Als men echter over VGA (met
+multisync) mogelijkheden beschikt,
+verandert de zaak. Dat beeld is
+subliem. Vooral ook in de eenvoudig te
+kiezen zwart-wit instelling. De
+ingebouwde synchronisatie mogelijkheid
+voor de russische weersatellieten is
+een welkome extra feature. Deze kan
+echter ook als optie in de MSX
+interface worden ingebouwd. (Waarom zit
+dat er eigenlijk niet standaard in?)
+
+FSK-APT OMZETTER
+
+Voor ontvangst van de FAX stations op
+de lange of korte golf, waarbij het
+signaal in FSK wordt uitgezonden, wordt
+gebruik gemaakt van een stabiele
+enkelzijband ontvanger. Het
+audiosiganaal moet daarna met een
+eenvoudige interface in een APT signaal
+worden omgezet om door Digisat te
+kunnen worden verwerkt. Deze interface
+moet voor een prima beeldkwaliteit zeer
+goed worden afgeregeld!
+
+ALS UW BELANGSTELLING GEWEKT IS
+
+Als u zelf iets in deze richting wilt
+gaan ondernemen, raden wij u aan de
+literatuur eerst goed te bestuderen en
+aan de hand daarvan (en van wat wij
+erover schreven) u bij de
+gespecialiseerde handel uitvoerig te
+orienteren alvorens tot aanschaf over
+te gaan.
+(Met dank aan Pieter Vijlbrief)
+

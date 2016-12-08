@@ -1,0 +1,427 @@
+389, maa 25 feb '91
+
+SPECIAL: AMATEUR- EN WEERSATELLIETEN
+
+Pieter Vijlbrief stelde, in aansluiting
+op het satelliet baanberekenings
+programma waarvan hij regelmatig een
+update verzorgt, een overzicht samen
+van de gegevens die door amateur- en
+weersatellieten worden uitgezonden en
+die door radio zendamateurs op bepaalde
+frequenties kunnen worden opgevangen.
+
+A) AMATEUR-SATELLIETEN
+
+Regelmatig zendt NOS Scoop een
+bijgewerkt programma uit om de banen
+van rond de aarde draaiende satellieten
+te berekenen. Nu zullen er luisteraars
+zijn, die geinteresseerd in de
+radiohobby, ook wel eens willen
+beluisteren, wat er zoal gaande is in
+het satellieten verkeer en misschien
+zijn er hier en daar ook wel
+zendamateurs, die wel eens iets in die
+richting willen proberen. Radioverkeer
+over satellieten wordt toegepast om met
+hoge frekwenties (dus korte
+golflengten) toch grote afstanden op
+aarde te kunnen overbruggen. Vergelijk
+in dit verband de wereldomspannende
+televisie uitzendingen, waarbij ook van
+satellieten gebruik wordt gemaakt.
+
+Oorspronkelijk werd alleen radioverkeer
+in morse of spraak tussen twee stations
+op aarde ondersteund door de amateur
+satellieten. Tegenwoordig is ook
+dataverkeer mogelijk en zijn er
+bulletin boards waaruit berichten te
+plukken zijn (PACSATS). Het is niet
+gemakkelijk om voldoende kennis te
+vergaren over de gebruikte frekwenties
+en de verschillende mogelijkheden van
+deze amateur satellieten en de 'modes'
+waarop wordt uitgezonden. In dit
+artikel zullen we proberen in deze
+leemte te voorzien. Wel moet in
+gedachten worden gehouden dat we
+slechts de mogelijkheden kunnen
+aanstippen. Is de interesse eenmaal
+gewekt, dan is het aan te bevelen de
+regelmatig verschijnende rubrieken over
+dit onderwerp in de amateur radiobladen
+te lezen om op de hoogte te blijven van
+de nieuwste ontwikkelingen op dit
+gebied.
+
+DOPPLER EFFECT
+
+Men dient ook goed rekening te houden
+met de frekwentie veranderingen
+tengevolge van het z.g. Doppler effect.
+Als de satelliet op ons afkomt, neemt
+de frekwentie waarop de satelliet wordt
+ontvangen toe. Het omgekeerde vindt
+plaats als de satelliet van ons
+afbeweegt. In het door ons uitgezonden
+baan- berekenings programma is dit ook
+aangegeven, geldend voor de boven de
+tabel opgegeven frekwentie. Is op 145
+MHz de verschuiving b.v. 5 kHz, dan is
+op 435 MHz op datzelfde moment de
+verschuiving driemaal zo groot, dus 15
+kHz.
+
+INVERTERING
+
+Veel satellieten relayeren het signaal
+dat wordt opgestraald vanaf de aarde
+spiegelverkeerd op de 'downlink'
+frekwentie, d.w.z. een USB signaal
+wordt teruggezonden als een LSB
+signaal. En verschuiven we in
+frekwentie naar boven, dan verschuift
+de terug ontvangen frekwentie naar
+beneden. Dit wordt in de volgende
+tabellen, voor zover het feit ons
+bekend is, aangegeven met (INV).
+
+FREKWENTIES EN MODES
+
+    Uplink (band)   Downlink (band)
+A =     145 MHz         29 MHz
+B =     435 MHz        145 MHz
+J =     145 MHz        435 MHz
+JA=     145 MHz      29 en 435 MHz
+JD=     145 MHz        435 MHz
+(digitaal)
+JL=145 MHz en 2.4 GHz  435 MHz
+K =      21 MHz         29 MHz
+KA=  21 en 145 MHz      29 MHz
+KT=      21 MHz      29 en 145 MHz
+L =    1260 MHz        435 MHz
+S =     435 MHz        2.4 GHz
+T =      21 MHz        145 MHz
+
+SATELLIETEN
+
+UOSAT-OSCAR 10
+Mode B:
+Baken   : 145.809 MHz
+Uplink  : 435.025 - 435.175 MHz
+Downlink: 145.975 - 145.825 MHz (INV)
+Mode L:
+Baken   : 436.020 en 436.040 MHz
+Uplink  : 1269.05 -  1296.85 MHz
+Downlink: 436.950 -  436.150 MHz (INV)
+Opmerking: Het besturings systeeem is
+ernstig defect. Bij goede ladings
+toestand van de batterijen mag alleen
+het B-relais worden gebruikt. De
+signalen zijn zwak. Voorlopig is de
+satelliet enige maanden buiten gebruik
+door energiegebrek.
+
+UOSAT-OSCAR 11
+Bakens 145.825 en 435.025 MHz
+Opmerking: Sinds midden 1990 zwijgt de
+Digitalker. Zendt o.a. bulletins in
+1200 bd ASCII (en sneller). Uplink is
+alleen in gebruik door officiele
+grondstations. De satelliet is vaak
+uitgeschakeld.
+
+AMSAT-OSCAR 13
+Mode B:
+Bakens  : 145.812 en 145.985 MHz
+Uplink  : 435.420 - 435.570 MHz
+Downlink: 145.975 - 145.825 MHz (INV)
+Mode L:
+Bakens  : 435.651 en 435.677 MHz
+Uplink  : 1269.33 - 1269.62 MHz
+Downlink: 436.005 - 435.715 MHz (INV)
+Mode J:
+Uplink  : 144.425 - 144.475 MHz
+Downlink: 435.975 - 435.925 MHz (INV?)
+Mode S:
+Baken   : 2400.665 MHz
+Uplink  : 435.471  - 435.507 MHz
+Downlink: 2400.711 - 2400.747 MHz
+Rudak:
+Downlink:  435.677 MHz
+Het gebruiksschema wordt steeds
+gewijzigd.
+Voor 28/12'90 - 15/3'91 geldt:
+Mode       MA
+       van    tot
+B       0      20
+B      65     165
+JL    190     195
+S     195     200
+BS    200     205
+B     205     256
+Rondstraler: MA 240 - 30.
+Opmerking: Op 435 MHz is een
+zendvermogen van minstens 50 watt en
+een antennegain van 10 dB vereist, op
+1296 MHz is minstens 2 kW EIRP SSB
+nodig om een verbinding over deze
+satelliet te kunnen maken. Bij de
+ontvangst moet een antenne
+voorversterker worden gebruikt.
+
+UOSAT-OSCAR 14 (UOSAT D)
+Packet Radio AX.25 1200/9600 bps
+Baken   : 145.825 MHz
+Uplink  : 145.975 MHz
+Downlink: 435.070 MHz
+Opmerking: Speciale programmatuur nodig
+voor P(acket)R(adio) verbindingen (PG
+en PB).
+
+UOSAT-OSCAR 15
+Is defekt geraakt tijdens lancering.
+Waarnemings-rapport: nooit gehoord.
+
+UOSAT-OSCAR 16
+Heeft een BBS voor packetradio aan
+boord (PACSAT 1200 bps PSK AX.25).
+Uplink  : 145.900, 145.920, 145.940 en
+145.960 MHz
+Downlink: 437.025 en 437.050 MHz
+Opmerking: Eveneens speciale
+programmatuur voor PR-verbindingen
+vereist.
+
+DOVE-OSCAR 17
+Downlink: 145.825 MHz (1200 bps AX.25
+of spraak in FM)
+Opmerking: Deze satelliet heeft een
+werkende spraak synthesizer aan boord.
+Sterke signalen 1200 bps AFSK AX.25
+(FM), die met een normale voor 'aardse
+verbindingen' gebruikelijke TNC te
+ontvangen zijn. Heeft geen transponder
+aan boord.
+
+WEBERSAT-OSCAR 18
+Zendt CCD-videobeelden.
+Downlink: 437.075 en 437.100 MHz (1200
+bps PSK AX.25)
+Opmerking: de laatste tijd door de
+langzame rotatie van de satelliet geen
+goede beelden meer uitgezonden.
+Verwacht wordt, dat in de toekomst de
+rotatie (in de tegengestelde richting)
+weer sneller zal worden en dat er dan
+weer mooie beelden kunnen worden
+verwacht.
+
+LUSAT-OSCAR 19
+Uplink  : 145.840, 145.860, 145.880 en
+145.900 MHz
+Downlink: 437.150 MHz (1200 bps AX.25)
+          437.125 MHz (12 wpm CW)
+Opmerking: Voor het werken met PR is
+speciale apparatuur vereist. De
+satelliet is met 100 watt EIRP goed aan
+te spreken.
+
+FUJI-OSCAR 20
+Werkt in mode JA en JD.
+JA uplink  : 145.900 - 146.000 MHz
+   downlink: 435.800 - 435.900 MHz
+JD uplink  : 145.850 - 145.910 MHz
+   downlink: 435.910 MHz
+Opmerking: Kan gewerkt worden met 10
+watt output in een antenne met 10 dB
+gain (dus 100 watt EIRP) op 145 MHz met
+digitale signalen in F2 modulatie,
+waarbij op 435 MHz in SSB moet worden
+geluisterd. Een 2PSK modem nodig en een
+TNC werkend met AX.25 level 2, versie
+2.
+
+RADIO-SPOETNIK 10/11
+RS 10:
+Mode A:
+Baken   : 29.357 en 145.857 MHz
+Uplink  : 145.86 - 145.90 MHz
+Downlink:  29.36 -  29.40 MHz
+In verband met het in gebruik nemen van
+de navigatie-zender op 150 MHz kan mode
+A niet meer gebruikt worden.
+Mode K:
+Baken   : 29.357 MHz
+Uplink  : 21.16 - 21.20 MHz
+Downlink: 29.36 - 29.40 MHz
+Mode T:
+Baken   : 145.857 en 145.903 MHz
+Uplink  :  21.16 -  21.20 MHz
+Downlink: 145.86 - 145.90 MHz
+Robot:
+Uplink  : 21.120 en 145.820 MHz
+Downlink: 29.403 MHz
+Opmerking: Over deze satelliet is met
+heel eenvoudige middelen te werken,
+aanbevolen voor beginners.
+
+RS 11:
+Mode A (waarschijnlijk afgeschakeld):
+Baken   : 29.407 MHz
+Uplink  : 145.910 - 145.950 MHz
+Downlink:  29.410 -  29.450 MHz
+Mode K:
+Baken   : 29.407 MHz
+Uplink  : 21.210 - 21.250 MHz
+Downlink: 29.410 - 29.450 MHz
+Mode T:
+Baken   : 145.907 en 145.953 MHz
+Uplink  :  21.210 -  21.250 MHz
+Downlink: 145.910 - 145.950 MHz
+Opmerking: RS 11 zit in een satelliet
+met de RS 10, de RS 10/11. Daarin zit
+ook een navigatie zender die op 150 MHz
+werkt en de ontvangst op 145 MHz
+blokkeert.
+
+RADIO-SPOETNIK 12
+Mode A:
+Uplink  : 145.91 - 145.95 MHz
+Downlink:  29.41 -  29.45 MHz
+Baken   :  29.4081 of  29.4543 MHz
+Mode K:
+Uplink  :  21.21 -  21.25 MHz
+Downlink:  29.41 -  29.45 MHz
+Baken   :  29.4081 of 29.4543 MHz
+Mode T:
+Uplink  :  21.21 -  21.25 MHz
+Downlink: 145.91 - 145.95 MHz
+Baken   : 145.9125 of 145.9587 MHz
+Mode KA:
+Uplink  :  21.21 -  21.25 MHz
+          145.91 - 145.95 MHz
+Downlink:  29.41 -  29.45 MHz
+Baken   :  29.4081 en 29.4543 MHz
+Mode KT:
+Uplink  :  21.21 -  21.25 MHz
+Downlink:  29.41 -  29.45 MHz
+          145.91 - 145.95 MHz
+Baken   :  29.4081 of  29.4543 MHz
+          145.9125 of 145.9587 MHz
+Autoanswer 'Robot':
+Modes: A, K, T, KA en KT
+Uplink  :  21.1291 en/of 145.8308 MHz
+Downlink:  29.4543 en/of 145.9587 MHz
+Opmerking: de RS12 vormt met de RS 13
+een eenheid, de RS 12/13.
+
+RADIO-SPOETNIK 13
+Mode A:
+Uplink  : 145.96 - 146.00 MHz
+Downlink:  29.46 -  29.50 MHz
+Baken   :  29.4582 of  29.5043 MHz
+Mode K:
+Uplink  :  21.26 -  21.30 MHz
+Downlink:  29.46 -  29.50 MHz
+Baken   :  29.4582 of  29.5043 MHz
+Mode T:
+Uplink  :  21.26 -  21.30 MHz
+Downlink: 145.96 - 146.00 MHz
+Baken   : 145.8622 of 145.9083 MHz
+Mode KA:
+Uplink  :  21.26 -  21.30 MHz
+          145.96 - 146.00 MHz
+Downlink:  29.46 -  29.50 MHz
+Baken   :  29.4582 of  29.5043 MHz
+Mode KT:
+Uplink  :  21.26 -  21.30 MHz
+Downlink:  29.46 -  29.50 MHz
+          145.96 - 146.00 MHz
+Baken   :  29.4582 of  29.5043 MHz
+          145.8622 of 145.9083 MHz
+Autoanswer 'Robot':
+Modes: A, K, T, KA en KT
+Uplink  :  21.1385 en of 145.8403 MHz
+Downlink:  29.5043 en/of 145.9083 MHz
+Opmerking: Vrij jonge satelliet. Geen
+verdere gegevens bekend.
+
+RADIO-OSCAR 21
+Bevat twee lineaire mode B
+relaisstations.
+Lineair relaisstation 1
+Uplink:   435.022 - 435.102 MHz
+Downlink: 145.852 - 145.932 MHz (INV)
+CW baken: 145.822 MHz
+Digitaal baken: 145.952 MHz (1100 bps)
+Packets: (1200 bps AX.25): 145.983 MHz
+Opmerking: Identificeert zich als RS 14
+! De uitzendingen met 1100 bps PSK zijn
+gebaseerd op in de USSR gebruikte
+zelfbouw apparatuur.
+Lineair relaisstation 2
+Uplink:   435.043 - 435.123 MHz
+Downlink: 145.946 - 145.866 MHz (INV)
+CW baken: 145.948 MHz
+Digitaal baken: 145.838 MHz
+Idem          : 145.800 MHz
+
+MIR
+Communicatie op 143.625 MHz.
+De kosmonauten aan boord van de MIR
+zijn ook actief in de 144 MHz band op
+144.625, 144.675 en 145.550 MHz, o.a.
+met PR.
+
+B) WEERSATELLIETEN
+
+Hiertoe behoren o.a. de NOAA's, de
+METEOR's, OKEAN's en de FENG YUN's, die
+rond de aarde draaien en daarbij
+opnamen maken van het wolkendek en de
+landen waar zij overheen komen. Een
+tweede categorie vormen de METEOSAT's
+en de GOES satellieten, die een vaste
+positie innemen en vandaar uit de aarde
+van bovenaf gadeslaan. De eersten
+zenden (ook) uit in de 136 MHz band en
+zijn daarom met eenvoudige middelen te
+ontvangen. De tweede soort is slechts
+goed te ontvangen met behulp van een
+schotel.
+
+BEELDEN ZICHTBAAR MAKEN
+
+De beelden zijn zichtbaar te maken op
+speciale FAX apparatuur of met behulp
+van een computer (PC of MSX), uitgerust
+met een interface en programmatuur voor
+het op het scherm weergeven van
+weerfoto's (b.v. DIGISAT van COMSAT).
+De apparatuur moet in staat zijn de APT
+signalen te decoderen. Soms worden ook
+beelden weergegeven die met een
+infrarood systeem zijn opgenomen, deze
+geven een indruk van de warmte in de
+beschouwde gebieden. De NOAA's geven
+tijdens een overtocht zowel infrarode
+als normale beelden door elkaar. Deze
+zijn op eenvoudige wijze apart weer te
+geven (telkens een lijn overslaan). De
+METEOSAT's hebben een uitzend schema,
+waarin de verschillende beelden en
+gebieden elkaar afwisselen. Het zou te
+ver voeren in het kader van dit
+overzicht daar dieper op in te gaan. De
+werkgroep Kunstmanen, een afdeling van
+de Stichting 'de Koepel', geeft een
+twee-maandelijks blad uit, 'de
+Kunstmaan', waarin veel over deze
+technieken wordt gepubliceerd
+(Secretariaat: Dollardstraat 126, 3812
+EP Amersfoort).
+Bedankt, Pieter!
+

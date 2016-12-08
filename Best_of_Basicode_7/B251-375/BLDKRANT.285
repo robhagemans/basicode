@@ -1,0 +1,319 @@
+285, woe 10 jan '90
+
+MICROSATS EN UOSAT D EN E
+
+Begin januari is de lanceerdatum voor
+vlucht V35 van de ARIANE 4 raket met de
+nieuwe UoSATs en MicroSats verschoven
+naar 24 of 25 januari. Het uitstel was
+noodzakelijk in verband met problemen
+met het vluchtgeleidings systeem in de
+ARIANE raket.
+
+Tijdens de lancering zal een aantal
+stations in de AMSAT Launch Information
+Network Service (ALINS) verslag leveren
+van de gebeurtenissen rond de lancering
+op verscheidene amateur- frekwenties.
+De lanceernetten zijn te beluisteren op
+de volgende frekwenties: AMSAT-UK
+stations vanuit London bij 3,780 MHz,
+WA3NAN bij Washington bij 3,860, 7,185
+en 14,295 MHz, AMSAT-SA stations bij
+3,718, 7,080 en 14,282 MHz, en stations
+via AMSAT-OSCAR 13 mode B bij 145,950
+en mode L bij 435,970 MHz.
+
+VOORBEREIDING
+
+In december zijn de AMSAT-teams in
+Kourou nog druk bezig geweest met het
+testen van de satellieten en het
+voorbereiden op de lancering. Vooral
+het laden en testen van alle
+programmatuur in de boordcomputers van
+de vier MicroSats kostte veel tijd. Bij
+het foutzoeken in de programmatuur werd
+ook ondersteuning gegeven vanuit de
+USA. Het 70 cm CW-baken in LUSAT werd
+nogmaals nauwkeurig afgeregeld en er
+werden testopnamen gemaakt met de CCD
+videokamera's in UoSAT E en WEBERSAT.
+De digitale spraaksynthesizer in DOVE,
+de VOTRAX SC-02 chip, werkte
+uitstekend. Er mogen sterke signalen
+worden verwacht van de 4 W zender van
+DOVE.
+
+Op 13 december werden alle satellieten
+aan de ASAP van de ARIANE raket
+gemonteerd. Op 3 januari is deze
+samenstelling, met in totaal 7
+satellieten, bovenop de derde trap van
+de ARIANE raket gemonteerd. De
+batterijen in de satellieten werden
+elke dag bijgeladen vanuit externe
+voedingen. Op 5 januari is de komplete
+raket naar het lanceerplatform
+getransporteerd. Deze rit over een
+afstand van 14 km moest zeer
+voorzichtig worden uitgevoerd.
+
+MICROSATS AKTIEF TIJDENS LANCERING
+
+De vier MicroSats zullen tijdens de
+lancering volledig aktief zijn, waarbij
+de programmatuur in de boordcomputers
+geheel operationeel zal zijn. Een
+speciale schakelaar zorgt ervoor dat
+geen enkele zender in bedrijf kan komen
+totdat de satellieten zijn losgekoppeld
+van de derde trap van de ARIANE 4
+raket. De zenders zullen pas later
+worden ingeschakeld door een
+kommandostation. De twee UoSATs zijn
+geheel buiten bedrijf tot het moment
+van loskoppelen. Rond 0920 UTC op de
+dag van de lancering zullen de
+satellieten voor het eerst worden
+geaktiveerd door het UoSAT
+kommandostation in Surrey.
+
+FREKWENTIES
+
+De zes te lanceren satellieten zullen
+niet beschikbaar zijn voor algemeen
+gebruik voor eind februari. Eerst
+moeten ze uitgebreid worden getest.
+Bovendien moet allerlei programmatuur
+in de boordcomputers worden geladen en
+getest. Wel kan men de satellieten al
+gaan ontvangen zodra ze ingeschakeld
+worden:
+
+Satell.   frekw.  mode
+=======================================
+====
+UoSAT D   435,070 1200/9600 Baud AFSK
+AX.25
+UoSAT E   435,120 1200/1200 Baud AFSK
+AX.25
+PACSAT    437,025 1200 Baud PSK AX.25
+DOVE      145,825 1200 Baud AFSK AX.25
+/ FM
+WEBERSAT  437,075 1200 Baud PSK AX.25
+LUSAT     437,150 1200 Baud PSK AX.25
+LUSAT     437,125 12 wpm CW telemetrie
+
+POLAIRE BAAN
+
+Alle satellieten, SPOT 2, UoSAT D en E,
+en de vier MicroSats, zullen door de
+ARIANE 4 raket in een cirkelvormige
+polaire baan worden gebracht op een
+gemiddelde hoogte van 822 km en met een
+baanhelling van 98,7 graden.
+Aanvankelijk zullen de satellieten nog
+dicht bij elkaar verblijven maar na
+enkele dagen zijn ze al flink uit
+elkaar gedrift. Vanaf zo'n 8 uur na de
+lancering zijn de satellieten voor het
+eerst hoorbaar vanuit Nederland.
+Baangegevens zullen zo spoedig mogelijk
+worden gepubliceerd.
+
+SPOT-VOGEL 2
+
+Niet minder dan zeven satellieten
+zullen er op 24 of 25 januari worden
+gelanceerd. Niet alleen de zes amateur
+satellieten, maar ook de SPOT 2
+satelliet. De vertraging waardoor de
+missie nu al voor de zoveelste maal
+getroffen wordt (en die van Superbird-B
+en DFS-Kopernikus, die nog eerder
+omhoog had moeten gaan) leidt ertoe om
+langzamerhand over de 'SPOT-vogel
+missie' te spreken.
+
+ZONSYNCHROON
+
+SPOT 2 is een zonsynchrone
+aardobservatie satelliet. SPOT 2 moet
+een baan beschrijven waarbij hij
+dezelfde positie houdt ten opzichte van
+de zon, net als een fotograaf die de
+optimale belichting wil vasthouden. Met
+veel precisie is daarvoor een baan
+berekend die rekening houdt met de
+stand van de aarde ten opzichte van de
+zon. Om die reden moet de satelliet
+heel precies worden gelanceerd om 01:40
+(UTC) om zeer precies in die bepaalde
+baan te komen. Om de missie niet al te
+moeilijk te maken mag vlucht 35 wel
+enkele minuten eerder of later
+vertrekken dan het uur U omdat de
+computer aanboord van de raket het
+mogelijk maakt het lanceer traject te
+veranderen en aan te passen. Maar toch
+is het lanceer venster in dit geval
+uitermate nauw, namelijk plus of min 5
+min. Dat heeft ook te maken met de
+veiligheids voorschriften en de
+capaciteit van het volgstation
+Fairbanks dat de satellietdata moet
+kunnen verwerken.
+
+IN OPPOSITIE
+
+Vlucht 35 moet daarom op 24 of 25
+januari (inmiddels al anderhalf maand
+na de eerst genoemde datum) precies
+starten tussen 01:35 en 01:45 uur
+(UTC). Daarbij is ook nog rekening
+ermee gehouden dat SPOT 2 niet het
+functioneren van SPOT 1, die nog steeds
+in dienst is, mag onderbreken. De
+uiteindelijke positie van beide
+satellieten zal diametraal
+tegenovergesteld zijn.
+
+JAS 1B
+
+Deze tweede Japanse amateursatelliet is
+gereed voor zijn lancering met een H1
+raket vanaf de Tanegashima lanceerbasis
+in het zuiden van Japan, samen met de
+Japanse MOS 1B satelliet. Het
+lanceervenster is nu gepland van 0125
+tot 0200 UTC op 1 februari.
+
+RADIO SPOETNIKS
+
+Volgens de laatste geruchten zullen
+RS12 en RS13 niet voor de zomer van
+1990 worden gelanceerd. Men begint er
+zelfs al rekening mee te houden dat
+RS14 eerder kan worden gelanceerd dan
+RS12/13. Bij AMSAT-DL wordt inmiddels
+hard gewerkt aan de voltooiing van het
+RUDAK 2 packet radio systeem dat in
+RS14 moet worden ondergebracht.
+
+AMATEUR RADIO VANUIT SPACE SHUTTLE
+
+De Space Shuttle vlucht STS 35 van het
+gisteren gelanceerde ruimteveer
+Columbia, met onder andere Ron Parise,
+WA4SIR, wordt verlengd tot 10 dagen.
+Daarom is meer water, voedsel enz.
+meegenomen. Als gevolg daarvan is
+besloten dat de ATV- en SSTV-
+experimenten van WA4SIR moeten komen te
+vervallen. Wel zal Ron aktief zijn met
+FM spraak en met packet radio.
+
+Het ziet ernaar uit dat er ook een
+amateur aktief zal zijn vanuit een
+Space Shuttle tijdens vlucht STS 37 in
+mei of juni. Misschien kan hij de
+experimenten uitvoeren die
+oorspronkelijk gepland waren door
+WA4SIR. Het is nog niet duidelijk welke
+baanhelling zal worden toegepast bij
+die vlucht. Mogelijk komt de Shuttle
+dan wel binnen bereik van Nederland.
+
+Nico Janssen, PA0DLO.
+
+LANCERINGEN
+
+Japan gaat op 23 januari de 'Muses-A'
+lanceren. De satelliet zal in een
+trajekt langs de maan worden gestuurd.
+Op 2 februari zal een tweede
+observatie- satelliet voor de Japanse
+marine worden gelanceerd. Het gaat om
+de MOS-2.
+
+De tweede vlucht van het Sovjet
+ruimteveer Buran heeft begin 1991
+plaats. Het wordt gelanceerd met de
+Energia draagraket en zal aan MIR
+worden gekoppeld. De Buran is ook nu
+weer onbemand. Om budgetaire redenen
+zal er in 1990 geen gebruik worden
+gemaakt van de Energia. De geplande
+lancering dit jaar is geschrapt.
+
+RUIMTEWANDELING MIR
+
+Viktorenko en Serebrov maakten deze in
+de nacht van 8 op 9 jan. '90 tijdens
+omlopen: 22322 t/m 22324, ong. tussen
+1930 en 2230UTC, duur r/w 2u. 56min.
+Tijdens de 2 eerste omlopen was MIR nog
+buiten ons bereik. Het laatste deel van
+de r/w vond binnen bereik plaats en
+leverde interessant radioverkeer op.
+Als eerste was S. naar buiten gegaan.
+S. monteerde en demonteerde zaken,
+geassisteerd door V.
+
+Het werk verliep zo goed als volgens
+plan. Het bestond uit:
+1. Het aanbrengen buiten Kvant-2 van de
+noodzakelijke sterredetectoren
+(star-trackers) voor het orienteren van
+het station t.o.v. sterren en zon. Zeer
+noodzakelijk gezien de asymmetrische
+vorm (lijkt op een schoen) v/h complex.
+De 2 instrumenten wogen ieder 80 KG.
+2. Het aanbrengen van enkele
+voetsteunen buiten het station voor
+toekomstige r/w-en.
+3. Het binnenhalen van aan de ruimte
+blootgestelde polymeren, die t.z.t.
+naar aarde zullen worden teruggebracht.
+4. Over reparatie v/h defecte
+zonnepaneel werd alleen gezegd, dat dit
+bij een volgende r/w zou gebeuren.
+
+VERLICHTING TIJDENS R/W
+
+Tijdens perioden van duisternis tijdens
+de r/w kregen de kosmonauten licht van
+een lantaarn aan het openstaande luik
+en van de maan. Hiervoor gebruikten zij
+een groenfilter.
+
+Gebruik werd gemaakt van de oude
+ruimtepakken van vorige bemanningen.
+Men verliet het station door het
+doorgangs compartiment (dus niet via de
+luchtsluis in de Kvant-2) en wel door
+de poort, waaraan in het voorjaar de
+Module-T (Kvant-3) zal worden
+aangekoppeld.
+
+NA TERUGKEER
+
+Op 8 jan. te 2341-2351UT (oml. 22325)
+waren de kosmonauten terug in het
+station en bezig met het uittrekken
+ruimtepakken en conserveren
+instrumentarium. Tijdens de volgende
+oml. 22326 (0116-0127UT) ging dit werk
+door en werden al data ingevoerd in de
+computer voor het functioneren van de
+'startrackers', die de Gyrodina's de
+juiste commando's voor standregeling
+moeten geven. Er was nog wat
+radioverkeer op de volgende omloop,
+hoofdzakelijk over de opvang van
+condenswater. De volgende r/w begint op
+11 jan. 's avonds.
+
+Chris v.d. Berg, NL-9165/A-UK3202.
+

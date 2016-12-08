@@ -1,0 +1,253 @@
+126, woe 10 feb '88
+
+AMSAT-OSCAR 10
+
+ZL1AOX, een van de kommando stations van OSCAR
+10, heeft gekonstateerd dat de zonnehoek voor
+de zonnepanelen van OSCAR 10 sneller afneemt
+dan verwacht. Daarom heeft men moeten
+besluiten dat de satelliet al vanaf 15
+februari niet meer beschikbaar is voor
+gebruik, ook al is hij dan vaak nog wel
+hoorbaar. Alle boordsystemen bleken eind
+januari al uit te vallen zodra de satelliet
+in de schaduw van de aarde kwam.
+
+UoSAT-OSCAR 11
+
+Nieuw ontwikkelde programmatuur voor de
+Digitalker spraaksynthesizer van OSCAR 11
+is onlangs in de boordcomputer gebracht en
+wordt sinds 28 januari getest. Met deze
+nieuwe programmatuur zijn de mogelijkheden
+van de Digitalker sterk uitgebreid. Dit is
+vooral van belang voor de grote
+ski-expeditie over de noordpool vanaf 1
+maart, waarbij de Digitalker van OSCAR 11
+zal worden gebruikt voor het doorgeven van
+allerlei informatie aan de ski-ers, zoals
+navigatie informatie.
+
+Verder worden er nieuwe experimenten
+uitgevoerd met het CCD videosysteem in OSCAR
+11 in samenhang met het DSR experiment. Het
+DSR bevat een groot geheugen waarin veel
+data, zoals een CCD-beeld, kan worden
+opgeslagen en later uitgelezen. De
+uitzendingen van de data uit het DSR vinden
+gewoonlijk plaats met grote snelheid (2400
+of 4800 Baud) via de 70 cm bakenzender. In
+het september/oktober nummer (no 5, 1987)
+van het IERE-Journal is een reeks artikelen
+opgenomen over UoSAT-OSCAR 11, het UoSAT-
+grondstation in de University of Surrey en
+de experimenten die met OSCAR 11 worden
+uitgevoerd.
+
+FUJI-OSCAR 12
+
+In januari is mode JD van OSCAR 12 tijdelijk
+buiten bedrijf geweest als gevolg van de te
+lage batterijspanning in de satelliet. Nadat
+de batterij weer op sterkte was gekomen kon
+het normale schema worden hervat.
+Diegenen die geinteresseerd zijn in de
+experimenten van onder andere G4CUO, waarbij
+signalen worden gerelayeerd via twee
+satellieten, worden aangeraden te luisteren
+op de mode JA downlink frekwentie 435,870
+MHz van OSCAR 12. Als men rapporten van de
+ontvangst van OSCAR 12 naar de JARL stuurt
+kan men een QSL-kaart van OSCAR 12 ontvangen.
+
+AMSAT-Phase 3C
+
+Op 11 januari heeft een kwalifikatie test
+van de derde trap van de eerste ARIANE 4
+raket plaatsgevonden. Omdat de resultaten
+van de test niet geheel naar wens waren
+zullen verbeteringen moeten worden
+aangebracht. De lancering van ARIANE 401,
+vlucht V22, met onder andere Phase 3C aan
+boord, is daarom toch weer enkele weken
+uitgesteld. Men verwacht dat de lancering
+niet voor eind mei of begin juni zal kunnen
+plaatsvinden.
+
+PHASE-3C NAAR KOUROU
+
+De voltooide Phase 3C satelliet wordt nu bij
+AMSAT-DL in Marburg voorbereid op zijn
+transport naar Frankrijk en daarna naar Frans
+Guyana. Het transport zal over de weg en per
+schip worden uitgevoerd. Er moet in totaal
+zo'n 2 ton aan materiaal naar Kourou worden
+getransporteerd. Naast de satelliet zelf gaat
+veel hulpmateriaal, apparatuur en een
+kompleet grondstation mee naar de ESA
+lanceerbasis bij Kourou. Bovendien moeten in
+de periode tot aan de lancering enkele
+technici van AMSAT-DL en van AMSAT-NA naar
+Kourou om de satelliet daar voor te bereiden
+op de lancering. Na de voltooiing van de
+Phase 3 satelliet had AMSAT-DL echter geen
+geld meer voor het transport van materiaal
+en mensen naar Frans Guyana. Daarom heeft
+AMSAT-UK eind januari 13500 Pound Sterling
+geschonken aan AMSAT-DL om alle verdere
+kosten te dekken. AMSAT-NA is er inmiddels
+in geslaagd het grootste deel van de
+benodigde 10.000 US Dollars bij elkaar te
+krijgen voor de verzekering van de lancering
+van Phase 3C. Verdere donaties blijven welkom.
+
+OVEREENKOMSTEN MET OSCAR-10
+
+In een aantal opzichten lijkt Phase 3C veel
+op zijn voorganger OSCAR 10. Het mode B
+relaisstation en veel van de antenne systemen
+komen vrijwel overeen. Het mode L relais
+station van OSCAR 10 heeft nooit goed
+gefunktioneerd. Als alles goed gaat zal mode
+L van Phase 3C zeer goed bruikbaar worden:
+350 W EIRP in de uplink zal voldoende zijn.
+Nieuw ten opzichte van OSCAR 10 zijn mode J,
+mode S en RUDAK.
+
+RUDAK: EEN INTELLIGENTE DIGIPEATER
+
+RUDAK is de afkorting van het Duitse
+'Regenerativer Umsetzer fuer Digitale
+Amateurfunk Kommunikation'. RUDAK is een
+intelligente digitale repeater, die primair
+bedoeld is voor AX.25 Packet Radio
+kommunikatie tussen alle stations die binnen
+het bereik van de satelliet zijn. Omdat de
+satelliet in een hoge elliptische baan moet
+komen zal hij een groot deel van de tijd
+binnen het bereik zijn van de meeste
+gebruikers. Daarom achtte men het niet
+noodzakelijk ook een packet radio mailbox
+systeem of een andere vorm van een
+store-and-forward systeem aan RUDAK te
+koppelen.
+
+ANDERE FUNKTIES VAN RUDAK
+
+Naast het funktioneren als digipeater zal
+RUDAK ook algemene informatie uitzenden in
+AX.25 UI-frames. Bovendien krijgt RUDAK een
+ROBOT-mode, zoals bij de Radio Spoetniks.
+Als men daarbij een Connect tot stand brengt
+met RUDAK, dan zal dit systeem antwoorden
+met een bericht dat bijvoorbeeld ook
+baanparameters kan bevatten. RUDAK
+funktioneert geheel onafhankelijk van de
+andere systemen aan boord van Phase 3C. Wel
+zijn er koppelingen naar de boordcomputer en
+naar het mode L relais van de satelliet.
+
+DE HARDWARE VAN RUDAK
+
+RUDAK wordt bestuurd door een 65SC02 CMOS
+microprocessor, terwijl de AX.25 protocol
+afhandeling wordt verzorgd door een 84C40,
+een CMOS-versie van de Z80 SIO. Het systeem
+bevat 56 kByte CMOS RAM (D4464) en 2 kByte
+FL-PROM (HM6616). Omdat RUDAK uitsluitend
+CMOS komponenten bevat is zijn totale
+verbruik slechts 400 mW. RUDAK kan alleen
+in bedrijf zijn tijdens mode L bedrijf.
+Daarbij hoeft de mode L doorlaatband echter
+niet ingeschakeld te zijn, want RUDAK heeft
+zijn eigen zender en ontvanger. (We ontvingen
+deze informatie, zoals altijd, van PA0DLO).
+
+ERS-1 HEEFT OOG VOOR HET WEER
+
+ERS-1, de eerste remote-sensing satelliet
+van ESA (European Space Agency), zal begin
+1990 worden gelanceerd.
+Na de lancering van de eerste Amerikaanse
+Landsat satelliet in 1972 en de Franse SPOT
+satelliet in 1986, zal ERS-1 de eerste
+satelliet zijn die is uitgerust met een
+actief Microwave instrument (AMI).
+Dit instrument is in staat met twee modes
+te werken: als een wind scatterometer,
+die informatie geeft over windsnelheden
+en windrichtingen van het wateroppervlak,
+en als een Synthetic Aperture Radar (SAR).
+Deze radar is een belangrijke ontwikkeling
+die de satelliet in staat stelt om aan een
+zijde van de satelliet te 'scannen' met
+een wijdte van 100 km.
+
+ERS MET RADAR ALTIMETER
+
+ERS satellieten zullen ook een radar
+hoogtemeter aan boord hebben die reflecties
+opmeet van hoog frequente radiogolven.
+Een van de voordelen van het werken met
+microwave is dat de satelliet door wolken
+heen kan kijken. De radar dringt door de
+waterdamp -die licht en infrarode
+golven absorbeert- heen.
+
+De ERS satellieten leveren snel de
+verkregen informatie: binnen drie uur,
+dit in tegenstelling tot de overige
+remote sensing satellieten die er twee
+tot drie weken over doen.
+
+DERDE GENERATIE
+
+Er kunnen beelden worden doorgegeven
+van o.a. windsnelheden en windrichtingen,
+evenals de hoogte, lengte en richtingen van
+golven op de oceaan waardoor een natuurramp
+kan worden voorkomen. Door de technische
+vooruitgang worden de ERS satellieten wel
+de derde generatie genoemd, ervan uitgaande
+dat de eerste drie Landsat satellieten de
+eerste generatie vertegenwoordigen en de
+Landsat 4 en 5, en de SPOT de tweede
+generatie waren.
+Door gebruik te maken van microwave
+technieken zal deze Europese satelliet een
+aanvulling betekenen op de Landsat en het
+SPOT ruimtevaartuig waardoor een hogere graad
+van informatie zal worden verkregen van de
+gesteldheid van de aarde.
+
+ERS ALS MILIEUBEWAKER
+
+Door signalen op te pikken die door het
+ruimtevaartuig worden afgegeven kunnen de
+wetenschapsmensen zien in welke richting
+b.v. een olievlek, of een ijsberg gaat.
+Verder is er de mogelijkheid tot het
+bestuderen van zure regen en de gevolgen
+ervan op onze bossen. Evenals het signaleren
+van aardbeving gevoelige gebieden.
+
+ERS-1 zal ook de voorloper zijn van een
+systeem dat eind deze eeuw operatief zal
+zijn en dat een belangrijke rol zal spelen
+in de wetenschappelijke studie van oceanen,
+landmassa, zeeoppervlakken, onderzee-
+topografie, en kustlijnen.
+
+Komende zondag meer over ERS.
+
+NOORDELIJK AMATEUR TREFFEN
+
+Op zaterdag 27 februari wordt door de
+Noordelijke afdeling van de Veron/VRZA
+weer een amateur treffen gehouden in de
+Groningse Martinihal. Behalve het grote
+aantal zendamateurs zullen dit jaar ook
+de verschillende computerclubs aan deze
+manifestatie deelnemen. De deuren van
+de Martinihal zijn van 10.00 - 17.00 uur
+voor het publiek geopend.

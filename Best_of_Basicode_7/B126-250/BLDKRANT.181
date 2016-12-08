@@ -1,0 +1,265 @@
+181, maa 7 nov '88
+
+PROGRAMMEREN IN MS-DOS
+
+Maatwerk in het werken met MS-DOS, door Van
+Wolverton. Nederlandse uitgave door Kluwer,
+248 pag., prijs f 69,50.
+Dit boek is bedoeld voor de wat meer
+gevorderde PC-gebruiker, die, hoewel (nog)
+niet een gevorderd machinetaal programmeur
+zijnde, toch een diepergaand gebruik van het
+besturings systeem wil maken. Het leert je
+hulpschermen en menu's gebruiken, bestanden,
+ook (hulp)programma's, te maken, te bekijken
+en te wijzigen en voor veelgebruikte
+toepassingen een menusysteem op maat te
+vervaardigen, zodat men de programma's met
+een enkele toetsdruk kan oproepen. Het leert
+je batch-bestanden te schrijven en goed om te
+gaan met de 'device-drivers', de
+besturings programma's voor aangesloten
+apparaten, zoals printers, RAM-disks, extra
+diskdrives, e.d. Zo worden ANSI.SYS,
+DRIVER.SYS en RAMDRIVE.SYS besproken, die
+vanaf versie 3.20 bij MS-DOS worden geleverd.
+Ook wordt aandacht besteed aan CONFIG.SYS, dat
+het computer systeem softwarematig volgens
+bepaalde wensen instelt. De bijgeleverde hulp-
+programma's, als DEBUG, EDLIN, CHKDSK enz.
+worden ook uitvoerig besproken. In een van de
+appendices is een voorbeeld van een menu-
+programma opgenomen, dat zo voor eigen gebruik
+kan worden aangepast. De naam van de schrijver
+garandeert een deskundige behandeling van de
+stof. Een heel goed boek.
+
+HET IBM-BASIC HANDBOEK
+
+door David A. Lien, uitgave Kluwer, 278 pag.,
+prijs f 62,50.
+Vrijwel een ieder, die een PC bezit, zal
+kunnen beschikken over BASIC als programmeer-
+taal. IBM-BASIC en GWBASIC (dat bij 'klonen'
+wordt meegeleverd) lijken sprekend op elkaar
+en bovendien wordt in de inleiding van het
+boek vermeld dat, gezien de vele BASIC-
+dialecten (b.v. ROM-Basic, DISK-Basic en
+BASICA) er verwarring zou kunnen ontstaan,
+maar daar wordt terdege rekening mee gehouden,
+evenals met de geringe verschillen tussen het
+gebruik op een XT of een AT. Het boek
+completeert de reeks van de twee eerder
+verschenen boeken van dezelfde schrijver (het
+BASIC Handboek en IBM-Basic voor PC's), het is
+dan ook geen woordenboek of een leerboek, maar
+een encyclopedisch naslagwerk voor de
+gebruiker van BASIC op een PC. Alle commando's
+staan er overzichtelijk in vermeld en daarbij
+de juiste syntax, een programma- voorbeeld en
+eventueel een verwijzing naar verwante
+commando's. Het vormt een bondig en
+overzichtelijk naslagwerk voor hen, die al min
+of meer met Basic vertrouwd zijn. In een
+viertal appendices wordt een overzicht gegeven
+van de ASCII-tabel en Scan-codes, algemene
+informatie over diverse dialecten, geheugen
+indeling, diskette- bestanden, device-namen,
+precisie, funktietoetsen, foutcodes,
+foutmeldingen en de VARPTR funktie. De
+kundigheid van de schrijver is een garantie
+voor de inhoud! Voor de BASIC programmeur een
+uitstekend naslagwerk, dat bovendien voorzien
+is van een goede index.
+
+LOKALE NETWERKEN IN DE PRAKTIJK
+
+Werken met PCLAN, door M.Kleeman e.a., uitgave
+Kluwer, 199 pag., prijs f 59,50.
+Communicatie tussen (personal) computers
+neemt hand over hand toe. Een van de methoden
+is gebruik te maken van een lokaal netwerk
+(Local Area Network, afgekort LAN). Daarover
+gaat dit boek. Het gaat verder dan het gebruik
+van een databank, zoals FIDO. Kostbare
+apparaten, zoals laserprinters, grote opslag
+media e.d. staan ter beschikking van alle
+netwerk gebruikers. Voor bedrijven kan de
+produktiviteit worden vergroot. In zijn
+algemeenheid is een LAN niet bedoeld voor
+particulieren. Het boek is dan ook bestemd
+voor een ieder, die af wil van de afzonderlijk
+funktionerende PC's in een bedrijf en
+verantwoordelijk is voor de aanschaf van
+nieuwe computer apparatuur en zich daarbij wil
+orienteren over de voor- en nadelen van de
+verschillende lokale netwerken en bekabelings-
+sytemen. Voor de gemiddelde hobbyist is dit,
+overigens goede, boekwerk niet aan te bevelen.
+
+TURBO-PROLOG
+
+door Kasper Boon en Rik de Boer, uitgave
+Kluwer, 248 pag., Prijs f 49,50.
+Dit boek is ook geschreven voor hen, die nog
+onbekend zijn met PROLOG. Het is dan ook
+beslist niet volledig, maar het behandelt de
+typische Prolog basistechnieken. Prolog is een
+programmeertaal, die sterk verschilt van de
+gebruikelijke programmeertalen, zoals b.v.
+Pascal er een is. De verschillen tussen beide
+talen worden dan ook duidelijk uiteen gezet.
+En voor de mensen, die nog geen versie van
+Prolog hebben aangeschaft, worden programmeer
+voorbeelden gegeven samen met de te verwachten
+resultaten. Men kan dan een goede indruk
+krijgen van de wijze waarop Prolog werkt. Er
+bestaan duidelijk verschillende versies van
+Prolog. In dit boek wordt uitsluitend TURBO-
+PROLOG besproken. De snelheid, het geheugen
+gebruik en de rekenvaardigheid van Prolog
+lopen achter in vergelijking met Pascal, maar
+de taal is wel bijzonder geschikt voor
+toepassingen bij AI (kunstmatige
+intelligentie). Er zijn een aantal listings
+van complete programma's in het boek
+opgenomen, onder andere van een AI-Robot en
+een programma voor patroon herkenning.
+Een boek voor mensen die zich in Prolog willen
+verdiepen, maar zeker niet voor iedereen aan
+te bevelen. (Met dank aan Pieter Vijlbrief)
+
+VENEZIA NUOVA
+
+Computer technieken moeten Venetie redden van
+dreigende ondergang. De eerste berichten over
+problemen in de Dogenstad dateren al uit de
+14e eeuw. In die dagen werd van de rivieren
+die in de lagune uitmonden, de meeste last
+ondervonden. Om te voorkomen dat de lagune zou
+dichtslibben werd er uitgebreid gekanaliseerd.
+In de 18e eeuw echter bleek dat de invloed
+van de rivieren zo verregaand was ingeperkt
+dat de zee een overheersende invloed had
+gekregen op de waterhuishouding van de lagune.
+Men ging dit geweld te lijf met de bouw van
+'Murazzi', beschermende muren op beschermende
+eilanden, nieuwe vaargeulen en havenhoofden.
+Enorme hoeveelheden materiaal werden er uit
+de lagune gehaald: 30 miljoen kubieke meter
+in de 19e eeuw en nog eens 50 miljoen
+kubieke meter in de 20e eeuw. Resultaat:
+verdere verzakking, overstromingen en een
+lagune die 30% kleiner is geworden, niet
+in de laatste plaats door de aanleg van
+kunstwerken zoals het vliegveld Marco Polo.
+
+OPRICHTING CONSORTIUM
+
+Om het probleem definitief uit de wereld
+te helpen heeft de Italiaanse regering een
+consortium opgericht, VENEZIA NUOVA.
+Hierin werken Italiaanse en buitenlandse
+experts samen. Hun opdracht bestaat uit
+het beschermen van de stad tegen verdere
+verwoestende vloedgolven en het herstel van
+het fysiche evenwicht van de lagune.
+Het verval van de lagune moet door deze
+samenwerking worden gestopt.
+
+COMPUTERMODELLEN
+
+Op het programma van Venetia Nuova staat
+het bestuderen van de eb en vloed in de
+lagune en van de daarmee samenhangende
+verschijnselen zoals beweging van de bodem.
+In 1976 werd hiervoor in Voltabarozzo,
+bij Padua, een 170 bij 70 meter groot
+model van het gehele gebied gebouwd.
+(schaal 1:250). De betonnen constructie
+van het model sloot flexibel onderzoek
+vrijwel uit. Daarom hebben wetenschappers
+die gespecialiseerd zijn op het gebied
+van oceanografie, biologie en
+thermodynamica, mathematische computer
+modellen gemaakt waarbij wel rekening
+kan worden gehouden met de steeds wisselende
+omstandigheden. De in de lagune aanwezige
+meetpunten maken het mogelijk deze modellen
+te verifieren. Bovendien kan gebruik gemaakt
+worden van de meteorologische informatie van
+weerstations en van waarnemingen van de
+satelliet Landsat 1 van ESA.
+
+VLOEDVOORSPELLING
+
+Het uitgebreide model-project maakt het
+mogelijk om zes uur van tevoren een
+vloedvoorspelling te doen. Men streeft
+ernaar om deze waarschuwingstijd te
+verlengen naat twaalf uur. Bij extreem
+hoge waterstanden kan de lagune dan nameljk
+worden afgesloten met beweegbare dammen
+zoals deze door het consortium worden
+voorgesteld voor de drie openingen
+tussen de lagune en de Adriatische zee.
+Het gevaar voor ernstige overstroming
+is dan weliswaar bezworen, maar het
+fysische evenwicht binnen de lagune
+is hiermee nog lang niet hersteld.
+Hiervoor moeten nog andere kunstwerken
+worden aangebracht. Gedacht wordt aan
+kunstmatige wadden. Het effect hiervan
+zal men met behulp van het netwerk van
+meetpunten moeten blijven controleren.
+De computermodellen blijven ook in deze
+fase van het project onmisbaar, omdat de
+effecten van de ingrepen op het ecosysteem
+alleen hiermee snel zichbaar gemaakt kunnen
+worden.
+
+Het lagune project en de restauraties dienen
+met inbegrip van een vernieuwd rioleringsnet
+omstreeks het jaar 2000 klaar te zijn. Venetie
+zal dan ook voor vele toekomstige generaties
+niet alleen als stedebouwkundig maar ook als
+waterstaatkundig monument te bezichtigen zijn.
+(Uit: 'Notities' van Siemens)
+
+ELEKTRONISCHE POST VOOR DIPLOMATEN
+Het berichten verkeer tussen het ministerie
+van Buitenlandse Zaken en 25 diplomatieke
+posten in het buitenland wordt binnenkort
+afgehandeld via elektronische post. Dat staat
+in de toelichting op de begroting. Ook andere
+ministeries krijgen een aansluiting op het
+communicatienet van Buitenlandse zaken.
+Via het systeem zijn ook databanken van
+internationale organisaties te raadplegen.
+(Bron: Telecom Daily)
+
+STOF TOT NADENKEN
+
+In Beeldkrant 175 van 17 oktober j.l. stond
+een bericht over het nieuwe laboratorium van
+de SRON, dat in Utrecht gebouwd zal worden.
+Andre Kuppens uit Gorinchem stuurde ons
+daarop de volgende reactie:
+
+In uw beeldkrant 175 wordt de klasse 1000
+genoemd voor de schone ruimten van SRON.
+Het opstellen van classificaties voor schone
+ruimten gebeurt in Europa volgens de
+Amerikaanse US-Federal Standaard 209a.
+Deze kent echter alleen de klassen 100000,
+10000 en 100. De klasse 1000 en ook de weleens
+genoemde klasse 10 zijn dus niet gedefinieerd
+volgens boven genoemde standaard.
+
+Klasse 100000 is ook geen 100000 deeltjes per
+kubieke foot, maar wil zeggen niet meer dan
+100000 partikels (deeltjes dus) groter dan 0.5
+um (1 um = 0.001 mm). Er kunnen dus best meer
+dan 100000 deeltjes in een kubieke foot gaan,
+echter die zijn dan kleiner dan 0.5 um.
+Idem voor de andere klassen. (Bedankt, Andre!)

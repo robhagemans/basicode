@@ -1,0 +1,262 @@
+83, woe 12 aug '87
+
+CD CATALOGI
+
+De uitgeverij WSU-tijdschriften heeft het
+aanbod van CD's behoorlijk gebundeld. Er
+zijn twee CD-catalogi verschenen: voor het
+populaire en het klassieke genre. Op het
+gebied van populaire muziek zijn meer dan
+6000 titels opgenomen. Bij klassieke CD's
+is er sprake van zelfs meer dan 7000 titels.
+WSU-tijdschriften hebben de CD-titels
+ondergebracht in A-5 boekjes, waar ze op
+componist of uitvoerenden te vinden zijn.
+Men denkt meerdere catalogi per jaar uit te
+brengen. Verkoop geschiedt via CD speciaal
+zaken. Inlichtingen ook bij postbus 43,
+3800 AA Amersfoort. Losse nummers f 9,95.
+Er is ook een tijdschrift verschenen.
+Daarover volgende week.
+
+LAATSTE NIEUWS RS 10 & 11
+
+Via UA3CR zijn nu de gegevens bekend gemaakt
+over de antennes van RS10 en RS11. Aan de
+buitenzijde van KOSMOS 1861 zijn vier aparte
+antennes gemonteerd voor RS10/11. De eerste
+antenne is een halve golf dipool voor 2 meter.
+Deze antenne wordt alleen gebruikt door RS10,
+en is omschakelbaar tussen de ontvangers en
+de zenders van RS10, afhankelijk van de mode
+die in bedrijf is, dus mode A of mode T. De
+tweede antenne is een soortgelijke halve golf
+dipool voor 2 meter van RS11. Ook deze antenne
+is omschakelbaar tussen de ontvangers en de
+zenders van RS11, afhankelijk van de gebruikte
+mode. De derde antenne is een kwart golf
+antenne voor 10 meter, dus zoals een groundplane.
+Deze antenne is omschakelbaar tussen de 10
+meter zenders van RS10 en RS11 en wordt dus
+gebruikt voor de downlink van mode A en mode K.
+De vierde antenne is een kwart golf antenne
+voor 15 meter. Dit is de enige antenne die niet
+omschakelbaar is: hij is steeds verbonden met
+de 15 meter ontvangers van zowel RS10 als
+RS11. Deze antenne wordt gebruikt voor de
+uplink van mode K, mode T en de 15 meter
+commando uplink. Alle antennes van RS10/11
+zijn dus lineair gepolariseerd.
+
+NIEUWE MODE VOOR RS11
+
+Begin aug is mode AK van RS11 weer in
+bedrijf gesteld. Daarbij werden experimenten
+uitgevoerd met de bakenzenders van dit
+satelliet systeem. Zo werd de CW-telemetrie
+op 4 aug uitgezonden door baken 2, dus
+boven de doorlaatband, terwijl de ROBOT
+downlink toen gebruik maakte van baken 1, dus
+onder de doorlaatband. Op 8 en 9 aug was
+geheugen-kaart 1 in RS11 in bedrijf. Het
+commando station RS3A had een bericht in het
+Russisch in deze geheugen kaart gebracht. Dit
+bericht werd toen vanuit het geheugen met
+telegrafie uitgezonden door baken 1,
+afgewisseld met een telemetrie frame. Ook dit
+systeem bleek uitstekend te funktioneren.
+
+Enkele Britse stations zijn inmiddels begonnen
+met experimenten waarbij verbindingen worden
+gemaakt via twee satellieten: RS11 en OSCAR 12.
+Op 28 en 30 juli en op 1 aug zijn zij erin
+geslaagd verbindingen te maken via mode T van
+RS11, dus 15 m naar 2 m, en dan direkt verder
+via mode JA van OSCAR 12, dus 2 m naar 70 cm.
+Zodra deze modes weer tegelijkertijd in bedrijf
+zijn zullen hiermee nieuwe proeven worden
+genomen. (Zie voor verklarende teksten en modes
+Beeldkrant 81 van vorige week woensdag).
+
+UoSAT-OSCAR 11
+
+Op 25 en 26 juli is het baken op 2401,5 MHz
+in bedrijf geweest. Omdat dit baken, dat een
+uitgangsvermogen heeft van 100 mW, een extra
+belasting veroorzaakt voor de batterij, wordt
+het niet vaak ingeschakeld. Als er echter meer
+belangstelling is voor de uitzendingen van
+dit baken, dan kan men een verzoek voor het
+in bedrijf stellen van het baken sturen naar
+de UoSAT-Unit in de University of Surrey in
+Guildford, GU2 5XH, Engeland.
+
+Er komen steeds meer
+gateway-stations voor het Digital
+Communications Experiment in OSCAR 11.
+Stations die in principe continu beschikbaar
+zijn als gateway naar het DCE zijn: GB3UP,
+NK6K, VK5AGR, ZL1AOX en K1KSY. Stations die
+soms ook aktief kunnen zijn als gateway zijn:
+WA9FMQ, AP2SUP, AP2PUL en N5BRG. Gewoonlijk
+zijn al deze gateway-stations opgenomen in een
+aards packet-radio netwerk, zodat alle packet
+radio stations via dit netwerk berichten kunnen
+doorgeven aan zo'n gateway-station, dat de
+berichten dan verder doorgeeft via het DCE van
+OSCAR 11. Op deze wijze kunnen dus packet
+radio berichten worden uitgewisseld over
+de hele aarde.
+
+GROTE BELANGSTELLING KEPLERLIJST
+
+In verband met de grote belangstelling voor
+de uitzendingen van de Kepler baanparameters
+in de vorm van zogenaamde title frames door
+het DCE in OSCAR 11 zullen deze uitzendingen
+nu worden uitgebreid. Ze zullen voortaan
+steeds 60 sec in plaats van 30 sec lang
+worden uitgezonden in elke cyclus van de
+uitzendingen van de bakenzenders van OSCAR
+11. Verder is besloten het 2,4 GHz baken van
+deze satelliet nu regelmatig in bedrijf te
+gaan stellen volgens een vast schema, voor
+zover de energie voorziening in de satelliet
+dat toestaat. Op veler verzoek is besloten de
+edukatieve uitzendingen van OSCAR 11 op
+woensdag ook voort te zetten in aug.
+Elke woensdagmorgen zendt de satelliet dan
+telemetrie uit, terwijl op woensdagmiddag en
+-avond Whole Orbit Data beschikbaar is.
+
+VLIEGENDE JAPANSE MAILBOX
+
+Nadat de nieuwe programmatuur voor het mode
+JD Bulletin Board System was geladen in de
+boord computer van OSCAR 12 is geladen, is
+de satelliet vrijgegeven voor algemeen gebruik.
+Sindsdien maken verscheidene stations over de
+hele wereld gebruik van de nieuwe mogelijkheid
+om packet radio berichten uit te wisselen via
+deze 'vliegende mailbox'. De gebruikers van
+mode JD ondervinden wel enige problemen bij
+het gebruik van het Bulletin Board System in
+OSCAR 12. In de praktijk blijkt het niet goed
+mogelijk langere berichten in het BBS te laden.
+Dit wordt onder andere veroorzaakt door de
+traagheid van het systeem en door storingen
+in de uplink. Men rekent er echter op dat
+verder verbeterde programmatuur het BBS beter
+zal laten funktioneren. Het 1 MByte grote
+geheugen in OSCAR 12 heeft een fout detektie-
+en correktie schakeling die 1 fout bit per
+byte kan korrigeren. Om twee of meer foute
+bits per byte te kunnen korrigeren wordt nu
+een speciale software routine geschreven in
+Japan. Zodra deze programmatuur gereed en
+getest is wordt deze ook in de boord
+computer van de satelliet geladen.
+
+GEBRUIKSSCHEMA
+
+De Japansen Amateur Radio Vereniging meldt
+dat het gebruiksschema van OSCAR 12 als volgt
+is gepland: mode JA moet in bedrijf zijn van
+1047 UTC op 15 aug tot 0657 UTC op 17 aug en
+van 0805 UTC op 18 aug tot 0710 UTC op 19 aug.
+Daarna moet mode JD ingeschakeld zijn van 0616
+UTC op 20 aug tot 0725 UTC op 21 aug en van
+0630 UTC op 22 aug tot 0536 UTC op 23 aug.
+Vervolgens is mode JA weer gepland van 0550
+UTC op 25 aug tot 0455 UTC op 26 aug, van 0603
+UTC op 27 aug tot 0510 UTC op 28 aug en van
+0616 UTC op 29 aug tot 0428 UTC op 31 aug.
+In de tussenliggende perioden is de satelliet
+geheel uitgeschakeld om de batterij de
+gelegenheid te geven op te laden.
+
+MEER PACKET RADIO
+
+En nu we het toch over packet radio hebben:
+de Ver van Radio Zendamateurs (VRZA) in
+Apeldoorn meldt:
+- Er is telefonisch kontakt geweest met de
+Radio Controle Dienst en... onze PI8VRZ call
+zit er aan te komen. Eindelijk zullen we dan
+van start kunnen gaan met de reeds lang geplande
+packet-radio uitzendingen. Over de frekwenties,
+mailboxen, digipeaters en dergelijke leven bij
+de crew van het Apeldoornse VRZA-zendstation
+een hoop ideeen, maar laten we eerst nog even
+de schriftelijke bevestiging van de PI8
+vergunning afwachten. (Hobbyscoop heeft ook
+toestemming voor een dergelijk station
+aangevraagd).
+- Dan helaas een trieste mededeling voor onze
+telex-fans op de zondagavond: gezien de
+hierboven genoemde nieuwe uitdaging op het
+packet-radio vlak en de helaas sterk
+afgenomen belangstelling voor de herhaling
+van het rtty-bulletin, zullen we de uitzendingen
+in het nieuwe seizoen niet meer voortzetten.
+Kopieen van ons bulletin zijn o.a. via de
+computers van FIDO-NOS en FIDO-Apeldoorn
+op te vragen op resp. 035 - 45395 en 055 -
+211811.
+
+FREKWENTIES EN ADRESSEN
+
+Het zendstation PI4VRZRZ/A is te bereiken via
+postbus 1110, 7301 BJ Apeldoorn en telefonisch
+tijdens de uitzenduren op 055 - 792097. Buiten
+de uitzenduren (zaterdagmorgen en zondagavond)
+treft u een antwoordapparaat aan waarop een
+mededeling ingesproken kan worden.
+QTH: Apeldoorn locator: cm70b / jo22xf.
+frekw 3,6 - 29,59 - 144,8 - 432,25 mhz.
+op zat en zondag: 144,725 - 432,25 mhz.
+
+TWENTE IN DE BOCHT
+
+Na enige tijd is Fido Twente Technovia weer
+online. Nadat er een crash van de harddisk
+optrad, draait alles nu weer zoals het
+behoort. Het nummer is 053 - 301845 24 uur
+per dag. Snelheden 1200 en 300 bps full
+duplex.
+
+MERKWAARDIGE STATIONS
+
+Via het Bulletin Board (Neverboard) in
+Pittsburg krijgt Hobbyscoop op eigen BBS
+vaak kortegolf tips van luisteraars binnen.
+Zo schrijft Lou Josephs inzake de ontvangst
+van Radio Baghdad: English at 0130-0145 on
+6195 kHz. Lot's of interference from USSR
+transmitter that carries Kiev at 0200. Radio
+Polonia (Poland) on 7270 with English News
+at 0200, and feature program with Polish Rock
+Bands. Radio Havana at 0200 with news, much
+hipper programs on 6090 and 6145. Radio RSA
+(Zuid Afrika) at 0200 on 6010 and 6185.
+Vatican Radio at 0200 to A/NZ area on 7135.
+Radio Finland has added a broadcast to the
+West Coast at 930pm pdt on 11755 to NA East
+Coast on 15400,11945 1100,1200,1300 and 1400
+on 15400 only Saturdays no 1100 transmission
+and Sundays 1300 on 15400, and 11945.
+
+Radio Tashkent at 1200-1225 on all of these
+frequencys 11785,9600,9540, and 7275. Look for
+ABC Perth at 9605 if you are hearing this one.
+Here's the latest frequencys for Iraq 9875 at
+2100-2245 in English try 6195 at 0100-0245.
+Look for the Marshall Islands WSZO in sw from
+1900-0530 on 6070 and from 0530-1005 on 4940.
+WSZO is running 10 kW English and local language
+programs. The station has been heard well on
+the west coast and in Australia and Indonesia.
+
+Lou geeft de tijden in PDT, ongetwijfeld
+Pittsburg (Pennsylv) local time. Dus dat wordt
+even rekenen...

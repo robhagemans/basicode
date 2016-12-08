@@ -1,0 +1,278 @@
+136, zon 27 mrt '88
+
+CURSUS PROGRAMMEREN IN BASICODE
+
+DEEL 2: DE PROGRAMMA-OPBOUW
+
+Het is verstandig, bij de regelnummering een
+bepaalde afspraak na te komen:
+    0-  999 Gereserveerd voor de Basi-
+            code subroutines
+ 1000-19999 Het hoofdprogramma
+20000-24999 Eigengemaakte subroutines
+25000-29999 DATA-statements
+30000-32767 REM-statements, waarin zo
+            nodig aanwijzingen voor
+            het programma kunnen staan
+
+HET BEELDSCHERM
+
+In Basicode gaan we ervan uit, dat het
+beeldscherm 24 regels telt van 40 tekens. Het
+is van het grootste belang hier rekening mee
+te houden, omdat anders al gauw de scherm-
+presentatie rommelig en daardoor
+onoverzichtelijk wordt. Pas ook op, wat je met
+de 24ste regel doet. Het scherm mag niet gaan
+'scrollen'! Denk eraan, dat de regeltelling
+loopt van 0 t/m 23.
+
+DE VARIABELEN
+
+We moeten denken aan de eenvoudigste systemen,
+die aan Basicode meedoen, daarom mogen de
+namen van variabelen hoogstens 2 tekens lang
+zijn, waarvan de eerste een letter moet zijn.
+Doordat er zo veel computers tot de Basicode
+familie behoren, kunnen niet alle namen voor
+variabelen worden gebruikt, omdat het voor
+bepaalde systemen soms 'keywords' zijn.
+'Verboden' variabelen zijn: AS AT DI DS EI
+EL ER FN GO GR HC IF LN MA MP PI SQ ST ST$ TI
+TI$ TO en alle variabelen namen die met een
+O beginnen, want deze zijn gereserveerd voor
+de Basicode subroutines. Elke variabele, die
+in het programma wordt aangeroepen, moet
+'gedeclareerd' zijn. Men mag niet aannemen, dat
+bij het begin van het programma de variabelen
+'op nul staan'. Een variabele, die wordt
+gebruikt zonder een bepaalde waarde te hebben
+gekregen (of bij de eerste aanroep te krijgen)
+leidt bij sommige systemen tot een fout-
+melding: 'unknown variable at line...', hier
+dient men terdege rekening mee te houden!
+
+SUBROUTINE 110
+
+Dit is een van de meest gebruikte subroutines
+in Basicode. In het programma wordt een waarde
+van 0 - 23 toegekend aan de variabele VE voor
+de verticale positie en aan de variabele HO
+een waarde tussen 0 en 39 voor de positie op
+de regel. Met de aanroep: GOSUB 110 wordt de
+cursor dan op die positie op het scherm
+gebracht (zie het voorbeeld programma verderop
+in deze les). Denk eraan, dat bij aanroep van
+deze routine zowel HO als VE een waarde moeten
+hebben gekregen!
+
+SUBROUTINE 120
+
+Deze subroutine doet net het omgekeerde van de
+vorige. Met de aanroep: GOSUB 120 wordt de
+positie van de cursor op het scherm opgeborgen
+in de variabelen VE en HO. Hiervan kan men een
+goed gebruik maken bij de opmaak van het
+beeldscherm.
+
+VOORBEELDPROGRAMMA
+
+Laad de subroutines in het geheugen van de
+computer (zie Les 1). Tik het volgende
+programma in:
+1000 A=100:GOTO 20:REM Cursor besturen
+1010 GOSUB 100
+1020 VE=8:HO=8:GOSUB 110
+1030 PRINT ''Mijn naam is '';:GOSUB 120
+1040 VT=VE:HT=HO
+1050 VE=15:HO=8:GOSUB 110
+1060 PRINT ''Geef je naam '';:INPUT NM$
+1070 VE=VT:HO=HT:GOSUB 110:PRINT NM$
+1080 END
+
+WERKING VAN HET PROGRAMMA
+
+Regel 1000 is verplicht. Regel 1010 maakt het
+scherm schoon. Regel 1020 plaatst de cursor op
+de 9de regel, 9 posities van links. Regel 1030
+print daar 'Mijn naam is', en de cursor
+positie aan het eind van de regel wordt
+opgeslagen in VE en HO. In regel 1040 worden
+deze posities bewaard in de 'tijdelijke'
+variabelen VT en HT. In regel 1050 wordt de
+cursor op de 9de positie van de 16de regel
+geplaatst en in regel 1060 wordt om je naam
+gevraagd. Let erop, dat de statement:
+INPUT ''Geef je naam'';NM$ NIET MAG!! Dat
+moet worden opgesplitst in een PRINT en een
+aparte INPUT statement! Dit vanwege de zwakkere
+systemen onder ons. In regel 1070 wordt de
+tijdelijk opgeslagen cursor positie aan het
+eind van de eerste regel op het scherm weer
+opgehaald en daar wordt dan de inhoud van NM$
+geprint. Toegegeven, het programma kan nog veel
+mooier worden gemaakt, maar dat is niet de
+opzet van een zuiver voorbeeld- programma. Er
+is echter niets tegen om het zelf verder te
+verfraaien!
+
+REGELLENGTE
+
+De afspraak in Basicode is, dat de regellengte
+maximaal 60 tekens mag bedragen. Bijvoorbeeld
+regel 1050 en 1060 passen samen net op een
+regel (spaties zijn overbodig, behalve tussen
+de aanhalingstekens, die in de voorbeelden
+vervangen zijn door '', omdat anders de
+Beeldkrant van slag raakt). De meeste
+computers kunnen wel langere regels verwerken,
+maar enkelen niet, vandaar....
+
+SAMENVATTING VAN DE TWEEDE LES
+
+Hierin heeft men kennis gemaakt met de cursor
+besturing (de subroutines 110 en 120), het
+gebruik van variabelen in Basicode, het
+beperkte gebruik van het INPUT statement en de
+regellengte van maximaal 60 tekens. Ook werd
+de algemene opbouw van het programma en het
+beeldscherm besproken. (Aldus Pieter Vijlbrief)
+
+BIJZONDER HORLOGE
+
+Heel veel computerhobbyisten hebben indertijd
+het Seiko computer horloge RC-1000 aangeschaft.
+Het was het eerste horloge met een geheugen
+dat vanuit de computer: Tandy-100, Commodore
+Apple of PC kon worden geprogrammeerd. Toen
+Hobbyscoop het voor het eerst signaleerde
+kostte het f 495.- Op dit ogenblik kost het
+nog maar rond de f 100.-. Het is een vrij
+groot klokje, maar er kunnen veel gegevens
+in worden ondergebracht.
+Inmiddels heeft Seiko een opvolger bedacht.
+Het is de RC4000 of RC4400. Het eerste model
+een polshorloge, het tweede model - met
+dezelfde eigenschappen - kan als een hangertje
+worden gedragen.
+De eigenschappen zijn behoorlijk veranderd.
+De wereldtijden (jammer!) zijn er uit. Er is
+meer ruimte voor een jaarlijks- of wekelijks-
+of dagelijks alarm (vrij programmeerbaar).
+In het oude horloge was alleen een dagelijks
+alarm voorhanden. Bij meerdere dagelijkse
+alarmtijden en boodschappen is het horloge
+nu heel goed te gebruiken voor mensen die
+op verschillende tijden bijv. geneesmiddelen
+moeten nemen. Handig is daarbij dat na het
+alarm de boodschap op het display behouden
+blijft, totdat men hem 'wist'. Hij verdwijnt
+niet meer meteen als men het gepiep stopt.
+Elk alarm kan afzonderlijk worden onderdrukt.
+Bij het oude type werden met een knopdruk
+alle boodschappen geluids- en daarmee
+waardeloos.
+
+PROGRAMMEREN MET PC
+
+De nieuwe, enigszins gewijzigde programmatuur
+is volgens onze inlichtingen alleen nog voor
+Apple II en de PC voorhanden. De andere
+computers worden dus niet meer ondersteund.
+Wat ook verdwenen is: het ingebouwde lichtje
+waarbij je overigens de dunne lettertjes van
+de RC1000 toch nauwelijks kon lezen.
+Grootste verschil is het uiterlijk. Het
+horloge is aanzienlijk fraaier en slanker
+geworden. De tijd blijft nu onder alle
+omstandigheden op het display staan: met grote
+cijfers. De boodschappen, die bij een keihard
+piepen verschijnen, staan in twee regels van
+12 tekens daarboven, in een wat kleiner
+lettertype, maar wel leesbaarder.
+Belangrijk is ook dat bij de nieuwe
+uitvoering niet alle gegevens eerst via het
+computer programma hoeven te worden aangemaakt.
+Men kan ook - door handig met de grotere
+knoppen te manipuleren - op het horloge zelf
+de boodschappen en alarms intikken. Sterker
+nog: met een extra adapter kan men het
+horloge nu ook 'leegzuigen' (niet standaard)
+en de gegevens naar de computer overbrengen,
+daar wijzigen en weer terug naar het horloge
+zenden.
+Dit nieuwe zal klokje vermoedelijk weer net
+zo snel zijn weg vinden naar de computer
+entoesiast als het vorige, vooral door de
+meerdere mogelijkheden en de veel sierlijker
+uitvoering. De RC4000 kost bijna f 300.- en
+is bij sommige computershops, Maxis, V & D
+en dergelijke te koop.
+
+CURSUS 'NIET-IONISERENDE STRALING'
+
+Naar aanleiding van de uitzending
+van Hobbyscoop van 3 febr. j.l. over straling
+van radio en t.v. zenders, bereikte
+ons het volgende bericht.
+
+Van 16 tot en met 20 mei a.s. wordt
+er in het gebouw van de Vrije Universiteit
+in Amsterdam een cursus gegeven over
+'Niet-Ioniserende straling'.
+
+INHOUD VAN DE CURSUS
+
+In de introduktiecursus worden de basis
+principes van niet-ioniserende straling
+gegeven. De cursus omvat bronnen die
+niet-ioniserende straling uitzenden, de
+risico's voor het personeel, alsmede de
+basisprincipes voor bescherming en controle.
+Bijzondere aandacht wordt besteed aan bronnen
+die laser en andere microgolfstraling
+uitzenden.
+
+PROGRAMMAPUNTEN
+
+-Lasers; kenmerken en toepassingen van lasers
+eigenschappen van laserstraling, biologische
+effekten en andere risico's van lasers,
+stralingshygienische normen en controle
+metingen.
+-Elektromagnetische (EM) straling; kenmerken
+van EM.straling en toepassingen daarvan.
+-mikrogolven; toepassingen van mikrogolven,
+biologische effekten, stralingscontrole
+metingen en veiligheidsnormen voor
+mikrogolfovens.
+-Infrarood (IR), zichtbaar en ultraviolet
+UV-licht; overzicht van de optische
+basisprincipes, biologische effekten
+en risico's van IR, zichtbaar en
+UV-licht alsmede controlemetingen.
+
+DOELSTELLING VAN DE CURSUS
+
+Na afloop van deze cursus moet de cursist
+met behulp van de verkregen informatie
+en praktische vaardigheid in staat zijn om:
+a. Niet-ioniserende stralingsbronnen te
+identificeren en de uitgezonden
+stralingssoort vast te stellen.
+b. De ernst van het risico voor de
+blootgestelden vast te stellen.
+c. De noodzakelijke beschermende
+maatregelen te treffen om de risico's
+voor het personeel tot een
+aanvaardbaar nivo terug te brengen.
+
+CURSUS INFORMATIE
+
+De cursus wordt in het Engels
+gegeven, ondermeer met behulp van
+audiovisuele middelen. Voor de practica
+is instrumentarium voorhanden. Docent is
+Dr. S.Y.Acram.
+Voor meer informatie kunt U zich wenden
+tot WG-Plein 476, 1054 SH Amsterdam.

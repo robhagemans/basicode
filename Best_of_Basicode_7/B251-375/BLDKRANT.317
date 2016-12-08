@@ -1,0 +1,310 @@
+317, maa 7 mei '90
+
+MS-MAIL OOK GESCHIKT VOOR SPRAAK
+
+Als een van de deelnemers aan de
+MacWorld Expo in de Amsterdamse RAI
+demonstreert Microsoft op haar stand
+(Hollandhal nr.1313) alle produkten die
+deel uitmaken van het Microsoft Office
+concept voor Apple Macintosh computers.
+Onderdeel van dit concept zijn de tekst
+verwerker Word 4.0, het spreadsheet
+pakket Excel 2.2 en het presentatie
+pakket Power Point 2.0. En ook
+Microsoft's pakket voor elektronisch
+postverkeer Mail 2.0, dat nu zelfs
+inzetbaar is voor transmissie van
+spraak. Dit laatste is mogelijk dankzij
+een nieuwe Mail-optie genaamd Mail
+Voice Form, die het bedrijf voor het
+eerst op de MacWorld Expo zal
+demonstreren.
+
+UITBREIDING BESTAAND PAKKET
+
+Mail 2.0 is een elektronisch postpakket
+dat gebruikers van Mac computers de
+beschikking geeft over een groot aantal
+communicatie mogelijkheden via local en
+wide area networks. Tot dusver
+betroffen die communicatie
+mogelijkheden data, tekst en grafische
+informatie, bijvoorbeeld aangemaakt in
+Word en Excel. Met de introduktie van
+Mail Voice Form, een ontwikkeling van
+Farallon Computing Inc., is daar nu ook
+spraak bijgekomen. Daarmee is Mail het
+eerste elektronisch postpakket ter
+wereld voor de Macintosh dat de
+gebruikers in staat stelt snel en
+gemakkelijk korte, gesproken
+boodschappen op te nemen, te
+comprimeren, te versturen als
+afzonderlijk bericht of als
+tekstbijlage (annotatie), en na
+ontvangst te beluisteren.
+
+MAIL VOICE FORM
+
+Mail Voice Form maakt gebruik van de
+zogeheten Single Copy Storage (SCS)
+techniek. Dit houdt in dat een
+boodschap maar eenmaal wordt vastgelegd
+en daarna kopieerbaar is voor
+verzending naar elk gewenst aantal
+geadresseerden. SCS bespaart daardoor
+zowel CPU-tijd als schijfruimte.
+Bovendien stelt Mail's Form utility de
+gebruiker in staat om al het berichten
+verkeer, dus ook het mondelinge, te
+laten verlopen op basis van zelf
+ontworpen en aanpasbare formulieren,
+inclusief aankruis- en commando-
+vakjes, etc.
+
+De integratie in Mail vereist de
+installatie van een Voice Form op de
+Mail server en de toevoeging van zowel
+de Farallon Mac Recorder als Farallon
+Sound Driver aan de System Folder van
+elke Macintosh die men voor verzending
+van mondelinge berichten wil inzetten.
+De ontvangst en het beluisteren van
+deze berichten vraagt geen enkele extra
+voorziening. Mocht de Sound Driver bij
+de ontvanger ontbreken, dan projecteert
+Microsoft Mail automatisch op het
+scherm een venster waarin toestemming
+voor installatie wordt gevraagd.
+
+NIEUWE COMMUNICATIE FACILITEITEN
+
+Voor het elektronisch postpakket voor
+Apple computers zijn nu ook diverse
+opties gekomen die de communicatie
+mogelijkheden verruimen. Toegevoegd
+zijn: gateways voor berichten
+uitwisseling met computers in AppleLink
+en X.400 netwerk omgevingen, de FAXGATE
+gateway voor de verzending en ontvangst
+van fax- berichten, een Gateway
+Software Development Kit en een kit
+voor de ontwikkeling in HyperCard van
+gateways naar Microsoft Mail.
+
+De nieuwe AppleLink gateway verbindt de
+elektronische postsystemen Mail 2.0 en
+AppleLink naadloos. Voortaan behoeven
+gebruikers van beide systemen niet meer
+omstandig zowel in het ene als in het
+andere systeem in te loggen om te
+kijken of er berichten zijn
+binnengekomen. De verzending naar
+AppleLink gebruikers gaat dus net zo
+gemakkelijk als naar Mail gebruikers,
+ook als een groep bestaat uit
+verzend-adressen op beide systemen. De
+gateway voorziet in 'up- en
+downloading' van meervoudig te
+communiceren berichten, dus behoeft
+niet elke gebruiker afzonderlijk te
+worden benaderd. Van AppleLink
+afkomstige berichten gaan (door
+mapping) rechtstreeks naar elke Mail-
+gebruiker, zonder dat de afzender
+adresregels moet toevoegen.
+
+De uitbreiding met de nieuwe X.400
+Gateway van Touch Communications geeft
+de Macintosh gebruiker wereldwijde
+aansluiting op vrijwel elk elektronisch
+postsysteem dat de X.400 standaard
+ondersteunt. Dit inclusief systemen op
+basis van lokale netwerken, netwerken
+met een hostcomputer en openbare
+netwerken zoals die van de PTT.
+
+FAXEN MET HET MAIL-SYSTEEM
+
+Met Faxgate kunnen Microsoft Mail
+gebruikers hun Macintosh computers ook
+gemakkelijk inzetbaar maken voor de
+verzending en ontvangst van
+faxberichten. Deze optie, een gateway
+server, verbindt Microsoft Mail met het
+BackFAX programma van Solutions Inc. en
+vraagt verder de aansluiting van
+slechts EEN fax-modem aan een Mail
+server. Aangezien noch BackFAX noch
+Mail een dedicated server vereisen, kan
+de gebruiker van de Macintosh fax-modem
+combinatie tijdens de afhandeling van
+het faxverkeer gewoon doorwerken.
+
+GATEWAY SOFTWARE DEVELOPMENT KIT
+
+Voor 'Third Party Developers' die
+gateways willen ontwikkelen tussen
+Microsoft Mail en andere postsystemen
+is nu de Gateway Software Development
+Kit beschikbaar. Deze bestaat uit een
+uitgebreide set ontwikkel
+gereedschappen en API's (Application
+Programming Interfaces) om zelf
+ontwikkelde gateways zodanig in Mail te
+integreren dat de berichten-
+uitwisseling zo snel, transparant en
+betrouwbaar mogelijk kan plaatsvinden.
+
+HYPERCARD ONTWIKKELINGEN
+
+Voor HyperCard zijn er een aantal
+uitbreidingen die het mogelijk maken
+dat HyperCard- stacks berichten
+ontvangen en verzenden via AppleTalk
+netwerken. Ontwikkelaars kunnen hiermee
+HyperCard applicaties bouwen die Mail
+inschakelen voor informatie-
+uitwisseling, zowel tussen gebruikers
+als tussen applicaties. De primeurs
+zijn te zien op de komende Mac World
+Expo in de Amsterdamse RAI
+(Hollandhal).
+
+NIEUW C ONTWIKKELSYSTEEM
+
+Voor professionele programmeurs is nu
+het Microsoft C Professional
+Development System versie 6.0
+beschikbaar. Dit is een set volledig
+geintegreerde programmeer tools die hen
+in staat stelt om aanmerkelijk
+produktiever dan voorheen omvangrijke
+en complexe applicaties te ontwikkelen
+voor DOS, Windows en OS/2 omgevingen.
+Kenmerkend daarbij is de hoge compileer
+snelheid: gemiddeld 10% sneller dan de
+voorgaande versie 5.1. Bovendien zijn
+gecompileerde programma's gemiddeld 7
+tot 10% kleiner.
+
+Nieuw in C 6.0 is onder meer de Source
+Browser, een tool waarmee de
+programmeur interactief in een project
+database kan spitten om, in code,
+relaties en het gebruik van variabelen,
+functies, definities en macro's te
+bekijken. Alle tools zijn gefundeerd op
+de Programmer's Workbench, een
+uitgebreide en geintegreerde ontwikkel
+omgeving.
+
+DELFTS BLAUW
+
+Het is zo nu en dan wel eens aardig om
+de verschillen in (beeld)weergave van
+diverse (beeld)verwerkende en
+genererende apparaten te aanschouwen.
+Normaal zal men dit verschil niet
+kunnen constateren omdat men de best
+mogelijke verbinding kiest tussen de
+apparaten. Ook zal men vaak door
+gewenning de zwakte van de oude
+situatie 'vergeten'. Het extra genieten
+van de hogere kwaliteit die
+bijvoorbeeld een Van den Hull snoertje
+tussen het element van een platenspeler
+en diens ingang op de versterker geeft
+zal dan ook van korte duur zijn.
+Voor een ieder beter waarneembaar zijn
+echter de verschillen die optreden bij
+bijvoorbeeld de signaaldoorgifte van
+computers aan beeldschermen. Doorgifte
+van het beeldsignaal door het eerst
+'op' een draaggolf te zetten
+(moduleren) en het vervolgens in een tv
+daar weer van 'af' te halen
+(demoduleren) versus het doorgeven van
+het directe zgn. video- (composiet)-
+signaal is een bekend voorbeeld.
+Scherper kan de tegenstelling en het
+beeld nog door het voorgaande te
+vergelijken met een RGB(I)-signaal.
+Hierbij is het signaal nog verder uit
+elkaar 'getrokken'. De aparte
+kleurcomponenten worden hierbij
+gescheiden van elkaar en van
+intensiteit en van synchronisatie
+doorgegeven. Het is bijna als het
+verschil tussen dag en nacht.
+
+Voor de niet computer- liefhebbers zijn
+bovenstaande vergelijkingen natuurlijk
+niet zo heel erg interessant. Zij zien
+meer in gewoon bewegende -menselijke-
+beelden. Het verschil tussen de
+beeldkwaliteit van een ranzige Philips
+K9-bak, waar de plaatselijke
+electronica klein-grutter aan sec de
+zekeringen kan zien wat voor een
+apparaat het is en dan ook nog weet te
+vertellen wat er stuk is, en van een
+vrij nieuwe kleurenmonitor die het
+video- (composiet)- signaal krijgt
+toegevoerd uit een video-player is voor
+hen overduidelijk.
+
+Hoelang men deze vergelijkingen nog kan
+maken is vaag, immers dit jaar zal op
+de algemene vergadering van het Comite
+Consultatif International technique des
+communications Radio-electriques (CCIR)
+van de ITU de televisie-norm van de
+'toekomst' worden gekozen. De keuze is
+uit het Japanse (NHK) MUSE systeem of
+het Europese HDMAC systeem, waarbij bij
+het Europese systeem het kleursignaal,
+de intensiteit en het geluid gescheiden
+worden doorgegeven. De gevolgen zullen
+zich daarbij niet beperken tot de
+televisie en de videorecorder maar in
+hun kielzog het geheel van
+beeldschermen in zowel computer als
+medische sector, CD-video, bewakings
+systemen (CCTV), beeldtelefonie (ISDN)
+en natuurlijk het transport van de
+betreffende informatie maar ook de
+registratie ervan meenemen. Het geheel
+is zelfs zo omvangrijk dat deskundigen
+de totale markt voor HDTV minimaal
+schatten op zo'n 220 miljard gulden
+voor de eerste 10 jaar na
+marktintroductie...
+[WOEF]
+
+TOEKOMST IN TELECOMMUNICATIE
+
+De TROS herhaalt momenteel de
+televisiecursus 'Toekomst in
+Telecommunicatie', steeds op
+dinsdagavond om 18.30 uur via Nederland
+2. Bij de serie, die door Hobbyscoop
+wordt begeleid, hoort een cursuspakket.
+Dat is te bestellen door f 44,95 over
+te maken op girorekening 6398 van
+TROS-Kiosk, Postbus 777, 4870 BK
+Etten-Leur. U kunt ook een volledig
+ingevulde girobetaalkaart of Eurocheque
+ter waarde van dit bedrag sturen naar
+bovengenoemd adres.
+
+Het cursuspakket omvat een rijk
+geillustreerd cursusboek, een CD-video
+over de historie van telecommunicatie,
+een telefoonkaart met vier tikken, een
+poster en een boek over telematica. Op
+de CD-video staat o.a. een documentaire
+over KG-communicatie en een
+computerprogramma in Basicode.
+

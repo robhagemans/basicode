@@ -1,0 +1,280 @@
+77, zon 14 jun '87
+
+TELEAC: SYSTEMEN VOOR PROBLEEMANALYSE
+
+door ing. Peter van Tilburg
+Wanneer de aanschaf van bijvoorbeeld een
+financieel pakket overwogen wordt, kan men in
+principe kiezen tussen standaard software en
+maatwerk software.
+Onder standaardsoftware wordt een verzameling
+programma's, een zogenaamd programma pakket,
+verstaan, dat direct bij de dealer van de
+computer kan worden aangeschaft. Dergelijke
+pakketten worden soms door de leverancier van
+de computer ontwikkeld, maar ook vaak door
+onafhankelijke softwarehouses.
+Standaardpakketten zijn zo algemeen
+gedefinieerd dat ze in veel verschillende
+ondernemingen te gebruiken zijn. Zij zullen
+echter ten gevolge van de eis dat zij algemeen
+bruikbaar moeten zijn, waarschijnlijk nooit
+op precies dezelfde wijze functioneren als
+waarop men gewend was de administratie te
+doen. De mate waarin men zich zal moeten
+aanpassen, zal dan ook dikwijls een belangrijke
+overweging zijn bij de aanschaf.
+
+STUURGEGEVENS
+
+Bij een aantal pakketten bestaat de
+mogelijkheid om vooraf een of meerdere
+stuurgegevens in te voeren, waardoor het
+mogelijk is het pakket beter af te stemmen
+op een concrete werksituatie. Men duidt dit
+wel aan met de term customizing. Wanneer men
+bijvoorbeeld als instelling niets te maken
+heeft met omzet belasting, dan kan men dat bij
+de initialisatie opgeven. De gebruiker zal
+dan nooit meer gevraagd worden btw-bedragen of
+-percentages in te voeren.
+Hoewel een standaardpakket - soms wordt ook
+wel gesproken van confectie software - dus
+nooit precies zal zijn wat men wenst, zijn er
+ook een aantal belangrijke voordelen: De prijs
+is relatief laag en het pakket is gewoonlijk
+uit voorraad leverbaar.
+
+Komt men tot de conclusie dat er bijv. door
+de specifieke toepassing waarmee men bezig is
+geen goed standaardpakket leverbaar is, dan
+bestaat er altijd nog de mogelijkheid om een
+maatwerkpakket te laten ontwikkelen. Hoewel
+in theorie elk mogelijk pakket ontwikkeld kan
+worden, zijn er dikwijls wel een aantal
+rand voorwaarden die de praktische realisatie
+kunnen belemmeren. Je kunt daarbij bijv. denken
+aan de kosten die gepaard gaan met de realisatie
+van alle wensen of de capaciteit van het
+aanwezige computersysteem.
+Voor het ontwikkelen van een maatwerk pakket,
+kan men zich wenden tot een softwarehouse. Bij
+de ontwikkeling wordt er onderscheid gemaakt in
+een aantal fasen die, afhankelijk van de grootte
+van het project, door dezelfde of door
+verschillende personen worden verricht.
+
+SYSTEEM ANALYSE
+
+De eerste fase kan bestaan uit een systeem
+analyse. In deze fase wordt dan door een
+systeem analist het bestaande informatie
+systeem bekeken. Onder een informatie systeem
+worden alle activiteiten verstaan welke tezamen
+de informatie voorziening in een bedrijf of
+instelling bepalen.
+Het zal duidelijk zijn dat elke onderneming
+een informatie systeem heeft. Zonder informatie
+over producten, afnemers en concurrenten zal
+geen enkele onderneming lang kunnen functioneren.
+Deze informatie kan worden verkregen door middel
+van menselijke handelingen, maar ook met behulp
+van een computer systeem.
+
+De taak van een systeem analist is nu dit
+informatie systeem te analyseren en aan te
+geven of de informatie stromen wijziging
+behoeven. Om dat te kunnen beoordelen, zal hij
+zich bewust moeten zijn van de organisatie
+waarin hij opereert, met name van de betrokken
+afdeling. De informatie die hij nodig heeft,
+wordt vooral verkregen in gesprekken met de
+zogenaamde informanten. Dit zijn personeels
+leden van de betrokken onderneming of afdeling
+die de analist inzicht kunnen geven in het
+betreffende informatie systeem.
+
+SYSTEEM ONTWERP
+
+De volgende fase is het systeem ontwerp. Een
+systeem ontwerper tracht de wensen die er zijn
+te realiseren in een nieuw ontwerp van het
+informatie systeem. Omdat het natuurlijk voor
+hem belangrijk is te weten hoe het huidige
+systeem in elkaar zit, is het rapport van de
+analist voor hem een belangrijke informatie
+bron. Via gesprekken met informanten zal hij
+proberen te ontdekken wat zij als tekort
+komingen van het huidige systeem ervaren en
+een ontwerp maken waarin de geuite wensen zo
+goed mogelijk worden verwezenlijkt. Een
+systeem ontwerper zal - evenals een systeem
+analist - goed op de hoogte moeten zijn van
+de wijze waarop een onderneming functioneert.
+Ook moet hij (of zij!) over goede contactuele
+eigenschappen beschikken om zonder probleem
+als gesprekspartner voor de informanten te
+kunnen optreden.
+
+Meestal maakt de systeem ontwerper eerst een
+voorlopig rapport, waarin een globale oplossings
+weg is aangegeven. Dit rapport dient om een
+indruk te krijgen van de mogelijkheid om de
+wensen van de gebruikers te realiseren en de
+kosten die daaraan verbonden zijn. Aan de
+hand van dit rapport kan de opdracht gever
+- meestal is dat de directeur van het bedrijf
+of de chef van een afdeling - bepalen of het
+project doorgang moet vinden.
+
+UITEINDELIJKE ONTWERP
+
+Wordt het voorlopig ontwerp geaccepteerd, dan
+kan de systeem ontwerper beginnen met het
+uiteindelijke ontwerp. Hierin is in detail
+aangegeven hoe het nieuwe (onderdeel van het)
+informatiesysteem eruit ziet. Dit ontwerp
+wordt meestal in een vergadering met de
+informanten besproken. Zij kunnen dan zien of
+hun wensen in voldoende mate zijn gerealiseerd.
+Is het rapport goedgekeurd, dan kunnen de
+programmeurs aan de slag. Het is hun taak het
+ontwerp van de systeem ontwerper om te zetten
+in een programma(pakket). Men noemt dit wel
+het coderen van het programma. Om hun werk
+goed te kunnen verrichten, zullen zij de
+programmeer taal waarvan gebruik gemaakt wordt
+van binnen en van buiten moeten kennen.
+Naast het coderen, zijn de programmeurs ook
+belast met het testen. Door het testen wordt
+geverifieerd of het systeem de taken waarvoor
+het ontworpen is correct uitvoert. Wanneer het
+testen goed gebeurt, voorkomt het vertragingen
+en frustraties tijdens de implementatie van
+het nieuwe systeem.
+
+Voordat het systeem werkelijk wordt ingevoerd,
+wordt er dikwijls nog 'schaduw' gedraaid. Dit
+houdt in dat het oude en het nieuwe systeem
+tijdelijk naast elkaar gebruikt worden. Het
+schaduw draaien dient enerzijds om mogelijke
+fouten die zich in de praktijk voordoen op
+te sporen, anderzijds om de gebruikers aan
+het nieuwe systeem te laten wennen. Indien
+mogelijk, wordt getracht de implementatie
+geleidelijk - in een aantal fasen - te laten
+verlopen. Voordat het pakket uiteindelijk
+wordt afgeleverd, moet er nog gezorgd worden
+voor een goede documentatie. Voor de gebruikers
+wordt er een gebruikers handleiding gemaakt.
+Hierin treffen zij een algemene beschrijving
+van het systeem aan, een overzicht van de
+invoer die het systeem nodig heeft en de uitvoer
+die gegeven wordt.
+
+GROTERE SYSTEMEN
+
+Bij wat grotere systemen krijgt ook de
+functionaris die de computer bedient, de
+operator, een eigen handleiding. Daarin staat
+onder andere vermeld welke configuratie het
+systeem nodig heeft. Tenslotte wordt er een
+zogenaamde technische documentatie gemaakt.
+Deze documentatie is bestemd voor de systeem
+ontwerper en de programmeurs. Wanneer er na
+enige tijd wijzigingen in het programma pakket
+aangebracht moeten worden, kan er veel tijd
+bespaard worden wanneer er een goede
+documentatie van het systeem aanwezig is.
+
+In de praktijk zien we nogal eens dat
+gebruikers steeds nieuwe wensen hebben. In het
+begin zullen deze nog wel in het huidige
+systeem gerealiseerd kunnen worden. Na een
+aantal jaren zal het echter noodzakelijk zijn
+om een geheel nieuw informatie systeem te
+ontwikkelen.
+
+ATARI WEDSTRIJD
+
+Steeds vaker worden de ATARI ST-Computers op
+scholen ingezet. In Utrecht bijvoorbeeld zijn
+op alle 120 basisscholen de ATARI's 1040
+STf-kleurensets geplaatst. De inspecteur voor
+het onderwijs heeft in overleg met deskundigen
+en instanties deze keus bepaald. Daarbij
+speelde het geheugen, de grafische beeldscherm
+opbouw, de prijs en de gebruikers
+vriendelijkheid door muisbesturing mee.
+De Stichting Nederlandse Schoolradio zal in
+samenwerking met VARA en AVRO via radio- en TV
+het project begeleiden. Er bestaat natuurlijk
+behoefte naar educatieve software (Atari ST
+werkt nog niet met NOS-Basicode, wie doet er
+wat aan?) en daarom zijn er een aantal prijzen
+uitgeloofd:
+Hoofdprijzen:
+1e MEGA ST4 met kleurenmonitor
+2e MEGA ST2 met kleurenmonitor
+3e 1040 STf met kleurenmonitor
+Clubprijzen:
+1e Laser-Printer
+2e Harddisk
+3e Kleurenmonitor
+Schoolprijzen:
+1e 1040STf met kleurenmonitor
+2e 1040STf met z/w-Monitor
+3e 520STm met z/w-Monitor
+
+WEDSTRIJDVOORWAARDEN
+
+Alleen programma's met educatieve waarde
+dingen mee en dus ook alleen die op een Atari
+draaien. Programma's die niet worden
+geaccepteerd zullen, met een
+standaardbrief, aan de inzender worden
+geretourneerd. Alle programma's die worden
+geaccepteerd winnen een prijs. Ze moeten
+echter wel op diskette worden ingezonden
+voor 1 september bij Atari Benelux,
+Postbus 70, 4130 EB Vianen. Alle rechten
+op de programma's vervallen aan de
+fabrikant.
+
+CLUB- en SCHOOL VERBAND
+
+Programma's ontwikkeld in clubverband door
+regionale clubs van de Stichting Atari
+Gebruikers of van de HCC-Atari GG maken door
+een extra verloting kans op een van de speciale
+club prijzen.
+Programma's ontwikkeld in samenwerking met,
+of door een school, maken ook via een extra
+verloting kans op een van de speciale school
+prijzen.
+De volgende eigenschappen spelen een
+belangrijke rol:
+Educatieve waarde, bedieningsgemak (muis),
+originaliteit, uitvoering en documentatie.
+
+Opmerking: vermelding van deze prijsvraag
+door Hobbyscoop heeft alleen te maken met het
+educatieve karakter van de wedstrijd.
+Hobbyscoop heeft op geen enkele wijze te maken
+met de wedstrijd, nog met de jurering. De
+leden van de jury zijn niet bekend gemaakt.
+
+FIDO NIEUWS
+
+Reinier de Groot meldt dat per 16 juni de
+Fido's 500/24 respectievelijk OPUS Zoetermeer
+en OPUS SEAdog help verhuist naar Monster.
+Het nummer van het BBS is gewijzigd in:
+01749 - 48422 Snelheden van 300 tot 2400.
+Voorstel voor een nieuwe naam is 500/24:
+HCC OPUS WESTLAND.
+
+Majel Migo meldt dat de tweede Olivetti
+Fido op dit moment aktief is. Sysop is Jan
+Leyerweerd en nummer is 05910-28888. Alle
+snelheden tot 2400 baud.

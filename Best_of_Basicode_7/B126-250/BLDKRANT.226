@@ -1,0 +1,313 @@
+
+226, woe 03 mei '89
+
+AMSAT-OSCAR 10
+
+De zonnepanelen van OSCAR 10 blijken al
+weer voldoende zonlicht te ontvangen om
+het mode B relaisstation weer tijdelijk
+in gebruik te kunnen nemen. De
+satelliet komt echter tot 13 juli elke
+omloop in de buurt van het perigeum
+enige tijd in de schaduw van de aarde.
+Om de batterij te sparen mag de
+satelliet dan beslist niet worden
+gebruikt. Ook moeten alle aktiviteiten
+worden gestaakt zodra zich
+FM-verschijnselen voordoen in de
+doorlaatband of op de bakensignalen op
+145,809 MHz.
+
+Het gebruiksschema van OSCAR 10 voor de
+periode van 1 mei tot en met 13 juli
+luidt als volgt: mode B beschikbaar van
+mean anomaly phase 25 tot en met 225,
+en niet gebruiken van phase 226 tot en
+met 24. Van 14 juli tot in september
+mag mode B kontinu worden gebruikt,
+althans zolang er geen
+FM-verschijnselen optreden.
+
+FUJI-OSCAR 12
+
+Op 16 april werd OSCAR 12 automatisch
+uitgeschakeld door zijn boordcomputer
+omdat de boordspanningen te laag waren
+geworden. Nadat de batterij enkele
+dagen lang was opgeladen kon de
+satelliet zijn geplande gebruiksschema
+weer vervolgen vanaf 22 april. Dit
+soort problemen met de energie
+voorziening in OSCAR 12 kunnen helaas
+steeds vaker gaan optreden.
+
+AMSAT-OSCAR 13
+
+Vanaf 3 mei is het nieuwe
+gebruiksschema van OSCAR 13 in gebruik.
+Het mode S baken op 2400,665 MHz is nu
+elke omloop ingeschakeld gedurende
+ongeveer 30 minuten van mean anomaly
+phase 210 tot 222. De mode S antenne is
+dan meestal binnen 10 graden naar de
+gebruikers gericht. Het baken zendt
+PSK-telemetrie uit.
+
+Nader onderzoek heeft nu duidelijk
+gemaakt wat de problemen zijn met het
+mode S relaisstation. Het systeem is
+zodanig ontworpen dat het mode S baken
+en het relaisstaion niet tegelijkertijd
+ingeschakeld kunnen zijn. Het lukt
+echter niet om het systeem volledig om
+te schakelen van baken- naar
+relaisstation- bedrijf. Zodra men
+probeert het relaisstation in te
+schakelen blijft de bakenzender in
+bedrijf. De enige manier om toch
+signalen in het relaisstation te
+krijgen is via zijn laatste
+middenfrekwent schakeltransistor die
+uitgeschakeld is. Hiervoor blijkt zo'n
+20 dB meer uplink vermogen nodig te
+zijn dan de 2,5 kW ERP die
+oorspronkelijk was gepland voor een
+downlink signaalnivo gelijk aan het
+baken signaalnivo. Een uplink vermogen
+van ongeveer 50 kW ERP blijkt in de
+praktijk al bruikbare signalen in de
+downlink op te leveren. De mode S
+uplinkband is gemeten tussen 435,603 en
+435,638 MHz en de downlinkband tussen
+2400,718 en 2400,753 MHz.
+
+DATASPACE '89
+
+Het Amateur Satellite Colloquium van
+AMSAT-UK en de UoSAT-Unit gekombineerd
+met het Data Symposium van de RSGB
+wordt gehouden van 27 tot en met 31
+juli in de University of Surrey bij
+Guildford ten zuidwesten van Londen. Op
+27 juli vindt een International
+Satellite Meeting plaats. Op 28 juli
+zijn er hoofdzakelijk lezingen over
+data-kommunikatie, zoals packet radio.
+Op 29 juli zijn er lezingen over de
+kombinatie van data-kommunikatie en
+satellieten. Op 30 juli zijn er vooral
+lezingen over (amateur)satellieten. Op
+31 juli wordt aandacht besteed aan het
+gebruik van satellieten voor edukatieve
+doeleinden. Alle geinteresseerden zijn
+welkom bij dit weekend in Surrey. (Met
+dank aan Nico, PA0DLO)
+
+EERSTE BEELDEN VAN METEOSAT MOP 1
+
+Na een succesvolle lancering met een
+Ariane-4 raket, heeft de satelliet
+Meteosat MOP-1 nu de juiste
+geostationaire baan bereikt. Op 19
+april j.l. werd de radiometer aangezet
+en werden de eerste beelden
+binnengehaald. Meer testen zullen voor
+het eind van deze maand worden
+uitgevoerd, voordat MOP-1 zal worden
+overgedragen aan Eumetsat, de
+organisatie die garant staat voor het
+uit te voeren programma van deze
+weersatelliet. De gehele operatie van
+MOP-1, die overigens na de overdracht
+verder door het leven gaat onder de
+naam Meteosat-4, is dan in handen van
+ESOC.
+
+EERSTE VLUCHT ARIANE 44
+
+Ariane Vlucht 31 -ter lancering van de
+Superbird-A en de DFS Kopernikus
+satellieten- zal de krachtigste
+uitvoering van de Europese draagraket
+gebruiken: de Ariane 44L (uitgerust met
+vier stuwmotoren).
+
+Evaluaties van eerdere Ariane 44 LP
+lanceringen maakten extra
+deugdelijkheids tests nodig, vanwege
+trillingen die in het bovenste deel van
+de raket geconstateerd werden. Door de
+hierdoor ontstaande vertraging zal
+Vlucht 31 enige weken worden
+uitgesteld.
+
+De procedure voor Vlucht 32 begon
+volgens schema op 10 april met de
+aankomst in Kourou van de Olympus
+satelliet, die in juni met de laatste
+Ariane-3 zal worden gelanceerd.
+
+OVEREENKOMST INTELSAT EN ARIANESPACE
+
+Op het hoofdkantoor van de
+Internationale Telecommunicatie
+Satelliet organisatie (Intelsat)
+tekenden de directeuren Dean Burch en
+Frederic d'Allest van resp. Intelsat en
+Arianespace dinsdag 18 april een
+contract op de toekomst. Het contract
+hield in: 3 lanceringen, en een optie
+op de lancering van 4 van de nieuwe
+generatie satellieten.
+Het lanceerplan voor de eerste drie
+satellieten ziet er als volgt uit:
+- Intelsat VII -F1 najaar 1992.
+- Intelsat VII -F4 eind 1993.
+- Intelsat VII -F5 medio 1995.
+De satellieten zullen worden gelanceerd
+vanaf het lanceerplatform in Kourou,
+Frans Guiana.
+
+RECORD ORDER VOOR BOEING
+
+De Ierse GPA Group Ltd. heeft bij
+Boeing de grootste order voor
+straalverkeers vliegtuigen geplaatst,
+die deze maatschappij ooit heeft
+gekregen. Het gaat hier om 182
+toestellen met een totale waarde van
+ruim 19,5 miljard gulden. De waarde van
+deze order is meer dan twee keer zo
+hoog als de vorige record bestelling,
+die honderd vliegtuigen met een totale
+waarde van ruim 7,5 miljard gulden
+betrof.
+
+De GPA-order omvat 92 toestellen van
+het 737-type, waarvan de versie (-300,
+-400 of -500) later zal worden bepaald,
+vijftig 757's en veertig 767's met
+verlengd vliegbereik. De 757's krijgen
+Rolls-Royce motoren en de 767's Pratt &
+Whitney motoren.
+
+De aflevering van alle drie vliegtuig
+typen zal beginnen in 1990 en loopt
+door tot in 1997. Omdat de afleveringen
+zich uitstrekken over een zeer lange
+termijn, kunnen de toestellen worden
+gebouwd binnen de nu al geplande
+produktie- tempo's.
+
+AANDEELHOUDERS
+
+Aandeelhouders in GPA Group Ltd. zijn
+de directie en werknemers, alsmede
+belangrijke financiele instellingen,
+handels maatschappijen en luchtvaart
+maatschappijen in Europa, Japan en
+Noord Amerika.
+
+Bij de bekendmaking van de orders in
+New York zei GPA President Dr. T.A.
+Ryan dat hiermee in belangrijke mate de
+huidige investerings ronde van GPA in
+nieuwe vliegtuigen is voltooid. 'Deze
+orders betekenen het hoogtepunt van
+vijf jaar intensieve research en
+analyse en ruim een jaar onderhandelen
+tot in alle details met zeven vliegtuig
+fabrikanten en vijf motorleveranciers.
+Het komt erop neer dat wij verwachten
+ongeveer 10% te kopen van alle
+straalverkeers vliegtuigen die tot het
+midden van de jaren '90 zullen worden
+afgeleverd'.
+
+AFLEVERINGSPOSITIES
+
+Boeing directeur Albrecht gaf toe dat
+sommige luchtvaart maatschappijen zich
+zorgen maken over de lease bedrijven
+die een aanzienlijk aantal toekomstige
+afleverings posities vastleggen. 'Dit
+moeten we wel in het juiste perspectief
+zien. De lease maatschappijen spelen
+een belangrijke rol in de vliegtuig
+markt. Zij stellen een aantal
+luchtvaart maatschappijen in staat
+nieuw materieel in gebruik te nemen,
+dat zij op het ogenblik niet hadden
+kunnen kopen. Daarnaast bieden zij
+flexibiliteit aan andere
+maatschappijen, die een bepaald
+vliegtuig-type voor drie tot vijf jaar
+in hun vloot kunnen opnemen, wetende
+dat zij de grootte van hun
+vliegtuigtypen en daarmee de structuur
+van hun vloot kunnnen veranderen als
+dat nodig mocht zijn', aldus
+Dhr.Albrecht. Hij benadrukte dat Boeing
+er al het mogelijke aan doet om
+luchtvaart maatschappijen afleverings
+posities te bieden die passen in hun
+planning.
+
+DE RODE PLANEET
+
+Dit is de titel van een nieuwe publieks
+voorstelling, die het Zeiss Planetarium
+in Artis sinds vorige week donderdag
+(27 april) presenteert. 'De rode
+planeet' is gewijd aan onze buurplaneet
+Mars, die al eeuwen tot de verbeelding
+spreekt van de mens. Met behulp van de
+reusachtige planetarium projektor en
+circa honderd dia- en speciale effect-
+projektoren wordt in een half uur
+durend programma een indrukwekkend
+beeld opgeroepen van Mars. Van alle
+planeten in ons zonnestelsel lijkt Mars
+het meest op de aarde. Tijdens het
+programma zal o.a. worden ingegaan op
+de aloude vraag of er leven is op Mars,
+dan wel of dat er ooit is geweest. Er
+zijn concrete plannen om
+robotverkenners op die verre wereld te
+laten rondrijden en Marsgrond naar de
+aarde te halen. Misschien komt er dan
+een definitief antwoord op die vragen.
+
+De nieuwe voorstelling is dagelijks te
+zien in het Zeiss Planetarium om 12.00
+- 13.00 - 14.00 - 15.00 en 16.00 uur.
+Bezoekers aan Artis kunnen deze
+voorstellingen gratis bijwonen.
+
+NAJAARS-EXAMENS RADIOZENDAMATEURS
+
+Radio zendamateurs die examen willen
+doen in Radiotechniek en Voorschriften
+1 en 2 kunnen dat doen op 8 november
+dit jaar in Nieuwegein.
+Het examen Opnemen en Seinen -met
+snelheden van 8 en 12 woorden per
+minuut- wordt afgenomen in Utrecht in
+de periode van 12 tot 22 december 1989.
+Aanmelden is mogelijk tijdens werkdagen
+vanaf 19 juni tot en met 11 september
+a.s. U moet zich wel telefonisch
+aanmelden bij het examen secretariaat
+voor Radio zendamateurs in Groningen,
+tel. 050-222270.
+De kosten voor deelneming aan de
+examens bedragen fl.62,50. In afwijking
+van eerdere examens zal nu eerst een
+accept-girokaart worden toegezonden.
+Zodra het examengeld is voldaan, worden
+de op dat examen van toepassing zijnde
+machtigings voorschriften en
+beperkingen en het reglement amateur
+radiozendexamen met de bijbehorende
+examenprogramma's toegezonden.
+

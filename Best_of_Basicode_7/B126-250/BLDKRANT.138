@@ -1,0 +1,291 @@
+138, zon 3 apr '88
+
+CURSUS PROGRAMMEREN IN BASICODE
+
+DEEL 3: SUBROUTINE 200
+
+Deze subroutine houdt het toetsenbord in de
+gaten en kijkt of er een toets is ingedrukt.
+De waarde van de ingedrukte toets wordt in de
+variabele IN$ geplaatst. Let wel: er wordt
+niet op een toetsindruk gewacht! Als er geen
+toets is ingedrukt, blijft IN$ leeg. Verder kan
+elke toetsaanslag in IN$ worden gezet, dus ook
+controle tekens, zoals 'return' of 'enter'
+(ASCII- code 13).
+
+SUBROUTINE 210
+
+Deze subroutine wacht op een toetsaanslag! Dit
+in tegenstelling tot de vorige, die alleen
+keek, of er een toets was ingedrukt. De waarde
+van de toetsaanslag wordt geplaatst in de
+variabele IN$.
+
+SUBROUTINE 250
+
+De aanroep van deze subroutine veroorzaakt een
+piepje, als de computer daartoe in staat is.
+
+VOORBEELDPROGRAMMA
+
+1000 A=100:GOTO 20:REM SUBR.200-210-250
+1010 GOSUB 100
+1020 FOR I=0 TO 1000
+1030 PRINT''TEST SUBROUTINE 200'': PRINT
+1040 GOSUB 200
+1050 IF (IN$=''S'') OR (IN$=''s'')
+     THEN I=1000
+1060 NEXT I
+1070 GOSUB 250:GOSUB 100
+1080 PRINT''TEST SUBROUTINE 210''
+1090 VE=5:HO=0:GOSUB 110
+1100 PRINT''VERDER (J/N) '';:GOSUB 210
+1110 IF (IN$=''J'') OR (IN$=''j'')
+     THEN 1010
+1120 IF (IN$<>''N'') AND (IN$<>''n'')
+     THEN 1090
+1130 END
+
+WERKING VAN HET PROGRAMMA
+
+Regel 1000 en 1010 spreken voor zich. Regel
+1020 is het begin van een FOR/NEXT loop, waarin
+een tekst (regel 1030) over het scherm scrollt.
+In regel 1040 wordt gekeken of er een toets
+wordt ingedrukt (subroutine 200). In regel 1050
+wordt deze toetsindruk vergeleken met S of s.
+Als niet aan deze voorwaarde wordt voldaan,
+gaat alles gewoon door, indien er wel op de S
+of de s werd gedrukt, wordt I de eindwaarde
+1000 gegeven en stopt de 'loop' in regel 1060.
+In regel 1070 volgt een piepje (subroutine 250)
+en wordt het scherm schoongeveegd, waarna de
+tekst uit regel 1080 boven in het scherm wordt
+afgedrukt. In regel 1090 wordt de cursor op het
+begin van de zesde schermregel geplaatst en
+wordt de tekst uit regel 1100 geprint. Tevens
+wordt verwezen naar subroutine 210, waardoor er
+gewacht wordt op het indrukken van een toets.
+Als dit een J of een j is, gaat het programma
+verder op regel 1010, anders wordt in regel
+1120 gekeken, of er wel met de N of de n is
+geantwoord. Zo niet, dan wordt de vraag op
+dezelfde plek op het scherm herhaald, net
+zolang totdat er een J, j, N of n is ingedrukt.
+In het geval van een N (of n) wordt het
+programma beeindigd.
+LET WEL: zowel in regel 1110 als in regel
+1120 wordt eventueel na de logische
+vergelijking naar een andere regel gesprongen.
+Dit gaat met: IF <waar is> THEN <regelnummer>.
+NIET: THEN GOTO <regelnummer>!
+
+DE IF-STATEMENT IN BASICODE
+
+Indien in een IF statement een logische
+vergelijking wordt gebruikt (OR, AND of NOT),
+dan is het in Basicode verplicht om de
+bewerkings- volgorde door middel van haakjes
+aan te geven (ook al vanwege sommige computers,
+die dat nodig hebben). Zie voorbeelden in dit
+programma. Ander voorbeeld:
+IF (A<>B) AND ((B=5) OR (B=8)) THEN ...
+Het weglaten van de haakjes is een veel
+gemaakte fout in de aan de Basicode redaktie
+toegezonden programma's. Let goed op regel 1120
+in het voorbeeld programma: bij ongelijkheid
+moet hier AND worden gebruikt, terwijl men
+misschien op het eerste gezicht zou denken, dat
+hier OR zou moeten staan!
+
+DE FOR/NEXT LOOP IN BASICODE
+
+Nog een enkel woord over deze in bijna elk
+programma voorkomende opdracht. In Basicode is
+het verplicht aan het einde van de 'loop'
+achter NEXT ook de variabele te vermelden (in
+ons voorbeeld: NEXT I). Dit ook weer, omdat er
+systeempjes zijn, die dit nodig hebben.
+Heel belangrijk is ook, en dat geldt niet
+alleen voor Basicode, dat op een nette manier
+uit de loop wordt gesprongen. Men mag de 'loop'
+niet verlaten met een 'voorwaardelijke' sprong
+naar buiten, zonder de 'loop' af te maken.
+Daarom wordt hier in regel 1050 als aan de
+voorwaarde is voldaan, eerst de 'loop
+variabele' I op zijn eindwaarde gebracht. Omdat
+in de volgende regel al NEXT I staat, zijn
+verdere maatregelen niet nodig. Als dat niet zo
+was geweest, zou er met een 'GOTO 1060' naar
+toe moeten worden gesprongen.
+
+SAMENVATTING VAN DE DERDE LES
+
+Met behulp van een voorbeeld programma werd de
+werking van de subroutines 200, 210 en 250
+verduidelijkt. Ook werd gewezen op de
+noodzakelijke haakjes bij logische
+vergelijkingen en kwamen de voorwaarden aan de
+orde voor het gebruik van een FOR/NEXT loop.
+(Met dank aan Pieter Vijlbrief)
+
+24-NAALDSPRINTER VAN NEC
+
+Printers met een kop met 8 of 9 naalden
+zijn zo gewoon geworden dat iedereen die al
+thuis heeft staan. Soms zelfs al twee, want
+dot-matrix printers van die klasse
+worden veelal voor belachelijke prijzen
+verkocht. Wie tien jaar geleden zijn eerste
+Centronics voor ruim f 3000.- kocht kan het
+haast niet geloven. Op dat gebied is ook een
+revolutie gaande met als thema 'kwaliteit'.
+Met name laser printers bieden vrijwel
+drukwerk kwaliteit. Voor de hobbyist zijn
+die nog niet haalbaar, al liggen de prijzen
+nu al rond de f 5000.- tot f 6000.- per stuk.
+
+MEER NAALDEN
+
+Wel haalbaar en met een ongelofelijke kwaliteit
+zijn de dot-matrix printers met koppen en 24
+fijne naalden. Joop Niggebrugge testte er een
+voor Hobbyscoop van NEC (Manudax - Heeswijk).
+Dit type komt veel voor, ook onder andere namen.
+Apple betrekt zijn printers onder meer van NEC.
+Joop schrijft: de P-2200 printer heeft een
+'normaal' uiterlijk, met een zeer praktische
+bediening aan de voorkant. De voorkant is
+voorzien van LEDjes die de functies en
+instellingen van de printer duidelijk weergeven.
+Een deurtje aan de voorkant van de printer kan
+gebruikt worden voor het invoeren van losse
+vellen papier (in het Engels spreekt men van
+'convenience door': een makkelijk deurtje).
+
+PRINTDRUK
+
+De printdruk is instelbaar over 5 posities. De
+printstijl is direct op de voorkant in te
+stellen, ook de zelftest is daar te activeren.
+De machine geeft een waarschuwing wanneer er
+geen papier meer voorradig is en wanneer het
+lint op is of niet goed is ingebracht. Dip
+switches zijn niet aanwezig. De printer is
+geheel software instelbaar, dwz via commando's
+vanuit de computer. In het handboek staat
+beschreven hoe eventueel de zogenaamde default
+settings gewijzigd kunnen worden. De
+instellingen die gegeven zijn op het
+frontpaneel zijn de volgende: - normaal -
+correspondentie - NLQ (near letter quality) -
+proportioneel - smalschrift. De print'stijlen'
+kunnen allen via een sheet worden gekozen. Er
+zijn totaal 13 landen variaties mogelijk op de
+standaard meegeleverde karaktersets. Meerdere
+printstijlen zijn als opties verkrijgbaar
+inclusief de stijl: barcode printen, wat best
+wel interessant kan zijn voor de hobbyist.
+De printstijlen die voorkomen zijn: Courier,
+Super focus, OCR-B, ITC Souvenir en eventuele
+extra fonts (lettertypen).
+
+INTENSIEF GEBRUIK
+
+Tijdens het gebruik van drie weken van deze
+printer zijn er geen problemen voorgekomen.
+De kwaliteit in draft mode high speed is ruim
+voldoende en zeer handig voor listings etc.
+De snelheid is dan geweldig groot. Alle
+printmodes geven trouwens een bevredigend
+beeld. NLQ is heel behoorlijk. Dit geldt ook
+bij doorslag van 2 kopieen. Ervaringen met
+graphics programma's zijn ook erg goed te
+noemen, zij het dat het wel van belang is bij
+grafisch printen de kopdruk niet te hoog in te
+stellen, daar de pinnen bij 'triple print'
+(astrologie figuren bijvoorbeeld) dwars door
+het lint gaan (operator fout!) De bediening
+is erg vriendelijk en overzichtelijk. De
+printer is IBM en Epson compatible. Bijzonder
+is de 'quiet mode', de relatief stille afdruk
+manier, die het geluids volume halveert en de
+snelheid ook. Op normale uren is die mode niet
+nodig gebleken (kantooruren). De printer maakt
+geen echt storend geluid voor eventuele
+huisgenoten. Wel 's nachts bij het programmeren
+wanneer iedereen slaapt...
+
+AFDRUKSTIJLEN
+
+De afdrukstijlen die gebruikt worden zijn erg
+uitgebreid: normaal, proportioneel,
+geaccentueerd, onderstreept, vergroot, dubbele
+aanslag (vet), cursief, gespatieerd,
+kladschrift, NLQ en correspondentie kwaliteit.
+Verder is het formaat, zoals te doen
+gebruikelijk, volledig bestuurbaar: variabele
+regel afstand, variabele pagina lengte,
+horizontale en verticale tabuleringen.
+De pagina lengte is van 3 tot 14 inch
+instelbaar. De tekenset is IBM standaard,
+cursief index, zowel 8 pins als 24 pins.
+De graphic set is Epson en onbeperkt vrij
+programmeerbaar, wat voor een printer van
+deze prijs erg aantrekkelijk is. De baudrate
+is instelbaar van 150 tot 19200 Baud.
+
+HANDLEIDING
+
+De handleiding bestaat uit een uitgebreid
+Engels handboek, waarin voor zowel de
+beginner als de gevorderde alles op het gebied
+van de printer unit duidelijk omschreven is.
+Voor de beginner zijn alle normale
+noodzakelijke gegevens volledig beschreven.
+Voor de gevorderde wordt speciaal het
+programmeren en het geheugen gedeelte
+uitgebreid behandeld. Alle ESC-codes worden
+in detail besproken. De printstijl opties
+worden volledig vermeld, inclusief de door de
+gebruiker te definieren tekens. Dit wordt
+aangevuld met voorbeelden en programma's in
+Basic.
+
+CONCLUSIE TEST
+
+De hier geteste printer is een veelzijdige en
+met een uitgebreide printstijl en karakterset.
+De printer zal mijns inziens snel zijn weg
+weten te vinden naar de computer hobbyist, dit
+zeker door zijn vrij lage prijsstelling.
+De bediening van de voorzijde is bijzonder
+plezierig en handig voor zowel in het gebruik
+bij ketting formulieren als bij losse vellen.
+Een belangrijk hulpmiddel is die zogenaamde
+'convenience door'. Voor de specialist is het
+een groot gemak dat elke pin-positie vrij
+programmeerbaar is in een 8 en 24 matrix. De
+printer is voor rond de ruim f 1000.- (f 1200
+inclusief) te koop en is daarmee in relatie
+tot zijn uitgebreide prestaties goedkoop te
+noemen, daar ditzelfde bedrag soms ook nog
+voor een 9 pins printer moet worden neergelegd.
+Om die reden zal de printer geen moeite hebben
+om populair te worden zelfs bij de veeleisende
+hobbyist.
+
+ALGEMENE INFO
+
+Pinwriter P 2200 brede wagen 136 kolommen. Kop:
+24 pins matrix (2 x 12 overlappend). Interface:
+Centronics standaard (en RS232C serieel).
+Optioneel: automatische sheetfeeder. Buffer:
+4K bij door gebruiker gedefinieerde karakters
+(8K is normaal). Snelheid (CPS): 168 CPS max
+(high speed). 140 CPS normaal. Tekenafstand
+(CPI): 10, 12, 15, 17 en 20 max. Papierbreedte:
+5 tot 10 inch (6,5) 8,5 inch met sheetfeeder).
+Gewicht: 5 kg. Geluids niveau: 57 dBA normaal
+(ISO), 54 dBA quiet mode (ISO).

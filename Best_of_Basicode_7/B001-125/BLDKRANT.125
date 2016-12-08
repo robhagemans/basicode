@@ -1,0 +1,286 @@
+125, zon 7 feb '88
+
+NIEUWE SUBROUTINES VOOR COMMODORE
+
+De Commodore 128 beschikt over zowel een C-64
+als een C-128 werkstand. Met behulp van schijf
+en cassette kunnen programma's van de ene
+werkstand in de andere worden ingelezen.
+Het is echter -met de huidige subroutines-
+niet mogelijk om een in de C-64 werkstand
+ingelezen NOS-Basicode programma correct te
+laten draaien in de C-128 werkstand, wanneer
+dit programma gebruik maakt van de -veel
+gebruikte- subroutines 110 & 120. De nieuwe
+C-64/128 subroutines maken dit wel mogelijk.
+Een met de C-64/128 subroutines ervoor
+ingelezen NOS-Basicode programma zal dus in
+zowel de C-64 als in de C-128 werkstand
+correct werken.
+
+Hiervoor zoekt de nieuwe subroutine-set zelf
+uit in welke werkstand de Commodore 128 staat.
+Dit moet, omdat routines als het positioneren
+en het opvragen van de positie van de cursor,
+in beide werkstanden verschillend moeten
+worden aangestuurd. In de C-128 werkstand kan
+dan zelfs nog het scherm-formaat wisselen.
+Hiermee en zelfs met eventuele windows wordt
+automatisch rekening gehouden. Ook wordt in
+de C-128 werkstand het 'automatisch doorgaan
+op de volgende regel' uitgezet. Middels twee
+'POKE'-opdrachten (regel 40) wordt dit voor
+zowel de 40 als 80 koloms-mode gerealiseerd.
+
+AANWIJZINGEN BIJ DE SUBROUTINES
+
+Pas bij het invoeren en wijzigen van programma
+regels in de C-128 werkstand op. Deze kunnen
+nu maar maximaal de schermbreedte lang zijn!
+U heft deze toestand op door nul (0) in beide
+locaties te zetten. (POKE 248,0:POKE 2648,0)
+
+Routine 250 (beep) is een copie van de
+'bell'-routine van de C-128 werkstand.
+
+Routine 270 (vrij geheugen) levert nu in de
+C-64 werkstand altijd een positief getal op.
+In de C-128 werkstand wordt het aantal vrije
+geheugen- plaatsen in het variabelen- geheugen
+bepaald. De variabele 'FR' geeft nu dus niet
+meer een indicatie hoeveel ruimte er in het
+geheugen nog over is voor het programma maar
+dat is volgens het protocol ook nooit een
+eis geweest.
+
+In beide werkstanden worden niet meer gebruikte
+(niet-actuele) stringvariabelen gewist.
+
+De routines 350 & 360 geven als secundair adres
+'007' mee. Op de standaard Commodore printers
+hoort dit klein-schrift plus hoofdletters
+op te leveren, precies wat nodig is voor
+bijvoorbeeld de beeldkrant. Interface
+gebruikers dienen hier (regel 350 & 360)
+dus veelal iets anders neer te zetten.
+
+HOOFD- EN KLEINE LETTERS
+
+In regel 20 dient de 'PRINTCHR$(14);' voor
+het omschakelen naar klein-schrift plus
+hoofdletters op het scherm. De 'PRINTCHR$(8);'
+in regel 30 zorgt voor een fixering van deze
+tekstmode in de C-64 werkstand. In de C-128
+werkstand zorgt regel 40 ('PRINTCHR$(11);')
+voor deze fixering. De regels 40 & 120 dienen
+overigens in de C-128 werkstand te worden
+ingegeven. Alleen in deze werkstand zullen
+de opdrachten 'BANK' & 'RREG', als opdracht
+door de computer worden herkend. Het beste
+is dus om het vertaalprogramma te laden in
+de C-128 werkstand, de gewijzigde regels in
+te toetsen en het vertaalprogramma weer
+veilig te stellen. U heeft dan altijd de
+C-64/128 subroutines in het geheugen staan
+nadat u het vertaalprogramma heeft opgestart.
+
+Opdrachten voor het instellen van de kleur
+van de border, achtergrond en tekst en
+dergelijke kunt u ook in de eerste 5 regels
+opnemen.
+
+Regel 20 : Instellingen voor beide
+werkstanden.
+Regel 30 : Instellingen alleen voor de
+Commodore 64 werkstand.
+Regel 40 : Instellingen alleen voor de
+Commodore 128 werkstand.
+
+U moet hierbij wel bedenken dat het een
+tijdrovende klus is als u opeens besluit dat
+andere kleuren toch een mooier beeld geven
+en u die wijziging in de NOS-Basicode
+programma's wilt doorvoeren. Omdat u de
+subroutines gelijktijdig met het vertaal
+programma laadt staan deze in elk
+NOS-Basicode programma dat u nadien inleest.
+
+TYPEWERK BESPAREN
+
+Indien u de subroutines in al eerder ingelezen
+NOS-basicode programma's wilt doorvoeren kunt
+u zich veel typewerk besparen door gebruik te
+maken van de volgende methode. (zie
+eventueel Beeldkrant 84)
+
+1) Schakel over naar de C-128 werkstand.
+2) Geef: POKE 248,0:POKE 2648,0
+3) Definieer de functietoetsen 1 & 4 met de
+volgende inhoud:
+key 1, chr$(27) + ''@delete 1000- (DOWN)
+(DOWN)'' + chr$(141) + ''poke 45, peek(4624)
+- 2: poke 46, peek(4625) (UP)(UP)(UP)'' +
+chr$(13) + chr$(13)
+key 4, chr$(27) + ''@delete -999 (DOWN)
+(DOWN)'' + chr$(141) + ''poke 45,1:poke 46,
+28 (UP)(UP)(UP)'' + chr$(13) + chr$(13)
+
+(DOWN) resp. (UP) staat voor eenmaal
+cursor-down resp up intoetsen.
+4) Zet de nieuwe C-64/128 subroutines in
+het geheugen.
+5) Druk op F1.
+6) Laad het betreffende NOS-Basicode
+programma.
+7) Druk op F4.
+8) Het NOS-Basiode programma bevat nu de
+nieuwe routines en kan ge-SAVE-d worden.
+
+Herhaal nu voor elk programma de stappen
+5 t/m 8.
+
+TOT SLOT
+
+Opmerkingen en ideeen om de subroutines beter
+en sneller te laten verlopen worden zeer op
+prijs gesteld! De routines worden veel
+gebruikt en het is dus van het allergrootste
+belang dat handelingen als het plaatsen van
+de cursor en het bepalen van de plaats van
+de cursor zo snel mogelijk geschieden.
+Stuur dus uw op- of aanmerkingen.
+
+Deze toelichting en de nu volgende nieuwe
+subroutines voor de Commodore 64 en 128
+werden ontwikkeld door onze Commodore kenner
+Thijs Timmerman uit Uithoorn. Bedankt, Thijs!
+
+SUBROUTINES VOOR DE C-64/128
+
+   10 goto1000
+*  20 o5=((peek(244) and 216)<>216):
+print chr$(14);
+*  30 ifo5=. theno6=39: o7=24: print
+chr$(8);: goto1010
+*  40 bank15: sys65517: rreg,o6,o7: poke248,
+64: poke2648,64: printchr$(11);: goto1010
+  100 print''(CLR)'';:return
+* 110 o8=ho: ifo8>o6 theno8=o6
+* 111 o9=ve: ifo9>o7 theno9=o7
+* 112 ifo8<. theno8=.
+* 113 ifo9<. theno9=.
+* 114 ifo5 thensys65520,,o9,o8,.: return
+* 115 poke214,o9: poke211,o8: sys58732:
+return
+* 120 ifo5 thensys65520,,,,1: rreg,ve,ho:
+return
+* 121 ho=peek(211) + (peek(211)>39)*40:
+ve=peek(214): return
+  200 getin$:return
+  210 getin$:ifin$='''' then210
+  220 return
+* 250 poke54296,21: poke54277,9:
+poke54278,.: poke54273,48
+* 251 poke54276,32: poke54276,33: return
+  260 rv=rnd(1): return
+* 270 fr=fre(1) - (fre(1)<.)*65536: return
+  300 sr$=str$(sr): ifleft$(sr$,1)='' ''
+then sr$=mid$(sr$,2)
+  301 return
+  310 oo$='' '': oo=ct-cn-sgn(cn):
+o1=.5*10^-cn: o3=abs(sr): sr$='''': ifsr<-o1
+thensr$=''-''
+  311 ifo3>=10^oo thensr$='''': oo$=''*'':
+goto316
+  312 sr$=sr$ + mid$(str$(int(o3+o1)),2)
+  313 iflen(sr$)<oo thensr$=oo$+sr$: goto313
+  314 ifcn=. or o3>=1e10 then316
+  315 sr$=sr$ + mid$(str$(1+o3-int(o3)+o1),
+3,cn+1)
+  316 iflen(sr$)<ct thensr$=sr$+oo$: goto316
+  317 iflen(sr$)>ct thensr$='''':
+oo$=''*'': goto316
+  318 return
+* 350 open4,4,7: print#4,sr$;: close4: return
+* 360 open4,4,7: print#4: close4: return
+
+De regels aangegeven met een sterretje zijn
+veranderd (of nieuw) ten opzichte van de NOS-
+Basicode subroutines voor de Commodore 64.
+
+Zoals gebruikelijk in de beeldkrant, zijn de
+dubbele aanhalingstekens vervangen door
+twee enkele.
+
+KNIPPERENDE CURSOR
+
+In sommige Basicode programma's is het handig
+als je beschikt over een knipperende cursor.
+In de oorspronkelijke subroutine 210 voor de
+Commodore 64 (en 128) is daarin echter niet
+voorzien. Paul de Greeff uit Bakel stuurde
+ons de benodigde aanpassingen:
+
+210 poke 204,0
+211 get in$:if in$='''' then 211
+212 poke 204,1: return
+
+Bedankt, Paul!
+
+COMPUTERDAG HCC AFDELING VENLO
+
+Op zaterdag 5 maart 1988 organiseert de HCC
+afdeling Venlo voor de 7e keer een
+internationale computerdag, ditmaal in
+congrescentrum 'de Maaspoort' in Venlo.
+
+In 1980 begonnen in het College Marianum,
+met duizend bezoekers, is de afdeling nu voor
+de derde maal te gast in 'de Maaspoort'. Dit
+jaar worden ongeveer 5000 bezoekers verwacht
+uit Belgie, Duitsland en Nederland.
+
+Om het toenemende aantal computerleken dat zich
+onder de bezoekers bevindt toch te boeien, is
+dit jaar gekozen voor een meer branche gerichte
+aanpak. Er wordt speciale aandacht geschonken
+aan de branches 'land- en tuinbouw' en
+'transport' uit de regio.
+
+SPECIALE ATTENTIE VOOR DEELNEMERS
+
+Voor de hobbyisten die iets willen demonstreren
+op deze dag is er dit jaar een aparte attentie.
+Eenieder die een demonstratie verzorgt krijgt
+een speciale computer verzekering aangeboden
+voor het systeem dat hij of zij meebrengt.
+De verzekering is geldig voor een jaar en
+gratis voor de verzekering nemer.
+
+Verder zijn er prijzen voor de beste software
+en hardware. Uiteraard is iedereen welkom om
+een demonstratie te verzorgen, ook als deze
+volgens eigen inzicht geen prijs zal krijgen.
+
+Voor de deelnemers zijn aanmeldings
+formulieren verkrijgbaar bij: HCC/CDC Venlo,
+Postbus 8029, 5993 ZG Maasbree.
+
+ZONNEWIJZERS - ZONNEKLAAR
+
+Ter gelegenheid van haar 10-jarig bestaan
+organiseert de Zonnewijzerskring een aantal
+tentoonstellingen. De eerste in de serie
+vindt plaats in het Amsterdamse Scheepvaart
+Museum van 3 t/m 23 mei a.s.
+De zonnewijzerskring is een vereniging voor
+mensen die zonnewijzerkunde als hobby
+hebben, zelf noemen zij dit 'GNOMONICA'.
+De doelstelling van deze vereniging
+is: het geven van adviezen bij nieuw
+te plaatsen zonnewijzers, het restaureren
+van oude zonnewijzers en de kennis op
+dit gebied vasthouden en verdiepen.
+De openingstijden van het Scheepvaart-
+museum aan het Kattenburgplein in Amsterdam:
+dinsdag t/m zaterdag van 10.00 - 17.00 uur.

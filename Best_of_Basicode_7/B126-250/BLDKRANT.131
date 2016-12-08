@@ -1,0 +1,278 @@
+131, zon 6 mrt '88
+
+AMSAT-OSCAR 10
+
+Midden februari is OSCAR 10 helemaal
+uitgevallen. In verband met de lage zonnehoek
+ontvangen de zonnepanelen niet voldoende licht
+om de batterij te kunnen opladen. Door de lage
+boordspanning is alle elektronika in de
+satelliet buiten bedrijf in maart en april.
+Men hoopt dat de satelliet vanaf begin mei
+weer gedurende enkele maanden te gebruiken
+zal zijn.
+
+UoSAT-OSCAR 11
+
+Op 1 maart viert OSCAR 11 zijn vierde
+verjaardag. De satelliet funktioneert nog
+steeds uitstekend. Het gebruiksschema van
+OSCAR 11 ziet er nu als volgt uit. Dagelijks,
+behalve op woensdagen, zendt de satelliet
+afwisselend verschillende soorten gegevens
+uit via de bakenzender op 2 meter, onder
+besturing van de Diary- programmatuur in de
+boordcomputer. Eerst wordt gedurende 60 s
+telemetrie uitgezonden, dan is de Digitalker
+60 s lang in bedrijf, en dan wordt de status
+van de boordcomputer gegeven gedurende 15 s.
+Daarna volgt 120 s lang een bulletin met
+amateur-nieuws, en dan volgt weer 60 s
+Digitalker. Daarna volgt Whole Orbit Data
+gedurende 240 s, dan weer 60 s Digitalker en
+tenslotte worden DCE Title Frames uitgezonden
+gedurende 60 s. Op woensdagen wordt tussen
+0000 en 1400 UTC afwisselend 150 s telemetrie
+en 30 s Digitalker informatie uitgezonden.
+'s Woensdags vanaf 1400 UTC tot aan het
+uploaden van een nieuw bulletin op donderdag
+wordt afwisselend 120 s Whole Orbit Data en
+60 s Digitalker informatie uitgezonden.
+Verder worden regelmatig op woensdagen, over
+enige tijd wekelijks, CCD-videobeelden
+uitgezonden op 70 cm via het DSR-systeem.
+
+FUJI-OSCAR 12
+
+Het gebruiksschema van OSCAR 12 is
+als volgt gepland:
+mode JA van  8-3 0113 UTC tot  9-3 0425 UTC,
+mode JA van 10-3 0127 UTC tot 11-3 0235 UTC,
+mode JA van 12-3 0141 UTC tot 14-3 0155 UTC,
+mode JD van 17-3 0522 UTC tot 18-3 0630 UTC,
+mode JD van 19-3 0333 UTC tot 20-3 0442 UTC,
+mode JD van 21-3 0347 UTC tot 22-3 0455 UTC,
+mode JD van 23-3 0401 UTC tot 24-3 0509 UTC,
+mode JD van 26-3 0321 UTC tot 27-3 0428 UTC,
+mode JA van 30-3 0146 UTC tot 31-3 0254 UTC.
+
+Gedurende alle andere perioden zal de
+satelliet uitgeschakeld zijn om de batterij
+de gelegenheid te geven op te laden. Omdat
+vooral mode JD het energievoorzienings systeem
+in de satelliet nogal zwaar belast kan het
+noodzakelijk zijn dit systeem regelmatig
+buiten bedrijf te stellen. De JARL schijnt
+een Award beschikbaar te hebben voor OSCAR 12
+mode JA verbindingen. Daarvoor zouden 10 QSL-
+kaarten nodig zijn. Nadere informatie hierover
+zal spoedig bekend worden gemaakt door
+JJ1ZUT, onder andere via de mode JD mailbox.
+
+AMSAT-Phase 3C
+
+De eerstvolgende ARIANE-lancering, vlucht
+V21, is nu verschoven naar 11 maart omdat nog
+enige wijzigingen moeten worden aangebracht
+aan een van de te lanceren satellieten. De
+lancering van de eerste ARIANE 4 raket,
+vlucht V22, met onder andere Phase 3C aan
+boord, staat op het programma voor begin juni.
+De 140 kg zware satelliet Phase 3C moet na
+een geslaagde lancering zeker 5 jaar
+probleemloos in gebruik kunnen blijven.
+
+UoSAT-C
+
+Sinds de lancering van OSCAR 11 in maart 1984
+bestaan er bij de UoSAT-Unit in de University
+of Surrey al plannen om een opvolger te
+bouwen en te lanceren. Daarbij waren er echter
+steeds twee problemen: een geschikte
+lanceermogelijkheid en de financien. Onlangs
+heeft de NASA een mogelijkheid geboden voor
+de lancering van een nieuwe Britse
+wetenschappelijke amateursatelliet van de
+UoSAT-Unit. Deze nieuwe UoSAT-C kan voor het
+einde van 1988 samen met een andere satelliet
+worden gelanceerd met een DELTA-raket van de
+NASA naar een cirkelvormige baan met een
+hoogte van zo'n 500 km en een inclinatie
+van 43 graden. Deze baan is weliswaar niet
+zeer geschikt, vooral voor stations op hogere
+breedtegraden, maar gezien het beperkt aantal
+beschikbare lanceermogelijkheden moet elke
+kans worden gegrepen. Hoewel er niet veel
+tijd meer is voor de bouw, denkt men dat het
+toch wel zal lukken de nieuwe satelliet op
+tijd klaar te hebben. Voor de bouw van OSCAR
+11 had men ook maar een half jaar de tijd.
+Omdat het UoSAT-C projekt een internationaal
+samenwerkings verband zal zijn, kunnen de
+financien nu ook beter geregeld worden.
+Daarom is men nu al begonnen met de
+ontwikkeling en bouw van de nieuwe satelliet.
+
+MEER EXPERIMENTEN AAN BOORD
+
+Er zullen meer experimenten worden
+ondergebracht in UoSAT-C dan in zijn twee
+voorgangers OSCAR 9 en OSCAR 11. Een van de
+belangrijkste systemen zal het Packet radio
+Communications System (PCE) zijn. Dit wordt
+een digitaal 'store and forward' kommunikatie
+systeem, oftewel een Packet Radio Bulletin
+Board systeem, zoals mode JD van OSCAR 12.
+Dit PCE is beschikbaar voor gebruik door alle
+amateurs en dus niet beperkt bruikbaar zoals
+het DCE in OSCAR 11. Verder zullen er
+verscheidene experimenten aan boord zijn voor
+het meten van de invloed van kosmische
+straling op halfgeleiders en op zonnepanelen.
+Er moeten enkele microprocessors in de
+satelliet komen, waaronder de 1802 en 80C86,
+terwijl er in totaal zo'n 5 MByte aan digitaal
+geheugen (RAM) beschikbaar is voor alle
+experimenten. UoSAT-C zal een van de
+krachtigste satellieten worden voor wat
+betreft rekenmogelijkheden en
+gegevensverwerking. Misschien komt er ook
+apparatuur voor Digital Signal Processing
+(DSP) aan boord. Verder zullen er nieuwe
+systemen worden toegepast voor standregeling
+en dergelijke. (met dank aan PA0DLO).
+
+BOEK OVER RADIO KOOTWIJK
+
+Afgelopen woensdag berichtten wij u over het
+zestigjarig bestaan van Radio Kootwijk.
+Ter gelegenheid hiervan is ook een boek
+verschenen dat de geschiedenis van het
+zendstation vrij uitvoerig beschrijft. Het
+gaat vooral in op het verleden van Kootwijk
+en wat de pioniers bij de opbouw te doen
+stond. Ook zijn er een aantal hoofdstukken
+over de hedendaagse taak van het zendstation.
+Het boek, dat is samengesteld door mensen die
+de omgeving goed kennen, behandelt ook een
+aantal menselijke aspecten van het wonen op
+zo'n afgelegen plaats.
+
+De uitgave kreeg als titel: 'Tussen zand en
+zenders'. Het kost f27,50 en is te bestellen
+via het volgende adres: Mw. L.Udo, Radioweg
+2, Radio Kootwijk, 7346 AS Hoog Soeren.
+Telefonisch kunt u mevrouw Udo benaderen
+onder nummer 05769 - 327.
+
+BOEK OVER WORDPERFECT
+
+Enige maanden geleden schreef Gerrit Komrij in
+het NRC-Handelsblad in zijn column 'Een en
+ander': 'Computerboeken onderscheiden zich in
+drie dingen van het reguliere boek. Ten eerste:
+je kunt er alles in vinden, wat je niet zoekt.
+Ten tweede: je kunt er niets in vinden wat je
+wel zoekt. En, vooral, ten derde: ze zijn
+allemachtig hoog geprijsd'. Wij zijn geneigd
+Komrij gelijk te geven. Echter het geldt niet
+voor het boek, dat wij deze week ter bespreking
+ontvingen:
+BASISHANDLEIDING WORDPERFECT, met als
+ondertitel: 'Leer nu WP in 20 minuten',
+geschreven door W. Melchin en P. Doorn, 59
+pag., uitgave Parnassus Press - Utrecht, prijs
+f15.--. We deden wel iets meer dan 20 minuten
+er over, maar dit boek vormt een bijzonder
+goede introductie tot het gebruik van
+Wordperfect V4.2 (en V4.1). Deze tekstverwerker
+wordt zeer veel gebruikt bij grote instellingen
+en menige administratieve kracht zal ermee te
+maken krijgen. Het doorzettingsvermogen voor
+het doorworstelen van dikke handboeken is niet
+aan een ieder gegeven. Deze Basishandleiding
+'biedt geen schone schijn, maar is een
+praktische gids voor beginner en gevorderde',
+staat op de laatste pagina van het boek, en wij
+zijn het daar volkomen mee eens. Al direct in
+het begin is men in staat iets met WP te doen
+en na enkele uurtjes met dit programma te
+hebben gestoeid met het boekje naast het
+toetsenbord, raakt men er steeds meer in thuis.
+De schrijvers (Melchin is docent aan de
+Universiteit van Amsterdam en Doorn is docent
+computerkunde aan de Rijksuniversiteit van
+Leiden) hebben hun Basishandleiding gebaseerd
+op hun uiterst succesvolle cursus
+tekstverwerkers voor beginners. Dat is
+duidelijk te merken aan de overzichtelijke
+opzet van het boek. Dit, voor een computerboek,
+uiterst laag geprijsde werkje kunnen wij dan
+ook van harte aanbevelen. (Pieter Vijlbrief)
+
+SAG GEBRUIKERSDAG IN DEN BOSCH
+
+Op zaterdag 12 maart a.s. van 10 tot 17 uur
+houdt de Stichting Atari Gebruikers in de
+Bossche Brabanthallen haar jaarlijkse
+landelijke gebruikersdag. Deze dag zal naar
+verwacht zo'n 8000 computergebruikers trekken.
+
+De opzet van deze dag is tweeledig: ten eerste
+is het een ontmoetingspunt voor computer
+gebruikers, waar contacten kunnen worden gelegd
+en ideeen uitgewisseld. De regionale afdelingen
+van de SAG staan daarbij centraal. Daarnaast is
+er het beursgedeelte, waarop zich ruim 40 hard-
+en software bedrijven zullen presenteren.
+
+NIEUWTJES
+
+Op de beurs zijn verschillende nieuwtjes op het
+gebied van computergebruik te zien. Zo wordt
+voor de 16-bits ST-computers de CD-ROM
+gepresenteerd. Een ander nieuwtje is een WORM-
+systeem als extern computergeheugen. Verder
+aandacht voor de nieuwe MS-DOS machines van
+Atari, alsmede een hardware MS-DOS emulator
+voor de al bestaande ST-reeks. Ook zal
+apparatuur en programmatuur voor het verwerken
+van streepjescode worden gedemonstreerd.
+Tenslotte aandacht voor verbeterde software
+pakketten t.b.v. Computer Aided Design (CAD).
+
+MUZIEK EN LEZINGEN
+
+Een heel bijzondere toepassing is een concert
+waarin de ST-computers centraal staan. Dit
+concert wordt gegeven door de componist Henri
+Broeren en de fluitist Geurt Grosveld.
+Hierbij worden met name de muzikale
+mogelijkheden van het MIDI-interface op de
+Atari machines benut.
+
+Verder zal op deze gebruikersdag een
+tweetal lezingen worden gehouden. Prof. Bron
+uit Groningen zal een inleiding verzorgen
+over Modulair Pascal. Prof. Koster uit
+Nijmegen, mede-ontwikkelaar van de
+programmeertaal ELAN, zal een uiteenzetting
+geven over het bedrijfssysteem EUMEL.
+
+BASICODE INTERFACES 800XL EN 130XE
+
+Ook zullen op de beurs interfaces
+verkrijgbaar zijn waarmee Basicode programma's
+in de Atari 800XL en 130XE kunnen worden
+geladen (dus niet in de 600XL). Deze
+interfaces bestaan uit een programma-
+cassette en een stukje hardware.
+
+Dit alles dus komende zaterdag in de Bossche
+Brabanthallen, van 10 tot 17 uur. De entree
+bedraagt f2,50 voor donateurs, en f5,00 voor
+niet-donateurs.
+
+Voor nadere informatie kunt U schrijven naar
+de S.A.G., Postbus 2095, 5202 CB Den Bosch,
+of bellen: tel. 073-217534.

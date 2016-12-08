@@ -1,0 +1,213 @@
+106, zon 22 nov '87
+
+MACHINETAAL MS-DOS DEEL 2
+
+In de eerste aflevering maakten we kennis met
+MS-DOS en met de bijbehorende
+microprocessoren. We bekeken de nummering van
+de plaatsen in het geheugen en zagen, welke
+registers in de microprocessor aanwezig zijn.
+We maken nu een begin met het bekijken van
+een programma voor de microprocessor. Zijn
+werk wordt beschreven in de vorm van
+instructies.
+
+ELEMENTAIRE HANDELINGEN
+
+De instructies stuk voor stuk betreffen
+enkel de meest elementaire handelingen
+die de computer kan verrichten. Doordat de
+instructies zo elementair zijn, zijn er grote
+aantallen van nodig voordat er werkelijk iets
+zinnigs is gebeurd. Grote programma's in
+machinetaal zullen we zelf wel nooit maken.
+Een paar honderd bytes aan echte instructies
+is al heel wat. We hebben het meeste profijt
+van ons werk, wanneer we machinetaal
+gebruiken voor kleine toepassingen waar een
+hoge snelheid nuttig is. Doordat we zelf tot
+in het kleinste detail in de hand hebben wat
+de computer wel en niet doet, kunnen we de
+hoogst mogelijke verwerkings snelheid ook
+werkelijk halen. Wanneer we ons wenden tot
+bijvoorbeeld BASIC als tussenpersoon, is er
+altijd verspilling, in de praktijk zelfs veel
+verspilling.
+
+Verder kan kennis van machinetaal ons helpen
+kleine verbeteringen aan te brengen in
+kant-en-klare programma's van anderen, zoals
+bij het voorbeeld genoemd aan het begin van
+de vorige aflevering. De onderdelen van
+dergelijke programma's kunnen we volledig
+ontcijferen. Soms zullen we er ook in slagen
+de taak van die onderdelen te zien in het
+grotere geheel. Soms zal het niet lukken het
+grotere verband te achterhalen: een
+dinosaurus reconstrueren uit losse botten is
+ook een hachelijke taak.
+
+Voorzover het uitpluizen wel succes heeft, is
+de teleurstellende - of geruststellende -
+conclusie in het algemeen dat de makers van
+de beroemde programma's de problemen niet
+slimmer hebben weten op te lossen dan we het
+zelf gedaan zouden hebben. Dat wij alleen via
+machinetaal in de kant-en-klare programma's
+kunnen kijken, betekent niet dat die
+programma's oorspronkelijk ook helemaal in
+machinetaal geschreven zijn. Vaak zijn ze
+bijvoorbeeld grotendeels opgesteld in de
+programmeertaal 'C' en vervolgens automatisch
+vertaald.
+
+SPRONGEN
+
+Terug nu naar de doe-het-zelf informatie.
+De eerste machinetaalinstructie zien we al
+vermeld bij de uitkomst van het r-commando
+uit de eerste afelevering:
+
+0A43:0100  E9FB06  JMP   07FE
+
+Voor de machine heeft een programma dezelfde
+vorm als alle andere informatie, namelijk een
+reeks bytes, die ons niets zegt. De
+instructie hier ziet eruit als E9 FB 06. Voor
+ons gemak is dit vertaald tot de menselijker
+vorm JMP 07FE. Hierin kunnen we in JMP de
+opdracht jump, spring, herkennen. Het gaat
+hier dus om een opdracht naar adres 7FE te
+springen, gerekend overigens ten opzichte van
+het codesegment.
+
+Het vertalen van bytereeksen in menselijker
+instructietaal en omgekeerd kan debug
+automatisch voor ons doen met het commando u
+(voor unassemble). Toch is het nuttig er hier
+eens nader naar te kijken. Het doeladres 7FE
+is namelijk niet terug te vinden in de
+bytereeks E9 FB 06. Dat komt doordat het hier
+gaat om een relatieve sprong. Zonder sprong
+zou de instruction pointer na een opdracht van
+drie bytes komen te staan op 103. Tellen we
+daar 06 FB bij op (de laatste twee bytes van
+de code in omgekeerde volgorde), dan komen we
+op 7FE, het doeladres in absolute termen.
+
+Deze relatieve manier van springen heeft een
+voordeel. Wanneer we later een stuk
+programmacode in zijn geheel verplaatsen (via
+het m commando van debug), dan zullen de
+relatieve sprongen binnen dat programmadeel
+nog steeds goed zijn. We hoeven alleen de
+sprong instructies te wijzigen, die het
+programmadeel met de buitenwereld verbinden
+evenals anders soortige adresverwijzingen.
+Omdat bytes geen teken hebben, lijkt het
+alsof we zo alleen vooruit kunnen springen.
+Dat is niet zo. De helft van de byteparen is
+gereserveerd voor sprongen achteruit. Zo
+betekent FF FF een byte terug, FE FF twee
+bytes terug, FD FF drie bytes terug
+enzovoorts.
+
+Met deze manier van springen kunnen we niet
+het gehele geheugen bereiken. Daarom is er
+ook nog de verre sprong JMP FAR, die tegelijk
+CS en IP verandert.
+
+DE VOORLOPER
+
+Aan het begin van een programma is de waarde
+van IP gelijk aan 100. Waarom wordt er niet
+gewoon bij 0 begonnen? Op de adressen 0 tot
+en met FF wordt bij het laden van het
+programma allerlei informatie neergezet over
+de omgeving waarin het programma komt te
+werken, zoals de hoeveelheid geheugen van de
+machine en de commandoregel waarmee het
+programma gestart is. Van de commandoregel
+wordt de naam van het programma zelf
+weggelaten. De rest is te vinden vanaf
+geheugenplaats 81, waar meestal een spatie
+zal staan. De regel eindigt met return,
+waarvan de hexadecimale code 0D is. Als het
+programma de informatie in de voorloper wenst
+te gebruiken, kan het dat geheugendeel
+raadplegen en bijvoorbeeld de commandoregel
+gaan ontleden. De hoeveelheid geheugen staat
+in de bytes 02 en 03. Laten we eens kijken
+met het debug commando d:
+
+0A43:0000  CD 20 00 60 00 9A EE FE
+M.....n
+
+Op de genoemde plaatsen staat 00 60, wat we
+moeten lezen als 6000 hexadecimaal aan
+segmenten. Enig gereken laat zien dat dit
+384K is en dat klopt inderdaad met wat er in
+deze machine zou moeten zitten. Dit alles
+geldt voor files met het achtervoegsel com.
+Bij files van het type exe werkt dit wat
+anders.
+
+De aanwezigheid van de voorloper zorgt er ook
+voor dat het laatste adres van het programma
+niet DX CX is, maar DX CX plus 100.
+
+EEN PROGRAMMA ONTRAFELEN
+
+Als we in een programma op een instructie
+stuiten, waarvan we willen weten wat hij
+doet, dan kunnen we het debug commando t (van
+trace) gebruiken. Er wordt dan een enkele
+instructie uitgevoerd, waarna we te zien
+krijgen wat er met de registers gebeurd is en
+bij welke instructie we zijn aanbeland.
+
+Een hele reeks programma-instructies kunnen
+we te zien krijgen met het debugcommando u
+eventueel gevolgd door een beginadres. Zonder
+adres begint de lijst de eerste keer bij IP.
+De verschillende instructies nemen
+verschillende aantallen bytes in. Het kan
+daarom voorkomen dat we middenin een
+instructie beginnen, waardoor we een paar
+instructies lang onzin te zien krijgen totdat
+het ontcijferen weer in de pas komt te lopen.
+Het is ook mogelijk dat we proberen een stuk
+tekst of getallen als instructies te
+ontcijferen. Met dat probleem hebben we in
+ieder geval te doen, wanneer we op het scherm
+DB instructies zien verschijnen. Het
+betreffende programmadeel moet dan niet met
+het commando u bekeken worden, maar met het
+commando d. De instructies van een
+kant-en-klaar programma op het scherm laten
+verschijnen is een van de beste manieren om
+vertrouwd te raken met machinetaal.
+
+Wanneer we zover zijn dat we zelf
+machinetaalinstructies kunnen gaan invoeren,
+dan staat ons daarvoor het debugcommando a
+ter beschikking. Dit is het omgekeerde van
+het commando u. Achter elke adresaanduiding
+die debug ons voorzet, kunnen we een complete
+machinetaal instructie in de menselijke vorm
+plaatsen. Deze wordt na een druk op de
+returntoets inmiddellijk vertaald in het
+overeenkomstige stel bytes. Wanneer we een
+onmogelijke instructie hebben ingetypt, geeft
+debug dat aan. We verlaten de adresreeks met
+control-break of met een extra druk op
+return. In de volgende aflevering gaan we
+kijken welke instructies er allemaal zijn.
+
+Behalve als Beeldkrant verschijnt deze cursus
+in afleveringen ook in het tijdschrift Mens
+en Wetenschap (Postbus 108, 1270 AC HUIZEN,
+02152 - 58388). Deze cursus wordt geschreven
+door Pim van Tend, Veldheimweg 8, 6871 CD
+Renkum, 08373-15358. (c) NOS HOBBYSCOOP.
+Reacties svp naar Hobbyscoop.

@@ -1,0 +1,260 @@
+147, zon 8 mei '88
+
+CURSUS PROGRAMMEREN IN BASICODE DEEL 7
+
+STEEDS TERUGKERENDE VRAGEN e.d.
+
+Als het programma regelmatig een zelfde vraag
+stelt, b.v. of een volgende pagina al mag
+worden getoond, dan kan men dit het beste in
+een subroutine onderbrengen en eventueel
+daar de kleine- naar hoofdletter routine
+aanhangen, die ook afzonderlijk kan worden
+aangeroepen.
+
+VOORBEELD SUBROUTINE
+
+20000 HO=0:VE=23:GOSUB 110
+20010 PRINT''Volgende pagina (J) '';
+20020 GOSUB 210:GOSUB 20050
+20030 IF IN$<>''J'' THEN 20000
+20040 GOSUB 100:RETURN
+20050 IF (IN$<''a'') OR (IN$>''z'')
+      THEN RETURN
+20060 IN$=CHR$(ASC(IN$)-ASC(''a'')
+      +ASC(''A''))
+20070 RETURN
+
+WERKING VAN DEZE SUBROUTINES
+
+Men roept subroutine 20000 aan in het programma
+als de pagina vol is en men wacht op een
+commando om verder te mogen gaan. Hier kan
+VE=23 worden gebruikt, omdat niet verwacht
+wordt dat op een regel eronder zal worden
+geprint (ook geen 'prompt+nieuwe regel' na
+'end'). Deze subroutine roept zelf subroutine
+20050 aan en blijft wachten op 'J' (eventueel
+na omzetten van de 'j'). Elders in het
+programma kan men ook alleen van subroutine
+20050 gebruik maken.
+
+COPYRIGHT EN BASICODE-2
+
+Bij elk programma staat in de laatste regel:
+COPYRIGHT NOS HILVERSUM. Dit betekent niet, dat
+de auteur al zijn rechten aan de NOS heeft
+overgedragen, maar dat commercieel gebruik van
+het programma door derden, zonder verkregen
+toestemming van de auteur, niet is toegestaan.
+In geval van overtreding zal, indien dit bij de
+NOS bekend wordt, hiertegen worden opgetreden.
+Dit betekent niet, dat men een eenmaal
+uitgezonden programma niet aan een vriendje mag
+geven, die om een of andere reden het programma
+niet heeft kunnen ontvangen! Onder hobbyisten
+moet behulpzaamheid, zonder eraan te verdienen,
+hoog in het vaandel staan.
+
+FIDO NOS HOBBYSCOOP
+
+In dit verband wijzen we er ook op, dat via
+een telefoon aansluiting en een modem met
+bijbehorend programma het voor een ieder
+mogelijk is uit de NOS FIDO (databank), tel.
+035 - 45395, geheel gratis een eerder
+uitgezonden Beeldkrant (file area #1) of
+Basicode programma (filearea #3) te
+'downloaden'!
+
+DOEL VAN BASICODE
+
+Door de wekelijkse uitzendingen van Basicode
+programma's kunnen velen gratis in het bezit
+komen van een schat van veelal zeer goede
+programma's. Daardoor is het in de allereerste
+plaats mogelijk te profiteren van de
+programmeer ervaring van mede hobbyisten.
+Bekijk de opbouw van de programma's en verruim
+daardoor de eigen kennis van het programmeren
+in Basic.
+
+WAT VERDER ?
+
+Het ligt niet in onze bedoeling Basicode-2
+verder uit te breiden. De plaatsruimte, die de
+subroutines in het geheugen van de computer
+daarbij innemen, maakt het voor de meeste
+systemen onmogelijk om nog een uitgebreid
+programma te herbergen. Ondanks de beperkingen
+van Basicode-2 kan men er, mits men over
+voldoende programmeer ervaring en voldoende
+inventiviteit beschikt, bijzonder goede en
+leerzame programma's mee maken. Zodra men
+verder wil en bijvoorbeeld zich uitgebreid met
+de grafische mogelijkheden van de moderne
+computer systemen wil bezighouden, is er maar
+een goede oplossing: verdiep je in de
+mogelijkheden die het eigen systeempje je
+biedt. (Ook in andere programmeer talen dan
+Basic). Lees de daarover handelende boekwerken
+en neem kontakt op met mede hobbyisten, die je
+kunt vinden in de gebruikers verenigingen. Een
+van de oudste clubs is de HCC, hetgeen staat
+voor de Hobby Computer Club, Postbus 149, 3990
+DC Houten. Deze vereniging telt vele landelijke
+afdelingen, die regelmatig bijeenkomsten
+organiseren en heeft ook tientallen gebruikers-
+groepen, die zich specialiseren in een bepaald
+type computer en op de bijeenkomsten waarvan
+men dan ook de mede- hobbyisten treft, die soms
+veel ervaring hebben met het systeem, waar men
+zelf ook in geinteresseerd is. Daarnaast zijn
+er ook nog vele merk- gebonden clubs. Zie de
+computer agenda in de Beeldkrant!
+
+TENSLOTTE
+
+Aan het einde gekomen van deze mini cursus,
+wensen we elke computer bezitter heel erg veel
+plezier toe met de welhaast onbegrensde
+mogelijkheden, die in elk computer systeempje
+schuil gaan. Het vormt een bron van ontzettend
+veel genoegen voor jong en oud: men is dan ook
+nooit te 'bejaard' om te leren, zoals schrijver
+dezes telkenmale ervaart! Het prikkelt de
+fantasie en het houdt jong. Heel veel succes
+toegewenst en... mogen we op de Basicode
+redaktie nog eens een vrucht van uw ploeteren
+in de vorm van een wel doordacht Basicode
+programma tegemoet zien?
+
+DANKWOORD
+
+Graag willen we Pieter Vijlbrief, de auteur
+van deze cursus, bedanken voor het vele werk
+dat het schrijven ervan zal hebben gekost.
+Aangezien hij jarenlang onze Basicode
+redacteur is geweest, kent hij als geen ander
+de kneepjes van het 'vak', maar ook alle
+valkuilen waar je als beginnend Basicode
+programmeur in kunt tuimelen! Via deze cursus
+heeft hij ons laten profiteren van de door
+hem opgedane ervaring. Hartelijk dank, Pieter!
+
+TELECOM NIEUWS
+
+De Algemene Nederlandse Wielrijders Bond
+(ANWB) installeert een landelijk netwerk tussen
+de kantoren, voor het opvragen van informatie
+uit een toeristische databank, het rechtstreeks
+boeken van reizen en kantoor automatisering
+in de vestigingen.
+
+De doorgang van het plan van een aantal
+Europese telecom- fabrikanten om gezamenlijk
+een chip joint venture aan te gaan, waar ook
+Philips deel van uitmaakt, wordt gedwarsboomd
+doordat Siemens het oneens is met SGS-Thomson.
+De laatste wil een volledige stem krijgen in
+de joint venture. Siemens is het daarmee oneens.
+
+XPLORing a New Image is de titel van de
+jaarlijkse bijeenkomst voor Europese gebruikers
+van Xerox electronic printing systemen. Deze
+bijeenkomst wordt georganiseerd door Rank
+Xerox en XPLOR International en vindt plaats
+in congrescentrum De Leeuwenhorst in
+Noordwijkerhout. (bron: Telecom Daily)
+
+ADVERTENTIES
+
+Dimitrie Grinmis uit Zaandam biedt zijn Sharp
+MZ-700 computer met ingebouwde datarecorder
+te koop aan. Daarbij hoort ook een Brother
+HR-5 thermische matrix printer. Zowel computer
+als printer zijn voorzien van handleidingen.
+Verder de nodige programmatuur, zoals Sharp-
+Basic, HDC-Basic, applicatie programma's en
+spelletjes. Voor het geheel vraagt hij f600.
+Voor meer informatie: tel. 075-313698.
+
+Pierre Knops uit Heerlen wil graag nummers van
+de Electron User ruilen tegen exemplaren van
+de Acorn User of het tijdschrift Beebug, vanaf
+januari 1988. Bel naar: 045-410149.
+
+F. van Dijk uit Den Haag is op zoek naar het
+BASIC PROGRAMMING MANUAL FOR THE MPF-II.
+Bovendien zou hij graag willen weten wie er
+nog met de MPF-II werkt, en geinteresseerd is
+om af en toe contact op te nemen voor vragen,
+problemen of ideeen aangaande deze weinig meer
+gebruikte machine. Schrijf dan een briefkaart
+naar: Driebergenstraat 351, 2546 BK Den Haag.
+
+Bent U in het bezit van het septembernummer
+1987 van de Computer's Gazette? H. Tobe uit
+Barendrecht is ernaar op zoek: 01806-14626.
+
+Te ruil: een Stanford M1776 mengpaneel tegen
+een diskdrive of modem voor de Commodore 64.
+Reacties graag naar: Bruno van Hemelijck,
+Rijkenbroek 78, 1840 Eppegem (Belgie dus).
+
+Jan Lomans uit Veghel zoekt een diskdrive
+voor zijn Oric Atmos. Bel: 04130-64567.
+
+WAO-er P. Kusters zit met het volgende
+probleem: zijn VIC 40/80 kolomskaart (model
+1020) is kapot. Kunt U hem helpen aan een
+nieuwe of de oude repareren? Schrijf dan naar:
+Koning Karelstraat 15, 6231 BV Meerssen.
+
+Te koop: een P2000T/102K computer (bouwjaar
+1986) met professioneel toetsenbord en
+Blaupunkt kleurenmonitor. Verder interfaces
+en programma's voor zend- en luisteramateurs
+en electronici, o.a. RTTY - ASCII - AMTOR en
+electronica berekeningen. Tot slot allerlei
+boeken en tijdschriften. De complete lijst
+en prijzen kunt U aanvragen bij PA0MAX Max
+Wolff, Luchthavenlaan 66, 5042 TE Tilburg.
+
+Dat was het voor deze keer. Wilt U ook uw
+NON COMMERCIELE advertentie op het gebied
+van computers en/of communicatie gratis
+in de Beeldkrant zien verschijnen? Stuur
+dan een briefkaartje naar Postbus 1200.
+
+JUBILEUM VOOR VRZA RADIOKAMP
+
+Voor de 25e maal zal op de Jutberg
+in Laag Soeren het radiokamp van de
+Vereniging Radio Zendamateurs worden
+georganiseerd. Vanwege dit jubileum
+is er een speciaal programma samengesteld.
+Op Hemelvaartsdag (12 mei) na afloop van de
+inmiddels overbekende radiomarkt zal om
+14.30 uur een poging worden gedaan het
+record telegrafie verbinding met de grootste
+en kleinste seinsleutel te verbeteren. De
+bouwer van deze seinsleutel is ervan
+overtuigd dat het zal werken en dat het
+record onder toezicht van bestuursleden
+van de VRZA, ambtenaren van de Radio
+Controledienst en een notaris in Nederlandse
+handen zal vallen. Op zaterdag 14 mei zullen
+vanuit een rijdende stoomtrein van de
+Veluwse Stoomtrein maatschappij twee
+amateur radiostations continu in bedrijf
+zijn om radioverbindingen te maken met
+gelicenseerde zendamateurs uit Nederland
+en daarbuiten. Tweemaal zal er worden
+gestopt om de passagiers in de gelegenheid
+te stellen een groot aantal verborgen
+zendertjes op te sporen.
+Ook niet-deelnemers aan deze Jutberg
+activiteiten kunnen mee met deze stoomtrein.
+U moet zich daarvoor wel even aanmelden bij de
+VRZA op de Jutberg in Laag Soeren.

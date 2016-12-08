@@ -1,0 +1,293 @@
+390, maa 04 mrt '91
+
+NOS-SCOOP INTERLINK STATION
+
+Sinds vrijdag 22 februari is het
+interlink station annex netwerknode
+PI1NOS/PI8NOS weer in bedrijf. Dit
+station staat opgesteld op de
+Hilversumse toren van het Audio en
+Video Verbindingen Centrum (AVVC) van
+PTT Telecom in Hilversum. Het station,
+dat daar gekomen is op instigatie van
+NOS-Scoop, voldoet aan de hoogste
+technische en professionele eisen. Op
+de TV-toren van het Omroepkwartier
+staan ook honderden andere zenders
+zoals straalverbindingen, autotelefoon,
+semafoon en dergelijke. Om niet te
+interfereren met deze verbindingen
+heeft men bij de Centrale Directie van
+PTT alle frekwenties doorgerekend op
+eventuele bijprodukten. Aan de NOS-node
+kant (zeker voor het 70 en 23
+cm-relais; zie Beeldkrant 387) moesten
+vele extra filters worden bijgeplaatst
+om een spectraal zo zuiver mogelijk
+output te krijgen. In enkele gevallen
+werden verzwakkers in de antenne
+leiding opgenomen om niet alleen het
+vermogen terug te brengen maar ook de
+ontvangst gevoeligheid te beperken, met
+als nevenvoordeel een beter
+intermodulatie gedrag van de
+ontvangers. Het bereik van de
+zend/ontvangers is desondanks
+aanzienlijk in verband met de
+gigantische hoogte van het station
+centraal in Nederland: circa 100 meter
+voor het phone-relais en bijna 80 meter
+voor het interlink station.
+
+ONTWIKKELINGSWERK VAN ROB (PE1CHL)
+
+Zijn de relaisposten vooral het werk
+van Jan van der Meij (PAOJMY) en Redert
+Steens (PA0NEK), de Packet apparatuur
+is vooral ontwikkeld door Rob Janssen
+(PE1CHL), met steun van wat collega's
+in Eindhoven. Rob ontwikkelde eigen
+programmatuur en bracht een aantal
+ideeen in omloop die het goed deden in
+de packet radio wereld. Steun werd ook
+gegeven door Joop Rijpkema (PA0JYL).
+
+Het interlink station is kreeg
+volledige nieuwe 23 cm-apparatuur. Deze
+is ondergebracht in een nieuwe
+behuizing, en uitgebreid met een aantal
+transceivers en modems. De basis van
+het hele station is een Atari Mega-ST2,
+een op de 68000 microprocessor
+gebaseerde computer met 2 Mb RAM, 192
+Kb ROM en een 800 Kb floppy disk drive.
+Van het geheugen wordt 1 Mb als een
+RAM-DISK gebruikt.
+
+ZELF ONTWORPEN SCHAKELINGEN
+
+De packet radio interface bestaat uit
+een zelf ontworpen en gebouwde
+schakeling met 4 Z8530 SCC chips. Deze
+schakeling verzorgt 8 AX25 links zonder
+gebruik te maken van TNC's. Aan deze
+interface zijn (via optocouplers)
+modems gekoppeld. Aanwezig zijn:
+- 5 stuks 1200 bits/s AFSK modems
+gebaseerd op het IC TCM3105.
+- 2 stuks 4800 bits/s FSK modems
+volgens het ontwerp van HAPN (Hamilton
+Area Packet Network)
+Deze modems zijn als volgt ingezet:
+
+naam  snelh  link
+----  -----  ----
+lap    1200  lokaal gebr 430.675 MHz
+ln.W   1200  interlink W 1240.7/1299.7
+MHz (naar PI1ESA)
+ln.N   1200  interlink N 1240.8/1240.8
+MHz (naar PI1JYL en PA3DUY)
+ln.E   1200  interlink O 1240.4/1299.4
+MHz (naar PI1VRZ/A)
+ln.E48 4800  interlink O (idem 4800
+bps)
+ln.S   1200  interlink Z 1240.9/1299.9
+MHz (naar PI1EHV en PI1RNI)
+ln.s48 4800  interlink Z (idem 4800
+bps)
+
+LOKALE TOEGANG MET MOBILOFOON
+
+Voor lokale toegang wordt gewerk met
+een kristal gestuurde mobilofoon en een
+verticaal gepolariseerde rondstraler
+(Comet CX-901) die tevens in gebruik is
+als antenne voor het 23 cm
+FM-spraakrelais PI6NOS. Deze antenne op
+de toren wordt in oostelijke richting
+afgeschermd door enkele hogere
+antennes. Het zendvermogen is zeer
+laag, ongeveer 100 mW, maar door de
+gunstige antenne positie is toch een
+redelijk bereik denkbaar. (In
+afwachting van de machtiging is deze
+LAP nu nog niet in bedrijf.
+
+Voor het packet station op 23 cm wordt
+gebruik gemaakt van vier Kenwood TM-531
+transceivers. Op de tegenstations
+gerichte (kleine) yagi antennes staan
+rondom de toren. Op de zendontvangers
+voor de interlink oost en zuid zijn
+twee modems aangesloten, zodat in deze
+richtingen bedrijf met zowel 1200
+bits/s als 4800 bits/s mogelijk is.
+
+NODE EINDHOVEN IN OPBOUW
+
+De node PI1EHV te Eindhoven, die op dit
+moment in opbouw is, zal vanaf het
+begin ook met 4800 bits/s bedreven
+worden. De overige knooppunten (PI1RNI,
+PI1VRZ) moeten nog worden omgebouwd
+voor deze snelheid. De voor de node
+gebruikte software is gebaseerd op het
+KA9Q TCP/IP pakket, met uitbreidingen
+door Rob (PE1CHL). Tot de mogelijkheden
+behoren:
+- NET/ROM routering en lokale toegang,
+compatible met de TheNET nodes in het
+Nederlandse packet netwerk. Naast de
+van TheNET nodes bekende commando's is
+er ook de mogelijkheid een lijst van
+recent gehoorde stations op te vragen,
+en kan de nodelijst worden opgevraagd
+in een vorm die tevens de route naar de
+betreffende nodes aangeeft.
+- TCP/IP routering en services. De node
+kan TCP/IP verkeer doorgeven tbv
+gebruiker stations, en kan (prive)
+berichten forwarden met het SMTP
+protocol. Er zijn routes gedefinieerd
+naar veel regio's in het hele land, en
+ook verkeer met Duitsland en
+Zwitserland is vaak mogelijk.
+
+NOG VEEL GELD NODIG
+
+Het functioneren van het Nederlandse
+packet netwerk is afhankelijk van de
+beschikbaarheid van betrouwbare nodes
+en interlinks. We hopen met de nieuw
+opgezette NOS-node hieraan een forse
+bijdrage te leveren.
+Van de gebruikers van zowel de
+spraakrelais zender als het packetradio
+station hopen wij een bijdrage te mogen
+ontvangen. De bijzonder hoge technische
+eisen die PTT stelt op deze unieke
+plaats in Nederland en de bijkomende
+kosten voor de montage -die door PTT
+zelf moet worden verricht- maken
+PI(1,2,6,8 en 9)NOS ongetwijfeld niet
+alleen het hoogste station in meters
+maar ook in guldens. Wij durven geen
+schatting te geven van de
+(professionele) uren die in de
+ontwikkeling van de zendcluster is gaan
+zitten. Zonder hulp en meetapparatuur
+van een aantal vooraanstaande
+communicatie bedrijven, plus de
+medewerking van PTT zelf, zou het
+station zeker niet tot stand zijn
+gekomen. Daarom is er echter nog wel
+vrij veel geld nodig om het station af
+te ronden. Wie iets kan missen kan het
+(met vermelding van zijn gift en naam
+in de Beeldkrant en met ontvangst van
+een speciale QSL-kaart) storten op
+Postbank 3408886 tnv Jan Rozema
+(PE1HMD). Namens allen, Hans G. Janssen
+(PI9NOS).
+
+BLADMUZIEK OP CD-ROM
+
+Voor het eerst is in de muziekwereld
+een omvangrijke collectie bladmuziek op
+CD-ROM uitgebracht. De in MCN (Muziek
+Catalogus Nederland) samenwerkende
+muziek bibliotheken (BFO Hilversum,
+Donemus Amsterdam, Gaudeamus Amsterdam,
+NOB Hilversum en RIM Utrecht) hebben
+momenteel 200.000 titels in alle
+categorieen muziek op een CD-ROM
+vastgelegd. Met behulp van ongeveer 40
+snelle zoekpaden, zoals geboortejaar en
+sterfjaar van de componist, (orkest)
+bezetting, jaar en plaats van uitgave,
+genre, taalcode en dergelijke, kan
+iedere gewenste informatie in enkele
+seconden worden gevonden. Ongeveer
+vijftig manjaren catalogiseerwerk is nu
+voor iedereen toegankelijk. Het ligt in
+de bedoeling eenmaal per jaar een
+bijgewerkte aanwas van 40.000 titels
+uit te geven, zo heeft MCN meegedeeld.
+De CD-ROM, genaamd MUSICROM, wordt als
+abonnement op de markt gebracht voor
+f1750 per jaar. (Bron: Kunstenkrant
+januari 1991)
+
+ASCII OP DE HELLING?
+
+ASCII, al jarenlang het Esperanto van
+de computer linguistiek, voldoet niet
+meer. Het aantal tekens dat in deze set
+is gedefinieerd is niet meer toereikend
+voor de grote hoeveelheid uiteenlopende
+computers en verschillende talen.
+Daarom heeft een coalitie van software
+en hardware fabrikanten nu besloten
+ASCII te vervangen door een tekenset
+die is opgebouwd uit zestien bits
+(ASCII leunt op zeven bits). IBM,
+Apple, Sun, Go, Microsoft, Novell,
+Metaphor en The Research Libraries
+Group hebben hiertoe Unicode opgericht.
+Unicode coordineert het onderzoek naar
+de standaardisatie. ASCII ondersteunt
+128 tekens. Het is de bedoeling dat
+Unicode meer dan 27.000 tekens gaat
+ondersteunen!
+
+Een systeem dat Unicode ondersteunt zou
+alle tekens van vrijwel alle alfabetten
+ter wereld op hetzelfde scherm kunnen
+produceren. Tevens worden onder meer
+wiskundige tekens en typografische
+karakters ondersteund. Met Unicode zou
+een Arabische gebruiker in Frankrijk
+een elektronisch bericht kunnen sturen
+dat bestaat uit Engelse, Arabische en
+Franse tekens. De ontvanger zou het
+bericht precies zo op zijn scherm
+krijgen. Bovendien is Unicode een
+uitkomst voor Mac gebruikers die
+momenteel problemen ondervinden bij het
+'converseren' met DOS-systemen. Bij de
+omzetting worden momenteel
+verschillende tekens, zoals aanhalings
+tekens, verminkt. Gevolg is wel dat
+hardware producenten, software
+leveranciers en gebruikers hun
+besturings systemen, applicaties en
+character fonts moeten vervangen. (Uit:
+Computerworld)
+
+INLICHTINGEN OVER HP'S NEWWAVE
+
+In de computer bijlage van Scoop heeft
+u gehoord over NewWave 3.0, de slimme
+'bovenlaag' voor Windows 3.0, die extra
+faciliteiten biedt. Voor wie beschikt
+over een behoorlijke PC met een 80386
+processor, tenminste 4 Mb aan geheugen
+en MS-Windows 3.0, is het interessant
+om gegevens over het pakket te krijgen.
+Dat kan door onderstaande bon op een
+briefkaart te plakken en aan ons te
+adresseren. Wij zorgen dat hij te
+bestemder plaatse komt.
+
+-----------------------
+
+Aan:  NOS - Radio Scoop
+
+Inzake HP's NewWave 3.0
+
+P o s t b u s      1200
+
+1200    BE    Hilversum
+
+-----------------------
+

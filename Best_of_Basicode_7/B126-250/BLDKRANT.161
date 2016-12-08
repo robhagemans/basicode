@@ -1,0 +1,278 @@
+161, 17 aug '88
+
+AMSAT OSCAR 13
+
+Op vrijdag 22 juli is OSCAR 13 om 1500 UTC
+officieel vrijgegeven voor algemeen gebruik.
+Sindsdien is het gebruiksschema enkele malen
+gewijzigd als gevolg van de experimenten, die
+aanvankelijk nog door de kommando stations
+moesten worden uitgevoerd. Bovendien moest de
+stand van de satelliet in de ruimte nog worden
+aangepast. Rond 26 juli werd de gewenste stand
+bereikt. De antennes van de satelliet zijn nu
+naar de aarde gericht als de satelliet zich bij
+het hoogste punt van de baan bevindt. De
+richtantennes zijn nu in gebruik.
+
+GEBRUIKSSCHEMA
+
+Tot 21 september is het volgende gebruiksschema
+van toepassing voor OSCAR 13: mode B van mean
+anomaly phase 3 tot 100 en van phase 180 tot
+220, mode JL van phase 100 tot 180, mode B met
+rondstraler antenne van phase 220 tot 240,
+alle relais uitgeschakeld van phase 240 to 3.
+Afwijkingen van dit schema zijn mogelijk in
+verband met verdere tests van systemen in de
+satelliet. Mode J zal niet elke dag
+ingeschakeld zijn. Deze mode is overigens in
+principe alleen bedoeld voor stations in
+landen waar het moeilijk is om mode L te
+gebruiken. Westerse stations worden verzocht
+uitsluitend gebruik te maken van mode L als
+mode JL in bedrijf is. De mode B downlink
+signalen blijken nogal wat spinmodulatie te
+vertonen. Deze signaalsterkte variaties worden
+veroorzaakt door de 23 cm helix-antenne, die
+het stralingspatroon van de 2 m-antenne
+beinvloedt. De rotatiesnelheid van OSCAR 13 om
+zijn Z-as bedraagt nu zo'n 32 omwentelingen
+per minuut.
+
+PROBLEMEN MET RUDAK
+
+Tijdens de testfase van OSCAR 13 in juli bleek
+dat er problemen waren met het RUDAK packet
+radio systeem. Het opstarten van de
+programmatuur in RUDAK bleek niet goed te
+verlopen. Er is nu voorlopig een noodprocedure
+in bedrijf, terwijl de kommando stations
+proberen de fout te herstellen.
+
+FREKWENTIE-AFWIJKINGEN
+
+Volgens informatie van AMSAT-NA wijken de
+uiteindelijke frekwenties van OSCAR 13 iets af
+van de oorspronkelijk gepubliceerde
+frekwenties. De afwijkingen varieren van 2 tot
+21 kHz. Bij het mode B relais is de som van de
+uplink en downlink frekwenties 581,398 MHz,
+zonder rekening te houden met doppler
+verschuiving. Dit betekent dat bij de downlink
+frekwentie 145,890 MHz de uplink frekwentie
+435,508 MHz hoort. Bij het mode J relais is de
+som van uplink en downlink frekwenties 580,413
+MHz en bij mode L is deze som 1705,356 MHz.
+Bij mode L is de afwijking dus 21 kHz.
+
+STAND ANTENNES
+
+Gebruikers van mode L moeten rekening houden
+met de stand van de satelliet antennes ten
+opzichte van de stations op de aarde. De
+openingshoek van de mode L antennes is vrij
+klein, dus als de stand van de satelliet niet
+zeer gunstig is, kunnen de signalen al gauw
+erg zwak worden. Het is natuurlijk altijd van
+belang goede, liefst rechtsom cirkulair
+gepolariseerde, antennes te gebruiken, terwijl
+een goede voorversterker eigenlijk ook
+onmisbaar is.
+
+DISCUSSIES OVER MODE J
+
+Er lopen nu in enkele landen diskussies over
+het gebruik van mode J van OSCAR 13. Eigenlijk
+is mode J niet bedoeld voor stations in
+westerse landen. Mode J moet stations in landen
+waar het moeilijk is aan mode L apparatuur te
+komen, een mogelijkheid bieden deel te nemen
+aan mode L aktiviteiten. Sommige amateurs
+storen zich aan de gekozen uplink frekwenties
+van mode J. Alvorens definitieve beslissingen
+te nemen over het verdere gebruik van mode J,
+wil AMSAT-DL tot 10 september kommentaren
+verzamelen van betrokkenen. (Bedankt, Nico!).
+
+HAART BALLONVAARTEN
+
+In 1987 hebben enkele leden van de Britse
+amateursatelliet organisatie AMSAT-UK twee
+lineaire relaisstations gebouwd. Zij wilden
+zodoende ervaring opdoen met het bouwen van
+dit soort apparatuur, als voorbereiding op het
+ontwikkelen en bouwen van delen van toekomstige
+amateursatellieten. Om deze relaisstations
+onder realistische omstandigheden te testen,
+wilde men ze in bedrijf stellen tijdens enkele
+ballonvaarten boven Engeland. Het is hen tot
+nu toe echter niet gelukt een machtiging
+voor deze experimenten te verkrijgen.
+
+HAMSAT wil onze Britse collega's de helpende
+hand bieden en heeft daarom aangeboden de
+lineaire relaisstations te testen tijdens
+enkele ballonvaarten boven Nederland.
+Het eerste relaisstation, HAART 1, kan
+waarschijnlijk al in augustus en september
+in bedrijf worden gesteld tijdens enkele
+ballonvaarten met een hete-lucht ballon.
+
+WAT IS HAART?
+
+HAART 1 (High Altitude Amateur Radio
+Transponder 1) bestaat uit een lineair mode B
+relaisstation dat signalen relayeert van 70 cm
+naar 2 m, en een bakenzender op 2 m. De uplink
+frekwenties zitten tussen 435,040 en 435,050
+MHz en de downlink frekwenties tussen 145,840
+en 145,850 MHz. Het uitgangsvermogen is
+maximaal 300 mW. Het baken zendt telegrafie
+(CW) op 145,852 MHz met 60 mW uitgangsvermogen.
+In de huidige eerste versie zendt het baken
+nog geen telemetrie gegevens uit maar wel de
+stations identifikatie. De apparatuur wordt
+gevoed vanuit een batterij. Zodra de
+batterijspanning onder 9 V komt, schakelt het
+systeem zichzelf automatisch uit. De vertikaal
+gepolariseerde antennes voor uplink en downlink
+zijn kwart-golf stralers. De analoge
+schakelingen van HAART 1 zijn gebouwd door
+David, G4CUO, en de digitale schakelingen door
+Richard, G3RWL.
+
+ROEPNAAM
+
+HAART 1 zal gebruik maken van de roepnaam van
+de piloot van de Nederlandse ballon: PE0THZ.
+Elke 60 seconden zal het baken de volgende
+identifikatie uitzenden: 'HI HI Test de PE0THZ
+PE0THZ'. Daarna volgt een nummer, te beginnen
+met '001'. Omdat het systeem aan het begin van
+de ballonvaart wordt ingeschakeld en dus ook
+ge-reset, kan men aan dit nummer steeds zien
+hoeveel minuten de vaart al heeft geduurd.
+Na de vaart kan daarmee eventueel de positie
+en hoogte worden gerekonstrueerd. Bij latere
+vaarten kan een 8-kanaals telemetrie systeem
+aan HAART 1 worden toegevoegd, waarmee
+gegevens over spanningen, stromen, temperaturen
+en dergelijke kunnen worden uitgezonden.
+
+Zodra het HAART 1 systeem is aangekomen in
+Nederland zal worden bekeken of het nog
+mogelijk is op korte termijn een ballonvaart
+uit te voeren. Dit zal dan binnen enkele dagen
+moeten gebeuren, omdat de ballon, PH-SIM, op
+19 augustus naar Bristol in Engeland vertrekt
+voor deelname aan Europese ballonvaart
+kampioenschappen. De volgende mogelijkheid
+voor een ballonvaart met HAART 1 komt daarna
+pas in de loop van september. Een en ander is
+dan weer afhankelijk van de beschikbaarheid
+van de ballon en van de weersomstandigheden.
+We houden iedereen op de hoogte.
+
+DUUR EN STARTPLAATS
+
+De vaarten zullen gewoonlijk zo'n 1 tot 2 uur
+duren, een enkele keer misschien langer. De
+ballon kan worden opgelaten op verscheidene
+startplaatsen, maar het meest waarschijnlijk
+is een start vanuit Strijbeek bij Breda. Omdat
+er meestal een westelijke of zuidwestelijke
+wind is, zal de ballon dan over Noord-Brabant
+of naar het midden van van het land varen.
+De grootste hoogte, die tijdens de vaart wordt
+bereikt, zal meestal tussen 1200 en 3000
+meter liggen.
+
+Alle daartoe gemachtigde radio-amateurs worden
+uitgenodigd deel te nemen aan de experimenten
+met het mode B relais van HAART 1, zodra dat in
+bedrijf is. Er zal slechts zeer weinig uplink
+vermogen nodig zijn voor het maken van
+verbindingen via HAART 1. Men wordt verzocht
+uitsluitend SSB of CW toe te passen. De
+gebruikers en meeluisteraars worden uitgenodigd
+rapporten over het gedrag van HAART 1 door te
+geven aan HAMSAT of aan AMSAT-UK. Zodra nadere
+informatie beschikbaar is over de uit te voeren
+ballonvaarten, zal die zo snel mogelijk worden
+doorgegeven. (met dank aan Nico, PA0DLO).
+
+NEDERLANDS KAMPIOENSCHAP VOSSEJAGEN
+
+Ook dit jaar kunt U weer deelnemen aan het
+Nederlands Kampioenschap Vossejagen en wel in
+de radio amateur banden 80 en 2 meter. En ook
+dit jaar kunt U gerust de familie meenemen,
+want de omgeving leent zich uitstekend voor
+wandelen, ravotten of bezoek aan bv. het
+Afrika Museum of de Heilige Land Stichting,
+voor elk wat wils dus.
+
+De organisatie van deze kampioensjacht is
+dit jaar in handen van de afdeling Nijmegen
+(A 35) en als ook het weer zoals voorgaande
+jaren is, zien ze het daar wel zitten.
+Hoewel... niks zitten, want de deelnemers
+dienen buiten de vossen ook een baken te
+peilen en diverse spoetniks op te sporen.
+
+GEGEVENS VOOR DEELNEMERS
+
+De start vindt plaats op de parkeerplaats
+van hotel 'Erica', aan de Molenbosweg te
+Berg en Dal (bij Nijmegen). Er wordt om
+11 uur gestart. Inschrijven kan vanaf
+10 uur. De startbijdrage is f2,50.
+Om 13 uur is er een pauze. Tenslotte
+worden rond 17 uur de prijzen uitgereikt.
+
+Voor jagers die de startplaats niet weten te
+vinden is er een inpraat mogelijk via de
+repeater van Nijmegen (R 6). Wilt U meer
+weten, bel dan even met Wim de Winkel, PE1FIB,
+tel. 08895-41748, of met Hans Luidens, NL8800,
+tel. 05716-577.
+
+TENTOONSTELLING & SEMINAR
+
+'Computers in Onderwijs' is het sluitstuk van
+het onderwijsdeel uit het INformatica
+Stimulerings Plan (INSP). De ministers van
+Onderwijs en Wetenschappen en Economische Zaken
+zijn de initiatiefnemers van dit evenement, dat
+zal plaatsvinden in de Irenehal van het
+Jaarbeurs complex te Utrecht. Het bestaat uit
+twee delen: een tentoonstelling (van 30-11 t/m
+2-12-1988), en een seminar (op 1 december).
+
+TENTOONSTELLING
+
+Hierop staan de ontwikkelingen in het
+Nederlandse onderwijs op het gebied van
+informatie technologie centraal, zoals die met
+name uit INSP projecten zijn voortgekomen.
+De tentoonstelling richt zich vooral op
+leerkrachten, oudercommissies, schoolbesturen,
+medezeggenschaps raden, personeel van
+verzorgings instellingen en beleidsmakers.
+
+SEMINAR
+
+Gedurende het seminar zal voor een publiek van
+politici, onderwijs specialisten, onderzoekers
+etc. de stand van zaken met betrekking tot
+onderwijs en informatie technologie worden
+opgemaakt en zullen de beleids aspecten vanuit
+een toekomstgerichte invalshoek worden belicht
+en ter discussie gebracht.
+
+De entree voor de tentoonstelling bedraagt f5
+per persoon per dag, en f125 voor het seminar.
+Nadere inlichtingen zijn te verkrijgen bij drs.
+de Waard, Bakkenist, Spits en Co Organisatie
+Adviseurs, Den Haag, tel. 070 - 763666.

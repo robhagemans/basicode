@@ -1,0 +1,392 @@
+293, maa 12 feb '90
+
+BEELDKRANT SPECIAL: HOBBYSCOOP BBS
+
+In de Beeldkranten 159 en 160
+(juni/juli 1988) schreef Pieter
+Vijlbrief een introductie- cursus over
+het contact leggen met de Fido NOS
+databank. Aangezien er sindsdien veel
+is veranderd in ons Bulletin Board,
+bleek er behoefte te bestaan aan een
+nieuwe handleiding, die met name
+bedoeld is voor beginners op het gebied
+van datacommunicatie. Pieter kweet zich
+opnieuw voortreffelijk van zijn taak...
+
+BELLEN MET FIDO NOS
+
+Een HANDLEIDING voor nieuwe gebruikers.
+
+Over de gehele wereld bestaat een groot
+netwerk van met elkaar samenwerkende
+Computer Databanken, speciaal voor
+Hobbyisten. Het is het Fido-netwerk.
+Over het algemeen is dit netwerk
+bedoeld voor leden van grote Computer
+verenigingen. In Nederland is dat de
+Hobby Computer Club (HCC), met het
+hoofdkantoor in Houten. Over het hele
+land zijn Fido- knooppunten verspreid,
+zodat iedereen er wel eentje in zijn of
+haar buurt heeft. Dat spaart
+telefoonkosten (basistarief gebied).
+Alleen als HCC-lid heeft men daar
+toegang. Een uitzondering vormt het
+Fido-knooppunt (node) nummer 2:500/202
+dat beheerd wordt door NOS Hobbyscoop
+en gevestigd is in Hilversum.
+
+VOOR WIE TOEGANKELIJK?
+
+De NOS Fido is toegankelijk voor
+iedereen, die in computers,
+elektronica, radio en radio-
+amateurisme is geinteresseerd, echter
+niet voor commercieel gebruik. Men
+behoeft geen lid te zijn van een
+bepaalde vereniging. Dit verhaal wil
+mensen, die ook wel eens met de NOS
+Fido willen bellen, helpen met een
+beknopte handleiding.
+
+MOGELIJKHEDEN
+
+Men kan in het NOS Fido berichten lezen
+over Hobbyscoop, computers en radio
+amateurisme en er ook zelf berichten in
+plaatsen, dus ook vragen stellen, die
+dan door ter zake kundigen kunnen
+worden beantwoord. Ook gemiste Basicode
+programma's en andere computer
+programma's kunnen worden
+binnengehaald. De nieuwste gegevens
+over satellieten en ruimtevaart zijn er
+in te vinden. De laatste Beeldkranten
+staan erin. Kortom, het is een ware
+vraagbaak.
+
+BENODIGDE APPARATUUR
+
+Natuurlijk moet men over een computer
+beschikken die met behulp van een z.g.
+modem met de telefoonlijn kan worden
+verbonden. Hiervoor kunnen we alleen
+algemene richtlijnen geven. Het modem
+moet zijn van het type V21, V22, V22bis
+of V23. Dat wil zeggen, het moet kunnen
+werken met 300 Baud, 1200 Baud, 2400
+Baud of 1200/75 Baud (de z.g. Viditel
+mode) en de computer moet ook daarmee
+overweg kunnen en verder werken met 8
+databits, geen pariteit (No Parity) en
+1 stopbit. Dat is instelbaar met het in
+de computer geladen communicatie
+programma. Het modem staat in de oproep
+stand (originate).
+
+NUTTIGE EXTRA'S
+
+Men kan alleen al met het toetsenbord
+en het scherm verbinding maken met
+Fido, maar het is een groot voordeel,
+als het communicatie- programma de
+mogelijkheid heeft om datafiles via een
+'protocol' te kunnen ontvangen en/of
+verzenden. Dat kan zijn: Kermit,
+Xmodem, XCmodem, Zmodem, Telink, maar
+ook in gewoon ASCII. De eerstgenoemden
+beschikken over een foutcontrole, zodat
+men verzekerd is van de goede
+overdracht van de files. Hiermede kan
+men o.a. ook programma's binnenhalen,
+waaronder ook de in de laatste jaren
+uitgezonden Basicode programma's.
+
+VERBINDING MAKEN
+
+De NOS Fido is dagelijks bereikbaar (in
+lokale tijd) van 07u00-08u00, van 09u00
+tot 12u30, van 13u30 tot 18u00 en van
+19u00 tot 01u00. Op de andere tijden,
+die o.a. bedoeld zijn voor service
+doeleinden, is dit knooppunt niet
+bereikbaar. Het telefoonnummer is 035
+(Hilversum) 45395. Als het nummer vrij
+is hoort men kort daarop een fluittoon
+en zoekt het Fido modem kontakt met uw
+modem, dat automatisch of met de hand
+dient te worden ingeschakeld. Het Fido
+modem zoekt zelf uit op welke snelheid
+uw modem werkt, en zal zich automatisch
+daarop instellen.
+
+INLOGGEN
+
+Als de modems elkaar hebben gevonden,
+verschijnt op uw scherm het inlog menu:
+een eenvoudig getekend hondje, omringd
+door gegevens betreffende het
+knooppunt. Dan wordt gevraagd naar uw
+voornaam (First name) en daarna naar uw
+achternaam (Last name). Geef dan elke
+keer op dezelfde wijze uw naam op.
+Voorbeelden staan op het introductie
+scherm. Hoofd- en kleine letters zijn
+niet belangrijk. Andere kleine
+verschillen worden door de computer wel
+als verschillende namen gezien. Zo is
+Gerrit.Jan iemand anders dan
+Gerrit-Jan. Wanneer uw voor- of
+achternaam uit meerdere delen bestaat,
+gebruik dan altijd de punt. Ook in
+bijvoorbeeld: van.der.Grift of
+Karelsen.Pietersen, enz.
+
+EERSTE VERBINDING
+
+Is het uw eerste verbinding met de NOS
+Fido, dan wordt u hartelijk welkom
+geheten en om een (zelf bedacht)
+Password gevraagd. Onthoud dat dan wel
+goed, want elke keer dat u weer inlogt,
+moet u hetzelfde Password opgeven! Dan
+wordt de eerste keer ook uw woonplaats
+gevraagd en daarna krijgt u toegang tot
+de databank, de eerste maal voor 20
+minuten, alle volgende malen een half
+uur (met een maximum van 60 minuten per
+24 uur). Men krijgt altijd een
+waarschuwing als de tijd dreigt op te
+raken. Na enkele berichtjes, o.a. een
+wetje van Murphy en een 'post-lijstje',
+volgt:
+
+HOOFDMENU
+
+De gebieden van de databank heten
+secties, het hoofdgebied heet dan ook:
+MAIN Section. U kunt via een menu
+kiezen uit:
+M)sg-Section, het berichten gebied,
+F)ile-section, het programma en
+'file'gebied,
+B)ulletins, voor de algemene berichten,
+S)tatistics, informatie betreffende
+uzelf,
+C)hange, mogelijkheid de scherm
+presentatie te veranderen of uw
+password te wijzigen,
+L)ist-Callers, een lijst van inloggers,
+V)ersion, de gebruikte versie van Fido,
+G)oodbye, om Fido te verlaten.
+
+U kiest door de eerste letter van het
+commando in te tikken, gevolgd door een
+druk op de <return>- of <enter>-toets.
+
+BERICHTENGEBIED
+
+Kies de eerste keer M, het berichten
+gebied. En dan A van A)rea-Change. U
+krijgt dan een overzicht van de voor u
+bereikbare berichten gebieden:
+1) Hobbyscoop radio berichten gebied,
+2) Radio Netherlands message area,
+3) Berichten van en aan de Sysop (de
+Systeem beheerder).
+Gebied 2 is speciaal voor Engelstalige
+inloggers en wordt bijgehouden door
+Radio Nederland Wereldomroep (Jonathan
+Marks, eindredakteur van Media
+Networks).
+
+LEZEN VAN BERICHTEN
+
+Kies 1, dan komt u in het Hobbyscoop
+berichten gebied. Het aantal berichten
+dat dit gebied bevat en het nummer van
+het laatste bericht wordt vermeld,
+evenals het laatste bericht dat u (een
+vorige keer) gelezen heeft. Dan zijn er
+een paar mogelijkheden: met S)earch kan
+naar een bepaald onderwerp worden
+gezocht, met L)ist worden alle
+onderwerpen getoond. Met een getal, het
+nummer van het bericht, kan een bepaald
+bericht worden gelezen, met N)ext het
+volgende en met P)revious het vorige
+bericht. Met C)ontinuous volgen de
+berichten elkaar zonder rustpauze op
+(te pauzeren met CTRL-S). Met
+A)rea-Change gevolgd door een spatie en
+een getal komt men in een ander
+berichtengebied (2 of 3). Met E)nter is
+men in staat een bericht naar Fido te
+sturen. Met G)oodbye sluit men de
+sessie af of met M)ain-menu gaat men
+terug naar het Hoofdmenu om verder in
+Fido rond te kijken. Denk erom, dat
+alle commando-letters en -cijfers door
+een <return> (of <enter>) moeten worden
+gevolgd. Het lijkt ingewikkeld, maar al
+doende leert men en steeds verschijnt
+de commando-lijst weer in beeld als
+geheugensteuntje.
+
+KOPPELEN VAN COMMANDO'S
+
+Om sneller te werken, kan men op de
+commandoregel ook een paar commando's
+achter elkaar plaatsen, gescheiden door
+een spatie of een puntkomma. Het geheel
+wordt dan afgesloten door een druk op
+de <return>-toets. Voorbeeld: vanuit
+het hoofdmenu wil men naar berichten
+gebied 3 gaan. Dan tikt men in: m a 3
+<return>. De commando's worden dan
+achter elkaar uitgevoerd: M)sg-Section,
+A)rea-Change en nummer van het
+berichten gebied. Men is dan direct
+waar men wezen wil: in berichten gebied
+nummer 3, de berichten van en aan de
+Sysop.
+
+PLAATSEN VAN BERICHTEN IN FIDO
+
+Na E)nter en <return> kan men een
+bericht in Fido zetten. In het
+adres-gebied staat eerst de afzender
+(de eigen naam) en wordt gevraagd naar
+de geadresseerde. Hier vult men de naam
+in (nauwkeurig spellen!), men kan ook
+All invullen, als het een algemeen
+bericht betreft en daarna het
+onderwerp, gevolgd door het bericht
+zelf, afgesloten door een lege regel en
+S van Save, of, als men wat wil
+verbeteren, E van E)dit. (Let wel, u
+ziet nu een ander commando lijstje,
+daarin heeft de E deze betekenis). Men
+kan dan regelsgewijs verbeteringen
+aanbrengen door eerst het regelnummer
+op te geven, gevolgd door het
+'foutieve' stukje en de verbetering
+(als erom gevraagd wordt). Ik ga er in
+het vervolg van uit, dat u steeds na
+een commando afsluit met <return> (of
+<enter>, afhankelijk van uw
+toetsenbord). Als het bericht goed is
+geworden, vergeet het dan niet weg te
+schrijven met S)ave! Of, als u het
+bericht toch niet wilt verzenden,
+verwijder het dan met A)bort, dan
+bewaart Fido het bericht niet.
+
+HELP-FUNKTIE
+
+Begrijpelijkerwijze duizelt het u nu
+een beetje. Maar gelukkig is er een
+help-funktie aanwezig. Als u een ?
+(natuurlijk gevolgd door <return>)
+intypt na de commandolijst van een
+bepaalde sectie, dan krijgt u een
+toelichting op het scherm betreffende
+de sectie waarin u zich op dat moment
+bevindt. Ook kunt u bij een bepaald
+commando specifieke hulp vragen, door
+de eerste letter van dat commando in te
+tikken gevolgd door een vraagteken.
+Wanneer u bv. wilt weten wat het
+C)hange commando in het hoofdmenu doet,
+dan tikt u in: C? <return>.
+
+FILE-SECTIE (BESTANDENGEBIED)
+
+U kunt hier naar toe vanuit het
+hoofdmenu. Vanuit het berichten gebied
+moet u met M)ain-Menu eerst terug naar
+het hoofdmenu. Daarna komt u met
+F)ile-Section in het bestanden gebied.
+U weet toch nog wel, dat we bij de
+commando's alleen de eerste letter, die
+voor het haakje, moeten gebruiken
+(jawel, gevolgd door een <enter> of
+<return>). Dus vanuit het hoofdmenu
+geeft u: F en u komt in het
+File-gebied. met A krijgt u een
+overzicht van de voor u toegankelijke
+bestands gebieden. Dat zijn:
+1 Hobbyscoop tekst files (Beeldkranten)
+2 Radio Netherlands files (in het
+Engels)
+3 Basicode programma gebied (v.a. 1986)
+5 Algemeen Up- en Download gebied
+6 Wekelijkse bezettings rapportage van
+deze Fido
+7 HCC Nieuwsbrief
+9 Files voor luister- en zendamateurs
+
+FILE-SECTIE COMMANDO'S
+
+F)iles, geeft een lijst van bestanden
+D)ownload, vraagt een bestand op
+T)ype, brengt een bestand op het scherm
+A, G en M zijn oude bekenden, (wilt u
+weer terug naar het Hobbyscoop
+berichten gebied, dan geeft u dus: m m
+a 1 <return>). U kunt dus met T het
+bestand bekijken (met control en C
+-tegelijk- stopt u het uittypen). Als u
+het bestand (of het programma) zelf
+wilt bezitten, kunt u het D)ownloaden.
+
+DOWNLOADEN
+
+Over het downloaden hebben we het in
+het begin al even gehad. Uw
+communicatie programma geeft hier de
+mogelijkheden aan. Beschikt u over een
+'protocol', dan geeft u dit aan met een
+letter volgens het op het scherm
+getoonde commando- lijstje. U wilt
+bijvoorbeeld het bestand DOWNLOAD.DOC
+uit het Hobbyscoop file-gebied
+binnenhalen en u beschikt over het
+Xmodem protocol, dan gaat u eerst naar
+file area nummer 3 en geeft dan: d x
+download.doc <return>. (Let hierbij
+goed op de juiste benaming). Fido meldt
+dan, dat het gereed is om het gevraagde
+programma naar u volgens het Xmodem
+protocol te verzenden. U moet dan uw
+eigen communicatie programma ook in de
+Xmodem ontvangstand zetten, het zal u
+dan vragen waar het bestand moet worden
+heengestuurd en daarna begint, als
+alles goed is, de overzending van het
+bestand. Na enige tijd is het gereed en
+heeft u het gevraagde in uw bezit.
+Hetzelfde geldt natuurlijk ook voor de
+andere protocollen, die Fido aankan.
+
+TER AFSLUITING
+
+Het bovenstaande is een beknopte
+handleiding om gebruik te kunnen maken
+van het NOS Hobbyscoop Fido knooppunt.
+In de bestanden en Helpfiles (?), die
+in dit Fido zijn opgenomen, kunt u nog
+meer bijzonderheden vinden. Maak er een
+verstandig en nuttig gebruik van en
+bovenal: doe het netjes en met overleg.
+De Sysop zal onverbiddelijk alle niet
+passende berichten of opmerkingen
+verwijderen. Het is druk op dit
+knooppunt. Heb geduld, draai het nummer
+met korte tussenpozen een aantal malen
+als u 'in gesprek' krijgt. U zult er
+dan zeker in komen. Wij wensen u veel
+aangenaam Fido gebruik. (Bedankt,
+Pieter!)
+

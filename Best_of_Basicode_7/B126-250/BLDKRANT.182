@@ -1,0 +1,269 @@
+182, woe 9 nov '88
+
+RADIO SPOETNIKS 1 EN 2
+
+Op 26 oktober vierden RS1 en RS2 hun tiende
+verjaardag. Beide satellieten, gebouwd door
+Russische radio amateurs en studenten, zijn na
+hun lancering slechts enkele maanden echt
+operationeel geweest. Toch zendt RS1 nog steeds
+bakensignalen uit bij 29,401 MHz als hij zich
+in het zonlicht bevindt. De ervaring die werd
+opgedaan met RS1 en RS2 heeft geleid tot de
+bouw van ISKRA 2 en 3, RS3 tot en met RS8, en
+RS10/11. Momenteel worden RS12 en 13 al weer
+gebouwd. Uit recente informatie van UA3CR
+blijkt dat er nog een experimenteel
+instrumenten pakket, met de aanduiding RS1-N,
+was ondergebracht in de satelliet behuizing
+van RS1. Dit pakket RS1-N, dat was gebouwd
+door studenten van het Power Institute van
+Moskou, werd suksesvol gescheiden van RS1 maar
+aanvankelijk wilden de antennes en zonnepanelen
+niet uitklappen. Pas na een maand lukte het de
+antennes te laten uitklappen. Daarna zond
+RS1-N gedurende 11 uur telemetrie signalen uit
+totdat de batterij ontladen was.
+De zonnepanelen zijn nooit uitgeklapt.
+
+UoSAT-OSCAR 11
+
+In oktober zijn experimenten gestart met de
+drie Geigerteller buizen in OSCAR 11. Deze
+buizen, die deel uitmaken van het Particle/
+Wave Experiment, zijn sinds de lancering
+nauwelijks ingeschakeld geweest. De
+hoogspannings generators in de buizen blijken
+namelijk meer stroom te trekken bij lagere
+temperaturen. Omdat de gemiddelde temperaturen
+in de satelliet na de lancering lager werden
+dan verwacht, liep de stroom op en schakelde
+de stroombegrenzings schakeling de
+Geigerbuizen uit. Nu is men begonnen met
+experimenten, waarbij de Geigerbuis voeding
+van buis A onder besturing van de boordcomputer
+steeds weer wordt ingeschakeld na het
+automatisch uitschakelen. Omdat de temperatuur
+daardoor hoger wordt, neemt de stroom af en wil
+de buis wel in bedrijf blijven. De tests met de
+buizen B en C zijn nog niet zo suksesvol maar
+de experimenten worden voortgezet.
+
+AMSAT-OSCAR 13
+
+Het mode S baken is ingeschakeld van mean
+anomaly phase 195 tot en met 199, dus tijdens
+mode L bedrijf. Het mode S relais station komt
+ook in bedrijf van phase 200 tot en met 209,
+dus in de periode waarin ook mode B
+ingeschakeld is. De stations die nu
+experimenteren met mode S krijgen de indruk dat
+ongeveer 10 dB meer uplink vermogen nodig is
+dan men verwachtte. Het is nog niet duidelijk
+of dit veroorzaakt wordt door een defekt in
+het relais. Er wordt verder ge-experimenteerd
+met het relais.
+
+MICROSATS
+
+De bouw van de vier kleine MicroSats in Boulder
+in de USA vordert goed. Onlangs uitgevoerde
+vibratie- en schud- tests van een prototype
+zijn zeer geslaagd. Er wordt verwacht dat deze
+nieuwe amateur satellieten samen met UoSAT D
+en E kunnen worden gelanceerd in juni 1989 met
+een ARIANE 3. Twee van deze MicroSats zullen
+een packet radio mailbox aan boord hebben, die
+gebruik maakt van W0RLI/WA7MBL programmatuur.
+Het protocol is gewoon AX.25 en normale TNC's
+kunnen worden gebruikt, in combinatie met een
+PSK-modem.
+
+FREKWENTIES
+
+De volgende frekwenties zijn afgesproken voor
+de vier MicroSats:
+MicroSat A: deze PACSAT van AMSAT-NA en TAPR
+zal gebruik maken van de downlink frekwentie
+437,050 MHz, terwijl de uplink frekwenties
+zullen zijn: 145,900, 145,920, 145,940 en
+145,960 MHz.
+MicroSat B: DOVE (Digital Orbiting Voice
+Encoder) van BRAMSAT en AMSAT-NA zal zijn
+Digitalker signalen uitzenden tussen 145,970
+en 145,975 MHz.
+MicroSat C: deze satelliet van het Weber State
+College in Utah zal primair CCD videobeelden
+uitzenden in AX.25 UI-frames of HDLC-frames op
+437,100 MHz. De satelliet kan eventueel ook
+als PACSAT funktioneren.
+MicroSat D: LU-SAT van AMSAT-LU is vrijwel
+identiek aan de PACSAT van AMSAT-NA. Zijn
+downlink frekwentie zal zijn: 437,150 MHz en
+zijn uplink frekwenties: 145,840, 145,860,
+145,880 en 145,900 MHz.
+
+AMATEUR RADIO VANUIT MIR
+
+Vladimir Titov, de kommandant van de huidige
+bemanning in MIR, is ook enthousiast geworden
+over de geplande amateur radio aktiviteiten
+vanuit dit Russische ruimtestation. Daarom zal
+niet alleen Mousa Manarov maar ook Vladimir
+Titov het amateurstation in de 2 meter band
+in bedrijf gaan stellen. Omdat Vladimir
+kommandant is, zal hij de roepnaam U1MIR gaan
+gebruiken, terwijl Mousa aktief zal zijn onder
+de roepnaam U2MIR.
+
+De test- en trainings-periode voor Vladimir en
+Mousa vindt plaats in de periode van 8 tot
+14 november. Afhankelijk van de resultaten
+wordt besloten wanneer en hoe de verbindingen
+in de 2 meter band zullen worden gemaakt.
+In principe is het de bedoeling dat de
+aktiviteiten starten op 19 november en dat het
+station alleen tijdens de weekends gebruikt
+zal worden gedurende de vrije uren van de twee
+kosmonauten. Men verwacht dat de aktiviteiten
+wel voortgezet kunnen worden na de aankomst
+van drie extra kosmonauten met SOYUZ TM-7 tegen
+eind november. Men moet er echter wel rekening
+mee houden dat alle kosmonauten het in december
+erg druk zullen krijgen met het uitvoeren van
+een reeks nieuwe experimenten aan boord van het
+ruimtestation MIR.
+
+De FM amateur zendontvanger in MIR heeft een
+frekwentie bereik van 145,500 tot 145,600 MHz.
+U1MIR en U2MIR zullen aktief zijn op de
+downlink frekwentie 145,550 MHz. Zij luisteren
+niet op hun eigen zendfrekwentie. De uplink
+frekwenties, waarop zij gewoonlijk zullen
+luisteren, zijn 145,525 en 145,575 MHz.
+(Met dank aan Nico Janssen, PA0DLO)
+
+DAG VOOR DE AMATEUR 1988
+
+De Veron, de Vereniging voor Experimenteel
+Radio Onderzoek in Nederland, organiseert ook
+dit jaar voor radio zendamateurs, luister
+amateurs en overige belangstellenden de Dag
+voor de Amateur/Amrato in het congres centrum
+en recreatiepark 'Flevohof' in Biddinghuizen,
+nabij Dronten in de provincie Flevoland.
+Het evenement wordt gehouden op zaterdag 12
+november van 09.00 tot 17.00 uur.
+
+Op de Dag voor de Amateur worden lezingen en
+demonstraties op het gebied van het radio
+zendamateurisme gegeven en Flevohof is op deze
+dag het ontmoetingspunt voor Nederlandse
+radiozend- en luister amateurs, die elkaar
+normaal gesproken alleen via de radio
+zendontvangers horen. Ruim dertienduizend
+mensen beoefenen in Nederland de zendhobby.
+Enkele duizenden van hen komen volgens de
+verwachting naar de Flevohof.
+
+INFORMATIE
+
+De Dag voor de Amateur 1988 biedt ook
+informatie voor de bezoekers op
+verschillende terreinen.
+Zo worden er lezingen gegeven over:
+- Packet Radio, een manier om computergegevens
+via de amateurradio van de ene naar de andere
+radiozendamateur te versturen. Het gaat daarbij
+om vragen als: hoe ziet de toekomst van het
+Packet Radio Netwerk in Nederland eruit en wat
+zijn daarvan de mogelijkheden?
+- HF antennes, die gebruikt worden op de
+korte golf amateurbanden.
+- Facsimile, het verzenden van plaatjes en
+tekeningen.
+- Beginnende zendamateurs, deze kunnen voor
+hen bestemde informatie krijgen tijdens de
+lezing voor beginners.
+
+BIJENKOMSTEN GROEPEN
+
+Voor speciale groepen zend- en luister amateurs
+zijn aparte vergaderingen belegd. Voor bijv.
+mensen die graag op de hoge frequenties werken,
+de korte golf, de groep vrouwelijke
+zendamateurs en de luister amateurs.
+
+AMRATO
+
+In de Flevohof wordt tegelijkertijd de Amrato
+gehouden. Hier laten de de handelaren de
+nieuwste radio zend-ontvangers zien, verder
+randapparatuur, antennes en onderdelen.
+
+MORSE WEDSTRIJD
+
+Mensen die morse tekens 'verstaan' kunnen
+meedoen aan een vonkenboer wedstrijd. Morse
+tekens zijn korte en lange fluittoontjes
+waarmee informatie kan worden geseind.
+Degene die bij de hoogste snelheid van een
+reeks toontjes nog de tekst kan meeschrijven
+is de winnaar.
+
+RADIO CONTROLE DIENST
+
+De Radio Controle Dienst zal ook in de
+Flevohof aanwezig zijn voor het verstrekken
+van algemene informatie en technische adviezen.
+Tevens bestaat de mogelijkheid om apparatuur
+te laten meten en als nieuwe service van de
+RCD is aanmelding mogelijk voor de zendexamens
+van het voorjaar 1989.
+
+SERVICE BUREAU
+
+Het Veron Service Bureau zal de hele dag
+aanwezig zijn in het hoofdpaviljoen en het
+complete assortiment van artikelen voor de
+zend- en luister amateur zal verkrijgbaar zijn,
+waaronder handboeken, lesmateriaal, kaarten
+bouwpakketten en moeilijk verkrijgbare
+onderdelen.
+
+AFSCHEIDSCOLLEGE PROF VERHOEFF
+
+De hoogleraar J J Verhoeff (een in Nederland
+wijd en zijd bekende computer-prof) heeft
+onlangs met een geestige rede afscheid
+genomen van zijn studenten aan de Erasmus
+Universiteit in Rotterdam. In het auditorium
+waren ook vele bekenden van dhr. Verhoeff
+aanwezig, onder meer van de vroegere vereniging
+Teachip, waarvan hij voorzitter is geweest.
+
+Professor Verhoeff ging met pensioen. Maar met
+zijn laatste college gaf hij studenten en
+bekenden veel stof tot nadenken. Hoewel zijn
+rede over 'Fractals' ging: een wiskundige
+aangelegenheid, was het een aansporing van de
+spreker om na te denken over toekomst
+verwachtingen en voorspellingen aan de hand
+van statistieken. 'Zelden voorspelt men het
+weer goed, zelden ook komt de voorspelling
+van een politicus uit,' orakelde de professor.
+
+Hobbyscoop heeft de hand weten te leggen op
+1000 exemplaren van de slotrede van professor
+Verhoeff. Daarvan zijn er inmiddels al
+honderden verstuurd. We hebben er echter nog
+een paar over. Wie het wiskundig getinte, maar
+zeer geestige werkje alsnog wil hebben, zou
+even onderstaande bon moeten opsturen:
+
+----------------------
+NOS-RADIO - HOBBYSCOOP
+Lezing prof. Verhoeff
+Postbus 1200
+1200 BE Hilversum
+----------------------

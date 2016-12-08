@@ -1,0 +1,363 @@
+265, maa 06 nov '89
+
+TELETEKST DECODER VOOR DE PC
+
+Na het ontwikkelen van diverse Basicode
+interfaces voor de PC heeft men bij de
+firma Komfa te Soest niet stilgezeten:
+dit jonge elektronica- bedrijf heeft de
+afgelopen maanden gewerkt aan de
+ontwikkeling van een lowcost PC/XT/AT
+Teletekst Decoder. Doordat veel
+ontwikkelwerk in de vrije tijd is
+geschied, kon de verkoopprijs zeer
+scherp worden gesteld. Desondanks
+beschikt deze decoder over zeer veel
+mogelijkheden.
+
+Het blijkt mogelijk om met de Teletekst
+Decoder de Teletekst pagina's via uw
+computer op te roepen. Ook al hebt u
+reeds Teletekst op uw TV-toestel, dan
+nog is de aanschaf te overwegen,
+aangezien men de PC niet alleen passief
+maar ook aktief kan gebruiken en de
+decoder nieuwe mogelijkheden biedt.
+
+HARDWARE
+
+De interface is een externe kaart en
+behoeft dus niet in een slot van de PC
+te worden geplaatst. De bijgeleverde
+seriele kabel dient men bij de PC aan
+te sluiten op de RS232 poort; op
+aanvraag is ook een versie verkrijgbaar
+die via de (parallelle) printerpoort
+aan de PC kan worden gekoppeld.
+
+De interface kunt u op verschillende
+manieren op een TV-toestel aansluiten:
+
+A) Via de SCART-aansluiting.
+Hiermee brengt men het videosignaal via
+de Teletekst Decoder over naar de PC.
+Dit kan ook via een 6/8 polige
+AV-connector.
+
+B) Via een TV-tuner.
+Niet alle TV-toestellen hebben een
+SCART aansluiting, maar via een losse
+TV-tuner (bv. de Philips 22AV7300) zijn
+de TV-zenders te ontvangen en op een
+monitor te bekijken. Door
+tussenschakeling van de Teletekst
+Decoder kunnen de Teletekst pagina's
+worden opgeroepen.
+
+Een TV-toestel met SCART aansluiting
+biedt de meeste mogelijkheden.
+TV-beelden mengen met de Teletekst
+ondertiteling bijvoorbeeld, en deze
+vervolgens opnemen met een
+videorecorder. De opname op de
+videorecorder bevat dan beeld en
+ondertiteling tegelijk. Dit is zeer
+handig voor slechthorenden. Er bestaan
+echter nog andere mogelijkheden om
+Teletekst pagina's te manipuleren.
+
+SOFTWARE
+
+Voor de decoder is er een goed Public
+Domain programma dat bij de decoder
+wordt geleverd. Op de linkerzijde van
+het scherm krijgt men een menu met een
+opsomming van de kommando's, op de
+rechterzijde verschijnt de Teletekst
+pagina. Het Public Domain programma
+voorziet helaas niet in kleur.
+
+Er wordt hard gewerkt aan een eigen
+versie, die wel in kleuren zal voorzien
+en het hele beeldscherm vult. Dit
+programma is nog in ontwikkeling, en
+zal voorzien zijn van vele denkbare
+extra mogelijkheden.
+
+BASICODE PROGRAMMA'S INLEZEN
+
+Zeer bijzonder wordt Teletekst pagina
+420 van NOS-Hobbyscoop. Hier staat
+altijd een Basicode programma. Het ligt
+in de bedoeling dat men deze pagina als
+Telesoftware kan 'downloaden'. Het
+Basicode programma zal RUN-klaar
+afgeleverd worden met als extensie
+'.BAS'. Overtollige tekst wordt
+verwijderd en de (in GW-Basic)
+benodigde spaties toegevoegd. Met beide
+programma's kan men de Teletekst
+pagina's lezen, opslaan, bewerken en
+afdrukken.
+
+KOSTEN
+
+De verkoopprijs van Komfa zal f275
+bedragen, waarvoor men tevens de
+benodigde PD en eigen software gratis
+ontvangt. Bovendien kunnen Hobbyscoop
+luisteraars nog eens f25 korting
+krijgen wanneer gebruik wordt gemaakt
+van onderstaande knipuitbon. De prijs
+van een dergelijke decoder ligt
+doorgaans rond f350 tot f400. Hij wordt
+geleverd inclusief een seriele kabel;
+een SCART-kabel dient men zelf aan te
+schaffen. De voeding van de decoder is
+extern, hiervoor kan men een universele
+gestabiliseerde spannings adapter van
+12 Volt toepassen. Deze moet wel
+ongeveer 1 Ampere kunnen leveren. Een
+behuizing voor de decoder is tegen
+meerprijs leverbaar.
+
+DEMONSTRATIE OP HCC-DAGEN
+
+Aangezien het instrument nog maar net
+werkt en de software nog niet helemaal
+klaar is, moet de handleiding nog
+worden vervaardigd. Tijdens de komende
+HCC-dagen (op 24 en 25 november a.s.)
+verwacht men dat het pakket kompleet
+leverbaar is. Bovendien zal er dan een
+demonstratie van het pakket worden
+gegeven op een stand van de Computer
+Users Club (C.U.C.). Eventueel volgt er
+in de toekomst ook nog een MSX-versie.
+
+CORRECTIE OP PROGRAMMA 'VERSLAG'
+
+Op maandag 30 oktober j.l. werd het
+Basicode- programma 'Verslag' van Frans
+Verberkt uit Nijmegen uitgezonden.
+Hierin zaten o.a. twee bestandsroutines
+voor MSX computers, om de gegevens op
+diskette te kunnen opslaan en naderhand
+weer van schijf te kunnen inladen.
+
+Deze routines bleken echter niet
+kompleet te zijn, zoals Rini Kikkert,
+eindredacteur van de Basicode Corner in
+het tijdschrift 'C.U.C. Journaal', al
+snel bemerkte. MSX-bezitters dienen
+daarom onderstaande regels aan het
+programma toe te voegen:
+
+20205 CLOSE#1
+21205 CLOSE#1
+
+Bedankt, Rini!
+
+CHIPKAART-PROEF
+
+In Woerden zijn bij 170 winkels (van
+allerlei branches, ook supermarkten) in
+totaal 220 terminals (beeldschermen)
+geplaatst. Als de klant iets wil
+afrekenen, voert hij aan de toonbank
+zijn chipkaart met persoonlijke pincode
+in en krijgt dan te zien wat het
+artikel kost en of hij voldoende saldo
+op zijn bank- of girorekening heeft om
+te betalen. De privacy en veiligheid
+zijn voldoende gewaarborgd, volgens
+woordvoerder Enters.
+
+Bij de Postbank en bij een
+informatiekantoor in Woerden zijn
+verder twee ,,uitlees- terminals''
+geplaatst. Hierop kan de houder van de
+chipkaart in een enigszins afgeschermde
+omgeving meer bankgegevens opvragen.
+Voorlopig kan met de chipkaart geen
+geld bij de (Post-) bank worden
+opgenomen. Enters: ,,Die apparatuur
+wordt wel gemaakt, maar daarover
+bestaan ook nog geen internationale
+afspraken''.
+
+INITIATIEF
+
+Het initiatief voor de proef komt van
+het hoofdbedrijfsschap voor de
+detailhandel. Ter voorbereiding van de
+proef is vervolgens een stuurgroep
+opgericht waarin ook de andere
+betrokkenen zitten: de banken, de
+Postbank en de Consumentenbond. Als
+waarnemers zijn De Nederlandse Bank en
+het ministerie van economische zaken in
+de stuurgroep vertegenwoordigd.
+
+Tot nu toe hebben 8000 van de 35.000
+inwoners een kaart aangevraagd. De
+stuurgroep Chipkaart experiment rekent
+in totaal op maximaal 15.000
+deelnemers.
+
+LICHT OP GROEN
+
+Het heeft er nog om gespannen of de
+proef op 1 november kon beginnen. Pas
+enkele weken geleden heeft de
+stuurgroep het licht op groen gezet.
+
+De chipkaarten zijn van het Franse
+bedrijf Schlumberger Industries. De
+'Smartcard' bezit een leesgeheugen van
+4 kilobyte, een microprocessor en een
+transactie EPROM van 8 K. Dankzij
+slimme technieken kunnen er 5000
+betalingen in worden vastgelegd,
+tweemaal zoveel als verwacht was.
+(Bron: ANP)
+
+HP KOMT MET EERSTE EISA-PC
+
+HP heeft de eerste in de reeks EISA
+PC's het licht doen zien: de HP Vectra
+486, een krachtige 32-bit personal
+computer die prestaties levert op
+minicomputer niveau.
+
+De keuze voor EISA (Extended Industry
+Standard Architecture) betekent meer
+dan alleen een keuze voor een 32-bit
+centrale processor. De EISA PC heeft
+ook een 32-bit databus en 32-bit
+uitbreidings slots. Het hart van de
+machine bestaat uit de door Intel
+ontwikkelde 32-bit i486 processor. Deze
+processor beschikt over meer dan een
+miljoen transistoren waarin functies
+van verschillende PC subsystemen zijn
+geintegreerd, zoals een numerieke
+co-processor, 8 kilobyte aan
+cache-geheugen en een cache-
+controller. De 25 MHz microprocessor
+heeft een verwerkings snelheid van 15
+tot 20 mips (= miljoen instructies per
+seconde).
+
+OPTIMIZED ARCHITECTURE
+
+In de HP Vectra 486 PC wordt gebruik
+gemaakt van de HP Optimized
+Architecture, waarmee de EISA voordelen
+tot hun recht komen. Zo wordt met deze
+technologie o.a. de volle kloksnelheid
+benut. HP heeft hiervoor een memory
+management subsysteem ontwikkeld
+waarbij het interne geheugen kan worden
+vergroot van 2 naar 64 megabyte RAM.
+Communicatie tussen memory management
+subsysteem en centrale processor vindt
+plaats op 32-bit niveau.
+
+EXTRA'S
+
+De HP Vectra 486 beschikt over diverse
+extra's, zoals acht 32-bit EISA I/O
+slots, waarin allerlei uitbreidings
+kaarten kunnen worden geplaatst, en de
+mogelijkheid om harde schijven aan te
+sluiten met een kapaciteit van 108 tot
+670 megabyte. De EISA I/O slots hebben
+als voordeel dat uitbreidings kaarten
+van 16-bit en zelfs 8-bit ook kunnen
+worden gebruikt.
+
+FILOSOFIE
+
+Met de eerste van deze nieuwe serie
+personal computers onderstreept HP zijn
+filosofie ten aanzien van de
+PC-architectuur. Met EISA kiest HP voor
+een ontwikkeling die uitgaat van
+bestaande standaarden. Dat wil zeggen
+dat gebruikers gebruik kunnen maken van
+een ruim aanbod aan nieuwe
+toepassingen, terwijl de bestaande
+applicaties en randapparatuur bruikbaar
+blijven.
+
+'LEVEN OP ANDERE PLANETEN'
+
+Dat is de titel van de lezing die prof.
+dr. W. de Graaff morgenavond (7
+november) in het Artis Planetarium te
+Amsterdam zal verzorgen.
+
+Aan de hand van dia's zullen de
+mogelijkheden worden besproken voor het
+ontstaan en voortbestaan van
+buitenaardse levensvormen. Tijdens deze
+traditionele avondvoorstelling (altijd
+op de eerste dinsdag van de maand)
+wordt uiteraard ook aandacht besteed
+aan de sterrenhemel in de maand
+november.
+
+De avondvoorstelling begint om 20.00
+uur. De zaal is open vanaf 19.30 uur.
+De toegangsprijs bedraagt 8 gulden per
+persoon. Houders van een Artis-
+abonnement hebben gratis toegang.
+
+KNIPUITBON PRO-AUDIO
+
+Knip de onderstaande bon uit, plak hem
+op een briefkaart, schrijf daarop uw
+naam en adres, en stuur hem op. U
+ontvangt dan vanzelf een gratis
+proefexemplaar van het professionele
+tijdschrift PRO-AUDIO.
+
+------------------------------
+N.O.S.  -  H O B B Y S C O O P
+
+Aanvraag PRO-AUDIO Tijdschrift
+
+P o s t b u s      1200
+
+1200  BE  -  H I L V E R S U M
+------------------------------
+
+KNIPUITBON TELETEKST DECODER
+
++++++++++++++++++++++++++
++   NOS - HOBBYSCOOP    +
++ Inl teletekst decoder +
++                       +
++   Postbus  1200       +
++  1200  BE  HILVERSUM  +
++++++++++++++++++++++++++
+
+Met behulp van bovenstaande bon kunt u
+nadere informatie aanvragen over de
+Teletekst Decoder van Komfa. Bovendien
+geeft deze bon recht op f25 korting op
+de aanschafprijs wanneer u mocht
+besluiten om langs deze weg de decoder
+te bestellen. Op dit moment is de
+interface echter nog niet leverbaar.
+Daarom kunt u alleen aangeven dat u
+wilt voorintekenen. Uw naam komt dan
+terecht op een intekenlijst, waardoor
+uw bestelling t.z.t. met voorrang zal
+worden behandeld.
+
+In de Hobbyscoop uitzending van komende
+woensdag 8 november zullen we
+terugkomen op dit onderwerp.
+

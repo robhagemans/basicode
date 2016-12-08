@@ -1,0 +1,299 @@
+90, zon 13 sep '87
+
+PROEFSCHRIFT OVER BBS-EN
+
+Op 29 maart 1987 schreef Noam Kloos een
+'proefschrift' over BBS data communicatie
+bij gelegenheid van het behalen van
+een 'ere-doctoraat'. Hier volgt het
+eerste deel van de tekst van dit
+proefschrift, oorspronkelijk afkomstig
+van het BBS NEABBS (Tel.020-717666).
+Joop Engels dacht dat het zeer zeker
+ook interessant was voor Hobbyscoop
+luisteraars. Vandaar Noams column:
+
+VOORWOORD
+
+De sysops van Nederlands Eerste Bulletin
+Board Service hebben op 24 maart 1987
+aan mij de titel 'Doctor in BBS
+communicatie' verleend.
+Dit ere-doctoraat spoorde mij aan om
+eens de zaken in de BBS-wereld op een
+rijtje te zetten. In 1982 had ik met
+een collega het plan een computerservice
+te starten voor voornamelijk het midden-
+en kleinbedrijf.
+Geinspireerd door de opkomst van
+computerterminals bij de gemeente
+Amsterdam kreeg ik het idee een systeem
+aan te schaffen en via de telefoonlijnen
+de administratie en communicatie te verzorgen.
+Er was door mij al een uitgebreid plan
+gemaakt en dit viel bij mijn toenmalige
+chef erg in de smaak. Helaas is het bij
+een plan gebleven en is het er vanwege
+financiele redenen niets van gekomen.
+Wij zijn echter wel kontinu in de weer
+geweest om ons te orienteren op de computermarkt.
+Ik had mij al zeer verdiept in de computerkunde
+en informatie analyse. Twee jaar later
+kwam ik tijdens een bezoek aan de
+Personal Computer RAI in Amsterdam in
+aanraking met betaalbare computersystemen
+die echter toch voor onze plannen niet
+geschikt waren. Wel bracht dit mij
+direkt tot de aanschaf van een
+tekstverwerker/terminal waarmee ik mij
+toegang verschafte tot het computernetwerk
+van de Universiteit van Amsterdam.
+Kort daarop verscheen in het Parool
+een artikel over een bulletin board,
+bereikbaar voor iedereen met een 300
+baud modem. Dit bulletin board bleek
+NEABBS te zijn. Vanaf dit moment raakte
+ik bekend met het fenomeen bulletin board
+dat iets heel anders was dan het kille
+'mainframe gebruik' wat ik tot op dat
+moment alleen nog kende. NEABBS was de
+deur tot de nog steeds in ontwikkeling
+zijnde wereld van BBS communicatie.
+
+INLEIDING
+
+In dit geschrift probeer ik zo kompleet
+mogelijk het fenomeen BBS communicatie
+te behandelen. Dit is een voor Nederland
+nog vrij nieuw begrip en menigeen zal ook
+niet weten wat zich hierbij voor te stellen.
+Wie kan het nut van een BBS en de
+gebruiksmogelijkheden daarvan inzien?
+Ik moet helaas konkluderen dat er maar
+weinig mensen zijn die echt weten wat
+een BBS is en wat het verder nog voor
+ze kan betekenen. Dit vraagstuk is
+onlosmakelijk verbonden met de ideen
+die men over de computer heeft.
+De ervaren en doorgewinterde computer
+hobbyist zal zich regelmatig ergeren aan de
+professionele computer gebruikers die
+soms zelfs lyrisch zijn over hun manier
+van computergebruik, terwijl dit in de
+ogen van de computer hobbyist fantasieloos
+en dikwijls ook primitief blijkt te zijn.
+Het zal niemand dan ook verwonderen dat
+het in de BBS wereld precies zo is gesteld.
+Het is hier vooral de 'hacker' die zich
+ergert aan de onkunde van bedrijven en
+instellingen die van data communicatie
+gebruik maken en de leek zodoende ook
+voortdurend van verkeerde of onvolledige
+informatie voorzien. De hackers die zich
+openlijk manifesteren zijn jonge
+computerfanaten die wel weten wat je
+met data communicatie allemaal kunt uitrichten.
+Dit vaak tot ergernis van hoog geschoolde
+systeem beheerders van grote computer
+systemen die door zo'n hacker onaangenaam
+verrast worden door bijvoorbeeld een bericht
+dat de beveiliging van de computer zo lek is
+als een zeef. De hackers hebben een zeer
+grote invloed gehad op de explosieve
+groei van allerlei bulletin board systemen
+in allereerst Amerika en later ook
+Europa en Nederland.
+
+HET FENOMEEN BULLETIN BOARD
+
+Als men al bekend is met het fenomeen
+'bulletin board' dan kent men het vaak
+alleen als een medium om iemand via de
+computer een bericht te versturen
+vergelijkbaar met naar elkaar schrijven
+van brieven via een postbus of men
+denkt aan het elektronische prikbord
+waar men een mededeling kan plaatsen die
+door elke toevallige BBS gebruiker gelezen
+kan worden. Dit is vergelijkbaar met
+het plaatsen van een oproep in de
+supermarkt met het verschil dat
+voorbijgangers niet je briefje pikken,
+maar er een briefje bij kunnen hangen
+met een reaktie op het briefje dat je
+daar geplaatst hebt. Deze vorm van
+communicatie is inderdaad de meest
+elementaire vorm van bbs-communicatie.
+Dit is echter maar een onderdeel van
+wat een BBS kan bieden. Buiten een nog
+verder uitgebreide vorm van berichten
+uitwisseling zoals openbare en
+besloten conferenties is er ook de
+mogelijkheid hulp te krijgen van de
+systeembeheerder terwijl je gebruik
+maakt van het BBS. In de BBS wereld
+wordt de systeembeheerder SYSOP
+genoemd naar SYStem OPerator. Men kan
+zo analoog aan een conversatie via de
+telex zich met de SYSOP in verbinding
+stellen. Een geavanceerder systeem
+laat je 'spreken' met gebruikers die op
+dat moment via een andere telefoonlijn
+ook op het systeem zijn aangesloten.
+In Nederland is dit laatste echter
+alleen bij NEABBS of op dure zakelijke
+time-sharing systemen mogelijk.
+Je krijgt soms wel de indruk dat een
+gesprek met iemand gewoon via de
+telefoonhoorn efficienter is, maar
+daarvoor moet je wel het telefoonnummer
+van de opgeroepene weten. Op een BBS
+geef je alleen maar een commando om te
+kijken wie er aanwezig is en je vraagt
+wanneer je dat wilt een gesprek met een
+gebruiker aan. Dit kan iemand uit
+Arnhem of Maastricht zijn terwijl je
+zelf tegen lokaal tarief belt.
+Een mogelijkheid is ook dat je
+tegelijkertijd gewoon door gaat met het
+gebruik van het bulletin board zoals
+downloaden of uploaden. Deze twee
+begrippen houden in dat je respectievelijk
+een bestand, computerprogramma of een
+stuk tekst van het BBS naar je toe haalt
+of van je terminal naar het bbs verstuurt.
+Dat heen en weer sturen van bestanden
+heet in vakjargon 'filetransfer'.
+Tot nu toe hadden we het alleen over
+bbs communicatie door middel van een
+terminal of computer met terminalprogramma.
+Met elk type terminal, teletype of computer
+die via een modem op het telefoonnet is
+aangesloten kan je van de meest elementaire
+bbsfunkties gebruik maken. Het up- en
+downloaden van gegevens stelt een wat
+hogere eis aan de te gebruiken apparatuur.
+Hiervoor is tenminste een intelligente
+terminal nodig met een eigen intern en
+extern geheugen waarin de bestanden
+kunnen worden opgeslagen.
+Mijn tekstverwerker kon bijvoorbeeld
+stukken tekst van 14.5 Kilobytes
+versturen of ontvangen. Hiervoor wordt
+het algemeen gebruikte ASCII protokol
+gebruikt. Wanneer men computerprogramma's
+of binaire bestanden via de telefoonlijn
+wilt versturen wordt alweer een hogere
+eis aan de apparatuur gesteld.
+De computer of terminal moet voldoende
+geheugen hebben om de 'files' op te
+slaan en de programmatuur moet in staat
+zijn binaire gevens in plaats van
+gewoon tekst over te zenden via een
+communicatie protokol. XMODEM en Kermit
+zijn daar een voorbeeld van.
+
+BBS-HISTORIE
+
+NEABBS staat voor Nederlands Eerste
+Algemeen Bulletin Board Service.
+Het woord Algemeen in dit acroniem
+heeft al snel het woord ATARI vervangen.
+In de begindagen van NEABBS en de
+Nederlandse bbswereld bestond dit bord
+nog uit een simpele Atari homecomputer
+met modem. Tegenwoordig is NEABBS
+uitgegroeid tot een professioneel en
+uniek systeem met vijf telefoonlijnen
+die aangesloten zijn op een IBM AT en
+XT machine. Het heeft heel wat werk,
+inspanning en geld gekost om tot dit
+resultaat te komen. Nu nog wordt heel
+wat tijd en geld gestoken in de
+vernieuwing en verbetering van het bbs
+systeem. De sysop Max Keizer die de
+boel bedenkt en financiert (dat hij
+daar gezien de ongehoorde kosten nog
+niet aan failliet is gegaan is een
+wonder) en de absoluut onmisbare rol
+van Richard Ronteltap jr., ook wel
+Dr. Brains genoemd, die verdoemd is tot
+het diep in de nacht programmeren van
+het bulletin board programma.
+Mijn suggesties tot het op de gebruiker
+afstemmen van het programma werden
+gelukkig steeds op prijs gesteld en ik
+was dan ook verheugd dat het ook een
+daadwerkelijke, zij het dan bescheiden
+bijdrage was aan de ontwikkeling van
+NEABBS. Verder zijn er natuurlijk nog
+meer mensen die invloed hebben gehad op
+de huidige vorm van NEABBS, zoals de
+betalende leden, die verder ook
+allerlei nuttige bijdragen hebben
+geleverd. Het bulletin board programma
+geschreven door Onno Tijdgat heeft voor
+een groot deel het huidige gezicht van
+NEABBS bepaald.
+(wordt vervolgd...) NOS/HCC databank
+heeft nummer 035-45395. voor uw
+commantaar of per brief uiteraard.
+
+HERINKTEN GOEDKOPER?
+
+Er bestaan inktlintcassettes van fl 15.- tot
+zelfs fl 303.- p/st. Als ze onvoldoende
+zwarte afdruk geven worden ze weggegooid, hoewel
+het lint en de cassette dan nog lang niet
+versleten zijn. In feite is alleen de inkt
+er uit! Om de computer-hobbyist, voor wie
+elk dubbeltje telt, ter wille te zijn is
+derhalve Mac Inker uitgevonden. Dit systeem
+- dat wij niet kennen - brengt opnieuw inkt in
+het lint.
+De Mac Inker is een soort kantoormachine die
+geschikt is voor het her-beinkten van meer
+dan 7000 type en soorten inktlint- cassettes
+of rollen. Op het moment dat het schriftbeeld
+niet meer acceptabel is, brengt de machine
+opnieuw inkt in het lint. Hierdoor print het
+weer als nieuw en gaat zo'n 15 maal langer mee
+De importeur van dit machientje is Computer
+Ideal, Postbus 84, 5900 AV in Venlo, die goede
+resultaten claimt. Nogmaals: wij kennen het
+systeem niet, maar zijn wel benieuwd naar
+gebruikers-rapporten. We beloven ze op deze
+plaats door te geven.
+
+AIRBORNE MEMORIAL AWARD
+
+Op donderdagavond 17 september 1987 zijn de
+zendamateurs uit de gemeente Renkum weer in de
+ether aanwezig tussen van 19.00 uur tot 24.00
+uur plaatselijke tijd. Dit om een ieder die er
+belangstelling voor heeft in de gelegenheid te
+stellen de punten voor het Airborne Memorial
+Award award in een avond te vergaren. Netto
+opbrengsten en extra stortingen komen ten goede
+aan het Airborne Security Fund. Dit fonds
+heeft tot doel, de nabestaanden van gesneuvelde
+parachutisten de graven te laten bezoeken.
+Renkum e.o. is qrv op HF, 2 meter en 70 cm.
+Aanvragen en inlichtingen gaarne aan AMA,
+Postbus 60, 6860 AB Oosterbeek. De Renkumse
+amateurs wensen u veel succes.
+
+CORRECTIE REKENFREAK
+
+Op Zondag 23 aug hebben wij een fout gemaakt
+wat betreft de aankondiging van de programma's
+Rekenfreak 1 en 2. De programma's dienen
+'gemerged' te worden. Het zijn geen aparte
+programma's zoals werd gezegd. Vaak kan dit
+met het Basicode vertaal programma gebeuren,
+door eerst deel 1 'gewoon' te laden en er dan
+(maar nu zonder de subroutines), deel 2 aan
+toe te voegen op de Basicode-1 manier. Dit gaat
+o.a. op de Apple, de BBC, de C-64, de MSX, de
+Microprofessor. Veel succes toegewenst namens
+Basicode redakteur Pieter Vijlbrief.

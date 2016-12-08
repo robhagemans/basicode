@@ -1,0 +1,267 @@
+122, woe 20 jan '88
+
+UoSAT-OSCAR 11
+
+Als gevolg van nieuwe stormen is het antenne
+systeem van het UoSAT kommandostation in de
+University of Surrey begin januari verder
+beschadigd. Na de storm in oktober vorig jaar
+had men de antennes al provisorisch gerepareerd.
+Begin januari moest dit weer gebeuren. Daarbij
+was OSCAR 11 enkele dagen buiten bedrijf. Nu wil
+men het hele antennesysteem vervangen. Men zal
+er echter voor zorgen dat het commando station
+steeds operationeel blijft, zodat de beide UoSAT
+satellieten zonder onderbrekingen in bedrijf
+kunnen blijven.
+
+AMSAT OSCAR-10
+
+Met ingang van 29 februari mag OSCAR 10
+gedurende enkele maanden helemaal niet
+gebruikt worden omdat er in die periode
+vrijwel geen elektrische energie beschikbaar
+is van de zonnepanelen om de batterij
+op te laden.
+
+FUJI-OSCAR 12
+
+Vanaf eind januari is het gebruiksschema voor
+OSCAR 12 als volgt:
+mode JA van 1053 UTC op 28 jan tot 1201 op 29,
+mode JA van 1107 UTC op 30 jan tot 0919 op 01,
+mode JD van 0932 UTC op 03 feb tot 0839 op 04,
+mode JD van 0852 UTC op 06 feb tot 0758 op 07,
+mode JD van 0905 UTC op 08 feb tot 0811 op 09.
+Zoals gewoonlijk zal de satelliet bij mode JD
+bedrijf steeds afwisselend 2 uur aan en dan
+weer 2 uur uitgeschakeld zijn.
+
+Zie voor al deze satellieten ons nieuwe Hamsat-
+Hobbyscoop berekenings programma van deze zondag.
+
+AMSAT-Phase 3C
+
+In verband met problemen met de derde trap van
+de ARIANE raket, die bij vlucht V21 gebruikt
+moet worden, is deze vlucht enige tijd vertraagd.
+Daarom heeft ook vlucht V22, waarbij Phase 3C
+gelanceerd moet worden, weer enkele weken
+vertraging opgelopen.
+Het nieuwe lanceervenster voor ARIANE 401 ligt
+nu tussen 30 april en 4 mei. Het ziet er
+momenteel naar uit dat er weinig extra
+vertraging meer te verwachten is, tenzij er
+problemen ontstaan bij de lancering van vlucht
+V21 in maart. De lancering van vlucht V22, met
+onder andere Phase 3C aan boord, zal in elk
+geval overdag plaatsvinden, waarschijnlijk
+tussen 1000 en 1200 UTC.
+In de periode rond de lancering zal iedereen
+direkt geinformeerd worden over de stand van
+zaken via wereldwijde informatie netten op
+vele amateurbanden door de AMSAT Launch
+Information Network Service (ALINS). Informatie
+over de hierbij gebruikte frekwenties zal
+tijdig worden gepubliceerd, ook in de Beeldkrant.
+
+PACSAT VOOR VRIJWILLIGERS
+
+Op dit moment worden er twee packet radio
+satelliet systemen (PACSAT) ontwikkeld. Het ene
+systeem is van VITA, de Volunteers In Technical
+Assistance, het andere systeem van AMSAT-NA/TAPR.
+VITA is een Amerikaanse vrijwilligers
+organisatie, die zich tot doel stelt ontwikkeling
+shulp in derde wereld landen te ondersteunen
+met technische middelen. Omdat een van de
+grootste problemen in dergelijke landen het
+opzetten van een betrouwbaar telekommunikatie
+systeem is, wil men daarbij helpen door een
+packet radio satelliet systeem te leveren, in
+samenhang met een aantal packet radio grond
+stations. In het kader van deze plannen heeft
+men vorig jaar al proeven gedaan met packet
+radio stations in Lesotho, die via digipeaters
+waren verbonden met het packet radio netwerk
+in Zuid-Afrika. VITA heeft nu voldoende geld
+verzameld om een PACSAT systeem te bouwen. Het
+ziet ernaar uit dat dit PACSAT systeem, dat in
+samenwerking met AMSAT wordt gebouwd, in de
+nieuwe UoSAT-C van de University of Surrey zal
+worden ingebouwd. Gezien de toepassingen van
+het systeem zal het waarschijnlijk geen gebruik
+maken van amateur frekwenties.
+
+PACSAT VOOR AMATEURS
+
+Tegelijkertijd is AMSAT-NA samen met de Tucson
+Amateur Packet Radio groep (TAPR) bezig met een
+PACSAT-systeem dat wel voor amateurs bedoeld is.
+Het grootste deel van het ontwerp is voltooid
+en een prototype wordt al gebouwd. Er wordt
+nu bekeken of dit PACSAT systeem ook in UoSAT-C
+kan worden ondergebracht.
+
+Verder onderzoekt AMSAT-NA andere lanceer
+mogelijkheden voor hun PACSAT. Misschien zijn er
+mogelijkheden bij een nieuwe Amerikaanse
+commerciele organisatie die satelliet
+lanceringen wil gaan verkopen. De nieuwe PACSAT
+plannen van AMSAT-NA zijn erop gericht een
+packet radio satelliet systeem op te zetten dat
+makkelijk te gebruiken en zeer betrouwbaar is.
+
+POLAIRE SKI-EXPEDITIE
+
+De voorbereidingen voor de grote ski-expeditie
+van Rusland naar Canada over de noordpool zijn
+in volle gang. De tocht, die moet worden gemaakt
+door 4 Canadezen en 10 of 11 Russen, moet
+starten op 1 maart in het noorden van Rusland.
+Men verwacht zo'n drie maanden later in het
+noorden van Canada aan te komen. Tijdens hun
+expeditie zullen de ski-ers voor de
+kommunikatie en navigatie grotendeels gebruik
+maken van amateur frekwenties. Leonid, UA3CR,
+zal de groep begeleiden vanuit een basis in
+Frobisher Bay op Baffin eiland in het noorden
+van Canada. Men zal daarbij ook gebruik maken
+van packet radio, onder andere via het DCE van
+OSCAR 11. De positie van de groep ski-ers zal
+steeds worden opgemeten met behulp van COSPAS /
+SARSAT satellieten. De gemeten positie wordt
+dan doorgegeven aan de groep via de Digitalker
+spraak synthesizer van OSCAR 11 en OSCAR 9 op
+145,825 MHz. Uit proeven is al gebleken dat zij
+die Digitalker goed kunnen ontvangen met de
+twee meter portofoons die ze mee zullen nemen.
+
+MINITEL VOOR RANDSTAD OF BRABANT
+
+Het lijkt erop dat Nederland weer eens heel
+dicht bij een nieuw media experiment staat.
+Het Franse voorbeeld van Teletel houdt de
+Nederlandse Vereniging van Informatie
+leveranciers NVI nog steeds in de ban: medio
+december wordt de studie 'Telebox' afgerond,
+waarin de kansen voor een miljoen videotex
+terminals in de Randstad worden aangegeven.
+Op vrijwel hetzelfde tijdstip presenteert de
+Eindhovense Stichting Telematica een
+'business plan', dat voorziet in de
+exploitatie van een netwerk met 100.000
+videotex terminals in de provincie Noord-
+Brabant. Op de ledenlunch van de NVI op 10
+november bleken velen echter nog niet
+bijgekomen van het debacle van Ditzitel.
+A. Greeven van het Rai Data Centrum pleitte
+voor een scherp afwegen van de potentie van
+technieken in opkomst, zoals nu CD-Rom.
+Over de vraag hoe groot het 'kritische
+aantal' van terminals moet zijn, verschillen
+de meningen. Het bureau Intercai voert de
+studie Telebox uit voor de NVI, met
+medewerking van ARC, Has-Info, Alcatel en
+Philips. Er komt geen uitvoerig
+marktonderzoek, wel marktpeilingen en een
+scenario onderzoek. De studie wil straks
+kunnen aanwijzen wat een minimaal diensten
+aanbod moet omvatten om de consument
+tevreden te stellen, zodanig dat die ook
+bereid is te betalen.
+
+Drs. O. Gorter van Intercai zei dat de keuze
+voor een infrastructuur, kabel-tv, telefoon
+of hybride netten, open wordt gehouden.
+Wel wordt gedacht aan een zeer goedkope
+terminal zonder beeldscherm, omdat de
+gebruiker zijn televisie er bij moet
+gebruiken. Volgens de NVI-voorzitter mr.
+R.J. Kasteleijn heeft het Telebox concept
+zich langzaam ontwikkeld van een vraag naar
+'kastjes' tot een denkmodel dat de kip-of-ei
+kwestie voor een nieuwe consumenten dienst
+probeert op te lossen.
+
+BREDE STEUN VOOR BRABANTS INITIATIEF
+
+Het plan voor 100.000 terminals in Noord-
+Brabant heeft inmiddels de steun van Philips
+(PTIS), Siemens, Deltakabel, de PTT, Intercai
+en de Brabant Pers. Dat bleek uit de
+presentatie van de directeur van de Stichting
+Telematica J.Abelshausen voor de NVI. Harde
+toezeggingen meldde hij echter nog niet.
+Het Brabantse initiatief laat zich zeer
+zelfverzekerd uit over de cocktail van
+diensten die in het videotexnet worden
+ondergebracht: men wil uitdrukkelijk het
+Franse voorbeeld volgen en onder meer
+telebankieren, telewinkelen, sport en spel en
+'messageries' aanbieden. Persoonlijk
+berichtenverkeer, messagerie, blijkt in
+Frankrijk de meest populaire toepassing van
+Teletel te zijn.
+
+Sommige organisaties met bindingen in de
+agrarische sector, zoals de CHV en de
+Rabobank, zijn al nauw bij het diensten
+concept betrokken, 'zij kennen het koopgedrag
+van hun leden ook heel goed', zei Abelshausen.
+Hij noemde ook Vendex, Interpolis, de
+Postorderbond en de Maatschappij voor
+Industriele Projecten. Hij wierp de suggestie
+op dat het Brabantse experiment zich uitbreidt
+naar de rest van het land. Intussen wordt met
+de PTT onderhandeld over versterking van de
+technische infrastructuur met onder meer
+inkiespunten voor videotex diensten. Destijds
+schoot het Franse net ook zeer tekort bij de
+onverwachte verkeers toename als gevolg van
+Teletel. Voorlopig wordt uitgegaan van een
+investerings begroting van 100 miljoen, een
+bedrag waar geen diensten ontwikkeling in is
+opgenomen. De Franse uitgever van Le Parisien
+Libere, succesvol in videotex, heeft de
+Stichting Telematica gratis gebruik van haar
+systeemsoftware aangeboden voor testdoeleinden.
+
+MINITEL IN WEST-DUITSLAND
+
+De Westduitse overheid doet haar deuren open
+voor de succesvolle Franse videotex dienst
+Minitel. Een contract is getekend tussen de
+Duitse minister van Telecommunicatie Schwarz
+Schilling en zijn Franse tegenspeler Longuet.
+De Westduitse PTT Bundespost heeft
+uiteindelijk toch de Franse Minitel standaard
+geaccepteerd na druk van de Franse overheid
+en de Franse PTT DGT. Frankrijk heeft vorig
+jaar een klacht ingediend bij de Europese
+Commissie tegen wat Frankrijk noemde 'een
+tegenwerkende houding van de Westduitse
+autoriteiten ten opzichte van Minitel'.
+Frankrijk lijkt met Minitel de leiding te
+hebben genomen in de videotexindustrie en
+wil haar Minitel dienst graag exporteren.
+
+HERHALING VERTAALPROGRAMMA C-16
+
+Op woensdag 23 december 1987 zonden we een
+Basicode-2 vertaalprogramma uit voor de
+Commodore computers C-16, C-116 en Plus/4.
+Helaas hebben deze machines bij het werken
+met cassette veel last van fase
+verschuivingen. De auteur van het programma,
+Arwin Vosselman uit Mijdrecht, had daarom
+voorspeld dat het in ongeveer 50% van de
+gevallen fout zou gaan. Volgens de reacties
+van de C(1)16 en Plus/4 gebruikers bleek dit
+inderdaad te kloppen.
+
+Daarom zullen we op woensdag 27 januari a.s.
+het vertaalprogramma opnieuw uitzenden, maar
+dan in tegenfase. We hopen dat het dan bij
+veel mensen alsnog goed zal gaan. Ook horen
+we weer graag uw reacties op deze herhaling.

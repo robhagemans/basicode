@@ -1,0 +1,275 @@
+134, zon 20 mrt '88
+
+CURSUS PROGRAMMEREN IN BASICODE
+
+In deze aflevering van de Beeldkrant starten
+we met een mini-cursus over het programmeren
+in Basic met behulp van de Basicode-2
+subroutines. Het ligt in het voornemen in
+opeenvolgende afleveringen de belangrijkste
+aspecten daarvan te bespreken en met een kort
+voorbeeld- programmaatje te illustreren.
+
+De cursus is geschreven door onze vroegere
+Basicode- redacteur (en nu onze MSX en MS-DOS
+specialist!) Pieter Vijlbrief.
+
+INLEIDING
+
+De Basicode-2 subroutines kunnen we zelf heel
+goed gebruiken, als we een klein of groot
+programmaatje zelf willen opbouwen. Dat
+bespaart een heleboel moeite. Hoe 'bemachtig'
+je nu die subroutines? Het eenvoudigste is
+daarvoor een klein programmaatje te schrijven:
+
+1000 A=100:GOTO 20:REM <Naam>
+1010 GOSUB 100:REM Begin van het pgm
+1020 END
+
+Vertaal dit programmaatje met behulp van het
+Basicode vertaalprogramma naar Basicode en
+schrijf dit weg. Als je dit programmaatje dan
+weer inleest met behulp van het
+vertaalprogramma, staan de voor jouw systeem
+geldige subroutines erbij.
+
+DE REGEL 1000
+
+Zoals je in het bovenstaande programmaatje al
+kunt zien, luidt die regel:
+
+1000 A=<een getal>:GOTO 20:REM <Naam>
+(LET OP: geen GOSUB 20!!)
+
+Deze regel is verplicht. Waarom? Bij de
+computers, die meedoen aan Basicode, bevinden
+zich er een aantal, waarbij het nodig is van
+tevoren de geheugenruimte te reserveren voor de
+opslag van 'strings' (dat zijn reeksen letters
+en cijfers, niet te verwarren met getallen, die
+aan variabelen zijn toegewezen). De waarde, die
+we aan A geven, moet dus in overeenstemming
+zijn met het programma. Aangezien de meeste
+computers deze noodzaak niet kennen, is het
+voor de bezitters daarvan, die in Basicode
+willen programmeren, wel aardig te weten, hoe
+zij een indruk kunnen krijgen van de waarde,
+die aan A moet worden toegekend. Daar kan men
+heel eenvoudig een indruk over krijgen. Nadat
+het gereedgekomen programma gesaved is, wordt
+de computer enige seconden uitgezet en dan
+opnieuw aangezet (om er zeker van te zijn, dat
+we met een schone lei beginnen). Dan wordt het
+programma weer geladen (nog niet 'runnen'). Nu
+tikt men in:
+
+GOSUB 270: PRINT FR <return>
+
+Er verschijnt dan een getal op het scherm.
+Noteer dit. Run het programma daarna zo
+volledig mogelijk (maak gebruik van alle
+mogelijkheden). Onmiddellijk na het beeindigen
+van het programma, tikken we bovenstaand
+regeltje weer in en noteren het getal, dat op
+het scherm verschijnt. Dit zal over het
+algemeen kleiner zijn dan het eerst genoteerde
+getal. Het verschil tussen beide getallen is
+een indicatie voor de waarde, die men aan A
+moet toekennen. We ronden naar boven af tot een
+honderdtal, dan hebben we zeker niet een te
+lage waarde gekozen. Dat in dit geval strikt
+genomen niet alleen de stringruimte wordt
+bepaald, is niet zo heel erg. We hebben nu
+meteen al kennis gemaakt met de werking van
+SUBROUTINE 270: de grootte van de vrije
+geheugenruimte wordt in de variabele FR
+opgeslagen!
+
+Verder staat in regel 1000: GOTO 20. Bij de
+computers, die dat nodig hebben, staat op regel
+20 de routine voor het reserveren van
+stringruimte ter grootte van A en GOTO 1010.
+Voor de computers, die dat niet nodig hebben,
+staat er alleen GOTO 1010. Want in regel 1010
+begint pas het eigenlijke programma. Voor de
+goede orde hebben we in regel 1000 in een REM
+ook de naam van het programma opgenomen.
+
+GOSUB 100
+
+In regel 1010 van het voorbeeldprogramma wordt
+deze subroutine al aangeroepen. Dat is een
+goede gewoonte. We beginnen dan met een schoon
+scherm en de cursor in de linker bovenhoek. We
+hebben dus nu al geleerd, wat GOSUB 100 doet:
+het scherm schoonmaken!
+
+SAMENVATTING VAN DE EERSTE LES
+
+Na bestudering van deze les, weet je hoe je de
+subroutines voor eigen programma's uit het
+vertaal- programma kunt verkrijgen, en ken je de
+samenstelling van regel 1000 (die in een
+Basicode programma in deze vorm verplicht is).
+Ook weet je nu, wat de subroutines 100 en 270
+doen. (Bedankt, Pieter!)
+
+CORRECTIE BELASTINGPROGRAMMA 1987
+
+Chris Bouws uit Nieuwegein meldde ons dat de
+uitkomsten van de rente- en dividend-
+vrijstelling van de belastingvrije som niet
+klopten voor een werkende en gehuwde
+belastingplichtige waarvan de partner geen
+eigen inkomen heeft. Dit is te verbeteren
+door het toevoegen van enkele regels en het
+veranderen van een GOTO- statement.
+
+TOEVOEGEN:
+1183 PRINT''Was U in 1987 meer dan zes
+maanden gehuwd? (j/n) '';
+1184 GOSUB 210: GOSUB 24500: PRINT IN$
+1185 HW=0: IF IN$=''j'' THEN HW=1
+1186 GOSUB 20000
+
+WIJZIGEN:
+In regel 5240 'GOTO 5440' veranderen in
+'GOTO 5380'
+
+Deze wijzigingen zullen uw aangifte een
+prettiger uitkomst geven indien U tot de
+genoemde categorie behoort. Met excuses aan
+de fiscus...
+Tenslotte: we herinneren U er nog maar eens
+aan dat het gebruik van het programma geheel
+voor eigen risico geschiedt!
+
+ONTWIKKELAAR SHAREWARE IN NEDERLAND
+
+Jim Button heeft in de Personal
+Computerwereld grote bekendheid gekregen
+als mede-ontwikkelaar van het 'Shareware'
+concept voor de verspreiding van goede
+en goedkope programmatuur. De gebruikers
+mogen deze software vrijelijk aan elkaar
+doorgeven, maar na het uittesten, bij
+voortgezet gebruik, wordt men geacht een
+bedrag aan de maker te betalen, veelal
+ter grootte van f70,00 tot f190,00.
+Hiermee registreert de gebruiker zich,
+ontvangt een gebonden handleiding en
+verkrijgt het recht op telefonische
+ondersteuning. De PCC, gebruikersclub voor
+de IBM-PC en compatibles, heeft Jim Button
+uitgenodigd als gastspreker voor haar
+jaarlijkse ledendag op 7 mei a.s. in de
+Amsterdamse RAI. Informatie over deze
+gebruikersdag: PCC, Postbus 228,
+Amstelveen, tel. 020 - 411049.
+
+HANDBOEK TELCOM 1200 PC MODEM
+
+Dit handboek behandelt in een heldere
+en overzichtelijke vorm de basis voor
+datacommunicatie en is speciaal toegespitst
+op het gebruik van het TELCOM 1200 PC modem.
+Het legt de grondbeginselen uit van modem
+communicatie en gaat bijzonder in op het
+Hayes protocol. Het geeft een stap voor stap
+handleiding om communicatie tussen computer
+en bulletin boards etc. op te starten.
+De onderwerpen, die hierbij behandeld
+worden zijn a-synchrone communicatie, de
+ASCII-code, de functies van verschillende
+communicatie programma's en ook de communicatie
+protocollen die het meest gebruikt worden,
+zoals ANSI-bbs, X-modem telelink, Kermit
+protocol modem en Y-modem protocol.
+
+MISSER
+
+Overigens hebben wij hebben wel een
+belangrijke misser ontdekt: de schakelaar
+die noodzakelijk is voor het instellen van
+het dataformaat wordt precies andersom op het
+modem voorgesteld. Verder is er een drukfout
+in de tekst op blz 104 en 105: deze zijn
+namelijk verwisseld.
+Desondanks is het boekje aantrekkelijk
+geschreven en een goed hulpmiddel voor
+beginnende communicatie belangstellenden.
+De prijs is echter veel te hoog voor een
+'handleiding' n.l. f 35,--
+Handboek voor Telcom 1200 PC modem werd
+geschreven door Wessel Akkermans en uitgegeven
+door Uitgeverij Stark, Texel. Met dank aan
+Joop Niggebrugge.
+
+MENS & COMPUTER '88
+
+Afhankelijk van het weer zal van 8 t/m 10
+april in Maastricht een grootse lasershow
+te zien zijn. Deze zal worden gehouden
+in het kader van de beurs 'Mens & Computer',
+die in het nieuwe MECC centrum zal
+worden gehouden.
+
+De Personal Computer neemt een steeds
+grotere plaats in binnen de huishoudelijke
+electronische uitrusting. Vaak ook door
+de speciale bijdrage regelingen voor de
+aanschaf voor personeel van het bedrijfsleven
+en de overheid. De huiscomputers waren er
+aanvankelijk alleen om mee te spelen.
+Behendigheid speelde daarbij een grote rol.
+Behendigheid speelt nu ook nog een rol bij
+het veel ruimer gebruik van de ook steeds
+beter toegeruste computer. De computer doet
+dienst voor opslag van het bestand aan
+prive-gegevens, verjaardagen, rekeningen
+en andere financiele beslommeringen, adressen,
+recepten etc., en kan in combinatie met een
+printer ook worden benut voor het afwikkelen
+van correspondentie.
+
+In veel gevallen wordt de huiscomputer ook
+al gebruikt voor het aansturen van andere
+apparatuur. Voor de komende decennia doemt
+het beeld op dat de computer een sleutelrol
+speelt bij alles wat in en om de woning moet
+gebeuren. Doordat het tv scherm daarbij vaak
+gebruikt wordt om te tonen waar de computer
+mee bezig is, verandert de tv-ontvanger
+ook stilaan van kijkkast tot veelzijdig
+gebruiksvoorwerp.
+
+INBRENG RUL OP MECC
+
+De Rijksuniversiteit Limburg zal een grote
+inbreng hebben op de beurs. Op het programma
+staan een aantal lezingen door de hoogleraren
+Prof. van den Herik, Prof. Drazan en Prof.
+Hasman. Ook zullen er een aantal demonstraties
+worden gegeven van o.a. expert-systemen,
+onderwijs programma's en datacommunicatie.
+Voorts worden er bijdragen geleverd van de
+instrumentele dienst van de universiteit en
+van de medische faculteit.
+De Rijksuniversiteit wordt bijgestaan door
+de Technische Hogeschool uit Delft.
+Een geheel nieuwe vorm van personeels
+werving vindt plaats op de banenmarkt voor
+technici en automatiserings deskundigen.
+Deze banenmarkt heeft namelijk de vorm van
+een 'talentenjacht'!
+Tot slot geeft Floris Kolvenbach
+een computerconcert, d.w.z. een concert
+met door computers gestuurde instrumenten.
+
+Kortom, zeker de moeite van een bezoek waard
+is de beurs Mens en Computer '88, van 8 tot
+en met 10 april in het Maastrichtse Expositie
+en Congres Centrum. Hobbyscoop is tijdens de
+beurs ook aanwezig met een stand, zodat U uw
+vragen rechtstreeks aan ons kunt stellen.

@@ -1,0 +1,333 @@
+415, maa 27 mei '91
+
+BEGRIPPEN UIT DE RADIO-TECHNIEK (3)
+
+In de Beeldkranten nummers 365 en 395
+zijn de begrippen behandeld die
+betrekking hebben op de ontvanger
+parameters en de zender parameters. In
+dit derde en laatste deel van de serie
+'Begrippen uit de radio-techiek' gaat
+zendamateur Jan van der Meij (PA0JMY)
+nader in op connectoren en
+antennekabels.
+
+CONNECTOREN
+
+In de hoogfrequent techniek wordt
+gebruik gemaakt van verschillende
+soorten connectoren. Er zijn in
+hoofdzaak een tweetal systemen: een 50
+Ohm systeem en een 75 Ohm systeem. In
+de centrale antenne techniek en bij
+video wordt over het algemeen gebruik
+gemaakt van 75 Ohm kabels EN de
+bijbehorende 75 Ohm connectoren. In de
+zend/ontvang techniek wordt over het
+algemeen gebruik gemaakt van 50 Ohm
+kabel met 50 Ohm connectoren. Voor deze
+applicaties zijn de volgende
+connectoren min of meer standaard:
+
+PL259, ofwel de bekende Amphenol
+connector. (Amphenol is de fabrikant
+van de connector, maar er wordt vaak
+gesproken over een Amphenol connector
+terwijl men een PL259 connector
+bedoelt). In oorsprong is deze
+connector gemaakt voor hoogspannings
+toepassingen. De fabrikant (Amphenol
+dus) geeft op, dat de connector ook
+gebruikt kan worden in hoogfrequent
+toepassingen, echter voor frequenties
+tot 30 MHz. De impedantie bedraagt dan
+circa 35 Ohm. Door het gebruik van deze
+connectoren op VHF en zelfs UHF
+frequenties zal er sprake zijn van
+ernstige misaanpassing!
+
+BNC is een connector die speciaal
+gemaakt is voor hoogfrequent
+toepassingen. De connector is
+verkrijgbaar in 50 Ohm en in 75 Ohm. Er
+is een duidelijk verschil tussen de
+beide typen: het middenpennetje van een
+75 Ohm connector is veel dunner dan dat
+van een 50 Ohm connector. De
+connectoren zijn bruikbaar tot zo'n 10
+GHz. Er is in de handel veel verschil
+in kwaliteit tussen de diverse merken
+BNC connectoren: sommige zijn verguld
+(goed voor hoge frequenties), andere
+zijn verzilverd, maar bij de meeste is
+er geen edelmetaal bij de fabricage
+aanwezig geweest (goedkoop).
+
+TNC wordt gebruikt in een brede
+toepassing. De TNC connector ziet eruit
+als een BNC connector, maar heeft geen
+bajonet doch een schroef bevestiging.
+Ook hier kan men kiezen uit 50 Ohms en
+75 Ohms connectoren. De connectoren
+zijn bruikbaar tot een frequentie van
+circa 10 GHz.
+
+N-type connectoren zijn hoogwaardig in
+kwaliteit en ook in prijs. Voor veel
+apparaten, gemaakt voor VHF, UHF en SHF
+frequenties, zal men N-type connectoren
+tegenkomen. Ook deze zijn verkrijgbaar
+in 50 Ohm en 75 Ohm. De connectoren
+zijn bruikbaar tot ver boven 10 GHz.
+
+SMA connectoren worden toegepast in de
+SHF technieken, waarbij frequenties
+boven zo'n 2 GHz worden gebruikt. De
+connectoren kunnen worden gebruikt tot
+een frequentie van circa 18 GHz. SMA
+connectoren zijn zeer klein van formaat
+en bijna altijd verguld.
+
+SMB connectoren worden in het algemeen
+gebruikt voor bekabeling binnen een
+kastje, waarbij een goede impedantie en
+weinig straling van grote noodzaak is.
+SMB connectoren zijn vrijwel altijd
+verguld. Er zijn typen in de handel,
+welke passen in print connectoren uit
+de DIN 41612 reeks (ook wel abc
+connector genoemd), speciaal bedoeld
+voor printen in 19 inch technieken.
+
+KWALITEIT VERBINDINGEN
+
+Het is bij het gebruik van zenders en
+ontvangers altijd aan te bevelen om een
+goede kwaliteit (coax) antennekabel te
+gebruiken, alsmede connectoren van de
+juiste impedantie en een goede
+kwaliteit. Op vlooienmarkten komt men
+vaak connectoren en koppelstukken
+tegen, die voor een lage prijs worden
+aangeboden. Vaak betreft het 75 Ohm
+connectoren. De misaanpassing zorgt
+voor verlies in zend- en
+ontvangleidingen.
+
+Bijna alle soorten connectoren zijn
+verkrijgbaar in een soldeer uitvoering
+en een crimp uitvoering. Voor de crimp
+uitvoering heeft men een speciale
+crimptang nodig. In het algemeen kan
+worden gezegd dat, wanneer connectoren
+vaak worden los- en vastgemaakt, zoals
+bij testkabels, een gesoldeerde
+verbinding de voorkeur verdient, want
+deze heeft de langste levensduur.
+
+Ook dient men rekening te houden met
+het feit, dat connectoren niet
+onbeperkt los- en vastgeschroefd kunnen
+worden. Van een N-connector is bekend,
+dat bij circa 100 maal los en vast
+schroeven de lipjes in de connector
+zijn uitgebogen en men de connector
+moet vervangen. Bij een afgebroken
+pennetje of lipje in de connector is de
+amateur snel geneigd te denken, dat er
+nog genoeg kontakt- materiaal over is
+en de connector nog gewoon gebruikt kan
+worden. In de praktijk echter zal
+blijken, dat de demping wellicht niet
+meetbaar is toegenomen, maar de SWR is
+volledig om zeep geholpen. Gebruik
+daarom, zeker bij frequenties van boven
+30 MHz, altijd de juiste en op de
+juiste wijze gemonteerde connectoren.
+
+ANTENNEKABELS
+
+Het is ongetwijfeld bekend, dat er
+verliezen optreden in antennekabels.
+Ook mag bekend worden verondersteld,
+dat de verliezen lager worden naarmate
+de kabels dikker zijn. Evenals bij de
+connectoren wordt in hoofdzaak
+onderscheid gemaakt tussen twee
+categorieen kabels: 50 en 75 Ohms
+typen. Er zijn kabels verkrijgbaar met
+andere impedanties, maar in het kader
+van dit artikel gaan we op deze typen
+niet verder in. De enige uitzondering
+is de kabel aan onze autoradio's. Het
+draadje van de binnengeleider is zeer
+dun. Dit is niet gedaan om de
+goedwillende amateur te treiteren, doch
+om bij een geringe kabel- diameter de
+gewenste impedantie van 130 Ohm te
+kunnen bereiken. Door amateurs worden
+de volgende kabels veel gebruikt:
+
+RG-58/U is een 50 Ohms kabel met een
+dikte van circa 5 mm. De kabel wordt
+veel gebruikt om in voer- en vaartuigen
+de radio (zend-) ontvangst apparatuur
+aan de antenne te koppelen. De prijs
+van RG58 is laag. De kabel is voor
+kleine stukken (tot een lengte van
+circa 4-5 meter) goed bruikbaar tot 500
+MHz. Boven deze frequentie dienen we
+andere kabelsoorten te kiezen. Er
+bestaat een type RG58 met een speciaal
+di-electricum (de isolatie tussen
+binnengeleider en de metalen mantel van
+de kabel) van een schuimsoort. Deze
+kabel wordt verkocht als RG58-FOAM, en
+heeft een kleinere demping (minder
+verlies) dan 'normale' RG58. De kabel
+is echter wat duurder en vrijwel niet
+te koop. Voor RG58 worden BNC, PL259 en
+N-connectoren verkocht.
+
+RG-59/U is het 75 Ohm broertje van de
+RG58 kabel. De transmissie
+eigenschappen zijn vrijwel gelijk aan
+die van RG58. Deze kabel wordt veel
+gebruikt in video toepassingen. Voor
+RG59 zijn BNC, N en TNC connectoren de
+meest gebruikte.
+
+RG-8/U en RG213/U zijn veel gebruikte
+kabels als 'verliesarm' dient te worden
+gewerkt. De dikte van de kabels is
+ongeveer 10 mm en de karakteristieke
+impedantie bedraagt 50 Ohm. De demping
+van dit soort kabel is veel kleiner dan
+die van RG58. Door de grotere dikte is
+het aan de andere kant moeilijker om de
+kabel te verwerken. De isolatie tussen
+de kern en de mantel is, evenals bij
+RG58, massief. Voor deze kabel kan men
+BNC, N en PL259 connectoren toepassen.
+De PL259 connectoren kunnen uitsluitend
+in het korte golfgebied worden
+gebruikt. De kabel is goed bruikbaar
+tot een frequentie van zo'n 1,3 GHz,
+zij het dat op de hogere frequenties de
+demping ook groot wordt. Het is dan ook
+noodzakelijk om de kabel- lengtes
+altijd zo klein mogelijk te houden.
+
+RG-174/U is een zeer dunne 50 Ohms
+coaxkabel, speciaal voor gebruik binnen
+apparaten. De dikte van de kabel is
+circa 2,5 mm. Deze kabel wordt veel
+gebruikt met SMB connectoren en in
+mindere mate ook met BNC connectoren.
+RG-188/U heeft dezelfde eigenschappen
+als RG-174/U, echter de isolatie is van
+teflon gemaakt.
+
+In de industrie wordt veel gebruik
+gemaakt van een 5 mm dikke kabel met
+dubbele, verzilverde afscherming. Het
+typenummer van dergelijke kabel is
+RG-142/U. Het betreft een 50 Ohms kabel
+en de dubbele afscherming zorgt voor
+weinig straling door de kabel.
+Dergelijke kabel kan uitstekend worden
+gebruikt als verbinding van een zender
+of een ontvanger naar een duplex
+filter, waarbij de straling van de
+zenderuitgang naar de ontvangeringang
+zo klein mogelijk dient te zijn. Ook
+voor deze kabel dienen speciale
+connectoren te worden toegepast: de
+meest gebruikte connector is die van
+het N-type.
+
+Semi rigid kabel heeft een massief
+koperen mantel en een massieve,
+verzilverde kern. De meest gebruikte
+soort heeft een dikte van circa 3 mm en
+de karakteristieke impedantie bedraagt
+50 Ohm. De kabel wordt in het algemeen
+gebruikt voor kastbekabeling, waarbij
+gebruik wordt gemaakt van frequenties
+tot 10 GHz. Ook wordt de kabel wel
+gebruikt als spoel bij stabiele Voltage
+Controlled Oscillatoren (VCO's). SMA
+connectoren zijn wel de meest
+gebruikte, hoewel ook N-type
+connectoren in de handel verkrijgbaar
+zijn.
+
+H100 is een moderne coaxkabel, waarbij
+opvalt dat de isolatie tussen de kern
+en de mantel niet massief is. De dikte
+van de kabel is circa 10 mm en de
+demping is wat kleiner dan die van
+RG213. Door de luchtisolatie is de
+kabel echter wat moeilijker te
+verwerken en er zijn ook speciale (N)
+connectoren benodigd.
+De mantel van de kabel bestaat uit een
+dun massief scherm en daarbuiten nog
+een zeer dun vlechtwerk. Het is
+derhalve niet mogelijk om de mantel te
+gebruiken als trekontlasting van de
+connector. Door de gladde buitenkant is
+het niet mogelijk om met een smalle
+kunststof ring voldoende trekontlasting
+te bewerkstelligen. De enige juiste
+connector is er derhalve een met een
+brede kunststof ring; op de meeste
+amateur markten zijn deze connectoren
+(meestal van Greenpar) wel te vinden.
+In kringen van radio zendamateurs is
+H100 wel een van de meest gebruikte
+coaxkabel soorten.
+
+Als laatste komen de (groene) TV
+coaxkabels aan de beurt. Hier geldt,
+net als bij alle andere soorten, dat
+hoe dikker de kabel, hoe kleiner het
+verlies is. De kabel is gemaakt om in
+de grond te leggen en het materiaal van
+de mantel kan niet tegen ultraviolette
+straling (lees: zonlicht). Deze kabel
+is dan ook minder geschikt om te
+gebruiken als antennekabel. Ook dient
+men gebruik te maken van de
+bijbehorende (75 Ohm) connectoren.
+
+ANTENNEROTOR
+
+Bij het gebruik van een antennerotor
+dient men de kabel in een grote lus te
+leggen in verband met het draaien van
+de antennes. Een kabel met lucht als
+isolatie is minder geschikt om in de
+buurt van een antennerotor te worden
+gebruikt. Bij kabels met een grote
+lengte kan men het beste met een lang
+stuk naar net onder de antennerotor
+gaan en daarna overgaan op meer soepele
+kabel. De connectoren moeten dan
+vanzelfsprekend van een goede kwaliteit
+zijn, en bovendien waterdicht. Het
+verdient aanbeveling om alle overgangen
+met zelf vulkaniserende tape te
+bewikkelen. Ook siliconenkit doet
+wonderen. Bij elke overgang met
+connectoren moet rekening gehouden
+worden met een demping (verlies) van
+ongeveer 0,5 dB. Bij gebruik van korte
+kabels en/of lage frequenties kan men
+derhalve beter een wat slechtere kabel
+van boven naar beneden benutten dan een
+betere kabel met een extra connector
+bij de antennes.
+
+Jan van der Meij, PA0JMY.
+

@@ -1,0 +1,254 @@
+129, woe 24 feb '88
+
+LORAN C
+
+Loran C is een zogenaamd 'hyperbolisch' radio
+navigatiesysteem dat in de jaren 1952-55 in
+de USA werd ontwikkeld. In 1974 nam de
+Amerikaanse regering het besluit dit
+navigatiesysteem als standaard voor de
+kustzone te accepteren, het systeem daartoe
+verder uit te bouwen en vervolgens voor
+bepaalde categorieen scheepvaart verplicht te
+stellen. Aanvankelijk was bij de invoering
+van dit systeem in 1957 de te gebruiken
+apparatuur omvangrijk en vooral erg duur.
+De belangstelling voor civiel gebruik was
+derhalve gering. Dit veranderde sterk als
+gevolg van de zogenaamde micro-
+miniaturisering in de elektronika. Thans kan
+men voor relatief weinig geld ontvangers
+kopen, voorzien van uiterst slim
+geprogammeerde microprocessors en in staat
+om gekoppeld te worden aan de automatische
+piloot. De komende tijd zal, als de tekenen
+niet bedriegen, ook in de luchtvaart een
+grotere toepassing te zien geven. Deze
+beweging is in de USA al aan de gang en kan
+als gevolg van een paar ontwikkelingen in
+Europa eveneens van betekenis worden.
+
+HOE WERKT HET?
+
+Bij Loran C produceren minimaal drie
+zendstations uitermate nauwkeurige tijd-
+impulsen. Een der zenders is bijzonder
+gekenmerkt en fungeert min of meer als
+'dirigent'. Deze 'master'-zender zendt in
+een snelle opeenvolging acht impulsen uit,
+gevolgd door een negende herkenningspuls.
+Op een nauwkeurig aangehouden tijdsafstand
+daarna komen de twee overige 'slave'-zenders
+ook ieder met acht impulsen in de lucht.
+
+De tijdsverschillen zijn ook zodanig gekozen,
+dat men door middel van de ontvanger
+gedecodeerde signalen altijd in dezelfde
+volgorde binnen krijgt; dus eerst de
+'master', vervolgens 'slave x' en dan 'slave
+y'. De ontvanger is in wezen niets anders dan
+een supernauwkeurige elektronische stopwatch
+die de tijdsverschillen meet tussen de
+binnenkomende signalen.
+
+TIJDSVERSCHILLEN BEPALEN AFSTAND
+
+Aangezien zoals gezegd de zenders onderling
+altijd door middel van zogenaamde
+atoomklokken gestuurde vaste uitzendtijden
+aanhouden, wordt de de variatie in het gemeten
+tijdsverschil bepaald door de positie die de
+ontvanger inneemt ten opzichte van de drie
+zenders, of met andere woorden de afstanden
+die de ontvangen signalen hebben afgelegd,
+alvorens zij de ontvanger bereikten. Een
+bepaald tijdsverschil in de ontvangst van
+de twee zenders blijkt in de kaart te
+corresponderen met een lijn die de vorm
+heeft van een hyperbool. Aangezien we met
+drie zenders beschikken over twee zenderparen,
+kunnen we twee van dergelijke hyperbolen
+bepalen. Het snijpunt van deze twee
+hyperbolen levert onze positie of 'fix' op
+en voila, daarom noemden we het een
+hyperbolisch navigatiesysteem.
+
+FREQUENTIE EN DRACHT
+
+Alle Loran C-stations zenden uit op een
+normale frequentie van 100 kHz, in een
+toegekende band van 90-110 kHz. Deze
+bandbreedte is nodig om de impulsvorm
+zodanig te krijgen dat de ontvanger in staat
+is deze zeer nauwkeurig, tot op enkele
+tientallen nano- (= 10 tot de min-negende
+ofwel een duizendste deel van het miljoenste!)
+seconde te meten. De zenders zijn gegroepeerd
+in zogenaamde ketens, die zoals al eerder
+uiteengezet uit tenminste drie zenders
+bestaan. Anders dan bij de meeste systemen
+maken alle zenders gebruik van dezelfde
+frequentie. Hoe wordt zo'n ontvanger daar nu
+wijs uit? Welnu, elke keten zendt zijn
+impulsreeksen in een kenmerkend ritme uit.
+De in Frankrijk gelegen 'Systeme National
+de Radionavigation - Loran C' zendt elke
+89.400 micro-seconden een impulsreeks uit,
+terwijl de 'Norwegian Sea Chain' dit om de
+79.700 micro-seconden doet. De ontvanger
+timed alleen die signalen voor welk ritme of
+'rate' hij is ingesteld!
+
+LAGE ZENDFREQUENTIE IS GUNSTIG
+
+Het gebruik van de lage zendfrequentie 100
+kHz heeft enige belangrijke voordelen. Ten
+eerste is het bereik zeer groot, waardoor
+in principe met slechts weinig zendstations
+enorme gebieden kunnen worden gedekt. Een
+ander groot voordeel is dat de ontvangst ook
+op lage hoogte mogelijk is, ongeacht of er
+zich tussen zender en ontvangers heuvels
+mochten bevinden. Dit laatste vooral heeft
+in bepaalde gebieden in de USA ertoe geleid
+een diepgaande studie te maken van de
+potenties van dit systeem voor luchtvaart
+navigatie. Dit heeft inmiddels geresulteerd
+in het verlenen van licenties voor apparatuur
+en toepassing in een groot aantal staten voor
+IFR 'en route' gebruik, terwijl de inmiddels
+gehouden proeven er op duiden dat door middel
+van Loran C de gehanteerde normen voor 'non
+precision approach' ruimschoots kunnen worden
+gehaald. Belangrijk hierbij is dat op de
+betrokken luchthavens slechts minimale
+voorzieningen vereist zijn, ten hoogste
+bestaande uit het installleren van een monitor
+ontvanger om de ligging van het tijdsverschil
+patroon te bewaken. Dit kan namelijk wel eens
+tijdelijk, bijvoorbeeld seizoensafhankelijk,
+iets verschuiven.
+
+LORAN C IN EUROPA ?
+
+In 1985 kwamen in Frankrijk te Lessay en
+Soustons krachtige Loran C-zenders in bedrijf,
+primair bedoeld voor de Marine Nationale, doch
+ook vrij beschikbaar voor burgerlijk gebruik.
+Eind 1985 werd het bestaande, door de US Coast
+Guard gedreven station op Sylt (BRD) geschikt
+gemaakt voor zogenaamd 'dual rate' bedrijf,
+waardoor deze zender met gebruikmaking van
+het principe 'time sharing' tegelijkertijd
+zowel voor de 'Norwegian Sea Chain' als voor
+de Franse 'SNR-LC' keten in de lucht kon
+zijn. In juni 1986 werden hiermee geslaagde
+proeven genomen.
+
+Intussen hebben zowel de Engelse als de
+Noorse regering publiekelijk te kennen
+gegeven het huidige Decca Navigator
+plaatsbepalings systeem, alom in gebruik bij
+scheepvaart en visserij, te willen vervangen
+door Loran C. De achtergrond hiervoor vormt
+de steeds meer veld winnende gedachte, dat
+ook na de indienst stelling van het
+geavanceerde satelliet plaatsbepalings systeem
+GPS behoefte blijft bestaan aan een 'back up'
+in de vorm van een aardegebonden
+(hyperbolisch) systeem. Een reeks van
+factoren maakt in dat geval de keuze voor
+Loran C aantrekkelijker. Als uitvloeisel
+hiervan zal daardoor vrijwel zeker ook over
+Nederland en het ons omringende deel van
+Europa volledige Loran C-dekking ontstaan,
+terwijl vanaf het begin van de jaren
+negentig over hetzelfde gebied een
+(gedeeltelijke) 'fase out' van het Decca
+systeem kan plaatsvinden. Momenteel wordt
+bezien of de min of meer tijdelijke
+voorzieningen aan de zender Sylt in
+enigzins gewijzigde vorm continu
+dubbelbedrijf mogelijk zouden kunnen maken.
+
+LORAN C IN DE LUCHTVAART
+
+Gedurende de laatste tien jaar heeft het
+gebruik van het Loran C plaatsbepalings
+systeem in de luchtvaart een enorme expansie
+te zien gegeven. Gedragen door een
+voorafgaande ontwikkeling in de scheepvaart
+begonnen enige fabrikanten van scheepsnavigatie
+ontvangers, die hun produkten ook in kleine
+vliegtuigen in gebruik genomen zagen worden,
+speciaal op deze markt gerichte apparatuur
+te ontwikkelen. Dit sloeg enorm aan en naar
+de stand van heden vliegen zo'n slordige
+veertigduizend toestellen, te rekenen tot de
+general aviation, rond op Loran C.
+
+Vooral in gebieden in de USA, waar de
+grondvoorzieningen als VOR's en NDB's bepaald
+niet rijkelijk voorhanden zijn, voorziet het
+in een behoefte. De FAA laat thans door de
+bouw van enige stations in het binnenland de
+zogenaamde 'mid-continent gap' sluiten, een
+niet gedekt gebied dat ontstond doordat het
+systeem in eerste instantie bedoeld was om
+de kustwateren te dekken.
+
+Een geweldig groot voordeel is dat de
+voorzieningen per vliegveld minimaal kunnen
+zijn, hoogstens bestaande uit een controle
+ontvanger op de toren om het signaal te
+bewaken. Er bestaan plannen om deze controle
+ontvangers (monitors) te integreren met
+bestaande VOR's in verband met medegebruik
+van bestaande data-verbindingen. De
+uitrusting van het vliegtuig zelf biedt de
+vlieger een reeks van faciliteiten,
+tenminste gelijkwaardig aan datgene wat een
+aanzienlijk duurdere RNAV-uitrusting kan
+bieden. Door het gebruik van de lange golf
+volgt het signaal de contouren van de bodem
+en blijft zodoende bruikbaar tot op de
+grond, zelfs in een dal.
+
+VERBETERING ONTVANGST
+
+Bij de onderzoekingen die het NOB laboratorium
+verricht voor Hobbyscoop Basicode is al een
+resultaat geboekt. Bij de bestudering van de
+slecht inleesbare bandjes bleek de onderzoekers
+dat men veelal te maken had met een heel
+slechte golfvorm. Het lukte de technici zelf
+ook zulke 'vervormde' Basicode op te nemen
+en daarmee een deel van het probleem alvast
+op te lossen. Wanneer zij namelijk de radio,
+die op de middengolf wordt gebruikt voor
+Radio 5 slordig afstemden, ging het op het
+laboratorium ook mis. Dat wil zeggen: men
+kreeg dus problemen als de ontvanger niet
+precies op het midden van de 1008 kHz stond.
+
+DUBBEL PROBLEEM
+
+Veel mensen stemmen de radio zelfs expres
+wat naast het centrum van de zender af. Het
+geluid klinkt dan wat scheller en
+verstaanbaarder. Bij NOS-BASICODE is dat dus
+uit den boze. Neem er de tijd voor om precies
+het midden van de frekwentie te vinden. De
+klank is dan zo donker mogelijk. Een dubbel
+probleem is dat voor het AM-bereik (AM is
+Amplitude Modulatie) bij de ontvanger
+vaak geen afstemoog of iets dergelijks
+aanwezig is. Bij FM kent men de zogeheten
+nul-doorgangsmeters, die precies de goede
+afstemming opleveren. Ons Lab rapporteert
+dat bij het juist afstemmen vrijwel alle
+vervorming bij het opnemen van Basicode
+verdwijnt.
+Binnenkort gaan we desondanks nog proeven
+doen met een verbeterde golfvorm. We zijn
+-zoals altijd - benieuwd naar uw reacties.

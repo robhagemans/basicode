@@ -1,0 +1,274 @@
+140, zon 10 apr '88
+
+CURSUS PROGRAMMEREN IN BASICODE DEEL 4
+
+SUBROUTINE 260
+
+Het aanroepen van subroutine 260 heeft tot
+gevolg, dat in de variabele RV een willekeurig
+getal wordt gezet. Dit getal is altijd kleiner
+dan 1 en minimaal 0. Het kan gebruikt worden in
+spelletjes en voor het produceren van
+getallenreeksen in voorbeeld- programma's.
+Met behulp van de uit Basic bekende routines
+kunnen er allerlei variabele getallen van
+gemaakt worden, bijvoorbeeld na aanroep van
+subroutine 260 produceert:
+G = INT(RV*10+.5) in de variabele G
+de getallen van 0 tot 10.
+
+VOORBEELDPROGRAMMA
+
+Laad de subroutines en tik in:
+
+1000 A=100:GOTO 20:REM SUBR.260
+1010 GOSUB 100
+1020 FOR I=1 TO 44
+1030 GOSUB 260
+1040 PRINT RV,
+1050 NEXT I
+1060 END
+
+en 'run' het. Op het scherm verschijnen dan
+in dit geval 44 getallen tussen 0 en 1.
+Vervang nu regel 1040 door:
+1040 PRINT INT(RV*100+.5),
+(de komma achteraan niet vergeten!) en 'run'
+het. Hele getallen tussen 0 en 100 komen nu
+op het scherm.
+
+SUBROUTINE 300
+
+Deze subroutine maakt een string SR$ van de
+waarde van de variabele SR. Sommigen kennen in
+hun Basic de statement STR$(), die ongeveer
+hetzelfde doet, maar in Basicode is verboden
+(vanwege sommige computers, weet je wel). De
+subroutine 300 doet het heel fraai, het zet het
+getal dat in SR staat zonder omringende spaties
+in SR$. Dat is van groot belang voor een mooie
+presentatie op het scherm (of de printer).
+Voorbeeld:
+PRINT ''Er zijn'';X;''mensen.'' Als X=25 komt
+er, afhankelijk van de computer, op het scherm:
+Er zijn25mensen.   Of:
+Er zijn25 mensen.  Of:
+Er zijn 25 mensen. En dat was de bedoeling
+van de programmeur.
+
+VOORBEELDPROGRAMMA
+
+Om deze moeilijkheden te omzeilen, gebruiken we
+subroutine 300. Tik het volgende in:
+
+1000 A=200:GOTO 20:REM SUBR.300
+1010 GOSUB 100
+1020 X=25:SR=X:GOSUB 300
+1030 PRINT''Er zijn'';X;''mensen.''
+1040 PRINT''Er zijn '';SR$;'' mensen.''
+1050 END
+
+Het hangt helemaal van de computer af, wat men
+nu te zien krijgt. Op een MSX bijvoorbeeld ziet
+men twee gelijke zinnetjes onder elkaar op het
+scherm, maar op een Apple ziet men duidelijke
+verschillen. Om er dan ook zeker van te zijn,
+dat het programma op elk type computer
+hetzelfde te zien geeft, gebruikt men in zo'n
+geval subroutine 300 en zet tevoren de af te
+drukken getalwaarde in de variabele SR. De
+noodzakelijke spaties moeten in de tekst
+worden opgenomen, zie regel 1040. Op deze
+manier komen de programma's een stuk beter tot
+hun recht en het is een kleine moeite.
+
+SUBROUTINE 310
+
+Sommige computers hebben de mogelijkheid 'PRINT
+USING' opdrachten te gebruiken, die onder meer
+in staat zijn getallen op een bepaalde wijze af
+te drukken, bijvoorbeeld:
+A=234.56789:PRINT USING''####.##'';A
+levert dan op:  234.57
+dus: maximaal 4 cijfers voor de punt (maar er
+zijn er maar 3, dus een spatie en dan 3
+cijfers) en 2 cijfers erachter (afgerond). In
+Basicode hebben we daarvoor subroutine 310.
+Deze plaatst de getalwaarde van SR in SR$,
+zodat de totale lengte van SR$ gelijk is aan CT
+tekens, de spaties en de punt meegeteld, en
+waarvan er CN tekens na de decimale punt staan,
+die keurig worden afgerond als daar reden voor
+is. SR, CN en CT veranderen niet door de
+aanroep van deze subroutine.
+
+VOORBEELDPROGRAMMA
+
+Tik na de subroutines het volgende in:
+
+1000 A=200:GOTO 20:REM SUBR.310
+1010 GOSUB 100
+1020 FOR I=1 TO 20
+1030 GOSUB 260:SR=RV*1000
+1040 CT=7:CN=2:GOSUB 310
+1050 PRINT''Uitkomst fl.'';SR$;''  SR
+     was'';SR
+1060 NEXT I
+1070 END
+
+In regel 1030 wordt een willekeurig getal
+tussen 0 en 999.999... in SR geplaatst en in
+regel 1040 met de waarden van CT en CN in SR$
+overgebracht. In regel 1050 wordt dit
+uitgeprint met erachter de oorspronkelijke
+waarde van SR.
+
+NOG MEER OVER SUBROUTINE 310
+
+Verander nu de waarde 1000 in regel 1030 in
+100000, en kijk wat er gebeurt. Als het getal
+niet meer past in het formaat, worden er een
+CT- aantal sterretjes geprint. Merk ook op, dat
+het aantal cijfers achter de punt altijd wordt
+aangevuld tot de waarde van CN, eventueel met
+nullen. Experimenteer nu met CT=8 en run het
+programma nog eens. Verander daarna regel 1030
+als volgt:
+1030 GOSUB 260:SR=-(RV*1000)
+en kijk wat er gebeurt. Merk op, dat de '-'
+wordt meegeteld voor het totaal aantal tekens,
+als de waarde van CT dus te klein is,
+verschijnen er sterretjes! (Proberen!)
+
+SAMENVATTING VAN DE VIERDE LES
+
+Met behulp van voorbeeldprogramma's werd de
+werking van de subroutines 260, 300 en 310
+verduidelijkt. Met de eerste subroutine kunnen
+we 'random getallen' maken en de laatste twee
+subroutines blijken van grote waarde te zijn
+voor een fraaie presentatie op het scherm en
+ook, zoals we later zullen zien, op de printer.
+(Met dank aan Pieter Vijlbrief)
+
+FIDO VOOR DOVEN
+
+Daar de computer voor doven een heel geschikt
+medium is om hun isolement te doorbreken,
+heeft het bestuur van de Afdeling Hoorn van
+de Stichting Nederlandse Dovenraad gemeend
+om voor Doven (Auditief gehandicapten) wat te
+moeten doen. Het resultaat is dat er een HCC
+netwerk komt voor DOVEN + SLECHTHORENDEN in
+de vorm van een FIDO netwerk. Dit netwerk kan
+alleen opgestart worden als een HCC Gebruikers
+Groep. Wilt u lid worden van de HCC DOVEN
+GEBRUIKERSGROEP/ WERKGROEP, dan kunt u zich
+opgeven bij het hoofdkantoor van de HCC,
+Postbus 149, 3990 DC Houten, tel. 03403 -
+78788. Inlichtingen kunt u ook inwinnen bij de
+Stichting Nederlandse Dovenraad, Postbus 19,
+3500 AA Utrecht. (Met dank aan Franklin Bieri)
+
+SUCCES VAN NOS-DATABANK
+
+Het is bijna niet te geloven hoe succesrijk
+onze NOS-Fido databank is gebleken. Regelmatige
+gebruikers weten dat, want het nummer 035 -
+45395 is vrijwel permanent in gesprek tussen
+'s ochtends 07 en 's nachts 01 uur. Daarna
+werkt Fido wel, maar handelt de post af tussen
+de verschillende knooppunten. Er zijn nu al
+ongeveer 26.000 bellers geweest. Voor zo'n
+1500 mensen is het een min of meer een vaste
+stek. Veel luisteraars gebruiken de node
+'anoniem', dwz met het standaard password om
+een Basicode programma dat ze gemist hebben
+of dat verminkt is overgekomen op te halen.
+Vanweg de vele taken die onze Fido heeft, ook
+binnen de redaktie, zijn we overgeschakeld op
+een ander, sneller systeem. Gebruikt wordt nu
+een Genisys systeem met 80286 processor. Dit
+systeem is sinds de ingebruikname geen enkele
+keer down geweest door hardware perikelen.
+Wel loopt de Databank wel eens vast in de
+software: wij gebruiken Fido software 11w,
+die met name onder MS-DOS 3.3 wel eens
+problemen geeft.
+
+TOEKOMST PLANNEN
+
+Het bijna overmatig gebruik van NOS-HCC-Fido
+heeft ons nogal wat hoofdbrekens gekost.
+Gedacht wordt om in dit jubileum jaar (20
+jaar Hobbyscoop) meer lijnen te openen,
+maar het is de vraag of dat met bestaande
+geldmiddelen kan. Gedacht wordt aan een 06
+nummer zodat iets van de investeringen die
+wij moeten doen om alle Basicode programma's
+alsnog thuis te bezorgen voor een deel terug
+komen. Principieel is en blijft Basicode
+natuurlijk gratis: over de zender. Om de
+overdracht ervan te verbeteren hebben we
+inmiddels al de nieuwe Basicode regenerator
+in gebruik genomen die de ontvangst met name
+op middengolf aanzienlijk moet verbeteren.
+Gaarne uw commentaar wat dat betreft!
+
+NIEUW IN FIDO
+
+Theo en Truus Schijf schreven een prachtig
+leer programma voor MS-DOS, Macintosh- en
+Atari computers. In de Fido-files #5
+(algemeen) staat een inleiding van 15.000
+tekens over deze leerprogramma's die zeer
+bruikbaar zijn voor lager- en voortgezet
+onderwijs. Het verhaal is te gespecialiseerd
+en te lang voor de Beeldkrant. Voor wie
+het interesseert is het daar op te halen.
+Er is ook een handboek over OOPS verkrijgbaar:
+bij MAC GG Nederland, Nieuwe Englaan 12,
+1404 EC Bussum.
+
+BASICODE OP PERSONAL COMPUTER
+
+Al heel wat jaren bestaat er een vertaal
+programma naar Basicode voor de PC. Heel
+veel mensen weten dat, sommigen hebben het
+zelfs in huis, maar het probleem blijkt de
+kabel te zijn die erbij nodig is. Daar is
+indertijd een ontwerp voor gemaakt, maar
+computeraars blijken niet in staat zo'n kabel
+te vervaardigen of het schema dat in de
+documentatie voorkomt te lezen, laat staan de
+soldeerbout te hanteren.
+Omdat er veel vraag is naar het vertaal
+programma voor de PC (de PC wordt nu op veel
+scholen ingevoerd) heeft Hobbyscoop een kant
+en klaar pakket samengesteld, dat de brug naar
+de PC nu definitief moet slaan. In dat pakket
+een kabel (de verbinding tussen de cassette
+recorder en de printerpoort van de PC) en het
+vertaalprogramma voor lezen en schrijven in
+NOS-Basicode, op een 5,25 inch floppy disk.
+Het pakket is te bestellen voor f 30.- bij
+NOS Algemeen Secretariaat, Postbank nummer
+1419 in Hilversum. Zet op de giro: PC-pakket.
+
+EXPERIMENT NIEUWE REGENERATOR
+
+Vorige woensdag en zondag hielden we een
+experiment met een nieuwe Basicode- regenerator
+die de ontvangst van Basicode programma's, met
+name over de middengolf, zou moeten verbeteren.
+Uit uw reacties bleek echter dat het experiment
+geen onverdeeld succes was: sommige mensen
+berichtten ons inderdaad dat ze de programma's
+nu beter konden ontvangen, maar bij anderen
+(vooral Commodore bezitters) bleken er juist
+meer inleesfouten op te treden.
+Daarom zullen we volgende week het experiment
+herhalen: opnieuw zullen de programma's 2 maal
+worden, zowel met de oude als met de nieuwe
+regenerator. We zijn nog steeds benieuwd naar
+uw bevindingen: stuur deze naar Postbus 1200.

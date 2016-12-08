@@ -1,0 +1,292 @@
+
+217, woe 29 mrt '89
+
+UoSAT-OSCAR 11
+
+In de eerste weken van maart zijn er
+problemen opgetreden met de Digitalker
+spraaksynthesizer in OSCAR 11. Het is
+nog niet duidelijk of het een software
+of hardware probleem betreft. De
+satelliet zendt nu een ongemoduleerde
+draaggolf uit in de perioden waarin de
+Digitalker in bedrijf hoort te zijn.
+Het UoSAT kommando station in Guildford
+onderzoekt het probleem en ontvangt
+graag verdere rapporten van waargenomen
+afwijkend gedrag van de Digitalker.
+
+AMSAT-OSCAR 13
+
+Het kommandostation VK5AGR was op 25
+maart nog bezig met de standverandering
+van OSCAR 13. Eind maart zal de nieuwe
+stand vermoedelijk zijn bereikt. Bij
+het gebruik van OSCAR 13 moet men er
+rekening mee houden dat de signalen
+snel zwakker worden naarmate de
+antennes van de satelliet niet meer
+goed naar de aarde zijn gericht tijdens
+bepaalde delen van zijn omlopen. Mode S
+is nu niet in bedrijf omdat de
+kommandostations nog bezig zijn met het
+testen van het RUDAK systeem.
+
+AMATEUR RADIO VANUIT MIR
+
+Eind maart passeert het Russisch
+ruimtestation MIR van west naar oost
+over Europa tijdens de avonduren. Bij
+helder weer kan men het station
+regelmatig met het blote oog waarnemen
+tijdens hoge passages. Waarschijnlijk
+zullen de amateur radio aktiviteiten
+vanuit MIR in de komende weken weer
+toenemen tijdens de middag- en vroege
+avonduren. De kosmonauten hebben het
+wel druk met het uitladen van PROGRESS
+41. Dit ruimtevrachtschip is op 16
+maart om 1854 UTC gelanceerd vanaf
+Baykonoer en in de avond van 18 maart
+aan MIR aangekoppeld. Rond 21 maart is
+de baan van MIR weer iets verhoogd met
+behulp van de raketmotor van PROGRESS
+41. Begin april moet PROGRESS 42 al
+weer naar MIR worden gelanceerd. De
+nieuwe bemanning voor MIR moet op 19
+april in SOYUZ-TM 8 naar het
+ruimtestation vertrekken en daar op 21
+april aankomen. De kommandant van de
+nieuwe bemanning zal Aleksandr
+Viktorenko zijn.
+
+Het is inmiddels zeker dat Aleksandr
+Serebrov in april nog niet naar MIR zal
+gaan. Door wie hij vervangen zal worden
+is nog niet duidelijk. Ook is besloten
+dat de gehele huidige bemanning, dus
+inklusief de arts Valeri Poliakov
+U3MIR, naar de aarde zal terugkeren op
+29 april. Omdat Sergei Krykalov, voor
+zover bekend, nog geen gebruik gemaakt
+heeft van de roepnaam U5MIR, zou deze
+roepnaam gebruikt kunnen gaan worden
+door Aleksandr Viktorenko.
+
+MICROSATS
+
+Drie van de vier eerste MicroSats, die
+nu worden gebouwd, maken gebruik van
+een Binary Phase Shift Keying (BPSK)
+packet radio zender voor hun
+kommunikatie met de grond. Alle
+uitzendingen zijn digitaal, NRZ-I,
+BPSK, HDLC en compatible met het AX.25
+Level 2 protocol dat bij packet radio
+wordt gebruikt.
+
+Onder besturing van de boordcomputer
+worden unconnected information packets
+uitgezonden die telemetrie (of
+CCD-beeldinformatie bij WEBERSAT)
+bevatten en connected information
+packets naar gebruikers van het
+Bulletin Board System in de satelliet.
+De BPSK-zenders maken gebruik van een
+eindtrap met een hoog rendement. Het
+maximale uitgangs vermogen zal 4 W
+zijn. Het uitgangs vermogen kan ook
+worden geregeld in 16 stappen tussen 0
+en 4 W, zowel direkt vanaf de grond
+door een kommandostation als
+automatisch door de boordcomputer in de
+satelliet. Bij het hoogste vermogen (4
+W) wordt een DC-naar-HF rendement van
+de zenders verwacht van ongeveer 84% op
+2 meter en 74% op 70 cm.
+
+TWEE ZENDERS AAN BOORD
+
+Elke zendermodule zal twee zenders
+bevatten, niet alleen omdat er dan een
+reserve zender is maar ook voor
+experimentele doeleinden. De ene zender
+zal direkt gemoduleerd worden met PSK
+signalen, zodat sterkere zijbanden te
+verwachten zijn. De andere zender zal
+gemoduleerd worden met gefilterde PSK
+signalen, waarbij de zijbanden veel
+meer worden verzwakt (38 dB in plaats
+van 14 dB).
+
+De frekwenties van de tweede zender van
+elke MicroSat zijn nog niet vastgelegd.
+De transmissie- snelheid is
+omschakelbaar tussen 1200 en 4800 Baud.
+De bijbehorende bandbreedte van de
+uitgezonden signalen is 4 resp. 15 kHz.
+De zenders sturen direkt een 70 cm
+turnstile antenne aan, die cirkulair
+gepolariseerd is. (Met dank aan Nico
+Janssen, PA0DLO)
+
+NATIONALE ZELFBOUWDAG
+
+Op zaterdag 6 mei a.s. vindt weer de
+Nationale Zelfbouwdag plaats in het
+Rijnlands Zeehospitium te Katwijk. Aan
+deze dag, die in het teken staat van
+het ether gebruik door niet
+omroepzenders, zullen tientallen
+zendamateurs hun zelfgebouwde
+apparatuur demonstreren. Er zal onder
+meer worden getoond: een spraak-
+synthesizer, Packet Radio, grofraster
+TV, het maken van printen en het maken
+van eindtrappen zonder problemen. Ook
+wordt medewerking verleend door
+amateurs die meer gespecialiseerd zijn
+op diverse computer toepassingen.
+Tevens is er een informatie stand
+aanwezig van de Radio Controle Dienst
+(RCD) uit Groningen. Op het
+buitenterrein zal een demonstratie
+gegeven worden met o.a. een peilwagen
+van de RCD, en kunt u een kijkje nemen
+in een wagen van de Politie Verbindings
+Dienst.
+
+European Space Research and Technology
+Centre (ESTEC) uit Noordwijk zal haar
+visie geven op het gebruik van diverse
+frequenties in de ruimte. Een andere
+gebruiker van de ether is de
+modelbouwer. U kunt van deze hobby
+diverse facetten zien, o.a.
+vliegtuigen. Voor de boten is speciaal
+hiertoe een vijver aangelegd.
+
+U bent welkom van 10 tot 16 uur. Het
+Rijnlands Zeehospitium staat in Katwijk
+aangegeven en is niet moeilijk te
+vinden. De toegang is gratis en er is
+voldoende parkeer gelegenheid in de
+omgeving. De organisatie is in handen
+van PI4LD en de VERON afd. Leiden. Voor
+zendamateurs is een inpraat station
+aanwezig op 145.000 MHz.
+
+VLIEGTUIG-RESERVERINGSSYSTEMEN
+
+American Airlines en Delta Air Lines
+verenigen hun elektronische
+reserverings systemen in een
+onafhankelijk bedrijf ter waarde van 2
+miljard dollar. De twee Amerikaanse
+luchtvaart maatschappijen hopen op deze
+manier een groter aandeel van de
+overzeese boekingen te pakken. Het
+reserverings systeem van American
+Airlines biedt al sinds halvervege de
+jaren '70 informatie aan reisbureaus.
+Delta's systeem is vanaf 1982
+operationeel. Omdat het Sabre- systeem
+van American Airlines veel groter is
+dan Delta's Datas II systeem, betaalt
+Delta haar partner 650 miljoen dollar
+in contanten. Het nieuwe bedrijf wordt
+gevestigd in Dallas/ Fort Worth. Al
+eerder gingen United Airlines, USAir,
+Trans World Airlines en Northwest
+Airlines een dergelijke samenwerking
+aan. Ook zijn Europese luchtvaart
+maatschappijen druk doende met
+gecombineerde reserverings systemen.
+(Uit: Telecom Daily)
+
+VROUWELIJKE CAPTAIN BIJ TRANSAVIA
+
+Cockie v. Giessel, voorheen directie-
+secretaresse, komt uit een vliegers
+gezin. Zij is de eerste vrouwelijke
+verkeers vlieger in Nederland. In 1972
+begon ze als secretaresse om later van
+stewardess op te klimmen tot co-piloot
+op twee-motorige vliegtuigen. Na
+diverse examens gedaan te hebben is zij
+per 1 februari j.l. bevorderd tot
+gezagvoeder op de Boeing 737.
+
+EDS KRIJGT SATELLIETVERBINDING
+
+Naast British Telecom en Mercury
+Communications heeft Electronic Data
+Systems een vergunning gekregen voor de
+exploitatie van een satelliet
+verbinding in Engeland. Electronic Data
+Systems (EDS) zal via deze verbinding
+diensten aanbieden aan bedrijven, zoals
+video- conferencing en informatie
+verspreiding. Gedacht kan worden aan de
+snelle verspreiding van een grote
+hoeveelheid gegevens, bijvoorbeeld
+beurs ontwikkelingen. EDS exploiteert
+in de VS al een dergelijk netwerk en
+heeft daar meer dan 4000 gebruikers.
+(Uit: Telecom Daily)
+
+NIEUWE CD-FABRIEK IN HAARLEM
+
+Op 13 maart j.l. is CBS Haarlem
+begonnen met de bouw van een produktie
+bedrijf voor compact discs. De
+robotfabriek gaat ongeveer 7 miljoen
+gulden kosten. Het ontwerp is van
+architect Jan Kooij. CBS manager Hans
+van Luit gaat het produktie bedrijf
+starten en krijgt de supervisie. De
+fabriek moet op 1 september a.s. volop
+draaien. Het nieuwe geautomatiseerde
+bedrijf zal aan zeven mensen werk
+bieden.
+
+Het eerste jaar rollen 3,5 miljoen
+3-inch (8 cm) muziekdiscs van de band.
+De produktie capaciteit kan de komende
+jaren worden opgevoerd tot maximaal 20
+miljoen exemplaren. Het concern heeft
+definitief gekozen voor Westduitse en
+Japanse machines.
+
+DUBBELPERSER
+
+Zoals bekend, is CBS vorig jaar door
+Sony overgenomen. Sony Japan maakt
+onder meer de robots voor de Haarlemse
+cd-fabriek. Bijzonder is dat er een
+machine komt te staan die twee discs
+tegelijk perst. ''Daarmee is onze
+gecompliceerde high-tech installatie
+uniek. We zijn de enige ter wereld met
+zo'n produktie bedrijf voor uitsluitend
+3-inch cd's!'', aldus van Luit.
+
+UITVALSBASIS
+
+De Haarlemse produktielijn fungeert
+voorlopig nog als uitvalsbasis voor de
+Sony fabriek bij Salzburg waar ze
+5-inch (12 cm) cd's maken. Wanneer
+grote vraag is naar een bepaald muziek
+nummer, moeten alle Europese winkels
+binnen 24 uur worden bevoorraad,
+waartoe Salzburg niet in staat is. In
+Haarlem, waar de grootste CBS
+grammofoonplaten fabriek ter wereld
+staat, is grote ervaring opgedaan met
+het persen en snel distribueren van
+singles van hits. En die know-how komt
+goed van pas bij de distributie van de
+kleine discs waarop 20 minuten muziek
+staat. (Uit: de Haarlemmer Courant)
+

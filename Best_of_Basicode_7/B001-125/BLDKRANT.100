@@ -1,0 +1,242 @@
+100, woe/zon 28 okt/1 nov '87
+
+JUBILEUM BEELDKRANT
+
+Op woensdag 4 dec 1985 ging de eerste, nog
+betrekkelijk magere Beeldkrant de lucht in.
+Dus al weer bijna twee jaar geleden. Het was
+het begin van een experiment dat later maar
+ronduit geslaagd zou blijken. De Beeldkrant
+was hoofdzakelijk bedeold om onze post terug
+te dringen. Veel vragen van luisteraars
+komen immers neer op: wilt u dit telefoon
+nummer, dat adres of het bewuste gironummer
+nog eens herhalen. Met de Beeldkrant
+dachten we daar vanaf te zijn.
+Die verwachting is maar zeer ten dele
+uitgekomen. Weliswaar liepen de verzoeken om
+giro-, telefoonnummers en adressen terug,
+maar een nieuwe groep - geen luisteraars maar
+lezers - stuurden hun commentaar. Zeer
+gedetailleerde brieven soms, die lang niet
+altijd in zijn geheel in de Beeldkrant passen.
+
+VEEL BELANGSTELLING
+
+Die post liep zo op, dat we werkelijk benieuwd
+werden naar aantallen lezers van de Beeldkrant.
+Dat bracht ons op het idee om - net als Libelle
+en Margriet - een 'knipuit bon' in de krant op
+te nemen. Voor een boekje van IBM en van de
+Wereldomroep. Dat werd een knaller. Duizenden
+coupons kregen we: zoveel hadden we er echt
+niet verwacht. Gelukkig konden we de briefkaarten
+zo doorsturen en hoefden we ze niet zelf te
+beantwoorden. Een ding was duidelijk: vele
+tienduizenden mensen beleven plezier aan de
+Beeldkrant. Vandaar dat we over enige tijd
+zeker weer een coupon zullen opnemen voor de
+shoppinglist (overzicht van alle ontvangers)
+van de Wereldomroep. U hoort van ons als het
+overzicht herfst '87 uit is.
+
+NIEUWE IDEEEN
+
+Inmiddels zijn er wel weer een paar nieuwe
+ideeen gerezen over het gebruik van de
+Beeldkrant. Deze snelle manier van elektronisch
+publiceren heeft nog een aantal voordelen
+in de communicatie met de luisteraars, of
+liever: lezers. Geen maand- of weekblad kan zo
+snel reageren op de verzoeken vanuit z'n
+achterban als juist de Beeldkrant. Vandaar
+dat wij u in deze jubileumkrant enige
+voorstellen doen:
+
+kHz     mode  call  name         landdetails
+20075.0  US IRS20  ITALCABLE R  I   tfc>ME
+20075.0  US IED26  ITBAT Beirut LBN tfc>Rome
+20077.0  R  Y4A2   DP Berlin    DDR ry
+20080.0  R  FTU8   Diplo Paris  F   F msgs
+20099.0  R  ASP32  MFA Islamabd PAK E & tfc
+
+Dit rijtje korte golfstations komt uit een van
+vele frekwentieboeken van Michiel Schaay uit
+Doorn. Achter elkaar vindt u de frekwentie,
+mode, call, naam, land en details over het
+station. Als we het eens zijn over de gebruikte
+afkortingen (die standaard zijn bij DX-ers),
+dan bestaat de mogelijkheid om met zijn allen
+interessante delen van zo'n frekwentie lijst
+samen te stellen. Het is een kwestie van met
+zijn allen intensief luisteren. U stuurt
+uw gegevens naar ons in Hilversum en wij
+brengen de zaak in de computer. Met de (grote)
+computer kunnen we enorme lijsten sorteren
+en rangschikken en vervolgens in de
+Beeldkrant plaatsen zodat u de laatste gegevens
+over een deel van spectrum meteen in huis
+hebt. Niet alleen de frekwenties die uzelf
+gehoord hebt, maar ook die men in
+Oostgroningen waarneemt of in Zuid-Limburg.
+
+Hetzelfde is nogelijk met scanner frquenties.
+U stuurt uw lijst, en samen met die van vele
+anderen hebben we in no-time een compleet
+boekwerk, dat up-to-date weer bij u thuis
+wordt bezorgd, compleet en gratis. Deze vorm
+van Hobbyscoop service moet eerst nog
+nauwkeurig worden bekeken voordat we eraan
+beginnen. Formaat en details moeten worden
+uitgewerkt met hulp van deskundigen, zoals
+bv. Mischiel Schaay. Als u er zelf ideeen
+over heeft laat die dan aan ons weten. Bij
+voorkeur per modem en databank 035-45395.
+Anders per briefkaart.
+
+ADVERTENTIE MEDIUM
+
+Een ander grappige toepassing van de Beeldkrant
+is de mogelijkheid om het als advertentie
+medium te gebruiken. Een dan denken wij niet
+aan grote zaken die hun waren aan de man gaan
+brengen, maar uitsluitend aan particulieren,
+die wat spullen voor Spectrum, Commodore of
+PC kwijt willen dan wel nodig hebben.
+Binnenkort willen we zo'n krant met 'gevraagd'
+en 'aangeboden' uitzenden met daarin die zaken
+die u nou net nodig heeft of waar u van af wil.
+Alle advertentie - zo KORT mogelijk - moeten
+uiteraard voorzien zijn van een informatie
+adres of liever nog telefoon nummer en naam.
+Alleen advertenties afkomstig van particulieren
+nemen we. De advertenties bij voorkeur
+inleveren bij onze HCC/NOS Fido-databank,
+node nummer 202 (dus u kunt de advertentie
+ook verzenden vanaf uw plaatselijk knooppunt)
+en zo mogelijk in de afdeling Vraag en Aanbod
+plaatsen. Anders per briefKAART aan onze
+postbus zenden. Niet meer dan enkele
+zaken tegelijk: er komen meer van zulke
+kranten! Als we genoeg stuff hebben, valt hij
+vanzelf bij u in de computer: een ideale
+ruilmarkt is op deze manier ook op te
+bouwen!
+
+PROBLEEM MET WORDPROF OP C-64
+
+Het Basicode programma 'Wordprof' dat
+afgelopen zondag werd uitgezonden veroorzaakt
+een probleem voor de Commodore-64 computer: er
+kunnen namelijk bij dit programma geen
+hoofdletters op het scherm of de printer
+worden afgedrukt. Dit probleem kan worden
+verholpen door in het programma de volgende
+regel toe te voegen:
+1825 IF I>127 THEN I=I-96
+NB. Dit geldt dus UITSLUITEND voor de C-64!
+Deze praktische tip ontvingen wij van Paul
+de Greeff uit Bakel. Bedankt, Paul!
+
+SUBROUTINES VOOR C/16 EN PLUS/4
+
+De Commodore Compet gebruikersgroep van de
+HCC kreeg de laatste tijd veel vragen over
+een vertaalprogramma voor de Commodore C/16
+en Plus/4. Daarom ontwierpen zij een
+aangepaste versie van de C-64 subroutines
+voor Basicode 2.
+Het is namelijk mogelijk om Basicode 2
+programma's vanuit de Commodore 64 over te
+zetten naar de C/16 of Plus/4, omdat zowel
+de C-64 als de C/16 gebruik kunnen maken
+van hetzelfde type diskdrive.
+Eerst laadt men het Basicode 2 programma
+op de C-64 op de gebruikelijke manier.
+Daarna zet men het programma weg naar disk.
+Nu sluit men de diskdrive aan op een C/16.
+Nu kan men het programma als een normaal
+Basic programma binnenladen. Als laatste
+past men dan de subroutines aan voor de
+C/16. Het enige punt waarop men dan moet
+letten is, dat het programma niet te groot
+is voor de C/16.
+
+HIER KOMEN ZE DAN
+
+Vanuit de subroutines voor de Commodore 64
+hoeven maar 4 regels te worden aangepast
+om de C/16 versie van de subroutines te
+krijgen. Deze regels met hun veranderingen
+zijn:
+
+120 ho=peek(200)+256*peek(201)-3072+peek(202)
+250 vol8
+251 sound1,770,100
+252 return
+
+Voor het overige zijn de subroutines voor de
+C/16 dus identiek aan die voor de C-64. Aan
+een vertaalprogramma voor de C/16 wordt
+momenteel gewerkt. Het zal echter nog even
+duren voordat daarvan een resultaat te
+verwachten is.
+Voor vragen kunt U terecht bij:
+HCC Commodore Compet gebruikersgroep
+Postbus 2, 3984 ZG Odijk
+Deze informatie kregen wij van Hans
+Kessels uit Helden. Met dank.
+
+SATELLIETCOMMUNICATIE VAN PTT
+
+PTT Telecommunicatie heeft een optie genomen
+op drie transponders van de tweede
+generatie Europese communicatie satellieten.
+In Den Haag zijn de contracten hiervoor
+getekend door hoofddirecteur Drs.
+A. Dek. In 1990 lanceert Eutelsat de eerste
+communicatie satelliet van de tweede generatie.
+In de jaren erna volgen er nog drie.
+De nieuwe geavanceerde technieken van deze
+generatie Eutelsat-satellieten maken het
+mogelijk om meerdere transponders (kanalen)
+gelijktijdig te gebruiken over een
+groter Europees bedekkingsgebied.
+Het vermogen dat de zonnepanelen afgeven
+is zo groot dat de ontvangstantennes op aarde
+aanzienlijk kleiner kunnen zijn dan nu het
+geval is. Ontvangst van b.v. TV
+programma's in kleinere eenheden (flatgebouwen)
+voor aparte gebruikersgroepen zowel als
+voor individueel ontvangenden behoort
+tot de reele mogelijkheden.
+
+De toekomstige Europese satellieten
+bieden het bedrijfsleven vele mogelijkheden.
+Enkele ervan 'remote printing', worden nu
+al op betrekkelijk kleine schaal in de
+praktijk toegepast. Bij remote printing
+worden pagina's opgemaakt van een dagblad
+of tijdschrift door middel van een
+satelliet verbinding van de (opmaak)redactie
+overgeseind naar een drukkerij in een ander
+land. De uitgever bespaart hiermee op
+traditionele arbeids-,tariefs- en transport
+kosten.
+Een andere toepassing is bedrijfstelevisie.
+Door middel van een televisieuitzending
+via de satelliet is een bedrijf in staat
+alle dochterondernemingen en/of filialen
+in binnen- en buitenland tegelijk te
+bereiken voor b.v. bedrijfstrainingen en
+produktinformatie.
+
+WOONRUIMTE GEVRAAGD
+
+Langs deze, ongebruikelijke weg, vragen we
+woonruimte in 't Gooi voor onze Basicode
+redakteur. Hij heeft veel computers, dus
+ook op z'n minst een grote, dan wel twee
+kleinere kamers nodig. Liefst met een
+keukentje of gebruik van keuken. Help
+ons alstublieft...

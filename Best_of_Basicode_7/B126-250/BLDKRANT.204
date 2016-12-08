@@ -1,0 +1,255 @@
+
+204, woe 1 feb '89
+
+UoSAT-OSCAR 9
+
+Het normale uitzendschema van OSCAR 9 luidt nu
+als volgt: elke dinsdag wordt de Diary
+programmatuur opnieuw geladen in de boord-
+computer. Daarna wordt een CCD videobeeld
+uitgezonden. Dit beeld is meestal op dinsdag-
+of woensdag- morgen opgenomen. Het videobeeld
+wordt uitgezonden tot 0000 UTC op donderdag.
+Dan schakelt het baken om naar digitale
+telemetrie met de volgende kanalen: 8, 9, 17,
+18, 19, 27, 28 en 29. Vanaf donderdagavond
+wordt de volgende data herhaald uitgezonden
+met 1200 Baud: telemetrie gedurende 60
+sekonden, bulletin gedurende 60 sekonden en
+Whole Orbit Data (WOD) gedurende 150 sekonden.
+De Whole Orbit Data omvat momenteel de volgende
+kanalen: op donderdag 22, 23 en 30, op vrijdag
+3 en 13, op zaterdag 3 en 13, op zondag 1, 3
+en 13 en op maandag 1, 23 en 49. Op dinsdag
+schakelt het baken uit in afwachting van het
+opnieuw laden van de Diary programmatuur. De
+drie ingeschakelde HF-bakens van OSCAR 9 zijn
+goed ontvangen. Het baken in de 10 m-band
+blijkt te zenden bij 29,509 MHz.
+
+JAS 1B
+
+Toen JAS 1A (nu FUJI-OSCAR 12) in 1986 werd
+gelanceerd met de eerste proefvlucht van de
+Japanse H1 raket, rekende men erop dat er iets
+fout kon gaan, waardoor al snel daarna een
+tweede proefvlucht zou moeten worden
+uitgevoerd. Omdat men de konfiguratie van de
+betalende lading bij de eventuele tweede
+proefvlucht hetzelfde wilde houden als bij de
+eerste, moest er al direkt een tweede
+vluchtmodel van de te lanceren satellieten
+aanwezig zijn. Daarom werden er meteen twee
+komplete vluchtmodellen van JAS 1 gebouwd.
+Omdat de lancering toch een groot sukses werd,
+had men sindsdien de beschikking over een
+tweede JAS 1 satelliet, die ook gelanceerd zou
+kunnen worden. Men heeft nu een lanceer
+mogelijkheid gevonden voor deze JAS 1B en wel
+in juli 1989. Aanvankelijk was JAS 1B een kopie
+van JAS 1A. Na de praktische ervaringen met JAS
+1A (dus OSCAR 12) heeft men inmiddels echter de
+nodige verbeteringen aangebracht aan JAS 1B.
+Er is vooral aandacht besteed aan het energie
+voorzienings systeem in de satelliet. Er mag
+dus worden verwacht dat JAS 1B na zijn
+lancering beter zal funktioneren dan zijn
+voorganger OSCAR 12.
+
+AMATEURSATELLIET COLLOQUIUM
+
+Het volgende Amateursatelliet Colloquium van
+AMSAT-UK en de University of Surrey in de
+universiteit bij Guildford in Surrey, ten
+zuidwesten van Londen, is dit jaar gepland
+van 28 tot en met 30 juli 1989. Alle
+geinteresseerden zijn daarbij welkom.
+
+MICROSATS
+
+De vier MicroSats, die nu tot aan hun
+lancering bekend staan als de MicroSats A tot
+en met D, worden opgebouwd volgens een nieuw
+concept. Ze zijn vrijwel kubusvormig en zonder
+antennes meet elke zijde slechts 23 cm. Deze
+satellieten worden ontworpen voor lage, zon-
+synchrone banen om de aarde. De massa van elke
+satelliet moet zo'n 8,5 kg worden. De lanceer-
+adaptor en apparatuur voor het loskoppelen van
+de satelliet van de lanceerraket voegen nog
+2,5 kg toe. De zonnepanelen van elke satelliet
+moeten gemiddeld over elke omloop een vermogen
+van meer dan 6 W genereren, gerekend voor de
+minst gunstige zon-synchrone baan.
+
+FREKWENTIES
+
+De te gebruiken frekwenties van de 4 MicroSats
+zijn voorlopig als volgt vastgesteld: MicroSat
+A (DOVE) zendt op 145,970 MHz; MicroSat B
+(LUSAT) zendt op 437,150 MHz en ontvangt op
+145,900, 145,880, 145,860 en 145,840 MHz;
+MicroSat C (PACSAT) zendt op 437,050 MHz en
+ontvangt op 145,900, 145,920, 145,940 en
+145,960 MHz; en MicroSat D (WEBERSAT) zendt op
+437,100 MHz. Eventuele uplink frekwenties voor
+MicroSat D zijn nog niet vastgelegd.
+
+TECHNISCHE GEGEVENS
+
+De digitale uitzendingen van de MicroSats
+vinden plaats met Binary Phase Shift Keying
+(BPSK) binnen een bandbreedte van 20 kHz.
+Ook de bandbreedte van de FM-uitzendingen met
+spraak- synthesizer van MicroSat A zal minder
+dan 20 kHz bedragen. Elke satelliet heeft twee
+zenders aan boord met elk een maximum uitgangs
+vermogen van 4 W. Het uitgangs vermogen kan
+worden geregeld door de boordcomputer of door
+kommando stations. Het telemetrie systeem van
+elke satelliet omvat in het huidige ontwerp-
+stadium minstens 32 analoge kanalen en kan
+gemakkelijk worden uitgebreid. De telemetrie-
+informatie wordt in digitale packets
+uitgezonden, terwijl bij MicroSat A daarvoor
+ook de spraaksynthesizer kan worden benut.
+
+LANCEEERPLANNEN
+
+De vier MicroSats moeten samen met UoSAT D en
+E worden gelanceerd met een ARIANE raket vanaf
+de ESA-lanceerbasis bij Kourou in Frans Guyana.
+De zes amateursatellieten worden dan
+gelanceerd samen met de Franse aardobservatie
+satelliet SPOT 2. De geplande zon-synchrone
+baan moet een baanhelling krijgen van 98,7
+graden, een apogeum van 835 km en een perigeum
+van 817 km. De satellieten moeten na hun
+lancering elke avond rond 2230 uur lokale tijd
+passeren van zuid naar noord. Omdat de
+satellieten met iets verschillende snelheids
+vektoren worden losgekoppeld van de lanceer
+raket, zullen zij zich in het baanvlak van de
+lancering gaan verspreiden rond de aarde. Dit
+effekt zagen we eerder ook al gebeuren met RS3
+tot en met RS8, die ook allemaal met eenzelfde
+raket werden gelanceerd. (Aldus Nico, PA0DLO)
+
+BAANCORRECTIE MIR
+
+Op 28 jan. '89 werd het MIR-station voor de 2e
+maal in korte tijd in een hogere baan gebracht.
+Dit gebeurde met de motor van de Progress-39,
+die nog steeds aan het station vastzit, maar
+binnenkort zal worden afgestoten om te
+verbranden in de atmosfeer. MIR komt nu later
+over dan met de oude Keplers werd voorspeld.
+In de eerste overkomst op 28 jan. (oml. 16935,
+1558-1602UT) -4 minuten later- werd bevestigd,
+dat een correctie was uitgevoerd.
+De kosmonauten hadden het via een
+zij-patrijspoort kunnen waarnemen.
+
+DRASTISCHE WIJZIGINGEN PLANNEN
+
+Op 26 jan. '89 gaven de kosmonauten blijk van
+hun ontstemming over het feit, dat zij niet op
+de hoogte waren gesteld van wijzigingen in de
+plannen. Dit was hun gebleken uit vragen van
+een radio commentator. Zij vonden het
+beschamend, dat zij niet wisten, dat de
+plannen zoals deze door henzelf tijdens een
+persconferentie voor hun vertrek waren
+toegelicht nu anders waren. Het duurde tot 28
+jan. voor TsUP een nieuwe planning opgaf.
+Voordien hadden de kosmonauten aan het
+volgschip Kosmonavt V. Komarov gevraagd of men
+daar iets wist. Op de K.V.K. wist men alleen,
+dat de huidige bemanning op 29 april a.s. zal
+worden afgelost door een bemanning, die tot de
+herfst aan boord zal blijven. Op 27 jan. bleek
+uit een gesprek tussen Volkov en de journalist
+Bezhayev, dat:
+1. de ruimtewandeling van Volkov en Krikalyov
+niet in februari zal plaatsvinden,
+2. er wel door hen een vrachtschip,
+Progress-40 zal worden ontvangen,
+3. het werk zich zal concentreren op dat
+schip en op experimenten als: Yantar,
+Roentgen, Glazar, Mariya en veel visuele
+waarnemingen van het gebied der S.U.
+
+De langverwachte grote module kwam niet ter
+sprake en deze valt dus niet de maand februari
+te verwachten. Maart 1989 zal wel een drukke
+maand worden met twee lanceringen waarbij
+koppelingen zullen plaatsvinden.
+I.v.m. slechte ontvangst af en toe enkele
+zaken onder voorbehoud:
+1. 12 maart koppeling van iets (mogelijk die
+grote module -onder voorbehoud)
+2. 16 maart start Progress-41, koppeling op
+18 maart '89 (onder voorbehoud - het is in
+ieder geval rond deze data).
+
+Ook gaat er iets op 1 april 1989 gebeuren.
+(onder groot voorbehoud: mogelijk een bemande
+Buran). Zeker is dat de Progress-41 de
+voorlaatste van de oude typen Progressen zal
+zijn. Na de Progress-42 wordt er een nieuw
+soort 'parlevinker' in gebruik genomen.
+
+RADIO-AMATEUR VERKEER VANUIT MIR
+
+Mede door het feit, dat de MIR grotendeels in
+de nachturen overkwam viel er niet veel te
+horen op dat gebied. De Tsjechische amateur
+OK3LPU heeft op 23 jan. j.l. te 1847UT een
+oproep van PlYAKOV (U3MIR) gehoord op 145.650
+mc. Het blijkt, dat Polyakov toch een paar
+woorden engels spreekt. Groetjes,
+Chris van den Berg, NL-9165/A-UK3202.
+
+TRANSPONDER-BELEGGING ASTRA
+
+Zoals beloofd in Beeldkrant 192 (van woensdag
+14 december 1988), krijgt u nu een overzicht
+van de organisaties die programma's gaan
+uitzenden via de 16 transponders op de Astra
+satelliet. Op dit moment zijn er daarvan elf
+belegd. De verdeling ziet er als volgt uit:
+
+nr.   programma      frequentie (GHz)
+-------------------------------------
+ 1.   Screensport              11.214
+ 2.   --                       11.229
+ 3.   TV 3/Zweeds/MAC          11.244
+ 4. * Disney Channel           11.258
+ 5.   Lifestyle                11.273
+      Kindernet
+ 6.   --                       11.288
+ 7.   Scansat/MAC (12/89)      11.303
+ 8.   Sky Channel              11.318
+      Arts Channel
+      Landscape Channel
+      European Business Ch.
+ 9.   Eurosport                11.332
+10.   --                       11.347
+11. * Filmnet                  11.362
+12.   Sky News                 11.376
+13.   --                       11.391
+14.   --                       11.406
+15.   MTV                      11.421
+16. * Sky Movies               11.435
+
+De met '*' gemerkte programma's zijn
+gecodeerd, en kunnen alleen met eån speciale
+decoder zichtbaar worden gemaakt.
+Nog enige technische opmerkingen: de oneven
+transponder- nummers zijn horizontaal
+gepolariseerd, de even vertikaal. Gelet op de
+frequentie belegging moet de polarisatie
+scheiding van de ontvang installatie wel
+redelijk goed zijn! (Met dank aan Ir. F.J.W.
+van Let, Hoofd TD Casema).
+

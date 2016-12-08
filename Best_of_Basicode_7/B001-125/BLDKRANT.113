@@ -1,0 +1,275 @@
+113, zon 20 dec '87
+
+UoSAT-OSCAR 9
+
+De Diary programmatuur in de boordcomputer
+van OSCAR 9 zorgt ervoor dat de telemetrie-,
+bulletin- en Whole Orbit Data- uitzendingen
+steeds worden afgewisseld. Op sommige dagen
+wordt dit schema onderbroken door andere
+soorten uitzendingen, zoals CCD videobeelden,
+Digitalker spraaksynthesizer en dergelijke.
+Het 21 MHz-baken van OSCAR 9 is nu steeds
+ingeschakeld.
+
+AMSAT-OSCAR 10
+
+Het mode B relais van OSCAR 10 is nu goed
+bruikbaar. Het lijkt erop dat de rondstraler
+antennes van de satelliet nu in bedrijf zijn.
+Daarom zijn de signalen niet erg sterk
+wanneer de satelliet zich bij het hoogste
+punt van zijn elliptische baan bevindt. Uit
+metingen is gebleken dat de rotatiesnelheid
+van de satelliet om zijn Z-as nu is afgenomen
+tot zo'n 24 omwentelingen per minuut.
+De periode waarin de satelliet elke omloop
+in de schaduw van de aarde komt bereikt rond
+21 december een maximum van 101 minuten.
+Omdat de satelliet beslist niet mag worden
+gebruikt tijdens deze schaduwperioden, is
+het volgende gebruiksschema opgesteld:
+
+Periode:     Satelliet NIET beschikbaar in:
+15 t/m 21 december  M.A. phase 110 t/m 190
+22 t/m 28 december  M.A. phase 120 t/m 200
+29 dec t/m 4 jan    M.A. phase 140 t/m 220
+
+UoSAT-OSCAR 11
+
+In november heeft de UoSAT-Unit in de
+University of Surrey nieuwe Diary
+programmatuur ontwikkeld voor OSCAR 11.
+Deze programmatuur werd geschreven onder de
+programmeertaal Forth. Eind november werd
+de nieuwe Diary programmatuur in de boord
+computer van OSCAR 11 gebracht. Aanvankelijk
+leek alles goed te funktioneren, maar na
+enige tijd liep het programma vast. De
+bakenzender van OSCAR 11 zond uitsluitend
+nog zinloze karakters uit. Men begrijpt nog
+niet waarom de programmatuur, die op de
+grond prima werkte, niet goed werkt aan
+boord van de satelliet. Men probeert nu eerst
+de boordcomputer weer onder kontrole te
+krijgen, waarna andere Diary programmatuur
+naar de satelliet kan worden gezonden. Zodra
+alles weer goed funktioneert mag men er op
+rekenen dat het baken op 435,025 MHz op
+zondagen ook in bedrijf is, terwijl op
+woensdagen uitzendingen van CCD videobeelden
+te verwachten zijn.
+
+FUJI-OSCAR 12
+
+Verscheidene Europese stations, waaronder
+G4CUO, houden zich bezig met experimenten
+met verbindingen, die gemaakt zijn via twee
+satellieten. Signalen, die op 70 cm naar
+OSCAR 10 worden gezonden, worden door het
+mode B relais omgezet naar 2 m, waarna deze
+signalen direkt door het mode JA relais van
+OSCAR 12 weer worden gerelayeerd van 2 m
+naar 70 cm. Hoewel de uiteindelijk op 70 cm
+ontvangen signalen niet sterk zijn, is het
+toch mogelijk op deze wijze verbindingen te
+maken. Zodra mode T van RS11 weer beschikbaar
+is, zullen ook weer proeven worden genomen
+met signalen, die eerst door mode T van RS11
+zijn omgezet van 15 m naar 2m, en daarna
+direkt door mode JA van OSCAR 12 worden
+gerelayeerd van 2 m naar 70 cm. Enkele
+maanden geleden heeft men al eerste suksessen
+geboekt met dit soort proeven.
+
+GEBRUIKSSCHEMA OSCAR 12
+
+In de periode van 2234 UTC op 19 december tot
+0037 UTC op 20 december zal mode JD alleen in
+bedrijf zijn als digipeater, dus niet als
+mailbox, omdat dan nieuwe programmatuur in de
+boordcomputer wordt gebracht door de Japanse
+kommandostations.
+
+Daarna ziet het schema er als volgt uit:
+mode JD 0444 UTC op 20 dec tot 0552 op 21,
+mode JD 0458 UTC op 22 dec tot 0404 op 23,
+mode JD 0106 UTC op 24 dec tot 0619 op 25,
+mode JD 0324 UTC op 26 dec tot 0432 op 27,
+mode JD 0338 UTC op 28 dec tot 0243 op 29,
+mode JD 0257 UTC op 31 dec tot 0404 op 1-1.
+
+AMSAT-Phase 3C
+
+De bouw van de nieuwe amateur satelliet Phase
+3C is voltooid in West Duitsland bij AMSAT-DL.
+Deze opvolger van OSCAR 10 wordt nu uitgebreid
+getest voordat hij wordt overgedragen aan de
+Europese ruimtevaart organisatie ESA. De
+satelliet moet onder andere schud- en vibratie
+tests ondergaan om na te gaan of hij bestand
+is tegen de enorme trillingen die hij te
+verwerken zal krijgen tijdens de lancering
+met de ARIANE 4 raket. Ook wordt Phase 3C
+onderworpen aan 'thermal vacuum tests',
+waarbij de satelliet in een vakuumkamer wordt
+verhit en afgekoeld. Daarbij wordt het goed
+funtioneren van de hele satelliet
+gekontroleerd onder de zware omstandigheden
+waaronder hij later in de ruimte ook zal
+moeten werken. Nadat de satelliet is
+overgedragen aan de ESA zullen in Toulouse
+opnieuw soortgelijke tests worden uitgevoerd
+met de satelliet. Bovendien wordt dan nog
+eens bekeken of er geen problemen kunnen
+optreden bij het monteren van de satelliet
+in de neuskegel van de ARIANE 4 raket, die
+de lancering moet verzorgen. Volgens de
+laatste plannen is die lancering niet voor
+eind maart 1988 te verwachten. Bij AMSAT
+wordt nu geld ingezameld voor het Phase 3C
+Insurance Fund, waarmee de lancering van de
+satelliet kan worden verzekerd. Men hoopt
+10000 US-Dollars bij elkaar te krijgen.
+AMSAT-UK heeft onlangs 1000 Dollars
+geschonken aan dit fonds en wil bovendien
+AMSAT-DL helpen bij het verzekeren van het
+transport van Phase 3C van Duitsland naar
+de ESA in Frankrijk.
+
+RUSSISCH RUIMTESTATION MIR
+
+Rond Kerstmis zal SOYUZ-TM4 met een 3-koppige
+Russische bemanning worden gelanceerd vanaf
+Baykonoer en na twee dagen aankoppelen aan
+het ruimtestation MIR. De bemanning, en
+reserve bemanning, is aangekomen op Baykonoer
+om daar de laatste oefeningen door te nemen,
+zoals de koppeling, en om nog medisch
+onderzocht te worden. De nieuwe bemanning, of
+althans zeker twee van de drie kosmonauten,
+zal de huidige bemanning in MIR aflossen.
+Yuri Romanenko, die al sinds begin februari
+in MIR verblijft, heeft er schoon genoeg van
+en krijgt steeds meer problemen van verzwakte
+spieren. Ook Alexander Alexandrov zal
+terugkeren naar de aarde, waarschijnlijk nog
+net voor het einde van dit jaar.
+
+Zoals altijd ontvingen wij deze ruimtevaart
+informatie van Nico, PA0DLO. Bedankt, Nico!
+
+KENNISMAKINGSCURSUSSEN VOOR VROUWEN
+
+Al zes jaar verzorgt Vrouwen en Informatica
+introductie bijeenkomsten die de bedoeling
+hebben vrouwen over de informatica drempel
+te helpen en die wij dan ook drempeldagen
+noemen. Vaak zijn dat bijeenkomsten van een
+hele dag, die uit drie delen bestaat: 1 deel
+gaat over computers: wat zijn dat voor
+apparaten, wat kun je er mee, wat is een
+programma. Daarbij wordt een aantal
+programma's getoond en als het enigszins kan
+zitten de deelneemsters zelf aan de computer.
+De 2 andere delen worden afhankelijk van de
+deelneemsters uitgekozen: bijv. een lezing
+over de geschiedenis van computers,
+informatie over computers en onderwijs; de
+werking van de streepjescode; computers in
+huis. De deelneemsters worden over drie
+subgroepen verdeeld en rouleren langs de
+onderwerpen. We zorgen ervoor dat een aantal
+basisbegrippen aan bod komen en praktische
+voorbeelden. Vaak gaan we in op de toekomst,
+en in ieder geval op maatschappelijke
+aspecten: gevolgen van computer gebruik voor
+privacy, voor werkgelegenheid, voor inhoud
+en organisatie van het werk.
+
+VUISTREGELS
+
+In de loop der jaren hebben we een aantal
+vuistregels opgesteld die we bij dergelijke
+bijeenkomsten hanteren, zoals: laat altijd
+zowel de technische aspecten, de toepassingen
+als de maatschappelijke gevolgen aan bod
+komen; bind bij computergebruik je handen op
+je rug, zodat je niet over de ruggen van de
+deelneemsters heen (zowel letterlijk als
+figuurlijk) hun toetsenbord aanraakt; wees
+zeer zorgvuldig in je woordgebruik: spreek
+bijvoorbeeld niet alleen over programmeurs
+maar ook over programmeuzes, niet om
+muggezifterig te zijn, maar omdat meisjes
+en vrouwen dan tenminste inzien dat het ook
+wel eens over hen zou kunnen gaan.
+
+EFFECT
+
+Het effect van de drempeldagen op de
+deelneemsters is vaak zeer overweldigend.
+Omdat we onderwerpen kiezen die dicht bij
+huis liggen realiseren zij zich vaak dat ze
+al heel wat van informatieverwerking weten.
+Dat geeft een gevoel van: zo dom en onwetend
+ben ik dus ook weer niet. Maar omdat we ook
+nieuwe begrippen uitleggen, of we een
+begrijpelijke uitleg geven van kreten die
+ze al vaak gehoord hebben maar nooit
+begrepen, snappen ze iets waarvan ze altijd
+dachten dat het moeilijk was. Dat kan heel
+motiverend werken.
+
+ORGANISATIE
+
+Meestal worden de drempeldagen georganiseerd
+door een bestaande vereniging of organisatie,
+uiteenlopend van club- en buurthuizen tot de
+vrouwen organisatie van een politieke partij.
+Zij doen dan de werving voor de bijeenkomst,
+regelen de inschrijving, huren een zaal en
+computers, bestellen de broodjes, vragen
+subsidie aan (bijvoorbeeld uit de
+gemeentelijke 'emancipatiepot'). Het Centrum
+voor Vrouwen en Informatica zorgt voor de
+cursusleidsters. Dat betekent dat individuele
+vrouwen, die een dergelijke bijeenkomst
+willen meemaken, (voorlopig) niet bij het
+Centrum terecht kunnen. Maar groepen meisjes
+of vrouwen die een bijeenkomst of cursus
+willen organiseren, kunnen informatie
+inwinnen bij:
+
+Centrum voor Vrouwen en Informatica
+WG-plein 250
+1054 SE, Amsterdam
+Tel.: 020-831661
+
+HOBBYSCOOP ZOEKT VERSLAGGEVER (V/M)
+
+Ons programma kan - op parttime basis - een
+goede verslaggever gebruiken. Het zou een
+vrouw of man moeten zijn met journalistieke
+(event. radio) ervaring. Natuurlijk moet zij
+of hij ook belangstelling of kennis hebben
+van communicatie en/of computers. Gedacht
+wordt aan een freelancer die een halve
+werkweek beschikbaar is. Brieven (met in de
+linker bovenhoek 'vacature') gaarne naar
+onze redaktie.
+
+SPREEKUUR
+
+Om de overvloedige stroom van telefoontjes in
+de hand te houden we het maandagochtend
+spreekuur ingesteld. U kunt ons elke maandag
+bellen van 10 - 12 op 035 - 773015. Geen ander
+nummer is daarvoor beschikbaar en na 12 wordt
+het weer afgekoppeld. Dus zorg dat u er bij
+bent als u een vraag telefonisch wilt stellen.
+Schrijven blijft echter een van de betere
+methoden. Heel veel vragen zijn voor ons
+gesneden koek: er zijn daarvoor standaard
+brieven ontwikkeld die we u per ommegaande
+toesturen. Postbus 1200 staat er voor open!

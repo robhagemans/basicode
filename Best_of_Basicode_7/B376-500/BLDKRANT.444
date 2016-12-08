@@ -1,0 +1,304 @@
+444, maa 07 okt '91
+
+MOBIFAX
+
+PTT Telecom introduceerde vorige week
+op de Efficiency Beurs een nieuwe
+mobiele fax, met name bedoeld voor
+gebruik in combinatie met een
+autotelefoon: de Mobifax PF-1. Deze kan
+direct op de auto-accu worden
+aangesloten. Via een adapter kan het
+apparaat werken op het lichtnet (220
+Volt), zodat de Mobifax eveneens in
+andere mobiele situaties (hotelkamer,
+bouwprojecten en dergelijke) goed kan
+worden ingezet. Ook kan de Mobifax
+werken met behulp van een bijgeleverde
+batterij.
+De Mobifax PF-1 is met name interessant
+voor mobiele beroepsgroepen zoals
+politie, brandweer, journalisten en
+vertegenwoordigers.
+
+De Mobifax PF-1 is een licht en vooral
+klein apparaat. Het is voorzien van
+foutcorrectie, waardoor foutloze
+verzending van documenten mogelijk
+wordt. Met behulp van een universeel
+interface kan het apparaat eenvoudig op
+de autotelefoon installatie worden
+aangesloten.
+
+De prijs van de Mobifax (zonder 220
+Volt adapter) bedraagt f.3495,- (excl.
+btw). De 220 Volt adapter kost f.395,-
+(excl. btw). Het apparaat kan ook
+worden geleast. Nadere informatie is
+o.a. verkrijgbaar bij de diverse PTT
+Primafoon winkels in den lande.
+
+DIVERSITY
+
+Als vervolg op zijn driedelige cursus
+radio-techniek, die we eerder plaatsten
+in de Beeldkranten 365, 395 en 415,
+stuurde Jan van der Meij ons het
+volgende artikel over 'diversity': Jan
+legt uit wat dat is.
+
+Bij diversity wordt onderscheid gemaakt
+tussen twee verschillende soorten:
+antenne diversity en ontvanger
+diversity. Het principe van diversity
+is altijd, dat er een keuze gemaakt kan
+worden uit meerdere antennes bij
+antenne diversity en meerdere
+ontvangers bij ontvanger diversity.
+
+ANTENNE DIVERSITY
+
+Bij antenne diversity worden meerdere
+antennes aangesloten op een ontvanger.
+Vooral bij wat zwakkere ontvangst
+signalen kan het voorkomen, dat door
+reflecties tegen de grond en gebouwen
+er een zeer plaats- afhankelijke
+ontvangst van een zender is. Naarmate
+de frequentie hoger wordt, zal men meer
+last krijgen van deze reflecties; ook
+zal de afstand tussen de plaatsen, waar
+ontvangst goed is, dichter op elkaar
+komen te liggen naarmate de frequentie
+hoger wordt. We kennen dit effect ook
+wel als 'multi path fading', dat wil
+zeggen dat het signaal gelijktijdig op
+diverse manieren op de antenne terecht
+komt.
+
+We maken van dit effect gebruik,
+wanneer bijvoorbeeld een flat tussen de
+ontvanger en de zender staat. Door de
+schaduw werking van de flat kan er
+eigenlijk geen ontvangst zijn, maar
+door reflecties tegen bomen, heuvels,
+gebouwen en ook tegen de grond zal er
+in die gevallen toch ontvangst mogelijk
+zijn, zij het dat de absolute
+veldsterkte (en dus de ontvangst
+kwaliteit) niet voorspelbaar is.
+
+Wanneer we op bijvoorbeeld een autodak
+twee antennes voor ontvangst van de
+autoradio plaatsen, waarbij een antenne
+voor op de auto en de andere antenne
+achter op de auto wordt geplaatst, zal
+de absolute veldsterkte op de beide
+antennes verschillen. Wanneer de ene
+antenne in een 'dip' staat, waar geen
+ontvangst mogelijk is, zal de andere
+antenne het signaal nog ontvangen. Door
+gebruik te maken van een
+'koppeleenheid', waarbij de beide
+antennes worden gekoppeld en het
+gekoppelde signaal wordt toegevoerd aan
+de autoradio, zal de reikwijdte van een
+FM zender groter zijn. Bij lage
+frequenties (en dus grote golflengten)
+heeft het uit elkaar zetten van de
+antennes niet veel zin, omdat de
+golflengte veel groter is dan de
+afstand tussen de ontvang antennes.
+
+Bij een aantal leveranciers wordt voor
+de autoradio reeds antenne diversity
+aangeboden. Ook voor mobiele
+communicatie toepassingen (bijvoorbeeld
+de zogenoemde gesloten mobilofoon
+netten) heeft het plaatsen van meerdere
+antennes op de auto zin. Bij de huidige
+dichtheid van de autotelefoon zenders
+en semafoon zenders is het niet
+noodzakelijk om meerdere antennes op de
+auto te plaatsen. De veldsterkte is
+overal in Nederland ruim voldoende. Op
+veel plaatsen kan zelfs met een
+portable telefoon worden gewerkt.
+
+ONTVANGER DIVERSITY
+
+Ontvanger diversity wordt zeer veel
+toegepast in radio communicatie netten
+in Nederland. Een vast opgestelde
+zender heeft gemiddeld tien maal zo
+veel vermogen als een portofoon. Dat
+betekent, dat de vast opgestelde zender
+een veel grotere reikwijdte heeft dan
+de zender van een portofoon. Om voor
+vast opgestelde en mobiele radio
+apparatuur een ongeveer gelijk bereik
+te kunnen waarborgen zijn er derhalve
+in de vaste opstellingen meer
+ontvangers nodig dan zenders. In
+Nederland hebben we ook nog het
+probleem, dat er grote frequentienood
+is en we zuinig moeten zijn met het
+uitgeven van kanalen (frequenties).
+Overreikwijdte van zenders dient ook zo
+veel mogelijk te worden voorkomen. In
+de 160 en 460 MHz banden ligt de
+herhalings afstand op 60 kilometer: dat
+wil zeggen dat een frequentie na 60
+kilometer weer wordt gebruikt. Door de
+zendantennes op een zeer hoge lokatie
+te plaatsen wordt de reikwijdte zeer
+groot; de kans dat een zender dan in
+een volgend blok, 60 kilometer verder,
+wordt gehoord is dus eveneens groot.
+Het zal duidelijk zijn dat men in die
+gevallen hinder zal ondervinden van de
+'vreemde' zender.
+
+Resumerend kan worden gezegd, dat de
+zender antenne zo laag mogelijk zal
+moeten staan (het te bestrijken gebied
+moet nog net worden bedekt). Door het
+lagere zendvermogen van de portofoons
+moeten er een aantal ontvangers worden
+bijgeplaatst. De 'diversity ontvangers'
+staan rondom de zenders en zijn met
+behulp van een tweedraads telefoonlijn
+met een centrale verbonden. Door middel
+van datatelegrammen en/of vaste tonen
+wordt via de telefoonlijn informatie
+van de ontvanger naar de centrale
+overgebracht.
+
+DE TECHNIEK
+
+In de ontvanger wordt het (spraak)
+laagfrequent signaal gescheiden van de
+ruis. De ruis wordt in de ontvanger
+meteen na de FM-detector afgetakt en
+door een hoogdoorlaat filter gevoerd.
+Uit het filter komt nu ruis zonder de
+spraak, met een frequentie van zo'n 10
+kHz. Deze ruisspanning wordt
+gelijkgericht. Wanneer het signaal
+sterk op de ontvanger binnenkomt, is er
+weinig ruis en is de gelijkspanning
+laag; bij een zwak signaal is er veel
+ruis en is de gelijkspanning hoog. We
+hebben nu dus een gelijkspanning
+verkregen welke afhankelijk is van de
+grootte van het aangeboden hoogfrequent
+(antenne) signaal. Door een toontje in
+amplitude te moduleren kunnen we de
+verkregen gelijkspanning (dus omgekeerd
+evenredig met de veldsterkte) via de
+telefoonlijn overbrengen naar de
+centrale. We keren het gelijkspannings
+signaal om (inverteren) en zorgen
+ervoor, dat de amplitude van het
+toontje groot is bij een sterk signaal
+(het toontje klinkt luid) en klein bij
+een zwak HF signaal (het toontje klinkt
+minder luid). Uiteraard wordt ook de
+spraak via dezelfde telefoonlijn
+overgebracht, zij het dat een
+laagdoorlaat filter ervoor heeft
+gezorgd dat er geen spraak componenten
+aanwezig zijn rondom de frequentie van
+ons toontje.
+
+DE CENTRALE
+
+In de centrale komen alle signalen van
+de diverse ontvangers samen. Bij alle
+telefoon- lijnen is het in amplitude
+van de veldsterkte afhankelijke toontje
+aanwezig. De toon- en spraaksignalen
+van de telefoonlijn gaan door een
+hoogdoorlaat filter, waardoor er alleen
+de toon overblijft. De toon wordt
+gelijkgericht en we hebben weer een
+gelijk- spanning, afhankelijk van de
+veldsterkte aan de ontvanger zijde. In
+een vergelijkings schakeling worden de
+gelijkspanningen van de diverse
+ontvangers met elkaar vergeleken en het
+signaal van de ontvanger met de hoogste
+gelijkspanning wordt doorgeschakeld
+naar de luidspreker van de bedienaar
+van het radionet. De bedienaar heeft er
+dus geen idee van op welke ontvanger de
+portofoon binnenkomt en ook schakelen
+van de ene ontvanger naar de andere
+wordt niet opgemerkt.
+
+Bij dataverkeer kan het voorkomen dat
+de diversity centrale niet mag
+schakelen, omdat er fasesprongen kunnen
+voorkomen ten gevolge van het verschil
+in lengte van de diverse
+telefoonlijnen. Er is dan ook een
+mogelijkheid om bijvoorbeeld door het
+actief worden van een Data Carrier
+Detect (DCD) signaal uit een modem de
+selectie te stoppen. De op dat moment
+gekozen ontvanger blijft dan gekozen,
+onafhankelijk van het feit dat op een
+andere ontvanger een sterker signaal
+binnenkomt. Het door de centrale
+geselecteerde signaal hoeft niet beter
+te zijn dan goed en daarom wordt alleen
+geselecteerd in de gebieden met lage
+veldsterkte, waarbij een flinke portie
+ruis nog op het signaal hoorbaar is.
+Ruisvrijer dan ruisvrij is dan ook niet
+nodig.
+
+TOONSQUELCH
+
+Door de grote hoeveelheid radioverkeer
+is de kans op hinder of storing de
+laatste jaren flink toegenomen. De
+radiogolven trekken zich niets aan van
+grenzen (soms: helaas) en vooral bij
+diversity- netten is het een bittere
+noodzaak om de ontvangers te beschermen
+tegen 'vreemde' signalen. Door gebruik
+te maken van toonsquelch (ook wel
+sub-audio of private line genoemd), kan
+storing of hinder worden voorkomen. Bij
+toonsquelch wordt een toon met een
+frequentie tussen 67 en 250 Hz continu
+meegezonden zolang de zendtoets van de
+portofoon (of mobilofoon) is ingedrukt.
+De ontvangers 'weten' nu, dat het
+ontvangen signaal een eigen of een
+vreemd signaal is. Uiteraard kiest in
+deze gevallen de diversity centrale
+uitsluitend uit de signalen, waarbij de
+juiste toonsquelch toon aanwezig is.
+
+Een groot nadeel is, dat de
+detectietijd van toonsquelch toch al
+gauw in de grootte-orde van 250
+milliseconden ligt, en dat maakt de
+diversity selectie flink traag. Daar
+tonen onder 300 Hz niet via de
+telefoonlijn worden doorgegeven moet er
+een andere manier worden bedacht om de
+informatie 'toonsquelch aanwezig' over
+te brengen. Er bestaat de mogelijkheid
+om in een datatelegram van de ontvanger
+naar de centrale deze informatie over
+te brengen. Ook is het mogelijk om een
+extra (hoge) toon naast de diversity
+toon mee te sturen. Aan de filters aan
+de kant van de centrale worden dan wel
+hoge eisen gesteld.
+
+Jan van der Meij, PA0JMY.
+

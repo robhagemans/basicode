@@ -1,0 +1,214 @@
+54, woe 10 dec '86
+
+SCHOOTCOMPUTER BIJ IBM
+
+IBM heeft nu ook een schoot computer. Het
+bedrijf kondigde dit kleinste model vorige
+maand aan, niet lang nadat Wang dat ook gedaan
+had. Het IBM apparaat weegt bij 6 kilo, is
+bijna 7 cm hoog, 31 breed en 36 lang. Het heeft
+de weinig stroom vragende 80C88 microprocessor
+aan boord. Dat is de C-Mos versie (wat langzamer)
+van de gewone tafel-IBM processor. Er zitten
+twee diskette drives in van 720 Kb elk op het
+3,5 inch formaat. Er zijn 78 toetsen. Het
+besturings programma is PC DOS versie 3.2. De
+batterijen geven voldoende power voor acht tot
+tien uur. Het scherm is van LCD-kristallen
+gemaakt en kan 25 regels bij 80 tekens
+omvatten.
+
+Wang en Toshiba hebben echter al schoot
+computer met ingebouwde harddisk. Overigens:
+onze test van de gedumpte versie van de T-1100
+van Toshiba gaat niet door. De machine met een
+720 Kb diskdrive en ook een 80x25 scherm
+schijnt geheel uitverkocht te zijn. De versie
+die zo goedkoop was had overigens geen RS-232
+interface aan boord en maar 256 K. De T-1100
+wordt in Amerika niet meer geleverd. Wel de
+wat uitgebreidere versie 1100plus. Vandaar
+mogelijk de dump actie. In plaats van de
+Toshiba is nu de draagbare Apricot goedkoop
+te krijgen. Test volgt. Rond de Kerstdagen.
+
+BEELDKRANT PRINT TIPS
+
+W.F. Scholte uit Leeuwarden komt met de
+volgende tip inzake het adrukken van de
+Beeldkrant voor Spectrumgebruikers met een
+OPUS Diskdrive en 80 koloms printer. Hij
+schrijft, neem de volgende regels in de
+Beeldkrant op:
+ 1141 CLOSE #VAL ''3''
+ 1142 OPEN #VAL ''3'';''t''
+ RUN daarna de beeldkrant met GOTO 1000.
+Dit werkt ook met vele andere interfaces,
+w.o. Interface-1.
+
+Wilt u 96 karakters op een regel bij de
+Seikosha SP-800, neem dan de volgende
+regels op:
+ 1141 CLOSE #VAL ''3''
+ 1142 OPEN #VAL ''3'';''b''
+ 1143 LPRINT CHR$ VAL ''27'';CHR$ VAL ''77'';
+ 1144 CLOSE #VAL ''3''
+ 1145 OPEN #VAL ''3'';''t''
+Uiteraard moet u deze veranderingen zelf in
+de Beeldkrant aanbrengen omdat het specifieke
+Spectrum zaken betreft. Wij houden onze
+versie van de Beeldkrant even zoals hij nu
+is.
+
+Hein Jonkman uit Wassenaar bericht ons dat
+hij al eerder de subroutines van het VIC
+vertaalprogramma heeft aangepast om de
+Beeldkrant goed te kunnen lezen. Het moet
+worden:
+ 350 OPEN 4,4,7: PRINT #4,CHR$(17)SR$;:
+ CLOSE 4: RETURN
+ 'Op mijn printer levert dit dan toch een
+leesbare krant met upper- en lower case
+op,' zegt hij. Dit ondanks het feit dat
+hij zelf de VIC-20 zo ongeveer overleefd
+acht. Bedankt Hein.
+
+PACKET RADIO GROEP
+
+Op de Dag van de Zelfbouw in de Amsterdamse
+RAI is een landelijke overleg groep Packet
+Radio opgericht. De groep bestaat uit leden
+van beide verenigingen op het gebied van
+zendamateurisme VERON en VRZA en enige
+onafhankelijke leden. De groep heeft tot doel
+de kennis rond Packet Radio te vergroten en
+een goed gebruik ervan te bevorderen. Het
+voorlopige secretariaat is gevestigd bij
+Hobbyscoop, NOS-radio, pb 1200, 1200 BE in
+Hilversum. De groep heeft de bestaande naam
+DAPR (Dutch Amateur Packet Radio) aangenomen.
+
+PACKET RADIO IN ENGLAND
+
+Vraag: hoe staan de zaken ervoor aan de
+andere kant van de Noordzee: A
+network of AX-25 digital repeaters
+(digipeaters) was switched on
+officially last Saturday November 22nd
+86. All repeaters operate on the
+frequency of 144.650 MHz in the FM
+mode. At present, unmanned use of an
+amateur radio station is still illegal,
+but these digipeaters are tolerated by
+the British authorities, providing no
+beacons are used. Official confirmation
+of this step forward is expected before
+the end of 1986. Having the frequency
+occupied with beacon signals during
+working hours was thought to be too
+much of an advertisement that the
+stations were not being operated by
+humans. At present the following
+digipeaters are GB3AP in West Midlands,
+GB3AP Bristol, GB3DP in Devon, GB3DP
+Weymouth, GB3EP in Exeter, GB3HP in
+Winchester, GB3JP in Jersey (Channel
+Islands), GB3NP in Norwich, Norfolk,
+GB3UP in Guildford, Surrey. All
+stations are VERTICALLY polarised,
+except GB3UP in Guildford. Vertical
+polarisation will be the UK standard.
+Four more digipeaters are awaiting a
+license: GB3CD in Rewe, GB3HQ in
+Potters Bar (home of RSGB), GB3KP
+Kingston Upon Thames, GB3XP in New
+Maldon, Surrey, and GB3YP in Harrogate,
+Yorkshire.
+
+MERKWAARDIGE FREKWENTIES
+
+Via ons bulletin board in Hilversum komen
+soms de meest merkwaardige mededelingen over
+het gebruik van frequenties binnen. Meestal
+afkomstig uit Amerika, waaruit blijkt dat
+daar zeer gehaaide kortegolf luisteraars
+zijn. Tim Tyler uit Colorado meldt dat hij
+het vliegtuig van president Reagan heeft
+gehoord. Het toestel vloog van en naar
+Reykjavik rond de halve wereld. Tim
+spreekt over de Air Force 1 (AF1) en
+meldt: AF1 was using 1027 usb last thursday
+enroute to Reykjavik, and I also monitored
+them returning to Washinton on sunday. They
+were on 6683, with 26000 (the back up plane)
+and 'Filmore' (the National Emergency Airborne
+Command Post) on 3071. An interesting conference
+call was made to AP & UPI (twee bekende pers
+bureaus) on the return trip from AF1. I
+monitored 'Filmore' radio checking 'WAR46'
+(ANMCC-Fort Ritchie, MD xmitter) on 3113 USB
+later on. I also monitored some Parkhill type
+secure voice on 5266 at 07502 on 13 oct 86.
+Robert Orvitz voegt daaraan toe: AF1 used 13247
+usb on the way home from North Dakota last
+Thursday the 16th. Weet u ook waar u naar moet
+luisteren voor het geval Reagan nog eens naar
+Europa komt.
+
+ANTARCTICA TIP
+
+Ken Leonard uit Colorado geeft een verhaal door
+over het gebruik van de Zuidpool door zend
+amteurs: I talked to the communications operator
+at the South Pole via satellite and he gave me
+these HF freqs: Their amateur station uses
+14320 to run phone patches with a Tuscon
+station at 0100 Zule (=utc). They use military
+freqs for coordination of flights to McMurdo
+(From 1 Nov or so, when the South Pole 'opens'
+for summer) 8997 primary, 13251 secondary,
+also 7995 and 11553. These are mainly used for
+voice communications or RTTY. Tactical calls
+are Main Body and WinFly. Look for them 2100-
+0400 UTC.
+
+David Cochrun meldt over Antarctica: Thought
+you might be interested. I ran the amateur
+station out of McMurdo during the Deepfreeze
+1979 season. There are no telephone lines out
+of the American base and all communication with
+families is through the courtesy of hams! We
+used to run most patches through a fella in
+California who went by the handle of Big John.
+He ran hundreds of patches for us. I don't
+recall his call sign. We also ran patches
+from our aircraft. I was a navigator on LC-130's.
+We had two HF radios on board. We always had
+to use one for operational communication but
+the other was often used to run patches. The
+aircraft call signs used to be X-ray Delta 01
+through 06.
+
+Overigens: 'patchen' is het aansluiten van de
+amateurzender op het telefoonnet. In Nederland
+streng verboden. In Amerika de gewoonste zaak
+van de wereld. Merkwaardige verschillen.
+
+ELEKTRONISCH SCHAKEN
+
+Er blijkt nog meer via de Fido Bulletins te
+komen dan Amerikaanse ontvangstrapporten.
+Het is zelfs mogelijk te schaken via de
+telefoonlijn. De hoofredakteur van de HCC
+nieuwsbrief, die ook over een eigen Fido
+beschikt (o.a. voor het inleveren van de
+Nieuwsbrief kopij) meldt een schaaktoernooi.
+Op Fido_Alkmaar) is het Fido schaaktoernooi
+geopend door Gary Kasparov en Anatoly
+Karpov. Het is een zeer bijzonder 'open'
+toernooi. Iedere schaker kan op elk moment
+inloggen en een of meer partijen beginnen
+tegen Karpov, Kasparov of een schaker van
+een veel lager nivo. Dus ook voor beginners!
+Bel 072-126783 300/300, 1200/1200 of
+1200/75 Baud.

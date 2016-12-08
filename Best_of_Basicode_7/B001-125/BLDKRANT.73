@@ -1,0 +1,274 @@
+73, zon 31 mei '87
+
+STRUCTUUR IN PROGRAMMA'S
+
+In het kader van de samenwerking met Teleac
+hierbij weer een aflevering zoals uitgesproken
+door ing. Peter van Tilburg voor Teleac radio.
+
+Zowel in het bedrijfsleven als in de industrie
+wordt dikwijls gebruik gemaakt van simulatie
+om bepaalde alternatieven die men overweegt,
+vooraf te kunnen bestuderen. Er wordt dan een
+mathematisch model opgezet dat, als het goed is,
+de werkelijkheid zo dicht mogelijk benadert.
+Als voorbeeld kunnen we denken aan een
+productielijn in een fabriek. Omdat deze op een
+bepaald moment te kampen heeft met een gebrek
+aan capaciteit, wil men een bepaalde machine
+die fungeert als bottle-neck, vervangen door
+een nieuwere en hopelijk betere. Omdat het
+meestal gaat om een aanzienlijke investering,
+is het van groot belang om vooraf te weten
+wat de diverse alternatieven voor effect zullen
+hebben op de productiviteit. Het is daarbij
+niet voldoende om alleen te kijken naar de
+capaciteit van de nieuwe machine. Omdat deze
+afhankelijk is van de aanvoer van producten,
+moet de capaciteit van de gehele productielijn
+bestudeerd worden.
+
+MATHEMATISCH MODEL
+
+In een dergelijke situatie kunnen we beginnen
+met het opstellen van een mathematisch model
+waarin de huidige situatie is weergegeven.
+Omdat de resultaten van deze productielijn
+bekend zijn, is het mogelijk om het model te
+toetsen aan de werkelijkheid en deze op die
+wijze zo goed mogelijk te benaderen. Is eenmaal
+dit model opgesteld, dan wordt alleen het
+gedeelte dat betrekking heeft op de betrokken
+machine vervangen door gegevens over de
+capaciteit van de nieuwe alternatieven.
+
+We moeten nu op het nieuwe model diverse
+soorten situaties uittesten om een goede
+indruk van de werking te krijgen. Het zal
+duidelijk zijn dat de computer hierbij een
+uitstekend hulpmiddel kan zijn. Door de
+snelheid waarmee deze gegevens kan verwerken,
+kunnen er binnen enkele minuten situaties
+geanalyseerd worden die zich in de loop van
+jaren kunnen voordoen. Niet alleen krijgen we
+zo een betere indruk van de werking van een
+bepaald alternatief, ook hoeven we ons niet
+te beperken tot het bekijken van slechts
+enkele alternatieven.
+
+UNIEKE EIGENSCHAPPEN
+
+Hoewel elk probleem natuurlijk een aantal
+unieke eigenschappen bezit, kunnen we bij
+simulatie steeds een aantal verschillende
+stappen onderscheiden. De eerste stap bestaat
+uit het definieren van het probleem. Een
+belangrijk onderdeel hiervan is het definieren
+van variabelen die een rol spelen in het
+beslissingsproces. Wanneer we de situatie bij
+een tankstation analyseren met als doel te
+ontdekken of we een extra pomp in gebruik
+moeten nemen, spelen de volgende gegevens een
+rol: om de hoeveel tijd komt er een nieuwe
+auto aan, hoelang moet er gewacht worden
+voordat er een pomp vrij is en hoelang duurt
+het tanken. Verder moet het systeem in de
+gaten houden hoeveel klanten er wachten. Dit
+noemt men een systeem variabele omdat dit
+aantal afhankelijk is van de aankomst van
+klanten en de tijd dat zij bezig zijn te
+tanken. Dit alles wordt weer beinvloed door
+het aantal pompen.
+Men noemt dat een beslissings variabele,
+omdat de waarde van deze variabele beinvloed
+kan worden en deze waarde van belang is voor
+de performance van het systeem. Om deze
+performance te kunnen meten, moet er een
+criterium opgesteld worden. Dit zou de tijd
+kunnen zijn dat de klanten gemiddeld moeten
+wachten totdat zij kunnen gaan tanken. Wanneer
+deze tijd te groot wordt, lopen we het risico
+dat klanten niet komen tanken omdat ze een hele
+rij wachtenden zien staan, dan wel vertrekken
+voordat ze getankt hebben omdat ze het wachten
+moe zijn. We moeten nu uitzoeken hoeveel pompen
+we nodig hebben om de wachttijd zo te reduceren,
+dat een aanzienlijk gedeelte (bijvoorbeeld 95%)
+van de klanten die willen tanken ook inderdaad
+tankt.
+
+PROBLEEM DEFINITIE
+
+Wanneer het probleem gedefinieerd is, moeten we
+een model formuleren. Dit bestaat in ieder geval
+uit het aangeven van de volgorde waarin zich de
+verschillende processen afspelen. In ons
+probleem hebben we als volgorde:
+-aankomst van de klant
+-plaatsnemen in de wachtrij
+-verlaten van de wachtrij
+-beginnen te tanken
+-einde tanken
+-verlaten van het tankstation
+Steeds wanneer een van deze gebeurtenissen
+plaatsvindt, heeft dat invloed op de waarde
+van een of meer variabelen. In een
+tijdseenheid kunnen ook meerdere gebeurtenissen
+plaatsvinden. Het is mogelijk dat op hetzelfde
+moment dat een klant het tankstation verlaat,
+weer een nieuwe klant aankomt. Zelfs een
+bepaalde klant kan gedurende een tijdseenheid
+meerdere stadia doorlopen. Wanneer hij de
+eerste klant van de dag is, komt hij aan,
+neemt plaats in de wachtrij, verlaat deze weer
+meteen om met tanken te beginnen.
+
+SIMULATIE
+
+De volgende stap bestaat uit het uitvoeren van
+de simulatie. Tijdens dit proces kan men
+eventueel een aantal parameters wijzigen
+teneinde bijvoorbeeld een indruk te krijgen
+hoe het systeem reageert op bepaalde crisis
+situaties, die zich slechts zelden voordoen.
+
+Wanneer we BASIC gebruiken om simulatie processen
+uit te voeren, dan moeten we goed om de hoogte
+zijn van de werking van de RND-functie. De
+resultaten van een simulatie moeten steeds
+reproduceerbaar zijn, zodat we bij elke run
+dezelfde reeks waarden krijgen. We mogen dus
+alleen dan een RANDOMIZE statement gebruiken
+indien we daar steeds dezelfde waarde aan
+meegeven.
+Het spreekt voor zich dat het aantal waarden
+dat we laten produceren steeds groot genoeg
+moet teneinde een werkelijke willekeurige
+verdeling te krijgen. Hoe groter het aantal
+getallen, des te beter zal er een gelijkmatige
+verdeling over het interval ontstaan.
+
+IN BASIC
+
+Hoewel BASIC goed geschikt is om simulatie
+processen uit te voeren, zijn er mede door
+het veelvuldig gebruik van dit soort
+toepassingen een hele reeks specifieke talen
+ontwikkeld. We kunnen daarbij onderscheid
+maken tussen talen die gebaseerd zijn op het
+maken van stroom diagrammen en talen die meer
+opdracht gericht zijn. In de eerste groep
+talen begint de gebruiker met het definieren
+van een aantal blokken die later in stroom
+diagrammen worden uitgewerkt, en verbindt
+vervolgens de diverse blokken zodanig, dat er
+een programma structuur ontstaat die het
+systeem, dat gesimuleerd moet worden, weergeeft.
+
+Het belangrijkse voorbeeld van een taal die
+op deze manier werkt is GPSS, een afkorting van
+General Purpose Simulation System. Een groot
+voordeel van GPSS is dat het een taal is die
+vrij gemakkelijk te leren is. Wordt er gewerkt
+met talen die meer opdracht-gericht zijn, dan
+definieert de gebruiker condities waaraan
+voldaan moet worden, willen bepaalde situaties
+kunnen optreden. Bovendien geeft hij aan wat de
+resultaten van die situaties zijn. De bekendste
+taal die op deze wijze werkt is SIMSCRIPT. In
+feite is het een uit Fortran ontstane taal.
+Een ander voorbeeld van een taal die zijn
+oorsprong vindt in een algemene programmeer
+taal is Simula, een afkorting van SIMUlation
+LAnguage. Deze taal, die voor het eerst in
+1965 werd toegepast, is een uitbreiding op
+Algol 60.
+
+BOEKENNIEUWS COMMODORE
+
+Bij Kluwer Technische Boeken verschenen onlangs
+twee boeken (A4) over de Commodore-64.
+'Leren programmeren Commodore 64', Boek 1&2.
+Ze zijn uitgevoerd in full-color en kosten elk
+f 27,50.
+In deel 1 worden de allereerste Basic
+opdrachten uitgelegd en via voorbeeld
+programma's toegelicht. De tweemaal 64 pagina's
+worden echter voor ruwweg 1/3 tot 1/2 opgeslokt
+door schermbeelden. Hierdoor blijft er weinig
+ruimte over voor de tekst. Bovendien is die
+tekst in boek 1 hier en daar te summier.
+Verder ontstaat door de indeling van: ieder
+onderwerp maar 2 pagina's geen goed doorlopend
+beeld. Voorbeeld programma's zijn - nog steeds
+in boek 1 - zodanig van ballast voorzien, om
+ze gebruikers vriendelijker en meer ogender te
+maken, dat daardoor het doorgronden van die
+programma's (daar zijn ze immers voor) er niet
+simpeler op wordt. Wel handig zijn de goed
+verzorgde tabelletjes die - waar nodig - zaken
+verhelderen.
+
+Boek 2 is verrassend genoeg geheel anders van
+niveau dan 1. Het behandelt het defineren van
+functie's, de logische vergelijkingen en geeft
+enkele uitstekende routines ter ondersteuning
+van de high-resolution mogelijkheden, die
+samen met het geluid niet standaard in de Basic
+van de C-64 zijn geimplementeerd. Ook wordt de
+beginnende programmeur de wereld ingeloodst
+van het zelf defineren van karakters, sprites
+(zelfs meerkleuren sprites), de vorm van het
+geluid en de diverse filter-technieken.
+String behandeling en array's worden net
+niet vergeten. Men besluit met informatie hoe
+je een spel moet ontwerpen. Tenslotte mag
+informatie over fout-opsporing niet ontbreken.
+Op zich twee goede boeken maar buiten de
+schaarse informatie die in de tekst van het
+boek staat moet je werkelijk alles uit de
+listings halen. Vooral voorbeelden en hoe
+iets in de praktijk nu wordt gebruikt, wat
+de syntax is en hoe het werkt. Basic voor
+doorbijters kortom.
+
+C64 PRAKTISCHE TIPS
+
+Ook uit de stal van Kluwer is het boek
+'Commodore 64 praktische tips, programma's,
+BASIC' (A5, 220 blz.). Het is een al wat
+ouder boek van Albert Sickler en kost f
+32,50. Na een wat gedateerde inleiding
+bespreekt men heel rustig de commodore-64.
+Begrippen als hard- en software komen langs
+en worden nader toegelicht. Ook alles wat aan
+de computer kan worden 'gehangen' en er als
+software kan worden 'ingestouwd' komt aan de
+orde. Na al deze en andere enigzins technische
+informatie wordt gestart met het programmeren
+in BASIC.
+In logische volgorde worden de beginselen
+grondig uitgelegd en nog eens extra toegelicht
+door voorbeeldprogramma's die eenvoudig te
+doorgronden blijven. Lussen, array's,
+subroutines en het manipuleren van strings
+komen uitgebreid aan bod.
+Na al deze 'standaard' Basic commando's en
+zo'n 100 pagina's zijn de grafische
+mogelijkheden aan de beurt. Dit valt een
+beetje tegen. Het blijft bij low-resolution
+en bij het behandelen van sprites is het goed
+opletten. Maar veel uitproberen kan heel
+verhelderend werken. Geluid is een van de
+zwakke punten van het boek. Het wordt maar heel
+kort behandeld. Verder dan het instellen van
+volume, frequentie en de vorm van het geluid
+komt men ruweg niet. Te hoog gegrepen - naar
+mijn mening schrijft Thijs Timmermans - is het
+nog even snel behandelen van machinetaal.
+Deze complexe materie, en om daar nu een BASIC
+leerboek mee te besluiten is verre van ideaal.
+Enkele appendices met daarin tabellen en
+overzichten zijn aan het boek toegevoegd.
+Geschikt voor een ieder die met BASIC op de
+Commodore-64 aan de gang wil.

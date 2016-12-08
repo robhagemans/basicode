@@ -1,0 +1,344 @@
+336, maa 27 aug '90
+
+FIRATO SPECIAL: MAC EN HDTV (1)
+
+Van Fred van Let, Hoofd Technische
+Dienst van de kabelmaatschappij Casema,
+ontvingen we een zeer interessant
+artikel over de technische problematiek
+rond MAC (Multiplexed Analogue
+Component) en de implicaties daarvan
+m.b.t. de 'TV van de toekomst': High
+Definition Television, oftewel HDTV.
+Het artikel is toegespitst naar de
+Nederlandse situatie en bijgewerkt tot
+de stand van zaken in mei van dit jaar
+(de ontwikkelingen gaan snel!).
+
+Vanwege de lengte zullen we het
+splitsen in twee delen. Het eerste deel
+(dit dus) geeft een uiteenzetting van
+de verschillende MAC systemen. In het
+tweede deel wordt nader ingegaan op
+encryptie, compatibiliteit en het
+overzetten van MAC signalen op
+kabelnetten.
+
+INLEIDING
+
+De twee belangrijkste leden van de MAC
+familie zijn in principe C-MAC en
+D-MAC, omdat deze voor de
+data-overdracht (geluid, teletekst,
+synchronisatie, encryptie) een snelheid
+van 20,25 Mbit/seconde gebruiken.
+Daardoor is eenvoudige omzetting
+mogelijk (in twee richtingen!) van de
+digitale studio standaard CCIR REC 601,
+die de helderheids component
+kwantiseert met 13,5 MHz en de chroma
+component (=kleur) met 6,75 MHz. Dit
+zijn dezelfde frequenties die worden
+verkregen wanneer de tijdscompressie
+factoren (3:2 en 3:1) worden toegepast
+om een (4:3) MAC signaal te vormen.
+
+Zulke hoge data-overdrachts snelheden
+kosten een hoop bandbreedte, waarmee
+C-MAC ongeschikt is voor uitzending via
+aardse zenders of kabeltelevisienet.
+D-MAC is voor aardse zenders eveneens
+onbruikbaar, maar op de Kabel zou het
+onder voorwaarden kunnen. Daarom zijn
+destijds ook B-MAC en D2-MAC bedacht
+die lage data-overdrachts snelheden
+kennen en genoemde problemen omzeilen.
+
+C-MAC
+
+C-MAC is de originele EBU MAC
+transmissie standaard. Als er geen
+video ('lege beeldlijnen') wordt
+uitgezonden is de momentane data-rate
+20,25 Mb/s; dit komt overeen met een
+gemiddelde data-overdrachts snelheid
+van 3 Mb/s. Dit is voldoende voor acht
+geluidskanalen (8 x mono of 4 x stereo)
+met CD kwaliteit, maar er is grotere
+flexibiliteit ontworpen om de
+datacapaciteit ook alternatief te
+kunnen gebruiken.
+
+Voor het video-deel van het signaal
+wordt (via de satelliet!) frequentie
+modulatie gebruikt maar voor audio en
+andere data, kortom het digitale deel,
+wordt fase modulatie toegepast. Dit
+maakt de ontvanger er niet eenvoudiger
+op, omdat daarin twee verschillende
+demodulator delen nodig zijn. C-MAC
+wordt gebruikt door NRK in Noorwegen en
+enige andere DBS uitzend organisaties
+zijn van plan dit systeem in te zetten,
+zij het dat velen ook als alternatief
+D-MAC achter de hand houden.
+
+Voor uitzending wordt bij het
+video-deel van het C-MAC signaal een
+driehoekige golfvorm opgeteld om de
+nodige energie- dispersie op het
+satelliet traject te bereiken.
+
+B-MAC
+
+B-MAC reduceert de vereiste bandbreedte
+tot zo'n 6 MHz door een multi-niveau
+data coderings systeem toe te passen,
+hetgeen de data-overdrachts snelheid
+inperkt. Dat gaat nogal ten koste van
+de ongevoeligheid voor ruis van het
+digitale deel (geluid, data) van het
+signaal, ofwel: er is een grotere hoog-
+frequente signaal-ruis verhouding nodig
+aan de ingang van de ontvanger. De
+verwerking van wat zwakkere signalen
+gaat dus minder goed. B-MAC signalen
+kunnen worden her-uitgezonden via de
+conventionele aardse middelen zonder
+dat een vertaalslag (transcoderen)
+nodig is. Het is in gebruik bij vele
+kabel exploitanten in Canada en
+Australie.
+
+Gedurende lange tijd al wordt B-MAC
+(het enige operationele systeem dat
+geconditioneerde toegankelijkheid kent
+en een tot op heden onkraakbare
+encryptie) in Europa gebruikt door de
+American Forces Broadcasting Network en
+door SIS, de Engelse interactieve
+informatie dienst. Feitelijk heeft
+Sientific Atlanta een monopolie op
+B-MAC apparatuur.
+
+D-MAC
+
+D-MAC gebruikt duo-binaire codering om
+de vereiste bandbreedte te reduceren,
+en dat zonder een significant verlies
+aan ruisbestendigheid. Het gehele D-MAC
+signaal wordt frequentie- gemoduleerd
+alvorens het wordt uitgezonden. Voor
+ontvangst is in de ontvanger dus
+slechts EEN conventionele FM
+demodulator vereist. Het
+allerbelangrijkste aspect van D-MAC is
+diens compatibiliteit met het
+voorgestelde Europese
+High-Definition-TV systeem (HD-MAC,
+Eureka 95).
+
+D-MAC heeft met C-MAC de momentane
+data-overdrachts snelheid van 20,25
+Mb/s gemeen en kan dus ook bijvoorbeeld
+8 audiokanalen met CD-kwaliteit aan of
+een ander equivalent. Op de Engelse BSB
+satelliet zal waarschijnlijk D-MAC
+worden gebruikt.
+
+D-MAC heeft een (gecomprimeerde) video-
+bandbreedte van 7,4 MHz, maar het
+data-pakket met z'n 20,25 Mb/s vereist
+zo'n 10,5 MHz hoogfrequent transmissie
+bandbreedte wanneer het wordt
+uitgezonden door AM-restzijband
+zenders. In aanvang vond men in Europa
+deze bandbreedte te groot voor gebruik
+in kabeltelevisie netwerken.
+
+D2-MAC
+
+D2-MAC is een ondervariant van D-MAC,
+bedoeld om het transmissie bandbreedte
+probleem te verminderen door slechts
+half zoveel data uit te zenden, ergo
+10,125 Mb/s. Dat betekent dus dat
+slechts 4 (mono) audiokanalen met
+CD-kwaliteit of een equivalent daarvan
+beschikbaar zijn. Het omzetten van
+D-MAC in D2-MAC is eenvoudig mogelijk
+door de helft van de data weg te laten.
+Daartoe zijn de datapakketten in D-MAC
+gegroepeerd in twee 'onderrasters'.
+
+In D2-MAC wordt de grootste transmissie
+bandbreedte door het (gecomprimeerde)
+video-deel bepaald. Oorspronkelijk zijn
+er in Europa proeven gedaan om het
+D2-MAC signaal in de conventionele 7
+(VHF) resp. 8 (UHF) MHz brede
+TV-kanalen over te dragen. Dit bleek
+slechts als noodoplossing aanvaardbaar.
+Feitelijk is een ongeveer 10 MHz breed
+kanaal vereist, rekening houdend met de
+restzijband modulatie.
+
+Net als bij C-MAC wordt bij D2-MAC voor
+uitzending over het satellietpad ten
+behoeve van energie-dispersie een
+driehoekige spanningsvorm opgeteld,
+maar dan wel bij het gehele basisband
+signaal en niet slechts bij het
+video-deel daarvan.
+
+D2-MAC 16:9
+
+D2-MAC 16:9 is een broertje van D2-MAC,
+met als verschil dat de uitgezonden
+beeldverhouding van breedte en hoogte
+(4:3 bij alle TV-systemen in de wereld)
+is veranderd in 16:9. Hierdoor kunnen
+bijvoorbeeld speelfilms beeldvullend
+worden weergegeven, zonder zwarte
+balken boven en onder. Een en ander
+wordt bereikt door andere compressie
+factoren te kiezen voor luminantie en
+chrominantie, namelijk resp. 2 en 4.
+Deze compressie factoren worden ook bij
+HD-MAC gebruikt, waarover later meer.
+Hierdoor wordt het video-deel echter
+weer bepalend voor de vereiste
+transmissie bandbreedte, die ruim 11
+MHz bedraagt, wederom rekening houdend
+met restzijband uitzending. Dit heeft
+geleid tot 'standaardisatie' van 12 MHz
+brede kanalen op de kabeltelevisie
+netten in (delen van) Europa, waaronder
+Duitsland (Deutsche Bundes Post) en
+Nederland (vnl. CASEMA). De energie
+dispersie ten behoeve van het satelliet
+transmissie traject is identiek
+geregeld als bij D2-MAC.
+
+HD-MAC
+
+HD-MAC is de Europees aanvaarde norm
+voor uitzendingen van High-Definition
+TeleVision (HDTV). In Eureka 95 worden
+de ontwikkelings werkzaamheden
+begeleid. HD-MAC gaat uit van het
+dubbele aantal beeldlijnen (en 16:9
+beeldformaat) in de studio's en op het
+ontvanger display, maar NIET op het
+transmissiepad daartussen. Daartoe
+wordt in de rasterblanking van het
+video-deel van het signaal extra
+informatie meegezonden, die speciale
+HD-MAC ontvangers in staat stelt de
+oorspronkelijke 1250 beeldlijnen in
+16:9 te reconstrueren. Gewone MAC
+ontvangers geven dan slechts 625 lijnen
+weer. Aan de betrouwbare ontvangst van
+deze extra uitgezonden informatie wordt
+uiteraard een hoge eis gesteld.
+Onderzoekingen zullen nog moeten
+uitwijzen of hier misschien een
+bottle-neck in het systeem zit waar het
+gaat over transmissie via de
+kabelnetten.
+
+Het HD-MAC signaal moet -behoudens het
+bovenstaande- in 12 MHz brede
+transmissie kanalen passen in geval van
+restzijband uitzending via de kabel. De
+energie- dispersie op het satellietpad
+verloopt eender als bij D-MAC is
+beschreven.
+
+A-MAC
+
+A-MAC was eigenlijk het eerste systeem
+waarin het digitale deel (data, geluid)
+parallel op een aparte hulpdraaggolf
+van 7,16 MHz werd uitgezonden. Veel
+meer had het niet te bieden, zij het
+dat hiermee voor het eerst bewezen werd
+dat het mogelijk was luminantie en
+chrominantie in tijd gecomprimeerd en
+in tijd per beeldlijn gemultiplext uit
+te zenden. A-MAC is heden ten dage
+geschiedenis.
+
+S-MAC
+
+S-MAC is een variant die bedoeld is
+voor studiogebruik. Er is een
+bandbreedte van ruim 11 MHz voor nodig
+om de originele synchronisatie en
+kleurburst signalen te handhaven die
+een vertaalslag naar PAL of SECAM
+mogelijk moeten maken. In dit artikel
+wordt hier verder niet op in gegaan.
+
+ENCRYPTIE
+
+Veel heersende verwarring ontstaat door
+misinterpretatie van het woord
+'decoder'. Om MAC beelden te ontvangen
+heeft men een MAC decoder nodig. Dit
+apparaat vertaalt de binnenkomende
+uitzending in de MAC-vorm naar een
+signaal waarmee een TV-ontvanger (of op
+z'n minst de beeldbuis ervan) kan
+worden aangestuurd. De huidige
+ontvangers bevatten een PAL decoder (in
+Frankrijk en Rusland een SECAM
+decoder). Die decodeert het
+binnenkomende PAL signaal naar een
+basisband signaal waarmee een beeld op
+het beeldscherm kan worden gevormd. Om
+PAL te ontvangen is een PAL decoder
+nodig, om SECAM te ontvangen een SECAM
+decoder en om MAC te ontvangen zullen
+we een MAC decoder moeten gebruiken.
+
+Als uitzendende organisatie kun je de
+programma's versleutelen (encrypten)
+-foutief ook wel genoemd 'coderen' of
+'scramblen'- en dat kan het beelddeel,
+het geluidsdeel of beide betreffen.
+
+Op die manier zijn de uitgezonden
+programma's alleen te bekijken door
+kijkers die beschikken over een
+geschikte ontsleutelaar (decrypter).
+Omdat een MAC signaal beeld, geluid en
+data bevat kan de uitzender zowel beeld
+als geluid versleutelen en hij heeft
+bovendien in het datapad de
+mogelijkheid parallel informatie mee
+uit te zenden naar de 'geautoriseerde
+ontsleutelaars' hoe het signaal moet
+worden ontsleuteld. De autorisatie kan
+zowel een groep apparaten als een
+individueel ontsleutel apparaat
+betreffen. Het fundamentele voordeel
+van MAC is dat de decoder tevens de
+ontsleutelaar kan zijn, naast het
+voordeel van de verbeterde
+beeldkwaliteit, zeker in HD-MAC. Het
+voorkomt bij de consument allerlei
+aanvullende ontsleutelaars (vb. FilmNet
+kastje) en bijbehorende verbindings
+snoeren. Om het versleutelde Franse
+programma Canal Plus van de Franse
+omroep satelliet te ontvangen is
+slechts een D2-MAC decoder/
+ontsleutelaar nodig en die is a priori
+in de D2-MAC ontvanger aanwezig.
+
+Het principe is dus eenvoudig. De
+werkelijkheid is wat gecompliceerder,
+maar zo is het in het leven altijd.
+(wordt vervolgd)
+

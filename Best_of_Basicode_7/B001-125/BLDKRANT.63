@@ -1,0 +1,240 @@
+63, zon 29 mrt '87
+
+BASIC, HOE SPREEK JE DAT
+
+Ing. Peter van Tilburg, een van de redakteuren
+van de cursus 'Structuur in Basic' van Teleac
+schreef de volgende bespigeling. Hij spreekt
+die wekelijks uit op de donderdag in de
+radiolessen van Teleac. Zie ook agenda.
+
+In hoofdstuk 2 van het cursusboek wordt een
+groot gedeelte van de in BASIC aanwezige
+opdrachten behandeld. We zullen in deze radioles
+bij enkele daarvan wat nader stilstaan.
+
+Belangrijke opdrachten in GWBASIC zijn de
+FOR..NEXT- en WHILE..WEND-opdracht. Deze twee
+opdrachten stellen ons in staat om in
+programma's lussen te gebruiken, zonder dat er
+via een sprongopdracht teruggegaan wordt naar
+een eerder regelnummer. Bij een sprongopdracht
+moeten we niet alleen denken aan een GOTO-
+(onvoorwaardelijke sprong) of IF..GOTO-opdracht
+(voorwaardelijke sprong), maar ook aan de IF..
+THEN..ELSE-opdracht, die immers ook gevolgd kan
+worden door een regelnummer en dan fungeert als
+een voorwaardelijke sprongopdracht.
+
+De FOR.. NEXT-lus is bedoeld voor lussen
+waarvan bij binnen treden vaststaat hoeveel
+keer deze doorlopen moeten worden. Wanneer er
+bijvoorbeeld in het programma staat: FOR X=1
+TO A, dan is het afhankelijk van de waarde
+van A hoeveel keer de lus doorlopengaat worden.
+Komt de computer echter voor de eerste keer
+bij deze opdracht, dan wordt op dat moment
+vastgelegd wat de bovengrens is waarvoor de
+lus nog doorlopen moet worden. Een eventuele
+verandering van de waarde van A binnen de lus,
+heeft geen gevolg voor het aantal keer dat de
+lus doorlopen wordt.
+
+De WHILE.. WEND-constructie werkt geheel anders.
+Deze lus wordt doorlopen zolang aan een bepaalde
+voorwaarde voldaan wordt. Gewoonlijk is het zo
+dat, wanneer het WHILE-gedeelte van de opdracht
+bereikt wordt, de conditie waar is. Zou dat
+niet het geval zijn, dan zou de hele WHILE..
+WEND-lus overgeslagen worden. Binnen de lus zal
+er altijd een opdracht moeten staan die er op
+een gegeven moment voor zorgt dat de conditie
+niet meer waar is. Indien dat niet het geval
+zou zijn, dan bevat het programma een eeuwige
+lus en zal derhalve nooit eindigen.
+
+Sommige BASIC-dialecten, zoals de uit oogpunt
+van gestructureerd programmeren zeer fraaie
+BBC-BASIC, hebben in plaats van de WHILE...
+WEND-opdracht een REPEAT... UNTIL-opdracht.
+Deze opdracht, die we ook in Pascal tegenkomen,
+werkt op een iets andere manier. De lus wordt
+nu doorlopen totdat - in plaats van zolang -
+aan een bepaalde conditie is voldaan. In het
+begin zal hier de conditie gewoonlijk dus niet
+waar zijn en later ergens binnen de lus wel
+waar worden. Op het eerste gezicht zou een
+WHILE... WEND omgezet kunnen worden in een
+REPEAT... UNTIL door de betreffende conditie
+'om te klappen'. WHILE A<10..WEND zou dan
+vertaald kunnen worden in REPEAT... UNTIL
+A>=10. Dit zal echter niet altijd tot het
+juiste resultaat leiden.
+
+Bij een WHILE..WEND wordt namelijk bij de
+WHILE gecontroleerd of de lus doorlopen moet
+worden. Blijkt daar dat de conditie al in het
+begin niet waar is, dan wordt de lus
+overgeslagen en gaat de computer verder bij
+de eerste opdracht achter de WEND.
+
+Bij REPEAT..UNTIL wordt echter pas na afloop,
+dus bij UNTIL, gecontroleerd of de conditie
+waar is geworden. Is dat het geval, dan wordt
+de lus verlaten. Dit houdt in dat een REPEAT...
+UNTIL-lus altijd 1 keer doorlopen wordt, zelfs
+al is de conditie bij het binnentreden al waar!
+Hiermee moeten we dus rekening houden bij het
+omzetten van WHILE... WEND- naar REPEAT...
+UNTIL-opdrachten.
+
+Ook een belangrijke rol bij het gestructureerd
+programmeren in BASIC speelt de GOSUB-opdracht,
+die fundamenteel verschilt van de GOTO-opdracht.
+Een GOSUB-opdracht roept een subroutine aan,
+die bestaat uit een of meerdere opdrachten.
+Wanneer in deze subroutine een RETURN-opdracht
+wordt tegengekomen, wordt er teruggesprongen
+naar de eerste opdracht achter de GOSUB-opdracht.
+Een dergelijke constructie tast de structuur
+van het programma niet aan en is zelfs
+buitengewoon handig om structuur in het
+programma aan te brengen. Wanneer we bijv een
+programma hebben dat uit drie hoofdgedeelten
+bestaat, kunnen we een hoofdprogramma
+schrijven dat uit niets anders bestaat dan
+drie aanroepen van subroutines en een
+END-opdracht. In deze subroutines worden
+dan de eigenlijke opdrachten opgenomen. Ook
+is het mogelijk dat we een subroutine zelf
+nog nader willen uitwerken. In dat geval
+bestaat de subroutine zelf weer uit aanroepen
+voor een aantal sub-subroutines.
+
+Het is een goede gewoonte een GOSUB-opdracht
+altijd te laten volgen door een REM-opdracht.
+In deze opdracht geven we aan wat er precies
+in de subroutine wordt gedaan. We laten de
+subroutine zelf ook beginnen met een
+REM-opdracht, die natuurlijk hetzelfde is als
+de REM-opdracht bij de aanroep. Door op deze
+wijze een programma te schrijven, wordt de
+structuur duidelijk kenbaar. Willen we later
+bijvoorbeeld iets wijzigen in de uitvoer,
+dan hoeven we niet het hele programma te
+doorlopen. Het programma geeft dan zelf aan
+waar we ergens moeten zijn.
+
+Een ander voordeel van subroutines is dat,
+wanneer we in diverse gedeelten van het
+programma dezelfde werkzaamheden moeten
+verrichten, we de bijbehorende opdrachten
+slechts eenmaal in een subroutine hoeven op
+te nemen. In het programma nemen we dan twee
+aanroepen voor deze routine op. In hoofdstuk
+2 komen naast deze en andere opdrachten, ook
+een aantal commando's ter sprake. Het is
+moeilijk tussen beiden een duidelijk
+onderscheid te maken.
+
+Dikwijls wordt gezegd dat een commando altijd
+in direct mode gegeven wordt en opdrachten in
+indirect mode. Dat onderscheid is echter niet
+geheel correct. Bepaalde commando's zoals LIST
+kunnen ook in een programma voorkomen, terwijl
+bijvoorbeeld een PRINT-opdracht ook zonder
+regelnummer gegeven kan worden. De opdracht
+wordt dan direct door de computer uitgevoerd.
+
+Hoewel een commando eventueel deel uit kan
+maken van een programma, heeft het zelf altijd
+betrekking op een geheel programma. Met dat
+gehele programma moet iets gebeuren. Het moet
+bijvoorbeeld gestart worden (RUN), het moet op
+het beeldscherm gezet worden (LIST), of het
+moet van het achtergrondgeheugen opgehaald
+worden (LOAD). Naast dit onderscheid tussen
+commando's en opdrachten, worden ook de
+opdrachten dikwijls nog in groepen ingedeeld.
+Meestal wordt dan onderscheid gemaakt tussen
+invoer-, verwerkings- en uitvoeropdrachten.
+Tot de invoeropdrachten worden die opdrachten
+gerekend die gegevens ophalen die het
+programma nodig heeft, maar die zich niet in
+het programma zelf bevinden. Voorbeelden
+daarvan zijn de INPUT- en GET-opdracht, die de
+invoer respectievelijk van het toetsenbord en
+uit een bestand op cassette of diskette halen.
+
+Dikwijls wordt de READ-opdracht ook tot deze
+groep gerekend, wat echter niet terecht is.
+Deze opdracht haalt de gegevens namelijk uit
+een DATA-regel die zich in het programma
+bevindt en kan daarom niet als een invoer
+opdracht worden beschouwd.
+
+Tot de uitvoeropdrachten behoren bijvoorbeeld
+de BEEP-, PRINT-, LPRINT- en PUT-opdracht,
+die gegevens sturen naar respectievelijk de
+luispreker, het beeldscherm, de printer en
+het achtergrondgeheugen. Alle opdrachten die
+niet tot de in- of uitvoeropdrachten behoren,
+worden verwerkingsopdrachten genoemd.
+
+NIEUWS VAN FIDO-DATABANKEN
+
+Het telefoonnummer van de Fido-node in
+Apeldoorn is al enige tijd gewijzigd. Het
+knooppunt, met als inspirerende Sysop Ron
+Goossen bezit twee lijnen, allebei te bereiken
+onder 055-211811. Officieel heet de databank
+HCC-Apeldoorn-1. Hij is landelijk te bereiken
+onder Net 500, Node 25. Specialisatie van
+het bulletin board is zendamateurisme.
+Hobbyscoop ontleent nogal wat gegevens aan
+dit knooppunt. Andersom gebruikt Apeldoorn
+ook veel gegevens uit onze Beeldkrant
+en de Hamsat bulletins. Wat samenwerking
+al niet vermag.
+
+Ook Utrecht heeft zijn eigen Fido. Dit
+knooppunt is te bereiken onder 030-733908.
+Sysop Peter van der Post. Fido Zoetermeer
+van Sysop Erik Slagter heeft telefoonnummer
+079-510425. Men gebruikt bij deze node
+afwijkende programmatuur, type Opus.
+
+HOBBYSCOOP DATABANK
+
+Via elk van deze knooppunten is het ook
+mogelijk berichten naar onze Fido in
+Hilversum door te geven. Dan dient u wel lid
+van HCC te zijn en een bedrag voor het
+overbrengen van berichten te hebben betaald.
+Dat haalt u er makkelijk uit, met het oog op
+de telefoonkosten. Mocht u overigens een
+NOS-programma missen of slecht doorgekregen
+hebben, dan kunt u elk uitgezonden programma
+direct opvragen bij onze databank in Hilversum,
+Fido 't Gooi, tel: 035-45395. Elke snelheid
+tot 2400 baud is mogelijk. Daarin naast de
+uitgezonden Basicode programma's ook info
+voor zend- en luister amateurs en nu ook alle
+programmatuur uit de Teleac-cursus 'Structuur
+in Basic'.
+
+ZWEEDS COMMENTAAR
+
+Regelmatig ontvangen we commentaar van Olof
+Swembel uit Zweden. Hoewel de ontvangst
+condities van de MG-zenders daar sterk
+wisselen, ontvangt hij onze Beeldkranten
+en Basicode-programma's meestal wel. Hij
+deelt een compliment uit wat betreft de
+Philips D6450 Automatische Data-recorder,
+waarmee hij duidelijk betere opnames maakt
+van onze programmatuur dan met een gewone
+cassette recorder. Dank Olof. Als u hem wilt
+schrijven, zijn adres is: Lundagardsv. 35,
+S-163 53 Spanga in Sweden. Wel even in het
+Engels.

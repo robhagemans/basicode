@@ -1,0 +1,194 @@
+66, woe 08 apr '87
+
+WEER OPTIMOD
+
+Tja het was weer eens mis. Een of andere
+technische collega schakelde de Optimod
+pas uit toen het programma bijna afgelopen
+was. Het lag dus niet aan uw ontvangst! We
+zijn dus gedwongen om het hele programma
+van afgelopen zondag opnieuw uit te zenden.
+Vervelend, omdat we daardoor uit de pas
+gaan lopen met de Teleac-uitzendingen.
+
+Een van de cursisten schreef ons dat hij
+best een bandje zou willen hebben met al
+die cursus programma's er op in Basicode-vorm.
+Dit ondanks het feit dat er nog veel aan
+gedaan moet worden voor ze in een hobby
+computer lopen. Wij verwachten daarom niet
+zoveel belangstelling voor zo'n bandje,
+maar misschien vergissen we ons en hoort
+het cursus-materiaal wel op een cassette.
+Schrijft u eens over uw ervaringen met
+het cursusmateriaal.
+
+KOPPELING MIR MISLUKT
+
+Het laatste nieuws rond de Russische
+ruimtevaart komt als gebruikelijk weer van
+Nico, PA0DLO. Hij verwerkte de laatste
+gegevens in zijn verslag.
+
+Het lang verwachte grote astrofysisch
+laboratorium is in de late avond van 30 maart
+(utc) gelanceerd vanaf Baykonoer met een
+PROTON-raket. Dit laboratorium heet QUANT,
+heeft een massa van 20 ton en is dus praktisch
+net zo groot als het ruimtestation MIR. QUANT
+moest op dezer dagen 4 april 's avonds laat
+automatisch aan MIR koppelen. De naderings
+procedure verliep vlekkeloos tot op 200 m
+afstand. Toen werd de koppelprocedure afgebroken
+omdat er problemen waren met het automatische
+navigatie-kontrolesysteem van QUANT. Men
+analyseert nu de telemetrie van QUANT om na te
+gaan wat er fout is en hoe de koppeling
+alsnog kan worden uitgevoerd. QUANT heeft nog
+een tweede koppelpoort waaraan later eventueel
+een SOYUZ of PROGRESS kan vastkoppelen. In
+totaal wil men in de toekomst tot vijf
+speciale modules aan MIR koppelen.
+
+SKI-EXPEDITIE RADIO-AMATEURS
+
+Er wordt een internationale ski-expeditie
+georganiseerd, waarbij een groep Russische
+en Canadese wetenschappelijke onderzoekers
+een tocht zullen maken van Rusland naar
+Canada via de noordpool. De expeditie moet in
+februari 1988 starten in Rusland en eindigen
+in juni in Canada. Het grootste gedeelte van
+alle radio-communikatie wordt verzorgd door
+radio-amateurs. Daarbij wordt veel gebruik
+gemaakt van alle dan beschikbare amateur
+satellieten. Voor de navigatie wil men ook
+gebruik maken van COSPAR en SARSAT informatie
+die door amateursatellieten kan worden
+geleverd. Bij de radio kommunikatie wil men
+zowel spraak als digitale kommunikatie
+toepassen.
+
+NIEUWE SATELLIET?
+
+Vanuit Duitsland worden al enkele weken
+geruchten verspreid over waargenomen signalen
+op 29,361 en 29,402 MHz, die afkomstig zouden
+zijn van een onbekende satelliet. Omdat de
+signalen dagelijks zeer langdurig hoorbaar zijn,
+dacht men dat het om een satelliet in een zeer
+hoge baan moest gaan. Uit eigen waarnemingen
+blijkt echter dat het signaal op 29,361 MHz,
+dat daar al enkele maanden hoorbaar is, geen
+dopplerverschuiving heeft. Het is een tijd
+ijksignaal met sekondenpulsen, dat
+waarschijnlijk afkomstig is van een station
+ergens in Europa. Er zijn ook nog geen meldingen
+gekomen van waarnemingen van dit signaal
+buiten Europa. Het signaal op 29,402 MHz kan
+misschien verward zijn met de signalen van RS1,
+die nog regelmatig hoorbaar zijn.
+
+RADIO SPOETNIKS
+
+Nu RS5 en RS7 zich weer kontinu in het zonlicht
+bevinden, zijn ze weer beschikbaar voor algemeen
+gebruik. RS7 is vrijwel steeds in bedrijf volgens
+het normale schema. Dat betekent dat de satelliet
+steeds mag worden gebruikt, behalve op
+woensdagen. Maandagen zijn, zoals altijd,
+QRP-dagen. Dan mag men dus uitsluitend zeer
+lage uplinkvermogens gebruiken. De batterij in
+RS5 is helaas vrij zwak, zodat deze satelliet
+niet kontinu in bedrijf kan worden gehouden.
+Men wordt dringend verzocht de Radio Spoetniks,
+en dan vooral RS5, niet te zwaar te belasten,
+zodat hun levensduur zover mogelijk kan worden
+verlengd.
+
+AKTIVITEITENDAGEN
+
+Van 20 tot 26 april worden er speciale
+aktiviteitendagen gehouden via RS5 en RS7.
+Bovendien heeft de Centrale Radio Club van de
+USSR een RS-kontest georganiseerd op 26 april.
+Iedereen wordt uitgenodigd deel te nemen.
+Binnenkort zal nadere informatie beschikbaar
+komen over het telemetrie-systeem van de
+toekomstige RS9, die in juni moet worden
+gelanceerd. Volgens UA3CR zal de telemetrie van
+RS9 32 analoge kanalen en 16 digitale status
+kanalen bevatten. De beschrijving van alle
+telemetrie-kanalen zal binnenkort worden
+gepubliceerd. De informatie over de
+omrekenings formules is nog niet beschikbaar
+en zal daarom later volgen.
+
+FUJI-OSCAR 12
+
+De telemetrie-uitzendingen van OSCAR 12
+zijn gewijzigd. Zij hebben nu de volgende
+vorm:
+JAS-1 FF YY/MM/DD HH:MM:SS
+xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx
+xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx
+xxx xxx xxx xxx xxx xxx xxx xxx yyy yyy
+sss sss sss sss sss sss sss sss sss sss
+
+FF : Frame Identifier
+RA: Realtime Telemetry, ASCII
+RB: Realtime Telemetry, Binary
+SA: Stored Telemetry, ASCII
+SB: Stored Telemetry, Binary
+M0: Message
+0
+M1: Message
+1...etc.
+M9: Message
+9
+YY/MM/DD : Datum
+HH:MM:SS : Tijd (UTC)
+In RS en SA frames geldt:
+xxx (000-999) : 28 Analoge telemetrie-kanalen
+(decimaal)
+y (0-F)       :  6 Systeem status kanalen (hex)
+s (0 of 1)    : 30 Digitale status kanalen (bin)
+
+Informatie over de inhoud van alle kanalen
+volgt spoedig. OSCAR 12 blijft inmiddels
+beschikbaar voor afwisselend gebruik in mode
+JA en mode JD. Zodra de experimenten met het
+AX.25 protocol zijn voltooid en alle nieuwe
+programmatuur is geladen kan de mode JD
+mailbox worden geaktiveerd.
+
+OPMERKING SCHNEIDER/AMSTRAD
+
+Gerard van Rossum uit Paterswolde meldt ons
+dat het programma Islamitische Gebedstijden
+op de Amstrad Schneider niet loopt omdat er
+de Basic-opdracht 'DI' in voorkomt. DI wordt
+gebruikt als dag van de Arabische datum. Het
+commando schakelt bij deze computer een
+interrupt uit en dan ontstaan er problemen.
+Dhr. Van Rossum stelt voor om RDI als
+variabele te gebruiken in de regels 2710 t/m
+4160. Verder merkt hij op dat zijn computer
+weinig problemen heeft met de ontvangst van
+zondagavond uitzendingen. (Als de Optimod
+tenminste uitstaat... Red)
+
+BUITENLAND
+
+Knud Erik Bengston, Aegirsweg 48 in Fredericia
+in Denemarken meldt dat hij onze
+Beeldkranten prima ontvangt en sluit een
+mooi geformateerd exemplaar bij. Voor andere
+computer amateurs vertaalde verschillende
+zaken naar het Deens. Hij volgt onze
+uitzendingen regelmatig. Peter Hellweg van
+de Amiga User Group in Dortmund (Arnstadstr
+73 - D-4600) doet dat ook. Hij kreeg de
+meeste programma's zonder fouten binnen in
+zijn C-64, want er is geen vertaalprogramma
+voor de Amiga. Bedankt voor de reakties!

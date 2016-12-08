@@ -1,0 +1,353 @@
+382, maa 04 feb '91
+
+BRAINMAKER: NEURAAL NETWERK OP DE PC
+
+BrainMaker is een programma om op een
+MS-DOS PC een neuraal netwerk na te
+bootsen. Een neuraal netwerk kunnen we
+taken laten uitvoeren, zonder dat we
+het eerst moeten programmeren. Net als
+de hersenen van de mens leert een
+neuraal netwerk van voorbeelden.
+
+BrainMaker is voor tegenwoordige
+begrippen een klein programma. De
+computer moet 256K RAM hebben. Een
+MS-DOS versie vanaf 3.0 is vereist.
+BrainMaker gebruikt alleen
+tekstschermen en kan dus werken met
+alle videokaarten.
+
+TRAINING
+
+In de vorm van een tekstbestand bieden
+we BrainMaker de feiten aan, die
+geleerd moeten worden: steeds een stel
+invoerfeiten gevolgd door de
+bijbehorende uitvoerfeiten. Na het
+trainen kunnen we door veranderen op
+het scherm nieuwe waarden voor de
+invoerfeiten aangeven. Het getrainde
+brein laat dan zien, wat het denkt dat
+de bijbehorende uitvoer is. Daarbij
+maakt het in feite gebruik van analogie
+tussen het nieuwe feit en de geleerde
+feiten.
+
+TOEPASSINGEN
+
+In de reklame voor BrainMaker spelen
+financiele toepassingen een belangrijke
+rol. We zouden als invoerfeiten
+aandelenkoersen, inflatiecijfers,
+valutakoersen en dergelijke kunnen
+nemen en als uitvoer de aandelenindex
+een maand later. We trainen BrainMaker
+met een reeks gegevens uit vorige
+jaren. Met nieuwe feiten kunnen we
+BrainMaker dan vervolgens laten
+voorspellen, of ons de komende maand
+winst te wachten staat, wanneer we nu
+aandelen kopen.
+
+PRAKTIJKPROBLEMEN
+
+Zo gemakkelijk laat de toekomst zich
+echter niet voorspellen. Bij de
+ontwikkelingen op de financiele markten
+spelen telkens nieuwe factoren een rol,
+factoren waarmee ons neurale netwerk
+nog geen ervaring heeft kunnen opdoen.
+Wie zijn netwerk traint met de
+voortekenen van de beurskrach van 1929,
+moet niet verbaasd zijn, wanneer het
+netwerk een eventuele beurskrach in
+1992 niet weet aan te kondigen: de
+voortekenen van die instorting zullen
+luisteren naar nieuwe wetten die niet
+uit het verleden zijn af te leiden.
+
+DOELGROEP
+
+Speculanten zijn dus niet zo geholpen
+met BrainMaker. Wie wel? Vooral, zo
+denken we, liefhebbers die wel eens met
+eigen ogen een neuraal netwerk aan het
+werk willen zien. Verder mensen die
+toevallig een probleem hebben, waar
+neurale netwerken goed in zijn, en die
+bereid zijn behoorlijk wat te
+experimenteren om een geschikt netwerk
+tot stand te brengen.
+
+VOORBEELDEN
+
+Bij BrainMaker horen een aantal
+voorbeelden die aangeven aan wat voor
+probleem gebieden je zou kunnen denken.
+Drie voorbeelden betreffen het
+herkennen van tekens of figuren. De
+invoer is een rechthoekige verzameling
+beeldpunten waarvan sommige aan zijn en
+andere uit. De uitvoer is een
+waarschijnlijkheid voor driehoek, voor
+vierkant, voor rechthoek en voor cirkel
+of voor een van de cijfers 0 tot en met
+9. Tekenen de beeldpunten die 'aan'
+zijn samen bijvoorbeeld een zes uit,
+dan krijgt bij de uitvoer de zes een
+hoge waarschijnlijkheid. Ook de vijf
+zal echter enige waarschijnlijkheid
+hebben, omdat de vorm van een vijf
+nogal lijkt op de vorm van een zes. Dat
+is zeker zo bij de grofmazige plaatjes
+waarmee we bij BrainMaker moeten
+werken. Het maximum is zestien bij
+zestien beeldpunten, maar minder is
+eigenlijk beter.
+
+Een andere toepassing classificeert
+vruchten, uitgaande van de kenmerken
+groot/klein, al dan niet rond en de
+kleur. De uitvoer loopt van kers tot
+ananas: op grond van de invoer krijgt
+elke vrucht een waarschijnlijkheid
+toegewezen. Als het goed is, geeft een
+grote, gele, niet-ronde vrucht een hoge
+waarschijnlijkheid bij banaan.
+
+Verder is er een toepassing waarbij een
+neuraal netwerk aangeeft, hoe een
+ingetypt Engels woord moet worden
+uitgesproken. Een PC kan niet zomaar
+praten en daarom wordt de uitspraak op
+het scherm gepresenteerd als een
+fonetische code.
+
+Een laatste voorbeeldnetwerk kan bij
+het spelletje boter, kaas en eieren de
+kwaliteit van een zet beoordelen.
+
+LANGE LEERTIJD
+
+Om al het gewenste te leren dient
+BrainMaker het lijstje met leerfeiten
+vele malen te doorlopen. Geleidelijk
+aan gaat het netwerk daarbij steeds
+beter doen, wat het moet doen. Voor een
+serieuze toepassing (zou die wel
+bestaan?) zijn minstens honderd feiten
+nodig. Een ingewikkelde toepassing
+vraagt een groot netwerk en een groot
+netwerk eist een lange leertijd.
+Eenvoudige demonstratie voorbeelden kan
+BrainMaker binnen tien minuten leren,
+maar voor een serieuze toepassing zou
+wel eens een leertijd van dagen nodig
+kunnen zijn.
+
+Een lange leertijd is overigens niet
+nadelig voor het latere functioneren
+van het getrainde netwerk. Ieder
+netwerk geeft vrijwel onmiddellijk
+antwoord op een gestelde vraag.
+
+BEDIENING EN SCHERMPRESENTATIE
+
+BrainMaker wordt bediend via menu's. De
+koppeling tussen het menusysteem en de
+toetsen werkt anders dan bij de meeste
+programma's gebruikelijk is. Daardoor
+verloopt de bediening vaak niet zo
+soepel. BrainMaker biedt geen
+schermhulp. Bij dit programma is de
+handleiding dan ook geen overbodige
+luxe.
+
+De gegevens kunnen op het scherm in
+verschillende vormen worden
+weergegeven: gewoon als getallen, als
+grote beeldpunten met een bepaalde
+grijswaarde, als tekst behorend bij een
+bepaalde getalwaarde of als
+thermometer. Daarbij wordt de waarde
+weergegeven door de lengte van een
+staafje, waarbij meestal acht eenheden
+te onderscheiden zijn. Dat lijkt grof,
+maar het is ook ongeveer de
+nauwkeurigheid van een neuraal netwerk
+en deze vorm van uitvoer blijkt erg
+handig.
+
+Niet zo handig is dat je de indeling
+van het scherm moet aangeven via regel-
+en positienummers. Door schuiven of
+aanwijzen de schermweergave bepalen is
+niet mogelijk.
+
+BESTANDEN
+
+Wat in- en uitvoer van en naar
+bestanden aangaat, biedt BrainMaker
+alle mogelijkheden die je maar zou
+kunnen wensen. De bestanden hebben de
+vorm van gewone tekst en kunnen dus
+naar hartelust door andere programma's
+worden aangemaakt of verder verwerkt.
+De vaak gehoorde kritiek dat
+kunstmatige intelligentie zich niet
+laat combineren met andere software
+gaat hier dus niet op. Wel wat vreemd
+is dat in de bestanden het hartje
+(ASCII-code 3) wordt gebruikt om
+commentaar aan te geven.
+
+DOCUMENTATIE
+
+Het programma gaat vergezeld van twee
+Engelstalige handboeken. Het ene is een
+gebruiks aanwijzing voor het programma
+zelf, het andere een algemeen boek over
+neurale netwerken. Liefhebbers van
+flauwe grappen kunnen bij de gebruiks
+aanwijzing hun hart ophalen.
+
+NIET GOEDKOOP
+
+De prijs van BrainMaker is f595,- (ex
+BTW). Het programma wordt verkocht door
+DARE Research, Nieuwe Achtergracht 91,
+Postbus 18152, 1001 ZB Amsterdam, tel.
+020-230004.
+Software importeren is kennelijk een
+dure zaak. In de Verenigde Staten kost
+BrainMaker slechts 100 dollar. Zou het
+neurale netwerk van DARE Research de
+dollarkoers soms verkeerd hebben
+voorspeld? (met dank aan Pim van Tend)
+
+EETMETER OP FLOPPY
+
+Onlangs ontvingen we van het
+Voorlichtings buro voor de Voeding in
+Den Haag een floppy met daarop een
+MS-DOS programma genaamd 'de Eetmeter'.
+Scoop redacteur Chris van Offeren
+voelde het programma eens flink aan de
+tand.
+
+Met het programma 'de Eetmeter' kunt u
+de samenstelling van uw voeding
+vaststellen. De Eetmeter kent 600
+voedings middelen en geeft aan hoeveel
+vet, eiwit, koolhydraten, zout, alcohol
+en energie (naar keuze in kilojoules of
+in kilocalorieen) erin zitten. Opgaven
+van vitaminen ontbreken.
+
+SYSTEEMEISEN
+
+Het pakket dat wij ontvingen bestaat
+uit een 3.5 inch floppy (5.25 inch kan
+ook), met een korte en ook nog een
+uitvoerige gebruiks aanwijzing. Het
+programma werkt met iedere MS-DOS PC
+met minimaal 512 kb geheugen. Een harde
+schijf is niet nodig.
+
+Na het opstarten is het even wennen aan
+de funktietoetsen; ze staan overigens
+op elk scherm duidelijk aangegeven. Als
+je de funktietoetsen kent, gaat het
+verder vanzelf.
+
+GEGEVENSINVOER
+
+Begonnen wordt met het invoeren van wat
+persoonlijke gegevens en alle te
+nuttigen waren: van ontbijt tot
+tussendoortje 's avonds. Invoeren kan
+door eerst een hoofdgroep te kiezen en
+vervolgens het produkt zelf (dus bijv.
+eerst Groente en dan Andijvie) of
+alfabetisch. Dat is in beide gevallen
+een tijdrovend klusje, zeker in het
+begin, als er nog geen 'basismenu' is
+ingevoerd. Is dat achter de rug, dan is
+het mogelijk om alle gegevens in
+tabelvorm te zien en te printen.
+
+VERGELIJKING
+
+Interessant is de mogelijkheid om een
+vergelijking te maken met een 'ideale'
+voeding. Dat kan grafisch en in tekst
+op scherm of printer ('U gebruikt
+teveel van dit en te weinig van dat').
+Overigens zijn de grafieken in kleur
+(rood, geel en groen) duidelijk, maar
+op mijn monochroom scherm zijn ze
+lastig te lezen. Bovendien geeft HELP
+(altijd onder F1 beschikbaar) hier
+verwarrende informatie.
+
+VOORS EN TEGENS
+
+Het programma heeft ten opzichte van
+een gewone voedingsmiddelen gids het
+voordeel, dat het berekeningen loslaat
+op de ingevoerde menu's, waarop het dan
+vervolgens de adviezen baseert. De
+Eetmeter is echter voor dagelijks
+gebruik minder geschikt; een
+tabellenboekje is handiger om even snel
+een produkt op te zoeken, dus die zeker
+niet wegdoen!
+
+CONCLUSIE
+
+Een prima programma om mee te berekenen
+of een bepaalde voeding wel gezond is.
+Niet duur bovendien, dus zeker een
+aanrader.
+
+De Eetmeter is te bestellen door f14,25
+over te maken op giro 4323700 van het
+Voorlichtingsburo voor de Voeding,
+Postbus 85700, 2508 CK in Den Haag.
+Vermeld vooral: De Eetmeter, 3.5 of
+5.25 inch floppy, en voor alle
+zekerheid uw adres en postcode.
+Geregistreerde gebruikers kunnen
+desgewenst beroep doen op een
+telefonische hulpdienst; kosten: 40
+cent per minuut. (Bedankt, Chris!)
+
+PRINT-PROBLEMEN OP ATARI-ST
+
+Er is kort geleden een probleem
+gesignaleerd met betrekking tot het
+Basicode vertaal- programma voor de
+Atari ST's. Enkele gebruikers
+ondervonden moeilijkheden bij het
+gebruik van Basicode programma's die
+voorzien in de mogelijkheid om tekst op
+papier af te drukken m.b.v. een
+printer. Deze Beeldkrant is daar een
+voorbeeld van.
+
+De auteur van het Atari ST
+vertaalprogramma, Jelle van der Schuit
+uit Leiden, verschafte ons een simpele
+maar doeltreffende oplossing. Met de
+Omikron Basic editor moeten in het
+betreffende Basicode programma de
+volgende regels gewijzigd worden:
+
+350 LPRINT SR$;:RETURN
+360 LPRINT:RETURN
+
+De verandering is dus alleen nodig als
+u met het programma iets op papier wil
+afdrukken.
+

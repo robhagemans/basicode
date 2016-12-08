@@ -1,0 +1,245 @@
+155, zon 12 juni '88
+
+'REMOTE ACCESS' IN DE SOVJET-UNIE
+
+Remote access is momenteel in de Sovjet-Unie
+het toverwoord voor het op grote schaal
+toegankelijk maken van informatie hulpbronnen
+en daarmee voor het bijhouden van de
+technologische ontwikkelingen.
+
+Een analyse in het kader van een programma voor
+de wetenschappelijk- technische ontwikkeling
+in de Sovjet-Unie in de jaren 1986 - 2005 heeft
+aangetoond dat vooralsnog remote access de
+enige economisch verantwoorde manier is om een
+snelle en goedkope ingang tot volledige en
+up-to-date informatie te verkrijgen.
+
+GEEN ANDERE KEUS
+
+Volgens de Russische deskundigen is een andere
+keus voorlopig uitgesloten. In dat geval zijn,
+zo stellen ze, veel meer databanken nodig,
+moeten deze door het hele land worden
+getransporteerd, moet de apparatuur over een
+zeer groot geheugenveld beschikken en zijn
+aanvullende uitgaven nodig voor polygrafische,
+digitale en menselijke hulpmiddelen. Vandaar
+dat de Russen voor de overdracht van data
+gekozen hebben voor het remote access systeem,
+waarbij zij om praktische redenen voor
+schakelbare kanalen (channel switching) kiezen.
+Vooral de gemakkelijke aansluiting op het
+openbare telefoon- en telegraafnet is een groot
+voordeel bij het leggen van de verbindingen.
+
+OEKRAIENS SYSTEEM
+
+In de Oekraine is remote access tot het Systeem
+voor Geautomatiseerde Wetenschappelijk-
+Technische Informatie (ASNTI) van deze
+republiek (elke republiek heeft zijn eigen
+ASNTI, terwijl het GASNTI het systeem is voor
+de hele USSR) gerealiseerd met een JeS-1022
+computer met een werkgeheugen van 512 K, drie
+harddisks van 29 Megabyte en vier harddisks
+van 7,25 Megabyte, een JeS-8403 multiplexer
+met adapter, modems, gewone cassetterecorders,
+de telemonitor KAMA en het DBMS Poisk-1.2.
+
+PRAKTISCHE PROBLEMEN
+
+De Oekraiense deskundigen hebben door het
+schrijven van nieuwe soft- en firmware heel wat
+problemen moeten oplossen, voordat het systeem
+operabel kon worden. En in het praktisch
+gebruik bleek dat de reaktietijd van het
+systeem niet bepaald kort was. Mede daarom is
+op een bepaald moment besloten dat per sessie
+maximaal vier terminals op het systeem
+aangesloten mochten zijn.
+
+Uiteindelijk zijn veel technische verbeteringen
+doorgevoerd, waardoor ook de reaktietijd niet
+meer onaanvaardbaar lang was. Op het ogenblik
+wordt het aantal technische middelen voor
+remote access via nieuwe terminals en decoders
+sterk uitgebreid. Er wordt gewerkt aan een
+'intelligente' terminal die kan worden
+aangesloten op de Elektronika-60, Iskra-226 en
+DVK-2 microcomputers en kleine machines uit de
+SM-serie. (bron: Telecom Daily).
+
+DATACOMMUNICATIE VIA AUTOTELEFOON
+
+PTT Telecommunicatie is onder de naam Modanet
+gestart met de beperkte invoering van een
+nieuwe vorm van mobiele datacommunicatie.
+Essentie van het systeem is dat met relatief
+hoge snelheid en op veilige en betrouwbare
+wijze data kan worden verzonden met behulp
+van de autotelefoon en een daaraan gekoppeld
+modem. In eerste instantie zullen er circa
+100 deelnemers zijn. Na ongeveer zes maanden
+volgt de definitieve introductie van het
+systeem.
+
+Via Modanet kunnen bezitters van autotelefoon
+het telefoonnet of Datanet 1 bereiken. Op die
+manier kan vanuit het voer- of vaartuig met de
+eigen draagbare computer een dataverbinding
+worden opgebouwd met computers in binnen- en
+buitenland. Ook zijn elektronische berichten-
+en informatiediensten, zoals Memocom en Viditel,
+te raadplegen.
+
+MODANET-MODEM
+
+Voor Modanet is een speciaal modem ontwikkeld.
+Een van de voordelen hiervan is dat de
+communicatie snelheid hoog ligt (maximaal 1200
+bit/s). Storingen op de radioweg kunnen leiden
+tot verminkingen in de gegevens overdracht.
+Modanet sluit dit uit: in het syteem is een
+automatische foutcorrectie ingebouwd.
+
+Ook aan de veiligheid van de over te brengen
+informatie is gedacht. In het Modanet-modem is
+een chip ingebouwd die de te verzenden data
+versleutelt. Het encryptie algoritme is
+ontwikkeld door het Dr. Neherlaboratorium van
+PTT. De microprocessorchip hanteert telkens een
+andere code. Er is tevens voor gezorgd dat de
+chip niet meer terug te lezen is, zodat de
+manier waarop de versleuteling plaatsvindt niet
+achterhaald kan worden. Hiermee wordt een hoge
+mate van privacy gewaarborgd.
+
+Modanet werkt via Autotelefoonnet 2. In de
+toekomst zal de dienst ook op Autotelefoonnet
+3 operationeel zijn. Mogelijke gebruikers van
+Modanet zijn wegvervoerders, journalisten,
+vertegenwoordigers, klantenbezoekers en
+dergelijke. (bron: PTT-persdienst)
+
+MOBIELE FAX IN MOBILOFOONNET
+
+Koning en Hartman in Delft wil binnenkort een
+kleine fax introduceren, die geschikt is voor
+mobiel gebruik en gebruik maakt van het
+mobilofoonnet. K&H presenteerde deze fax op de
+Praktijkdag Mobiele Communicatie en
+Autonavigatie in het Autotron in Rosmalen.
+
+Hetzelfde Delftse bedrijf (onderdeel van
+Internatio Muller) onderzoekt de Nederlandse
+mogelijkheden van een Brits plaatsbepalings
+systeem Datatrak, dat gebruikt maakt van een
+radio-hyperboolsysteem. (bron: Telecom Daily)
+
+KEURINGSINSTITUUT TELECOMMUNICATIE
+
+De hoofddirecteur Telecommunicatie en Post van
+het ministerie van Verkeer en Waterstaat heeft
+gistermiddag het Nederlands Keuringsinstituut
+voor Telecommunicatie (NKT) geopend. Het NKT
+is een onafhankelijk keuringsinstituut onder
+de vleugels van de PTT Centrale Werkplaatsen.
+
+Ter gelegenheid van de opening vond er een
+mini-seminar plaats, waarin vooral de
+vertegenwoordigers van de PTT erop hamerden
+dat het NKT 'echt onafhankelijk' zal worden
+van de PTT. 'De Centrale Werkplaats is slechts
+gastheer,' stelde de directeur van de Centrale
+Werkplaats, ir. B. Zanting.
+
+FUNKTIE NKT
+
+Het NKT zal in de toekomst 'verklaringen van
+conformiteit' afgeven over de randapparatuur
+van het telefoonnet. De apparatuur moet voldoen
+aan de technische eisen, die opvraagbaar zijn
+bij het ministerie van Verkeer en Waterstaat.
+De testinstituten, zoals het NKT, krijgen hun
+erkenning van een speciale 'Stichting Erkenning
+Testlaboratoria'. Maar die procedure gaat pas
+in na 1-1-89, als de PTT is geprivatiseerd.
+Het NKT heeft tot die tijd een voorlopige
+erkenning van het Ministerie van Verkeer en
+Waterstaat.
+
+BELANGENVERSTRENGELING VERMIJDEN
+
+Op het mini-seminar was ook de KEMA
+vertegenwoordigd, die al eerder heeft
+aangekondigd een soortgelijk instituut te
+willen opzetten. De PTT heeft daarop sterk
+aangedrongen, om alle schijn te vermijden dat
+de commerciele poot van PTT Telecommunicatie
+- die immers ook apparatuur blijft leveren na
+'89 - wordt voorgetrokken voor andere
+leveranciers. Een andere uitweg voor
+leveranciers, die menen dat de Nederlandse
+Keuringsinstituten niet eerlijk werken, wordt
+in de toekomst het buitenland. Door de Europese
+uniformering van de specificaties voor telecom
+randapparatuur wordt het binnen afzienbare tijd
+mogelijk een telefoontoestel of ander apparaat
+ter keuring aan te bieden in Duitsland.
+
+INTERNATIONALE ERKENNING
+
+Insiders verwachten dat de erkenning van
+keuringsinstituten tussen landen afzonderlijk
+zal plaatsvinden; zo zal de Nederlandse
+Stichting een Westduits instituut eerder
+erkennen dan een Belgisch, omdat in dat eerste
+land een goed keuringsapparaat bestaat.
+
+De directeur van de VIFKA op het
+minisymposium, mr. G.J.A.M. Kroeks, zei te
+verwachten dat er in de toekomst slechts ruimte
+is voor vijf grote keuringsinstituten binnen de
+Europese Gemeenschap. Hij bepleitte dan ook een
+snelle opheffing van het NKT, omdat het moet
+opgaan in een Europese organisatie.
+
+TOEZEGGINGEN
+
+Aan het eind van het symposium putte de
+hoofddirecteur van de PTT Telecommunicatie,
+drs. A. Dek, zich uit in toezeggingen, dat het
+NKT de apparatuur van PTT Telecommunicatie geen
+voorkeursbehandeling zou geven. 'Het had zo
+mooi kunnen zijn,' zei Dek, 'De PTT zou dit
+jaar het feit kunnen vieren dat 60 jaar geleden
+het monopolie werd ingesteld op de aansluiting
+van huistelefoon inrichtingen op het
+Rijkstelefoonnet. Maar u zult van mij geen
+nostalgisch verhaal horen, want de situatie is
+in 1988 geheel anders.' Dek noemde het NKT een
+onafhankelijk instituut, waarbij het principe
+'wie het eerst komt die het eerst maalt'
+onverkort geldt. 'Ook het begrip
+kruissubsidiering wordt ruim geinterpreteerd,
+zeer ruim,' voer Dek voort. 'Ik acht het
+bovendien een gelukkig feit dat de ordenende
+instanties -buiten de PTT- toe zullen zien op
+de naleving van de wetten voor de
+randapparatuur. De sancties, die in de wet zijn
+vastgelegd, zullen daarbij effectief zijn.'
+
+MOBIELE COMMUNICATIE
+
+Een apart probleem bij de wetswijziging vormt
+de keuring van mobiele apparaten, die gebruik
+maken van radiogolven. Tot het eind van dit
+jaar worden die gekeurd door de Radio Controle
+Dienst in Groningen, waar ook de expertise voor
+dit soort keuringen aanwezig is. De RCD wordt
+van deze taak ontheven, terwijl de nieuwe
+keuringsinstituten - vooral de KEMA - weinig
+ervaring hebben met radio-apparatuur.
+(bron: Telecom Daily)

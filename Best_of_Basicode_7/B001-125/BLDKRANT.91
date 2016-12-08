@@ -1,0 +1,255 @@
+91, zon 20 sep '87
+
+COMMUNICATIE NIEUWS
+
+Het communicatie nieuws, dat u meestal op de
+woensdag krijgt voorgeschoteld, ditmaal op de
+zondag in verband met het uitvallen (voetbal)
+van de uitzending 16e.
+
+Tien Europese landen hebben in principe
+besloten om in 1990 in de middengolf
+radiotelefonieband een digitaal selectief
+oproepsysteem in te voeren. Hiermee wordt
+vooruit gelopen op de wereldwijde invoering
+van het Global Distress and Safety System
+(GMDSS) in de negentiger jaren.
+Het GMDSS, een ontwikkeling van de
+Internationale Maritime Organization (IMO)
+van de Verenigde Naties heeft tot doel de
+veiligheid van de zeescheepvaart en de
+opvarenden te verbeteren. Met het DSC-systeem
+(Digital Selective Calling) zijn de schepen
+die varen op de Noordzee, een groot deel van
+de Oostzee, de Bothnische Golf en de wateren
+rond Noorwegen en Ierland voortdurend direkt
+oproepbaar door instanties aan de wal.
+Omgekeerd kunnen schepen via het systeem
+automatisch kuststations oproepen.
+In geval van nood wordt in de automatische
+oproep naast de roepnaam van het schip
+ook de positie en de aard van het ongeval
+meegezonden. De schepen moeten uiteraard
+wel zijn uitgerust met de benodigde
+apparatuur om aan het DSC-systeem te kunnen
+deelnemen. De tien landen die het systeem
+gaan invoeren zijn: Engeland, Frankrijk,
+Belgie, Ierland, West-Duitsland, Denemarken,
+Noorwegen, Zweden, Finland en Nederland.
+
+MIDDENGOLF
+
+Voor het DSC-systeem is in de middengolf
+radiotelefonieband de frequentie 2187,5 kHz
+gereserveerd. Primaire doelstelling van het
+DSC-systeem is het verbeteren van het nood-,
+spoed- en veiligheidsverkeer voor de
+scheepvaart. Een groot aantal van de
+kuststations die met het DSC-systeem gaan
+werken gaat het ook gebruiken voor toepassingen
+in het openbare radioverkeer. Enkele
+deelnemende landen hebben te kennen gegeven
+het systeem ook in de VHF-band (marifonie)
+toepasbaar te maken. Belangrijk voordeel
+hierbij is dat schepen die zijn uitgerust met
+het digitale oproepsysteem automatisch -
+dus zonder tussenkomst van een telefoniste op
+een kuststation - een telefoongesprek tot
+stand kunnen brengen met een abonnee aan de
+wal. Onderzocht wordt of deze toepassing ook
+in de middengolf telefonie mogelijk is.
+
+Hoewel in de IMO nog geen definitieve
+besluiten genomen zijn, wordt naar verwachting
+het Global Maritime Distress and Safety
+System gefaseerd in gebruik genomen, te
+beginnen in 1991 en eindigend in 1997.
+In het GMDSS is een belangrijke rol
+weggelegd voor communicatie via satellieten
+van het IMMARSAT satelliet systeem en van
+het COSPAS/SARSAT systeem.
+
+OSCAR 12
+
+PA0DLO seint ons het amateur radionieuws door:
+De gebruikers van mode JA van OSCAR 12 zullen
+bekend zijn met de vrij grote Doppler
+verschuiving op alle signalen. Bij het gebruik
+van de mode B relaisstations van OSCAR 7 en
+OSCAR 10 had men de gewoonte ontwikkeld om de
+optredende Doppler-verschuiving te corrigeren
+door de frekwentie van de zender op 70 cm aan
+te passen en de afstemming van de 2 m-ontvanger
+ongewijzigd te laten.
+Bij gebruik van mode JA echter blijkt het
+systeem van afstemmen van de uplink zender niet
+goed te funktioneren: de frekwentie waarop de
+verbinding via mode JA wordt gemaakt drift
+geleidelijk door de doorlaatband, waarbij
+andere verbindingen worden gestoord. In de
+praktijk blijkt een veel betere methode het
+afstemmen van de 70 cm downlink ontvanger om
+de Doppler verschuiving te corrigeren, terwijl
+de uplink zendfrekwentie hetzelfde wordt
+gehouden. De voor de verbinding te gebruiken
+frekwentie zal dan veel minder driften en
+onderlinge storingen kunnen gemakkelijk worden
+voorkomen. In het algemeen kan men stellen dat
+het korrigeren van Doppler-verschuiving moet
+plaatsvinden op de hoogste frekwentie die wordt
+gebruikt bij het maken van een verbinding via
+een satelliet relaisstation.
+Het gebruiksschema van OSCAR 12 wordt
+hoofdzakelijk bepaald door de toestand van de
+batterij in de satelliet en de van de
+zonnepanelen beschikbare energie voor het
+opladen van de batterij. Het in- en uitschakelen
+van de relaisstaions van OSCAR 12 door de
+Japanse commando stations vindt plaats tijdens
+hoge passages over Tokyo. In de perioden dat
+mode JD in bedrijf is moet men er rekening mee
+houden dat het systeem dan steeds afwisselend
+twee uur ingeschakeld en twee uur uitgeschakeld
+is. Volgens de JARL moet mode JA van OSCAR 12
+in bedrijf zijn van 0745 UTC op 19 sep tot 0150
+UTC op 21.
+Op 22 sep wordt tussen 0054 en 0300 UTC
+speciale telemetrie-programmatuur in de
+boordcomputer geladen, die het mogelijk moet
+maken elke twee seconden telemetrie uit te
+zenden in plaats van elke minuut. In deze
+periode is de mailbox niet beschikbaar maar zal
+mode JD wel funktioneren als digipeater. Mode
+JD moet weer als mailbox in bedrijf zijn van
+0501 UTC op 22 sep tot 0407 UTC op 23, van
+0515 UTC op 24 sep tot 0421 UTC op 25 en van
+0327 UTC op 26 sep tot 0435 UTC op 27.
+Vervolgens is mode JA weer ingeschakeld van
+0246 UTC op 29 sep tot 0354 UTC op 30, van
+0300 UTC op 1 okt tot 0408 UTC op 2 en van
+0314 UTC op 3 okt tot 0126 UTC op 5. In alle
+tussenliggende perioden is de satelliet geheel
+uitgeschakeld om de batterij de gelegenheid te
+geven op te laden. Als de toestand van het
+energie systeem in de satelliet dat noodzakelijk
+maakt kan het gebruiksschema op elk willekeurig
+moment worden gewijzigd. In de praktijk blijkt
+het geplande schema echter vrij goed
+aangehouden te kunnen worden.
+
+RUIMTEVAART JUBILEUM
+
+Binnenkort is het 30 jaar geleden dat de
+allereerste satelliet werd gelanceerd, waarmee
+het ruimtevaart tijdperk werd ingeleid. Die
+eerste satelliet, Spoetnik 1, werd gelanceerd
+in Rusland om 0600 Moskouse tijd op 4 oktober
+1957. Iets meer dan vier jaar later werd de
+eerste amateursatelliet, OSCAR 1, al gelanceerd.
+In AMSAT-kringen denkt men er over de 30e
+verjaardag van de ruimtevaart te vieren met
+speciale aktiviteiten, onder andere via RS10/11
+en OSCAR 12. Een en ander moet nog worden
+uitgewerkt en zal zo spoedig mogelijk bekend
+worden gemaakt.
+
+BALLONVLUCHTEN MET RADIO
+
+Op 15 augustus heeft een groep radio amateurs
+rond WB8ELK om 1727 UTC een onbemande ballon
+opgelaten vanuit Findlay, Ohio, USA. Aan de
+ballon waren onder andere bakenzenders voor 2 m
+en voor 70 cm bevestigd. De signalen van deze
+bakenzenders werden goed ontvangen door vele
+amateurs in 9 staten. Toen de ballon was
+aangekomen op een hoogte van 80.000 voet
+vielen de bakenzenders uit om onbekende redenen.
+De ballon klom verder naar een hoogte van
+boven 120.000 voet toen het visueel kontakt
+werd verloren. Het is niet bekend waar de
+ballon en alle daaraan bevestigde apparatuur
+uiteindelijk terecht zijn gekomen maar men
+vermoedt dat het niet veel verder dan enkele
+tientallen kilometers van Findlay af zal zijn.
+(80.000 voet is 27 km hoog en daar is het erg
+koud -60 ofzo. Onze ballonzender is ook wel eens
+zo hoog geweest en er moeten speciale
+maatregelen worden getroffen om de batterijen
+tegen die kou te beschermen, anders houdt de
+zender op met piepen. RED)
+
+BEMANDE BALLON MET TV
+
+In Nederland is een bemande ballonvlucht
+gepland met een ATV-zender aan boord. Ter
+gelegenheid van een Lustrum van de Universiteit
+van Nijmegen wil men op zondagmiddag 27 sep
+een ballonvlucht van zo'n 3 uur uitvoeren
+vanuit Nijmegen, waarbij PA0SON direkte
+ATV-beelden zal uitzenden op 70 cm vanuit de
+mand. De uitzendingen zijn primair bedoeld voor
+een grondstation in de Universiteit van Nijmegen.
+Op 2 m zal men contact houden met de ballon op
+144,535 MHz met FM. De te gebruiken call is
+nog niet bekend maar zou PA6SON kunnen worden.
+
+Ook in Engeland worden voorbereidingen
+getroffen voor een bemande ballonvlucht met
+amateur-radio apparatuur aan boord. De
+Technische Commissie van AMSAT-UK is bezig met
+de bouw van alle apparatuur, waaronder een
+lineair relaisstation, dat tijdens de vlucht
+gebruikt zal worden. Op deze wijze hoopt men
+de nodige ervaring te kunnen opdoen bij het
+bouwen van dergelijke apparatuur in projekt
+verband, zodat men later eventueel ook een
+goede bijdrage kan leveren aan de bouw van
+een toekomstige amateursatelliet.
+
+TENTOONSTELLING
+
+Tot en met 10 december 1987 zal in het
+Technisch Tentoonstellingscentrum TCC
+in Delft een tentoonstelling te zien zijn
+over de verandering in de inrichting en
+vormgeving van de keuken als gevolg van de
+maatschappelijke ontwikkelingen en de daaraan
+parallel lopende technische mogelijkheden.
+Deze tentoonstelling getiteld 'Ontwikkelingen
+in de keuken', werd samengesteld door het
+Unilever Research Laboratorium te Vlaardingen
+in nauwe samenwerking met verschillende grote
+en kleine bedrijven, instellingen zoals
+musea, universiteiten, opleidingen en
+researchcentra. Behalve aan keukens wordt
+ook nog aandacht geschonken aan de ontwikkeling
+van het keukengerei, aan opleidingen in
+de huishoudkunde en aan verandering van
+eetgewoonten door buitenlandse invloeden.
+
+VAN SPIEREN NAAR MOTOR
+
+Tot en met 16 november 1987 is in hetzelfde
+TTC een boeiende Tsjechoslowaakse expositie
+te zien met als titel 'Van spierkracht
+naar motormacht'. Deze door het Nationaal
+MUseum te Praag vervaardigde expositie bevat
+vele historische waardevolle objecten,
+prachtige modellen, originele printen en
+tekeningen of reprodukties daarvan met
+verklarende teksten. Aandacht wordt besteed
+aan windenergie, Waterkracht, de
+stoommachine en vervolgens de motor.
+
+HOLOGRAFIE
+
+Tot slot is er in het TTC de permanente
+tentoonstelling holografie te zien.
+In de holografie houdt men zich onder meer
+bezig met het maken van drie-dimensionale
+beelden van objecten. Vaak lijken
+de beelden zo echt, dat men overtuigd is
+door een venster naar een daarachter
+geplaatst reeel voorwerp te kijken.
+Sommige hologrammen geven zelfs een beeld
+dat gedeeltelijk voor een hologram is gelegen.

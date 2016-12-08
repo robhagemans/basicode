@@ -1,0 +1,271 @@
+82, zon 09 aug '87
+
+NIEUW BOEKEN: TRUUKS VOOR CBM
+
+Bij uitgeverij Stark uit Texel verscheen het
+boekje (A5,110 blz.) 'Commodore 64 - handige
+truuks tips routines programma's'. Het bevat
+allerlei handige kleine routines die vrijwel
+elke basic-programmeur(m/v) wel eens nodig
+heeft. Het sorteren van een array, het bepalen
+op welke dag een bepaalde datum valt of
+een selectieve RESTORE. Of handige truuks
+zoals een INKEY$-functie of het bewerken van
+de toetsenbord-buffer. Allemaal routines die
+men - na ze eenmaal ingetikt te hebben -
+kan blijven gebruiken.
+Het is beslist geen boek waarin kale lijsten
+met peeks en pokes staan, zonder teoelichting.
+Er staat steeds bij wat men ermee kan en hoe
+alles te gebruiken is. Via duidelijk
+leesbare teksten worden de gebruikte
+truuks helder uitgelegd. Bijvoorbeeld hoe een
+UNNEW-programma werkt of wat garbage-collect
+is en wat daar aan te doen valt. Ook bevat het
+enkele kant en klare programmaatjes zoals een
+getal omrekenings programma en een analoog
+klokje. De listings zijn overzichtelijk en van
+goede afdruk-kwaliteit. Dit eerste deeltje
+(wat impliceert dat er meer komen) kost F 24,50.
+
+PRAKTISCHE PROGRAMMA'S CBM
+
+Van de hand van Roelf Sluman verscheen bij
+uitgeverij Kluwer Techn. Boeken in Deventer
+een 150 pagina tellend boekje 'Commodore C128
+- Praktische tips en programma's'. Het is een
+helder en duidelijk geschreven boekje.
+De auteur bespreekt en diept een groot aantal
+mogelijkheden van de C128 Basic uit. Gebruik
+makend van de nieuwe C128 Basic opdrachten
+geeft de auteur eerst een inleiding in het
+programmeren in Basic. Rekenfuncties, arrays,
+sprongen en subroutines komen hierbij aan de
+orde. Ook een 'pluim' voor Hobbyscoop vanwege
+het - goede - gebruik van subroutines in het
+Basicode-systeem. Hierna behandelt de auteur
+de lussen, de geluids- en grafische-opdrachten
+(wo. de Sprites) tot in de pixel nauwkeurig.
+Aanbevolen vindt Thijs Timmerman van ons team.
+
+INTRODUCTIE TOT MACHINETAAL
+
+Een gedegen inleiding tot machinetaal
+- tenslotte - vormt het tweede deel van het
+boekje. Gezien de omvang van dat deel (35 blz)
+kan daarin natuurlijk niet alles worden
+behandeld. Toch weet de auteur een heel eind
+te komen: talstelsels, de instrcutieset, de
+adresseringsmodes, branches en subroutines. Het
+staat er allemaal in. Tot slot een hoofdstukje
+over telecommunicatie en het werken met files,
+met daarin een aantal basisbegrippen. Afgezien
+van plusminus tien foutjes die in de 1e druk
+staan, een heel aardig boek voor f 39,75.
+
+ATARI GEEFT PROGRAMMA WEG
+
+Atari Benelux is druk bezig de ST te
+profileren als schoolcomputer bij uitstek.
+Voor de zomer gebeurde dat al door het
+uitschrijven van een wedstrijd voor
+educatieve software met behoorlijke
+prijzen. Eind juli is de volgende stap
+gezet. Alle officiele Atari-dealers hebben
+een reken-leerprogramma gekregen dat
+gratis aan de klanten mag worden weggegeven.
+Het programma dat dus als 'public
+domain-software verspreid wordt heet
+Rekencircus ST, is een hulpmiddel om
+kinderen sneller te leren rekenen. Het
+speelt zich af in een circustent - in
+full-colour, het programma werkt alleen met
+kleurenmonitor.
+Door sommetjes goed op te lossen klimt een
+clown naar de nok van de tent. Daar hangt
+een parapluutje. Als er vier verzameld zijn,
+is het spel gewonnen. Snelheid is geboden,
+want bij te lang wachten glijdt de clown een
+stukje naar beneden. Het programma is alleen
+te spelen, maar kinderen kunnen ook een
+wedstrijdje doen om wie de snelste is.
+Dat kan ook met bijvoorbeeld hun ouders. Het
+aardige van Rekencircus ST is namelijk dat
+het 'in de gaten heeft' als de sommen
+(optellen, aftrekken, vermenigvuldigen en
+delen) voor een van de spelers te
+gemakkelijk zijn. Het programma past het
+niveau van de desbetreffende speler dan
+automatisch aan. Eenvoudige opgaven als 2 +
+3 = ? worden al snel vervangen door
+vermenigvuldigingen met drie cijfers.
+De reden dat het programma weggegeven wordt,
+is omdat het commercieel verspreiden van
+educatieve software nog nauwelijks
+interessant is, zegt Wilfried de Graaf van
+de firma: 'We hebben wel geprobeerd
+educatieve uitgeverijen voor de ST te
+interesseren maar men is over het
+algemeen alleen geinteresseerd als het
+om grote oplages gaat. Dit initiatief is
+bedoeld om een zekere goodwill te kweken
+voor de ST als schoolcomputer. Het is de
+bedoeling om via de dealers nog meer
+educatieve programma's gratis te gaan
+verspreiden. Atari heeft nog een
+aantal programma concepten op de plank
+liggen die oorspronkelijk voor de
+achtbitters ontwikkeld werden, maar die
+binnenkort worden uitgewerkt voor de ST.
+Ook programma's die hoge ogen gooien in de
+prijsvraag voor educatieve software
+(sluitingsdatum 1 september) zullen
+gratis ter beschikking komen. Aldus
+Bart Oosterveld.
+
+NEDERLANDSE TEKSTVERWERKER ST
+
+Dat Nederland een klein vlekje op de
+wereldkaart is, wisten we al langer, maar
+misschien wordt het in computerland nog het
+beste geillustreerd. De software (let op het
+woord) die hier wordt uitgebracht, is bijna
+zonder onderscheid in het Engels. Maar
+misschien nog wel erger: de handboeken zijn
+dat ook.
+Computerfanaten komen er toch wel uit, is
+ongetwijfeld de redenering van de software
+distributeurs, dus waarom zouden we grote
+kosten maken voor een Nederlandse vertaling?
+En zo belandt een deel van de programma's
+hier onvertaald op de schappen van de
+computerwinkels.
+Het is daarom loffelijk dat Atari
+Benelux de moeite heeft genomen om een
+oorspronkelijk Engelstalig programma in het
+Nederlands te vertalen. Het gaat om
+1st-word plus, zoals te raden de opvolger
+van 1st-word, een tekstverwerker voor de
+Atari ST. Hopenlijk volgen er meer
+vertalingen: het maakt de computer
+toegankelijker voor een groter publiek.
+Sinds de introductie van de ST-lijn - nu
+alweer twee jaar geleden - is 1st-word zo'n
+beetje de standaard tekstverwerker voor de ST
+geworden. Niet zonder reden, want voor wie
+voorheen met een andere tekstverwerker
+schreef, was het programma een verademing:
+grotendeels muisgestuurd en bijna perfect
+'wysiwyg'.
+
+SCHERPE KANTJES
+
+Toch zaten er nog wel wat scherpe kantjes
+aan. Omdat de ST geen lampje heeft dat
+aangeeft of de caps lock-toets is
+ingeschakeld, was het altijd gissen of je
+hoofdletters kreeg of niet. Verder werd
+bijvoorbeeld de optie 'bewaar en ga door'
+node gemist. Deze kleine ongemakken zijn in
+1st-word plus opgelost, zodat het leven er
+weer een stukje gemakkelijker op is
+geworden.
+Maar dat zijn niet de enige wijzigingen ten
+opzichte van de oude versie. Belangrijkste
+verschil is dat de plus-versie grafische
+capaciteiten heeft gekregen. Zonder enige
+moeite is het mogelijk om tekeningen,
+grafieken, kaartjes en andere afbeeldingen
+in een tekst op te nemen.
+Daarnaast is de 1st-word plus uitgerust met
+spellings controle. Het (zelf uitbreidbare)
+woordenboek van 40.000 woorden dat bij het
+pakket wordt bijgeleverd is meteen ook al in
+het Nederlands. Je krijgt hier trouwens
+extra waar voor je geld, want op de
+programmaschijf staat ook nog het Engelse
+woordenboek.
+Een nuttige toevoeging is verder de optie
+'statistieken'. Met de muis aangeklikt geeft
+deze de lengte van het artikel (in pagina's,
+regels, woorden en bytes) en de vrije ruimte
+op de floppy. Het is nu ook mogelijk om de
+stijl van een eenmaal geschreven stuk tekst
+te wijzigen (van vet naar cursief
+bijvoorbeeld). Zo zijn er nog wat kleine
+(maar niet te versmaden) verbeteringen.
+Niemand is perfect, en dus ook dit programma
+niet. Het scrollen gaat nog niet al te snel
+(mogelijk kan hier alleen de aangekondigde
+blitter-chip uitkomst bieden) en ik had nog
+wel een eenvoudige rekenfunctie ingebouwd
+willen zien, al was het alleen maar het
+optellen van kolommen. Maar desalniettemin
+is 1st-word plus een fraai stuk schrijf
+gereedschap dat zijn de adviesprijs
+van f 239 waard is.
+
+EEN DATABANK DIE VERBANDEN LEGT
+
+Een ander programma dat recentelijk door
+Atari in Nederland werd uitgebracht is
+Adimens ST, een wat genoemd wordt
+'relationele database'. Hoewel het hier
+gaat om een van oorsprong Duits produkt,
+is de voertaal Engels (vanwege de kleinere
+doelgroep was hier een Nederlandse vertaling
+waarschijnlijk weer niet lonend.
+Voornaamste verschil tussen een 'gewone'
+databank en een relationele is dat het bij
+de laatste mogelijk is om verbanden te
+leggen tussen meerdere delen van de
+opgeslagen gegevens. Vergeleken met een
+ouderwets kaartenbak-bestand is een gewone
+databank een lade met kaartjes, en een
+relationele databank een kast met
+meerdere lades.
+Het belangrijkste verschil met de ouderwetse
+ladenkast is echter dat het zeer eenvoudig
+is om bij een eenmaal gevonden gegeven uit
+een van de deelbestanden direct de gegevens
+uit de andere deelbestanden op te roepen.
+Bij Adimens gaat dat als volgt. De
+deelbestanden worden op het scherm
+weergegeven door ikonen. In het
+bijgeleverde voorbeeld zijn dat collecties
+LP's, singles, banden en videoclips. Door
+een van de ikonen 'aan te klikken' kunnen de
+gegevens geraadpleegd worden. Wil je nu
+weten of je behalve een plaat van de Elton
+John ook beschikt over een videoband van
+deze brillenverzamelaar, dan klik je
+eenvoudigweg zijn naam aan en het antwoord
+verschijnt op het scherm.
+Zo zou een postzegelverzamelaar die zich
+heeft gespecialiseerd op het onderwerp
+antieke auto's relaties kunnen leggen
+tussen een exemplaar uit zijn verzameling
+en de technische gegevens van de auto.
+Voor een bedrijf kan het programma dienen
+om verbanden te signaleren tussen een
+mailing bestand en een bestand van mensen
+die daadwerkelijk iets gekocht hebben.
+De bediening van het programma is helemaal
+muisgestuurd en dus zonder problemen onder
+de knie te krijgen (hoewel het handboek
+zoals gezegd in het Engels is). Het zoeken,
+eventueel met gebruikmaking van 'wildcards',
+gaat razendsnel.
+Het enige wat problemen geeft is het
+definieren van een eigen database. Omdat het
+programma gebruikt maakt van een eigen
+instructietaal, moet de gebruiker voor
+deze klus het handboek behoorlijk
+doorspitten.
+Om een electronisch adressenboekje van je
+kennissen aan te leggen kun je beter een
+ander database programma gebruiken. Maar ook
+al gezien de prijs (advies f 359) lijkt
+Adimens ST meer geschikt te zijn voor het
+kleinere zakelijke werk. Aldus onze ST-man
+Bart Oosterveld.

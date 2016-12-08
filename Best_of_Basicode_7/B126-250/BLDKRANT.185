@@ -1,0 +1,289 @@
+185, maa 21 nov '88
+
+WEERDECODER EN TELEXPROGRAMMA'S
+
+Enige weken geleden zonden wij het programma
+'Weerdecoder' van de Heer Wolff uit. Daarbij
+is het nodig de op de kortegolf in telex
+uitgezonden meteo-programma's te kunnen lezen.
+Voor veel computers bestaan daarvoor
+zogenaamde RTTY (=radio teletype) programma's
+die de volgens de Baudot-code uitgezonden
+berichten kunnen decoderen. Uit vragen, die
+ons bereikten, blijkt dat een nadere uitleg
+gewenst is.
+
+BAUDOT-CODE
+
+Deze code wordt reeds sinds lange tijd
+gebruikt in het telexverkeer. Behalve een
+start- en een stop eenheid, bevat het vijf
+eenheden, die tezamen de code voor het uit te
+zenden letter- of cijferteken voorstellen. Met
+vijf eenheden is het mogelijk 32 combinaties
+te vormen, te weinig voor alle letters,
+cijfers en leestekens, die we willen
+overbrengen. Men bedacht een oplossing.
+
+CIJFERS, LETTERS EN LEESTEKENS
+
+Door alleen maar hoofdletters (of alleen maar
+kleine letters) te gebruiken, heeft men
+slechts 26 lettertekens nodig. Met 'spatie',
+'nieuwe regel', 'wagen terug', en 'pauseteken'
+heeft men al 30 van de 32 mogelijkheden
+gebruikt. De toetsen voor de letters worden
+tevens benut om cijfers en leestekens te
+produceren of om een bel te laten klinken.
+Men kent iets dergelijks ook reeds van de
+schrijfmachine.
+
+CIJFER- EN LETTERSHIFT
+
+Door nu als men een regel lettertekens gaat
+uitzenden, deze te laten voorafgaan door een
+speciaal teken, de z.g. lettershift en als men
+een getal wil uitzenden, eerst een cijfershift
+te geven, weet de ontvangende 'machine', welk
+teken er op het scherm of het papier moet
+worden afgedrukt. Tot zover is alles in orde.
+
+DE PRAKTIJK
+
+Bij het uitzenden van Baudot-code over de
+radio kunnen storingen een funeste invloed
+hebben. Als een lettershift niet wordt
+ontvangen, kan een hele tekstregel als een
+cijfer- en leesteken allegaartje worden
+afgedrukt. In veel gevallen bouwt men dan in
+de telex-ontvanger of het computerprogramma
+een 'unshift on space', dus: 'terug naar
+letters na een spatie' in.
+
+UNSHIFT ON SPACE
+
+Het gevaar, dat een hele regel tekst wordt
+verminkt, is nu bezworen, maar: het omgekeerde
+kan wel. Als het zendende station een
+cijfercode uitzendt met spaties tussen de
+cijfergroepen, wordt de eerste groep goed
+ontvangen, maar de volgende groepen worden dan
+naar letters omgezet als 'unshift on space'
+aktief is, tenzij vlak voor elke cijfergroep
+het 'cijfershift' teken wordt uitgezonden.
+
+VERMINKING VAN DE TEKST
+
+De lettergroepen, die eigenlijk cijferreeksen
+zouden moeten zijn, kunnen makkelijk worden
+terugvertaald. QWERTYUIOP = 1234567890. (Ook
+leestekens veranderen: X=/ en V=;). Beter
+is natuurlijk, de 'unshift on space' uit te
+schakelen. Maar dat is niet in elk Telex-
+programma mogelijk. En ondanks dat, kan door
+storingen toch wel een cijferreeks in letters
+worden getransformeerd.
+
+LAAT DE COMPUTER VOOR U WERKEN
+
+Om het terugvertalen naar cijfers in ons geval
+overbodig te maken, stel ik de volgende
+verandering in het, overigens heel mooie,
+programma van de Heer Wolff voor:
+Aan het eind van regel 1090 na 'INPUT W$'
+toevoegen ': GOSUB 10000'.
+Op regel 10000 begint dan een subroutine, die
+de ingegeven reeks cijfers en letters omzet in
+de juiste cijfergroepen.
+
+DE SUBROUTINE, type in:
+
+10000 WW$='''':FOR QQ=1 TO LEN(W$):
+      L$=MID$(W$,QQ,1)
+10010 IF L$=''Q'' THEN L$=''1''
+10020 IF L$=''W'' THEN L$=''2''
+10030 IF L$=''E'' THEN L$=''3''
+enz. enz. (volgorde: QWERTYUIOP), tot:
+10100 IF L$=''P'' THEN L$=''0''
+10110 IF L$=''X'' THEN L$=''/''
+10120 WW$=WW$+L$
+10130 NEXT QQ
+10140 W$=WW$
+10150 RETURN
+
+HET KAN NOG MOOIER
+
+In het bovenstaande geval wordt verondersteld,
+dat de lettergroepen als hoofdletters worden
+ingegeven, door een kleine verandering kan men
+hieraan ontkomen:
+10010 IF (L$=''Q'') OR (L$=''q'') THEN ...
+enz. enz. Dan kunnen zowel hoofd- als kleine
+letters worden ingegeven.
+
+HOE WERKT DEZE SUBROUTINE ?
+
+In regel 1090 wordt de code, die ontvangen is,
+in de variabele W$ ingegeven. Dan wordt
+gesprongen naar de subroutine. Eerst wordt in
+regel 10000 een nieuwe variabele WW$ leeg
+gemaakt. Dan wordt in een FOR-NEXT loop de
+hele regel die in W$ staat doorlopen van
+positie 1 tot aan het eind. QQ geeft de plaats
+in de regel aan. Met de funktie 'MID$' wordt
+steeds een letter op de positie QQ uit de
+invoer-string gelicht en in de variabele L$
+geplaatst. In de volgende regels wordt
+gekeken, of een van de letters 'QWERTYUIOPX'
+er in voorkomen. Zo ja, dan worden deze
+vervangen door de bijpassende cijfers of de
+'/'. Andere tekens worden niet veranderd. Soms
+komt de letter V voor, deze staat voor de ';'
+en betekent het einde van de cijferreeks. Deze
+moet dus niet worden ingetikt. Denk er aan dat
+'EEE' staat voor '333' en dus ook het eind van
+de codereeks aangeeft (zie Handleiding
+Weerdecoder). De oorspronkelijk ingegeven
+string wordt opnieuw, maar nu aangepast,
+opgebouwd in de string met de naam WW$. Als
+alles achter de rug is, wordt de veranderde
+string in de oorspronkelijke variabele gezet
+door de opdracht: W$=WW$.
+
+HET PROGRAMMA GAAT GEWOON VERDER
+
+Na deze ingreep loopt het programma gewoon
+door, echter de als letters ontvangen cijfers
+(en leesteken '/') zijn nu terugvertaald naar
+de oorspronkelijke tekens. De computer heeft
+het 'vuile werk' voor u gedaan. (Deze routine
+werd ontworpen door Pieter Vijlbrief. Het is
+een nuttige aanvulling op het AAXX weercode
+programma van Max Wolff. Bedankt, Pieter!)
+
+DDR START PRODUKTIE 1MB RAM-CHIPS
+
+Oost-Duitsland maakt zich op voor de produktie
+van 1Mb geheugenchips. Dat heeft dr. Klaus
+Stubenrauch, staatssecretaris van het
+ministerie van Wetenschappen en Technologie,
+bekend gemaakt in Londen. Oost-Duitsland is
+eerder dit jaar al gestart met de produktie
+van 256Kb geheugenchips.
+
+In het Westen verwacht men dat de ontwikkeling
+van de 1Mb chips de Oostduitse technologiekloof
+met het Westen zal doen verkleinen. Wel voegen
+Westerse zakenlieden hieraan toe dat Japan
+waarschijnlijk al volgend jaar zal starten met
+een grootschalige produktie van 4Mb chips, en
+het is nog onduidelijk wanneer Oost-Duitsland
+begint te produceren. Gesteld wordt dat de
+produktie nog steeds lijdt aan een hoog uitval
+aantal door gebrekkige produkten.
+
+Volgens Stubenrauch werd in het eerste half
+jaar van 1988 de computer capaciteit in
+Oost-Duitsland vergroot door de produktie van
+meer dan 27.000 personal computers, waarvan
+een groot aantal bestaat uit desk-top
+apparatuur. Op dit moment telt het land 57.000
+CAD/CAM-systemen. (Bron: Telecom Daily)
+
+ZIJN ER NOG PC-FABRIKANTEN NA 1992?
+
+Willen pc-bedrijven overleven na 1992, dan
+moeten zij in elk lidstaat vaste voet op de
+markt hebben. Dat vindt Franz Hetzenauer, een
+van de topmannen van Tulip Computers. Hij
+waarschuwt bedrijven ervoor dat het een enorme
+fout is van computer producenten die al een
+aandeel hebben op internationaal niveau, om te
+veronderstellen dat de markt voor hen weinig
+zal veranderen na 1992 en dat zij zich niet
+hoeven voor te bereiden op de markt. 'Alleen
+die organisaties die door heel Europa werkzaam
+zijn zullen kunnen voldoen aan de eisen van
+alle klanten in Europa,' aldus Hetzenauer.
+
+Emotionele, culturele en zakelijke verschillen
+tussen de lidstaten zullen ook na 1992 blijven
+bestaan. Daarom is het van essentieel belang
+om lokale filialen te vestigen met lokale
+werknemers die het bedrijf kunnen aanpassen
+aan de condities die daar gelden. Hetzenauer
+waarschuwt tevens kleine en middelgrote
+bedrijven ervoor dat ze stevige concurrentie
+kunnen verwachten van Amerikaanse en Japanse
+organisaties die gewend zijn te functioneren
+op een dergelijke grote markt.
+(Bron: Telecom Daily)
+
+NIEUWE INNOVATIECENTRA
+
+Op 14 december 1988 en 11 januari 1989 worden
+respectievelijk de InnovatieCentra in Eindhoven
+en Venlo geopend. 'Eind volgend jaar moeten
+alle centra zijn voltooid,' aldus minister de
+Korte van Economische Zaken. Door de meeste
+regio's zijn kandidaten aangedragen voor het
+voorzitterschap. Datzelfde geldt voor de
+directie en adviesfuncties. De InnovatieCentra
+moeten een trekkersrol vervullen in de
+verspreiding van technologische kennis naar het
+midden- en kleinbedrijf. Deze rol bestaat uit
+het geven van advies en praktische
+ondersteuning. Tevens gaan de centra nationale
+voorlichtings programma's uitvoeren. Alle 18
+centra worden ondergebracht in afzonderlijke
+stichtingen. Elke stichting heeft een eigen
+bestuur. De centra zijn eind volgend jaar niet
+alleen te vinden in Venlo en Eindhoven, maar
+ook in Amsterdam, Alkmaar, Arnhem, Breda, Den
+Haag, Dordrecht, Hengelo, Groningen, Heerlen,
+Leeuwarden, Lelystad, Meppel, Middelburg,
+Rotterdam, Utrecht en Zutphen.
+(Bron: Telecom Daily)
+
+BEELDKRANT ADVERTENTIES
+
+Te koop gevraagd: modem (tafelmodel), minimaal
+V21 en V22. Reakties aan: Kees Broer,
+Amersfoort, tel. 033-725647.
+
+Te koop aangeboden: een radiografisch
+bestuurbare boot. Type Wieser merk Graupner.
+Totale lengte: 108 cm. Moet worden afgebouwd.
+Compleet met motoren, accu, en 2-kanaals
+zender. Vraagprijs f300,00. Inlichtingen:
+J. van Oostveen, Hoorn, tel. 02290-41570.
+
+Bob Dammann uit Heehugowaard zoekt (gebruikte)
+computers voor een lagere school. De school
+heeft geen mogelijkheid tot enige betaling,
+maar de leerlingen willen dolgraag met
+computers gaan werken. Dus: heeft u nog een
+oude (micro)computer op zolder of in een kast
+staan, die u niet meer gebruikt, dan kunt u
+deze kinderen er een groot plezier mee doen!
+Berichten graag aan: Bob Dammann, Aquamarijn
+14, Heerhugowaard, tel. 02207-40266.
+
+Heeft u ook iets te vragen of aan te bieden
+op het gebied van computers of communicatie,
+stuur dan uw NON-COMMERCIELE advertentie aan
+het adres in de kop van deze Beeldkrant.
+
+BASICODE UTILITIES VOOR C-64
+
+Komende woensdag 23 november geen beeldkrant,
+maar in plaats daarvan een aantal nuttige
+programma's voor de Commodore-64, die het
+werken met Basicode voor deze machine wat
+moeten vergemakkelijken. Onder andere zullen
+we een programmaatje uitzenden dat het
+mogelijk maakt om verminkte regelnummers in
+een Basicode programma te herstellen. Verder
+een routine waarmee Basicode programma's die
+uit onze Fido-NOS databank zijn gehaald
+kunnen worden omgezet naar Commodore Basic.

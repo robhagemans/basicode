@@ -1,0 +1,283 @@
+127, zon 14 feb '88
+
+REMOTE SENSING IN EUROPA
+
+In Beeldkrant 126 van afgelopen woensdag
+gaven we U informatie over de ERS-1
+satelliet. Dit is het vervolg hierop.
+
+De tweede vlucht van de ERS satellieten,
+n.l. die van de ERS-2, zal dezelfde impact
+hebben als zijn voorganger ERS-1.
+De lancering ervan zal zo rond 1993 liggen.
+Ook van deze satelliet verwacht men een
+levensduur van twee tot drie jaar.
+
+ERS is een oog in het heelal om onze aarde
+in de gaten te houden.
+Het ERS ruimtevaartuig zal de eerste
+niet militaire remote sensing satelliet
+zijn die is uitgerust met een actief
+Microwave Instrument (AMI) zoals een
+windscatterometer of een Synthetische
+Radar met lensopening. Deze nieuwe radar
+kan verder en scherper spieden.
+Dit is een van de voordelen op b.v.
+infrarood of optische sensoren. De radar
+kan op een tiende van een centimeter
+nauwkeurig meten, b.v. het hoogste punt
+van een golf. Eveneens een groot
+voordeel van deze radar is het feit dat
+hij enkele meters diep de grond in kan
+'kijken'. Dit is met name belangrijk voor
+b.v. de oogst en de bosbouw.
+Ook kunnen oude riviertjes in door
+droogte geteisterde gebieden worden
+opgespoord.
+
+HOE WERKT DE SAR?
+
+De SAR ofwel de Synthetic Aperture Radar
+genereert electromagnetische
+microgolven die vanaf een korte antenne
+worden opgestraald met de snelheid
+van het licht. Als dit signaal -dat als een
+groep pulsen wordt opgestraald- terugkaatst
+op de antenne, die even stopgezet wordt
+om te ontvangen i.p.v. te zenden,
+worden de ontvangen echo's direct verwerkt.
+
+Het specifieke karakter van SAR is dat
+het de condities simuleert, waaronder een
+hoog oplossend vermogen wordt verkregen
+dat normaal alleen zou worden geproduceerd
+door belichting van elk individueel element
+van het doel door een erg lange antenne.
+Om met een korte antenne hetzelfde te
+bereiken als met een lange antenne, zendt
+SAR stralen naar beneden.
+De echo's daarvan worden door het ontvang
+station verzameld en door een speciaal
+daarvoor gemaakt computersysteem
+verwerkt. Wel wordt natuurlijk rekening
+gehouden met het tijdsverschil en de
+snelheid van het ruimtevaartuig. Dus de
+effectieve lengte van de antenne is de
+afstand die de satelliet aflegt tussen het
+zenden en ontvangen van een bericht.
+Beelden die hiervan binnenkomen hebben een
+veel hogere resolutie. Zelfs al zijn deze
+beelden genomen vanaf de enorme hoogte
+waarop het ruimteschip zich bevindt (ongeveer
+800 km), met de ERS-1 is het mogelijk om
+onder alle weersomstandigheden voorwerpen op
+aarde van slechts enkele meters te 'zien'.
+
+GRATIS NUMMER MET PTT NIEUWS
+
+Als service aan het eigen personeel is de PTT
+onlangs een 'nieuwslijn' gestart. Op het
+gratis nummer 06-0100 is dagelijks een aantal
+korte actuele berichten over PTT-zaken te
+beluisteren. De service is in eerste instantie
+bedoeld om PTT personeelsleden zo snel
+mogelijk de laatste ontwikkelingen uit het
+eigen bedrijf te kunnen melden, nog voordat
+het nieuws in de kranten of op radio en
+televisie verschijnt. Maar uiteraard kunnen
+ook niet-PTT-ers het gratis nummer bellen.
+
+Voor Hobbyscoop luisteraars en beeldkrant
+lezers zijn de nieuwtjes op het gebied van
+telecommunicatie waarschijnlijk het meest
+interessant. Op de dagen dat wij het nummer
+belden, werd ondermeer bericht over de
+nieuwe zenders van Nederland 3 en over de
+verwikkelingen rond spelshows waarbij het
+publiek per telefoon kan reageren.
+
+De lijn is 24 uur per dag en zeven dagen in
+de week kosteloos bereikbaar. In principe
+wordt het bandje dagelijks om 12 uur 's
+middags ververst. Bij belangrijk nieuws
+zelfs vaker. Het nummer nogmaals: 06-0100.
+
+En als u zelf nieuws te melden mocht hebben:
+de redactie is bereikbaar via 070-439301 of
+070-439303. (Met dank aan Bart Oosterveld)
+
+GROTE EN KLEINE DISKETTES
+
+De nieuwe PC's zijn soms uitgerust met 3.5
+inch diskdrives i.p.v. met het gebruikelijke
+5.25 inch formaat. Dit kan problemen opleveren
+als men al over software beschikt.
+Het Leidse bedrijf CYCO Automatisering
+begon zijn activiteiten vier jaar geleden met
+drie man en is inmiddels uitgegroeid tot een
+zaak met vijf en twintig medewerkers. Ter
+gelegenheid van de opening van een nieuw pand
+in het najaar van 1987 werd aan de pers een
+exemplaar van hun programma 'PARAC' verstrekt.
+Dit programma overbrugt de kloof tussen grote
+en kleine diskdrives.
+
+PARAC
+
+Met behulp hiervan kan men twee PC's via de
+parallel (printer) poorten met elkaar koppelen.
+Het ene systeem fungeert dan als 'Master' en
+de andere computer als 'Slave', d.w.z het is
+mogelijk allerlei diskfiles (programma's en
+datafiles) van de Master naar de Slave over
+te brengen en dus van de ene diskette naar
+de andere diskette te transporteren. Het
+formaat doet er dan niet meer toe, het werkt
+ook met 'harddisks'. En het gaat snel.
+
+SNELHEID
+
+Het voordeel van het gebruik van de parallel
+poorten is, dat er acht bits gelijktijdig
+worden overgezet, waarbij de snelheid wordt
+bepaald door het langzaamste systeem. Twee
+XT's doen er 15 minuten over om een 10 MB
+harde schijf over te zenden, terwijl twee AT's
+in dezelfde tijd 20 MB kunnen transporteren.
+Wij hebben het programma uitgetest met een
+PC-kloon, uitgerust met 5.25 inch diskdrives en
+een Toshiba portabele met een 3.5 inch drive.
+
+WERKING
+
+Het programma is menu gestuurd. Men kiest op
+het ene systeem voor verzenden en op het andere
+systeem voor ontvangen. Er wordt dan gevraagd
+van welke 'dir' er gecopieerd moet worden.
+Het default 'huidige dir' is misleidend. Men
+moet wel degelijk een path opgeven. Hetzelfde
+geldt voor de 'dir' waar heen moet worden
+geschreven. De filenamen mogen met wildcards
+worden aangeduid, ook 'hidden files' worden
+desgewenst meegenomen evenals subdirectories.
+De verbinding tussen de beide systemen wordt
+daarna automatisch tot stand gebracht.
+
+RESULTAAT
+
+Uit onze test blijkt, dat het programma werkt
+overeenkomstig 'file-copy' van DOS. Beschermde
+programma's kunnen niet worden overgezet.
+Gelukkig komen die steeds minder voor, maar
+beschikt men over een dergelijk programma, dat
+men nu op het andere systeem wil gebruiken,
+dan zal toch een versie op het vereiste disk
+formaat moeten worden aangeschaft. Voor
+normale programma's werkt het overzetten zonder
+problemen en heel snel.
+
+OPMERKINGEN
+
+Een (klein) nadeel vinden wij, dat bij het
+optreden van een foutje (doordat men b.v. heeft
+vergeten de diskdrive te sluiten) de DOS-error
+melding de schermopmaak danig verstoort, zodat
+men moeite heeft het verloop van het copieer
+proces te volgen. Dit was althans het geval
+bij versie 4.07. Dit heeft echter geen invloed
+op de goede werking. Het programma is niet
+goedkoop, maar aanschaffen van nieuwe software
+bij overgang op een ander systeem is veel
+kostbaarder! Wij kunnen dit programma beslist
+aanbevelen. (Met dank aan Pieter Vijlbrief).
+
+COMPUTERVIRUS GEVANGEN IN ISRAEL
+
+Een onbekende booswicht heeft geprobeerd
+computers van de Hebreeuwse Universiteit van
+Jeruzalem te besmetten met een
+software-virus. Een dergelijk virusprogramma
+is in staat grote hoeveelheden informatie te
+vernietigen en kan zo de onderzoeks resultaten
+van jaren verloren laten gaan. Volgens
+Yisrael Radai, software ontwikkelaar bij het
+computercentrum van de universiteit, is het
+virus de ernstigste bedreiging die hij ooit
+tegengekomen was.
+
+Een computervirus is een stel opdrachten dat
+zichzelf kan voortplanten, wanneer een
+saboteur het eenmaal heeft losgelaten. Het
+verplaatst zich van de ene naar de andere
+computerschijf om daar ongemak en schade te
+veroorzaken. Net als een biologisch virus
+maakt een computervirus hierbij misbruik van
+de mogelijkheden die zijn gastheer ongevraagd
+biedt.
+
+ANTIPROGRAMMA
+
+Kort nadat het virus was ontdekt, konden
+deskundigen van de universiteit een programma
+maken, waarmee het virus kon worden
+aangetoond en buiten gevecht gesteld. Wie dat
+antiprogramma niet toepast, zal het virus in
+het algemeen pas opmerken, als het al te laat
+is. Het gevaar heeft bestaan, dat het virus
+onderzoeks resultaten, boekhoudingen, de
+studenten administratie en andere essentiele
+informatie zou vernietigen. Ook instituten en
+individuen buiten de universiteit waren al
+besmet. Het virus bevond zich op MS-DOS
+diskettes, die vrijelijk werden gekopieerd.
+
+PROFIEL VAN DE BOOSWICHT
+
+Volgens Radai moet het virus uitgedacht zijn
+door een kennelijk geestelijk gestoord
+persoon, die macht over anderen wilde
+uitoefenen, zonder zich erom te bekommeren
+hoe. De booswicht moet goed op de hoogte zijn
+geweest van de werking van de computer: hij
+liet zijn virus rechtstreeks de diskdrive
+aanspreken en vermeed zo de beveiligingen,
+waarvan men normaal gebruik maakt. Het virus
+nestelde zich op een standaardmanier in het
+geheugen van de computer. Het virus zette
+kopieen van zichzelf op alle diskettes
+waarmee het in aanraking kwam en verspreidde
+zich zo naar computers die eerst nog gezond
+waren.
+
+TIJDBOM
+
+De saboteur mikte op vrijdag 13 mei 1988 als
+de dag waarop het virus informatie zou
+vernietigen. Tot die tijd zorgde het virus op
+vrijdagen en op de dertiende van elke maand
+voor een vertragingen in besmette computers.
+De maker van het virus had er niet aan
+gedacht dat een en dezelfde computer
+meermaals besmet zou kunnen worden. Er raakte
+dan steeds meer geheugenruimte bezet, en de
+vertraging werd echt merkbaar. Toen
+deskundigen naar de oorzaak gingen zoeken,
+werd het virus snel ontdekt.
+
+COMPUTER-AIDS
+
+Volgens de Israelische computerdeskundige
+Bushinsky zijn computervirussen een nieuwe
+uiterst gevaarlijke ontwikkeling voor de
+militaire, de industriele en de zakelijke
+wereld. 'Virussen kunnen voor computers de
+betekenis krijgen, die AIDS heeft voor sex.
+Er zal een einde komen aan de vrije
+uitwisseling van informatie, die er nu nog
+is. Iedereen zal zal heel voorzichtig worden
+met wie hij nog informatie wil uitwisselen.'
+In feite is het nog erger dan met AIDS, want
+voor computers bestaan geen condooms...
+
+GJ van Lonkhuyzen scheurde dit bericht van de
+telex en Pim van Tend bewerkte het voor ons.

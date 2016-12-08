@@ -1,0 +1,366 @@
+405, maa 22 apr '91
+
+TEST 1: PHILIPS KAARTMODEM MET MNP
+
+In de telefoonwinkels van PTT zijn op
+dit moment verschillende modems te
+koop. Het goedkoopste in deze reeks is
+het Philips kaartmodem PC2400, dat
+ondermeer wordt ondersteund door
+Videotex Nederland in Nieuwegein. Op de
+HCC-dagen vorig jaar verkocht men ze
+voor een fancy-prijs, te mooi om te
+laten liggen. Nu worden ze via de
+Primafoon-winkels gesleten, en nog
+steeds is de prijs uiterst
+aantrekkelijk: f 349,- inclusief
+communicatie software.
+
+Hoewel het modem eigenlijk in twee
+uitvoeringen verkrijgbaar zou moeten
+zijn (met of zonder kastje) is alleen
+het kaartmodem in de handel. Zonder
+kastje is het apparaat goedkoper (geen
+lampjes ed). Het geteste modem, van
+Videotex Nederland, draagt typenummer
+PCK2401, V2.3 MNP5. Dat betekent dat
+het inderdaad gaat om een (K=kaart)
+modem in een iets nieuwer type, met als
+ROM versie 2.3 aan boord.
+
+FOUTCORRECTIE EN DATACOMPRESSIE
+
+De melding MNP betekent dat het modem
+verschillende extra foutdetecties en
+herstelprocedures aankan volgens het
+Microcom Networking Protocol. Daarmee
+is de kans op een betrouwbare
+verbinding veel groter (MNP4). Tevens
+kan het modem de data comprimeren,
+waardoor een hogere effectieve
+overdrachts snelheid wordt bereikt
+(MNP5). Wel is het zo dat de
+'tegenpartij' dan ook zo'n bijzonder
+modem moet bezitten. Het werken met MNP
+geeft echter vaak problemen, zoals wij
+bemerkten. Daarover straks meer.
+Belangrijker is dat het kaartmodem
+geleverd wordt met software: Teletalk
+(een programma waar we verder niet op
+ingaan, iedereen gebruikt doorgaans
+toch zijn eigen communicatie
+programma's), en alle snelheden tot
+2400 bps aankan. Dat wil zeggen 300
+bps, 1200, 1200/75, 1200/REL (reliable)
+volgens MNP4, 1200/REL/COMPRESSED
+volgens MNP5, 2400, 2400/REL en
+2400/REL/COMPRESSED. Daarbij kunnen
+zowel de Amerikaanse (Bell) als de
+Europese (CCITT) toontjes opgewekt
+worden. Hoewel de kaart uitsluitend
+past in een PC-achtige computer, kan
+hij op elke poort (COM1 t/m COM4)
+worden geinstalleerd.
+
+DOCUMENTATIE
+
+Er is een gezegde dat meldt dat een
+apparaat of programma niet beter is dan
+het handboek dat bij het toestel
+verpakt zit. Zonder handboek ben je
+blind in veel gevallen, met een slecht
+handboek krijg je de zaak wel aan de
+praat, maar met een goed handboek kun
+je alle mogelijkheden benutten.
+
+Zeker voor dit Philips 2401-modem geldt
+dit in alle hevigheid. Zelden kreeg ik
+zo'n complete en overzichtelijke
+handleiding voorgeschoteld. Hij begint
+met een korte algemene beschouwing over
+telecommunicatie via telefoonlijnen en
+wat daar aan vast zit. Hoewel kort, zou
+deze niet misstaan in een leerboek.
+Daarna volgt een uiteenzetting over de
+PCK2401 zelf en welke mogelijkheden dit
+modem zoal in huis heeft.
+
+HAYES EXTENDED COMMANDS
+
+Het modem beschikt over de standaard
+set Hayes AT-commando's plus de
+extended (uitgebreide) versie daarvan.
+Dat wil zeggen dat men heel veel zaken
+door het modem kan laten regelen. En
+omdat het in het handboekje zo goed
+wordt uitgelegd, kan men ze ook met
+gemak gebruiken. Raakt men verdwaalt in
+het bos van commando's, dan is het
+modem gewoon te resetten of zelfs terug
+te brengen naar de fabrieks
+instellingen. Gebruikt men vaak een
+bepaalde modem instelling, dan kan die
+ook in een niet-vluchtig geheugen
+worden opgeslagen en altijd
+teruggeroepen worden.
+
+OPBOUW VERBINDING VOLGEN
+
+Op het modem zit een speakertje waarmee
+de hele verbinding kan worden gevolgd.
+Men kan ook kiezen voor uitsluitend
+volgen van de opbouw (begin) van de
+verbinding, waarna de luidspreker
+zichzelf uitschakelt. Alle belangrijke
+boodschappen over de op te bouwen
+verbinding kunnen op het scherm worden
+gebracht, zodat - ook bij de
+afwezigheid van LED's, zoals op het
+kastmodem voor extern gebruik - men de
+status van het modem kent. Bovendien
+zijn er allerlei mogelijkheden om de
+registers van het modem uit te lezen,
+terwijl men op diverse wijzen een
+verbinding automatisch op kan bouwen.
+
+INTERSPEEDER
+
+Het kaartmodem bevat een full
+interspeeder. Dat betekent dat een hoge
+snelheid tussen computer en modem
+mogelijk is en weer een andere (meestal
+lagere) snelheid tussen het modem en de
+buitenwereld. Het verschil in snelheid
+wordt opgevangen door de chips op de
+insteekkaart. Wanneer het snelheids
+verschil heel groot is, bijvoorbeeld
+9600 bps tussen modem en computer en
+2400 of 1200 bps via de telefoonlijn,
+ontstaat er een behoorlijk
+tijdsverschil tussen het opnemen van de
+berichten uit de computer en het
+verzenden per lijn. Daar maakt het
+modem gebruik van om de signalen te
+bewerken (compressing) en extra tijd te
+besteden aan een betrouwbare
+overdracht.
+
+MNP-KLASSEN
+
+Het modem kent de MNP-klassen 2 t/m 5.
+Bij klasse 2 is de efficiency lager dan
+gewoonlijk, namelijk 84 pct. De
+verbinding is echter betrouwbaarder.
+Bij klasse 3 is de efficiency 108 pct.
+Door gebruik te maken van de synchrone
+transmissie techniek wordt de
+effectieve bitsnelheid iets hoger dan
+bij een normale verbinding. Bij klasse
+4 is de efficiency 120 pct. Het
+protocol is gelijk aan dat van klasse
+3. Het past bovendien automatisch de
+bloklengte aan, afhankelijk van het
+aantal geconstateerde fouten.
+
+MAXIMALE WINST MET MNP5
+
+Bij MNP5 bereikt het modem het maximale
+rendement door bovenop protocol 4 ook
+datacompressie toe te passen. De
+efficiency is sterk afhankelijk van de
+data die verstuurd worden. Bij random
+bytes is de efficiency 105 pct. Bij
+tekst (ASCII tekens) kan de efficiency
+tot 200 pct oplopen.
+
+Het bezwaar van deze extra protocollen
+is natuurlijk wel dat je computer
+voldoende snel moet zijn (4800 of bij
+voorkeur 9600 bps moet aankunnen) om de
+extra waarden op een snelheid van 1200
+of 2400 bps (full duplex) met de
+buitenwereld te kunnen halen. Bij
+andere snelheden werkt MNP niet. Daar
+komt bij dat aan de andere zijde ook
+een modem met minimaal gelijke
+mogelijkheden aanwezig moet zijn.
+Anders werken de extra's gewoon niet.
+
+PROBLEMEN BIJ PROEF
+
+Wij hebben geprobeerd met MNP5, het
+maximaal haalbare, files over te zenden
+naar het Scoop BBS (tel. 035-45395).
+Maar dan blijkt de zaak nog wel eens
+hopeloos vast te lopen als naast het
+MNP-protocol voor een bestands
+overdracht met bijv. het Xmodem of
+Xmodem-CRC protocol wordt gekozen. Veel
+BBS-en bieden immers een keus uit
+betrouwbare overdrachts protocollen,
+zonder dat aan de hardware op te
+dragen. Gaat er iets mis tijdens het
+verzenden, dan vraagt de ontvangende
+partij (middels de software) om het
+laatste blok te herhalen, net zolang
+tot het correct is ontvangen. Blijkbaar
+gaat dat met MNP als extra beveiliging
+niet goed. Verschillende malen
+verslikten de modems zich in een
+verzendfout en de hele zaak bleef
+hopeloos hangen. Voor een BBS uiteraard
+een (bijna) nachtmerrie.
+(Hans Janssen)
+
+TEST 2: BAUSCH-MODEM MET SEND-FAX
+
+De Bausch modem CN-3522-SAF is gelijk
+aan de bekende externe 'Postbank modem'
+type CN-3522-SA, maar dan voorzien van
+de Send-Fax optie. Dat betekent dat met
+de SAF faxberichten kunnen worden
+verzonden. Faxen ontvangen kunt u er
+niet mee.
+
+Het type SAF wordt geleverd met de
+communicatie- software Vidi80 (voor
+Videotex- achtige diensten) en Comm80
+(voor BBS-sen als Fido bijvoorbeeld).
+Het Send-Fax deel wordt gestuurd door
+de 'BitFax' software. Een RS-232 kabel
+en een losse voeding (13.5 VAC, 750 mA)
+horen ook tot de standaard uitrusting,
+evenals twee Nederlandstalige gebruiks
+aanwijzingen. Het ene boekje gaat over
+het modemgedeelte, het tweede is
+helemaal gewijd aan BitFax. Beide zijn
+voldoende uitvoerig en duidelijk.
+
+FAXBERICHTEN VERZENDEN
+
+De installatie en de verdere bediening
+is geen probleem. Al na een halfuurtje
+verzond ik mijn eerste fax! De fax
+bestond uit een gewone ASCII-tekst, die
+met iedere tekstverwerker is aan te
+maken. BitFax zelf bevat ook een
+eenvoudige tekst-editor.
+
+De BitFax software heeft nog veel meer
+aardige mogelijkheden. Zo is er een
+logboek, dat precies bijhoudt wanneer
+en aan wie u ooit welk faxbericht zond
+en hoeveel tijd dat kostte. Er is een
+telefoonboek dat u zelf kunt bijhouden
+en een editor om het voorblad
+('coverpage') van uw faxberichten mee
+aan te passen. Met de cursortoetsen
+wandelt u makkelijk naar het gewenste
+telefoonnummer en file op disk en met
+Return selekteert u ze. Het programma
+zet dan eerst de ASCII tekst om in een
+speciaal fax-formaat (dat duurt weer
+even, afhankelijk van de omvang van de
+tekst), waarna het kiezen van het
+telefoonnummer en het verzenden van de
+fax automatisch volgen. Alleen bestaat
+vlak voor de verzending nog de
+mogelijkheid om een grafische
+afbeelding op het scherm te zien van de
+fax, zoals die bij de ontvanger zal
+aankomen. Prima. Het resultaat is een
+zeer goed leesbare tekst, die uit de
+faxmachine aan de andere kant rolt.
+
+NIET ERG SNEL, TOCH GOEDKOOP
+
+Het verzenden gaat met 4800 bps, en dat
+is langzamer dan we tegenwoordig van
+faxmachines gewend zijn. Tijdens het
+testen bleek de verzendtijd van een
+enkel vel A4 enigszins afhankelijk van
+de inhoud te zijn. Wij klokten tijden
+tussen de 1'05'' en 1'15''. Met een A4
+coverpage erbij duurt de verzending
+circa 2'10''. Een A4 vol tekst
+verzenden kost in het basistarief dus
+nooit meer dan een telefoontikje van 15
+cent; buiten uw basisgebied kost het
+overdag twee tikken en na zessen of in
+het weekend maar eentje. Een
+binnenlandse fax is dus altijd veel
+goedkoper dan een gewone brief, die u
+immers papier, inktlint, een envelop,
+een postzegel van 75 cent en een
+wandeling naar de brievenbus kost.
+
+Om telefoonkosten te sparen is ook een
+rooster mogelijkheid ingebouwd in
+BitFax. Dat betekent dat u van te voren
+kunt aangeven wanneer de computer uw
+fax moet verzenden. Bent u op dat
+moment iets anders op uw computer aan
+het doen, dan verzorgt BitFax de
+verzending op de achtergrond, ook als
+het gaat om faxen naar verschillende
+bestemmingen.
+
+GRAFISCHE MOGELIJKHEDEN BEPERKT
+
+Ten opzichte van een 'gewone' fax is de
+Bausch beperkt in de mogelijkheden om
+plaatjes en afbeeldingen te verzenden.
+Dat kan namelijk alleen als u een
+grafisch programma heeft dat een van de
+volgende typen files aanmaakt: PCX,
+IMG, DCX, TIFF, TIFF bi-level, Pad-bit
+of TIFF Class F. Die programma's zijn
+onder andere Paintbrush, BitPaint,
+Microsoft Windows, sommige scanners,
+GEM Artline, Ventura Publisher,
+Intel/DCA en Logitech Paintshow.
+Verzenden van dit soort files is niet
+getest.
+
+MODEMGEDEELTE
+
+Het Hayes compatible modemgedeelte
+werkt met de snelheden 300, 1200 en
+2400 bps (V.21, V.22 en V.22bis) en
+doet het werk zonder problemen. Een
+enkele dienst werkt nog met alleen
+1200/75 (V.23); deze verouderde
+standaard wordt hier niet ondersteund.
+
+Handig zijn de rode ledjes aan de
+voorzijde van het cremekleurige
+kunststof modemkastje en ook de
+luidspreker met instelbaar volume laat
+de hele gang van zaken goed volgen.
+
+PRIJZEN EN INFORMATIE
+
+Tot slot de prijzen van de modems
+(inclusief BTW): het type SA is
+verkrijgbaar bij de Postbank/ Girotel
+met drie maanden garantie voor f 249,-;
+een erg lage prijs voor een 2400 bps
+modem. Een upgrade door Bausch van SA
+naar SAF kost f 237,-. Type SAF is ook
+bij Bausch zelf verkrijgbaar met een
+jaar garantie voor f823,58. Een flink
+prijsverschil.
+NB: de Sendfax optie lijkt (nog) niet
+te zijn goedgekeurd door het Ministerie
+van Verkeer en Waterstaat. De blauwe
+sticker op de modemkast vermeldt alleen
+type SA.
+
+Verdere inlichtingen bij:
+- Bausch Datacom, Goudsesingel 94, 3011
+KD Rotterdam, tel. 010-4137055, fax
+010-4137264;
+- Postbank, afdeling Girotel,
+Antwoordnummer 999, 8900 PB Leeuwarden.
+(Chris van Offeren)
+

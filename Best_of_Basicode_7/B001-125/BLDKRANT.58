@@ -1,0 +1,248 @@
+58, zon 04 jan '87
+
+VOORSTEL DHR. RAMSELAAR
+
+Voor AMSTRAD/SCHNEIDER computer
+Om het Basicode-2 programma voor de
+Schneider CPC machines wat sneller en
+meteen gebruiksklaar in te kunnen laden
+doe ik jullie hierbij een wijziging
+toekomen, die het programma
+gebruikersvriendelijker maakt.
+
+SNELLER
+
+Met deze wijziging wordt het programma
+de helft korter dan het origineel
+waardoor de laadtijd korter wordt en de
+wachttijd van 60 seconden verdwenen is.
+Tevens worden de drie commando's die
+voor dit programma nodig zijn
+ondergebracht onder de funktietoetsen
+op het nummerieke keypad en wel zodanig,
+dat na het drukken van de funktietoets
+het commando op het scherm zichtbaar
+wordt. Mocht men per abuis een verkeerde
+toets drukken, dan kan men dit herstellen
+met de ESC-toets. Met de ENTER-toets
+wordt het commando bevestigd.
+
+De wijziging omvat het volgende:
+Laadt uw Basicode-2 programma in met:
+
+  LOAD''BASICODE'' [ENTER]
+
+en type vervolgens:
+
+  DELETE 1020-     [ENTER]
+
+Spoel de cassette terug en vervang deze
+voor een nieuwe.
+
+Type vervolgens onderstaande listing
+in:
+
+1020 KEY 129,CHR$(124)+''GET''
+1030 KEY 130,CHR$(124)+''PUT''
+1040 KEY 131,CHR$(124)+''RSET''
+1050 LOAD''!basic'',&A000:'disc
+gebruikers typen ''basic.bin''
+1060 CALL &A4DC
+1070 PRINT''Dit programma is een
+aangepaste versie''
+1080 PRINT''  van het N.O.S/HOBBYSCOOP
+programma''
+1090 PRINT''     Basicode-2 voor de
+Schneider''
+1100 PRINT:PRINT''Door deze aanpassing is
+het programma''
+1110 PRINT''         alleen bruikbaar op
+ de''
+1120 LOCATE 12,8:PRINT''SCHNEIDER CPC
+'':'vul het typenummer van uw computer in
+1130 PRINT:PRINT''De commando's voor dit
+programma zijn''
+1140 PRINT''gedefinieerd onder de toetsen
+op het''
+1150 PRINT''nummerieke keypad en wel als
+volgt:''
+1160 PRINT:PRINT''      F1 (|GET)  -
+laden basicode''
+1170 PRINT''      F2 (|PUT)  - saven
+basicode''
+1180 PRINT''      F3 (|RSET) -
+verwijderen''
+1190 PRINT:PRINT''Met ENTER wordt het
+commando uitgevoerd''
+1200 LOCATE 3,20:PRINT''Uw Basicode-2
+programma staat klaar!''
+1210 LOCATE 17,23:PRINT''SUCCES!'':
+DELETE 1010-
+
+List en save het programma op de nieuwe
+cassette met:
+
+  SAVE''BASICODE''  [ENTER]
+
+Spoel de cassette nog niet terug, maar
+vervang deze door de cassette met de
+originele Basicode-2 versie.
+
+Reset de computer (CTRL+SHIFT+ESC) en
+laadt het programma op de gebruikelijke
+wijze met:
+
+  RUN''BASICODE''   [ENTER]
+
+Vervang de cassette door de cassette
+met de nieuwe versie van het Basicode-2
+programma en wacht op de Ready-prompt.
+
+Druk de REC en PLAY toets in op de
+cassetterekorder en type vervolgens:
+
+  SAVE''BASIC'',B,&A000,&4FA  [ENTER]
+
+Nu wordt de machinetaal achter het
+basicdeel weggeschreven.
+
+Spoel hierna de band terug, reset de
+computer en laadt de nieuwe versie in
+met:
+
+  RUN''BASICODE''  [ENTER]
+
+Als nu alles goed gegaan is, is het
+programma de helft korter geworden en is
+meteen gebruiksklaar. Tevens zijn de
+funktietoetsen geaktiveerd.
+Op het scherm komt nu te staan welke
+funktietoetsen u kunt gebruiken.
+
+Met deze aanpassing is het echter niet
+meer mogelijk het programma uit te
+wisselen op een ander type computer. Dus
+als het b.v. is aangepast op de CPC464,
+dan werkt dit niet op b.v. de CPC6128
+en andersom. U doet er verstandig
+aan het originele programma zuinig te
+bewaren. Je weet maar nooit.
+
+Voor de goede orde het volgende:
+
+In het Basicode-2 formaat is het niet
+mogelijk alle instructies weer te geven
+zoals dit zou moeten zijn. Met name geldt
+dit voor print opdrachten.
+
+De printopdrachten in de listing zijn
+voorzien van twee opeen volgende komma's
+aan de bovenlijn. Deze dienen te worden
+vervangen door het aanhalingsteken.
+(SHIFT+2)
+
+Voor de mensen die niet in het bezit zijn
+van een printer zal deze aanpassing een
+lastig karwei worden omdat alles van het
+scherm overgenomen dient te worden.
+Bij wijze van uitzondering bied ik de
+mogelijkheid om de inhoud van deze krant
+geheel kosteloos aan te vragen.
+U dient hiervoor het volgende te doen:
+
+Zend een aan uzelf gerichte A5-envelop,
+voldoende gefrankeerd in een andere
+envelop, eveneens voldoende gefrankeerd
+naar (svp uitknippen en opplakken):
+
+-----------------------
+  NOS-HOBBYSCOOP
+  CPC-Beeldkrant no.58
+  Postbus 1200
+  1200 BE Hilversum.
+-----------------------
+
+en een kopie van de inhoud wordt u zo
+spoedig mogelijk toegezonden. Alleen
+voldoende gefrankeerde aanvragen worden
+in behandeling genomen. Dit aanbod is
+slechts een maand na uitzending geldig.
+
+NOG EEN TIP
+
+Schneidergebruikers die in het bezit zijn
+van oude Basicode programma's kunnen
+moeilijkheden ondervinden bij het inladen.
+Dit kan te wijten zijn aan het
+overschrijven van de subroutine van ons
+Basicode-2 programma. Dit euvel kan op een
+zeer eenvoudige wijze worden opgelost. Men
+dient hiervoor eerst een file aan te maken
+om de subroutine te kunnen herstellen. Dit
+gaat op de volgende manier.
+
+Laad het originele Basicode-2 programma
+in met LOAD''BASICODE'' en type vervolgens
+DELETE 1000- in.
+
+Save de rest van dit programma op een
+cassette zodat we het kunnen gebruiken
+wanneer dit nodig is. Voor het gemak
+noemen we deze file ''TEST'', maar iedere
+andere naam mag ook.
+
+Wanneer het nu voorkomt dat een ingeladen
+Basicode programma niet wil runnen en de
+SYNTAX ERROR komt voor in een regelnummer
+dat lager is dan regel 1000, dan is de
+subroutine niet in orde.
+
+Men gaat dan als volgt te werk:
+Laad het te runnen programma in met:
+
+  LOAD''[naam van programma]''.
+
+Laadt vervolgens de TEST file in met:
+
+  MERGE''TEST''.
+
+List en save het programma alvorens het
+te runnen.
+
+Hierna kan men het programma runnen en
+men zal zien dat het programma loopt,
+indien er verder geen onbekende commando's
+in voorkomen.
+
+DISKDRIVE GEBRUIK
+
+Gebruikers van de Schneider CPC464 met
+discdrive kunnen problemen verwachten voor
+wat betreft het ''MERGEN''. Er zijn
+namelijk disc controllers in omloop met
+een klein foutje, die het ''MERGEN''
+onmogelijk maken. De CPC464 zal dit
+''MERGEN'' als ''End of File'' zien (EOF)
+en zodoende de opdracht niet uitvoeren.
+Is dit het geval, dan doet men er
+verstandig aan de interface los te
+koppelen en deze werkwijze op cassette
+te doen.
+
+SPECIALE MEDEDELING
+
+*                           *
+*  Den Haag, oktober 1986.  *
+*                           *
+* De inhoud van deze beeld- *
+* krant is  n.a.v.  het on- *
+* langs uitgezonden vertaal *
+* programma  voor  Amstrad/ *
+* Schneider  computers   en *
+* samengesteld door:        *
+*                           *
+*     R.Ramselaar.          *
+*     Tomatenstraat 33,     *
+*     2564 CK Den Haag.     *
+*                           *
+*****************************

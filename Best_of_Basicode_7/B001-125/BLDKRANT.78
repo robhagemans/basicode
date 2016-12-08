@@ -1,0 +1,261 @@
+78, woe 17 jun '87
+
+SATELLIETNIEUWS
+
+PA0DLO kan zijn bulletin ditmaal met een
+verheugend nieuws beginnen: sinds de tweede
+week van juni functioneert Uosat OSCAR 9 weer
+vrijwel normaal. Het UoSAT team is nog bezig
+met laatste correcties van de programmatuur
+in de boordcomputer van de satelliet.
+
+OSCAR 10
+
+De belichting van de zonnepanelen van OSCAR
+10 wordt geleidelijk steeds gunstiger. Omdat
+het energie-systeem in de satelliet daardoor
+steeds beter functioneert heeft AMSAT besloten
+het gebruiksschema iets uit te breiden. Het
+mode B relaisstation mag tot en met 20 juli
+worden gebruikt tussen de mean anomaly phasen
+20 en 250. De rest van juli, en waarschijnlijk
+ook in augustus, is mode B beschikbaar voor
+algemeen gebruik tussen de phasen 40 en 220.
+De satelliet komt elke omloop enige tijd in
+de schaduw van de aarde. Hij bevindt zich
+daarbij dan in de omgeving van het perigeum.
+Omdat de batterij in de satelliet dan niet kan
+opladen mag mode B in de periode rond het
+perigeum niet worden gebruikt, ook al is het
+relais dan wel ingeschakeld.
+Eind juni schijnt de zon loodrecht op de
+zonnepanelen van OSCAR 10. Als gevolg van de
+goed werkende energievoorziening in juni en
+juli kan de satelliet in deze periode dus
+optimaal worden gebruikt. Er zijn dan
+inmiddels ook weer vele stations aktief via
+mode B, ook DX-stations, zoals BV2B en VK0LM.
+De commando stations zijn tot de conclusie
+gekomen dat de rondstraler-antenne van OSCAR
+10 nu is ingeschakeld, in plaats van de
+richtantennes. Bij het uitvallen van de
+boordcomputer in het voorjaar heeft het
+antennesysteem zichzelf blijkbaar automatisch
+omgeschakeld. De commando stations kunnen dit
+niet meer beinvloeden. Nu de rondstraler
+antenne in bedrijf is, vertonen de downlink
+signalen een heel ander fadingpatroon. De
+signalen zijn nu relatief zwak als de
+satelliet zich bij het apogeum bevindt, maar
+ze zijn juist zeer sterk als de satelliet
+zich bij het perigeum bevindt. Daarom dringt
+AMSAT er bij de gebruikers op aan steeds lage
+uplinkvermogens te gebruiken zodra de satelliet
+bij het lage deel van zijn omlopen komt. Ook
+raadt men aan het baken bij 145,809 MHz
+regelmatig te beluisteren. Als men
+FM-verschijnselen waarneemt op de ongemoduleerde
+draaggolf die daar wordt uitgezonden, wordt de
+batterij blijkbaar te zwaar belast, en moeten
+alle aktiviteiten in de doorlaatband
+onmiddellijk worden gestaakt.
+
+FUJI-OSCAR 12
+
+Begin juni is de batterijspanning in OSCAR 12
+tijdelijk naar gevaarlijk lage waarden gezakt
+omdat mode JD te lang achtereen in bedrijf was
+gebleven. Om verdere problemen te voorkomen
+moeten de commando stations het mode JD bedrijf
+beperken, hoewel men nu juist bezig is met het
+laden en in bedrijf stellen van de nieuwe
+programmatuur voor het Bulletin Board systeem
+van mode JD.
+
+De eerste voorlopige versie van de BBS
+programmatuur van mode JD van OSCAR 12 kent
+de volgende commando's:
+F  : Geef de nummers en koppen van de
+laatste 10 berichten in de mailbox.
+F* : Geef de nummers en koppen van alle
+berichten in de mailbox.
+R 3: Lees bericht nummer 3.
+W  : Zend een bericht. Het BBS vraagt om de
+call van de geadresseerde en het onderwerp van
+het bericht. Geef <CR>.<CR> om het bericht te
+beeindigen.
+K 5: Wis bericht nummer 5. Een bericht kan
+niet worden gewist door andere stations.
+H  : Help. Het BBS geeft hulp-informatie.
+
+Instellingen van de Packet Radio TNC van de
+gebruikers:
+-De TNC moet gebruik maken van het AX.25 Level
+2 Version 2 protocol.
+-De Frame Acknowledge Timer van de TNC moet
+worden ingesteld op 6 seconden of meer, bijv.
+FRack 6.
+-Voor het maximaal ineens uit te zenden aantal
+Information Frames wordt men aangeraden 2 of 3
+te kiezen, bijvoorbeeld MAXframe 2.
+
+ROEPNAAM VERPLICHT
+
+Verdere informatie over het gebruik van deze
+eerste versie van het mode JD BBS van OSCAR 12:
+-De roepnaam, die moet worden gebruikt om een
+Connect tot stand te brengen met het BBS van
+OSCAR 12, luidt 8J1JAS.
+-Het maximale aantal berichten is nu nog
+beperkt tot 50. Als er meer dan 50 berichten in
+het systeem komen worden oudere berichten
+overschreven. Het totale beschikbare geheugen
+voor berichten is nu nog 192 kByte.
+-Er is geen uitlog commando. Uitloggen
+geschiedt door gebruik te maken van het normale
+Disconnect commando van de TNC.
+-Persoonlijke berichten verzenden is nog niet
+mogelijk. Iedereen kan alle berichten lezen.
+-Zodra het BBS in bedrijf is werkt mode JD niet
+als digitale repeater.
+-Alleen direkte packets worden geaccepteerd door
+OSCAR 12. Packets die door een ander station
+zijn ge-digipeat worden niet geaksepteerd.
+-Als het aantal gebruikers toeneemt zal het
+systeem trager worden. De Frame Acknowledge
+Timer van de TNC van de gebruikers zal dan
+hoger moeten worden ingesteld.
+-De maximaal toegelaten lengte van een
+Information Frame is 1
+
+NIEUWS OVER ONTVANGERS
+
+Het Media Network programma van Radio
+Netherlands (eindreadkteur Jonathan Marks)
+is wereldwijd altijd uitstekend ingelicht
+over nieuwtjes op ontvanger gebied. Media
+Network meldt:
+Another Panasonic travel portable
+shortwave receiver has been announced.
+To be called the RFB-40, its a
+simplified version of the recently
+introduced RFB-60L from the same
+company. Both are pocket sized designed
+for the traveller interested to keep in
+touch with world events. The RFB-40 has
+less memory facilities and more
+restricted tuning. It'll be late
+October before its available in the
+European marketplace though.
+
+Meanwhile Eddy Visser, technical
+advisor to the ESKAB company of Malmo
+Sweden has announced a special board
+designed to slot into the Japan Radio
+Company NRD-525. It comes is different
+versions, and claims to offer better
+intermediate frequency selectivity,
+less noise, and synchronous detection
+if desired. ESKAB claim the board can
+be installed without previous technical
+knowledge, although its use means there
+is no room to install the VHF/UHF
+converter from JRC. The ESKAB board
+will be available from August onwards.
+
+Gilfer Shortwave have annouced
+publication of a second book of
+independent receiver reviews by
+respected European author Rainer
+Lichte. Following the sucess of 'Radio
+Receiver Chance or Choice' issued last
+year, Lichte has made an update
+paperback book of a further 100 pages.
+It includes measurements on sets such
+as the Kenwood R-5000, Grundig
+Satellite 650, and ICOM R-7000. The
+update is priced at 12 dollars 95 cents, or
+$19.95 with the original book as well.
+
+JAPANESE LINK UP
+
+NHK Radio Japan's media editor Kaz
+Matsuda is the organiser of a special
+two hour live programme late on Sunday
+night in Tokyo. They'll be inviting
+listeners to call in, as well as
+linking up for contributions by the
+BBC, Radio Australia, Radio Canada
+International, Radio Thailand, and if
+the studio line works to Hilversum we
+should be somewhere in there as well.
+From 1400 to 15 hours UTC on Sunday
+check 5990 kHz in North America, 9695
+and 11870 kHz are for listeners in
+South-East Asia. And for part two
+between 15 and 16 hours the channels
+are 5990 for the United States, and
+9695 for Asia. For listeners in Europe,
+Radio Japan has just announced that
+21700 kHz will be available for the
+entire two hour period, thats from the
+relay station in Gabon, West Africa.
+
+MARAC ACTIVITEITEN
+
+Op 26, 27 en 28 juni 1987 worden in Den
+Helder de jaarlijkse nationale vlootdagen
+gehouden. Gekoppeld aan de vlootdagen zullen
+op 27 en 28 juni voor de tweede maal de
+Marac activiteits dagen gehouden worden.
+Deze activiteits dagen stellen de deelnemers
+in de gelegenheid punten te verzamelen voor
+het Marac award en de 50 punten sticker,
+terwijl men tevens in het bezit kan komen
+van een fraai Marac vaantje, ditmaal met het
+wapen van het korps Mariniers.
+Voor het behalen van het vaantje geldt het
+volgende: Marac-leden dienen minimaal 25 qso's
+te maken met niet leden. Niet-leden dienen 15
+punten te verzamelen middels qso's met Marac
+leden (Europese stations 10 ptn, Dx-stations
+5 ptn). Op 27 en 28 juni gemaakte qso's zijn
+ook geldig voor de Marac award/sticker.
+
+PI4MRC zal op 27 en 28 juni van 0900lt -
+1630lt (evt langer) QRV zijn op 145,375 mhz,
+op ong. 3550 khz CW en op ong 3740 khz SSB.
+QSO's met PI$MRC tellen voor 2 punten, alsook
+QSO'S met PD0MTB en PD0NUY. Overige Marac
+stations tellen voor 1 pnt. De kosten voor
+het vaantje bedragen f 5,-. Aanvragen voor 1
+augustus 1987 inzenden aan:
+W de Bode, Wittenstein 69, 3328 MS Dordrecht.
+Omdat het bestellen van de vaantjes pas na 1
+augustus gebeurt dient men er rekening mee te
+houden dat toezending enige tijd vergt.
+Marac vertelt ons niet hoe luister stations
+kunnen meedoen met deze wedstrijd.
+
+SCHRIJVERS EN COMPUTERS
+
+Louis van Geel, Sysop van de S-Team Fido
+uit Mortsel in Belgie deelt ons het volgende
+mee: Bij BRT-3 is een project ter studie om
+een aantal Vlaamse schrijvers een jaar
+lang uit te rusten met een PC, modem,
+tekstverwerker en communicatiesoftware.
+De bedoeling is een schrijf project op te
+zetten waarbij een achttal schrijvers
+via computers mekaar en het publiek op de
+hoogte houden van hun werk. De initiatief
+nemers van dit project zijn BRT-mensen. Zij
+zoeken methodes om eveneens niet-PC-bezitters
+bij dit project te betrekken. Bestaan er data
+transmissie methodes waarbij simultaan data en
+spraak kunnen verzonden worden ?
+Jazeker in FM-stereo. In het linker kanaal
+een spreker; rechts een Beeldkrant! We wensen
+de BRT-collega's veel succes. Eventueel kan
+NOS-Hobbyscoop nog helpen met de verspreiding
+van berichten via dit Beeldkrant medium.

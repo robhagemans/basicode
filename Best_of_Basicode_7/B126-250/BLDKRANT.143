@@ -1,0 +1,295 @@
+143, zon 24 apr '88
+
+CURSUS PROGRAMMEREN IN BASICODE DEEL 5
+
+SUBROUTINE 350
+
+Deze subroutine print de inhoud van SR$ op de
+printer, maar sluit de regel nog niet af. Het
+is dus mogelijk meerdere keren achtereen op
+dezelfde regel te printen.
+
+SUBROUTINE 360
+
+Sluit de regel op de printer af en begint een
+nieuwe regel.
+
+Omdat lang niet iedereen een printer heeft,
+dient in het programma de keus te worden
+gelaten, of men de resultaten op het scherm of
+op de printer wil zien.
+
+VOORBEELDPROGRAMMA
+
+1000 A=200:GOTO 20:REM PRINTDEMO
+1010 GOSUB 100
+1020 PRINT''Zet de printer aan !'':PRINT
+1030 PRINT''Tik een te printen regel,''
+1040 PRINT''gevolgd door <return>:''
+1050 PRINT:INPUT A$
+1060 SR$=A$
+1070 GOSUB 350:GOSUB 360
+1080 END
+
+WERKING VAN HET PROGRAMMA
+
+Regel 1020 waarschuwt ons dat de printer moet
+worden aangezet en laat een regel 'blank'.
+Regel 1030 en 1040 vraagt ons op het scherm om
+een te printen regel. Regel 1050 laat weer een
+regel 'blank' en wacht op input van tekst,
+afgesloten met 'return' of 'enter'. In regel
+1060 wordt de in A$ opgeslagen tekst naar SR$
+overgebracht. In regel 1070 wordt SR$ eerst
+geprint (GOSUB 350) en daarna wordt met 'GOSUB
+360' naar een nieuwe regel overgegaan.
+
+VERDERE EXPERIMENTEN
+
+Experimenteer met dit programma door regel
+1070 te vervangen door alleen GOSUB 350.
+Vervang dan regel 1080 door:
+1080 PRINT''Nog een stuk tekst graag:''
+1090 PRINT:INPUT SR$
+1100 GOSUB 350:GOSUB 360:END
+Merk op, dat directe input in SR$ mogelijk is!
+Maak de tekstjes niet te lang, zodat ze samen
+op een printer- regel passen en merk ook op,
+dat ze niet automatisch door een spatie worden
+gescheiden! Dat kan wel als men regel 1090
+verandert in:
+1090 SP$='' '':INPUT SR$:SR$=SP$+SR$
+In Basicode wordt gerekend met een maximale
+printerbreedte van 80 posities.
+
+BASICODE VOOR EIGEN GEBRUIK
+
+Je kan natuurlijk de Basicode subroutines ook
+gebruiken om het programmeren voor je zelf
+aangenamer (= makkelijker) te maken en verder
+de Basicode- regels 'overtreden'. Daar is
+niets tegen, alleen worden dit dan geen
+Basicode programma's, ze zijn niet
+uitwisselbaar met andere merken computers. Als
+men mee wil doen aan Basicode programmeer
+wedstrijden of eventueel een eigengemaakt
+programma aan Hobbyscoop wil insturen, moet men
+zich wel aan de regels houden. Het is aan te
+raden het NOS-Basicode boek te
+bestellen en te bestuderen. In deze mini-
+cursus kan niet alles worden behandeld.
+
+BASICODE TIPS IN TELEGRAMSTIJL
+
+Toch zullen we hier nog een aantal zaken
+behandelen, ten eerste: welke Basic- commando's
+'mogen' in Basicode? Dat zijn:
+ABS    AND   ASC   ATN  CHR$    COS
+DATA   DIM   END   EXP  FOR     GOSUB
+GOTO   IF    INPUT INT  LEFT$   LEN
+LET    LOG   MID$  NEXT NOT     ON
+OR     PRINT READ  REM  RESTORE RETURN
+RIGHT$ RUN   SGN   SIN  SQR     STEP
+STOP   TAB   TAN   THEN TO      VAL
+En de operatoren:  + - * / ^  =   <   >
+           <>   <=   >=   (niet: =< =>)
+
+ENKELE OPMERKINGEN OVER COMMANDO'S
+
+Al eerder werd op het gebruik van haakjes bij
+logische vergelijkingen (AND, OR en NOT)
+gewezen. Bij gebruik van SIN, COS, TAN en ATN
+wordt de hoek in 'radialen' aangeduid. In DATA
+regels worden data gescheiden door een
+komma, string-data moeten tussen
+aanhalingstekens staan en er mogen aan het eind
+van een DATA regel geen REM statements staan!
+DIM: elke array mag slechts eenmaal in het
+programma worden gedimensioneerd, het aantal
+dimensies is maximaal twee. Dus DIM V(2,2,2)
+mag niet! EXP heeft het grondtal 'e'. GOSUB mag
+alleen door een regelnummer worden gevolgd.
+(NR=100:GOSUB NR mag niet!) Ook mag de
+constructie: IF xx THEN xx ELSE xx niet!
+Gebruik ook nooit: IF xx THEN GOTO
+<regelnummer>, maar IF xx THEN <regelnummer>.
+Het gebruik van PRINT bij INPUT werd al
+besproken. Belangrijk is (er wordt door de
+programma inzenders vaak tegen gezondigd) dat
+bij LEFT$, MID$ en RIGHT$ de parameters nooit
+'0' mogen kunnen worden! Voorbeeld:
+C$=LEFT$(A$,0) mag niet. Dit kan vooral
+voorkomen, als men variabelen als parameter
+gebruikt en als deze dan door het programma
+nul worden gemaakt. Na NEXT moet altijd een
+variabele staan. Bij het PRINT commando moeten
+meerdere variabelen of strings en variabelen
+altijd gescheiden zijn door een punt-komma. Een
+komma, om in kolommen te printen, mag eigenlijk
+niet, hoewel de meeste computers hier wel goed
+op reageren. Het is (om het eenvoudig te
+houden) in het programma voorbeeld van les 4
+wel gebruikt, maar het mag dus officieel niet!
+Wil men na het printen niet automatisch naar
+een volgende regel overgaan, zet dan een punt-
+komma aan het einde. RESTORE <regelnummer> mag
+niet evenmin als RUN <regelnummer>. Het gebruik
+van TAB's wordt ontraden, omdat dat bij
+verschillende merken computers ook verschillend
+werkt. Beter SUBROUTINE 110 toepassen!
+In dit gedeelte zijn alleen punten besproken,
+die enigszins afwijken van hetgeen 'mag' in de
+meest gangbare Basic dialecten!
+
+SAMENVATTING VAN DE VIJFDE LES
+
+De opdrachten voor de printer werden met een
+voorbeeld- programma verduidelijkt, en er werd
+in telegram- stijl een overzicht gegeven van de
+beperkingen van Basicode-2 ten opzichte van de
+gangbare Basic's. (Aldus Pieter Vijlbrief)
+
+COMPUTER NIEUWS
+
+Na onze test van 24-naalds printer van NEC
+weer wat nieuws: op de CeBIT introduceert Epson
+Computers de eerste 48-naalds printer, met een
+resolutie van 360x360 dots per inch!
+
+Het kleinste back-up systeem ter wereld heet
+de Gigatape. De Gigatape is een tape-cassette
+ter grootte van een flinke luciferdoos, waarop
+1,2 Gigabyte aan informatie past, net zoveel
+als op een AT-floppie dus. Een voordeel?
+
+AMIGA EN APPLE
+
+Commodore demonstreerde op de CeBIT nadrukkelijk
+dat de Amiga computer bedoeld is voor de
+professionele markt. De nieuwe topper in de
+Amiga-lijn, de 2500 (gebaseerd op de 68020-
+processor) is leverbaar in twee versies:
+Unix en AT.
+
+Op een tweedaagse conferentie in Londen heeft
+Apple Computer de aanval ingezet op de Europese
+markt voor zakelijke computer gebruikers met
+de officiele introductie van Oasis, een
+nieuwe netwerk architectuur voor de Macintosh.
+
+PC-LAN ELEKTRICITEITSNET
+
+Nectar Electronics, een bedrijfje uit het Britse
+Houghton-le-Spring, ontwikkelde een netwerk voor
+personal computers, dat opereert via de draden
+van het gewone elektriciteitsnet. En nu maar
+aftappen...
+
+Het Groningse bedrijf Alva (Apparatuur voor
+Lichamelijk, Visueel en Auditief Gehandicapten)
+- ook al eens in Hobbyscoop te gast - heeft een
+terminal voor de PC ontwikkeld, waarmee in- en
+uitvoer in Braille mogelijk is.
+
+De Stichting Surf (samenwerking computer
+dienstverlening in het hoger onderwijs en
+onderzoek) heeft een scholingsproject
+gegund aan ACCU, het rekencentrum van de
+Rijksunversiteit Utrecht.
+(bron: Telecom Daily)
+
+OPTISCHE MEDIA
+
+De Universiteit van Bielefeld (West-Duitsland)
+wil de complete catalogus op compact disk
+zetten. Via PC's kan men deze CD-Roms
+raadplegen voor literatuur onderzoek.
+
+Vijftig Nederlandse bibliotheken beschikken
+sinds kort over de CD-ROM-disc Nederlandse
+Referentie bestanden: de eerste CD-ROM
+die is ontwikkeld door en voor bibliotheken.
+
+Ook de Japanse camera-fabrikant Olympus
+probeert het gat tussen magnetische en
+optische opslagmedia te vullen met een
+magneto-optische disk: een optische schijf
+waarop de gegevens gewist kunnen worden.
+
+DIGITAL PAPER
+
+Het Britse chemische concern ICI introduceerde
+op de CeBIT een nieuwe methode om gegevens
+digitaal op te slaan: Digital Paper. Dit
+medium betekent een nieuwe generatie gegevens
+dragers met een imponerende opslag capaciteit.
+(bron: Telecom Daily)
+
+RADIO-ZENDER IN DE VANGRAIL
+
+Het Westduitse bedrijf Fuba Communication heeft
+een kleine radiozender ontwikkeld, die kan
+worden aangebracht in de vangrail op de
+autosnelweg. De zend-antenne werkt over de
+hele lengte van de weg omdat hij werkt via de
+vangrail!
+
+Op de beurs Brand'88 introduceerde Radio
+Holland de nieuwe portofoons van Motorola, de
+MX-2000 en de HT-800. Tevens toont Radio
+Holland een systeem voor voertuiglokatie met
+satellieten.
+
+Het grootste telecommunicatie bedrijf ter
+wereld, de Japanse Nippon Telegraph & Telephone,
+introduceerde tegelijkertijd in Tokyo en op de
+CeBIT een fax die twee kleuren gebruikt: rood
+en zwart.
+
+Japanse elektronica bedrijven hebben de prijzen
+voor draadloze (huis-)telefoons flink verlaagd.
+Bovendien heeft de Japanse overheid het licht
+op groen gezet voor een nieuw en beter systeem.
+
+Vitronic Holding uit Oosterhout heeft een
+apparaatje op de markt gebracht, dat -
+aangesloten op een huis telefoon centrale - het
+telefoonnummer laat zien van de opbeller, nog
+voordat de telefoon overgaat.
+(bron: Telecom Daily)
+
+GRATIS PROEFNUMMER
+
+In Nederland is eigenlijk maar een blad dat
+zich uitsluitend met het testen van (semi-)
+professionele programmatuur bezig houdt. Dat
+is het tijdschrift voor de zakelijk PC
+gebruiker: het Software Magazine. De testen
+die daarin staan zijn meestal afkomstig van
+deskundigen op enig gebied: bv van accountants
+als het over boekhoud programma's gaat. NOS
+Hobbyscoop biedt (ism met Software Magazine)
+voor de luisteraars een gratis proefnummer
+aan. Daarvoor moet u even onderstaande bon
+uitprinten en invullen en op een briefkaart
+plakken. Vergeet het eigen adres niet!
+
+---------------------------
+> NOS - RADIO  HOBBYSCOOP <
+
+> betr: Software Magazine <
+
+> P o s t b u s   1 2 0 0 <
+
+> 1200  BE   HILVERSUM    <
+---------------------------
+
+MAC WORLD EXPO IN DE RAI
+
+Op 9, 10 en 11 mei wordt in de Amsterdamse
+RAI de Mac World Expo gehouden voor de
+bezitters van een Apple Macintosh. Er zijn
+ruim 150 standhouders, waaronder vele uit de
+omliggende landen, om het beste op het gebied
+van de Mac te tonen. De toegang bedraagt f25
+en geldt dan voor alle drie de Expo-dagen.

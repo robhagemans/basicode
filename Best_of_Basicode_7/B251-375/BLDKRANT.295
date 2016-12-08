@@ -1,0 +1,329 @@
+295, maa 19 feb '90
+
+CODE3 (DEEL 1)
+
+Sinds enige tijd is er een uitgebreid
+computerprogramma op de markt waarmee
+allerlei radiosignalen gedecodeerd
+kunnen worden. Dit programma, genaamd
+'CODE3', en de bijbehorende hardware
+werden voor Hobbyscoop uitvoerig getest
+door Pieter Vijlbrief. Hier volgt het
+eerste deel van zijn verslag.
+
+PIEPJES OP DE RADIO ONTCIJFEREN
+
+Als je zo op de diverse golflengten,
+die op een radiotoestel te ontvangen
+zijn, luistert, hoor je, behalve
+verstaanbare of onverstaanbare spraak
+of muziek ook heel veel andere
+signalen. Speciaal voor mensen die
+nieuwsgierig zijn aangelegd en graag
+alles willen ontraadselen is er nu een
+programma te koop voor een personal
+computer, werkend onder MS-DOS V2.0 of
+hoger, met twee diskdrives of een
+harddisk, die het mogelijk maakt
+allerlei anders 'onleesbare' signalen
+nu wel leesbaar te maken.
+
+HET CODE3 PROGRAMMA
+
+HOKA ELECTRONIC in Oude Pekela brengt
+het CODE3 programma in de handel voor
+de niet onaanzienlijke som van f
+895.--, het tussenschakelkastje
+inbegrepen. Er zijn extra uitbreidingen
+bij te verkrijgen, o.a. een
+oscilloscoop optie, die nog eens f
+50.-- moet kosten en er is ook een
+optie om signalen volgens het systeem
+'Piccolo mark 6' te ontvangen. Het
+lijkt verschrikkelijk duur. Maar we
+zullen spoedig zien, dat dit niet zo
+is, namelijk als we het programma
+vergelijken met soortgelijke produkten,
+die vaak zelfs minder presteren dan dit
+software pakket.
+
+WAT DOET CODE3 ?
+
+Met behulp van dit programma en een
+goede communicatie-ontvanger kan een PC
+nu op het scherm en op een aangesloten
+printer allerlei signalen leesbaar
+maken. Daartoe wordt het meegeleverde
+apparaatje, de converter, tussen de
+radio (koptelefoon- of recorderuitgang)
+en de RS-232 poort van de computer
+aangesloten. Dan kunnen, om met een
+eenvoudig voorbeeld te beginnen, de
+talloze morse-signalen, waarvan we
+allemaal wel eens gehoord hebben, door
+dit programma in leesbaar schrift
+worden omgezet. Maar ook andere
+signalen, o.a. telex, met inbegrip van
+allerlei ingewikkelde systemen, kunnen
+worden meegelezen. En er is nog meer:
+
+OOK PLAATJES WORDEN ZICHTBAAR
+
+Het programma heeft ook de mogelijkheid
+de over de radio uitgezonden persfoto's
+en weerkaarten zichtbaar te maken,
+zowel op het scherm als op de printer.
+Sommige programma's hebben speciale
+dure video-kaarten en monitoren
+daarvoor nodig. Dit programma doet het
+op een normale monitor, zodat de dure
+extra's niet meer behoeven te worden
+bijgekocht. In dat licht bezien, is dit
+programma spotgoedkoop. De grijstinten
+worden, net als in de krant, als
+puntjespatronen (rasters) weergegeven.
+
+VERBETERD FAX PROGRAMMA
+
+In de nieuwe versie 3.6 is ook voorzien
+in het automatisch synchroniseren van
+zowel meteo-fax als persfoto's, waarbij
+het programma zelf een stukje 'wit'
+tussen de foto's opneemt, waardoor bij
+het uitprinten de plaatjes netjes op
+het papier komen. Ook kan men nu een in
+de lengterichting extra groot beeld
+afbeelden, waardoor, speciaal op
+meteokaarten, de details beter tot hun
+recht komen. Door deze extra
+mogelijkheden wordt het programma nog
+meer bruikbaar dan het al was. De
+beelden zijn nog niet goed naar disk
+weg te schrijven, maar daar wordt nog
+aan gewerkt. Het accent ligt nu vooral
+op het uitprinten, hetgeen door het
+rasterpatroon heel goed gaat.
+
+HULPSCHERMEN
+
+Tijdens het gebruik van dit uitgebreide
+programma zal men dikwijls behoefte
+hebben om de handleidingen voor de
+diverse routines te raadplegen. Door
+het eenvoudig intoetsen van een
+vraagteken is het vanaf versie 3.6
+mogelijk de bij de routine behorende
+gegevens op het scherm zichtbaar te
+maken. Een in de praktijk heel handig
+gebleken mogelijkheid!
+
+VERGELIJKING MET ANDERE SYSTEMEN
+
+Voor de decodering van morse en telex
+signalen zijn er ook complete apparaten
+in de handel, die tussen ontvanger en
+beeldscherm worden aangesloten en dan
+ook deze signalen leesbaar maken,
+zonder gebruik te maken van een PC.
+Maar deze toestellen kosten al gauw
+zo'n f 3500.-- en meer. Als men toch al
+een PC heeft, komt men met CODE3 een
+stuk voordeliger uit en bovendien bevat
+het ook veel meer mogelijkheden. Het
+programma wordt nog steeds uitgebreid
+en de updates zijn de eerste zes
+maanden na aanschaf van het programma
+gratis te verkrijgen! Daarna moet er
+een vergoeding voor worden betaald.
+
+DE CONVERTER
+
+Het kastje dat tussen de ontvanger en
+de computer moet worden geschakeld is
+gemaakt volgens het Phase Locked Loop
+systeem (PLL) met een centerfrekwentie
+van 1750 Hz. Daardoor is het veel
+flexibeler dan een z.g.
+filterconverter. De ontvangst van de
+diverse telex-achtige signalen is in de
+meeste gevallen uitstekend. Alle
+instellingen worden softwarematig, dus
+via de computer, gedaan, vaak zelfs
+automatisch. Zelfs als de ontvanger
+iets verloopt, wordt dat door de
+converter gecompenseerd. Alleen bij
+sterke storingen door andere stations
+gaat het fout.
+
+MORSE SIGNALEN
+
+Zoals we eerder al aangaven, zijn de
+morse piepjes met behulp van dit
+programma ook leesbaar te maken.
+Gelukkig heeft men daarvoor een lagere
+toonfrekwentie (800 Hz) gekozen dan de
+bovengenoemde 1750 Hz. De meeste
+communicatie ontvangers geven in de
+stand 'CW' (of morse) de signalen met
+deze lagere toon weer. Hiermee is in
+dit programma rekening gehouden. Het
+signaal moet wel van de hoofdtelefoon-
+of luidsprekeruitgang worden afgenomen,
+want het moet wat sterker zijn dan voor
+de andere 'modes'. Een zwak punt bij de
+ontvangst van morse is, dat de signalen
+lang niet allemaal perfekt worden
+uitgezonden. En foutcorrectie ontbreekt
+natuurlijk geheel. Het gevolg is, dat
+de ontvangst van morsesignalen, zoals
+trouwens bij elk apparaat dat deze
+signalen kan ontcijferen, gebrekkig is.
+Maar het werkt in veel gevallen
+voldoende goed.
+
+Er zitten een paar kleine foutjes in
+het programma: de apostrofe ('= .----.)
+wordt afgebeeld als het aanhalingsteken
+(.-..-.), dat zelf echter niet herkend
+wordt. En ook de openings- en
+sluitingshaakjes worden (alleen bij
+morsesignalen) niet helemaal correct
+gedecodeerd. Maar daar valt mee te
+leven, daar deze tekens in morse zelden
+worden gebruikt.
+
+UITGEBREIDE BESCHRIJVING
+
+Om helemaal op de techniek van digitale
+beeldoverdracht in te gaan, biedt de
+Beeldkrant niet voldoende ruimte.
+Daarvoor verwijzen wij naar de
+uitvoerige artikelen in RAM van de hand
+van Willem Bos, die dit programma en
+ook de andere systemen grondig aan de
+tand heeft gevoeld. Een uitvoerige test
+van CODE3 is te lezen in RAM 107 en 108
+(december 1989 en januari 1990) en een
+samenvatting van de diverse digitale
+(o.a. telex) systemen, naar aanleiding
+van de test van een ouder hardware
+systeem, staat in RAM 98, 99 en 100
+(februari tot april 1989), die allen
+nog voor f 6.-- per nummer op postgiro
+1598540 t.n.v. Radio Amateur Magazine
+B.V. te Zandvoort zijn na te bestellen.
+
+Tot zover deel 1 van Pieter Vijlbriefs
+beschouwing over het CODE3 programma.
+In Beeldkrant 296 volgt deel 2.
+
+CENTRAAL NUMMER VOOR COMNET
+
+ComNet in Papendrecht, een van de
+grootste Videotext aanbieders in
+Nederland, krijgt een centraal nummer:
+078-159900. De club, die 40.000 leden
+heeft, is aanbieder van interactieve
+informatie-, teleshopping en
+conversatie diensten. Men kan met
+behulp van een modem een videotex
+terminal verbinding krijgen, waarbij
+een deel openbaar is maar voor meer
+gedetailleerde kennis moet worden
+betaald. ComNet bestaat nu drie jaar.
+Het systeem kwam onlangs in Hobbyscoop
+ter sprake omdat het de tussenschakel
+vormt bij radarbeelden die Meteo
+Consult uit Wageningen verschaft aan
+belangstellenden die regenbuien boven
+Nederland willen zien of volgen. Een
+'animatie' programma, ontwikkeld bij
+Meteo Consult, is ook in Papendrecht te
+downloaden, evenals de actuele neerslag
+situatie boven Nederland (in kaartvorm,
+bruikbaar voor dit programma), tot op
+een kwartier nauwkeurig.
+
+MSX-SYSTEEM BIJ POLITIE
+
+Twee politieagenten uit Veendam hebben
+een computer- programma geschreven dat
+geschikt is voor registratie van
+calamiteiten waarbij de politie wordt
+geroepen. Het systeem, dat werkt op een
+simpele MSX-computer, geeft ook aan wat
+de politie moet doen bij
+bankovervallen, vliegrampen, branden en
+andere voorvallen waarbij de politie
+betrokken wordt. Het systeem zou vooral
+bruikbaar zijn bij de wat kleinere
+politiekorpsen die niet over de meest
+geavanceerde apparatuur beschikken.
+(Uit: Computable)
+
+BASISONDERWIJS KRIJGT PHILIPS PC'S
+
+Philips heeft de order voor levering
+van PC's aan het basis- en speciaal
+onderwijs in de wacht gesleept. Philips
+gaat voor tachtig miljoen gulden 27.500
+PC's leveren aan het basis- en speciaal
+onderwijs.
+
+De invoering van de computer in het
+basis- en speciaal onderwijs staat
+bekend als het Comenius project. De
+kritiek op de keus van de vorige
+minister Deetman voor PC's met een
+Intel processor heeft niet verhinderd
+dat 9.300 van de 9.500 scholen aan het
+project willen deelnemen. Na uitvoering
+zal er 1 PC zijn per 60 leerlingen.
+(Uit: PC+)
+
+TREINREIS RIS
+
+De Radio Interesse Stam (RIS) is een
+onderdeel van Scouting Nederland. Ze
+bestaat uit een groep van ruim honderd
+scouts die geinteresseerd zijn in en
+zich bezig houden met elektronika en
+kommunikatie.
+
+Een 15-tal RIS-leden zal op zaterdag 24
+februari a.s. per trein het gehele land
+doorkruisen. Natuurlijk gaat de diverse
+apparatuur voor 2 meter en 70
+centimeter mee. Vanuit de trein zal
+gewerkt worden onder de roepnamen
+PA3EKI en PA3FBO. Elke verbinding wordt
+bevestigd met een speciale QSL-kaart.
+Voor de aktiviteit is toestemming
+gegeven door de Nederlandse Spoorwegen.
+Alle QSL-kaarten zullen dan ook
+'geknipt' zijn door de dienstdoende
+conducteur.
+
+REISSCHEMA
+
+Het reisschema ziet er als volgt uit:
+
+Rotterdam   6.31  Utrecht       7.22
+Zwolle      8.20  Leeuwarden    9.20
+Groningen  10.37  Zwolle       11.49
+Arnhem     12.50  Nijmegen     13.24
+Venlo      14.19  Roermond     15.02
+Den Bosch  16.01  Amsterdam    17.26
+Leiden     18.00  Roosendaal   19.25
+Tilburg    20.09  Geldermalsen 21.21
+Dordrecht  22.30
+
+Alle tijden zijn vertrektijden. Tijden
+onder voorbehoud van het missen van een
+aansluiting.
+
+U kunt de scouts vinden op of rond de
+frequenties 144.290 (usb), 145.525 en
+431.550 mhz. (Uit: RTTY-bulletin
+PI4VRZ/A, 20-1-1990)
+

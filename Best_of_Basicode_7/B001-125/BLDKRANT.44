@@ -1,0 +1,212 @@
+44, zon 26 okt 1986
+
+KRANT VOOR COMPUTER-ENTOESIASTEN
+
+Beste luisteraars en lezer, het wordt zo
+langzamerhand tijd dat we wat meer aandacht
+gaan besteden aan de Basicode programmeer
+wedstrijd. We hopen dat u tussen nu en 1
+januari uw inzendingen zult klaarmaken en
+zo spoedig mogelijk zal willen inzenden,
+met het oog op jurering, die altijd vrij
+veel tijd kost. Alle inzendingen die we de
+laatste tijd hebben binnen gekregn tellen
+trouwens mee. Er zijn fraaie programma's
+bij, dat valt niet te ontkennen. Maar we
+zouden - gezien ook de prijzen die beschikbaar
+komen - graag nog wat meer keuze hebben.
+Daarom bieden we u de helpende hand en geven
+wat regels die u van pas komen bij de:
+
+BASICODE PROGRAMMEER WEDSTRIJD
+
+De inzendingen voor de Basicode wedstrijd
+dienen te voldoen aan het NOS-Basicode-2
+protocol. Daar wordt nog wel eens tegen
+gezondigd. Daarom hier een lijst met de
+meest voorkomende fouten.
+
+1. Altijd de regel 1000 volgens 'het boekje'
+samenstellen. Dus: 1000 A=xxx:GOTO 20.
+xxx is het aantal bytes dat als stringruimte
+moet worden gereserveerd, wat voor sommige
+computers noodzakelijk is. 2. Regels tussen
+1001 en 1009 niet gebruiken, want deze worden
+in Basicode niet gelezen! 3. Op regel 1010
+begint het programma met: REM NAAM VAN HET
+PROGRAMMA. 4. Neem de aanbevolen
+regelnummering in acht. (Vanaf 20000 de eigen
+subroutines, vanaf 25000 DATA en vanaf 30000
+(tot max. 32767) eventuele REM's. 5. Voorzie
+het programma van een zodanige introductie,
+dat de bedoeling van het programma voor de
+gebruiker duidelijk is. Een zeer intelligent
+werkend berekeningsprogramma zonder duidelijke
+handleiding, die ook voor niet insiders te
+begrijpen is, is waardeloos!
+
+VERBODEN VARIABELEN
+
+6. Gebruik geen 'verboden variabelen' (zie
+het boek), deze vormen namelijk voor sommige
+computers z.g. sleutelwoorden (keywords).
+Ook variabele namen, die met een O beginnen
+mogen niet worden gebruikt! In dit verband
+ook oppassen, dat er niet per ongeluk een
+sleutelwoord ontstaat, voorbeeld: IF B=A
+THEN...., wordt soms gelezen als: IF B= AT
+HEN.... en geeft dan aanleiding tot een SYNTAX
+ERROR. Met haakjes erom is dit te verhelpen:
+IF (B=A) THEN.... 7. Neem nooit aan, dat een
+variabele, die in het programma voor het eerst
+wordt aangeroepen, altijd op nul staat. Men
+MOET elke variabele tevoren een waarde
+toekennen. Als het kan voorkomen, dat een
+variabele wordt aangeroepen, b.v. om te
+worden gebruikt in een berekening, maar de
+mogelijkheid bestaat dat deze tevoren nog
+niet een waarde heeft gekregen, declareer
+deze variabele dan aan het begin van het
+programma gelijk aan nul. 8. DIM statements
+altijd aan het begin van het programma
+plaatsen. Een verderop geplaatst DIM statement
+kan aanleiding geven tot een REDIM'D ERROR,
+als de regel een tweede maal wordt doorlopen.
+
+LOGISCHE VERGELIJKINGEN
+
+9. Speciale aandacht voor de logische
+vergelijkingen (AND, OR, NOT). Gebruik hier
+ALTIJD haakjes om de berekeningsvolgorde aan
+te geven, dus niet: IF A>B AND C=D THEN.....,
+maar IF (A>B) AND (C=D) THEN..... 10. Speciaal
+de mensen, die een machine gebruiken met meer
+dan 40 tekens per regel en meer dan 24 regels
+per scherm kunnen problemen krijgen, als hun
+programma's op een echt 40x24 scherm wordt
+gedraaid. Dan blijkt plotseling het scherm te
+scrollen of de regels op de volgende regel
+verder te lopen. De hele schermindeling loopt
+dan in de war. Berucht is het zinnetje 'Druk
+op een toets voor verder'. De cursor staat dan
+op de 25ste regel te knipperen en als die regel
+er niet is, dan scrollt het scherm 1 regel op
+en de bovenste regel verdwijnt. Een puntkomma
+kan hier wonderen doen! (Voorbeeld: PRINT 'DRUK
+OP EEN TOETS';:GOSUB 210). 11. Let erop, dat
+de regels, zoals ze in Basicode worden
+opgeslagen, nooit langer dan 60 tekens mogen
+zijn! Speciaal DATA-regels zijn berucht! 12.
+Gebruik waar mogelijk de subroutines 300 en/of
+310 om een goede presentatie van getallen op het
+scherm te krijgen. Voorbeeld: B=5:
+PRINT'Aantal:'; B kan opleveren: Aantal:5 of
+Aantal: 5, Beter is: B=5 : SR=B : GOSUB300 :
+PRINT'Aantal: ';SR$. Dit geeft op elke computer:
+Aantal: 5
+
+RECENSIES MSX-BOEKEN
+
+MSX VERDER UITGEDIEPT door H. Klopper, 78 pag.
+Uitgave: Stark-Texel, prijs f 23.90. Dit boek
+geeft een overzicht van de ROM routines, de
+indeling van het video geheugen en de registers
+van het VDP. Ook staat er een overzicht in van
+de speciale MSX control codes, de verschillende
+screen modes en het gebruik van VPOKES. Ook
+vertelt het iets over de sprites in mode 1,2 en
+3, over het Base statement, enz. In de
+appendices wordt aandacht geschonken aan het
+hexadecimale getallensysteem en de binaire
+getallen. Voorts bevat het boek een flink aantal
+handige programma's, zoals een disk loader
+utility, animatie met karakters, simulatie van
+het opstartscherm, een balspel, enz. Nuttig om
+door te werken en het is vooral goed te
+gebruiken als inleiding tot het bestuderen van
+de dikkere handboeken om te voorkomen, dat men
+dan door de vele bomen de weg door het 'bos'
+kwijtraakt.
+
+OOK VOOR RANDAPPARATUUR
+
+MSX COMPUTERS EN PRINTERS - AANSLUITEN EN
+GEBRUIKEN door Wessel Akkermans, 156 pag.,
+uitgave Stark-Texel, prijs f 27.50. Voor
+degenen die er over denken een printer aan
+te schaffen, staan in dit boek voldoende
+gegevens om een goede keus te maken. Heeft
+men (al) een printer, dan moet deze op de
+juiste manier met de computer worden
+gekoppeld. Dit wordt uitvoerig beschreven
+voor zowel MSX-1 als MSX-2 computers. Zowel
+de Centronics parallel poort als de RS232C
+interface worden volledig uit de doeken gedaan,
+evenals het ready/busy protocol en het
+Xon/Xoff protocol. Daar een MSX computer
+meestal is uitgerust met een Centronics poort
+is de beschrijving daarvan van groot belang
+voor de bezitters van zo'n systeempje. Maar
+ook voor hen, die zich wat algemener willen
+orienteren is de beschrijving van de seriele
+RS232C aansluiting zeer waardevol. Denk in dit
+verband aan het gebruik van telefoon modems.
+Ook het programmeren van de printers
+(verschillende lettervormen, regellengte,
+tabulatie, grafische weergave) wordt diepgaand
+besproken. Kortom een boek voor hen, die alles
+uit hun computer-printer combinatie willen
+halen wat er in zit! In appendix B staan vertaal
+tabellen voor commando's aan verschillende
+soorten printers (Seikosha SP1000MX en SP800,
+Epson FX80+, OKI-mate 20, Brother CE50BT en
+JUKI6100). Het nut van die tabellen is, dat
+programma's waarin printers worden aangestuurd,
+gemakkelijk kunnen worden geconverteerd naar
+een programma voor uw eigen printer. De tabel
+kunt u gemakkelijk met behulp van het bij uw
+printer behorende handboek voorzien van de
+gegevens, die bij uw printer passen, zo die
+al niet in de tabellen staan. Conclusie: een
+zeer nuttig naslagwerk.
+
+BASIC VOOR MSX
+
+BASIC VOOR MSX COMPUTERS door L.E.Carter en
+E.Huzan, 176 pag., verscheen bij MAKLU B.V.,
+(voorheen Maarten Kluwer) en kost f 39.50.
+De oorspronkelijke Engelse uitgave werd door
+L.A.P van den Wyngaert in het nederlands
+vertaald. Het is vooral nuttig voor hen, die
+de Engelse taal niet voldoende beheersen en
+bij de aanschaf van hun computer een in het
+Engels gestelde handleiding voor het
+programmeren in Basic hebben gekregen. Na een
+algemene inleiding over de opzet van een
+computer en de verschillende programmeer talen
+volgt een zeer uitgebreide behandeling van de
+MSX-Basic, waarbij ook alle ingebouwde
+grafische- en geluidsfunkties aan de orde
+komen. Het boek is verlucht met talrijke korte
+voorbeeld programmaatjes, zodat men direct kan
+waarnemen, wat men met een bepaalde opdracht
+kan doen. Waar dat nuttig is, worden ook
+stroomschema's getoond, waardoor het in een
+oogopslag duidelijk wordt, hoe een bepaald
+programma is opgebouwd. Het gebruik van de
+joystick in een programma voor besturings
+doeleinden inclusief de werking van de
+vuurknop, hoe men botsingen tussen sprites op
+het scherm kan detecteren en hoe men
+bestanden kan manipuleren is na de lezing van
+dit boek voor u geen geheim meer. In het boek
+komen hier en daar opdrachten voor, om zelf
+een bepaald probleem op te lossen met de
+verkregen kennis. De oplossimg staat achter in
+het boek. Helaas klopt de verwijzing naar de
+juiste tabel niet altijd, maar na even zoeken
+wordt de goede oplossing toch duidelijk doordat
+de benaming van de listing overeenkomt met de
+benaming van het opgegeven vraagstuk. Met
+behulp van dit boekwerk kan men uitstekend
+in MSX-Basic leren programmeren.

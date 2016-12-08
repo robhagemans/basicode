@@ -1,0 +1,292 @@
+116, zon 27 dec '87
+
+BOEK: WERKEN MET ROBOTS
+
+Wanneer we op een blaadje papier een
+rechthoek tekenen, moeten we daarbij -
+minstens - twee gewrichten gebruiken: de
+schouder en de elleboog. De beweging van die
+twee gewrichten moet gecoordineerd
+geschieden. Voor een mens is die coordinatie
+geen enkel probleem. Een probleem ontstaat,
+wanneer we de rechthoek willen laten tekenen
+door een robotarm. Over de oplossing van de
+bewegingsproblemen van een robot gaat het
+boekje Werken met Robots.
+
+Praktijkvoorbeelden maken ongeveer de helft
+uit van het boek. Deze zijn toegesneden op de
+CS-113 robot, gekoppeld aan een Commodore-64
+(of -128) computer, voorzien van Simons Basic
+en een diskdrive. De CS-113 wordt geleverd
+door Sciento (Den Bosch/Antwerpen) en kost
+compleet met interface meer dan 3000 gulden.
+Eerder iets voor het technisch onderwijs dan
+voor de hobbyist dus. Toch kunnen
+bijvoorbeeld bezitters van de bekende
+goedkope robotarm voor de MSX computer wel
+iets aan deze stukken van het boek hebben,
+mits ze de nodige zelfwerkzaamheid aan de dag
+leggen.
+
+In het eerste gedeelte van Werken met Robots
+wordt een computerprogramma beschreven om de
+werking van een robot na te bootsen. Op het
+scherm van de computer is te zien, wat de
+robot zou doen bij een bepaalde
+programmering. Zulk droogzwemmen heet in
+vaktaal off-line programmering. Een andere
+methode is teach-in: we typen commando's in
+in de computer om een aangesloten robot de
+gewenste handelingen meteen te laten
+uitvoeren. Het is de bedoeling dat de gegeven
+commando's worden onthouden en later samen
+een programma gaan vormen, waarmee de robot
+zelfstandig kan werken.
+
+Werken met Robots is geschreven door P.E.M.
+van den Wyngaert, C.J.W. Vanhoeylandt en
+G.M.I. van Landeghem. Het boek is verschenen
+bij Maklu, Apeldoorn/Antwerpen en telt 96
+bladzijden. De prijs is f.24,50. ISBN
+90-6215-1663. Aldus onze correspondent en
+cursusleider Pim van Tend.
+
+NIET ZO TE SPREKEN
+
+C-64 en 128 expert Thijs Timmerman is niet
+zo te spreken over een boek dat jij laatst
+las. Hij haalde er alle fouten uit: misschien
+handig als u het ook gekocht heeft. Zo lijkt
+het tamelijk onbruikbaar. Hij schrijft:
+onderstaand treft u een overzicht van alle
+fouten aan die mij bij het lezen van het boek
+van Roelf Sluman 'Commodore C128 - Praktische
+tips en programma's' zijn opgevallen.(1e druk)
+
+blz 34, regel 21: 'In dit geval krijgen we dus
+NEGEN keer de tekst...' moet zijn: 'In dit geval
+krijgen we dus TIEN keer de tekst...'
+
+blz 65/65: oneens met conclusie over bug. Pas
+wanneer in de betrefende kleurmode (0 of 1)
+wordt gewerkt, wordt de corresponderende nybble
+in het kleurengeheugen aangepast aan de actuele
+kleur. In hires-mode 'gedraagt' kleurmode 0
+zich dus analoog aan mode 1. Van een bug is m.i.
+geen sprake, dat het knap lastig kan zijn erken
+ik doch in bepaalde situaties heeft het ook
+voordelen. Het is immers mogelijk om twee
+kleuren per 8 bij 8 pixels te defineren die
+totaal onafhankelijk zijn aan de overige
+kleuren op het hires-scherm.
+
+blz 88, regel  3: in de listing: 30 SOUND
+1,X,1 moet zijn: 30 SOUND 1,Y,1
+
+blz 84/85 : listing gelijk aan die op blz
+82/83
+
+blz 89, regel 12 en 17: de opgegeven tijdsduur
+in de SOUND opdracht is te klein.
+
+blz 101: in de listing:
+50 DATA 238,32,208,76,0,192 moet zijn:
+50 DATA 238,32,208,76,0,11
+
+blz 102: in de tabel: 2821  192
+                m/z: 2821   11
+
+blz 102, regel 24:
+...taalprogramma op 16384 moet worden... m/z:
+...taalprogramma op 2816 moet worden...
+
+blz 103, regel  3:
+...starten door SYS 16384+RETURN in... m/z:
+...starten door SYS 2816+RETURN in...
+
+blz 119, regel 14:
+nulvlag is 0: uitkomst van ... m/z:
+nulvlag is 1: uitkomst van ...
+
+blz 119, regel 15:
+nulvlag is 1: uitkomst van ... m/z:
+nulvlag is 0: uitkomst van ...
+
+blz 119, regel 16:
+kijkt naar de nulvlag: als deze 1 is m/z:
+kijkt naar de nulvlag: als deze 0 is
+
+De NUL-vlag is true (N=1) als er nul wordt
+gedetecteerd, false (N=0) als er ongelijk aan
+nul wordt gedetecteerd. BNE = Branch if not
+equal, vrij vertaald als niet gelijk aan nul
+ = als niet de nul-vlag is geset = als
+nulvlag false is (N=0).
+
+blz 120: in de listing:
+10 FOR X=0 TO 2 m/z:
+10 FOR X=0 TO 22
+
+blz 141: in de listing:
+50 OPEN 2,2,0,CHR$(16):REM ... m/z:
+50 OPEN 2,2,0,CHR$(38)+CHR$(16):REM ...
+
+En op blz 144: de 1e listing voor cassette
+bezitters functioneert niet 100%. Kortom er
+valt op sommige computer boeken nogal wat af
+te dingen. Thijs was zo vriendelijk om de
+fouten aan de uitgever door te geven. Wij
+geven ze aan u: kunt u ze zelf in het boek
+verbeteren....
+
+BESPREKING PC-BOEKEN
+
+Op de Hobbyscoop redaktie komen de laatste
+tijd veel boeken binnen over MS-DOS en het
+PC gebruik. Hieruit valt af te leiden, hoe
+belangrijk dit type computer gaat worden.
+We zullen dan ook van tijd tot tijd een
+bespreking aan deze materie wijden.
+
+Een opmerking vooraf: het valt op, dat een
+heleboel boeken veel gemeen hebben. Overal
+vind je besprekingen over dezelfde onderwerpen.
+Maar over minder bekende zaken, b.v. het
+aansturen van de 'muis' of het aansluiten van
+een extra drive, die je op een of andere beurs
+voor een koopje op de kop hebt getikt, vind je
+bijna niets, althans niet iets, waar je als
+hobbyist mee uit de voeten kunt. Misschien een
+tip voor de publicisten onder ons, om daar eens
+aan te denken? We wachten af.
+
+Bij Stark-Texel verscheen: PC DOS/MS DOS
+randapparatuur en toepassingen, door W.J. van
+Heusden, 141 pag., prijs f 32.50. Het is een
+boek, dat speciaal gericht is op de beginnende
+gebruiker en hem/haar kennis laat maken met de
+vele mogelijkheden, die de PC te bieden heeft.
+Het kan een goede handleiding zijn bij het
+aanschaffen van een PC en de randapparatuur.
+Ook wordt een duidelijk overzicht gegeven van
+beschikbare software. Men moet geen uitputtende
+behandeling van de stof verwachten, maar voor
+de velen onder ons, die zich op het gebied van
+de PC nader willen orienteren, is het een heel
+geschikt werkje. Soms moet men eventjes naar de
+juiste paginanummering zoeken, want daar is wel
+eens een foutje in geslopen (o.a. pag 31 en 30
+zijn verwisseld), maar dat houdt de geest
+wakker. Het boek is (zeer) ruim geillustreerd
+en bevat veel scherm foto's, waardoor men een
+redelijke indruk krijgt van de besproken
+programma's. Een goed boek voor een beginner.
+
+Bij Omniboek, den Haag verscheen: PC voor
+beginners van Nico Baaijens, 192 pag., prijs
+f 57.- Dit is een goed geschreven boek, dat
+iets dieper graaft dan het voorgaande en ook de
+beginner op een PC wegwijs wil maken. Allerlei
+wetenswaardigheden over MS/DOS en ook over de
+verschillende applicatie programma's worden
+behandeld. Aanbevolen.
+
+CURSUS OP DISKJES
+
+PC en PC/DOS, interactieve cursus op diskette
+(en in boekvorm), door Dik van Baren, is bij
+Kluwer verschenen. Voor de prijs van f 79.-
+krijgt men een boek van 63 pagina's en twee
+diskettes, waarmede men wegwijs kan worden in
+PC-land. Het opbouwen van het systeem uit
+verschillende hardware componenten wordt uit
+de doeken gedaan en natuurlijk komt DOS heel
+uitvoerig aan bod. Al doende leert men een PC
+bedienen. Een goede cursus voor hen, die liever
+'doen' dan 'lezen'.
+
+PC EN ONDERNEMER
+
+Als Marka Paperback verscheen bij Het Spectrum
+'De PC in de kleine(re) onderneming', werking,
+gebruik en aandachtspunten rond de aanschaf,
+door Th.J. Miedema, 160 pag. prijs f 34.90.
+Dit boek is speciaal geschreven voor hen, die
+als ondernemer denken over automatisering van
+hun bedrijf. Allerlei zaken komen aan de orde,
+zoals 'kopen of leasen', compatibiliteit,
+desktop publishing, diverse administratieve
+programma's, enz. Alles in overzichts vorm.
+Verwacht dus geen diepgaande besprekingen van
+hard- en software. Echter: indien men zich als
+zakenman snel over deze materie wil orienteren
+is dit een geschikt boek.
+
+IBM-BASIC voor personal computers, door David
+A. Lien, 384 pag., prijs f 79.50, uitgave:
+Kluwer.
+Een werkelijk uitstekend boek voor hen die een
+PC bezitten en nu zelf ook wel eens wat willen
+programmeren in Basic. Het begint heel erg
+simpel, maar gaandeweg wordt men meer en meer
+in Basic ingewijd. Het boek bevat veel korte
+programmeer voorbeelden, waardoor men 'al
+doende leert'. Als toegift krijgt men nog een
+aantal kant en klare programma's. In enkele
+appendices zijn overzichtelijke tabellen met
+o.a. ASCII waarden, Basic commando's en
+foutmeldingen opgenomen. Een zeer goede cursus!
+
+Eveneens bij Kluwer verscheen: Word Perfect,
+tips en technieken, door E.Alderman / L.Magid,
+320 pag, f 69.50. Dit werk vormt een perfekte
+Nederlandstalige handleiding voor de steeds
+populairder wordende tekstverwerker. Het werken
+met twee documenten tegelijk, het gebruik van
+macro's en het toepassen van tekstbestanden in
+andere programma's e.d. komt uitvoerig aan de
+orde. Een goede index maakt het boek erg
+'gebruikers vriendelijk.'
+
+DOS HANDBOEK VERSIE 3.30
+
+Een nieuwe DOS een nieuw boek. Ditmaal door
+W.J. van Heusden, 622 pag., uitgave Stark
+Texel, prijs f 67.50.
+Dit boek bevat niet alleen een volledige
+handleiding voor DOS 3.30, maar er staat alles
+in over de installatie procedure en batch files.
+Ook geeft het een overzicht van de (GW)BASIC(A)
+commando's en zijn er in het boek vele tabellen,
+o.a. van systeem- en foutmeldingen, opgenomen.
+Elk hoofdstuk wordt besloten met een aantal
+vragen, waarmede men zijn opgedane kennis kan
+testen. Een uitvoerige uitwerking van deze
+vragen is uiteraard ook in het boek opgenomen.
+Niet voor een beginner, maar een gevorderde
+gebruiker zal er zijn voordeel mee kunnen doen,
+mede door de goede index.
+
+De IBM PC&MS DOS gebruikersgroep van de HCC
+zond ons hun uitstekende software catalogus,
+uit drie delen bestaande (inclusief het
+supplement onderwijs).
+Het staat boordevol Public Domain en Freeware
+software, dat voor een deel uit FIDO kan worden
+'gedownload' en voor het overige bij de gg kan
+worden besteld. Er staat van elk programma een
+korte beschrijving in en bovendien bevat het
+duidelijke overzichten in rubrieken.
+Het boekwerk is gevat in een
+stevige ringband. De twee dikke delen, die
+tesamen de beschrijving van meer dan 180 MByte
+software bevatten, kosten f 15.- per stuk,
+het onderwijs supplement f 10.- en de
+ringband, waarin deze drie delen passen,
+f 15.-, te bestellen bij de HCC IBM PC gg te
+Vlissingen, [verzendkosten f 5.- per zending,
+(giro 1947766), voor leden.]
+Deze PC en MS-DOS boeken werden gelezen door
+Pieter Vijlbrief. Tot zover onze 'boeken
+bijlage.'

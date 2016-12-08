@@ -1,0 +1,302 @@
+358, maa 05 nov '90
+
+VLIEGTUIG-RADIO (DEEL 2)
+
+Zoals beloofd in het eerste deel over
+vliegtuig communicatie en de Golf
+(vorige week) hier meer details die van
+belang zijn bij het luisteren. Omdat de
+Golfcrisis nog steeds voor de meeste
+beroering op de luchtwegen zorgt, ook
+dit maal weer uitgebreid aandacht
+daarvoor. Vorige keer had Bart Hoekstra
+het in deze rubriek al over de
+gebruikte ICAO four letter identifiers
+(vier letter codes). Omdat de meeste
+mensen die niet kennen, hier een
+overzichtje van de momenteel meest
+gebruikte codes:
+- EDAF Frankfurt/Rhein Main (Germany)
+- EDAR Ramstein (Germany)
+- EGUN Mildenhall (UK)
+- LPLA Lajes (Azores)
+- LETO Torrejon (Spain, near Madrid)
+- LEZA Zaragosa (Spain)
+- LICZ Sigonella (Italy)
+- LTAG Incrlik (Turkey, near Adana)
+- OEDR Dhahran (Saudi Arabia)
+- OERY Riyadh (Saudi Arabia)
+
+SYSTEEM IN CODE
+
+De slimme lezer zal al vermoeden dat er
+enig systeem zit in deze coderingen.
+Dat klopt. Al is het af en toe niet
+echt logisch. De eerste letter geeft de
+ICAO-region aan:
+E = northern Europe
+L = mediterranean
+O = middle east (met de O van midden
+Oosten)
+K = USA (met de K van ameriKa)
+
+De tweede letter geeft het land aan
+waar zich het vliegveld bevindt:
+G = Great Britain
+D = Deutschland
+H = Holland
+B = Belgium
+I = Italy
+E = Espagna
+T = Turkey
+
+UITZONDERINGEN IN USA
+
+Uitzondering hierop is de USA. Hiervoor
+geldt uiteraard geen landcode. De
+laatste drie posities worden hier
+gebruikt om het veld aan te geven. In
+de andere regio's worden de laatste
+twee posities daarvoor gebruikt.
+Meestal wordt hier gebruik gemaakt van
+een mnemonic, maar ook hier hebben
+sommige landen nog verder een systeem
+ingevoerd. Zoals, hoe kan het ook
+anders, onze oosterburen, de Duitsers.
+Daar geeft de derde positie de operator
+van het vliegveld aan: A = USAF/CAF
+(Canadian), U = RAF (Royal Air Force,
+UK). Tot zover de vier letter codes.
+
+TELEFOON OVER RADIO
+
+Er is ook veel te horen via de telefoon
+verbindingen die over radio worden
+geschakeld. De phone patches met
+Phantom: veel wordt er geregeld over
+zaken als vertrek/ bestemmings plaatsen
+etc. Maar ook meer dagelijkse zaken
+komen voor. Zoals iedereen tegenwoordig
+heeft ook de USAF haar eigen CAO en
+vliegtijden besluit. Daarin is
+opgenomen dat AirCrews niet langer dan
+een vastgestelde tijd operationeel
+mogen zijn. Uiteraard kunnen zich
+situaties voordoen waarin het niet
+mogelijk is hieraan te voldoen. Als je
+op weg bent van A naar C, ga je niet
+naar B omdat je tijd op is. Er moet dan
+aan PHANTOM toestemming worden gevraagd
+om de missie te vervolgen. Hiervoor
+moet een Crew Duty Day Extension worden
+aangevraagd. Meestal levert dat geen
+problemen op, maar wel informatie voor
+de attente luisteraar. Verder wordt de
+Aircraft Maintenance Status (de staat
+van onderhoud van het toestel)
+doorgegeven. De volgende codes worden
+hiervoor gebruikt.
+
+PROBLEMEN MET VLIEGTUIGEN
+
+A1 Vliegtuig is OK, geen problemen.
+A2 Minor problems (radio's, niet missie
+essentiele problemen).
+A3 Serious problems, soms noodzaak om
+te landen.
+A4 Major problems, noodlanding.
+A5 bemanning verlaat toestel!
+
+Bij code A1 wordt verder niets
+toegelicht, bij A2 of hoger volgt er
+een opsomming van Write-Ups (genoteerde
+klachten). Is er onderhoud nodig, dan
+wordt dat gecoordineerd met Phantom en
+het betreffende vliegveld. Af en toe
+wordt er ook wel eens met moeder de
+vrouw gebeld. Op het eerste gezicht
+niet interessant, soms kun je er toch
+uit afleiden waar zich de kist bevindt,
+of op wat voor missie hij is.
+
+MAC CALL SIGNS
+
+Momenteel bestaan de MAC call signs nog
+steeds uit MAC + 1 letter + 4 cijfers.
+Veel systeem hebben we tot nu toe niet
+kunnen ontdekken, of het moet zijn dat
+de 4 cijfers een gestaag oplopende
+reeks vormen. MAC call signs met 5
+cijfers duiden meestal op het
+registratie nummer van het toestel.
+Vluchten die onder registratie nummer
+worden gevlogen hebben meestal weinig
+met de operationele zaken als de
+Golfcrisis te maken. Andere Amerikaanse
+Call Signs bestaan veelal uit een woord
++ twee cijfers. Het woord is vaak
+verbonden aan de eenheid waartoe het
+toestel behoort.
+
+AARDIGE GEGEVENS UIT GOLF
+
+Call Signs van tankers (KC-10/KC-135)
+zijn vaak namen van oliemaatschappijen.
+Tot nu toe gehoord: SHELL, EXXON en
+TEXACO.
+Ook kleuren worden vaak door tankers
+gebruikt. RED, BLUE, BLACK etc., maar
+ook ongebruikelijke zoals AMBER, EBONY,
+BEIGE.
+
+Volgende keer nemen we een andere
+luchtmacht onder de loupe die momenteel
+zeer actief is in de regio: de RAF
+(Royal Air Force), in deel 3 van deze
+serie. Mocht je speciale wensen of
+interesses hebben, laat het dan even
+weten aan Paul Hoekstra via het NOS
+Scoop Bulletin Board (035-45395), of
+via Postbus 1200 in Hilversum.
+
+BEST BEWAAKTE REPEATER MODERNER
+
+Het best bewaakte Nederlandse amateur
+zenderpark wordt op dit moment
+uitgebreid en vernieuwd. PI2NOS en
+PI1NOS ondergaan een grondige wijziging
+en verbouwing, waarvan de allereerste
+fase achter de rug is. Het jublieum
+zendstation van Scoop heeft dezer dagen
+twee antennes gekregen omdat
+verbouwingen aan de PTT-toren in
+Hilversum een goede afstraling rondom
+onmogelijk maakte. Twee van elkaar
+afgeschermde rondstralers geven nu een
+achtvormige karakteristiek op het 70 cm
+spraakrelais, waardoor aan de opzet van
+de ontwerpers van het zendstation wordt
+voldaan: een bereik vanuit Hilversum
+tot aan Amsterdam, Utrecht, Amersfoort
+en de Flevoploder. Aan de eerste
+reacties te oordelen is het patroon nu
+zodanig dat mobiele stations rondom
+Hilversum optimaal gebruik kunnen maken
+van deze bijzondere repeater.
+
+HOGE KOSTEN
+
+Het spraakrelais, met de ingang op
+431.725 MHz en de uitgang op 430.125
+MHz, kost verschrikkelijk veel geld,
+kennis en mens-uren. De zender, die
+oorspronkelijk werd opgezet als een
+jubileum cadeau aan de Nederlandse
+zendamateurs bij het 20-jarig bestaan
+van NOS-Hobbyscoop, was bij de
+oplevering up-to-date. Inmiddels zijn
+de eisen die daaraan worden gesteld
+aanzienlijk verscherpt. Met name de
+bijkomende voorwaarden die gesteld
+werden aan het station door PTT en
+kabelnet Hilversum verzwaarden de opzet
+in hoge mate. Bovendien moet op het
+zwaar bewaakte Audio en Video
+Verbindingen Centrum van PTT iedere
+schroef en wijziging in de opzet worden
+aangemeld en goedgekeurd. De
+oorspronkelijke ramingen van hoeveel
+geld het zou kosten zijn met
+fantastische bedragen overtroffen. Met
+name omdat alle zenders (ook die van
+het packetradio knooppunt) een uiterst
+klein, maar schoon signaal moeten
+afgeven.
+
+MOEILIJK TOEGANKELIJKE PLAATS
+
+Daar komt nog bij dat bezoeken aan de
+AVVC toren gelimiteerd zijn. Dat heeft
+de begeleidings groep ertoe doen
+besluiten om de oudere Storno
+mobilofoonpost te vervangen door een
+hypermoderne post die microcomputer
+gestuurd is en waarvan alle parameters
+op afstand kunnen worden bestuurd, om
+het aantal bezoeken aan de bijzondere
+opstelplaats zoveel mogelijk te
+beperken. Uiteraard zijn hier
+aanzienlijke kosten en bouwtijd mee
+gemoeid. Ook de aanleg van allerlei
+zaken (die niet door amateurs gedaan
+mogen worden) moet worden vergoed aan
+PTT. Kosten die gezien de bijzondere
+opstelplaats onvermijdelijk zijn.
+
+KNOOPPUNT VOOR PACKETRADIO
+
+De Hilversumse groep heeft ook de
+verplichting op zich genomen om een
+belangrijk steunpunt in het landelijk
+packet radio netwerk te vormen. Gezien
+de hoogte (ca. 100 m voor het spraak
+relais en 80 m voor de packet zenders)
+is het in de praktijk al mogelijk
+gebleken om bijv. de Utrechtse
+heuvelrug te overbruggen en in
+oostelijke richting contact te leggen
+met het VRZA station in Apeldoorn. In
+westelijke richting is er verbinding
+met het ruimtevaart station van
+ESA/ESTEC in Noordwijk, terwijl er
+voorts contact is gelegd in zuidelijke
+en noordelijke richting. Een probleem
+daarbij is echter dat de jonge techniek
+van packet radio (met name de netwerk
+structuur) nog in ontwikkeling is en
+dus veel aandacht vraagt.
+
+NIEUWE EISEN PACKETRADIO NETWERK
+
+Onlangs is komen vast te staan dat alle
+hoofdverbindingen van het packetradio
+netwerk in de 23 cm-band moeten
+functioneren. Het probleem voor het
+PI1NOS station daarbij was dat tevoren
+allerlei 70 cm-sets bij elkaar
+gesprokkeld waren die nu allemaal
+vervangen moeten worden. Het aanbrengen
+van de totaal nieuwe structuur is een
+bijna onoverkomelijke zaak gezien de
+moeilijk bereikbare, hoge positie van
+het relais. De beslissing is echter wel
+genomen om juist dit stichtings station
+deze belangrijke rol te laten spelen.
+Teveel gebeurt het dat packet
+steunpunten van individuele
+zendamateurs plotseling wegvallen door
+persoonlijke problemen of
+omstandigheden.
+
+UW GELD IS HARD NODIG
+
+Hoewel er weliswaar een goede
+gemeenschappelijke basis bestaat voor
+dit station, is uw geldelijke steun
+hard nodig om het station up-to-date te
+maken en te houden. Daarvoor is een
+speciaal gironummer geopend tnv
+Penningmeester Hobbyscoop Repeater
+fonds, Jan Rozema (PE1HMD), Kortenhoef.
+Gironummer 3408886 bij de Postbank. We
+zien uw giften graag tegemoet. Alle
+giften worden verantwoord in een van de
+volgende Beeldkranten. Veel dank is
+verschuldigd aan de uiterst geduldige
+en bekwame technische kern van het
+station: PA0NEK (Redert), PA0JMY (Jan)
+en PE1CHL (Rob). Eventuele vragen of
+ideeen kunt u richten aan de machtiging
+houder van PI9NOS (Hans), p/a NOS
+Scoop, Postbus 1200, 1200 BE Hilversum.
+

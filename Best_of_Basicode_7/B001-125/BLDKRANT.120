@@ -1,0 +1,268 @@
+120, woe 13 jan '88
+
+AMSAT-OSCAR 10
+
+In de periode van 4 tot 10 januari mag OSCAR
+10 niet worden gebruikt tussen de mean anomaly
+phasen 155 en 223. Van 11 tot 17 januari mag
+OSCAR 10 niet worden gebruikt tussen de
+phasen 166 en 233. Tijdens de rest van elke
+omloop mag het mode B relais worden gebruikt
+maar men wordt dringend verzocht het uplink
+vermogen daarbij zoveel mogelijk te beperken.
+Eind februari wordt de hoek tussen de zon en
+de zonnepanelen van OSCAR 10 weer zo
+ongunstig dat de hoeveelheid beschikbare
+elektrische energie in de satelliet snel zal
+afnemen. Men moet er daarom op rekenen dat
+OSCAR 10 vanaf maart weer enkele maanden
+onbruikbaar zal zijn.
+
+UoSAT-OSCAR 11
+
+De UoSAT-unit in Surrey vermoedt dat de
+problemen, die onlangs optraden met de
+nieuwe DIARY programmatuur in de
+boordcomputer van OSCAR 11, veroorzaakt
+werden door een fout in een minder
+belangrijk deel van het digitale geheugen
+in de satelliet. Men gaat het geheugen nu
+uitgebreid testen met een speciaal 'worm'-
+testprogramma, dat elk bit van het totale
+geheugen zal kontroleren. Dit vergt vrij
+veel tijd, zodat men voorlopig moet rekenen
+op tijdelijke afwijkingen van het normale
+schema van OSCAR 11. Als gevolg van de
+software problemen is de satelliet uit zijn
+gravitatie-gradient stabilisatie geraakt en
+is dus aan het tuimelen. Met behulp van de
+opnieuw geladen 'oude' programmatuur is de
+boordcomputer nu bezig de stabilisatie weer
+automatisch te herstellen.
+
+In de afgelopen Kerst-periode heeft OSCAR 11,
+net als OSCAR 9, een speciaal gebruiksschema
+gevolgd. Tijdens de Kerstdagen zond de
+Digitalker van OSCAR 11 Kerstwensen uit in
+spraak via zijn bakenzenders. Ook werden
+dergelijke berichten verspreid via de DCE
+uitzendingen. In de University of Surrey
+wordt inmiddels gewerkt aan het ontwerp van
+UoSAT-C, de opvolger van OSCAR 11. Misschien
+is er eind 1988 al een lanceermogelijkheid
+voor deze nieuwe satelliet.
+
+FUJI-OSCAR 12
+
+Het gebruiksschema van OSCAR 12 is voor
+midden januari als volgt gepland:
+mode JD van 19-1 1255 UTC tot 20-1 1201 UTC,
+mode JD van 21-1 1308 UTC tot 22-1 1214 UTC,
+mode JD van 23-1 1121 UTC tot 24-1 1228 UTC,
+mode JA van 26-1 1241 UTC tot 27-1 1147 UTC.
+
+In alle tussenliggende perioden wordt de
+satelliet geheel uitgeschakeld gehouden om de
+batterij de gelegenheid te geven op te laden.
+
+AMSAT-Phase 3C
+
+De nieuwe Phase 3 satelliet heeft een eigen
+raketmotor aan boord, waarmee de baan na de
+lancering met de ARIANE 4 raket kan worden
+gewijzigd. Het raketmotor systeem is getest
+en blijkt helemaal in orde te zijn. Bij de
+lancering van OSCAR 10 zijn er problemen
+opgetreden in dit raketmotor systeem,
+waardoor de baanverandering niet helemaal
+verliep zoals gepland. Bij de lancering van
+Phase 3C zijn echter geen problemen te
+verwachten. De voltooide satelliet blijkt
+zo'n 10 procent lichter te zijn geworden
+dan verwacht. Dit is gunstig want daardoor
+kan meer raketmotor brandstof worden
+meegenomen en kan de uiteindelijke baan
+gunstiger worden. Phase 3C moet 4797,1
+sekonden na de start van de ARIANE 4 raket
+vanaf de lanceerbasis bij Kourou worden
+losgekoppeld van de derde trap van de raket.
+
+BAANPARAMETERS PHASE-3C
+
+De volgende baanparameters zijn gepland voor
+de elliptische parkeerbaan, waarin Phase 3C
+wordt achtergelaten door de ARIANE 4 raket:
+perigeum 222,504 km, apogeum 36076,636 km,
+inclinatie 9,997 graden, argument van het
+perigeum 178,148 graden, eerste evenaar-
+passage van zuid naar noord na de lancering
+bij 135,541 graden west, true anomaly
+127,554 graden. Nadat de baanparameters van
+de parkeerbaan nauwkeurig zijn bepaald na de
+lancering kan Phase 3C zichzelf naar zijn
+uiteindelijke baan manoeuvreren met behulp
+van zijn eigen raketmotor. De belangrijkste
+baanveranderingen die dan zullen worden
+doorgevoerd zijn het verhogen van het
+perigeum naar zo'n 1500 km en het vergroten
+van de inclinatie naar misschien wel 63
+graden. Het voordeel van een baanhelling bij
+63 graden is dat de breedtegraad van het
+apogeum dan niet zal gaan driften, zodat het
+apogeum steeds boven het noordelijk halfrond
+blijft. De satelliet blijft dan steeds
+uitstekende gebruiks mogelijkheden houden
+voor stations op het noordelijk halfrond.
+Veruit de meeste amateur stations bevinden
+zich op het noordelijk halfrond en omdat de
+stations, die zich op het zuidelijk halfrond
+bevinden, nooit erg ver ten zuiden van de
+evenaar zitten, zullen zij toch meestal ook
+zeer goed gebruik kunnen maken van de
+satelliet. De lancering van Phase 3C is nu
+gepland op 4 april.
+
+AANPASSING SATELLIET-PROGRAMMA'S
+
+Veel programma's die worden gebruikt voor het
+berekenen van omloopgegevens van satellieten
+bevatten een zogenaamde 'siderial time table',
+waarin konstanten zijn opgenomen die worden
+gebruikt bij de berekeningen. Deze konstanten
+moeten elk jaar worden aangepast. Voor de
+komende jaren moeten deze konstanten de
+volgende waarde hebben: voor 1988: 0,27469296,
+voor 1989: 0,27676777 en voor 1990:
+0,27610467. De meeste programma's maken
+tegenwoordig gebruik van kepler-
+baanparameters. Zolang men nog niet de
+beschikking heeft over parameters van 1988
+kan men elke set van parameters van 1987
+omrekenen naar 1988. Daartoe moet van de
+referentie-epoch het jaartal worden gewijzigd
+in 88 en van het dagnummer met fraktie moet
+365 worden afgetrokken, zodat men een
+negatief getal krijgt. Nieuwe, aangepaste
+baanparameters zullen zo spoedig mogelijk
+worden gepubliceerd. Met dank aan PA0DLO.
+
+COMMERCIELE KABELRADIO UIT HILVERSUM
+
+In de Hobbyscoop uitzending van 6 januari
+werd uitvoerig ingegaan op de testuitzendingen
+van het nieuwe radio-station 'Cable-one'.
+Hieronder nogmaals een samenvatting van de
+uitzending.
+
+Momenteel worden er proefuitzendingen gedaan
+via de satelliet met het commerciele
+radiostation 'Cable One'. Het station zendt
+in HiFi-STEREO via kabelnetten uit. Achter
+dit projekt staan de mannen Willem van Kooten
+(ex-disk-jockey Joost den Draaier) en Ad
+Ossendrijver. Gebruik wordt gemaakt van de
+oude, aan Nederland toegewezen, zend/ontvanger
+op de ECS satelliet. Na het verdwijnen van
+Europa-t.v. werd deze transponder door de PTT
+verhuurd aan het Duitse station 'Drei-SAT',
+en werden er door PTT, Philips en NOS
+technische proeven genomen met een vorm van
+digitale televisie. Op de meeste Nederlandse
+kabelnetten werd het oude 'Europa'-kanaal
+gesloten of voor andere toepassingen gebruikt.
+
+APPARATUUR AANWEZIG
+
+In veel kabelnetten is nog wel de ontvangst
+apparatuur voor Europa-tv aanwezig. Van dit
+gegeven maakt het nieuwe radio-station
+dankbaar gebruik. Voor Europa-tv was technisch
+een systeem gekozen dat het mogelijk maakt om
+in meer talen, naast het bijbehorende video
+beeld, uit te zenden. Zodoende kon met een
+video signaal en maximaal acht geluidkanalen
+toch een uniform 'Europees programma' worden
+gemaakt.
+
+Het kanaal op de satelliet is zo breed dat,
+in plaats van 1 beeld- en 8 audiokanalen,
+het kanaal eenvoudig verhuurd kan worden aan
+meerdere gebruikers. Er zijn besprekingen
+gaande om het video-deel op de satelliet te
+verhuren aan het Engelse bedrijf 'Meteo-cast',
+die dagelijks tussen 5 uur 's ochtends en 6
+uur 's avonds weerbeelden van de satelliet
+zal gaan uitzenden. Het geluidgedeelte is
+hierdoor ongebruikt en kan apart worden
+verhuurd.
+'Cable-(radio)-one', huurt twee audiokanalen
+op de satelliet transponder. Een is bestemd
+voor het linker kanaal en een andere voor het
+rechter. Bij de kabelnetten worden deze twee
+kanalen weer bij elkaar gevoegd en in STEREO
+op de F.M.-band gezet. Hiermee is een goede
+HiFi-kwaliteit mogelijk.
+
+GEEN APARTE SCHOTELANTENNE NODIG
+
+'De kabelnetten hoeven geen aparte
+schotelantenne te hebben om 'Cable one' door
+te geven. We zitten op dezelfde satelliet als
+waar ook 'Sky-channel', 'Super-channel' etc
+op uitzenden.' Veel kabelnetten hoeven naast
+de standaard apparatuur, die vaak al aanwezig
+is, maar enkele printen aan te schaffen om
+het nieuwe radio-station door te kunnen
+geven.', aldus Ossendrijver.
+
+'Voor de kabelnetten die nog geen goede
+ontvangst apparatuur hebben zullen
+investeringen moeten worden gedaan. We zijn
+met de fabrikant van de apparatuur in
+onderhandeling of het mogelijk is om speciaal
+voor 'Cable One' een aparte ontvanger te maken
+zodat het aanschafbedrag beperkt blijft.
+'Een logische redenatie wanneer je bedenkt,
+dat voor de doorgifte van een stereo
+radio-kanaal maar een beperkte ontvanger
+nodig is.
+
+PROGRAMMERING
+
+Over de invulling van het nieuwe radio-station
+zegt Ossendrijver: 'we zenden zeven dagen
+in de week dag en nacht uit, en richten ons
+op een publiek in de leeftijdscatagorie
+tussen 12 en 40 jaar.' Iedere dag is
+'horizontaal' geprogrammeerd. Dit betekent,
+dat iedere dag op hetzelfde tijdstip eenzelfde
+soort programma te verwachten is.
+De nieuws-items zullen in principe in het
+Engels worden gebracht maar kunnen ook in een
+andere taal worden uitgezonden.
+
+Op de vraag of 'Cable One' een direkte
+concurrent van RADIO-3 wordt, wordt
+geantwoord: 'met de ons voor ogen staande
+programmering denken we zeker een deel van
+de luisteraars bij radio-3 te gaan weghalen.'
+
+OOK NEDERLANDSE D.J'S OP CABLE-ONE
+
+Naast Skandinavische en Engelse disk-jockey's
+zullen er zeker ook d.j.'s uit Nederland op
+het station komen te werken. Namen kunnen ook
+worden genoemd: Tom Mulder; Kas van Iersel;
+Linda de Mol; Yvonne Keeley. 'Het ligt in
+ieder geval niet in de bedoeling, dat Willem
+van Kooten zelf als d.j. zal gaan optreden;
+wel heeft hij een zeer grote vinger in de
+pap als het om de programmering gaat'.
+
+Bezitters van een Grundig satelliet ontvanger
+kunnen zelf de proefuitzendingen van
+Cable-One volgen. Dagelijks tussen 12.00 en
+16.00 uur zijn de programma's te beluisteren
+via het oude Europa-tv kanaal op de ECS-F1
+satelliet. Gebruik wordt gemaakt van de
+geluidcarriers 4 en 5. (Aldus Bert Klaver)

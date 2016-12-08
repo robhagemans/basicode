@@ -1,0 +1,234 @@
+59, zon 11 jan '87
+
+SPECTRUM BOEKEN
+
+Lucie Blom, die laatst ook de test van enkele
+computers verzorgde in de computer bijlage van
+Hobbyscoop, las ook enkele boeken voor ons. Het
+gaat om 'Praktijkprogramma's voor de Spectrum,
+deel 1' door Wessel Akkermans. Uitgever is Stark
+Texel en het boek telt 126 pag, kost f 18,95.
+Een extra software cassette:f 24,95.
+
+Programma's, programmeertips en een duidelijke
+uitleg over dat alles zult u in dit boek tegen
+komen. Het begint met het omzetten van getallen
+(hex-dec, dec-bin, grondtal-grondtal enz),
+priemgetallen, ontbinden in factoren, zoeken en
+sorteerroutines. Vervolgens wordt uitgelegd
+hoe gegevens via het toetsenbord d.m.v. INKEY$
+kunnen worden ingevoerd. Ook het vergroten van
+karakters, het maken van een stopwatch en een
+digitale klok komen aan bod. Een programma om
+te leren typen en een grappig anagram-spel.
+Als u een microdrive bezit, dan staat er een
+handig programma in om een inhoudsopgave van
+de microdrive cartridges te maken. De
+conclusie: een boek vol met handige
+programma's.
+
+PRAKTIJK SPECTRUM 2
+
+Deel 2, van dezelfde auteur, is even duur.
+Ook hier is een cassette bij te koop. In
+dit tweede deel van deze serie een aantal
+programma's die naar Stark werden ingezonden.
+Het zijn vooral praktische programma's en naar
+eigen inzicht te veranderen. Uit de inhoud
+o.a.het volgende: afdrukken van Basic
+listings, gebruikskosten van de auto,
+inventariseer programma voor cassettes, vier
+op een rij, en een aantal korte routines.
+Een uitgebreid statistisch programma maakt
+het mogelijk om histogrammen en cirkel
+diagrammen te maken. Met een utility
+programma kan men de inhoud van de microdrive
+cartridge opgevragen, programma's die gewist
+en geformateerd moeten worden of automatisch
+gesaved. Conclusie: ook dit tweede deel is
+de moeite waard.
+
+UoSAT-OSCAR 9
+
+Rond de jaarwisseling 'telegraafeerde' onze
+kunstmaan deskundige PA0DLO het laatste nieuws
+door: na de feestdagen is het kommandostation
+in de University of Surrey weer helemaal
+operationeel en worden de normale aktiviteiten
+met OSCAR 9 en OSCAR 11 weer hervat. Het 21 MHz
+baken van OSCAR 9 is nu kontinu in bedrijf,
+terwijl het 2,4 GHz-baken uitgeschakeld is.
+
+RADIO SPOETNIKS
+
+Zodra RS5 en RS7 in de tweede week van januari
+elke omloop in de schaduw van de aarde komen
+zal hun gebruiks schema weer moeten worden
+beperkt. Vermoedelijk zal dan weer een schema
+worden toegepast zoals in november. Niet alleen
+de batterij van RS5, maar ook die van RS7 blijkt
+inmiddels vrijwel geheel versleten te zijn.
+Beide satellieten kunnen beslist geen grote
+belasting verdragen. Er zijn nog geen nieuwe
+gegevens beschikbaar over de op handen zijnde
+lancering van de nieuwe RS9 en/of RS10. De
+RS-groep in Moskou vermoedt nog steeds dat een
+lancering zou kunnen plaatsvinden in een van
+de eerste maanden van 1987.
+
+AMSAT-OSCAR 10
+
+Rond 21 december hebben de kommandostations
+weer problemen gekregen met het onder kontrole
+houden van de boordcomputer van OSCAR 10. Het
+mode B relaisstation schakelde vanzelf naar
+de stand met hoog uitgangsvermogen. De kommando
+stations zijn er sindsdien niet in geslaagd het
+relais terug te schakelen naar de laag vermogen
+stand. Omdat het relais nu kontinu in bedrijf
+is met groot uitgangs vermogen en de satelliet
+gedurende een deel van zijn omlopen in de
+schaduw van de aarde komt, wordt de belasting
+voor het energie systeem te hoog en zakt de
+batterij spanning naar gevaarlijk lage waarden.
+AMSAT verzoekt alle gebruikers dan ook dringend
+uitsluitend zeer lage uplink vermogens toe te
+passen en de satelliet helemaal niet te gebruiken
+tussen de mean anomaly phasen 200 en 020, dus
+in de gehele periode rond het perigeum. Mede
+door de hoge belasting hebben de kommando
+stations kort na Kerstmis de kontrole over OSCAR
+10 geheel verloren. De kommando ontvanger in
+de satelliet lijkt helemaal niet meer te
+werken. Het mode B relais gedraagt zich nogal
+vreemd en het General Beacon zendt alleen nog
+een ongemoduleerde draaggolf uit. Men denkt
+dat weer een totale reset noodzakelijk zal
+zijn om uit de nieuwe probleem situatie te
+komen maar men vreest dat de satelliet zelfs
+niet meer zal reageren op zo'n reset-kommando.
+In AMSAT-kringen wordt men steeds
+pessimistischer over de toekomst van OSCAR 10
+maar een klein team van kommandostations is
+nog steeds bereid te proberen de satelliet zo
+goed mogelijk te laten funktioneren.
+
+STAPELS PROBLEMEN
+
+Ondanks alle technische problemen met de
+satelliet komt het baanvlak nu wel weer steeds
+gunstiger te liggen voor de gebruikers op het
+noordelijk halfrond. Op 28 januari 1987 passeert
+het apogeum van de baan van OSCAR 10 namelijk
+de evenaar van zuid naar noord. In 1987 komt
+het apogeum dan steeds verder naar het noorden,
+tot ongeveer 26 graden noorderbreedte. Over
+enkele maanden komt het dan ook bijna niet
+meer voor dat de satelliet voor Nederland onder
+de horizon zit op het moment dat hij zijn
+apogeum bereikt. De perioden waarin de
+satelliet per omloop binnen bereik is, nemen
+steeds verder toe. Laten we hopen dat hij in
+dit nieuwe jaar niet alleen langdurig binnen
+ons bereik is maar dat hij dan ook goed
+bruikbaar zal zijn gedurende lange perioden.
+
+UoSAT-OSCAR 11
+
+De tests van de CCD-videokamera worden
+spoedig voortgezet nu er in het kommando
+station in Surrey nieuwe grafische
+programmatuur beschikbaar is. De Digitalker
+spraaksynthesizer is nu regelmatig in bedrijf
+en werkt prima. Begin december gaf de
+verzamelde telemetrie van OSCAR 11 tijdens
+een bepaalde omloop zeer merkwaardige
+resultaten. Uit de gegevens van de zonne
+panelen en de magnetometers bleek dat de
+rotatie van de satelliet in zeer korte tijd
+tot stilstand was gekomen, zonder dat de
+magnetorquers waren geaktiveerd. Men
+onderzoekt nog wat de oorzaak kan zijn geweest
+van dit verschijnsel. Men vermoedt dat het
+kan zijn veroorzaakt door de magnetische
+effekten van een tijdelijk zeer grote
+laadstroom voor de batterij, direkt nadat de
+satelliet uit de aardschaduw was gekomen.
+
+FUJI-OSCAR 12
+
+Kommando stations zijn bezig met het testen
+van de programmatuur in OSCAR 12 voor packet
+radio verkeer met mode JD. Men kent al een
+duidelijke fout in de programmatuur maar de
+experimenten worden nog voortgezet. Het zal
+nog wel enkele weken duren voordat de
+satelliet geheel operationeel is in mode JD.
+Tussen 20 december en 7 januari bevindt OSCAR
+12 zich kontinu in het zonlicht.
+
+AMSAT-PHASE III-C
+
+De nieuwe amateur satelliet Phase III-C is
+inmiddels geheel voltooid en werkt uitstekend.
+Hij moet nog wel verscheidene tests ondergaan
+maar men verwacht geen grote problemen. Volgens
+de laatste geruchten zou de lancering van
+Phase III-C met de eerste ARIANE 4 raket van
+ESA verder uitgesteld kunnen worden, misschien
+zelfs wel tot midden 1988. De eerstvolgende
+lancering van een ARIANE, vlucht V19, zou echter
+al in maart of april 1987 verwacht mogen worden.
+Als deze lancering een volledig sukses wordt
+zou men verwachten dat vlucht V21, met onder
+andere Phase III-C aan boord, niet lang meer op
+zich hoeft te laten wachten.
+
+BOEKEN OVER C-64
+
+Bij Kluwer Technische Boeken verschenen onlangs
+twee boeken (A4) over de Commodore-64. 'Leren
+programmeren Commodore 64', Boek 1&2. Ze zijn
+uitgevoerd in full-color en kosten elk f 27,50.
+In deel 1 worden de allereerste Basic opdrachten
+uitgelegd en met voorbeeld-programma's toegelicht.
+De tweemaal 64 pagina's worden echter voor ruwweg
+1/3 tot 1/2 opgeslokt door schermbeelden.
+Hierdoor blijft er weinig ruimte over voor de
+tekst. Deze is dan -in boek 1- hier en daar te
+summier. Verder ontstaat door de indeling van
+een onderwerp per twee pagina's geen goed
+doorlopend beeld. Voorbeeld programma's zijn
+-in boek 1- zodanig van ballast voorzien, om ze
+gebruikers vriendelijker en meer ogender te
+maken, dat daardoor het doorgronden van die
+programma's (daar zijn ze immers voor) er niet
+simpeler op wordt. Wel handig zijn de goed
+verzorgde tabelletjes die -waar nodig- zaken
+verhelderen.
+
+TWEEDE BOEK VERRASSEND
+
+Boek twee is verrassend genoeg heel anders
+van niveau dan het eerste. Het behandelt het
+definieren van functie's, de logische
+vergelijkingen en geeft enkele uitstekende
+routines ter ondersteuning van de high
+resolution mogelijkheden, die samen met het
+geluid, niet standaard in de Basic van de C-64
+zijn opgenomen. Ook wordt de beginnende
+programmeur geleerd karakters zelf te
+definieren, sprites (zelfs meerkleurensprites)
+te maken en de vorm van het geluid en de
+diverse filter-technieken te beheersen.
+Stringbehandeling en array's worden net niet
+vergeten. Men besluit met informatie hoe je
+een spel moet ontwerpen. Tenslotte mag
+informatie over fout-opsporing niet ontbreken.
+Conclusie: op zich twee goede boeken, maar
+buiten de schaarse informatie die in de tekst
+van het boek staat, moet men bijna alles uit
+de listings halen. Vooral voorbeelden en hoe
+iets in de praktijk wordt gebruikt, wat de
+syntax is en hoe een en ander werkt. Basic
+voor doorbijters kortom. Aldus Thijs (T) C-64.

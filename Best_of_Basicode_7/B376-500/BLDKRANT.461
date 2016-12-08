@@ -1,0 +1,348 @@
+461, maa 16 dec '91
+
+DATACOMMUNICATIE VOOR BEGINNERS (2)
+
+Vandaag deel 2 van een driedelige
+mini-serie, gebaseerd op een artikel
+uit het tijdschrift PC-Active (nummer
+32, november 1991). Deze keer aandacht
+voor het pariteits bit, synchronisatie
+en foutcorrectie- protocollen.
+
+PARITEITSBIT
+
+De letters van het alfabet en de
+cijfers (in feite alle ASCII-tekens met
+een waarde beneden 128) kunnen in
+binaire vorm door slechts zeven bits
+worden gerepresenteerd. Dit wil zeggen
+dat zo'n teken bestaat uit een reeks
+van zeven enen en nullen. De
+hoofdletter A bijv. wordt binair
+gerepresenteerd als 1000001, twee tot
+de macht zeven plus twee tot de macht
+nul. De uitkomst levert 65 op, hetgeen
+juist de ASCII-waarde van A is.
+
+Het achtste bit is bij gebruik van de
+gewone ASCII-tekens vrij en kan als
+pariteits-bit worden gebruikt bij het
+verzenden en ontvangen van bestanden.
+Er zijn twee mogelijkheden: even of
+oneven pariteit. Bij even pariteit
+maakt het versturende station het
+aantal enen in het byte van een bepaald
+teken even. Een voorbeeld: character
+'a' is binair 1100001. We tellen drie
+enen. Het pariteitsbit wordt dus 1 om
+het aantal enen even te maken. Het
+ontvangende station kan nu op de
+binnenkomende datastroom een pariteits
+controle uitvoeren. Bij toepassing van
+de even pariteit zal het ontvangende
+station dus controleren of het aantal
+enen in elke byte wel even is. Onder
+het oneven ('odd' in het Engels)
+protocol wordt juist gekeken of het
+aantal enen oneven is. Wordt er bij het
+versturen van een teken een pariteits
+fout ontdekt, dan kan het ontvangende
+station vragen dat teken nog eens te
+sturen.
+
+NADELEN
+
+De pariteit is echter geen waterdichte
+methode. Als er in een byte
+bijvoorbeeld twee enen zijn
+weggevallen, klopt de pariteit wel,
+maar is het verstuurde teken toch
+verminkt binnengekomen. Er zijn dus
+methodes gezocht om de detectie van
+transmissie fouten te verbeteren. Een
+ervan is het zojuist beschreven
+systeem, dat horizontale pariteits
+controle wordt genoemd, te combineren
+met een zogeheten longitudinale
+controle. Hierbij worden de bits in
+blokken van acht (over acht opvolgende
+tekens) ook in verticale richting
+gecontroleerd. Het voordeel van deze
+methode is dat fouten in een groot
+aantal gevallen automatisch kunnen
+worden hersteld. Een nadeel is de grote
+overhead aan extra informatie die mee
+moet worden verstuurd. Deze combinatie-
+methode wordt overigens ook vaak
+toegepast bij het lezen en beschrijven
+van computer-tapes.
+
+Het gebruik van het pariteitsbit heeft
+nog andere nadelen. Een moderne
+tekstverwerker gebruikt voor de
+opmaakcodes alle acht bits in een byte.
+Ook letters met een accentteken hebben
+een 8-bits code. Als we een bestand uit
+een tekstverwerker omzetten naar puur
+ASCII wordt het bestand van de meeste
+besturings codes ontdaan. De opmaak en
+de diacritische tekens gaan verloren.
+De ASCII-file die als platte tekst
+wordt verstuurd, moet aan de kant van
+de ontvanger weer in de oorspronkelijke
+vorm worden hersteld. Eigenlijk is ook
+de zeven-bits communicatie verouderd.
+
+Het zou natuurlijk veel beter zijn alle
+acht bits van elke byte ongeschonden te
+verzenden, vooral als twee machines
+dezelfde tekstverwerker gebruiken. De
+opmaak- en besturings codes voor bijv.
+paginalengte, onderstrepen en vet
+afdrukken kunnen dan gewoon in het
+bestand bewaard blijven. Acht bits zijn
+helemaal essentieel als er uitvoerbare
+bestanden - programma's dus, ze
+eindigen op .COM of .EXE - moeten
+worden verstuurd. De pariteits- methode
+kan dan helemaal niet worden gebruikt.
+We zullen zo dadelijk zien hoe dat
+probleem is opgelost.
+
+SYNCHRONISATIE
+
+Bij asynchrone transmissie (de meest
+gebruikelijke vorm voor een gewone
+kieslijn) hoeven de bytes niet keurig
+na elkaar, met een vaste tussenpauze,
+verzonden te worden. Als we bijv. via
+het toetsenbord commando's intikken,
+zullen de tekens niet regelmatig worden
+verstuurd. Er zijn daarom ook nog
+bitjes nodig om de beide communicerende
+computers met elkaar in de pas te
+houden. Elk teken wordt verpakt tussen
+twee synchronisatiebits: een start- en
+een stopbit.
+
+Om de ontvangende modem te laten weten
+dat er een teken komt, wordt er eerst
+een startbit (een logische 0)
+verstuurd. Dit activeert de modem, die
+vervolgens het teken binnenhaalt. Na
+het laatste databit of het pariteitsbit
+wordt een stopbit (een logische 1)
+verstuurd om de modem weer in de
+uitgangs positie te zetten. Op de
+huidige systemen is 1 stopbit
+voldoende. Slechts heel ouderwetse
+systemen werken nog wel eens met
+anderhalf of twee stopbits. Het aantal
+startbits is altijd 1 en hoeft nooit te
+worden opgegeven.
+
+Het hele pakketje wordt een 'frame' of
+seriele byte genoemd. Door de modem
+worden dus pakjes van 10 bits op de
+lijn gezet. Deze instelling wordt vaak
+afgekort: E/7/1 betekent even pariteit,
+7 databits en 1 stopbit; N/8/1 staat
+voor geen pariteit, 8 databits en 1
+stopbit.
+
+FOUTCORRECTIE-PROTOCOLLEN
+
+Bij het oversturen van hele bestanden
+is de pariteits controle, zoals we al
+gezien hadden, niet echt bruikbaar. De
+ge-eigende methode om verminkte
+gegevens te voorkomen bij het
+oversturen van bestanden is het gebruik
+van een foutcorrectie protocol. Het
+meest bekende is Xmodem. Xmodem was het
+eerste foutcorrectie protocol voor de
+PC. Het is het geesteskind van Ward
+Christiansen uit Chicago en het werd
+oorspronkelijk gewoon 'Modem' genoemd.
+In korte tijd groeide dit protocol uit
+tot een wereld standaard.
+
+XMODEM
+
+Foutcorrectie protocollen werken als
+volgt: data worden gebundeld in kleine
+pakketjes en uit de waarde van elk
+karakter in het pakketje wordt een
+controlegetal berekend dat met het
+pakketje wordt meegestuurd. Xmodem
+stelt pakketjes van 128 tekens samen en
+telt de waarde van de bytes op. Van de
+uitkomst wordt het laatste byte genomen
+en vervolgens als checksum aan het eind
+van elk pakketje toegevoegd. De
+ontvangende computer berekent aan zijn
+kant voor elk pakketje ook een
+checksum. Krijgt deze dezelfde
+uitkomst, dan zal de ontvanger een
+ACK-teken (hetgeen staat voor
+'Acknowledgement', bevestiging in het
+Engels) sturen. Dit betekent zoveel als
+'prima ontvangen, stuur de volgende
+maar'. Mochten de twee uitkomsten niet
+exact overeenkomen, dan is er onderweg
+iets misgegaan en wordt er een
+NAK-teken (Negative Acknowledgement)
+teruggezonden om het betreffende
+pakketje opnieuw te laten verzenden.
+
+Behalve de checksum worden ook een
+startcode, een bloknummer en het
+1-complement - zeg maar een soort
+rekenkundige truuk, waarbij alle nullen
+in dat bloknummer-byte in enen worden
+veranderd en omgekeerd - daarvan
+verstuurd. Bij elkaar opgeteld moeten
+bloknummer en het 1-complement altijd
+255 zijn (acht keer 1) en als dat niet
+zo is, dan is er een transmissie- fout
+opgetreden. Een extra beveiliging op
+het bloknummer, met andere woorden. Een
+compleet blok bestaat dus uit het
+start-teken, twee bytes voor bloknummer
+en 1-complement, 128 databytes en het
+block-check character.
+
+Xmodem heeft echter zijn beperkingen.
+Bij gebruik van Xmodem is er een kans
+van 1 op de 256 dat de checksum klopt,
+maar toch niet alle tekens goed zijn.
+Daarom is later Xmodem-CRC ontwikkeld,
+dat een controle- getal berekent dat
+uit twee bytes bestaat, waardoor de
+kans op een vergissing nog maar 1 op de
+65536 is. Bovendien wordt bij deze
+zogenaamde 'Cyclic Redundancy Check'
+niet alleen rekening gehouden met de
+waarde van elk teken, maar ook met de
+plaats ervan in het pakket. Twee bytes
+die zijn verwisseld sluipen dus niet
+meer door de controle heen.
+
+KERMIT DE KIKKER
+
+Het oude Xmodem kan geen nieuw pakketje
+sturen voordat het zeker weet dat het
+vorige goed is aangekomen, en crasht
+als er een vrij klein aantal pakketjes
+na elkaar wordt afgewezen. Dit probleem
+bracht Bill Catchings en Frank de Cruz
+ertoe Kermit te schrijven. Deze twee
+studenten stuurden geregeld bestanden
+over met Xmodem tussen hun CP/M micro
+en een mainframe op de Universiteit van
+Colombia. Met weinig succes overigens,
+want de mainframe was overbelast. Omdat
+deze computer wanhopig probeerde zijn
+tijd over een groot aantal gebruikers
+te verdelen, duurde het steeds net iets
+te lang om de datapakketjes te
+verwerken en de checksums te berekenen,
+waardoor Xmodem er de brui aan gaf.
+
+Catchings en de Cruz ontwierpen dus een
+nieuw full-duplex protocol om de
+communicatie tussen micro en mainframe
+af te handelen zonder dat er eerst
+gemeld hoefde te worden of de pakketjes
+wel goed gearriveerd waren. Het
+programma werd Kermit gedoopt, naar de
+praatgrage kikker uit de Muppet-show.
+Bovendien kan Kermit bij een 7-bits
+dataflow (kenmerkend voor het soort
+mainframes waarmee de ontwerpers
+moesten werken) toch binaire bestanden
+versturen. Het achtste bitje wordt dan
+in een apart frame verstuurd. De
+pakketjes die Kermit hanteert zijn vrij
+klein, maximaal 94 bytes, waardoor
+Kermit niet erg snel is.
+
+Net als Christiansen eerder had gedaan,
+besloten Catchings en de Cruz hun
+geesteskind public domain te maken: ze
+publiceerden de volledige documentatie
+met de technische details en gaven de
+broncode van het programma vrij. Hoewel
+Kermit oorspronkelijk bedoeld was om
+bestanden uit te wisselen tussen 7-bits
+mainframes en PC's, is Kermit hierdoor
+in vele versies, ook micro-naar-micro,
+beschikbaar gekomen.
+
+NIEUWE PROTOCOLLEN
+
+In de loop der tijd zijn er heel wat
+nieuwe protocollen ontwikkeld. Namen
+van bestands overdrachts protocollen
+die u kunt tegenkomen zijn Ymodem,
+Telink, Zmodem, Sliding Window Kermit
+en dergelijke. Dit zijn in wezen
+allemaal verder uitgewerkte versies van
+Xmodem en Kermit. Ze zijn stuk voor
+stuk sneller en betrouwbaarder dan deze
+stam- protocollen en bieden vaak de
+mogelijkheid een afgekeurd pakketje
+even achter te houden in plaats van het
+direct opnieuw te versturen. We noemen
+de bekendste.
+
+Ymodem is een snelle Xmodem variant.
+Toen de modems sneller en beter werden,
+bleken pakketjes van 128 bytes toch
+onhandig. Een pakketje van 128 bytes
+heeft nogal een grote overhead door de
+additionele controle-bytes die
+meegestuurd en berekend moeten worden.
+Een paar extra bytes hier en daar in
+een klein bestandje maakt niet zoveel
+verschil, maar bij grote bestanden
+begint het aan te tikken. Het kost
+onnodig veel tijd. Daarom werd Ymodem
+ontwikkeld. Ymodem verpakt de data in
+pakketten van maximaal 1024 tekens. De
+partijen kunnen elkaar doorgeven hoe
+groot de pakketjes moeten zijn. Blijken
+er door een slechte lijnverbinding te
+veel fouten op te treden, dan kan de
+pakket- grootte worden verkleind,
+waardoor de kans dat een pakket opnieuw
+verzonden moet worden kleiner wordt.
+Uiteindelijk is dat een soort afruil:
+hoe groter de pakketten, hoe minder de
+overhead als alles goed gaat. Maar als
+er een kraakje op de lijn zit, dan is
+de hoeveelheid die opnieuw verzonden
+moet worden ook groter.
+
+Met Ymodem-batch kunnen er
+verschillende bestanden tegelijk worden
+verstuurd. Ymodem-g is een zogenaamd
+'streaming' protocol, dat de
+foutcorrectie overlaat aan de modem.
+Modem7 is een Xmodem variant waarmee
+verschillende bestanden tegelijk voor
+overzenden kunnen worden geselecteerd.
+Xmodem-1K is een Xmodem variant die
+blokken van 1024 bytes gebruikt. Telink
+is het protocol van het FIDO-netwerk.
+Het is een Modem7 variant waarmee ook
+de bestands grootte en de creatie-
+datum kunnen worden verstuurd. Een
+ASCII-transfer is geen foutcorrectie
+protocol. Deze mode gebruikt men
+slechts voor het versturen van tekst en
+alleen dan als er geen protocollen
+voorhanden zijn.
+
+(wordt vervolgd)
+

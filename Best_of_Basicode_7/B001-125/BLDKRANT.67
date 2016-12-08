@@ -1,0 +1,273 @@
+67, woe 29 apr '87
+
+'t IS EINDELIJK MOOI WEER
+
+En PA0DLO weet dus te berichten dat de negen
+jaar oude RS1 weer regelmatig gehoord wordt
+bij 29,400 MHz met sterke signalen. De
+satelliet kan alleen baken signalen uitzenden
+in die delen van zijn omlopen waarin hij zich
+in het zonlicht bevindt. Het lijkt erop dat
+de satelliet nu soms in- en uitgeschakeld wordt.
+Misschien kan hij dus weer reageren op kommando's
+van kommandostations. RS5 en RS7 worden zoveel
+mogelijk ingeschakeld gehouden door de Russische
+kommandostations. Als gevolg van te zware
+belasting wil vooral RS5 zichzelf nogal eens
+uitschakelen. Dan moet er weer een kommando
+station aan te pas komen om de satelliet weer
+in te schakelen.
+
+AMSAT-OSCAR 10
+
+Er worden weer zwakke signalen ontvangen van
+OSCAR 10. Zowel het mode B relais als het
+General Beacon bij 145,810 MHz zijn weer
+gehoord toen de satelliet zich bij zijn
+perigeum bevond. Het ziet er dus naar uit
+dat de satelliet de moeilijke periode met
+de zeer ongunstige zonnehoek heeft overleefd.
+Eind april zullen de kommandostations weer
+proberen de satelliet enigszins onder
+kontrole te krijgen. Als de toestand van de
+batterij in de satelliet het toelaat zal
+OSCAR 10 dan waarschijnlijk weer worden
+vrijgegeven voor beperkt gebruik vanaf 1 mei.
+
+RADIO SPOETNIK 9
+
+Volgens Leonid, UA3CR, van de RS-groep in
+Moskou, wijken de frekwenties van RS9 nauwelijks
+af van de eerder gepubliceerde frekwenties van
+de satelliet, die toen nog bekend stond als de
+toekomstige RS10. Dit betekent dat RS9 dus
+inderdaad drie lineaire relaisstations zal
+bevatten: mode T, mode A en mode K. Deze
+gegevens waren begin 1985 al bekend. Het
+aantal ROBOT's aan boord van RS9 blijkt nu
+echter te zijn uitgebreid. Tot nu toe is er
+steeds alleen maar sprake geweest van een mode
+K ROBOT, dus 15 m uplink en 10 m downlink. Nu
+blijkt echter dat er ook ROBOT's aan boord
+zullen zijn voor 15 m naar 2 m, dus mode T, en
+voor 2 m naar 10 m, dus mode A. Men verwacht
+dat de mode T ROBOT het meest gebruikt zal
+worden. Voor zover nu bekend kan RS9 in juni
+worden gelanceerd vanaf Plesetsk. De Rus UA3CR
+heeft enige voorlopige gegevens over de
+telemetrie van de nieuwe RS9 doorgegeven. De
+gegevens zijn nog niet kompleet en bevatten nog
+enige onduidelijkheden. Alle formules voor het
+berekenen van de telemetrie-meetwaarden
+ontbreken nog. Toch kan men al een redelijke
+indruk krijgen van de mogelijkheden van het
+telemetriesysteem van RS9. Meer gedetailleerde
+informatie in de NOS-databank van Hobbyscoop.
+Kijk bij de files 'Zendamateurisme no. 11' bij
+het Hamsat bulletin 398.
+
+POPULAIR WETENSCHAPPELIJKE TV
+
+Het NOS-programma Horizon biedt volgende week
+een keuze aan technische en populaire
+wetenschappelijke onderwerpen. Oordeelt u
+zelf:
+- Het verband tussen omvallende dominostenen
+en het opblazen van gebouwen.
+- Waarom bacterien kathedralen opeten.
+- Nieuwe, chemische behandeling van uitlaat
+gassen, speciaal die van dieselmotoren met
+zwembad chemicalien.
+- Grootste onderzoek naar zure regen ter
+wereld wordt verricht op de Veluwe.
+- De elektronische neus (kwartskristal dat
+naar bepaalde moleculen speurt) wordt misschien
+de politiehond van morgen.
+- Hoe je tarwekorrels ertoe kunt brengen op
+eieren te gaan lijken (met veel proteine
+voorhanden)
+Horizon wordt komende dinsdag (5 mei)
+uitgezonden via Nederland 2. Het NOS TV
+programma begint om 20:20 uur.
+
+TELEAC'S RADIO CURSUS
+
+Peter van Tilburg zet in Hoofdstuk 4 uiteen
+hoe het zit met 'Herhalingsstructuren'. De
+tekst daarvan werd eerder uitgesproken in
+een radioles.
+Wanneer we programmeren volgens de top-down
+methode, is het uiteindelijke resultaat een
+programma dat op te delen is in een
+hoofdprogramma en een aantal subroutines.
+Deze subroutines kunnen eventueel zelf ook
+weer uit een aantal onderdelen bestaan. Op
+deze wijze is er een hierarchische structuur
+in het programma te ontdekken.
+
+Een aantal van de subroutines zal speciaal
+ontwikkeld moeten worden voor het betreffende
+programma. Er zijn er echter ook die zo
+algemeen zijn, dat we ze in diverse
+verschillende programma's kunnen gebruiken.
+Denk bijvoorbeeld aan een routine om een
+aantal getallen te sorteren of om een
+ingevoerde datum te controleren. In hoofdstuk
+5 van het cursusboek zijn nog diverse andere
+voorbeelden te vinden.
+
+Tijdens het schrijven van een programma, zou
+het erg gemakkelijk zijn wanneer we over een
+bibliotheek van routines konden beschikken. We
+zouden dan, in plaats van een routine opnieuw
+te schrijven, deze kunnen 'lenen' uit de
+bibliotheek.
+
+De eis dat een bepaalde subroutine voor gebruik
+in verschillende programma's geschikt moet zijn,
+heeft echter wel een aantal gevolgen. Allereerst
+moet deze zo algemeen zijn, dat hij inderdaad
+door verschillende programma's gebruikt kan worden.
+We hebben niets aan een routine die honderd
+getallen kan sorteren, terwijl een routine om N
+getallen te sorteren wel dikwijls gebruikt zal
+kunnen worden.
+
+Een groter probleem, waarmee we in de meeste
+BASIC-dialecten te maken hebben, is het feit
+dat deze geen lokale variabelen kennen.
+Hieronder worden variabelen verstaan die alleen
+binnen de subroutine betekenis hebben. Wanneer
+men nu in deze BASIC-dialecten in een subroutine
+variabelen gebruikt die ook in het hoofd
+programma een functie hebben, dan is dat voor
+de computer een en dezelfde variabele. Indien
+deze nu in de subroutine een nieuwe waarde
+krijgt, zal de waarde die van belang is voor
+het hoofdprogramma verloren gaan. Een ander
+probleem is dat we moeten weten via welke
+variabelen we gegevens moeten overdragen aan
+de subroutine. Bovendien moet bekend zijn waar
+de resultaten door de subroutine worden
+opgeslagen. Wanneer we dus in BASIC met
+standaard subroutines willen werken, kan dat
+alleen onder de volgende voorwaarden:
+-Afgesproken moet worden in welke variabelen
+gegevens worden overgedragen van hoofd
+programma naar subroutine. Deze variabelen
+mogen in de routine geen andere waarde krijgen.
+-Tevens moet bekend zijn in welke variabelen
+het resultaat van de subroutine wordt geplaatst.
+Deze mogen bij de aanroep nog geen waarde
+hebben, dan wel een waarde die voor het hoofd
+programma niet meer van belang is.
+-Het moet duidelijk zijn welke variabelen, die
+geen functie vervullen bij de overdracht van
+gegevens tussen hoofdprogramma en subroutine,
+in de subroutine gebruikt worden. Deze variabelen
+mogen in het hoofdprogramma niet worden gebruikt.
+Anders bestaat er immers het gevaar dat van
+belang zijnde gegevens door de subroutine
+gewist worden.
+
+Veel andere talen, zoals Algol en Pascal, en
+ook een aantal BASIC-dialecten zoals bv.
+BBC-BASIC, kennen wel lokale variabelen. We
+kunnen in deze talen subroutines - meestal
+wordt dan echter van procedures gesproken -
+definieren die vanuit het hoofd programma
+aangeroepen worden. Wanneer we daarbinnen
+variabelen gebruiken die ook in het hoofd
+programma voorkomen, dan wordt de waarde
+daarvan niet aangetast. Voor de computer zijn
+het dan twee variabelen, die alleen in hun
+eigen gebied een betekenis hebben. Ook is het
+in deze talen mogelijk om parameters over te
+dragen aan een procedure. Onder parameters
+worden gegevens verstaan die uitgewisseld
+moeten worden tussen hoofdprogramma en
+procedure. Wanneer we bijvoorbeeld de
+procedure aanroepen om N getallente sorteren,
+moet deze weten in welk array de getallen
+staan en uit hoeveel elementen dat array
+bestaat. In de kop of heading van de definitie
+staat aangegeven wat de naam is van de procedure,
+hoeveel parameters hij nodig heeft en van
+welk type deze moeten zijn. De parameters die
+in de heading van de procedure zijn opgenomen,
+worden formele parameters genoemd. De
+parameters die gebruikt worden bij de aanroep
+van de procedure, zijn actuele parameters.
+Het spreekt natuurlijk vanzelf dat er evenveel
+formele als actuele parameters moeten zijn en
+dat elk bij elkaar horend paar van hetzelfde
+type moet zijn. Tijdens de aanroep van de
+procedure wordt aan elke formele parameter de
+waarde van de bijbehorende actuele parameter
+overgedragen. Door gebruik te maken van
+procedures, kunnen we het opdrachten repertoire
+van een programmeertaal uitbreiden. In feite
+kunnen we de in een programmeertaal aanwezige
+opdrachten beschouwen als een aantal procedures
+die al zijn gedefinieerd. Wanneer we nog andere
+opdrachten willen gebruiken, dan moeten we daar
+zelf een beschrijving van maken. We noemen dat
+de declaratie van de procedure. Deze bestaat
+uit een reeks opdrachten of procedures die al
+eerder zijn gedefinieerd. Wanneer we bv. geen
+SWAP-opdracht hebben - daaronder wordt een
+opdracht verstaan om de waarde van twee
+variabelen te wisselen - ontwerpen we een
+routine SWAP, die we daarna steeds kunnen
+aanroepen met bijvoorbeeld de opdracht SWAP
+(AB). A en B zijn de twee variabelen waarvan de
+waarde gewisseld moet worden. Zij dienen
+zowel als in- als uitvoer parameter. De
+procedure bevat ook nog een lokale variabele,
+omdat we bij het wisselen van twee waarden
+gebruik moeten maken van een hulpvariabele.
+Wanneer deze de naam H heeft, bevat de
+procedure de opdrachten: LET H=A: LET A=B:
+LET B=H. Na het uitvoeren van de procedure
+heeft H geen functie meer en
+houdt op te bestaan.
+
+Naast lokale variabelen, zijn er ook zogenaamde
+globale variabelen. Dit zijn variabelen die in
+het gehele programma en ook binnen de
+procedures dezelfde betekenis hebben. In veel
+talen zijn variabelen geldig binnen het programma
+gedeelte waar ze gedeclareerd zijn en bovendien
+in alle daarvan afhankelijke routines. Daarmee
+worden de routines bedoeld die lager in de de
+hierarchie zitten. Hoewel we dus de waarde van
+globale variabelen ook in een procedure kunnen
+gebruiken, is hierbij geen sprake van parameter
+overdracht. Indien we over een computer
+beschikken met een BASIC die wel de mogelijkheid
+biedt om parameters over te dragen aan een
+procedure, zoals de BBC of de Sinclair QL,
+kunnen we ook recursieve procedures definieren.
+Daaronder worden procedures verstaan die
+direct of indirect zichzelf aanroepen. Bij de
+aanroep worden steeds een of meerdere parameters
+meegegeven. Er zijn diverse problemen die
+alleen goed via recursie kunnen worden
+aangepakt. Andere routines zijn heel eenvoudig
+te schrijven, wanneer er van recursie gebruik
+gemaakt wordt. Een voorbeeld van dat laatste
+is een procedure om N-faculteit te berekenen.
+We kunnen de oplossing als volgt recursief
+definieren:
+
+PROCEDURE FAC(N)
+
+Als N=1, dan is de uitkomst 1
+Als N>1, dan is de uitkomst N * FAC(N-1)
+Zolang N nog groter is dan 1, wordt steeds
+opnieuw de procedure FAC aangeroepen. Dit
+eindigt wanneer tenslotte de waarde van
+1-faculteit berekend moet worden. Vanaf dat
+moment worden de procedures in omgekeerde
+volgorde van aanroep weer doorlopen en is
+uiteindelijk de waarde van N! berekend.

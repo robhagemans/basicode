@@ -1,0 +1,222 @@
+17, woe 23 april 1986
+
+OPTIMOD
+
+Zou het waar zijn? Doorgaans
+betrouwbare bronnen verklaren ons dat
+half mei de Optimod onder het bereik
+van programmamakers komt te staan en
+dus ook uitschakelbaar wordt. De
+Optimod zorgt ervoor de middengolf
+helderder, verstaanbaarder, maar ook
+agressiever klinkt. Hij maakt van onze
+software echter appelmoes, vandaar dat
+alleen de programma's die u via FM
+bereiken nog werken. Voor ons reden om
+alle software uitzendingen op de
+donderdag (Radio 5, 1008 kHz van
+17.30-17.46) te staken. Maar omdat met
+name  dat blok bedoeld is voor de
+computers, is het natuurlijk zonde om
+dan geen Basicode uit te zenden. We
+hopen zo snel mogelijk nadere gegevens
+te kunnen geven.
+
+PTT-TELECOM EN SRR
+
+Vorige week heeft de plaatsverv.
+hoofddirekteur van PTT-Telecom voor een
+Hobbyscoop-primeur gezorgd. Omdat het
+technisch comite van de div. PPT's in
+Europa CEPT juist een vergadering
+gewijd had aan Short Range Radio, was
+de heer Van Velzen in staat het nieuws
+vers van de pers te geven. Het is een
+alternatieve MARC, maar dan in de 900
+MegaHerz-band. Er is sprake van 80
+simplex-kanalen, waaronder twee
+huishoudelijke. Via die kanalen en de
+vaste, ingebakken nummers kunnen de
+zend-ontvangers elkaar vinden. Via een
+digitale 'handshake' worden de beide
+gesprekspartners automatisch naar een
+leeg kanaal gedirigeerd, waarbinnen men
+boodschappen kan uitwisselen.
+
+VIJF WATT ZENDER
+
+De SRR (Short Range Radio = Korte
+afstands radio) heeft daar een
+microprocessor gestuurde ontvanger en
+zender voor van 5 Watt. FM is de
+modulatie soort die wordt gebruikt. De
+keuze van 900 MHz is een bewuste ivm.
+storing. Dat gebied ligt boven de
+TV-banden en eventuele
+storingsprodukten komen dan niet in de
+TV-band terecht. De bandbreedte is 25
+kHz en SRR zal in de toekomst door heel
+Europa gevoerd gaan worden. Dhr. Van
+Velzen schat de kosten van zo'n
+'bakkie-nieuwe stijl' op f 1000.- tot f
+1500.- Omdat iedereen een eigen nummer
+heeft zijn er geen anonieme gebruikers.
+Misbruik kan derhalve worden aangepakt.
+
+VOLGEND JAAR
+
+De Radio Controle Dienst (RCD) heeft al
+enige Japanse apparaten bekeken. In
+Japan is de SRR bekend onder de naam
+PRS (private Radio System) en
+behoorlijk populair. Met name omdat men
+daar zogeheten 'repeaters' of
+steunzenders toepast, die het bereik
+enorm doen toenemen. Ten opzichte van
+Japan zullen de toestellen afwijken wat
+betreft de toegepaste kanalen. De RCD
+zal halverwege dit jaar de eisen bekend
+maken waaraan de SRR-toestellen moeten
+voldoen. Volgend jaar zouden de eerste
+toestellen dan op de markt kunnen
+komen.
+
+REVISIE NEW YORK
+
+Een andere opmerkelijke uitlating van
+de plv. hoofddirecteur had betrekking
+op het draadloze toestel van PTT: New
+York. Een door Hobbyscoop uitgevoerde
+gebruikerstest eind vorig jaar toonde
+aan dat het apparaat nogal wat gebreken
+heeft. De PTT-woordvoerder gaf dat
+volmondig toe. In juni zullen de
+gebreken worden ondervangen door een
+revisie bij de PTT. Afspraken daarvoor
+kunnen worden gemaakt via de
+telefoonwinkel of 004. Het gaat onder
+meer om het hoge ruisniveau, de
+verstaanbaarheid en de reikwijdte. De
+bedoeling is dat er een aansluiting
+gemaakt zal worden op de basisset voor
+een buitenantenne.
+
+RENS EN RENS
+
+In de loop der jaren heeft het
+Hilversumse Rens en Rens-instituut vele
+Nederlandse electronici afgeleverd. Op
+25 en 26 april opent men een nieuw
+gebouw aan de Emmastraat 62-66.
+Tegelijk houdt men Open dagen met een
+expositie van meetapparatuur en
+Kabel-TV. Ook staat op zaterdag een
+reunie van oud-leerlingen op het
+programma. De officiele opening wordt
+tevoren verricht door Hilversums
+burgemeester. Zie ook agenda.
+
+NIEUWE STICKER
+
+De nieuwe sticker met de juiste
+uitzendtijden en zenders van ons
+programma kunt u aanvragen via postbus
+1200, 1200 BE in Hilversum. Doe
+simpelweg een aan u zelf geadresseerde
+(met postzegel erop!) enveloppe in een
+brief en schrijf even in de
+linkerbovenhoek: Sticker. Per omgaande
+ontvangt u dan de nieuwste versie
+thuis, aangepast aan het nieuwe
+zendschema.
+
+HOTNEWS MSX-2
+
+Hotnews van R. Schipper te Rotterdam!
+Volgens zijn gegevens werkt het
+prachtige programma van Peter
+Zevenhoven correct op de Philips MSX-2.
+Helaas niet op de Sony en we weten nog
+niet of ook de laatste Philips (8235)
+ermee overweg kan. Pieter Vijlbrief
+brouwde inmiddels een kleine
+'load'-programma waarmee een en ander
+op de MSX-2 te runnen valt. Hier volgen
+zijn aanwijzingen: Laad het programma
+van tape en  save het op schijf met:
+
+PROGRAMMA
+
+BLOAD'Basico',&H9000,&HB600,&H9000.
+Maak dan het volgende Basic-programma:
+10 BLOAD'Basico'
+20 DEFUSR=&H9000
+30 POKE &HFFFF,&HAA
+40 A=USR(0) Save dit programma op
+schijf met SAVE'RUNBAS' Als met het
+Basicodeprogramma gaat gebruiken, load
+en run je 'RUNBAS', dan start het 
+vertaalprogramma precies zo, als het op
+een MSX-1 zou doen en het functioneert
+ook prima!
+
+BELGIE 'PRIJST' NEDERLANDER
+
+Ing. Cees Bakker schreef al enige tijd
+geleden een programma op zijn Spectrum
+om allerhande berekeningen inzake
+warmteverlies en isolatie van een
+gebouw te kunnen berekenen. In het
+dagelijks leven is hij
+energie-coordinator van de gemeente
+Heerhugowaard (dus dat lag voor de
+hand). In onze donderdag uitzending kon
+u vernemen dat hij met dat programma
+een tweede prijs heeft gewonnen in de
+programmeerwedstrijd van de Vlaamse
+Gemeenschap rond het thema
+energie-besparing. Voor Nederlanders
+stelt hij nu zijn - zeer technische
+programma - ter beschikking. Met
+handleiding kost 'ISOKIT$' f 25.- Als u
+geinteresseerd bent maak dan dat bedrag
+over op zijn girono. 1374021. Het werkt
+alleen met een Sinclair. Cees Bakker
+heeft beloofd te proberen om het
+programma in de loop van dit jaar om te
+zetten naar Basicode. Mischien wint hij
+bij ons ook nog een prijs...
+
+BASICODE FOUTJE
+
+In het op 9 april uitgezonden
+Basicode-programma 'Niveau-becijfering'
+zit een klein foutje, dat voor de
+meeste computers niet storend is, maar
+de machines, die stringruimte moeten
+reserveren (o.a. de MSX-groep), zullen
+moeite hebben met de waarde die aan 'A'
+in regel 1000 is toegekend. Vervang in
+regel 1000 A=1 door: A=500, dan zullen
+er geen problemen met de stringruimte
+meer zijn.
+
+COMPUTER AGENDA
+
+Het gaat echt goed met de computer
+agenda en de Beeldkrant. Per brief of
+kaart krijgen we steeds meer suggesties
+van wat we er wel of niet in moeten
+opnemen. Er komen van luisteraars hele
+hoofdstukjes met daarin voorstellen om
+bepaalde tekstgedeelten in de krant op
+te nemen. Dat is heel bemoedigend en
+blijkbaar vinden veel mensen het
+gemakkelijk om alle Hobbyscoop gegevens
+nog een rustig op schrift na te lezen.
+Hartelijk dank voor die suggesties!
+Blijf ze sturen maar
+
+Meld aan ADRESZIJDE dat het om
+BEELDKRANT gaat of tenminste
+BUITENOP de enveloppe. 

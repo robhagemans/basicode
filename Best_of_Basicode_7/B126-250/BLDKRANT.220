@@ -1,0 +1,291 @@
+
+220, maa 10 apr '89
+
+GLASVEZELTECHNIEK
+
+Componenten, systemen en meettechniek,
+door Dieter Lutzke, 375 pag., uitgave
+Kluwer, ISBN 90 201 2173 1, uit het
+Duits vertaald, prijs f 94.50.
+De glasvezel techniek is een sinds de
+uitvinding van de Laser (in het begin
+van de jaren 60) tot ontwikkeling
+gekomen techniek van gegevens
+overdracht met behulp van licht.
+Overigens blijkt het, dat
+berichtenverkeer met behulp van licht
+al zeer oud is. Zo werd de ondergang
+van Troje al in de zesde eeuw voor
+Christus door middel van lichtsignalen
+gemeld. En in 1794 bestond er ook al
+een optische telegraaf, die in 6
+minuten een bericht van Parijs naar
+Lille kon overbrengen. Napoleon maakte
+gebruik van dit soort berichtenverkeer
+bij zijn militaire en politieke acties.
+Maar de moderne glasvezel kabel vormt
+wel een geweldige vooruitgang in de
+techniek van de datacommunicatie. Dit
+boek is weliswaar slechts als een
+inleiding tot deze techniek bedoeld,
+maar de gedegen 'Duitse' opzet van dit
+werk waarborgt een veelheid van
+gegevens, waaruit men stellig in eerste
+instantie een goed inzicht in deze voor
+velen nieuwe materie zal verkrijgen.
+Besproken worden o.a. de principiele
+opbouw van een verbinding met
+lichtgeleiders, de daaraan ten
+grondslag liggende natuurkundige
+principes, de benodigde grondstoffen,
+de fabricage methoden van
+lichtgeleiders en de techniek van de
+glasvezelkabel. Dan komt de koppelings
+techniek aan de orde en wordt gesproken
+over de daarbij optredende verliezen.
+O.a. gaat het hier ook over steker
+verbindingen. Natuurlijk mag ook een
+uitvoerige bespreking van de
+zendelementen (de licht-zenders) niet
+ontbreken, evenals de ontvangst
+elementen, waarvan ook een vrij
+compleet overzicht wordt gegeven. En
+dan volgt een hoofdstuk over de
+systemen (open- en gesloten netwerken)
+en de diverse modulatie methoden,
+waarbij ook een bespreking van de
+storingsbronnen niet wordt vergeten.
+Een volgend hoofdstuk is gewijd aan de
+meettechniek, die natuurlijk speciaal
+voor deze lichtcommunicatie is
+ontwikkeld. En in een aantal appendices
+vinden we o.a. een verklaring van de
+belangrijkste afkortingen en symbolen,
+stralennatuurkundige en lichttechnische
+begrippen, enz. Een uivoerige index
+besluit dit boekwerk, dat ik aan
+iedereen kan aanbevelen, die met de
+nieuwe ontwikkelingen van zijn tijd op
+de hoogte wil blijven. Bedenk daarbij
+wel, dat het geen populair
+wetenschappelijke verhandeling is, maar
+een gedegen technisch overzicht van de
+glasvezel techniek, hetgeen het juist
+voor de oprecht geinteresseerden
+aantrekkelijk maakt. (Met dank aan
+Pieter Vijlbrief)
+
+OPTISCHE VERBINDING VOOR COMPUTERS
+
+Wetenschappelijke medewerkers van IBM
+hebben een reeks van drie experimentele
+computerchips gedemonstreerd, die
+wellicht de krachtigste
+opto-elektronische chips zijn, die ooit
+werden vervaardigd. Elke 6,35 mm brede
+chip bevat vijftig maal zo veel
+componenten als ooit op een
+computerchip werd samengebracht voor
+het opto-elektronisch zenden, ontvangen
+en verwerken van gegevens. Deze chips
+kunnen de gegevens tien maal zo snel
+verwerken als de computers, die zij
+verbinden. Aangenomen wordt dat men,
+door het combineren van deze functies
+in deze drie chips, de mogelijkheden
+heeft geschapen voor een
+betrouwbaarder, snellere en goedkopere
+gegevens communicatie.
+
+De IBM-wetenschappers beschouwen deze
+chips als de voorlopers van de snelle,
+economische en efficiente optische
+verbindingen, die nodig zullen zijn om
+vele verschillende computers onderling
+te verbinden -vanaf onderzoekers, die
+geavanceerd en op supercomputers
+gebaseerd onderzoek verrichten tot aan
+individuele PC-gebruikers. Chips, zoals
+deze van IBM, kunnen functioneren als
+ontvanger/zender binnen of naast de
+computers, die gegevens uitwisselen.
+
+Vele complexe en nuttige toepassingen -
+zoals voorspellingen op economisch
+gebied, hypersone vluchtsimulaties of
+demografisch onderzoek - zullen gepaard
+gaan met gedetailleerde beelden die uit
+miljarden en zelfs biljoenen databits
+zijn samengesteld. Voor het verzenden
+van dergelijke beelden van het ene
+laboratorium of bedrijf naar het
+andere, zijn efficiente en betaalbare
+transmissie technieken nodig.
+
+CONDITIONERING
+
+De geavanceerde en gecomprimeerde
+IBM-circuits 'vertalen' de laserbundel
+- die miljarden keren per seconde aan-
+en uitknippert - in de elektrische
+'taal', die de computer begrijpt. Dit
+proces wordt 'conditioneren' genoemd.
+
+Het huzarenstukje van het conditioneren
+van gegevens kan worden vergeleken met
+de opgave waarvoor een verkeers
+regelaar zich geplaatst ziet wanneer
+hij samenkomende verkeers stromen in
+een tunnel met een rijstrook moet laten
+opgaan. De voertuigen stellen de vele
+berichten voor, die van de ene naar de
+andere computer gaan. Deze moeten
+soepel worden samengevoegd tot een
+snelle eenbaansweg (de optische vezel,
+die de computers verbindt). Als zij met
+een zeer hoge snelheid aan het andere
+uiteinde tevoorschijn komen, moeten zij
+weer in de juiste rijstroken worden
+terug geplaatst. Dit moet allemaal
+foutloos gebeuren.
+
+INTEGREREN VAN FUNCTIES
+
+Door de optische, de data transmissie-
+en de gegevens conditionerings functies
+te integreren, kan men deze zeer snelle
+informatie- uitwisseling
+betrouwbaarder, met minder energie
+verbruik en tegen veel lagere kosten
+verrichten dan met de huidige optische
+glasvezel verbindings technieken. Dit
+komt omdat het economischer is om een
+meer geintegreerde functionele eenheid
+te fabriceren dan een reeks pakketten
+samen te voegen, die vervolgens moeten
+worden verbonden door middel van
+kostbare bedrading, die de gegevens
+stroom kan vertragen.
+
+TOEPASSING VAN GALLIUM ARSENIDE
+
+De IBM wetenschappers vervaardigden de
+zender- en ontvangerchips van gallium
+arsenide (GaAs), een materiaal dat zeer
+geschikt is voor opto-elektronische
+apparaten omdat het lichtpulsen kan
+opsporen, kan dienen als een
+elektronisch circuit met een hoge
+snelheid en tot een zeer snelle, kleine
+laser kan worden gemaakt. De derde chip
+van de reeks bevat een GaAs
+injectielaser, die gebruik maakt van
+geavanceerde 'quantumbron' technieken.
+Deze laser dient als lichtbron voor de
+data transmissie.
+
+ZEER KLEINE COMPONENTEN
+
+De nieuwe IBM-chips bevatten meer dan
+achtduizend transistoren, waarvan
+sommige componenten slechts een
+veertigmiljoenste inch groot zijn. De
+ontvangerchip bevat vier
+lichtdetectoren, waarvan een zijde
+slechts drie duizendste inch groot is.
+Deze componenten zijn zo klein dat de
+zeer dunne glasvezel verbindingen, die
+de lasersignalen naar de fotodetector
+transporteren, onder een microscoop op
+dikke kolommen lijken, vergeleken bij
+de uiterst smalle elektronische
+verbindingen.
+
+Hoewel deze chips nog experimenteel
+zijn, zijn zij tot pakketten
+samengevoegd en in glasvezel
+verbindingen toegepast, die per seconde
+bijna een miljard bits konden
+verzenden.
+
+ZENDEN EN ONTVANGEN VAN GEGEVENS
+
+De informatie, die naar een andere
+computer moet worden verzonden, komt de
+zenderchip in een 'byte-brede' gegevens
+stroom binnen, aangezien een byte de
+standaard eenheid of het 'woord' is,
+waarmee computers werken. In dit geval
+bestaat het woord uit tien
+afzonderlijke gegevensbits. Deze
+parallelle stroom van tien bits,
+waarbij elke bit een digitale een of
+nul is, die via een afzonderlijke
+elektrische verbinding wordt vervoerd,
+wordt omgezet in een seriele stroom met
+een snelheid, die tien maal zo hoog is
+als die van de oorspronkelijke byte.
+Deze zeer snelle stroom, die door de
+geavanceerde IBM-circuits van een
+digitale in een analoge vorm is
+omgezet, wordt toegevoerd aan een GaAs
+injectielaser op een afzonderlijke
+chip. Deze laser maakt gebruik van de
+unieke voordelen van 'quantumbronnen'
+om elektrische signalen snel en
+efficient in optische signalen om te
+zetten. De gegevens, nu in de vorm van
+lichtsignalen, stromen via een optische
+glasvezel naar een fotodetector in de
+opto- elektronische ontvangerchip. Daar
+wordt het omzettings proces omgekeerd:
+de binnenkomende stroom optische
+signalen wordt door de fotodetector in
+elektronische signalen omgezet en
+opnieuw omgevormd tot de digitale
+byte-brede stroom, die de ontvangende
+computer kan verwerken. Het integreren
+van deze elementen op chips, die werken
+met een snelheid van een miljard (= 1
+giga) bits per seconde en het testen
+van een complete optische glasvezel
+verbinding met een vergelijkbare
+snelheid (950 megabits per seconde)
+betekenen een belangrijke stap
+voorwaarts. Het ligt in de verwachting
+dat er in de toekomst een vooruitgang
+zal worden bereikt omdat als gevolg van
+voortdurend onderzoek de componenten
+dichtheid, de snelheid en de
+betrouwbaarheid van deze techniek wordt
+verbeterd. (Bron: IBM Media Relations
+A'dam)
+
+OPEN DAG HCC AFD. NOORD-BRABANT
+
+Op zondag 23 april a.s. organiseert de
+afdeling N.O. Brabant van de HCC een
+Open Dag in het gehele complex van het
+Wijk- en Diensten Centrum 'de Biechten'
+in Hintham (gemeente Rosmalen), en wel
+van 10 tot 17 uur. Thema van deze dag
+is 'leven met computers, zonder
+drempels!', omdat deze dag geheel in
+het teken zal staan van het gebruik van
+computers door gehandicapten.
+
+Deelnemers zijn onder andere:
+- Vereninging voor weer- en
+sterrenkunde 'Galaxis'
+- Het Rode Kruis
+- Big-Band Muziekschool Rosmalen
+- Scouting Hintham
+- enkele sportverenigingen voor
+gehandicapten
+
+De opbrengst van deze Open Dag,
+waarvoor de Gemeente Rosmalen
+belangeloos de ruimte ter beschikking
+heeft gesteld, zal geheel ten bate
+komen van de aktie 'Drempels Weg'.
+

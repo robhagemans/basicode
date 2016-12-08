@@ -1,0 +1,306 @@
+284, maa 08 jan '90
+
+FAX OP DE PC
+
+In Beeldkrant 282 gaven we onze eerste
+indrukken over het in het jubileum
+nummer van TRON (nummer 30)
+gepubliceerde FAX programma met
+interface voor een PC met EGA (of VGA)
+videokaart. Inmiddels hebben we er ruim
+mee geexperimenteerd en we blijven
+enthousiast. Daarom komen we er in deze
+Beeldkrant nog eens op terug om onze
+verdere ervaringen te vermelden.
+
+DE INTERFACE
+
+In TRON staat een beschrijving van de
+interface met de bijbehorende print
+layout. We hebben in een korte tijd het
+schakelingetje kunnen nabouwen op een
+gaatjesboard (in ons geval met
+soldeereilandjes rond de boorgaatjes)
+en hebben daarbij dezelfde afmetingen
+en opstelling van de onderdelen
+aangehouden als op de printtekening.
+
+LET OP, KLEIN SCHEMAFOUTJE!
+
+Natuurlijk controleerden wij onze
+schakeling aan de hand van het
+afgedrukte schema. Toen bleek, dat in
+de schematische tekening de
+voedingspunten van het IC (7 en 4)
+verwisseld zijn. Punt 7 is de plus en
+punt 4 moet de min zijn. De printjes
+zijn echter goed getekend. Als men de
+schakeling nabouwt op gaatjesboard,
+worden de noodzakelijke verbindingen
+gelegd met dun geisoleerd montagedraad
+of met z.g. posijndraad (emailledraad
+met afsmeltende emaillelaag bij de
+soldeerpunten).
+
+HET AANSLUITEN
+
+De interface moet worden aangesloten op
+de COM 1 poort. Let er daarbij wel op,
+dat bij tussenschakeling van een
+verlengkabel, b.v. de modemkabel, ook
+de punten RTS en DCD zijn
+doorverbonden! Vaak worden deze bij een
+modem niet gebruikt en dan werkt de FAX
+interface niet, zoals wij in eerste
+instantie merkten.
+
+HET PROGRAMMA
+
+Het op de gratis floppy bij TRON
+meegeleverde programma is geheel
+softwarematig intstelbaar, het
+witniveau en de grijstinten inbegrepen.
+Voor stations op de lange en korte golf
+gelden verschillende waarden, deze
+kunnen in config files op schijf worden
+bewaard en naar behoefte worden geladen
+vanaf de statusregel, die altijd op het
+scherm aanwezig is.
+
+SYNCHRONISATIE
+
+Een voordeel tegenover veel duurdere
+programma's is, dat het schrijven
+vanzelf start aan het begin van het
+beeld dat dan ook meteen goed op het
+scherm komt. Alleen als men 'met de
+hand' opstart, indien men dus midden in
+een beeld op een station afstemt, dan
+klopt de synchronisatie niet altijd,
+maar het volgende beeld loopt weer
+automatisch in de pas. De beeldlengte
+past zich aan aan het uitgezonden
+plaatje, zodat ook grote beelden in hun
+geheel worden opgenomen.
+
+BEELDKWALITEIT
+
+De juiste afstemming bepaalt de
+kwaliteit van het beeld. Aangezien de
+FAX signalen in enkelzijband met FSK
+worden uitgezonden, beinvloedt de
+afstemming de toonhoogte van het
+signaal dat de interface ingaat en
+daarbij het grijsniveau. Teksten zijn
+goed leesbaar.
+
+DE BEELDVERWERKING
+
+De plaatjes kunnen op schijf worden
+bewaard en/of worden uitgeprint op een
+printer, die grafische mogelijkheden
+heeft. Het werkt zonder meer op
+Epsonachtige printers, maar ook de
+printcommando's kunnen in de config
+file worden gewijzigd, zodat men het
+programma makkelijk aan de voorhanden
+printer kan aanpassen. Een groot
+voordeel.
+
+COMBINATIE MET ANDERE PROGRAMMA'S
+
+Het bleek, dat de plaatjes ook zijn te
+gebruiken in andere grafische
+programma's, die in staat zijn, beelden
+van schijf in te lezen. Dit opent wijde
+perspectieven.
+
+CONCLUSIE
+
+Als men over een PC (AT of snelle XT)
+beschikt met minstens een EGA kaart en
+ook over een goede
+communicatie-ontvanger is het de moeite
+waard om eens met dit programma naar
+FAX beelden te kijken. Dan blijkt, dat
+ook met eenvoudige middelen veel is te
+bereiken. (Aldus Pieter Vijlbrief)
+
+We geven nog een keer het adres:
+secretariaat GGPC, Wielingenplein 17,
+3522 PC Utrecht.
+
+VIDEOTEX VAN START
+
+In de eerste maand van het nieuwe jaar
+zal de grootschalige introductie van
+videotex systemen in Nederland van
+start gaan. Videotex Nederland, een
+samenwerkings verband van verschillende
+projecten en PTT Telecom, denkt binnen
+drie tot vier jaar 500.000 tot 700.000
+terminals te plaatsen voor zowel
+zakelijk als particulier gebruik.
+Met videotex kan informatie uit
+databanken op een beeldscherm via de
+telefoonlijn of televisie kabel worden
+opgeroepen. Men kan er berichten mee
+versturen, elektronisch mee bankieren
+of winkelen, spelletjes mee spelen en
+met andere gebruikers communiceren. In
+totaal vergt het project in drie tot
+vier jaar 100 tot 120 miljoen gulden.
+
+ANDERE OPZET
+
+Anders dan bij Minitel in Frankrijk, de
+internationale koploper op het gebied
+van videotex, kiest Videotex Nederland
+niet voor gratis verspreiden van
+terminals. De apparatuur wordt te huur
+of te koop aangeboden, terwijl voor het
+gebruik tarieven zijn vastgesteld van
+nul tot 37,5 ct per minuut. Al jaren
+wordt in Nederland gesproken over
+grootschalige videotex projecten, maar
+de financiers toonden zich pas bereid
+te investeren toen de verschillende
+initiatieven zich vorig jaar
+aaneensloten in Videotex Nederland. De
+partijen spraken af gezamenlijk te
+streven naar een landelijk netwerk van
+videotex diensten.
+
+INTEL WIL AANPASBAAR BIOS
+
+Chipsfabrikant Intel gebruikt altijd de
+BIOS programmatuur op zijn boards van
+Phoenix Technologies. Met hetzelfde
+bedrijf gaat Intel nu een overeenkomst
+aan om de BIOS later te kunnen updaten.
+Daarbij zal gebruik gemaakt worden van
+een nieuwe chip van Intel, het
+zogenaamde Etox-geheugen. Dit 'flash
+memory' heeft een opslag capaciteit van
+1 megabit. De inhoud van deze
+geheugenchip blijft ook behouden na het
+uitschakelen van de computer.
+
+Het BIOS is een stukje software
+ingebakken in een of meer chips die als
+brug fungeert tussen het besturings
+systeem en de verschillende hardware
+componenten die in de computer aanwezig
+zijn. Phoenix levert aan een groot
+aantal fabrikanten van PC's een BIOS
+die compatibel is met die van IBM.
+
+Probleem is echter dat het Basic
+Input/Output System in de loop der
+tijden veroudert en achter blijft bij
+de nieuwste programmatuur. Ook blijkt
+achteraf nog wel eens een fout in de
+BIOS te zitten. Het idee van Intel en
+Phoenix is dat middels een floppy de
+BIOS in een de 'flitschips' wordt
+aangebracht, door de PC-bezitter zelf
+uit te voeren. Op dit ogeblik moeten
+diverse ROM's vervangen worden en moet
+de computer uiteraard worden
+opengeschroefd. Een opmerking van ons:
+de gevoeligheid voor virussen neemt met
+dit 'update systeem per floppy' vrij
+ernstig toe. Of de floppies moeten via
+Intel of Phoenix werkelijk verzegeld
+worden verzonden of iets dergelijks.
+
+SONY ONTWIKKELT NEURALE MACHINE
+
+Sony heeft de basis-technologie
+ontwikkeld die nodig is om neurale
+computers te maken. Om de menselijk
+hersenactiviteiten te evenaren zouden
+dergelijke machines in staat moeten
+zijn meer dan een miljard verbindingen
+per seconde te leggen. Volgens
+onderzoekers van Sony zijn daarvoor 128
+80860-processoren van Intel nodig. Tot
+nu toe is Sony erin geslaagd 4
+processoren succesvol met elkaar te
+koppelen. Men werkt momenteel aan een
+prototype dat in staat moet zijn de
+benodigde miljard verbindingen per
+seconde te maken. (Uit: Computable)
+
+AAN DE SLAG MET WP 4.2
+
+Voor degenen die nog met WordPerfect
+4.2 werken en het niet nodig vinden om
+op 5.0 over te gaan, heeft uitgeverij
+Pim Oets een nieuw handboek uitgebracht
+onder de titel 'Aan de slag met
+WordPerfect 4.2'. Het boek bestaat uit
+twee delen. In deel 1 staan lessen en
+deel 2 bevat aanvullende informatie
+zoals het aanmaken van etiketten, het
+samenvoegen van bestanden en het
+gebruik van verschillende lettertypen.
+Het boek is 240 pagina's dik en het
+formaat is 20x13 cm. De prijs is 25
+gulden. ISBN: 90 72260 090.
+
+PC-ACTIVE
+
+Hoofdredakteur: Wammes Witkop,
+verschijnt 11 maal per jaar, prijs f
+6.90 per nummer (met gratis diskette
+voor MS-DOS) of f 69.--/jaar.
+De hoofdredakteur heeft zijn sporen als
+redakteur van computerbladen wel
+verdiend, hij voert ook de
+hoofdredaktie van het MSX/DOS magazine.
+PC-ACTIVE bevat per nummer 66 pagina's
+met artikelen (en advertenties) over
+MS-DOS machines. Het is voortgekomen
+uit het blad dat speciaal gewijd was
+aan de 'Amstrad wereld'. Het bevat per
+nummer een aantal artikelen over
+diverse zaken die bezitters van een PC
+kunnen interesseren. De diversiteit is
+uiteraard groot, zodat het weinig zin
+heeft de onderwerpen nader te
+preciseren. Men kan het beste in een
+tijdschriften winkel eens een blad
+doorbladeren en als men er iets van
+zijn gading in vindt, het kopen. Op de
+'gratis' diskette staan, naast enkele
+utilities en spelletjes, ook vaak
+demo's van de in het blad besproken
+programma's, hetgeen natuurlijk altijd
+aardig is. De diskettes worden als 5.25
+inch flops uitgebracht. Voor mensen die
+uitsluitend 3.5 inch diskettes kunnen
+gebruiken, en geen vriendje hebben dat
+de grote floppies naar het kleine
+formaat kan omzetten, is een floppy-
+abonnement voor 3.5 inch diskettes
+mogelijk, maar dat kost dan wel f 79.--
+per jaar extra (in plaats van f 10.--
+per stuk).
+
+DE PC EN HET VERKEER
+
+De ANWB en de CIAD (vereniging voor
+computer- toepassingen in de ingenieurs
+praktijk) houden op 23 april een
+symposium in de RAI. In een halve dag
+worden verkeers deskundigen op de
+hoogte gebracht van de ontwikkelingen
+op hun werkterrein van de PC. Aan bod
+komen bijv. hardware en databanken,
+expert systemen en verkeersregel
+systemen. Het complete programma en een
+inschrijf formulier is verkrijgbaar bij
+de ANWB, afd. Bondspresentatie, Postbus
+93200, 2509 BA Den Haag.
+

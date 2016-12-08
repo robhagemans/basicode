@@ -1,0 +1,248 @@
+74, woe 03 jun '87
+
+MENSELIJKE FOUT
+
+Als gevolg van een 'operator error' zijn er
+problemen ontstaan met de programmatuur in de
+boord computer van OSCAR 9. Men is nog bezig
+met het opnieuw laden van de programmatuur.
+Voorlopig moet men rekenen op afwijkingen van
+het normale gebruiksschema van OSCAR 9, aldus
+onze hemel- en satelliet kenner PA0 - Nico -
+DLO. Hij bericht ook over de USSR kunstmanen:
+
+RADIO SPOETNIKS
+
+De RS-groep in Moskou wil proberen RS5 en RS7
+toch zoveel mogelijk in bedrijf te houden,
+ondanks de lange schaduw perioden voor deze
+oude satellieten. Van 4 tot 30 juni wil men
+beide satellieten in bedrijf stellen tijdens de
+tiende omloop van elke dag. Van 1 tot 25 juli
+moet RS5 ingeschakeld zijn tijdens de negende
+omloop van elke dag en van 1 tot 20 juli moet
+RS7 ingeschakeld zijn tijdens de negende omloop
+van elke dag. Op woensdagen zijn de satellieten
+echter niet beschikbaar voor algemeen gebruik.
+Volgens UA3CR ziet het er naar uit dat de
+lancering van de nieuwe RS9 weer iets verder is
+uitgesteld maar er zijn nog geen details bekend.
+
+AMSAT OSCAR 10
+
+De commando stations krijgen de indruk dat de
+batterij in OSCAR 10 vrij zwaar wordt belast.
+Het is nog niet duidelijk of dit wordt
+veroorzaakt door stations die te grote uplink
+vermogens gebruiken, of door bepaalde apparatuur
+in de satelliet zelf. Voorlopig blijft mode B
+echter beschikbaar voor algemeen gebruik met
+beperkt uplink vermogen tussen de mean anomaly
+phasen 30 en 220. De satelliet mag dus beslist
+niet gebruikt worden in de uren rond het
+perigeum.
+
+UoSAT OSCAR 11
+
+De standregel programmatuur in de boordcomputer
+van OSCAR 11 is verder verbeterd en getest en
+blijkt uitstekend te werken. Er worden regelmatig
+beelden van de CCD-videocamera in OSCAR 11
+ontvangen. Het UoSAT-team onderzoekt de beste
+instelling van de camera, zodat steeds betere
+video-beelden kunnen worden opgenomen. Er zijn
+nu steeds meer stations in Engeland en de USA
+betrokken bij het experimenteren met de packet
+radio berichten uitwisseling door middel van
+het Digital Communications Experiment (DCE) in
+OSCAR 11. In Engeland wordt daarbij gebruik
+gemaakt van het gateway-station GB2UP, dat een
+speciale machtiging heeft voor het doorgeven van
+packet radio berichten van en naar het DCE in
+OSCAR 11. Ook wordt het DCE nu gebruikt voor
+het verspreiden van nieuwe kepler baan
+parameters van alle amateur satellieten en enkele
+weersatellieten. Tot voor kort werden deze baan
+parameters verspreid via de normale bulletin
+uitzendingen van OSCAR 11. Omdat de parameters
+nu worden uitgezonden door het DCE, is er meer
+ruimte beschikbaar in het computer-geheugen voor
+andere bulletin-berichten. De uitzendingen
+vanuit het DCE zijn voorzien van 'n fout-detektie
+code, zodat iedereen bij ontvangst van de baan
+parameters zelf kan nagaan of de gegevens correkt
+zijn ontvangen. Om elke parameter-set binnen een
+regel van 80 karakters te laten passen heeft men
+het aantal decimalen van de parameters terug
+moeten brengen tot het hoogst noodzakelijke.
+
+FUJI OSCAR 12
+
+Nadat begin mei de nieuwe mailbox programmatuur
+in OSCAR 12 was geladen liep de boordcomputer
+vast op 14 mei. Daarna was mode JD alleen weer
+beschikbaar als digitale repeater. De Japanse
+kommando stations zijn echter weer bezig met
+het laden van nieuwe programmatuur in de boord
+computer van OSCAR 12. Men hoopt het Bulletin
+Board System van mode JD begin juni weer aktief
+te hebben. Mode JA wordt nu niet vaak in bedrijf
+gesteld; voorlopig is alle aandacht gericht op
+mode JD. Op maandagen en vrijdagen is OSCAR 12
+helemaal uitgeschakeld. Tijdens de dagen dat
+mode JD aktief is, blijft het systeem steeds
+afwisselend twee uur in bedrijf en twee uur
+buiten bedrijf. Als mode JD in bedrijf is,
+staat hij meestal in de luister-mode. Dat
+betekent dat de mode JD zender bij 435,913
+MHz alleen inschakelt als er korrekte AX.25
+frames worden ontvangen op een van de vier
+uplink frekwenties op 2 m. Als er drie minuten
+lang geen frames meer zijn ontvangen schakelt
+de zender weer uit. Elke minuut wordt er vijf
+seconden lang telemetrie uitgezonden, ook met
+PSK. De huidige eerste versie van de
+BBS-programmatuur is nog beperkt.
+
+AMSAT PHASE III
+
+Volgens de nieuwste plannen van ESA moet de
+volgende ARIANE lancering, vlucht V19,
+plaatsvinden in augustus. Als deze lancering
+dan helemaal slaagt kunnen de volgende
+lanceringen vrij snel daarna volgen. De
+lancering van AMSAT-Phase III-C met de eerste
+proeflancering van de nieuwe ARIANE 4 raket,
+die nu vlucht V22 wordt genoemd, is in principe
+gepland in februari 1988. Men denkt er echter
+over deze vlucht naar voren te schuiven, tussen
+de vluchten V20 en V21, zodat de lancering dan
+al eind 1987 kan plaatsvinden.
+
+AMSAT-DL is begonnen met de voorbereidingen
+voor de bouw van AMSAT-Phase III-D, de opvolger
+van de nog te lanceren Phase III-C. Deze Phase
+III-D moet een grotere en zwaardere versie van
+Phase III-C worden, en onder andere een mode JL
+relais station aan boord krijgen dat een uitgangs
+vermogen heeft van 250 W PEP. De satelliet, die
+bij de lancering een gewicht van zo'n 400 kg zou
+krijgen, wordt dan gelanceerd naar een hoge
+elliptische baan in 1990 of 1991.
+
+LUISTERAMATEUR TAPT MIR AF
+
+Van Chris v.d. Berg, NL-9165, uit Den Haag
+krijgen we via Fido erg veel informatie
+toegespeeld over ruimtevaart zoals hij dat
+beleeft via zijn ontvangers. Bijzonder
+interessant zijn de rapporten van het
+Sovjet ruimteschip Mir. Zijn waarnemingen
+beginnen op donderdag 21 mei, dus de termen
+'vandaag', 'hedenmorgen' slaan op die datum.
+
+KOPPELING AAN MIR
+
+Toen de Progress-30 aan Mir werd gekoppeld kon
+Chris dat volgen op 143.625 Mhz. Hij schrijft:
+De beloofde aankomst van de Progress-30 bij het
+Mir-complex vandaag leidde ook tot een
+geslaagde koppeling. Dat deze koppeling zou
+plaatsvinden en ook daadwerkelijk werd afgerond
+heb ik door beluistering van het radioverkeer
+hedenmorgen kunnen vaststellen. hiervoor had ik
+drie overkomsten van de satellieten nodig.
+
+05:40-05:47 utc
+Zodra ik de Mir kon horen was duidelijk, dat
+de naderingsprocedure in een beslissend
+stadium was gekomen. Romanenko geeft de stand op
+van de 'Gruzovik vrachtwagen': 1.1 gr, dan minder
+dan 0.5 gr. Brandstof verbruik: 790. Er wordt
+iets uitgeschakeld en Romanenko reageert op
+instructies van Tsup, het grondstation. Een
+bepaald radiokanaal is uitgeschakeld. Ontvangst
+via ander kanaal. Volgens Romanenko is de tijd
+daar en dit wordt bevestigd.
+
+07:13-07:22 utc
+De ruwe koppeling, die ong. 05:53 utc (dus
+onhoorbaar voor mij heeft plaatsgevonden) wordt
+in deze doorgang afgerond. Romanenko heeft
+contact met een hoge chef op de grond, die de
+roepnaam 'Zarya-4' gebruikt. Ook spreekt hij
+met collega Vladimir Alekseyevich
+(Dzhannibekov). Romanenko spreekt over 'het
+besluit van de koppeling' en 'het volbrengen
+daarvan'. Laveykin meldt dat zij beginnen met
+het controleren van de 'hermetische' afsluiting.
+Om 07:22 meldt Romanenko, dat de Progress-30
+'door- en door' gekoppeld is.
+
+Om 08:33 utc eerste officiele bericht via de
+pers over de koppeling (om 07:53 utc - 09:53
+Moskoutijd) van de Progress-30 aan de
+koppelingspoort van de Kvant. Dus: eerste
+contact en ruwe koppeling om 05:53 utc en
+technische afronding klaar om 07:20.
+
+08:52-08:57 utc
+Romanenko praat met Tsup over de geslaagde
+koppeling. Laveykin over de eerste controle,
+zoals de 'conservering' van de vrachtruimte.
+Alles is prima in orde. Dzhannibekov
+informeert naar de eventueel aanwezigheid van
+stof. Laveykin heeft dit niet aangetroffen,
+maar dat kan volgens hem in de loop van de
+werkzaamheden nog wel gebeuren. Romanenko
+herhaalt dat de afsluiting hermetisch is.
+Zullen doorgaan met werk. Felicitaties over en
+weer. Hij stelt het navolgende dagschema voor:
+eerst gymnastiek met medische registratie zoals
+eerder was afgesproken met arts Tamara, dan het
+middagmaal en tenslotte een reportage. Lang
+heen en weer gepraat over mogelijk andere
+schema's met Tsup.
+
+Tenslotte: bakensignaal van (mogelijk)
+Progress-30 op 19.990 MHz niet meer gehoord.
+Baken dus blijkbaar uitgezet. Aldus Chris
+v.d. Berg.
+
+ONTVANGST IN SPANJE
+
+Jos Lemmens uit Vlaardingen schrijft een
+verbazingwekkend rapport over de ontvangst
+van Radio 5 in Spanje. Leest u even mee:
+'Zondag 10 mei was ik in Spanje op vakantie
+in Malgrat de Mar, 56 km ten noorden van
+Barcelona. Ik zat die avond om ca. 22:40
+in m'n hotelkamer te spelen met de Sony
+Walkman WM-F31/F41 en tot mijn grote
+verbazing hoorde ik toen Hobbyscoop. Ik heb
+het hele programma letterlijk kunnen
+volgen. Af en toe zakte de ontvangst wel
+even in andere zenders weg, maar door m'n
+Walkman goed te richten kon ik toch alles
+volgen. Verder draaien bijna alle uitgezonden
+Basicode programma's van de woensdagen en de
+zondagen zonder problemen op de Commodore
+128.' Aldus Jos. Heeft u ook vakantie
+ervaringen met Radio 1 of 5? Schrijft u gerust.
+Na de zomer wijden we er een Beeldkrant aan.
+Overigens zijn we gedurende de maand juli
+uit de lucht, zowel op woensdag als zondag.
+
+TERUGLOPENDE DENKKRACHT?
+
+Pomp eens wat verse zuurstof naar die grijze
+cellen. NOS-sportief geeft adviezen voor een
+gezonde geest in een gezond lichaam. Radio 5,
+of het geluidskanaal van Nederland 1/2, ma
+t/m zaterdag van 9:00-9:25 uur. Deze week met
+adviezen van Fred Brouns (universiteit van
+Maastricht) over juiste voeding, en sportarts
+Gee van Ens over het voorkomen van (sport)
+blessures. Schrijf voor adressen en telno.s
+naar NOS-Sportief, Postbus 1010, 1200 BA in
+Hilversum.

@@ -1,0 +1,456 @@
+344, maa 17 sep '90
+
+NIKKEL-CADMIUM ACCU'S - Deel 1
+
+In het lijfblad van de Radio Club
+Kennemerland verscheen een zeer
+gedetailleerd technisch artikel over
+dit onderwerp. Het artikel werd
+herschreven en bewerkt voor de
+Beeldkrant door Andries Pals, PD0JKQ.
+(Bedankt, Andries!)
+
+INLEIDING
+
+Er gaan onder hobbyisten nogal wat
+uiteenlopende verhalen over het
+gebruik, laden en ontladen van NiCd
+accu's. Zelfs fabrikanten geven soms
+onvoldoende of helemaal geen
+instructies om een behoorlijke
+levensduur van deze, toch uitstekend
+werkende accu's te bevorderen. Om iets
+van de laad en ontlaad cyclus te
+begrijpen is het wenselijk om te weten
+wat er in de accu's gebeurt.
+
+OPBOUW EN WERKING
+
+Een NiCd accu bestaat uit een huisje,
+meestal cilindrisch van vorm, van
+roestarm staal, dat gasdicht is
+afgesloten door een van het huisje
+geisoleerd deksel. Meestal is er
+krimpkous om de accu aangebracht om
+kortsluiting van accu's in een accu
+batterij onderling te voorkomen.
+
+De negative plaat in een NiCd accu is
+van Cadmium, fijn verdeeld in een lap
+roestarm staalgaas. Als de accu wordt
+ontladen, dan wordt het Cadmium omgezet
+van de metallische vorm naar die van
+onoplosbaar loog.
+
+De positieve plaat is van Nikkel, maar
+dit is bij geen van de ladings
+toestanden als metallisch nikkel
+aanwezig. Het wordt bij ontladen
+omgezet van het ene nikkelloog in het
+andere, welke beide onoplosbaar zijn.
+
+Als de accu wordt geladen, dan worden
+beide reacties omgekeerd en wordt er
+weer metallisch cadmium gevormd. Aan
+dit omkeerbare proces is een
+electrische spanning van rond de 1,25 V
+verbonden tussen positieve en negatieve
+plaat.
+De beide platen zijn samen met een
+nylonvilt separator tot een rol
+gewikkeld en in het huisje geschoven.
+Het nylonvilt is gedrenkt in Kaliloog,
+dat als electrolyt fungeert.
+
+OVERLAAD-BESCHERMING
+
+Als het laden wordt voortgezet nadat al
+het daarvoor in aanmerking komende
+materiaal van de platen is omgezet, dan
+heeft de fabrikant ervoor gezorgd dat
+de nikkelanode het eerst is uitgeput.
+De zuurstof ionen, afkomstig uit het
+cadmiumloog van de negatieve plaat,
+arriveren bij de nikkelanode, maar
+vinden geen materiaal meer om te
+oxyderen. De ionen vormen dan zuurstof
+moleculen. Deze moleculen voegen zich
+samen tot gas onder druk in de vrije
+ruimte in de accu en gaan, door de hele
+accu heen, weer in oplossing in het
+electrolyt. Zo bereiken de zuurstof
+moleculen ook weer de cadmium plaat en
+oxyderen deze.
+
+Op deze wijze wordt de laadstroom die
+door de accu wordt gestuurd, omgezet in
+transport van zuurstof, die als
+negatieve ionen in de ene richting en
+als neutrale moleculen in de andere
+richting stroomt. Het energie overschot
+dat hierbij ontstaat wordt als warmte
+afgevoerd.
+
+LAADSTROOM-BEGRENZING NODIG
+
+Er is een lineair verband tussen de
+druk van het zuurstofgas en de snelheid
+waarmee de zuurstof moleculen weer in
+het kaliloog terugkeren. Hoe meer er
+terug moeten in een bepaalde tijds
+eenheid, des te hoger de druk die
+daarvoor nodig is. Dit is de reden
+waarom, zodra de nikkelanode is
+uitgeput, de laadstroom begrensd moet
+worden tot een waarde waarbij de accu
+in geen geval zuurstofgas gaat afblazen
+via het aanwezige veiligheids ventiel.
+Dit is buiten de accu te merken door
+het warm worden ervan. Zolang de
+nikkelanode niet is uitgeput, wordt
+alle electrische energie in chemische
+energie omgezet. De enige warmte
+ontwikkeling die ontstaat is te wijten
+aan de verliezen over de inwendige
+weerstand.
+
+THEORIE EN PRAKTIJK
+
+Het voorgaande houdt in, dat een NiCd
+accu kan worden geladen met een stroom
+waarbij de temperatuur stijging, door
+inwendig energie verlies, binnen
+redelijke grenzen blijft. Dus een
+laadstroom die de temperatuur niet
+boven 45 graden Celsius laat stijgen.
+
+Nu blijkt dat een dergelijke laadstroom
+veel groter is dan de door de fabrikant
+aangeven waarde. In de praktijk blijkt
+dat een laadstroom van 3 A voor een
+'penlight' accu (nominale laadstroom 50
+mA) nauwelijks temperatuur verhoging
+veroorzaakt. Zodra echter het punt van
+temperatuur verhoging is bereikt en men
+is er niet snel genoeg bij om de zware
+laadstroom (60 x de nominale waarde)
+uit te schakelen, dan zijn de poppen
+aan het dansen. De druk in de accu
+wordt dan zo hoog, dat zuurstofgas gaat
+afblazen via het veiligheids ventiel.
+Is dit punt bereikt, dan is al zeker
+95% van de lading in de accu.
+
+Men zou geneigd zijn nu de lader uit te
+schakelen. Het is echter beter om nu
+over te schakelen naar de nominale
+laadstroom, omdat de overige 5% van de
+lading nog moet worden geladen. Daar
+komen we later nog op terug.
+
+STORINGEN
+
+Er zijn heel wat gebruikers van NiCd
+accu batterijen die er niet zo
+'gelukkig' mee zijn. De oorzaak daarvan
+ligt aan de manier waarop de accu's
+worden gebruikt.
+
+De storingen die we bij een defecte
+accu zien optreden kunnen we
+functieverlies noemen. We hebben vaak
+zelf in de hand of deze al dan niet
+zullen optreden. Daarnaast zijn een
+aantal storingen niet blijvend. Die
+zijn op een bepaalde wijze te
+verhelpen; de accu is te
+reconditioneren.
+
+BLIJVENDE STORINGEN
+
+Men merkt in geval van storing altijd
+maar twee fouten op: of onvoldoende
+capaciteit, of de accu doet niets meer.
+Aan deze fouten kunnen verscheidene
+oorzaken ten grondslag liggen, zoals:
+a) electrolyt verlies;
+b) veroudering;
+c) losgeraakte verbindingen.
+
+A) ELECTROLYT VERLIES
+
+Als eerste uit de reeks blijvende
+storingen behandelen we het electrolyt
+verlies. Dit kan ontstaan door:
+
+1) Lekkage
+
+Als het kaliloog uit de accu is
+verdwenen door een lekkende pakking
+tussen deksel en huisje of door een
+lekkend veiligheids ventiel, kan de
+accu niet meer functioneren. Spontaan
+electrolyt verlies kan nooit, zelfs
+niet tijdens 'afblazen' van de accu met
+het veiligheids ventiel naar beneden
+gericht, want alle vloeistof is in de
+separator opgenomen.
+
+Accu's met electrolyt verlies zijn te
+herkennen aan de witte kristallen op de
+kop van de accu. Deze exemplaren zijn
+reddeloos verloren.
+
+2) Te heet worden tijdens ontladen
+
+Hierbij is de water component van het
+electrolyt als stoom afgeblazen via het
+veiligheids ventiel. Een dergelijke
+hitte kan zich ontwikkelen door
+kortsluit stromen, vooral bij
+serieschakeling van meerdere accu's.
+
+Bijvoorbeeld een volledig met een dik
+stuk koperdraad kortgesloten 7 Ah
+levert 20 a 25 A, terwijl de maximaal
+toegestane continu ontlaad stroom 35 A
+is. Het dubbele of het drievoudige
+hiervan doet binnen de tijd dat de
+accu's leeg raken nog geen kwaad,
+natuurlijk ook afhankelijk van het
+feit, in hoeverre de accu's hun warmte
+kwijt kunnen raken, maar bij serie
+schakeling van meer dan 5 accu's moeten
+we toch gaan uitkijken.
+
+In zo'n geval blijken maar 1 of 2
+accu's tot afblazen te komen. Die
+hadden waarschijnlijk net een paar
+milli Ohm meer inwendige weerstand dan
+de anderen.
+
+Door het afblazen van stoom, wat onder
+grote druk gebeurt, wordt de bodem van
+de accu vaak bol gedrukt, het
+electrolyt droogt uit en de krimpkous
+aan de buitenzijde smelt aan flarden.
+Toch hoeft een dergelijke accu niet
+defect te zijn; zolang er nog een
+beetje water in het electrolyt aanwezig
+is blijft deze werken. Alleen is de
+inwendige weerstand hoger geworden.
+
+3) Te heet worden tijdens laden
+
+Hier gebeurt hetzelfde als bij 2, maar
+dan door een te grote laadstroom; door
+de grote warmte ontwikkeling over de
+inwendige weerstand wordt er stoom
+afgeblazen. We gaan er maar vanuit dat
+dit een beroeps electronicus niet zal
+overkomen.
+
+4) Te hoge laadstroom
+
+bij een volgeladen accu. Dit komt vaker
+voor, want de stromen die het afblazen
+van zuurstofgas tot gevolg hebben, zijn
+kleiner dan die welke nodig zijn om
+tijdens het laden stoom af te blazen.
+Toch schaadt een keertje afblazen de
+accu niet. Pas na een keer of drie
+bemerkt men enkele nadelige effecten,
+zoals meer inwendige weerstand en een
+lagere capaciteit.
+
+Het zuurstof afblazen gebeurt het
+snelst tijdens het laden van koude
+accu's. Bij lagere temperatuur moet men
+dus uitkijken. Kennelijk gaat de opname
+van gasvormig zuurstof door koud
+electrolyt slechter dan door warm
+electrolyt.
+
+Overigens bepaalt de mate waarin de
+accu warmte kwijt kan, hoeveel stroom
+er kan lopen op het eerder genoemde
+punt van 95% van de ladings toestand.
+Bij een dik ingepakte accu is het niet
+raadzaam om boven de door de fabrikant
+aangegeven laadstroom uit te gaan. Bij
+een goed gekoelde accu kan men rustig
+tot het vijfvoudige gaan zonder dat er
+iets vervelends gebeurt.
+
+5) Gasdiffusie
+
+Ook hier is sprake van verlies van het
+watercomponent uit het electrolyt. In
+een gasdichte accu is altijd gasdruk
+aanwezig. Als hij warmer is dan de
+omgeving, heerst er binnenin een hogere
+waterdampdruk dan erbuiten. Altijd is
+er zuurstof onder druk aanwezig. Soms
+is er zelfs waterstofgas onder druk
+aanwezig.
+
+Het mag bekend zijn dat er geen pakking
+is die volledig afsluit. Een gevolg
+daarvan is, dat er altijd waterdamp,
+zuurstof en soms waterstof, molecuul na
+molecuul langs de dekselpakking of via
+het veiligheids ventiel ontsnapt. Bij
+de ene accu gebeurt dit sneller dan bij
+de ander. Dit verschijnsel heet
+'gasdiffusie' en in een jaar of tien
+merken we de gevolgen van het
+uitdrogende electrolyt; de accu is
+verouderd.
+
+6) Het ompolen van de accu
+
+Dit kan het gevolg zijn van een
+aansluit fout, maar komt vaker voor bij
+accu's die deel uitmaken van een serie
+schakeling van accu's. Als in zo'n
+serie schakeling een accu eerder leeg
+is dan de anderen, dan loopt de ontlaad
+stroom van de andere accu's in de
+verkeerde richting door de te vroeg
+ontladen accu. Het gevolg is dat er
+waterstofgas gaat ontstaan aan de
+nikkelanode.
+
+De fabrikanten brengen een beetje
+Cadmium Hydroxide aan in de nikkelanode
+als bescherming tegen ompolen, maar als
+ook dit omgevormd is, begint de vorming
+van waterstofgas.
+
+CITAAT
+
+We citeren uit het General Electric
+Nickel Cadmium Handbook:
+
+De grootte van de negatieve
+klemspanning van de omgepoolde accu
+hangt af van het feit tot hoever de
+ontlading wordt doorgezet. De spanning
+ligt meestal tussen 0 en -0.4 V,
+afhankelijk van welke elektrode
+omgepoold is. Doorgaan met de
+omgekeerde lading zal ook het ompolen
+van de andere elektrode veroorzaken en
+de spanning zal verder dalen tot
+ongeveer -1.4 V.
+
+Elke elektrode die omgepoold is begint
+gas te ontwikkelen. Aan de nikkelanode
+ontstaat waterstofgas en aan de Cadmium
+elektrode ontstaat zuurstof. In een
+gasdichte accu zal gewoonlijk de
+nikkelanode het eerst omgepoold worden.
+Daarom zal er waterstofgas ontstaan als
+de klemspanning tussen 0 en -0.4 V
+ligt.
+
+Er vindt slechts een beperkte en
+langzame recombinatie van de waterstof
+met de zuurstof plaats. Daarom zullen
+er bij veelvuldig en langdurig ompolen
+van de accu's steeds hogere waterstof
+drukken ontstaan door het cumulatieve
+effect. Er zal uiteindelijk gas
+afblazen plaatsvinden. Dit is de reden
+dat men toepassingen moet vermijden
+waarbij de accu regelmatig wordt
+omgepoold. Dit zal leiden tot gas
+afblazen dat, als het vaak en
+uitgebreid gebeurt, eventueel de
+werking van de accu zal verslechteren.
+(Einde citaat)
+
+Het is duidelijk, een keertje ompolen
+of verkeerd om laden, zelfs als de accu
+daarbij waterstof afblaast, doet geen
+kwaad. De ontstane waterstof blijft
+lang als gas in de accu aanwezig; het
+recombineert slecht met de zuurstof
+moleculen.
+
+B) VEROUDERING
+
+Voor de storings oorzaak 'veroudering'
+kunnen eigenlijk maar twee processen
+verantwoordelijk zijn. Het eerste is de
+hierboven al beschreven gasdiffusie
+waardoor het elektrolyt uitdroogt.
+
+De tweede mogelijkheid is het
+uiteenvallen van de separator. Deze
+bestaat uit een reep nylonvilt en
+bevindt zich tussen de platen, is
+doordrenkt met elektrolyt en fungeert
+tevens als afstandhouder om de
+positieve en negatieve platen uit
+elkaar te houden. Het is helaas zo dat
+het nylonvilt niet het eeuwige leven
+heeft. Vooral temperaturen boven 60
+graden Celsius en de aanwezigheid van
+veel zuurstof in de omgeving
+bespoedigen het uiteen vallen van de
+separator.
+
+Wil men lang plezier hebben van de NiCd
+accu's, dan moet men niet al te vaak en
+ook niet al te lang stroom door de accu
+jagen als deze al volgeladen is.
+Overigens hoeft men bij normaal gebruik
+de eerste tien jaar niet te vrezen voor
+het uiteenvallen van de separator.
+
+C) LOSGERAAKTE VERBINDINGEN
+
+De derde en laatste blijvende storings
+oorzaak betreft de losgeraakte
+verbindingen. Daarmee bedoelen we niet
+de externe verbindingen tussen de
+accu's onderling, maar de interne
+stripjes die de verbinding vormen
+tussen enerzijds de negatieve plaat en
+het huisje en anderszijds de positieve
+plaat en het afsluit deksel. Sporadisch
+komt het voor dat de fabrikant de zaak
+niet goed gepuntlast heeft, maar in
+vrijwel alle gevallen is de gebruiker
+zelf de schuldige. Een serie schakeling
+van accu's is namelijk in staat een
+dermate grote kortsluit stroom te
+leveren, dat deze inwendig de aansluit
+strippen van de platen doorsmelt.
+
+Het klink ongelooflijk, maar 10 stuks
+500 mAh accu's (penlight cellen)
+leveren een kortsluit stroom van zeker
+80 A. Zijn deze accu's extern door
+strippen verbonden, dan is de fabrikant
+wel zo wijs geweest deze zo dun te
+maken dat die het eerst doorsmelten.
+Bovendien begrenst de totaal weerstand
+van de externe strippen de kortsluit
+stroom. Zitten de accu's echter
+kop/staart in een houder gemonteerd,
+dan is deze begrenzende factor
+weggevallen en zijn bovengenoemde
+waarden mogelijk. Bij het ene fabrikaat
+vlugger dan bij het andere. Men kan de
+schade vaststellen door het feit dat de
+accu volkomen 'open' ligt en geen
+laadstroom meer aanneemt.
+
+Het is dus zaak, vooral bij serie
+schakelingen van accu's, geen
+kortsluiting te veroorzaken. Denk
+daarbij ook aan het gevaar voor het
+ontstaan van BRAND!! (Einde deel 1)
+

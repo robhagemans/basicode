@@ -1,0 +1,295 @@
+
+244, woe 23 aug '89
+
+AMSAT-OSCAR 13
+
+Vanaf 14 augustus zijn de
+kommandostations bezig geweest met een
+standverandering van OSCAR 13. Als
+gevolg van de veranderende stand van de
+zon ten opzichte van de zonnepanelen
+van de satelliet moest zijn stand weer
+30 graden worden gewijzigd. Dit
+betekent dat de antennes van OSCAR 13
+niet meer optimaal naar de aarde zijn
+gericht wanneer de satelliet zich bij
+zijn apogeum bevindt maar pas enkele
+uren na de apogeumpassage. Een
+aangepast gebruiksschema is nu dan ook
+van toepassing tot 23 november: mode B
+van mean anomaly phase 3 tot 160 en van
+phase 200 tot 240, mode JL van phase
+160 tot 200 en alle relaisstations
+uitgeschakeld van phase 240 tot 3.
+Omdat de satelliet elke omloop bij zijn
+perigeum enige tijd in de schaduw van
+de aarde komt, mag hij tijdens de
+perigeumpassages niet worden gebruikt.
+Mode S is voorlopig in bedrijf van
+phase 201 tot 217. Rond 16 november
+wordt de stand van OSCAR 13 weer
+teruggebracht naar zijn nominale
+waarde, die hij in de afgelopen maanden
+ook had. Daarom is in november weer een
+wijziging van het gebruiksschema te
+verwachten.
+
+MODE S RELAIS WERKT WEER
+
+DB2OS, een van de OSCAR 13
+kommandostations, is erin geslaagd de
+problemen met het mode S relaisstation
+op te lossen. Na enige diskussies over
+de mode S problemen tijdens het
+DATASPACE '89 Colloquium in Surrey
+gingen enkele betrokkenen opnieuw aan
+het experimenteren met het mode S
+relais. Het probleem was dat het mode S
+baken niet wilde uitschakelen zodra het
+mode S relais werd ingeschakeld. Daarom
+was zeer veel uplinkvermogen nodig om
+het relais te kunnen gebruiken. Dank
+zij de medewerking van DF5DP en ON6UG
+wist Peter, DB2OS, het mode S baken
+onder direkte besturing uit te
+schakelen terwijl het relaisstation in
+bedrijf bleef. Toen bleek het relais,
+voor het eerst sinds de lancering,
+uitstekend te funktioneren. De
+problemen bleken te worden veroorzaakt
+door een fout in de mode S besturings
+interface. Gelukkig is deze fout te
+omzeilen door een wijziging in de
+programmatuur in de boordcomputer. Deze
+wijziging zal waarschijnlijk voor eind
+augustus zijn geimplementeerd, zodat
+het mode S relais spoedig op
+regelmatige basis in bedrijf zal kunnen
+zijn met goede downlink signalen.
+
+Inmiddels is een merkwaardig
+verschijnsel waargenomen: hoewel de
+mode B en mode S uplinkbanden
+verschillend zijn, blijken mode B
+uplinksignalen toch ook in de mode S
+downlinkband te verschijnen. Om
+onderscheid te kunnen maken wordt men
+geadviseerd USB te gebruiken in de mode
+B uplink als men via mode S wil werken
+en LSB als men via mode B wil werken.
+Het mode S relais inverteert niet.
+
+RUDAK
+
+In december wil men de laatste pogingen
+ondernemen om het digitale RUDAK
+relaisstation in OSCAR 13 in bedrijf te
+krijgen. Men verwacht dat de fout in de
+RUDAK-apparatuur temperatuur-
+afhankelijk is. In december zijn de
+temperaturen in de satelliet hoger en
+kunnen verder worden verhoogd door het
+inschakelen van extra apparatuur in de
+buurt van het RUDAK systeem.
+
+AMATEUR RADIO VANUIT SPACE SHUTTLE
+
+De eerstvolgende amateur radio
+aktiviteiten vanuit een Amerikaanse
+Space Shuttle zijn gepland in 1990. Ron
+Parise, WA4SIR, zal dan deel uitmaken
+van de bemanning van de ASTRO-1 missie
+aan boord van Space Shuttle Columbia.
+Momenteel is de lancering van deze
+vlucht STS-35 gepland op 26 april 1990.
+WA4SIR wil dan het Shuttle Amateur
+Radio Experiment 2 (SAREX 2) aktiveren.
+Hierbij wordt gebruik gemaakt van
+dezelfde zend-ontvanger die eerder is
+gebruikt door Owen Garriott, W5LFL, en
+Tony England, W0ORE. Er zullen weer
+FM-verbindingen worden gemaakt in de 2
+meter band, maar deze keer zal er ook
+een packet radio TNC gekoppeld zijn aan
+de apparatuur. Met behulp van de TNC
+zullen niet alleen direkte packet radio
+verbindingen worden gemaakt maar zijn
+er meer mogelijkheden. Het systeem kan
+als baken fungeren, waarbij een
+mededeling van maximaal 1800 karakters
+herhaald kan worden uitgezonden vanuit
+een geheugen. Zo kunnen de astronauten
+berichten over hun missie en over de
+SAREX aktiviteiten naar alle
+geinteresseerden zenden. Ook zal het
+systeem een ROBOT-mode bevatten, zodat
+iedereen een automatische verbinding
+tot stand kan brengen met SAREX, ook in
+de perioden waarin de astronauten geen
+tijd hebben voor het maken van direkte
+verbindingen. Omdat de baanhelling
+tijdens deze vlucht slechts ongeveer 26
+graden zal zijn, zal de Shuttle helaas
+vrijwel niet binnen het bereik van
+Nederland komen.
+
+In juni of juli 1990 zal er weer een
+zendamateur aan boord zijn tijdens een
+Space Shuttle vlucht. Ken Cameron,
+KB5AWP, wil proberen weer aktief te
+zijn met amateur radio vanuit de
+Shuttle tijdens deze vlucht STS-37.
+Omdat het hier een volledig militaire
+missie betreft is het niet zeker dat
+toestemming wordt verkregen voor
+amateur radio aktiviteiten. Een
+voordeel is wel dat de baanhelling bij
+deze vlucht ongeveer 57 graden zal
+zijn, zodat de Shuttle dan goed te
+bereiken zal zijn vanuit Nederland.
+(Met dank aan Nico Janssen, PA0DLO)
+
+EPIRB
+
+Binnenkort moeten alle schepen die
+onder de internationale wetgeving
+vallen, uitgerust zijn met een
+Emergency Position Indicating Radio
+Beacon (EPIRB). Dit is een zelfdrijvend
+noodradiobaken dat werkt via een van de
+Cospas/Sarsat satellieten. Een en ander
+werd vastgelegd in het kader van het
+toekomstige nood- en veiligheids
+systeem (het Global Maritime Distress
+and Safety System).
+
+NAUWKEURIGE PLAATSBEPALING
+
+De EPIRB is een noodradiobaken dat
+automatisch geactiveerd wordt zodra het
+in het water terecht komt. Daarnaast
+bestaat ook de mogelijkheid om het met
+de hand in te schakelen. Is het baken
+eenmaal geactiveerd, dan zendt het
+gecodeerde signalen uit waarin o.a. de
+roepnaam van het in nood verkerende
+schip is opgenomen. Bij de meer
+geavanceerde bakens is het ook mogelijk
+extra signalen uit te zenden, zoals de
+aard van de noodsituatie.
+
+De noodsignalen van de EPIRB's bereiken
+de Cospas/Sarsat satellieten die een
+baan rond de aarde beschrijven. De
+opgevangen signalen worden aan boord
+van de satelliet bewaard totdat deze
+binnen het bereik van een van de
+stations op aarde is. De vertraging die
+hierdoor optreedt kan in extreme
+gevallen oplopen tot 3 uur. Een groot
+voordeel is echter dat een noodsignaal
+van een schip altijd ontvangen wordt en
+er een redelijk nauwkeurige
+positiebepaling kan plaatsvinden.
+
+INMARSAT
+
+Een andere mogelijkheid wordt geboden
+door de Inmarsat satellieten, die een
+geostationaire baan beschrijven op
+ongeveer 36.000 km. boven de evenaar.
+Zij bevinden zich blijvend op een vast
+punt en zijn 24 uur per dag bereikbaar:
+ontvangen signalen worden dus zonder
+noemenswaardige vertraging doorgegeven
+aan een Reddings Coordinatie Centrum.
+Het nadeel is echter dat bepaalde
+gebieden - o.a. de poolgebieden - niet
+door het systeem bereikt worden.
+Speciale voorzieningen zullen dan
+noodzakelijk zijn voor een nauwkeurige
+positiebepaling: de actuele positie
+moet door de EPIRB's zelf uitgezonden
+worden, wat betekent dat ze vooraf
+geprogrammeerd moeten worden. Om die
+reden zal waarschijnlijk gekozen worden
+voor het Cospas/Sarsat systeem, hoewel
+de discussie hierover nog niet is
+afgerond. (Uit: Electronaut)
+
+LANCERING GALAXY EN SBS-6 IN 1990
+
+Groot was het vertrouwen in de Europese
+ruimtevaart, toen vorige maand het
+contract werd getekend tussen Hughes
+Communications Inc. en ARIANESPACE. Het
+betreft de lancering van twee
+telecommunicatie satellieten, de GALAXY
+VI en de SBS-6. De twee satellieten
+gaan deel uitmaken van de momenteel uit
+negen satellieten bestaande vloot van
+Hughes.
+
+GALAXY VI
+
+Galaxy VI is een HS 376 satelliet met
+een lanceergewicht van 1250 kg. De
+satelliet is voorzien van een 24 C-band
+transponder en wordt geplaatst op 91
+graden Westerlengte. 'Op aanvraag'
+kunnen telecom diensten geboden worden,
+evenals videotransmissies en
+distributie van tv-kanalen voor kabel-
+en microgolf- netwerken.
+
+SBS-6
+
+De tweede satelliet, genaamd SBS-6, is
+een HS 393 model, met 19 Ku-band
+transponders en een lanceergewicht van
+2400 kg. De SBS-6 wordt geplaatst op 72
+graden Westerlengte. De satelliet zal
+worden gebruikt in samenwerking met de
+SBS-4 en SBS-5 satellieten. Hughes wil
+hiermee een verdere commerciele
+doorbraak bereiken van zijn Ku-band
+netwerk.
+
+Ariane 4, Arianespace's grootste raket,
+zal de beide satellieten moeiteloos in
+een keer op de plaats van bestemming
+brengen. De lancering is gepland voor
+juni 1990.
+
+LUCHTVAARTBEURS IN AVIODOME
+
+In het luchtvaartmuseum Aviodome op
+Schiphol wordt in het weekend van 21 en
+22 oktober weer het jaarlijkse
+'avioplein' georganiseerd. Dit is een
+luchtvaartbeurs waar geinteresseerden
+en verzamelaars de gelegenheid krijgen
+om allerlei spullen die te maken hebben
+met de vliegerij te ruilen of te
+verkopen.
+
+Bij dit evenement, dat inmiddels is
+uitgegroeid tot de grootste
+luchtvaartbeurs van ons land, zal weer
+een grote verscheidenheid aan artikelen
+uit de luchtvaart worden aangeboden:
+van boeken en tijdschriften tot
+onderdelen van vliegtuigen, foto's,
+ansichtkaarten, videobanden en
+artikelen die in de loop der jaren zijn
+uitgegeven ter herinnering aan
+belangrijke vluchten en luchtvaart
+evenementen. Voor het eerst wordt dit
+jaar een hoek ingericht voor
+verzamelaars van vliegtuigmodellen.
+
+De beurs is dagelijks geopend van 10.00
+tot 17.00 uur. Iedereen die een tafel
+wil reserveren kan dat telefonisch doen
+bij het Aviodome: 020-6041521.
+

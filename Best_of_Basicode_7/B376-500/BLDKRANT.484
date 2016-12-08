@@ -1,0 +1,357 @@
+484, maa 23 mrt '92
+
+VIRUS MINSTE RISICO VOOR PC-NETWERK
+
+Computervirussen en -criminaliteit
+vormen het minste risico voor
+pc-netwerken. De meeste schade in
+netwerken ontstaat door foute
+bediening, onachtzaamheid, gebruik van
+slecht materiaal, verkeerde
+instructies, ondoordachte procedures,
+rammelende organisatie, onvoldoende
+bescherming en een gebrek aan een
+calamiteitenplan. Dit bleek vorige week
+op een seminar over pc-netwerk
+beveiliging in Alphen aan den Rijn, dat
+het raadgevend informatiebureau
+Applicare samen met de afdeling
+computer criminaliteit van de
+Amsterdamse politie had georganiseerd.
+
+VIRUS-PANIEK BUITEN PROPORTIE
+
+Volgens de organisatoren is begin deze
+maand volslagen onnodig paniek rond de
+mogelijke gevaren van het Michelangelo-
+virus gezaaid. Veel meer aandacht
+verdient volgens hen een goed
+preventief beleid, waarmee schade aan
+netwerken voorkomen kan worden door een
+systematische vermindering van de
+risico's. Terwijl telkens blijkt dat de
+schade door computer criminaliteit en
+virussen enorm meevalt, krijgen de
+inbrekers en criminelen buiten-
+proportionele aandacht, aldus R. Kroon
+van het adviesbureau.
+
+ONVOLDOENDE BEVEILIGING
+
+Uit de praktijk blijkt dat bij veel
+bedrijven en overheids instellingen
+nauwelijks of geen sprake is van
+pc-netwerk beveiliging. Het komt
+regelmatig voor dat de toegang tot
+gebouwen goed wordt bewaakt, maar de
+echte geheimen van het bedrijf of
+instelling op de meest simpele wijze
+met behulp van een telefoon of
+eenvoudige apparatuur gestolen kunnen
+worden.
+
+EIGEN MEDEWERKERS
+
+Uit onderzoek is gebleken dat bij
+computer criminaliteit vrijwel altijd
+medewerkers van de eigen organisatie
+betrokken zijn. Het zijn over het
+algemeen jonge mensen met een
+gemiddelde leeftijd van 25 jaar, vaak
+met een hoge opleiding. Dikwijls hebben
+zij een vertrouwens positie binnen de
+onderneming. Zij verrichten hun daden
+soms uit geldzucht. Meestal zijn wraak
+of frustratie in verband met een
+gemiste promotiekans of ontslag
+aanleiding tot dit criminele gedrag.
+
+ALTIJD AANGIFTE DOEN
+
+D. Komen, groepsleider van de afdeling
+computer criminaliteit van de
+Amsterdamse politie, is van mening dat
+altijd aangifte moet worden gedaan van
+computer criminaliteit. Vele
+organisaties en bedrijven leggen een
+volgens hem onterechte weerzin aan de
+dag om in geval van fraude of diefstal
+van gevoelige gegevens naar buiten te
+komen. Zij menen het vertrouwen van het
+publiek, overheid of klanten te
+verliezen door aangifte van computer
+criminaliteit te doen. De recherche is
+echter van mening dat aangifte
+preventief kan werken, zowel binnen als
+buiten het bedrijf. (Bron: ANP)
+
+HANDBOEK VOOR MS-DOS PROGRAMMEURS
+
+Na een reeks boeken voor gebruikers van
+MS-DOS 5 is er nu, speciaal voor
+programmeurs, een Nederlandse vertaling
+van de oorspronkelijke Microsoft MS-DOS
+5 referentiegids door Kluwer
+uitgebracht. Het boek (niet bedoeld om
+in de DOS omgeving te leren
+programmeren) is bij uitstek geschikt
+voor eenieder die bekend is met de
+instructies en de architectuur van de
+Intel 8086 processor familie en die
+door middel van machinetaal optimaal
+gebruik wil maken van de vele nieuwe
+mogelijkheden die de MS-DOS 5 kernel
+biedt. Daar MS-DOS opwaarts compatibel
+is, kan dit boek ook gebruikt worden
+voor eerdere versies.
+
+Ook voor de programmeurs die met C,
+Pascal en zelfs Basic werken is het een
+nuttig naslag werk, daar al deze talen
+de mogelijkheid hebben om in
+machinetaal geschreven modules in de
+programma's op te nemen. De Bios
+interrupt routines worden wel genoemd,
+maar vallen buiten het bestek van dit
+boek.
+
+MS-DOS KERNEL
+
+In de eerste hoofdstukken wordt
+duidelijk en gemakkelijk leesbaar
+ingegaan op alle onderdelen van de DOS
+kernel, zoals het file systeem, I/O
+devices, language support, netwerk-,
+programma- en geheugenbeheer. Bij de
+verschillende onderdelen komen naast de
+DOS functies ook de bijbehorende
+structuren van parameter blokken
+uitgebreid aan de orde en bij de
+behandeling van de in DOS aanwezige
+devices zoals CON, COM, PRN en AUX
+wordt ook aandacht besteed aan het
+externe device ANSI.
+
+Het hoofdstuk programmabeheer
+beschrijft hoe het DOS besturings
+systeem te werk gaat bij het laden en
+uitvoeren van BATCH, TRS, OVERLAY, COM
+en EXE bestanden. Ook hierbij worden de
+diverse parameter blokken besproken en
+wordt naast uitleg over het beheer van
+het conventionele geheugen het hoge RAM
+geheugen behandeld. De op de Intel 286,
+386 en 486 processoren aanwezige 20e
+adreslijn, die toegang geeft tot het
+HMA (High Memory Area) waarin DOS hoog
+kan worden gezet, komt ook bij het
+geheugenbeheer aan bod. Kortom, alles
+wat de MS-DOS kernel te bieden heeft
+komt aan de orde en wordt beknopt maar
+volledig behandeld, kompleet met
+verwijzingen naar de betreffende DOS
+functies en structuren.
+
+INTERRUPTS
+
+Dit deel van het boek besteedt
+uitgebreid aandacht aan de DOS
+interrupts. Er wordt ook weer beknopt
+maar duidelijk inzicht gegeven omtrent
+het in programma's afhandelen van
+'onderschepte' interrupts. De Multiplex
+interrupt 2Fh, waarmee toegang kan
+worden verkregen tot de diensten van de
+DOS geheugen residente programma's
+zoals PRINT, SHARE en APPEND, wordt met
+inbegrip van de 'task switching'
+functies uitvoerig behandeld. Verder
+komen in een apart hoofdstuk de
+interrupt 21h functies overzichtelijk
+een voor een aan bod. Bij alle functies
+worden de register instellingen,
+parameters en terugkeer waardes
+gegeven, alsmede een verwijzing naar
+verwante functies. Bij verouderde
+functies uit eerdere DOS versies wordt
+vermeld door welke nieuwe functie deze
+is vervangen. Jammer is, dat niet per
+interrupt is aangegeven vanaf welke DOS
+versie de betreffende interrupt geldig
+is. (Handig voor het schrijven van
+programma's die ook onder eerdere DOS
+versies moeten kunnen werken.) Bij het
+overzicht van alle interrupt 21h
+functies wordt dit wel genoemd. (dus
+even bladeren)
+
+In het laatste gedeelte van het boek
+komt de device driver zeer uitgebreid
+aan de orde. Alle functies van blok- en
+karakter- device drivers worden
+duidelijk behandeld en ook hier zijn de
+diverse structuren overzichtelijk en
+kompleet in tabellen weergegeven.
+
+CONCLUSIE
+
+Al met al een boek dat (afgezien van
+een foutje op pagina 472: carriage
+return karakter ASCII 20h) bij het
+schrijven van modules en programma's
+voor DOS computers een waardevol
+naslagwerk is en bij elke programmeur
+onder handbereik in de boekenkast hoort
+te staan. (Luut Looyenga)
+
+Titel    : Handboek voor MS-DOS
+programmeurs
+Auteur   : Microsoft Press
+Uitgever : Kluwer technische boeken
+ISBN     : 90 201 2591 5
+Prijs    : f 89,50
+
+VIDEOTEX OP ATARI ST
+
+Via de bladen STart (Uitg. Divo in
+Capelle a/d IJssel) en Atari Nieuws
+Magazine (ACN Haarlem), die zich op de
+Atari-ST gebruikers richten, heeft men
+een Videotex-schijf verspreid met een
+soortgelijk programma als er al voor de
+PC te verkrijgen was voor f25,-.
+Alleen, dit programma is dus gratis
+voor de abonnees van die bladen. Dat
+zijn er ruim 30.000, abonnementen en de
+losse verkoop bij elkaar. In Beeldkrant
+479 beloofden we u een recensie van
+deze Videotex software voor de Atari
+ST's. Hans Hogendoorn bekeek het pakket
+voor ons. Hier volgt zijn verslag.
+
+PROFITEL
+
+Het programma lijkt als twee druppels
+water op het commerciele Videotex
+programma Profitel, dat al een tijdlang
+(in demo-vorm) de ronde deed via het
+BBS- en PD-circuit. Dat programma is
+geschreven door programmeur Frank
+Bemelman, en inderdaad, navraag bij ACN
+in Haarlem leert dat Bemelman het
+programa verkocht heeft aan Videotex
+Nederland. Volgens Willem Hartog van
+ACN heeft de programmeur er een bedrag
+van 10.000 gulden voor gekregen, zonder
+enige provisie. Een luttele uitgaaf
+voor Videotex Nederland, dat slechts
+uit is op een overvloedig aantal
+telefoon verbindingen. Binnen een week
+zullen de kosten eruit zijn. Adverteren
+is duurder.
+
+SCHERMPJE
+
+De gebruiker krijgt te maken met een
+programma dat niet slecht is, maar ook
+niet opvallend makkelijk in het
+gebruik, zoals That's Viewdata (en de
+Junior versie daarvan). Het schermpje
+dat in beeld de Videotex schermen
+weergeeft is wel verdraaid klein. Het
+beslaat ongeveer een kwart van het toch
+al niet grote Atari-scherm. Van de
+weeromstuit wordt alles weergegeven in
+van die 8-punts Atari-lettertjes, zodat
+je na een poosje kramp in je nek krijgt
+van het turen.
+
+HELP!
+
+De handleiding is summier, en er is
+weliswaar ondersteuning door een
+telefonische hulpdienst in Nieuwegein,
+maar wanneer je bijvoorbeeld bij het
+girotellen een aantal routinematige
+handelingen vast wilt opslaan (al die
+cijfercodes, wel voorzichtig mee zijn),
+dan leidt een telefoontje naar
+Nieuwegein ook niet tot de oplossing.
+Ze leken daar niet goed te weten wat je
+bedoelt, zodat een kennis met wat meer
+ervaring de enige was die me de
+verlossende procedure aan de hand kon
+doen.
+
+HEKJE
+
+De opvallendste tekortkoming is
+misschien wel het afsluit-teken. Dat is
+bijna altijd de return-toets, maar in
+het videotex protocol het Amerikaanse
+Cijfer-teken '#', meestal 'Hekje'
+genoemd. Een Atari-programma als That's
+Viewdata vertaalt dit automatisch naar
+de return-toets, wat het
+bedieningsgemak vergroot. Bij het
+programma Profitel van Videotex NL was
+die moeite te veel, en moet je
+voortdurend op je hoede zijn welke
+toetsen je aanraakt, anders krijg je
+bestraffende teksten toegeworpen als
+'niet toegestaan'.
+
+AUTEURSRECHTEN
+
+Het lijkt misschien erg veel, 10.000
+gulden ineens voor een bakje enen en
+nullen, maar niemand kan vertellen
+hoeveel mensen daar nog plezier aan
+gaan beleven. Het is tekenend voor de
+computerwereld, dat daarin nog
+dergelijke overeenkomsten kunnen worden
+afgesloten, tot tevredenheid van beide
+partijen ongetwijfeld. Maar in de
+wereld van boeken-, tijdschriften- en
+muziekuitgevers is zoiets al sinds
+mensen- heugenis ondenkbaar. Daar laten
+auteurs hun belangen behartigen door
+een overkoepelende organisatie, en daar
+is het vanzelfsprekend dat de
+exploitatie van een geestelijk produkt
+gepaard gaat met een evenredige
+vergoeding: auteursrechten, royalties.
+Blijvend gekoppeld aan de verkoop. Of
+aan aantallen telefoonverbindingen, in
+dit geval.
+
+CONCLUSIE
+
+Alle waar is naar zijn geld. Het
+programma werkt, het maakt je computer
+niet stuk, na afloop wordt de duur van
+al die telefoon- sessies opgeslagen, en
+de echte klap komt pas wanneer de
+PTT-nota twee maanden later op de
+deurmat ploft. (Hans Hogendoorn)
+
+TELEFOONAANSLUITING OOK ELDERS
+
+Binnenkort kunnen ook bij andere
+leveranciers van telefoon apparatuur
+dan PTT Telecom een aansluiting en
+abonnement worden aangevraagd.
+Leveranciers van telecommunicatie
+apparatuur kunnen, als zij voldoen aan
+bepaalde eisen en daarvoor een
+overeenkomst aangaan met PTT, het
+predikaat 'Officieel dealer PTT'
+krijgen. Ze zullen dan herkenbaar zijn
+aan een vignet. De erkende dealers
+kunnen ook de verhuizing van een
+telefoon aanvragen of blokkering voor
+de doorschakeldienst of 06-koopnummers.
+De eerste dealers zal men aantreffen in
+de telefoon districten Hengelo,
+Nijmegen, Rotterdam-zuid.
+

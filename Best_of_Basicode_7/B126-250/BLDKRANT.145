@@ -1,0 +1,281 @@
+145, zon 1 mei '88
+
+CURSUS PROGRAMMEREN IN BASICODE DEEL 6
+
+HOOFD- EN KLEINE LETTERS
+
+In programma's worden vaak vragen gesteld, die
+beantwoord moeten worden met J/N of met andere
+lettertekens. Afhankelijk van het systeem,
+waarop het programma is gemaakt (en van het
+daarbij ingestelde lettertype), wordt het
+antwoord verwacht in hoofd- en/of kleine
+letters. Wordt het goede antwoord in het
+verkeerde lettertype gegeven, dan wordt het
+niet herkend. De programmeur moet dus
+maatregelen treffen waardoor een dergelijke
+situatie zich niet zal voordoen.
+
+VOORBEELDPROGRAMMA
+
+Laad de subroutines en tik in:
+1000 A=200:GOTO 20:REM HFD/KL.LETTERS
+1010 GOSUB 100
+1020 HO=12:VE=10:GOSUB 110
+1030 PRINT''PAGINA EEN''
+1040 HO=0:VE=21:GOSUB 110
+1050 PRINT''Volgende pagina ? J/N '';
+1060 GOSUB 210
+1070 IF (IN$<>''J'') AND (IN$<>''N'')
+     THEN 1040
+1080 IF IN$=''N'' THEN 1110
+1090 GOSUB 100:HO=5:VE=10:GOSUB 110
+1100 PRINT''Dit was de laatste pagina''
+1110 END
+
+WERKING VAN HET PROGRAMMA
+
+Regel 1000 is de verplichte beginregel. Van
+regel 1010 tot 1030 wordt eerst het scherm
+schoongemaakt en dan een tekst geprint op de
+door ons bepaalde plaats. In regel 1040 gaat de
+cursor omlaag en wordt een vraag geprint.
+(Waarom VE=21 en niet 22 of 23? Probeer het
+maar en kijk wat er gebeurt als het scherm op
+jouw computer ook maar 24 regels aankan. Geldt
+niet voor b.v. C-64, die kan 25 regels aan! Dat
+vereist dan wel speciale aandacht bij het
+programmeren in Basicode, waarbij rekening moet
+worden gehouden met 24- regelige schermen).
+Nu wordt alleen het antwoord geaccepteerd, als
+het in hoofdletters wordt gegeven. Als het geen
+'J' of 'N' is, wordt de vraag herhaald. Een 'J'
+laat het programma gewoon doorlopen, bij een
+'N' wordt gesprongen naar regel 1110 en wordt
+het programma beeindigd.
+
+ANTWOORD IN KLEINE LETTERS GEGEVEN
+
+Wat nu? In dit speciale geval kan met een
+eenvoudige oplossing worden volstaan:
+Verander regel 1060:
+1060 GOSUB 210:GOSUB 20000
+en voeg toe:
+20000 IF IN$=''j'' THEN IN$=''J''
+20010 IF IN$=''n'' THEN IN$=''N''
+20020 RETURN
+Nu werkt het altijd! Want deze subroutine
+verandert een kleine letter 'j' of 'n' in de
+bijpassende hoofdletter.
+
+EEN UNIVERSELE OPLOSSING
+
+De door ons toegevoegde subroutine op regel
+20000 e.v. werkt alleen met 'j' en 'n', maar
+vaak worden er meer en andere vragen gesteld.
+(Zie de Beeldkrant!) We veranderen de
+subroutine in:
+20000 IF (IN$<''a'') OR (IN$>''z'')
+      THEN RETURN
+20010 IN$=CHR$(ASC(IN$)-ASC(''a'')
+      +ASC(''A''))
+20020 RETURN
+
+HOE WERKT DEZE SUBROUTINE ?
+
+Om dat te begrijpen moeten we iets van de
+getalwaarden weten, die aan letters worden
+toegekend. De meeste computers werken met de
+z.g. ASCII waarden volgens de algemeen
+aanvaarde standaard, sommige andere computers
+maken daar echter een potje van, maar de
+alfabetische volgorde wordt wel altijd
+aangehouden. Meestal krijgen de hoofdletters
+een lagere waarde dan de kleine letters. In de
+normale ASCII tabel heeft A de decimale waarde
+65, a de waarde 97, Z de waarde 90 en z de
+waarde 122. In dit geval staan de hoofdletters
+dus (97-65)=32 lager dan de kleine letters in
+de tabel. Vergelijk de waardes van Z en z maar.
+Als we dus dit verschil aftrekken van de ASCII
+waarde indien we met een kleine letter te maken
+hebben, krijgen we een hoofdletter. Stel, dat
+de tabel net andersom is gerangschikt, dan
+hebben de kleine letters een lagere waarde dan
+de hoofdletters, als we dan de ASCII waarde van
+A aftrekken van de ASCII waarde van a, krijgen
+we een negatief getal. Als we dit negatieve
+getal weer aftrekken van de ASCII waarde van de
+kleine letter, krijgen we weer de hoofdletter,
+want:
+getal-(-GETAL)=getal+GETAL
+Stel ASCII A=97 en ASCII a=65, dan is
+ASCII a - ASCII A = -32
+en ASCII a -(-32) = 65 + 32 = 97 !
+
+TERUG NAAR DE SUBROUTINE
+
+In regel 20000 wordt heel in het algemeen
+gekeken of we met een kleine letter te maken
+hebben. Als IN$ buiten de range a-z valt, is er
+dus iets anders ingetikt en behoeven we de
+correctie niet toe te passen, dus direct:
+'return'! In het geval we wel met een kleine
+letter te maken hebben, gaan we naar regel
+20010, daar wordt de ASCII waarde van de input
+bekeken 'ASC(IN$)'. Daarna wordt het verschil
+van de ASCII waarden van 'a' en 'A' er met het
+juiste teken van afgetrokken en blijft dus de
+hoofdletter over, die met CHR$(waarde) wordt
+verkregen! Met de return komen we weer in het
+programma terug.
+
+COMPUTERS MET ALLEEN HOOFDLETTERS
+
+Sommige oudere computers (b.v. APPLE II, MPF-2,
+ZX 81 e.d.) kennen geen kleine letters. De
+besproken routines leveren geen problemen op
+met deze apparaten, omdat door het Basicode
+vertaalprogramma alle kleine letters al in
+hoofdletters zijn omgezet. De routine trekt dan
+ASCII A van ASCII A af, hetgeen '0' oplevert,
+er wordt dus geen input correctie toegepast.
+(Deze les is daarop onbegrijpelijk!)
+
+SAMENVATTING VAN DE ZESDE LES
+
+In deze les werd nogmaals gewezen op het 24-
+regelige Basicode scherm en de aandacht, die de
+programmeur daaraan moet wijden. Ook werd een
+routine besproken, die kleine letters in
+hoofdletters omzet, waardoor het probleem met
+input in het verkeerde lettertype kan worden
+ondervangen. (Met dank aan Pieter Vijlbrief)
+
+JACHT OP NAMAAK 1541 DISKDRIVES!
+
+Commodore heeft de jacht geopend op de
+producent(en) en aanbieder(s) van de namaak
+1541 diskdrives waarvoor het speciaal
+aangepaste operating systeem door Commodore
+werd ontwikkeld. Steekproefgewijs neemt
+Commodore de diskdrives uit de handel en elk
+exemplaar zal bij de Technische Diensten
+worden onderzocht. Indien blijkt dat het hier
+om een namaak 1541 gaat zal tegen elke
+betrokkene een proces worden aangespannen.
+
+UNIVERSITEITSBIBLIOTHEEK OP CD-ROM!
+
+De universiteit van Bielefeld (Dtsl)
+gaat de complete catalogus van de
+universiteits bibliotheek op compact-disc
+zetten. Via personal computers kan men
+deze cd-rom dan raadplegen voor
+literatuur onderzoek. Het betreft hier
+een gezamenlijkheids project van CCS
+(Hamburgs systeemhuis) en Philips
+Kommunikations Industrie.
+Voorlopig komen er twee cd's uit
+waarvan de ene de boektitels en de
+auteursnamen bevat en de andere de
+onderwerpen en vakgebieden bestrijkt.
+Totaal gaat het hier om maar liefst
+1,4 miljoen banden. Het ligt in de
+bedoeling twee maal per jaar een
+up-date versie uit te brengen. In
+de tussenliggende tijd zullen de
+gegevens op disc worden vastgelegd.
+
+INZENDTERMIJN INFOPERSPRIJS GEOPEND!
+
+Eenmaal in de twee jaar looft de Infopers
+een prijs uit voor de beste journalistieke
+prestatie. Infopers is de representatieve
+vereniging van journalisten en voorlichters/
+pr functionarissen op het gebied van
+de informatie technologie, computer- en kantoor
+techniek. Het gaat bij de Infopersprijs om
+journalistiek werk op het gebied van de
+automatische gegevens- en informatie verwerking
+en de maatschappeijke implicaties van de
+informatica in het algemeen.
+Voorwaarde is dat er sprake is van
+oorspronkelijke publicaties in het Nederlands,
+en in een Nederlands medium gepubliceerd of
+uitgezonden in de periode 1 juli 1986 -
+1 mei '88. De publikatie mag inhoudelijk niet
+commercieel zijn. Tot 1 juli kunt U nog inzenden.
+Informatie: Secretariaat Infopers: L.R. v.
+Dullemen, Vodellaan 1, 2111 CM Aerdenhout.
+
+FIRATO '88 VOLGEBOEKT ?!
+
+Bij het sluiten van de inschrijvings termijn
+voor deelname aan de Firato '88, de
+tweejaarlijkse tentoonstelling voor beeld,
+geluid en muziek in de Amsterdamse Rai,
+was de beschikbare expositie- oppervlakte
+geheel volgeboekt. Met nog ruim een half
+jaar te gaan voordat de Firato'88 op
+26 augustus a.s. de poorten opent voor
+het publiek, hebben inmiddels 120
+exposanten standruimte gereserveerd.
+Gezamenlijk nemen zij de 45.920 m2
+expositieruimte in het Europacomplex
+van de Rai in beslag.
+Alle bekende fabrikanten van audio en
+video apparatuur zullen zich hier
+grootschalig presenteren. Zij tonen
+de nieuwste ontwikkelingen op het
+gebied van de consumenten- elektronica.
+Het meest tot de verbeelding spreekt
+natuurlijk de introductie van DAT
+(Digital Audio Taperecording),
+CD-video en satelliet t.v.
+
+MUZIEK STERKER VERTEGENWOORDIGD
+
+In vergelijking met voorgaande jaren zal
+de muzieksector sterker vertegenwoordigd
+zijn. De liefhebber van elektronische
+muziekinstrumenten zal er alles van zijn
+gading kunnen vinden. Het beluisteren
+en bespelen van de instrumenten kan in
+alle rust gebeuren, in speciaal voor dat
+doel gebouwde cabines.
+Terug van weggeweest zijn de producenten
+van hifi-apparatuur. Vanwege de specifieke
+eisen die gelden voor het beluisteren en
+testen zijn in het RAI Congrescentrum
+zalen gereserveerd voor het demonstreren
+van deze apparatuur.
+
+KABEL EN SATELLIETPROGRAMMA'S
+
+Ook de aanbieders van kabel-en
+satellietprogramma's zijn op deze Firato
+prominent vertegenwoordigd. Zij zijn
+verenigd in een speciaal paviljoen, waarvan
+tevens de lokale omroepen in Nederland
+deel uitmaken.
+
+ELEKTRON
+
+Gelijktijdig met de Firato'88 wordt het
+Elektron gehouden, de educatieve
+manifestatie over elektronica en
+informatica, bedoeld voor leerlingen in
+het voortgezet onderwijs.
+Het Elektron staat in het teken van
+'Communicatie' met als deelthema's
+de mens in het interactieve huis, op de
+interactieve school, en op de interactieve
+werkplek. Natuurlijk treft u ook Hobbyscoop
+met een eigen stand aan op de Firato!
+De Firato'88 is geopend van 26 augustus
+tot en met 4 september van 10.00 - 17.00
+uur en van 19.00 - 22.00 uur op
+weekdagen. In het weekend uitsluitend van
+10.00 - 17.00 uur. De toegangsprijs bedraagt
+fl.15,- per persoon.

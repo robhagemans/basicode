@@ -1,0 +1,269 @@
+114, zon 20 dec '87
+
+CURSUS MACHINETAAL MS-DOS DEEL 6
+
+De cursus machinetaal nadert zijn einde. In
+deze aflevering kijken we naar de toepassing
+van de verworven kennis.
+
+HET GEHEUGENPROBLEEM
+
+We weten nu genoeg van de elementaire
+instructies en kunnen weer opstijgen naar het
+probleem dat we aan het begin van de serie
+gesteld hebben. Waarom meldt de computer
+'Insufficient memory' terwijl er toch genoeg
+is? Kennelijk kijkt het programma alleen of
+de werkelijke geheugenomvang gelijk is aan de
+minimaal vereiste hoeveelheid. Het vindt dan
+geen overeenstemming omdat er teveel geheugen
+is. Er zijn minstens drie manieren om het
+knelpunt op te sporen.
+
+In de eerste plaats kunnen we gewoon met het
+t (en g) commando van debug aan het programma
+beginnen. Deze eenvoudige aanpak is hier zo
+slecht nog niet, omdat het heel
+waarschijnlijk is dat de fout nogal vooraan
+zit.
+
+In de tweede plaats kunnen we met het s
+commando kijken, waar in het programma de
+omvang van het geheugen wordt opgezocht. We
+weten dat die omvang te vinden is op adres
+0002 in de voorloper. Een opdracht die de
+inhoud daarvan ophaalt, heeft zeer
+waarschijnlijk de bytecombinatie 02 00 in
+zich, die we kunnen opsporen. Er zou een
+probleem kunnen zijn, als deze combinatie te
+pas en te onpas blijkt voor te komen.
+
+We hebben dan nog een derde kans. We sporen
+met de s-opdracht van debug de tekst
+'Insufficient memory' op. Dat levert ons een
+adresnummer. De plaats vanwaaraf deze
+mededeling bij het draaien van het programma
+wordt gegeven, bevat vast en zeker een
+instructie met dat adresnummer erin. We
+kunnen dus het knelpunt opsporen door met een
+tweede s de vermelding van het gevonden
+adresnummer op te sporen.
+
+We kunnen dan de controle op de
+geheugenomvang wijzigen met de a opdracht.
+Het eenvoudigst is een onvoorwaardelijke
+sprong over het gewraakte programmadeel heen.
+Deze oplossing kan problemen opleveren,
+wanneer het programma later nog gebruik zou
+maken van resultaten die door dat
+programmadeel opgeslagen werden. De
+geheugenomvang, eenmaal opgehaald uit de
+voorloper, wordt misschien nogmaals gebruikt.
+In dit - waar gebeurde - geval hebben we voor
+een andere oplossing gekozen. We lieten het
+programma niet meer de inhoud van adres 0002
+te laden, maar rechtstreeks het getal dat het
+programma daar eigenlijk wilde ophalen.
+
+HET DATUMPROBLEEM
+
+Veel programma's geven de datum weer in de
+Amerikaanse vorm, met eerst de maand en dan
+pas de dag. We kunnen proberen onze nieuwe
+kennis van machinetaal te gebruiken om dit te
+veranderen in de Nederlandse datumvorm. Soms
+zullen we nog succes hebben ook.
+
+Allereerst het opsporen van de plaats in een
+programma, waar de datumuitvoer plaats vindt.
+De datum wordt uit het systeem gehaald met
+een aanroep van INT 21 met in AH het getal
+2A. We gaan nu eerst na, wat de codering in
+bytes is van de opdracht MOV AH,2A. Dit
+kunnen we doen met de commando's a en u van
+debug, waarbij we nog geen programma geladen
+hebben. Vervolgens laden we het programma in
+debug met de commando's n en l. Dan gebruiken
+we s om de bytecombinatie voor MOV AH,2A op
+te sporen. In de omgeving van de gevonden
+plaatsen moeten we dan nagaan, hoe alles
+precies in zijn werk gaat.
+
+Een andere opsporingsmogelijkheid is het
+streepje (-) dat gezet wordt tussen de
+verschillende onderdelen van de datumuitvoer.
+Als die uitvoer werkt via INT 21 met in AH
+het getal 9, moet in DL de ASCII code voor
+het streepje aanwezig zijn. Die code is 45
+decimaal, 2D hexadecimaal. We gaan dus na wat
+de bytecode is van MOV DL,2D. Die bytegroep
+proberen we dan in het programma op te
+sporen.
+
+Via soortgelijke methoden kunnen we het
+invoeren van een datum in een programma
+proberen te localiseren.
+
+VOETANGELS EN KLEMMEN
+
+Ook al weten we precies waar en hoe iets
+gebeurt en wat we ervan zouden willen maken,
+dan kunnen we nog voor onoverkomelijke
+problemen komen te staan. Vaak is het
+programma op die plaats namelijk al helemaal
+vol. Onze verandering is eigenlijk alleen
+maar mogelijk als we minder bytes nodig
+hebben. Kunnen we het zo niet plooien, dan
+wordt ons pad nog glibberiger dan het al was.
+
+Een eenvoudige oplossing is een sprong naar
+voorbij het eindadres van het programma. Daar
+hebben we dan min of meer onbeperkt de ruimte
+voor wat we willen maken. Ons eigen werk
+sluiten we af met een sprong naar de plaats
+in het programma waar we de uitvoering verder
+willen laten gaan. We veranderen DX CX om de
+file met zijn nieuwe lengte weg te schrijven
+en klaar lijkt kees.
+
+Zo eenvoudig is het soms wel, maar niet
+altijd. We hebben namelijk geen enkele
+garantie dat het programma de ruimte achter
+zich niet gebruikt. Sommige
+kwaliteitsprogramma's doen dat inderdaad
+niet, andere wel. De zaken kunnen nog veel
+ingewikkelder liggen. Het programma
+COMMAND.COM bijvoorbeeld, dat de DOS
+commando's verwerkt, is niet actief op de
+plaats waar het oorspronkelijk wordt geladen.
+Het zet een kopie van een deel van zichzelf
+op een andere plaats in het geheugen en gaat
+dan daar aan de gang. Deze werkwijze houdt in
+dat vele adressen (maar niet de relatieve)
+verwijzen naar andere plaatsen dan we zouden
+kunnen denken. In een dergelijk geval kunnen
+we nooit zeker weten of we werkelijk alle
+veranderingen hebben aangebracht, die nodig
+zijn. Verder blijkt dat we een COMMAND.COM
+met een gewijzigde lengte niet kunnen testen
+in een omgeving waar een andere versie al
+gedraaid heeft. De enige mogelijkheid is de
+computer opnieuw te starten met de nieuwe
+versie.
+
+NIEUW PROGRAMMA
+
+Wanneer we zelf een heel nieuw
+machinetaalprogramma maken, hebben we het
+doorgaans iets gemakkelijker wat
+ruimteproblemen betreft. We kunnen een
+programma ruim opzetten voor latere
+verbeteringen en uitbreidingen door kwistig
+gebruik te maken van de instructie:
+
+90          NOP
+
+Deze instructie doet niets, maar neemt wel
+een byte in, die we later nog voor iets
+anders kunnen gebruiken. Hiermee kunnen we er
+ook voor zorgen dat een bepaald programmadeel
+waar we naartoe willen gaan springen,
+werkelijk op het goede adres begint. Hoe dan
+ook blijft het vooruitdenken met adresnummers
+een lastige zaak.
+
+Tot slot nog twee tips. Probeer bij het
+opzetten van een nieuw machinetaalprogramma
+zo dicht mogelijk aan te leunen bij gedeelten
+uit al bestaande programma's. Het is
+bijvoorbeeld zo goed als onmogelijk het
+aanmaken, beschrijven en sluiten van een
+uitvoerfile goed te doen zonder voorbeeld.
+Verder is het vaak nuttig de grote lijn van
+een programma eerst langzaam uit te proberen
+in BASIC, zodat de grootschalige denkfouten
+verwijderd zijn voordat we het snelle doolhof
+van de machinetaal binnengaan.
+
+LITERATUUR
+
+Informatie over de bediening van debug en
+over de conventies van MS-DOS zou te vinden
+moeten zijn in de handboeken van de computer.
+In de vele boeken over MS-DOS, die in de
+boekwinkels liggen, is ook wel het een en
+ander te vinden. De meeste auteurs hebben het
+echter vooral over de werking van de gewone
+MS-DOS commando's en geven geen hoge
+prioriteit aan dit soort technische zaken.
+Een boek over de machinetaal van de IBM PC en
+zijn klonen is Stephen P. Morse, The
+8086/8088 Primer, second edition, uitgave
+Hayden Book Company, Rochelle Park NJ, 1982,
+ISBN 0-8104-6255-9.
+
+Behalve als beeldkrant verschijnt deze cursus
+in afleveringen ook in het tijdschrift Mens
+en Wetenschap (Postbus 108, 1270 AC HUIZEN,
+02152 - 58388).
+
+Deze cursus wordt geschreven door Pim van
+Tend, Veldheimwg 8, 6871 CD RENKUM,
+08373-15358. (c) NOS HILVERSUM
+
+INSCHRIJVING WUBBO OCKELSPRIJS 1988
+
+De Wubbo Ockelsprijs wordt eenmaal per jaar
+door de stad Groningen toegekend aan een
+persoon, gezelschap, onderneming of instelling
+voor een bijzondere prestatie op het gebied
+van de natuurwetenschappen of de techniek.
+Voorwaarde is dat zij persoonlijk of door hun
+prestatie een band hebben met de stad
+Groningen. De prijs bestaat onder andere uit
+een bedrag van tienduizend gulden.
+
+Tot 7 januari 1988 hebben kandidaten de tijd
+om een inschrijf formulier aan te vragen. Dat
+formulier vermeldt tevens de criteria waaraan
+de inzending getoetst wordt. Voor de
+beoordeling van de inzendingen is een jury van
+3 leden benoemd.
+
+NIEUW TIJDSCHRIFT OVER UNIX
+
+Sinds enige maanden verschijnt er een nieuw
+en onafhankelijk tijdschrift voor UNIX
+gebruikers, met als titel: 'UNIX INFO'. Het
+wordt uitgegeven door Sala Communications
+in Blaricum.
+
+Het tijdschrift bevat onder andere artikelen
+over hardware en software onder UNIX,
+achtergrond informatie over computers,
+programmeertalen en toepassings software
+(zoals bv. desk top publishing) en actuele
+nieuwtjes met betrekking tot UNIX.
+
+Voor meer informatie: Sala Communications
+Postbus 112, 1260 AC Blaricum
+Tel. 02152 - 65695
+
+HCC VERHUIST NAAR HOUTEN
+
+Als gevolg van de snelle groei van de Hobby
+Computer Club (HCC), is deze vereniging
+verhuisd naar een groter kantoor.
+Het nieuwe adres is sinds 16 december:
+
+Hobby Computer Club
+Standerdmolen 8
+3995 DC Houten
+Postbus 149
+3990 DC Houten
+Telefoon 03403 - 78788
+Telefax  03403 - 78930
+
+Op 16 januari 1988 houdt de HCC in het nieuwe
+gebouw een OPEN DAG. U kunt het gebouw gaan
+bezichtigen van 11.00 tot 17.00 uur.

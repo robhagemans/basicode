@@ -1,0 +1,346 @@
+365, maa 26 nov '90
+
+BEGRIPPEN UIT DE RADIO-TECHNIEK (1)
+
+In deze Beeldkrant het eerste deel van
+een 'begrippenlijst' in afleveringen,
+opgezet door zendamateur Jan van der
+Meij, PA0JMY.
+
+Er bestaat nogal wat verwarring over
+begrippen in de radio techniek. De
+meest gebruikte begrippen worden hier
+verklaard met de meetmethode om de
+waarden te kunnen meten.
+
+VERVORMING
+
+De vervorming van een signaal wordt
+gemeten met een meetinstrument, dat
+bestaat uit een filter en een vermogens
+meter. We gaan uit van een LF
+frequentie van 1 kHz. Dit signaal
+voeren we toe aan de vervormings meter.
+Deze meet het niveau van het
+binnenkomende signaal. Vervolgens wordt
+de 1 kHz component uitgefilterd. Het
+signaal, dat uit het filter komt is
+ruis en wellicht wat harmonischen van
+het 1 kHz signaal. Ook van deze 'rest'
+wordt het niveau gemeten. De verhouding
+tussen het oorspronkelijke signaal en
+het 'rest' signaal is vervorming. De
+vervorming wordt uitgedrukt in dB's.
+Een vervorming van 10% komt overeen met
+20 dB; bij een vervorming van 1% is dat
+40 dB, enz.
+
+SINAD
+
+Met SINAD wordt bedoeld 'signal
+inverted by noise and distortion'. Dat
+wil zeggen, dat SINAD een verhouding is
+tussen het (gewenste) signaal en de
+ruis en vervorming. In de professionele
+radio techniek (smalband) wordt normaal
+een waarde gekozen van 12 dB. Het
+signaal is dus 12 dB sterker dan de
+ruis plus de vervorming. Het is soms
+noodzakelijk om de vervorming bij het
+meten uit te sluiten. Het is dan de
+bedoeling om alleen Signaal/Ruis
+verhouding te meten. Om S/N
+(Signal/Noise) te meten wordt het LF
+niveau aan de uitgang van de ontvanger
+afwisselend met en zonder modulatie
+gemeten. De verhouding tussen het
+signaal met en dat zonder modulatie is
+een maat voor de signaal/ruis
+verhouding van een ontvanger.
+
+QUIETING
+
+Met de quieting methode kan de
+steilheid van de detektor in een
+ontvanger worden bepaald. Eerst wordt
+met geopende squelch het ruisniveau aan
+de luidspreker uitgang gemeten en
+vervolgens wordt een ongemoduleerd HF
+signaal toegevoerd aan de ontvanger
+ingang. De HF amplitude wordt zover
+opgevoerd, dat aan de luidspreker
+uitgang het ruisniveau 20 dB lager
+geworden is. Men spreekt nu over 20 dB
+quieting bij een HF ingangs signaal van
+zo-en-zoveel microvolt.
+
+NEVENKANAAL-SELEKTIVITEIT
+
+Onder nevenkanaal selektiviteit
+verstaan we de eigenschap van de
+ontvanger om een zwak signaal te
+ontvangen, terwijl in het naastliggende
+kanaal (het nevenkanaal) een sterk
+signaal aanwezig is. In professionele
+kringen dient de nevenkanaal
+selektiviteit tenminste 70 dB te
+bedragen.
+
+Eigenlijk kijken we hier naar de veraf
+selektiviteit van de gebruikte
+kristalfilters. Bij gebruik van een
+goed filter en goede afscherming kan
+buiten het doorlaatkanaal een demping
+worden bereikt van 100 dB of meer.
+Produktie technisch moet een en ander
+echter ook verantwoord zijn en daarom
+zijn de cijfers veel minder.
+Nevenkanaal selektiviteit wordt gemeten
+met twee meetzenders, welke met een
+koppelaar met elkaar zijn verbonden. De
+meetzenders moeten van prima kwaliteit
+zijn en mogen elkaar niet beinvloeden.
+Met een van de meetzenders wordt op de
+ontvang frequentie een signaal gezet
+met een niveau, waarbij de SINAD waarde
+aan de luidspreker uitgang 20 dB
+bedraagt. Nu wordt met de andere
+meetzender op een frequentie 1 kanaal
+hoger of lager en een modulatie
+frequentie van 400 Hz gestoord. Op een
+gegeven moment zal de SINAD waarde van
+het gewenste signaal gedaald zijn tot
+14 dB. De verhouding tussen de uitgangs
+spanningen van de beide meetzenders is
+de nevenkanaal selektiviteit van de
+ontvanger.
+
+CO-CHANNEL ONDERDRUKKING
+
+Onder co-channel onderdrukking verstaan
+we het vermogen van een ontvanger om
+twee signalen op de gewenste ontvanger
+frequentie van elkaar te scheiden. Bij
+co-channel onderdrukking worden twee
+signalen op dezelfde frequentie aan een
+ontvanger toegevoerd. De eerste
+(gewenste) is gemoduleerd met 1000 Hz
+en heeft een zodanig niveau, dat aan de
+luidspreker uitgang van de ontvanger
+een SINAD waarde ontstaat van 20 dB. De
+tweede meetzender wordt gemoduleerd met
+400 Hz en het niveau wordt opgedraaid
+totdat de SINAD waarde aan de
+luidspreker uitgang van de ontvanger is
+gedaald tot 14 dB. De verhouding tussen
+de ontvangers is de co-channel
+onderdrukking. De eis in professionele
+apparatuur is 8 dB, dat wil zeggen dat,
+wanneer het ongewenste signaal meer dan
+8 dB kleiner is en blijft dan het
+gewenste signaal, er in de ontvanger
+niet veel last van het ongewenste
+signaal zal zijn. In de praktijk, en
+zeker bij amateur ontvangers, zal de
+co-channel onderdrukking boven 10 dB
+liggen.
+
+INTERMODULATIE ONDERDRUKKING
+
+Bij de intermodulatie onderdrukkings
+metingen wordt de kwaliteit van de
+mixer in de ontvanger bepaald. Er
+worden signalen aan de ontvanger
+toegevoerd met dusdanig gekozen
+frequenties, dat een intermodulatie
+produkt (mengprodukt) uitkomt op de
+gewenste ontvanger frequentie. De te
+gebruiken frequenties liggen vast. De
+frequenties zijn:
+Fk+1Fr en Fk+2FrFk-1Fr en Fk-2Fr
+Fk+2Fr en Fk+4FrFk-2Fr en Fk-4Fr
+Fk+3Fr en Fk+6FrFk-3Fr en Fk-6Fr
+Fk+4Fr en Fk+8FrFk-4Fr en Fk-8Fr
+Fk = kanaal frequentie (hier is de
+ontvanger op afgestemd)
+Fr = raster frequentie (kanaalafstand)
+
+Er worden dus 8 metingen gedaan. In de
+praktijk zullen de uitkomsten van de 8
+metingen vrijwel gelijk zijn. Er wordt
+bij het meten gebruik gemaakt van twee
+meetzenders met een koppelaar. Ook hier
+mogen de meetzenders elkaar niet 'zien'
+en worden hoge eisen gesteld aan de
+kwaliteit van de meetzenders. Bij de
+beide meetzenders wordt het uitgangs
+niveau gelijk gehouden. Een van de
+meetzenders is gemoduleerd met 1000 Hz
+en de andere meetzender is niet
+gemoduleerd. Bij een bepaald uitgangs
+niveau van de meetzenders ontstaat een
+intermodulatie produkt in de ontvanger,
+waardoor er een 1000 Hz signaal uit de
+luidspreker hoorbaar wordt. Bij een
+SINAD waarde van 20 dB wordt naar het
+uitgangs niveau van de beide
+meetzenders gekeken en de verhouding
+tussen deze waarde en de waarde voor 20
+dB SINAD op de gewenste frequentie is
+de intermodulatie onderdrukking.
+Professioneel moet deze boven 70 dB
+liggen en voor vast opgestelde
+apparatuur nog meer. Amateur ontvangers
+gaan bijna altijd de mist in bij
+intermodulatie onderdrukking: de
+uitkomsten zijn vaak niet best (minder
+dan 60 dB).
+
+BLOCKING
+
+Onder blocking ofwel blokkering wordt
+verstaan: de (on)gevoeligheid van de
+ontvanger voor harde signalen rond de
+ontvanger frequentie. Blocking wordt
+gemeten met ongewenste signalen in
+frequentie varierend van 1 tot 10 MHz
+onder en boven de gewenste ontvanger
+frequentie. Door blocking wordt de
+absolute ontvanger gevoeligheid
+kleiner.
+
+Er wordt gemeten met een signaal op de
+ontvanger met een amplitude van 2
+microvolt. Met een andere (ook op de
+ontvanger ingang gekoppelde) meetzender
+wordt een signaal toegevoerd met een
+frequentie van 1 tot 10 MHz boven de
+ontvanger frequentie en een amplitude
+van 100 dB boven 1 microvolt (dat is
+100 mV). Als een punt wordt gevonden
+waar de SINAD waarde van het ontvanger
+signaal afneemt, dan wordt van het
+ongewenste signaal de amplitude zover
+veranderd dat de SINAD waarde nog 20 dB
+bedraagt. De amplitude van het HF
+signaal dient in ieder geval groter te
+zijn dan 90 dB boven 1 uV (ca. 30 mV).
+Hetzelfde wordt nogmaals gedaan voor
+ongewenste frequenties van 1 tot 10 MHz
+onder de ontvanger frequentie.
+
+SPURIOUS
+
+Er is een overeenkomst tussen spurious
+onderdrukking en blocking. Er moet
+tijdens de metingen van blocking ook
+altijd goed op worden gelet of het punt
+waar blocking optreedt geen spurious
+frequentie is. Het verschil is de
+absolute frequentie van het ongewenste
+signaal. Als er bij de blocking
+metingen een duidelijke frequentie
+wordt ontdekt waar vermindering van de
+ontvanger gevoeligheid optreedt, dan is
+het een spurious van de ontvanger.
+Indien het niet een frequentie maar een
+frequentie bandje betreft, dan is het
+'echte' blocking.
+
+Een ander verschil tussen spurious en
+blocking is, dat spurious wordt gemeten
+met ongewenste frequenties tussen 0 en
+2000 MHz (2GHz). Ook hier worden twee
+meetzenders aan elkaar gekoppeld en de
+beide signalen worden dus toegevoerd
+aan de ontvanger. Het gewenste signaal
+is 2 uV en het ongewenste signaal wordt
+groot gemaakt (meer dan 50 mV). Met de
+meetzender wordt nu over de band
+gedraaid en als er een punt wordt
+gevonden waar de ontvanger gevoeligheid
+minder wordt, wordt het uitgangs niveau
+van de 'ongewenste' meetzender zover
+verminderd, dat de SINAD waarde terug
+gelopen is tot 14 dB. De frequentie en
+het uitgangs niveau worden genoteerd.
+Er mag in de gehele band geen
+frequentie zijn, waar de onderdrukking
+van spurious signalen kleiner is dan 70
+dB. Voor vast opgestelde stations is
+dit cijfer in verband met de chaos op
+de landmobiele frequenties in Nederland
+echter nog te laag.
+
+ONGEWENSTE UITSTRALING
+
+Er worden eisen gesteld aan de
+uitstraling van alles waar oscillatoren
+in worden gebruikt. Via de antenne
+aansluiting van een ontvanger mag het
+uitgestraalde vermogen niet groter zijn
+dan 4 nW (0,000000004 Watt). De
+zogenoemde local oscillator, nodig om
+het antenne signaal om te zetten naar
+de middenfrequentie van een ontvanger,
+is meestal het sterkste signaal aan de
+antenne aansluiting van een ontvanger.
+Ook wordt gemeten of de kast van de
+ontvanger niet straalt. Het is
+mogelijk, dat er een signaal in de
+ontvanger wordt opgepikt en de kast van
+de ontvanger speelt dan voor antenne.
+Het is zeer moeilijk om ontvangers
+welke niet aan deze eisen voldoen te
+verbeteren. Alleen in de ontwerp fase
+van het apparaat is het mogelijk om
+door gebruik van zo kort mogelijke
+verbindingen en afdoende afscherming
+kaststraling en uitstraling via de
+antenne aansluiting te voorkomen.
+
+FREQUENTIE AFWIJKING
+
+Het is in de praktijk vrijwel
+onmogelijk om met simpele middelen de
+ontvangst frequentie en de zend
+frequentie tot op cijfers achter de
+komma nauwkeurig te houden. Bij het
+gebruik van 'normale' mobilofoons en
+portofoons (FM dus) is het toegestaan
+dat de frequenties wat afwijken. Er is
+in de professionele wereld vastgelegd
+dat de afwijking tot maximaal 2,5 kHz
+mag bedragen bij frequenties tot 500
+MHz. Bij sterke signalen zal men van
+een frequentie afwijking van 2,5 kHz
+niet veel merken. In amateur kringen
+wordt over het algemeen gewerkt op de
+rand van de mogelijkheden voor wat
+betreft ontvanger gevoeligheid. Het is
+dan te prefereren dat de frequentie zo
+stabiel en nauwkeurig mogelijk is. Een
+vervelende zaak is de afhankelijkheid
+van de temperatuur.
+
+TEMPERATUUR ASPECTEN
+
+In professionele kringen wordt
+aangehouden, dat een mobilofoon en een
+portofoon moet kunnen werken als het
+apparaat zich in de felle zon bevindt
+en ook als het buiten vriest. Het
+vereiste temperatuur bereik loopt van
+-20 tot +55 graden Celsius. Bij de
+extreme temperaturen mogen de
+specificaties wel wat zijn verminderd,
+maar het apparaat moet nog steeds goed
+werken. Om te kunnen meten bij extreme
+temperaturen wordt gebruik gemaakt van
+een zogenoemde klimaat kast, waarbij
+behalve temperatuur ook nog de
+vochtigheid kan worden ingesteld
+(alleen bij temperaturen boven nul
+natuurlijk).
+WORDT VERVOLGD (Bedankt, Jan!)
+

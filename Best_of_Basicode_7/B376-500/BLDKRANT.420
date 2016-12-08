@@ -1,0 +1,393 @@
+420, maa 17 jun '91
+
+ZELF MET DE VOYAGER MEE
+
+In de jaren 1977-1989 maakten de
+Voyager ruimteschepen een grote reis
+langs de planeten Jupiter, Saturnus,
+Uranus en Neptunus. Vaak werden daarbij
+computerfilmpjes vertoond, waarin we de
+Voyagers konden volgen. Die nabootsing
+is nu beschikbaar voor de PC, al is het
+in een erg sobere vorm.
+
+GRANDTOUR
+
+Het programma voor de Voyagerreis heet
+Grandtour. Het is afgeleid van het
+echte navigatie programma dat in de
+jaren 1982-87 werd ontwikkeld op het
+Jet Propulsion Laboratory in Pasadena,
+Californie, om te helpen bij het
+analyseren van de wetenschappelijke
+gegevens. We kunnen de passages volgen
+van de Voyager 1 langs Jupiter (28
+februari tot 10 maart 1979) en van de
+Voyager 2 langs Neptunus (20 augustus
+tot 13 september 1989). In Amerika is
+een diskette te bestellen met de andere
+planeet- ontmoetingen en met de vlucht
+van de Giotto langs de komeet van
+Halley.
+
+VELDGROOTTES
+
+Na binnengaan van Grandtour moeten we
+aangeven, met welke videokaart onze
+computer is uitgerust en welke passage
+we willen bekijken. Vervolgens
+verschijnt het eerste beeld van de
+gekozen planeet, gezien vanuit het
+ruimteschip. De beste manier om met de
+weergave vertrouwd te raken is eerst de
+zes verschillende veldgroottes te
+bekijken. We doorlopen die
+mogelijkheden met de toets 'x' (kleine
+letter; in het hele programma wordt
+verschil gemaakt tussen hoofd- en
+kleine letters!)
+
+SCHERMOPBOUW
+
+Het opbouwen van een plaatje kost nogal
+wat tijd, op onze computer tien
+seconden. Wanneer we bij een boodschap
+'Hit any key' een toets indrukken,
+blijft ook die melding steeds nog tien
+seconden staan, terwijl het programma
+onze toets toch echt wel gezien heeft.
+
+Het scherm toont de planeet, de manen
+in de buurt, de ring om de planeet en
+achtergrond- sterren. Op de planeet
+wordt de evenaar getekend, evenals een
+aantal lengtecirkels. De grens van dag
+en nacht is aangegeven en het punt waar
+de zon recht boven staat, is gemarkeerd
+met een driehoekje. Twee vierkanten
+geven de afmetingen aan van de
+gezichtsvelden van de camera's.
+
+INSTELLINGEN
+
+De tijdstap van het programma staat
+aanvankelijk op nul. We vergroten hem
+met de toets '[' (vierkante
+openingshaak). Vervolgens kunnen we het
+plaatje van de volgende tijdstap laten
+maken door op de 'j' te drukken.
+Volgens de handleiding zou dan een
+serie plaatjes in gang moeten worden
+gezet, maar in de praktijk moeten we
+voor ieder volgend plaatje opnieuw op
+de toets drukken.
+
+Het standaard gezichtspunt is het
+ruimteschip. Met de toets '5' kiezen we
+de Aarde als uitkijkpunt. Terug naar de
+Voyager gaat met de 'g'. Met een '6'
+gevolgd door een '9' kijken we bovenop
+de noordpool van de planeet. Dit is de
+manier om het hele gebeuren te
+overzien.
+
+De toets 'Z' geeft een tekstscherm
+waarop alle huidige instellingen worden
+vermeld. De 'H' levert een scherm met
+informatie over de toetsen die gebruikt
+kunnen worden om instellingen te
+veranderen. De mogelijkheden staan ook
+vermeld in de (Engelstalige)
+handleiding, die 34k beslaat. Het
+programma verlaten gaat met de 'y'.
+
+VIDEOKAARTEN
+
+Grandtour werkt zwart-wit op Hercules-
+en CGA-kaarten en in kleur op
+EGA-kaarten (met 128k of meer). De
+achtergrond- sterren worden dan
+weergegeven met hun echte kleuren. Bij
+de planeet en de manen dienen de
+kleuren alleen ter onderscheiding; ze
+hebben niets te maken met de werkelijke
+kleuren. (Overigens zijn de kleuren in
+de gepubliceerde Voyagerfoto's ook niet
+echt. Een NASA-man heeft ooit gezegd
+dat niemand de echte kleuren mooi zou
+vinden.)
+
+Een Herculeskaart moet eerst worden
+vrijgegeven voor grafisch bedrijf.
+Daarvoor gaan we GWBASIC binnen, we
+geven de opdracht OUT &H3BF,3 en keren
+terug naar DOS. Pas dan kan Grandtour
+met succes worden gestart.
+
+BESTELINFORMATIE
+
+Grandtour is diskette 4151 uit de
+programmatheek van de MS-DOS
+gebruikersgroep. Een 5,25 inch diskette
+kost f.6,00. Voor 3,5 inch is de prijs
+f.7,50. Per bestelling wordt f.5,00
+verzendkosten gerekend. Bestellen bij
+de HCC DOS-gg, Antwoordnummer 3909,
+3940 ZH Wijk bij Duurstede. Betaling
+achteraf per acceptgirokaart. (Pim van
+Tend)
+
+PERFECTVIEW
+
+PerfectView is een database- of
+kaartenbak- programma voor MS-DOS
+computers. Het is geheel
+Nederlandstalig. Oorspronkelijk heeft
+men het pakket gemaakt om een brug te
+slaan tussen de tekstverwerker
+WordPerfect en het grote
+databaseprogramma dBase. PerfectView
+schrijft zijn gegevens naar schijf in
+dezelfde vorm als dBase dat doet. De
+bediening is overgenomen van
+WordPerfect. Zo is functietoets F2
+zoeken, F3 help en F7 einde. Erg ver
+gaan de overeenkomsten met WordPerfect
+overigens niet: in een database-
+programma zijn andere dingen te doen
+dan in een tekstverwerker.
+
+VOORBEELDEN
+
+Bij PerfectView zit een zestal
+kant-en-klare voorbeeld- databases: een
+prijslijst, een leden- administratie,
+een adressenbestand, een administratie
+voor circulerende tijdschriften, een
+lijst van dingen die gedaan moeten
+worden (agenda), en een database om
+gewerkte uren bij te houden. Wie een
+van deze toepassingen heeft, kan meteen
+beginnen met het invoeren van zijn
+eigen gegevens. Wie een ander soort
+database wil definieren, moet buiten
+het eigenlijke PerfectView (pv) het
+zogeheten installatie programma pvi
+gebruiken. Meestal dient een
+installatie- programma om programma-
+bestanden over te brengen naar vaste
+schijf. Hier wordt de term echter
+gebruikt voor een programma voor het
+aanmaken van nieuwe databases.
+
+KAART- EN LIJSTOPMAAK
+
+Basis van een database is de
+kaartopmaak. Daarin staat de aard van
+alle gegevens aangegeven. Verder is er
+de lijstopmaak. De gegevens van een
+kaart worden in de lijstopmaak naast
+elkaar gezet. In de praktijk van pv zal
+bovenaan het scherm een kaart staan
+waarin we kunnen wijzigen. Het onderste
+deel van het scherm zal gevuld zijn met
+een deel van de lijst van alle kaarten.
+Zo houden we in de gaten, hoe de kaart
+die bewerkt wordt, past in het geheel
+van kaarten.
+
+DBASE IV
+
+Bij het bespreken van een programma als
+PerfectView kom je er niet onderuit een
+vergelijking te maken met het
+vlaggeschip onder de database-
+programma's, dBase IV. PerfectView kost
+een derde van de prijs van dBase IV en
+de mogelijkheden zijn
+dienovereenkomstig kleiner. Dat is niet
+alleen een nadeel: je wordt niet
+afgeleid door dingen die je eigenlijk
+niet nodig hebt. Er is EEN ding dat
+PerfectView kan en dBase niet (zonder
+meer): bij een postcode kan PerfectView
+automatisch de plaatsnaam en het
+netnummer invullen.
+
+BEPERKINGEN
+
+PerfectView kan slechts 1 database
+bestand tegelijk geopend hebben.
+PerfectView kent geen ingebouwde
+programmeertaal; alles is en blijft
+handwerk. Wat je ten opzichte van dBase
+ook bij eenvoudige toepassingen al gaat
+missen is de rapport generator. Daarmee
+kun je op een heel eenvoudige manier
+mooie afdrukindelingen tot stand
+brengen. Bij PerfectView zijn de
+mogelijkheden daarvoor vrij beperkt;
+eens te meer blijkt hoe slim de rapport
+generator van dBase IV eigenlijk is.
+
+SCHERMHULP
+
+Naast een goede handleiding van 143
+bladzijden biedt PerfectView
+schermhulp. In pvi heb je soms zelfs
+het gevoel een handboek op het scherm
+te hebben, waarbij ook nog een
+programma hoort.
+
+Voor PerfectView is een MS-DOS computer
+met minimaal 384 Kb RAM nodig. Het
+programma is een produkt van Cyco
+Software, Admiraal Banckertweg 2a, 2315
+SR Leiden, tel. 071-222707, fax
+071-224979. De prijs bedraagt f.495,-
+(ex BTW). Het pakket bevat zowel 5,25
+als 3,5 inch diskettes. (Pim van Tend)
+
+TWEE HANDLEIDINGEN BIJ PC TOOLS 6.0
+
+Wij kregen ter bespreking een tweetal
+Nederlandstalige handleidingen voor het
+populaire Utility-pakket PC Tools 6.0
+voor MS-DOS computers. In Beeldkrant
+343 bespraken we al eerder een boekje
+over PC Tools 6.0 (uit de serie
+'Snelcursus'), maar dat was te beperkt
+om enig nut te hebben. De hierna
+besproken boeken zijn wel bruikbare
+alternatieven voor de originele
+Amerikaanse handleidingen. Ze zijn
+Nederlandstalig en daardoor maken ze PC
+Tools voor een groter publiek
+toegankelijk. Een vergelijking.
+
+GEGEVENS
+
+Boek 1
+Titel    : Het grote PC Tools 6.0 Boek
+Oorspr.  : Das grosse Buch zu PC Tools
+6
+Schrijver: Stephani, Maass
+Uitgever : A.W. Bruna Uitgevers BV
+ISBN-code: 90 229 3723 2
+Prijs    : f 59,90 (448 pag.)
+
+Boek 2
+Titel    : Werken met PC Tools Deluxe 6
+Oorspr.  : Inside PC Tools Deluxe
+Schrijver: Stephen L. Nelson
+Uitgever : Kluwer technische boeken
+ISBN-code: 90 201 2478 1
+Prijs    : f 64,50 (388 pag.)
+
+PCBACKUP
+
+Net als de eerder beschreven
+Snelcursus, gaan deze boeken pas ergens
+middenin de Backup- procedures
+beschrijven. Ik vind nog steeds dat een
+boek met uitleg over Backup moet
+beginnen, na de hoofdstukken Algemeen
+en Installatie. Zodra er immers een
+backup is gemaakt, kunnen er geen grote
+ongelukken meer gebeuren, wat de
+nieuwbakken PC Tools gebruiker ook
+doet.
+
+PCBACKUP zal ongetwijfeld een van de
+meest gebruikte onderdelen van PC Tools
+zijn. Het werkt handig en snel, als je
+maar weet hoe het moet. De
+mogelijkheden van PCBACKUP moeten dan
+ook goed zijn beschreven. Boek 1 stelt
+wat dat betreft teleur. Slechts 14
+pagina's zijn gewijd aan Backup en
+Restore (=het weer terugzetten van een
+backup). Nog erger is het dat Boek 1
+maar EEN soort backup methode noemt: de
+Full Backup. Boek 2 gaat dieper op de
+verschillende soorten in en is
+voldoende volledig in meer dan 30
+bladzijden. Een groot pluspunt.
+
+COMPRESS
+
+Dit is ook zo'n belangrijke -want vaak
+gebruikte- utility. Het ordent de harde
+schijf, waardoor bestanden sneller
+gevonden worden. Boek 2 beschrijft
+eerst de algemene procedure en gaat
+daarna in op de overige bijzonderheden.
+Boek 1 doet dat alles door elkaar en is
+dus moeilijker te volgen. Weer een plus
+voor boek 2.
+
+PC SHELL
+
+Deze 'schil' maakt het mogelijk om
+zonder kennis van DOS toch ingewikkelde
+bestanden te beheren (kopieren,
+hernoemen, verplaatsen, sorteren,
+wissen, editen, directory-struktuur
+veranderen, enz). Dit veelgebruikte
+onderdeel van PC Tools, waarin wel 50
+verschillende utilities, staat in boek
+2 helemaal achteraan. Het krijgt hier
+duidelijk minder aandacht dan in boek
+1, dat terecht meer dan twee keer
+zoveel pagina's besteedt aan PC SHELL.
+Hoera voor 1.
+
+INDEX EN APPENDICES
+
+Boek 1 kent een uitgebreide index,
+zodat het opzoeken van een bepaald
+onderwerp niet moeilijk is. Bij boek 2
+is de index kleiner, waardoor je langer
+zult zoeken maar toch meestal wel vindt
+wat je zoekt. Boek 1 heeft nog een
+aantal Appendices: korte overzichten
+van verbindingskabels en hun
+aansluitingen, uitleg over het gebruik
+van de Hot Keys in de verschillende
+utilities (bijv. CTRL-ESC voor het
+oproepen van de residente PC SHELL),
+startparameters en fout- en
+systeemmeldingen. Boek 1 scoort hier
+beter.
+
+Boek 2 werkt makkelijk door de vele
+scherm- afbeeldingen. Juist de
+kleintjes zijn handig, want je ziet al
+in het boek wat je later op het scherm
+zult tegenkomen. Boek 1 had best wat
+meer plaatjes kunnen hebben.
+Voordeeltje voor 2.
+
+CONCLUSIE
+
+Beide boeken zijn geschikt voor elke PC
+Tools 6 gebruiker. Waarschijnlijk zal
+een beginner iets meer profijt hebben
+van boek 2: goed leesbaar, veel
+illustraties en bovenal: PC BACKUP
+wordt goed behandeld. Boek 1 is veel
+meer gedetailleerd als het gaat om PC
+SHELL (bestandsbeheer). Heel jammer dat
+het een grote steek laat vallen in het
+hoofdstuk over de backup. Boek 1 is met
+appendices iets dikker dan boek 2. De
+lettertypes zijn echter verschillend,
+waardoor de hoeveelheid tekst ongeveer
+dezelfde zal zijn. De prijzen van de
+twee boeken verschillen nauwelijks. Het
+hangt van uw persoonlijke voorkeur af,
+welk boek u aanschaft. Kijk ze beide
+eens in bij de boekhandel en maak uw
+keus.
+Chris van Offeren, Scoop-redactie.
+

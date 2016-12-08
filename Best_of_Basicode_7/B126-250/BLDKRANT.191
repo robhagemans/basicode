@@ -1,0 +1,261 @@
+191, maa 12 dec '88
+
+NIEUWE EDITIE IBM OS/2 BESCHIKBAAR
+
+Zoals IBM Nederland N.V. onlangs aankondigde,
+is sinds 30 november j.l. de OS/2 Standard
+Edition Versie 1.1, met Presentation Manager,
+beschikbaar. Deze versie van het besturings
+systeem voor de IBM Personal System/2, voor de
+modellen 50, 60, 70 en 80, stelt de gebruiker
+in staat verscheidene applicaties in 'windows'
+op het beeldscherm te volgen. IBM OS/2 Standard
+Edition 1.1, kortweg OS/2 SE 1.1, biedt de
+gebruiker de faciliteiten om verscheidene
+programma's tegelijk te laten uitvoeren (Multi
+Tasking), waarbij versie 1.1 met Presentation
+Manager gebruik maakt van 'windows'. IBM OS/2
+maakt gebruik van maximaal 16Mb werkgeheugen.
+
+PRESENTATION MANAGER
+
+De Presentation Manager zorgt dat meerdere
+applicaties in 'windows' op het beeldscherm
+zichtbaar zijn. Deze applicaties, geselecteerd
+en geactiveerd via menu-selectie en 'icons'
+door middel van een Muis, zijn gelijktijdig
+actief. Dit houdt in, dat wijzigingen vanuit
+de applicaties, direct worden doorgegeven aan
+het 'window'. Deze 'windows' worden dus
+gelijktijdig en direct bijgewerkt. Grootte en
+positie van het 'window' kunnen door de
+gebruiker worden gewijzigd naar eigen inzicht.
+Tevens kan een 'window' worden gewijzigd in
+een 'icon', waardoor de applicatie dus minder
+ruimte op het beeldscherm inneemt. Door een
+eenvoudige druk op de knop kan het 'icon' weer
+in een venster worden gewijzigd.
+
+INTERACTIE MET PRESENTATION MANAGER
+
+De grafische mogelijkheden van de Presentation
+Manager dragen zorg voor een eenvoudiger,
+gemakkelijker te begrijpen en logischere
+'mens-machine' interactie. Zeker door SAA in
+overweging te nemen, zal de gebruiker
+aanzienlijk voordeel ondervinden van een
+consistente presentatie van gegevens, een
+consequent gebruik van functietoetsen en
+consequente wijze van bijvoorbeeld
+foutmeldingen. Dit alles resulteert in
+voordelen voor twee groepen. Ten eerste de
+gebruikers: eenvoudiger en consequenter in
+gebruik, kortere opleidingstijd en efficienter
+gebruik van applicaties op verschillende
+systemen. Ten tweede de 'investeerder':
+gereduceerde opleidings kosten, verhoogde
+produktiviteit en flexibeler inzet van
+applicatie- ontwerper en programmeur.
+
+SYSTEMS APPLICATION ARCHITECTURE
+
+IBM OS/2 neemt een sleutelpositie in binnen
+IBM's Systems Application Architecture (SAA).
+Applicaties, die geschreven zijn naar de
+specificaties van SAA, hebben een consistente
+schermopbouw, schermlayout en schermgebruik
+voor wat betreft bijvoorbeeld functietoetsen,
+invoer van gegevens en controle, en opbouw van
+het scherm. Deze consistentie is niet beperkt
+tot IBM OS/2 en PS/2, maar strekt zich uit
+over de drie belangrijkste IBM hardware
+architecturen:
+- Personal System/2 (Operating System/2)
+- Application System/400 (Operating
+System/400)
+- Enterprise System/370 (MVS/VM).
+Deze consistentie is bovendien niet beperkt
+tot de gebruiker, maar geldt tevens voor de
+applicatie- ontwerper, die op veel eenvoudiger,
+efficienter en snellere wijze voor de drie
+bovengenoemde besturings systemen applicaties
+kan ontwikkelen.
+
+MICRO CHANNEL ARCHITECTURE
+
+De Presentation Manager, het grafisch
+'interface', moet voldoende capaciteit bieden
+om verscheidene 'windows' op het beeldscherm
+weer te geven en de inhoud vanuit de
+gelijktijdig actieve applicaties bij te werken.
+Dit alles resulteert in een grote gegevens
+stroom vanuit de systeemeenheid naar het
+beeldscherm. IBM's Micro Channel Architecture
+biedt hiervoor de juiste architectuur en
+capaciteit. IBM OS/2 kan gebruikt worden op
+IBM PS/2 Modellen 50, 50Z, 60, 70 en 80,
+uitgerust met minimaal 3,5 Mb werkgeheugen.
+Deze modellen zijn uitgerust met de Micro
+Channel Architecture. Daarnaast kunnen 80286
+systemen uit de PC familie worden gebruikt.
+
+BESCHIKBAARHEID
+
+Sinds 30 november is de Engelstalige versie
+beschikbaar. Deze Engelse versie is standaard
+ingesteld op het Amerikaanse toetsenbord.
+Dit is op eenvoudige wijze te veranderen naar
+bijvoorbeeld het Nederlandse toetsenbord.
+In maart 1989 zullen additionele Device
+Drivers beschikbaar komen, die ervoor zorgen
+dat andere IBM printers en beeldschermen
+ondersteund worden. Vanaf het eerste kwartaal
+van 1989 zal de Nederlandstalige versie
+beschikbaar komen.
+
+OS/2 TOOLKIT EN TECHNICAL REFERENCE
+
+De Programmer Toolkit 1.1 en Technical
+Reference 1.1 zijn vanaf januari 1989
+leverbaar. Deze versies bieden de applicatie-
+ontwerper een hoeveelheid hulpmiddelen om op
+een productieve, snelle wijze gebruik te maken
+van Presentation Manager faciliteiten vanuit
+een IBM Macro Assembler/2 of IBM C/2
+applicatie. Voorbeelden: Font Editor, Dialog
+Editor, BitMap Editor, Resource Compiler,
+API definities en verscheidene voorbeeld-
+applicaties. (Uit: Telecom Daily)
+
+EUROPESE CHIP-MARKT
+
+Het groeicijfer van de Europese chip-markt zal
+volgend jaar scherp dalen, na een stijging van
+bijna 25 procent in 1988. Cijfers van Motorola,
+de Amerikaanse chip-fabrikant met een grote
+produktie faciliteit in West-Europa, tonen een
+10,7 % stijging in chip-verkopen volgend jaar,
+met de Italiaanse markt als topper met een
+expansie van 20,6 procent, gevolgd door Groot-
+Brittannie met 13,7 procent. Verwacht wordt dat
+de totale Europese verkopen volgend jaar 9
+miljard dollar zullen bedragen tegen 8,1
+miljard dollar in 1988.
+
+Deze cijfers onderschrijven het groeiende
+belang van o.a. Japanse chip-fabrikanten op de
+Europese markt. Dit jaar zullen de Japanse
+producenten 14 procent van de Europese verkopen
+uitmaken. Vier jaar geleden lag dit percentage
+nog op 10,2 procent. Andere Aziatishe
+fabrikanten, voornamelijk Zuidkoreanen, zullen
+iets meer dan 1 procent van de verkopen in
+handen hebben tegen vrijwel 0 procent in 1984.
+
+De Europese fabrikanten behielden vorig jaar
+hun marktaandeel van 41 procent van de totale
+verkopen, terwijl de Amerikaanse producenten
+op de Europese markt een aandeel van 44 procent
+konden noteren. Een belangrijk deel van de
+'Japanse stijging' is te danken aan de hoge
+prijsstijgingen van geheugenchips. Het
+marktaandeel van de producenten uit het Verre
+Oosten komt onder druk te staan als de prijzen
+zich zullen stabiliseren. (Uit: Telecom Daily)
+
+CD-ROM PROGRAMMERS LIBRARY
+
+Microsoft heeft een weer een nieuwe toepassing
+ontwikkeld voor het opslagmedium CD-ROM. Het
+produkt heet Programmers Library en betreft
+een database voor programmeurs, bestaande uit
+naslagwerken van in totaal meer dan 20.000
+pagina's en voorbeeld programma's van Microsoft
+produkten. Ook updates van Microsoft's
+professionele programmeertalen zullen in de
+toekomst op CD-ROM worden uitgebracht. Naar
+verwachting zal de prijs daarvan lager zijn
+dan de traditionele registraties op diskette.
+
+Een CD-ROM is een optisch leesbare schijf met
+een opslag capaciteit van 660 megabyte. Dit
+medium maakt het mogelijk om op efficiente
+wijze grote hoeveelheden informatie te
+verspreiden. Deze informatie kan de gebruiker
+volgens een standaard procedure laden op zijn
+harde schijf. Althans, wanneer hij/zij tevens
+beschikt over een CD-ROM aandrijf eenheid.
+
+GIROTEL
+
+Aan de Girotel dienst van de Postbank worden
+vaak vragen gesteld in de trant van: 'Het zou
+handig zijn als ik mijn Girotel gegevens kon
+koppelen aan mijn financiele administratie'.
+Of: 'Als ik mijn Girotel betalings opdrachten
+op een diskette opspaar en in 1 keer uitvoer,
+zou me dat telefoon kosten schelen. Is daar
+niet iets op te vinden?' Op dit soort vragen
+kan Girotel sinds kort antwoord geven. Want
+abonnees die elektronisch bankieren met een
+DOS compatible PC, kunnen nu gratis beschikken
+over een veelzijdig en kosten besparend
+programma: Girotel Off-Line.
+
+VOORDELEN
+
+Girotel Off-Line bespaart tijd en telefoon
+kosten. Want met dit programma kunnen betalings
+opdrachten op een diskette of hard disk worden
+verzameld en in 1 keer in het Girotel systeem
+worden verwerkt. Betalings opdrachten kunnen
+zonder telefoon verbinding worden voorbereid.
+
+Een ander pluspunt van dit programma is dat
+een bestand van maximaal 2500 crediteuren kan
+worden bijgehouden in plaats van de huidige 98
+crediteuren (via het adresboek).
+Vooral zakelijke gebruikers bleken aan deze
+uitbreiding behoefte te hebben.
+
+VOORDELIG MODEM
+
+Bezitters van een personal computer die zich
+willen abonneren op Girotel, kunnen sinds
+oktober j.l. via de Postbank zeer voordelig
+een modem aanschaffen. Het gaat om een
+zogenoemd kaart-modem met bijbehorende software
+voor de prijs van f125,00. Het modem is
+eenvoudig te monteren, en alleen geschikt voor
+een DOS compatible PC. De kaart past in een
+uitbreidings slot van de PC. Het modem betrekt
+ook de voeding uit de PC. Er komt dus geen
+apart kastje bij de computer, en er hoeven geen
+kabeltjes te worden aangesloten. Voor het modem
+geldt de originele fabrieks garantie van Micro
+Technology te Papendrecht. Bestaande Girotel
+abonnees kunnen eveneens van dit aanbod gebruik
+maken. (Bron: Girotel Nieuws, november 1988,
+uitgegeven door Postbank NV Afd. In- en Externe
+Betrekkingen/ Marketing Communicatie,
+Antwoordnummer 230, 1000 XA Amsterdam)
+
+CONGRES VROUWEN EN AUTOMATISERING
+
+Op donderdag 12 januari 1989 organiseert het
+Landelijk Centrum Vrouwen en Informatica een
+congres voor vrouwen die werkzaam zijn in de
+automatisering. Op deze dag zullen in enkele
+lezingen en in workshops huidige en toekomstige
+ontwikkelingen in de automatisering worden
+belicht. Tevens bestaat de gelegenheid
+contacten te leggen met andere vrouwen die
+een functie in de automatisering bekleden.
+
+Het congres vindt plaats in het
+Mariott Hotel, Stadhouderskade 19-21 (vlak bij
+het Leidseplein), in Amsterdam.
+De kosten bedragen f275,00 per deelnemer.
+Nadere inlichtingen zijn verkrijgbaar bij het
+Landelijk Centrum Vrouwen en Informatica, WG-
+plein 250, 1054 SE Amsterdam, tel. 020-831661.

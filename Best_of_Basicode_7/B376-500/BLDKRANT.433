@@ -1,0 +1,365 @@
+433, maa 02 sep '91
+
+REAL TIME CLOCK VOOR ATARI ST
+
+Doorgaans zijn bezitters van een Atari
+ST gelukkige computer gebruikers. De
+machine is gebruikers vriendelijk en er
+is een enorme hoeveelheid software voor
+deze computer- familie beschikbaar. De
+ST heeft helaas EEN groot mankement:
+hij mist een ingebouwde klok die ook na
+het uitschakelen van het systeem de
+tijd bijhoudt. Elektuur ontwierp daarom
+een schakeling die ook dat minpuntje
+wegwerkt.
+
+AANSLUITING OP PRINTERPOORT
+
+Een van de krachtigste eigenschappen
+van de Atari ST is het feit dat de
+machine royaal van interfaces voorzien
+is. Van deze eigenschap wordt hier
+gebruik gemaakt om het elektronisch
+uurwerkje op de computer aan te
+sluiten. De kleine print krijgt een
+plaatsje op de Centronics poort van de
+ST, de poort voor de parallelle
+printer. De schakeling is zo opgezet,
+dat de printerpoort ook voor het
+normale printwerk bruikbaar blijft. Wel
+moet daartoe de printer-aansluiting in
+de computer licht gemodificeerd worden.
+Er is namelijk een extra I/O lijn
+nodig, waarvoor een draadverbinding
+moet worden gelegd. Deze ingreep is
+technisch niet moeilijk, maar wel
+omvangrijk: in de praktijk betekent het
+aansluiten van de twee draadjes dat de
+hele computer gedemonteerd moet worden!
+
+De accu op de print kan vanuit de
+computer worden bijgeladen. Het geheel
+past keurig in een compact kunststof
+kastje van 12x7x3 cm.
+
+SOFTWARE OP FLOPPY
+
+Bij de hardware is ook een diskette met
+systeem software verkrijgbaar, die door
+de Elektuur Produkt Service geleverd
+wordt. Hierop staat een kant en klaar
+programma (desk accessory) dat de
+nieuwe klokfunctie ondersteunt.
+Aangezien de broncode van het programma
+(geschreven in de taal C) er ook op
+staat, is het mogelijk voor de
+gebruiker om zelf nieuwe functies eraan
+toe te voegen. Daartoe is dan wel een
+C-compiler nodig.
+
+Alle verdere informatie, de
+print-layout en de complete
+bouwbeschrijving is te vinden in het
+september-nummer van Elektuur, pag.
+68-71.
+
+TEST: DYNALINK 9624P POCKET FAXMODEM
+
+De laatste vijf jaar zijn modems steeds
+betaalbaarder geworden. Toendertijd
+betaalde je voor een V21/V22 (300 full
+duplex en 1200/75 bps) modem al snel
+f.800. Wilde je een 'pocket modem', dan
+was dat al snel meer dan f.1000.
+Vandaag de dag koop je een V22bis (2400
+bps) modem voor minder dan f.500. En
+bijna allemaal zijn ze in hoge mate
+compatibel met het Hayes protocol. Of
+beter, een van de twee, want er zijn
+grofweg twee versies. De oudste versie
+beschikt niet over een niet-vluchtig
+geheugen waarin telefoon- nummers
+kunnen worden opgeslagen. De huidige
+versie biedt die mogelijkheid wel.
+Daarnaast zijn er kleine verschillen in
+de zogenaamde S-registers. Deze
+registers bepalen de configuratie van
+het modem en zijn dus de vervangers van
+de ouderwetse DIP schakelaars.
+
+SNELHEID
+
+Het Dynalink modem dat we hier bekijken
+is een V22/V22bis modem en kan dus 300,
+1200 en 2400 bps full duplex werken.
+Daarnaast heeft het een faxmode, zodat
+het, bij gebruik van de juiste
+software, ook als fax kan fungeren. In
+de faxmode wordt zowel zenden als
+ontvangen ondersteund (er zijn
+faxmodems die alleen kunnen zenden) op
+9600 bps. Mocht de fax aan de andere
+kant alleen lagere snelheden
+ondersteunen, dan schakelt het Dynalink
+modem terug. Hetzelfde gebeurt als de
+kwaliteit van de lijn geen hoge
+transmissiesnelheid toelaat.
+
+AANSLUITINGEN
+
+Zoals uit de term 'pocket faxmodem' al
+blijkt, gaat het hier om een modem voor
+portable gebruik. Met gesloten kapje
+meet het modem slechts 14 x 6 x 2,5 cm.
+Wordt het kapje verwijderd, dan
+verschijnen twee 'amerikaanse' telefoon
+aansluitingen en een 9-polige sub-D
+connector. Op de telefoon aansluitingen
+worden telefoon en PTT-net aangesloten.
+De sub-D connector kan direct achterin
+de PC worden gestoken. Er wordt een
+kabel meegeleverd met aan computerzijde
+zowel een 9- als 25-polige sub-D
+connector. Het gebruik van deze kabel
+heeft de voorkeur, de lengte van het
+modem werkt als een hefboom waardoor de
+connector op de PC nogal wat voor zijn
+kiezen krijgt. Voor gebruik onderweg is
+het echter wel handig, het scheelt het
+meeslepen van een kabel. Ook een
+voeding wordt meegeleverd, hoewel er
+ook gewerkt kan worden op een 9 V
+batterij. Die moet voldoende 'sap'
+geven voor 2 uur zenden.
+
+SOFTWARE
+
+De Dynalink volgt de nieuwe Hayes
+standaard zeer goed en wil dus
+makkelijk en probleemloos werken met de
+software die ik in huis heb. Standaard
+wordt het programma Bitmodem
+meegeleverd als communicatie programma.
+Dit ondersteunt de meest gangbare
+zendprotocollen zoals Xmodem, Ymodem,
+Ymodem-batch, Ymodem-G en Kermit.
+Verder wordt de aansturing van MNP5
+modems ondersteund, iets dat overigens
+niet door de Dynalink geboden wordt.
+Zelf gebruik ik MTE, een pakket dat
+softwarematig MNP5 emuleert waardoor
+met het (niet-MNP5) Dynalink modem toch
+een hogere snelheid en foutcontrole kan
+worden bereikt.
+
+Voor het verzenden van faxen wordt het
+programma Bitfax - van dezelfde
+leverancier als de communicatie
+software - meegeleverd. Dit pakket - ik
+beschikte over versie 3.02 - wordt
+geleverd met een menuprogramma, vanwaar
+de diverse programmadelen kunnen worden
+gestart. Zo is er een apart programma
+voor het verzenden, het geprogrammeerd
+verzenden, het ontvangen en het
+bekijken/printen. Dit zijn allemaal
+TSR's en blijven dus in het geheugen
+zitten. Dat kost al snel 60 tot 70 kb
+kostbaar geheugen. Bovendien moet eerst
+goed geexperimenteerd worden met de
+volgorde van het inladen indien andere
+software tegelijk wordt gebruikt. Ik
+ben fanatiek WordPerfect Office
+gebruiker en start dus alles vanuit de
+WP Shell. Gek genoeg kost het
+ontvangst- programmaatje dan ineens 300
+kb: 60 kb geregistreerd en de rest
+verdwijnt op mysterieuze wijze in een
+zwart gat. Op zich geen ramp want als
+je het programmaatje VOOR Shell laadt,
+dan doet dit probleem zich niet voor.
+
+De software heeft nog wat andere kleine
+ongemakken, maar ook daar is makkelijk
+omheen te werken. Zo zouden WordPerfect
+5.1 files gelezen kunnen worden. Dit
+gaat echter niet altijd goed. Ik vind
+het veel handiger het te faxen document
+als ASCII tekst weg te schrijven. Dat
+gaat - mits de kantlijnen goed staan -
+probleemloos. Ook het op het scherm
+inzien van ontvangen faxen is niet
+ideaal. Een 12 MHz 286 had met name
+voor het scrollen duidelijk wat tijd
+nodig. Zelfs mijn 25 MHz 386 deed nog
+wat schokkerig.
+
+Mocht de indruk zijn ontstaan dat de
+software gebrekkig is, dan is dat
+onterecht. Het werkt - afgezien van de
+kleine ongemakken - uitstekend en
+makkelijk. Helemaal interessant zijn
+opties als uitgesteld verzenden en mail
+merge (of heet dat hier fax merge). Met
+de uitgesteld verzenden optie kunnen
+documenten op een later tijdstip worden
+verzonden. Bijvoorbeeld als het
+telefoontarief laag is. Er kan
+eenvoudig een lijst worden aangelegd
+waarin de geadresseerde vanuit een
+bestand wordt gekozen. Ook mergen werkt
+met deze DBase III compatibele
+database. De geadresseerden kunnen
+eenvoudig aangestipt worden of op
+categorie worden geselecteerd. Op die
+manier kon ik 's avonds exposanten van
+een beurs vragen om hun nieuws: bijna
+50 faxen werden in vijf minuten
+'geschreven' en 's avonds verzonden.
+Een logboek van zowel verzonden als
+ontvangen faxen wordt op de harde
+schijf bijgehouden.
+
+PRINTS
+
+Doordat de software direct grafische
+beschrijvingen van ASCII codes maakt,
+ziet de fax er aan ontvangstzijde veel
+beter uit dan wanneer een conventionele
+fax aan zendzijde zou zijn gebruikt. De
+scanners in faxen zijn nu eenmaal wat
+minder. Voor de ontvanger is er een
+bijkomend voordeel: de Dynalink
+verbruikt alleen papier wanneer er nog
+wat op staat. Fax't u een bericht van
+drie regels, dan zal bij de ontvanger
+maar een klein stukje papier worden
+verbruikt (tenzij u dat in de software
+anders instelt). Verder is er een
+mogelijkheid tot gebruik van een
+geleidevel waarop geadresseerde,
+afzender en een korte boodschap kunnen
+worden vermeld. Uiteraard wordt de
+zendercode/naam, datum en tijd
+meegezonden. De laatste twee betreffen
+de systeemklok in de PC.
+
+CONCLUSIE
+
+Voor f.942 incl. BTW kunt u ook bijna
+een conventionele fax kopen. En in veel
+gevallen is dat ook aan te bevelen.
+Want de fax software legt duidelijk
+beslag op uw PC. Ik gebruik het echter
+zowel als modem en als fax in
+combinatie met mijn Commodore C286-LT
+notebook. Dat geeft de mogelijkheid
+vanuit hotels of vanaf beurzen overal
+ter wereld naar het thuisfront te faxen
+of modemen. Een telefoonkabeltje met
+aan een kant de aansluiting op het
+modem en aan de andere kant twee
+banaanstekkers met krokodilleklemmen
+lost daarbij in Europa het
+stekkerprobleem op. Op het kantoor
+wordt het modem gebruikt voor
+fax-merge.
+
+In de korte tijd dat ik het modem heb,
+is het zeer intensief gebruikt. Door
+een toevallige omstandigheid moesten er
+in 3 dagen bijna 100 faxen uit. Twee
+daarvan werden halverwege verbroken
+door een slechte verbinding, alle
+andere faxen gingen uitstekend.
+(Hans Beekhuyzen)
+
+INFORMATIE
+
+Besproken produkt: Dynalink 9624P
+pocket faxmodem
+Systeemeisen (opgave fabrikant): MS-DOS
+computer met 640 kb geheugen en 5 Mb
+vrije ruimte op de harde schijf (in de
+praktijk blijkt 1,5 Mb schijfruimte
+voldoende).
+Prijs: f.942 incl. BTW (795 excl. BTW)
+Importeur: 2L computers, Postbus 192,
+3870 CD Hoevelaken, tel. 03495-36294,
+fax: 03495-34454.
+
+NIEUWE CASIO DIGITAL DIARY
+
+De nieuwe Casio SF-9500 Digital Diary,
+het elektronische zakboek zouden wij in
+het Nederlands zeggen, kent de
+mogelijkheid om een RAM-kaart of een
+specifieke extra kaart te gebruiken. De
+SF-9500 is daarmee een stuk
+veelzijdiger, maar ook duurder
+geworden. De adviesprijs ligt nu rond
+de f600,- en die van de RAM-kaart
+ES-100 (64 Kb) rond de f300,-.
+Weliswaar betaalt niemand die
+adviesprijzen, maar uitkijken bij de
+aankoop is op zijn plaats, zeker als
+men de prijs vergelijkt met die van
+Atari's Portfolio.
+
+VEELZIJDIG
+
+De Casio is ongekend snel en
+veelzijdig. Maar dat was de voorganger
+ook al. Een beetje onlogisch is de
+onderverdeling in telefoonboek en
+visitekaartjes, een korte en een lange
+adreslijst. Die zouden heel goed
+gecombineerd kunnen worden in EEN
+database. Daarnaast is er een prettige
+rekenmachine en overzichtelijke agenda
+met overzichten en alarmeringen. Ook
+dat was in het vorige model -dat de
+trend van zulke digitale zakboeken
+aangaf- al aanwezig. Verder is het
+makkelijk om gegevens van de ene Casio
+naar de andere over te brengen door
+middel van een bijgeleverd snoertje.
+
+NIEUWE MOGELIJKHEDEN
+
+Nieuw in deze machine is de
+mogelijkheid om een insteekkaart te
+gebruiken. Er zijn dan enkele extra
+knopjes die speciale funkties
+aankunnen. Makkelijk is het de
+beschikbare RAM-kaart (bijv. 64 Kb
+extra) erbij te kopen voor backup of
+voor gebruik van meerdere databases.
+Voor communicatie met de bureau-
+computer moet nog een extra setje
+worden aangekocht. Extra kaarten en
+mogelijkheden zijn deels nog in
+ontwikkeling.
+
+VERGELIJKING MET SHARP
+
+Kritiek ten opzichte van de voorganger
+is ook te leveren op deze Casio. Hij
+heeft net zo'n klein scherm als z'n
+voorganger, terwijl er in de
+tussenliggende periode toch veel aan
+LCD-techniek gepasseerd is. Sharp had
+een nog veel kleiner schermpje vroeger,
+maar is ook overgestapt op een
+horizontaal schermpje, dat overigens
+niet groter is. Wel is bij de
+vergelijkbare zakcomputer en agenda van
+deze concurrent veel meer mogelijk en
+leverbaar op het gebied van speciale
+kaarten. Verder zijn de Sharp en Casio
+nu vrijwel gelijk in veel opzichten
+(ook qua prijzen), dat wil zeggen Sharp
+heeft zijn achterstand ingehaald.
+(Hans Janssen)
+

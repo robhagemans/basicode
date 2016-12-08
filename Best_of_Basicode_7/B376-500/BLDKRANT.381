@@ -1,0 +1,310 @@
+381, maa 04 feb '91
+
+UITVINDER TRANSISTOR OVERLEDEN
+
+De Amerikaanse natuurkundige John
+Bardeen, die twee keer de Nobelprijs
+gekregen heeft, is vorige week woensdag
+(30 jan.) in een ziekenhuis in Boston
+gestorven. De man, wiens
+wetenschappelijk werk mede de deur
+heeft geopend naar het tijdperk van de
+elektronica, is 82 jaar geworden.
+
+In 1947 ontwikkelde Bardeen samen met
+W.H. Brattain en William Shockley de
+transistor, die in de plaats kwam van
+de onhandige vacuum buizen en de
+mogelijkheid schiep tot het maken van
+kleine elektronische apparaten. Deze
+wetenschappelijke groep kreeg voor haar
+ontdekking in 1956 de Nobelprijs voor
+natuurkunde. In 1972 kreeg de in
+Madison (in de staat Wisconsin) geboren
+Bardeen de hoogste wetenschappelijke
+onderscheiding ter wereld nog een keer,
+nadat hij met L.N. Cooper en J.R.
+Schrieffer de theorie van de supra-
+geleiding had ontwikkeld. (Bron: ANP)
+
+SUPERCOMPUTER
+
+Dit voorjaar wordt de krachtigste
+supercomputer ter wereld geinstalleerd
+in Caltech (Californie). Het gaat om
+een systeem dat werkt met 528
+parallelle Risc processoren van Intel.
+Deze zorgen voor een theoretische
+verwerkings kracht van 32 gigaflops. De
+supercomputer, het Delta systeem, is
+gebaseerd op de iPSC/860 supercomputer
+van Intel. Er zijn echter nog geen
+applicaties die behoefte hebben aan
+deze enorme kracht. Het grote probleem
+bij parallel verwerken is immers dat
+applicaties in delen moeten worden
+gesplitst. De enorme kracht wordt pas
+volledig benut als de applicaties
+zodanig worden gesplitst dat het werk
+gelijk over alle processoren wordt
+verdeeld. (Uit: de Muurkrant)
+
+VEILIGHEID OP ZEE
+
+In 1974 werd een internationaal verdrag
+gesloten ter beveiliging van
+mensenlevens op zee, Safety Of Lifes At
+Sea (SOLAS). In de loop van de daarop
+volgende jaren is hard gewerkt om een
+aantal belangrijke zaken die hiervoor
+noodzakelijk zijn te bewerkstelligen.
+Ten behoeve van deze beveiliging heeft
+men het Wereldwijde Maritieme Nood en
+Veiligheids Systeem, het zogeheten
+Global Maritime Distress and Safety
+System (afgekort GMDSS) ontwikkeld. In
+het nu volgende artikel zet zendamateur
+Andries Pals uiteen wat dit systeem
+inhoudt en welke organisaties eraan
+deelnemen.
+
+ORGANISATIES
+
+Het zal duidelijk zijn dat je voor dit
+soort zaken te maken krijgt met
+verschillende organisaties. Om daarvan
+enkele te noemen: de Internationale
+Hydrografische Organisatie (IHO); de
+Internationale Maritieme Organisatie
+(IMO); de Wereld Meteorologische
+Organisatie (WMO). Ook nationaal zijn
+deze terug te vinden. Denk daarbij aan
+de Dienst der Hydrografie van de
+Koninklijke Marine, het Directoraat
+Generaal voor Scheepvaart en Maritieme
+Zaken (DGSM) en het KNMI voor wat de
+meteorologische kant van de zaak
+betreft.
+
+GMDSS
+
+Met betrekking tot het wereldwijde
+berichten verkeer is inmiddels het
+INternational MARitime SATellite net
+(INMARSAT) operationeel. Dit bestaat in
+hoofdzaak uit een drietal
+geostationaire communicatie
+satellieten, dat wil zeggen met een
+'vaste' plaats in de ruimte t.o.v. onze
+aarde. Deze zijn gestationeerd op
+gelijke afstanden van elkaar boven de
+evenaar en wel zodanig, dat de aardse
+gebieden die ze bedekken elkaar ruim
+overlappen in de oost-west richting. In
+de Noord-Zuid richting bedekken ze een
+gebied van 75 graden NB tot 75 graden
+ZB.
+
+MARITIEME VEILIGHEIDS INFORMATIE
+
+Deze heeft betrekking op gevaren voor
+de scheepvaart en kan van zeer
+uiteenlopende aard zijn: navigatie
+waarschuwingen, meteorologische
+waarschuwingen en verwachtingen, spoed
+en veiligheids berichten. Als gevolg
+van de verschillende internationale
+verdragen wordt deze informatie door
+allerlei instanties en via diverse
+media verspreid.
+
+Het is voor de verantwoordelijke mensen
+aan boord van schepen een hele klus om
+de relevante berichten te selecteren en
+te ontvangen via LF, MF, HF en VHF; in
+modes zoals telefonie, telegrafie,
+Radiotelex (RTX) v/h TOR geheten, en
+facsimile (FAX) en dan ook nog op
+verschillende tijden en allerlei
+frequenties.
+
+VEILIGHEIDS BERICHTGEVING
+
+Door de samenwerking van IHO en IMO is
+sedert 1979 een gecoordineerd en
+efficient werkend wereldwijd navigatie
+waarschuwings systeem, Worl Wide
+Navigational Warning System (WWNWS)
+opgebouwd. Daartoe heeft men de aarde
+verdeeld in 16 zogeheten NAVAREA
+(NAVigational AREA) gebieden. De
+regionale en lokale berichten worden
+meerdere malen per dag op vaste tijden
+of, wanneer noodzakelijk, tussentijds
+uitgezonden via radio telegrafie (RTG),
+RTX en radio telefonie (RTF). De
+berichtgeving voor die uitzendingen
+wordt verzorgd door de 16 NAVAREA
+coordinatoren.
+
+METEO BERICHTEN
+
+De WMO is (beperkt) betrokken bij de
+berichten van meteorologische aard,
+zoals wind en storm waarschuwingen,
+weers verwachtingen en rapporten. Voor
+die berichtgeving zijn 6 regio's
+vastgesteld. Er wordt via RTF, RTG, RTX
+en RTTY uitgezonden. Verder worden via
+FAX door vele stations weerkaarten,
+golfhoogte kaarten, kaarten met
+luchtdrukken op verschillende hoogten,
+kaarten met windrichtingen en stroom
+richtingen e.d. uitgezonden. Ook dat
+kan aan boord met de FAX weerkaarten
+schrijver worden ontvangen.
+
+OPSPORING EN REDDING
+
+De opsporings en reddings berichten,
+Safety And Rescue (SAR), worden via de
+nood en oproep frequenties 2182 kHz
+(RTF), 500 kHz (RTG) en Marifoon (VHF)
+kanaal 16 (156.800 MHz) uitgezonden. De
+coordinatie van SAR operaties ligt bij
+de Reddings Coordinatie Centra, Rescue
+Coordination Centres (RCC). Die hebben
+op hun beurt allerlei diensten,
+organisaties en frequenties ter
+beschikking, die voor dergelijke
+operaties onontbeerlijk zijn.
+
+NAVTEX
+
+Voor het GMDSS zijn door de IMO in
+samenwerking met INMARSAT twee systemen
+ontwikkeld: NAVTEX en Safety Net.
+
+Het woord NAVTEX is een samentrekking
+van NAVigational TEleX. NAVTEX is een
+component van het IHO/IMO WWNWS en
+onderdeel van het GMDSS. Vanaf 1
+augustus 1993 is het een verplichte
+uitrusting op de brug voor schepen
+vanaf 300 BRT (Bruto Register Ton).
+NAVTEX bestaat sedert 1984 en de NW
+Europese landen hebben al vanaf 1987
+een gecoordineerd NAVTEX systeem
+operationeel.
+
+De uitzendingen vinden plaats op de MF
+518 kHz in de RTX FEC (=broadcast)
+mode. Het zijn eenzijdige uitzendingen
+welke door een aantal (niet alle)
+kuststations worden verzorgd en door de
+wijze van uitzenden met een speciale
+ontvanger met ingebouwde processor en
+printer zijn te ontvangen. De
+reikwijdte van de zenders is doorgaans
+tenminste 200 nautische mijl (NM).
+Naast de internationale NAVTEX service
+in het Engels kan een land ook NAVTEX
+uitzendingen verzorgen in de nationale
+taal op de frequenties 409 kHz of
+4209.5 kHz.
+
+SAFETY NET
+
+In de nabije toekomst zal Safety Net de
+scheepvaart gaan voorzien van navigatie
+en meteo berichten, nood en
+spoedberichten en elektronische
+transmissie van zeekaart correcties.
+Het is geschikt voor alle soorten
+schepen. Safety Net is een satelliet
+service van het Enhanced Group Call
+(EGC) systeem van INMARSAT en is
+speciaal ontworpen voor maritieme
+veiligheids berichtgeving.
+Vanaf 1 februari 1995 is een Safety Net
+ontvanger verplicht voor nieuwe schepen
+en vanaf 1 februari 1999 voor alle
+schepen die varen in de gebieden zonder
+NAVTEX dekking.
+
+Het EGC systeem voorziet in een
+automatische wereldwijde methode van
+uitzenden voor alle schepen, zowel in
+vaste als variabele geografische
+gebieden of aan bepaalde groepen van
+schepen.
+Het Safety Net systeem dekt dezelfde
+geografische gebieden als de INMARSAT
+satellieten tussen 75 graden NB en 75
+graden ZB. Het is ook bedoeld voor
+schepen die niet door NAVTEX zijn te
+bereiken.
+Het Safety Net systeem voorziet in
+gecoordineerde en automatische
+ontvangst van maritieme veiligheids
+informatie via EGC, met een print
+uitdraai in de Engelse taal.
+
+Het Safety Net systeem is uitermate
+geschikt om over enige tijd het
+elektronische zeekaarten systeem
+(ECDIS) automatisch te corrigeren. In
+1988 zijn daarmee proeven gedaan in het
+kader van het North Sea Project,
+waaraan ook Nederland deelgenomen
+heeft. In de loop van dit jaar worden
+deze proeven uitgebreid voortgezet.
+
+Hoewel NAVTEX en Safety Net voor de
+schepen kosteloos zijn, moet de
+financiering nog geregeld worden. In
+december 1990 zal in London een
+speciale bijeenkomst worden belegd van
+IMO met o.a. IHO en WMO, waar het
+kosten aspect aan de orde komt.
+
+Wanneer de Safety Net service
+operationeel is geworden, mag een land
+de Maritime Safety Information (MSI),
+welke aan boord met een automatische
+ontvanger met printer wordt ontvangen,
+op HF frequenties blijven uitzenden.
+
+RADIOTELEGRAFIE (RTG)
+
+Ondanks dat er al veel NAVTEX stations
+operationeel zijn, zal het toch zeker
+tot begin 1993 duren voordat alle
+geplande stations bedrijfsklaar zijn.
+Zoals vermeld, zal het Safety Net naar
+verwachting in 1992 gaan werken. Het is
+dan zo, dat MSI tot 1 februari 1999 ook
+nog via radiotelegrafie (RTG) zal mogen
+blijven plaatsvinden.
+
+TOT SLOT
+
+Het GMDSS zal de scheepvaart voorzien
+van directe automatische ontvangst, op
+de brug, van wereldwijde maritieme
+veiligheids informatie die van een zo
+grote importantie is voor schip,
+opvarenden en lading.
+Uit het voorgaande zal blijken dat,
+wanneer het hele systeem operationeel
+is geworden, de ontvangst van
+veiligheids berichten aan boord van
+schepen in de toekomst eenvoudiger en
+efficienter wordt.
+Er is inmiddels bepaald dat over enige
+tijd de Radio Officier van de schepen
+verdwijnt. De radiotelegrafie is
+voorlopig nog niet uit de lucht.
+(Bedankt, Andries!)
+Bronnen: PTT Telecom, DGSM, ITU.
+

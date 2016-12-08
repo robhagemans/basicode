@@ -1,0 +1,276 @@
+121, zon 17 jan '88
+
+200 MB MS-DOS SOFTWARE OP FIDO
+
+De ProgrammaTheek is de best gedokumenteerde
+software bibliotheek van Nederland, en zo
+groot dat je 'm nooit helemaal zult kennen:
+300 disks met MS/PC-DOS software en 500 disks
+CP/M! De HCC groepen die de ProgrammaTheek
+beheren hebben zes Fido systemen, en het was
+altijd (voor bezitters van onze catalogus
+c.q. het blad SoftwareBus) mogelijk software
+uit de library te downloaden.
+'Verzoekschijven' kon ook, als de sysop ze in
+bezit had; opvragen bij de centrale
+bibliotheek gebeurde ook wel. Doch niet
+gestruktureerd, en er zijn vele verzoekjes
+blijven liggen. Dat moet nu OVER zijn: ALLE
+schijven zijn aan te vragen.
+
+PROGRAMMATHEEK OP BBS-EN
+
+Er zijn twee centrale depots gevormd,
+plus het plan van alle sysops om onbeperkt
+de eenmaal aangevraagde volumes te
+'hamsteren'. Dus: leden van de HCC CP/M gg
+of de HCC MS-DOS gg, die in het bezit zijn
+van de ProgrammaTheek catalogus en/of het
+blad SoftwareBus (met supplementen), kunnen
+hun hart ophalen! Het betreft de BBS-en:
+
+ProgrammaTel, Hengelo:   074-423860
+SoftwareBoss, Voorburg:  070-694081
+Bliep, Spijkenisse:      01880-15014
+ (op moment van schrijven waren er
+ verhuisplannen, doch probeer toch maar..)
+DataShareware, Veenendaal: 08385-29478
+ (Deze is centraal depot, dus ALLES
+ binnen 2 dagen online!)
+MS-Boss Oost, Enschede:  053-762039
+MS-Boss West, Amsterdam: 020-982155
+ (de laatste twee geen CP/M).
+
+Inloggen, kijken wat er online staat, en
+missende wensen in message area 3 aanvragen
+bij de sysop! Sukses!
+Erik de Ruijter (HCC ProgrammaTheek)
+
+NEDERLANDSE DESKTOP VOOR ATARI ST
+
+Als nieuwe zet in de slag om de schoolcomputer
+heeft Atari de 'desktop' van de ST van
+Nederlandse teksten voorzien. Door een
+slimmigheidje dat de Atari ontwerpers in de
+computer hebben ingebouwd kon dat zonder het
+aanpassen van de ROM's waarin het besturings
+systeem van de ST is vastgelegd.
+
+De truc komt op het volgende neer: de Engelse
+teksten die de ST normaal op het scherm
+vertoont, staan in de ROM's. Bij het opstarten
+van de computer worden ze echter van het
+(onuitwisbare) ROM geheugen naar het RAM
+geheugen gekopieerd. Vanaf dat moment maakt
+hij alleen gebruik van de teksten in RAM, die
+dus naar believen veranderd kunnen worden.
+
+DESKTOP WORDT LAADBURO
+
+Het door Atari Benelux ontwikkelde programma
+Laadburo maakt van dit principe gebruik.
+Het kan zelfs zonder er naar om te kijken
+door het programma in een 'auto-folder' te
+zetten. Tijdens het opstarten wordt de ST dan
+automatisch met de Nederlandse tekst geladen.
+
+Voor iemand die de Engelse aanwijzingen
+gewend is, doen de Nederlandse teksten wat
+onwennig aan. Het rijtje 'Desk File View
+Options' wordt 'Buro Data Kijk Opties', de
+vuilnisemmer heet nu ook prullenbak. Maar om
+de diskdrive om te dopen tot 'burolade' en
+een file tot 'blad'? Of wat te denken van
+'Deel in' (van indelen) voor formateren?
+Maar wie weet denken schoolkinderen er
+anders over.
+
+XL/XE EMULATOR VOOR DE ST
+
+Ook al in het kader van de educatie heeft
+Atari Benelux een XL/XE emulator voor de ST
+uit de VS laten overkomen (een emulator is
+een programma dat een computer laat denken
+dat hij een andere computer is). Dit
+programma maakt het mogelijk software die
+geschreven werd voor de oudere XL/XE
+computers te laten lopen op de ST. Mede
+dankzij het radioprogramma 'Chips die je
+niet kunt eten' van de stichting Nederlanse
+schoolradio is voor deze computers een grote
+hoeveelheid educatieve software beschikbaar.
+
+LEUK BEELD, MAAR SCHIJN BEDRIEGT
+
+De emulator, met de naam ST-XFORMER, ziet er
+op het eerste gezicht prachtig uit. Het beeld
+dat op het scherm van de ST verschijnt (het
+werkt alleen met kleurenmonitor) lijkt als
+twee druppels water op dat van de oude
+achtbitters. Het bevat zelfs een '6502
+monitor' waarmee met machinetaal
+gemanipuleerd kan worden.
+
+In het gebruik stelt het programma echter
+flink teleur. De XL/XE programma's verlopen
+tergend langzaam. De twee voorbeeld
+programma's in Basic die ik geprobeerd heb
+gaven op een gegeven moment beide de geest.
+Mogelijk is dat door het aanpassen van een
+aantal programmaregels te verhelpen, maar
+dat vermindert het nut van de emulator wel
+aanzienlijk.
+
+PROBLEMEN MET UITWISSELBAARHEID
+
+De beschikbaarheid van XL/XE programmatuur
+voor de ST is voorlopig ook nog een
+probleem. Omdat de schijfjes niet onderling
+uitwisselbaar zijn, zullen de programma's
+eerst op ST-formaat moeten worden
+overgeschreven. Atari zelf neemt geen
+stappen in die richting. 'We hebben daar de
+mankracht niet voor', aldus Wilfred Kilwinger
+van Atari Benelux. 'Maar we hopen dat via de
+gebruikersclubs een flinke library van
+omgezette programma's ontstaat'.
+
+De besproken programma's Laadburo en
+ST-XFORMER zijn gratis te kopieren bij de
+Atari dealers of te downloaden van het eigen
+bulletin board van Atari in Vianen
+(03473-77584). Aldus Bart Oosterveld.
+
+BEURS VOOR SUPERCOMPUTERS
+
+De Jaarbeurs en het academisch rekencentrum
+ACCU van de Rijksuniversiteit van Utrecht
+gaan samen een beurs organiseren voor de
+toekomstige gebruikers van systemen in de
+Super Computer klasse. Deze beurs zal
+gehouden worden van 21 tot en met 23
+februari 1989 (volgend jaar dus!).
+
+Supercomputers vind je hoofdzakelijk bij
+universiteiten, laboratoria, Ministeries
+van Defensie, en andere grote rekencentra.
+Het gebruik van dergelijke systemen neemt
+steeds meer toe, al kosten ze een vermogen.
+Maar door de komst van zogenaamde 'mini
+supers' zijn er al systemen die voor een
+miljoen gulden geleverd kunnen worden.
+
+SAMENWERKING MET AMERIKA
+
+Supercomputers worden hoofdzakelijk in
+Amerika en Japan geproduceerd. In Europa
+is het aantal fabrikanten zeer beperkt.
+De organisatoren van de beurs hebben zich
+verzekerd van de hulp van het Amerikaanse
+Ministerie van Handel, dat met name Holland
+promoot als een uitstekende 'Gateway to
+Europe'. Tevens zal de Jaarbeurs gebruik
+maken van de know-how van een collega
+beursorganisator in Amerika, die als eerste
+ter wereld zo'n specifieke vakbeurs heeft
+georganiseerd.
+
+Tijdens de beurs zal ook een internationale
+conferentie worden gehouden, waarop sprekers
+uit Amerika, Japan en Europa hun visie geven
+op de toekomst van supercomputers.
+
+TELECOMM. SYSTEEM SCHELDE-RADARKETEN
+
+PTT Telecommunicatie gaat alle telecommunicatie
+verbindingen en -apparatuur leveren en
+installeren voor de uitbreiding en vernieuwing
+van de Schelde radarketen op Nederlands
+grondgebied. Hiervoor is op 28 december een
+raamovereenkomst getekend met het Directoraat
+Generaal Scheepvaart en Maritieme Zaken.
+Tevens treedt PTT Telecommunicatie op als
+adviseur, met name bij de wederzijdse
+afstemming van het Nederlandse systeem op dat
+in Belgie.
+
+Een ander aspect van de overeenkomst betreft
+de technische ontwikkeling van het systeem,
+de engineering. Het telecommunicatie systeem
+wordt in de zomer van 1990 opgeleverd.
+Met de opdracht is een bedrag gemoeid van
+bijna 11 miljoen gulden.
+
+NETWERK
+
+Het telecommunicatie systeem omvat een groot
+aantal vaste verbindingen, een
+radiocommunicatie systeem en uitgebreide
+bedrijfstelecommunicatie voorzieningen.
+Voor een deel worden de voorzieningen
+speciaal voor dit project ontwikkeld.
+
+De vaste verbindingen bestaan uit 155 data-
+en telefoonlijnen, een straal- en twee
+coaxverbindingen. Een aantal verbindingen
+wordt gebruikt voor de koppeling van de
+radar installaties langs de Westerschelde.
+De datalijnen vormen een netwerk voor het
+volledig geautomatiseerde
+informatieverwerkings systeem. Via het
+openbare autotelefoonnet kunnen zelfs loods-
+en patrouille vaartuigen direct toegang
+krijgen tot dit systeem.
+
+RADIOVERKEER MET SCHEPEN
+
+Het radiocommunicatie systeem wordt gebruikt
+voor het radioverkeer tussen de schepen en
+de vaste wal en tussen de schepen onderling.
+Het Nederlandse netwerk sluit aan op dat in
+Belgie. Vanaf de Noordzeekust tot in
+Antwerpen staan de verkeersleiders zodoende
+in voortdurend radiocontact met de schepen
+en de loodsen.
+
+Het bedrijfstelecommunicatie systeem
+voorziet onder andere in rechtstreekse
+spraakverbindingen tussen de verkeersposten
+alsmede de koppeling met het openbare
+telefoonnet. Ook zijn er directe
+verbindingen met de verkeersposten in
+Antwerpen en Zeebrugge.
+
+RADARKETEN
+
+De Schelde radarketen is een gezamenlijk
+project van de Nederlandse en Belgische
+overheid. Het gaat bestaan uit 15 onbemande
+radartorens en 5 verkeersposten. Drie
+verkeersposten staan op Nederlands
+grondgebied: in Vlissingen, Terneuzen en
+Hansweert. De hele keten bestrijkt een gebied
+met een lengte van 130 kilometer vanaf zee
+tot het centrum van Antwerpen. In Vlissingen
+komt het Schelde coordinatiecentrum. Via een
+geavanceerd computersysteem wordt hier een
+totaal-overzicht van het hele gebied
+verkregen. Het computersysteem voegt hiervoor
+de gegevens van de radartorens samen met de
+informatiestroom over het scheepsbewegingen
+en alle andere hiermee samenhangende gegevens.
+
+SPREEKUUR
+
+Om de overvloedige stroom van telefoontjes in
+de hand te houden hebben we het maandagochtend
+spreekuur ingesteld. U kunt ons elke maandag
+bellen van 10 - 12 op 035 - 773015. Geen ander
+nummer is daarvoor beschikbaar en na 12 wordt
+het weer afgekoppeld. Dus zorg dat u er bij
+bent als u een vraag telefonisch wilt stellen.
+Schrijven blijft echter een van de betere
+methoden. Heel veel vragen zijn voor ons
+gesneden koek: er zijn daarvoor standaard
+brieven ontwikkeld die we u per ommegaande
+toesturen. Postbus 1200 staat er voor open!

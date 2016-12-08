@@ -1,0 +1,285 @@
+123, zon 24 jan '88
+
+BESPREKING BOEKEN OVER MS-DOS E.D.
+
+Pieter Vijlbrief las weer voor ons
+een aantal boeken over o.a. MS-DOS, de
+programmeertaal Modula-2 en... de
+aanschaf van een eigen huis!
+Hier komen ze.
+
+SERIE MS DOS TRUUKS EN TIPS
+
+Uitg. Stark-Texel. Deel 1 (voor GW Basic en
+Basica), 93 pag., prijs f 29,50, auteur:
+K. Hanssen.
+Het boek bevat veel nuttige aanwijzingen, ook
+over de geheugen adressen waarin zich de systeem
+gegevens bevinden, zoals het totaal beschikbare
+geheugen, het fabrikaat van het systeem ROM, de
+aangesloten interfaces, enz. Voorts komen aan
+de orde: het bewaren van toegekende funkties
+aan de funktie toetsen op diskette, het bepalen
+van cursor coordinaten, het uitlezen van
+bijzondere toetsen en allerlei handige truukjes,
+zoals het ongedaan maken van 'NEW' en het poken
+in het videoRAM. Bij het uitproberen van een
+enkel in het boek opgenomen programma bleek dit
+lang niet altijd vlekkeloos te lopen, maar een
+klein beetje eigen inzicht doet hier wonderen.
+Het zal wel veroorzaakt worden door de
+onderlinge verschillen in de 'kloons'.
+
+DEEL 4, MS DOS, DOOR W.J. VAN HEUSDEN
+
+110 pag., prijs f 29,50. Een heel aardig boek
+over de opbouw van de PC en het zelf installeren.
+De diverse adapter kaarten worden beschreven
+evenals de mogelijkheden van config. sys.,
+het mode commando, de harde schijf en voor
+het werken in Basic een aantal handige
+programmaatjes. Ook dit boek bevat weer enkele
+storende onnauwkeurigheden zoals op pag. 22:
+Poundteken = f! Men moet wel iets van de PC
+en MS DOS afweten om dit boek met vrucht te
+kunnen gebruiken. Geschikt als beknopt
+naslagwerkje voor gevorderden.
+
+DEEL 5, DOOR W.J. VAN HEUSDEN
+
+122 pag., f 29,50. Dit werkje gaat over Batch
+files, foutmeldingen en het bevat een
+woorden register, waarin men specifieke
+computer termen kan opzoeken. Het maken van
+Batchfiles wordt uitvoerig besproken (27
+pag.). Daarna komen er 39 pagina's
+foutmeldingen gevolgd door een verklarende
+woordenlijst van 47 pagina's. Indien men
+deze zaken al niet uit andere boeken kent,
+is dit een beknopt overzicht.
+
+PC MS DOS HANDBOEK VOOR VERSIE 3.20
+
+474 pag. Auteur: W.J. van Heusden, uitg.
+Stark. Prijs f 59.50. Behalve DOS wordt ook
+een beknopt overzicht van de commando's voor
+de diverse Basic's gegeven. Ook in dit boek
+vinden we weer enkele onnauwkeurigheden, zo
+komt de beschrijving van CLEAR ,3000 op pag.
+285 mij erg onwaarschijnlijk voor. Maar
+overigens is het een goed boek.
+In tabelvorm zijn diverse handige
+overzichten opgenomen, b.v. de ASCII waarden,
+de EDLIN commando's, de DEBUG funkties,
+gereserveerde filenamen en extensies,
+apparatuur codes en een overzicht van de
+foutmeldingen. Achter elk hoofdstuk zijn een
+aantal vragen geplaatst, waarvan de uitwerking
+achter in het boek te vinden is, zo kan men
+de opgedane kennis testen. Conclusie: een
+goede Nederlandstalige handleiding voor MS
+DOS 3.20.
+
+DE WEG NAAR HET EIGEN HUIS
+
+door W.J. v.Heusden. Uitgave: Stark-Texel,
+123 pag., prijs f 32.50.
+Dit boek bevat alles wat u weten moet bij
+het aanschaffen van een eigen huis. Waarom
+wordt dit boek in een computer boeken rubriek
+besproken? Wel, er horen (apart verkrijgbare)
+programma's bij volgens de Basicode standaard,
+de MSX standaard of voor de IBM-PC en
+compatibles. Deze zijn dus niet in de prijs
+inbegrepen en berekenen o.a. de woonlasten en
+alles wat er bij de aanschaf van een eigen
+huis speelt.
+Deze programma's hebben we niet kunnen
+uittesten, want ze waren niet bijgevoegd.
+
+MODULA 2 DOOR R.GLEAVES
+
+187 pag., Uitg. MAKLU, prijs f 47.50.
+Met behulp van dit boek kan men uitgaande van
+de kennis die men al van Pascal heeft, de taal
+MODULA 2 leren. In deel 1 worden nieuwe
+begrippen geintroduceerd, deel 2 geeft de
+verschilpunten met Pascal aan en deel 3
+bespreekt de modulen die de basis faciliteiten
+voor het programmeren verschaffen. Modula
+werd gemaakt voor het schrijven van kleine
+realtime besturings systemen. Uit de
+programmerings mogelijkheden die Modula te
+bieden had en de algemene bruikbaarheid
+van Pascal werd Modula-2 geboren. Het
+verschilt op drie punten van Pascal:
+1. Ook systeemontwerp is mogelijk
+2. Men kan programmeren op machine nivo
+3. Het programmeren is eenvoudiger dan in
+Pascal en de leesbaarheid en efficientie van
+de broncode is beter.
+Voor hen, die voortbouwend op hun kennis van
+Pascal zich in Modula-2 willen verdiepen is
+dit boek zeker het lezen waard.
+
+INTERACTIEVE CURSUS MS-DOS/PC-DOS
+
+prijs f 75.00, Uitgave De Muiderkring, door
+RANDOM R.E.C.I. Courseware.
+Cursusboek + 2 diskettes. Een zeer goede
+inleiding tot het gebruik van DOS op een PC.
+Met gerichte vragen wordt de opgedane kennis
+voortdurend gecontroleerd. Op systemen met maar
+een diskdrive gaat het wat moeizaam, maar met
+2 diskdrives of 1 drive en een vaste schijf is
+het een lust om ermee te werken. We hebben een
+onnauwkeurigheidje gevonden: de directory van
+een floppy zou 112 'bytes' en van een harddisk
+512 'bytes' groot zijn! Bedoeld is natuurlijk
+het maximum aantal files. Het boek geeft een
+overzicht van de cursus schermen. Om echter
+profijt van deze cursus te hebben moet men wel
+een PC ter beschikking hebben. In deze serie
+zijn nog meer cursussen verschenen, die we
+t.z.t. gaarne zullen bespreken als we de
+beschikking daarover krijgen. Voor beginners
+zeer aan te bevelen!
+
+DIGITAAL RADIO MONTAGE-SYSTEEM
+
+De BBC-radio is met een grote stap het digitale
+tijdperk ingestapt. Tot op heden was de BBC
+nog een van de weinige omroepen waar men nog
+letterlijk knipte en plakte bij het monteren
+van radioprogramma's. Met de ontwikkeling van
+een digitaal montagesysteem zal daaraan
+binnenkort een einde komen.
+
+Bij het systeem wordt het geluid in 16-bits
+formaat gedigitaliseerd op een harddisk
+geschreven. De technicus kan vervolgens de
+programma fragmenten terugspelen en met een
+paar drukken op de knop aangeven waar de
+montages moeten komen.
+
+Met de nieuwe machine is het mogelijk veel
+nauwkeuriger te monteren dan met de hand
+ooit mogelijk zou zijn. De precisie ligt
+in de orde van grootte van 1 milliseconde.
+Bij de montage worden de twee signalen
+bovendien gemengd, zodat de 'knip' volkomen
+onhoorbaar wordt. (bron: BBC)
+
+HEILIG VUUR
+
+Er is een nieuwe richtingenstrijd uitgebroken
+in computerland. Nog niet zo lang geleden
+waren het de Spectrumfans en de Commodore
+addicten die met elkaar op de vuist gingen.
+Wederzijds maakten aanhangers van beide
+richtingen elkaars computer uit voor
+rotte vis.
+
+De Commodore-aanbidders wezen laatdunkend
+op de rubberen toetsjes van de Spectrum.
+Nee, dan de C-64: een echt toetsenbord en
+fantastische geluids mogelijkheden. 'Maar
+je moet wel hogere informatica gestudeerd
+hebben om er geluid uit te krijgen',
+lachten de Spectrum overtuigden meesmuilend.
+En terloops wezen ze nog even op die speciale
+cassetterecorder, waarmee je binnen het
+kwartier geen programma geladen kreeg.
+
+FRONTWISSEL
+
+De kruitdampen zijn inmiddels opgetrokken.
+De strijders van beide kampen (voor zover er
+nog over zijn) leven weer in pais en vree.
+Op een ander front begint het strijdgewoel
+echter op te laaien: de MS-DOSsers versus de
+aanhangers van ST en Amiga.
+
+Even had het er nog op geleken dat de ST-ers
+en de Amigo's met elkaar slaags zouden raken
+('Fuck de A....!' las ik in de wederzijdse
+bladen). Maar ze bleken een gezamelijke vijand
+te hebben die veel gevaarlijker is: de klonen.
+
+OLIE OP HET VUUR
+
+Jan Jacobs gooide een paar weken geleden olie
+op het vuur (het tegenovergestelde van olie op
+de golven) in zijn computercolumn in de
+Volkskrant. Hij stelde vraagtekens bij het feit
+dat bedrijven die een PC-priveproject overwegen
+bijna automatisch naar een IBM-kloon grijpen.
+In het gros van de gevallen is het personeel
+veel meer gebaat bij een moderne en speelsere
+machine als de ST of de Amiga, was zijn oordeel.
+
+Dat was tegen het zere been van menig MS-DOS
+fan. Prompt greep een van hen naar de pen en
+schreef een ingezonden stuk over de veel
+professionelere software. En leuke spelletjes
+genoeg in de PD-bibliotheek!
+
+Het antwoord kwam snel. Een jonge Amiga bezitter
+schreef naar de zelfde krant dat zijn vader,
+ooit veroordeeld tot MS-DOS cursussen, binnen
+luttele uren op zijn machine uit de voeten kon.
+Hij wees er fijntjes op dat je die mooie
+spelletjes op een kloon wel kunt vergeten
+zonder dure kleurenkaart.
+
+OVERVERHIT
+
+Het is vreemd dat een apparaat als een computer
+zulk Heilig Vuur in mensen losmaakt. Vervang
+voor het idee computer eens door stofzuiger
+of strijkijzer ('Nee dan mijn ijzer, 2000 Watt
+en een turbostoomknop, heel wat beter dan die
+stoomwals van jou').
+
+Ondertussen blijf ik overtuigd ST-aanhanger.
+Als die letters, dubbele punten en backslashes
+onthouden en intypen daar krijg je volgens mij
+volgeslibte hersens en lamme vingers van.
+Geef mij maar het snelle klik-werk met de
+rechter wijsvinger.
+
+Opvallend is trouwens wel dat de MacIntosh
+clan zich nog nauwelijks in het strijdgewoel
+gemengd heeft. Of zouden dat echt verstandige
+mensen zijn? (Met dank aan Bart Oosterveld).
+
+ONTVANGST BASICODE-PROGRAMMA'S
+
+In Beeldkrant 118 vermeldden we een tip van
+Frans Verberkt uit Nijmegen over een 'truuk'
+om Basicode programma's beter te kunnen
+inlezen. Nol van Gerwen uit Voorburg reageerde
+hierop, en berichtte ons van zijn ervaringen:
+
+'Ik kan maar zelden een programma direct
+foutloos inlezen. Vaak is het zelfs een enorme
+puinhoop waaruit niet wijs te worden is.
+Niet zolang geleden heb ik ontdekt dat ik de
+programma's moet copieren. Ik copieer dan vrij
+hard van een ITT recorder naar een Technics
+deck. Nagenoeg feilloos verlopen dan mijn
+inlezingen van het gecopieerde bandje.
+
+TEGENGESTELDE ERVARINGEN
+
+Dit klopt dus nog met de ervaringen van de
+heer Verberkt uit Nijmegen. Merkwaardig genoeg
+heb ik twee bandjes kortgeleden uitgeleend
+aan een collega die net als ik een BBC heeft.
+Deze kon niets beginnen met het gecopieerde
+bandje, maar het originele bandje kon hij wel
+inlezen!' Tot zover Nol van Gerwen.
+
+De moraal van dit verhaal: je weet maar nooit
+hoe een computer een Basicode programma vangt.
+Blijven proberen dus!

@@ -1,0 +1,301 @@
+75, zon 07 jun '87
+
+TELEAC: SPECIALE ROUTINES
+
+In hoofdstuk 7 van de Cursus Structuur in
+Basic schirijft ing. Peter van Tilburg het
+volgende: Sinds het op de markt komen van de
+eerste computers, heeft er een dermate grote
+ontwikkeling plaatsgevonden, dat de huidige
+apparatuur eigenlijk niet meer te vergelijken
+is met voorgangers van nog maar enkele decennia
+geleden.
+
+Hetzelfde geldt ook voor de wijze waarop voor
+deze computers programma's werden geschreven.
+Het hart van de computer, de processor, kent
+alleen de zogenaamde machinetaal en verwacht
+opdrachten die in binaire code worden gegeven.
+Deze opdrachten bestaan meestal uit een, twee
+of drie bytes. De eerste byte bevat de
+zogenaamde operator. Deze geeft aan wat voor
+soort opdracht er uitgevoerd moet worden.
+Meestal wordt deze operator nog gevolgd door
+een of twee operanden, die aangeven welke
+geheugenpositie(s) object van de bewerking zijn.
+
+NADELEN MACHINETAAL
+
+Het werken in machinetaal heeft veel nadelen.
+Allereerst zijn de opdrachten van een dermate
+primitief niveau, dat er voor het vervullen
+van een eenvoudige functie al gauw een hele
+reeks opdrachten nodig is. Bovendien moet de
+programmeur over een grondige kennis van de
+machine beschikken. Doordat hij steeds met
+geheugen locaties werkt, moet hij ervan op de
+hoogte zijn welke adressen in gebruik zijn.
+Wordt er later een opdracht verwijderd, dan
+heeft dat gevolgen voor het gehele programma.
+Ook het feit dat het programma maar twee
+symbolen bevat, namelijk 0 en 1, draagt niet
+bij tot eenvoudig en overzichtelijk
+programmeren.
+
+Het laatste bezwaar werd al snel opgevangen
+door de mogelijkheid om zowel operator als
+operand niet binair, maar octaal, decimaal of
+hexadecimaal weer te geven. Om deze programma's
+door de computer te kunnen laten uitvoeren,
+werd er gebruik gemaakt van een vertaler die
+alles omzette naar binaire code. Dit vertaal
+programma, dat zelf natuurlijk wel in binaire
+code was geschreven, kreeg b.v. invoer
+opdrachten die hexadecimaal waren weergegeven
+en produceerde als uitvoer een programma in
+binaire code door simpelweg elk hexadecimaal
+cijfer om te zetten in een rijtje van vier bits.
+
+DOORBRAAK: ASSEMBLEREN
+
+Een nieuwe doorbraak kwam in het begin van de
+jaren vijftig met de ontwikkeling van de
+assembleer talen. Het werd nu mogelijk om een
+opdracht weer te geven door middel van een
+zogenaamde mnemonic. Daaronder wordt een
+symbolische naam verstaan die aan opdrachten
+gegeven kan worden. Voor optellen had men
+bijvoorbeeld de mnemonic ADD, voor aftrekken
+SUB. Het voordeel van deze mnemonics is dat
+opdrachten gemakkelijker te onthouden zijn en
+dat het programma een stuk beter leesbaar is.
+
+Een ander voordeel van assembleer talen is dat
+zij toestaan om met symbolische adressen te
+werken. Daarmee wordt de mogelijkheid bedoeld
+om een adres een symbolische naam - een zog.
+label - te geven, waaraan dan verder in het
+programma gerefereerd kan worden. In plaats
+van de opdracht om aan het einde van een lus
+bijvoorbeeld 18 adressen terug te springen
+naar het begin van de lus, zou men nu een
+sprong kunnen maken naar het label LOOP, dat
+aan de eerste opdracht van de lus is toegekend.
+Worden er later nog extra opdrachten binnen
+de lus opgenomen, dan hoeft er nu niets aan
+het programma gewijzigd te worden.
+
+Naast het voordeel dat door het gebruik van
+labels het programma overzichtelijker wordt,
+neemt ook de kans op fouten af. Een programma
+in assembleertaal bestaat dus uit opdrachten
+van de vorm: ADD SOM. Het vertalen van derg.
+opdrachten naar machinetaal, geschiedt door
+een zogenaamd assembleer programma. Dit
+programma, dat als invoer heeft het programma
+in assembleertaal, zet alle symbolische namen
+om in absolute adressen en de mnemonics in
+binaire codes. Dit is een relatief eenvoudig
+proces, omdat elke opdracht in assembleertaal
+ook een opdracht in machinetaal wordt. Men
+spreekt wel van een 1 op 1 relatie.
+
+MACHINE ONAFHANKELIJK
+
+Hoewel weer een flinke verbetering, kleven er
+nog steeds veel nadelen aan het werken met
+assembleer talen. Door de relatie tussen
+machine taal en assembleer taal, moeten deze
+beide overeenkomstige opdrachten bevatten. Dat
+betekent dat de programma's nog steeds
+machine afhankelijk zijn, en dat de programmeur
+over een goede kennis van de betreffende machine
+moet beschikken. De gewenste machine
+onafhankelijkheid werkt bereikt aan het einde
+van de jaren vijftig, toen de eerste zogenaamde
+hogere programmeer talen werden geintroduceerd.
+Deze talen bevatten opdrachten van een veel
+hoger niveau dan de assembleer talen. Het
+vertalen van een opdracht uit een hogere
+programmeer taal vergt dan ook meerdere
+opdrachten in machine taal. Men spreekt in dit
+verband wel van een 1 op n relatie.
+
+De machine onafhankelijkheid werd bereikt door
+meerdere vertaalprogramma's te schrijven, die
+ieder elke opdracht in de hogere programmeer
+taal omzetten in een reeks machinetaal
+opdrachten voor een bepaalde computer. Het
+vertalen noemt men compileren of interpreteren,
+afhankelijk van de wijze waarop dit geschied.
+Het verschil tussen beide begrippen wordt
+behandeld in hoofdstuk 2 van het cursusboek.
+
+HOGERE PROGRAMMEERTAAL
+
+Het werken in een hogere programmeer taal is,
+doordat er geen specifieke kennis nodig is
+van de machine waarmee men werkt, een heel
+stuk gemakkelijker dan het werken met
+assembleer talen. Doordat er programmeer talen
+zijn ontwikkeld voor een grote reeks van
+toepassingen, is er bijna altijd wel een taal
+beschikbaar die zich bij uitstek leent voor het
+oplossen van bepaalde problemen. Hoe meer een
+taal staat bij de wijze van formuleren van
+problemen, des te beter is deze geschikt.
+Een ander voordeel ten opzichte van de
+assembleer talen - die men ook wel de lagere
+programmeer talen noemt - is de goede
+leesbaarheid van het programma, wat zeker
+een rol gaat spelen als er later nog
+wijzigingen aangebracht moeten worden.
+
+GROOTSTE NADEEL
+
+Het grootste nadeel van hogere programmeer
+talen is de tijd die gemoeid is met het
+vertalen naar machinetaal. Het zal duidelijk
+zijn dat het vertalen hier een heel stuk
+moeilijker is dan bij lagere programmeer talen.
+Bovendien is ten gevolge van het feit dat
+compilers een grote reeks van verschillende
+programma's moeten kunnen vertalen, het doel
+programma in machinetaal een stuk minder
+efficient wat betreft geheugen gebruik en
+uitvoerings snelheid.
+
+Hoewel in principe de machine afhankelijkheid
+door het gebruik maken van hogere programmeer
+talen bereikt is, is een en ander niet altijd
+even goed geimplementeerd. Bovendien zien we
+dat er voor diverse hogere programmeertalen
+in de loop der jaren hele reeksen van
+verschillende dialecten zijn ontwikkeld.
+Van dat laatste is met name Basic een goed -
+of misschien beter gezegd - slecht voorbeeld.
+Vooral vanaf het moment dat de eerste home
+computers op de markt kwamen, werd door steeds
+meer fabrikanten een eigen Basic ontwikkeld.
+Hoewel deze verschillende dialecten natuurlijk
+wel alle basis opdrachten gemeen hebben - anders
+kun je niet meer van een Basic spreken - zijn
+met name de opdrachten die te maken hebben met
+geluid en scherm weergave afwijkend. Hoewel
+het aantal dialecten in de loop der jaren bijna
+even sterk toenam als het aantal nieuwe
+computers, wordt op dit moment toch de standaard
+bepaald door producten van de Amerikaanse firma
+MicroSoft, te weten MicroSoft Basic en GWBasic.
+Hopelijk zijn we daardoor eindelijk van alle
+conversie problemen verlost. (Ander moeten we
+weer naar Basicode grijpen - red).
+
+REVOX-GELUIDREGELTAFEL
+
+Sinds ongeveer een maand is er een mengpaneel
+van Revox op de markt. Onze medewerker Bert
+Klaver testte een van de eerste exemplaren.
+De test zonden we eerder uit met het verzoek
+om contact op te nemen met de importeur in
+verband met verbeteringen. Bert testte en
+concludeerde:
+Er is goed nagedacht over deze 6 kanaals
+audio-mixer. De mechanische opbouw is zeer
+degelijk. En het schuin aflopende bedienblad
+zorgt voor een goede bedienbaarheid van de
+knoppen. Met beugels is deze geluidtafel in
+een 19 inch rek te monteren.
+
+Ieder kanaal kan of mono of stereo gebruikt
+worden. En om dit te realiseren zijn er een
+paar electronische trucs bedacht. Zo wordt het
+niveau geregeld door faders met VCA's: en
+dat zijn spannings gestuurde versterker,
+door middel van een (in dit geval) lineaire
+schuifpotmeter. Dus nooit meer last van
+krakende faders.
+
+In ieder kanaal zitten twee van die VCA's die
+door een en dezelfde schuif regelaar
+aangestuurd worden. Zo is het mogelijk om door
+middel van een regelaar twee signalen te regelen.
+In stereo, is het ingangskanaal geschikt voor
+een stereo lijnsignaal van bijvoorbeeld tuner,
+band- of cassette recorder. Daarvoor zijn twee
+tulp- of cinch- ingangen beschikbaar. In MONO
+wordt eenvoudig-weg de helft van de kanaal module
+afgeschakeld. Dat omkiezen van stereo naar mono
+gebeurt aan de ingang van het kanaal.
+
+INGANGEN
+
+Zowel de mono- microfoon als lijningang hebben
+elk een XLR-plug, die populair ook wel een Cannon
+plug wordt genoemd. Alle microfoon ingangen hebben
+een 48 Volt fantoom voeding, die achter op de
+tafel met een centrale schakelaar uit te schakelen
+is. In ieder kanaal vinden we nog een laag-af
+filter voor de microfoon ingang; een apart hoog-
+en laag filter, en een auxilary-rail, die zowel
+voor als na de fader te kiezen is.
+
+De pan-pot regelaar functioneert in stereo, als
+een balans regelaar. Ook is in ieder kanaal nog
+een vooraf luistering van het signaal mogelijk.
+Wat opvalt, is de zeer goed uitgedachte
+uitsturings meter. Deze voldoet aan de eisen,
+die aan een Piek Programma meter gesteld mogen
+worden, en is vergelijkbaar met een meter die
+ook in de professionele audio-wereld wordt
+gebruikt. Deze meter is ook te gebruiken om de
+voorafluister signalen, het auxilary geluid of
+de correlatie van het uitgangs signaal te
+bemeteren. Met dit laatste kan bekeken worden
+of een stereosignaal ook voor mono weergave
+geschikt is.
+
+ELECTRISCHE EIGENSCHAPPEN
+
+Een ruisarme geluidregeltafel. De microfoon
+ingangsruis is -123 dBm, gemeten 20 Hz tot 20
+kHz recht effectief. Een zeer goede gelijkloop
+van de stereo-fader: binnen 0,2 dB gelijk
+tussen het linker en rechter kanaal. Een
+uitermate goede faderdemping: Beter dan 90 dB
+sluitdemping. Een lage harmonische vervorming:
+beter dan 0.03 % bij volle uitsturing van de
+tafel. Alleen bij 40 Hz op vol niveau loopt
+de vervorming op tot de nog zeer acceptabele
+waarde van 0,12 %.
+
+Een zeer goede ingangs symmetrie voor de
+microfoon ingang. Bij 1 kHz was deze onmeetbaar
+en voor 10 kHz lag het getal altijd nog boven
+de 70 dB. Voor de lijn ingang werden getallen
+gemeten altijd boven de 50 dB.
+
+KRITIEK
+
+Er zijn een paar kleine punten van kritiek:
+1 De uitgangs symmetrie is niet veel beter
+dan 25 dB bij 10 kHz. Nu vindt ik de ingangs
+symmetrie belangrijker, maar het had mooier
+gekund.
+2 De meters geven niet de daadwerkelijke
+spanning op de uitgangs klemmen aan. Dus
+wanneer de uitgang zwaar belast wordt, daalt
+de spanning, zonder dat we dat op de meters
+zien. Maar met de lage uitgangs impedantie
+van kleiner dan 40 Ohm zullen we bij een
+mis-aanpassing wel niet zo heel veel last
+hebben van signaalverlies.
+3 Van de microfoon-ingang naar de master
+uitgang keert de fase 180 graden. Gelukkig is
+dit bij iedere ingang gelijk, maar netjes is
+het zeker niet. En voor een eventuele
+verbetering kan men contact opnemen met de
+importeur. Overigens liggen de normen van een
+apparaat van f 5000 gulden bepaald op een
+duidelijk professioneel niveau. Importeur:
+Heijnen Audio-Video BV, Postbus 10, Gennep.

@@ -1,0 +1,382 @@
+337, woe 29 aug '90
+
+FIRATO SPECIAL: MAC EN HDTV (2)
+
+Vandaag het tweede en laatste deel van
+onze Firato Special over MAC en HDTV.
+De auteur Fred van Let is voorzitter
+van de Projectgroep Transmissie van het
+Nationale Platform HDTV, dat de
+introductie van dit nieuwe medium van
+overheidswege moet bevorderen.
+
+In dit deel gaat Ing. van Let nader in
+op de technische details van de MAC
+datatransmissie (in digitale packets)
+en de diverse methoden om de signalen
+te versleutelen (encryptie).
+
+MAC-COMPATIBILITEIT
+
+De ontwikkeling van nieuwe ontvangers
+is buitengewoon gecompliceerd, doordat
+het MAC concept uiterst gecompliceerd
+is. Er moest zeer verfijnde software
+worden geschreven om het systeem
+uberhaupt te laten werken.
+
+Nog los van het feit dat het bij MAC
+gaat om signalen in tijdmultiplex in
+plaats van het conventionele frequentie
+multiplex (zoals bij PAL) en de geheel
+digitale geluids overdracht, is het
+grote verschil tussen MAC en PAL/SECAM
+de manier waarop de synchronisatie van
+zender en ontvanger plaatsvindt. Er
+zijn geen conventionele synchronisatie
+signalen (raster- en lijnsync pulsen);
+in plaats daarvan vormen de eerste zes
+bits van de databurst van elke
+beeldlijn een horizontaal
+synchronisatie woord dat per beeldlijn
+afwisselend normaal (001011) of
+geinverteerd (110100) wordt
+uitgezonden, opdat de decoder ook als
+deze eens een syncwoord mist de juiste
+kleuren kan coderen. Daarnaast is er
+een verticaal synchronisatie woord van
+64 bits aan het begin van beeldlijn
+625.
+
+OPBOUW BEELDLIJNEN
+
+Het fundamentele probleem van MAC is de
+mogelijkheid van de dynamische
+configuratie. Zo heeft D-MAC een
+datacapaciteit van 20,25 Mb/s; D2-MAC
+maar de helft hiervan.
+
+Elke beeldlijn bevat een (D2) of twee
+(D) blokken van 105 databits, nl. het 6
+bits synchronisatie woord plus 99 zelf
+in te vullen bits en dat kan zijn:
+geluids pakketten, teletekst,
+computerdata of adresserings/
+autorisatie- informatie voor de
+ontsleutel apparatuur.
+
+De databits in lijnen van 1 tot 623
+zijn samengevoegd in 82 (D2) of 164 (D)
+pakketten (packets!) van 751 bits elk.
+De oneven bits die overblijven in lijn
+623 worden weggegooid. Elk pakket
+begint met een 23 bits kop, bestaande
+uit een 10 bits pakketadres, een 2 bits
+continuiteits index en een 11 bits
+toevoeging voor beschermings doeleinden
+(foutcorrectie en -protectie). Achter
+deze kop volgen 8 bits die het type
+pakket aangeven, zodat de decoder
+bijvoorbeeld geluid en andere data kan
+onderscheiden. De koppen van de
+pakketten zijn tot vier niveaus
+Golay-code beschermd tegen fouten en de
+volgende 720 bits zijn 'interleaved'
+(verweven) met een afstand van 94 bits
+om de gevolgen van fouten in groepen
+van opeenvolgende bits (bursts) te
+minimaliseren. Bovendien is de
+datastroom gescrambled (!) door er een
+pseudo-random binaire reeks aan toe te
+voegen, die cyclisch opnieuw wordt
+gestart door het eerste
+synchronisatiebit in lijn 1. Deze
+scrambling wordt alleen gedaan om het
+uitgezonden frequentie- spectrum van
+het signaal de gewenste vorm te geven,
+maar het betekent geenszins dat de
+datastroom daarmee gemakkelijker te
+decoderen zou zijn!
+
+DYNAMISCHE CONFIGURATIE
+
+Als de decoder dan eenmaal de data
+heeft geidentificeerd en uit het
+MAC/packet signaal heeft losgemaakt,
+kan het gedigitaliseerde geluids
+signaal de volle bandbreedte (CD
+kwaliteit) of de halve bandbreedte
+(spraak kanaal) hebben, het kan
+bovendien lineair of NICAM gecodeerd
+zijn, stereo of mono en een tot acht
+kanalen breed zijn. De geluidsdata
+kunnen foutbeschermd zijn met een
+Hamming code of met pariteits bits, al
+naar gelang wordt aangegeven door de
+'coding mode bits' in het adreswoord
+van het pakket, en moeten dus op de
+juiste manier worden gedecodeerd.
+
+Bovendien zijn er in (H)D-MAC en D2-MAC
+verschillende beeldverhoudingen
+mogelijk (breedte x hoogte), namelijk
+conventioneel 4:3 en breedbeeld 16:9
+(wide screen). Om enige compatibiliteit
+te houden tussen brede en normale
+beeldschermen, zijn in de datastroom
+zogeheten 'panning' vectoren opgenomen
+die aangeven welk 4:3 deel van het 16:9
+plaatje op een conventioneel
+beeldscherm moet worden vertoond.
+
+Lijn 624 wordt gebruikt voor de analoge
+referentie niveaus als piekwit,
+piekzwart en een paar grijsniveaus om
+de decoder iets te laten doen als deze
+zich dreigt te gaan vervelen.... Lijn
+625 bevat in het geheel geen beeld
+informatie, maar in plaats daarvan 648
+(1296) databits, die opleveren de
+raster synchronisatie, de tijd, de
+datum, informatie over de positie van
+de satelliet en gegevens over de
+algehele configuratie van de geluids
+datapakketten die moeten worden
+ontvangen en waarop het foutcorrectie
+en -protectie mechanisme moet worden
+toegepast. Deze service- informatie
+moet worden gedecodeerd en
+geinterpreteerd, wil de
+ontvanger/decoder weten wat hij
+verondersteld wordt te gaan doen met de
+binnenkomende signalen.
+
+ENORME COMPLEXITEIT
+
+Bovendien moet worden gedescrambled,
+waartoe de descramble algoritmen moeten
+worden losgelaten op geluid, beeld en
+data. Erger nog: de standaard databits
+die informatie over de configuratie
+en/of de service- informatie bevatten
+behoeven op zich nog niets te
+betekenen, maar kunnen ook slechts met
+behulp van pointers aangeven welke
+databits in andere beeldlijnen de
+gewenste informatie dan wel bevatten.
+En dan hebben we het nog niet gehad
+over het pakket met adres 0 dat
+eveneens service informatie bevat en
+dat bij dag en ontij kan langskomen om
+de decoders te reconfigureren, ook
+halverwege een beeld als het moet...
+Het moge duidelijk zijn: een MAC
+decoder bouw je niet op een
+regenachtige zondagmiddag!
+
+TELETEKST
+
+Ook teletekst kon in de MAC norm niet
+zo blijven als het was. Deze signalen
+staan in de PAL/SECAM norm in de raster
+blanking, maar in MAC zal deze ruimte
+nodig zijn om de additionele informatie
+voor de speciale High Definition MAC
+ontvangers uit te zenden. Daarom is
+teletekst in MAC ondergebracht in de al
+meer genoemde datapakketten. Dat
+binnenkomende datapakketten als
+teletekst moeten worden behandeld wordt
+uiteraard mee-uitgezonden, maar het is
+wederom een extra complicatie bij het
+ontwerp van de data-decoderchip. Het
+betekent overigens ook, dat de
+teletekst decoder uit de PAL/SECAM
+ontvangers onbruikbaar zijn voor de
+decodering van teletekst in het MAC
+signaal.
+
+EUROCRYPT
+
+De principes van het versleutelen van
+MAC signalen zijn eenvoudig. Het
+analoge (luminantie en chrominantie)
+deel van het signaal van elke beeldlijn
+wordt in twee stukken geknipt, die op
+verschillende manieren verwisseld
+worden voordat uitzending plaats vindt.
+Hiermee wordt heel doeltreffend bereikt
+dat het resulterende beeld rommel is.
+Indien uitsluitend het luminantie deel
+wordt geknipt heet dit officieel
+'single-cut line-component rotation'
+(SCR). Indien ook de chrominantie wordt
+geknipt heet het 'double-cut ...'
+(DCR).
+
+Het is duidelijk dat DCR veel veiliger
+is voor piraterij dan SCR. Deze laatste
+is dan ook alleen maar geintroduceerd
+voor het geval de versleutelde MAC
+signalen over kabeltelevisie netten
+worden gedistribueerd. Hier kan
+namelijk het theoretisch al te
+voorspellen probleem van lijn-tilt
+ontstaan.
+
+Als echter de MAC specificatie was
+geschreven op basis van wat meer
+praktijk- ervaring, zou een hoop werk
+(en silicium oppervlak) bespaard zijn.
+Aanvullende metingen in Engeland tonen
+aan dat de ruis alle voorspelde
+amplitude- en fasefouten in kabelnetten
+maskeert en dat SCR dus niets beter is
+dan DCR.
+
+VERSLEUTELEN EN ONTSLEUTELEN
+
+Maar goed, welke versleutel techniek
+dan ook is gebruikt om het
+oorspronkelijke beeld weer te
+herstellen, de decoder/ ontsleutelaar
+behoeft slechts de knip-punten te weten
+en het proces om te keren. Omdat een
+MAC decoder elke beeldlijn
+digitaliseert en als 1296 samples in
+RAM geheugen opslaat, kan deze vorm van
+versleutelen en ontsleutelen
+gemakkelijk worden doorgevoerd als een
+standaard functie. De crux is te weten
+waar de knippunten zich bevinden. Die
+sleutel is het slimme stukje, dat de
+uitzendende organisatie uitsluitend aan
+de geautoriseerde ontsleutelaar doet
+toekomen, m.a.w. aan de eigenaars van
+die apparaten die het noodzakelijke
+abonnements geld hebben betaald. De
+sleutel kan in het MAC signaal worden
+meegezonden, maar ook in de vorm van
+een chip-card worden verspreid (per
+post). Hoe de sleutelcode ook wordt
+geleverd: hij wordt gepast in het
+lokale 'prive'-slot in de
+ontsleutelaar, dat de fabrikant erin
+heeft gebouwd om het knippunt-
+algoritme te starten.
+
+Op dezelfde manier zijn de geluids
+kanalen gemakkelijk te versleutelen
+door de pseudo- random reeks op een
+ander punt te starten. Ook hier geldt
+weer dat alleen geautoriseerde
+ontsleutelaars het algoritme kennen om
+het audio weer hoorbaar te maken.
+
+STANDAARD ONDERDEEL
+
+Merk op dat het scramblen van de data
+standaard onderdeel is van MAC
+uitzendingen: alle decoders kennen de
+standaardregels voor het descramblen
+omdat zij een gepubliceerd deel zijn
+van de EBU specificaties. Er is een
+sterke lobby om alle MAC video
+uitzendingen op dezelfde wijze
+standaard te versleutelen en dus ook
+een inverse standaard voorziening aan
+ontvangzijde. Zo'n vrij toegankelijke
+versleuteling zou voor uitzendende
+organisaties erg gemakkelijk zijn: wie
+slechts afwijkt van standaard
+versleuteling, heeft zijn uitzending
+geschikt gemaakt voor slechts
+geautoriseerde ontvangers. De EBU
+specificaties bevatten onderdelen van
+'vrij toegankelijke' versleutel
+standaards, met de aanbeveling dat alle
+fabrikanten dergelijke voorzieningen in
+alle toekomstige ontvangers voor dit
+doel zouden inbouwen. Dat is het
+Eurocrypt systeem.
+
+Helaas hebben diverse gevestigde
+belangen enige items aan deze 'open'
+standaard toegevoegd, zodat er nu twee
+rivaliserende Eurocrypts zijn. De
+verschillen zitten hem voornamelijk in
+de mogelijkheden die zij bieden en de
+externe interface.
+
+EUROCRYPT M
+
+Eurocrypt M is de door Duitsland en
+Frankrijk aanvaarde standaard
+(gepubliceerd in maart '89). Deze maakt
+gebruik van een 8 bits parallel data
+interface tussen de decoder en de
+Access Control Module (ACM), samen met
+ongeveer 10 andere huishoudelijke en
+klok- signalen. De geboden
+mogelijkheden zijn flexibel en
+geavanceerd, maar dat is waarschijnlijk
+ook de reden waarom geen uitzendende
+organisatie dit systeem tot nu toe
+gebruikt.
+
+EUROCRYPT S
+
+Eurocrypt S is de standaard die door
+het Verenigd Koninkrijk en Scandinavie
+is voorgesteld (gepubliceerd in
+september '89).
+
+Er wordt gebruik gemaakt van een 9600
+Baud seriele interface. De geboden
+faciliteiten zijn minder goed
+gedefinieerd dan in 'M' en niet minder
+complex om te implementeren.
+
+'STANDAARD'?
+
+Het trieste gevolg van deze twee
+rivaliserende systemen is, dat je een
+'standaard EBU interface' wel kunt
+vergeten. Het heeft inmiddels al geleid
+tot alternatieve vormen van
+versleuteling van MAC signalen. Zo
+gebruikt de BSB satelliet 'Videocypher'
+en in Scandinavie worden op TV3 en
+TV1000 (Astra) eigen versleutel
+varianten toegepast. De beveiliging is
+er wel, maar niet omdat het systeem zo
+moeilijk te kraken is, maar omdat er te
+weinig D2-MAC decoders zijn waarmee men
+het kraken zou kunnen proberen.
+
+MAC OP DE KABEL
+
+De MAC signalen kunnen niet zomaar op
+de Kabel: vele kabeltelevisie netten
+zijn met programma's gevuld tot hun
+huidige maximale capaciteit. Het
+vervangen van de aanwezige PAL
+programma's door MAC signalen gaat niet
+zomaar, omdat deze immers een grotere
+bandbreedte vereisen. Kabel exploitant
+CASEMA is echter al enige tijd bezig
+met het renoveren van al haar
+kabeltelevisie netten om de televisie
+van de toekomst bij al haar abonnees
+thuis te kunnen brengen. Door die
+renovatie -die binnen afzienbare tijd
+moet zijn afgerond- wordt het mogelijk
+om nominaal 30 TV-programma's door te
+geven, waarvan er 5 tot 10 (afhankelijk
+van de plaatselijke situatie) voor MAC
+signalen geschikt zijn, zelfs High
+Definition MAC.
+
+Ing. F.J.W. van Let, Hoofd Technische
+Dienst van de N.V. Casema.
+

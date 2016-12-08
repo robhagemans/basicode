@@ -1,0 +1,180 @@
+65, zon 05 apr '87
+
+ROMAN EN INSTRUCTIE
+
+Bijlage van Hobbyscoop bij de cursus 'Structuur
+in Basic'. Geschreven door ing. Peter van
+Tilburg en behorend bij Hoofdstuk 3. De tekst
+werd eerder uitgesproken in een Teleac Radio
+uitzending, afgelopen donderdag tussen 22:00
+en 22:30 via Radio 5, 1008 kHz middengolf.
+
+In hoofdstuk 3 van het cursusboek wordt voor
+het eerst gebruik gemaakt van Programma
+Structuur Diagrammen. Zoals de naam eigenlijk
+al aangeeft, is dit een manier om in een
+schema de structuur van een programma weer
+te geven. Hoewel in het cursusboek verder de
+naam PSD wordt gehanteerd, spreekt men ook
+wel over Nassi-Schneidermann-diagrammen,
+genoemd naar de ontwerpers van deze techniek.
+
+In Programma Structuur Diagrammen zijn een
+drietal basisstructuren te onder kennen,
+namelijk volgorde, selectie en herhaling.
+Meestal duidt men deze basisstructuren aan
+met de Engelse namen: Sequence, selection en
+iteration.
+
+De normale BASIC-opdrachten worden in een PSD
+door middel van een rechthoek weergegeven,
+waarbinnen is aangegeven om wat voor opdracht
+het gaat. Deze rechthoeken worden onder elkaar
+geplaatst in de volgorde waarin de opdrachten
+door de computer uitgevoerd moeten worden.
+
+We spreken van selectie wanneer afhankelijk van
+een bepaalde conditie, een of meerdere
+opdrachten wel of niet uitgevoerd moeten worden.
+Het is ook mogelijk dat, indien de conditie niet
+waar is, een andere reeks opdrachten moet worden
+uitgevoerd dan wanneer de conditie wel waar is.
+
+Een dergelijke zogenaamde enkelvoudige selectie
+wordt in een PSD weergegeven door een op zijn
+punt staande driehoek, waarbinnen de conditie
+is opgenomen. Links en rechts van deze driehoek
+wordt met 'nee' en 'ja' of met 'false' en 'true'
+aangegeven welke bijbehorende kolom van
+opdrachten uitgevoerd moet worden. We gebruiken
+een dergelijke figuur voor het weergeven van
+IF..THEN- en IF..THEN..ELSE-opdrachten. Is er
+sprake van een IF..THEN-constructie, dan is de
+'nee'- of 'false' -kolom leeg, bij een IF..THEN
+..ELSE zijn beide kolommen gevuld.
+
+Het eerste PSD in hoofdstuk 3 geeft aan hoe een
+IF..THEN ...ELSE-opdracht in een PSD vertaald
+wordt. Het programma begint met het inlezen
+van de schermregel en de af te breken zin.
+Wanneer de zin langer is dan de schermregel,
+wordt de zin in gedeelten afgedrukt. Is dat
+niet het geval, dan kan de zin direct in zijn
+geheel worden afgedrukt.
+
+Naast de enkelvoudige selectie, kunnen we in
+een PSD ook een meervoudige selectie aangeven.
+In dat geval wordt afhankelijk van een bepaalde
+waarde een bijbehorende reeks opdrachten
+uitgevoerd. Het aantal kolommen in het PSD wordt
+dan uitgebreid tot het aantal mogelijke waarden
+dat een bepaalde variabele kan hebben. In BASIC
+komen we een dergelijke structuur tegen in
+de ON..GOSUB-opdracht.
+
+Tenslotte kunnen we in een PSD ook een herhaling
+aangeven. Dit kan zowel voor opdrachten die een
+vast aantal keer uitgevoerd moeten worden, als
+voor opdrachten waarbij het herhalen afhankelijk
+is van het wel of niet waar zijn van een
+bepaalde conditie. In BASIC moeten we dan denken
+aan respectievelijk de FOR..NEXT- en WHILE...
+WEND-lus.
+
+Een voorbeeld van een vertaling van een WHILE...
+WEND-opdracht vindt u in het cursusboek.
+Hierin wordt aangegeven dat zolang NUMMER
+ongelijk is aan 0 en tevens I kleiner is dan
+45 een reeks van opdrachten uitgevoerd moet
+worden. Omdat deze test al direct in het begin
+uitgevoerd wordt, is het mogelijk dat de hele
+lus al meteen wordt overgeslagen. De computer
+blijft de opdrachten binnen de lus uitvoeren
+totdat NUMMER niet meer gelijk is aan 0 en/of
+I groter of gelijk aan 45 is geworden.
+
+Omdat we in tegenstelling tot programma
+stroomschema's niet van de basis structuren
+kunnen afwijken, is het niet mogelijk een
+GOTO-opdracht in een PSD op te nemen. Mede
+hierdoor is het gebruik maken van PSD's een
+goed hulpmiddel bij het ontwerpen van
+programma's. Willen we immers het ontwerp
+vastleggen in een PSD, dan moeten we zorgen
+dat het programma GOTO-vrij is; er moet dan
+structuur aanwezig zijn.
+
+We kunnen PSD's gebruiken in elk stadium
+binnen de ontwerpfase. In het begin zal het
+diagram nog geen opdrachten bevatten, maar
+uitsluitend uit omschrijvingen bestaan, die
+aangeven wat er precies moet gebeuren. Deze
+globale omschrijvingen worden verder
+uitgewerkt zodat er, afhankelijk van het op
+te lossen probleem, na een aantal fasen het
+opdrachtenniveau wordt bereikt. Hierdoor is
+de PSD ontwerptechniek bij uitstek geschikt
+om de verschillende verfijnings stappen binnen
+een top-down aanpak van een programma weer te
+geven. Een goed voorbeeld van een PSD dat zich
+nog in een omschrijvingsfase bevindt is het
+volgende diagram. In het daarop volgende PSD
+wordt een klein gedeelte van dit diagram nader
+uitgewerkt.
+
+Naast een functie in de ontwerpfase van een
+programma, kan een PSD ook zijn nut bewijzen
+als een goed documentatie-middel. Een
+alternatief voor PSD is de flowchart techniek
+ofwel het gebruik van stroomdiagrammen. Ook
+deze techniek kent als basisstructuren de
+volgorde, de selectie en de herhaling. Er
+bestaat hier echter de mogelijkheid om van
+deze basisstructuren af te wijken. Hoewel het
+bijvoorbeeld regel is dat de opdrachten
+binnen een stroomdiagram van boven naar
+beneden worden afgehandeld, kan daar toch
+van worden afgeweken door een verbinding te
+leggen van een opdracht naar een opdracht,
+die meer naar boven gelegen is. Op deze wijze
+is het wel mogelijk om een GOTO-opdracht in
+het diagram op te nemen.
+
+Naast aan PSD's, willen we in dit radio
+programma ook nog wat aandacht besteden
+aan blokcorrespondentie, waarvoor in het
+tweede gedeelte van het hoofdstuk een
+programma ontwikkeld wordt. In plaats van
+blokcorrespondentie, wordt ook wel gesproken
+van bouwsteen correspondentie. Men bedoelt
+hiermee dat uit een verzameling ter beschikking
+staande tekstelementen bepaalde bouwstenen
+worden gekozen om zo een nieuwe tekst samen
+te stellen. Deze bouwstenen kunnen bestaan
+uit een vaste tekst, maar het is ook mogelijk
+dat er bepaalde parameters meegegeven moeten
+worden. Zo zal de bouwsteen 'In de hoop u van
+dienst te zijn geweest, verblijven wij' geen
+parameter nodig hebben, terwijl 'Referend
+aan ons telefonisch onderhoud d.d..... zenden
+wij u hierbij de gevraagde informatie' als
+parameter een datum nodig heeft.
+
+Het voordeel van bouwsteen correspondentie
+zal duidelijk zijn. In plaats van een hele
+brief te dicteren, kan nu volstaan worden met
+het opgeven van de vereiste bouwstenen met de
+eventueel daarbij horende parameters. Van een
+achtergrond geheugen kan de typist (m/v)
+vervolgens de bouwstenen oproepen, de
+bijbehorende parameters opgeven en de aldus
+ontstane brief laten printen. Het zal
+duidelijk zijn dat we bij het opstellen de
+bouwstenen zo moeten formuleren dat ze in
+verschillende combinaties op elkaar aan kunnen
+sluiten. Daarnaast moet de onderlinge
+samenhang in de zinnen of serie van zinnen
+grammaticaal kloppen. Hebben we daar echter
+voor gezorgd, dat kan het werken met
+bouwsteen correspondentie veel tijd besparen
+en veel fouten vermijden.

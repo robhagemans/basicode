@@ -1,0 +1,267 @@
+79, zon 21 jun '87
+
+WERKEN MET BESTANDEN: DATABASES
+
+Ing. Peter van Tilburg van Teleac schrijft:
+In hoofdstuk 9 van het cursusboek wordt
+aandacht besteed aan de sequentiele en de
+directe bestands organisatie. Deze twee basis
+vormen hebben ieder een aantal voordelen. De
+sequentiele organisatie kan op eenvoudige
+informatie dragers worden toegepast en neemt
+geen onnodige ruimte in beslag. De directe
+organisatie waarborgt een snelle toegang en
+een eenvoudige wijze van muteren. Een poging
+om de voordelen van beide organisaties te
+combineren, is de index-sequentiele of
+geindexeerde bestandsorganisatie. Bij deze
+organisatie wordt er een tabel bijgehouden
+waarin van elk record de sleutel waarde en het
+adres wordt opgeborgen. Het adres is de plaats
+op het achtergrond geheugen waar de eerste
+positie van het record staat. De records zelf
+worden sequentieel opgeborgen, zodat er optimaal
+gebruik wordt gemaakt van de beschikbare ruimte.
+
+Wanneer er een record aan het bestand toegevoegd
+moet worden, wordt deze geplaatst aan het einde
+van het reeds bestaande bestand. Het is ook
+mogelijk dat het record wordt geplaatst op een
+plaats in het bestand dat eerder door een
+inmiddels verwijderd record werd ingenomen. In
+de tabel wordt van het record de sleutel waarde
+en het adres opgenomen.
+
+Het raadplegen van een record bestaat uit het
+sequentieel aflopen van de tabel totdat de
+sleutelwaarde is gevonden. Wanneer er zich
+geen record in het bestand bevindt met de
+gezochte sleutelwaarde, dan wordt dit pas
+ontdekt na het doorlopen van de gehele tabel.
+Wordt de sleutelwaarde wel gevonden, dan is ook
+het adres bekend en kan vervolgens direct
+daarnaar toe worden gesprongen. De wijze van
+toegang is dus ten gevolge van het sequentieel
+aflopen van de tabel, iets minder direct als
+bij de zuiver directe bestands organisatie.
+De mate van directheid hangt onder andere af
+van de lengte van het sleutelveld ten opzichte
+van het gehele record.
+
+Het verwijderen van een record kan op
+verschillende manier geschieden. In de tabel
+kan de sleutel waarde en het bijbehorende adres
+verwijderd worden dan wel van een aantekening
+worden verzien om aan te geven dat het record
+verwijderd is. De ruimte die het record in het
+bestand inneemt kan opnieuw door een ander
+record worden ingenomen.
+
+Wanneer het bestand nogal omvangrijk wordt,
+dan kan ook het sequentieel aflopen van de
+tabel nogal wat tijd kosten. In dergelijke
+gevallen kan het aanbeveling verdienen er van
+het begin af aan voor te zorgen dat de tabel
+gesorteerd is op sleutel waarde. Dit houdt dan
+wel in dat het onderhoud van de indextabel wat
+omslachtiger wordt. Het bijwerken daarvan hoeft
+echter alleen plaats te vinden bij het toevoegen
+of verwijderen van een record.
+
+Het voordeel van het gesorteerd houden van de
+indextabel is dat er nu gebruik gemaakt kan
+worden van binair zoeken. De werking van deze
+methode wordt behandeld in hoofdstuk 5 van het
+cursusboek. Indien het bestand uit bijv. 1000
+records bestaat, hoeft er via deze wijze van
+zoeken toch slechts ten hoogste 10 keer
+'geprikt' te worden voordat het gezochte record
+is gevonden, dan wel vastgesteld is dat het niet
+in het bestand is opgenomen.
+
+Deze index-sequentiele bestands organisatie
+biedt met name voordelen wanneer we te maken
+hebben met een uit veel records bestaand
+bestand, dat meestal on-line geraadpleegd
+moet worden - sequentiele toegang is dan niet
+mogelijk wegens de lange toegangstijd -,
+terwijl slechts een gering gedeelte van
+mogelijke sleutel waarden in gebruik is. Was
+dat laatste immers niet het geval, dan zouden
+we ook kunnen kiezen voor de directe bestands
+organisatie met directe adressering. In derg
+gevallen kan het echter ook overweging
+verdienen te kiezen voor een directe bestands
+organisatie met indirecte adressering. Ee
+voorbeeld daarvan is de functionele relatie.
+Er wordt dan een relatie gedefinieerd via welke
+een grote groep mogelijke sleutel waarden wordt
+afgebeeld op een veel kleiner aantal adressen.
+Dit aantal adressen moet natuurlijk tenminste
+de grootte hebben van het aantal gegevens dat
+men op wil slaan.
+
+Om de kans op synoniemen geheel uit te sluiten,
+zou het zogenaamde primaire gebied voor elke
+mogelijke sleutel waarde ruimte moeten
+reserveren. In dat geval zou er echter sprake
+zijn van een directe relatie, wat dan ook als
+een speciaal geval van de functionele relatie
+kan worden beschouwd. Omdat bij een zuiver
+functionele relatie nu net in het primaire
+gebied niet voor alle mogelijke sleutel waarden
+ruimte is gereserveerd, moet er een voorziening
+worden getroffen om het synoniemen probleem op
+te lossen. Meestal wordt er voor gekozen om de
+synoniemen op te bergen in een zogenaamd
+secundair- of overflow gebied. Dit gebied
+bevindt zich achter het primaire gebied en
+bevat alle records die hun primaire plaatst
+bezet vonden.
+
+Het gevolg van deze constructie is dat het
+raadplegen van een record iets minder direct
+is. Er wordt dan allereerst berekend op welk
+adres het record zich zou kunnen vinden. Vinden
+we op dat adres een record met een andere
+sleutel waarde - dus een synoniem - dan wordt
+er een sprong gemaakt naar het overflow gebied,
+dat dan vervolgens sequentieel wordt afgezocht.
+Deze toegang is een heel stuk directer te maken
+door de synoniemen via een ketting met elkaar
+te verbinden. Daarmee wordt bedoeld dat elk
+record een veld bevat waarin het adres staat
+van het volgende synoniem. Is er geen verder
+synoniem, dan wordt daareen dummy waarde
+(bij. -1) neergezet en is dus het einde van
+de ketting bereikt. Het voordeel van een veel
+directere toegang moeten we hier echter
+'betalen' met het onderhoud van de ketting,
+wat in praktijk dikwijls nog niet zo eenvoudig
+is.
+
+Concluderend kunnen we stellen dat we niet
+kunnen spreken van een 'beste' bestands
+organisatie. Welke organisatie we het beste
+kunnen gebruiken, zullen we per geval moeten
+bekijken, daarbij onder andere rekening
+houdend met de omvang van het bestand, de
+wijze van raadplegen (wel of niet on-line) en
+het beschikbare achtergrond geheugen.
+
+Voor de in het hoofdstuk behandelde database
+programma is gekozen voor de directe
+organisatie. In GWBASIC kunnen we standaard
+namelijk alleen maar beschikken over de
+sequentiele en de directe organisatie. Willen
+we een index-sequentiele bestands organisatie
+toepassen, dan zullen we de daarvoor benodigde
+tabellen zelf moeten opbouwen en onderhouden.
+De mogelijkheden van het programma zijn niet
+gering. We treffen er eigenschappen aan die
+we ook in professionele database pakketten
+zoals DBASE III aantreffen. Met name de
+mogelijkheid om zelf te kunnen bepalen wat
+voor gegevens er moeten worden opgeslagen,
+maakt het programma voor veel doeleinden
+geschikt. Daarnaast biedt het programma een
+goede mogelijkheid om via het opbouwen van een
+masker records te selecteren die aan bepaalde
+voorwaarden voldoen.
+
+NIEUWE LEESHULP VOOR BLINDEN
+
+'Delta' is de naam van een nieuw apparaat
+dat blinden en slechtzienden helpt bij het
+lezen. In zijn soort betekent de uit
+Frankrijk afkomstige Delta een kleine
+revolutie, want hij maakt het mogelijk om
+elke gedrukte of getypte tekst
+rechtstreeks in braille om te zetten.
+Het apparaat bestaat uit een kastjes met
+bedieningstoetsen en een soort muis die
+over de gedrukte tekst heen en weer
+geschoven moet worden. Een micro-video
+camera in de muis registreert de letters,
+die daarna door de software in het
+apparaat geintepreteerd worden en omgezet
+in ASCII-codes. Uitlezing vindt plaats
+middels een 12-karaker brailleregel.
+
+ALLE LETTERTYPES
+
+De Delta herkent bijna alle lettertypes.
+Uitzonderingen zijn handschrift en
+cursieve en aan elkaar geschreven letters.
+De lettergrootte mag varieren tussen 1 en
+7 milimeter.
+Om de regel in de gedrukte tekst te
+kunnen volgen, zijn op de muis twee
+trilpunten aangebracht. De tekst die
+ingelezen wordt verschijnt ook op een
+LCD-display, zodat een ziende eventueel
+kan helpen bij het instellen van het
+apparaat.
+Een ingelezen tekst kan voor herlezing
+worden opgeslagen in een 8 K groot intern
+geheugen. Via de RS 232 C interface op het
+apparaat is het mogelijk de informatie
+naar een computer te sturen voor opslag of
+verdere verwerking.
+Het enige probleem met dit door de
+stichting HBS (Hulpmiddelen voorziening
+voor Blinden en Slechtzienden) in Maarssen
+geimporteerde apparaat is eigenlijk de
+prijs: 18.000 gulden. Er loopt echter een
+aanvraag bij de Ziekenfondsraad voor
+opname in het ziekenfondspakket.
+Uitsluitsel hierover komt na de zomer.
+Aldus onze medewerker Bart Oosterveld.
+
+MACHINETAAL VOOR DE C-64
+
+Voor Kluwer Technische Boeken in Deventer
+schreef Roelf Sluman het boekje
+'Machinetaal voor de Commodore 64'. Het
+omvat ruim 200 pagina's en geeft een
+gedegen inleiding tot het programmeren in
+machinetaal. Het boek omvat alles rond het
+in het geheugen plaatsen van machinetaal
+en de basisbegrippen tot een uitleg over
+de registers van de processor. Verder
+geeft het de instructieset en de daarbij
+behorende adresserings modes. Tot slot
+van het theoretische deel - wat verhelderd
+wordt door veel voorbeelden - worden
+diverse andere facetten van machinetaal,
+zoals rekenkundige bewerkingen, sprongen,
+subroutines, logische instructie's, stack
+faciliteiten en interrupts gegeven.
+
+Na deze theorie enkele praktische
+subroutines: voor het verplaatsen van
+geheugenblokken, een futuristische
+karakterset, sprite-manipulatie's en het
+maken van een muziekje op de interrupt.
+Dit alles om op te nemen in uw eigen
+machinetaal programma's en om uw
+vaardigheden te testen.
+Om niet opnieuw het wiel te hoeven
+uitvinden is een overzicht van de KERNAL
+routines die standaard al in de C-64
+zitten toegevoegd, zodat u deze direct
+kunt gebruiken. Ook een tabel van alle
+toegestane machinetaal instructie's
+ontbreekt niet. Om het - relatief -
+eenvoudig invoeren van de machinetaal
+programma's mogelijk te maken, is als
+listing een machinetaal monitor
+bijgeleverd. Wel moet u dan eerst ruim
+3200 bytes in dataregels invoeren.
+De SLUMON-64 monitor is echter bij de
+uitgever voor rond de 20 gulden te
+bestellen. Conclusie: een duidelijk boekje
+voor de 'beginnende' machinetaal
+programmeur (m/v). De prijs: f 39,75.
+Dit alles volgens C-64 kenner Thijs
+Timmerman.

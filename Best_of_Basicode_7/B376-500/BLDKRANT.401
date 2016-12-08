@@ -1,0 +1,264 @@
+401, maa 08 apr '91
+
+METEOSAT-BEELDEN VERSLEUTELD
+
+Het Nationaal Lucht- en Ruimtevaart
+Laboratorium (NLR) heeft het
+proefstadium afgesloten voor een
+computerpakket dat de gegevens van de
+weersatelliet Meteosat zal comprimeren
+en versleutelen. Het systeem is
+ontwikkeld voor ESOC (Darmstad) met
+medewerking ESTEC (Noordwijk). In
+Nederland werkten onder leiding van het
+NLR de software bureau's van BSO en HCS
+en in Duitsland VCS Nachrichten Technik
+eraan. Het systeem heet Meteodis en
+zorgt voor een compressie tot de helft
+van de data die bedoeld zijn voor de
+Primary Data User Station (PDUS), in
+het algemeen alle meteorologische
+diensten met een abonnement. Het gaat
+om de HRPT beelden (d.w.z. High
+Resolution Picture Transmission), die
+dan veel meer controle gegevens
+meekrijgen plus extra informatie.
+Tevens wordt de zaak versleuteld zodat
+alleen de abonnees met een black box,
+die voor decompressie en decodering
+zorgt, de beelden kunnen ontvangen.
+Daarbij worden de beelden
+gedetailleerder en storingsvrij.
+Meteodis zal geen invloed hebben op de
+beelden die weeramateurs gebruiken. Dit
+zijn afgeleide beelden van een lagere
+resolutie. Voor het ontvangen van HRPT
+beelden is een grote schotel nodig die
+werkt in de 400 MHz band. De meeste
+amateurs werken met een long yagi in de
+1700 MHz band.
+
+METEO SOFTWARE
+
+Voor diegenen die net een telex
+converter hebben aangeschaft om bv.
+meteoberichten te decoderen en tot de
+ontdekking zijn gekomen dat deze
+vrijwel alleen maar uit codes bestaan,
+is er nu een nieuw computer programma
+verkrijgbaar om deze codes in
+'leesbare' taal om te zetten. Het
+programma, gemaakt door Paul Esmeijer
+(programmatuur), Johan Habing
+(data-invoer) en Frans Verspaget
+(meteorologie), is te verkrijgen in een
+zgn. 'Europa' versie (past op een 360
+kb floppy disk) met alleen de Europese
+meteo landstations, en een 'Wereld'
+versie (op een 3.5 inch, 720 kb floppy
+disk of op twee 360 kb floppy disks)
+met daarop alle meteo landstations
+(meer dan 9500) ter wereld. De naam van
+het programma is, hoe kan het ook
+anders, 'METEO 1.0 PC', en het is te
+gebruiken op elke MS-DOS compatible
+computer met een grafische kaart (van
+Hercules tot VGA).
+
+PROGRAMMA-OPSTART
+
+Het programma is in kleur en start op
+met de datum en tijd, waarna er een
+keuze gemaakt moet worden van welk deel
+van de wereld er gedecodeerd moet
+worden (bij de Europa versie wordt deze
+vraag ook gesteld maar is hier dus
+eigenlijk overbodig).
+Vervolgens begint het programma een
+grote hoeveelheid gegevens van disk te
+laden, en dat kost wel even wat tijd.
+Op een 16 MHz AT computer kost het ca.
+20 sec. om deze data van een harddisk
+in te lezen. Op een 8 MHz XT duurt het
+ca. 2 minuten en vanaf een floppy disk
+nog iets langer.
+
+KEUZE-MENU
+
+Na opstart bestaat de mogelijkheid te
+kiezen uit een menu met een zestal
+opties:
+1. Synop code (het eigenlijke decodeer
+gedeelte),
+2. Synop code geselecteerd bestand (ook
+het decodeer gedeelte maar dan van een
+gemuteerde file, waarover later meer),
+3. (nog niet in gebruik),
+4. Station gegevens (geeft een lijst
+van alle aanwezige meteostations in het
+bestand met het stationsnummer),
+5. Aanpassen kleuren en printer (zoals
+al doet vermoeden kunnen hiermee de
+kleuren op de monitor worden ingesteld
+en de printer codes worden aangepast;
+het programma gaat standaard uit van de
+veel gebruikte Star LC-10 printer),
+0. Stoppen met werken (einde
+programma).
+
+AAXX DECODEREN
+
+Als in het menu voor optie 1 gekozen
+wordt, verschijnt er een submenu met 4
+opties waarvan er nu nog maar 1 te
+gebruiken is. Het is volgens de makers
+van het programma echter de bedoeling
+om in de toekomst het geheel uit te
+breiden en men heeft daarvoor alvast
+ruimte gereserveerd binnen het
+programma. De keuze hier is dus optie
+1. AAXX (Landstations - het decoderen
+van meteo landstations). Optie 2 geeft
+BBXX (Schepen) maar dit is een van die
+opties die in de toekomst nog zullen
+worden toegevoegd. Opties 3 en 4 zijn
+nog leeg.
+
+INPUTFILE
+
+Na het kiezen van 'AAXX' verschijnt er
+in de linker bovenhoek 'DISK' waarna,
+na nogmaals indrukken van de
+entertoets, gevraagd wordt de Drive of
+Subdirectory in te typen waar de input
+datafile te vinden is. Deze inputfile
+moet in ASCII formaat zijn, wat door
+veel RTTY decodeer programma's wordt
+aangemaakt. Eventueel kunnen er,
+voordat het 'METEO 1.0 PC' programma
+wordt opgestart, met een tekst editor
+de 'verminkte' stukken uitgehaald
+worden, hoewel het programma geen
+problemen heeft met het inlezen van
+'vreemde' karakters.
+
+Als nu de inputfile gekozen is krijgen
+we een lijst te zien van landen welke
+gedecodeerd kunnen worden. Er wordt wel
+van uitgegaan dat er EEN land wordt
+gekozen of een serie van landen. Deze
+landen moeten bovendien in de lijst
+achter elkaar staan, want het is niet
+mogelijk om in EEN keer willekeurig
+verschillende landen te kiezen en meteo
+berichten afkomstig uit deze landen te
+decoderen.
+
+Als nu de landen gekozen zijn leest het
+programma de file waar alle data in is
+weggeschreven door het RTTY programma,
+om daarna aan te geven hoeveel
+berichten erin staan en of deze ook nog
+gesorteerd moeten worden op stations
+nummer. Vervolgens verschijnt er op het
+scherm een prima overzicht, in
+verschillende vakken, van alle gegevens
+van het eerste ingelezen station met
+daarin gegevens over dit station, de
+datum en tijd, het zicht, de wind, de
+temperatuur, de dauwpunt temperatuur,
+de luchtdruk, de druk- tendens, de
+bedekkings graad, de neerslag, het
+weerbeeld, en de ingelezen code van het
+bericht. In deze laatste zijn eventueel
+mutaties mogelijk maar het is niet aan
+te bevelen om er bijvoorbeeld stukken
+tussenuit te halen omdat dan het
+bericht verkeerd wordt gedecodeerd.
+
+DECODEERFOUTEN
+
+Het programma heeft absoluut geen
+moeite met 'vreemde' karakters, maar
+het kan wel een fout maken met het
+decoderen zodat de waarde(n) in het
+desbetreffende vak op het scherm niet
+juist is. Staat er bijvoorbeeld als
+code 1106# in plaats van 11061 voor de
+temperatuur, dan zal in het eerste
+geval de temperatuur -0.6 graden zijn
+terwijl deze volgens de tweede en goede
+code -6.1 moet zijn. Is het bericht
+echter zonder storing ontvangen, wat
+hier in Nederland met bv. Bracknell
+Meteo bijna altijd mogelijk is, dan is
+het werkelijk een verademing om de
+gegevens direct in 'leesbare taal' op
+het scherm te zien. Met de functie-
+toetsen F1 en F2 is het mogelijk om het
+volgende of het vorige station in te
+lezen en met F3 is het mogelijk om
+eventueel de data te muteren, hoewel
+het nut daarvan niet direct duidelijk
+is, want als er ergens een vreemd
+karakter in de lijst voorkomt dan is
+het natuurlijk onmogelijk om te weten
+wat er wel had moeten staan. Met
+functietoets F4 kunnen deze gemuteerde
+gegevens nog naar disk worden
+weggeschreven. Met functietoets F5 is
+het tenslotte nog mogelijk om direct
+een land of station op te zoeken (als
+deze aanwezig is natuurlijk). De
+gedecodeerde gegevens kunnen overigens
+ook nog zonder problemen in een
+complete lijst naar de printer worden
+gestuurd, hoewel bij het station alleen
+het stationsnummer is opgenomen en niet
+de naam. Hierbij is het nodig de lijst
+bij de hand te hebben die met optie 4
+van het hoofdmenu bekenen kan worden.
+
+Alles werkt wel niet 'on-line' tijdens
+het ontvangen zelf maar dat is
+eigenlijk ook nergens voor nodig. De
+AAXX berichten worden altijd op
+ongeveer dezelfde tijden uitgezonden en
+kunnen daarna zeer snel en makkelijk
+gedecodeerd worden middels dit
+programma.
+
+PRIJS EN BESTELWIJZE
+
+Tot slot nog even het belangrijkste: de
+prijs. Wel, dat is eigenlijk het meest
+verrassende deel van alles, want het
+geheel kost maar 40 gulden INCLUSIEF
+PORTOKOSTEN EN FLOPPY voor een Europa
+versie (naar keuze op een 3.5 of 5.25
+inch floppy disk), en 50 gulden voor
+een Wereld versie. Er zijn natuurlijk
+nog wel wat op- en aanmerkingen
+betreffende het programma; zo worden
+bv. de namen van de landen als deze wat
+lang zijn 'keihard' afgekort op het
+scherm weergegeven, maar we mogen niet
+vergeten dat dit versie 1 is en dat de
+prijs wel bijzonder laag is. Op- en
+aanmerkingen zijn dan ook van harte
+welkom bij de makers van het programma.
+
+'METEO 1.0 PC' is verkrijgbaar door
+overmaking van het eerder genoemde
+bedrag op bankrekening nummer
+66.53.51.984 t.n.v. Johan Habing te
+Enschede of via girorekening nummer
+811153 van de N.M.B. te Enschede o.v.v.
+rek.nr. 66.53.51.984 t.n.v. J.Habing.
+Vermeld erbij of het gaat om METEO
+EUROPA of METEO WERELD. Neem voor meer
+informatie contact op met Johan Habing,
+Kolmschotlanden 65, 7542 GE Enschede,
+Tel. 053-768083. (met dank aan Jan
+Nieuwenhuis)
+

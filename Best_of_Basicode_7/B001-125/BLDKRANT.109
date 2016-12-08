@@ -1,0 +1,222 @@
+109, woe 2 dec '87
+
+AMSAT-OSCAR 10
+
+Sinds 16 november is OSCAR 10 vrijgegeven door
+AMSAT voor algemeen gebruik. Het mode B relais
+funktioneert weer uitstekend en kan zeer goed
+gebruikt worden door stations met gering uplink
+vermogen, vooral zolang er geen stations met
+groot vermogen in de uplink verschijnen. In de
+periode van 24 tot 30 november mag OSCAR 10
+worden gebruikt van mean anomaly phase 0 tot
+en met 69 en van phase 141 tot en met 255.
+Van 1 tot 7 december mag de satelliet worden
+gebruikt van phase 0 tot en met 89 en van
+phase 161 tot en met 255. In de perioden
+rond het apogeum komt de satelliet elke
+omloop meer dan anderhalf uur in de schaduw
+van de aarde. Het is van groot belang het
+mode B relais in deze perioden helemaal met
+rust te laten.
+
+FUJI-OSCAR 12
+
+Het gebruiksschema van OSCAR 12 ziet er nu
+als volgt uit: 0642 UTC op 2 dec mode JD
+van 0345 UTC op 3 december tot 0453 UTC op
+4 dec mode JD van 0358 UTC op 5 dec tot
+0507 UTC op 6 dec mode JA van 0116 UTC op
+8 dec tot 0224 UTC op 9 december.
+Vervolgens blijft mode JA regelmatig in
+bedrijf tot 18 december, waarna mode JD weer
+in bedrijf komt vanaf 19 december.
+
+AMSAT-Phase 3C
+
+De lancering van ARIANE-vlucht V20 op 21
+november om 0219 UTC is een volledig sukses
+geworden. Met de door de ARIANE 2 gelanceerde
+TV-SAT 1 zijn er nog wel enige problemen: een
+van de twee grote zonnepanelen wilde na de
+lancering niet uitklappen. Als gevolg van
+het sukses van de lancering wordt het ARIANE
+lanceerprogramma gewoon voortgezet. Vlucht
+V21, een ARIANE 3 raket met drie kommunikatie
+satellieten aan boord, staat nu op het
+programma voor februari 1988. Vlucht V22,
+de eerste ARIANE 4 vlucht met onder andere
+AMSAT Phase 3C aan boord, zal daarom niet
+voor eind maart 1988 te verwachten zijn.
+De Phase 3C satelliet wordt inmiddels in
+West Duitsland voorbereid op zijn lancering.
+
+AMATEUR-SATELLIET FREKWENTIES
+
+De Japanse amateur vereniging JARL heeft
+onlangs een nieuw bandplan voor de 70 cm
+band opgesteld, dat in februari 1988 van
+kracht moet worden. Onder druk van de
+duizenden Japanse amateurs, die FM gebruiken
+voor lokaal verkeer op 2 m en 70 cm, stelt de
+JARL voor niet alleen de hele 2 m band maar
+ook de hele 70 cm band in Japan vrij te geven
+voor lokaal FM-verkeer. Na heftige protesten
+van onder andere de Japanse amateur satelliet
+organisatie JAMSAT heeft de JARL het plan nog
+zodanig gewijzigd dat het gedeelte 435 tot
+436 MHz in principe wordt uitgesloten van FM
+verkeer, maar in de praktijk zal dit weinig
+effekt hebben. De amateur satelliet wereld
+heeft verbijsterd gereageerd op deze plannen
+van de JARL, een grote amateur vereniging die
+zelf de belangrijkste betrokkene is bij de
+bouw, lancering en het in bedrijf houden van
+de Japanse amateur satelliet FUJI-OSCAR 12.
+Het zal duidelijk zijn dat het gebruik van
+alle relais stations van amateur satellieten,
+die gebruik maken van de 70 cm band, zoals
+mode B, J, L en S, in Japan onmogelijk wordt.
+Alle relais stations van satellieten, die een
+uplink hebben in de 70 cm band, zoals mode B
+en S, zullen ernstige storingen ondervinden
+van de Japanse FM-stations in de uplink zodra
+deze satellieten binnen het bereik komen van
+Japan. Voor satellieten als OSCAR 10 en de
+komende Phase 3C betekent dit dat veel storing
+te verwachten is over grote delen van de aarde
+gedurende een groot gedeelte van vrijwel elke
+omloop. Ook kommando uplinks naar amateur
+satellieten zullen ernstig worden gestoord,
+met alle gevolgen vandien. Onder andere via
+de IARU wordt nu geprobeerd de JARL op andere
+gedachten te brengen. Daarnaast worden
+wereldwijd protestbrieven naar de JARL
+gezonden. Iedereen die ook zijn ongenoegen
+kenbaar wil maken aan de JARL kan schrijven
+naar de President van de JARL, Shozo Hara,
+en naar de JARL Frequency Committee, beiden
+via het volgende adres: 1-14-2 Sugamo,
+Toshima-ku 170, Japan.
+
+RUIMTEVAART CONFERENTIE IN MOSKOU
+
+Tijdens de grote conferentie, die begin
+oktober werd gehouden, zijn afspraken gemaakt
+tussen de USA en de USSR over samenwerking
+bij nieuwe satelliet projekten. Naast het
+COSPAS/SARSAT projekt, dat het opsporen van
+onder andere vliegtuigen en schepen in nood
+mogelijk maakt, wil men nu ook kleine packet
+radio satellieten gaan gebruiken voor het
+onderhouden van kontakten met afgelegen
+gebieden, onder andere voor medische
+toepassingen. De ervaringen van AMSAT op dit
+gebied kunnen daarbij goed worden gebruikt.
+Om meer ervaring op te doen met eenvoudige
+packet radio systemen in de ruimte zullen
+amateurs uit Rusland en de USA gaan
+samenwerken bij de bouw van packet radio
+satellieten. Een eerste stap moet worden het
+onderbrengen van een packet radio digipeater
+en eventueel mailbox in het Russische
+ruimtestation MIR. De apparatuur hiervoor
+wordt nu al in de USA ontwikkeld, en zou
+mogelijk al eind 1988 kunnen worden ingebouwd
+in MIR. Ook moet er gezamenlijk een packet
+radio satelliet worden gebouwd door Russische,
+Amerikaanse en eventueel ook Europese amateur
+satelliet groepen. Deze satelliet zou in een
+polaire baan kunnen komen op een hoogte van
+800 of 900 km. Verder kunnen er in de toekomst
+misschien ook westerse amateur satellieten
+worden gelanceerd in Rusland. Tijdens de grote
+noordpool ski expeditie van Canadezen en
+Russen in de loop van volgend jaar zal ook
+veel gebruik worden gemaakt van packet radio,
+onder andere via amateur satellieten, zoals
+via het DCE van UoSAT-OSCAR 11.
+
+Aldus onze deskundige zendamateur PA0DLO.
+
+BASICODE-2 SUBROUTINES VOOR AMIGA
+
+Afgelopen zondag ging er in Beeldkrant 108
+iets mis met de (voorlopige) Basicode-2
+subroutines voor de Commodore Amiga.
+Daarom herhalen we nog eens deze routines,
+die we ontvingen van Peter Hellweg uit
+Dortmund. Hier komen ze:
+
+10 GOTO 1000
+20 GOTO 1010
+100 CLS:RETURN
+110 LOCATE ve+2,ho+2:RETURN
+120 ve=CSRLIN:ho=POS(0):RETURN
+200 IN$=INKEY$:RETURN
+210 IN$=INKEY$:IF IN$="" THEN 210
+211 RETURN
+250 BEEP:RETURN
+260 RV=RND(1):RETURN
+270 FR=FRE(0):RETURN
+300 SR$=STR$(SR): IF LEFT$(SR$,1)="" THEN
+SR$=RIGHT$(SR$,LEN(SR$)-1)
+301 RETURN
+310 SR$="": IF SR>=10^(CT-CN-SGN(CN))
+THEN 318
+311 IF SR<-.5*10^-CN THEN SR$="-"
+312 SR$ = SR$ + MID$(STR$(1+ABS(SR)
+- INT(ABS(SR)) + .5*10^-CN),3,CN+1)
+316 IF LEN(SR$)<CT THEN SR$=SR$+" ":
+GOTO 316
+317 IF LEN(SR$)>CT THEN SR$=""
+318 IF LEN(SR$)<CT THEN SR$=SR$+"*":
+GOTO 318
+319 RETURN
+350 LPRINT SR$;:RETURN
+360 LPRINT:RETURN
+
+VAN C-64 NAAR AMIGA
+
+Omdat er voor de Amiga nog geen vertaal
+programma bestaat, gebruikt hij een C-64
+om de programma's over te zetten. Hij gaat
+daarbij als volgt te werk: eerst laadt hij
+het Basicode-programma in de C-64. Daarna
+gebruikt hij Exbasic L2 om spaties toe te
+voegen met 'SPACE'. Vervolgens tikt hij in:
+open2,8,2,''programmanaam,s,w''
+cmd2
+list 1000-
+print#2
+close2
+
+De aldus aangemaakte sequentiele file zendt
+hij dan over naar de Amiga met een nul-modem
+kabel. Tenslotte 'MERGE't hij het programma
+met de subroutines tot regel 360.
+
+Volgens Peter werken de meeste programma's
+op deze manier goed. In de Beeldkrant moet
+echter een kleine verandering worden
+aangebracht: verwijder de regels 1020-1070
+en vervang deze door:
+1020 vp=22:hp=75
+
+VERTAALPROGRAMMA GEVRAAGD
+
+Zoals reeds gezegd, gaat het hier om een
+voorlopige versie van de Basicode routines
+voor de Amiga. Bovendien heeft niet iedere
+Amiga bezitter ook een C-64. Een alternatief
+zou het gebruik van een modem zijn: dan kan
+de Amiga de programma's direct uit onze
+Fido-NOS databank (Tel.035-45395) halen.
+Maar ook niet iedereen heeft een modem...
+
+Met andere woorden: wij zouden graag een
+echt VERTAALPROGRAMMA voor de Amiga willen
+hebben! Als U er een (gemaakt) heeft,
+stuur het a.u.b. naar Hobbyscoop, zodat wij
+het kunnen uitzenden. Daarmee doet U vele
+mede Amiga-bezitters een groot plezier!

@@ -1,0 +1,362 @@
+435, maa 09 sep '91
+
+MINI DISC: SONY'S OFFENSIEF TEGEN DCC
+
+Met de introductie van het Digitale
+Compact Cassette systeem deed Philips
+een duidelijke aanval op DAT. Men
+stelde dan wel vriendelijk dat het om
+een totaal ander produkt met een totaal
+andere doelgroep ging, maar in principe
+zal een eventueel succes van DCC het
+succes van DAT in de weg staan.
+
+Sony had dan ook slechts een half jaar
+nodig om een alternatief aan te
+kondigen. Een alternatief dat overigens
+voor een redelijk deel rond reeds
+bestaande technieken is gebouwd. Laten
+we met het schijfje zelf beginnen. Dit
+is een afgeleide van de Sony Magnetisch
+Optische Disc (MOD), die o.a. wordt
+gebruikt in de Akai DD-1000 recorder en
+editor voor digitale muziek-opnamen
+(een uiteenzetting over de werking van
+MOD volgt binnenkort in de Beeldkrant).
+Ook hier nemen co-ercieve krachten af,
+wanneer een bepaalde temperatuur wordt
+bereikt. In het geval van de Mini Disc
+is dat 400 graden Celsius. Wordt daarna
+de laser weggenomen (bijv. omdat de
+disc ronddraait), dan zal het materiaal
+weer afkoelen en onder het zogen.
+Curie-punt komen. De polariteit die het
+materiaal dan heeft, zal het ook
+behouden. Een elektromagneet kan
+eenvoudig vlak voor het bereiken van
+het Curie-punt de polariteit
+veranderen. Om een nieuw signaal
+betrouwbaar te registreren, wordt een
+eventueel aanwezig bitpatroon op nul
+gesteld. Dit gebeurt normaal op twee
+manieren: ofwel men gebruikt twee
+laser/magneet constructies (een voor
+wissen en een voor schrijven), ofwel
+men laat eerst een enkele laser de disc
+wissen, om daarna de disc een tweede
+keer langs de laser te sturen voor
+opname. Het eerste systeem is
+natuurlijk duur, omdat er twee laser
+mechanieken nodig zijn. Het tweede
+systeem is behoorlijk onhandig omdat
+het meer tijd kost.
+
+Sony heeft nu echter een nieuw systeem
+uitontwikkeld, het Overwrite systeem.
+Bij dit systeem bevindt de
+elektromagneet zich niet achter de
+laser, maar aan de andere kant van de
+disc. Hierdoor ontstaat een magnetisch
+veld op de 'laser-spot' en
+vanzelfsprekend komt dat magnetisch
+veld overeen met de te registreren
+digitale informatie. Door deze methode
+kan kortegolf optekening op MOD worden
+bereikt, hetgeen uiteraard leidt tot
+verhoging van de opslag capaciteit. Het
+64 mm kleine schijfje kan tot 74
+minuten audio bevatten. Door verder nog
+nieuwe materialen als informatie drager
+te gebruiken (Terbium Ferrite Kobalt
+voor de kenners) en door een hoogst
+efficiente magnetische kop te
+ontwikkelen, werd portable gebruik
+mogelijk.
+
+BRONCODERING
+
+Die 74 minuten audio zouden niet
+haalbaar zijn geweest wanneer er
+normale 16-bits/44,1 kHz bemonstering
+zou zijn gebruikt. Vandaar dat men
+gebruik heeft gemaakt van een vorm van
+broncodering, vergelijkbaar met PARSC
+dat Philips bij DCC gaat gebruiken. De
+hierdoor bereikte datareductie is bij
+Sony een factor 5 (Philips komt aan een
+factor 4 - alsof we het over
+zonnebrandolie hebben). Het is echter
+nog totaal niet in te schatten of dat
+invloed op de geluids kwaliteit zou
+kunnen hebben (let op de voorzichtige
+formulering) en elke mening op dit
+gebied moet dan ook worden gezien als
+zuivere speculatie. Het gaat immers om
+de manier waarop de data reductie wordt
+bereikt. In omroepkringen wordt een nog
+veel hogere datareductie gebruikt, maar
+de daarvoor toegepaste coders zijn zo
+duur dat ze nooit betaalbaar worden
+voor de consument. Dit Musicam systeem
+werkt ook 'onhoorbaar onder praktische
+omstandigheden'. Sony noemt zijn
+systeem ATRAC (Adaptive TRansform
+Acoustic Coding); het zou net zoals
+Musicam en PARSC op basis van Fourier
+transformatie werken.
+
+LEESFOUTEN
+
+Nu is genoegzaam bekend dat portable
+gebruik van disc systemen niet zonder
+problemen is. Bij de lichtste schokken
+verliest de laser het contact met de
+informatie. Schokken voorkomen is dan
+ook de beste oplossing en die vinden we
+terug in CD-spelers voor in de auto. De
+een na beste oplossing is wellicht het
+verhogen van de servosturing. Dat heeft
+echter vrij grote stuurstromen tot
+gevolg, die vrij makkelijk de digitale
+datastroom kunnen verstoren. Sony zal
+in het Mini Disc systeem best een
+combinatie van beide systemen hebben
+toegepast om zo min mogelijk leesfouten
+te hebben. Maar omdat die nu eenmaal
+niet uit te bannen zijn, heeft men een
+gigantisch databuffer in het systeem
+geplanned: maar liefst 1 megabit! Een
+paar jaar geleden hadden zelfs grote
+computers niet zoveel geheugen. Het
+lezen van de schijf gebeurt met een
+duidelijk veel hogere snelheid dan
+nodig is voor audio. Die hogere
+datastroom wordt gebufferd in het 1
+megabit geheugen en van daaruit met een
+lagere klok uitgelezen. Zodra de buffer
+vol is, krijgt de drive de opdracht
+even in pauze te gaan totdat er weer
+ruimte in de buffer is. Zodra er
+leesfouten ontstaan, bijvoorbeeld door
+schokken, speelt de speler eenvoudig op
+de inhoud van de buffer verder. Heeft
+de laser het spoor weer terug gevonden,
+dan haalt hij met zijn veel hogere
+schrijfsnelheid het verlies snel weer
+in.
+
+VERWACHTING
+
+De Mini Disc is uiterst klein en dus
+zeer portable. Ik weet niet hoe
+makkelijk de disc in een speler is te
+stoppen, hetgeen vooral van belang is
+bij gebruik in de auto. Een andere
+vraag is of de consument zo ondertussen
+niet stapelgek wordt van al die
+systemen: DAT, CD-Write-Once, DCC, en
+nu Minidisc. Los nog even van CD-Photo,
+CD-I, CD-ROM etc., want die hebben dan
+wel niets met opnemen en portable
+gebruik te maken, maar het zijn
+allemaal nieuwe systemen waar de
+consument het nut van zou moeten gaan
+begrijpen. Toch lijkt die consument
+altijd zijn eigen weg te vinden. Kijken
+we terug naar de begintijd van het
+cassette tijdperk, dan zien we daar net
+zo'n puinhoop als nu met de digitale
+recorders. De Compact Cassette was
+slechts 1 van de vier systemen die toen
+geconcipieerd zijn. Saillant detail is
+dat de Compact Cassette toen ook de
+minste kwaliteit bood. Maar ook dat is
+een bekend verschijnsel. Waren immers
+Betamax en Video 2000 beide niet
+superieur aan VHS?
+
+SOFTWARE
+
+Een aspect dat nu mee gaat tellen is de
+beschikbaarheid van software. Sony,
+Matsushita en Philips bezitten
+natuurlijk allen platen-
+maatschappijen. Als Philips DCC
+software op de markt brengt en Sony met
+Mini Disc software komt, wat zal
+Matsushita dan doen? Ze zouden met
+Philips meedoen, maar het MITI (Japans
+Ministerie van Handel en Industrie)
+schijnt dit tegen te houden. De
+culturen van Sony en Matsushita zijn
+echter zo verschillend, dat
+samenwerking op zijn zachtst gezegd wat
+verrassend zou zijn. Daarnaast zijn er
+nog de kleinere platen- maatschappijen
+die vaak de smaakmakers van de
+industrie zijn. Want de Compact
+Cassette was nu net ideaal voor uiterst
+kleine oplagen. Met de DCC zou dat net
+zo makkelijk gaan, maar met de Mini
+Disc is dat de vraag. Er kunnen
+schijfjes worden geperst volgens het
+CD-procede, maar dan zit je al snel aan
+wat hogere oplagen. Er kan natuurlijk
+1:1 gekopieerd worden, maar dat is weer
+relatief arbeids intensief. Wie weet
+heeft Sony hiervoor ook al een
+oplossing, bijvoorbeeld een soort van
+Sprinter zoals die voor DAT tape ooit
+is aangekondigd. 1992 beloofde voor ons
+Europeanen al interessant te worden, de
+elektronica- industrie doet er nog een
+paar schepjes bovenop: In het voorjaar
+de introductie van DCC, halverwege het
+jaar het complete CD-I programma en aan
+het eind van het jaar de Mini Disc.
+
+Hans Beekhuyzen. (Uit: Pro-Audio
+Magazine, juli/augustus 1991)
+
+INFORMATIEMAPPEN WETENSCHAPSLIJN
+
+De Wetenschapslijn, onderdeel van PWT's
+voorlichtings activiteiten, beantwoordt
+per jaar zo'n 8500 vragen van mensen
+die iets willen weten over wetenschap
+of techniek. Veel vragen om algemene
+informatie ('Heeft U wat over...?')
+kunnen worden beantwoord door
+toezending van een standaard
+informatiemap. Hieronder volgt de lijst
+van onderwerpen waarover momenteel
+mappen beschikbaar zijn:
+
+Aardbevingen
+Acupunctuur
+Agressie
+AIDS
+Angsten en fobieen
+Autisme
+Biotechnologie, algemeen
+Biotechnologie, medische aspecten
+Biotechnologie, planten
+Broeikaseffect
+Compact Disc
+Computer en samenleving
+Criminologie
+Dementie
+Demografische ontwikkelingen
+Dierproeven
+Energie, kernenergie
+Energie, windenergie
+Energie, zonne-energie
+Energie: anders dan anders
+Erfelijkheidsonderzoek
+Ethiek en wetenschap
+Europa 1992
+Evolutie
+Fractals en chaos
+Fraude in de wetenschap
+Geheugen
+Geluidshinder
+Genetische manipulatie
+Hersenonderzoek
+Het huis van de toekomst
+Intelligentie
+In vitro fertilisatie
+Kanker
+Kijken en zien
+Kunstmatige intelligentie
+Lasers
+Milieu-problematiek
+Ozonlaag-aantasting
+Pool-onderzoek
+Prenatale diagnostiek
+Recycling
+Ruimte-onderzoek en maatschappij
+Slapen en dromen
+Sport en doping
+Straling in huis en op kantoor
+Supergeleiding
+Taal
+Taal- en spraaktechnologie
+Tele-informatiediensten
+Toxicologie: werk, vrije tijd,
+ziekenhuis
+Toxicologie: voedsel, milieu
+Transplantatie
+Tropische regenwouden
+Verkeer
+Veroudering
+Verslaving
+Voorkoming van voedselbederf
+Weerkunde
+
+Per persoon kunnen maximaal 2
+informatiemappen kosteloos worden
+toegestuurd. Wilt u meer dan 2
+informatie mappen ontvangen, dan kunt u
+deze voor 3 gulden per stuk (incl.
+verzend kosten) bestellen bij de
+Wetenschapslijn.
+Voor hen die niet op de gebruikelijke
+manier kunnen lezen, kunnen mappen op
+verzoek in aangepaste vorm gratis
+worden verkregen bij de CBB in Ermelo,
+bibliotheek voor aangepaste lectuur en
+informatie, tel. 03417-51014.
+Bel de Wetenschapslijn: tel. 06-8212144
+(20 cent per minuut, op werkdagen
+bereikbaar van 10 tot 16 uur). U kunt
+ook schrijven naar: Stichting PWT,
+Postbus 171, 3500 AD Utrecht.
+(Uit: Iota, september 1991)
+
+NATIONALE WETENSCHAPSWEEK 1991
+
+Wetenschap?! Dat is toch iets voor
+saaie bollebozen, wereldvreemde genieen
+en verstrooide professoren... Eenmaal
+per jaar krijgt iedereen de kans zelf
+eens op onderzoek uit te gaan in de
+wereld van wetenschap en techniek:
+tijdens de Nationale Wetenschapsweek,
+die dit jaar gehouden wordt van 6 t/m
+13 oktober. Om tot de ontdekking te
+komen dat wetenschap veel meer inhoudt
+dan veel mensen denken. Wetenschap kan
+een leuk en spannend avontuur zijn, vol
+onverwachte wendingen. Wetenschap, dat
+is een beetje magie en heel veel
+mensenwerk!
+
+De Stichting Nationale Wetenschapsweek
+(SNW) organiseert dit jaar voor de
+zesde keer dit grote wetenschaps
+festival, in samenwerking met
+universiteiten, musea, sterrenwachten
+en onderzoeks instituten. Om te tonen
+hoe veelomvattend wetenschap is, om te
+laten zien hoe wetenschappers te werk
+gaan en om mensen de kans te geven zelf
+actief met wetenschap aan de slag te
+gaan.
+
+De Wetenschapsweek gaat op zondag 6
+oktober van start met 'Wetenschap op
+zicht'. Tijdens deze landelijke
+wetenschapsdag presenteren zo'n 100
+instellingen voor wetenschappelijk
+onderzoek en onderwijs zich met een
+speciaal programma van lezingen,
+rondleidingen, films, demonstraties en
+experimenten. Verder vinden er tijdens
+deze week scholieren manifestaties en
+lezingen- programma's plaats bij
+diverse universiteiten. Een uitgebreid
+overzicht van alle activiteiten is te
+vinden in de gratis informatiekrant die
+voor u klaar ligt in boekhandels,
+VVV-kantoren en bibliotheken.
+

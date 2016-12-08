@@ -1,0 +1,352 @@
+343, maa 17 sep '90
+
+SUPERGELEIDENDE TRANSISTOR
+
+Een paar jaar geleden behoorde Prof.
+dr. Horst Rogalla van de Universiteit
+Twente nog tot de voorzichtige
+natuurkundigen: hoge temperatuur
+supergeleiding was dan wel ontdekt, het
+zou nog lang, heel lang duren, voordat
+de eerste toepassingen zouden komen. Nu
+is Rogalla's onderzoeksgroep erin
+geslaagd een supergeleidende transistor
+te maken en ziet hij de eerste
+elektronica op basis van hoge
+temperatuur supergeleiders over een
+paar jaar op de markt verschijnen.
+
+'HOGE' TEMPERATUREN
+
+Voor 1986 meende men dat supergeleiding
+(het verdwijnen van de elektrische
+weerstand) alleen kon optreden bij
+extreem lage temperaturen. In dat jaar
+werden enkele materialen ontdekt, die
+bij hogere temperaturen al
+supergeleidend werden. Die zogenaamd
+hogere temperaturen liggen overigens
+nog steeds ver onder nul. In de
+elektronica wil men graag gebruik maken
+van supergeleiding, omdat daarmee
+snellere schakelingen mogelijk worden.
+
+SCHERPE OVERGANG
+
+Er bestaat een scherpe overgang tussen
+supergeleidend en niet supergeleidend.
+Niet alleen bij verhogen van de
+temperatuur valt de supergeleiding
+plotseling weg, ook bij toenemen van de
+stroom gebeurt dat. Doordat de overgang
+zo scherp is, reageert een
+supergeleidend schakelelement bijzonder
+snel.
+
+SANDWICH
+
+De transistor is het sleutelelement dat
+men nodig heeft om nuttige schakelingen
+te kunnen bouwen. Een transistor heeft
+de vorm van een sandwich. Bij de
+supergeleidende transistor is zijn de
+twee lagen brood aan de buitenkant van
+supergeleidend materiaal en is de
+tussenliggende laag beleg van niet
+supergeleidend materiaal.
+
+OPDAMPEN EN ETSEN
+
+Supergeleidende stoffen zijn moeilijk
+te hanteren. Het zijn keramische
+materialen, die brokkelig zijn. Het is
+daarom moeilijk er de dunne lagen mee
+te maken, waaruit de transistor moet
+komen te bestaan. De opdamp techniek
+voor het maken van dunne lagen heeft
+men in Twente echter inmiddels
+behoorlijk onder de knie. Men kon er
+alleen niet rechtstreeks een transistor
+mee maken. Daarvoor was nog een extra
+truc nodig: tussentijds etsen.
+
+HELLING
+
+Er wordt begonnen met het maken van een
+lagen pakket, waarvan een laag uit
+supergeleidend materiaal bestaat. De
+bovenste laag wordt dan voor de ene
+helft bedekt met een materiaal dat
+etsen voorkomt. Vervolgens wordt van
+bovenaf ge-etst. Aan de grens van het
+beschermde en het niet beschermde
+gebied ontstaat nu een helling,
+waarlangs de verschillende lagen aan
+het oppervlak treden. (Het is haast
+geologie!)
+
+SCHUINE SANDWICH
+
+De helling wordt opgedampt met een niet
+supergeleidende laag en vervolgens met
+een supergeleidende laag. Ergens langs
+de helling hebben we nu van buiten naar
+binnen de overgang supergeleidend, niet
+super geleidend, supergeleidend. Onze
+sandwich staat schuin. Schuin of niet,
+dit is de supergeleidende transistor.
+Een andere term daarvoor is overigens
+Josephson junctie.
+
+KORTOM:
+
+             SSSSSSSSSSSSSSSSSS
+         SSSSSSSS NNNNNNNNNNNNN
+     SSSSSSSS NNNNNN IIIIIIIIII
+SSSSSSS NNNNNNN NNNNNNNNNNNNNNN
+NNNNNNNNNN SSSSSSSSSSSSSSSSSSSS
+YSZ YSZ YSZ YSZ YSZ YSZ YSZ YSZ
+
+YSZ = grondlaag lagenpakket
+S = supergeleider
+N = niet-supergeleider
+I = isolator (bovenkant lagenpakket)
+SS NN SS = transistor
+
+MELK
+
+De onderzoeksgroep van Rogalla is er
+als eerste in geslaagd een Josephson
+junctie te maken met de nieuwe
+materialen die niet meer zo heel erg
+gekoeld hoeven te worden om
+supergeleidend te worden. De magische
+grens hierbij is -196 graden Celsius.
+Is een materiaal op of boven die
+temperatuur supergeleidend, dan kan men
+vloeibare stikstof als koelmiddel
+gebruiken. Vloeibare stikstof is
+goedkoop en alom beschikbaar. Een liter
+vloeibare stikstof kost evenveel als
+een liter melk. Eist een materiaal
+diepere koeling, dan is het dure en
+lastige vloeibare helium nodig.
+
+MAGISCHE GRENS
+
+De nieuwe materialen zijn al 15 graden
+boven de magische grens supergeleidend.
+Dat is dus geen probleem, maar gaat men
+van die materialen iets maken, dan
+wordt het kritischer. Met een enkele
+transistor zitten de Twentenaren nog
+aan de goede kant van de grens, met
+combinaties van twee transistoren
+zitten ze er helaas net onder. Omdat
+met zulke transistorparen (SQUID's
+genaamd) interessante dingen gedaan
+kunnen worden, moet men nog wat
+verbeteringen zien aan te brengen.
+
+PLANTEN
+
+Wat uiteindelijk de mogelijkheden
+kunnen zijn, is al te zien aan de
+toepassingen van helium gekoelde
+supergeleiders. Een van de toepassingen
+daarvan is een supersnelle
+oscilloscoop, waarmee men bijvoorbeeld
+het opvangen van licht in planten kan
+bestuderen.
+
+HERSENEN
+
+Helium gekoelde SQUID's worden gebruikt
+om de magnetische activiteit van de
+hersenen te meten. Daarbij moet men op
+ongeveer vijf centimeter van het hoofd
+blijven, vanwege het enorme temperatuur
+verschil. SQUID's met stikstof koeling
+kunnen dichterbij komen en een meer
+gedetailleerd beeld geven van de
+magnetische hersen activiteit.
+
+GALLIUM-ARSENIDE
+
+Of supergeleidende schakelingen op
+grote schaal gebruikt zullen worden,
+waar snelle elektronica nodig is,
+blijft een open vraag. Ook de
+kamertemperatuur elektronica wordt
+sneller, bijvoorbeeld door toepassing
+van gallium arsenide in plaats van het
+aloude silicium. Dit wordt een kwestie
+van de uiteindelijke kosten.
+
+OPTISCH
+
+Een andere concurrent zouden optische
+schakelingen kunnen zijn, waarin de rol
+van elektronen is overgenomen door
+licht. Dit gebied kampt echter met een
+groot probleem: er bestaat geen optisch
+element dat de veelzijdigheid van de
+transistor heeft.
+
+GEEN PATENT
+
+Rogalla is niet van plan patent aan te
+vragen op zijn transistor. Een patent
+aanvraag zou de uitwisseling van
+wetenschappelijke resultaten met andere
+instituten te zeer belemmeren, vindt
+hij.
+
+ONDERNEMEND VERSUS UNIVERSITAIR
+
+'Als de Universiteit Twente zich een
+ondernemende universiteit noemt, dan is
+dit een geval waar je het universitaire
+van het ondernemende moet laten winnen.
+Wij kunnen alleen succes hebben door te
+profiteren van de resultaten van
+anderen. Het is een wedstrijd van drie
+instituten, de KFA Julich (Duitsland),
+het IBM laboratorium in Yorktown
+Heights (New York) en wij. Het ene
+moment ligt de een voorop, het andere
+moment de ander. Nu zijn wij het even.'
+(Met dank aan Pim van Tend)
+
+SUBSTITUUT VOOR SILICIUM IN CHIPS
+
+Wetenschappers van de universiteit van
+Berkeley in Californie denken een soort
+plastic te hebben gecreeerd dat als
+vervanging zou kunnen dienen voor
+silicium in computer chips. De ontdekte
+stof is een polymeer die door de
+industrie, en in het bijzonder door de
+chip bakkers, met veel belangstelling
+tegemoet wordt gezien. B. Novak,
+wetenschappelijk medewerker chemie,
+maakte dit bekend op de conferentie van
+de American Chemical Society in
+Washington.
+
+Novak vertelde dat hij de stof
+toevallig ontdekte toen zijn team op
+zoek was naar een afdeklaag voor chips.
+Tijdens experimenten ontdekte het team
+dat de gevonden stof een zeer geschikte
+halfgeleider was. Blootgesteld aan
+licht verandert de stof van isolator in
+halfgeleider. In plaats van gehecht te
+worden aan silicium kan de nieuwe stof
+zelf gebruikt worden als basis voor een
+nieuw circuit. Novak voorspelt dat de
+stof het proces dat nu nodig is om
+kleine micro circuits op silicon chips
+te bevestigen zal verkleinen. (Uit:
+Computable)
+
+SNELCURSUS PC TOOLS 6
+
+Het veelzijdige utility programma PC
+Tools versie 6 is recent uitgebracht en
+direkt algemeen gunstig beoordeeld in
+de vakbladen. Nu is PC Tools niet
+beschermd tegen kopieren, dus duiken de
+schrijvers van handleidingen in het gat
+op de markt om iedere niet officieel
+geregistreerde gebruiker van dienst te
+zijn. Het boekje 'Snelcursus PC Tools
+6' uit een serie van Data Becker
+Nederlands is daar een van de eerste
+voorbeelden van.
+
+Van huis uit wordt PC Tools 6 geleverd
+met drie boekwerken met in totaal bijna
+1000 bladzijden. Onvermijdelijk kent de
+hier besproken Snelcursus met nog geen
+200 pagina's dus beperkingen.
+Voorbeeld: het onderdeel
+Gegevensbeveiliging (PCBACKUP en
+RESTORE) telt 21 bladzijden; het
+origineel ca. 150. Er is wel aandacht
+voor het maken van een volledige backup
+van de harde schijf, maar over even
+snel de laatste wijzigingen aan deze
+'full backup' toevoegen (de
+'incremental backup') geen woord, net
+zo min als over de overige drie vormen
+van backup. Ook ontbreekt een uitleg
+over archive bits en als u een backup
+op een tape-streamer wilt maken, wordt
+u met de Snelcursus niets wijzer.
+Kritiek is er ook op het feit dat het
+onderwerp backup pas midden in het boek
+ter sprake komt, na een verhaal over
+het ordenen van de harde schijf en het
+verplaatsen en het wissen (!) van
+bestanden. Die volgorde klopt
+natuurlijk niet.
+
+SLORDIGHEDEN
+
+Wat ook niet klopt, zijn sommige
+instrukties. Op zeker moment raadt de
+schrijver tot twee keer toe aan op 'C'
+te klikken voor installeren en op 'I'
+om door te gaan. Precies verkeerd om
+dus en erg vervelend. Het gebruik van
+de scroll balken met de muis wordt een
+keer fout (blz. 23) en een keer goed
+(blz. 26) beschreven. Vooral voor
+beginners -en daar lijkt het boek zich
+toch op te richten- moet toch ook
+vermeld worden dat een wijziging in
+AUTOEXEC.BAT pas werkt na opnieuw
+opstarten. En wat dacht u van: 'Voordat
+u een diskette kunt gebruiken voor de
+opslag van gegevens, moet u die eerst
+formatteren ....... Formatteren kost
+tijd, ongeveer een minuut per
+diskette'.
+
+LICHTPUNTJES
+
+Er zijn nog wel een paar slordigheidjes
+te noemen, maar positief zijn de
+duidelijke schermafbeeldingen met de
+Engelstalige schermteksten in een apart
+kader vertaald in duidelijk Nederlands.
+Door de beknoptheid en de Nederlandse
+taal is het boek makkelijker en
+overzichtelijker dan de originele
+Engelstalige handleiding. Maar verwacht
+niet dat de Snelcursus volledig is; bij
+lange na niet. Volgens de omslag van
+het boek gaat het om het leren kennen
+van de belangrijkste funkties van PC
+Tools 6 en dat klopt wel. Maar al
+werkend met het programma mis je toch
+al gauw een degelijk naslagwerk met
+goede index.
+
+CONCLUSIE
+
+Voor de weinig veeleisende PC Tools 6
+gebruiker is dit boek heel geschikt.
+Ook prima voor een eerste indruk van
+wat het programma kan. Maar anderen
+kunnen gezien de zeker niet te hoge
+prijs beter voor het origineel kiezen.
+(Met dank aan Chris van Offeren)
+
+Nog even wat gegevens:
+Titel:    Snelcursus PC Tools 6
+Auteur:   Stephani
+Uitgever: A.W. Bruna Uitgevers BV
+Prijs:    f 29,90
+

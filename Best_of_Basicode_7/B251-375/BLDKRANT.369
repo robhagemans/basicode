@@ -1,0 +1,320 @@
+369, maa 17 dec '90
+
+CONSEQUENTE COMPUTER
+
+Bij het Centrum voor Wiskunde en
+Informatica (CWI) in Amsterdam werkt
+men aan een systeem dat computers
+gemakkelijker toegankelijk moet maken.
+De aanpak is minder ambitieus dan die
+van de Japanners (zie Beeldkrant 354
+van 22 oktober), maar heeft daardoor
+misschien meer kans van slagen. Als een
+computer zich maar op een consequente
+manier aan de gebruiker presenteert,
+dan is die computer ook gebruikers
+vriendelijk, zo denkt het CWI.
+
+MACINTOSH
+
+De meest verbreide benadering van een
+vriendelijke computer is op het
+ogenblik de Macintosh. Daarbij geeft de
+gebruiker zijn opdrachten door via een
+muis een mogelijkheid aan te wijzen op
+het scherm. Programmeurs die
+programma's voor de Macintosh moeten
+vervaardigen dienen allemaal gebruik te
+maken van dezelfde zogeheten
+gereedschaps kist. Daarin zitten
+kant-en-klare stukjes programma om de
+latere gebruiker de vertrouwde
+schermaanblik te bieden. Zelfs wanneer
+de programmeur de gereedschaps kist
+volgens de gebruiks aanwijzing
+gebruikt, ontstaan er echter toch nog
+verschillen in de bediening van
+programma's.
+
+DIR EN RENAME
+
+Bij MS-DOS computers is consequent
+gedrag nog veel verder te zoeken. Stel,
+we willen de naam van een schijfbestand
+veranderen. We weten de naam van het
+bestand niet precies en dus vragen we
+eerst de lijst met bestands namen op.
+Rechtstreeks vanuit MS-DOS gaat dat met
+de opdracht 'dir'. Zitten we echter in
+Basic, dan luidt de opdracht 'files'.
+De naam van het bestand veranderen we
+vervolgens met de opdracht 'rename'.
+Zitten we echter in Basic, dan is het
+'name' en moeten er dubbele aanhalings
+tekens om de bestandsnamen heen.
+
+VIEWS
+
+Eenvoudiger zou het zijn, wanneer we in
+de bestands lijst met de cursor naar de
+gezochte oude naam zouden kunnen lopen
+en dan gewoon de nieuwe naam over de
+oude heen zouden kunnen typen. Dit is
+het soort mogelijkheden waarnaar het
+CWI streeft in zijn Views project.
+
+WEDERKERIGE KOPPELINGEN
+
+Stel, op het computerscherm staat een
+temperatuur vermeld in graden Celsius
+en in graden Fahrenheit. We kunnen dan
+met de cursor naar de temperatuur in
+graden Celsius lopen en die veranderen.
+De temperatuur in graden Fahrenheit
+wordt vervolgens automatisch
+meeveranderd. Evenzo hadden we kunnen
+ingrijpen in de graden Fahrenheit,
+waarbij de graden Celsius met de
+wijziging zouden zijn meegegaan. In de
+meeste computer programma's van het
+moment is er of een koppeling van
+Celsius aan Fahrenheit, of net
+omgekeerd, maar niet in beide
+richtingen. In het Views systeem zijn
+wederkerige koppelingen de norm.
+
+SNELLERE COMPUTERS
+
+Deze verwevenheid van de dingen op het
+scherm is mogelijk geworden door de
+toegenomen snelheid van personal
+computers. Als er iets verandert, dan
+moet de computer snel kunnen nagaan
+welke dingen daarmee samenhangen en die
+dingen aanpassen zonder dat de
+gebruiker lang hoeft te wachten.
+
+WYSIWYG WORDT TAXATA
+
+Uit de wereld van de tekstverwerking is
+de term WYSIWYG bekend: what you see is
+what you get, wat je op het scherm
+ziet, is wat je op papier zult krijgen.
+In de praktijk wordt dit principe
+eigenlijk maar zelden letterlijk
+verwezenlijkt. De aanpak van het CWI
+gaat nog verder dan WYSIWYG. De naam
+ervoor is TAXATA: things are exactly as
+they appear, de dingen zijn precies
+zoals ze eruit zien. Je werkt niet aan
+een kopie van de feitelijke gegevens,
+die je uiteindelijk nog zult moeten
+opslaan als het definitieve exemplaar.
+Nee, je hebt het echte exemplaar al
+voor je. Dit geldt niet alleen bij het
+wijzigen van teksten, maar ook bij
+getallen, zoals de genoemde temperatuur
+waarden.
+
+TERUG NAAR THUISCOMPUTER
+
+Wanneer een programmeur een programma
+wil maken, moet hij op het moment op de
+hoogte zijn van vier dingen: ten eerste
+de opdrachten van het besturings
+systeem, ten tweede de opdrachten van
+de editor (of tekstverwerker) waarmee
+het programma gemaakt wordt, ten derde
+de programmeertaal en ten vierde hoe
+een programma in die taal op deze
+machine ten uitvoer moet worden
+gebracht. Bij Views zijn er alleen nog
+de programmeertaal en de editor. De
+overige zaken zijn hierin opgenomen.
+Dit gaat eigenlijk een beetje terug
+naar de oude thuiscomputer. Daarvoor
+hoefde je ook geen afzonderlijk
+besturings systeem te kennen: de Basic
+waarin je programmeerde diende tegelijk
+als besturings systeem.
+
+ABC
+
+De programmeertaal bij Views is een
+nieuw ontworpen taal, ABC genaamd. Deze
+taal is zo opgezet dat de verwevenheid
+van de betrokken objecten gemakkelijk
+kan worden aangegeven. Een programma in
+ABC is ongeveer vijf maal zo bondig als
+een programma in Pascal.
+
+Moeten we nu allemaal meteen ABC gaan
+leren? Dat staat nog te bezien. Eens
+bedachten wetenschappelijke informatici
+de taal Algol-68: in zijn tijd
+werkelijk een juweeltje van
+consequentheid en overzichtelijkheid.
+Slechts weinigen hebben er echter ooit
+gebruik van gemaakt. Nu is het een dode
+taal.
+
+Wat we wel zien, is dat vele van de
+mooie eigenschappen van Algol-68 toch
+zijn terechtgekomen in de taal C, de
+populairste onder de nieuwe
+programmeertalen. Die fraaie
+eigenschappen hebben daar echter wel
+gezelschap gekregen van programmeurs
+trucs waarbij Algol-68 mensen zich in
+hun graf zouden omdraaien. Views en ABC
+mogen blij zijn wanneer ze op een of
+andere manier zouden mogen voortleven
+in systemen die werkelijk gebruikt
+worden. (met dank aan Pim van Tend)
+
+ELEKTRONISCHE KRANT VOOR BLINDEN
+
+Begin 1991 gaan 50 visueel
+gehandicapten dagelijks het dagblad
+Trouw via elektronische weg ontvangen
+en lezen. Het gaat hier om een
+experiment dat onder de naam ELK
+(Elektronisch Lezen van een Krant) is
+opgezet door het ministerie van WVC en
+het Centrum voor Gesproken Lektuur.
+De gedigitaliseerde krant zal via het
+landelijk FM-radio zendernet van de
+Nozema worden verspreid nog voordat de
+reguliere radio uitzendingen van de
+omroep beginnen.
+Via speciaal voor de PC ontwikkelde
+software wordt de gedigitaliseerde
+krant gelezen en de digitale informatie
+wordt dan via de ether (net als deze
+Basicode Beeldkrant) verzonden. Aan de
+ontvangstkant worden via een
+tekst-naar-spraak systeem de nieuws
+berichten omgezet naar gesproken woord.
+Het systeem is ontwikkeld in Zweden in
+samenwerking met de Gotenborg Posten en
+het Chalmers Institute of Technology in
+1983 en werd operationeel in 1985.
+(Uit: Telecombrief)
+
+ATARI-ST VERTAAL-PAKKET
+
+Op de afgelopen HCC-dagen
+introduceerden we een Basicode
+vertaal-pakket voor de Atari-ST's. Dit
+pakket is bruikbaar op de 520ST, de
+1040ST en alle Mega ST's. Het bestaat
+uit een 3.5 inch diskette met daarop
+het vertaalprogramma, en een
+interface-kabel die wordt aangesloten
+op de seriele poort (RS232). Er was
+toen zoveel vraag naar, dat we binnen
+de kortste keren door onze kleine
+voorraad heen waren. Maar inmiddels
+hebben we een nieuwe serie
+binnengekregen, zodat u e.e.a. bij ons
+kunt bestellen: maak daartoe f60,00
+over op giro 1419 t.n.v. NOS Algemeen
+Secretariaat in Hilversum, o.v.v.
+'Basicode vertaal-pakket voor Atari
+ST'. We bezorgen het dan per post bij u
+thuis.
+
+BEST OF BASICODE NO. 4 UITVERKOCHT
+
+Tijdens de HCC-dagen ging tevens het
+laatste exemplaar van onze vierde
+cassette uit de serie 'The Best of
+Basicode' de deur uit. Deze is dus niet
+meer verkrijgbaar. De eerste drie
+cassettes (B.O.B. 1, 2 en 3) wel nog:
+ze kosten f7,50 per stuk, en zijn
+eveneens te bestellen via giro 1419.
+Als u ze alle drie tegelijk bestelt
+hoeft u maar f15,00 over te maken.
+Bovendien krijgt u dan een originele
+Hobbyscoop linnen draagtas erbij kado.
+Ook onze CD (Best of Basicode nr. 5) is
+nog steeds verkrijgbaar voor f15,00.
+Tot slot, als u Best of Basicode 1,2,3
+en 5 tegelijk bestelt, hoeft u in
+verband met de lagere verzendkosten
+maar f25,00 over te maken voor de 3
+cassettes en de CD samen. Ook dan
+zenden we de fraaie draagtas gratis
+mee.
+
+BASICODE VERTAALPROGRAMMA C-64
+
+Op woensdag 5 december j.l. zonden we
+een nieuw Basicode vertaalprogramma uit
+voor de Commodore 64, geschreven door
+Melis van Deelen uit De Glind. Uit de
+daarop volgende reacties van
+luisteraars is ons gebleken dat veel
+Commodore 64 bezitters er niet in
+geslaagd zijn het nieuwe
+vertaalprogramma in te lezen in hun
+computer. Daarom hebben we besloten het
+vertaalprogramma vandaag nogmaals uit
+te zenden, zodat u een nieuwe kans
+krijgt.
+
+DOWNLOADEN OF BESTELLEN
+
+Mocht het ook deze keer niet gelukt
+zijn, dan blijven er twee mogelijkheden
+over:
+
+1) U haalt het programma uit onze
+Fido-NOS databank, bereikbaar met
+computer en modem via tel. 035-45395.
+Het staat onder de file-naam
+'VERTPROG.C64' beschikbaar in
+file-gebied 3. Denk er echter aan dat
+dit een MACHINETAAL programma is! U
+kunt het dus niet 'listen' op uw
+scherm, alleen 'downloaden' met behulp
+van een 'transparant' bestands
+overdrachts protocol, bv. Zmodem,
+Kermit of Telink.
+
+2) U bestelt het programma op diskette.
+Maak in dat geval f5,00 over op
+bankrekening nummer 49.00.12.205 ten
+name van A.J. van Donk, Meiland 30,
+3075 SJ Rotterdam, o.v.v. 'C-64
+Basicode diskette'. U krijgt de
+diskette dan thuisbezorgd over de post.
+Als u via uw eigen girorekening wilt
+bestellen, maak dan f5,00 over op
+girorekening nummer 3016 van AmRo Bank
+Rotterdam, t.g.v. A.J. van Donk
+Rotterdam, bankrek. nr. 49.00.12.205,
+ook weer o.v.v. 'C-64 Basicode
+diskette'. En vergeet niet uw VOLLEDIGE
+naam en adres te vermelden!
+
+TOELICHTING VERTAALPROGRAMMA
+
+Bij het nieuwe vertaalprogramma hoort
+ook een uitgebreide uitleg in de vorm
+van een 'nieuwsbrief'. Afgelopen
+maandag 10 december hebben we deze
+uitgezonden. Mocht u de toelichting
+niet (goed) ontvangen hebben, dan kunt
+u hem evenals het vertaalprogramma uit
+ons Fido-NOS BBS halen: zie file-gebied
+3. De file-naam is 'C64TOEL.BSC'. Op de
+eerder genoemde diskette is deze uitleg
+reeds opgenomen. Tot slot kunt u hem
+ook bij ons aanvragen: stuur een
+briefkaart naar Postbus 1200 in
+Hilversum o.v.v. 'Uitleg C-64'. U
+krijgt hem dan (op papier)
+thuisbezorgd.
+

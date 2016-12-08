@@ -1,0 +1,276 @@
+
+228, maa 08 mei '89
+
+BASICODE-MODEM
+
+In de Hobbyscoop uitzending van maandag
+17 april j.l. berichtten wij over een
+zogenaamd 'Basicode modem' dat is
+ontwikkeld door de ontwerp- afdeling
+van het elektronica- tijdschrift
+Elektuur (zie nr. 306, april 1989, pag.
+58-63). Elektuur was zo vriendelijk om
+ons van dit ontwerp een test-exemplaar
+ter beschikking te stellen, zodat we
+wat ervaring ermee konden opdoen.
+Daarvan volgt hier een (voorlopig)
+verslag. We beginnen echter met een
+terugblik op het 'waarom' en het 'hoe'.
+
+VANWAAR DIT ONTWERP?
+
+In de tijd dat Basicode ontstond (begin
+jaren '80), waren de meeste
+micro-computers voorzien van een
+aansluiting voor een cassetterecorder.
+Het was dus heel gemakkelijk om een
+Basicode programma dat je van de radio
+had opgenomen in de computer (bv. een
+Apple II of een C-64) in te lezen, nl.
+via de cassette-poort.
+Niet alle computers bleken echter over
+zo'n cassette-poort te beschikken,
+omdat met name de nieuwe computer-typen
+met een veel sneller geheugenopslag
+medium werden uitgerust (de
+disk-drive), dat de cassette
+aansluiting overbodig maakte.
+Het gevolg was dat onder andere de
+volgende computers niet met Basicode
+konden werken:
+- de Apple IIc, IIgs en de Macintosh
+serie
+- de Atari 520ST, 1040ST en de MEGA
+ST's
+- de Commodore Amiga 500, 1000 en 2000
+- de IBM PC, XT en AT reeks (inclusief
+alle kloons en compatibles)
+- de Acorn Archimedes (300 en 400
+serie)
+
+Voor de MS-DOS machines bestaat er een
+oplossing in de vorm van een stukje
+hardware (interface) dat op de
+parallelle printerpoort wordt
+aangesloten, in combinatie met speciaal
+hiertoe ontworpen software. Voor de
+overige hierboven genoemde computers
+was er tot nu toe niets dergelijks
+ontwikkeld.
+
+Al deze machines bezitten echter wel
+een seriele (RS232) poort, die vaak
+wordt gebruikt voor de aansturing van
+een muis of een modem. Deze laatste
+toepassing bracht de ontwerpers van
+Elektuur op een idee: waarom zou je
+niet, in plaats van een telefoon-modem,
+een cassetterecorder- modem kunnen
+maken?! Het principe blijft immers
+hetzelfde: er komen analoge
+(geluids)signalen binnen, die
+vervolgens worden vertaald in voor de
+computer begrijpelijke digitale
+informatie. Hiervoor zorgt de
+DEModulator. Omgekeerd kan de MOdulator
+digitale signaal-reeksen weer omzetten
+in analoge piepjes, die vervolgens over
+een telefoonlijn kunnen worden
+verzonden of op een cassette worden
+opgenomen.
+Dit is dus wat Elektuur deed: men
+ontwierp een MODEM voor Basicode, die
+UNIVERSEEL is, d.w.z. geschikt voor
+ELKE computer die is voorzien van een
+seriele (RS232) poort. Alle Apple's,
+Atari's, Amiga's enz. kunnen nu dus ook
+met Basicode 'meedoen'!
+
+BENODIGDE PROGRAMMATUUR (1)
+
+Omdat de hardware (de Basicode modem)
+de informatie kant en klaar aanbiedt,
+kan de benodigde software in principe
+zeer eenvoudig worden gehouden. Het is
+bv. zonder meer mogelijk om een
+Basicode programma met behulp van een
+communicatie- programma in te lezen. De
+instelling is dan als volgt: 1200 Baud
+(full duplex), 1 startbit, 8 databits,
+geen pariteitsbit en 2 stopbits. Omdat
+in Basicode het 8e databit altijd
+logisch 1 is, kunnen er problemen
+ontstaan bij het zichtbaar maken van de
+informatie, want ASCII tekens bestaan
+maar uit 7 bits. Vaak is het voldoende
+om de instelling te veranderen naar 7
+databits. Soms moet ook nog het
+pariteitsbit op logisch 1 (MARK) worden
+gezet.
+
+Een ander probleem dat zich kan
+voordoen, wordt veroorzaakt door het
+feit dat in Basicode een regel wordt
+afgesloten met alleen een CR-teken
+(Carriage Return). Veel computers
+verwachten daarnaast ook nog een
+LF-teken (Line Feed), dat ervoor moet
+zorgen dat de volgende tekst een regel
+lager wordt afgedrukt. Wanneer dit
+LF-teken ontbreekt, zal derhalve het
+hele Basicode programma op 1 regel
+verschijnen, en daardoor onleesbaar
+worden.
+Dit probleem kan in de meeste
+communicatie- programma's worden
+opgelost met behulp van een speciale
+instelling. Deze zorgt ervoor dat, zo
+gauw er een CR-teken wordt ontvangen,
+het programma zelf een LF-teken eraan
+toevoegt, zodat alle regels netjes
+onder elkaar verschijnen. Deze
+instelling wordt vaak aangeduid met de
+term 'AUTO LINE-FEED'.
+
+Om ervoor te zorgen dat het betreffende
+Basicode programma niet alleen op het
+beeldscherm wordt getoond, maar ook in
+het geheugen wordt opgeslagen, kan het
+beste een 'log buffer' of 'session
+buffer' worden geaktiveerd, zodat het
+ingelezen programma naderhand op schijf
+kan worden opgeslagen.
+Daarmee zijn we er echter nog niet:
+omdat er bij deze inlees-methode geen
+enkele fout- detectie plaatsvindt, zal
+het Basicode programma in de buffer
+vaak worden voorafgegaan en gevolgd
+door onzin-tekens (bv. afkomstig van
+stemgeluid of muziek). Daarom is het
+nodig om het programma te 'zuiveren'
+met behulp van een tekstverwerker. Op
+een MS-DOS machine kan bv. het
+programma 'EDLIN' worden gebruikt.
+
+We hebben nu dus een 'schoon' Basicode
+programma in de vorm van een ASCII-file
+op schijf staan. Kunnen we nu dit
+programma direct uitvoeren met behulp
+van een Basic- interpreter zoals bv.
+GW-Basic? Nee! Hiervoor zijn twee
+redenen: ten eerste zal het vaak nodig
+zijn om aan het programma extra spaties
+toe te voegen. De GW-Basic interpreter
+begrijpt bv. niets van het commando
+'GOSUB100'. Alleen bij 'GOSUB 100' gaat
+er een lichtje branden... Dit geldt
+eveneens voor Omikron Basic (op de
+Atari ST), en waarschijnlijk ook voor
+Amiga Basic. Daarom moeten bij deze
+Basic- interpreters de Basicode
+programma's worden voorbewerkt met een
+speciale spatie-toevoeg utility. Tot
+dusver is er alleen voor GW-Basic een
+dergelijke utility ontworpen. Deze is
+te vinden in de Fido-NOS databank (tel.
+035-45395), onder de naam
+'CONVERT.EXE'.
+Ten tweede geldt ook hier, zoals voor
+ELKE computer: het Basicode programma
+zal pas werken nadat de voor het
+betreffende Basic-dialect geldende
+Basicode SUBROUTINES (regels 0-999)
+eraan zijn toegevoegd! En voor bv.
+Omikron Basic moeten deze eerst nog
+worden ontworpen...
+
+BENODIGDE PROGRAMMATUUR (2)
+
+Tot zover de eerste inlees-methode: met
+behulp van een communicatie- programma.
+De tweede methode bestaat uit het
+rechtstreeks aanspreken, bv. vanuit
+Basic, van de seriele poort. In het
+april-nummer van Elektuur staan twee
+voorbeeld- programma's van dit type.
+Het eerste is bedoeld voor de Acorn BBC
+en Master computers, en het tweede voor
+MS-DOS machines. Overigens vindt in
+geen van beide inlees- programma's
+enige foutcontrole plaats. Voor de
+overige computers (Atari, Amiga,
+Macintosh, etc.) moet dit soort
+programma's nog worden ontwikkeld.
+
+PRAKTIJK-ERVARINGEN
+
+Het inlezen van een Basicode programma
+middels een communicatie- programma
+bleek goed te gaan op een MS-DOS
+machine, een Apple IIe, een Acorn
+Electron en een Atari 1040ST. Ook voor
+andere computers worden bij deze
+methode geen problemen verwacht. Het is
+echter een bewerkelijk proces, omdat er
+veel tussenstappen nodig zijn voordat
+men beschikt over een bruikbaar
+Basicode programma.
+
+Verder hebben we de voorbeeld-
+programma's uit Elektuur getest. Het
+programma voor de Acorn BBC bleek niet
+goed te werken op een Acorn Electron,
+omdat er tijdens het wegschrijven naar
+disk informatie wegvalt c.q. wordt
+verminkt in de RS232 buffer. Het
+inlees- programma in GW-Basic (voor de
+MS-DOS computers) bleek niet
+uitvoerbaar op een gewone PC of XT,
+omdat deze machines (onder
+geinterpreteerd Basic) te traag zijn,
+en de binnenkomende stroom informatie
+niet kunnen bijbenen. Waarschijnlijk
+heeft Elektuur het programma alleen
+uitgevoerd op een snelle (en dure!)
+AT-computer...
+
+Voor de Acorn Electron is inmiddels een
+goed werkende inlees-routine (in
+machinetaal) ontwikkeld, die het
+binnenkomende Basicode programma direct
+omzet naar BBC-Basic, zonder dat er
+iets naar disk wordt weggeschreven.
+Voor de PC's zal waarschijnlijk een
+speciaal programma in een hogere
+programmeertaal moeten worden
+geschreven (bv. Quick Basic, Pascal of
+C), dat daarna kan worden gecompileerd.
+
+CONCLUSIE
+
+In alle tests bleek de Basicode modem
+zeer betrouwbaar te zijn: er kan met
+een laag ingangs signaal worden
+volstaan (bv. de lijn- uitgang van het
+cassettedeck in de stereo-
+installatie), en er treden weinig
+leesfouten op. Ook het uitgangs signaal
+is zeer zuiver.
+Daartegenover staat echter dat de
+Basicode modem niet bepaald goedkoop
+is. De prijs- schatting van Elektuur
+(ca. f100 onderdelen) is ons inziens
+aan de lage kant. Men moet er al gauw
+zo'n f40 tot f50 bij optellen voor:
+kastje, netsnoer, zekeringhouder, RS232
+connector, en enkele andere zaken die
+Elektuur voor het gemak niet heeft
+meegerekend.
+
+Onze conclusie: de Basicode modem is
+een fraai ontwerp, dat helaas alleen de
+hardware-kant van het probleem oplost.
+De benodigde software moet dus
+grotendeels nog worden geschreven. Zou
+u ons daarbij behulpzaam willen zijn?!
+

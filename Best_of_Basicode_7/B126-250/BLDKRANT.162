@@ -1,0 +1,249 @@
+162, 21 aug '88
+
+UoSAT-OSCAR 11
+
+Het Digital Communications Experiment (DCE) in
+OSCAR 11 wordt steeds meer gebruikt voor het
+uitwisselen van packet radio berichten tussen
+packet netwerken in verschillende werelddelen.
+Het DCE-grondstation GB3UP in de University of
+Surrey kan nu packet radio berichten
+uitwisselen met ZL1AOX, VK5AGR, ZS6SAT en sinds
+kort ook met ZL5BA op Ross Island, Antarctica.
+Er wordt geprobeerd weer een DCE-grondstation
+in de USA aktief te krijgen. Een goede
+kandidaat is N6IIU in een hoofdkwartier van het
+Rode Kruis bij San Francisco. Mogelijk komt er
+ook een DCE-grondstation aan de oostkust van de
+USA, terwijl ook DB2OS een DCE-station aan het
+voorbereiden is. Binnenkort kunnen dus alle
+belangrijke packet netwerken in de wereld met
+elkaar worden verbonden via het DCE.
+
+Alle aktiviteiten in OSCAR 11 worden bestuurd
+door de Diary programmatuur in zijn
+boordcomputer. De UoSAT-Unit in Surrey is nu
+bezig met het testen van nieuwe Diary
+programmatuur, die geschreven is in de
+programmeertaal Forth. Deze nieuwe Forth
+Applied Diary 1 (FAD 1) zal later allerlei
+faciliteiten bieden, zoals geavanceerde
+stand-regel algoritmen, waarmee de stand van
+de satelliet nauwkeurig kan worden geregeld.
+
+FUJI-OSCAR 12
+
+Het gebruiksschema voor OSCAR 12 luidt voor de
+rest van augustus als volgt:
+mode JD van 25-8 0348 UTC tot 26-8 0457 UTC,
+mode JD van 27-8 0606 UTC tot 28-8 0511 UTC,
+mode JA van 30-8 0120 UTC tot 31-8 0228 UTC.
+Afwijkingen van dit schema zijn steeds
+mogelijk als gevolg van variaties in de
+beschikbare energie in de satelliet.
+
+RADIO SPOETNIKS
+
+Tijdens het eerste bezoek van een westerse
+amateur, Danny SM0NBJ, aan het RS kommando
+station RS3A in Moskou op 15 juli, bleek dat
+men daar al enige tijd geleden alle kontrole
+over RS5 en RS7 verloren had. Men is er van
+overtuigd dat de batterijen in die satellieten
+definitief defekt zijn geraakt. Er zijn dan
+ook al geruime tijd geen signalen meer
+ontvangen van deze satellieten. Daarmee zijn
+de laatste twee satellieten uit de serie RS3
+tot en met RS8 definitief buiten bedrijf.
+
+Bij een nauwkeurige bestudering van de
+baanparameters van RS5 bleek dat de baan van
+RS5 niet stabiel is. De mean motion van een
+satelliet neemt gewoonlijk geleidelijk toe.
+Dit is inderdaad ook het geval bij satellieten
+als RS7. Bij RS5 blijkt echter dat de mean
+motion soms over een periode van enkele
+maanden zelfs afneemt. Dit betekent dus dat
+deze satelliet dan tijdelijk naar een hogere
+baan gaat. De oorzaak voor deze
+baanveranderingen is niet duidelijk. Enkele
+Radio Spoetniks bevatten onder andere een
+hermetisch gesloten ruimte. Misschien is bij
+RS5 lucht aan het ontsnappen uit deze ruimte
+als gevolg van een klein lek. Door het roteren
+en tuimelen van de satelliet kan dit in
+bepaalde perioden een zekere stuwkracht
+veroorzaken, die de satelliet dan in een iets
+hogere baan brengt.
+
+KOSMOS 1861
+
+De navigatie satelliet KOSMOS 1861, die samen
+met RS10/11 in dezelfde satellietbehuizing is
+ondergebracht, wordt nu geregeld in bedrijf
+gesteld. De zender op 150 MHz veroorzaakt
+daarom weer storingen in de 2 meter uplink van
+mode A van RS11. Helaas moet men er rekening
+mee houden dat de navigatie satelliet nu vaker
+ingeschakeld gaat worden.
+
+De doorlaatband van elk van de RS10/11 relais
+stations kan in opdracht van een kommando
+station worden opgesplitst in sub-bandjes van
+4 kHz elk. Het voordeel is dat een sterk
+signaal binnen een van die sub-bandjes geen
+invloed heeft op alle andere sub-bandjes.
+Volgens UA3CR is er nu bij RS10/11 het probleem
+ontstaan dat het omschakelen tussen de normale
+toestand en de toestand, waarbij elk relais
+station is opgesplitst, spontaan gebeurt.
+Daarom zal men soms dus toch last ondervinden
+van een te sterk station elders in de
+doorlaatband van een relais.
+De bovenste trap van de raket, die KOSMOS
+1861 en RS10/11 heeft gelanceerd, is onlangs
+in een andere baan gemanoeuvreerd.
+
+PLANNEN MET RADIO SPOETNIKS
+
+Leonid, UA3CR, gaf tijdens het Amateursatelliet
+Colloquium in Surrey enige nadere informatie
+over de plannen voor toekomstige Radio
+Spoetniks. Op dit moment wordt gewerkt aan de
+bouw van de RS12/13 systemen, die veel moeten
+lijken op de huidige RS10/11 systemen. De
+nieuwe RS12/13 zullen weer mode A, K en T
+relais stations bevatten, hoewel mode T niet
+zo vaak in bedrijf zal zijn. Verder zullen ze
+betere telemetrie systemen bevatten en een
+groter uitgangsvermogen hebben: 5 tot 8 W.
+De lineaire relais stations kunnen weer worden
+opgesplitst in segmenten van elk 4 kHz. Per
+segment is dan een vermogen beschikbaar van
+500 mW in plaats van 300 mW, zoals bij RS10/11.
+De RS12/13 systemen zullen weer in een
+navigatie satelliet worden ingebouwd. De
+lancering is in de loop van 1989 te verwachten.
+Dit is echter afhankelijk van de levensduur
+van de navigatie satelliet KOSMOS 1861, die de
+huidige RS10/11 huisvest. De nieuwe navigatie
+satelliet, met RS12/13, zal pas worden
+gelanceerd als KOSMOS 1861 uitgewerkt is.
+
+Een tweede satelliet systeem, dat nu ontwikkeld
+wordt, is een Radio Spoetnik met een mode B
+relais en mogelijk ook een mode J relais. Ook
+dit systeem wordt in een andere satelliet
+ingebouwd. Deze satelliet zou in 1991 moeten
+worden gelanceerd in een polaire baan op een
+hoogte van 1000 km.
+
+Een derde plan voor een Radio Spoetnik is een
+internationaal samenwerkings projekt in Oost
+Europa, waarbij de modules van het nieuwe
+satelliet systeem in verschillende landen
+worden gebouwd. Men denkt aan mode J, mode L
+en digitale relais stations. Het systeem zou
+weer in een andere satelliet moeten worden
+ingebouwd, bijvoorbeeld een Molniya. De
+betrokken landen zijn: de USSR, Hongarije,
+Tsjecho-Slowakije, Bulgarije en Oost-Duitsland.
+Men verwacht echter niet dat dit plan snel
+gerealiseerd kan worden. (Deze satelliet info
+werd weer voor ons verzrgd door PA0DLO).
+
+BOEKBESPREKING
+
+Chris van den Berg, onze expert op het gebied
+van Russische ruimtevaart, schreef een
+recensie van het volgende boek:
+
+ARTIS IN DE RUIMTE, Henk Nieuwenhuis, uitg.
+van Wijnen, Franeker.
+
+Een op het oog bescheiden paperbackje met een
+titel, die niet helemaal de lading lijkt te
+dekken, maar die lading is alleszins de
+moeite waard.
+Het behandelt in kort bestek, maar goed
+gedocumenteerd en logisch gerangschikt, een
+wel zeer essentieel onderdeel van het ruimte
+onderzoek, n.l. proeven in ruimtevluchten met
+dieren, planten en andere levende organismen.
+Het begint al in het prille begin van de
+ruimtevaart en gaat door tot bijna de dag van
+vandaag (MIR en het daar aan boord zijnde
+'Tsvetoblok' worden zelfs genoemd). Het boekje
+verdient het verschillende interessegroepen
+te bereiken: niet alleen de ruimtevaart
+deskundigen en fans, maar ook biologen,
+dierenvrienden, zelfs onder hen diegenen, die
+tegen proeven met dieren zijn.
+
+MISNOEGEN
+
+De auteur geeft blijk van zijn misnoegen over
+de wijze waarop dieren in de beginperiode
+werden misbruikt en opgeofferd, om vervolgens
+te constateren, dat het na een aantal jaren
+ook op een aanvaarde manier bleek te kunnen.
+Toch slaagde hij er ook in om aan te tonen,
+dat zonder het geklungel met allerlei
+zoogdieren in het begin de huidige bemande
+ruimtevaart onmogelijk zou zijn.
+Dit natuurlijk voornamelijk door de opgedane
+bio-medische ervaringen, maar ook door het al
+in het begin met behulp van dieren beproeven
+van de nodige technische voorzieningen om de
+normale levensfuncties zo goed mogelijk door
+te laten gaan. Reeds bij de honden, die met
+de Kosmos 110 de ruimte ingingen werden
+luchtverversings systemen en opvang mechanismen
+voor afvalstoffen beproefd, die een enorme rol
+spelen in het dagelijks leven van de
+cosmonauten van nu.
+Hij bepleit een zo groot mogelijke
+internationale samenwerking op dit gebied,
+omdat dit het aantal noodzakelijke
+ruimtevluchten met dieren zou kunnen beperken.
+Ook wordt in het boekje -zij het wat minder
+gedetailleerd- aandacht besteed aan allerlei
+proeven met planten in gewichtloze toestand.
+
+BOEKJE IS GOED LEESBAAR
+
+Het boekje is vlot te lezen, barrieres in de
+vorm van moeilijke formules en theorieen
+ontbreken en ook voorkomt de auteur uit te
+glijden op terreinen, die buiten zijn
+vakgebied liggen (zoals de communicatie
+aspecten en telemetrie).
+
+De auteur heeft gezorgd voor een evenwichtige
+verdeling van aandacht voor Amerikaanse en
+Russische prestaties. Er zijn al teveel
+publicaties waarin deze ontbreekt en alleen
+de ruimtevaart van het Westelijk halfrond
+aandacht krijgt. De aandacht, die hij even
+besteedt aan de bemande ruimtevaart der Russen,
+zoals deze thans dagelijks boven onze hoofden
+plaatsvindt, licht een tipje op van de sluier,
+die dat in ons land pleegt te bedekken.
+
+Het boekje is rijk geillustreerd met duidelijke
+zwart-wit foto's. Mocht er nog eens een
+volgende druk komen, dan moet de auteur de
+Russische bronnen in de literatuurlijst wel
+even beter laten translitereren. Nokorehne
+Kocmoca, Mockba, staat niet erg prettig als
+het 'Pokoreniye Kosmosa', Moskva, moet zijn.
+Maar ja, een kniesoor die op zulke dingen let!
+De titel zou misschien iets anders hebben
+gekund, al is het feit, dat er in Artis thans
+een Planetarium is, waar een ruimtevaart
+deskundige directeur van is, mogelijk een
+aardige opstap voor een -naar te hopen valt-
+ruime verspreiding van dit boekje onder zoveel
+mogelijk belangstellenden. De prijs, F.17,50,
+hoeft daarvoor geen belemmering te zijn.
+(Bedankt, Chris!)

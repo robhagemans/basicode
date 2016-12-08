@@ -1,0 +1,301 @@
+132, zon 13 mrt '88
+
+BASICODE EN BASICCOMPILERS OP EEN PC
+
+Voor een gedegen overzicht van Basic- compilers
+voor gebruik op een PC verwijzen we naar de
+artikelen in PC WORLD (1987/nr.6) en in HCCN
+(Nr.97, Okt. 1987). In dit aanvullende
+artikeltje gaat het over de toepassing van een
+Basiccompiler bij Basicode programma's en de te
+verwachten snelheids verbetering, met
+zijdelings ook een opmerking over de reken
+nauwkeurigheid.
+
+VOORBEWERKING
+
+In elk geval gaat het over Basicode programma's
+die reeds goed uitgeprobeerd zijn op een PC en
+daarop foutloos blijken te lopen. De 'on error
+goto' routine in regel 23 is dan overbodig
+geworden en kan worden verwijderd, inclusief de
+daarbij horende regels 900 - 989. Ook moet er
+een reden zijn om de programma's te
+compileren. In het algemeen zal dit de behoefte
+zijn om snelheidswinst te verkrijgen. Een
+voorbeeld vormen de programma's 'EMUF' en
+'SATELLIETBANEN'. Een DIM statement, die niet
+aan het begin van het programma staat, kan bij
+het compileren problemen opleveren. Indien dat
+het geval is, verplaats die opdracht dan naar
+bijvoorbeeld regel 5. Men kan echter rustig
+wachten op een foutmelding van de compiler. Het
+kan meevallen.
+
+DE KEUZE VAN EEN COMPILER
+
+Als men reeds over een goede Basic- compiler
+beschikt, is dit geen vraag meer. Maar indien
+er nog een compiler moet worden aangeschaft,
+kan wat nu volgt wellicht in overweging worden
+genomen. In de boven aangehaalde artikelen
+wordt veel vermeld over Turbobasic en
+Quickbasic, maar enkele aspecten bleven
+onvermeld. Allereerst de reken nauwkeurigheid.
+In HCCN 68 (feb 1985) gevolgd door reakties in
+HCCN 71 (mei 1985) wordt door Rob Geutskens een
+test beschreven waarmede men een indruk kan
+krijgen over de reken nauwkeurigheid van een
+computer(taal). Ondanks de naderhand
+gepubliceerde commentaren, blijf ook ik
+volhouden, dat de door Rob beschreven methode,
+die door hem in Scientific American van april
+1984 is aangetroffen, een goede indruk geeft
+van de grenzen die de computer stelt aan het
+werken met decimale breuken.
+
+HET TESTPROGRAMMA
+
+Tik het nu volgende programma in (de # staat
+voor 'dubbele precisie'):
+10 A#=1.0000001#
+20 FOR I= 1 TO 27
+30 A#=A#*A#
+40 NEXT I
+50 PRINT A#
+60 PRINT A# - 674530.4707410#
+70 END
+en RUN het. In regel 60 wordt het verschil
+berekend tussen de uitkomst, die de computer
+geeft en wat het werkelijk moet zijn (tot 7
+decimalen achter de komma).
+
+DE TESTRESULTATEN
+
+Op een PC kregen we de volgende uitkomsten:
+In GWBASIC: verschil 0.000129...
+In QUICKBASIC V2.01: hetzelfde (!)
+In QUICKBASIC V4.0 en TURBOBASIC V1.0:
+verschil 0.00478..., dus aanzienlijk meer. We
+werkten zonder extra rekenchip in de computer.
+Er kwam nog een verschil aan het licht tussen
+GWBASIC en QUICKBASIC enerzijds en TURBOBASIC
+anderzijds: bij het afronden van getallen
+achter de komma, die op een 5 eindigen, ronden
+de eersten (normaal) naar boven af en
+TURBOBASIC naar beneden. Dit laatste kan soms
+tot verschillen in uitkomsten leiden tussen het
+programma in Basic of in gecompileerde vorm.
+
+DE SNELHEIDSWINST
+
+Het gaat er natuurlijk om, dat het
+gecompileerde programma aanzienlijk sneller
+loopt dan het niet gecompileerde programma. Het
+verrassende is nu, dat QUICKBASIC V2.01 het
+hier overtuigend wint. We compileerden het
+programma 'EMUF 1.7+'. De snelheidswinst ten
+opzichte van het oorspronkelijke Basicprogramma
+bleek hierbij ruim zevenmaal te zijn, terwijl
+QUICKBASIC V4.0 en TURBOBASIC hier slechts een
+faktor twee sneller waren dan Basic. Ook het
+programma over de berekening van satellietbanen
+leverde vergelijkbare resultaten op.
+
+CONCLUSIE
+
+Voor PC's zonder rekenchip verkiezen we voor
+het versnellen van in Basicode geschreven
+programma's QUICKBASIC V2.01 boven V4.0 of
+TURBOBASIC. Voor andere toepassingen, zoals het
+programmeren in een 'uitgebreidere' Basic,
+geldt dit niet, maar daarover kunt u lezen in
+de eerder genoemde artikelen. (met dank aan
+Pieter Vijlbrief).
+
+WIJZIGING PROGRAMMA 'HYPOTHEEK'
+
+Enige tijd geleden zonden we het Basicode
+programma 'Hypotheek' van Gert Hardeman uit
+Meppel uit. Arwin Vosselman uit Mijdrecht
+ontdekte echter dat het programma niet
+dezelfde bedragen gaf als zijn bank, en
+evenmin de bedragen die hij op zijn
+zakrekenmachine berekende. De oorzaak daarvan
+ligt volgens hem in het niet afronden op hele
+centen, en de volgorde van berekening. Met de
+volgende wijziging kreeg hij wel de juiste
+bedragen:
+
+1410 TB=P/TJ/(1-(1+P/TJ)^-TT)*HS:
+TB=(INT(TB*100+.5))/100
+1890 REM RB = rentebedrag
+1900 RB=SC*P/TJ: RB=(INT(RB*100+.5))/100
+1910 REM AB = aflossingsbedrag
+1920 AB=TB-RB: RD=RD+RB: AD=AD+AB: NO=NO+1:
+SC=SC-AB
+2330 RB=SC*P/TJ: RB=(INT(RB*100+.5))/100
+2340 AB=TB-RB
+
+KNIPPERENDE CURSOR VOOR C-16
+
+In Beeldkrant 126 van zondag 7 februari werd
+een methode aangegeven om bij de Commodore
+C-64 (en 128) te beschikken over een
+knipperende cursor. Volgens Arwin Vosselman
+kan dit bij de C-16 ook, als volgt:
+
+210 OS=40*PEEK(205)+POS(0): OI=INT(OS/256):
+POKE 65292,OI: POKE 65293,OS-256*OI
+211 POKE 239,0: POKE 1373,0:GETKEY IN$
+212 POKE 65292,3: POKE 65293,255: RETURN
+
+Bovenstaande routines vervangen dus
+subroutine 210. Bedankt, Arwin!
+
+OSBORNE GEBRUIKERSGROEP
+
+De Onafhankelijke Gebruikers Groep voor
+Osborne en Compatible Computers, kortweg
+'OGG voor OCC', is voortgekomen uit de 5 jaar
+geleden opgerichte Osborne Gebruikers Groep.
+De Osborne was de eerste draagbare computer
+die op de markt kwam, met standaard een
+uitvoerig pakket professionele software
+toegevoegd.
+De oorspronkelijke leden waren vooral de meer
+zakelijke gebruikers van software pakketten
+als Wordstar, Supercalc, Mbasic, Cbasic,
+Dbase2 en andere programma's die onder CP/M
+draaien.
+
+Veel van hun Osbornes, maar ook Bondwells,
+Kaypros, Zorbas etc. zijn in de loop der jaren
+op de tweedehands markt terecht gekomen,
+waardoor de interesse-groep wat gewijzigd is.
+
+Omdat het kortgeleden vernieuwde bestuur van
+de OGG deze gebruikers niet allemaal kent, wil
+het graag de huidige gebruikers van deze 2e tot
+10e hands computers benaderen en motiveren om
+op de komende gebruikers bijeenkomst, die op
+woensdag 30 maart gehouden wordt, eens kennis
+te komen maken.
+
+Het zwaartepunt van deze avond zal, naast het
+leren gebruiken van de standaard programmatuur,
+sterk liggen op het demonstreren en toelichten
+van CP/M utilities als DDT, ASM, SuperZap, DUU
+en aanverwante programma's. Deze programma's
+zijn veelal zeer bruikbaar om onvoorziene
+fouttoestanden op te lossen. Tevens komen
+hardware uitbreidingen van onder meer de
+Osborne OS1 en Executive aan de orde.
+
+Er is binnen de OGG veel kennis over alle
+mogelijke CP/M programmatuur, hardware
+aanpassingen etc. aanwezig, en men beschikt
+over een ruim gesorteerde diskette
+programmatheek waarbinnen de leden -tegen
+een geringe vergoeding- een keus kunnen
+maken. Ook m.b.t. de problemen van de
+overgang van CP/M naar MS-DOS en vice versa
+is veel kennis aanwezig.
+Voor spoed-problemen staat 24 uur per dag
+een telefonische 'Hotline' ter beschikking
+van de leden. Verder wordt er eens per twee
+maanden een 'DraagComputer Bulletin'
+over CP/M uitgegeven.
+
+Meer informatie is verkrijgbaar bij de
+administratie van de OGG, p/a Wim van
+Ommeren, Elzensingel 18, 4231 DN Meerkerk,
+tel. 01837-1703.
+
+COMMUNICATIEMIDDEL SLECHTHORENDEN
+
+Tijdens het derde Internationale
+Dovencongres dat onlangs werd gehouden,
+vond de introductie plaats van een
+nieuw communicatiemiddel voor
+slechthorenden. Er kan in gewijzigde vorm
+gebruik worden gemaakt van het Fido
+net, het elektronisch bulletinboard syteem
+van de Hobby Computer Club in Houten.
+Holland Computer Import, een Rotterdams
+computerbedrijf, heeft 4 complete systemen
+ter beschikking gesteld die als knooppunt
+zullen gaan dienen. Deze zijn speciaal
+gericht op auditief gehandicapten. De HCC
+zal de systemen voor de dovenraad beheren
+en voor hen een speciale gebruikersgroep
+oprichten. Ons land heeft op dit moment
+zo'n 400.000 mensen met een gehoorprobleem.
+
+COMPUTERBEURZEN AGENDA
+
+De komende maanden worden er een groot
+aantal computerbeurzen gehouden.
+Wij geven U hiervan een overzicht om
+in de agende te noteren.
+
+UTRECHT
+
+Van 14 tot en met 19 maart Technologiebeurs
+
+SCHIEDAM
+
+Op 2, 3 en 4 april a.s. in de Margriethal
+in Schiedam de microcomputerbeurs SHIFT'88.
+Openingstijden:2 april- 10.00-18.00 uur,
+               3 april- 11.00-17.00 uur,
+               4 april- 10.00-17.00 uur.
+Toegangsprijs f 7,50 per persoon.
+Inlichtingen: 010 - 4708434 of 4705940.
+
+MAASTRICHT
+
+8-10 april 1988 - Mens en Computer
+in het nieuwe MECC centrum in Maastricht.
+Openingstijden: 8 april- 10.00-22.00 uur
+                zaterdag 9 april en zondag
+                10 april- 10.00-18.00 uur.
+Toegangsprijs f 7,50 p.p. Inl. 043 - 216666.
+
+EINDHOVEN
+
+De Brabantse Computerbeurs Eindhoven'88
+10 en 11 mei Automatiserings vakbeurs
+geopend: dinsdag 10 mei- 14.00-22.00 uur
+        woensdag 11 mei- 10.00-18.00 uur
+
+Algemene Computerbeurs
+geopend: vrijdag 13 mei 14.00-22.00 uur
+        zaterdag 14 mei 10.00-18.00 uur
+Beide beurzen worden gehouden in de
+Evenementenhal, Frederiklaan in Eindhoven.
+Inl. 040 - 535269.
+
+UTRECHT
+
+In de Utrechtse Jaarbeurs de PCM Show, van
+25 tot en met 28 mei 1988.
+Openingstijden:
+woensdag  25 mei 10.00 - 17.00 uur
+donderdag 26 mei 10.00 - 21.00 uur
+vrijdag   27 mei 10.00 - 17.00 uur
+zaterdag  28 mei 10.00 - 17.00 uur
+
+AMSTERDAM
+
+Firato 88, van vrijdag 26 augustus t/m
+zondag 4 september in de Amsterdamse RAI.
+Openingstijden: op weekdagen van
+10.00 - 17.00 uur en van 19.00 - 22.00 uur.
+In de weekenden van 10.00 - 17.00 uur.
+Toegangsprijs: f 15.-- p.p., jongeren van
+4 t/m 11 jaar, en houders van een 65 plus
+pas f12,50 p.p.
+Op woensdag 24 en donderdag 25 augustus
+is de Firato uitsluitend geopend voor
+de vakhandel.

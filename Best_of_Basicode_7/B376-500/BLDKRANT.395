@@ -1,0 +1,321 @@
+395, maa 18 mrt '91
+
+BEGRIPPEN UIT DE RADIO-TECHNIEK (2)
+
+In Beeldkrant 365 van maandag 26
+november 1990 publiceerden we het
+eerste deel van de serie 'Begrippen uit
+de radio-techniek', samengesteld door
+zendamateur Jan van der Meij (PA0JMY).
+In deel 1 zijn de begrippen behandeld
+die betrekking hebben op de ontvanger
+parameters. In dit tweede deel worden
+de zender parameters behandeld.
+
+ZENDVERMOGEN
+
+Onder zendvermogen verstaan we het
+uitgezonden vermogen van een zender.
+Wanneer we te maken hebben met een
+draaggolf en niet meer dan dat (zoals
+bij een FM gemoduleerd of een niet
+gemoduleerd signaal) is het
+zendvermogen eenvoudig met een
+hoog-frequent vermogensmeter te meten.
+Bij het gebruik van een goede of zeer
+goede professionele vermogensmeter zal
+het zendvermogen met een nauwkeurigheid
+van circa 5 procent kunnen worden
+bepaald.
+
+Anders is het, wanneer we het
+zendvermogen willen meten bij een
+zender waarvan het vermogen niet
+constant is, zoals bij enkelzijband
+zenders en in amplitude gemoduleerde
+zenders. Een hoogfrequent
+vermogensmeter is niet snel genoeg om
+de modulatie te kunnen volgen. Om deze
+signalen te meten wordt gebruik gemaakt
+van een vaste modulatiediepte (bij AM)
+en een vaste dubbeltoon (bij SSB). De
+toonfrequenties van de dubbeltoon
+bedragen 1200 en 1500 Hz. Er wordt nu
+aangenomen dat het gemeten, gemiddelde
+vermogen het zendvermogen is. Het PEP
+vermogen (Peak Envelop Power) is vier
+maal zo hoog.
+
+Meestal wordt het zendvermogen
+uitgedrukt in Watt. Een andere
+grootheid om vermogen uit te drukken is
+dBm, waarbij in dit geval 0 dBm gelijk
+is aan 1 milliWatt in 50 Ohm (komt
+overeen met 224 mV in 50 Ohm). Bij een
+met spraak gemoduleerde zender zal bij
+AM en SSB modulatie het gemeten
+vermogen veranderen bij spraak, bij FM
+gemoduleerde signalen is de amplitude
+van het hoogfrequent signaal
+onafhankelijk van de spraak en de
+vermogensmeter zal een constant
+vermogen aanwijzen, onafhankelijk van
+de spraak.
+
+ZIJBANDRUIS
+
+Zijbandruis is een door de zender
+uitgezonden, meestal ongewenst produkt.
+Zijbandruis is tot op grote afstand van
+de draaggolf meetbaar en vooral in
+systemen waar meerdere zenders en
+ontvangers zijn opgesteld kan
+zijbandruis hinderlijk zijn.
+
+Normaal gesproken zal zijbandruis
+minimaal 80 dB onder het niveau van de
+draaggolf liggen en daarom is het een
+moeilijk te meten fenomeen. Alleen met
+speciale filters, waarmee de draaggolf
+wordt onderdrukt, kan zijbandruis
+worden gemeten. In duplex systemen
+waarbij een zender en een ontvanger op
+een antenne worden aangesloten is het
+noodzakelijk om de zijbandruis
+component, aanwezig op de ontvangst
+frequentie, in de lijn tussen zender en
+antenne uit te filteren. Daar in duplex
+systemen de ontvangst- en
+zendfrequentie dicht bij elkaar liggen,
+worden er hoge eisen gesteld aan de
+kwaliteit van het duplex filter.
+
+MODULATIE
+
+In de 'normale' telecommunicatie wordt
+spraak op een draaggolf gemoduleerd. De
+meest voorkomende vorm van modulatie is
+FM. Deze modulatievorm wordt gebruikt
+bij spraak communicatie op de VHF en
+UHF banden alsmede in een breedband
+toepassing voor omroep (radio). Bij FM
+(Frequentie Modulatie) wordt de
+draaggolf een beetje in frequentie
+gevarieerd. De frequentie waarin wordt
+gevarieerd is de audiofrequentie en de
+mate van varieren wordt deviatie ofwel
+zwaai genoemd. Men kan zeggen, dat de
+deviatie recht evenredig is met de
+amplitude van het laagfrequent signaal.
+Bij smalband signalen (voor
+spraaktoepassing met mobilofoons en
+portofoons) bedraagt de deviatie
+nominaal circa 3 kHz en voor breedband
+signalen (omroep) bedraagt de deviatie
+circa 75 Khz.
+
+Deviatie kan worden gemeten met een
+speciale meetontvanger. Omdat de
+deviatie recht evenredig is met de
+amplitude van het laagfrequent signaal
+kan men eenvoudig door het meten van de
+amplitude van het in de meetontvanger
+gedemoduleerde signaal de deviatie
+bepalen. Van de meetontvanger moet het
+amplitude gedrag over de gehele
+laagfrequent band bekend zijn. Vaak
+wordt gewerkt met pre-emphasis in de
+zender. Dat wil zeggen, dat de deviatie
+oploopt bij oplopende frequentie. De
+deviatie is dan niet alleen meer
+afhankelijk van de amplitude van het
+laagfrequent signaal maar ook van de
+frequentie van dit signaal.
+Pre-emphasis wordt toegepast om vooral
+in het bereik van de hoge tonen de
+signaal/ruis verhouding te verbeteren.
+Bij breedband toepassing wordt een
+pre-emphasis aangehouden van 750 usec.
+Dat wil zeggen, dat het oplopen van
+deviatie pas begint bij een frequentie
+van 1333 Hz (750 usec periodetijd komt
+overeen met een frequentie van 1333
+Hz). Onder deze frequentie is het
+deviatiegedrag recht en dus uitsluitend
+afhankelijk van de amplitude van het
+laagfrequent signaal. In de ontvanger
+wordt de pre-emphasis weer gecorrigeerd
+om uiteindelijk op de luidspreker
+uitgang van de ontvanger weer een
+rechte frequentie karakteristiek te
+hebben.
+
+Een andere vorm van modulatie is AM
+ofwel Amplitude Modulatie (ook wel
+Antieke Modulatie genoemd). AM wordt
+vrijwel alleen nog gebruikt door de
+omroep in de middengolf- en kortegolf-
+banden. Bij AM wordt de draaggolf in
+amplitude gemoduleerd met het
+laagfrequent signaal, met andere
+woorden: het niveau van de draaggolf
+wordt groter en kleiner onder invloed
+van het laagfrequent signaal. Bij AM is
+door de variatie in de draaggolf
+amplitude de signaal/ruis verhouding
+ongunstiger dan bij FM.
+
+VERMOGEN IN HET NEVENKANAAL
+
+Wanneer een zender gemoduleerd is, zal
+de bandbreedte afhankelijk zijn van de
+amplitude en de frequentie van het
+laagfrequent signaal. Het is
+noodzakelijk om eisen te stellen aan de
+modulatie produkten die buiten de
+bandbreedte vallen van het kanaal
+waarin de zender werkt. De minimale
+onderdrukking van het vermogen in het
+nevenkanaal dient 70 dB te bedragen.
+Meten van deze parameter is mogelijk
+met een ontvanger, waarbij het
+middenfrequent filter aanzienlijk beter
+moet zijn dan de te meten waarde.
+Meestal zal een nevenkanaal
+vermogensmeter onderdeel zijn van een
+mobilofoon meetplaats.
+
+ZENDER INTERMODULATIE
+
+Zender intermodulatie is een begrip dat
+in de laatste jaren een steeds
+belangrijkere rol is gaan spelen. We
+kunnen vanaf de antenne uitgang van een
+zender een signaal terugsturen in de
+zender eindtrap, en daar ontstaat een
+intermodulatie produkt met het
+draaggolf signaal. Dat intermodulatie
+produkt wordt vervolgens weer
+uitgezonden. De intermodulatie
+onderdrukking van een zender dient ten
+minste 20 dB te bedragen. Natuurlijk
+zijn de signalen die worden
+teruggestuurd vanaf de antenne uitgang
+maar klein. De gevoeligheid van een
+ontvanger is dat echter ook. Bij vast
+opgestelde apparatuur, zeker wanneer er
+meerdere zenders op een lokatie of
+zelfs op een antenne staan, is er de
+mogelijkheid om met behulp van
+circulatoren of isolatoren de demping
+richting zendereindtrap te vergroten om
+zo de intermodulatie onderdrukking te
+vergroten. Bij mobiele apparatuur en
+vooral portofoons is het door de
+afmetingen van circulatoren niet
+mogelijk deze in te bouwen.
+
+Het effect van zender intermodulatie is
+identiek aan dat van ontvanger
+intermodulatie: men hoort signalen die
+er in werkelijkheid niet zijn. Vooral
+op plaatsen waar men dicht in de buurt
+komt van de vast opgestelde stations
+zal zender intermodulatie optreden.
+Meten van zender intermodulatie is
+alleen mogelijk met een vermogens
+meetzender, waarmee een gedefinieerd
+signaal kan worden gegenereerd dat
+wordt geinjecteerd op de zender
+eindtrap. Met een spectrum analyzer kan
+men dan de intermodulatie produkten
+meten.
+
+SWR
+
+Het begrip Staande Golf Verhouding
+(SGV), ook wel Standing Wave Ratio
+(SWR) genoemd, is een moeilijk te
+bevatten begrip. De SWR heeft iets te
+maken met een niet aangepaste zender
+(of ontvanger) aan een antenne. SWR is
+het eenvoudigst te meten bij de zender.
+Er zijn in de handel kant en klare SWR
+meters te koop.
+
+Wanneer van een zender de uitgangs
+impedantie niet geheel gelijk is aan de
+impedantie van de antenne of de
+antennekabel, zal er onderweg vermogen
+worden gereflecteerd. Dit
+gereflecteerde vermogen zal op de ene
+plaats op de kabel meewerken met het
+uitgaande vermogen en op andere
+plaatsen wordt er tegengewerkt. Het is
+mogelijk om de maximale spanning, waar
+de vermogens met elkaar samenwerken, en
+de minimale spanning, waar de heen en
+teruggaande vermogens elkaar
+tegenwerken, te bepalen. De SWR is dan
+de maximale spanning gedeeld door de
+minimale spanning. Als er geen vermogen
+wordt gereflecteerd, zal er geen
+tegenwerkend vermogen zijn. De maximale
+spanning is dan gelijk aan de minimale
+spanning en de SWR is dan 1. Omdat de
+minimale spanning uiteraard nooit
+groter kan zijn dan de maximale
+spanning, kan de SWR niet kleiner zijn
+dan 1.
+
+Wanneer we de SWR meten met een SWR
+meter gaan we ervan uit, dat de
+uitgangs impedantie van de zender
+keurig 50 Ohm zal zijn. Ook gaan we
+ervan uit, dat de impedantie van de
+antennekabel in orde zal zijn, zodat we
+met zekerheid weten, dat het retour
+vermogen door de antenne gereflecteerd
+moet zijn. Niets is minder waar! Door
+afwijkingen in de gebruikte
+connectoren, matige kwaliteit van de
+kabels en niet in de laatste plaats de
+SWR meter zelf, meten we niet de juiste
+SWR. Het zal vaak zo zijn, dat de
+antenne beter is dan de meetapparatuur.
+
+Een belangrijke meetfout bij SWR
+metingen wordt veroorzaakt door demping
+van de antennekabel. Als we aannemen,
+dat de antenne het 'slechte' element in
+de installatie is en de demping van de
+coaxkabel is 3 dB, dan is het
+gereflecteerde vermogen dat we meten,
+aan de antennezijde 2 maal zo hoog (3
+dB). Omdat de demping van de kabel 3 dB
+bedraagt, is het vermogen dat bij de
+antenne aankomt ook al 3 dB kleiner dan
+het vermogen dat aan het begin van de
+kabel wordt aangeboden (3 dB is de
+helft van het vermogen). Het deel dat
+wordt gereflecteerd wordt weer 3 dB
+verzwakt voor we het kunnen meten. We
+kunnen dus zeggen, dat het absolute
+gemeten gereflecteerde vermogen
+eigenlijk 6 dB groter is (dus een
+factor 4). We weten, dat bij een SWR
+van 3 het gereflecteerde vermogen 25%
+bedraagt van het uitgezonden vermogen.
+Dat wil zeggen dat, indien de demping
+van een antennekabel 3 dB bedraagt, de
+SWR nooit slechter zal worden dan 3,
+onafhankelijk of een antenne is
+aangesloten of niet!! Bij relatief lage
+frequenties (kortegolf banden) is de
+demping van coaxkabels vrij klein. Bij
+hogere frequenties moet men al snel
+rekening houden met dempingen van
+antennekabels.
+
+Wordt vervolgd. (Bedankt, Jan!)
+

@@ -1,0 +1,259 @@
+86, zon 23 aug '87
+
+VERSCHILLEN IN ASCII
+
+Er bestaat nogal wat verwarring over de
+interpretatie van de ASCII-tabel. Dat komt
+omdat de fabrikanten daarin geen eenheid
+hebben geschapen bij het ontwerpen van hun
+computers. Thijs Timmerman rafelt de zaak
+in twee uitvoerige afleveringen uiteen.
+Hierbij het eerste deel van zijn speurocht:
+
+ASCII staat voor American Standard Code for
+Information Interchange. Deze standaard
+specificeert welk 'visuele' teken
+correspondeert met welke 'binaire' combinatie
+van - in principe - 7 bits. Met 7 bits zijn
+(2^7) 128 combinaties mogelijk. De ASCII
+'loopt' dus in principe van 0 tot en met 127.
+Nu worden deze codes meestal opgeslagen in een
+geheugen wat 8 bits 'breed' is. Het ligt dus
+voor de hand om de ASCII-codes uit te breiden
+naar 8 bits. Dit betekent een verdubbeling van
+het aantal mogelijkheden. En daar begint de
+ellende. Omdat de codes 'boven' de 127 niet
+gedefineerd waren, heeft vrijwel iedere fabrikant
+deze zelf gedefineerd.
+Bij een computer als de Exidy Sorcerer zitten
+daar allerlei fraaie graphics, bij een Spectrum
+verschijnen de basic-keywords, een (oude) Apple
+II herhaalt nog eens de codes van 0-127 (negeert
+het 8e en tevens hoogste bit). En bij de
+Commodore's (VIC-20, C-64, C-16, +4 en C-128)
+zit het weer anders :
+
+ Code    Hex   Char. set 1      Char. set 0      ASCII
+
+0 000-031 00-1F Control I      } Control I      } Control
+1 031-063 20-3F Dienst         } Dienst         } Dienst
+2 064-095 40-5F Kleine letters } Hoofd letters  } Hoofd  letters
+3 096-127 60-7F Hoofd  letters } Shift Graphics } Kleine letters
+4 128-159 80-9F Control II     } Control II     } -
+5 160-191 A0-BF C= Graphics    } C= Graphics    } -
+6 192-223 C0-DF Hoofd  letters } Shift Graphics } -
+7 224-255 E0-FF C= Graphics    } C= Graphics    } -
+
+Bij het opstarten van de Commodore is Char.
+set 0 actief. Omschakelen naar set 1 kan
+gebeuren door het gelijktijdig indrukken van
+'C=' en 'Shift' of door het geven van 'CHR$(14)'
+wat gelijk is aan CTRL-N. Met 'CHR$(8)' of
+CTRL-H kan deze set (of set 0) zodanig worden
+'gelocked' dat 'C= Shift' geen effect meer
+heeft. Met 'CHR$(9)' of CTRL-I wordt dit weer
+opgeheven.
+
+NOS BASICODE EN HET VERTAALPROGRAMMA
+
+Het NOS-Basicode 'transmissie-systeem' maakt
+alleen gebruik van de blokken 0-3 uit de
+ASCII-tabel.
+De meeste Control-codes worden niet gebruikt
+en zijn derhalve maar verboden. Alleen de codes
+
+002 $02: (STX) Start of text (start BASICODE prg-text),
+003 $03: (ETX) End of text (einde BASICODE prg-text) en
+013 $0D: (CR) Carriage Return (einde regel in BASICODE prg-text)
+          zijn toegestaan. Deze drie worden door de vertaal
+          routine appart verwerkt.
+De diensttekens zijn in het algemeen ook geen
+probleem. Zolang de 'quote-flag' maar bij het
+begin van elke regel op 'buiten-quotes' wordt
+gezet zijn er geen problemen te verwachten, ook
+niet als de sluit-quote eventueel zou ontbreken.
+Wat betreft de conversie behoeven zij geen
+aanpassing en ondergaan deze ook niet.
+Wel is een aanpassing nodig bij de hoofdletters.
+Bij de hoofdletters op zich wordt het 8e bit
+geset. Dit houdt in dat de codes niet meer lopen
+van 65-90 ($41-$5A) maar van 193-218 ($C1-$DA).
+Het voorgaande geschied echter alleen als char.
+set 1 actief is (dwz. geselecteerd is) tijdens
+het inlezen. De andere codes in dat blok
+blijven gelijk. Opgemerkt kan worden dat de
+P2000 in de problemen raakt als deze een
+'slingeraap' (
+64=$40) tegenkomt. Dit teken
+dient dus in principe niet gebruikt te worden.
+Ook is een aanpassing nodig bij de kleine
+letters. Het 6e bit (b5) wordt 0 gemaakt.
+Gevolg hiervan is dat de waarden verschuiven
+van.
+096- #127 ($60-$7F) naar. #064- #095 ($40-$5F).
+
+In een basicode prg komen dus voor binnen
+quotes hoofdletters met char. code.
+193- #218 ($C1-$DA), kleineletters met char. code. #065
+090 ($41-$5A) en natuurlijk allerlei
+diensttekens. Resumerend:
+
+  Code       Set 0     Set 1   Opmerking
+
+0 $00-$1F => $00-$1F } $00-$1F $0D en $03 afgevangen door vertaalprogramma
+1 $20-$3F => $20-$3F } $20-$3F Onveranderd
+2 $40     => $40     } $40     Onveranderd maar liever niet gebruiken
+  $41-$5A => $41-$5A } $C1-$DA Verander alleen bij inlezen als char.set 1
+                     }         actief is
+  $5B-$5F => $5B-$5F } $5B-$5F Onveranderd
+3 $60-$7F => $40-$5F } $40-$5F Verschil in upper/lower-case wordt vernietigd
+                     }         bij inlezen als char.set 0 actief is
+
+Nu zijn er natuurlijk geen problemen als dat
+daarbij blijft. Een hoofdletter 'A' zal in
+een directe stringtoewijzing identiek zijn aan
+een 'A' verkregen uit een data-regel. Deze
+horen volgens het NOS-BASICODE immers ook
+tussen quotes te staan en ondergaan bij het
+inlezen dezelfde behandeling.
+Het gaat echter mis als de programmeur zelf
+voor computer gaat 'spelen' en zelf wel even
+de ASCII codes uitrekent. Voor een hoofdletter
+'A' neemt deze dan.
+65 en inderdaad voor vrijwel
+alle computers zal dat werken. Een 'routine'
+om bijvoorbeeld te wachten tot er een
+hoofdletter wordt ingetoetst kan er dan
+zo uitzien :
+
+20000 GOSUB 210:IN=ASC(IN$):IF (IN<65) OR (IN>90) THEN 20000
+20010 RETURN
+
+Een Commodore accepteerd hier echter alleen
+maar kleine letters (als char.set 1 actief
+is). Als IN$ vervolgens (welke dan nog alleen
+maar kleine letters kan bevatten) ook nog eens
+wordt vergeleken met een directe string of
+een character uit een dataregel kan er een
+conditie optreden die NOOIT waar (true) kan
+zijn of worden. Voorbeeld:
+
+3500 GOSUB 20000:IF (IN$=''J'') OR (IN$=''N'') THEN 3520
+3510 GOTO 3500
+3520 ...
+
+VOORBEELDEN UIT DE PRAKTIJK
+
+Een goed voorbeeld hiervan is het programma
+'Spelling'. Dit accepteert alleen maar de
+ASCII-codes 65-90 (hoofdletters) en 97-122
+(kleine letters). Van deze kleine letters
+worden vervolgens hoofdletters gemaakt door
+er 32 van af te trekken. Hierna worden de
+waarden vergeleken met de ASCII waarden van
+stringvariabelen die uit dataregels gelezen
+zijn. Dit zijn hoofdletters met een
+ASCII-code 65-90.
+
+Bij een Commodore gaat het als char.set 1
+actief was bij het inlezen al direct mis. Om
+te beginnen worden de hoofdletters met een
+ASCII-code van 193-218 niet geaccepteerd. Wel
+de kleine letters (65-90). Deze komen echter
+niet overeen met de ASCII waarden uit de
+dataregels nl. hoofdletters (193-218). Als
+char.set 0 actief was bij het inlezen gaat het
+wel goed. Er komen dan alleen maar codes voor
+van 65-90, in zowel dataregels als directe
+string toewijzingen.
+Iets soortgelijks gebeurt er ook bij het
+intro. Een groot aantal werkwoorden wordt
+getoond met de juiste vervoeging. Daarvoor
+wordt gelet op de laatste letter van het
+werkwoord (stam). Is dit een S, T, H, K of
+P dan een T gebruiken, anders een D. In het
+programma wordt dat probleem opgelost door
+een hulpvaribele (B) de ASCII waarde te geven
+van een D. De programmeur heeft dat al gedaan;
+er staat dus keurig 'B=68'. Vervolgens wordt
+in 3 regels getest of de ASCII-code van de
+laatste letter van het woord mogelijk 83 or
+84, 72 or 75 or 80 is. In al die gevallen
+wordt dan de hulpvariabele (B) overschreven
+met de ASCII-code van een T en die is ook al
+uitgerekend, dus: THEN B=84.
+
+Resultaat op een Commodore is dat als het
+programma is ingelezen terwijl char.set 1
+actief was aan geen van de drie voorwaarde
+ooit wordt voldaan en (B) dus altijd de
+waarde 68 zal behouden. Er zal dus altijd een
+'d' worden getoond als laatste letter van de
+stam. Immers de werkwoorden staan als
+hoofdletters in de dataregels. Bij het
+inlezen worden dat dus keurig codes in de
+reeks 193-218 en deze kunnen NOOIT overeen
+komen met codes als 72, 75, 80, 83 en 84.
+
+Als het programma echter wordt ingelezen
+terwijl char.set 0 actief is, dan gaat
+alles wel goed. Er zijn wat betreft letters
+dan alleen nog maar codes tussen 65 en 90 en
+deze komen prachtig overeen met hetgeen de
+programmeur verwachtte. De rest van het
+programma werkt (en vervoegt) dan ook goed.
+
+DUITSE NAAMVALLEN
+
+Het tweede en tevens laatste ASCII probleem
+van bijv. de Best of Basicode 4 cassette
+doet zich voor in het programma 'Duitste
+naamvallen'. Het zelfstandig- en bijvoegelijk
+naamwoord worden alvorens deze af te drukken
+eerst omgezet in kleine letters waarna van de
+eerste (dus altijd kleine letters) van het
+zelfstandig naamwoord een hoofdletter wordt
+gemaakt. In het programma wordt dit gedaan
+door een subroutine die van hoofdletters,
+kleine letters maakt. Getest wordt of het
+betreffende karakter een hoofdletter is
+(65-90). Is dat zo dan wordt het verschil
+met de kleine letters (97-122) nl. 97-65=32
+erbij opgeteld. Dit zelfde verschil wordt er
+naderhand bij het eerste teken weer afgehaald
+zodat een hoofdletter ontstaat. Al met al een
+zeer fraaie lay-out en tevens conform de Duitse
+schrijfwijze. Als het programma echter op een
+Commodore draait wordt er een troep van gemaakt.
+
+Als char.set 0 actief is worden er bij de codes
+van de ingetoetste hoofdletters (zonder Shift)
+keurig 32 opgeteld. Er ontstaan dan - fraaie -
+graphics ! Is char.set 1 actief dan wordt er
+aan eventueel ingetoetste hoofdletter (193-218)
+niets gedaan, deze liggen immers buiten het
+bereik 65-90. De ingetoetste kleine letters
+(65-90) worden veranderd in quasi hoofdletters
+(97-122). Deze codes geven wel hoofdletters
+(of graphics in char.set 0) maar omgekeerd
+geven hoofdletters (of graphics) nooit deze
+codes maar uitsluitend de codes 193-218.
+Resultaat is dat in char.set 1 het bijvoeglijk
+naamwoord in hoofdletters verschijnt, het
+zelfstandig naamwoord begint met een kleine
+letter en voor de rest ook kapitaal is en de
+uitgang waar alles voor bedoeld was weer in
+kleine letters is: der GUTe mANN, des GUTes
+mANNes enz. Nog erger is het resultaat in
+char.set 0. Daar verschijnt dan bijvoorbeeld:
+'DER ***E M***, DES ***ES M***ES', waarbij
+elke '*' een grafisch teken voorstelt.
+
+De conclusie en voorgestelde verbeteringen
+van Thijs Timmerman volgen op zondag 6 sept.
+Op 30 aug hebben we geen software en Beeldkrant:
+vanwege de rechtstreekse uitzending vanuit
+Berlijn. Nog een opmerking: bovenstaand komen
+overzichten voor die alleen goed te bekijken
+zijn op een 80-koloms scherm op printer. Op
+een 40-breed scherm wordt het een warboel!

@@ -1,0 +1,216 @@
+40, woe 08 okt 1986
+
+LAATSTE KANS OP STICKER
+
+De eerstvolgende uitzending valt op zondag(!)
+12 oktober. Als u dat nog niet doorheeft kunt
+u beter op het onderstaande aanbod ingaan. De
+donderdag uitzendingen zijn dus vervallen. Op
+woensdag 15 oktober vervalt Hobbyscoop in
+verband met Europacup voetbal trouwens ook.
+Het gaat om een incident want over het algemeen
+is de aanvangstijd om 19:00 onbereikbaar voor
+de sport.
+
+---------------------------------
+
+  Aan:  NOS-HOBBYSCOOP
+        tgv. aanvraag 'sticker'
+        postbus   1200
+        1200 BE   HILVERSUM
+
+----------------------------------
+
+Knip dit adres uit en plak het op een
+gefrankeerde enveloppe. Doe die enveloppe
+op de post met daarin een aan uzelf gerichte
+enveloppe, OOK met een postzegel erop. Wij
+doen er dan een sticker in. Komende zondag
+hebben we weer een (andere) waardebon. Let op
+de Hobbyscoop aanbiedingen. Ook in Belgie
+verkrijgbaar.....!
+
+AMSAT-OSCAR 10
+
+PA0DLO (Nico) heeft weer de hele wereld
+uitgeluisterd om ons van het laatste nieuws
+over amateursatellieten te voorzien. Hij meldt:
+De kommandostations hebben inmiddels alle
+kontrole over OSCAR 10 verloren. Het is niet
+meer mogelijk programmatuur te laden in de
+boordcomputer en verscheidene systemen zijn al
+uitgevallen. Men verwacht dat de satelliet
+midden oktober geheel spanningsloos wordt omdat
+de zonnepanelen, bij de huidige stand van de
+satelliet ten opzichte van de zon, dan geen
+zonlicht meer vangen. Alle systemen in de
+satelliet zullen dan gedurende enkele weken
+helemaal buiten bedrijf zijn. Midden november
+is de stand van de satelliet ten opzichte van
+de zon zodanig gewijzigd dat er weer licht
+op de zonnepanelen valt, zodat de batterij
+weer langzaam zal opladen. Het is niet te
+voorspellen hoe systemen in de satelliet, en
+dan vooral de geheugenchips van de boordcomputer,
+zullen reageren op deze totale reset. Volgens
+sommige specialisten kan deze reset een zeer
+heilzame uitwerking hebben op de geheugens.
+Als dit inderdaad het geval is zullen de
+kommandostations eind november weer kontrole
+over de satelliet kunnen krijgen en nieuwe
+programmatuur kunnen laden in de boordcomputer.
+Mocht dit allemaal suksesvol verlopen dan is
+OSCAR 10 voor Kerstmis weer volledig
+operationeel. We zullen eerst moeten
+wachten tot eind november voordat we weten in
+welke richting de zaken zich gaan ontwikkelen.
+
+UoSAT-OSCAR 11
+
+Het UoSAT-team gaat experimenteren met nieuwe
+programmatuur in de boordcomputer van OSCAR 11
+die moet zorgen voor nauwkeuriger standregeling
+van deze satelliet. Tot nu toe wilde de
+satelliet nogal eens uit z'n gravitatie-gradient
+stabilisatie raken, waarna de onderzijde van de
+satelliet niet meer goed naar de aarde gericht
+bleef. Als de stabilisatie nauwkeuriger wordt
+gehandhaafd zal dit niet meer gebeuren. Vooral
+de UHF en SHF downlinksignalen zullen dan
+stabieler blijven, terwijl ook beter bepaald
+kan worden van welke delen van het aardoppervlak
+de CCD-videokamera beelden opneemt. De 4800 Baud
+datatransmissie, die elke woensdag te horen
+is van de 70 cm-bakenzender, vindt plaats met
+AFSK met tonen van 4800 en 9600 Hz. Men heeft
+dus een ontvanger nodig met een vrij grote
+bandbreedte en ook een speciale decoder die
+deze snelle signalen goed kan verwerken. Verder
+moet men er rekening mee houden dat deze data
+niet ASCII gekodeerd is, dus een konversie
+programma is ook noodzakelijk.
+
+FUJI-OSCAR 12
+
+De Japanse kommandostations hebben nog enige
+problemen met het laden van programmatuur in
+de nieuwe OSCAR 12. Als gevolg van het
+tuimelen van de satelliet is de fading zo diep
+dat steeds delen van de datastroom wegvallen.
+De satelliet is echter al steeds langzamer
+aan het tuimelen en men verwacht dat hij
+spoedig is gestabiliseerd. Men hoopt de
+satelliet begin oktober zodanig geprogrammeerd
+te hebben dat al PSK-uitzendingen kunnen
+worden gestart via de bakenzender op 435,797
+MHz. Daarna gaat men proberen de digitale mode
+JD repeater in bedrijf te krijgen. Daarvoor
+moet ook veel nieuwe programmatuur in de
+boordcomputer worden geladen. Op 30 augustus
+hebben kommandostations de mode JD zender op
+435,910 MHz enkele malen kortstondig in bedrijf
+gesteld. Zoals te verwachten was waren de
+signalen zeer sterk, zo'n 10 dB sterker dan de
+bakensignalen op 435,797 MHz. Als iemand dus
+in staat is het baken op 435,797 MHz goed te
+ontvangen zal hij straks zeker geen problemen
+hebben met de ontvangst van mode JD. De
+kommandostations houden OSCAR 12 momenteel
+uitgeschakeld op maandagen en vrijdagen,
+enerzijds in verband met de vrij lange schaduw
+perioden per omloop en anderzijds in verband
+met de experimenten met de systemen aan boord
+van de satelliet. Verder heeft men bekend
+gemaakt dat OSCAR 12 niet beschikbaar is voor
+algemeen gebruik op woensdagen, ook al is de
+satelliet dan vaak wel ingeschakeld.
+
+AANBEVELING GEBRUIK
+
+Men wil de gebruikers van mode JA er nogmaals
+aan herinneren dat niet meer dan 100 W EIRP
+mag worden gebruikt in de uplink. De som van
+de uplink- en downlink-frekwenties van mode JA
+is altijd 581,800 MHz, geen rekening houdend
+met Doppler-verschuiving. Als de uplink
+frekwentie bijvoorbeeld 145,920 MHz is, dan is
+de bijbehorende downlink frekwentie 435,880 MHz.
+In de downlink kan men maximaal 5 kHz Doppler
+verschuiving verwachten en op het baken maximaal
+8 kHz. Volgens de aanbevelingen worden CW-stations
+verwacht tussen 435,800 en 435,835 MHz en
+SSB-stations tussen 435,865 en 435,900 MHz. In
+het midden van de doorlaatband zijn zowel
+SSB-stations als CW-stations welkom. Om storingen
+in de doorlaatband zoveel mogelijk te vermijden
+wordt aangeraden de downlink frekwentie
+tijdens een verbinding steeds hetzelfde te
+houden, terwijl de veranderende Doppler
+verschuiving kan worden gekorrigeerd door de
+uplink-frekwentie bij te regelen. Men wordt
+ook dringend verzocht nooit met een
+ingeschakelde zender door de uplinkband
+heen en weer af te stemmen.
+
+OSCAR-JUBILEUM
+
+Op 12 december 1961 werd de eerste amateur
+satelliet OSCAR 1 gelanceerd. Om te vieren
+dat er al weer 25 jaar lang amateur
+satellieten aktief zijn in de ruimte heeft
+AMSAT-North America voor de hele maand december
+1986 een 'OSCAR 25th Anniversary Operating Event'
+georganiseerd. Alle zendamateurs over de hele
+wereld worden uitgenodigd hieraan deel te nemen.
+Iedereen wordt dan verondersteld verbindingen
+te maken met zoveel mogelijk stations via alle
+beschikbare aktieve amateursatellieten. Men
+wordt verzocht tijdens deze verbindingen
+informatie uit te wisselen over zijn vroegere
+OSCAR-aktiviteiten en over de amateursatelliet
+organisatie waar men eventueel lid van is.
+
+SONY MSX-2 TIP
+
+Hans van Helden schrijft ons de volgende tip
+die hij gebruikt wanneer er onvoldoende
+geheugen beschikbaar is op de Sony MSX-2,
+bijv. als de Beeldkrant te lang blijkt:
+1. Zet het vertaalprogramma op tape, als het
+op disk staat. 2. Start de computer terwijl
+men herhaaldelijk Shift en Ctrl indrukt.
+Hierdoor wordt de geheugenruimte voor het
+disksysteem niet aangesproken. 3. De disk
+is dus nu niet aanspreekbaar. 4. CLOAD nu
+het vertaalprogramma en RUN het. 5. CSAVE
+nu het vertaalde programma en zet de computer
+uit (Reset) 6. CLOAD nu het te lange programma
+van tape en SAVE het op disk. Hans heeft een
+HB-500 MSX-2 computer waarmee deze truc werkt.
+
+CLUBNIEUWS NOORD EN ZUID
+
+Iedere derde zaterdag van de maand wordt er een
+bijeenkomst van de Computer Club Limburg gehouden
+in Maastricht. Elke derde zondag van de maand
+wordt deze bijeenkomst gehouden in Kerkrade,
+behalve tijdens de feestdagen dan worden deze
+data aangepast. Bij voldoende aanmeldingen zal
+men proberen om ook in andere plaatsen in
+Limburg bijeenkomsten te organiseren. Inmiddels
+is er ook voor de Acorn Electron bezitters
+plaats gemaakt binnen deze gebruikersgroep.
+Voor informatie kunt u bellen met P.A.J.Habets
+Borghaag 75, 622 EX Maastricht.
+
+Op vrijdag 17 oktober organiseert de Sinclair
+gebruikers groep Appingedam een informatiedag
+in gebouw de Molenberg in Delfzijl. Er
+zullen diverse demonstraties worden gegeven
+op het gebied van hard-en software op de
+Spectrum en de QL. Dit jaar voor het eerst
+zullen er ook demonstraties worden gegeven
+op de MSX. Vanaf vrijdag 14.00 uur tot 22.30
+kunt U terecht in zaal De Schans. Voor nadere
+informatie kunt U bellen met Gerry Kuipers
+05960 - 28548.

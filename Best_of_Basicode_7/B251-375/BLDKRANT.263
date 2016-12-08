@@ -1,0 +1,267 @@
+263, maa 30 okt '89
+
+BOEKBESPREKINGEN
+
+Vandaag weer een groot aantal recensies
+in de Beeldkrant. Het betreft met name
+uitgaven op het gebied van MS-DOS.
+Verder een boek over MIDI, en een
+spannende detective die u kennis laat
+maken met het verschijnsel 'computer
+spionage'. Enfin, leest u zelf maar.
+
+TOOLBOX VOOR MACHINETAALPROGRAMMEURS
+
+door Roelf Sluman, 411 pag., uitgave
+Kluwer, prijs f 69.50 (zonder de
+bijbehorende diskette, die nogeens f
+49.50 kost excl. verzendkosten!), ISBN
+90 201 2228 2.
+In dit uitgebreide boekwerk zijn veel
+uitgewerkte machinetaal subroutines
+opgenomen voor het programmeren in
+machinetaal op de PC met gebruikmaking
+van de Microsoft assembler (MASM v 5.0
+of hoger) of de Turbo assembler. De
+opzet van het boek is, het saaie werk
+uit handen te nemen, m.a.w. 'het wiel
+behoeft niet steeds opnieuw te worden
+uitgevonden'. Men vindt in dit boek
+tien onderafdelingen (blokken), n.l.
+Keyboard, Clip, Cursor, String, Screen,
+Text, Window, Dialoog, File en
+tenslotte: Diversen. Elk blok staat vol
+met daarop betrekking hebbende handige
+(sub-) routines. Deze routines zijn
+grondig getest. Geen van deze blokken
+staat op zichzelf; ze werken alleen
+goed indien samen gebruikt met een of
+meer andere blokken. De meeste blokken
+gebruiken macro's, die zijn opgenomen
+in een include-bestand, dat bij elk
+blok hoort. Bij het schrijven van
+complete applicaties kan men gebruik
+maken van het Include-bestand
+PRIMITIVE.INC. Hierin staan de Include-
+opdrachten voor alle blokken
+afzonderlijk. Voor de ware machinetaal
+programmeur is dit boek een aanwinst te
+noemen. Ook beginners kunnen er veel
+uit opsteken.
+
+HET HARD DISK GEBRUIKERSHANDBOEK
+
+door Peter Norton en Robert Jourdan,
+416 pag., uitgave Kluwer, prijs f
+79.50, ISBN 90 201 2231 2.
+Doordat de hard disk ook onder
+hobbyisten veel gebruikt wordt, is er
+behoefte ontstaan aan uitgebreide
+informatie over dit onderwerp. Welnu,
+dat wordt in ruime mate in dit boek
+geboden. Men vindt consumenten
+informatie over de aanschaf van de HD.
+Ook de installatie van de nieuwe HD
+wordt uitvoerig besproken evenals het
+organiseren van de bestanden op de HD
+en het optimaliseren van een en ander.
+Er staat tevens een hoofdstuk in over
+speciale backup apparatuur, doch ook
+wordt ingegaan op het gebruik van
+programma's voor het maken van backups
+op floppies. Een uitgebreide
+verklarende woordenlijst van alle
+technische termen maakt ook voor de
+niet technische gebruiker dit boek goed
+leesbaar. Het boek bevat tevens een
+goede index. Aanbevolen!
+
+WORDPERFECT 5.0 NL
+
+door E. Alderman en L. Magid, 366 pag.,
+uitgave Kluwer, prijs f 69.50, ISBN 90
+201 2234 7.
+Wat deze nieuwe nederlandse versie van
+de bekende tekstverwerker voor de PC
+inhoudt, behoef ik hier niet te
+herhalen. De combinatie mogelijkheid
+van tekst en plaatjes is genoegzaam
+bekend. Maar voor het installeren en
+gebruiken van dit programma is een
+goede handleiding onontbeerlijk.
+Sommigen vinden de bij het programma
+geleverde handleiding op enkele punten
+niet zo duidelijk en slaan liever nog
+eens een ander boek op. Dit boek is een
+van de velen op dit gebied. Een ieder
+zal bij de keuze van een extra
+handleiding moeten afgaan op zijn eigen
+voorkeur. In vorige afleveringen van de
+Beeldkrant hebben we al enkele boeken
+over dit onderwerp besproken. Dit boek
+is zeker niet het slechtste!
+
+MIDI, MUZIEK EN COMPUTER
+
+door Hans Timmermans, 269 pag., uitgave
+Kluwer, prijs f 59.50, ISBN 90 201 2166
+9.
+Theorie en praktijk van het gebruik van
+computers bij het creatief beoefenen
+van muziek komt in dit boek uitvoerig
+aan de orde. De schrijver is terdege
+met dit onderwerp bekend en heeft er
+ook veel cursussen over gegeven. De
+ontwikkeling van de interface standaard
+voor de koppeling van
+muziekinstrumenten en computers (MIDI)
+in de afgelopen tien jaar vormde de
+aanleiding tot het schrijven van dit
+boek, waarin de auteur een aantal
+geheimen van MIDI ontsluiert. Er is
+intensief samengewerkt met andere
+instellingen en musici om tot een
+verantwoord geheel te komen. Het is dan
+ook een veelomvattende handleiding
+geworden voor het werken met MIDI. Als
+computers worden vooral de Atari ST en
+de Apple Macintosh genoemd en de
+software daarvoor besproken. Uitvoerig
+wordt ingegaan op allerlei technische
+aspecten, waaronder het koppelen van
+instrumenten. Het MIDI protocol wordt
+uiteraard uitvoerig besproken. Een boek
+waarvan speciaal muzikale computeraars
+een nuttig gebruik kunnen maken. (Met
+dank aan Pieter Vijlbrief)
+
+COMPUTERS & SPIONAGE
+
+Een van de meest spannende detectives
+van dit moment is een computerboek. Het
+heet 'Het Koekoeksei' en is geschreven
+door Clifford Stoll, een Amerikaanse
+astronoom. Het boek handelt, zoals de
+ondertitel al zegt, over 'krakers en
+computer spionage'. Het zou een van de
+beste fiction romans van de laatste
+tijd genoemd kunnen worden als alles
+wat er in stond niet echt gebeurd was.
+
+Het boek laat zich echt lezen als een
+detective. Met ingehouden adem leest
+men de avonturen van student Clifford
+die het toezicht heeft gekregen als
+Sysop op een van de universiteits
+mainframes. Als hij gaat uitzoeken
+waarom er 75 cent weg is van de
+berekende computertijd stuit hij op een
+kraker die zichzelf ook Sysop heeft
+gemaakt. Als een mol kruipt deze kraker
+onzichtbaar door de programmatuur en
+duikt slechts hier en daar op en steeds
+weer onder andere namen. Hij gaat ook
+(gratis) over alle netwerken in de
+Verenigde Staten.
+
+GEBREK AAN INTERESSE
+
+Clifford vindt uit waar de kraker op
+uit is: militaire en NASA-informatie.
+Hij begint een persoonlijke oorlog
+tegen de kraker die geweldig spannend
+is om te lezen. Het is echt een
+persoonlijke oorlog omdat geen van de
+autoriteiten aanvankelijk
+geinteresseerd is. Later wordt dat
+anders als blijkt dat de kraker zelfs
+doorgedrongen is in allerlei 'veilig
+geachte computers' via netwerken. Dan
+komen CIA, NSA, FBI en hoe de
+instanties ook maar mogen heten, er aan
+te pas. Dan is het gebrek aan interesse
+plotseling over.
+
+ASTRONOOM EN ZENDAMATEUR
+
+Clifford Stoll was afgelopen week even
+in ons land voor een conferentie over
+computer veiligheid en ook om zijn
+Nederlandse boek ten doop te houden.
+Hij verklaart zijn volharding in deze
+zaak omdat hij astronoom en zendamateur
+is. In beide beroepen speur je naar een
+'naald in een hooiberg', een kleine
+ster, miljoenen lichtjaren ver of naar
+een zwak signaal in de ether. Je leert
+zoeken naar het onmogelijke en vooral
+volhouden, zegt hij, in gesprek met de
+Beeldkrant. Clifford is 39 jaar en nog
+steeds zeer gespitst op het
+schoonhouden van bestanden en het weren
+van krakers.
+
+KRAAK VAN DE EEUW
+
+Wat hij ontdekte kun je wel de kraak
+van de eeuw noemen waarbij een Duitse
+hacker, die ook bekend was met de Chaos
+Computer Club, gegevens stal uit
+Amerikaanse computers en die hij via
+via later verkocht in Oost Berlijn aan
+de inlichtingen diensten daar. Hoewel
+mogelijk geen 'gevoelig' materiaal aan
+de overkant is gekomen heeft de kraak
+aangetoond dat het bij slordig beheer
+mogelijk is dat een kraker op
+mainframes elders Sysop kan worden,
+rekeningen, namen en passwoorden kan
+stelen en daarmee ongelofelijk veel
+schade kan doen aan universiteits- of
+andere computers. Dat blijkt zo
+duidelijk omdat Stoll minutieus
+aantekening heeft gehouden van zijn
+opsporingen en missers.
+
+Het Koekoeksei laat zich als een zeer
+spannende detective lezen. Voor wie
+geinteresseerd is in computers is het
+gewoon adembenemend! Het boek verscheen
+bij uitgeverij De Haan/Unieboek in
+Houten en kost f 29,90.
+
+CORRECTIE BASICODE PROGRAMMA 'LINGO'
+
+Enige tijd geleden zonden we het
+programma 'Lingo' uit, de
+computervariant van het bekende
+tv-spel. Uit reacties van luisteraars
+bleek dat het programma niet goed liep
+op een Commodore 64 of 128. De auteur,
+Peter Jan van der Mespel uit Den Haag,
+ontdekte dat het probleem wordt
+veroorzaakt door de eigenaardige manier
+waarop in de Commodore 'random'
+getallen worden gegenereerd. Wanneer
+het programma wordt geRUNd, kiest deze
+computer namelijk steeds weer dezelfde
+getallen. En dat zijn precies die
+getallen waardoor het programma in een
+eindeloze lus terecht kan komen.
+
+Voor dit euvel heeft Peter Jan de
+volgende oplossing bedacht (die dus
+uitsluitend voor de Commodore 64 en 128
+van toepassing is):
+Regel 1680 moet worden verwijderd.
+Regel 1530 moet als volgt worden
+veranderd:
+1530 GOSUB 260: WS=INT(RV*25)+1: IF
+WS=13 THEN 1530
+
+Hierdoor wordt bij het wegstrepen van
+de eerste 8 getallen op de Lingo-kaart
+het middelste getal nooit gekozen,
+zodat het programma nu ook op de
+Commodore goed werkt.
+

@@ -1,0 +1,244 @@
+95, zon 04 okt '87
+
+SPREEKUUR
+
+Voor wie het nog niet wist: op maandagochtend
+houden we spreekuur. U kunt ons dan bereiken
+op 035-773015. Dat nummer is alleen bruikbaar
+van 10-12 uur. Daarna gaat het weer op slot,
+dus houdt u zich alstublieft aan die tijden.
+
+'PROEFSCHRIFT' BBSCOMMUNICATIE
+
+Deel 2, de stand van zaken
+
+In zo'n vier jaar is er heel wat veranderd
+op BBS gebied. Net als met andere
+computerprogramma's denkt men nog steeds
+dat menubesturing het beste systeem is
+om een gebruiker door een programma te
+loodsen. Wat dit betreft is er nog niet
+veel veranderd. Bulletin Board programma's
+zoals Fido, Opus, RBBS, TBBS, BBS-PC
+vragen van de gebruikers onlogische en
+tijdrovende combinaties van letters in
+te geven om een bericht te kunnen lezen
+of posten. Het wordt misschien vervelend,
+maar NEABBS geeft duidelijk het voorbeeld
+hoe een BBS er uit zou moeten zien.
+Aangezien iedereen liefst zo min mogelijk
+tijd verspilt en zoveel mogelijk kosten
+en moeite wil besparen is het van belang
+dat een programma snel en doeltreffend
+werkt. Daarom biedt NEABBS alleen die
+informatie die men werkelijk nodig heeft
+en mocht men nog niet precies weten hoe
+iets werkt kan men gewoon HELP LEES
+ingeven om te weten hoe men berichten
+kan lezen. Al de andere commando's
+volgen dit zelfde concept. Het is dan
+ook voor niemand een probleem snel met
+dit systeem overweg te kunnen.
+
+HERSCHREVEN IN XENIX
+
+Het huidige NEABBS is herschreven om
+met het XENIX besturingsysteem te werken
+en tegelijkertijd meerdere gebruikers
+toe te laten die ook onderling met
+elkaar in verbinding kunnen staan. Het
+gevolg is dat het programma technisch
+niets meer weg heeft van Onno's
+programma waar het uit ontstaan is.
+Echt uniek is de wekelijkse publikatie
+van Info-Mat, een uitgave van het
+Amerikaanse bedrijf BBS Press Service.
+Samen met INFOBOARD heeft NEABBS een
+contract afgesloten waardoor men
+wekelijks op de hoogte wordt gehouden
+van de laatste ontwikkelingen op
+computergebied waarvan meestal pas enige
+maanden later in de vakbladen melding
+wordt gemaakt. Nog mooier is de
+mogelijkheid via dezelfde service
+demonstratie programma's via de telefoon
+binnen te halen en thuis eens rustig te
+bekijken of die het kopen waard zijn.
+Verder wordt het mogelijk om over de
+hele wereld berichten uit te wisselen
+via het UUCP netwerk. Dit is een
+wereldomvattend netwerk van UNIX computers.
+Bij studenten waarschijnlijk wel bekend
+van USENET die daar ook bij is aangesloten.
+Dit netwerk is niet zozeer een koppeling
+van allerlei bulletin board systemen
+zoals Fido en Opus, maar een wijd verbreid
+net van allerlei wetenschappelijke en
+industriele instellingen. Bepaalde
+systemen zijn echt bedoeld als
+conferentie systeem om informatie uit te
+wisselen over programmeren, computertalen
+en diverse soorten van hardware en
+software zaken zoals data communicatie en
+digitale beeld verwerking.
+
+PERSONAL COMPUTER SYSTEEM
+
+Fido is echt een netwerk van Personal
+Computers met systeem beheerders die als
+hobbyist mee werken. Helaas worden deze
+bulletin board systemen regelmatig
+verwaarloosd, maar de Hollandse Computer
+Club die het netwerk in Nederland
+verzorgt is van plan daar verbetering
+in te brengen.
+Opus is een gelijksoortig netwerk, maar
+dan onder beheer van sysops die niet
+verbonden zijn aan de HCC.
+Voor beide PC netwerken geldt dat het
+overgrote deel van de berichten het
+lezen niet waard zijn. Het netwerk wordt
+vooral misbruikt door gebruikers die het
+zo leuk vinden dat hun naam door heel
+Nederland is te lezen. Wel effectief
+zijn de advertenties die gebruikers zo
+door het hele netwerk verspreiden.
+Een bericht wordt via 'echo-mail' naar
+alle aangesloten bulletin boards en
+computersystemen verstuurd, zodat er een
+erg grote kans is dat je ook verkoopt
+wat je aanbiedt of vindt wat je zoekt.
+Toen ik nog maar net begon met
+datacommunicatie heb ik ook via diverse
+BBS goede koopjes begaan zoals een
+beter modem en een best bruikbare
+terminal. Ik moest daarvoor meerdere
+BBS'en bellen. Een procedure die nu tot
+het verleden behoort, tenzij men ook wil
+meekrijgen wat zich voor de rest op een
+BBS afspeelt.
+
+POSITIEVE BIJWERKING
+
+In de tijd dat de bulletin boards nog
+in opkomst waren, de PTT voor een lokaal
+gesprek 15 cent per onbeperkte tijdsduur
+rekende en de Stichting Apple
+Gebruikersgroep Amsterdam zijn eigen
+bulletin board startte, ontsproot er een
+hechte gemeenschap frequente bulletin
+board gebruikers. SAGA was in principe
+bedoeld voor bezitters van een Apple
+computer, maar aangezien er nog niet
+veel mensen waren die een modem hadden
+werd iedereen gratis toegelaten.
+De sysop Kees Huyser (samen met Paul
+Molenaar een van de allereerste BBS
+gebruikers) had daar een bord ingericht
+om gebruikers hun ongerief over
+medegebruikers en andere zaken te laten
+blijken. Al snel postten de gebruikers
+alleen nog maar berichten om een reaktie
+uit te lokken. Felle discussies laaiden
+op en op ieder bericht kwamen weer een
+stuk of zes tegenberichten. Daar men al
+gauw zeer persoonlijk werd opperde de
+sysop het idee samen ergens te gaan eten
+en zo de discussies een wat konkretere
+wending te geven. Het idee werd door
+iedereen enthousiast ontvangen en het
+eerste SAGADINNER werd al gauw een feit.
+Men verzamelde zich bij het centraal
+station in Amsterdam op een afgesproken
+datum en tijd en iedereen begaf zich
+daarna eerst even naar een bierproef lokaal
+alvorens zich onbeperkt te goed te doen
+aan Noorse gerechten. Van eten kwam niet
+veel terecht maar gepraat en gedronken
+werd er des te meer. Nauwelijks van een
+kater bekomen hing de SAGA clan thuis
+alweer aan het modem om de volgende
+afspraak te maken. SAGADINNER 2.0 kwam
+er inderdaad, alsook een brombakfietsen
+race op de Amsterdamse grachten.
+Het bulletin board gebeuren heeft voor
+velen een explosieve groei van hun
+kennissen bestand betekend.
+
+VERDERE ONTWIKKELING
+
+In de beginperiode waren bulletin board
+gebruikers computer fanaat, journalist
+of hacker geinspireerd door de film
+'War Games'.
+Tegenwoordig zijn er veel meer
+modemgebruikers die hun computer als
+werktuig gebruiken en zich voor de rest
+ook niet zoveel voor computers
+interesseren. Zij hebben behoefte aan
+informatieuitwisseling over andere zaken
+zoals literatuur, politiek en sport.
+NEABBS richt zich op die gezonde trend
+zonder de kern van computerliefhebbers
+te verlaten. Zoals het er nu uit ziet
+zijn de meeste borden te sterk gericht
+op een enkel thema. Vaak is dit uit
+noodzaak, omdat er maar een telefoonlijn
+is en ook de opslagruimte parten speelt.
+
+BEDRIJFSCOMMUNICATIE
+
+Verdere aspecten van BBS communicatie
+zijn bedrijfs communicatie,
+data communicatie via het datanet,
+database gebruik en geavanceerde
+communicatie protocollen. Ik heb echter
+besloten hier verder niet op in te gaan
+aangezien dat een veel te technisch
+verhaal zou worden. Deze zaken alsmede
+elektronisch bankieren en winkelen
+vallen onder een apart thema.
+
+INFO NEABBS
+
+NEABBS is bereikbaar op 300, 1200/75,
+1200 en 2400 baud. Telefoon bulletin board:
+020 - 717666 (5 lijnen).
+Inlichtingen NEABBS: 020 - 647383. Voor
+verdere vragen en/of opmerkingen over dit
+artikel: Noam Kloos, Postbus 12984, 1100 AW
+Amsterdam Zuidoost. Of Hobbyscoop schrijven.
+In dit geval liefst per BBS, maar dan via ons
+eigen board, tel: 035-45395.
+Het eerste artikel van Noam Kloos verscheen
+eerder in de Beeldkrant. Plaatsing houdt niet
+in dat we het op alle punten eens zijn met
+zijn visie. Vandaar: uw commentaar is welkom.
+
+COMPUTER INFO BEURS AMSTERDAM
+
+Komende zaterdag 17 oktober wordt in de
+Amsterdamse RAI de Computer Info Beurs
+gehouden. Er is nog steeds een onderscheid
+tussen de huiscomputer en de zakelijke
+computer, maar deze afstand wordt steeds
+kleiner. Ten eerste omdat de kopers,
+gelokt door de steeds lagere prijzen,
+steeds betere en professionele apparatuur
+wensen, ook thuis. Aan de andere kant hebben de
+traditionele leveranciers van huiscomputers
+ook professionele modellen op de markt
+gebracht. Vooral het laatste halfjaar is er
+een vrij massale overstap naar de serieuzere
+modellen. Men wil geen 'speelgoed' computer
+meer. Door de prijsdalingen die de
+computermarkt al jaren kenmerkt, is de
+serieuze computer binnen het bereik van
+veel meer gebruikers gekomen en is men
+ook veel meer geinteresseerd in uitbreidingen
+zoals diskdrives, printers en betere
+software.
+De Computer Info Beurs in de Amsterdamse Rai
+informeert over al deze zaken. Men kan er
+terecht van 10.00 - 17.00 uur en de
+toegangsprijs bedraagt f 7,50.

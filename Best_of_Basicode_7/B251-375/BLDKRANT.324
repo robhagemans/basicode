@@ -1,0 +1,294 @@
+324, woe 23 mei '90
+
+AMSAT-OSCAR 10
+
+Begin mei heeft een kommando station
+een reset signaal naar OSCAR 10
+gestuurd. Het mode B relais kwam weer
+in bedrijf en bleek goed te
+funktioneren. De komende paar maanden
+mag OSCAR 10 dan ook normaal worden
+gebruikt, althans zolang er geen FM
+verschijnselen optreden op de signalen
+in de doorlaatband of op het
+bakensignaal in de 2 meter band.
+
+Omdat de kommando stations helemaal
+geen kontrole meer hebben over de
+systemen in OSCAR 10 kunnen ze de stand
+van de satelliet in de ruimte ook niet
+meer regelen. Als gevolg van
+natuurlijke effekten verandert deze
+stand geleidelijk. De stand van OSCAR
+10 is nu zodanig dat zijn richtantennes
+van de aarde af gericht zijn wanneer de
+satelliet zich bij het apogeum bevindt.
+Men moet daarom rekenen op zeer zwakke
+signalen als de satelliet zich in dat
+deel van zijn omlopen bevindt. De
+antennes zijn daarentegen naar de aarde
+gericht wanneer de satelliet zich bij
+het perigeum bevindt. De signalen zijn
+dan dus zeer sterk en men zal dan een
+laag uplink vermogen moeten toepassen
+om het mode B relais niet te
+oversturen.
+
+UoSAT-OSCAR 14
+
+Op 4 mei is de programmatuur in het
+PACSAT Communications Experiment in
+OSCAR 14 gecrashed. Het is nog niet
+duidelijk wat de oorzaak was. Het UoSAT
+kommando station in de University of
+Surrey heeft vervolgens alle
+programmatuur weer opnieuw in de
+boordcomputer van de satelliet geladen.
+Daarbij zijn meteen kleine wijzigingen
+aangebracht in enkele programma's. In
+de nieuwe programmatuur is ook het
+PACSAT Broadcast Protocol opgenomen.
+Allerlei gegevens worden voortaan
+uitgezonden, in binaire vorm, volgens
+een bepaalde standaard. In de
+uitzendingen zijn nu naast telemetrie
+gegevens ook Whole Orbit Data, Cosmic
+Particle Experiment data en error logs
+opgenomen. De opgetreden problemen
+hebben enige vertraging veroorzaakt in
+het operationeel maken van het PCE als
+packet radio Bulletin Board System.
+
+FUJI-OSCAR 20
+
+Japanse kommando stations werken nog
+steeds aan verbeteringen in de
+programmatuur in de boordcomputer van
+OSCAR 20. Een van de gevolgen is dat
+het gebruiks schema van de satelliet
+regelmatig verandert. Als gevolg van de
+veranderende belasting voor de
+batterijen kunnen mode JA en mode JD
+niet steeds tegelijkertijd in bedrijf
+zijn.
+
+In april hebben gebruikers van OSCAR 20
+ontdekt dat de kepler baanparameters
+voor deze satelliet, die door
+NASA/NORAD worden gepubliceerd, niet
+korrekt zijn. De afwijkingen bedragen
+inmiddels al bijna 3 minuten. Men
+vermoedt dat NASA twee satellieten
+heeft verwisseld. Waarschijnlijk zijn
+de baanparameters, die nu gepubliceerd
+worden voor OSCAR 20, eigenlijk van
+toepassing voor DEBUT, een ander objekt
+uit dezelfde lancering.
+
+AMATEUR RADIO VANUIT SPACE SHUTTLE
+
+De lancering van Space Shuttle Columbia
+voor vlucht STS-35 is uitgesteld als
+gevolg van problemen in een koelsysteem
+in de Shuttle. Omdat de reparatie op
+het lanceer platform moet worden
+uitgevoerd, is het nog niet duidelijk
+hoe lang de vertraging gaat duren. De
+nieuwe lanceer datum is voorlopig
+vastgesteld op donderdag 31 mei a.s.
+
+Tijdens deze vlucht van bijna 9 dagen
+zal Ron Parise, WA4SIR, aktief zijn in
+de 2 meter band met FM-spraak en packet
+radio. De FM verbindingen zijn allemaal
+van te voren afgesproken. De packet
+radio verbindingen verlopen vrijwel
+allemaal automatisch: men kan een korte
+verbinding tot stand proberen te
+brengen met de ROBOT in het packet
+radio systeem. Er zal uitsluitend
+'split frequency operation' worden
+toegepast, met andere woorden, het
+amateur station in de Shuttle ontvangt
+steeds op een andere frekwentie dan
+waarop gezonden wordt. De baanhelling
+is bij deze vlucht zodanig dat de
+Shuttle niet binnen het bereik van
+Nederland komt. Daarom kan men hier
+niet deelnemen aan de amateur
+experimenten. Wel kan men de vlucht
+volgen door mee te luisteren naar de
+kommunikatie tussen de Shuttle en
+Mission Control in Houston, Texas. Dit
+kan op verscheidene frekwenties,
+waaronder 14,295, 21,395 en 28,650 MHz,
+waar WA3NAN in het Goddard Space Flight
+Center bij Washington D.C. alle
+kommunikatie relayeert.
+
+AMATEUR RADIO VANUIT MIR
+
+Het Sovjet ruimtestation MIR passeert
+nu weer tijdens de avonduren. Bij
+heldere hemel is het station goed
+zichtbaar tijdens hoge passages van
+west naar oost. Men verwacht dat de
+kosmonauten Anatoly Solovyev en
+Aleksandr Balandin eind mei weer vaker
+aktief zullen zijn met FM op 145,500
+en/of 145,550 MHz en eventueel andere
+frekwenties. Ook wordt gesproken over
+de mogelijkheid in juni een FM
+verbinding in de 2 meter band tot stand
+te brengen tussen de kosmonauten in MIR
+en de Amerikaanse astronaut Ron Parise,
+WA4SIR, in Space Shuttle Columbia.
+
+De kosmonauten in MIR zijn nu bezig met
+het uitladen van het ruimte vrachtschip
+Progress 42, dat begin mei aan MIR
+aankoppelde. Ze bereiden zich voor op
+een ruimte wandeling waarbij een deel
+van de thermische isolatie van het
+ruimteschip SOYUZ-TM9 moet worden
+gerepareerd. Verder houden ze zich
+bezig met materiaalproeven en met het
+repareren van verscheidene systemen in
+MIR. Vooral het oplossen van de
+problemen met een computer systeem dat
+de standregeling van het station moet
+verzorgen kost veel tijd. De lancering
+van de nieuwe grote module T, die aan
+MIR moet aankoppelen en dan Kristall
+moet gaan heten, lijkt nu op het
+programma te staan voor 1 juni. Voor
+die tijd moet een aantal problemen in
+MIR zijn opgelost door de kosmonauten,
+dus ze hebben het nogal druk. Het is
+daarom de vraag of ze veel tijd over
+hebben voor aktiviteiten in de 2 meter
+band. (Aldus Nico Janssen, PA0DLO)
+
+VERONICA LANCEERT SCHOTELBLAD
+
+De naar schatting 115.000 particuliere
+schotel antenne bezitters in ons land
+kunnen met ingang van deze week in druk
+een groot aantal satelliet-tv
+programma's vinden in 'Veronica
+Satellite'. Het Veronicablad heeft
+onderzoek laten verrichten naar de
+belangstelling voor een dergelijke
+bijlage bij het omroepblad. Van de
+schotel bezitters leest bijna de helft
+dit blad. In drie weken tijd, meldt
+Veronica, schreven zich van de 55.000
+lezers al 7.500 bijlage- abonnees in.
+Tot op heden kunnen zij nergens anders
+de programma- overzichten raadplegen
+van hun extra satelliet- kanalen.
+
+De bijlage wordt, tegen een kwartje
+extra per week, meegezonden met het
+Veronicablad zelf. Voorlopig beperkt
+het aanbod zich tot de zenders Sky One,
+Sky News, Lifestyle, 3Sat, Pro7, Japan
+STV, Tele-5, Eins Plus, Bayrisches
+Fernsehen, The World Channel,
+Galavision, TF1, Antenne 2, La Cinq en
+M6.
+
+De komende maanden gaat de redactie
+onder de lezers nader onderzoek doen
+naar de wensen om informatie over
+satelliet programma's. De bijlage zal
+daaraan zoveel mogelijk worden
+aangepast. In de bijlage zelf: 'U
+begrijpt, dit is nog maar het begin.
+Naarmate het satelliet- aanbod groeit,
+groeit Veronica Satellite mee!'. (Uit:
+Spreekbuis)
+
+UITSTEL HIGH DEFINITION TV
+
+Het officiele uitstel met drie jaar van
+de grootschalige marktintroductie van
+HDTV in Europa heeft grote
+consequenties voor de wijze waarop
+D2MAC naar de consument wordt gebracht.
+Om de consument toch tot aanschaf van
+D2MAC te verleiden, wordt de beeldmaat
+16:9 eerder ingevoerd en wordt aan
+invoering van een kabelvariant van
+HDMAC grotere prioriteit gegeven.
+
+VOOR 2000 GEEN BETAALBARE HDTV
+
+Niet alleen de Europeanen hebben
+besloten de invoering van HDTV op te
+schuiven van 1992 naar 1995, ook in
+Japan is van een grootschalige
+marktintroductie van
+consumentenprodukten nog geen sprake.
+Oorspronkelijk zouden de eerste Japanse
+HDTV sets al in 1988 in de winkel
+liggen, maar in mei 1990 is daar, met
+uitzondering van de professionele
+sector, nog geen sprake van. En in de
+VS zal een brede marktintroductie zeker
+niet voor 1995 plaats vinden. De
+conclusie is duidelijk: voordat er
+wereldwijd van een HDTV penetratie van
+5 procent sprake is, is het jaar 2000
+al ver gepasseerd. Pas dan zullen de
+sets, die aanvankelijk voor f 10.000
+tot f 12.000 in de winkel liggen, voor
+'normale' prijzen beschikbaar zijn (f
+3000 en minder). In Europa en Japan
+gelden de argumenten dat de verdere
+integratie van chipsets nog lang niet
+is voltooid, terwijl ook de produktie
+van HDTV beeldbuizen nog op problemen
+stuit. Hoe dan ook, de aanvankelijke
+prognoses zijn duidelijk veel te
+optimistisch gebleken. (Uit:
+Telecombrief)
+
+SPRAAKGESTUURD OPBELLEN
+
+Het Amerikaanse telecom-concern Nynex
+heeft onlangs in White Plains in de
+staat New York een proef gestart met
+'voice dialing' (spraak gestuurd
+opbellen). Hierbij zijn 135 abonnees
+betrokken. Een enkel woord volstaat om
+iemand telefonisch te bereiken.
+
+Het onderliggende principe is
+eenvoudig: voice dialing maakt gebruik
+van een interactieve interface, via
+welke de gebruiker namen kan toevoegen
+aan een 'spraakgids'. Ingevoerde namen
+kunnen langs die weg eveneens
+verwijderd of gewijzigd worden. De
+gebruiker staat het vrij in elke
+gewenste taal de namen in te spreken.
+Een computer in de telefoon centrale
+herkent de naam aan de hand van een
+eerder opgeslagen patroon dat bij die
+naam hoort. Vervolgens wordt
+automatisch het nummer gebeld dat aan
+de geidentificeerde naam is gekoppeld.
+
+Nynex beschouwt deze proef als een
+eerste stap in de richting van spraak
+herkenning als integrale faciliteit van
+het telefoon netwerk. Het bedrijf hoopt
+zowel de particuliere als de zakelijke
+klant enthousiast te maken voor het
+nieuwe systeem. Grootschalige
+introductie van het produkt zal echter
+op zich laten wachten tot de resultaten
+van de proef bekend zijn. (Uit:
+Telecombrief)
+

@@ -1,0 +1,270 @@
+356, maa 29 okt '90
+
+CD-ROM: DE TECHNIEK
+
+In het tijdschrift PC-Active nr. 20
+troffen we een interessant artikel aan
+over CD-ROM, een nieuw massa-opslag
+medium dat 600 miljoen tekens
+informatie kan bevatten! Het artikel
+bevat veel informatie over de techniek
+achter CD-ROM. Vandaar dat we u dit
+niet wilden onthouden. Met dank aan de
+redactie van PC-Active, die toestemming
+verleende voor publicatie in de
+Beeldkrant.
+
+OPBOUW VAN EEN CD
+
+Hoewel de CD gebruikt wordt als een
+soort disk heeft hij wat opbouw betreft
+meer weg van een langspeel plaat.
+Diskettes en vaste schijven zijn
+opgebouwd uit cirkelvormige sporen,
+tracks geheten, die weer zijn
+onderverdeeld in sectoren. LP's bestaan
+echter uit EEN enkel spoor, dat
+spiraalvormig van buiten naar binnen
+loopt. CD's hebben ook zo'n spoor,
+alleen loopt het vanuit het centrum van
+de disk naar buiten. Toch heeft een CD
+weer iets weg van een floppy: het spoor
+is onderverdeeld in frames, die elk 24
+bytes bevatten.
+
+KRASBESTENDIG
+
+Om een geluids-CD te beschermen, zijn
+er twee soorten maatregelen getroffen
+op elke CD. De eerste is een
+beschermlaag aan de buitenkant; de
+tweede is een uitgebreid systeem van
+fout- correcties. Dit systeem heet CIRC
+(Cross Interleaved Reed Solomon Codes)
+en is een combinatie van Reed Solomon
+controle getallen die Cross Coded en
+Interleaved op de disk geschreven
+worden. Lees rustig verder, de
+betekenis hiervan volgt hieronder. De
+controle code is in feite een variatie
+op de aloude checksum, een getal dat
+aan een reeks data- bytes wordt
+toegevoegd volgens een bepaalde
+methode. Als de data worden ingelezen,
+wordt de checksum meteen mee gelezen,
+maar ook opnieuw berekend over de
+zojuist ingelezen gegevens. De beide
+controle- getallen moeten kloppen,
+anders zijn de gegevens kennelijk
+beschadigd geraakt.
+
+Er zijn goede en minder goede methodes
+om zo'n checksum te berekenen. Was de
+checksum vroeger een gewone optelling
+van de data- bytes, tegenwoordig is het
+vaak een bijzonder ingewikkelde
+formule. Het doel van een goede
+foutcorrectie is immers om zoveel
+mogelijk fouten in de data op te
+sporen, en eventueel zelfs te bepalen
+welk byte de boosdoener is. Dit noemt
+men het localiseren van de fout. De
+gewone checksum merkt weliswaar op,
+wanneer er EEN enkel byte veranderd is,
+maar er is een kans dat twee
+verschillende fouten elkaar als het
+ware opheffen. Hierdoor is de checksum
+in orde, maar de data niet. En dat is
+nu net het enige, dat nooit mag
+voorkomen. Een veel gebruikte checksum
+methode (die onder andere ook door
+floppy- en harddisk- controllers en in
+de X-, Y- en Z-modem communicatie
+protocollen gebruikt wordt!) is de CRC,
+de Cyclic Redundancy Check. Deze werkt
+met een combinatie van bit-schuif en
+XOR opdrachten. De Reed Solomon
+checksum is een andere, bijzonder
+ingewikkelde controle-code, die de kans
+op twee of meer elkaar opheffende
+fouten bijzonder klein maakt.
+
+ZELFREINIGEND
+
+Maar CD's merken het niet alleen als er
+een fout optreedt: ze proberen ook
+zelfstandig te achterhalen wat er
+verkeerd gegaan is. Met een normaal
+controle-getal is weliswaar snel te
+constateren dat er in een bepaald blok
+een fout zit, maar welk byte de
+schuldige is, is niet te bepalen. Met
+Cross Coding is dat te verbeteren. De
+data wordt hierbij niet opgevat als een
+lange rij bytes, maar als een twee-
+dimensionaal rooster van bytes. Door
+zowel op de rijen als op de kolommen
+een checksum te plaatsen, kan het
+foutieve byte als het ware gepeild
+worden. Maar fouten ten gevolge van
+fysieke beschadiging van de CD (lees:
+van het oppervlak) leiden er vrijwel
+altijd toe dat er niet EEN byte, maar
+een hele reeks beschadigd raakt. Het is
+dan wel duidelijk waar de fout zit,
+maar herstellen is lastiger. Vandaar de
+Interleave: de gegevens worden niet in
+de oorspronkelijke volgorde
+weggeschreven, maar als het ware met de
+rijen en kolommen van het rooster
+verwisseld. Opeenvolgende bytes op de
+CD vormen dus zeker geen opeenvolgende
+bytes na het inlezen, zodat de schade
+in feite gedeeld wordt door de rijen
+(of kolommen) van het data-rooster.
+
+In praktijk komt het erop neer, dat een
+reeks beschadigde bytes op de disk
+leidt tot meerdere kleine
+beschadigingen in de data, die met
+interpolatie kunnen worden opgelost.
+Het ontbrekende byte -dat bekend is,
+vanwege de Cross Coding- wordt dan
+gewoon gemiddeld tussen de bytes ervoor
+en erna. Voor geluids CD's is dit
+vrijwel nooit een probleem, omdat het
+verloop van de data altijd geleidelijk
+is. Al deze technieken samen leiden tot
+een betrouwbaarheid van 1 op 1 biljoen
+(duizend miljard, oftewel een 1 met
+negen nullen) bits. Bij de huidige
+capaciteit van CD's betekent dat
+gemiddeld 1 foutief bit op twee hele
+CD's!
+
+CD-ROM
+
+Voor computer toepassingen is dat
+echter nog steeds onaanvaardbaar. Om de
+betrouwbaarheid nog verder te
+verbeteren, worden er 98 frames van 24
+bytes elk gecombineerd tot een CD-ROM
+sector, die dus 2352 bytes groot is.
+Een deel van de sector wordt gebruikt
+voor extra informatie over de data: een
+32-bits CRC en nog eens 276 bytes met
+pariteits informatie. De combinatie van
+de CIRC methode -om fouten te
+detecteren en te localiseren- en de
+extra sector-informatie stelt de
+CD-lezer in staat verkeerde bits weer
+terug te buigen. Dit verbetert de
+betrouwbaarheid tot 1 op 1 biljard
+(1000 biljoen, een 1 met twaalf
+nullen), oftewel 1 onbetrouwbaar bit op
+2000 CD's. Daar valt mee te leven,
+zelfs voor de fabrikanten van CD's.
+
+Er blijven nog 2048 bytes per sector
+over, een mooi getal voor computer
+toepassingen. De capaciteit wordt 540
+Mb per CD, met een maximale overdrachts
+snelheid van 150 Kb per seconde. Niet
+erg snel, maar dat heeft weer te maken
+met de draaisnelheid van de CD en het
+feit, dat de informatie in dat ene
+spiraal vormige spoor opgeslagen is. De
+draaisnelheid van een CD is namelijk
+afhankelijk van de positie van de
+leeskop. Omdat de omtrek van een
+omwenteling aan de binnenkant van de CD
+kleiner is dan aan de buitenkant, moet
+de CD sneller draaien wanneer de kop
+zich dichter bij het centrum van de
+disk bevindt. Dit garandeert dat er
+altijd evenveel gegevens per seconde
+voorbij komen, terwijl de dichtheid van
+de informatie -het aantal bytes per
+centimeter spoorlengte- gelijk blijft.
+Om een bepaald deel van de CD te lezen
+moet de kop dus naar de plaats gebracht
+worden waar de gegevens zouden moeten
+staan, de draaisnelheid moet worden
+aangepast aan de positie van de kop en
+het spoor moet worden afgetast totdat
+het gewenste deel langs komt.
+
+KLEIN MAAR FIJN
+
+Informatie op een CD wordt opgeslagen
+in de vorm van putjes in een
+reflecterende laag. Laserlicht wordt
+teruggekaatst in het gebied tussen de
+putjes (de zogeheten 'lands') en
+geabsorbeerd door de putjes ('pits'
+geheten). Op deze manier kunnen nullen
+en enen op de disk geschreven worden,
+door het inbranden van putjes in de
+laag. De informatie dichtheid op een CD
+kan zo hoog zijn, omdat licht veel
+nauwkeuriger te positioneren is dan
+magnetische velden. Een putje heeft een
+lengte van 0.9 tot 3.5 micrometer (een
+miljoenste meter), is 0.5 micrometer
+breed en 0.1 micrometer diep. De
+breedte van het spoor is ruwweg drie
+keer de breedte van een putje; de
+sporen liggen 1.6 micrometer uiteen.
+Dit betekent, dat er 20.000 windingen
+van het spoor op 1 CD liggen. Zouden
+die uitgewikkeld kunnen worden, dan zou
+het spoor 5 kilometer lang zijn... Even
+ter vergelijking: een menselijk haar is
+50 micrometer breed, zodat er in de
+breedte van een mensenhaar dertig
+sporen geplaatst zouden kunnen worden!
+
+CD-ROM ALS MEDIUM
+
+Goedkoop zijn ze nog niet echt, CD-ROM
+drives. Maar de prijzen zijn wel in
+beweging. En gezien de mogelijkheden
+die een CD-ROM biedt wordt zo'n
+apparaat steeds aantrekkelijker.
+Massieve data-opslag, dat biedt heel
+nieuwe perspectieven voor allerlei
+programmatuur. Zeker in deze tijd, nu
+de grafische mogelijkheden van de
+computer steeds meer op de voorgrond
+treden. Fraaie schermen, die echter
+zoveel ruimte nemen dat ze op de
+normale manier (met floppy en harddisk)
+eigenlijk nog niet helemaal bruikbaar
+zijn.
+
+Daarnaast is de CD-ROM natuurlijk een
+ideale manier om allerlei software uit
+te brengen, als we even kijken naar het
+feit dat een CD-ROM zich zeer wel laat
+beschermen tegen illegaal kopieren. En
+wie een beetje netjes met de plaatjes
+omspringt zal ook nooit opeens moeten
+vaststellen dat de zaak beschadigd is
+geraakt. Een prima medium, zo'n CD-ROM.
+
+Alleen, we hebben weer eens te maken
+met de bekende kip-en-ei situatie. Er
+is nog niet erg veel software op CD-ROM
+beschikbaar, hoewel er steeds meer
+verschijnt. Dat komt natuurlijk doordat
+de drives nog niet zo wijd verbreid
+zijn. Anderzijds, doordat er nog niet
+al te veel drives zijn verkocht, zijn
+de software boeren nog ietwat
+terughoudend. Eens -binnenkort- zal
+daar verandering in komen en breekt de
+dam door. Dan zal de CD-ROM heel nieuwe
+toepassingen en mogelijkheden in
+computerland bewerkstelligen, want met
+een dergelijke capaciteit...
+

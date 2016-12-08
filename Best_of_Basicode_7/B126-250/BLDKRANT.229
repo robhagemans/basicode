@@ -1,0 +1,304 @@
+
+229, woe 10 mei '89
+
+HOOGSTE REPEATER IN NEDERLAND
+
+Onder auspicien van het NOS
+radioprogramma Hobbyscoop is dezer
+dagen de laatste hand gelegd aan
+vermoedelijk de hoogste phonerepeater
+in Nederland. Het is het 70 cm-relais
+PI2NOS in Hilversum op de frekwentie
+430.125 MHz (shift 1,6 MHz up).
+
+De spraakrepeater staat op een trans
+van de PTT-toren in Hilversum op een
+hoogte van circa 100 meter. Het
+afgegeven vermogen is 0,5 Watt
+effectief, terwijl de gevoeligheid is
+teruggebracht door de squelchdrempel
+erg hoog in te stellen. Het relais is
+bedoeld voor portofoons en mobielen in
+de regio Amsterdam, Utrecht, Het Gooi,
+Amersfoort en de Flevopolder.
+
+Het relais is tot stand gekomen dankzij
+de medewerking van diverse
+PTT-instanties, zoals de RCD (toen nog)
+en de DKRV (divisie Kabel- en Radio-
+Verbindingen). Ook kreeg het Hobbyscoop
+team adviezen van de Hilversumse CAI en
+werd het relais gebouwd in samenspraak
+met VERON en VRZA.
+
+PTT-TOREN UNIEK
+
+Het is een buitengewone kans om op een
+PTT-toren amateurzender(s) te plaatsen.
+De eisen waren echter buitengewoon
+streng. Bij PTT's berekende men
+allereerst of de amateurzenders niet
+konden interfereren met de reeksen
+bundels van de straalzenders die in
+Hilversum samenkomen. Het geheel mocht
+voorts absoluut geen storing
+veroorzaken op de Hilversumse CAI, die
+ter plaatse alle ontvangst-antennes
+heeft staan. Een en ander leidde tot
+een zeer professionele, maar uiterst
+kostbare opzet, die grotendeels
+gedragen is door het programma
+Hobbyscoop, als een schenking aan de
+Nederlandse zendamateurs ter
+gelegenheid van het 20-jarig bestaan.
+
+VIJF ZENDERS!
+
+In een 19-inch rek zijn vijf zenders
+opgenomen, waarvan een voor het
+phone-relais dat nu uiteindelijk gaat
+werken. De vier andere zenders in de 70
+en 23 cm-band stralen uit in alle
+hoofdrichtingen van de windroos. Ze
+zullen worden ingezet voor het
+landelijke packet radio netwerk in
+Nederland. Naar het noorden bouwt men
+aan een verbinding met de Flevopolder,
+in het oosten naar het VRZA knooppunt
+in Apeldoorn, in het zuiden wordt de
+verbinding gelegd naar Breda of
+Zaltbommel en in het Westen naar
+Noordwijk (ESA). Dit station staat in
+dienst van het hele packet radio
+verkeer in Nederland en is dus niet
+gebouwd voor de individuele amateur.
+Vandaar dat men spreekt van een
+Interlink station.
+
+Het Interlink programma is bedacht door
+een brede werkgroep die zich in
+Nederland bezig houdt met packet radio.
+Voor het NOS knooppunt is speciale
+software geprogrammeerd op een Atari
+computer die alle vier de zenders
+commandeert. De software is zo
+ingericht dat de packet node in de
+toekomst op een hogere snelheid zal
+kunnen werken dan nu (nog op 1200
+baud).
+
+WANNEER IN GEBRUIK?
+
+Mogelijk eind van deze maand, anders in
+juni zal de packet node beproefd
+worden. Het hele packet radio net moet
+vervolgens rond september operationeel
+zijn, waarbij de officiele opening op
+een symposium aan het eind van die
+maand in Hilversum zal plaatsvinden.
+Hopelijk zal het 'kostbare' Hobbyscoop
+station dan tot in lengte van jaren
+bruikbaar blijken.
+
+Wie een bijdrage wil leveren aan het
+NOS- repeaterfonds kan een bedrag
+storten op giro 1417 van NOS-radio. Te
+zijner tijd kan zal een speciale
+'donatie award' worden toegezonden,
+mits de gift een tientje overschrijdt.
+Wie meer wil weten over de
+werkzaamheden of donatie kan contact
+opnemen met Jan Rozema, penningmeester
+van de NOS-repeaters, tel: 035 - 60912.
+Vermeld op het strookje wel duidelijk:
+'gift NOS-repeaterfonds.'
+
+NIEUWE LIJST VAN RELAIS-STATIONS
+
+Met de komst van o.a. de nieuwe
+NOS-repeater is de lijst van omzetters
+in Nederland weer behoorlijk gegroeid.
+Thijs (PA3BJG) turfde deze apparaten op
+2 meter:
+Uitg-Freq Call     Locatie
+==================================
+145.600   PI3PYR   Soesterberg
+145.600   PI3TWE   Markelo
+145.600   PI3ZVL   Axel
+145.625   PI3ALK   Alkmaar
+145.650   PI3AMR   Geertruidenberg
+145.650   PI3MEP   Meppel
+145.675   PI3FLE   Lelystad
+145.6875  PI3RSD   Rosendaal
+145.700   PI3EHV   Eindhoven
+145.700   PI3FRL   Akkrum
+145.725   PI3APD   Apeldoorn
+145.725   PI3GOE   Goes
+145.725   PI3ZLB   Heerlen
+145.750   PI3CDH   Den Haag
+145.750   PI3GRN   Groningen
+145.750   PI3NYM   Nijmegen
+145.775   PI3HLM   Haarlem
+
+70 - cm
+==================================
+430.025   PI2HVN   Heerenveen
+430.050   PI2ASN   Assen
+430.075   PI2GOE   Goes ++
+430.075   PI2MEP   Meppel
+430.100   PI2FRL   Joure/Akkrum
+430.100   PI2EHV   Eindhoven
+430.125   PI2NOS   Hilversum
+430.150   PI2GRO   Groningen ++
+430.200   PI2ASD   Amsterdam
+430.225   PI2TWE   Almelo
+430.250   PI2RGK   Zandvoort
+430.275   PI2NYM   Nijmegen
+430.300   PI2ZAZ   Zaandam
+430.325   PI2AMR   Geertruidenberg
+430.325   PI2YSS   Zutphen
+430.350   PI2CDH   Den Haag
+430.375   PI2ALK   Alkmaar
+433.025   PI2HVN   H v Holland
+
+ ++ = (nog) niet operationeel
+
+FM - transponders
+=================
+1298.225  PI6HME  Amstelveen
+Ing-Freq 430.475 - operator PA0DLA
+
+1298.250  PI6ZDT  Zaandam
+Ing-Freq 144.825 - operator PE1LJY
+alleen 2-m ingang indien operator
+aanwezig, anders: Ing-Freq 430.500
+
+Lineaire Transponders
+=====================
+1296.6375 PI6ASD Amsterdam Ingang
+432.5375
+432.625   PI6SHF Diemen    Ingang
+2320.350
+
+Op- en aanmerkingen of verbeteringen en
+aanvullingen graag naar postbus 1200 in
+Hilversum. T.z.t. publiceren we dan een
+nieuwe lijst.
+
+BIJZONDERE AUTOTELEFOON
+
+In onze woensdag uitzending gaven we
+een impressie van een heel bijzondere
+autotelefoon van het merk Dancall. Het
+is een fraai Deens produkt dat in
+Nederland wordt vertegenwoordigd door
+handelsonderneming Argo, Computerweg
+10-16 in Maarssen bij Utrecht. Tel
+03465 - 95216. Het apparaat draagt het
+type nummer Dancall 9000 en biedt
+aanzienlijk meer dan veel andere,
+soortgelijke toestellen, maar is
+natuurlijk ook wel wat duurder. Kosten
+de meeste tussen de f 3000.- en f
+4000.-, deze machine kost met
+uitbreidings mogelijkheden f 4200.- ca.
+Dat is de versie die in een slee,
+achterin de auto zit en eruit kan
+worden gehaald en dan met een accupack
+kan worden gebruikt als elke andere 900
+MegaHertz telefoon. Het apparaat kan
+overigens met een sleuteltje ook in de
+slee vergrendeld worden.
+
+SPRAAK MODULEN
+
+Het wordt pas interessant als men de
+uitbreidings modulen gaat toepassen,
+die men niet op andere merken aantreft.
+De spraak module herkent 60
+telefoonnummers, die men van tevoren
+moet inspreken (trainen). Men kan dat
+ook verdelen over twee gebruikers van
+de auto, elk 30 nummers of eventueel
+een verdeling van 20/40. Zijn die
+eenmaal ingesproken dan zijn ze met de
+stem op te roepen, allemaal in verband
+met de verkeers veiligheid in de auto.
+Het display dat OP het dashboard is
+gemonteerd geeft aan welk nummer de
+telefoon 'gehoord' heeft en met het
+commando 'bel op' wordt geheel stem
+gestuurd opgebeld. De display zit zo
+dat men zijn ogen niet van de weg hoeft
+te halen. De spraak module kost f
+1945.- extra.
+
+LIJN INTERFACE
+
+Een andere, aanklikbare module verzorgt
+een lijn interface naar de
+autotelefoon. Kosten f 1110.- extra.
+Daarop kan men fax, modem of
+bandrecorder (radio reportages)
+aansluiten. Het is de klassieke 600 ohm
+aansluiting voor zulk soort toepassing,
+nu via de zender.
+De digitale recorder kost weer f 1390.-
+extra. Maar daarin kunnen boodschappen
+worden opgenomen die men zelf inspreekt
+of die kunnen worden ingesproken door
+iemand die opbelt. U hoorde dat
+allemaal in onze uitzending
+gedemonstreerd: een soort kantoor in de
+auto ontstaat op die manier, met fax en
+computer en antwoordapparaat.
+
+RELAIS POST
+
+Helemaal fraai is de volgende
+oplossing: Dancall komt met een
+draadloze telefoon volgens PTT-normen
+in de 900 MHz. Het apparaat is nu op
+voor de type keuring maar heeft die bij
+de Denen reeds gehaald. Het wordt (als
+al die 900 MHz telefoons) een apparaat
+van tussen de f 1000.- en f 2000.-
+gulden. Daarmee kan men in of rond het
+huis lopend (of in het bad)
+telefoneren. Het bereik is beperkt en
+via het netdeel gaat men het openbare
+telefoonnet op.
+Het apparaat kan echter ook op de lijn
+interface van de autotelefoon worden
+geschakeld. Dan heeft men in de buurt
+van de auto (100 tot 200 meter), via de
+autotelefoon, als relaispost, toegang
+tot het openbare net via de 900 MHz.
+Heel slim allemaal van die Denen.
+
+KLM BESTELT BOEINGS
+
+De KLM heeft in principe weer tien
+Boeings besteld van het type 737. Om
+welke uitvoering het gaat wordt nader
+bepaald. Het kunnen 737's van het type
+300, 400 of 500 zijn. De roll-out van
+dit laatste type zal trouwens deze
+maand plaatsvinden.
+Na het afwerken van een programma van
+vliegproeven, dat het FAA
+luchtwaardigheids bewijs moet
+opleveren, zullen de 500's in het
+eerste kwartaal van 1990 o.a. worden
+afgeleverd aan Southwest Airlines.
+Daarna volgen de leveringen aan nog
+vier luchtvaart maatschappijen. Op het
+ogenblik heeft Boeing van 15
+ondernemingen orders ontvangen voor 132
+737-500's en liggen er nog 50 opties
+voor dit type. Daarnaast zijn er nog
+288 orders geplaatst en 236 opties
+genomen op 737-ers (de KLM nog niet
+meegerekend), waarvan de afnemers later
+zullen meedelen welke versie ze wensen.
+

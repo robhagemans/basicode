@@ -1,0 +1,314 @@
+319, maa 14 mei '90
+
+486-PC'S SCHAKELEN OVER OP 33 MHZ
+
+Op de CeBIT debuteerde de 33 MHz versie
+van de Intel 80486 processor bij NCR en
+Laser. De verhoging van de kloksnelheid
+van 25 tot 33 MHz brengt de verwerkings
+snelheid van 80486 PC's van 11 op 15
+MIPS. NCR's PC486/33 is het snellere
+broertje van de al bestaande PC486/25,
+en wordt evenals deze uitsluitend
+gefabriceerd met MCA-bus. De basis
+configuratie heeft 4 Mb geheugen en
+door NCR zelf ontwikkelde VGA+
+beeldaansturing en SCSI stuurkaart voor
+schijfeenheden. Aan de laatste schrijft
+NCR een verwerkings capaciteit van 44
+Mb/sec toe.
+
+DIVERSE MODELLEN
+
+In het bureaumodel, dat vanaf juli
+leverbaar zal zijn, is plaats voor drie
+3,5'' drives, elk met een capaciteit
+van 100 of 320 Mb. Later komt er ook
+een torenmodel, met plaats voor meer
+drives van grotere capaciteit. Voor de
+eenvoudigste uitvoering zal men
+ongeveer 40.000 gulden moeten
+neertellen.
+
+NCR presenteerde ook nieuwigheden op
+het 386SX front, namelijk enerzijds een
+van de eerste 20 MHz modellen (de
+PC386sx/20), anderzijds een enigszins
+uitgekleed 16 MHz 'entrylevel' model
+(de PC386sx/EL). De laatste is gericht
+op gebruikers die voor zo weinig
+mogelijk geld willen overstappen van de
+AT naar de 32-bits wereld. Het EL-model
+onderscheidt zich van de gewone vooral
+doordat het minder plaats voor drives
+heeft, en daardoor een stuk platter is.
+Hij is ook zonder schijf verkrijgbaar.
+
+LASER BESCHEIDENER
+
+Laser heeft heeft alleen een nieuwe
+80486-PC, de 33 MHz Laser 486/1. Dit
+apparaat heeft van huis uit 2 Mb
+geheugen, een 122 Mb vaste schijf, VGA
+beeldaansturing, maar (kennelijk)
+slechts een AT-bus. Het geheel is
+duidelijk bescheidener dan de
+tegenhanger van NCR, maar de prijs is
+dat nog meer. Voor slechts circa 16.000
+gulden zal men vanaf juni eigenaar
+kunnen worden van een 486/1. Laser
+denkt de machine te verkopen voor
+veeleisende grafische toepassingen als
+het genereren van foto- realistische
+beelden en visuele modellering en als
+centrale computer in X Windows
+omgevingen.
+
+DUITS OFFENSIEF
+
+Laser's aanwezigheid op de CeBIT is het
+begin van een offensief op de Duitse
+markt. Sinds de oprichting in 1985
+heeft het merk zich vanuit Nederland
+verbreid naar Belgie en Engeland. Laser
+is onderdeel van de Video Technologies
+Group in Hongkong.
+
+PORTFOLIO GOEDKOPER
+
+De Atari Portfolio (de kleine MS-DOS
+computer) is begin mei in prijs
+verlaagd. De nieuwe prijs is f 749,-
+inclusief BTW en dat is een
+prijsverlaging van f 200,-. Hobbyscoop
+komt binnenkort met een testverslag van
+deze kleine computer, samen met een
+test van de Sinclair Z88. Deze is geen
+MS-DOS machine, maar wel erg portable
+en de prijs is vergelijkbaar, nl. tegen
+de f 1000,-. De test zal in een van de
+komende Beeldkranten worden
+gepubliceerd.
+
+EXPERTSYSTEMEN IN OPERATIEKAMER
+
+Tijd is een kritische factor tijdens
+operaties. Een chirurg wil de gegevens
+over de toestand van patient en
+apparatuur telkens zo snel mogelijk ter
+beschikking hebben. Dat valt niet mee,
+want om die patient heen staan
+tegenwoordig vele apparaten, die een
+stroom van informatie genereren. Voor
+het verzamelen en presenteren van de
+relevante gegevens heeft een ervaren
+anesthesist veel kennis in huis. Met
+behulp van expert systemen kan die
+kennis van de deskundige in een
+computer worden ingebracht, die dan
+sneller intelligente boodschappen over
+de toestand van de patient en de
+apparatuur kan melden. Hiermee kan
+kostbare tijd gewonnen worden. Ir. Hans
+Blom en ir. Jan van der Aa ontwikkelden
+een programmeertaal en de toepassing
+van zo'n expert systeem. Afgelopen
+vrijdag, 11 mei, promoveerden zij aan
+de TU Eindhoven.
+
+SIMPLEXYS
+
+Hans Blom (46) heeft het programma
+SIMPLEXYS ontworpen, waarmee zeer
+snelle expert systemen kunnen worden
+ontwikkeld. Tot nu toe waren deze
+systemen te langzaam voor gebruik in de
+operatiekamer, voldeden niet aan de
+veiligheids en betrouwbaarheids eisen
+die dat gebruik stelt en waren niet
+implementeerbaar op een PC.
+Met SIMPLEXYS heeft Blom een dergelijk
+systeem gerealiseerd in een
+automatische bloedruk regelaar. Het
+bestuurt een infuuspomp, waarmee een
+stof bij de patient wordt ingebracht
+die dient voor het regelen van de
+bloeddruk. Zowel tijdens operaties als
+daarna. Uiteraard zijn expert systemen
+voor andere, niet medische toepassingen
+waarbij de tijd een kritische factor is
+eveneens met dit pakket te ontwerpen.
+
+ALARMSYSTEMEN
+
+Jan van der Aa (37) ontwierp met behulp
+van SIMPLEXYS een tweede expert
+systeem, dat tot een verbetering van de
+bestaande alarm systemen in de
+operatiekamer kan leiden. Hij deed dat
+in nauwe samenwerking tussen de
+vakgroep Medische Elektrotechniek van
+de TU Eindhoven en de afdeling
+Anesthesiologie van de Universiteit van
+Florida in Gainesville (USA).
+
+Meetapparatuur in een operatiekamer
+signaleert wanneer een meetgegeven
+buiten vooraf ingestelde grenzen komt.
+Maar bestaande alarm systemen werken
+niet altijd optimaal. Van der Aa
+ontwikkelde een prototype, dat in staat
+is de abnormale en potentieel
+gevaarlijke situaties bij een
+kunstmatig beademde patient onder
+narcose op te sporen en tijdig alarm te
+slaan. De anesthesist krijgt direct de
+oorzaak en de plaats van het probleem
+gemeld, waardoor onnodig tijdverlies
+wordt voorkomen. Ook gaat dit systeem
+na of de patient voldoende zuurstof
+krijgt toegediend; die behoefte wijzigt
+zich soms tijdens een operatie. Indien
+nodig meldt het systeem dit ook aan de
+anesthesist. Een dergelijk systeem
+helpt de anesthesist in zijn bewaking
+van de patient zonder de behandeling
+over te nemen.
+
+DADS
+
+Chirurgische ingrepen worden steeds
+complexer en als gevolg daarvan duren
+operaties soms ook langer. Een grote
+verscheidenheid van bewakings- en
+behandelings- apparatuur omringt de
+patient, wat leidt tot een veelheid van
+meetgegevens. De vakgroep Medische
+Elektrotechniek doet al vele jaren
+onderzoek naar methoden om
+patientbewaking in de operatiekamer zo
+goed mogelijk te maken.
+
+In 1986 promoveerde dr. A. Meijler op
+het zogeheten Data Acquisitie en
+Display Systeem (DADS). Dat brengt alle
+meetgegevens van alle apparatuur op EEN
+plaats samen, presenteert ze in
+onderlinge samenhang, signaleert
+storingen in de gegevens en genereert
+een automatisch anesthesieverslag.
+Wanneer alle relevante meetgegevens op
+deze wijze voorhanden zijn wordt het
+mogelijk hieruit conclusies te trekken.
+Daarmee wordt de anesthesist in EEN
+keer geinformeerd over zowel de
+toestand van de patient als over die
+van de behandel- en meetapparatuur. De
+dissertaties van de promovendi Blom en
+Van der Aa vormen een afronding van dit
+onderzoek.
+
+DELFTS BLAUW
+
+Het lijkt wel of de PC-prive projecten
+aan West- Duitsland voorbij zijn
+gegaan. In de WDR computer uitzendingen
+worden bijvoorbeeld regelmatig andere
+typen computers getoond dan de in
+Nederland zo populaire MS-DOS machines.
+Ook zijn er in de Nederlandse
+boekhandel Duitstalige tijdschriften
+verkrijgbaar die geheel niet of niet
+specifiek zijn gericht op MS-DOS
+machines. De belangen van de vele
+computer bezitters met de betreffende
+NON-MS-DOS machine worden op deze wijze
+nog steeds gediend. Op een aanzienlijk
+niveau worden de zaken goed beschreven
+en de regelmatige inzendingen van
+lezers, die vaak van hoog niveau zijn,
+goed gedocumenteerd en beloond. Van een
+minachtende sfeer is geen sprake. Een
+sfeer die in Nederland wel heerst. Het
+noemen van het computer type en dat het
+geen MS-DOS compatibel apparaat is,
+stelt men vaak tot het laatste uit, of
+men geeft de microcomputer een PC-look
+middels een PC-kast en dito krulsnoer.
+Een sfeer die natuurlijk het
+duidelijkst is te proeven op
+gebruikers- groep bijeenkomsten van de
+microcomputer waar ook MS-DOS
+gebruikers worden toegelaten of op de
+jaarlijkse HCC-dagen waar bezoekers met
+hun zoveelste PC printerkabel onder de
+arm snel de stands met microcomputers
+voorbij zoeven, eventueel onder het
+maken van opmerkingen dat de
+uitgestalde apparatuur al heel erg oud
+is en niet tot de MS-DOS compatibelen
+behoort, op weg naar het volgende PC
+printerkabel verkooppunt...
+
+Geheel anders is vaak de sfeer bij de
+oudere gebruikers- groepen. Het lijkt
+wel of daar toch een heel ander slag
+gebruikers rondloopt. Mensen die hun
+machine door en door kennen, iets wat
+toch van de gemiddelde MS-DOS gebruiker
+niet gezegd kan worden. De soldeerbout
+is geaccepteerd gereedschap en hier en
+daar zijn hele 'kerstbomen' van
+printjes, ROMs, RAMs en de nodige
+schakelaars te zien. Veel specifieke
+kennis die mede door de hoogdravende
+PC-prive rage mogelijk verloren gaat
+maar in ieder geval slechter
+toegankelijk wordt. PC gebruikers
+hebben echter toch niets aan die
+kennis, de PC is een kompleet apparaat
+waar je hooguit wat andere kaarten in
+schuift en verder niets aan verandert,
+hoogstens om de zoveel tijd een andere
+PC printerkabel...
+[WOEF]
+
+HONDERD KRAAKPOGINGEN VEENENDAAL
+
+Bij DSS in Veenendaal is zo'n
+honderdmaal de telefoon overgegaan na
+het verschijnen van de KraakBeeldkrant
+en het interview drie weken geleden met
+directeur Ir. P. Broertjes. Dat
+betekent echter niet dat alle
+kraakpogingen serieus moesten worden
+genomen, want zo'n vijftig mensen
+belden alleen maar op om te luisteren
+en hadden er geen modem bij aan. Zij
+die wel serieus probeerden in het
+systeem van DSS te geraken (zelfs
+herhaalde malen) werden binnen de tien
+seconden weer uitgelogd omdat zij niet
+aan de voorgeschreven procedure
+voldeden en niemand kwam verder.
+
+Ing. Broertjes zegt dat 30 tot 40
+mensen toch getracht hebben - met de
+kennis die ze uit de Kraakkrant hebben
+- contact te leggen. Hij noemt hun
+pogingen verdienstelijk al heeft
+niemand het gehaald. Overigens: de
+meeste telefoontjes kwamen direct na de
+uitzending en de volgende dag binnen en
+het weekend daarna.
+
+Mocht het zo zijn dat iemand toch met
+nog wat nadere kennis wil proberen het
+systeem binnen te dringen en daar nog
+wat specifieke kennis voor mist, dan
+kan hij telefonisch nader worden
+geinformeerd via de gewone telefoon van
+DSS in Veenendaal: 08385 - 41301. Voor
+overige gegevens zie BeeldKraakkrant
+312.
+

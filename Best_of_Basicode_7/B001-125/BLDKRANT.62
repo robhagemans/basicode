@@ -1,0 +1,223 @@
+62, zon 22 mrt '87
+
+BASIC SPREEKT EEN WOORDJE MEE
+
+Peter van Tilburg, een van de medewerkers van
+de Teleac-cursus gestructureerd programmeren,
+spreekt elke donderdag de cursisten toe via
+Radio 5 (1008 kHz). Hij doet dat donderdag
+tussen 22.00 en 22.30 uur. De les wordt
+herhaald op maandag 20.30 uur op 5. De eerste
+'column' van hem laten we hier in tekstvorm
+volgen. Zie ook agenda.
+
+De programmeertaal BASIC heeft de naam dat het
+een eenvoudige taal is die iedereen gemakkelijk
+kan leren. Toch menen veel deskundigen dat
+BASIC een van de moeilijkste talen is en
+daardoor zeker niet een geschikte taal om het
+programmeren te leren.
+Hoewel veel BASIC-programmeurs waarschijnlijk
+vreemd op zullen kijken van deze bewering, zit
+er wel degelijk een grond van waarheid in. Hoe
+vreemd het ook mag klinken, de moeilijkheid van
+BASIC is gelegen in de grote vrijheid die deze
+taal biedt.
+In andere talen zoals bijvoorbeeld Algol en
+Pascal ben je als programmeur gebonden aan
+strenge regels. Zo moet je al in het begin van
+het programma aangeven welke variabelen je gaat
+gebruiken. Willekeurige sprongen door een
+programma zijn er niet mogelijk.
+In praktijk maken veel BASIC-programmeurs de
+grootste fout die je kunt maken en gaan wanneer
+ze een programma willen schrijven direct achter
+de computer zitten. Wanneer daarna blijkt dat
+het programma niet correct werkt, worden er
+enige wijzigingen aangebracht om de ontdekte
+foute situaties op te vangen.
+Meestal bestaan deze wijzigingen uit het
+toevoegen van extra sprong opdrachten, om te
+voorkomen dat in bepaalde situaties een
+specifiek gedeelte van het programma doorlopen
+wordt. Wanneer er uiteindelijk geen fouten meer
+worden gevonden, wordt aangenomen dat het
+programma goed is.
+Het resultaat dat zo uiteindelijk wordt
+verkregen is meestal echter niet correct. Denk
+bijvoorbeeld aan een programma dat van tien in
+te voeren getallen het grootste moet bepalen.
+Iemand die meteen begint met het schrijven van
+het programma, zal bijvoorbeeld vooraf stellen
+dat het grootste getal 0 is. Vervolgens gaat
+hij de tien getallen af en kijkt steeds of
+het betreffende getal groter is dan het
+grootste getal op dit moment. Indien dat het
+geval is, wordt dit getal het grootste getal.
+Na alle tien getallen bekeken te hebben,
+heeft hij dan het allergrootste getal.
+Wanneer je een dergelijk programma gaat
+testen, dan zal het op het eerste oog steeds
+het juiste resultaat geven. Mag je dan
+concluderen dat het programma juist is? Nee!
+Met testen kan men immers wel fouten aantonen,
+maar niet bewijzen dat er geen fouten zijn.
+Wanneer er bijvoorbeeld tien negatieve
+getallen worden ingevoerd, dan blijft 0 het
+grootste getal. Het programma zal dan als
+resultaat 0 geven, terwijl dit getal niet in
+de reeks voorkwam. Een dergelijke situatie
+komt er meestal niet tijdens het testen uit en
+moet daarom al tijdens een voorafgaande analyse
+van het probleem onderkend worden.
+Een ander nadeel van het aan de slag gaan
+zonder eerst het probleem te analyseren is dat
+het uiteindelijk verkregen programma zeker
+slecht van structuur zal zijn. Doordat het
+oorspronkelijke programma op allerlei manieren
+is bijgeschaafd om vooraf niet voorziene
+situaties op te vangen, is in het programma
+geen duidelijke oplossinssings structuur meer
+zichtbaar. Diverse situaties die bij een goede
+analyse vooraf op een zelfde manier aangepakt
+hadden kunnen worden, worden nu afzonderlijk
+afgehandeld.
+Naast het feit dat een op deze manier
+geschreven programma meestal niet correct is,
+heeft het nog meer nadelen. Wanneer er b.v. na
+enkele maanden wijzigingen in het programma
+aangebracht moeten worden, moet je als
+programmeur het hele programma gaan doorlopen
+om te bekijken waar de wijzigingen moeten
+plaatsvinden. Bovendien is de kans groot dat de
+betreffende wijziging op meerdere plaatsen
+aangebracht moet worden. Dit extra werk is
+nodig omdat, door gebrek aan structuur in het
+programma, het programma niet voor zichzelf
+spreekt. De programmeur moet nu in feite
+opnieuw zijn eigen programma doorgronden.
+In plaats van spaghetti programmeren, waaronder
+het veelvuldig en onnodig gebruik maken van
+sprong opdrachten in een programma verstaan
+wordt, zullen we in deze cursus leren op een
+gestructureerde manier programma's te schrijven.
+We zullen zien dat programmeren niet bestaat
+uit corrigeren, maar uit analyseren en
+structureren. Tijdens het analyseren trachten
+we alle aspecten te ontdekken van het vraagstuk
+waarvoor een programma geschreven moet worden.
+Door hierin vervolgens structuur aan te brengen,
+wordt dikwijls min of meer automatisch de
+oplossingsweg zichtbaar die we moeten volgen om
+met behulp van een computer het vraagstuk op te
+lossen.
+Wanneer we wat grotere programma's moeten gaan
+schrijven, is het dikwijls erg moeilijk om
+overzicht te houden over de werkzaamheden die
+verricht moeten worden. Wanneer we dan trachten
+het probleem in een keer aan te pakken, lopen
+we een goede kans dat we bepaalde aspecten ervan
+over het hoofd zien.
+Het is daarom verstandig om dergelijke
+problemen op te splitsen in een aantal deel
+problemen, die dan vervolgens een voor een
+worden uitgewerkt. Wanneer we daarbij precies
+definieren welke invoer- en uitvoer parameters
+elk onderdeel heeft en wat er precies moet
+gebeuren, dan krijgen we uiteindelijk een aantal
+bouwstenen, die samen het uiteindelijke programma
+gaan vormen. Deze wijze van programmeren, die
+ook gehanteerd kan worden wanneer we met
+meerdere personen aan hetzelfde programma werken,
+noemt men top-down programmeren. In feite
+bestaat deze benadering van een probleem uit drie
+stappen:
+-Allereerst wordt de algemene structuur van
+het probleem bepaald, inclusief de specificatie
+van de invoer die er nodig is om de gewenste
+uitvoer te kunnen verkrijgen.
+-Vervolgens wordt het probleem uitgesplitst
+in een aantal deelproblemen.
+-De deelproblemen worden verder weer
+uitgesplitst, totdat er een niveau bereikt wordt
+waarop de programmeur het hele deelprobleem kan
+overzien en er een oplossing voor kan produceren.
+Op deze wijze ontstaat er een gelaagde
+hiearchische structuur. Daarbij is elke laag de
+detaillering van degene die hem bestuurt
+(de naast-hogere) en algemener dan die hij zelf
+bestuurt.
+Een eerste onderverdeling die we bijna altijd
+kunnen maken is die in invoer, verwerking en
+uitvoer. Onder invoer worden gegevens verstaan
+die tijdens de uitvoer van het programma door
+de gebruiker ingegeven moeten worden. De
+verwerking dient om deze gegevens om te zetten
+in de informatie die gewenst wordt en die
+tenslotte wordt uitgevoerd. Hoewel niet elk
+probleem invoer nodig heeft - soms kunnen alle
+gegevens al vooraf bekend zijn - zal er wel
+altijd sprake zijn van verwerking en natuurlijk
+ook van uitvoer. Dikwijls zal het nodig zijn om
+het onderdeel verwerking in meerdere sub-
+onderdelen op te splitsen.
+Als voorbeeld kunnen we nemen een programma
+om te bepalen of een ingevoerd bankrekeningnummer
+wel een bankrekeningnummer kan zijn. Dit
+probleem wordt nader besproken in hoofdstuk 5
+van het cursusboek.
+In eerste instantie kunnen we het probleem
+splitsen in drie onderdelen:
+1) Invoer: het vragen naar een rekeningnummer
+2) Verwerking: bepalen of het een goed
+rekeningnummer kan zijn
+3) Uitvoer: het resultaat - wel of niet een
+goed rekeningnummer - uitvoeren
+
+De verwerking kunnen we weer verder uitsplitsen
+in twee onderdelen:
+1) Bepaal de som van de producten factor*cijfer
+2) Stel vast of deze som een 11-voud is
+Op deze wijze is het programma uiteindelijk
+onderverdeeld in vier kleine problemen, die min
+of meer onafhankelijk van elkaar opgelost kunnen
+worden en waardoor het toch mogelijk is een
+goed overzicht te houden over het geheel. We
+zijn kortom bezig met het aanbrengen van
+structuur in BASIC.
+
+BERICHT UIT ENGELAND
+
+Graham Smith uit Bury St Edmunds schrijft dat
+hij zijn eigen Basicode programma in het
+westen goed heeft kunnen ontvangen. Hij kreeg
+er enige brieven op, uit wat uithoeken van
+Europa. Louis Payne uit Norfolk - een andere
+Basicode programmeur uit Engeland - schreef
+hem, evenals F. Dormeier uit Berlijn. Verder
+wat Nederlanders. Ik maak daaruit op dat de
+ontvangst goed was in Berlijn (!) en Leimuiden,
+schrijft Graham, terwijl de anderen om een
+listing vroegen.
+
+Verder wil ik u graag vertellen over een paar
+interessante zenders die ik op mijn radio heb
+gehoord. Op 981 kHz is Radio Algiers Int. Serv.
+te horen net uitzendingen in het Engels van
+19 - 20 utc en in het Spaans van 20 - 21. Elke
+zondag zendt de Zweedse radio een Zweedse les
+uit voor luisteraars in Duitsland om 17.30 utc
+op 1179 kHz. Elke vrijdag zendt Deutschlandfunk
+een Duitse les uit voor luisteraars in Zweden
+om 18.30 utc op 1269 kHz. Misschien kunnen die
+twee landen elkaar nu beter verstaan! De Duitse
+les wordt op andere dagen in andere talen
+uitgezonden, bijvoorbeeld op dinsdag in het
+Nederlands en op woensdag in het Engels.
+
+Ik heb ook een Poolse zender gehoord die
+computerprogramma's uitzendt voor Atari en
+Spectrum. De software is elke dinsdagavond
+te horen tussen 22.30 en 22.45 utc op circa
+1080 kHz. Hebben andere luisteraars dit
+programma ook gehoord, vraagt Graham Smith.

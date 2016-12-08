@@ -1,0 +1,308 @@
+159, zon 26 juni '88
+
+MINICURSUS PRATEN MET FIDO-NOS DEEL 1
+
+INTRODUCTIE
+
+Het gebruik van databanken is voor vele
+computerbezitters nog een onbekend iets.
+Teneinde hen over de drempel heen te helpen en
+hen enigszins bekend te maken met deze moderne
+manier van communiceren, heeft Pieter Vijlbrief
+deze introductiecursus geschreven.
+Voor beginners dus.
+
+WAT BIEDT FIDO-NOS?
+
+Het FIDO-NET is een wereldwijd verbreid,
+telefonisch te bereiken netwerk voor
+communicatie door computerbezitters onderling.
+In Nederland staat dat netwerk ter beschikking
+aan de leden van de HCC (Hobby Computer Club).
+Een uitzondering daarop vormt het FIDO-NOS,
+dat is -beperkt- openbaar, dus door iedereen
+te gebruiken, die over een computer en een
+modem (met programmatuur) beschikt. In deze
+databank vindt men een berichtengebied, waarin
+men een bericht aan b.v. Hobbyscoop kan
+plaatsen of aan andere gebruikers van dit net.
+Later kan men dan antwoord verwachten. Ook
+treft men er een bestandengebied (file area)
+aan, waarin berichten staan van Hobbyscoop,
+Radio Nederland, Teleac, zendamateurs, de HCC,
+enz., maar ook de Basicode programma's, die de
+laatste jaren zijn uitgezonden. Ook is een
+advertentie rubriek (aangeboden / gevraagd)
+opgenomen. Dit alles kan op een eenvoudige
+wijze uit Fido in de eigen computer worden
+geladen ('ge-download') en later worden
+geraadpleegd of worden gebruikt. Behalve de
+normale telefoonkosten voor de verbinding met
+Hilversum kost deze service u verder niets.
+
+WAT HEEFT U NODIG?
+
+Behalve over een geschikte computer (en dat
+zijn ze bijna allemaal), moet u beschikken
+over een 'communicatie - programma' en een
+bruikbaar 'modem' voor deze computer. Een
+modem zet de spanningspulsjes uit de computer
+om in toontjes voor de telefoonlijn
+(MOdulator) en doet ook het omgekeerde van
+telefoonlijn naar computer (DEModulator),
+vandaar de naam.
+
+MODEMS
+
+Er zijn verschillende types. Dit houdt verband
+met de 'seinsnelheid' of 'baudrate'. Het
+bekendste is het Viditel modem (V23), dat met
+1200 Bd ontvangt en met 75 Bd zendt in de
+'originate' = 'opbeller' stand. Voor normale
+communicatie is dit in het begin goed
+bruikbaar, mits de computer het gebruik van de
+2 snelheden aankan. Fido reageert er goed op.
+
+HET V21 MODEM
+
+Eenvoudiger is een 300 Bd modem. Dit werkt
+met dezelfde snelheid voor zenden en
+ontvangen (V21), maar ontvangt dan wel 4 maal
+minder snel dan het V23 modem, wat vooral
+merkbaar is bij het binnenhalen (downloaden)
+van programma's. Het versturen van programma's
+gaat echter 4 maal sneller (300 ipv 75 Bd).
+
+ONDERLINGE COMMUNICATIE
+
+Het voordeel is, dat een dergelijk modem
+betrekkelijk voordelig is en beschikt over een
+'originate' en een 'answer' stand, zodat men
+ook met een kennis, die over een dergelijk
+modem beschikt, per computer kan communiceren.
+De opbeller zet het modem in de stand
+'originate', terwijl de ander in de stand
+'answer' staat. Daarmede wordt de juiste
+toonhoogte voor het te zenden en het te
+ontvangen signaal ingesteld.
+
+KOSTPRIJS
+
+Bedenk wel, dat de aanschafprijs van het
+modem maar 1 keer wordt betaald, maar dat de
+telefoonkosten steeds doorlopen. Hoe sneller
+de verbinding kan worden afgehandeld, hoe
+goedkoper (of beter: minder duur) het op den
+duur zal zijn. Helaas zijn de meeste
+databanken niet in staat te reageren op een
+modem in de V23 'answer' stand, waarbij het
+verzenden ('uploaden') van programma's met de
+hoge snelheid van 1200 Bd plaatsvindt. Daarom
+is deze stand niet op alle modems aanwezig.
+
+V22 en V22bis MODEMS
+
+Wil men echter de hogere snelheid ten volle
+benutten, dan moet men zich een V22 modem
+(1200 Bd / 1200 Bd) of een V22bis modem (2400
+Bd / 2400 Bd) aanschaffen. Deze zijn echter
+wel duurder en bij de hoogste snelheid speelt
+ook de kwaliteit van de telefoonlijnen een
+rol. Omschakelbare modems (V21, V23 en soms
+V22 en V22bis) bestaan ook.
+
+MODEMS VOLGENS HET HAYES PROTOCOL
+
+Dit zijn zeer luxe uitvoeringen, die geheel
+vanuit de computer kunnen worden bestuurd,
+zowel wat de instellingen betreft als het
+opbellen of beantwoorden van de abonnee, als
+tenminste het daarvoor geschikte programma ook
+voor de computer beschikbaar is.
+
+KOPPELING MET HET TELEFOONNET
+
+Dan is er nog een punt: de koppeling met het
+telefoonnet. De PTT stelt hieraan eisen. Het
+beste is een door de PTT goedgekeurd modem,
+voorzien van een telefoonsteker met een
+wandkontakt doos van de telefoon te verbinden.
+De telefoon wordt dan met het modem gekoppeld.
+Soms worden nog goedkope acoustische modems
+(300 Bd) te koop aangeboden. Koppeling vindt
+dan plaats door middel van de telefoonhoorn.
+Deze zijn storingsgevoelig voor omgevings
+geluid. Belangrijk is, dat het modem voor uw
+computer geschikt is en dat er een goed
+programma voor bestaat (zie de voor uw
+apparaat specifieke computer tijdschriften).
+
+HET COMMUNICATIEPROGRAMMA
+
+Een absolute eis voor het tot stand komen van
+een goede verbinding met Fido is, dat het
+programma instelbaar moet zijn op minstens een
+van de genoemde modem types (Baudrate) en
+verder op 1 startbit, 8 databits, geen
+pariteitsbit (=No-parity) en 1 stopbit. Verder
+is het een voordeel bij het 'downloaden' van
+programma's, dat er een foutcontrole protocol
+aanwezig is (bijv. XMODEM of KERMIT). Het kan
+wel zonder dat (ASCII modus), maar dat is
+vooral bij lijnstoringen vrij onbetrouwbaar.
+
+AANSLUITEN
+
+Het modem moet meestal via de RS 232 poort
+met behulp van een speciale kabel aan de
+computer worden verbonden. Soms vindt
+aansluiting plaats via een 'cartridge slot' of
+een ander uitbreidings slot. Dit is merk-
+afhankelijk. Raadpleeg daarvoor de
+gebruiksaanwijzing. Vaak wordt het normale
+telefoontoestel met het modem verbonden en
+gaat de steker van het modem in de
+wandkontaktdoos van de PTT.
+
+PROEFDRAAIEN
+
+Als alles op de juiste wijze is verbonden en
+het communicatie programma in de computer is
+geladen moet dit laatste worden ingesteld op
+de 'Baudrate' van het modem, 8 databits, no-
+parity en 1 stopbit (bijv. 300,8,N,1). Soms
+gaat dit instellen via een menu. Het modem
+wordt in de stand 'originate' gebruikt. Het
+beste is eerst een verbinding tot stand te
+brengen met een bevriende hobbyist, die ook
+over dergelijke apparatuur beschikt. Deze zet
+zijn modem op dezelfde snelheid, maar in de
+stand 'answer'. Als alles bevredigend werkt,
+moet men boodschappen op elkaars scherm kunnen
+schrijven. Voor een eerste oefening is dit
+zeer aan te bevelen!
+
+OVERZICHT VAN HET EERSTE DEEL
+
+U heeft vluchtig kennisgemaakt met Fido en
+weet nu iets over modems en over de eisen die
+aan het communicatie programma moeten worden
+gesteld en u heeft reeds 'droog' geoefend. In
+het volgende deel gaan we in op het tot stand
+brengen van een verbinding met FIDO-NOS en de
+mogelijkheden die u daarvan kunt benutten.
+(Met dank aan Pieter Vijlbrief).
+
+TYPE AANDUIDINGEN BIJ DISKETTES
+
+Er zijn nogal wat computer gebruikers
+die van mening zijn dat HD-diskettes
+op elke drive kunnen worden gebruikt.
+Dit is echter niet het geval. U kunt
+met 1S/2D - of 2S/2D diskettes ook niet
+op HD-drivers werken. Het verloren
+gaan van gegevens en storingen in het
+systeem kan worden voorkomen door de juiste
+diskettes te gebruiken. Met het volgende
+schema geven wij een overzicht van de
+geschiktheid van de diverse diskettes.
+De indeling naar grootte - 3.5', 5.25' en
+8'- is de gemakkelijkste omdat deze
+direct te zien zijn. Ook de indeling
+naar schrijfdichtheid is overzichtelijk.
+De afkortingen gelden voor alle formaten en
+worden vrijwel zonder uitzondering door alle
+leveranciers gebruikt.
+
+AFKORTINGEN EN BETEKENISSEN
+
+ALGEMEEN
+
+HD - High Density- schrijfdichtheid
+KB - 1 kilobyte = 1.024 bytes van elk 8 bits
+MB - 1 megabyte = 1000 KB
+
+3.5 INCH DISKETTES
+
+1  - enkelzijdig gesteste diskettes
+2  - dubbelzijdig geteste diskettes
+DD - dubbele schrijfdichtheid
+HD - High Density- schrijfdichtheid
+
+5.25 INCH DISKETTES
+
+1S    - enkelzijdig geteste diskettes
+2S    - dubbelzijdig geteste diskettes
+2D    - dubbele schrijfdichtheid
+96 tpi- schrijfdichtheid 96/100 sporen per inch
+HD    - High Density - schrijfdichtheid
+
+'HD' STAAT VOOR HIGH DENSITY
+
+HD betekent letterlijk High Density, dus hoge
+opslag dichtheid. De uitsluitend in
+dubbelzijdige uitvoering verkrijgbare HD
+diskette heeft als verkorte aanduiding
+2S/HD. De HD diskette is op geen andere
+drive te gebruiken. Als voordeel heeft
+deze diskette de hoge opslag capaciteit
+van 1,6 MB ongeformatteerd. Het is dus in
+het eigen belang van de diskette gebruiker
+na te gaan of hij over een High Density
+drive beschikt en de in vergelijking met
+de normale diskette duurdere HD moet
+gebruiken. Bij de 5.25 inch - 2S/HD diskette
+is de schijf zelf voorzien van een
+1 duizendste millimeter 'dikke' magnetische
+laag, waarin zoals bekend de bits worden
+opgeslagen.
+
+5.25 INCH / 96 TPI DISKETTES
+
+Met uitzondering van de HD-uitvoering hebben
+alle diskettes met een lagere schrijfdichtheid
+een magnetische laag die ongeveer 2 duizendste
+millimeter dik is. Diskettes met de verkorte
+aanduiding 5.25 inch - 2S/2D 96 tpi,
+geven een opslag capaciteit van 1 MB ofwel
+1000 kilobytes. In tegenstelling tot de
+HD diskettes zijn ze in de richting van een
+geringere schrijfdichtheid compatibel.
+Ook kunnen ze worden gebruikt in plaats van
+de 2D of de 1D uitvoering.
+
+5.25 - 2D EN 1D DISKETTES
+
+Dubbelzijdige 5.25 inch diskettes met een
+dubbele schrijfdichtheid met de verkorte
+aanduiding 2S/2D hebben een opslag capaciteit
+van 500 KB. Ze kunnen ook als enkelzijdige
+1S/2D versie worden toegepast, maar hebben dan
+een opslag capaciteit van slechts 250 KB.
+
+VERSTEVIGINGSRING
+
+De aanduiding 'hard hole' verwijst naar
+de rond het centrale gat van de 5.25 inch
+diskette aangebrachte verstevigingsring.
+Het helpt de aandrijfkracht van de drive
+op de diskette over te brengen en zorgt
+ervoor dat de diskette zo goed mogelijk
+wordt gecentreerd. Diskettes met een
+verstevigingsring zijn voor praktisch
+alle drives geschikt en kunnen dan ook
+worden aanbevolen, tenzij de gebruiks
+aanwijzing anders aangeeft.
+
+SECTORINDELING
+
+De aanduiding 'sectors soft' geeft aan dat de
+diskettes ongeformatteerd zijn. De gebruiker
+moet dus voor hij er mee aan het werk
+gaat formatteren. Als hij hiervoor geen
+ge1schikt programma heeft, is het aan te raden
+geformatteerde diskettes te kopen.
+Die beschikken over een aanduiding van het
+aantal sectoren en het aantal bytes per
+sector, bv. 26 x 256 bij 5.25 inch diskettes.
+(Bron: BASF Nederland)

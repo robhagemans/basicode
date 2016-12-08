@@ -1,0 +1,338 @@
+452, maa 11 nov '91
+
+MOBILOFOON TRUNKING SYSTEEM IN BOTLEK
+
+PTT Telecom, district Rotterdam, gaat
+aan 4 grote chemiebedrijven in het
+Botlek gebied (ICI, AKZO, ARCO en DSM)
+een gezamenlijk mobilofoon trunking
+systeem leveren. Deze omvangrijke order
+omvat circa 300 mobiele posten, zoals
+mobilofoons en portofoons, een compleet
+antenne systeem en de bijbehorende
+centrale besturings eenheid. Het
+systeem heeft een reikwijdte met een
+straal van circa 3 kilometer, waarmee
+het grootste deel van het Botlek gebied
+wordt bestreken. Het mobilofoon systeem
+zal in het eerste kwartaal van 1992
+geleidelijk operationeel worden.
+
+Bij de opzet van het mobiele
+communicatie systeem, waarbij de
+Stichting Radio- communicatie Rotterdam
+is betrokken geweest, stond een
+gemeenschappelijk hoge kwaliteits-
+netwerk, dat veilig en betrouwbaar
+moest zijn, voorop. Bovendien was de
+permanente beschikbaarheid van
+mobilofoon kanalen een absolute
+vereiste. Vooral bij bestrijding van
+calamiteiten is een gezamenlijk
+mobilofoon systeem van groot belang.
+Het systeem zal onder meer worden
+gebruikt door bewakings en onderhouds
+personeel en brandweer- en
+EHBO-ploegen. (Bron: PTT Telecom)
+
+TRUNKING TECHNIEKEN
+
+De behoefte aan communicatie groeit
+zeer snel. Bij mobiel gebruik kan geen
+gebruik worden gemaakt van de
+infrastructuren op het land zoals
+telefoonlijnen. De communicatie dient
+derhalve draadloos te geschieden,
+waarbij gelet moet worden op een zo
+efficient mogelijk gebruik van de ether
+kanalen. Door de grote communicatie-
+behoefte zal het duidelijk zijn dat
+niet iedereen over een eigen,
+ongestoord radiokanaal kan beschikken.
+Het frequentie spectrum is immers
+beperkt en grote delen zijn ingevuld
+door de krijgsmacht en de omroep.
+
+WEINIG RADIOKANALEN BESCHIKBAAR
+
+Er zijn voor landmobiel gebruik grofweg
+de frequentiebanden 146 t/m 174 en 450
+t/m 470 MHz beschikbaar. Deze banden
+moeten worden gedeeld door particuliere
+gebruikers, de overheids diensten zoals
+politie en brandweer, en landelijke
+infrastructuren ten behoeve van
+autotelefoon en semafoon. Buiten de
+landelijke infrastructuren is het deel
+dat overblijft voor communicatie zeer
+beperkt en iedere gebruiker van een
+radiokanaal zal te maken hebben met
+medegebruikers. Indien gebruik wordt
+gemaakt van bijv. toonsquelch (zie
+Beeldkrant 444) zal men de
+medegebruikers niet horen, maar het
+radiokanaal kan uiteraard slechts door
+1 gebruiker tegelijk worden benut. De
+herhalings afstand, waarbij een
+frequentie weer kan worden gebruikt,
+bedraagt in Nederland circa 60 km. Dat
+wil zeggen, dat een radiokanaal na 60
+km door een andere gebruiker kan worden
+benut. Bij goede propagatie hoort men
+altijd een flink aantal medegebruikers
+op hetzelfde kanaal.
+
+KANALEN SAMEN GEBRUIKEN
+
+Het is zo, dat bij normaal gebruik van
+een radiokanaal men niet 24 uur per dag
+en 7 dagen in de week zal zenden. De
+belegging van het radiokanaal is
+afhankelijk van het aantal mobiele
+gebruikers, maar zal toch niet meer
+bedragen dan zo'n 5 tot 10 procent van
+de tijd. Dat betekent, dat een andere
+gebruiker in de overige 90 procent van
+de tijd gebruik kan maken van het
+radiokanaal.
+
+Bij telefoon verkeer wordt gebruik
+gemaakt van dit feit. Elk telefoon
+toestel heeft zijn eigen aansluiting
+naar de centrale, maar van centrale
+naar centrale gaan geen kabels voor elk
+toestel naar overal in de wereld. Het
+is in de praktijk zo, dat niet iedereen
+tegelijk telefoneert. Wanneer wel
+iedereen tegelijk zou telefoneren,
+komen we tot het eind van de capaciteit
+van de kabels van de centrale naar een
+volgende centrale. Iets dergelijks
+gebeurt in de praktijk wel eens,
+bijvoorbeeld op nieuwjaarsmorgen zeer
+vroeg, wanneer half Nederland de andere
+helft van Nederland een goed nieuwjaar
+wil wensen. De capaciteit van het
+telefoon verkeer is dus eindig. Buiten
+de genoemde pieken in telefoon verkeer
+zal in de meeste gevallen, wanneer de
+hoorn van de haak wordt genomen, er
+kiestoon hoorbaar zijn en kan men de
+verbinding met de gewenste abonnee
+maken. Het gebruik zoals boven
+omschreven noemt men trunking.
+
+BEREKENING CAPACITEIT
+
+Er bestaat een formule, waarbij
+rekening wordt gehouden met het aantal
+aansluitingen, het aantal gesprekken in
+het spitsuur en de toelaatbare
+stagnatiekans. Uit de formule komt een
+cijfer met als grootheid Erlang. Een
+Erlang is als een lijn 100 procent van
+de tijd bezet is. In het algemeen weet
+de Nederlandse PTT hoe lang de
+gemiddelde gespreksduur is en hoeveel
+er vanaf een aansluiting gemiddeld
+wordt gebeld. Uiteraard wordt rekening
+gehouden met uitbreiding van het aantal
+aansluitingen. Het Erlang getal is dan
+een maat voor het aantal benodigde
+lijnen.
+
+Vooral in de -dure- intercontinentale
+verbindingen kan ook nog gebruik worden
+gemaakt van een andere techniek: het is
+mogelijk om zelfs een aantal kanalen te
+delen met meer gebruikers dan er
+kanalen zijn. In de spraakpauze heeft
+men het kanaal niet nodig en kan het
+dus aan een andere gebruiker worden
+toegewezen. Uiteraard merken de
+gebruikers niets van al het schakelen
+in de verbinding.
+
+TRUNKING EN RADIOCOMMUNICATIE
+
+Ook bij radioverkeer kan gebruik worden
+gemaakt van trunking technieken. Ook
+hier wordt niet voor 100 procent van de
+beschikbare tijd gebruik gemaakt van
+het radiocommunicatie net. De werkwijze
+is iets anders dan bij telefoon
+verkeer, omdat de portofoons en
+mobilofoons nu eenmaal niet met een
+draadje vastzitten aan de centrale. In
+rusttoestand staan de portofoons en
+mobilofoons op een apart kanaal: het
+organisatie kanaal. Op het organisatie
+kanaal vindt uitsluitend data- verkeer
+van en naar de mobiele apparatuur
+plaats. Als een portofoon of mobilofoon
+wordt aangezet, dan zoekt het apparaat
+naar het organisatie kanaal. Als het
+organisatie kanaal is gevonden, wordt
+er een data telegram naar de centrale
+verzonden, waarmee de portofoon zich
+aanmeldt in het radionet. De trunking
+centrale houdt bij welke apparaten zijn
+aangemeld. Bij het uitzetten van de
+portofoon wordt uiteraard het apparaat
+weer afgemeld.
+
+OPBOUW VERBINDING
+
+Elke portofoon en mobilofoon heeft zijn
+eigen oproepnummer. Als iemand vanaf
+bijv. een portofoon een andere
+gebruiker -een andere portofoon-
+oproept, dan moet het oproepnummer van
+de op te roepen portofoon worden
+ingetoetst. Op het organisatie kanaal
+wordt een data telegram verzonden naar
+de centrale. In de centrale wordt in
+een tabel gekeken of het is toegestaan,
+dat de oproep plaats vindt. Indien de
+oproepende portofoon inderdaad met de
+op te roepen portofoon mag werken,
+wordt gekeken of de op te roepen
+portofoon is aangemeld aan het radio
+systeem. De centrale verstuurt nu aan
+de beide portofoons een data telegram
+met daarin een commando om naar een
+bepaald vrij kanaal te gaan. De beide
+portofoons gaan dan naar het
+betreffende kanaal en kunnen met elkaar
+converseren. Het gehele spel van vraag
+en antwoord duurt in een 'normaal'
+trunkingnet circa 600 msec. In een AEG
+trunkingnet wordt een speciaal protocol
+gebruikt, waardoor de maximale tijd
+slechts 300 msec bedraagt. Na een eind
+telegram of na een bepaalde time out
+gaan de beide portofoons weer terug
+naar het organisatie kanaal. Indien de
+op te roepen portofoon niet bereikbaar
+is, wordt een bezet- toon naar de
+oproepende portofoon gezonden.
+
+ORGANISATIEKANALEN
+
+Bij een groot trunkingnet kan gebruik
+worden gemaakt van verschillende
+organisatie kanalen. Uiteraard is het
+organisatie kanaal vrij toe te wijzen,
+en het systeem houdt bij of het
+organisatie kanaal goed werkt. Om de
+goede werking van het trunkingnet te
+controleren wordt gebruik gemaakt van
+een aantal zend/ ontvangers, waarbij
+men precies weet, met welke veldsterkte
+het signaal van de vaste post (de
+hoofdzender) binnenkomt. Indien op een
+van de kanalen een aantal malen geen
+antwoord wordt gegeven op een data
+telegram, wordt dat kanaal als gestoord
+gemeld. Ook indien er een storing
+optreedt op een van de kanalen wordt
+dat kanaal uiteraard niet meer
+toegewezen voor spraakverkeer.
+
+LUCHTHAVEN SCHIPHOL
+
+Een groot particulier trunkingnet in
+Nederland staat op de luchthaven
+Schiphol. Met een totaal van 48 kanalen
+en 2500 portofoons is dat zelfs een van
+de grootste trunking netwerken in de
+wereld. Op Schiphol wordt, door de
+relatief kleine oppervlakte van het
+terrein, gebruik gemaakt van slechts 1
+zender locatie. Op deze locatie staan
+de 48 zenders en ontvangers, verdeeld
+over 2 antennes. Voor de ondergrondse
+ruimten en in de gebouwen wordt gebruik
+gemaakt van stralende coax kabel. Op
+het dak van zo'n gebouw staat een
+antenne, gericht op de zend/ontvang
+antenne. Na de antenne komt een duplex
+filter om de zendfrequenties van de
+ontvangst frequenties te scheiden. Aan
+de zendende en de ontvangende kant zit
+een breedbandige versterker, welke in
+de zendrichting het op de antenne
+ontvangen signaal versterkt en in de
+ontvang- richting de signalen van de
+stralende coax versterkt. Het zal
+duidelijk zijn, dat de ingangen en de
+uitgangen van de versterkers elkaar
+niet mogen 'zien'. Met andere woorden:
+de stralende coax moet goed zijn
+afgeschermd van de antenne op het dak
+van het gebouw. Met deze hulpmiddelen
+is overal op het terrein van de N.V.
+Luchthaven Schiphol een goede ontvangst
+van de hoofdpost mogelijk.
+
+TRAXIS
+
+Een ander groot trunking netwerk in
+Nederland is het nieuwe Traxis netwerk
+van PTT Telecom. Met dit netwerk kan
+(als alles gereed is) in heel Nederland
+verbinding worden gemaakt met een
+andere gebruiker. Ook hier geldt, dat
+men gerechtigd moet zijn om de andere
+gebruiker op te roepen. Het is mogelijk
+om, net als overigens in het Schiphol
+netwerk, zogenoemde 'closed user
+groups' te formeren, waarbij oproepen
+binnen de groep mogelijk is en buiten
+de groep niet. In tegenstelling tot het
+Schipholnet wordt in Traxis, behalve
+van trunking technieken, ook gebruik
+gemaakt van cellulaire technieken. Op
+Schiphol heeft men aan 1 cel voldoende
+om de gewenste reikwijdte te halen.
+Indien Nederland als werkterrein wordt
+gekozen, heeft men uiteraard aan 1
+locatie niet genoeg. De gebruiker van
+het Traxis net kan van de ene naar de
+andere cel gaan zonder de verbinding
+kwijt te raken. Er wordt dan van kanaal
+gewisseld. Door het cellulaire en
+trunking principe staat niet bij
+voorbaat vast op welk kanaal (welke
+frequentie) de communicatie zal plaats
+vinden. Het systeem zal een vrije
+frequentie toewijzen, uitsluitend voor
+de duur van het gesprek. Daarna is de
+frequentie weer vrij voor een andere
+gebruiker.
+
+TOT SLOT
+
+Met trunking technieken is het mogelijk
+om een groot aantal gebruikers te laten
+werken met een beperkt aantal
+radiokanalen. Omdat de trunking
+centrale uitsluitend bruikbare kanalen
+zal toewijzen, is het mogelijk om
+communicatie te voeren zonder al te
+veel storing. De frequentie banden voor
+trunking netten liggen buiten de
+gebruikelijke banden voor landmobiel
+radioverkeer. Vooral in gebieden waar
+de communicatie behoefte zeer groot is,
+zal een trunking netwerk vele voordelen
+bieden. Het nadeel van een trunking
+netwerk is de intelligente
+infrastructuur vanwege de hoge
+investering, en de prijs van een
+intelligent mobiel apparaat is circa
+anderhalf maal zo hoog als die van een
+conventioneel apparaat.
+
+Jan van der Meij, PA0JMY.
+

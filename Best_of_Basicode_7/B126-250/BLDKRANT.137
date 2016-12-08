@@ -1,0 +1,287 @@
+137, woe 30 mrt '88
+
+FUJI-OSCAR 12
+
+Het gebruiksschema van OSCAR 12 is voor april
+als volgt gepland:
+mode JA van 1-4 0106 UTC tot 4-4 0120 UTC en
+mode JA van 6-4 0133 UTC tot 7-4 0039 UTC.
+Op 9 april wordt tussen 1547 UTC en 1748 UTC
+speciale telemetrie programmatuur geladen, die
+tijdens mode JD bedrijf elke 2 sekonden
+telemetrie uitzendingen mogelijk maakt in
+plaats van elke minuut. In die periode is mode
+JD alleen beschikbaar als digipeater. Daarna
+is het schema als volgt gepland:
+mode JD van  9-4 2159 UTC tot 10-4 1857 UTC,
+mode JD van 12-4 1506 UTC tot 13-4 1614 UTC,
+mode JD van 16-4 1332 UTC tot 17-4 1439 UTC,
+mode JA van 20-4 1359 UTC tot 21-4 1305 UTC,
+mode JA van 23-4 1318 UTC tot 24-4 1224 UTC,
+mode JD van 26-4 1030 UTC tot 27-4 1144 UTC,
+mode JD van 28-4 1050 UTC tot 29-4 1157 UTC.
+Men moet er rekening mee houden dat
+afwijkingen van dit schema mogelijk zijn als
+gevolg van de beperkte hoeveelheid beschikbare
+energie in de satelliet.
+
+AMSAT-Phase 3C
+
+Na de geslaagde ARIANE vlucht V21 heeft de ESA
+het lanceerschema voor de volgende vluchten
+iets gewijzigd. Omdat men veel haast heeft met
+in bedrijf stellen van de nieuwe kommunikatie
+satelliet Intelsat 5, heeft de ESA besloten
+deze satelliet eerst te lanceren in mei.
+Oorspronkelijk was deze lancering gepland met
+vlucht V23. Daarom zijn de vluchten V22 en
+V23 nu verwisseld. Vlucht V22 wordt nu dus een
+ARIANE 2 raket met Intelsat 5 aan boord. Deze
+lancering is nu gepland op 11 mei. Als alles
+daarmee goed gaat is vlucht V23 drie weken
+later te verwachten, dus rond 1 juni. Bij deze
+vlucht moet dan de eerste ARIANE 4 raket
+worden gelanceerd, met aan boord de amateur
+satelliet AMSAT-Phase 3C, de Europese
+weersatelliet Meteosat P2 en de Amerikaanse
+kommunikatie satelliet PANAMSAT.
+
+SATELLIET VERHUIST NAAR KOUROU
+
+Rond 28 maart vertrekt de groep specialisten
+van AMSAT-DL met de Phase 3C satelliet vanuit
+Marburg in West Duitsland naar Kourou in
+Frans Guyana. Na bijna een week hopen ze aan
+te komen op de ESA lanceerbasis met de
+satelliet en alle hulp-apparatuur. Vanuit
+de USA zullen ook medewerkers van AMSAT-NA
+naar Kourou gaan om te assisteren bij de
+voorbereidingen op de lancering. De AMSAT-DL
+amateurs willen in de periode voor en rond
+de lancering dagelijks kontakt onderhouden
+met hun 'thuisbasis' in Marburg via amateur-
+radio. Ze willen dan steeds rond 1900 UTC
+aktief zijn op 14,280 of 21,280 MHz met SSB.
+Daarbij kunnen ze gebruik maken van het
+clubstation FY7KRU of van hun eigen
+roepnamen, voorafgegaan door FY7/, dus
+bijvoorbeeld FY7/DJ5KQ.
+
+DEFINITIEVE FREKWENTIES
+
+AMSAT-DL heeft de definitieve frekwenties
+van Phase 3C, zoalsgemeten in de voltooide
+satelliet, nu bekend gemaakt. Zij luiden
+als volgt:
+Mode B:   uplink:  435,567 -  435,422 MHz
+        downlink:  145,823 -  145,968 MHz
+        General Beacon     :  145,812 MHz
+        Engineering Beacon :  145,985 MHz
+Mode L:   uplink: 1269,620 - 1269,330 MHz
+        downlink:  435,715 -  436,005 MHz
+        General Beacon     :  435,651 MHz
+        Engineering Beacon :  435,677 MHz
+Mode J:   uplink:  144,425 -  144,475 MHz
+        downlink:  435,990 -  435,940 MHz
+Mode S:   uplink:  435,601 -  435,637 MHz
+        downlink: 2400,711 - 2400,747 MHz
+RUDAK:    uplink: 1269,710 MHz
+        downlink:  435,677 MHz
+Mode B, mode L en mode J zijn inverterende
+lineaire relais- stations. Mode J en mode L
+zullen vaak tegelijkertijd in bedrijf zijn:
+mode JL. RUDAK maakt gebruik van dezelfde
+zender als het Engineering Beacon van mode L.
+De mode S zender begrenst de amplitude omdat
+mode S primair bedoeld is voor FM gebruik.
+
+RADIO SPOETNIK 12/13
+
+De bouwers van de Radio Spoetnik 10 en 11
+satelliet systemen zijn inmiddels al weer
+bezig met de bouw van de opvolgers: Radio
+Spoetnik 12 en 13. Volgens OK3AU moeten
+deze nieuwe satelliet systemen veel gaan
+lijken op RS10/11 en zullen ze ook in een
+andere satelliet worden ingebouwd. Of dit
+weer een navigatie satelliet zal worden is
+nog niet duidelijk. Daarom is de baan,
+waarin ze moeten komen, ook nog niet bekend.
+Informatie over de te gebruiken frekwenties
+van RS12/13 is nog niet beschikbaar. Men
+verwacht dat de lancering van deze nieuwe,
+gekombineerde satelliet kan plaatsvinden
+in de zomer van 1989.
+
+BALLON-VLUCHTEN MET AMATEUR-RADIO
+
+Als alles goed is gegaan is op zaterdag 26
+maart weer een BACAR ballonvlucht uitgevoerd
+boven Zuid-Afrika. De ballon moest klimmen
+tot 70.000 voet (ruim 21 km). Een bakenzender
+zond op 144,550 MHz zolang de ballon beneden
+28.000 voet was. Aan boord was ook een
+digitaal 'store and forward' systeem voor
+packet radio en voor spraak. Er kon voor 15
+sekonden aan spraak- signalen worden
+opgeslagen in een geheugen, waarna die
+signalen later door middel van een spraak-
+synthesizer weer konden worden uitgezonden.
+De AMSAT-UK groep wacht nog steeds op een
+machtiging om een ballonvlucht uit te mogen
+voeren boven Engeland met hun HART relais
+station. De machtiging- aanvraag loopt via
+de RSGB. Er zijn al twee HART systemen
+gebouwd, voorzien van een lineair relais en
+telemetrie- en kommando systemen. (Met dank
+aan Nico, PA0DLO)
+
+BEELDKRANT-ADVERTENTIES
+
+Deze keer weer een aantal advertenties in de
+Beeldkrant. Eerst vermelden we nog even de
+'spelregels' voor opgave en plaatsing:
+- Het opgeven van een advertentie (stuur
+een briefkaartje naar postbus 1200) is gratis.
+We accepteren echter alleen NIET-COMMERCIELE
+advertenties.
+- Wat wordt gevraagd of aangeboden dient
+iets met computers te maken te hebben. Dit is
+blijkbaar niet voor iedereen vanzelfsprekend!
+- Alle communicatie tussen vrager en aanbieder
+dient RECHTSTREEKS te verlopen! Vermeld dus
+altijd uw adres en/of telefoonnummer.
+
+137-1
+
+Aangeboden: Printer COMX35-P, compleet met
+netvoeding en interface voor de COMX35.
+Vraagprijs f50. Bel: 01860 - 12217 (P. Stolk)
+
+137-2
+
+Dhr. van der Zee uit Zutphen vraagt voor zijn
+Commodore-64 het programma 'Wolters Software
+Assembler'. Tel. 05750 - 21736 (na 18.00 uur)
+
+137-3
+
+Wie zou mij voor een schappelijke prijs aan
+een VOEDING voor de Commodore-64 kunnen
+helpen? Bovendien ben ik op zoek naar een
+printer MPS 803. Reacties graag aan: J.Vente,
+Eperveste 34, 8161 AB Epe, tel. 05780 - 20329
+
+137-4
+
+Te koop aangeboden wegens overstap naar PC:
+Sinclair Spectrum 48K (issue IV) f200.
+Opus Discovery 1 diskdrive met ca. 25
+diskettes (vol) en printerkabel f350.
+Smith Corona Fastext 80 matrixprinter f275.
+Of alles in 1 koop voor f750.
+Hans Hockx, tel. 010 - 4704465 (20-22 uur)
+
+137-5
+
+Te koop wegens overcompleet: MSX plotter/
+printer, merk Sony, type PRN C41. 1 jaar oud
+en weinig gebruikt. Vraagprijs f200.
+Inlichtingen bij Dick Potwijt, Zevenhuizen,
+tel. 01802 - 3521 (na 18.00 uur).
+
+137-6
+
+Diverse radio amateurs zoeken Packet Radio
+software voor besturing via interface vanuit
+Spectrum 48/128K. Reacties aan: O. Alzamora,
+Thorbeckestraat 48, 1161 XT Zwanenburg.
+
+137-7
+
+Te koop: MSX-1 computer 64K, met handleiding
+Ned/Eng, stofhoes, monochrome monitor,
+datarecorder met adaptor, 2 joysticks, 2 Basic
+cursussen, en veel software. Reacties aan:
+Gijs van Schip, Woerden, tel. 03480 - 20938
+
+137-8
+
+Gevraagd: ontvanger voor de middengolf met een
+smalle middenfrekwentie. Het mag eventueel een
+fixed frequency ontvanger zijn voor Radio 5.
+Opbouw uit modulen of ombouw van autoradio is
+denkbaar. Als Radio 5 maar in Italie te
+ontvangen is! Voor tips of een eenvoudig na te
+bouwen ontwerp: A.J. Moor 02518-57365 te
+Castricum of op het NOS-Fido board 035-45395.
+
+OPROEP TEKSTTELEFOON
+
+Henri Derksen uit Arnhem stuurde ons een
+brief met de volgende oproep:
+
+'Wie kan mij helpen met het bouwen van een
+interface tussen het telefoonnet en de
+seriele poort van een computer (op RS232C
+niveau), om die als een teksttelefoon te
+kunnen gebruiken, voor het zenden en
+ontvangen van karakters naar en van een
+andere teksttelefoon?
+Ik denk aan een soort hardware schakeling
+die de aangeboden ASCII waardes omzet in de
+juiste tooncodes. Voor de ontvangst moeten
+de tooncodes weer worden omgezet in ASCII
+waardes. De reeds hiervoor bestaande en in
+de handel verkrijgbare apparaten zijn zeer
+compleet. Er zitten echter vrij veel
+onderdelen in, die velen reeds in huis
+hebben, namelijk in hun computer! Bovendien
+zijn ze ook vrij prijzig, zeker voor een
+particulier. Wie reeds over een Personal
+en/of Huiscomputer beschikt, zou aan zo'n
+teksttelefoon interface en een bijpassend
+communicatie programma voldoende hebben om
+ook met de teksttelefoon van slechthorende
+en dove familieleden te kunnen communiceren.'
+
+Reacties graag naar: Henri Derksen, Bolwerk
+25, 6811 JW Arnhem (of via HCC Fido Arnhem).
+
+TIPS VAN LUISTERAARS
+
+Van dhr. Brederode uit Lisse ontvingen we de
+volgende brief:
+
+'Sinds enige tijd loopt er een onderzoek naar
+de problemen die computeraars hebben bij het
+inlezen van Basicode programma's. Jullie
+hebben waarschijnlijk al heel wat bandjes
+gekregen, waar de weerbarstige opnamen
+opstaan (inderdaad!). Ik had ook wel
+probleempjes, zo af en toe.
+Sinds kort heb ik een datarecorder van
+Philips in gebruik, type NMS 1510/1515.
+Ik ben er enthousiast over! Bij het op de
+oscilloscoop bekijken van de opnamen die ik
+met mijn vorige recorder maakte (Philips
+N2213), viel me steeds op hoe weinig het
+signaal op een blokgolf leek. Mijn nieuwe
+datarecorder echter maakt keurige blokgolven
+en de leesfouten zijn verleden tijd.'
+
+Een andere tip ontvingen we van Freddie
+Borchers uit Hilvarenbeek:
+
+'Deze tip geldt voor alle MSX gebruikers die
+alleen over een Basicode-3 vertaalprogramma
+beschikken: gebruik geen subroutines van een
+Basicode-3 programma, maar de subroutines van
+een Basicode-2 programma. Als ik namelijk
+bepaalde (lange) Basicode programma's gebruik,
+krijg ik met de Basicode-3 subroutines een
+'out of memory error' en met Basicode-2 niet.'
+
+Nog even voor de duidelijkheid: Hobbyscoop
+zendt UITSLUITEND programma's in Basicode-2
+uit! Het is maar dat U het weet...

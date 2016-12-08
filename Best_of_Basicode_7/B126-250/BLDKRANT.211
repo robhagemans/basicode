@@ -1,0 +1,271 @@
+
+211, woe 01 mrt '89
+
+INKOMSTENBELASTING 1988
+
+Na de uitzending van het programma
+'Inkomstenbelasting 1988' ontvingen we een
+aantal reakties van luisteraars.
+
+Een belangrijke was die van de heer
+Siegers uit Roden. Hij merkte terecht op
+dat het programma, bij vraag 2 (Reiskosten
+woning-werk), een minimum aftrekbaar bedrag
+van f 200,- aanhoudt. Dit geldt echter alleen
+indien men het hele jaar 1988 werkte en/of een
+Ziektewet-uitkering genoot. In alle andere
+gevallen vervalt het minimum bedrag!
+Indien het minimum bedrag voor u niet geldt,
+omdat u bijvoorbeeld bent afgekeurd of
+gepensioneerd, kunt u regel 2440 van deel 1
+laten vervallen om het programma voor u
+juist te laten lopen.
+In deel 1 staat verder nog een tikfout: in
+regel 14540 moet 7h staan ipv 7f.
+
+In deel 2 blijkt een programma-fout een
+onjuistheid in de berekening van de
+verschuldigde belasting te veroorzaken. Ter
+correctie moet in regel 10010 voor 'HO=0'
+worden toegevoegd: 'Y3=0:'.
+Ook in deel 2 werd nog een tik-duiveltje
+gevonden. In regel 4630 staat ondermeer
+'or(V4<>0)'. Dat moet zijn: 'or(V4>0)'.
+(Aldus Chris Bouws)
+
+VERANDERINGEN IN TOEKOMSTPLANNEN MIR
+
+In het radioverkeer van 15-2-'89 (in oml. 17214
+van 1001-1011UTC) beantwoordde Volkov enkele
+vragen van een journalist. Het meest relevant
+was een vraag over het feit, dat de voorgenomen
+lancering van een grote module in maart 1989
+was uitgesteld om technische redenen. Het
+bleek, dat de kosmonauten zeer verbitterd waren
+over dit uitstel. De grote module, zelfs groter
+dan MIR zelf, zou al in november 1988 worden
+gelanceerd. Dus ook Titov en Manarov hadden
+zich op de komst van dit ruimtetuig ingesteld.
+Als het doorgegaan was zou in dezelfde maand
+i.p.v. Krikalyov, Serebrov zijn meegekomen met
+Volkov omdat Serebrov voorbestemd was om voor
+het eerst de ruimtefiets uit te proberen. Ook
+nu zat Serebrov te wachten op zijn lancering in
+april 1989. Of bij de dan te lanceren bemanning
+Serebrov is ingedeeld is nu niet zeker meer.
+
+MIR-BEWONERS TELEURGESTELD
+
+Inmiddels is gebleken, dat het uitstel van de
+lancering niet het gevolg is van problemen aan
+boord van het MIR station of met de bemanning.
+Volkov verklaarde n.l., dat hij niet wist
+waarom de lancering weer moest worden
+uitgesteld. Hij nam aan, dat dit kwam door de
+onvolkomenheden in de technologie, de productie
+en een onjuiste planning. Hij verklaarde, dat
+hij en zijn collega's het erg druk hebben met
+andere experimenten, maar zij hadden de komst
+van die module veel interessanter gevonden dan
+datgene, waar zij zich nu mee bezighouden. Dit
+o.m. omdat deze module erg belangrijk was uit
+wetenschappelijk oogpunt, maar ook voor de
+volkshuishouding. Uit Volkov's opmerkingen
+bleek, dat de plannen voor het sturen van twee
+extra modules buiten de Kvant al langer dan
+drie jaar bestaan.
+
+ONZEKERHEID VLUCHTDUUR ARTS POLYAKOV
+
+Officieel is medegedeeld, dat Volkov en
+Krikalyov op 29 april 1989 zullen terugkeren
+naar aarde. Of dan de arts Polyakov ook mee zal
+gaan staat nog niet vast. Overwogen wordt om
+hem langer aan boord van MIR te laten blijven!
+
+AFLOSSING VOLGSCHEPEN
+
+De wacht bij de Azoren is van de Akademik
+Sergey Korolyov overgenomen door de Kosmonavt
+Yuriy Gagarin. Op 13 febr. aanvaardde de A.S.K.
+de terugvaart; op 15 febr. begroetten de
+kosmonauten van MIR de K.Yu.G. en feliciteerden
+zij dit schip met het aanvangen van de
+'tracking' werkzaamheden. Het volgschip
+Kosmonavt Vladimir Komarov is nog in actie.
+
+COMMUNICATIE MIR
+
+a.De laatste weken wordt het radioverkeer
+tussen MIR en TsUP herhaaldelijk 'versluierd'.
+Deze mogelijkheid bestaat al jaren en werd
+reeds door de bemanningen van Kizim, Romanenko
+en Titov gebruikt, zij het dat zij het zelden
+toepasten. Alvorens over te gaan naar
+'versluierd' verkeer deelt men mede 'over te
+gaan naar het 2de regiem'. Deze 'scrambling'
+is ook mogelijk aan boord van de Soyuz-TM
+schepen. Toen Lyakhov in de Soyuz-TM6 op weg
+was naar de MIR ging hij over op het 42ste
+regiem en was dezelfde versluiering hoorbaar.
+Dat het nu zoveel vaker wordt gebruikt heeft
+ongetwijfeld te maken met het feit, dat de
+Russen zich steeds meer bewust worden van het
+feit, dat er vele 'meeluisteraars' zijn, ook
+in hun eigen land!
+
+b. Duidelijk is men druk bezig de systemen,
+die voor allerlei radioverbindingen worden
+gebruikt te verbeteren. Met de Progress-40 is
+veel apparatuur meegekomen om deze
+verbeteringen technisch te verwezenlijken.
+Op 20 feb. was men urenlang bezig met het
+installeren van modules, die o.a. het lopen
+van het RTTY verkeer (Stroka) via het systeem
+'Strela' mogelijk moeten maken.
+
+c. Er wordt ook communicatie bedreven d.m.v.
+'Laser' stralen. Dat gaat via een der
+volgschepen. Enkele dagen geleden had men met
+dit systeem verbinding via het volgschip
+Kosmonavt Yuriy Gagarin.
+
+d. Door de kosmonauten wordt erg veel geklaagd
+over de enorme hoeveelheid West-Europese
+stations, die binnenkomen via de MIR-uplink.
+Ongetwijfeld zal men hier in de toekomst iets
+aan gaan doen. Het lijkt erop of men op die
+uplink ook harmonischen van aardse zenders
+binnenkrijgt: zo horen de kosmonauten op de
+uplink niet alleen TsUP, maar ook veel radio
+amateurs, politie, brandweer, luchtvaart en
+zelfs omroep, waarvan veel stations echt niet
+op de uplink frequentie zullen zijn afgestemd.
+
+EERSTVOLGENDE BURAN-VLUCHT
+
+Uit een radiogeprek met MIR kwam naar voren,
+dat men de eerste vlucht met een V.K.K. wil
+combineren met een aantal MIR-omlopen. Men
+sprak van een 'geintegreerde baan'. De baan
+zal cirkelvormig zijn. Het aantal omlopen zal
+t.z.t. worden bepaald. Mogelijk weer een
+'computer gestuurde' vlucht (Krikalyov sprak
+van 'processor gestuurd').
+
+ANALYSE VLUCHT SOYUZ-TM6
+
+Krikalyov liet zich enkele dagen geleden
+voorlichten over de conclusies, die men had
+getrokken uit het onderzoek naar de
+gebeurtenissen tijdens de vlucht van de S-TM6
+op 21-12-1988. Mogelijk heeft men toen tot
+uitstel van de landing besloten als gevolg
+van een verkeerde interpretatie van enkele
+gegevens. TsUP sprak zelfs van een 'drukfout'.
+Verder zal men een aantal procedures
+veranderen, zoals het buiten werking stellen
+van de infrarood sensor als de motor eenmaal
+werkt. Deze sensor zal dan de computer er niet
+meer toe kunnen brengen de motor af te zetten.
+(Aldus Chris van den Berg, NL-9165/A-UK3202)
+
+LASSO EXPERIMENT SUCCESVOL
+
+Voor de eerste keer heeft het LASSO experiment
+(Laser Synchronisation from Stationary Orbit)
+de haalbaarheid getoond van een nieuwe methode
+van tijdstandaard synchronisatie van
+intercontinentale afstanden. Dit met een
+accuratesse van een biljoenste van een seconde.
+Het laser experiment is een onderdeel van
+Meteosat P2, de weersatelliet van ESA die in
+juni vorig jaar werd gelanceerd.
+
+Het eerste deel van het experiment bestond
+uit het afvuren van laser-pulsen vanuit een
+grondstation en de ontvangst van het retour-
+signaal afkomstig van de satelliet. Hiermee
+kon precies berekend worden hoeveel tijd er
+gebruikt werd tussen het afvuren van de
+laser-puls en het retour-signaal. Het volgende
+experiment dat zal worden uitgevoerd is de
+berekening van de tijd synchronisatie tussen
+de verschillende grondstations over de hele
+wereld. Het experiment wordt begeleid vanaf
+het Telespazio grondstation in Fucino, Italie,
+in samenwerking met Meteosat Operational
+Control Centre bij ESA's centrum ESOC in
+Darmstad, Duitsland.
+
+TV-SATELLIET-ONTVANGERS
+
+Over een jaar zullen in Europa bijna een
+miljoen schotels geplaatst zijn voor ontvangst
+van signalen van de tv-satellieten Astra en
+British Satellite Broadcasting (BSB).
+Deze voorspelling is afkomstig van het Britse
+onderzoeks bureau Logica in het recente rapport
+'Satellite Television Receivers - The European
+Market'. In 1988 stonden er in Europa tussen
+de 100.000 en 140.000 schotels opgesteld,
+berekende Logica. Daarvan stonden zo'n kleine
+2000 in Nederland. West- Duitsland, Zweden en
+Groot- Brittannie beschikten elk over 20.000
+schotels. In Frankrijk en Spanje stonden vorig
+jaar 15.000 schotels opgesteld.
+
+In Nederland zal het aantal satelliet antennes
+in 1990 zijn vervijfvoudigd tot 10.000, maar
+dat is eigenlijk niets vergeleken met de groei
+in West- Duitsland en Groot- Brittannie. Door
+de lancering van de Astra- en (binnenkort) de
+BSB- satelliet, staan volgend jaar in Groot-
+Brittannie 369.000 antennes opgesteld. West-
+Duitsland is een goede tweede met 200.000
+schotels in 1990. De groei zal na 1990 niet
+afnemen; in 1996 verwacht Logica tussen de 6
+en 8 miljoen schotels in heel Europa. Logica
+voorspelt dat slechts 20 procent van de
+consumenten de Astra-schotel zelf zullen
+plaatsen. De installatie van de Astra-schotel
+kost iets minder dan 70 pond. Voor de plaatsing
+van de vierkante BSB-schotel, die handzamer is
+dan die voor Astra, zijn de doe-het-zelvers
+minder bang. (Uit: Telecom Daily)
+
+NIEUWE VIDEO-STANDAARD
+
+Het Japanse consumenten- elektronica bedrijf
+Sony lanceert een verbeterde versie van de 8mm
+videocassette. Sony stelt dat de nieuwe
+Hi-Band standaard de beeldkwaliteit van de
+huidige 8mm videocassettes verbetert en naar
+het niveau trekt van de Super-VHS standaard,
+een iets groter model dat nu al wordt verkocht
+door een aantal concurrenten van Sony.
+
+De compacte 8mm videocassettes worden veelal
+gebruikt in de camcorder (draagbare
+videocamera's) en in mindere mate in de
+huis-tuin-en-keuken videorecorder. Vorig jaar
+werden 1,3 miljoen camcorders verkocht in
+Japan. Verwacht wordt dat er dit jaar 2
+miljoen over de toonbank gaan.
+
+Sony wil in april beginnen met de verkoop van
+de nieuwe cassette in Japan. De VS is in mei
+aan de beurt en eind dit jaar volgt Europa.
+Het Japanse bedrijf hoopt dit jaar 8000
+Hi-Band camcorders en 4000 Hi-Band
+videocassette- recorders af te zetten op de
+Japanse markt. Sony, dat met het Betamax
+systeem de video-veldslag verloor van het
+populaire VHS systeem dat een jaar later werd
+geintroduceerd door Matsushita Electric,
+heeft een groep van tien bedrijven opgezet,
+die gezamenlijk de nieuwe standaard hebben
+ontwikkeld en zullen ondersteunen. Deelnemers
+zijn onder meer Matsushita, Hitachi en Canon.
+(Uit: Telecom Daily)
+

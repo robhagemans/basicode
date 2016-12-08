@@ -1,0 +1,288 @@
+
+214, maa 20 mrt '89
+
+TURBO-BASIC
+
+door Nico Baaijens en Hans Stavleu, 336
+pag., uitgave Kluwer, prijs f64.50, de
+bijbehorende diskettes zijn apart te
+bestellen, prijs, afhankelijk van het
+formaat en de inhoud, tussen f25 en
+f35. Over deze diskettes kunnen wij
+geen oordeel geven, aangezien zij niet
+ter recensie werden aangeboden.
+Turbo-BASIC wordt in dit boek
+aanbevolen als de programmeertaal bij
+uitstek voor mensen, die uit
+liefhebberij goed willen programmeren,
+maar zich niet met de 'moeilijke' talen
+willen bezighouden. Het biedt ruime
+mogelijkheden om eigenlijk alles wat
+maar in een programma kan worden
+verwerkt op een nette, gestructureerde
+manier te programmeren en wel zodanig,
+dat ook anderen er nog uit wijs kunnen
+worden. Dit laatste is erg belangrijk,
+ook als men zelf na maanden of jaren
+nog eens wijzigingen wil aanbrengen en
+men de opzet van weleer al lang weer is
+vergeten.
+
+COMPILER TEGENOVER INTERPRETER
+
+In dit boek wordt de snelheidswinst wel
+wat overdreven. Turbo-Basic is
+weliswaar geen 'interpreter', zoals de
+normale basic wel is, maar een
+'compiler'. Voor degenen, die het
+verschil nog niet weten: een
+interpreter vertaalt telkens weer
+opnieuw het programma regel voor regel
+in voor de computer begrijpbare
+commando's, maar een compiler doet dit
+slechts een keer en maakt er een
+programma van, dat steeds als het wordt
+gebruikt, direct de computer kan
+commanderen. Dit laatste geeft
+natuurlijk een beduidende winst aan
+snelheid. Afhankelijk van de
+ingewikkeldheid van het programma en
+van het al of niet beschikbaar zijn van
+een z.g. rekenchip in de computer, kan
+deze snelheidswinst liggen tussen een
+faktor 4 en een faktor 10 of meer. Wil
+men echt snelle programma's maken, dan
+zal men toch in C of, nog beter, maar
+veel moeilijker, in Assembler moeten
+gaan werken, om een paar
+programmeer-talen te noemen, die voor
+een hobbyist nog te behappen zijn. Voor
+normaal gebruik zijn echter met behulp
+van een Basic- compiler gemaakte
+programma's al snel genoeg.
+
+WAT BIEDT DIT BOEK?
+
+Dit boek geeft daarvoor duidelijke
+instructies. De bij de pakketten
+geleverde boeken zijn daarvoor veel te
+beknopt. Het is vooral toegespitst op
+Borland's Turbo-Basic, maar de
+principes zijn ook geldig voor
+Microsoft's Quick-Basic. Veel
+programmeer- voorbeelden maken de
+bedoeling duidelijk. Door het boek heen
+speelt de wording van het programma PC
+STAIRS, dat een documenten database met
+zeer veel mogelijkheden is. Ook wordt
+'ONTREGEL.BAS' besproken, een programma
+om oudere Basic programma's van hun
+regelnummers te ontdoen en te
+transformeren naar de moderne opzet
+voor de Basic compiler (hoewel de
+compiler ook programma's met
+regelnummers kan verwerken). Daarnaast
+worden echter ook nog aan de hand van
+allerlei aardige kleine programmaatjes
+de mogelijkheden van Turbo-Basic
+uitvoerig toegelicht, waarbij de
+moeilijkheids graad, naarmate men
+verder komt, wordt verhoogd. De naam
+van de schrijvers waarborgt al de
+kwaliteit van het boek. Wij kunnen de
+bestudering van dit werk sterk
+aanbevelen aan een ieder, die plezier
+in programmeren heeft.
+
+PROGRAMMEREN MET MS-DOS EN OS/2
+
+door Jaap Bloem en Vic de Valk, 358
+pag., uitgave Kluwer, prijs f69.50,
+(programma diskettes f49.50 excl.
+kosten).
+Ook dit boek kwam weer zonder de
+diskettes, zodat wij alleen een indruk
+over het boek kunnen geven. De opzet
+van het boek is, de computer gebruiker
+zich de mogelijkheden van batch
+verwerking te doen realiseren. Met de
+moderne besturings systemen is veel
+mogelijk. Nu ook OS/2 zijn intrede
+heeft gedaan, is het nuttig, dat dit
+boek zowel de MS-DOS als de OS/2
+commando's bespreekt.
+Een Batch programma is eigenlijk niets
+anders dan een samenvoeging van een
+aantal van deze commando's achter
+elkaar in een programma, met daarmee de
+mogelijkheid een reeks gewenste
+bewerkingen automatisch te laten
+uitvoeren. Dit kan het omgaan met de
+computer bijzonder vergemakkelijken.
+Men kan zelfs applicatie programma's
+ontwikkelen, die vrijwel uitsluitend
+bestaan uit de in deze besturings
+systemen voorhanden commando's en
+operatoren. Daarin is OS/2 duidelijk
+verder dan MS-DOS.
+
+Het eerste deel van het boek bespreekt
+de opzet van complete applicatie
+programma's in 'Batch' en het tweede
+deel is vooral gewijd aan de bespreking
+van een viertal vrij omvangrijke batch
+applicaties: een kleine en een grote
+databank, een printprogramma voor het
+afdrukken van een aantal bestanden,
+compleet met pagina nummering en een
+schaakprogramma om partijen op het
+scherm na te spelen met de mogelijkheid
+van tussentijdse opslag. Als men zich
+in de mogelijkheden van het gebruik van
+batch programma's samen met de
+aanwending van een RAM-disk wil
+inwerken, kan dit boek daarbij zeker
+van nut zijn. Wel voor wat gevorderden!
+
+MACHINETAALBOEK VOOR DE IBM-PC
+
+door Peter Norton en John Socha, 371
+pag., uitgave Kluwer, prijs f89.50.
+Doordat de PC steeds meer binnen het
+bereik van de hobbyisten is gekomen,
+wordt het maken van programma's niet
+meer alleen door professionals gedaan.
+De wat gevorderde amateur wil zich
+steeds vaker op dit terrein begeven.
+Basic wordt al gauw te beperkt gevonden
+en ook Pascal en C hebben hun
+specifieke voors en tegens. De grootste
+flexibiliteit bereikt men natuurlijk in
+machinetaal. Men moet dan echter wel
+met de details van de werking van de
+computer op de hoogte zijn en begrippen
+als segment, offset, stack, BIOS en,
+last but not least, de instructieset
+van de CPU kennen.
+
+Peter Norton neemt u samen met zijn
+medeauteur aan de hand en leidt u
+stapsgewijs in deze op het eerste
+gezicht nogal ingewikkelde materie
+binnen, daarbij worden u spelenderwijs
+de fascinerende mogelijkheden van
+machintetaal getoond. Als een rode
+draad loopt door het boek de
+programmering van een complete
+applicatie, een disk-editor, heen. Aan
+de hand daarvan leert men, hoe
+gebruikers invoer moet worden
+afgehandeld, hoe het scherm moet worden
+bestuurd en hoe een echte assembler
+werkt. Daarvoor is dan wel nodig, dat
+men beschikt over de IBM- of de
+Microsoft Macro Assembler (minstens
+f250!). De kleinere programma's uit het
+eerste gedeelte van het boek zijn ook
+via 'Debug' in te voeren. Tenslotte zal
+men in staat zijn wat grotere
+programma's zelf te schrijven. Ook hier
+staan alle voorbeeld- programma's uit
+dit boek weer op een los te bestellen
+diskette, die echter niet ter recensie
+werd aangeboden, zodat u zelf zult
+moeten bekijken, wat deze te bieden
+heeft.
+
+Conclusie: voor de doorzetter, die zich
+in machinetaal voor de PC wil bekwamen,
+een uitstekend boek om mee te beginnen.
+(Met dank aan Pieter Vijlbrief)
+
+SAMENWERKING TNO EN TU TWENTE
+
+TNO en de Technische Universiteit
+Twente gaan nauw samenwerken op het
+gebied van de laserbewerkings techniek.
+Deze samenwerking vindt plaats binnen
+het Centrum voor Materiaal bewerking
+met Lasers, het CML. Een en ander
+gebeurt mede op initiatief van een
+werkgroep uit de industrie, die van de
+samenwerking nieuwe stimulansen voor de
+toepassing van lasers verwacht. Ook het
+ministerie van Economische Zaken staat
+positief tegenover de aangekondigde
+samenwerking. TNO en de Twentse
+universiteit werken al samen op
+deelgebieden van laseronderzoek, maar
+gaan nu dus als een geheel opereren.
+
+Bij het Centrum voor Materiaalbewerking
+met lasers zijn aan de TNO-kant de
+Technisch Physische Dienst TNO-TH in
+Delft en het Metaalinstituut in
+Apeldoorn betrokken. De TNO
+activiteiten worden nu geconcentreerd
+in Apeldoorn. Van de Universiteit
+Twente zijn bij de samenwerking
+betrokken de groep 'werktuigbouwkundige
+automatisering' van de faculteit
+Werktuigbouw, en het 'Fijnmechanische
+fysische werkgebied' van de faculteit
+Technische Natuurkunde.
+
+De activiteiten van de partners in het
+nieuw gevormde centrum omvatten, buiten
+de advisering van bedrijven, o.a.
+onderzoek op de gebieden snijden,
+lassen en oppervlakte behandelen van
+metalen, kunststoffen en keramiek, de
+ontwikkeling van snelle bewerkings
+systemen, besturing en
+procesbeheersing. Een deel van het
+onderzoek vindt plaats in het kader van
+nationale en Europese onderzoek
+projekten, zoals de Innovatieve
+Onderzoek Programma's (IOP'S) Eureka,
+Euram en Brite. Industrie en
+Economische Zaken zijn vertegenwoordigd
+in een programmaraad die moet adviseren
+over het werkprogramma van het CML.
+
+ELEKTRONISCHE POSTDIENST VOOR MINITEL
+
+France Telecom introduceert nog dit
+jaar een elektronische berichtendienst
+op de videotex dienst Teletel onder de
+naam Minicom. In april begint een
+experiment met elektronische post in de
+regio's Toulouse en Grenoble. Eind dit
+jaar moet heel Frankrijk over Minicom
+beschikken. De abonnees kunnen hun
+eigen elektronische postbus openen -via
+een wachtwoord- zonder extra
+abonnements kosten.
+
+France Telecom, de telecom-poot van de
+Franse PTT, heeft ook bekend gemaakt
+dat het dit jaar winst verwacht te
+maken met de videotex dienst Teletel,
+in Nederland beter bekend onder de naam
+Minitel. Binnen twee tot drie jaar
+denkt de France Telecom de
+investeringen van het videotex project,
+dat tien jaar geleden is gestart, terug
+te hebben verdiend. Dat is meegedeeld
+door Patrick Teixido van Intelmatique,
+de internationale marketing organisatie
+van France Telecom. Om welk bedrag het
+gaat werd niet bekend gemaakt.
+
+Dit jaar worden tevens drie nieuwe
+typen terminals geintroduceerd: de
+draagbare M5 van de firma Matra; de M12
+voor zakelijke gebruikers, geproduceerd
+door Alcatel, en de M2 voor
+particulieren. (Uit: Telecom Daily)
+

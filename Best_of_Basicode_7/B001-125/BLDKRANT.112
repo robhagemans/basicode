@@ -1,0 +1,306 @@
+112, zon 13 dec '87
+
+HOBBYSCOOP ZOEKT VERSLAGGEVER
+
+Ons programma kan - op parttime basis - een
+goede verslaggever gebruiken. Het zou een
+vrouw of man moeten zijn met journalistieke
+(event. radio) ervaring. Natuurlijk moet zij
+of hij ook belangstelling of kennis hebben
+van communicatie en/of computers. Gedacht
+wordt aan een freelancer die voor een halve
+werkweek beschikbaar is. Brieven (met in de
+linker bovenhoek 'vacature') gaarne naar
+onze redaktie.
+
+CURSUS MACHINETAAL MS-DOS DEEL 5
+
+In de vorige aflevering bespraken we de
+aanroep van subroutines in machinetaal. Een
+bijzondere vorm van subroutine is de
+interrupt, die onder andere gebruikt wordt
+voor allerlei DOS-functies. Er zijn echter
+meer interrupts dan deze met nummer 21
+(hexadecimaal).
+
+ANDERE INTERRUPTS
+
+Er is INT 20 om een programma te beeindigen.
+De bytes daarvan zijn CD 20 en mensen met
+ervaring zullen die code onmiddellijk
+herkennen op adres 0 in de voorloper. JMP 0
+is dus een andere manier om een programma te
+laten stoppen. Deze dubbele mogelijkheid
+bestaat om aan te sluiten bij conventies uit
+vroeger tijden.
+
+INT 27 laat het programma ook stoppen, maar
+houdt het geheugen tot het adres aanwezig in
+DX geblokkeerd. Deze methode wordt gebruikt
+door programma's die hun werking pas na het
+draaien willen doen gelden (bijvoorbeeld het
+schermdump programma GRAPHICS). U kunt zien
+dat U na het installeren van een aantal van
+dergelijke programma's een groter getal
+aantreft in CS: het lage geheugen is bezet.
+
+Programma's die stoppen met INT 27 maken vaak
+vast aan een interrupt om later via een
+aanroep van die interrupt te kunnen
+terugkeren. Om te begrijpen hoe dit gaat,
+moeten we weten wat zich afspeelt achter de
+schermen van de INT instructie. INT
+veroorzaakt een sprong naar de plaats die
+staat aangegeven in segment 0 op het adres
+vier maal het getal van de INT aanroep. Voor
+INT 5 moeten we dus kijken op adres 0:14
+(immers 4 maal 5 = 20 decimaal = 14
+hexadecimaal):
+
+-d 0:10 l8
+0000:0010  6C 01 70 00 8F 01 1B 06
+
+De vier bytes die we hier aantreffen zijn 8F
+01 1B 06. Zo wordt aangegeven dat INT 5
+(ongeveer) gelijkwaardig is aan de aanroep
+CALL 061B:018F (de bekende omkering).
+
+Waarom ongeveer? Wat betreft de terugkeer
+zijn INT en de verre CALL niet gelijkwaardig.
+De terugkeer van een INT is IRET. Deze bevat
+een automatische POPF. De terugkeer van een
+verre CALL is RETF, die geen ingebouwde POPF
+heeft. Zo heeft INT een ingebouwde PUSHF,
+de verre CALL niet.
+
+INT 5 doet hetzelfde als het indrukken van
+HOOFDLETTER-PrtSc: in het normale geval wordt
+de tekst op het scherm afgedrukt op de
+printer. We kunnen afwijken van het normale
+geval door de bytes die het adres voor INT 5
+aangeven, naar een andere subroutine te laten
+verwijzen.
+
+INT 17 heeft betrekking op de printer. INT 9,
+16 en 1B hebben met het toetsenbord te maken,
+de veelvoorkomende INT 10 met het scherm en
+INT 8 en INT 1C met de timer.
+
+IN- EN UITVOER
+
+Via INT 21 functies kunnen we de diskettes
+bereiken, tekens op het scherm zetten, datum
+en tijd lezen en dergelijke. Soms is het
+echter toch handig zelf rechtstreeks in- en
+uitvoerkanalen te kunnen aanspreken. De
+machinetaal van de PC kent hiervoor twee
+instructies: IN en OUT. Achter deze woorden
+komt het poortnummer te staan, waarvan
+gelezen of waarheen geschreven moet worden.
+De opdracht wordt afgesloten met AX als het
+enig mogelijke aankomst- en vertrekpunt van
+in- en uitvoergegevens. IN en OUT komen
+overeen met de BASIC-functie INP en de
+BASIC-opdracht OUT. Als het goed is, is daar
+ook nadere informatie te vinden over de
+geldende poortnummers. Het volgende stukje
+programma zet de acht gegevensbits van de
+parallelle printerpoort (nummer 3BC) allemaal
+op 1.
+
+BABC03        MOV     DX,03BC
+B8FF00        MOV     AX,00FF
+EF            OUT     DX,AX
+
+Het volgende stukje programma kijkt naar de
+toestand van de lijn die aan de computer
+meldt of de printer bezig is. Dat bit is te
+vinden op poortnummer 3BD.
+
+BABD03        MOV     DX,03BD
+ED            IN      AX,DX
+
+We hebben nu het register AX geladen, terwijl
+we maar een enkel bit nodig hebben. Hoe we
+dat bit isoleren, zullen we nog zien.
+
+Wanneer we een in- of uitvoerpoort
+aanspreken, is dat soms om de lengte van een
+puls te bepalen (door te tellen) of om een
+puls van een bepaalde lengte af te geven. Dit
+is het geval waarin we niet willen dat de
+computer op eigen initiatief INT subroutines
+gaat uitvoeren buiten onze instructies om,
+bijvoorbeeld om de klok bij te werken. We
+verbieden hem dat vooraf via de instructie
+CLI (CLear Interrupt). We staan zijn
+initiatief later weer toe via STI (SeT
+Interrupt).
+
+Het is ook handig te weten, hoe we
+rechtstreeks het scherm kunnen bereiken.
+Schijnbaar staat de volledige inhoud van het
+tekstscherm in het geheugen vanaf adres
+B000:0000. De bytes vanaf dat punt stellen om
+en om een teken en de kleur van dat teken
+voor. De betekenis van de kleurcodes staat in
+het BASIC handboek bij het COLOR statement.
+Bedenk dat men daar gewoon decimale notatie
+gebruikt.
+
+In feite is het segment B000 geen normaal
+geheugen. Dit segment ligt voorbij de grens
+van 640K, het maximum aan vrij RAM-geheugen
+dat MS-DOS toelaat. Dat geeft aan dat het
+schermgeheugen een bijzondere plaats inneemt.
+Op dit punt blijken trouwens verschillen te
+bestaan tussen verschillende uitvoeringen van
+MS-DOS computers. Bij een kleurenscherm (bij
+aanwezigheid van de bekende Color Graphics
+Adapter CGA) ligt het schermsegment op B800.
+
+VOORWAARDELIJKE SPRONGEN
+
+Het programmaatje hierboven gaat verder met:
+
+2480          AND     AL,80
+3C00          CMP     AL,00
+74F9          JZ      010C.
+
+De AND (en) instructie kent U waarschijnlijk
+wel van het enkelvoudige geval: waar en
+onwaar is onwaar, 1 en 0 is 0. Bij
+machinetaal doet AND dit voor een aantal bits
+naast elkaar. Het getal 80 hexadecimaal ziet
+er in bits uit als 1000 0000. AND met een
+0-bit erbij geeft altijd 0, dus de laatste
+zeven bits worden hoe dan ook 0. De uitkomst
+(0 of iets anders) hangt hier alleen af van
+de waarde van het meest linkse bit in AL. We
+isoleren zo het bit dat we zoeken. De
+volgende CMP (CoMPare) vergelijkt AL met 0.
+Was het gezochte bit 0, dan is deze uitkomst
+ja, was het 1, dan is het antwoord nee. De
+uitkomst wordt onthouden voor de JZ opdracht.
+Deze springt bij ja en doet niets bij nee.
+
+JZ is bij lange niet de enige voorwaardelijke
+sprongopdracht. Ze worden doorgaans
+voorafgegaan door een CMP:
+
+3B165CF0      CMP     DX,[F05C]
+7E04          JLE     0417
+
+3B06F6F3      CMP     AX,[F3F6]
+7C26          JL      01A0
+
+3B06F6F3      CMP     AX,[F3F6]
+7F2F          JG      01A0
+
+3B46EE        CMP     AX,[BP-12]
+7D06          JGE     025E
+
+Hierbij staat E voor equal (gelijk), L voor
+less (kleiner), G voor groter. De
+vergelijking wordt hier gemaakt met teken,
+dus FFFF is L dan 0. Willen we alle getallen
+als positief laten opvatten, dan moeten we in
+plaats van de L van less de B van below
+(onder) gebruiken en in plaats van de G van
+groter de A van above (boven).
+
+Voorwaardelijke sprongen gaan altijd over
+korte afstand. We kunnen hooguit 80
+hexadecimale plaatsen vooruit of achteruit.
+Als we verder weg willen, moet dat in tweeen:
+met een voorwaardelijke sprong naar een
+gewone sprong die ons brengt waar we wezen
+willen.
+
+Waar AND bestaat, is er natuurlijk ook OR
+voor of:
+
+0932          OR      [BP+SI],SI
+
+Verder is er XOR voor het uitsluitende of.
+XOR van een register met zichzelf is een vaak
+gebruikte manier om het register snel nul te
+maken:
+
+32E4          XOR     AH,AH
+
+INSTRUCTIES VOOR RIJEN BYTES
+
+Er bestaat een groepje instructies dat
+bedoeld is voor het bewerken van een reeks
+getallen of tekens. Deze eindigen op -SB of
+-SW, naar gelang ze per keer een byte of een
+woord behandelen. Vaak wordt een dergelijke
+instructie voorafgegaan door REP. De
+instructie wordt dan herhaald, totdat het
+aftelregister CX nul is. Er zijn ook
+vergelijkingsinstructies voor reeksen, die op
+een andere manier kunnen stoppen. In de
+praktijk kunnen we de werking daarvan
+gemakkelijk uitzoeken met het trace-commando
+van debug, mochten we ze in een programma
+aantreffen.
+
+We hebben nu de meeste instructies besproken.
+In de volgende aflevering wordt gekeken, wat
+met al die kennis voor nuttigs te doen is.
+
+Behalve als beeldkrant verschijnt deze cursus
+in afleveringen ook in het tijdschrift Mens
+en Wetenschap (Postbus 108, 1270 AC HUIZEN,
+02152-58388).
+
+Deze cursus wordt geschreven door Pim van
+Tend, Veldheimwg 8, 6871 CD RENKUM,
+08373-15358. (c) NOS HILVERSUM
+
+VEILING MATERIAAL RIJKSWATERSTAAT
+
+Op 16 december wordt er in Zeeland een
+verkoping gehouden van materiaal van Rijks
+Waterstaat, dat werd gebruikt bij het
+opzetten van de Deltawerken.
+Op deze verkoping wordt erg veel electronica
+aangeboden, zoals computers, monitoren,
+meetapparatuur etc., teveel om op te
+noemen.
+
+Voor meer informatie: Troostwijk Veilingen
+BV, Amsterdam, Tel. 020-463161
+
+SPECIALE KERST-POSTZEGEL PTT
+
+PTT Post geeft sinds 1 december j.l. een
+speciale postzegel uit van 50 cent. De zegel
+is bedoeld voor het frankeren van de Kerst-
+en Nieuwjaarskaarten met een bestemming
+binnen Nederland. Het gebruik van de
+December postzegel levert de klant van PTT
+Post een voordeel op van 15 cent per kaart
+(met envelop) en 5 cent bij een enkelvoudige
+kaart. De bijzondere regeling is gebaseerd
+op een kwantumkorting: de postzegels zijn
+uitsluitend te koop in boekjes van 20 stuks.
+
+Zolang de voorraad strekt zijn de boekjes
+met de zegels van 50 cent tot en met 31
+december 1987 verkrijgbaar bij alle
+postinrichtingen in het land en bij een
+groot aantal kaartverkopers. Verzending
+van Kerst- en Nieuwjaarskaarten met alleen
+de speciale zegel is mogelijk gedurende de
+maanden December '87 en Januari '88. Bij
+gebruik van andere postzegels voor de Kerst-
+en Nieuwjaarspost gelden de normale tarieven.
+De zegels van 50 cent houden ook na 31
+januari '88 hun waarde. Wel moeten dan andere
+zegels worden bijgeplakt tot het geldende
+tarief is bereikt. Hetzelfde geldt in de
+maanden December en Januari als de zegels
+worden gebruikt voor andere dan Kerst- en
+Nieuwjaarspost.

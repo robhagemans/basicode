@@ -1,0 +1,252 @@
+104, zon 15 nov '87
+
+KNUTSELEN MET MACHINETAAL IN MS-DOS
+
+Als vervolg op de cursus 'Structuur in Basic'
+aan korte leergang machinetaal voor
+MS-DOS computer geschreven door Pim van Tend.
+
+Machinetaal is de meest primitieve manier om
+een computer te programmeren. Het is veel
+gemakkelijker om te werken met een taal als
+BASIC. Met een hogere taal als BASIC kunnen
+we echter niet ten volle doordringen in de
+ingewanden van de computer, met machinetaal
+wel. Verder krijgen we een mogelijkheid te
+gaan snuffelen in de kant-en-klare
+programma's die we voor de computer ter
+beschikking hebben. Machinetaalprogramma's
+kunnen heel erg vlug werken, maar het kost
+wel heel erg veel tijd om ze te maken.
+
+OVER MICROPROCESSORS
+
+Er bestaan vele soorten machinetaal. Het werk
+van een computer wordt gedaan door zijn
+microprocessor, de chip die getallen uit het
+geheugen kan halen, getallen bij elkaar kan
+optellen, getallen weer kan terugzetten in
+het geheugen, enzovoorts. Microprocessoren
+zijn er in verschillende types en ieder type
+heeft zijn eigen machinetaal. De Spectrum en
+de MSX hebben bijvoorbeeld een Z80 processor;
+de Commodore 64 werkt met een 6509 processor;
+de Macintosh en de Amiga zijn uitgerust met
+een 68000. Deze cursus gaat over de
+microprocessor die het hart vormt van de IBM
+PC en de talloze computers die op dezelfde
+manier in elkaar zitten, de zogenaamde MS-DOS
+machines. Wie niet een dergelijke computer
+heeft, kan uit deze cursus hooguit enkele
+algemene idee-en opdoen over de primitieve
+manier waarop een microprocessor eigenlijk
+tewerk gaat.
+
+Het hart van de MS-DOS computers is in
+principe een 8088 chip, een produkt van het
+Amerikaanse bedrijf Intel, een dochter
+onderneming van IBM. In principe, want
+er bestaan een aantal opgevoerde versies van
+de 8088: de 8086, de 80186, de 80286 en de
+80386. Van hetzelfde type, maar buiten dit
+rijtje vallend, zijn ook de NEC V20 en V30.
+Er worden nog rechtszaken gevoerd om uit te
+zoeken of het Japanse bedrijf NEC wel chips
+mag maken, die precies hetzelfde doen als
+Amerikaanse Intel microprocessors.
+
+Een 80386 kan dingen die een 8088 niet kan.
+Omgekeerd kan de 80386 echter alles wat de
+8088 al kon, en, wat heel belangrijk is, op
+precies dezelfde manier. Men zegt dan de rij
+8088...80386 opwaarts compatibel is. We gaan
+het hier hebben over de machinetaal van 8086
+en de 8088 (die machinetaal is volkomen
+identiek). We zijn dan dus niet compleet wat
+een 80386 aangaat, maar wat hiet staat, geldt
+wel voor die processor.
+
+OVER MS-DOS
+
+Een MS-DOS computer heeft een 80xxx
+processor, maar een computer met een
+80xxx processor is niet meteen een MS-DOS
+machine. MS-DOS staat voor MicroSoft Disk
+Operating System. MS-DOS is een stuk
+software, dat de gang van zaken binnen de
+computer regelt. De term voor zulke software
+is besturingssysteem. Zoals de naam al
+aangeeft, speelt bij MS-DOS de disk-ette (of
+de vaste schijf) een hoofdrol. MS-DOS heeft
+een 80xxx-microprocessor nodig om te kunnen
+draaien, maar legt ook allerlei andere eisen
+op aan de opzet van de computer. De fabrikant
+van een computer heeft dan nog enige vrijheid
+in het ontwerp van zijn produkt, maar niet zo
+erg veel. Een toepassingsprogramma (laten we
+zeggen een tekstverwerker) maakt op allerlei
+punten gebruik van stukken van MS-DOS. Als de
+maker van dat toepassingsprogramma zich heeft
+gehouden aan alle regels van MS-DOS, kan zijn
+werkstuk op alle MS-DOS machines draaien.
+
+Daarbij bestaan er inmiddels echter weer
+verschillende versies ook van MS-DOS. Die
+zijn ook opwaarts compatibel. Een programma
+voor versie 2.1 draait bijvoorbeeld ook op
+versie 3.2; het omgekeerde hoeft niet het
+geval te zijn. Dit lijkt allemaal mooi, maar
+in de praktijk treden er best problemen op.
+Met name bij het grafisch gebruik van het
+beeldscherm betekent een aanduiding MS-DOS
+nog lang niet dat het ook werkelijk om
+uitwisselbare zaken gaat.
+
+MACHINETAAL NUTTIG GEBRUIKT
+
+Stel we hebben voor onze IBM PC of
+MS-DOS computer van een ander een
+kant-en-klaar programma gekopieerd. Op onze
+computer blijkt het echter niet te werken:
+het programma beweert niet genoeg geheugen te
+hebben, terwijl we toch zelfs een grotere PC
+hebben. We zullen zelf in het programma een
+reparatie moeten uitvoeren.
+
+Daarbij komt nogal wat kijken. We kunnen het
+programma inzien met debug, een hulpprogramma
+dat op de DOS diskette aanwezig is en waarvan
+een bruikbare handleiding in het DOS handboek
+staat. Maar daarmee zijn we er nog lang niet.
+Datgene wat debug ons laat zien, zullen we
+ook nog moeten begrijpen. Met andere woorden:
+we moeten iets weten van de machinetaal van
+de PC. Los daarvan moeten we allerlei
+conventies van MS-DOS kennen. Hoe weet een
+programma bijvoorbeeld, hoeveel geheugen de
+machine heeft, waarin het draait? Over die
+zaken is veel moeilijker documentatie te
+vinden. Tenslotte zullen we om de fout te
+vinden ook nog wat geluk nodig hebben.
+Eventueel kunnen we dat geluk gedeeltelijk
+vervangen door wijsheid over hoe programma's
+meestal in elkaar zitten en vooral over wat
+voor fouten mensen plegen te maken.
+
+DE REGISTERS
+
+We laden het gewraakte programma
+met debug in het geheugen. Een eerste indruk
+van wat ons te wachten staat, krijgen we door
+het commando r te geven. Debug toont ons dan
+iets als:
+
+AX=0000  BX=0000  CX=07F6  DX=0000
+SP=FFFE  BP=0000  SI=0000  DI=0000
+DS=0A43  ES=0A43  SS=0A43  CS=0A43
+IP=0100   NV UP DI PL NZ NA PO NC
+0A43:0100 E9FB06     JMP      07FE
+
+(Bij het werken met debug op een MS-DOS
+computer zien we dit over een breedte van 80
+posities.)
+
+Dit is een weergave van de toestand van de
+processor van onze PC aan het begin van het
+programma. We kunnen de microprocessor zien
+als een soort telraam met een aantal balkjes,
+die registers worden genoemd. In computertaal
+worden die registers aangeduid met AX tot en
+met IP. Om de inhoud daarvan te begrijpen
+moeten we ook nog iets weten van
+computer-rekenen. De inhoud van de registers
+achter de =-tekens staat namelijk in
+hexadecimale notatie. Bij die weergave van
+getallen tellen we eerst gewoon van 0 tot en
+met 9, maar vervolgens gaan we verder met A,
+B, C, D, E en F. Daarmee zijn we aanbeland
+bij wat normaal vijftien heet. Zestien wordt
+dan geschreven als 10, zeventien is 11,
+zesentwintig wordt geschreven als 1A, 32
+decimaal is 20 hexadecimaal. 100 hexadecimaal
+is 256 decimaal. Alle getallen bij debug
+worden hexadecimaal genoteerd. Het is even
+wennen, maar het systeem is erg handig, omdat
+het goed aansluit bij de manier waarop de
+computer zijn geheugen indeelt. Het meest
+ongewone is dat het getal midden tussen 100
+en 200 niet 150 is, maar 180.
+
+We zien dat in de registers AX en BX nul
+staat. CX met zijn 7F6 is interessanter. Een
+van de regels van debug is dat DX CX de
+lengte van de geladen file aangeeft, in dit
+geval dus 000007F6. Dit is in decimale
+notatie 7*256 + 15*16 + 6 = 2038. Inderdaad
+was dat de lengte van de geladen file in de
+dir-lijst. Wanneer we later files gaan
+wegschrijven vanuit debug, doen we er goed
+aan vooraf even te controleren of DX en CX
+wel op de dan gewenste lengte staan. Het is
+hoe dan ook verstandig een gewijzigd
+programma weg te schrijven voordat we het
+proefdraaien, omdat het draaien ongewenste
+veranderingen kan veroorzaken.
+
+Laten we nu de registers stuk voor stuk gaan
+bekijken. De ontwerpers hebben elk register
+een bepaalde taak toebedeeld. In de praktijk
+hebben we echter een behoorlijke vrijheid om
+te kiezen, waarvoor we elk register
+gebruiken. AX (de zogenaamde accumulator) is
+het algemene werkregister, te vergelijken met
+het venster van een zakrekenmachientje. BX is
+het basisregister. Daarmee wordt aangegeven
+dat dit register kan verwijzen naar het
+eerste element (de basis) van een rij
+getallen. De C van CX is niet alleen de derde
+letter van het alfabet, maar staat ook voor
+count, tellen. Met CX wordt namelijk in
+bepaalde gevallen afgeteld. DX is het
+dataregister, waarin gegevens worden
+geplaatst.
+
+De tekens die de IBM PC op zijn scherm kan
+zetten, zijn genummerd van 0 tot en met 255
+decimaal, dat is van 0 tot en met FF
+hexadecimaal. In een register kunnen dus twee
+van die tekens naast elkaar staan. De
+linkerhelft van AX kunnen we aanspreken als
+AH (hoog), de rechterhelft als AL (laag).
+Evenzo bij BX, CX en DX. Verwar deze
+aanduidingen niet met hexadecimale getallen.
+BL en DH zijn registerhelften, BD en DF zijn
+getallen (189 respectievelijk 223 decimaal).
+
+ADRESSERING
+
+Voordat we de overige registers
+kunnen bespreken, moeten we het eerst
+hebben over de manier waarop in de PC
+geheugenplaatsen worden aangegeven. Met een
+register kunnen we tellen totaan FFFF, wat
+overeenkomt met 64K decimaal. Vrijwel alle
+PC's hebben meer geheugen dan dat en dus
+moeten twee registers samen gebruikt worden
+om een plaats in het geheugen aan te geven.
+Dat gaat op een beetje bijzondere manier.
+Iedere geheugenplaats kan een getal van 0 tot
+en met FF bevatten, een half register dus.
+Dit is een byte. Zestien bytes in het
+geheugen vormen een segment. Die segmenten
+zijn genummerd. De verwijzingen naar
+segmenten worden geplaatst in de registers
+waarvan de namen op een S eindigen: DS, ES,
+SS en CS.
+
+Behalve als beeldkrant verschijnt deze cursus
+in afleveringen ook in het tijdschrift Mens
+en Wetenschap (Postbus 108, 1270 AC HUIZEN,
+02152 - 58388). Deze cursus wordt geschreven
+door Pim van Tend, Veldheimwg 8, 6871 CD RENKUM,
+08373-15358. COPYRIGHT NOS HILVERSUM

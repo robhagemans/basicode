@@ -1,0 +1,377 @@
+304, maa 2 apr '90
+
+BEELDKRANT SPECIAL: KABEL-RADIO
+
+Ir. F.J.W. van Let van de CASEMA
+stuurde ons een interessant artikel
+over de technische problemen die zich
+voordoen wanneer een middengolfzender
+zoals Radio 5 moet worden doorgegeven
+via een kabelnet. Hier komt het.
+
+ONTVANGST MIDDENGOLF OP KABELNETTEN
+
+De doorgifte van de Nederlandse
+radio-omroep programma's via
+kabeltelevisie- netten is voor de
+exploitanten daarvan verplicht. Dat is
+logisch en voor de in de FM-band
+uitgezonden radioprogramma's ook
+helemaal geen probleem. Sinds de
+ontkoppeling echter van de FM-zenders
+en de middengolfzenders is het
+weliswaar logisch gebleven dat ook die
+programma's via de kabeltelevisie-
+netten worden doorgegeven, maar er is
+wel een tamelijk gecompliceerd
+technisch probleem. Frequenties onder
+de 46 MHz kunnen via een
+kabeltelevisienet niet naar de abonnees
+worden gedistribueerd. Dat betekent dat
+alleen de FM-band voor de doorgifte van
+radioprogramma's kan worden gebruikt.
+Anders dan met in F(requentie)
+M(odulatie) uitgezonden programma's kan
+de kabelexploitant bij in A(mplitude)
+M(odulatie) uitgezonden programma's
+-zoals de middengolf- niet eenvoudig
+volstaan met het in frequentie
+verschuiven van die programma's. Op
+zich nog geen probleem, maar de Omroep
+heeft ooit de OPTIMOD ontdekt en daar
+begint de ellende.
+
+VERTAALSLAG
+
+Kabelexploitanten zijn beheerders van
+infrastructuren. Dat betekent dat ze
+aan de ene kant signalen ontvangen en
+aan de andere kant (van het
+kabeltelevisienet) deze weer
+beschikbaar stellen op een manier die
+door de aangesloten randapparatuur kan
+worden begrepen, met andere woorden:
+als een abonnee zijn radio- of
+televisietoestel aansluit moet dat van
+het kabeltelevisienet signalen
+ontvangen in een norm die deze
+apparaten begrijpen. Het is dus niet
+meer dan logisch, dat standaardisatie
+van normen belangrijk is.
+
+In de FM-band van het kabeltelevisienet
+geldt dezelfde norm van uitzenden als
+in de ether. Daarom is het mogelijk,
+dat een FM-tuner zowel op een
+individuele antenne als op het
+kabeltelevisienet kan worden
+aangesloten en in beide gevallen
+gelijkwaardige prestaties kan leveren.
+Zou een kabeltelevisie exploitant een
+middengolf signaal slechts naar de
+FM-band verschuiven dan komt dat
+signaal weliswaar bij al zijn abonnees
+aan, maar de radio-ontvangers begrijpen
+die AM-gemoduleerde signalen niet.
+Daarom zetten de kabeltelevisie
+exploitanten de norm van de middengolf
+programma's om. Dat gebeurt tot nu toe
+door het middengolf signaal
+(bijvoorbeeld van Radio 5) eerst zo
+goed en vlak mogelijk te demoduleren en
+vervolgens het aldus verkregen
+audio-signaal in FM met de daarvoor
+geldende normen te moduleren op een
+frequentie in de FM-band van het
+kabeltv-net.
+Technisch gesproken is het allemaal
+geen probleem en alle kabeltelevisie
+exploitanten doen het zo, maar er
+schuilen enige fikse adders onder het
+gras die menig kabelabonnee heeft doen
+afvragen waarom HET op Radio 1 en 5 via
+zijn kabelaansluiting allemaal zo
+anders klinkt dan bij de rest van de
+FM-programma's.
+
+NORM- EN ONTVANGERVERSCHILLEN
+
+Er is namelijk meer aan de hand dan
+alleen maar het verschil in modulatie-
+methodiek. Het belangrijkste is, dat de
+uitgezonden bandbreedte van het audio
+uit de studio bij uitzending in de
+middengolf 4,5 kHz is tegen maar liefst
+15 kHz bij uitzending in de FM-band.
+Bij middengolf uitzendingen gaat dus
+veel aan hoge tonen verloren. Wat niet
+wordt uitgezonden kan de kabeltelevisie
+exploitant er bij zijn omzetting van
+middengolf naar FM-band niet bijmaken.
+Het gevolg is dat dergelijke omgezette
+programma's aanmerkelijk minder
+'transparant' klinken dan normale
+FM-radio programma's. Toch zou het
+kabelsignaal nog altijd beter kunnen
+klinken dan met de eigen, individuele
+middengolf- ontvanger met ingebouwde
+antenne veelal mogelijk is. Dat heeft
+iets te maken met de ontvanger-
+eigenschappen en de drukte in de
+middengolf band in de ether.
+
+Zoals gezegd is de AM-ontvanger in het
+ontvangstation van het
+kabeltelevisienet keurig vlak tot 4,5
+kHz audio bandbreedte en daarmee is de
+ontvangst optimaal afgestemd op wat de
+zender uitzendt. De selectiviteit is
+ook goed maar wordt niet gebruikt om
+nog ergens een zwak signaaltje uit de
+ether te kunnen plukken: het gaat
+alleen maar om relatief sterke
+signalen. Dat is dus een heel andere
+situatie dan waarop de producent van
+(low-cost) middengolf- ontvangertjes
+rekent. Die gaat er van uit, dat ook de
+zwakkere stations nog voldoende moeten
+kunnen worden ontvangen zonder al te
+veel hinderlijke bijgeluiden
+(interferentie met nabuurzenders,
+bijvoorbeeld). Dat heeft ertoe geleid,
+dat bij verreweg de meeste ontvangers
+de ontwerp- accenten op de
+selectiviteit zijn komen te liggen en
+de audioweergave (voorzover die ook al
+niet door de kleine ingebouwde
+luidspreker wordt beperkt) boven de 2
+kHz drastisch begint af te vallen. Een
+onmiddellijk gevolg daarvan is, dat de
+verstaanbaarheid van het gesproken
+woord op die AM-ontvangertjes ernstig
+te lijden krijgt. Het leidt er onder
+andere toe, dat gevoelsmatig de muziek
+altijd te hard en het gesproken woord
+altijd te zacht uit de speaker lijkt te
+komen terwijl je niet aan de
+volumeregelaar van de ontvanger draait.
+Omgekeerd bleek, dat menigmaal aan de
+volumeknop moest worden gedraaid om
+gedurende uitzendingen steeds een
+acceptabel geluids niveau te handhaven.
+De omroepen weten van dit probleem al
+jaren en hebben naar een middel
+gegrepen om daar wat aan te doen: de
+beruchte OPTIMOD. En daarmee begon de
+ellende, vooral voor de kabeltelevisie
+exploitanten en hun kabelabonnees.
+
+OPTIMOD VERKEERD GEBRUIKT
+
+De OPTIMOD is een apparaat waarmee in
+opzet programmamakers het audiospectrum
+van het door hen gemaakte programma wat
+kunnen kleuren. Het lijkt wel wat op de
+werking van een equaliser. Door de
+klankkleur op deze manier te
+beinvloeden kun je programma's een
+bepaalde sfeer meegeven. De OPTIMOD
+heeft op zich dan ook niets te maken
+met met de daaropvolgende AM- of FM-
+uitzendmethode.
+
+Maar wat gebeurde er: de Omroep wilde
+de verstaanbaarheid aan ontvangzijde
+verbeteren en heeft onderzocht wat de
+gemiddelde audio- karakteristiek van de
+AM-ontvangers thuis was. Het resultaat
+is hierboven al genoemd. Vervolgens is
+men ertoe overgegaan om met behulp van
+de OPTIMOD voor die gemiddelde
+ontvanger het door de studio aan de
+zenders toegeleverde signaal zodanig
+voor te vervormen dat die ontvanger
+weer een ruwweg vlak audio- spectrum
+zou gaan weergeven, waarmee de
+verstaanbaarheid een heel eind zou
+verbeteren.
+
+Dit lijkt aardig, maar er gebeurt
+principieel iets fout: de omroepen gaan
+in feite op de stoel van de
+infrastructuur exploitant zitten, in
+dit geval van NOZEMA die de Nederlandse
+omroepzenders beheert. Net als de
+kabeltv-net exploitanten moet NOZEMA
+zich houden aan (veelal internationaal)
+afgesproken standaards. Daar hoort ook
+de zorgvuldige technische afstemming
+van de eigenschappen van de
+infrastructuur en die van de
+daaropvolgende ontvangers bij. Voor de
+FM-band is dat ook zo: de
+FM-omroepzenders zenden uit met een
+preemfase en in de FM-ontvangers is
+voorzien in een precies daarop
+aansluitende deemfase die nauwkeurig in
+goed internationaal overleg is
+overeengekomen. De OPTIMOD is echter in
+het geheel niet genormeerd: elke
+omroeporganisatie zou die naar eigen
+smaak kunnen instellen...
+
+Helaas is er nog geen internationale
+overeenstemming over de manier waarop
+in de AM-banden het best een
+verbetering van de ontvangst kwaliteit
+kan worden bereikt. Moeilijk punt is
+altijd, dat rekening moet worden
+gehouden met het bestaande ontvanger-
+bestand: je kunt niet iedereen
+verplichten om van de ene dag op de
+andere de oude ontvanger maar weg te
+gooien en een nieuwe aan te schaffen,
+nog afgezien van het probleem hoe je in
+zo korte tijd zoveel nieuwe ontvangers
+zou moeten maken.
+
+NIET ALTIJD OPTIMOD
+
+Hoewel feitelijk niet juist, zou
+wellicht voor kabelexploitanten nog met
+de gehanteerde 'oplossing' zijn te
+leven en zou men wellicht nog bereid
+zijn om een DE-OPTIMOD schakeling in de
+AM-FM omzetters van de ontvangstations
+te laten inbouwen als in andere landen
+om Nederland heen dezelfde OPTIMOD-
+instelling werd gehanteerd. Dat is
+echter niet het geval en daarmee wordt
+het onhaalbaar om de internationale
+industrie die de componenten voor de
+ontvangstations van de kabeltelevisie
+netten levert een eenduidige opdracht
+te geven.
+
+Maar een nog groter probleem is, dat de
+OPTIMOD niet altijd staat ingeschakeld.
+Via de radio worden namelijk ook
+computerprogramma's uitgezonden, onder
+andere in het programma HOBBYSCOOP. De
+OPTIMOD heeft op deze uitgezonden
+computerprogramma's een verwoestende
+werking: kortom na ontvangst zijn deze
+programma's onbruikbaar geworden. Dat
+kan natuurlijk niet de bedoeling zijn
+en om dat te voorkomen gaat tijdens die
+programma's de OPTIMOD uit.
+
+Voor de individuele AM-ontvangers geen
+probleem, maar voor de kabelontvangst
+ligt dat minder simpel: als in het
+ontvangstation een DE-OPTIMOD
+schakeling is ingebouwd wordt die
+tijdens uitzending van de
+computerprogramma's NIET uitgezet. In
+infrastructuren zijn dit soort akties
+uit den boze. Het zou betekenen dat die
+programma's ver onder de kwalitatieve
+maat bij de betreffende kabelabonnees
+terecht zouden komen. Dat is natuurlijk
+onacceptabel. Geen DE-OPTIMOD dus, met
+als gevolg dat de met OPTIMOD
+uitgezonden middengolf programma's na
+AM-FM omzetting nogal raar klinken,
+want de omroepen halen het hoog (bij
+4,5 kHz) zo'n 9 dB op!!... Bovendien is
+de uitstuurbaarheid van de
+FM-modulatoren in het ontvangstation
+van het kabeltelevisienet door deze
+onvlakheid niet optimaal te noemen.
+
+HET CASEMA-COMPROMIS
+
+De grootste kabeltelevisie exploitant
+in Nederland, de NV. CASEMA, heeft
+proeven gedaan om te achterhalen in
+hoeverre op eenvoudige wijze een
+aanpassing van de AM-FM omzetters in
+haar ontvangstations mogelijk is die
+tegemoet komt aan twee eisen, namelijk:
+1) de hogere audiofrequenties mogen
+niet dermate worden verzwakt dat het
+naar de FM-band omgezette programma al
+te 'donkerbruin' klinkt ten opzichte
+van de normale FM-programma's;
+2) de uitgezonden computerprogramma's
+mogen nauwelijks worden aangetast,
+zodat deze goed zijn te ontvangen met
+de standaard FM-ontvangers.
+
+Gezocht is praktisch gesproken naar een
+compromis tussen het niet toepassen van
+de DE-OPTIMOD en de al te drastische
+werking van een echte DE-OPTIMOD in de
+ontvangstations van de kabeltelevisie
+netten, waarbij de oplossing dan ook
+nog gemakkelijk uitvoerbaar zou moeten
+zijn. Uit de diverse mogelijkheden is
+ten slotte gekozen voor de volgende:
+aan het AM-ontvangdeel in het
+ontvangstation van het
+kabeltelevisienet wordt niets
+gewijzigd, maar van de FM-modulator
+wordt de normaliter aanwezige preemfase
+uitgeschakeld. Omdat de op de Kabel
+aangesloten FM-ontvangers thuis een
+deemfase toepassen van 50 microseconden
+wordt als het ware hier een soort
+DE-OPTIMOD toegepast! Als het ware,
+omdat de werking van de OPTIMOD in de
+studio niet geheel teniet wordt gedaan:
+overall gemeten resteert nog een licht
+ophalen van het hoog met ongeveer 4,5
+dB (bij 4,5 kHz). Juist dat laatste
+zorgt er voor, dat de naar de FM-band
+omgezette AM-middengolf programma's
+toch nog aardig klinken ten opzichte
+van de normale FM-programma's. Uit de
+proeven bleek verder, dat de
+computerprogramma's nauwelijks werden
+aangetast. Sinds februari 1990 zijn de
+eerste grote ontvangstations (o.a. Den
+Haag en Arnhem) definitief aangepast;
+de rest volgt de komende tijd, althans
+waar het CASEMA ontvangstations
+betreft. Er is tot nu toe geen enkele
+klacht ontvangen, sterker nog: er zijn
+wel reacties dat het nu veel beter
+klinkt!
+
+TOT SLOT
+
+Hoewel CASEMA probeert het beste van de
+AM-FM omgezette middengolf programma's
+te maken, blijft het een compromis. De
+principieel betere oplossing is te
+komen tot internationaal vastgelegde
+afspraken. Daarnaast blijft altijd nog
+gelden dat de radioprogramma makers
+veel van de technische kwaliteit van
+hun produkt verloren zien (horen!)
+gaan, doordat hun programma's slechts
+in de middengolf worden uitgezonden.
+Dit staat in schril contrast met de
+nieuwe technieken die het zelfs
+mogelijk maken de uitgezonden
+programma's digitaal uit te zenden per
+satelliet en/of Kabel en dus 100%
+studiokwaliteit bij iedereen thuis te
+brengen. Dat lijkt voor de Omroep, de
+kabelexploitanten en het luisterpubliek
+in ieder geval een betere alternatieve
+weg om in te slaan.
+
+Ir. F.J.W. van Let, Hoofd Afdeling
+Technische Dienst NV. CASEMA.
+
