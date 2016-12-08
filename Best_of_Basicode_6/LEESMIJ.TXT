@@ -1,0 +1,60 @@
+                                           Hilversum, 16-11-1991
+
+  Beste Basicode gebruiker,
+
+Dit is alweer nummer 6 uit de reeks 'The Best of Basicode',
+die door het NOS-radioprogramma (Hobby)Scoop in 1984 werd
+gestart. Ditmaal geen verzamelcassette (B.O.B. 1 t/m 4) of
+CD (B.O.B. 5) maar voor het eerst een diskette! Dat laatste
+betekent overigens wel dat alleen bezitters van een MS-DOS
+computer gebruik kunnen maken van de Basicode programma's
+op deze schijf (3,5 inch) c.q. schijven (5,25 inch).
+
+We adviseren u om te beginnen met een backup te maken van de
+diskette(s), bijv. met het DOS-commando DISKCOPY. Berg daarna het
+origineel op een veilige plaats op, en gebruik alleen de backup.
+
+The Best of Basicode nr. 6 bevat 40 Basicode programma's
+die in de periode tussen augustus 1988 en oktober 1991
+in NOS-Scoop zijn uitgezonden. (Een complete lijst,
+plus omschrijvingen, staat in de file 'BOB-6.CAT'.)
+Dit is slechts een selectie uit het totale aantal in die
+periode uitgezonden programma's: bijna 150! De complete
+verzameling vindt u in de Fido-NOS databank, bereikbaar
+met computer en modem op het nummer: 035-45395. Als u (nog)
+niet bekend bent met Fido, kunt u alvast oefenen met het
+programma 'FIDO.BAS': dat spaart een hoop telefoonkosten!
+
+Om de Basicode programma's op deze diskette te 'RUNnen'
+heeft u geen Basicode vertaalprogramma nodig, alleen
+een Basic-interpreter, bijv. 'GWBASIC.EXE' of 'QBASIC.EXE'.
+Alle programma's werken zowel onder GW-Basic als onder QBasic
+(de Basic-interpreter die wordt meegeleverd bij MS-DOS 5.0).
+We hebben niet kunnen testen of de programma's ook werken
+onder Basic-compilers, zoals Quick Basic of Turbo Basic.
+
+Aan alle programma's zijn reeds de benodigde extra spaties
+en de Basicode subroutines voor MS-DOS toegevoegd, zodat ze
+klaar zijn voor gebruik. Soms echter is het nodig bepaalde
+programma's aan te passen, bijv. om te kunnen werken met
+bestanden. Verder verdient het bij sommige programma's
+aanbeveling om, indien de video-kaart in uw computer die
+mogelijkheid biedt, het scherm om te schakelen naar 40 tekens
+per regel (Basicode standaard). Zet daartoe in regel 20 van
+het betreffende programma de waarde van variabele OHT% op 40.
+
+
+Heeft u vragen of opmerkingen, schrijf dan naar:
+
+
+                       NOS Scoop,
+                       Postbus 1200,
+                       1200 BE Hilversum.
+
+
+  Veel plezier met Basicode op uw PC!
+
+
+                                         Met vriendelijke groet,
+                                         de NOS Scoop redactie.
+
