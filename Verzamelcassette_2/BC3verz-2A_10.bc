@@ -204,7 +204,7 @@
 25930 DATA"commando geeft, maar meteen op [RETURN] drukt,"
 25940 DATA"keert u weer terug naar het hoofdmenu. .P"
 25950 DATA".Z4"
-25960 DATA"WISSEN .F1 ------ .F en sector wissen"
+25960 DATA"WISSEN .F1 ------ .F2 U kunt een sector wissen"
 25970 DATA"door bij het submenu de gewenste sector op te"
 25980 DATA"geven. Er wordt automatisch weer naar het"
 25990 DATA"hoofdmenu teruggekeerd en bij de sector die u"
