@@ -1,0 +1,116 @@
+
+1000 A=500:GOTO20:REM  Radiohorizon
+1010 HC=HO:VC=VE:RESTORE
+1020 GOSUB3000:PRINT:PRINT:N=1
+1030 READSR$:IFSR$="XXX" THEN1070
+1040 IF(N=0)OR(SR$<>"") THENPRINTSR$
+1050 N=0:GOSUB120:IFVE+1<VC THEN1030
+1060 GOSUB3500:GOTO1020
+1070 GOSUB3500
+1080 GOSUB3000
+1090 RA=6365110:REM Aardstraal
+1100 HO=8:VE=4:GOSUB110:PRINT"Antennehoogte:"
+1110 J$="":P=0:HO=24:GOSUB110
+1120 GOSUB210:IF(IN=127)OR(IN=28) THEN1210
+1130 IF(P=0)AND((IN=13)OR(IN=75)) THEN1220
+1140 IFIN=13 THENPRINT" m":GOTO1230
+1150 IFIN=75 THENPRINT" km":J$=J$+"000":GOTO1230
+1160 IFP=4 THEN1220
+1170 IF(IN=48)AND(P=0) THEN1220
+1180 IF(IN<48)OR(IN>57) THEN1220
+1190 P=P+1:J$=J$+IN$
+1200 GOSUB110:PRINTJ$;" ";:GOSUB110:PRINTJ$;:GOTO1120
+1210 IFP=1 THENP=0:J$="":GOTO1200
+1215 IFP>0 THENP=P-1:J$=LEFT$(J$,LEN(J$)-1):GOTO1200
+1220 GOSUB250:GOTO1120
+1230 H=VAL(J$):IFH=0 THEN1220
+1240 SR$="De afstand tot de horizon is:"
+1250 HZ=SQR(2*H*RA+H*H)
+1260 SR=INT(HZ+.5):VE=9:GOSUB2000
+1270 SR$="De afstand tot de 'radiohorizon' is:"
+1280 RH=SQR(3*H*RA+H*H)
+1290 SR=INT(RH+.5):VE=15:GOSUB2000
+1300 HO=(HC-22)/2:VE=22:GOSUB110
+1310 PRINT"Nog zo'n berekening ? ";
+1320 GOSUB210:IFIN=74 THEN1080
+1330 IFIN<>78 THEN1320
+1340 GOTO950
+2000 HO=(HC-LEN(SR$))/2:GOSUB110:PRINTSR$
+2010 KM=0:IFSR>9999 THENKM=1:SR=INT(SR/1000+.5)
+2020 GOSUB300:LE=LEN(SR$):SR$=LEFT$(SR$,2)
+2030 IFLE>2 THENFORI=3 TOLE:SR$=SR$+"0":NEXTI
+2040 SR$=SR$+" "
+2050 IFKM=1 THENSR$=SR$+"kilo"
+2060 SR$=SR$+"meter"
+2070 VE=VE+2:GOSUB2500:RETURN
+2500 HO=(HC-8-LEN(SR$))/2:GOSUB110:GOSUB150:RETURN
+3000 GOSUB100:SR$="Radiohorizon":VE=0:GOSUB2500:RETURN
+3500 HO=HC-7:VE=VC:GOSUB110
+3510 PRINT"Toets >";:GOSUB210:RETURN
+25000 REM *** Tekst van de uitleg ***
+25010 DATA"Zoals bekend reiken radiosignalen van"
+25020 DATA"zenders die werken in de VHF- en UHF-"
+25030 DATA"band niet verder dan de horizon.",""
+25040 DATA"Dit geldt voor onze FM- en TV-zenders,"
+25050 DATA"maar ook voor amateurzenders werkend"
+25060 DATA"in de 2 meter- en 70 centimeterband.",""
+25070 DATA"Dit programma berekent hoe ver de"
+25080 DATA"horizon verwijderd is van een antenne"
+25090 DATA"met een gegeven hoogte.",""
+25100 DATA"Om ook de horizon van satellieten te"
+25110 DATA"kunnen berekenen is de hoogte tot"
+25120 DATA"10.000 km in te geven.",""
+25130 DATA"Door na het intypen van de hoogte een"
+25140 DATA"'K' te typen in plaats van 'ENTER'"
+25150 DATA"wordt de antennehoogte in kilometers"
+25160 DATA"in plaats van in meters ingevoerd.",""
+25170 DATA"In de praktijk blijken de radiogolven"
+25180 DATA"door de atmosfeer een beetje met de"
+25190 DATA"kromming van de aarde mee te buigen,"
+25200 DATA"daarom is de 'radiohorizon' wat verder"
+25210 DATA"weg dan de theoretische horizon.",""
+25220 DATA"Dit programma berekent de afstand van"
+25230 DATA"de theoretische horizon, maar ook van"
+25240 DATA"de 'radiohorizon' zoals we die in de"
+25250 DATA"praktijk beleven.",""
+25260 DATA"De afstanden worden afgerond, alleen"
+25270 DATA"op een volkomen gladde aarde zouden"
+25280 DATA"nauwkeuriger uitkomsten zinvol zijn.",""
+25290 DATA"Om te berekenen of een bepaalde zender"
+25300 DATA"te ontvangen is moet zowel de horizon"
+25310 DATA"van de zendantenne als van de ontvang-"
+25320 DATA"antenne berekend worden.",""
+25330 DATA"Als de som van beide 'radiohorizons'"
+25340 DATA"groter is dan de afstand tussen zender"
+25350 DATA"en ontvanger is deze zender onder"
+25360 DATA"normale omstandigheden te ontvangen.",""
+25370 DATA"Enkele voorbeeld hoogten:",""
+25380 DATA"TV-antenne op woonhuis: 15 meter,"
+25390 DATA"flatgebouw van 15 hoog: 45 meter,"
+25400 DATA"TV-toren in Lopik: 300 meter,"
+25410 DATA"verkeersvliegtuig: 10 tot 12 km,"
+25420 DATA"satellieten: 100 km en hoger.",""
+25430 DATA"Vaak is ontvangst over de horizon heen"
+25440 DATA"wel mogelijk, maar deze zal afhangen"
+25450 DATA"van allerlei wisselende factoren.",""
+25460 DATA"Ontdek dat de aarde krommer is dan u"
+25470 DATA"denkt."
+29990 DATA"XXX"
+32000 REM ********************
+32010 REM *                  *
+32020 REM *   RADIOHORIZON   *
+32030 REM *                  *
+32040 REM *   bewerkt voor   *
+32050 REM *    BASICODE-3    *
+32060 REM *       door       *
+32070 REM *   Klaas Robers   *
+32080 REM *     (PA0KLS)     *
+32090 REM *      op zyn      *
+32100 REM *  PHILIPS P2000T  *
+32110 REM *                  *
+32120 REM *     (c) 1988     *
+32130 REM *   K.H.J.Robers   *
+32140 REM *                  *
+32150 REM ********************
+32160 REM
+32170 REM TROS-RADIO dd 880817

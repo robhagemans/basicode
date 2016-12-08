@@ -1,0 +1,170 @@
+
+1000 A=100:GOTO20:REM MAANLANDER-SIMULATIE
+1010 VT=VE:SR$="MAANLANDER"
+1020 HO=(HO-LEN(SR$)-6)/3:VE=0:GOSUB110:GOSUB150
+1030 PRINT:PRINT
+1040 PRINT"Wilt u uitleg ? (J/N) ";
+1050 GOSUB210:IFIN=74 THEN GOSUB6030:GOTO1070
+1060 IFIN<>78 THEN1050
+1070 GOSUB100
+1080 REM
+1090 REM - Constanten -
+1100 REM
+1110 FM=50:REM faktor motorrendement
+1120 MV=1800:REM massa van het vaartuig
+1130 G=3:REM gravitatieconstante
+1140 REM
+1150 REM - Variabelen -
+1160 REM
+1170 BC=14:REM brandstofverbruik
+1180 T=0:REM tijd
+1190 H=1000:REM hoogte
+1200 V=20:REM (daal)snelheid
+1210 BV=1000:REM brandstofvoorraad
+1220 A=-G:REM vertraging (=-versnelling)
+2000 REM
+2010 REM - start handbesturing -
+2020 REM
+2030 GOSUB100
+2040 HO=28:VE=1:GOSUB110:PRINT"Tyd:    (s)";
+2050 R1=6:V2=12:VE=R1-2
+2060 HO=2:GOSUB110:PRINT"HOOGTE";
+2070 HO=14:GOSUB110:PRINT"SNELHEID";
+2080 HO=28:GOSUB110:PRINT"VERSNELLING";
+2090 VE=V2-2:HO=4:GOSUB110:PRINT"BRANDSTOF"
+2100 VE=V2-1:HO=6:GOSUB110:PRINT"Reserve";
+2110 HO=22:GOSUB110:PRINT"Toevoer naar motor";
+2120 VE=R1-1
+2130 HO=7:GOSUB110
+2140 PRINT"(m)         (m/s)         (m/s2)"
+2150 VE=V2
+2160 HO=13:GOSUB110:PRINT"(kg)";
+2170 HO=33:GOSUB110:PRINT"(kg/s)";
+3000 REM
+3010 REM - programmacyclus -
+3020 REM
+3030 VE=R1
+3040 SR=H:GOSUB300:SR$=LEFT$(SR$+"     ",5)
+3050 HO=2:GOSUB110:PRINTSR$;
+3060 SR=V:CT=6:CN=2:GOSUB310
+3070 HO=14:GOSUB110:PRINTSR$;
+3080 SR=A:GOSUB310
+3090 HO=28:GOSUB110:PRINTSR$;
+3100 VE=V2
+3110 SR=BV:GOSUB300:SR$=LEFT$(SR$+"     ",5)
+3120 HO=6:GOSUB110:PRINTSR$;
+3130 SR=BC:GOSUB300:SR$=LEFT$(SR$+"     ",5)
+3140 HO=26:GOSUB110:PRINTSR$;
+3150 VE=1:HO=32:GOSUB110
+3160 SR=T:GOSUB300:SR$=RIGHT$("    "+SR$,4):PRINTSR$
+3170 SD=10:SP=0:SV=0:GOSUB400
+3180 GOSUB4030
+3190 GOSUB200
+3200 IFIN=ASC("+") THENBC=BC+1
+3210 IFIN=ASC("-") THENBC=BC-1
+3220 IFIN<>0 THEN GOSUB200:GOTO3220
+3230 IFBC>25 THENBC=25
+3240 IFBC<0 THENBC=0
+3250 GOTO3030
+4000 REM
+4010 REM - REKENROUTINE -
+4020 REM
+4030 BV=BV-BC:REM nieuwe brandstofvoorraad
+4040 IFBV<=0 THEN4140:REM brandstof op
+4050 A=FM*BC*BC/(MV+BV+BC/2)-G:REM versnelling
+4060 V=V-A:REM snelheid
+4070 H=H-V-A/2:REM hoogte
+4080 IFH<=0 THEN4210:REM geland?
+4090 T=T+1
+4100 RETURN
+4110 REM
+4120 REM - brandstof op -
+4130 REM
+4140 HO=0:VE=V2+1:GOSUB110
+4150 PRINT"Brandstof op -- we gaan vallen ..."
+4160 BV=0:BC=0:GOSUB4050:GOTO4160
+4170 REM
+4180 REM - hoogte<0 dus einde -
+4190 REM
+4200 REM - bereken eindstanden -
+4210 Q=(H+V+A/2)/(V+A/2):T=T+Q
+4220 V=V+A-A*Q:IFV<0 THENV=0
+4230 BV=BV+BC-Q*BC
+4240 VE=V2+3:HO=0:GOSUB110
+4250 REM
+4260 REM - conclusie uit daalsnelheid -
+4270 REM
+4280 IFV<16 THEN4310
+4290 PRINT"EEN RAMP IS GESCHIED;"
+4300 PRINT"DE KLAP WAS OP JUPITER TE HOREN !":GOTO4470
+4310 IFV<10 THEN4330
+4320 PRINT"EEN CRASHLANDING; GEEN OVERLEVENDEN":GOTO4470
+4330 IFV<4 THEN4370
+4340 PRINT"JE VOERTUIG IS ONHERSTELBAAR BESCHADIGD"
+4350 PRINT"DE INZITTENDEN HEBBEN HET OVERLEEFD"
+4360 GOTO4470
+4370 IFV<2 THEN4410
+4380 PRINT"DAT WAS 'KANTJE BOORD' : SLECHTS"
+4390 PRINT"ENKELE ONDERDELEN ZIJN LICHT BESCHADIGD."
+4400 GOTO4470
+4410 IFV<1 THEN4440
+4420 PRINT"PRIMA, EEN GESLAAGDE LANDING !"
+4430 GOTO4470
+4440 PRINT"DAT WAS EEN SUPERZACHTE LANDING"
+4450 PRINT"ECHT TE GAAF !"
+4460 GOTO4470
+4470 PRINT:PRINT"Ter informatie:":PRINT
+4480 PRINT"U landde na ";T;" seconden"
+4490 PRINT"met een snelheid van ";V;" m/s"
+4500 PRINT"en nog ";BV;" kg brandstof over."
+4510 GOSUB7000
+4520 GOSUB100:PRINT:PRINT
+4530 PRINT"      Nog een keer ? (J/N) "
+4540 GOSUB210:IFIN=74 THEN1070
+4550 IFIN<>78 THEN4540
+4560 PRINT"Tot ziens als u meer zin hebt."
+4570 GOSUB7000:GOTO950
+6000 REM
+6010 REM - Uitleg subroutine -
+6020 REM
+6030 GOSUB100
+6040 PRINT"In deze simulatie bent u de piloot"
+6050 PRINT"van een maanlander. Uw voertuig wordt"
+6060 PRINT"door u met de hand bestuurd vanaf een"
+6070 PRINT"hoogte van 1000 meter."
+6080 PRINT"Op dat moment hebt u een snelheid van"
+6090 PRINT"20 meter per seconde en verstookt uw"
+6100 PRINT"raketmotor 14 kilogram brandstof per"
+6110 PRINT"seconde.":PRINT
+6120 PRINT"Uw vaartuig heeft een massa van 2800"
+6130 PRINT"kilogram. Daarvan is 1000 kg brandstof."
+6140 PRINT"Uw raketmotor heeft een trage bediening"
+6150 PRINT"want u kunt elke seconde het te"
+6160 PRINT"verstoken aantal kilos brandstof met 1"
+6170 PRINT"verhogen of verlagen."
+6180 GOSUB7000:GOSUB100
+6190 PRINT"U geeft meer of minder 'gas' door de +"
+6200 PRINT"of de - toets ingedrukt te houden."
+6210 PRINT:PRINT"Veel succes en wijsheid!":PRINT
+6220 PRINT"Permanent ziet u op het instrumenten-"
+6230 PRINT"bord de hoogte, de snelheid, de ver-"
+6240 PRINT"snelling, de brandstofvoorraad en"
+6250 PRINT"hoeveel u aan de motor toevoert."
+6260 PRINT"Streef naar een landingssnelheid"
+6270 PRINT"lager dan 1 meter per seconde."
+6280 PRINT:PRINT"Probeer in elk geval te overleven!"
+7000 HO=0:VE=VT:GOSUB110:PRINT"-- <return> voor vervolg --";
+7010 GOSUB210:IFIN<>13 THEN7010
+7020 RETURN
+32000 REM ************************
+32010 REM *                      *
+32020 REM * een demonstratie van *
+32030 REM * een simulatie door:  *
+32040 REM *                      *
+32050 REM *  STICHTING BASICODE  *
+32060 REM *    POSTBUS 1410      *
+32070 REM *   5602 BK EINDHOVEN  *
+32080 REM *                      *
+32090 REM ************************
+32100 REM
+32110 REM TROS-RADIO dd 880907

@@ -1,0 +1,492 @@
+
+1000 A=500:GOTO20:REM GAGE BEREKENEN
+1010 GOSUB100:T=0:M=0:S=0:P=0
+1020 CT=9:CN=2:DIMGA(10),HK(10),RK(10),N$(10),K(5)
+1030 HO=2:VE=5:GOSUB110
+1040 PRINT"GAGE BEREKENINGS PROGRAMMA DUITSLAND"
+1050 PRINT"  ------------------------------------"
+1060 HO=1:VE=9:GOSUB110
+1070 PRINT"Berekeningen zijn incl. Mehrwertsteuer"
+1080 PRINT" Auslandsteuer en Provisie."
+1090 HO=2:VE=12:GOSUB110
+1100 PRINT" (incl.mehrwertsteuer op provisie.)"
+1110 HO=1:VE=15:GOSUB110
+1120 PRINT"Gemaakt op een cbm-128 door W.v.Schip."
+1130 HO=8:VE=18:GOSUB110
+1140 SR$="Wilt U uitleg <j/n>":GOSUB150
+1150 GOSUB210
+1160 IFIN=78 THEN2000:REM N
+1170 IFIN<>74 THEN1150
+1180 GOSUB100:HO=5:VE=2:GOSUB110
+1190 PRINT"UITLEG BEREKENINGS-PROGRAMMA."
+1200 PRINT:PRINT"Met dit programma kunnen we het totale"
+1210 PRINT"bedrag berekenen, dat betaald moet"
+1220 PRINT"worden indien men (met max. 10 mensen"
+1230 PRINT"of groepen) gaat optreden in West-"
+1240 PRINT"Duitsland. Om het programma 'actueel'"
+1250 PRINT"te houden, moeten de 'Steuern' (=belas-"
+1260 PRINT"tingen) EERST ingetoetst worden."
+1270 PRINT:PRINT"Dit is keuze een van het menu."
+1280 PRINT:PRINT"Op dit ogenblik (feb 1988) is de"
+1290 PRINT"Auslandsteuer 15 % en de"
+1300 PRINT"Mehrwertsteuer 14%."
+1310 PRINT:PRINT"Provisie is evt. voor een agentuurbu-"
+1320 PRINT"reau indien dat als tussenpersoon werkt."
+1330 GOSUB1800:GOSUB100:PRINT:PRINT
+1340 PRINT"Met keuze twee kunnen we de totale "
+1350 PRINT"gage, van alle 'deelnemers' samen,"
+1360 PRINT"berekenen."
+1370 PRINT"Toets eerst alle namen in en daarna de"
+1380 PRINT"gages per persoon of groep.":PRINT
+1390 PRINT:PRINT"De reiskosten kunnen met keuze drie,"
+1400 PRINT"per persoon of groep ingevoerd worden.":PRINT
+1410 PRINT:PRINT"Met keuze vier kunnen we de gage en"
+1420 PRINT"reiskosten even samen op het scherm"
+1430 PRINT"zetten."
+1440 PRINT"Dit kan nodig zijn als er maar een"
+1450 PRINT"bepaald budget ter beschikking zou"
+1460 PRINT"zijn."
+1470 PRINT:PRINT"Er zijn dan nog aanpassingen mogelijk."
+1480 GOSUB1800
+1490 GOSUB100
+1500 PRINT:PRINT"Bij het berekenen van de hotelkosten,"
+1510 PRINT"(keuze nr vijf) wordt er gevraagd of er"
+1520 PRINT"1, 2 of 3 persoonskamers nodig zijn."
+1530 PRINT"De hotelkamertarieven kunnen daarna"
+1540 PRINT"ingevoerd worden.":PRINT
+1550 PRINT:PRINT"Keuze zes toont alle 'totaal' bedragen"
+1560 PRINT"op het scherm."
+1570 PRINT"Ook als nu e.e.a. niet goed zou zijn in"
+1580 PRINT"gevoerd, kunt U nog terug om verande-"
+1590 PRINT"ringen aan te brengen."
+1600 PRINT
+1610 PRINT:PRINT"Met keuze zeven kunnen we de BEREKENING"
+1620 PRINT"gaan maken."
+1630 PRINT"Dit kan eerst op het scherm en dan evt."
+1640 PRINT"op papier.":GOSUB1800
+1650 GOSUB100
+1660 PRINT:PRINT"Met keuze acht kunnen we geheel nieuwe"
+1670 PRINT"gegevens invoeren.":PRINT
+1680 PRINT:PRINT"Keuze negen is einde programma."
+1690 PRINT:PRINT:PRINT"Het programma rekent zowel van:"
+1700 PRINT:PRINT"   1.BRUTO naar NETTO, als van:"
+1710 PRINT:PRINT"   2.NETTO naar BRUTO.":PRINT
+1720 PRINT"Het programma geeft daarover zelf"
+1730 PRINT"nadere toelichting."
+1740 GOSUB1800:GOTO2000
+1750 HO=2:VE=22:GOSUB110
+1760 SR$="Berekening gaan maken? <j/n>":GOSUB150
+1770 GOSUB250:GOSUB210:IFIN=78 THEN2000
+1780 IFIN=74 THEN9000:REM J
+1790 GOTO1770
+1800 HO=8:VE=22:GOSUB110:SR$="Spatie voor verder."
+1810 GOSUB150:GOSUB210:IFIN<>32 THEN1800
+1820 RETURN
+1830 GOSUB250:PRINT:PRINT
+1840 HO=3:VE=6:GOSUB110
+1850 SR$="Maak EERST menu-keuze 1 & 2!!":GOSUB150
+1860 GOSUB1800
+2000 GOSUB100:REM MENU
+2010 HO=14:VE=1:GOSUB110:PRINT" HOOFDMENU":VE=2:GOSUB110
+2020 PRINT"===========":PRINT
+2030 PRINT" 1.Belasting percentage ingeven.":PRINT
+2040 PRINT" 2.Berekening van alleen de gage.":PRINT
+2050 PRINT" 3.Berekening reiskosten.":PRINT
+2060 PRINT" 4.Gage + reiskosten op scherm.":PRINT
+2070 PRINT" 5.Berekening hotelkosten.":PRINT
+2080 PRINT" 6.Alle totaal bedragen op scherm.":PRINT
+2090 PRINT" 7.De 'BEREKENING' gaan maken.":PRINT
+2100 PRINT" 8.Geheel nieuwe gegevens invoeren.":PRINT
+2110 PRINT" 9.Stoppen met het programma.":PRINT:PRINT
+2120 HO=6:VE=22:GOSUB110:SR$="Toets Uw keuze nr."
+2130 GOSUB150:GOSUB210
+2140 IN=IN-48
+2150 IF(IN<1)OR(IN>9) THEN2130
+2160 IFIN=9 THEN15000
+2170 ONIN GOTO3000,4000,5000,6000,7000,8000,9000,12000
+3000 GOSUB100
+3010 HO=10:VE=1:GOSUB110:PRINT"Percentages ingeven."
+3020 VE=2:GOSUB110:PRINT"====================":PRINT
+3030 PRINT"Belasting percentages ingeven."
+3040 PRINT:PRINT"Hoeveel % is de Mehrwertsteuer (MwSt)?"
+3050 PRINT:INPUTSR:M=SR/100:GOSUB300:M$=SR$
+3060 PRINT:PRINT"Hoeveel % is de Auslandsteuer (ASt)?"
+3070 PRINT:INPUTSR:S=SR/100:GOSUB300:S$=SR$
+3080 PRINT:PRINT"Provisie van toepassing ? <j/n>"
+3090 GOSUB210:IFIN=78 THEN3160
+3100 HO=1:VE=13:GOSUB110
+3110 PRINT:PRINT"Hoeveel % is de provisie?        "
+3120 PRINT"(evt. voor duits agentschap.)"
+3130 PRINT:PRINT"LET OP ingeven ZONDER Mehrwertsteuer !!"
+3140 PRINT"(Deze wordt automatisch mee berekend.)":PRINT
+3150 GOSUB250:INPUTP:P=P/100
+3160 HO=2:VE=22:GOSUB110
+3170 SR$="Gegevens goed ingevoerd ? <j/n>":GOSUB150
+3180 GOSUB210:IFIN=74 THEN2000:REM J
+3190 IFIN=78 THEN3000
+3200 GOTO3160
+4000 GOSUB100:HO=13:VE=2:GOSUB110
+4010 PRINT"Gage berekenen.":T=0:VE=3:GOSUB110
+4020 PRINT"===============":PRINT
+4030 PRINT"Hoeveel mensen/groepen gaan er mee?"
+4040 PRINT:SR$="Max. 10.":GOSUB150:PRINT:PRINT:INPUTT
+4050 IF(T<1)OR(T>10) THEN GOSUB250:GOTO4000
+4060 FORN=1 TOT:PRINT
+4070 PRINT"Wat is de naam van persoon/groep:";N
+4080 PRINT"Niet meer dan 16 letters!!":GOSUB250
+4090 PRINT:PRINT:INPUTN$(N)
+4100 IFLEN(N$(N))<=16 THEN4140
+4110 PRINT
+4120 SR$="Max. 16 tekens!!":GOSUB150:PRINT:PRINT
+4130 GOSUB250:GOTO4070
+4140 NEXTN:GOSUB100
+4150 HO=7:VE=2:GOSUB110:PRINT"De ingevoerde namen zijn: "
+4160 VE=3:GOSUB110:PRINT"-------------------------"
+4170 PRINT:FORN=1 TOT:PRINTN$(N):NEXTN
+4180 HO=4:VE=22:GOSUB110
+4190 SR$="Namen goed ingevoerd? <j/n>":GOSUB150
+4200 GOSUB210:IFIN=78 THEN4000
+4210 GOSUB100:GA=0
+4220 HO=9:VE=2:GOSUB110
+4230 PRINT"Ingeven van de gage.":VE=3:GOSUB110
+4240 PRINT"====================":PRINT:PRINT
+4250 FORN=1 TOT
+4260 PRINT" Hoeveel gage voor: ";N$(N)
+4270 PRINT:INPUTGA(N):PRINT:NEXTN
+4280 GOSUB100:HO=5:VE=2:GOSUB110
+4290 PRINT"Dit zijn de ingevoerde bedragen.":VE=3:GOSUB110
+4300 PRINT"--------------------------------":PRINT
+4310 FORN=1 TOT:SR=GA(N):GOSUB300:GOSUB310
+4320 PRINT"Gage ";N$(N);TAB(27);SR$;TAB(36);" DM.":NEXTN
+4330 HO=1:VE=22:GOSUB110
+4340 SR$="Bedrag(en) goed ingevoerd? <j/n>":GOSUB150
+4350 GOSUB210
+4360 IFIN=78 THEN4210
+4370 GOSUB100:K(1)=0
+4380 FORN=1 TOT
+4390 K(1)=K(1)+GA(N)
+4400 NEXTN
+4410 HO=10:VE=2:GOSUB110:PRINT"Totale gage-bedrag."
+4420 VE=3:GOSUB110:PRINT"==================="
+4430 SR=K(1):GOSUB310
+4440 PRINT:PRINTTAB(12);SR$
+4450 HO=21:VE=5:GOSUB110:PRINT" DM."
+4460 HO=4:VE=22:GOSUB110
+4470 SR$="Reiskosten invoeren? <j/n>":GOSUB150
+4480 GOSUB210
+4490 IFIN=78 THEN1750:REM N
+4500 IFIN<>74 THEN4480
+5000 GOSUB100
+5010 HO=9:VE=2:GOSUB110
+5020 PRINT"Ingave van reiskosten.":K(2)=0:VE=3:GOSUB110
+5030 PRINT"======================"
+5035 IFT=0 THEN1830
+5040 HO=0:VE=7:GOSUB110
+5050 FORN=1 TOT:PRINT" Reiskosten voor: ";N$(N)
+5060 PRINT:INPUTRK(N):PRINT:NEXTN
+5070 GOSUB100:HO=4:VE=2:GOSUB110
+5080 PRINT"De ingevoerde reiskosten voor: ":VE=3:GOSUB110
+5090 PRINT"------------------------------":PRINT
+5100 FORN=1 TOT:SR=RK(N):GOSUB300:GOSUB310
+5110 PRINTN$(N);TAB(27);SR$;TAB(36);" DM.":NEXTN
+5120 HO=1:VE=22:GOSUB110
+5130 SR$="Bedrag(en) goed ingevoerd? <j/n>":GOSUB150
+5140 GOSUB210
+5150 IFIN=78 THEN5000:REM N
+5160 IFIN<>74 THEN5140
+5170 GOSUB100
+5180 HO=7:VE=2:GOSUB110
+5190 PRINT"Totale reiskosten zijn.":VE=3:GOSUB110
+5200 PRINT"=======================":PRINT
+5210 FORN=1 TOT
+5220 K(2)=K(2)+RK(N)
+5230 NEXTN
+5240 SR=K(2):GOSUB310
+5250 PRINTTAB(11);SR$
+5260 HO=20:VE=5:GOSUB110:PRINT" DM."
+5270 GOSUB1750:GOTO2000
+6000 GOSUB100:K(4)=0
+6010 HO=5:VE=2:GOSUB110
+6020 PRINT"Berekening gage + reiskosten.":VE=3:GOSUB110
+6030 PRINT"============================="
+6040 IFT=0 THEN1830
+6050 PRINT:PRINT"Nu volgt de optelling van de gage en"
+6060 PRINT"de reiskosten."
+6070 PRINT:PRINT"Als dit bedrag TE hoog mocht zijn (b.v."
+6080 PRINT"er is maar een bepaald budget voor het"
+6090 PRINT"optreden beschikbaar) dan kunnen er nu"
+6100 PRINT"nog aanpassingen gemaakt worden.":GOSUB1800
+6110 GOSUB100:HO=5:VE=2:GOSUB110
+6120 PRINT"Berekening gage + reiskosten.":VE=3:GOSUB110
+6130 PRINT"============================="
+6140 HO=0:VE=7:GOSUB110
+6150 PRINT:PRINT"Totale gage:"
+6160 SR=K(1):GOSUB310
+6170 HO=27:VE=8:GOSUB110
+6180 PRINTSR$;" DM."
+6190 PRINT"Totale reiskosten:"
+6200 SR=K(2):GOSUB310
+6210 HO=26:VE=10:GOSUB110
+6220 PRINT"+";SR$;" DM."
+6230 HO=26:VE=11:GOSUB110
+6240 PRINT" -------------"
+6250 HO=0:VE=12:GOSUB110
+6260 PRINT"Totaal gage + reiskosten:"
+6270 HO=27:VE=12:GOSUB110
+6280 K(4)=K(1)+K(2)
+6290 SR=K(4):GOSUB310
+6300 PRINTSR$;" DM."
+6310 HO=7:VE=22:GOSUB110
+6320 SR$="Is dit accoord <j/n>":GOSUB150:GOSUB250
+6330 GOSUB210:IFIN=74 THEN1750:REM J
+6340 IFIN<>78 THEN6330
+6350 K(4)=0:K(1)=0:K(2)=0
+6360 GOSUB100:HO=0:VE=6:GOSUB110
+6370 PRINT"De ingevoerde reiskosten en gages staan"
+6380 PRINT"weer op '0' en kunnen (via het menu)"
+6390 PRINT"opnieuw ingevoerd worden.":GOSUB1800:GOTO2000
+7000 GOSUB100:REM HOTEL
+7010 HO=8:VE=2:GOSUB110
+7020 PRINT"Berekening hotelkosten.":VE=3:GOSUB110
+7030 PRINT"======================="
+7040 IFT=0 THEN1830
+7050 PRINT:PRINT"Hoeveel 1 persoonskamers zijn er nodig?"
+7060 PRINT:INPUTB1:PRINT
+7070 PRINT:PRINT"Hoeveel 2 persoonskamers zijn er nodig?"
+7080 PRINT:INPUTB2:PRINT
+7090 PRINT:PRINT"Hoeveel 3 persoonskamers zijn er nodig?"
+7100 PRINT:INPUTB3:GOTO7290
+7110 GOSUB100:HO=8:VE=2:GOSUB110
+7120 PRINT"Berekening hotelkosten.":VE=3:GOSUB110
+7130 PRINT"======================="
+7140 PRINT:PRINT"Wat kost een 1 persoonskamer?"
+7150 PRINT:INPUTP1:PRINT
+7160 PRINT:PRINT"Wat kost een 2 persoonskamer?"
+7170 PRINT:INPUTP2:PRINT
+7180 PRINT:PRINT"Wat kost een 3 persoonskamer?"
+7190 PRINT:INPUTP3:PRINT:GOTO7340
+7200 GOSUB100:HO=8:VE=2:GOSUB110
+7210 PRINT"Berekening hotelkosten.":VE=3:GOSUB110
+7220 PRINT"======================="
+7230 V1=B1*P1:V2=B2*P2:V3=B3*P3:K(3)=V1+V2+V3
+7240 HO=7:VE=7:GOSUB110
+7250 PRINT"Totale hotelkosten zijn:"
+7260 SR=K(3):GOSUB310
+7270 HO=11:VE=9:GOSUB110
+7280 PRINTSR$;" DM.":GOTO1750
+7290 HO=2:VE=22:GOSUB110
+7300 SR$="Aantallen goed ingevoerd? <j/n>":GOSUB150
+7310 GOSUB210:IFIN=78 THEN7000
+7320 IFIN=74 THEN7110:REM J
+7330 GOTO7290
+7340 HO=2:VE=22:GOSUB110
+7350 SR$="Bedragen goed ingevoerd? <j/n>":GOSUB150
+7360 GOSUB210:IFIN=78 THEN7110
+7370 IFIN=74 THEN7200:REM J
+7380 GOTO7340
+8000 GOSUB100:K(5)=0:REM ALLE TOTALEN
+8010 HO=2:VE=2:GOSUB110
+8020 PRINT"Alle totale bedragen op scherm."
+8030 PRINT"  ==============================="
+8040 IFT=0 THEN1830
+8050 PRINT:PRINT"Nu volgt de optelling van de gage,"
+8060 PRINT"reis en hotelkosten."
+8070 PRINT:PRINT"Als dit bedrag TE hoog mocht zijn (b.v."
+8080 PRINT"er is maar een bepaald budget voor het"
+8090 PRINT"optreden beschikbaar) dan kunnen er nu"
+8100 PRINT"nog aanpassingen gemaakt worden.":GOSUB1800
+8110 GOSUB100:HO=2:VE=2:GOSUB110
+8120 PRINT"Berekening gage, reis en hotelkosten."
+8130 PRINT"  ====================================="
+8140 HO=0:VE=7:GOSUB110
+8150 PRINT:PRINT"Totale gage:"
+8160 SR=K(1):GOSUB310
+8170 HO=27:VE=8:GOSUB110
+8180 PRINTSR$;" DM."
+8190 PRINT"       reiskosten:"
+8200 SR=K(2):GOSUB310
+8210 HO=26:VE=10:GOSUB110
+8220 PRINT"+";SR$;" DM."
+8230 PRINT"       hotelkosten:"
+8240 SR=K(3):GOSUB310
+8250 HO=26:VE=12:GOSUB110
+8260 PRINT"+";SR$;" DM."
+8270 HO=26:VE=13:GOSUB110
+8280 PRINT" -------------"
+8290 HO=0:VE=14:GOSUB110
+8300 PRINT"Tot. gage/reis hotelkosten: "
+8310 K(5)=K(1)+K(2)+K(3)
+8320 HO=27:VE=14:GOSUB110
+8330 SR=K(5):GOSUB310
+8340 PRINTSR$;" DM."
+8350 HO=8:VE=22:GOSUB110
+8360 SR$="Is dit accoord <j/n>":GOSUB150
+8370 GOSUB250:GOSUB210
+8380 IFIN=74 THEN1750:REM J
+8390 IFIN<>78 THEN8370
+8400 K(5)=0:K(1)=0:K(2)=0:K(3)=0
+8410 GOSUB100:HO=0:VE=6:GOSUB110
+8420 PRINT"De ingevoerde gages, reis en hotelkos-"
+8430 PRINT"ten staan weer op '0' en kunnen (via"
+8440 PRINT"het menu) opnieuw ingevoerd worden."
+8450 GOSUB1800:GOTO2000
+9000 GOSUB100:HO=10:VE=2:GOSUB110
+9010 PRINT"De BEREKENING maken.":VE=3:GOSUB110
+9020 PRINT"====================":IFT=0 THEN1830
+9030 Y1=M*100:Y2=Y1+100:Y3=S*Y2
+9040 Y4=P*(100+Y1):Y=Y2-Y3-Y4-Y1
+9050 HO=6:VE=7:GOSUB110
+9060 PRINT"U kunt de ingevoerde"
+9070 HO=10:VE=8:GOSUB110
+9080 PRINT"bedragen beschouwen als:"
+9090 HO=13:VE=10:GOSUB110
+9100 PRINT"1.Bruto bedragen.":PRINT:HO=13:VE=12:GOSUB110
+9110 PRINT"2.Netto bedragen.":PRINT:GOSUB210
+9120 IFIN=49 THENA=K(1)+K(2)+K(3):GOTO9160
+9130 IFIN=50 THENA=K(1)+K(2)+K(3):A=A*100/Y:GOTO9150
+9140 GOTO9090
+9150 B=M*A:C=A+B:D=S*C:GOTO9170
+9160 B=M*A:C=A+B:D=S*A
+9170 E=A-D:F=P*A*(1+M):G=E-F
+9180 GOSUB100:HO=5:VE=2:GOSUB110
+9190 PRINT"De BEREKENING is als volgt.":VE=3:GOSUB110
+9200 PRINT"==========================="
+9210 HO=1:VE=5:GOSUB110:PRINT"Bruto.................."
+9220 SR=A:GOSUB310
+9230 HO=24:GOSUB110:PRINTSR$;" DM."
+9240 HO=2:VE=6:GOSUB110:PRINT"ASt=";S$;"%.............."
+9250 SR=D:GOSUB310
+9260 HO=23:GOSUB110:PRINT"-";SR$;" DM."
+9270 VE=7:GOSUB110:PRINT" -------------"
+9280 HO=17:VE=8:GOSUB110:PRINT"Blijft:"
+9290 SR=E:GOSUB310
+9300 HO=24:GOSUB110:PRINTSR$;" DM."
+9310 HO=2:VE=9:GOSUB110:PRINT"Prov.=10% +";M$;"% MwSt.."
+9320 SR=F:GOSUB310
+9330 HO=23:GOSUB110:PRINT"-";SR$;" DM."
+9340 VE=10:GOSUB110:PRINT" -------------"
+9350 HO=17:VE=11:GOSUB110:PRINT"Blijft:"
+9360 SR=G:GOSUB310
+9370 HO=24:GOSUB110:PRINTSR$;" DM."
+9380 HO=1:VE=15:GOSUB110:PRINT"NETTO EINDBEDRAG......."
+9390 SR=G:GOSUB310
+9400 HO=24:GOSUB110:PRINTSR$;" DM."
+9410 VE=16:GOSUB110:PRINT"============="
+9420 HO=1:VE=19:GOSUB110:PRINT"In rekening brengen."
+9430 SR=A:GOSUB310
+9440 HO=24:GOSUB110:PRINTSR$;" DM."
+9450 VE=20:GOSUB110:PRINT"============="
+9460 HO=2:VE=23:GOSUB110
+9470 SR$="Printen of naar menu? <p/m>":GOSUB150
+9480 GOSUB210:IFIN=77 THEN2000:REM M
+9490 IFIN<>80 THEN GOSUB250:GOTO9460
+10000 GOSUB100:HO=8:VE=2:GOSUB110
+10010 PRINT"Printen van berekening.":VE=3:GOSUB110
+10020 PRINT"======================="
+10030 HO=3:VE=11:GOSUB110
+10040 SR$="Staat de printer klaar <j/n> ":GOSUB150:GOSUB250
+10050 GOSUB210:IFIN=74 THEN10100:REM J
+10060 IFIN<>78 THEN10000
+10070 HO=7:VE=14:GOSUB110
+10080 SR$="Doe dat dan eerst !!!":GOSUB150
+10090 GOSUB1800:GOTO10000
+10100 GOSUB100:HO=5:VE=2:GOSUB110
+10110 PRINT"De BEREKENING komt nu op papier.":VE=3:GOSUB110
+10120 PRINT"================================"
+10130 HO=9:VE=12:GOSUB110
+10140 SR$="Even geduld a.u.b.":GOSUB150
+10150 SR$="De berekening is als volgt:":GOSUB350:GOSUB360
+10160 SR$="===========================":GOSUB350:GOSUB360
+10170 R$="Bruto":GOSUB11010:SR=A:GOSUB310:R$=R$+SR$
+10180 R$=R$+" DM.":SR$=R$:GOSUB350:GOSUB360
+10250 R$=" ASt="+S$+"%":GOSUB11020:SR=D:GOSUB310:R$=R$+"-"
+10260 R$=R$+SR$:R$=R$+" DM.":SR$=R$:GOSUB350:GOSUB360
+10270 R$="":GOSUB11050:R$=R$+"  ------------"
+10280 SR$=R$:GOSUB350:GOSUB360
+10290 R$="":GOSUB11060:R$=R$+"Blijft:":SR=E:GOSUB310
+10300 R$=R$+SR$:R$=R$+" DM.":SR$=R$:GOSUB350:GOSUB360
+10310 R$=" Prov=10% +"+M$+"% MwSt":GOSUB11020:SR=F:GOSUB310
+10320 R$=R$+"-":R$=R$+SR$:R$=R$+" DM.":SR$=R$:GOSUB350
+10330 GOSUB360:R$="":GOSUB11050:R$=R$+"  ------------"
+10340 SR$=R$:GOSUB350:GOSUB360
+10350 R$="":GOSUB11060:R$=R$+"Blijft:":SR=G:GOSUB310
+10360 R$=R$+SR$:R$=R$+" DM.":SR$=R$:GOSUB350:GOSUB360
+10410 R$="NETTO EINDBEDRAG":GOSUB11010:SR=G:GOSUB310
+10420 R$=R$+SR$:R$=R$+" DM.":SR$=R$:GOSUB350:GOSUB360
+10430 R$="":GOSUB11050:R$=R$+"  ============"
+10440 SR$=R$:GOSUB350:GOSUB360
+10450 R$="":GOSUB11050:SR$=R$:GOSUB350:GOSUB360
+10460 R$="In rekening te brengen":GOSUB11010:SR=A:GOSUB310
+10470 R$=R$+SR$:R$=R$+" DM.":SR$=R$:GOSUB350:GOSUB360
+10480 R$="":GOSUB11050:R$=R$+"  ============"
+10490 SR$=R$:GOSUB350:GOSUB360
+10500 HO=8:VE=12:GOSUB110:SR$="Het printen is klaar."
+10510 GOSUB150:HO=5:VE=22:GOSUB110
+10520 SR$="Stoppen of naar menu <s/m>":GOSUB150
+10530 GOSUB210:IFIN=83 THEN15000:REM S
+10540 IFIN=77 THEN2000:REM M
+10550 GOTO10530
+11000 REM SPATIEROUTINE
+11010 Q=25-LEN(R$):GOTO11030
+11020 Q=24-LEN(R$)
+11030 FORX=1 TOQ:R$=R$+".":NEXTX:RETURN
+11040 REM SPATIEROUTINE 2
+11050 Q=24-LEN(R$):GOTO11070
+11060 Q=18-LEN(R$)
+11070 FORX=1 TOQ:R$=R$+" ":NEXTX:RETURN
+12000 GOSUB100
+12010 HO=8:VE=2:GOSUB110
+12020 PRINT"Nieuwe gegevens invoeren."
+12030 PRINT"       ==========================="
+12040 IFT=0 THEN1830
+12050 HO=0:VE=7:GOSUB110
+12060 PRINT"Bij het maken van een nieuwe berekening"
+12070 PRINT"worden alle gegevens op '0' gezet!!"
+12080 PRINT:PRINT"Dat houdt dus in, dat OOK de 'Steuern'"
+12090 PRINT"(=belastingen) opnieuw ingevoerd moeten"
+12100 PRINT"worden."
+12110 K(1)=0:K(2)=0:K(3)=0:K(4)=0:K(5)=0
+12120 B1=0:B2=0:B3=0:P1=0:P2=0:P3=0:V1=0:V2=0:V3=0
+12130 FORN=1 TOT:N$(N)="                  ":NEXTN
+12140 FORN=1 TOT:GA(N)=0:RK(N)=0:NEXTN
+12150 T=0:GOSUB1800:GOTO2000
+15000 GOSUB100
+15010 HO=10:VE=2:GOSUB110
+15020 PRINT"Einde van programma.":VE=3:GOSUB110
+15030 PRINT"===================="
+15040 HO=1:VE=7:GOSUB110
+15050 SR$="Programma echt beeindigen? <j/n>"
+15060 GOSUB150:GOSUB210
+15070 IFIN=78 THEN2000
+15080 IFIN<>74 THEN GOSUB250:GOTO15060
+15090 GOSUB100:HO=5:VE=3:GOSUB110
+15100 PRINT"Gage berekenen voor Duitsland.":VE=4:GOSUB110
+15110 PRINT"=============================="
+15120 PRINT:PRINT"   Een programma van W.v.Schip."
+15130 PRINT"   Gemaakt op een cbm 128."
+15140 PRINT:PRINT"   Commercieel gebruik alleen na"
+15150 PRINT"   toestemming van de auteur."
+15160 PRINT:PRINT"   Info op onderstaand adres;"
+15170 PRINT:PRINT"   Postbus 5069  3502 JB UTRECHT."
+15180 PRINT:PRINT"           Copyright 1987/88"
+15190 PRINT:PRINT"               W.v.Schip"
+15200 GOSUB1800
+15210 GOSUB100:HO=11:VE=11:GOSUB110
+15220 PRINT"Tot Basicode-3 !!!"
+15230 SD=400:GOSUB450:GOTO950
+30000 REM ----------------------
+30010 REM MOCHTEN DE 'STEUERN' VERANDEREN
+30020 REM PAS DAN DE '14%' AAN IN REGEL 1300
+30030 REM  EN PAS DE '15%' AAN IN REGEL 1290
+30040 REM ----------------------
+30050 REM VERSIE 7 FEBRUARI 1988
+30060 REM ----------------------
+32000 REM GAGE BEREKENINGS PROGRAMMA
+32010 REM GEMAAKT OP EEN CBM 128
+32020 REM DOOR W. VAN SCHIP
+32030 REM COPYRIGHT 1987/88
+32040 REM W. VAN SCHIP
+32050 REM POSTBUS 5069
+32060 REM 3502 JB UTRECHT
+32070 REM
+32080 REM TROS-RADIO dd 880413
