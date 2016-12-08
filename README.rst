@@ -32,28 +32,28 @@ This repository contains BASICODE programs from the following sources:
 ==================================  ==========  ==================  ==================
 Source                              Medium      Basicode version    Language
 ==================================  ==========  ==================  ==================
+`Chip Shop BASICODE 2`_             Tape        BASICODE-2          English
+`Wiegand & Fillinger - Basicode`_   Tape        BASICODE-2          German
 `BASICODE-2A`_                      Tape        BASICODE-2          English and Dutch
+`BASICODE-3`_                       Tape        BASICODE-3          Dutch
 `The Best of BASICODE 1`_           Tape        BASICODE-2          Dutch
 `The Best of BASICODE 2`_           Tape        BASICODE-2          Dutch
 `The Best of BASICODE 3`_           Tape        BASICODE-2          Dutch
 `The Best of BASICODE 4`_           Tape        BASICODE-2          Dutch
 `The Best of BASICODE 5`_           CD          BASICODE-2          Dutch
-`Chip Shop BASICODE 2`_             Tape        BASICODE-2          English
-`Wiegand & Fillinger - Basicode`_   Tape        BASICODE-2          German
-`BASICODE-3`_                       Tape        BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 1`_    Tape        BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 2`_    Tape        BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 3`_    Tape        BASICODE-3          Dutch
 ==================================  ==========  ==================  ==================
 
 .. _BASICODE-2A: Basicode-2a/
+.. _Chip Shop BASICODE 2: Chip_Shop_Basicode_2/
+.. _Wiegand & Fillinger - Basicode: Wiegand_Fillinger_Basicode_2/
 .. _The Best of BASICODE 1: Best_of_Basicode_1/
 .. _The Best of BASICODE 2: Best_of_Basicode_2/
 .. _The Best of BASICODE 3: Best_of_Basicode_3/
 .. _The Best of BASICODE 4: Best_of_Basicode_4/
 .. _The Best of BASICODE 5: Best_of_Basicode_5/
-.. _Chip Shop BASICODE 2: Chip_Shop_Basicode_2/
-.. _Wiegand & Fillinger - Basicode: Wiegand_Fillinger_Basicode_2/
 .. _BASICODE-3: Basicode-3/
 .. _BASICODE-3 Verzamelcassette 1: Verzamelcassette_1/
 .. _BASICODE-3 Verzamelcassette 2: Verzamelcassette_2/
