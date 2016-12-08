@@ -1,45 +1,48 @@
 
-1000 A=500:GOTO20:REM  autosimulator 3
+1000 A=500:GOTO20:REM  autosimulator 4
 1010 GOSUB100:REM  scherm schoon
 1020 PRINT"Dit programma tekent de"
-1030 PRINT"grafiek van het snelheidsverloop"
+1030 PRINT"grafiek van het vermogensverloop"
 1040 PRINT"van een voertuig dat"
 1050 PRINT"een streefsnelheid probeert"
-1055 PRINT"te halen. Met geheugen."
+1055 PRINT"te halen. Met geheugen en"
+1057 PRINT"klapband."
 1060 PRINT
 1070 PRINT"Toets voor start>";
 1080 GOSUB210:REM  wacht op toets
 1200 M=10:REM  massa
 1210 C=.1:REM  rolwrijving
 1220 KP=20:REM  regelsterkte
-1222 KI=.02:REM sterkte geheugenregeling
+1222 KI=.02:REM  sterkte geheugenregeling
 1230 VS=6:REM  streefsnelheid
 1240 V=0:REM  beginsnelheid
 1250 TT=10:REM  eindtijd (kleiner)
 1260 DT=.05:REM  tijdsstap (kleiner)
-1262 F0=6:REM  standaardkracht (zonder functie)
-1265 VM=VS*1.5:REM  maximaal verwachte snelheid
+1262 F0=6:REM  standaardkracht
+1265 VM=VS*F0*20:REM  maximaal verwacht VERMOGEN
 1270 GOSUB600:REM  grafisch scherm
 1280 CN=0:REM  voorgrondkleur
-1282 VE=1-(VS/VM):REM  limiet
-1284 HO=0:GOSUB620:REM  beginpunt
-1286 HO=1-1/HG:GOSUB630:REM  horizontale lijn
+1282 HO=0:VE=1-1/VG:REM  linksonder
+1284 GOSUB620:REM  beginpunt
+1286 HO=1-1/HG:REM  rechtsonder
+1290 GOSUB630:REM  lijn
 1295 VI=0:REM  snelheidsgeheugen schoon
 1300 FORT=0 TOTT STEPDT:REM  tijd loopt
+1310 IFT>5 THENC=5:REM  klapband
 1320 W=C*M*V:REM  wrijvingskracht
 1330 RP=VS-V:REM  discrepantie
-1345 VI=VI+(VS-V):REM tel verschil bij
+1345 VI=VI+(VS-V):REM  tel verschil bij
 1350 RI=VI*KI:REM  geheugenkracht/KP
 1360 F=KP*(RP+RI):REM  bijregeling
 1370 FF=F-W:REM  versnellingsdeel
 1380 DV=FF/M*DT:REM  snelheidsverandering
 1390 V=V+DV:REM  nieuwe snelheid
 1500 HO=T/TT*(1-1/HG):REM  plotwaarde tijd
-1510 VE=1-V/VM:REM  plotwaarde snelheid
+1510 VE=1-V*F/VM:REM  plotwaarde vermogen
 1520 IFT=0 THEN GOSUB620:REM  beginpunt
 1525 GOSUB630:REM  trek lijntje
 1530 NEXTT
-1535 GOSUB210
+1535 FORT=1 TO1000:NEXTT
 1540 GOTO950:REM  stop
 30000 REM
 30010 REM zie voor nadere toelichting

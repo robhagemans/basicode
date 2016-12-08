@@ -1,22 +1,21 @@
 
-1000 A=500:GOTO20:REM  autosimulator 2
+1000 A=500:GOTO20:REM  autosimulator 1
 1010 GOSUB100:REM  scherm schoon
 1020 PRINT"Dit programma tekent de"
 1030 PRINT"grafiek van het snelheidsverloop"
 1040 PRINT"van een voertuig dat"
-1050 PRINT"een streefsnelheid probeert"
-1055 PRINT"te halen."
+1050 PRINT"door een constante kracht"
+1055 PRINT"wordt voortbewogen."
 1060 PRINT
 1070 PRINT"Toets voor start>";
 1080 GOSUB210:REM  wacht op toets
 1200 M=10:REM  massa
 1210 C=.1:REM  rolwrijving
-1220 KP=20:REM  regelsterkte
 1230 VS=6:REM  streefsnelheid
 1240 V=0:REM  beginsnelheid
-1250 TT=10:REM  eindtijd (kleiner)
-1260 DT=.05:REM  tijdsstap (kleiner)
-1262 F0=6:REM  standaardkracht (zonder functie)
+1250 TT=10:REM  eindtijd
+1260 DT=.05:REM  tijdsstap
+1262 F0=6:REM  constante kracht
 1265 VM=VS*1.5:REM  maximaal verwachte snelheid
 1270 GOSUB600:REM  grafisch scherm
 1280 CN=0:REM  voorgrondkleur
@@ -25,8 +24,7 @@
 1286 HO=1-1/HG:GOSUB630:REM  horizontale lijn
 1300 FORT=0 TOTT STEPDT:REM  tijd loopt
 1320 W=C*M*V:REM  wrijvingskracht
-1330 RP=VS-V:REM  discrepantie
-1360 F=KP*RP:REM  bijregeling
+1360 F=F0:REM  constante kracht
 1370 FF=F-W:REM  versnellingsdeel
 1380 DV=FF/M*DT:REM  snelheidsverandering
 1390 V=V+DV:REM  nieuwe snelheid
@@ -37,18 +35,18 @@
 1530 NEXTT
 1540 GOTO950:REM  stop
 30000 REM
-30010 REM zie voor nadere toelichting
+30010 REM zie voor nadere toelichting:
 30020 REM AARDE & KOSMOS
 30030 REM jaargang 1987 nummer 5
 30040 REM
 30050 REM  Basicode-3
 30060 REM
-32000 REM  Ogee Kruijt
-32010 REM  Pr. Willem de Zwijgerln 2
-32020 REM  3991 BR  HOUTEN
-32030 REM
-32040 REM  copyright (c) 1987
-32050 REM  Stichting Mens en
-32060 REM  Wetenschap, Huizen NH
-32070 REM
-32080 REM TROS-RADIO dd 870715
+30070 REM  Ogee Kruijt
+30080 REM  Pr. Willem de Zwijgerln 2
+30090 REM  3991 BR  HOUTEN
+30100 REM
+30110 REM  copyright (c) 1987
+30120 REM  Stichting Mens en
+30130 REM  Wetenschap, Huizen NH
+30140 REM
+30150 REM TROS-RADIO dd 870715
