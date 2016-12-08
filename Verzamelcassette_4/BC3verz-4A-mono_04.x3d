@@ -1,0 +1,188 @@
+
+1000 A=500:GOTO20:REM Loonberekeningen 1988 + printen
+5590 REM PRINTROUTINE
+5600 PRINT:PRINT"Printen ? <J/N>";:INPUTSR$
+5610 GOSUB330:IFSR$="N" THEN GOSUB100:GOTO6660
+5620 REM Hier zonodig printer-stuurcodes toevoegen
+5630 CT=7:CN=2
+5640 IFMN<3 THEN5740:REM Periodeloon
+5650 SR$="Berekening "+T5$+" voor: "+T1$:GOSUB350:GOSUB360
+5660 SR$="   Loonst. nummer: "+T2$:GOSUB350:GOSUB360
+5670 SR$=" Over de periode: "+T7$:GOSUB350
+5680 SR$="   Fiskaal nummer: "+T3$:GOSUB350:GOSUB360
+5700 SR$="":IFP9>0 THENCT=8:SR=P9:GOSUB310
+5710 R$="Bruto "+T5$+SR$+" % van "
+5720 IFP9=0 THENR$="Bruto "+T5$:GOTO5790
+5730 SR=L(18):GOSUB310:R$=R$+SR$:CT=7:GOTO5790
+5740 SR$="Salarisberekening voor: "+T1$:GOSUB350
+5750 SR$=". Loonst. nummer "+T2$:GOSUB350:GOSUB360
+5760 SR$="Met ingang van: "+T4$:GOSUB350
+5770 SR$=". Fiskaal nummer "+T3$:GOSUB350:GOSUB360
+5780 R$="Bruto "+T6$
+5790 SR=L(0):GOSUB310:GOSUB7620:R$=R$+SR$:GOSUB7600
+5800 R$=R$+SR$:GOSUB7620
+5810 SR$=R$:GOSUB350:GOSUB360
+5820 R$="Premie SF  over f.":SR=M(1):GOSUB310
+5830 R$=R$+SR$+": "
+5840 IFBS<>0 THENR$=R$+"vast bedrag":CN=2:SR=L(1):GOTO5860
+5850 CN=3:SR=P1:GOSUB310:R$=R$+SR$+" % = ":CN=2:SR=L(1)
+5860 GOSUB310:GOSUB7610:SR$=R$+SR$:GOSUB350:GOSUB360
+5870 R$="Premie VUT over f.":SR=M(2):GOSUB310
+5880 R$=R$+SR$+": "
+5890 IFBV<>0 THENR$=R$+"vast bedrag":CN=2:GOTO5910
+5900 CN=3:SR=P2:GOSUB310:R$=R$+SR$+" % = ":CN=2
+5910 SR=-L(2):GOSUB310:GOSUB7620:R$=R$+SR$:SR=L(2)
+5920 GOSUB310:GOSUB7610:SR$=R$+SR$:GOSUB350:GOSUB360
+5930 R$="Premie BPF over f.":SR=M(3):GOSUB310
+5940 R$=R$+SR$+": "
+5950 IFBB<>0 THENR$=R$+"vast bedrag":CN=2:GOTO5970
+5960 CN=3:SR=P3:GOSUB310:R$=R$+SR$+" % = ":CN=2
+5970 SR=-L(3):GOSUB310:GOSUB7620:R$=R$+SR$:SR=L(3)
+5980 GOSUB310:GOSUB7610:SR$=R$+SR$:GOSUB350:GOSUB360
+5990 R$="":GOSUB7620:R$=R$+"-------"
+6000 SR$=R$:GOSUB350:GOSUB360
+6010 SR=L(9):GOSUB310:R$="":GOSUB7620:SR$=R$+SR$:GOSUB350
+6020 GOSUB360:R$="Premie ZFW over f.":SR=M(6):GOSUB310
+6030 R$=R$+SR$+": ":CN=3:SR=P6:GOSUB310:R$=R$+SR$+" % = "
+6040 CN=2:SR=L(6):GOSUB310:GOSUB7620:R$=R$+SR$
+6050 GOSUB7610:SR$=R$+SR$:GOSUB350:GOSUB360
+6060 R$="(Maximum voor ZFW is "
+6070 SR=M(6):IF(MN=3)AND(MF<>0) THENSR=MF
+6080 GOSUB310:R$=R$+SR$+")"
+6090 SR$=R$:GOSUB350:GOSUB360
+6100 R$="Premie ZW/WW over f.":SR=M(4):GOSUB310
+6110 R$=R$+SR$+": "
+6120 CN=3:SR=P4:GOSUB310:R$=R$+SR$+" % = ":CN=2:SR=-L(4)
+6130 GOSUB310:GOSUB7620:R$=R$+SR$:SR=L(4):GOSUB310
+6140 GOSUB7610:SR$=R$+SR$:GOSUB350:GOSUB360
+6150 R$="(Maximum voor ZW/WW is "
+6160 SR=M(4):IF(MN=3)AND(MZ<>0) THENSR=MZ
+6170 GOSUB310:R$=R$+SR$+")"
+6180 SR$=R$:GOSUB350:GOSUB360
+6190 R$="Premie WAO over f.":SR=M(5):GOSUB310
+6200 R$=R$+SR$+": "
+6210 CN=3:SR=P5:GOSUB310:R$=R$+SR$+" % = ":CN=2:SR=-L(5)
+6220 GOSUB310:GOSUB7620:R$=R$+SR$:SR=L(5):GOSUB310
+6230 GOSUB7610:SR$=R$+SR$:GOSUB350:GOSUB360
+6240 R$="(Maximum voor WAO is "
+6250 SR=MW:IFMN=3 THENSR=M(5)
+6260 GOSUB310:R$=R$+SR$+")"
+6270 SR$=R$:GOSUB350:GOSUB360
+6280 R$="(Vrijstelling voor WAO is "
+6290 SR=M(7):GOSUB310:R$=R$+SR$+")"
+6300 SR$=R$:GOSUB350:GOSUB360
+6310 r$="":GOSUB7620:R$=R$+"-------"
+6320 SR$=R$:GOSUB350:GOSUB360
+6330 SR=L(10):GOSUB310:R$="":GOSUB7620:SR$=R$+SR$
+6340 GOSUB350:GOSUB360
+6350 R$="Vermindering Inspecteur":GOSUB7620:SR=L(12)
+6360 GOSUB310:SR$=R$+SR$:GOSUB350:GOSUB360
+6370 R$="":GOSUB7620:R$=R$+"-------":SR$=R$
+6380 GOSUB350:GOSUB360
+6390 R$="Fiskaal loon":GOSUB7620:SR=L(13)
+6400 GOSUB310:SR$=R$+SR$:GOSUB350:GOSUB360
+6410 R$="":GOSUB7620:R$=R$+"=======":SR$=R$
+6420 GOSUB350:GOSUB360
+6430 R$="Premie AOW/AWW over f.":SR=L(13):GOSUB310
+6440 R$=R$+SR$:IFMN=3 THENSR=P7:GOSUB310:R$=R$+SR$+" % ="
+6450 IFM(8)<>0 THENR$=R$+"   (max.)"
+6460 SR=L(7):GOSUB310:GOSUB7610:SR$=R$+SR$
+6470 GOSUB350:GOSUB360
+6480 R$="Loonbelasting/"+T8$+" over f.":SR=L(13):GOSUB310
+6490 R$=R$+SR$:IFMN=3 THENSR=P8:GOSUB310:R$=R$+SR$+" % ="
+6500 SR=L(8):GOSUB310:GOSUB7610:SR$=R$+SR$
+6510 GOSUB350:GOSUB360
+6520 R$="":GOSUB7610:R$=R$+"-------"
+6530 SR$=R$:GOSUB350:GOSUB360
+6540 R$="Totaal inhoudingen":GOSUB7600:SR=L(14)
+6550 GOSUB310:SR$=R$+SR$:GOSUB350:GOSUB360
+6560 R$="":GOSUB7600:R$=R$+"-------"
+6570 SR$=R$:GOSUB350:GOSUB360:IFT6$="" THENT6$=T5$
+6580 R$="Netto uit te betalen "+T6$:GOSUB7600
+6590 SR=L(15):GOSUB310:R$=R$+SR$:GOSUB7600:SR$=R$
+6600 GOSUB350:GOSUB360
+6610 R$="":GOSUB7600:R$=R$+"======="
+6620 SR$=R$:GOSUB350:GOSUB360
+6630 PRINT"Nogmaals printen  ? <J/N> ";:INPUTSR$
+6640 GOSUB330:IFSR$="N" THEN GOSUB100
+6650 IFSR$="J" THENPRINT:GOTO5640
+6660 PRINT:PRINT"Terug naar menu ?  <J/N>";:INPUTSR$
+6670 GOSUB330:IFSR$="N" THEN GOSUB100:MN=4:GOTO30000
+6680 IFSR$="J" THENL(20)=0:GOTO1110
+6700 GOSUB100:PRINT"De WITTE tabel is van toepassing op:"
+6710 PRINT:PRINT"1 Loon uit HUIDIGE dienstbetrekking"
+6720 PRINT"2 Loon tijdens arbeidsongeschiktheid"
+6730 PRINT"   gedurende hoogstens twee jaar."
+6740 PRINT"  (BEHALVE als dat loon uitsluitend"
+6750 PRINT"   bestaat uit uitkering AAW of WAO !!"
+6760 PRINT"   Dan geldt de GROENE tabel !)"
+6770 PRINT:PRINT"  (De WITTE tabel geldt NIET voor"
+6780 PRINT"   huishoudelijk personeel !)":PRINT
+6790 GOSUB7570:IFIN<>86 THEN GOSUB100:GOTO6700
+6810 GOTO2000
+6830 GOSUB100:PRINT"De ROSE tabel is van toepassing op:"
+6840 PRINT:PRINT"1 Uitkeringen door bedrijfs- of"
+6850 PRINT"   ondernemingspensioenfondsen"
+6860 PRINT"  (behalve VUT-uitkeringen;"
+6870 PRINT"   zie daarvoor de GROENE tabel)"
+6880 PRINT"2 Aan Loonbelasting onderworpen"
+6890 PRINT"  lijfrenten."
+6900 PRINT:PRINT"Als de ontvanger van de uitkering of"
+6910 PRINT"lijfrente GEEN premie AOW/AWW behoeft"
+6920 PRINT"te betalen geldt de ROSE tabel NIET !"
+6930 PRINT"Zie dan de GELE tabel.":PRINT
+6940 PRINT"  (De ROSE tabel geldt NIET voor"
+6950 PRINT"   huishoudelijk personeel !)":PRINT
+6960 GOSUB7570:IFIN<>86 THEN GOSUB100:GOTO6830
+6980 GOTO2000
+7000 GOSUB100:PRINT"De GROENE tabel is van toepassing op:"
+7010 PRINT:PRINT"1 Pensioen-uitkeringen door het RIJK,"
+7020 PRINT"  het ABP en het SPOORWEG-pensioenfonds"
+7030 PRINT"2 Uitkeringen uit VUT, AAW en WAO"
+7040 PRINT"3 Uitkeringen WW en WWV"
+7050 PRINT"  (Behalve loonsuppleties !!)"
+7060 PRINT:PRINT"Als de ontvanger van de uitkering of"
+7070 PRINT"lijfrente GEEN premie AOW/AWW behoeft"
+7080 PRINT"te betalen geldt de GROENE tabel NIET !"
+7090 PRINT"Zie dan de GELE tabel !"
+7100 PRINT"  (De GROENE tabel geldt NIET voor"
+7110 PRINT"   huishoudelijk personeel !)":PRINT
+7120 GOSUB7570:IFIN<>86 THEN GOSUB100:GOTO7000
+7140 GOTO2000
+7160 GOSUB100:PRINT"De GRIJZE tabel is van toepassing op:"
+7170 PRINT:PRINT"Loon uit vroegere dienstbetrekking en"
+7180 PRINT"daarmee gelijkgestelde uitkeringen"
+7190 PRINT"zoals pensioenen, lijfrenten e.d. als"
+7200 PRINT"dit wordt genoten door iemand van 65"
+7210 PRINT"jaar of ouder."
+7220 PRINT"De GRIJZE tabel geldt NIET als in de"
+7230 PRINT"uitkering AOW-pensioen is begrepen."
+7240 PRINT"Zie dan de GELE tabel !":PRINT
+7250 PRINT"  (De GRIJZE tabel geldt NIET voor"
+7260 PRINT"   huishoudelijk personeel !)":PRINT
+7270 GOSUB7570:IFIN<>86 THEN GOSUB100:GOTO7160
+7290 GOTO2000
+7300 GOSUB100:PRINT"De GELE tabel is van toepassing op:"
+7310 PRINT:PRINT"Loon uit vroegere dienstbetrekking,"
+7320 PRINT"pensioenen, lijfrenten, uitkering"
+7330 PRINT"AOW en AWW maar ALLEEN als dit wordt"
+7340 PRINT"genoten door iemand die geen premie"
+7350 PRINT"AOW/AWW behoeft te betalen"
+7360 PRINT"(bijv. omdat hij/zij 65 jaar of ouder"
+7370 PRINT" is of jonger dan 15 jaar)."
+7380 PRINT:PRINT"Voor iemand die in Nederland woont en"
+7390 PRINT"65 jaar of ouder is EN in wiens loon "
+7400 PRINT"of uitkering GEEN uitkering AOW is"
+7410 PRINT"begrepen geldt de GELE tabel niet !"
+7420 PRINT"Zie dan de GRIJZE tabel !"
+7430 PRINT:PRINT"  (De GELE tabel geldt NIET voor"
+7440 PRINT"   huishoudelijk personeel !)":PRINT
+7450 GOSUB7570:IFIN<>86 THEN GOSUB100:GOTO7300
+7470 GOTO2000
+7500 ONTB GOTO6700,6830,7000,7160,7300
+7570 PRINT"Toets  V  voor verdere verwerking ";:GOSUB210
+7600 S=70-LEN(R$):GOTO7630
+7610 S=60-LEN(R$):GOTO7630
+7620 S=50-LEN(R$)
+7630 FORX=1 TOS:R$=R$+" ":NEXTX:RETURN
+32700 REM TROS-RADIO dd 880210

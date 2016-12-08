@@ -1,0 +1,84 @@
+
+1000 A=200:GOTO20:REM hypotheek-termijnen
+1010 GOSUB100
+1020 HO=2:VE=20:GOSUB110
+1030 PRINT"Dit programma is on-line te laden bij:"
+1040 PRINT"  MSX de Veluwe tel : 05250-5539"
+1050 HO=0:VE=0:GOSUB110
+1060 PRINT"  Hoe groot is de hypotheek ";
+1070 INPUTX
+1080 IFX=0 THENX=1000
+1090 GOSUB100
+1100 HO=2:VE=20:GOSUB110
+1110 PRINT"Auteur: A Bosch, Hillegom"
+1120 HO=2:VE=22:GOSUB110
+1130 PRINT"        2e Loosterweg 108"
+1140 PRINT"        2182 CL Hillegom"
+1150 HO=0:VE=0:GOSUB110
+1160 PRINT"  In hoeveel termijnen betaalt u ";
+1170 INPUTY2
+1180 IFY2=0 THENY2=12
+1190 Y0=Y2
+1200 GOSUB100
+1210 PRINT"  Uit hoeveel maanden bestaat een"
+1220 PRINT"  betalingstermijn ";
+1230 INPUTX0
+1240 IFX0=0 THENX0=1
+1250 GOSUB100
+1260 XO=X0/12
+1270 HO=2:VE=19:GOSUB110
+1280 PRINT"Tel: 02520 - 17780"
+1290 HO=0:VE=0:GOSUB110
+1300 PRINT"  Wordt er achteraf of vooraf betaald"
+1310 PRINT"  V of A ";
+1320 INPUTSR$:GOSUB330:Z$=SR$
+1330 IF(Z$="V")OR(Z$="A") THEN1360
+1340 GOSUB100:PRINT"  U moet een V of een A invullen"
+1350 PRINT:GOTO1300
+1360 GOSUB100
+1370 HO=2:VE=20:GOSUB110
+1380 PRINT"Dit programma is on-line te laden bij:"
+1390 PRINT"  MSX de Veluwe tel : 05250-5539"
+1400 HO=0:VE=0:GOSUB110
+1410 PRINT"  wat is de rente per jaar";
+1420 INPUTZ
+1430 IFZ=0 THENZ=12.6825
+1440 GOSUB100
+1450 P=(1+Z/100)^XO
+1460 Y=P-1
+1470 IFZ$="V" THENY0=Y0-1
+1480 Y=1/Y
+1490 P1=P^Y0
+1500 P2=1/P1
+1510 P3=1-P2
+1520 P4=Y*P3
+1530 IFZ$="V" THENP4=P4+1
+1540 Z2=X/P4
+1550 PRINT"Het termijnbedrag is f ";Z2;
+1560 PRINT" per ";X0;" mnd."
+1570 SR=X:CT=10:CN=2:GOSUB310
+1580 PRINT:PRINT"Hypotheek groot f ";SR$
+1590 SR=Y2:CT=6:CN=2:GOSUB310
+1600 PRINT"afgesloten op ";SR$;
+1610 PRINT" termijnen"
+1620 PRINT"bij betaling ";
+1630 IFZ$="A" THENPRINT"achteraf"
+1640 IFZ$="V" THENPRINT"vooraf"
+1650 PRINT"De rente bedraagt ";Z;
+1660 PRINT" % per jaar"
+1670 PRINT:PRINT:PRINT
+1680 PRINT"  Dit programma is gemaakt door:"
+1690 PRINT:PRINT"  A. Bosch"
+1700 PRINT"  2e Loosterweg 108"
+1710 PRINT"  2182 CL Hillegom"
+1720 PRINT"  tel 02520-17780"
+1730 PRINT:PRINT"Nog een keer (J/N) ?";
+1740 GOSUB210:IFIN=78 THEN950
+1750 Z=Z+.1:T=0:GOTO1010
+32000 REM  Dit programma is gemaakt door:
+32010 REM   A. Bosch
+32020 REM   2e Loosterweg 108
+32030 REM   2182 CL Hillegom
+32040 REM   tel: 02520-17780
+32050 REM
+32060 REM TROS-RADIO dd 880309
