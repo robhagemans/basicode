@@ -50,8 +50,8 @@ Kant B met lengte in K-byte:
 21. Hoofdrekenen                        24.9
 22. Talstelsels                         20.0
 23. Meerkeuze-analyse                   22.5
-24. Beschr. v/h BOB5 simulator progr.   22.5
-25. Simulator BOB5                      26.0
+24. Beschr. v/h 8085 simulator progr.   22.5
+25. Simulator 8085                      26.0
 ======================================= =====
 
 **Alle rechten voorbehouden NOS-radio/Hobbyscoop**
