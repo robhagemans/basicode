@@ -1,0 +1,392 @@
+
+1000 A=100:GOTO20:REM ** CORRELATIE en REGRESSIE
+1010 N=0:LS=9:GB=0:HT=HO:VT=VE:REM schermmaten
+1020 GOSUB100:SR$="CORRELATIE en REGRESSIE":GOSUB150
+1030 DM=0:REM geen DIM gegeven
+1040 PRINT:PRINT:PRINT"MENU":PRINT:PRINT
+1050 PRINT" 1  Uitleg":PRINT
+1060 PRINT" 2  Gegevens zelf invoeren/verbeteren":PRINT
+1070 PRINT" 3  Gegevens van schijf lezen":PRINT
+1080 PRINT" 4  Gegevens van cassette lezen":PRINT
+1090 PRINT" 5  Gegevens naar schijf schrijven":PRINT
+1100 PRINT" 6  Gegevens naar cassette schrijven":PRINT
+1110 PRINT" 7  Resultaten als formules tonen":PRINT
+1120 PRINT" 8  Resultaten in grafiekvorm":PRINT
+1130 PRINT" 9  Stoppen":PRINT
+1140 PRINT:PRINT"Welk nummer ";
+1150 GOSUB210
+1160 IF(IN<49)OR(IN>57) THEN GOSUB250:GOTO1150
+1170 IFIN=57 THEN950
+1180 ONIN-48 GOTO1190,1200,1210,1220,1230,1240,1250,1260
+1190 GOSUB9030:GOTO1020:REM uitleg
+1200 GOSUB2050:GOTO1020:REM invoer/correctie
+1210 NF=4:GOSUB7030:GOTO1020:REM van schijf
+1220 NF=0:GOSUB7030:GOTO1020:REM van cassette
+1230 NF=5:GOSUB8030:GOTO1020:REM naar schijf
+1240 NF=1:GOSUB8030:GOTO1020:REM naar cassette
+1250 GOSUB5030:GOTO1020:REM formules
+1260 GOSUB6030:GOTO1020:REM grafiek
+2000 REM
+2010 REM invoer/correctie getallen
+2020 REM
+2030 REM N=0: geen getallen aanwezig
+2040 REM N>0: wel  getallen aanwezig
+2050 GOSUB100:IFN>0 THEN2450:REM reeds aanwezig
+2060 SR$="Getallenparen invoeren":GOSUB150:PRINT:PRINT
+2070 SU$=SR$
+2080 INPUT"Hoeveel getallenparen in totaal ";N
+2090 IF(N=0)OR(DM=1) THEN1000
+2100 DIMX(N),Y(N):DM=1:GOSUB100
+2110 I=1:IM=0:I0=1:VI=4
+2120 GOSUB2570
+2130 VE=VI:HO=0:GOSUB110
+2140 I=VI+I0-4:SR=I:CT=3:CN=0:GOSUB310:PRINTSR$;
+2150 HO=6:S0=X(I):GOSUB3150
+2160 HO=18:S0=Y(I):GOSUB3150
+2170 HO=6:S0=X(I):GOSUB3000:X(I)=SR
+2180 IFI>IM THENIM=I
+2190 IFIN=31 THEN2290:REM omhoog
+2200 IFIN=30 THEN2250:REM omlaag
+2210 HO=18:S0=Y(I):GOSUB3000:Y(I)=SR
+2220 IFIN=31 THEN2290:REM omhoog
+2230 IFIN=28 THEN2170:REM links
+2240 REM omlaag
+2250 IFI=N THEN2390:REM eind
+2260 IFVI<VT-1 THENVI=VI+1:GOTO2130
+2270 PRINT:I0=I0+1:GOTO2120
+2280 REM omhoog
+2290 IFVI>4 THENVI=VI-1:GOTO2130
+2300 IFI0=1 THEN GOSUB250:GOTO2130
+2310 I0=I0-1:FORVE=4 TOVT-1
+2320 I=VE+I0-4
+2330 IFI>IM THEN2360
+2340 SR=I:CT=3:CN=0:GOSUB310:PRINTSR$;
+2350 HO=6:S0=X(I):GOSUB3150:HO=18:S0=Y(I):GOSUB3150
+2360 NEXTVE
+2370 VI=4:GOTO2130
+2380 REM omlaag
+2390 HO=0:VE=VT:GOSUB110:GOSUB250
+2400 PRINT"<spatie> voor einde invoer";
+2410 GOSUB210
+2420 IFIN=32 THEN GOSUB4030:RETURN
+2430 GOSUB110:PRINT"                          ";
+2440 GOTO2290
+2450 SR$="Getallen bekijken/verbeteren":GOSUB150:PRINT:PRINT
+2460 SU$=SR$
+2470 I=1:IM=N:I0=1:GOSUB100:VI=4
+2480 GOSUB2570
+2490 FORI=1 TOVT-4
+2500 IFI>N THEN2550
+2510 VE=I+3:HO=0:GOSUB110
+2520 SR=I:CT=3:CN=0:GOSUB310:PRINTSR$;
+2530 HO=6:S0=X(I):GOSUB3150
+2540 HO=18:S0=Y(I):GOSUB3150
+2550 NEXTI
+2560 GOTO2110
+2570 HO=0:VE=0:GOSUB110
+2580 SR$=SU$:GOSUB150
+2590 PRINT
+2600 PRINT"                              "
+2610 PRINT"Nr.            X            Y "
+2620 PRINT"                                     "
+2630 RETURN
+3000 SR=S0:GOSUB3150
+3010 GOSUB110:GOSUB150
+3020 GOSUB210:IFIN=13 THEN3120
+3030 IF(IN>27)AND(IN<32) THEN3120
+3040 IFIN=127 THENSR$=" "+LEFT$(SR$,LS-1):GOTO3100
+3050 IFIN$="." THEN3090
+3060 IF(IN$="-")AND(SR=0) THEN3090
+3070 IF(IN<48)OR(IN>57) THEN GOSUB250:GOTO3010
+3080 IFRIGHT$(SR$,2)=" 0" THENSR$=LEFT$(" "+SR$,LS)
+3090 SR$=RIGHT$(SR$,LS-1)+IN$
+3100 SR=VAL(SR$)
+3110 GOTO3010
+3120 GOSUB110:PRINT"   ";SR$;"   "
+3130 IV=(SR$<>LEFT$("                         ",LS))
+3140 IFIV THENRETURN
+3150 CT=LS:IFS0=INT(S0) THENCN=0:GOTO3200
+3160 SR=INT(S0):GOSUB300:CN=CT-LEN(SR$)-1
+3170 SR=S0-INT(S0):GOSUB300
+3180 IFLEN(SR$)-2<CN THENCN=LEN(SR$)-2
+3190 IFCN<0 THENCN=0
+3200 SR=S0:GOSUB110:GOSUB310:PRINT"   ";SR$
+3210 RETURN
+4000 REM
+4010 REM berekeningen
+4020 REM
+4030 SX=0:SY=0:X2=0:Y2=0:XY=0
+4040 PRINT:PRINT"Even rekenen ....":PRINT
+4050 FORI=1 TON
+4060 SX=SX+X(I):SY=SY+Y(I)
+4070 X2=X2+X(I)*X(I):Y2=Y2+Y(I)*Y(I)
+4080 XY=XY+X(I)*Y(I)
+4090 NEXTI
+4100 RT=N*XY-SX*SY
+4110 NX=N*X2-SX*SX:NY=N*Y2-SY*SY
+4120 IFNY=0 THENAX=0:BX=0:GOTO4140
+4130 AX=RT/NY:BX=(SX-AX*SY)/N
+4140 IFNX=0 THENAY=0:BY=0:GOTO4160
+4150 AY=RT/NX:BY=(SY-AY*SX)/N
+4160 RT=SQR(AX*AY):IFNX*NY=0 THENRT=1
+4170 RETURN
+5000 REM
+5010 REM presentatie-I
+5020 REM
+5030 GOSUB100:PRINT:PRINT
+5040 IFN=0 THEN GOSUB250:RETURN
+5050 PRINT"Aantal getallenparen = ";N
+5060 PRINT
+5070 PRINT"Zwaartepunt is":PRINT" ( ";SX/N;" , ";SY/N;" )"
+5080 PRINT
+5090 PRINT"Correlatie-coefficient = ";RT
+5100 PRINT
+5110 PRINT"Y = ";:IFNX=0 THENPRINT" kan niet ":GOTO5140
+5120 PRINTAY;" * X ";:IFBY>=0 THENPRINT"+ ";
+5130 PRINTBY
+5140 PRINT
+5150 PRINT"X = ";:IFNY=0 THENPRINT" kan niet ":GOTO5180
+5160 PRINTAX;" * Y ";:IFBX>=0 THENPRINT"+ ";
+5170 PRINTBX
+5180 HO=0:VE=VT:GOSUB110
+5190 PRINT"<spatie> voor vervolg ...";
+5200 GOSUB210:IFIN<>32 THEN5200
+5210 RETURN
+6000 REM
+6010 REM presentatie-II
+6020 REM
+6030 IFN=0 THEN GOSUB250:RETURN
+6040 GOSUB600:CN=0
+6050 HO=0:VE=0:GOSUB650
+6060 X0=X(1):X1=X(1):Y0=Y(1):Y1=Y(1)
+6070 FORI=1 TON
+6080 IFX(I)<X0 THENX0=X(I)
+6090 IFX(I)>X1 THENX1=X(I)
+6100 IFY(I)<Y0 THENY0=Y(I)
+6110 IFY(I)>Y1 THENY1=Y(I)
+6120 NEXTI
+6130 IFX1=X0 THENX1=X0+1:X0=X0-1
+6140 IFY1=Y0 THENY1=Y0+1:Y0=Y0-1
+6150 HO=1/16:VE=23/24:GOSUB620:VE=15/16-2/90:GOSUB630
+6160 HO=HO-1/90:VE=VE-1/120:GOSUB630
+6170 HO=HO+2/90:VE=VE-2/120:GOSUB630
+6180 HO=HO-1/90:VE=VE-1/120:GOSUB630
+6190 VE=0:GOSUB630
+6200 FORY=0 TO10
+6210 VE=1-5*Y/60-37/240
+6220 HO=1/16-1/120:GOSUB620
+6230 HO=1/16+1/120:GOSUB630
+6240 NEXTY
+6250 HO=1/40:VE=15/16:GOSUB620
+6260 HO=1/40+3/80:GOSUB630
+6270 HO=HO+1/150:VE=VE-1/90:GOSUB630
+6280 HO=HO+2/150:VE=VE+2/90:GOSUB630
+6290 HO=HO+1/150:VE=VE-1/90:GOSUB630
+6300 HO=39.9/40:GOSUB630
+6310 FORX=0 TO10
+6320 HO=7*X/80+17/160
+6330 VE=15/16-1/90:GOSUB620
+6340 VE=15/16+1/90:GOSUB630
+6350 NEXTX
+6360 FORI=1 TON
+6370 HO=(X(I)-X0)/(X1-X0)*7/8+17/160
+6380 VE=1-(Y(I)-Y0)/(Y1-Y0)*5/6-37/240
+6390 GOSUB620:REM plot ingevoerde punten
+6400 HO=HO+1/120:GOSUB630
+6410 VE=VE+1/90:GOSUB630
+6420 HO=HO-1/120:GOSUB630
+6430 VE=VE-1/90:GOSUB630
+6440 NEXTI
+6450 IFNX<>0 THENTA=AY:TB=BY:GOSUB6630:GOTO6470
+6460 GOSUB6940:REM verticaal
+6470 IFNY=0 THENTA=0:TB=Y(1):GOSUB6630:GOTO6510
+6480 IFNY=0 THENTA=0:TB=Y(1):GOSUB6630:GOTO6510
+6490 IFAX=0 THEN GOSUB6900:GOTO6510:REM verticaal
+6500 TA=1/AX:TB=-BX/AX:GOSUB6630
+6510 HO=0:VE=23/24:SR$="<spatie> voor menu ..."
+6520 GOSUB650
+6530 GOSUB210:IFIN<>32 THEN6530
+6540 RETURN
+6600 REM
+6610 REM teken y=TA*x+TB met X0<=x<=X1
+6620 REM
+6630 XB=X0:YB=TA*XB+TB
+6640 IF(YB>=Y0)AND(YB<=Y1) THEN6660
+6650 YB=Y0:XB=(YB-TB)/TA
+6660 HO=(8.5+(XB-X0)/(X1-X0)*70)/80
+6670 VE=1-(YB-Y0)/(Y1-Y0)*5/6-37/240:GOSUB620
+6680 XB=X1:YB=TA*XB+TB
+6690 IF(YB>=Y0)AND(YB<=Y1) THEN6710
+6700 YB=Y1:XB=(YB-TB)/TA
+6710 HO=(8.5+(XB-X0)/(X1-X0)*70)/80
+6720 VE=1-(YB-Y0)/(Y1-Y0)*5/6-37/240:GOSUB630
+6730 RETURN
+6900 HO=(8.5+(BX-X0)/(X1-X0)*70)/80
+6910 VE=1-37/240:GOSUB620
+6920 VE=1-5/6-37/240:GOSUB630
+6930 RETURN
+6940 HO=(8.5+(X(1)-X0)/(X1-X0)*70)/80
+6950 GOTO6910
+7000 REM
+7010 REM van schijf
+7020 REM
+7030 IFDM=1 THEN1000
+7040 GOSUB100:SR$="Lezen van schijf"
+7050 HO=0:VE=0:GOSUB110:GOSUB150
+7060 VE=4:GOSUB110
+7070 INPUT"Hoe heet het bestand ";NF$
+7080 GOSUB500
+7090 GOSUB540
+7100 IFIN=0 THEN7130
+7110 PRINT:PRINT"Sorry, maar dat lukt niet"
+7120 GOTO5180
+7130 N=VAL(IN$):VE=6:GOSUB110:PRINT"Nummer ";
+7140 DIMX(N),Y(N)
+7150 HO=7
+7160 FORI=1 TON
+7170 GOSUB110:PRINTI
+7180 GOSUB540:X(I)=VAL(IN$)
+7190 GOSUB540:Y(I)=VAL(IN$)
+7200 NEXTI
+7210 GOSUB580
+7220 GOSUB4030:REM bereken
+7230 RETURN
+8000 REM
+8010 REM naar schijf
+8020 REM
+8030 IFN=0 THEN GOSUB250:RETURN
+8040 GOSUB100:SR$="Schrijven naar schijf"
+8050 HO=0:VE=0:GOSUB110:GOSUB150
+8060 VE=4:GOSUB110
+8070 INPUT"Hoe heet dit bestand ";NF$
+8080 GOSUB500
+8090 GOSUB540
+8100 SR=N:GOSUB300:GOSUB560
+8110 VE=6:GOSUB110:PRINT"Nummer ";
+8120 HO=7
+8130 FORI=1 TON
+8140 GOSUB110:PRINTI
+8150 SR=X(I):GOSUB300:GOSUB560
+8160 SR=Y(I):GOSUB300:GOSUB560
+8170 NEXTI
+8180 GOSUB580
+8190 RETURN
+9000 REM
+9010 REM uitleg
+9020 REM
+9030 GOSUB9210
+9040 INPUT"Wilt u uitleg ";SR$
+9050 GOSUB330
+9060 IFLEFT$(SR$,1)="N" THENRETURN
+9070 GOSUB9210:READTR$
+9080 READSR$
+9090 IFSR$="!!" THENPRINTTR$:GOTO9190
+9100 IFSR$="!" THENPRINTTR$:PRINT:J=J+2:READSR$:TR$=""
+9110 TR$=TR$+" "+SR$
+9120 IFJ>VT THEN GOSUB9190
+9130 IFLEN(TR$)<HT THEN9080
+9140 I=HT
+9150 IFMID$(TR$,I,1)<>" " THENI=I-1:GOTO9150
+9160 PRINTLEFT$(TR$,I-1):J=J+1
+9170 TR$=RIGHT$(TR$,LEN(TR$)-I)
+9180 GOTO9120
+9190 HO=3:VE=VT:GOSUB110:PRINT"<spatie voor vervolg>";
+9200 GOSUB210:IFIN<>32 THEN9200
+9210 GOSUB100:HO=INT(HT/2)-15:VE=0:GOSUB110
+9220 SR$="Correlatie en Regressie"
+9230 GOSUB150:PRINT:PRINT:J=4:RETURN
+25000 DATA"Over correlatie","!","Als van een groot aantal"
+25010 DATA"mensen telkens de lichaamslengte en de"
+25020 DATA"schoenmaat wordt vergeleken, dan zal blijken dat"
+25030 DATA"de grotere schoenmaten vaker bij langere mensen"
+25040 DATA"voorkomen en dat de kleine voeten in het"
+25050 DATA"algemeen aan korte mensen zijn gemonteerd. Voor"
+25060 DATA"deze samenhang tussen lichaamslengte en"
+25070 DATA"schoenmaat wordt in de wiskunde het woord"
+25080 DATA"correlatie gebruikt. De correlatierekening"
+25090 DATA"onderzoekt of er samenhang bestaat tussen paren"
+25100 DATA"gegevens en drukt die samenhang uit in een"
+25110 DATA"getal: de correlatiecoefficient.","!","In dit"
+25120 DATA"programma kunt u een willekeurig aantal paren"
+25130 DATA"getallen invoeren. Telkens wordt het ene getal"
+25140 DATA"met X en het andere met Y aangeduid. Het"
+25150 DATA"programma berekent dan de correlatiecoefficient."
+25160 DATA"Deze coefficient kan zowel positief als negatief"
+25170 DATA"zijn. Hij is positief in het bovenstaande"
+25180 DATA"voorbeeld omdat daar bij grotere getallen voor"
+25190 DATA"de ene maat ook grotere getallen voor de andere"
+25200 DATA"maat behoren. Men spreekt dan van een positieve"
+25210 DATA"correlatie. Vergelijken we daarentegen het"
+25220 DATA"aantal fouten dat een scholier in een proefwerk"
+25230 DATA"maakt en het punt dat hij of zij voor dat"
+25240 DATA"proefwerk krijgt, dan zien we juist dat bij"
+25250 DATA"grotere getallen voor het aantal fouten juist"
+25260 DATA"kleinere getallen voor het punt behoren (en"
+25270 DATA"omgekeerd). In dit voorbeeld is sprake van een"
+25280 DATA"negatieve correlatie.","!","Vergelijken we van"
+25290 DATA"een aantal mensen telkens de lichaamslengte met"
+25300 DATA"de haarkleur, dan vinden we totaal geen"
+25310 DATA"samenhang. De correlatie is dan nul.","!","Bij"
+25320 DATA"ideale samenhang (zoals bij aantal fouten versus"
+25330 DATA"proefwerkpunt) is de correlatiecoefficient"
+25340 DATA"altijd precies 1 of precies -1. Ontbreekt elke"
+25350 DATA"samenhang dan is de waarde gelijk aan 0. Bij"
+25360 DATA"tussenliggende uitkomsten is er een geringe of"
+25370 DATA"een sterke of een zeer sterke"
+25380 DATA"samenhang.","!","Over regressie","!","Willen we"
+25390 DATA"niet alleen de mate van samenhang weten, maar"
+25400 DATA"tevens een formule waarmee we zo goed mogelijk"
+25410 DATA"uit het ene getal het andere kunnen uitrekenen,"
+25420 DATA"dan spreken we over regressie. Dit programma"
+25430 DATA"voert een lineaire regressie op de ingevoerde"
+25440 DATA"getallen uit. Dat betekent, dat er een lineaire"
+25450 DATA"functie wordt gezocht die zo goed mogelijk uit"
+25460 DATA"de gegeven waarden voor X de bijbehorende waarde"
+25470 DATA"voor Y oplevert. Tevens wordt het omgekeerde"
+25480 DATA"gedaan: ook wordt de functie bepaald die bij een"
+25490 DATA"gegeven Y zo goed mogelijk de bijbehorende X"
+25500 DATA"levert. Zolang de samenhang niet volledig is,"
+25510 DATA"leidt dit tot twee verschillende"
+25520 DATA"functies.","!","Over de invoer","!","U dient"
+25530 DATA"allereerst op te geven hoeveel getallenparen u"
+25540 DATA"wilt invoeren. Op dit aantal is geen wijziging"
+25550 DATA"meer mogelijk. Daarna kunt u de hele serie"
+25560 DATA"getallenparen invoeren. Een wit veld geeft aan"
+25570 DATA"met welk getal u bezig bent. Eventuele fouten"
+25580 DATA"kunt u met de wistoets (delete) verbeteren. Het"
+25590 DATA"witte invoerveld springt met een druk op"
+25600 DATA"<return> vanzelf naar het volgende getal. Voor"
+25610 DATA"het verbeteren van eerder ingevoerde getallen"
+25620 DATA"kunt u met de cursortoetsen het witte veld in"
+25630 DATA"elke gewenste richting verplaatsen. Als het"
+25640 DATA"witte veld lager komt dan het laatste getal,"
+25650 DATA"krijgt u de vraag of u inderdaad aan het einde"
+25660 DATA"bent gekomen.","!","Over de uitvoer","!","Dit"
+25670 DATA"programma berekent de correlatiecoefficient en"
+25680 DATA"de twee regressievergelijkingen. Deze gegevens"
+25690 DATA"worden op het scherm weergegeven. Verder kan een"
+25700 DATA"grafiek worden getekend waarin alle ingevoerde"
+25710 DATA"punten staan uitgezet en waarin bovendien de"
+25720 DATA"twee regressielijnen staan"
+25730 DATA"getekend.","!","Opslag","!","Desgewenst kunnen"
+25740 DATA"de ingevoerde getallen worden opgeslagen om bij"
+25750 DATA"gelegenheid weer te worden"
+25760 DATA"teruggelezen.","!!"
+30000 REM
+32000 REM ********************
+32010 REM *                  *
+32020 REM * CORRELATIE en    *
+32030 REM *     REGRESSIE    *
+32040 REM *                  *
+32050 REM * is een programma *
+32060 REM * van              *
+32070 REM *                  *
+32080 REM *  S. van Dijk     *
+32090 REM *   Amsterdam      *
+32100 REM *                  *
+32110 REM *   oktober 1988   *
+32120 REM *                  *
+32130 REM ********************
+32140 REM
+32150 REM TROS-RADIO dd 890118
+32160 REM incl.corr. dd 890415

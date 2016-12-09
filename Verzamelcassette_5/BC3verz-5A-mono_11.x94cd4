@@ -1,0 +1,424 @@
+
+1000 A=500:GOTO20:REM HET VERHELPEN VAN STORINGEN
+1010 GOSUB100
+1020 HO=3:VE=5:GOSUB110
+1030 SR$="HET VERHELPEN VAN STORINGEN":GOSUB150
+1040 HO=9:VE=10:GOSUB110
+1050 PRINT"Copyright by REIN OOMS"
+1060 HO=11:VE=15:GOSUB110
+1070 PRINT"1988 Groot-Ammers"
+1080 GOSUB9410
+1090 HO=1:VE=1:GOSUB110
+1100 SR$="** HET VERHELPEN VAN STORINGEN **"
+1110 GOSUB150
+1120 HO=16:VE=4:GOSUB110
+1130 PRINT"Menu"
+1140 PRINT:PRINT
+1150 PRINT" [1]  Motor start niet of moeilijk"
+1160 PRINT" [2]  Motor trekt niet"
+1170 PRINT" [3]  Slecht werkende koppeling"
+1180 PRINT"      (bij automaat)"
+1190 PRINT" [4]  Slecht werkende koppeling"
+1200 PRINT"      (bij versnellingsbrommer)"
+1210 PRINT" [5]  Motor maakt bijgeluiden"
+1220 PRINT" [6]  De besturing doet vreemd"
+1230 PRINT" [7]  De vering werkt niet goed"
+1240 PRINT" [8]  De remmen werken niet goed"
+1250 PRINT" [9]  Schakelprobl.bij versnellingsbr."
+1260 PRINT" [10] Accu en ontsteking"
+1270 PRINT" [11] STOPPEN"
+1280 PRINT:PRINT
+1290 PRINT"Wat is uw keuze ";:INPUTA$:A=VAL(A$)
+1300 IF(A<1)OR(A>11) THEN GOSUB250:GOSUB100:GOTO1090
+1310 GOSUB100:IFA>6 THEN1330
+1320 ONA GOTO2030,3030,4030,4530,5030,5530
+1330 ONA-6 GOTO6030,6530,7030,7530,8030
+2000 REM
+2010 REM KEUZE-1 : Motor start niet of moeilijk
+2020 REM
+2030 HO=3
+2040 SR$="MOTOR START NIET OF MOEILIJK":GOSUB9400
+2050 PRINT"Stroomt er benzine naar de carburateur"
+2060 GOSUB9700:IFIN=74 THEN2150:REM J
+2070 PRINT:PRINT"Tank leeg"
+2080 PRINT:PRINT"Leiding verstopt"
+2090 PRINT:PRINT"Kraan verstopt"
+2100 PRINT:PRINT"Vuil voor de vlotternaald"
+2110 PRINT:PRINT"Gaatje in de benzinedop zit dicht"
+2120 PRINT:PRINT"(ontluchting)"
+2130 PRINT:PRINT"Stationaire sproeier verstopt"
+2140 GOTO9000
+2150 PRINT"Draai de bougie eruit,"
+2160 PRINT:PRINT"leg hem op het blok."
+2170 PRINT:PRINT"Geeft de bougie een vonk bij het starten"
+2180 GOSUB9700:IFIN=74 THEN2280:REM J
+2190 PRINT"Bougie stuk"
+2200 PRINT:PRINT"Bougie vetgeslagen"
+2210 PRINT:PRINT"Vuile contactpunten"
+2220 PRINT:PRINT"Defecte condensator (vonken bij punten)"
+2230 PRINT:PRINT"Bougiekabel ligt tegen massa"
+2240 PRINT:PRINT"Bougiekap defect"
+2250 PRINT:PRINT"Contactschakelaar defect"
+2260 PRINT:PRINT"Bobine of spoel doorgeslagen"
+2270 GOTO9000
+2280 PRINT"Controleer de compressie."
+2290 PRINT:PRINT"Is de compressie goed ?"
+2300 GOSUB9700:IFIN=74 THEN2390:REM J
+2310 PRINT"Zuigerveren zitten vast"
+2320 PRINT:PRINT"Gat in de zuiger"
+2330 PRINT:PRINT"Lekke uitlaatklep"
+2340 PRINT:PRINT"Bougie zit los"
+2350 PRINT:PRINT"Doorgeslagen koppakking"
+2360 PRINT:PRINT"Inlaatmembraan defect"
+2370 PRINT:PRINT"Kleppen blijven hangen"
+2380 GOTO9000
+2390 PRINT"Opnieuw starten."
+2400 PRINT:PRINT"Slaat de motor aan ?"
+2410 GOSUB9700:IFIN=74 THEN2480:REM J
+2420 PRINT"Niet genoeg choke"
+2430 PRINT:PRINT"Te arm mengsel"
+2440 PRINT:PRINT"Verkeerde carburateur-afstelling"
+2450 PRINT:PRINT"Valse luchtaanzuiging"
+2460 PRINT:PRINT"Ontsteking staat verkeerd"
+2470 GOTO9000
+2480 PRINT"Draai de bougie eruit."
+2490 PRINT:PRINT"Is de bougie droog ?"
+2500 GOSUB9700:IFIN=74 THEN2540:REM J
+2510 PRINT"Inlaat verstopt"
+2520 PRINT:PRINT"Te veel choke"
+2530 GOTO9000
+2540 PRINT"Start opnieuw met de choke"
+2550 PRINT:PRINT"In de goede stand."
+2560 GOTO9000
+3000 REM
+3010 REM Keuze 2 : Motor trekt niet
+3020 REM
+3030 HO=7
+3040 SR$="DE MOTOR TREKT NIET":GOSUB9400
+3050 PRINT"Til het achterwiel van de grond"
+3060 PRINT:PRINT"En laat het draaien."
+3070 PRINT:PRINT"Draait het wiel vrij ?"
+3080 GOSUB9700:IFIN=74 THEN3150:REM J
+3090 PRINT"Rem loopt aan"
+3100 PRINT:PRINT"Lagers zijn defect"
+3110 PRINT:PRINT"Ketting staat te strak"
+3120 PRINT:PRINT"Ketting is niet goed gesmeerd"
+3130 PRINT:PRINT"Aandrijfriem staat te strak"
+3140 GOTO9000
+3150 PRINT"Controleer de bandenspanning."
+3160 PRINT:PRINT"Is de spanning goed ?"
+3170 GOSUB9700:IFIN=74 THEN3220:REM J
+3180 PRINT"Lekke band"
+3190 PRINT:PRINT"Zachte band"
+3200 PRINT:PRINT"Defect ventiel"
+3210 GOTO9000
+3220 PRINT"Gaat de motor bij het wegrijden"
+3230 PRINT:PRINT"langzamer draaien ?"
+3240 GOSUB9700:IFIN=74 THEN3280:REM J
+3250 PRINT"Koppeling versleten of verbrand"
+3260 PRINT:PRINT"Koppelingsveer te slap"
+3270 GOTO9000
+3280 PRINT"Geef een beetje gas."
+3290 PRINT:PRINT"Gaat de motor sneller draaien ?"
+3300 GOSUB9700:IFIN=74 THEN3380:REM J
+3310 PRINT"Choke staat nog dicht"
+3320 PRINT:PRINT"Luchtfilter zit verstopt"
+3330 PRINT:PRINT"Gaatje in benzinetankdop zit verstopt"
+3340 PRINT:PRINT"(ontluchting)"
+3350 PRINT:PRINT"Benzineleiding zit verstopt"
+3360 PRINT:PRINT"Uitlaat zit verstopt"
+3370 GOTO9000
+3380 PRINT"Maak een proefrit."
+3390 PRINT:PRINT"Trek de motor nu goed ?"
+3400 GOSUB9700:IFIN=78 THEN3430:REM N
+3410 PRINT"***   GOEDE REIS   ***"
+3420 GOTO9000
+3430 PRINT"Controleer het ontstekingstijdstip."
+3440 PRINT:PRINT"Staat de ontsteking op tijd ?"
+3450 GOSUB9700:IFIN=74 THEN3500:REM J
+3460 PRINT"Contactpunten verkeerd afgesteld"
+3470 PRINT:PRINT"Contactpunten versleten"
+3480 PRINT:PRINT"Contactpunten ingebrand"
+3490 GOTO9000
+3500 PRINT"Controleer de compressie."
+3510 PRINT:PRINT"Is de compressie goed ?"
+3520 GOSUB9700:IFIN=74 THEN3610:REM J
+3530 PRINT"Zuigerveren zitten vast"
+3540 PRINT:PRINT"Lekke uitlaatklep"
+3550 PRINT:PRINT"Bougie zit los"
+3560 PRINT:PRINT"Doorgeslagen koppakking"
+3570 PRINT:PRINT"Defect inlaatmembraan"
+3580 PRINT:PRINT"Versleten zuiger"
+3590 PRINT:PRINT"Klepspeling te klein"
+3600 GOTO9000
+3610 PRINT"Controleer de hoofdsproeier."
+3620 PRINT:PRINT"Zit de sproeier verstopt ?"
+3630 GOSUB9700:IFIN=78 THEN3670:REM N
+3640 PRINT"Maak de vlotterkamer schoon"
+3650 PRINT:PRINT"Maak de sproeier schoon"
+3660 GOTO9000
+3670 PRINT"Draai de bougie eruit."
+3680 PRINT:PRINT"Is de bougie vet en donker ?"
+3690 GOSUB9700:IFIN=78 THEN3730:REM N
+3700 PRINT"Te rijk mengsel"
+3710 PRINT:PRINT"Te koude bougies"
+3720 GOTO9000
+3730 PRINT"Ga na of de motor te heet wordt."
+3740 PRINT:PRINT"Wordt de motor te heet ?"
+3750 GOSUB9700:IFIN=78 THEN3820:REM N
+3760 PRINT"Te veel kool in de verbrandingskamer"
+3770 PRINT:PRINT"De koppeling slipt"
+3780 PRINT:PRINT"Het mengsel is te arm"
+3790 PRINT:PRINT"Te weinig water in het koelsysteem"
+3800 PRINT:PRINT"Te weinig olie in het carter"
+3810 GOTO9000
+3820 PRINT"Bij het rijden met 'volgas',"
+3830 PRINT:PRINT"draait de motor dan goed ?"
+3840 GOSUB9700:IFIN=78 THEN3870:REM N
+3850 PRINT"***   GOEDE REIS   ***"
+3860 GOTO9000
+3870 PRINT"Zuiger en/of cilinder versleten"
+3880 PRINT:PRINT"Mengsel te arm"
+3890 PRINT:PRINT"Te veel kool in de verbrandingskamer"
+3900 PRINT:PRINT"Ontsteking staat te vroeg"
+3910 GOTO9000
+4000 REM
+4010 REM Keuze 3 : Slecht werkende koppeling (A)
+4020 REM
+4030 HO=5:VE=11:GOSUB110
+4040 SR$="SLECHT WERKENDE KOPPELING":GOSUB150
+4050 HO=12:VE=13:GOSUB110
+4060 PRINT"(bij automaat)"
+4070 GOSUB9410
+4080 PRINT"Slipt de koppeling ?"
+4090 GOSUB9700:IFIN=78 THEN4130:REM N
+4100 PRINT"Verbrande of versleten koppeling"
+4110 PRINT:PRINT"Centrifugaalgewichten zitten vast"
+4120 GOTO9000
+4130 PRINT"Pakt de koppeling te vroeg of te laat ?"
+4140 GOSUB9700:IFIN=78 THEN4190:REM N
+4150 PRINT"Koppelingsveren gebroken"
+4160 PRINT:PRINT"Koppelingsveren te slap"
+4170 PRINT:PRINT"Verbrande of versleten koppeling"
+4180 GOTO9000
+4190 PRINT"Komt de koppeling niet goed vrij"
+4200 PRINT:PRINT" (wurgt motor af) ?"
+4210 GOSUB9700:IFIN=78 THEN4260:REM N
+4220 PRINT"Motor loopt te hard stationair"
+4230 PRINT:PRINT"Slappe koppelingsveren"
+4240 PRINT:PRINT"Stationairsproeier verstopt"
+4250 GOTO9000
+4260 PRINT"Controleer de spanning van de V-snaar."
+4270 GOTO9000
+4500 REM
+4510 REM Keuze 4 : Slecht werkende koppeling (V)
+4520 REM
+4530 HO=5:VE=11:GOSUB110
+4540 SR$="SLECHT WERKENDE KOPPELING":GOSUB150
+4550 HO=8:VE=13:GOSUB110
+4560 PRINT"(bij versnellingsbrommer)"
+4570 GOSUB9410
+4580 PRINT"Slipt de koppeling ?"
+4590 GOSUB9700:IFIN=78 THEN4660:REM N
+4600 PRINT"Verkeerde olie in het blok"
+4610 PRINT:PRINT"Speciale olietoevoeging in de olie"
+4620 PRINT:PRINT" (bijv.molybdeendisulfide)"
+4630 PRINT:PRIN"Koppelinsveren te slap"
+4640 PRINT:PRINT"Koppelingsplaten versleten"
+4650 GOTO9000
+4660 PRINT"Schokt de koppeling bij het wegrijden ?"
+4670 GOSUB9700:IFIN=78 THEN4710:REM N
+4680 PRINT"Kabel loopt te stroef"
+4690 PRINT:PRINT"Koppelingsplaten zijn krom"
+4700 GOTO9000
+4710 PRINT"Komt de koppeling vrij"
+4720 GOSUB9700:IFIN=78 THEN4770:REM N
+4730 PRINT"Ontkoppelingsmechanisme verkeerd"
+4740 PRINT:PRINT" afgesteld"
+4750 PRINT:PRINT"Uitgeslagen koppelingskorf"
+4760 GOTO9000
+4770 PRINT"Controleer de afstelling van de kabel"
+4780 GOTO9000
+5000 REM
+5010 REM Keuze 5 : Motor maakt bijgeluiden
+5020 REM
+5030 HO=6
+5040 SR$="MOTOR MAAKT BIJGELUIDEN":GOSUB9400
+5050 PRINT"Maakt de motor tikkende geluiden ?"
+5060 GOSUB9700:IFIN=78 THEN5100:REM N
+5070 PRINT"Zuigerpen versleten"
+5080 PRINT:PRINT"Klepspeling te groot"
+5090 GOTO9000
+5100 PRINT"Maakt de motor bonkende geluiden ?"
+5110 GOSUB9700:IFIN=78 THEN5150:REM N
+5120 PRINT"Big-end uitgelopen"
+5130 PRINT:PRINT"Krukaslagers versleten"
+5140 GOTO9000
+5150 PRINT"Dan heeft de motor geen bijgeluiden."
+5160 PRINT:PRINT"Advies : oren na laten kijken !"
+5170 GOTO9000
+5500 REM
+5510 REM Keuze 6 : De besturing doet vreemd
+5520 REM
+5530 HO=5
+5540 SR$="DE BESTURING DOET VREEMD":GOSUB9400
+5550 PRINT"Gaat het sturen zwaar ?"
+5560 GOSUB9700:IFIN=78 THEN5610:REM N
+5570 PRINT"Balhoofdlagers staan te strak"
+5580 PRINT:PRINT"Er zitten putjes in de balhoofdlagers"
+5590 PRINT:PRINT"Balhoofdspen is krom"
+5600 GOTO9000
+5610 PRINT"Zitten de wielen los ?"
+5620 GOSUB9700:IFIN=78 THEN5680:REM N
+5630 PRINT"Wielasmoeren zitten los"
+5640 PRINT:PRINT"Wiellagers zijn versleten"
+5650 PRINT:PRINT"Spaken zitten los"
+5660 PRINT:PRINT"Achtervorklagers zijn versleten"
+5670 GOTO9000
+5680 PRINT"Trekt de brommer naar een kant ?"
+5690 GOSUB9700:IFIN=78 THEN5760:REM N
+5700 PRINT"Gebroken veer aan een kant"
+5710 PRINT:PRINT"Verkeerde wieluitlijning"
+5720 PRINT:PRINT"Kromme voorvork"
+5730 PRINT:PRINT"Kromme achtervork"
+5740 PRINT:PRINT"Krom frame"
+5750 GOTO9000
+5760 PRINT"Controleer de bandenspanning"
+5770 GOTO9000
+6000 REM
+6010 REM Keuze 7 : De vering werkt niet goed
+6020 REM
+6030 HO=6
+6040 SR$="VERING WERKT NIET GOED":GOSUB9400
+6050 PRINT"Is de vering te slap ?"
+6060 GOSUB9700:IFIN=78 THEN6110:REM N
+6070 PRINT"Gebroken of te slappe veren"
+6080 PRINT:PRINT"Te zware belading"
+6090 PRINT:PRINT"Dempers versleten"
+6100 GOTO9000
+6110 PRINT"Is de vering te stug ?"
+6120 GOSUB9700:IFIN=78 THEN6160:REM N
+6130 PRINT"Versleten voorvorklagerbussen"
+6140 PRINT:PRINT"Geen olie of vet in de dempers"
+6150 GOTO9000
+6160 PRINT"Maken de veren vreemde geluiden"
+6170 PRINT:PRINT" tijdens het veren ?"
+6180 GOSUB9700:IFIN=78 THEN6230:REM N
+6190 PRINT"Geen olie of vet in de lagerbussen"
+6200 PRINT:PRINT"Te veel speling in de lagers"
+6210 PRINT:PRINT"Versleten aanslagrubbers"
+6220 GOTO9000
+6230 PRINT"Controleer de bandenspanning"
+6240 GOTO9000
+6500 REM
+6510 REM Keuze 8 : De remmen werken niet goed
+6520 REM
+6530 HO=6
+6540 SR$="REMMEN WERKEN NIET GOED":GOSUB9400
+6550 PRINT"Helpt het afstellen van de rem ?"
+6560 GOSUB9700:IFIN=78 THEN6590:REM N
+6570 PRINT"***   GOEDE REIS   ***"
+6580 GOTO9000
+6590 PRINT"Piepen de remmen bij het gebruik ?"
+6600 GOSUB9700:IFIN=78 THEN6660:REM N
+6610 PRINT"Versleten remvoering"
+6620 PRINT:PRINT"Ruwe trommel of schijf (roest)"
+6630 PRINT:PRINT"Versleten trommel of schijf"
+6640 PRINT:PRINT"Verkeerd type remvoering"
+6650 GOTO9000
+6660 PRINT"Werkt de rem heel slecht ?"
+6670 GOSUB9700:IFIN=78 THEN6740:REM N
+6680 PRINT"Water of modder op de schijf"
+6690 PRINT:PRINT"Water of modder in de trommel"
+6700 PRINT:PRINT"Slecht contact tussen voering en trommel"
+6710 PRINT:PRINT"Remkabel loopt stroef"
+6720 PRINT:PRINT"Lucht in hydraulisch systeem"
+6730 GOTO9000
+6740 PRINT"Controleer de speling in de bediening"
+6750 GOTO9000
+7000 REM
+7010 REM Keuze 9 : Schakelprobl.bij versnellingsbr.
+7020 REM
+7030 HO=9:VE=11:GOSUB110
+7040 SR$="SCHAKELPROBLEMEN":GOSUB150
+7050 HO=7:VE=13:GOSUB110
+7060 PRINT"(bij versnellingsbrommer)"
+7070 GOSUB9410
+7080 PRINT"Schiet de brommer uit zijn versnelling ?"
+7090 GOSUB9700:IFIN=78 THEN7140:REM N
+7100 PRINT"Speling op schakelpedaal"
+7110 PRINT:PRINT"Versleten schakelnokken"
+7120 PRINT:PRINT"Vergrendelveertje gebroken"
+7130 GOTO9000
+7140 PRINT"Wil de brommer in zijn versnelling ?"
+7150 GOSUB9700:IFIN=78 THEN7190:REM N
+7160 PRINT"Controleer werking van de koppeling"
+7170 PRINT:PRINT"Controleer werking van de transmissie"
+7180 GOTO9000
+7190 PRINT"Speling op schakelpedaal"
+7200 PRINT:PRINT"Verbogen bediening van schakelwals"
+7210 GOTO9000
+7500 REM
+7510 REM Keuze 10 : Accu en ontsteking
+7520 REM
+7530 HO=7
+7540 SR$="ACCU EN DE ONTSTEKING":GOSUB9400
+7550 PRINT"Geeft de accu genoeg stroom ?"
+7560 GOSUB9700:IFIN=74 THEN7620:REM J
+7570 PRINT"Accu leeg"
+7580 PRINT:PRINT"Accukabels los"
+7590 PRINT:PRINT"Hoofdzekering doorgeslagen"
+7600 PRINT:PRINT"Contactschakelaar defect"
+7610 GOTO9000
+7620 PRINT"Ontlaad de accu snel ?"
+7630 GOSUB9700:IFIN=78 THEN7680:REM N
+7640 PRINT"Laadcircuit defect"
+7650 PRINT:PRINT"Accu te oud"
+7660 PRINT:PRINT"Er loopt stroom als contact uit is"
+7670 GOTO9000
+7680 PRINT"Is er een vonk bij de bougie ?"
+7690 GOSUB9700:IFIN=74 THEN7790:REM J
+7700 PRINT"Bougie defect"
+7710 PRINT:PRINT"Bougiestekker defect"
+7720 PRINT:PRINT"Bougiekabel maakt massa"
+7730 PRINT:PRINT"Bobine is doorgeslagen"
+7740 PRINT:PRINT"Primaire spanning ontbreekt"
+7750 PRINT:PRINT"Contactpunten openen niet"
+7760 PRINT:PRINT"Elektronische besturing is defect"
+7770 PRINT:PRINT"Condensator is defect"
+7780 GOTO9000
+7790 PRINT"Is de vonk geel en zwak ?"
+7800 GOSUB9700:PRINT"Poolschoenafstand is niet goed"
+7810 PRINT:PRINT"Contactpuntafstand is niet goed"
+7820 PRINT:PRINT"Condensator is defect"
+7830 GOTO9000
+8000 REM
+8010 REM Keuze 11 : STOPPEN
+8020 REM
+8030 HO=8:VE=11:GOSUB110
+8040 PRINT"*** EINDE PROGRAMMA ***"
+8050 SD=50:GOSUB450
+8060 GOTO950
+9000 PRINT:PRINT:PRINT"Druk op een toets"
+9010 GOSUB210:GOSUB100:GOTO1090
+9400 VE=11:GOSUB110:GOSUB150
+9410 SD=10:GOSUB450:GOSUB100:RETURN
+9700 PRINT:PRINT"[J/N] ";:GOSUB210:GOSUB100
+9710 RETURN
+32000 REM **************************
+32010 REM *                        *
+32020 REM *   HET VERHELPEN VAN    *
+32030 REM *                        *
+32040 REM *       STORINGEN        *
+32050 REM *                        *
+32060 REM * copyright by REIN OOMS *
+32070 REM *                        *
+32080 REM *   1988 Groot-Ammers    *
+32090 REM *                        *
+32100 REM **************************
+32110 REM *                        *
+32120 REM *   TROS   BASICODE-3    *
+32130 REM *                        *
+32140 REM **************************
+32150 REM
+32160 REM TROS-RADIO dd 881221

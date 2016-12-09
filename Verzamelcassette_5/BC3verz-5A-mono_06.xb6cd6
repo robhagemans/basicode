@@ -1,0 +1,348 @@
+
+1000 A=1000:GOTO20:REM schuifpuzzel
+1010 HT=HO:VT=VE:REM schermmaten
+1020 HC=6:REM breedte van de puzzel
+1030 VC=5:REM hoogte van de puzzel
+1040 REM HC=10:VC=4:REM instelling voor ESCOTT-puzzel
+1050 DIMFS(HC+5,VC+5):REM feitelijk speelveld
+1060 FORI=0 TOHC+5:FORJ=0 TOVC+5
+1070 FS(I,J)=-1:NEXTJ:NEXTI:REM -1 = verboden
+1080 FORI=3 TOHC+2:FORJ=3 TOVC+2
+1090 FS(I,J)=0:NEXTJ:NEXTI:REM 0 = leeg
+1100 BO$=" 700 340 120 121 241 252 203 213"
+1110 BO$=BO$+" 123 124 002 012 043 044 054"
+1120 REM BO$ bevat de beginstand
+1130 GOTO1170:REM nu geen ESCOTT!
+1140 REM de nu volgende BO$ geeft de beginstand
+1150 REM voor de ESCOTT-schuifpuzzel
+1160 BO$=" 903 102 400 110 530 662 860 173 382 181"
+1170 AB=LEN(BO$)/4:REM aantal stukjes
+1180 DIMSV(AB,2)
+1190 READAM,DP
+1200 DIMSB$(AM),HP(AM,DP),VP(AM,DP)
+1210 DIMXY(5):XY(2)=1:XY(4)=-1
+1220 DIMBR(4):REM beweegbaarheid
+1230 DIMGZ$(10):FORI=0 TO10:GZ$(I)="***":NEXTI:GI=0
+1240 REM
+1250 REM lees opbouw van de stukjes
+1260 REM
+1270 FORI=0 TOAM
+1280 READSB$(I)
+1290 J=0
+1300 READHP(I,J),VP(I,J)
+1310 IF(HP(I,J)<>0)OR(VP(I,J)<>0) THENJ=J+1:GOTO1300
+1320 NEXTI
+1330 REM
+1340 REM bereken rastermaten in HP en VP
+1350 REM
+1360 HP=INT((HG-3)/HC)
+1370 VP=INT((21.5/24*VG-3)/VC)
+1380 V0=INT((21.5/24*VG-VC*VP)/2)+.1
+1390 H0=INT((HG-HC*HP)/2)+.1
+1400 GOSUB8030:REM uitleg
+1410 GOSUB600:CN=0
+1420 REM
+1430 REM teken kader
+1440 REM
+1450 HO=(H0-1)/HG:VE=(V0-1)/VG:GOSUB620
+1460 VE=(V0+VC*VP+1)/VG:GOSUB630
+1470 HO=(H0+HC*HP+1)/HG:GOSUB630
+1480 VE=(V0-1)/VG:GOSUB630:HO=(H0-1)/HG:GOSUB630
+1490 REM
+1500 REM teken raster
+1510 REM
+1520 FORHS=0 TOHC
+1530 FORVS=0 TOVC
+1540 HO=(H0+HS*HP)/HG:VE=(V0+VS*VP)/VG
+1550 GOSUB620
+1560 NEXTVS
+1570 NEXTHS
+1580 REM
+1590 REM teken en registreer de beginstand
+1600 REM
+1610 FORIT=1 TOAB
+1620 IS=VAL(MID$(BO$,4*IT-3,2)):HS=VAL(MID$(BO$,4*IT-1,1))
+1630 VS=VAL(MID$(BO$,4*IT,1)):GOSUB6030
+1640 SV(IT,0)=IS:SV(IT,1)=HS:SV(IT,2)=VS
+1650 FORI=0 TODP
+1660 FS(3+HS+HP(IS,I),3+VS+VP(IS,I))=IT
+1670 NEXTI:REM zet stukje in speelveld
+1680 NEXTIT
+3000 REM
+3010 REM hoofdlus: vraag stukje en beweeg
+3020 REM
+3030 HO=0:VE=23/24:CN=1:GOSUB620
+3040 CN=0:TR$="Welk stukje? (- terug; # stop)"
+3050 SR$=TR$:GOSUB650
+3060 GOSUB210:IT=IN-64
+3070 IFIN=35 THENSR$="GESTOPT, JAMMER.":GOTO3900:REM stop
+3080 IFIN<>45 THEN3200:REM normaal
+3090 REM - betekent terug
+3100 IF(GI=0)AND(GZ$(GI)="***") THEN GOSUB250:GOTO3060
+3110 I$=RIGHT$(GZ$(GI),3)
+3120 GZ$(GI)=LEFT$(GZ$(GI),LEN(GZ$(GI))-3)
+3130 IFGZ$(GI)="***" THENGI=GI-1:IFGI<0 THENGI=0
+3140 IT=ASC(LEFT$(I$,1))-48
+3150 RI=ASC(MID$(I$,2,1))-48+2:IFRI>4 THENRI=RI-4
+3160 IFRI>4 THENRI=RI-4
+3170 BR(RI)=ASC(RIGHT$(I$,1))-48
+3180 IS=SV(IT,0):HS=SV(IT,1):VS=SV(IT,2)
+3190 GOTO3630
+3200 IF(IT<1)OR(IT>AB) THEN3060
+3210 CN=1:GOSUB650:CN=0
+3220 TR$="Stukje "+IN$:SR$=TR$:GOSUB650
+3230 REM
+3240 REM check of stukje IT beweegbaar is
+3250 REM
+3260 BR=0:REM nog onbeweegbaar
+3270 IS=SV(IT,0):HS=SV(IT,1):VS=SV(IT,2)
+3280 FORRI=1 TO4:XD=0:YD=0:RA=0
+3290 RA=RA+1:XD=XD+XY(RI+1):YD=YD+XY(RI)
+3300 BR(RI)=RA:REM kan nog
+3310 FORI=0 TODP
+3320 J=FS(3+HS+HP(IS,I)+XD,3+VS+VP(IS,I)+YD)
+3330 IF(J<>0)AND(J<>IT) THENBR(RI)=0:I=DP:REM kannie
+3340 NEXTI
+3350 IFBR(RI)=1 THENBR=BR+1
+3360 IFBR(RI)>0 THEN3290
+3370 BR(RI)=RA-1
+3380 NEXTRI
+3390 CN=1:SR$=TR$:GOSUB650:REM wis oude tekst
+3400 IFBR=0 THEN GOSUB250:GOTO3040:REM zit vast
+3410 CN=0:TR$="Stukje "+IN$:SR$=TR$:GOSUB650
+3420 REM
+3430 REM als meer richtingen, vraag richting
+3440 REM
+3450 FORI=1 TO4:IFBR(I)>0 THENRI=I
+3460 NEXTI:REM zoek mogelijke richting
+3470 IFBR=1 THEN3570
+3480 TR$=TR$+"; Richting (cursortoets!) ?":SR$=TR$:GOSUB650
+3490 GOSUB210:RI=IN-28:IFRI=3 THENRI=4
+3500 IFRI=0 THENRI=3
+3510 IF(RI<1)OR(RI>4) THEN GOSUB250:GOTO3490
+3520 IFBR(RI)=0 THEN GOSUB250:GOTO3490
+3530 TR$=TR$+" "+MID$(">v<^",RI,1):SR$=TR$:GOSUB650
+3540 REM
+3550 REM wis stukje IT
+3560 REM
+3570 IFLEN(GZ$(GI))=252 THENGI=GI+1
+3580 GZ$(GI)=GZ$(GI)+CHR$(48+IT)
+3590 IFBR=1 THENGZ$(GI)=GZ$(GI)+CHR$(48+RI)
+3600 IFBR>1 THENGZ$(GI)=GZ$(GI)+CHR$(52+RI)
+3610 GZ$(GI)=GZ$(GI)+CHR$(48+BR(RI))
+3620 REM registreer de verplaatsing
+3630 FORI=0 TODP
+3640 FS(3+HS+HP(IS,I),3+VS+VP(IS,I))=0
+3650 NEXTI:REM wis in FS
+3660 CN=1:GOSUB6030:REM wis op scherm
+3670 REM
+3680 REM verplaats stukje IT
+3690 REM
+3700 HS=HS+BR(RI)*XY(RI+1):VS=VS+BR(RI)*XY(RI)
+3710 SV(IT,1)=HS:SV(IT,2)=VS
+3720 FORI=0 TODP
+3730 FS(3+HS+HP(IS,I),3+VS+VP(IS,I))=IT
+3740 NEXTI
+3750 REM
+3760 REM teken stukje IT
+3770 REM
+3780 CN=0:GOSUB6030:REM teken
+3790 REM wis invoerregel
+3800 SR$=TR$:CN=1:HO=0:VE=23/24:GOSUB620:GOSUB650
+3810 REM
+3820 REM test eindstand bereikt
+3830 REM
+3840 IF(SV(1,1)<>4)OR(SV(1,2)<>3) THEN3030
+3850 REM zo nee, terug
+3860 SR$="OPGELOST! PROFICIAT."
+3870 REM
+3880 REM einde, print successie
+3890 REM
+3900 GOSUB100:GOSUB150:PRINT:PRINT
+3910 PRINT"De zetten waren als volgt:":PRINT
+3920 PRINT" (de pyltjes < > ^ v geven zo nodig"
+3930 PRINT"  de richting aan)":PRINT
+3940 GI=0:I=4:R$="":AZ=0
+3950 IFLEN(GZ$(GI))<I THEN4030:REM regel af
+3960 I$=MID$(GZ$(GI),I,3)
+3970 SR$=CHR$(64+ASC(LEFT$(I$,1))-48):GOSUB330
+3980 R$=R$+SR$
+3990 J=ASC(MID$(I$,2,1))-48
+4000 IFJ>4 THENR$=R$+MID$(">v<^",J-4,1)
+4010 IFLEN(R$)>HT-3 THENPRINTR$:R$=""
+4020 AZ=AZ+1:I=I+3:GOTO3950
+4030 GI=GI+1:I=4
+4040 IFGZ$(GI)<>"***" THEN3950
+4050 PRINTR$:PRINT
+4060 PRINT"In totaal ";AZ;" zetten."
+4070 PRINT"Noteer ze en tot schuifs ..."
+4080 REM kortst bekende oplossing:
+4090 REM LKACDKK>AGHIJMN<EKL>AGHIJMMvAKLL<ENN^
+4100 REM gevonden door W vd Heijde te Leusden
+4110 GOSUB210:GOTO950
+6000 REM
+6010 REM subr. teken stukje IS op positie HS,VS
+6020 REM
+6030 TS$=SB$(IS)
+6040 HU=H0+HS*HP+1:HO=(HU+(HP-8)/2)/HG
+6050 VU=V0+VS*VP+1:VE=(VU+(VP-8)/2)/VG
+6060 SR$=CHR$(64+IT):GOSUB650
+6070 HO=HU/HG:VE=VU/VG
+6080 GOSUB620:TR=1:VH=1
+6090 DR=VAL(LEFT$(TS$,1)):IFDR=0 THENRETURN
+6100 DH=1:IFMID$(TS$,2,1)="-" THENDH=-1
+6110 DE=0:IFDH=VH THENDE=-2
+6120 ONTR GOTO6130,6140,6150,6160
+6130 HU=HU+DR*HP+DE:GOTO6170
+6140 VU=VU+DR*VP+DE:GOTO6170
+6150 HU=HU-DR*HP-DE:GOTO6170
+6160 VU=VU-DR*VP-DE
+6170 HO=HU/HG:VE=VU/VG:GOSUB630
+6180 TR=TR+DH:IFTR=5 THENTR=1
+6190 IFTR=0 THENTR=4
+6200 VH=DH:TS$=MID$(TS$,3):GOTO6090
+8000 REM
+8010 REM uitlegroutine
+8020 REM
+8030 GOSUB8210
+8040 INPUT"Wilt u uitleg ";SR$
+8050 GOSUB330
+8060 IFLEFT$(SR$,1)="N" THENRETURN
+8070 GOSUB8210:READTR$
+8080 READSR$
+8090 IFSR$="!!" THENPRINTTR$:GOTO8190
+8100 IFSR$="!" THENPRINTTR$:PRINT:J=J+2:READSR$:TR$=""
+8110 TR$=TR$+" "+SR$
+8120 IFJ>VT THEN GOSUB8190
+8130 IFLEN(TR$)<HT THEN8080
+8140 I=HT
+8150 IFMID$(TR$,I,1)<>" " THENI=I-1:GOTO8150
+8160 PRINTLEFT$(TR$,I-1):J=J+1
+8170 TR$=RIGHT$(TR$,LEN(TR$)-I)
+8180 GOTO8120
+8190 HO=3:VE=VT:GOSUB110:PRINT"<spatie voor vervolg>";
+8200 GOSUB210:IFIN<>32 THEN8200
+8210 GOSUB100:HO=INT(HT/2)-9:VE=0:GOSUB110
+8220 SR$="SCHUIFPUZZEL"
+8230 GOSUB150:PRINT:PRINT:J=4:RETURN
+25000 REM aantal stukjes + max aantal posities
+25010 DATA9,5
+25020 REM omtrekbeschrijving, posities
+25030 DATA"1+1+1+1+0",0,0
+25040 DATA"2+1+2+1+0",1,0,0,0
+25050 DATA"1+2+1+2+0",0,1,0,0
+25060 DATA"2+2+1+1-1+1+0",1,0,1,1,0,0
+25070 DATA"1+1-1+1+2+2+0",0,1,1,1,0,0
+25080 DATA"1+2+2+1+1-1+0",0,1,-1,1,0,0
+25090 DATA"2+1+1-1+1+2+",0,1,1,0,0,0
+25100 DATA"2+2+2+2+0",0,1,1,0,1,1,0,0
+25110 EATA"4+1+2-1+2+2+",1,0,2,0,3,0,0,1,1,1,0,0
+25120 DATA"2-1+2+2+4+1+",1,0,2,0,3,0,2,-1,3,-1,0,0
+26000 REM nu volgt de uitleg
+26010 DATA"Met dit programma kunt u schuifpuzzels"
+26020 DATA"oplossen. Zoals het programma nu is, krijgt u"
+26030 DATA"een bepaalde schuifpuzzel op het scherm en kunt"
+26040 DATA"u proberen door stukjes te verschuiven de puzzel"
+26050 DATA"op te lossen. Bij deze puzzel is het de"
+26060 DATA"bedoeling dat stukje A, dat in het begin in de"
+26070 DATA"linker boven hoek staat, in de rechter onder"
+26080 DATA"hoek terecht komt. Het is moeilijk, maar het"
+26090 DATA"kan.","!"
+26100 DATA"Het verhaal achter de schuifpuzzel in dit"
+26110 DATA"programma is het volgende: Jan de Geus, een bij"
+26120 DATA"veel puzzelaars bekende Hagenees, vond onlangs"
+26130 DATA"op een rommelmarkt deze schuifpuzzel, rond 1940"
+26140 DATA"gemaakt en keurig in houten blokjes uitgevoerd."
+26150 DATA"Nu is Jan niet alleen een verwoed puzzelaar maar"
+26160 DATA"tevens verzamelaar van puzzels en mede daardoor"
+26170 DATA"zo langzamerhand uiterst deskundig op dit"
+26180 DATA"gebied. Merkwaardig was, dat de puzzel NIET is"
+26190 DATA"opgenomen in de schuifpuzzel-bijbel, het boek"
+26200 DATA"'Sliding piece puzzles' van Edward Hordern."
+26210 DATA"Jan wist dus (?) niet hoe hij de puzzel kon"
+26220 DATA"oplossen en -slim bekeken- probeerde anderen"
+26230 DATA"voor zijn probleem te interesseren. Een van zijn"
+26240 DATA"slachtoffers is ondergetekende, die er dit"
+26250 DATA"programma voor maakte. Niet dat het de puzzel"
+26260 DATA"oplost, maar het helpt in elk geval."
+26270 DATA"!","De andere"
+26280 DATA"slachtoffers zijn de lezers van TROUW want in"
+26290 DATA"in die krant stond afgelopen zaterdag"
+26300 DATA"(19-11-'88) deze puzzel als 752e in de rubriek"
+26310 DATA"'Niet piekeren maar puzzelen'. Wie een"
+26320 DATA"oplossing vindt, kan deze nog tot 17 december"
+26330 DATA"insturen naar de puzzelredaktie van genoemd"
+26340 DATA"blad (het adres vindt u aldaar) en op 31-12-'88"
+26350 DATA"wordt de snelste oplossing gepubliceerd die"
+26360 DATA"gevonden blijkt te zijn. Aan de slag dus!"
+26370 DATA"Ik heb zelf een oplossing gevonden in 141"
+26380 DATA"verschuivingen en ik vermoed dat het nog wel wat"
+26390 DATA"handiger kan. Het programma bevat GEEN"
+26400 DATA"voorbeeldoplossing."
+26410 DATA"!","Bij deze puzzel is het dus de"
+26420 DATA"bedoeling dat stukje A, dat in het begin in de"
+26430 DATA"linker boven hoek staat, in de rechter onder"
+26440 DATA"hoek terecht komt.","!"
+26450 DATA"Voor de meeste verschuivingen hoeft u alleen"
+26460 DATA"maar op de juiste lettertoets te drukken. Als"
+26470 DATA"het gewenste stukje in meer richtingen"
+26480 DATA"verschoven kan worden, vraagt het programma om"
+26490 DATA"met de cursortoetsen de door u gewenste richting"
+26500 DATA"aan te geven. Als stukje A rechtsonder zit,"
+26510 DATA"stopt het programma vanzelf."
+26520 DATA"!"
+26530 DATA"Op elk moment kunt u met een druk op de - toets"
+26540 DATA"een verschuiving ongedaan maken. U kunt meer"
+26550 DATA"keer op de - toets drukken. Met een druk op de #"
+26560 DATA"toets stopt u het programma. Als het programma"
+26570 DATA"stopt krijgt u op het scherm nog te zien welke"
+26580 DATA"zetten u precies hebt gedaan en hoeveel er dat"
+26590 DATA"zijn geweest."
+26600 DATA"!"
+26610 DATA"Het programma is tamelijk eenvoudig aan te"
+26620 DATA"passen aan andere schuifpuzzels, al zult u"
+26630 DATA"daarvoor een klein beetje verstand van"
+26640 DATA"progr mmeren moeten hebben. In regels 1020 en"
+26650 DATA"1030 moet u invullen hoeveel eenheidscellen de"
+26660 DATA"puzzel groot is en in regels 1090 tot 1100 geeft"
+26670 DATA"u op hoe de beginstand er uit ziet. Als uw"
+26680 DATA"puzzel andere typen stukjes bevat dan in de"
+26690 DATA"DATA-regels staan gecodeerd, moet u zelf de"
+26700 DATA"extra DATA-regels toevoegen. Eventueel moet u in"
+26710 DATA"regels 4840-4850 de juiste test programmeren"
+26720 DATA"zodat het programma zelf ziet of de puzzel is"
+26730 DATA"opgelost."
+26740 DATA"!","Inmiddels is op 31-12-1988 in TROUW"
+26750 DATA"gepubliceerd welke minimale oplossing is"
+26760 DATA"gevonden. De vinder daarvan was de heer W.A."
+26770 DATA"van de Heijde uit Leusden. Zijn oplossing"
+26780 DATA"beslaat volgens de telmethode van dit programma"
+26790 DATA"minder dan 60 zetten en die oplossing staat"
+26800 DATA"ergens in dit programma verborgen (voor als u"
+26810 DATA"het opgeeft)."
+26820 DATA"!!"
+30000 REM betekenis belangrijkste variabelen:
+30010 REM BO$ : beginopstelling type van stukje-x-y
+30020 REM HC en VC : benodigd aantal eenheidscellen
+30030 REM HP en VP : benodigd aantal pixel per eenheidscel
+30040 REM HS en VS : positie stukje (0 ... HC-1, 0 ... VC-1)
+30050 REM AM : aantal verschillende stukjes
+30060 REM DP : aantal eenheden per stukje (max)
+30070 REM SB$(I) : omtrekbeschrijving van stukje nummer I
+30080 REM HP(I,J) en VP(I,J) : cellen van stukje nummer I
+30090 REM
+32000 REM ********************
+32010 REM *                  *
+32020 REM * SCHUIFPUZZEL     *
+32030 REM * is een programma *
+32040 REM * van              *
+32050 REM *                  *
+32060 REM * J.G.A. Haubrich  *
+32070 REM * Eindhoven        *
+32080 REM *                  *
+32090 REM * september 1988   *
+32100 REM *                  *
+32110 REM ********************
+32120 REM
+32130 REM TROS-RADIO dd 881123
+32140 REM incl.aanvulling dd 881231

@@ -1,0 +1,135 @@
+
+1000 A=1000:GOTO20:REM"INVUL-2"
+1010 T$="VUL IN: dd, dt, tt, d of t"
+1020 U$="( Als je EEN letter wilt invullen,"
+1030 V$="  dan ook nog een SPATIE tikken! )"
+1040 DIMIV$(10),IV(10),DT(201),NR(201)
+1050 GD=0:FT=0:M=0
+1060 PRINT:PRINT"   EVEN GEDULD A.U.B"
+1070 REM ---DATA regels tellen ---
+1080 MX=0
+1090 READA$
+1100 IFA$<>"*" THENMX=MX+1:GOTO1090
+1110 GOSUB100
+1120 REM --- scherm klaarzetten ---
+1130 HO=2:VE=5:GOSUB110:PRINTT$
+1140 VE=7:GOSUB110:PRINTU$
+1150 VE=8:GOSUB110:PRINTV$
+1160 HZ=0:VZ=12:HU=1:VU=16
+1170 HO=HZ:VE=VZ:GOSUB110:PRINT"  EVEN GEDULD"
+1180 GOSUB3040
+1190 REM --- DATA volgorde schudden ---
+1200 FORN=1 TOMX:DT(N)=N:NEXTN
+1210 FORN=MX TO2 STEP-1
+1220 GOSUB260:X=1+INT(RV*N)
+1230 NR(N)=DT(X)
+1240 FORM=X TON-1:DT(M)=DT(M+1)
+1250 NEXTM:NEXTN
+1260 NR(1)=DT(1)
+2000 REM === HOOFDPROGRAMMA ===
+2010 FORK=1 TOMX
+2020 REM --- zin ophalen uit DATA ---
+2030 RESTORE
+2040 FORN=1 TONR(K):READA$:NEXTN
+2050 REM --- zin analyseren ---
+2060 LA=LEN(A$):N=0:S=0:C=0
+2070 REM -- zoek streepje --
+2080 N=N+1:IFN=LA+1 THEN2200
+2090 IFMID$(A$,N,1)<>"-" THEN2080
+2100 REM -- onthoud plaats en tekst --
+2110 IV(S)=N-1-C:IV$(S)=MID$(A$,N+1,2)
+2120 REM -- verdubbel het streepje --
+2130 B$=LEFT$(A$,N)+"-":C$=RIGHT$(A$,LA-N-2)
+2140 REM -- na 1 letter wordt ingekort-
+2150 IFRIGHT$(IV$(S),1)="." THENC=C+1
+2160 A$=B$+C$
+2170 LA=LA-1:S=S+1:N=N+1
+2180 GOTO2080
+2190 REM --- zin op het scherm ---
+2200 HO=HZ:VE=VZ:GOSUB110:PRINTA$;
+2210 REM --- het invullen ---
+2220 C=0:FORM=0 TOS-1:V=0
+2230 HO=IV(M):VE=VZ:GOSUB110
+2240 SR$=IV$(M):GOSUB330:H$=SR$
+2250 REM -- 1e letter, GEEN spatie --
+2260 GOSUB210:IF(IN$=" ")OR(IN=13) THEN2260
+2270 C$=IN$:PRINTIN$;
+2280 REM -- 2e letter of spatie --
+2290 GOSUB210:PRINTIN$;
+2300 IFIN$=" " THENIN$=".":C=C+1:V=1
+2310 C$=C$+IN$:SR$=C$:GOSUB330:C$=SR$
+2320 REM -- vergelijk --
+2330 IF(C$=H$)OR(C$=IV$(M)) THEN2390
+2340 REM -- fout ingevuld --
+2350 FT=FT+1:GOSUB3040:GOSUB110:PRINT"--";
+2360 IFV=1 THENV=0:C=C-1
+2370 GOTO2230
+2380 REM -- goed ingevuld --
+2390 GOSUB110:PRINTIV$(M):GD=GD+1
+2400 IFIN$<>"." THEN2430
+2410 REM -- na 1 letter zin inkorten --
+2420 HO=HO+1:GOSUB110:PRINTRIGHT$(A$,LEN(A$)-IV(M)-C-1);" "
+2430 GOSUB3040:GOSUB3010
+2440 NEXTM
+2450 GOSUB3010
+2460 HO=HZ:VE=VZ:GOSUB110
+2470 REM -- WIS de ingevulde zin --
+2480 PRINT"                                          "
+2490 NEXTK
+2500 REM === EINDE VAN EEN SERIE ===
+2510 HO=2:VE=20:GOSUB110
+2520 IFFT=0 THENPRINT"GOED GEDAAN!";
+2530 IFFT>0 THENPRINT"KLAAR!";
+2540 PRINT" - NOG 'N KEER?";
+2550 GOSUB210:IFIN=78 THEN950
+2560 IFIN<>74 THEN2550
+2570 GOTO1000
+3000 REM === VETRAGINGSLUS ===
+3010 SP=0:SV=0:SD=10:GOSUB400
+3020 RETURN
+3030 REM === PRINT DE SCORE ===
+3040 HO=HU:VE=VU:GOSUB110
+3050 PRINT" goed ";GD;"            fout ";FT
+3060 HO=IV(M):VE=VZ:GOSUB110
+3070 RETURN
+3080 REM==============================
+25000 DATA"Het hou-t.en huis bran-dde af."
+25010 DATA"Het verbran-d.e huis wordt herbouw-d.."
+25020 DATA"Het vliegtuig uit Parijs is gelan-d.."
+25030 DATA"Het verwen-d.e jongetje huil-d.e."
+25040 DATA"Het schip wen-dde de steven."
+25050 DATA"Ben je daar al aan gewen-d.?"
+25060 DATA"De gewon-d.e hond grom-d.e."
+25070 DATA"Ik verwach-tte je nog niet."
+25080 DATA"Ik vin-d., dat je dik wor-dt."
+25090 DATA"Wor-dt hij daar verwach-t.?"
+26000 DATA"Ik was-t.e heel goe-d. mijn handen."
+26010 DATA"Ik betas-tte de getan-d.e spijlen."
+26020 DATA"De zwaar belas-t.e wagen slinger-d.e."
+30000 DATA"*"
+30010 REM Geschikt voor 2 letter-invul
+30020 REM of gemengd 1- en 2-letters.
+30030 REM invullen met 2 toetsaanslagen
+30040 REM zonder RETURN, hoofdletters
+30050 REM en kleine letters worden
+30060 REM beide geaccepteerd.
+30070 REM Ook geschikt voor UI of EU
+30080 REM IJ of EI en dergelijke.
+30090 REM Zet zelfgemaakte zinnen in
+30100 REM DATA-regels met een '-'
+30110 REM VOOR de in te vullen letters.
+30120 REM Na EEN letter een PUNT zetten
+30130 REM De leerling tikt na EEN
+30140 REM letter als tweede een SPATIE.
+30150 REM Pas zo nodig regel 1010 aan.
+30160 REM MAX 200 DATAREGELS.
+30170 REM LAATSTE DATA MOET "*" ZIJN.
+30180 REM
+30190 REM GEMAAKT OP EEN BBC B COMPUTER
+30200 REM bewerking augustus 1988
+30210 REM
+32000 REM Ch.W. Brederode
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES  LISSE
+32030 REM
+32040 REM TROS-RADIO dd 881026

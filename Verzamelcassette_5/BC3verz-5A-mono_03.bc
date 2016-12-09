@@ -1,0 +1,118 @@
+
+1000 A=1000:GOTO20:REM"INVUL-1"
+1010 T$="VUL IN:  a  of  o"
+1020 DIMIV$(10),IV(10),DT(201),NR(201)
+1030 GD=0:FT=0:M=0
+1040 PRINT:PRINT"   EVEN GEDULD A.U.B"
+1050 REM ---DATA regels tellen ---
+1060 MX=0
+1070 READA$
+1080 IFA$<>"*" THENMX=MX+1:GOTO1070
+1090 GOSUB100
+1100 REM --- scherm klaarzetten ---
+1110 HO=2:VE=7:GOSUB110:PRINTT$
+1120 HZ=0:VZ=12:HU=1:VU=16
+1130 HO=HZ:VE=VZ:GOSUB110:PRINT"  EVEN GEDULD"
+1140 GOSUB3040
+1150 REM --- DATA volgorde schudden ---
+1160 FORN=1 TOMX:DT(N)=N:NEXTN
+1170 FORN=MX TO2 STEP-1
+1180 GOSUB260:X=1+INT(RV*N)
+1190 NR(N)=DT(X)
+1200 FORM=X TON-1:DT(M)=DT(M+1)
+1210 NEXTM:NEXTN
+1220 NR(1)=DT(1)
+2000 REM === HOOFDPROGRAMMA ===
+2010 FORK=1 TOMX
+2020 REM --- zin ophalen uit DATA ---
+2030 RESTORE
+2040 FORN=1 TONR(K):READA$:NEXTN
+2050 REM --- zin analyseren ---
+2060 LA=LEN(A$):N=0:S=0
+2070 N=N+1:IFN=LA+1 THEN2140
+2080 IFMID$(A$,N,1)<>"-" THEN2070
+2090 IV(S)=N-1:IV$(S)=MID$(A$,N+1,1)
+2100 B$=LEFT$(A$,N):C$=RIGHT$(A$,LA-N-1):A$=B$+C$
+2110 LA=LA-1:S=S+1
+2120 GOTO2070
+2130 REM --- zin op het scherm ---
+2140 HO=HZ:VE=VZ:GOSUB110:PRINTA$;
+2150 REM --- het invullen ---
+2160 FORM=0 TOS-1
+2170 HO=IV(M):VE=VZ:GOSUB110
+2180 SR$=IV$(M):GOSUB330:H$=SR$
+2190 GOSUB210:IFIN=13 THEN2190
+2200 IF(IN$=IV$(M))OR(IN$=H$) THEN2220
+2210 FT=FT+1:GOSUB3040:GOTO2190
+2220 PRINTIV$(M):GD=GD+1
+2230 GOSUB3040:GOSUB3010
+2240 NEXTM
+2250 GOSUB3010
+2260 HO=HZ:VE=VZ:GOSUB110
+2270 PRINT"                                          "
+2280 NEXTK
+2290 REM === EINDE VAN EEN SERIE ===
+2300 HO=2:VE=20:GOSUB110
+2310 IFFT=0 THENPRINT"GOED GEDAAN!";
+2320 IFFT>0 THENPRINT"KLAAR!";
+2330 PRINT" - NOG 'N KEER?";
+2340 GOSUB210:IFIN=78 THEN950:REM N
+2350 IFIN<>74 THEN2340
+2360 GOTO1000
+3000 REM === VERTRAGINGSLUS ===
+3010 SP=0:SV=0:SD=10:GOSUB400
+3020 RETURN
+3030 REM === PRINT DE SCORE ===
+3040 HO=HU:VE=VU:GOSUB110
+3050 PRINT" goed ";GD;"            fout ";FT
+3060 HO=IV(M):VE=VZ:GOSUB110
+3070 RETURN
+3080 REM==============================
+25000 DATA"Jan heeft een bl-auwe jas."
+25010 DATA"Dat is een heel -oud geb-ouw."
+25020 DATA"Een tijger heeft scherpe kl-auwen."
+25030 DATA"De p-auw heeft bl-auwe veren."
+25040 DATA"Die bl-auwe -auto is van mijn oom."
+25050 DATA"Doe niet zo fl-auw, geef g-auw hier!"
+25060 DATA"Je moet niet zo doord-ouwen."
+25070 DATA"Wil je dat bl-auwe papier opv-ouwen?"
+25080 DATA"Deze -oude hond vertr-ouwt niemand."
+25090 DATA"De boekh-ouder keek heel ben-auwd."
+25100 DATA"Zijn g-ouden ring was er niet meer."
+25110 DATA"De bierbr-ouwerij is verb-ouwd."
+25120 DATA"Geef mij het z-out eens aan."
+25130 DATA"Die m-ouwen zijn veel te n-auw."
+25140 DATA"Die -oude mevr-ouw heeft het k-oud."
+25150 DATA"Gr-auwe ganzen zijn mooie vogels."
+25160 DATA"Ik h-oud niet zo van haverm-out."
+25170 DATA"G-auw en goed zijn twee dingen!"
+25180 DATA"Z-ou ik nu g-auw klaar zijn?"
+25190 DATA"Piet zag bl-auw van de k-ou!"
+25200 DATA"Wat loopt die poes toch te mi-auwen!"
+25210 DATA"Koeien en geiten zijn herk-auwers."
+25220 DATA"Je hoeft niet zo te sn-auwen."
+25230 DATA"De hond eet r-auw vlees."
+25240 DATA"Ik word g-auw verk-ouden."
+29999 DATA"*"
+30000 REM Geschikt voor 1 letter-invul.
+30010 REM invullen met 1 toetsaanslag
+30020 REM zonder RETURN, hoofdletters
+30030 REM en kleine letters worden
+30040 REM beide geaccepteerd.
+30050 REM Ook geschikt voor D of T
+30060 REM F of V en dergelijke.
+30070 REM Zet zelfgemaakte zinnen in
+30080 REM DATA-regels met een '-'
+30090 REM VOOR de in te vullen letter.
+30100 REM Pas zo nodig regel 1010 aan.
+30110 REM MAX 200 DATAREGELS.
+30120 REM LAATSTE DATA MOET "*" ZIJN.
+30130 REM
+30140 REM GEMAAKT OP EEN BBC B COMPUTER
+30150 REM bewerking augustus 1988
+30160 REM
+32000 REM Ch.W. Brederode
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES  LISSE
+32030 REM
+32040 REM TROS-RADIO dd 881026

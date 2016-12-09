@@ -1,0 +1,103 @@
+
+1000 A=10:GOTO20:REM *CORRECTIES C-64*
+1010 VT=VE:Q$=CHR$(34)
+1020 PRINT"Wijziging op het vertaalprogramma voor"
+1030 PRINT"    de Commodore-64/-128":PRINT
+1040 PRINT"Melis van Deelen, onze Commodore-ex-"
+1050 PRINT"pert, vond een methode waarmee in"
+1060 PRINT"bepaalde gevallen de C-64 beter in"
+1070 PRINT"staat is BASICODE-programma's in te"
+1080 PRINT"lezen. We geven dit dus graag door aan"
+1090 PRINT"de gebruikers. U moet daartoe enkele"
+1100 PRINT"wijzigingen in het vertaalprogramma"
+1110 PRINT"aanbrengen. Een waarschuwing is daarbij"
+1120 PRINT"op zijn plaats: gooi het vertaalpro-"
+1130 PRINT"gramma zoals u dat nu hebt beslist niet"
+1140 PRINT"weg en let erg goed op welke versie van"
+1150 PRINT"het vertaalprogramma u hebt.":GOSUB1960
+1160 PRINT"DEEL-I: de versie bij de EERSTE druk":PRINT
+1170 PRINT"N.B.: de nu volgende correcties zijn"
+1180 PRINT"ALLEEN van toepassing op de eerste"
+1190 PRINT"versie van het vertaalprogramma, de"
+1200 PRINT"versie dus zoals die bij de EERSTE DRUK"
+1210 PRINT"van het BASICODE-3 boek op cassette"
+1220 PRINT"staat. Voor alle zekerheid: bij deze"
+1230 PRINT"versie staat in het keuzemenu"
+1240 PRINT" '(c) J Haubrich 1986'. De correcties"
+1250 PRINT"werken UITSLUITEND bij de originele"
+1260 PRINT"versie zoals die op de vertaalcassette"
+1270 PRINT"staat en beslist NIET bij latere"
+1280 PRINT"versies van dit vertaalprogramma.":GOSUB1960
+1290 PRINT"Met deze correcties wordt het volgende"
+1300 PRINT"verholpen:":PRINT
+1310 PRINT" - het inlezen kan in bepaalde slechte"
+1320 PRINT"   omstandigheden beter verlopen. Dit"
+1330 PRINT"   gebeurt middels de eerste twee"
+1340 PRINT"   POKE-opdrachten.":GOSUB1960
+1350 PRINT"Voor het inbrengen van de correcties"
+1360 PRINT"voert u de volgende instructies uit:":PRINT
+1370 PRINT"-1- Zet de computer aan en lees het"
+1380 PRINT"    vertaalprogramma in met:"
+1390 PRINT"       LOAD";Q$;"C-64 BASICODE-3";Q$:PRINT
+1400 PRINT"N.B.: gebruik vooral niet de"
+1410 PRINT"      SHIFT+RUN/STOP-toets en geef"
+1420 PRINT"      beslist geen RUN-opdracht.":PRINT
+1430 PRINT"-2- Tik nu de volgende opdrachten in:":PRINT
+1440 PRINT" POKE 6632,90"
+1450 PRINT" POKE 6636,90"
+1460 PRINT" SAVE";Q$;"C-64 BASICODE-3a";Q$
+1470 PRINT:PRINT"-3- Hierna kunt u dit gewijzigde ver-"
+1480 PRINT"    taalprogramma laden en runnen."
+1490 GOSUB1960:PRINT"DEEL-II: de versie bij de TWEEDE druk"
+1500 PRINT:PRINT"N.B.: de nu volgende tekst is ALLEEN"
+1510 PRINT"van toepassing op de tweede versie van"
+1520 PRINT"het vertaalprogramma, de versie dus"
+1530 PRINT"zoals die bij de TWEEDE DRUK van het"
+1540 PRINT"BASICODE-3 boek op cassette staat. Voor"
+1550 PRINT"alle zekerheid: bij deze versie staat"
+1560 PRINT"in het keuzemenu"
+1570 PRINT" '(c) JH 1987 (c) MvD 1987'."
+1580 GOSUB1960:PRINT"Met deze correcties worden de volgende"
+1590 PRINT"foutjes verholpen:":PRINT
+1600 PRINT"- het inlezen kan in bepaalde slechte"
+1610 PRINT"  omstandigheden beter verlopen. Dit"
+1620 PRINT"  gebeurt middels de eerste twee"
+1630 PRINT"  POKE-opdrachten. Als u tevreden was"
+1640 PRINT"  over het inlezen dan kunt u deze twee"
+1650 PRINT"  POKE-opdrachten overslaan."
+1660 PRINT"- bij het saven van BASICODE komt er"
+1670 PRINT"  niet meer onnodig de foutmelding dat"
+1680 PRINT"  er te lange regels zijn."
+1690 PRINT"- een afrondfout in de grafische"
+1700 PRINT"  routines wordt hersteld."
+1710 GOSUB1960:PRINT"Voor het inbrengen van de correcties"
+1720 PRINT"voert u de volgende instructies uit:":PRINT
+1730 PRINT"-1- Zet de computer aan en lees het"
+1740 PRINT"    vertaalprogramma in met:"
+1750 PRINT"      LOAD";Q$;"C-64 BASICODE-3";Q$
+1760 PRINT:PRINT"N.B.: gebruik vooral niet de"
+1770 PRINT"      SHIFT+RUN/STOP-toets en geef"
+1780 PRINT"      beslist geen RUN-opdracht."
+1790 GOSUB1960:PRINT"-2- Tik nu de volgende opdrachten in:"
+1800 PRINT:PRINT" POKE 6104,90"
+1810 PRINT" POKE 6108,90"
+1820 PRINT" POKE 5269,64"
+1830 PRINT" POKE 4675,103"
+1840 PRINT" POKE 4676,184"
+1850 PRINT" POKE 4678,204"
+1860 PRINT" POKE 4679,188"
+1870 PRINT" POKE 4698,40"
+1880 PRINT" POKE 4701,204"
+1890 PRINT" POKE 4702,188"
+1900 PRINT" POKE 4714,1"
+1910 PRINT" SAVE";Q$;"C-64 BASICODE-3a";Q$
+1920 PRINT:PRINT"-3- Hierna kunt u dit gewijzigde ver-"
+1930 PRINT"    taalprogramma laden en runnen."
+1940 GOSUB1960:PRINT"Einde correcties":GOSUB1960:GOTO950
+1950 REM wacht en schermschoon
+1960 HO=0:VE=VT:GOSUB110:PRINT"Toets voor vervolg";
+1970 GOSUB210:GOTO100
+32000 REM Vrij van copyright
+32010 REM Stichting BASICODE
+32020 REM Eindhoven
+32030 REM TROS-RADIO dd 881130
