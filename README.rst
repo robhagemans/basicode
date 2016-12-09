@@ -41,9 +41,13 @@ Source                              Medium      Basicode version    Language
 `The Best of BASICODE 3`_           Tape        BASICODE-2          Dutch
 `The Best of BASICODE 4`_           Tape        BASICODE-2          Dutch
 `The Best of BASICODE 5`_           CD          BASICODE-2          Dutch
+`The Best of BASICODE 6`_           Diskette    BASICODE-2          Dutch
+`The Best of BASICODE 7`_           Diskettes   Text only           Dutch
 `BASICODE-3 Verzamelcassette 1`_    Tape        BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 2`_    Tape        BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 3`_    Tape        BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 4`_    Tape        BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 5`_    Tape        BASICODE-3          Dutch
 ==================================  ==========  ==================  ==================
 
 .. _BASICODE-2A: Basicode-2a/
@@ -54,10 +58,14 @@ Source                              Medium      Basicode version    Language
 .. _The Best of BASICODE 3: Best_of_Basicode_3/
 .. _The Best of BASICODE 4: Best_of_Basicode_4/
 .. _The Best of BASICODE 5: Best_of_Basicode_5/
+.. _The Best of BASICODE 6: Best_of_Basicode_6/
+.. _The Best of BASICODE 7: Best_of_Basicode_7/
 .. _BASICODE-3: Basicode-3/
 .. _BASICODE-3 Verzamelcassette 1: Verzamelcassette_1/
 .. _BASICODE-3 Verzamelcassette 2: Verzamelcassette_2/
 .. _BASICODE-3 Verzamelcassette 3: Verzamelcassette_3/
+.. _BASICODE-3 Verzamelcassette 4: Verzamelcassette_4/
+.. _BASICODE-3 Verzamelcassette 5: Verzamelcassette_5/
 
 *Many of the above sources additionally contain translation programs, encoded in the native modulation for each computer.
 These are not included here.*
