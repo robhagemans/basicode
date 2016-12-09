@@ -223,7 +223,7 @@
 4600 PRINT"Verkeerde olie in het blok"
 4610 PRINT:PRINT"Speciale olietoevoeging in de olie"
 4620 PRINT:PRINT" (bijv.molybdeendisulfide)"
-4630 PRINT:PRIN"Koppelinsveren te slap"
+4630 PRINT:PRINT"Koppelinsveren te slap"
 4640 PRINT:PRINT"Koppelingsplaten versleten"
 4650 GOTO9000
 4660 PRINT"Schokt de koppeling bij het wegrijden ?"
