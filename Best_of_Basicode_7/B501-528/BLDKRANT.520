@@ -1,0 +1,343 @@
+520, maa 07 sep '92
+
+SPECIAL: DISKETTES (DEEL 1)
+
+In het tijdschrift PC-Active van juni
+1992 stond een interessant artikel over
+diskettes, geschreven door Wammes
+Witkop. De PCA-redactie verleende ons
+toestemming het artikel over te nemen
+en te bewerken voor de Beeldkrant.
+Vanwege de lengte zullen we het in twee
+delen uitzenden. Vandaag deel 1, waarin
+een stukje uit de geschiedenis van
+magnetische opslagmedia en een
+uiteenzetting over de 'gegevens
+administratie' op een floppy disk.
+
+INLEIDING
+
+Iedereen gebruikt floppy disks. En we
+hebben allemaal wel eens meegemaakt dat
+een disk die eerst niet goed
+geformatteerd wilde worden bij een
+tweede poging foutloos bleek. Vreemd?
+Niet echt, als je wat meer van floppies
+weet.
+
+Op een diskette kan informatie worden
+opgeslagen. Net zoals bij een videoband
+of een audiocassette. Het basisprincipe
+is in alle gevallen hetzelfde, want
+alledrie die media zijn MAGNETISCH. De
+werking berust op het magnetiseerbaar
+materiaal op de band of op de 'cookie',
+zoals het kunststof schijfje dat het
+hart van een floppy disk vormt heet. En
+om uit te leggen hoe dat werkt is een
+stukje geschiedenis noodzakelijk.
+
+DRAADRECORDER
+
+De allereerste geluidsrecorders waren
+geen bandrecorders, maar
+draadrecorders. Op de spoelen zat een
+lang stuk dun en soepel ijzerdraad, dat
+als opname- en weergave- medium werd
+gebruikt. Daarbij maakte men gebruik
+van het al eeuwen bekende feit dat
+bepaalde materialen, zoals ijzer, zich
+laten magnetiseren. Door een sterke
+magneet langs een ijzeren spijker te
+halen kan men die spijker ook
+magnetisch maken: magnetisme is
+overdraagbaar. Zo'n magnetisch gemaakte
+spijker kan vervolgens als een
+primitieve kompasnaald worden gebruikt,
+zoals in veel natuurkunde boeken te
+lezen valt. Met andere woorden, dat
+magnetisme is op zijn minst niet meteen
+weer verdwenen: het gemagnetiseerde
+ijzer blijft langere tijd magnetisch.
+Minder sterk dan de magneet die
+gebruikt werd om het 'op te laden',
+maar het magneetveld blijft lange tijd
+aantoonbaar. Een magneet is een soort
+geheugen.
+
+ELEKTROMAGNEET
+
+Maar er zijn meer manieren om een
+magneet te maken. De elektromagneet
+bijvoorbeeld, een constructie waarbij
+een stuk stroomdraad om een ijzerkern
+gewikkeld is. Als er stroom door die
+draad loopt blijkt dat opeens een heel
+sterk magneetveld te veroorzaken. En
+niet alleen dat, maar dat veld draait
+ook nog eens om, als we de plus en de
+min van die stroom omdraaien. Ook het
+omgekeerde is waar: als zo'n
+elektromagneet zonder dat er spanning
+op de draadwinding staat door een
+wisselend magnetisch veld beweegt, kan
+er spanning over die spoel gemeten
+worden.
+
+Vanaf dat punt is de draadrecorder niet
+zo lastig meer. Twee spoelen,
+ijzerdraad, een elektromagneet en wat
+motoren om die draad langs die magneet
+te laten lopen. En ziedaar: de draad
+houdt in de vorm van wisselende
+magnetisatie keurig een signaal vast,
+dat middels wat elektronica zoals
+versterkers aan de kop - zoals we die
+elektromagneet nu maar gaan noemen -
+wordt aangesloten. Wanneer later de
+zaak omgedraaid wordt en de draad langs
+de kop gevoerd wordt, terwijl de
+versterker juist het signaal dat van de
+kop komt versterkt, dan krijgen we een
+redelijk natuurgetrouw signaal terug.
+En dat was de eerste draadrecorder voor
+geluid.
+
+VOLGENDE STAP
+
+Van draad naar band was een zeer voor
+de hand liggende stap. IJzerdraad is
+zwaar en kan nog roesten bovendien. Een
+kunststof band met daarop een
+magnetiseerbare laag bleek veel
+handelbaarder en betrouwbaarder. Om te
+beginnen, het kopcontact is bij een
+band vele malen beter. De kop heeft
+niet te maken met een ronde draad, maar
+met een vlak oppervlak. En door de kop
+zo te bouwen dat deze een breed spoor
+van de band gebruikt, kan er veel meer
+signaal op die band worden verstouwd,
+zodat er ook meer teruggelezen kan
+worden als het op afspelen aankomt. En
+al snel bouwde men zelfs
+stereorecorders, met twee koppen naast
+elkaar, eentje voor het linkerkanaal en
+eentje voor het rechterkanaal. De
+sporen werden smaller, maar het signaal
+bleef afdoende, zeker voor geluid. Maar
+er zijn meer problemen dan alleen de
+signaalsterkte...
+
+FREQUENTIE
+
+Zo'n gewone bandrecorder werkt exact
+als de cassetterecorder. En
+uiteindelijk geldt daarbij dat het
+frequentiebereik best te overzien is.
+Om spraak goed weer te geven worden
+niet zulke hoge eisen gesteld, dan is
+een bandbreedte van tussen de 100 Hertz
+en de 4000 Hertz (dat noemen we meestal
+4 kHz) afdoende. Hertz is daarbij het
+aantal trillingen per seconde, zodat
+voor spraak per seconde zo'n 4000
+veldwisselingen op de band genoeg zijn.
+HiFi stelt aanzienlijk hogere eisen:
+daar is de bovengrens om en nabij de 18
+kHz. En dat wordt op een gewone
+cassette lastig, want die heeft een
+bandsnelheid van 4,75 centimeter per
+seconde. Afgerond moeten er dan per
+millimeter band 38 veldwisselingen
+worden vastgelegd, en dat stelt hoge
+eisen aan de kwaliteit van het
+magnetiseerbaar materiaal. De werking
+van de kop dient dan heel zorgvuldig te
+zijn berekend: het signaal moet in de
+lengterichting van de band zo min
+mogelijk spreiden. Eigenlijk is de
+truuk om de diepte in te gaan.
+
+Over video zullen we het maar niet
+hebben, want daar zijn de bandbreedtes
+veel en veel groter en worden er
+technisch complexe truuks gebruikt om
+de bandsnelheid ten opzichte van de kop
+te verhogen. Om een tip van de sluier
+op te lichten: een videorecorder
+gebruikt geen vaste kop, maar een
+ronddraaiende koppentrommel, die
+diagonale spoortjes schrijft, die door
+de elektronica later weer tot EEN
+signaal worden samengevoegd. De
+gecombineerde beweging van
+koppentrommel en band levert (vanaf die
+kop gezien) een hele hoge relatieve
+bandsnelheid op, terwijl de band zelf
+niet erg snel wordt getransporteerd.
+
+FLOPPY DISK
+
+En dan nu: de diskette. Ook daar is het
+allemaal niet zo rechttoe-rechtaan als
+bij de audio-cassette, hoewel we wel
+dezelfde soort problemen tegenkomen.
+Bij een disk is het magnetiseerbaar
+materiaal op het schijfje, de cookie,
+aangebracht. Twee kleine oppervlakken -
+of EEN bij enkelzijdige disks - waar
+heel wat informatie op moet staan.
+Bovendien, de disk wijkt in EEN opzicht
+ingrijpend af van de geluids- of
+videoband. Bij banden wordt de
+informatie 'sequentieel' opgeslagen,
+ofwel achter elkaar. Op zich prima,
+want in principe willen we een stuk
+muziek wel gewoon van het begin af aan
+horen. Het is alleen wat lastig als we
+een nummer middenin een cassette
+zoeken. Voor een disk zou dat rampzalig
+zijn, als we de hele disk zouden moeten
+doorzoeken voordat we het gewenste
+stukje vinden. Vandaar dat op een disk
+geen lang spiraalvormig spoor staat,
+maar juist allemaal kleine stukjes die
+per stuk te vinden zijn, de sectoren.
+Binnen iedere sector staan de data dan
+weliswaar sequentieel, maar de sectoren
+zelf zijn per stuk snel onder de kop te
+manoeuvreren.
+
+TRACKS
+
+Om de disk in logische stukjes op te
+delen zijn er eigenlijk drie eenheden.
+Naast de voor de hand liggende (de twee
+zijden) zijn dat de tracks en de
+sectoren. Een track is eigenlijk zoiets
+als een spoor, maar dan als EEN enkele
+cirkel. Op het diskoppervlak bevinden
+zich een flink aantal tracks, die
+allemaal cirkelvormig binnen elkaar
+liggen. Afhankelijk van het soort disk
+zijn dat er meestal 40 of 80. Het
+aantal tracks bepaalt natuurlijk ook
+meteen de maximale spoorbreedte,
+waarbij geldt dat tussen de tracks
+onderling ook nog een lege ruimte moet
+zitten, anders zou de kop geen zuiver
+signaal kunnen lezen maar meteen
+stoorsignalen opvangen van de tracks
+ernaast. Overigens worden al die tracks
+door slechts EEN kop per kant
+beschreven en gelezen: die kop wordt
+heen en weer bewogen, terwijl de disk
+juist ronddraait. Zo kan de kop iedere
+plek op de disk bereiken. Uitgaande van
+een 80-tracks 3,5 inch diskette zal het
+duidelijk zijn dat die spoorbreedte erg
+smal is.
+
+SECTOREN
+
+Maar daarmee zijn we er nog niet. Want
+de tracks zijn weer verdeeld in
+sectoren. En een sector is de kleinste
+hoeveelheid informatie die we van een
+disk kunnen lezen of er naartoe
+schrijven. En in dat laatste zit hem de
+kneep.
+
+Iedereen die wel eens met een
+videorecorder of een gewone
+bandrecorder heeft gespeeld zal weten
+dat het onmogelijk is om zonder meer
+een fraaie 'las' te maken, het ene
+geluid of beeld in het ander over te
+laten lopen, simpel door een stukje
+opnieuw op te nemen. En met diskettes
+is dat wel wat we willen: als we een
+bestand opnieuw wegschrijven moet het
+niet tot verminkingen aan het einde van
+een ander bestand leiden. De lassen
+moeten schoon zijn.
+
+Vandaar de sectoren: stukjes van een
+track die in EEN keer geschreven (en
+gelezen) worden. Elke track op een disk
+is in een aantal sectoren verdeeld: op
+gewone disks zijn dat er 9, op high
+density disks zelfs 18. Tussen die
+sectoren zitten lege stukjes disk,
+zodat er geen sprake is van lassen:
+iedere sector staat geheel op zichzelf
+op de disk.
+
+FOUTCONTROLE
+
+Een sector bestaat uit een aantal bytes
+data, voorzien van de nodige omringende
+informatie. Zo is iedere sector
+voorzien van een nummer, dat nodig is
+voor de interne boekhouding van een
+diskette - en die is niet mis, want al
+die losse stukjes moeten wel in de
+juiste volgorde gelezen of beschreven
+worden. Ook heeft elke sector een
+controlegetal, dat achter de eigenlijke
+data staat. Als gebruiker heb je daar
+nooit iets mee te maken, maar de
+diskdrive-logica zelf gebruikt die
+controle- getallen wel degelijk. Zo'n
+controlegetal is eigenlijk de uitkomst
+van een speciaal soort rekensommetje
+over alle gegevens in een sector, en
+ook bij het lezen van een sector rekent
+de disk-controller dat getal
+vliegensvlug uit. Als dat niet
+overeenkomt met de checksum zoals die
+van de disk gelezen wordt, probeert de
+controller de sector nogmaals te lezen.
+En als het na een aantal keren proberen
+nog niet klopt, dan wordt de gebruiker
+gewaarschuwd dat deze sector niet
+betrouwbaar meer is: er verschijnt een
+foutmelding.
+
+BOEKHOUDING
+
+Sides, tracks en sectoren. Drie
+getallen, die tezamen het
+coordinatenstelsel van onze nederige
+floppies vormen. En waaromheen een hele
+boekhouding moet worden bijgehouden.
+Bij kleine bestandjes is dat relatief
+simpel. Als een bestand niet groter dan
+1 sector is, dan lijkt het allemaal nog
+wel te overzien. Bestand zus-en-zo
+staat gewoon in sector zoveel, en met
+een klein omrekentabelletje weet de
+disk-elektronica dan wel uit te
+puzzelen welke kant en welke track dat
+is. Eenmaal bij die track aangekomen
+zal de kop van iedere sector het
+identificatienummer lezen, net zolang
+tot de goede sector voorbij suist.
+Inlezen in de buffer en klaar is Kees.
+
+Grotere bestanden zijn veel lastiger.
+Want je mag er als diskcontroller niet
+op rekenen dat de logisch volgende
+sector ook de aansluitende informatie
+bevat. In eerste instantie misschien
+wel, maar als een disk eenmaal een tijd
+in gebruik is geweest wordt het wel wat
+ingewikkelder. Want die gebruikers
+wissen ook voortdurend bestanden. En
+dan willen ze wel graag die sectoren
+weer voor nieuwe gegevens kunnen
+gebruiken.
+
+Einde deel 1.
+

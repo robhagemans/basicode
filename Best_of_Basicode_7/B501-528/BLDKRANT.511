@@ -1,0 +1,342 @@
+511, maa 06 jul '92
+
+HARDE AANPAK COMPUTERCRIMINALITEIT
+
+De Tweede Kamer kan zich in grote
+lijnen vinden in het wetsvoorstel van
+minister Hirsch Ballin (Justitie) om de
+oprukkende computer criminaliteit
+strenger aan te pakken. Een
+kamermeerderheid vindt wel dat
+particulieren en bedrijven zelf ook een
+taak hebben om hun computersystemen te
+beveiligen, zo bleek afgelopen woensdag
+24 juni in het debat met de bewindsman.
+Het wetsvoorstel regelt onder meer het
+strafbaar stellen van het binnendringen
+in beveiligde computerbestanden en het
+toekennen van de bevoegdheid aan de
+politie om data- en fax- verbindingen
+af te tappen.
+
+De Centrale Recherche Informatiedienst
+CRI verwacht dat het aantal misdrijven
+met computers de komende tien jaar zeer
+fors zal toenemen. Door de opkomst van
+teleshopping en thuisbankieren is de
+misdaad per computer een groeimarkt
+geworden, zo heeft de CRI onlangs
+vastgesteld. Ook de gebruikers
+vriendelijkheid van de computer speelt
+daarbij een rol.
+
+Met het wetsvoorstel van Hirsch Ballin
+kan ook het verspreiden van
+computervirussen strenger worden
+aangepakt. Volgens de jongste CRI-
+gegevens zouden er inmiddels 1.300
+computer virussen in omloop zijn. Dat
+waren er vijf jaar geleden nog maar 80.
+In de afgelopen twee jaar is het aantal
+virussen explosief gestegen van 350 in
+1990 tot rond de 1.000 vorig jaar. In
+de computersector bestaat de vrees dat
+het aantal virussen tegen het eind van
+1992 zal uitkomen op 5.000. (Bron: ANP)
+
+TEST: DEMO IB-LINK
+
+Van de firma INFOboard in Herkenbosch
+ontving de Scoop redactie op MS-DOS
+diskette een demo-versie van IB-Link.
+Dit is een speciale optie die sinds
+kort in het communicatie programma
+CommPLUS (niet te verwarren met Comm80
+of Comm90) zit ingebouwd. IB-Link zou
+tijdens een sessie met het INFOboard
+BBS (tel. 04752-6200) voor een snellere
+schermopbouw moeten zorgen. Het systeem
+werkt als volgt: IB-Link zorgt ervoor
+dat alle schermen die men raadpleegt
+ook direkt op de harde schijf worden
+opgeslagen. Vraagt men nu gedurende een
+verbinding eenzelfde scherm nog een
+keer op, dan zoekt IB-Link dat scherm
+niet via de telefoonlijn in het BBS,
+maar kijkt eerst op de harde schijf van
+de eigen computer en haalt het zo
+mogelijk daar vandaan. U begrijpt: dat
+gaat sneller en spaart telefoon kosten.
+Vooral bij grafische schermen met veel
+kleur (ANSI stuurcodes!) kunnen de
+verschillen oplopen tot zo'n 7
+seconden.
+
+AUTOMATISCHE LOG-IN
+
+Onze demo werkte weliswaar direkt vanaf
+de diskette, maar alles gaat sneller
+vanaf de harde schijf. Een eenvoudige
+BAT file regelt het kopieren van
+diskette naar de nieuwe directory
+C:\IBDEMO. IBDEMO.EXE start de demo op,
+zorgt voor detectie van de modem, belt
+dan automatisch het BBS en logt ook
+automatisch in. Het eerste scherm
+verschijnt inderdaad pas na vele
+seconden en de demo geeft als
+commentaar dat het wel erg lang duurt
+allemaal. Maar het kan ook sneller,
+lezen we op de monitor. En even later
+flitst in een vlot tempo een flink
+aantal schermen voorbij, waarmee het
+nut van IB-Link was aangetoond.
+
+SCHERMOPBOUW ECHT SNELLER?
+
+Die bewering was niet meteen te
+controleren. Op de diskette en dus ook
+op onze harde schijf stonden namelijk
+al een aantal schermen en precies die
+werden door de demo achter elkaar
+getoond. Er was geen sprake van dat de
+demo-schermen eerst vanuit het
+INFOboard BBS werden verstuurd en
+vervolgens op de harde schijf werden
+opgeslagen. Dus verwijderden we een
+paar demo-schermen van de harde schijf
+en belden opnieuw. Inderdaad begon onze
+harde schijf weer vol te lopen! Nog
+eens bellen en het werkte weer net zo
+snel als tijdens de eerste verbinding.
+
+Er is dus met IB-Link zeker sprake van
+tijdwinst als men on-line een scherm
+voor de tweede keer oproept. Hoeveel
+men bespaart aan telefoonkosten is niet
+te voorspellen. Wel is duidelijk dat de
+besparing kleiner is, naarmate de modem
+sneller is. Aan de andere kant is de
+besparing groter naarmate de
+verbindings kosten hoger zijn. De harde
+schijf raakt natuurlijk wel sneller vol
+en na enige tijd lijkt het raadzaam
+eens een grote schoonmaak te houden om
+overbodige schermen te wissen.
+
+LOG-FILE
+
+Een redelijk alternatief voor IB-Link
+lijkt mij het aanmaken van een
+logbestand tijdens de verbinding. Ook
+dan worden de schermen bewaard, de
+verbinding wordt verbroken, de schermen
+kunnen nu rustig geheel off-line worden
+bekeken en eventueel logt men een
+tweede keer in om bijvoorbeeld een
+reaktie te uploaden. Maar van enige
+besparing TIJDENS de verbinding, zoals
+bij IB-Link, is dan natuurlijk geen
+sprake. De meeste kosten bespaart men
+ongetwijfeld met een combinatie van
+IB-Link en een logfile.
+
+Tot slot voor de duidelijkheid nog dit:
+IB-Link is alleen bruikbaar als u belt
+met het INFOboard BBS. Andere BBS-en in
+Nederland bieden deze mogelijkheid tot
+kostenbesparing door snellere
+schermopbouw (nog) niet. Het nut van
+deze optie in CommPLUS is dan ook
+beperkt. Het communicatie programma
+zelf is natuurlijk wel bruikbaar voor
+alle BBS-en. (Chris van Offeren)
+
+PRIJZEN EN INFORMATIE
+
+IB-Link kan gebruikt worden na
+registratie van het CommPLUS
+communicatie pakket (f99,-). Verder is
+een abonnement op INFOboard nodig
+(f36,- per jaar). Comm80 en Comm90
+gebruikers kunnen CommPLUS aanschaffen
+voor f50,-. Nadere inlichtingen zijn
+verkrijgbaar via het BBS of bij:
+INFOboard BV, Veldweg 33, 6075 NL
+Herkenbosch, tel. 04752-5868, fax
+04752-6584.
+
+TEST: VIDEOBLASTER
+
+WALOP Electronics uit Rotterdam
+introduceerde onlangs, als vervolg op
+de SoundBlaster-Pro geluidskaart voor
+de PC, de VideoBlaster, de tot voor
+kort ontbrekende schakel in het
+multimedia concept. Het derde lid uit
+de Blaster Family is de Multi Media
+Upgrade Kit, bestaande uit een
+SoundBlaster Pro kaart, een CD-ROM
+speler met 5 CD-ROM's, een
+MIDI-connector en veel ondersteunende
+software voor DOS en Windows 3.0/3.1.
+
+De Multi Media Upgrade Kit bespreken we
+na de vakantie. In de nu volgende
+recensie nemen we de Videoblaster onder
+de loep.
+
+ALGEMEEN
+
+De VideoBlaster is een framegrabber,
+wat inhoudt dat er een analoog
+videosignaal aangeboden wordt en in
+realtime mode wordt vertaald naar een
+VGA-signaal, met de mogelijkheid de
+beelden te bevriezen (freeze) en deze
+op te slaan op disk met bv. de extensie
+PCX of BMP. Wat de VideoBlaster niet
+kan is computer-tekst mengen (overlay)
+met het aangeboden videosignaal en het
+beeld op band vastleggen met een
+videorecorder. Dus de vakantiefilm kan
+niet voorzien worden van ondertiteling
+met behulp van de VideoBlaster. Wat
+deze kaart wel kan is de PC-VGA monitor
+gebruiken als TV-monitor of
+presentatiescherm voor het
+bedrijfsleven.
+
+HARDWARE
+
+De VideoBlaster PC-kaart, die
+ontwikkeld is door Creative Labs Inc.
+in Singapore, past in een 16-bits
+ISA-bus (PC-AT en hoger) en moet naast
+de VGA-kaart geplaatst worden. De
+feature bus van de VGA-kaart wordt via
+de meegeleverde kabel verbonden met de
+VideoBlaster, de VGA-monitor wordt op
+de VideoBlaster aangesloten. Als er op
+de VGA- kaart geen feature connector
+aanwezig is, dan is de VideoBlaster
+niet te gebruiken. De test werd
+overigens uitgevoerd op een 386/25
+kloon met een Tseng ET3000 VGA-kaart,
+die wel is voorzien van zo'n extra
+connector.
+
+Op de VideoBlaster kunnen 3
+video-bronnen worden aangesloten, zoals
+een TV-tuner, een videocamera of een
+videorecorder. Er kan echter van
+slechts EEN van de 3 video- bronnen de
+audio-uitgang (L+R) worden aangesloten,
+audio-aansluitingen voor de overige
+video-bronnen ontbreken. Wat we ook
+misten was een Y/C-bus aansluiting, die
+gebruikt wordt bij S-VHS en Hi8-video.
+
+SOFTWARE
+
+Bij de VideoBlaster, die bestaat uit
+een lange insteekkaart, wordt de
+software zowel op 3,5 als 5,25 inch
+diskettes meegeleverd. Hierop staat
+VideoBlaster besturings software en
+Tempra presentatie software. Verder
+zitten er nog 2 begeleidende boekjes in
+het pakket. De handleiding is helaas in
+het Engels en zeer summier opgesteld,
+met een korte opsomming van de
+mogelijkheden.
+
+De software installatie is relatief
+eenvoudig omdat in de meeste gevallen
+de default instellingen correct zijn,
+zodat alleen de enter-toets gebruikt
+hoeft te worden. Zowel bij de
+SoundBlaster als de VideoBlaster geldt
+natuurlijk dat enige specifieke kennis
+van MS-DOS machines, zoals IRQ, I/O
+base adres, videosignaal e.d.
+noodzakelijk is.
+
+DOS EN WINDOWS
+
+De VideoBlaster software is geschikt
+voor de DOS omgeving en de Windows
+3.0/3.1 omgeving. De DOS omgeving is
+makkelijk en nagenoeg direkt te
+gebruiken en het resultaat is met een
+aangesloten videobron direkt zichtbaar.
+Bij de Windows omgeving is eerst een
+installatie onder Windows noodzakelijk,
+wat omslachtiger is en niet direct
+functioneert met de default
+instellingen. De video-inputs moeten
+eerst met VB-Setup omgedefinieerd
+worden naar een PAL videosignaal i.p.v.
+NTSC- signaal. Uiteindelijk is het
+resultaat ook hier zichtbaar en als het
+videosignaal van goede kwaliteit is
+heeft men een uitstekende PAL-video
+naar VGA-signaal converter.
+
+TEMPRA PRESENTATIE-SOFTWARE
+
+Deze bestaat uit Tempra Show en Tempra
+GIF. De installatie is de eenvoud
+zelve, en zal geen problemen opleveren.
+Vervolgens kan de Tempra software onder
+Windows 3.0/3.1 geinstalleerd worden.
+Tempra heeft echter zijn eigen
+windowscherm, wat inhoudt dat bij deze
+software de mouse driver onder Windows
+niet werkt, zodat de DOS mouse driver
+ook geladen moet worden. Tempra
+ondersteunt zowel de VideoBlaster als
+de SoundBlaster.
+
+Tempra Show is een sequencer die een
+doorlopende presentatie van beeld en
+geluid opbouwt, wat met de Workeditor
+relatief eenvoudig te programmeren is.
+Tempra GIF is een grafisch manipulatie
+programma dat de grafische extensies
+TIF, TGA, GIF, PCX, !IM, BMP, WIN en
+PTN kan inlezen en bewerken met bv.
+tekst-overlays. Vervolgens zijn de
+beelden weer op te slaan en af te
+drukken.
+
+CONCLUSIE
+
+De Tempra software is geen onbekende in
+de beeldverwerkende sector en bewijst
+dan ook zijn krachtige mogelijkheden in
+combinatie met de SoundBlaster en de
+VideoBlaster. De VideoBlaster is nieuw
+in de Blaster family en heeft enige
+tekortkomingen voor een bredere
+toepassing op de consumentenmarkt.
+Ondanks deze tekortkomingen is het een
+uitstekend produkt met een goede
+prijs/kwaliteit verhouding, waarbij de
+nadruk ligt op toepassingen bij
+bedrijfs presentaties. (Pieter Bosma)
+
+INFORMATIE
+
+De prijs van de VideoBlaster bedraagt f
+999,- (incl. BTW). Meer informatie is
+verkrijgbaar bij: WALOP Electronics,
+Innsbruckweg 40-42, 3037 AH Rotterdam,
+tel. 010-4623478, fax 010-4376926. Ook
+kunt u bellen met het WALOP Multi Media
+Support BBS, tel. 010-2620199. Hierin
+verstrekt WALOP allerlei actuele
+informatie, demo's en programmatuur,
+w.o. MOD-files voor de Soundblaster
+kaarten.
+

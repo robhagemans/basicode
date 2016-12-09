@@ -1,0 +1,372 @@
+508, maa 22 jun '92
+
+SPECIAL: COMPUTERVIRUSSEN
+
+In de afgelopen maanden waren computer
+virussen weer bijzonder actueel (6
+maart: Michelangelo). Bijna elke dag is
+er wel weer een ander (nieuw) virus dat
+actief wordt en zijn vernietigende werk
+doet, ten koste van duizenden manuren
+werk. Sommige mensen geloven niet dat
+ze getroffen kunnen worden door
+virussen. Ze kopieren immers niet
+illegaal. Toegegeven, dat vermindert de
+kans op besmetting aanzienlijk! Maar
+een virus kun je ook op andere manieren
+oplopen: ook commerciele pakketten
+bevatten af en toe (per ongeluk)
+virussen. Virussen bestaan nu eenmaal,
+en gaan niet meer vanzelf weg.
+
+DEFINITIES
+
+Ter opfrissing van onze viruskennis nog
+even een kort overzicht.
+
+Virussen: actieve infecterende
+programma's die zichzelf kopieren in
+andere programma's, net zoals een
+biologische virussen levende cellen
+infecteren (bv. AIDS).
+
+Wormen: programma's die zichzelf
+dupliceren zonder andere programma's te
+besmetten. Ze nemen alleen enorm veel
+ruimte in, en 'vervuilen' de harddisk,
+die daarom steeds trager wordt.
+
+Trojaanse Paarden: schijnbaar 'nuttige'
+en aantrekkelijke programma's, die
+helaas een virus of een worm in uw
+andere programma's aanbrengen.
+
+WAT DOET EEN VIRUS?
+
+Een virus is dus een programma dat zich
+als ongewenste gast toevoegt aan een
+ander programma. Als zo'n besmet
+programma gestart wordt, wordt ook het
+virus actief, en gaat:
+1) weer andere slachtoffers
+(programma's) opzoeken en besmetten;
+2) naar aanleiding van bepaalde
+'triggers' (bepaalde datum, bepaald
+aantal keren gestart worden, aantal
+dagen dat verstreken is sinds de eerste
+startup) grappige of verschrikkelijke
+dingen doen, zoals lettertjes laten
+'vallen', of een zelfs de complete
+harddisk formatteren (alles kwijt!).
+
+BESTRIJDINGSTECHNIEKEN
+
+Er zijn diverse technieken om zich
+tegen virussen te beschermen.
+Bijvoorbeeld:
+
+1) Zoeken naar virushandtekeningen (de
+zogenaamde strains). Ieder virus heeft
+zijn eigen identiteit. Deze methode is
+als boter na de vis. Men gaat pas
+scannen als men iets vreemds ziet
+gebeuren, en dan heeft het virus al
+toegeslagen.
+
+2) Checksums (of nog beter: CRC's) plus
+de lengte van onbesmette programma's
+laten uitrekenen, immers: als de
+checksum (CRC) verandert, is het
+programma gewijzigd, hetgeen op
+besmetting zou kunnen wijzen.
+
+3) Het z.g. immuniseren van de files.
+Dit houdt in dat aan een programmafile
+(dus alleen *.COM of *.EXE files) een
+klein programmaatje van circa 900 bytes
+wordt toegevoegd, dat als 'voorproever'
+eerst wordt uitgevoerd als men het
+programma opstart. Als de file
+gewijzigd is, dan geeft dit programma
+een waarschuwing en de mogelijkheid om
+de verandering ongedaan te maken. Een
+mooi voorbeeld hiervan vinden we in de
+SCAN antivirus programma's (McAfee),
+die dus kunnen zien of ze soms zelf
+'ziek' zijn.
+N.B. een checksum/CRC plus
+lengtecontrole programma geeft in dit
+geval dus WEL loos alarm, m.a.w. de
+methoden 2) en 3) kunnen niet door
+elkaar gebruikt worden!
+
+4) Een TSR routine (Terminate and Stay
+Resident, beeindig en blijf aanwezig in
+geheugen), die continu bekijkt of er
+geen ongeoorloofde dingen worden
+gedaan, o.a. het wijzigen van de
+bootsector (systeem opstart code) van
+de harddisk. Helaas bewaren de meeste
+bootsector virussen een kopie van de
+onaangetaste bootsector, en spiegelen
+deze voor aan ieder programma dat om de
+bootsector vraagt. Tegen dit laatste
+helpt alleen een hardwarematige aanpak,
+zoals insteekkaarten als 'PC-cillin' en
+'Thunderbyte'.
+
+VEEL GEMAAKTE FOUTEN
+
+Er zijn nog een aantal veel gemaakte
+fouten bij het zoeken naar virussen.
+Hier zijn een aantal waarschuwingen:
+
+1) Veel bestanden afkomstig uit BBS-en
+zijn tegenwoordig gecomprimeerd
+(samengeperst). Een virusscanner kan in
+een gecomprimeerd bestand NOOIT een
+virus vinden, omdat de handtekening
+(het kenmerk van het virus) door de
+compressie namelijk is versleuteld
+(gecodeerd). Pak dus VOOR het zoeken
+eerst de ZIP, PAK, ARJ en LHA files
+uit, voordat met scannen wordt
+begonnen. Er zijn echter wel antivirus
+scanners die de samengeperste files
+tijdens het scannen 'uitpakken'.
+Compressie- programma's zoals Stacker
+(Norton) en Superstore (DR-DOS 6.0)
+doen dit laatste ook, dus dat is prima!
+
+2) De residente virusdetectors (zoals
+Norton Anti-Virus Intercept) kunnen
+nooit een virus detecteren als het
+m.b.v. het DOS-commando DISKCOPY wordt
+binnengehaald vanaf floppy, en ook niet
+als u door middel van Laplink of Norton
+Commander Link bestanden van een andere
+computer overneemt. Ook tijdens een
+modem-transfer of bij het terugkopieren
+vanaf een tape-backup wordt niets
+'gemerkt'.
+
+3) Indien men de 'intercept' utility
+heeft draaien in de achtergrond, dan
+kunnen communicatie programma's zoals
+Procomm, Telix en Smartcom gaan
+'hangen' of data verliezen. Dit kan
+voorkomen in multi-tasking systemen, of
+bij data-overdracht tussen twee
+systemen.
+
+NORTON ANTIVIRUS 2.0
+
+Virussen zijn schadelijk en kunnen
+enorme schade aanrichten in
+programma's, maar vooral ook in
+bestanden. De software- gebruiker wil
+zich daarom wapenen tegen wat wel
+genoemd wordt het computer-AIDS van de
+jaren '90. De software industrie haakt
+dan ook gretig in met het produceren
+van de z.g. virusscanners. Het aantal
+anti-virus programma's en nieuwe
+releases van bestaande programma's
+neemt momenteel explosief toe.
+
+Een van de commerciele anti-virus
+pakketten is Norton Anti-Virus (NAV),
+waarvan onlangs versie 2.0 is
+verschenen. Dit pakket bestaat in twee
+uitvoeringen: een DOS versie en een
+Windows versie. Beide versies zijn
+identiek qua functionaliteit, met
+uitzondering van de gebruikers
+interface, die iets verschilt. We
+bespreken hier daarom alleen de
+functionaliteit van de beide versies,
+plus de opvallende verschillen.
+
+COMPONENTEN
+
+NAV bestaat uit twee delen:
+a) een on-line scanner. Deze zoekt na
+opstarten naar virussen, en is na
+beeindiging weer non-actief, zonder
+geheugenruimte in te nemen.
+b) een residente scanner (Virus
+Intercept). Deze blijft na het
+opstarten permanent in het geheugen
+staan en vormt een continue bescherming
+tegen binnenkomende virus besmettingen
+(zie waarschuwing 2 bij item 'veel
+gemaakte fouten'). Als Virus Intercept
+actief is, kost dit echter wel een
+gedeelte van uw werkgeheugen: bij de
+instelling als uitgebreide
+virusonderschepper beslaat het
+programma 32K, als bootsector
+onderschepper 4K. De 'uitgeklede'
+versie controleert alleen *.COM en
+*.EXE files die worden opgestart.
+
+Een gemakkelijk installatieprogramma is
+aanwezig, zodat installeren een fluitje
+van een cent is. Alles is typisch
+Norton- achtig. Met functietoets F1 is
+overal een HELP functie beschikbaar.
+Helaas zijn de menu's een beetje wazig.
+
+CHECKSUM BESTANDEN
+
+NAV maakt gebruik van de methode om van
+ieder programmabestand afzonderlijk een
+'hidden' (verborgen) checksum bestand
+aan te maken en dit in dezelfde
+directory als het originele programma
+op te slaan. Een subdirectory met 10
+programma's zal dus eveneens 10 hidden
+checksum bestanden bevatten. Dit heeft
+tot gevolg dat de testcomputer (386 SX)
+met een 260 Mb harddisk in ons geval
+zo'n kleine 1 Megabyte aan schijfruimte
+moet inleveren, want hoe meer
+programma's, hoe meer hidden files.
+
+Dit heeft nogal wat consequenties.
+Wanneer een programma van de ene naar
+de andere directory wordt gekopieerd,
+moet ook het hidden checksum bestand
+worden meegekopieerd, om te voorkomen
+dat een volgende viruszoektocht
+veranderingen detecteert. Maar die
+bestanden kunnen niet zomaar worden
+gekopieerd. Wie niet over een geschikte
+utility beschikt (PCTools), zal met
+veel kunst en vliegwerk de bestanden op
+DOS-niveau moeten verwijderen.
+
+TRAGE SCANNER
+
+Waar het eigenlijk bij NAV om gaat is
+het opsporen van virussen. Dat gaat
+echter, vergeleken bij andere
+programma's, wel zeer langzaam, en dit
+geldt zeker voor de Windows versie. NAV
+doet in vergelijking langer over een
+totale schijf zoek-operatie dan andere,
+vergelijkbare scanners. Dit is
+waarschijnlijk te wijten aan het
+afwijkende zoekmechanisme. Andere
+virusscanners zoeken alleen in de
+'virus-gevoelige' delen van een file.
+NAV doorzoekt de complete file. Dit zou
+het verschil in snelheid kunnen
+verklaren.
+
+PERFORMANCE
+
+We onderwierpen NAV aan een
+praktijkproef, om te bepalen hoe
+doeltreffend de scanner is. Gedurende
+de test kwam ineens de melding dat het
+'TWIN virus' zich in het geheugen had
+genesteld. Bij nadere controle met
+andere scanners werd echter niets
+gevonden. Anderzijds werden slechts zes
+van de negen testvirussen (dit zijn de
+meest voorkomende) door NAV opgespoord,
+waaronder Michelangelo.
+
+Gelukkig kan de performance van NAV
+verbeterd worden door toevoeging van
+nieuwe (toekomstige) virus informatie.
+Het bijzondere van NAV is dat nieuwe
+virus-handtekeningen op twee manieren
+kunnen worden toegevoegd:
+Handmatig, door de string in te voeren
+(dit kan o.a. ook bij Central Point
+Anti-Virus).
+Automatisch, via het inladen van virus
+info-files. Met deze nieuwe virus
+informatie kunnen nieuwe virussen
+worden opgespoord.
+De bekende, reeds in NAV aanwezige
+virus strains kunnen NIET gewijzigd
+worden, en NAV zelf staat daarom
+permanent 'op slot'.
+
+Robbert van Herksen
+
+INFORMATIE
+
+Norton Anti-Virus 2.0 draait op alle
+IBM PC's, XT's, AT's en compatibles.
+Naast DOS 3.1 of hoger is minimaal 384K
+RAM vereist. Het programma is
+compatibel met Windows 3.0. De
+adviesprijs bedraagt Fl. 279,- (BFr.
+5.100). Upgrades zijn voor
+geregistreerde gebruikers beschikbaar
+voor Fl. 75,- (BFr. 1.400). Deze
+prijzen zijn exclusief BTW.
+
+De Norton pakketten, waaronder ook Anti
+Virus 2.0, zijn een produkt van
+Symantec. De Nederlandse distributeur
+is Kern Software Products BV in Leiden,
+tel. 071-355655, fax 071-355625.
+Distributeur in Belgie is de firma Add
+On in Brussel, tel. 02-7257681, fax
+02-7250274.
+
+ANTI-VIRUS SOFTWARE IN FIDO-NOS
+
+Het zal u niet ontgaan zijn dat we de
+laatste tijd veel aandacht besteden aan
+virussen, die een steeds groter gevaar
+vormen in de computer wereld, met name
+voor de bezitters van een MS-DOS
+computer. Naast informatie in gesproken
+woord en via de Beeldkrant hebben we
+als extra ondersteuning een speciaal
+gebied ingericht in de Fido-NOS
+databank, tel. 035-245395. In
+file-gebied 7 vindt u een groot aantal
+recente scanners, schoonmaak
+programma's, bestanden met virus
+handtekeningen en diverse utilities.
+Het gebied wordt beheerd en bijgewerkt
+door Wim Sips, die tevens moderator is
+van het landelijke echomail-gebied over
+virussen, dat u op veel BBS-en kunt
+raadplegen (als het meezit, binnenkort
+ook in Fido-NOS).
+
+UITKNIPBON VIRUS-INFO
+
+Met onderstaande uitknipbon kunt u
+informatie aanvragen over
+virus-bestrijding met behulp van de
+Thunderbyte PC Immunizer. U krijgt dan
+door de producent van deze insteekkaart
+een setje documentatie toegestuurd dat
+naast informatie over de kaart ook
+algemene wetenswaardigheden over
+virussen bevat. Dit setje heeft men nu
+al in gebruik en blijkt, ook voor
+particuliere gebruikers, uitstekend te
+voldoen. Plak de bon op een briefkaart
+van 60 cent, zet er ook uw naam en
+adres op, en stop hem in de brievenbus.
+U krijgt de informatie dan gratis
+toegestuurd.
+
+-----------------------------
+NOS Radio Redaktie Scoop
+Inl. Thunderbyte PC Immunizer
+
+Postbus 1200
+1200 BE Hilversum
+-----------------------------
+

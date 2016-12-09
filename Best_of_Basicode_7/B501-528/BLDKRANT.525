@@ -1,0 +1,332 @@
+525, maa 21 sep '92
+
+MODEMTEST CONSUMENTENBOND
+
+In augustus publiceerde de
+Consumentenbond een test van 14 modems.
+Het artikel in de Gids kopt:
+'Ondeugdelijke modems te koop', en in
+de tekst staat verder dat 'geen van de
+apparaten voldoet aan de wettelijke
+toelatings eisen'. Maar hoe die eisen
+dan (globaal) luiden en aan welke
+specifieke eisen de geteste modems niet
+voldoen, vinden wij nergens terug.
+
+Wij kregen telefonisch een toelichting
+van de heer Ruud Krol van de Bond: 'De
+eisen waaraan (onder meer) modems
+moeten voldoen, staan officieel bekend
+als de T10- en de T11- eisen. T10 heeft
+betrekking op de elektrische
+veiligheid, T11 op de geschiktheid voor
+het telefoonnet. T10 stelt onder meer
+dat een spanning van 3000 Volt niet
+over mag kunnen slaan naar aanraakbare
+delen. Bij de test vielen twee lichtnet
+adapters op dit punt door de mand.
+Overigens: direkt gevaar voor de
+gebruiker ziet de Consumentenbond niet,
+maar het risico op ongelukken
+(spannings overslag) neemt wel toe
+naarmate de adapters verouderen.
+
+T11 regelt hoe telefoon apparatuur moet
+reageren op het openbaar net en stelt
+eisen aan bijvoorbeeld kiestoon
+herkenning, de sterkte en het ritme van
+de kiespulsen en de kiestonen. Veel
+modems bleken niet aan de Nederlandse
+eisen met betrekking tot de pulsen te
+voldoen. En omdat, anders dan in de
+meeste buitenlanden, in het Nederlandse
+telefoonnet spanningen van wel enkele
+tientallen Volt kunnen voorkomen,
+worden weer eisen gesteld aan de
+veiligheid.
+
+Deze situatie is voor de fabrikanten
+economisch natuurlijk heel
+onaantrekkelijk. Aanpassing aan de
+specifieke eisen in Nederland gebeurt
+in het gunstigste geval slechts EEN
+keer: bij de typegoedkeuring ter
+verkrijging van de felbegeerde blauwe
+goedkeurings sticker. Heeft men de
+type- goedkeuring eenmaal verkregen,
+dan is er vervolgens niemand meer die
+controleert. Fabrikanten kunnen dus
+ongestraft modems op de markt brengen
+waarvan het typenummer is goedgekeurd,
+maar die feitelijk afwijken van het
+door Verkeer en Waterstaat onderzochte
+en goedgekeurde apparaat.' De exacte
+T10- en T11-eisen kunnen worden
+opgevraagd bij de Hoofddirectie
+Telecommunicatie en Post (HDTP) in
+Groningen. (Chris van Offeren)
+
+TEST: CENTRAL POINT ANTI-VIRUS V1.3
+
+De makers van PC-Tools hebben vorige
+maand de nieuwe versie 1.3 van CPAV op
+de markt gebracht. CPAV is een met
+pull-down menu's gestuurde virus
+scanner, met een aantal zeer doordachte
+extra's. Het pakket bevat installatie
+schijven in twee formaten, een
+handleiding en informatie omtrent het
+verkrijgen van updates. Zo zijn er
+telefoonnummers van bulletin boards,
+opgezet door Central Point, waar men
+nieuwe updates en informatie kan
+downloaden (na registratie en tegen
+betaling). Jammer dat het
+dichtstbijzijnde BBS in Duitsland ligt.
+
+HANDLEIDING GEDATEERD
+
+De handleiding ziet er netjes uit, maar
+is erg onvolledig. Duidelijk een
+handleiding van een eerdere versie. Dat
+blijkt ook wanneer je de diskettes
+bekijkt, want het bestand 'README.EXE'
+geeft een verbeterde uitleg over het
+installeren van CPAV, het opnieuw
+configureren, etc. Toch zit er nog een
+foutje in deze uitleg. Bij de optie
+un-install wordt vermeld, dat CPAV
+eventuele aanpassingen in de
+AUTOEXEC.BAT en CONFIG.SYS herstelt en
+de 'CPAV' directory verwijdert. Dit
+laatste is niet het geval. Na de optie
+om AUTOEXEC.BAT en CONFIG.SYS te
+herstellen komt, voor als men CPAV
+onder Windows heeft geinstalleerd, de
+mogelijkheid om WIN.INI te herstellen
+(zelfs al is Windows niet
+geinstalleerd), en dat is dan de
+complete un-install. De CPAV directory
+blijft ongewijzigd.
+
+INSTALLATIE VERLOOPT MOEIZAAM
+
+Bij het voor de eerste keer installeren
+ging niet alles zoals het moest gaan.
+Na het geheugen te hebben gescanned,
+vroeg het programma om schijf 2. Deze
+in de drive en op ENTER gedrukt, waarna
+weer om schijf 2 werd gevraagd.
+Controleren.. het is echt nummer 2, dus
+weer ENTER. Na nog een keer naar 2 te
+hebben gevraagd werd vervolgens schijf
+1 gevraagd. Dan nummer 1 maar in de
+drive, ENTER en... de hele zaak zat
+vast. Resetten. Bij de tweede poging
+ging het wel goed.
+
+UPGRADE VERSION: WRITE ONLY
+
+Indien men al een versie van CPAV bezit
+en men wil de huidige configuratie
+behouden, kan met INSTALL worden
+gekozen voor 'Upgrade Version', waarna
+CPAV de oude versie vervangt door de
+nieuwe, maar alle configuratie
+bestanden laat staan. Wanneer echter de
+bestanden van de oude versie uit
+veiligheids overwegingen Read Only zijn
+gemaakt, komt CPAV niet door het
+installatie proces heen (er is geen
+enkel bestand vervangen), hoewel
+INSTALL meldt dat de installatie goed
+is verlopen...
+
+GROTER EN TRAGER
+
+De meest opvallende veranderingen ten
+opzichte van een eerdere CPAV versie
+zijn de afmeting en de snelheid. De
+afmeting is aanzienlijk toegenomen, een
+eerdere versie gebruikte voor VSafe
+25Kb en voor VWatch 11Kb, tegenover nu
+resp. 41 en 25 Kb. Wel wordt standaard
+de mogelijkheid geboden deze
+applicaties in expanded of extended
+memory te plaatsen, dus dat scheelt
+weer... als men tenminste een computer
+heeft die daarover beschikt.
+
+Het CPAV programma zelf loopt enigszins
+trager dan eerdere versies, maar kan
+aanzienlijk meer virussen scannen. Er
+is vrij veel geheugen nodig voor CPAV.
+Tijdens het testen bleek minimaal 450
+Kb nodig te zijn, want bij 446 Kb kreeg
+ik de melding 'te weinig geheugen'.
+Gezien de verminderde snelheid vind ik
+het jammer dat de optie 'Fast
+Detection' niet meer beschikbaar is.
+
+BOOTSAFE
+
+Naast het hoofdprogramma bevat het
+pakket ook een 'Bootsafe', die in de
+AUTOEXEC.BAT opgenomen kan worden. Dit
+programma vergelijkt de bootsector van
+de harde schijf met een al eerder
+gesaved image, waarvan ook een kopie op
+een floppy bewaard dient te worden.
+Schrijft een bootsecor virus zichzelf
+naar de bootsector, dan zal Bootsafe
+dit ogenblikkelijk detecteren, waarna
+het programma ook in staat is om aan de
+hand van het image de bootsector in de
+orginele staat terug te brengen.
+Hetzelfde geldt voor de partitie sector
+van de harde schijf.
+
+VSAFE
+
+Een nuttige utility is het programma
+VSafe. Dit programma is opgenomen als
+SYS en als COM bestand, waardoor het
+ofwel meteen resident kan worden gezet
+bij het booten (CONFIG.SYS), of gewoon
+vanuit DOS gestart kan worden. VSafe
+controleert tijdens het werken met de
+computer of de programma's die gebruikt
+worden virus-vrij zijn. Ook is er de
+mogelijkheid om het schrijven naar de
+bootsector van de hard disk te
+onderscheppen, en er is zelfs de
+mogelijkheid om de totale schijf te
+beveiligen voor schrijf-acties. Als er
+dan toch een poging tot schrijven wordt
+gedaan, meldt VSafe dit onmiddellijk,
+waarna men kan kiezen: de schrijfactie
+onderbreken, door laten gaan, of het
+systeem resetten.
+
+NU EENS OVERIJVERIG...
+
+Nieuw is dat CPAV nu ook de 'Dark
+Avenger mutation engine' virussen kan
+opsporen, maar het programma is soms
+wat overijverig, want tijdens het
+installeren meende CPAV (volledig ten
+onrechte) in het door mijzelf
+geschreven programma BC2.COM het V2P6
+virus te ontdekken, en zonder een
+akkoord te vragen werd het zogenaamd
+gecleaned. Het cleanen bestaat uit het
+veranderen van de naam in 'naam.VIR' en
+het maken van een uitgeklede kopie van
+het oorspronkelijke programma met de
+originele naam. Bij het starten van het
+'gecleande' bestand zat de PC dan ook
+meteen helemaal muurvast en moest er
+gereset worden. Bij een tweede scan
+wordt ook het oorspronkelijke bestand
+'naam.VIR' als virus gezien en
+gerepareerd, dus de 'backup' is
+verwoest...
+
+Nu moet wel gezegd worden dat de
+genoemde 'Dark Avenger' virussen ook
+veel moeilijker zijn op te sporen dan
+de eerdere generaties. Ze zijn niet te
+herkennen aan een z.g. 'handtekening',
+maar staan verborgen in een aantal
+routines, die het eigenlijke virus
+genereren. Op zich is oplettendheid
+t.a.v. dit soort virussen dus terecht.
+
+EN DAN WEER ONACHTZAAM
+
+Wel slordig vind ik, dat bestanden met
+een kopie van een bootsector virus
+zoals 'pingpong' en 'stoned' niet als
+virus worden herkend. Om verder te
+testen heb ik deze 'bootsector'
+virussen voorzien van een simpele
+assembler routine waarmee ze (door het
+zo ontstane COM programma te starten)
+direct op de bootsector van de schijf
+worden gezet. Ook nu herkent CPAV deze
+echte virus COM bestanden niet als
+virus, zelfs niet bij een geheugenscan
+met de genoemde bestanden in een
+RAM-drive. Herkenning van deze virussen
+blijkt alleen plaats te vinden wanneer
+ze in de bootsector zelf worden
+aangetroffen. En dan is het in feite al
+te laat.
+
+Voor de rest verliep het scannen op de
+inmiddels vele virussen met een z.g.
+'handtekening' probleemloos. Geen
+enkele uit mijn verzameling bleef
+onopgemerkt.
+
+CONCLUSIE
+
+Het totale pakket CPAV versie 1.3 is
+met al zijn opties een redelijke virus
+scanner. Het komt het meest tot zijn
+recht op een 80286 of hoger. Het pakket
+'loopt' weliswaar ook op een XT, maar
+het gaat traag. De virus-detectie lijst
+is aanzienlijk uitgebreid ten opzichte
+van de vorige versie (meer dan 1200
+virussen). Al met al qua lay-out een
+verzorgd pakket, dat echter nog
+behoorlijk wat tekortkomingen vertoont.
+De prijs tenslotte is aan de hoge kant,
+mede gezien de goede kwaliteit van vele
+shareware produkten op dit terrein,
+zoals die van MacAfee, die bij vele
+BBS-en in Nederland (w.o. Fido-NOS)
+vrij gedownload kunnen worden.
+
+Luut en Peter Looyenga
+
+INFORMATIE
+
+Om Central Point Anti-Virus 1.3 te
+kunnen gebruiken, dient men te
+beschiken over een IBM PC, XT, AT, PS/2
+of daarmee compatibele computer,
+draaiend onder MS-DOS versie 3.1 of
+later, en met minstens 512 Kb
+werkgeheugen. Het pakket is volledig
+compatible met Windows 3.x in de 386
+'enhanced mode', en kan ook op
+netwerken worden gebruikt.
+
+CPAV 1.3 voor DOS in de internationale
+versie kost f330,-. Er is ook een
+internationale versie voor Windows
+beschikbaar, die meer dan 1000 virussen
+herkent. Ook deze kost f330,-. Tot slot
+is er een speciale Nederlandstalige
+versie voor DOS-gebruikers op de markt.
+Deze bevat tevens Nederlandstalige
+beschrijvingen van alle (meer dan 1000)
+virussen die door het pakket kunnen
+worden herkend, en kost f412,-. Alle
+bedragen zijn adviesprijzen, incl. BTW.
+
+Voor meer informatie: Schoep & Van der
+Toorn Communicatie Consultants, dhr.
+Charly Lammers van Toorenburg, Postbus
+75537, 1070 AM Amsterdam, tel.
+020-6763948, fax 020-6710747.
+
+Tot slot verwijzen we, voor meer
+informatie over (de bestrijding van)
+virussen, naar Beeldkrant 508,
+uitgezonden op 22 juni. Hierin stond
+tevens een test van het vergelijkbare
+pakket Norton Anti-Virus 2.0.
+

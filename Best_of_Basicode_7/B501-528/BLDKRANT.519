@@ -1,0 +1,349 @@
+519, maa 07 sep '92
+
+BOEK: VAN RAMMELBAK TOT REKENWONDER
+
+Dit boek is bestemd voor iedereen die
+een PC heeft (of er een wil gaan
+aanschaffen), een schroevendraaier kan
+hanteren en de kast van de computer
+open durft te maken, maar ook voor
+degene die iets meer wil weten over
+zijn of haar computer en een beetje
+thuis wil raken in de PC 'kretologie'.
+Hoewel de subtitel van het boek luidt:
+'Upgrade uw IBM compatible voor weinig
+geld', gaat het verder dan alleen het
+upgraden van b.v. een XT naar een 386
+machine. Ook het vervangen van disk
+drives, insteekkaarten etc. komt aan
+bod.
+
+UPGRADEN
+
+Na een overzicht van wat u zoal kunt
+upgraden, begint het met eenvoudige
+aanvullingen van de XT, zoals het
+installeren van een klokkaart en het
+plaatsen van een co-processor. Via
+informatie betreffende opvoerkaarten
+komt het vervangen van een moederbord
+aan bod. Hierbij wordt naast de
+informatie over de verschillende
+processor generaties aandacht besteed
+aan de bus-typen. Hoe u te werk moet
+gaan bij vervanging, wordt stap voor
+stap (verduidelijkt met foto's)
+aangegeven.
+
+ZACHTE EN HARDE SCHIJVEN
+
+Enkele hoofdstukken zijn gewijd aan
+disk drives en vaste schijven.
+Behandeld worden de diverse
+disk-formaten (inmiddels van 360 kb tot
+20 Mb), de drives en de bijbehorende
+controllers. Ook de vaste schijven
+worden besproken. U vindt informatie
+over de verschillende systemen die in
+omloop zijn, alsmede gegevens over
+controllers, inbouw en een compleet
+verhaal over het formatteren. Ook hier
+worden inbouw beschrijvingen gegeven
+aan de hand van foto's.
+
+OVERIGE ZAKEN
+
+Verder treft u in het boek zaken aan
+zoals bios vervangen, kaarten
+installeren en geheugen uitbreiden. Ook
+wordt aandacht besteed aan de
+apparatuur voor de in- en uitvoer zoals
+schermkaarten, monitoren,
+toetsenborden, printers, modems en
+andere randapparaten. Het geheel wordt
+gecompleteerd met een hoofdstuk over
+het verhelpen van storingen en een
+appendix met een adressen- lijst van
+leveranciers en een verklarende
+woordenlijst (een 'mini'
+computer-termen woordenboek). Kortom,
+alles wat met 'computer' te maken heeft
+komt globaal aan de orde.
+
+CONCLUSIE
+
+Het boek is niet bedoeld voor de
+doorgewinterde computer-techneut, maar
+is bij uitstek geschikt voor PC
+'gebruikers'. De genoemde onderwerpen
+worden weliswaar oppervlakkig
+besproken, maar geven voldoende
+informatie om zelf eens aan de PC te
+'sleutelen' of b.v. op de aanstaande
+HCC-dagen met enige kennis van zaken
+naar het koopje te gaan zoeken dat u
+anders zou hebben moeten laten lopen.
+(Luut Looyenga)
+
+Titel    : Van rammelbak tot
+rekenwonder
+Auteur   : Aubrey Pilgrim
+Uitgever : GW-boeken B.V.
+ISBN     : 90-6983-084-1
+Prijs    : f 39,50
+
+BOEK: PARALLELLE VERWERKING
+
+U bent vast wel eens in de krant of op
+TV een berichtje tegengekomen dat er
+weer een computer snelheids record is
+gebroken. Het betreft dan meestal de
+berekening van het grootste priemgetal
+dat ooit is gevonden (inmiddels
+duizenden cijfers), waarbij altijd
+wordt vermeld dat dit is gedaan op een
+supercomputer, opgebouwd met een groot
+aantal parallel werkende
+micro-processoren.
+
+Het boek 'parallelle verwerking' gaat
+uitgebreid in op deze ontwikkeling. Er
+wordt uitgelegd hoe de huidige
+generatie computers, die volgens het
+Von Neumann principe werken, aan de
+grens van hun capaciteit raken en dat
+de parallelle computer de logische
+opvolger is. De auteur wil met dit boek
+de informatie betreffende de nieuwste
+ontwikkelingen (die normaal alleen voor
+specialisten toegankelijk is) onder de
+aandacht brengen van de geinteresseerde
+'leek'.
+
+HARDWARE EN SOFTWARE
+
+Het boek (geen lichte kost) geeft een
+helder overzicht van verschillende
+methoden om processoren parallel te
+koppelen. De architecturen worden met
+de voor- en nadelen (voorzien van
+diverse diagrammen) behandeld.
+
+Naast de hardware wordt uitgebreid
+ingegaan op de methoden waarmee een
+parallelle computer aan het werk kan
+worden gezet. Meerdere algoritmen komen
+aan bod en worden m.b.v. voorbeeld-
+programma's verduidelijkt. Een aantal
+programma- voorbeelden zijn geschreven
+in de taal Occam, terwijl er ook enkele
+simulatie modellen zijn omgezet naar
+Turbo Pascal, zodat de lezer de
+mogelijkheid heeft op een IBM of
+compatible PC zelf te experimenteren
+met parallellisme. Om enig inzicht te
+krijgen in de Occam programma-
+listings, wordt in bijlage B de
+Occam-syntax behandeld. De andere
+bijlagen behandelen zaken als
+Proces-algebra, Semaforen en
+Transputers.
+
+PARALLEL BESTURINGSSYSTEEM
+
+In het laatste gedeelte van het boek
+wordt ruim aandacht besteed aan het
+besturings systeem, waarbij een
+functioneel model wordt ge-introduceerd
+van een parallel- computer besturings
+systeem, inclusief de hierbij
+voorkomende problematiek zoals het
+beslissings- en optimalisatie-
+probleem. Aan de orde komen hardware
+zaken als geheugen- en I/O-management
+en software zaken zoals gebruikers
+interface, interrupt afhandeling,
+planning en het communicatie
+mechanisme. Ook hier ondersteund door
+een Turbo-Pascal programma betreffende
+de plannings functie. Aan het eind van
+ieder hoofdstuk geeft de auteur een
+opsomming van de geraadpleegde
+literatuur. Zinvol voor degene die zich
+verder wil verdiepen in een specifiek
+onderwerp.
+
+CONCLUSIE
+
+Al met al een zeer interessant boek
+dat, als je erin begint te lezen, de
+nieuwsgierigheid prikkelt en uitnodigt
+tot verder lezen. Een aanrader voor
+eenieder die op de hoogte wil blijven
+van de nieuwste ontwikkelingen op
+computergebied en die over enige kennis
+van elementaire wiskunde beschikt.
+(Luut Looyenga)
+
+Titel    : Parallelle verwerking
+Auteur   : Huub de Waard
+Uitgever : Kluwer Technische Boeken
+ISBN     : 90-201-2507-8
+Prijs    : f 62,50
+
+BOEK: 'STARTEN MET C'
+
+Als het dit najaar een koude en natte
+herfst wordt, is het misschien een idee
+om maar eens te beginnen aan die
+lastige taal 'C'. Uit vrees voor de
+cryptische notaties en vooral die
+ondoorgrondelijke pointers is het er
+nooit van gekomen. Dit boekje is
+speciaal voor de beginners die het
+eindelijk eens onder de knie willen
+krijgen.
+
+HELLO WORLD
+
+Het begint allemaal heel eenvoudig. Na
+de inleiding volgt een variatie op het
+bekende 'hello world', ofwel hoe print
+ik iets op het scherm. Ook de codes
+voor commentaar- regels worden in
+hoofdstuk 2 behandeld.
+Tijdens de bespreking wordt gelijk met
+Engelse termen en software-kneuzen
+jargon gegooid. Da's mooi om indruk te
+maken op een borrel-avond, moet je maar
+denken.
+
+Het boek leest vlot weg, want voor je
+het weet zit je al in hoofdstuk 3. Dat
+is natuurlijk best motiverend. Het zijn
+dan ook hoofdstukken van 4 bladzijden,
+maar geleidelijk aan worden ze groter.
+In de volgende hoofdstukken komen alle
+mogelijke variabelen-typen, constanten,
+bewerkingen enz. aan bod. En met een
+zelden vertoonde accuratesse. Het
+naadje van de kous.
+
+PROGRAMMA-VERLOOP
+
+Na de gegevens (= de helft van het
+programma) volgt het programma-verloop.
+Dit zou moeten meevallen, omdat het
+allemaal constructies zijn die ook in
+Basic en Pascal voorkomen, alleen wordt
+het net even anders genoteerd.
+
+Eerst de functies, ofwel het opdelen
+van een programma in onderdelen. Ook
+hier weer een nauwkeurige en volledige
+beschrijving van het gebruik hiervan.
+Recursie bijvoorbeeld komt onmiddellijk
+om de hoek kijken. Dat lijkt me vooral
+leuk voor wiskundigen, of diegenen die
+eindelijk een faculteit- functie willen
+schrijven, maar verder wordt deze
+mogelijkheid weinig toegepast.
+
+Ook een typische C-term, de
+pre-processor, komt aan bod. Het is een
+standaard onderdeel van de taal, een
+'interpreter' die, voordat het
+programma door de compiler gedraaid
+wordt, nog even een en ander in de
+brontekst aanpast.
+
+WIJZERS
+
+En, ja het kon niet uitblijven, de
+pointers (wijzers). Eigenlijk is het
+heel eenvoudig, de mogelijkheden zijn
+praktisch onbegrensd, zolang je maar de
+definitie van een pointer in de gaten
+houdt. Heel eenvoudig worden de
+toepassingen van pointers duidelijk
+gemaakt. De connectie met arrays wordt
+gelegd en er komen ingewikkelder
+toepassingen aan bod als arrays van
+pointers en tenslotte pointers naar
+functies (een van de mooiste
+mogelijkheden van de taal C, vind ik
+zelf). Gelukkig staat het boek stampvol
+voorbeeld programma's, waarmee je zelf
+lekker kunt experimenteren.
+
+DE HELFT GEHAD
+
+Al over de helft van het boek zijn we
+inmiddels, en we treffen hier de
+structures aan, het bundelen van losse
+variabelen tot een samenhangend blok.
+De mogelijkheden en onmogelijkheden (en
+de redenen daarvan) worden ook hier
+nauwkeurig beschreven.
+
+Hierna ziet een andere veel gebruikte
+toepassing het daglicht: de gelinkte
+lijst. Ik moet er bij zeggen dat het
+hoofdstuk vrij ingewikkeld overkomt.
+Doordat de C-code hiervoor er complex
+uitziet, zou je verwachten dat de
+begeleidende tekst er glashelder over
+is. Maar wil je het volledig begrijpen,
+dan moet je het een paar keer
+overlezen.
+
+Het laatste hoofdstuk laat zien hoe je
+zaken naar het scherm schrijft en hoe
+strings (arrays van tekens) bewerkt
+kunnen worden.
+
+BIJLAGEN EN REGISTER
+
+De bijlagen bevatten een weergave van
+ANSI-C, met een lijst van beschikbare
+standaard functies. Ze worden summier
+behandeld, voor uitgebreide
+documentatie wordt verwezen naar andere
+boeken. Ook staan in de bijlagen de
+antwoorden op een aantal bij de
+hoofdstukken gestelde -best pittige-
+oefenvragen. Het beste kun je gewoon
+een voorbeeld nemen en daarmee
+experimenteren. Tot slot maakt een
+duidelijk register het boek compleet.
+
+In het boek wordt -terecht overigens-
+uitgegaan van de ANSI-C standaard. Over
+de oude C-notaties wordt echter niet
+gerept. Bij heel oude C-programma's kun
+je daarom wel eens voor verrassingen
+komen te staan.
+
+CONCLUSIE
+
+In de vrij forse lijst met
+beginnersboeken is dit er een dat
+uitblinkt in volledigheid en
+nauwkeurigheid. De regels voor netjes
+programmeren worden met de paplepel
+ingegoten. Helaas is het nogal saai
+geschreven. Je zou bijna vergeten dat
+programmeren ook leuk is!
+
+Loop eens een boekhandel binnen en
+vergelijk de verschillende
+beginnersboeken. Voor je het weet
+beoefen ook jij de boeiende hobby van
+het programmeren in C! (C's Mechielsen)
+
+Titel    : Starten met 'C' (240 blz.)
+Auteurs  : C. v/d Braak & P. Hoogenboom
+Uitgever : GW Boeken - Amsterdam
+ISBN     : 90-6983-101-5
+Prijs    : f 35,-
+

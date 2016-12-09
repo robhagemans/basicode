@@ -1,0 +1,388 @@
+527, maa 28 sep '92
+
+PROGRAMMEERTALEN
+
+Hoera, een nieuw technisch hoogstandje,
+ontsproten uit het menselijke brein. We
+noemen hem computer. Nu hoeft niet meer
+voor elk wissewasje een nieuw apparaat
+te worden bedacht en gebouwd. Deze
+machine krijgt zijn opdrachten door
+middel van een 'programma'. En dat is
+een hele vooruitgang. Want een
+programma is flexibel. Het kan elk
+moment gewijzigd worden. Nou, ga je
+gang maar, maak maar een programmaatje.
+
+EERSTE GENERATIE: MACHINETAAL
+
+Dat viel niet mee met zo'n 1e-generatie
+taal: de machinetaal. De computer is
+namelijk zeer eenkennig. Het enige, dat
+hij begrijpt, is:
+
+0010010100011010100111001110011
+
+En dat is net iets dat wij gewone
+stervelingen toch wel lastig vonden.
+Eerst moest ons probleem worden
+vertaald naar de beperkte hoeveelheid
+instructies die de machine kent.
+Vervolgens moest dat weer worden
+omgezet naar de 1-en 0-en patronen voor
+op de ponskaart. En dan inleveren bij
+de systeem operator, die het in de
+verwerk-bak legde. Nu maar hopen dat
+het goed werd uitgevoerd. Helaas, de
+grote buizen- en relais-bak (van
+honderden kubieke meters) deed niet wat
+ik bedoelde. Stom, ik had een adresje
+vergeten aan te passen...
+
+BUG
+
+Uit die tijd stamt het woord 'bug'.
+Ontwerpers waren bezig een programma te
+testen dat niet goed leek te werken. Na
+lang zoeken kwamen ze erachter dat er
+een motvlinder tussen de
+relais-contactjes zat. Deze bug (Engels
+voor insect) werd met succes
+verwijderd. Om tegenwoordige bugs te
+verwijderen gebruiken we complexe
+deBUGgers, maar de tijd om sommige
+fouten er uit te halen is nog minstens
+even lang, schat ik.
+
+TWEEDE GENERATIE: ASSEMBLERS
+
+Midden in de 50er jaren werden de
+programmeurs aan een 2e-generatie taal
+geholpen. Het was nu mogelijk om de
+instructies in begrijpelijke (nou ja,)
+symbolische kreten in te voeren. Een
+assembler-programma vertaalde het dan
+naar de 1-en en 0-en patronen die de
+machine nog steeds als enig verteerbaar
+voedsel tot zich wil nemen. Een
+mogelijk voorkomende opdracht zou nu
+bijvoorbeeld kunnen zijn:
+
+LDA salaris
+
+Dat was een hele vooruitgang. De
+werkelijke fysieke adressen hoeft de
+programmeur dus niet vantevoren te
+bepalen. Wijzigingen (en het was niets
+anders dan wijzigen, in die tijd)
+kunnen dus met minder fouten worden
+uitgevoerd. De volgende gedachten
+bleven de programmeur dus bespaard: Wat
+zeg je? 10 in 20 veranderen? Oh ja,
+waar stond ook alweer die 10.. Daar,
+daar, en daar en...verdraaid, eentje
+vergeten.
+
+DERDE GENERATIE: 'HOGERE TALEN'
+
+De 60er jaren brachten ons de
+3e-generatie talen, ook wel hogere
+programmeertalen genoemd. Talen als
+ALGOL, FORTRAN en COBOL zijn enorm
+populair geworden. De eigenschap van
+deze talen is dat ze grotendeels
+machine onafhankelijk zijn. Voorheen
+was een programma voor een specifieke
+computer geschreven. Programmeurs
+hoeven voortaan met deze talen niets te
+weten over de machinetaal. Hierdoor
+kunnen programma's 'vertaald' worden
+naar verschillende computers. Helaas
+blijven er door het kleine deel van het
+programma dat machine afhankelijk is
+toch nog steeds 'portabiliteits'
+problemen.
+
+VOORDELEN
+
+De 3e-generatie taal betekende dus een
+stap dichter bij de gebruiker-taal. De
+Engelstalige woorden (je moet dus wel
+Engels kennen) zijn gemakkelijker te
+begrijpen. Want zeg nu zelf, is het
+gemakkelijker om 'X=(A+B)/(C+D)' te
+schrijven, of:
+
+LDA C
+ADD D
+STA hulp
+LDA A
+ADD B
+DIV hulp
+STA X
+
+En dan zijn we er nog vanuit gegaan dat
+de processor een deel-instructie
+heeft...
+
+Een andere eigenschap is dat
+programma's geschreven in deze talen
+niet meer zelf-modificerend kunnen
+zijn. Men vond dat in de 60er jaren een
+groot nadeel. Maar ja, toen was het
+computer geheugen nog zeer krap. Nu
+moet je jezelf niet indenken dat het
+programma dat je hebt geschreven
+zichzelf ook nog eens gaat veranderen.
+
+VIERDE GENERATIE
+
+De 3e-generatie talen zijn procedurele
+talen. Een probleem kan worden
+opgedeeld in deelfuncties. Op die
+manier kan een programma structureel in
+elkaar gezet worden. Helaas zijn de
+programma's van tegenwoordig dermate
+complex dat er een gigantische
+hoeveelheid code voor nodig is, zelfs
+in de 3e-generatie taal. Dit maakt het
+geheel onoverzichtelijk. Ook het
+debuggen gaat lastig en kost veel tijd.
+Dit betekent dat het niet flexibel is.
+
+De 4e-generatie talen zijn ontworpen om
+dit soort problemen te lijf te gaan.
+Het doel van de 4e-generatie taal is
+het snel kunnen schrijven van
+programma's die gemakkelijk te
+veranderen zijn. Bovendien is de
+debug-tijd kort. De gebruiker kan nu
+zijn eigen programma's schrijven. (Is
+dit wel zo'n prettig idee?)
+
+TOEPASSINGS-GERICHT
+
+Derde-generatie talen gebruiken
+voornamelijk de von-Neumann achtige
+constructies: een lijst met statements
+en operaties met mogelijke herhalingen
+en sprongen. Eigenlijk soortgelijk als
+de machinetaal. De 4e-generatie talen
+wijken hierin sterk af. De vormen
+hiervan zijn uitgestrekt. Meestal zijn
+ze op EEN bepaalde toepassing
+toegespitst, vaak met een database-
+orientatie. Het programmeren kan
+plaatsvinden d.m.v. invullen van
+lijsten, kiezen van alternatieven of
+plaatjes tekenen op het scherm. Ze
+hebben allemaal als het ware een eigen
+visie op computer- zijn. Met deze talen
+zijn de programma's veel korter dan
+bijvoorbeeld in COBOL.
+
+NON-PROCEDUREEL
+
+Sommige 4e-generatie talen worden
+non-procedurele talen genoemd. Bij
+procedurele talen moet je aangeven HOE
+bepaalde problemen moeten worden
+opgelost. Non-procedurele talen moeten
+weten WAT er moet gebeuren. De
+gebruiker vertelt wat er moet gebeuren
+en is niet geinteresseerd in hoe het
+gedaan wordt.
+
+Een voorbeeld. Als je naar Hilversum
+wilt rijden, kan de opdracht daarvoor
+er in een procedurele taal als volgt
+uitzien: 'rij 500 meter vooruit; sla
+linksaf; rij 20 km vooruit; sla
+rechtsaf', enz. In een non- procedurele
+taal: 'Breng me naar Hilversum'.
+
+INTERACTIEF
+
+Nog sterker voorbeeld. Je zegt tegen
+een taxichauffeur: breng me naar 'Basic
+Instincts'. De taxichauffeur moet dan
+eerst gaan kijken in welke bioscoop dat
+draait, en vervolgens hoe hij er moet
+komen. Daar schuilt een gevaar in. Als
+de dichtst bijzijnde bioscoop waar die
+film draait 50 km verderop ligt, duurt
+het wel erg lang voordat je er bent.
+Als je dan halverwege zegt: 'Ja maar
+dat was niet de bedoeling', dan zegt de
+taxichauffeur: 'Ik volg alleen
+opdrachten op'. En dat doet een
+computer ook. Het is dus handig om
+interactief opdrachten te geven. De
+computer vertelt dan eerst wat de
+gevolgen zijn, daarna kun je beslissen
+of je dat echt wilt.
+
+VOORDELEN
+
+Een van de handigheden die in een
+4e-generatie taal kunnen zitten zijn de
+default-opties. Je kiest een opdracht,
+de computer kiest zelf de beste
+parameters daarvoor. Mocht je het daar
+niet mee eens zijn, dan kun je ze
+altijd zelf nog veranderen. Een ander
+voordeel is de korte debug-tijd. De
+talen zijn zo gemaakt dat er minder
+snel fouten gemaakt kunnen worden. Het
+is niet mogelijk om zelf-modificerende
+programma's te maken, of bijv. de
+beruchte GOTO te gebruiken. De riskante
+mogelijkheden van de 3e-generatie talen
+zijn eruit gehaald.
+
+VIJFDE GENERATIE: EXPERT SYSTEMEN
+
+Maar het kan nog beter. De computer
+moet de mens begrijpen. De 5e-generatie
+talen zijn volop in ontwikkeling: de
+expert systemen. De kunstmatige
+intelligentie maakt het mogelijk om
+conclusies te trekken uit gegeven
+omstandigheden. De computer moet
+daarvoor 'rekenen' in kennis in plaats
+van in getallen.
+
+Vooral in de medische wereld zijn deze
+systemen in gebruik. Een sterk
+voorbeeld: een patient communiceerde
+via een computer met een arts... dacht
+hij. In werkelijkheid was het echter
+een expert systeem. Voor de patient was
+het verschil niet te ontdekken.
+
+PROBLEEM
+
+Al die hogere generaties vormen wel een
+probleem voor de computer. Het vertalen
+moet als het ware van hoog naar laag
+plaatsvinden. Een 3e-generatie taal is
+nog betrekkelijk goed te vertalen naar
+machinetaal. Maar de 4e en vooral 5e
+generatie talen staan ver van de
+machinetaal af. Dit betekent dat de
+'vertalers' naar de machinetaal (de
+compilers) zeer complex worden, en dat
+er steeds krachtiger systemen nodig
+zijn om deze programma's te kunnen
+vertalen en uitvoeren.
+(Cees Mechielsen)
+
+OOP
+
+Tegenwoordig is OOP 'in': Object
+Oriented Programming. Iedereen heeft
+het erover, maar wat is het nu
+eigenlijk? Om dit duidelijk te maken,
+moeten we een onderscheid maken tussen
+OO-Ontwerpen en OO-Programmeren. Het
+ontwerp is waar het om draait. De
+implementatie van een OO-ontwerp kan
+natuurlijk het best in een OO-taal,
+maar dat is niet noodzakelijk.
+
+Bij OO-ontwerpen wordt gestreefd naar
+onafhankelijkheid tussen de
+verschillende delen van het programma.
+Uit ervaring blijkt dat door te veel
+globale variabelen en functies een
+groot programma al gauw
+onoverzichtelijk is, en daardoor ook
+moeilijk onderhoudbaar. En dat laatste
+is belangrijk voor de flexibiliteit van
+de software, want veroudering gaat erg
+snel in deze business.
+
+OBJECTEN
+
+Een object of 'class' is een abstract
+type dat een bepaalde taak vervult. Het
+is vergelijkbaar met het record van
+Pascal of de struct van 'C'. Maar in
+een class zitten zowel de gegevens als
+de algoritmen (procedures, functies).
+Als je iets van het object gedaan wilt
+krijgen, dan moet je het (om) een
+boodschap sturen. Hoe de boodschap
+wordt uitgevoerd is geheim. Je kunt
+daar dus niet bij.
+
+VARIABELEN
+
+Van een class kunnen variabelen
+(instances) gemaakt worden, net als bij
+record en struct het geval is. Als
+voorbeeld nemen we een class 'Motor'.
+De gegevens hierin zijn bijv.
+Cylinder-inhoud en Aantal-cylinders.
+Normaal zou je voor het invullen
+hiervan iets intikken in de trant van:
+
+Opel.Cylinder-inhoud = 1.7
+
+Bij OO-ontwerpers gaat dat als volgt:
+
+Opel.PutCylinder-inhoud(1.7)
+
+De werkelijke methode van opslag is
+niet bekend, en ook niet belangrijk. De
+voordelen worden al snel duidelijk:
+later kan altijd nog de opslagmethode
+of andere verwerking worden veranderd.
+De boodschap blijft gelijk.
+
+AFSTAMMELINGEN
+
+Een class kan afstammelingen hebben.
+Dit kan van EEN ouder-class zijn, maar
+ook van meerdere, bijvoorbeeld 4. Het
+mens-voorbeeld (2 ouders) gaat hierbij
+toch mank, ondanks de onvolprezen
+Nederlandse tolerantie. De
+eigenschappen van de ouder-classes
+zitten allemaal in de afstammeling.
+
+We nemen maar weer die Motor, en nemen
+daar als tweede ouder-class een Fiets
+bij. In de afstammeling, (je raadt het
+al) de Motorfiets, zijn zowel de
+Cylinder-inhoud van Motor als
+Wiel-diameter van Fiets aanwezig.
+
+Een ander voorbeeld van afstammelingen
+is een Veelhoek. De boodschap
+Oppervlakte kan de oppervlakte van de
+veelhoek uitrekenen en teruggeven. Een
+afstammeling hiervan kan zijn:
+Rechthoek. Hierin heeft ook Oppervlakte
+een betekenis. In werkelijkheid kan dit
+best een totaal andere functie zijn,
+maar de betekenis blijft gelijk. Deze
+herdefinitie van functies is zeer
+gebruikelijk in OO ontwerp. Als je
+bijvoorbeeld twee variabelen van het
+type Programma bij elkaar op moet
+tellen, kun je gewoon het volgende
+intikken:
+
+NOS-Laat + Achter-Het-Nieuws
+
+De '+' is in de class Gegevens
+gedefinieerd en weet hoe de beide
+variabelen bij elkaar gevoegd kunnen
+worden. De programmeur moet er
+natuurlijk wel voor zorgen dat de
+bekende betekenis van '+' ook zo
+blijft. Als het goed is, komt er NOVA
+uit, en geen Laat-op-3.
+(Cees Mechielsen)
+

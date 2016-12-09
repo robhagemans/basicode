@@ -1,0 +1,332 @@
+506, maa 15 jun '92
+
+SPECIAL: COMMODORE AMIGA 600HD
+
+Op de CeBIT in Hannover introduceerde
+Commodore de nieuwe Amiga 600HD. Sinds
+half mei is de 600 ook zonder HD (Hard
+Disk) leverbaar. Van de importeur
+ontving de Scoop redaktie een
+testexemplaar, model 600HD. Chris van
+Offeren voelde de kleine computer eens
+stevig aan de tandjes. Hier volgt het
+resultaat van zijn bevindingen.
+
+VERGELIJKBAAR MET A500+
+
+De adviesprijs van de 600 is
+vergelijkbaar met die van de 500 Plus.
+De 600HD is zelfs enkele honderden
+guldens goedkoper dan een 500 Plus met
+aparte harddisk en RF-modulator. De 600
+heeft net als de 500 Plus standaard 1
+Mb geheugen en het nieuwe besturings
+systeem Release 2. Alle aansluitingen
+van de 500 vinden we ook op de 600.
+Nieuw bij de 600 zijn een ingebouwde
+RF-modulator (voor aansluiting op de
+antenne-ingang van elke TV) en een
+composiet video uitgang in kleur (voor
+aansluiting op bijvoorbeeld de SCART
+van een TV of de video ingang van een
+monitor of videorecorder). Een 'echte'
+RGB monitor is beter, maar kleine
+lettertjes zijn via de composiet
+uitgang beter leesbaar dan via de
+aparte A520 modulator op de 500.
+
+NIEUW: PCMCIA-POORT
+
+Bijzonder is dat de 600 ook is voorzien
+van een PCMCIA (Pulse Code Modulated
+Complex Interface Adapter), uniek in
+deze prijsklasse. Hierin passen
+speciale geheugenkaartjes (RAM, ROM,
+Flash) zo groot als een betaalpasje,
+die ook wel toegepast worden in een
+enkele geavanceerde palmtop computer,
+zoals de pas geintroduceerde Olivetti
+Quaderno. Maar voorlopig zijn die
+kaartjes nog onbetaalbaar, zeker voor
+de Amiga doelgroep. 512 kb voor 800
+gulden is te veel, als je bedenkt dat
+er op een diskette van een gulden al
+meer gaat. Aan de andere kant missen we
+dan wel de voordelen van de PCMCIA
+kaarten: ze zijn klein en plat en
+hebben toch een capaciteit tot 4 Mb.
+Grootste voordeel is dat het systeem
+niet mechanisch werkt en heel snel
+toegankelijk is. Software ontwikkelaars
+zouden ook graag gebruik willen maken
+van PCMCIA kaartjes, omdat ze niet of
+in ieder geval veel moeilijker dan
+diskettes te kopieren zijn. Vergelijk
+het maar met de aloude cartridges voor
+de C-64 met programma's in ROM. Getest
+is PCMCIA hier niet, omdat de kaarten
+ontbraken. Wel zagen we dat in de
+meegeleverde systeem software PCMCIA
+utilities zijn opgenomen, zoals het
+programma PrepCard in de Workbench.
+
+COMPACTE BOUW
+
+Uiterlijk zijn 500 en 600
+onvergelijkbaar. De laatste is friswit
+('limestone beige') en is een stuk
+kleiner dan de 500. Weliswaar is de 600
+maximaal 15 mm hoger, maar 12 cm minder
+breed en 9 cm minder diep. De geringere
+afmetingen zijn onder meer verkregen
+door de toepassing van Surface Mounted
+Device (SMD) techniek op de print en
+het weglaten van het numerieke deel van
+het toetsenbord. De toetsen staan vrij
+dicht opeen en daardoor sla je wel
+regelmatig mis in de buurt van de
+Return, de Backspace en de Delete
+toets.
+
+PAST PRECIES...
+
+Handig is dat de muis/joystick poorten
+zich nu op de rechter zijkant van de
+kast bevinden. Deze poorten zijn echter
+net iets te ver verzonken aangebracht,
+zodat de muisconnector maar heel weinig
+in de poort kan worden gestoken en dus
+gemakkelijk weer losschiet. Dit in
+tegenstelling tot wat in de handleiding
+staat vermeld: 'de kabel past precies
+in de aansluiting'! De bekende Amiga
+880 kb diskdrive zit ook rechts. De
+diskettes moeten echt flink diep in de
+drive worden gestopt voor ze
+vastklikken. Ook hierbij zit een deel
+van de behuizing in de weg.
+
+LICHTGEWICHT VOEDING
+
+De voeding van de A600 is ondergebracht
+in het al van de 500 bekende blok
+waarop ook de netschakelaar zich
+bevindt. Dat betekent dus weer onder
+tafel bukken.... De voeding weegt
+slechts 650 gram; het fysiek even grote
+500 blok weegt maar liefst 1800 gram!
+Volgens de opschriften levert de
+600-voeding 5V/3A, +12V/0.5A en
+-12V/0.1A. Bij de 500 is dat
+respectievelijk 4.3A, 1.0A en 0.1A.
+Ondanks de extra te voeden harde schijf
+gaat de 600 dus beduidend economischer
+met de stroom om dan de 500. Ook dat
+zal aan de SMD-techniek en verdere
+integratie van onderdelen te danken
+zijn. Het geringe gewicht van het
+geheel en de bescheiden afmetingen
+maken de 600 makkelijk transportabel en
+door de ingebouwde modulator is hij
+overal aan te sluiten. Al is het
+natuurlijk geen accu- machine die je
+onderweg ook kunt gebruiken.
+
+INGEBOUWDE HARDE SCHIJF
+
+Bij de 600HD kan men in principe ook de
+diskettes thuis laten, want de software
+(uitgezonderd beveiligde programmatuur)
+kan immers op de 2,5 inch harde schijf
+van (minstens) 20 Mb worden geplaatst.
+In ons testmodel zat een 30 Mb
+IDE-drive van het merk Conner.
+Merkwaardig is overigens dat in het
+bijgeleverde onderhouds programma (HD
+Toolbox) de controller als SCSI wordt
+aangeduid, wat duidelijk niet het geval
+is. De schijfeenheid is redelijk snel
+(toegangstijd 23 msec, overdrachts
+snelheid 644 kb/sec). Het opstarten
+vanaf de harddisk gaat dan ook lekker
+vlot. Na 20 seconden is het systeem
+klaar. Ter vergelijking: vanaf diskette
+duurt de koude start 50 seconden.
+
+SYSTEEMKLOK ONTBREEKT
+
+Na het opstarten (en iedere andere
+reset) is het helaas steeds
+noodzakelijk om de systeemklok opnieuw
+in te stellen. Amiga DOS meldt ons
+namelijk na het commando SETCLOCK SAVE:
+'Can't find battery-backed up clock'.
+De 600HD is dus een machine met een
+harde schijf, maar zonder klokje, dat
+we wel op de 500 Plus standaard hebben.
+De (geheugen) uitbreidings kaarten met
+klok voor de 500, die achter het klepje
+onderop de machine worden geprikt,
+passen niet in de 600, want het vakje
+is hier kleiner. Commodore heeft nu
+aangekondigd dat er binnenkort een
+kleiner 1 Mb geheugenkaartje (de A601)
+komt. Daar zou dan tevens een klok met
+backup voeding op zitten. Prijzen zijn
+niet bekend. In de 600 is er ook geen
+ruimte voor de tot nu toe gangbare
+MS-DOS emulator- kaarten. En
+uitbreidingen die bij de 500 op de
+poort voor een Hard Disk (achter de
+klep links) worden aangesloten, passen
+ook niet op de 600, want dit slot
+ontbreekt op de kleine nieuweling. Er
+zijn op dit moment dus weinig
+uitbreidingen beschikbaar voor de 600.
+
+RADIOSTORING EN BASICODE
+
+In de praktijk heeft de 600HD een
+onhebbelijkheid die de 500 niet kent:
+een enorme AM-radiostoring. De voeding
+(niet verbonden met de computer)
+veroorzaakt een luide fluittoon in de
+ontvanger tot op een meter of twee
+afstand. Met de computer aangesloten,
+komt daar nog eens een sterke
+bromstoring bij en de harde schijf
+produceert tikgeluiden. Pogingen om
+Basicode programma's rechtstreeks van
+Radio 5 (AM 1008 kHz) in de 600 te
+laden mislukten door het hoge
+stoorniveau. Met de 500 Plus hadden we
+hier nooit last van. Gelukkig gaat het
+laden van Basicode signalen vanaf een
+cassette ook bij de 600 zonder
+probleem. Het Basicode vertaal
+programma voor de Amiga 500(+) en 2000
+is dan ook zonder meer bruikbaar op de
+A600. Alleen wordt net als bij de
+nieuwere 500 modellen geen Amiga Basic
+(van Microsoft) meer meegeleverd. Voor
+ons geen probleem, omdat we op de
+redaktie nog een oude maar trouwe Amiga
+2000 (een van de allereerste modellen)
+hebben staan, met Basic op de Extras
+schijf. Voor degenen onder de
+(toekomstige) A600 bezitters die met
+Basicode willen gaan werken, is het wel
+een probleem. Zij zullen op een of
+andere wijze Amiga Basic moeten zien te
+bemachtigen.
+
+SOFTWARE EN DOCUMENTATIE
+
+De importeur voegde bij de testmachine
+vier diskettes, alle met de versie
+2.05: Workbench, Extras, Fonts en
+A600HD Install Disk. Verder drie
+boekwerken, waarvan twee dunne
+Nederlands talige: 'Inleidung (sic!)
+tot de Amiga 600HD' (dit boek bevat
+veel tik- en (ver)taalfouten; nogal
+slordig van Commodore) en 'Handleiding
+bij de vaste schijf'. In deze boekjes
+staat af en toe Amiga 300 in plaats van
+600. Naar verluidt was 300 het
+oorspronkelijke type nummer, maar
+(waarschijnlijk om commerciele redenen)
+is dat later in 600 veranderd. Ook op
+het voedingsblok staat trouwens nog
+A300!
+
+Het derde boek is niet specifiek
+geschreven voor de 600. Het is een
+Engelse dikkerd waarin het besturings
+systeem van de Amiga's wordt verklaard:
+'Using the Amiga Workbench'. Het boek
+is helder geschreven, behoorlijk
+compleet, en biedt met name beginners
+een goede stap-voor-stap kennismaking
+met de Amiga Workbench (programmeer
+omgeving met vensters, ikoontjes en
+muisbesturing), de meegeleverde
+programma's en utilities en, voor de
+wat meer gevorderden, een inleiding in
+AmigaDOS.
+
+HD-INSTALL EN BACKUP
+
+De gebruiks aanwijzingen zijn voldoende
+duidelijk, mits de lezer de Engelse
+taal voldoende beheerst. In de
+Nederlandse boekjes staat bijvoorbeeld
+'Volg de aanwijzingen op het scherm',
+maar die zijn dan wel in het Engels en
+worden nergens toegelicht. Meer
+schermafbeeldingen zouden naast de
+Nederlandse tekst zeker niet misstaan.
+Maar toch lukte het wel met de software
+de harde schijf opnieuw te formatteren
+en de systeem software te installeren.
+Ook een Backup en Restore procedure
+verliep gladjes. Alleen lastig dat er
+bij iedere wisseling van schijf een
+akkoordklikje met de muis gegeven moet
+worden. PC Tools bijvoorbeeld 'ziet'
+zelf wel of de juiste diskette in de
+drive wordt gedaan en gaat dan gewoon
+uit zichzelf verder. Meestal kent de
+Amiga die truc ook wel, des te
+opvallender is het dat het hier zo is.
+Overigens zijn er natuurlijk ook andere
+backup programma's te koop als extra.
+
+BETROUWBAAR?
+
+Tot slot een opmerking over ons
+testexemplaar: dit vertoonde na enige
+tijd wat kuren. Zonder enige
+waarschuwing vooraf liep het systeem
+regelmatig vast, waarbij het beeld
+verdween. Oorzaak is waarschijnlijk een
+los contact of een verkeerde
+verbinding. Pas na enig 'timmeren' op
+de kast had de machine er (soms) weer
+even zin in. We hopen dat het hier een
+exemplarische fout betreft...
+
+CONCLUSIE
+
+De A600HD is een goedkoper alternatief
+voor een A500 Plus met aparte harde
+schijf en eventueel nog een aparte
+RF-modulator erbij.
+De 600 ziet er leuk uit en gaat
+makkelijk mee op reis. Op een heel
+grote uitzondering na, zal alle 500
+Plus software ook op de 600 draaien.
+Grootste nadelen zijn het ontbreken van
+een batterij gevoed klokje en het
+gebrek aan uitbreidings mogelijkheden.
+De standaard PCMCIA-poort is als
+technisch nieuwtje heel interessant,
+maar op dit moment is het nut ervan
+twijfelachtig. Misschien was het
+praktischer geweest als Commodore met
+de 600 ook een High Density diskdrive
+had geintroduceerd in plaats van
+PCMCIA.
+De harde schijf is bij aflevering
+geformateerd en voorzien van systeem
+software. Standaard accessoires zijn:
+een muis, een stereo audiokabel met
+Y-verloop voor mono en een coaxkabeltje
+voor aansluiting op een TV.
+De prijzen tot slot: met ingebouwde 20
+Mb harde schijf 1499 gulden, zonder
+harde schijf 1099 gulden. Prijzen zijn
+inclusief BTW.
+
+Chris Van Offeren
+

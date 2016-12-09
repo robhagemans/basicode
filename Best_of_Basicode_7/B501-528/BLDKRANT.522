@@ -1,0 +1,404 @@
+522, maa 14 sep '92
+
+SPECIAL: DISKETTES (DEEL 2)
+
+In deel 1 van zijn artikel over
+diskettes vertelde Wammes Witkop over
+de basis principes van magnetische
+geluids registratie en de 'boekhouding'
+op de schijf. In dit tweede en laatste
+deel komen zaken als fragmentatie, de
+File Allocation Table (FAT) en
+registratie problemen (bv. door
+drop-outs) aan de orde.
+
+VERBROKKELD
+
+Stel u voor, een bestand beslaat de
+eerste 4 sectoren van een disk. Een
+tweede bestand bezet de volgende 10
+sectoren, en verder is die disk leeg.
+Simpel zat, niet? Vervolgens haalt de
+computer gebruiker het in zijn of haar
+hoofd een derde file aan te leggen.
+Oke, ook niet lastig: gewoon vanaf
+sector 15. Maar dan komt de truuk. Er
+moet iemand zo nodig bestand nummer
+twee wissen, en nu zijn de sectoren 5
+tot en met 14 weer vrij. Natuurlijk is
+men niet zo beleefd om die weer in EEN
+keer te beschrijven, de volgende file
+meet 20 sectoren. En komt dan ook in
+twee stukken op de disk: eerst de
+leeggekomen sectoren 5 tot en met 14,
+en daarna de overige tien sectoren in
+de lege ruimte achter het
+oorspronkelijke derde bestand. En zo
+gaat dat door. De disk wordt tijdens
+het gebruik een ware legpuzzel van
+sectoren. Die boekhouding - en de tijd
+die de kop bezig is om de puzzelstukjes
+in logische volgorde op te halen - kan
+flink oplopen.
+
+DIRECTORY
+
+Die boekhouding staat ook op de disk
+zelf, want zonder die gegevens is een
+diskette een hopeloos geval. De eerste
+sectoren worden daarvoor gebruikt. Na
+een 'bootsector' volgen de
+directory-sectoren en de FAT. Pas
+daarna komen de eigenlijke
+data-sectoren, waarin onze gegevens
+staan.
+De bootsector is daarbij een speciaal
+geval. Daar vinden we zaken zoals de
+naam van de disk, een kenmerk onder
+welk systeem de disk is geformatteerd,
+een tabel met zaken zoals het aantal
+zijden, tracks en sectoren en, als het
+een disk betreft die zelf de computer
+kan laten starten, een heel klein
+programmaatje.
+Na de bootsector volgen een paar
+sectoren met de directory, de
+inhoudsopgave van de schijf. Per
+bestand is er ruimte gereserveerd voor
+zaken zoals de naam, de tijd en datum
+dat het aangemaakt is, wat
+systeem-informatie en vooral de sector
+waar het bestand begint.
+
+FILE ALLOCATION TABLE
+
+Voor korte bestanden is daarmee de kous
+af, maar voor verreweg de meeste
+bestanden (die meer dan 1 sector in
+beslag nemen) niet. Want de ontwerpers
+van dit disksysteem zijn slim geweest
+en hebben niet in die directory lijsten
+willen opnemen van de sectoren die elk
+bestand in beslag neemt. Dan zou men
+bij elk bestand een heel stuk ruimte
+moeten reserveren alleen daarvoor en
+dat zou verspilling zijn. Vandaar dat
+er voor die kettingen van sectoren, die
+uiteindelijk de bestanden vormen, een
+aparte tabel bestaat. Die tabel heet
+File Allocation Table (FAT) en daar
+bestaat geen ordentelijke Nederlandse
+vertaling voor. Krom gezegd is het de
+bestands toewijzings tabel, d.w.z. de
+lijst waarin de disk-controller kan
+opzoeken welk bestand waar staat en
+welke sectoren nog vrij zijn. En elke
+sector heeft een eigen plekje in die
+tabel.
+
+FAT-OPBOUW
+
+Als er nu een bestand wordt
+weggeschreven, dan zal in de directory
+worden bijgehouden in welke sector de
+data beginnen. In het bijbehorende
+hokje van de FAT echter staat niet bij
+welk bestand deze sector hoort; dat
+staat al in de directory en is
+eenrichtings verkeer. In de FAT houdt
+het systeem alleen bij welke VOLGENDE
+sector bij het bestand hoort. Met
+andere woorden, de directory verwijst
+naar het eerste hokje in de FAT, in de
+FAT wordt de ketting van sectoren
+bijgehouden. Middels de FAT kan het
+hele bestand (als het over meerdere
+sectoren verspreid is) worden
+ingelezen. De laatste FAT-entry van
+zo'n bestandsketen bevat alweer een
+speciale waarde, die als vlag dient om
+te melden dat hier het bestand ophoudt.
+
+ONAFSCHEIDELIJK
+
+De FAT is dus cruciaal voor een disk.
+Als de FAT niet meer klopt heb je geen
+logisch geheel meer, maar een
+onontwarbare kluwen van losse sectoren.
+FAT en directory zijn onafscheidelijk.
+
+Omdat de FAT zo belangrijk is, worden
+er twee exemplaren van bijgehouden. Zo
+kan men, als de computer over de kop
+slaat terwijl de FAT net bijgewerkt
+wordt, altijd trachten om met de tweede
+versie de disk weer toegankelijk te
+maken. Maar dat is erg ingewikkeld
+werk, eigenlijk alleen voor
+specialisten.
+
+FORMATTEREN
+
+Een disk is uiteindelijk een complex
+geheel. Vele sectoren, die tezamen een
+logische eenheid vormen. En die
+sectoren worden aangelegd tijdens het
+formatteren. Als een disk gemaakt
+wordt, is die disk maagdelijk. Het
+magnetisch materiaal is er, maar het
+bevat geen informatie. Het is een
+onbeschreven blad. Tracks en sectoren
+ontstaan pas tijdens het formatteren in
+de computer. Dan wordt het patroon van
+cirkels en taartpunten geschreven,
+waarin later de informatie kan worden
+opgeslagen. Dan worden de directory
+sectoren gereserveerd, de FAT ingevuld
+en de boot-sector voor het eerst
+beschreven.
+
+Daarbij kan het natuurlijk gebeuren dat
+een stukje disk niet helemaal zo is als
+het zou moeten zijn. Dat de informatie
+er niet goed op geschreven kan worden,
+door een slecht plekje in de
+magnetische laag. En ook daar kan het
+disksysteem mee leven, want toen de
+diskette net werd ontwikkeld gebeurde
+dat maar al te vaak. Als men alle
+diskettes die niet helemaal in orde
+waren toendertijd zou hebben afgekeurd,
+waren er maar weinig overgebleven.
+
+BAD SECTORS
+
+Vandaar dat een sector meteen na het
+formatteren in twee toestanden kan
+verkeren, namelijk beschikbaar (in orde
+en nog ongebruikt) of slecht. De Bad
+Sectors, in het Engels. Zo'n Bad Sector
+is een sector die toevallig op een
+slecht stukje van de disk valt. En dat
+ziet de elektronica onder het
+formatteren, want alle sectoren worden
+niet alleen beschreven met een
+startpatroon, maar ook teruggelezen.
+Daarbij wordt meteen het al genoemde
+controlegetal berekend en
+weggeschreven, en als dat bij het
+teruglezen niet klopt wordt zo'n sector
+als onbruikbaar gekenmerkt. Gewoon,
+door een heel speciaal getal in de FAT
+te zetten, de tabel waar alle sectoren
+hun eigen hokje hebben. Goede sectoren
+krijgen ook een speciale waarde, die
+natuurlijk nog niet naar de volgende
+sector in de ketting verwijst, maar die
+gewoon aangeeft dat hier een gezonde
+maar nog niet gebruikte sector zit.
+
+UITVAL
+
+Alleen aan het begin is het wel
+kritisch. Als de eerste sector, de
+bootsector, niet bruikbaar is, dan
+wordt de hele disk afgekeurd. En dat
+geldt ook voor zaken zoals de voor de
+directory en FAT gereserveerde
+sectoren. Slechte sectoren worden in de
+FAT aangegeven, en die bevat alleen
+data-sectoren.
+
+Dus, als er in die eerste sectoren een
+fout wordt geconstateerd, dan wordt de
+hele disk afgekeurd. Weggooien is de
+beste oplossing, over het algemeen. En
+dan wel bij het chemisch afval, want
+5,25 inch diskettes bevatten het nodige
+PVC, terwijl ook 3,5 inch diskjes toch
+echt geen groente-, fruit- of tuinafval
+zijn.
+
+Hoe kan dan nou, die uitval? En hoe kan
+het dat een disk die eerst wel goed is
+later problemen oplevert? En vooral,
+hoe kan een disk die eerst weigert zich
+te laten formatteren bij een tweede
+poging opeens wel goed blijken te zijn?
+Allemaal vragen die te maken hebben met
+de eigenschappen van de disk en dan
+vooral het magnetisch materiaal daarop.
+
+DROP-OUTS
+
+Die magnetische laag is namelijk het
+lastigste van de hele diskproduktie.
+Niet alleen dienen de juiste
+ingredienten in de goede verhoudingen
+te worden gemengd, maar die laag dient
+vooral heel gelijkmatig opgebracht te
+worden op de kunststof drager. En daar
+wringt soms de schoen, ondanks alle
+maatregelen tijdens de produktie.
+
+Diskettes worden onder 'clean room'
+condities gemaakt. Ofwel, de werkers
+zien er uit als maanmannetjes, in
+stofvrije pakken, met mutsjes op, en de
+fabriekshal wordt speciaal onder
+overdruk gehouden, terwijl alle
+ingeblazen lucht door een hele batterij
+filters gaat. De strijd tegen het
+stofje nemen de diskfabrikanten heel
+serieus, want elk stofje dat zich op
+een disk weet te nestelen kan die disk
+onbruikbaar maken. Waar stof zit, zit
+geen magnetische laag en kan dus geen
+informatie worden geschreven of
+gelezen: een zogenaamde drop-out.
+
+Drop-outs zijn onvermijdelijk, de kunst
+is om er zo weinig mogelijk te hebben.
+Drop-outs kunnen niet alleen door stof
+veroorzaakt worden, verontreinigingen
+in de materialen waarmee de magnetische
+laag wordt gemaakt spelen ook mee. Of
+bijvoorbeeld minuscule luchtbelletjes,
+die tijdens het opbrengen kunnen
+ontstaan. Bovendien, de ene drop-out is
+de andere niet. Als er geen
+magnetiseerbaar materiaal is, dan is er
+een echte drop-out, dan kan er niets
+worden beschreven of gelezen. Maar een
+toevallig dun plekje levert een
+relatieve drop-out op, een plek waar
+het signaal alleen maar zwakker zal
+zijn.
+
+LUCHTBELLETJES EN SLIJTAGE
+
+Luchtbelletjes zijn weer een verhaal
+apart: daar zit wel degelijk magnetisch
+materiaal, het zijn dus geen gewone
+drop-outs. Alleen, de kop komt keer op
+keer over zo'n luchtbel heen, en eens
+zal die mechanische belasting de bel
+doen breken. En dan is er dus opeens
+wel een drop-out ontstaan, op een plek
+waar eerst informatie stond. Dat soort
+processen doet diskettes tijdens het
+gebruik sneuvelen.
+
+Slijtage is natuurlijk ook van belang.
+De koppen rusten op de disk en dat
+houdt in dat zelfs de beste diskette na
+een aantal keren gebruik de geest zal
+geven. Afhankelijk van de kwaliteit van
+de kop (die spiegelglad moet zijn) en
+de afwerking van het diskoppervlak gaat
+het lang, zeer lang goed. Miljoenen
+koppassages zijn geen probleem, maar
+eens slijt de laag waarin de informatie
+staat vastgelegd zover weg dat het
+terug te lezen signaal te zwak wordt en
+de disk het begeeft.
+
+BUITENRAND
+
+Een disk bevat naast de data zijn eigen
+boekhouding: de directory en de FAT. En
+die sectoren worden over het algemeen
+veel vaker gelezen en beschreven dan de
+rest van het oppervlak. Ofwel, daar is
+de slijtage het sterkst. Een disk die
+oud en bejaard wordt zal meestal niet
+ergens in een bestand een foutje
+vertonen, maar in de interne
+boekhouding. En dat is ernstig, want
+zonder die boekhouding is de informatie
+niet meer toegankelijk. Vandaar dat
+fouten tijdens het lezen van de
+directory een hele goede reden zijn om
+een diskette subiet te vervangen.
+
+Dat systeemgebied zit aan de buitenrand
+van de disk. Dat is de plek om zo nu en
+dan eens kritisch te bekijken op
+slijtage verschijnselen. Het is ook de
+plek die absoluut geen fouten mag
+bevatten, wil de diskette bruikbaar
+zijn. Althans, geen fouten binnen de
+aangelegde sectoren, waar de
+bootsector, de directory- en de FAT-
+sectoren moeten staan. En daarmee
+hebben we de oorzaak te pakken van het
+verschijnsel dat een disk die niet
+geformatteerd wenst te worden bij een
+tweede poging vlekkeloos kan werken.
+Want tussen die sectoren zit loze
+ruimte. En als een drop-out tussen de
+tracks in zou vallen, is er niets aan
+de hand. De kans daarop bestaat, want
+waar het patroon begint dat tijdens het
+formatteren geschreven wordt is een
+pure toevalskwestie.
+
+SECTOR-LENGTE
+
+Er is overigens een goede reden om het
+systeemgebied aan de buitenrand van de
+disk aan te leggen: dat stuk is het
+betrouwbaarst. Om dat uit te leggen
+moeten we even terug naar de sectoren,
+de kleinste data-eenheid op een
+diskette. Op elke track zit hetzelfde
+aantal sectoren, met tussen de sectoren
+onderling wat lege ruimte, om ze per
+stuk te kunnen beschrijven. De diskette
+zelf draait met een vaste snelheid,
+namelijk driehonderd toeren per minuut.
+De kop schrijft echter gedurende een
+bepaalde tijd om 1 sector te
+formatteren. Ofwel, een sector heeft
+niet zozeer een bepaalde lengte, maar
+beslaat een bepaalde hoek op de disk.
+Die hoek, die men zich als een
+taartpunt kan voorstellen, omvat op de
+buitenrand meer ruimte dan aan de
+binnenkant. De sectoren zijn per track
+wisselend van fysieke lengte, hoewel er
+evenveel gegevens op staan. De
+frequentie van de vast te leggen
+signalen wordt lager, als we naar
+buiten gaan. En die frequentie is nu
+meteen de grenswaarde, als het gaat om
+de capaciteit van het magnetisch
+materiaal. Dat houdt in dat de
+buitenrand van een disk ruimschoots
+lagere frequenties moet vastleggen dan
+de binnenrand, en dan ook
+betrouwbaarder is. Niet voor niets
+zullen diskfouten bijna altijd op de
+hogere tracks optreden.
+
+HET VERHAAL GAAT VERDER
+
+Er valt nog veel meer over diskettes te
+vertellen. Zoals de reden dat een
+root-directory slechts een bepaald
+aantal bestanden kan bevatten, hetgeen
+weer alles te maken heeft met de
+logische structuur. Of wat die kort
+genoemde boot-sector nu precies
+inhoudt. Ook boeiend: wat bepaalt nu
+precies de kwaliteit van een disk? Is
+een witte disk slechter dan een
+merk-diskette, of alleen maar
+goedkoper? Over dit laatste onderwerp
+staat meer informatie in de PC-Active
+nummers 40 en 41, waarin een groot
+aantal DD en HD diskettes van diverse
+merken uitvoerig zijn getest.
+
+Wammes Witkop. (Uit: PC-Active nr. 39)
+
