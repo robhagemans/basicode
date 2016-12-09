@@ -1,0 +1,317 @@
+
+1000 A=300:GOTO20:REM * CARNAVAL / PASEN *
+1010 REM *** HOOFD-PROGRAMMA ***
+1020 VT=VE:GOSUB100
+1030 GOSUB6000:REM  * MENU  *
+1040 GOSUB1130:REM * INITIALISATIE/INVOER *
+1050 GOSUB2030:REM * PAASDATUM BEREKENEN  *
+1060 GOSUB3030:REM * UITVOER              *
+1070 GOSUB4030:REM * SCHRIKKELJAAR OF NIET *
+1080 GOSUB5030:REM * CARNAVALS-DATUM       *
+1090 GOSUB10020:RESTORE:GOTO1030
+1100 REM
+1110 REM ** INITIALISATIE/INVOER **
+1120 REM
+1130 GOSUB100:HO=0:VE=2:GOSUB110
+1140 PRINT"geef het jaar (1583 - 2199) :";
+1150 INPUTJ
+1160 IFNOT((J>=1583)AND(J<=2199)AND(J=INT(J))) THEN1130
+1170 RETURN
+2000 REM
+2010 REM ** PAASDATUM BEREKENEN **
+2020 REM
+2030 A=J-19*INT(J/19)
+2040 B=J-4*INT(J/4)
+2050 C=J-7*INT(J/7)
+2060 READBJ,M,N
+2070 IF(J>BJ) THEN2060
+2080 D=(19*A+M)-30*INT((19*A+M)/30)
+2090 E=(2*B+4*C+6*D+N)-7*INT((2*B+4*C+6*D+N)/7)
+2100 DN=22+D+E
+2110 IF(DN=57) THENDN=50
+2120 IF(DN=56)AND(D=28)AND(A>10) THENDN=49
+2130 RETURN
+3000 REM
+3010 REM ** UITVOER **
+3020 REM
+3030 PRINT:PRINT"******************************":PRINT
+3040 PRINT"Pasen valt in ";J;" op ";
+3050 IF(DN<=31) THENPRINTDN;" maart"
+3060 IF(DN>31) THENPRINTDN-31;" april"
+3070 PRINT:PRINT"******************************":PRINT
+3080 RETURN
+3090 REM
+4000 REM
+4010 REM *** SCHRIKKELJAAR OF NIET ****
+4020 REM
+4030 IF(J/3200=INT(J/3200)) THENF=28:GOTO4080
+4040 IF(J/400=INT(J/400)) THENF=29:GOTO4080
+4050 IF(J/100=INT(J/100)) THENF=28:GOTO4080
+4060 IF(J/4=INT(J/4)) THENF=29:GOTO4080
+4070 F=28
+4080 PRINT:PRINT"in ";J;" heeft februari ";F;" dagen."
+4090 RETURN
+4100 REM
+5000 REM
+5010 REM *** CARNAVALS-DATUM ***
+5020 REM
+5030 DG=31+F+DN
+5040 CZ=DG-49
+5050 CD=CZ-31
+5060 IF(CD>F) THENCD=CD-F:GOTO5090
+5070 IF(CD<=F) THEN5110
+5080 RETURN
+5090 PRINT:PRINT"Carnavals-zondag is: ";CD;" maart"
+5100 GOTO5080
+5110 PRINT:PRINT"Carnavals-zondag is: ";CD;" februari"
+5120 GOTO5080
+5130 REM
+6000 GOSUB100:REM ** MENU **
+6010 PRINT:PRINT"Carnaval / Paasdatum"
+6020 PRINT"--------------------"
+6030 PRINT:PRINT"          menu"
+6040 PRINT:PRINT" 1. historische gegevens van Pasen"
+6050 PRINT:PRINT" 2. historische gegevens van Gauss"
+6060 PRINT:PRINT" 3. uitleg schrikkeljaar"
+6070 PRINT:PRINT" 4. iets over Carnaval"
+6080 PRINT:PRINT" 5. berekening Pasen en Carnaval"
+6090 PRINT:PRINT" 6. stoppen"
+6100 PRINT:PRINT"geef nummer van uw keuze:";
+6110 GOSUB210
+6120 IF(IN$<"1")OR(IN$>"6") THEN6100
+6130 IFIN$="1" THEN6530
+6140 IFIN$="2" THEN7000
+6150 IFIN$="3" THEN7510
+6160 IFIN$="4" THEN8510
+6170 IFIN$="5" THENRETURN
+6180 IFIN$="6" THEN GOSUB100
+6190 HO=10:VE=10:GOSUB110
+6200 PRINT"TOT ZIENS !"
+6210 HO=0:VE=22:GOSUB110:GOSUB10020
+6220 GOTO950
+6500 REM
+6510 REM ** HISTORISCHE GEGEVENS PASEN ***
+6520 REM
+6530 GOSUB100:HO=0:VE=2:GOSUB110
+6540 PRINT"Historische gegevens van het Paasfeest"
+6550 FORQ=1 TO38:PRINTCHR$(45);:NEXTQ
+6560 PRINT:PRINT"In alle christelijke landen valt"
+6570 PRINT:PRINT"het Paasfeest op de zondag die"
+6580 PRINT:PRINT"volgt op de eerste volle maan"
+6590 PRINT:PRINT"na het begin van de lente. (21 maart)"
+6600 PRINT:PRINT"Pasen kan dus vallen op 22 maart (1598 "
+6610 PRINT:PRINT"1693, 1761, 1818 en 2285)"
+6620 PRINT:PRINT"De laatst mogelijke datum is 25 april"
+6630 PRINT:PRINT"(1734, 1886, 1943, 2038, 2190)"
+6640 GOSUB10020
+6650 GOSUB100:PRINT"De berekening van de datum van het"
+6660 PRINT:PRINT"Paasfeest werd vastgesteld op het"
+6670 PRINT:PRINT"concilie van Nicea (325 n.Chr.)"
+6680 PRINT:PRINT"Het was een poging v.de geestelijkheid"
+6690 PRINT:PRINT"het Paasfeest zo te regelen, dat het"
+6700 PRINT:PRINT"nooit samenvalt met het Joodse Pasen."
+6710 PRINT:PRINT"Een keer is het toch samengevallen:"
+6720 PRINT:PRINT"in 1825."
+6730 PRINT:PRINT"Een manier om de datum van Pasen"
+6740 PRINT:PRINT"te berekenen is de formule van Gauss."
+6750 GOSUB10020
+6760 PRINT:PRINT"De formule v.Gauss wordt hier gebruikt"
+6770 PRINT:PRINT"Zie regel 2000-3040"
+6780 PRINT:PRINT"Er werd rekening gehouden met de"
+6790 PRINT:PRINT"schrikkeljaren ="
+6800 PRINT:PRINT"Schrikkeljaren zijn :"
+6810 PRINT:PRINT"-alle jaren deelbaar door 4"
+6820 PRINT:PRINT"-eeuwjaren zijn geen schrikkeljaren"
+6830 PRINT:PRINT"-eeuwjaren deelbaar door 400 echter wel"
+6840 PRINT:PRINT"-eeuwjaren deelbaar door 3200 weer niet"
+6850 PRINT:PRINT"in schrikkeljaar :februari 29 dagen"
+6860 GOSUB10020:GOTO6000
+7000 GOSUB100:PRINT"Hist.gegevens over Gauss (1777-1855)"
+7010 FORQ=1 TO36:PRINT"-";:NEXTQ
+7020 PRINT:PRINT" Carl Friedrich Gauss werd geboren"
+7030 PRINT:PRINT" in 1777 te Brunswijk (D) als zoon van"
+7040 PRINT:PRINT" van een metselaar. Zijn vaardigheid"
+7050 PRINT:PRINT" in rekenen trok de aandacht. De hertog"
+7060 PRINT:PRINT" van Brunswijk liet hem doorstuderen."
+7070 PRINT:PRINT" Op 19-jarige leeftijd vond hij een"
+7080 PRINT:PRINT" constructie uit voor de regelmatige"
+7090 PRINT:PRINT" 17-hoek."
+7100 GOSUB10020
+7110 PRINT:PRINT" In 1807 bood de keizer van Rusland"
+7120 PRINT:PRINT" Gauss een zetel aan in de academie"
+7130 PRINT:PRINT" te Petersburg (Rusland), maar Gauss"
+7140 PRINT:PRINT" verkoos een betrekking als directeur"
+7150 PRINT:PRINT" der sterrenwacht en hoogleraar in de"
+7160 HO=18:VE=11:GOSUB110:PRINTCHR$(34)
+7170 PRINT" sterrenkunde te Gottingen."
+7180 PRINT:PRINT" Hij voerde het begrip congruentie van"
+7190 PRINT:PRINT" de tweede graad in. Hij schreef over"
+7200 PRINT:PRINT" de verdeling van de cirkel."
+7210 GOSUB10020
+7220 PRINT:PRINT" Gauss lukte het voor het eerst de"
+7230 PRINT:PRINT" grafische voorstelling van de z.g."
+7240 PRINT:PRINT" imaginaire getallen.Beroemd is de z.g."
+7250 PRINT:PRINT" Gausssche Fehlerkurve=kromme v.Gauss."
+7260 PRINT:PRINT" Naast zijn betekenis voor de wiskunde"
+7270 PRINT:PRINT" schreef Gauss vooral over astronomie"
+7280 PRINT:PRINT" (sterrenkunde). Hier ligt het raakvlak"
+7290 PRINT:PRINT" met de Paasdatum. Tenslotte schreef"
+7300 PRINT:PRINT" hij over natuurkunde."
+7310 GOSUB10020:GOTO6000
+7500 REM *** UITLEG SCHRIKKELJAAR ***
+7510 GOSUB100
+7520 PRINT:PRINT" Uitleg schrikkeljaar"
+7530 FORQ=1 TO21:PRINT"-";:NEXTQ
+7540 PRINT:PRINT"Tropisch jaar=tijd waarin de aarde haar"
+7550 PRINT:PRINT"rondje om de zon draait. (365,2422 dg)"
+7560 PRINT:PRINT"Burgerlijk jaar=1 jan - 31 dec.(365 dg)"
+7570 PRINT:PRINT"Kalender = poging om burgerlijk jaar"
+7580 PRINT:PRINT"gelijk te laten lopen met het trop.jr."
+7590 PRINT:PRINT"(anders verschuift de zomer naar de"
+7600 PRINT:PRINT"winter en omgekeerd.)"
+7610 GOSUB10020
+7620 PRINT:PRINT"Trop.jr.=365 d. 5 u. 48 min. 45 sec."
+7630 PRINT:PRINT"Burg.jr.=365 d. 6 u.(sinds jul.caesar)"
+7640 PRINT:PRINT"Dus ons burg.jr.is 11 min.en 15 sec."
+7650 PRINT:PRINT"te lang!"
+7660 PRINT:PRINT"Historisch overzicht"
+7670 FORQ=1 TO20:PRINT"-";:NEXTQ
+7680 PRINT:PRINT"vroeger: maan-jaar"
+7690 PRINT:PRINT"Julius Caesar(vermoord:15 mrt.44 n.Chr"
+7700 PRINT:PRINT"voerde het Egyptisch zonne-jaar in van"
+7710 PRINT:PRINT"365+ 1/4 dag te beginnen 1 jan.45 n.Chr"
+7720 GOSUB10020
+7730 PRINT:PRINT"Het jaar begon vroeger op 1 maart."
+7740 PRINT:PRINT"(daardoor september=7-de maand ! enz.)"
+7750 PRINT:PRINT"Februari was toen de laatste maand!"
+7760 PRINT:PRINT"Februari kreeg het restje van de dagen"
+7770 PRINT:PRINT"van het jaar,dus 28 dagen.Daar kwam dan"
+7780 PRINT:PRINT"eventueel de extra dag achteraan(=29)."
+7790 GOSUB10020
+7800 PRINT:PRINT"Om de 4 jaar werd een schrikkeldag"
+7810 PRINT:PRINT"bijgevoegd na de laatste febr.=29 febr."
+7820 PRINT:PRINT"(Schrikken betekende vroeger:"
+7830 PRINT:PRINT" Met grote stappen lopen !)"
+7840 PRINT:PRINT"Julius Caesar hield geen rekening met"
+7850 PRINT:PRINT"de fout van 11 min. en 15 sec."
+7860 PRINT:PRINT"Julius Caesar:"
+7870 PRINT:PRINT" - het jaar begint op  1 januari."
+7880 PRINT:PRINT" - de lente begint op 24 maart."
+7890 GOSUB10020
+7900 PRINT:PRINT"gevolg: 128 Jul.Caesar-jaren waren"
+7910 PRINT:PRINT"samen 1 dag te lang!"
+7920 PRINT:PRINT"Concilie van Nicea (323 na Chr.) dus"
+7930 PRINT:PRINT"zowat 3 x 128 jr.later,moest 3 dagen"
+7940 PRINT:PRINT"corrigeren.Daarom:lente begint nu 21/3"
+7950 PRINT:PRINT"In 1582, dus ongeveer 1280 jaar later,"
+7960 PRINT:PRINT"was het jaar intussen 10 dagen te lang!"
+7970 PRINT:PRINT"Paus Gregorius XIII verbeterde de fout"
+7980 PRINT:PRINT"in een klap, doordat hij 10 dagen liet"
+7990 GOSUB10020
+8000 PRINT:PRINT"wegvallen:na 4 okt.1582 volgde 15 okt.!"
+8010 PRINT:PRINT"(er zijn dus 10 dagen nooit geweest!)"
+8020 PRINT:PRINT"Julius Caesar:elke 4 jr.een schrikkeljr"
+8030 PRINT:PRINT"(deelbaar door 4 = schrikkeljaar)"
+8040 PRINT:PRINT"In 128 jaar 1 dag te veel"
+8050 PRINT:PRINT"in 3 x 128 jr = rond 400 jaar dus"
+8060 PRINT:PRINT"3 dagen te veel, daarom eeuw-jaren geen"
+8070 PRINT:PRINT"schrikkeljaar behalve telkens het"
+8080 PRINT:PRINT"vierde.(deelb.door 400 blijft schr.jr.)"
+8090 GOSUB10020
+8100 PRINT:PRINT"Na 32 eeuwen blijven nog 24 uur=1 dag"
+8110 PRINT:PRINT"te veel.(deelb.door 3200 geen schr.jr."
+8120 PRINT:PRINT"Samengevat wordt dat:"
+8130 GOSUB10020:GOTO6800
+8500 REM ***  CARNAVAL/VASTENAVOND ***
+8510 GOSUB100:PRINT"Carnaval / Vastenavond "
+8520 FORQ=1 TO21:PRINT"-";:NEXTQ
+8530 PRINT:PRINT"Carnaval is het volksfeest dat zich"
+8540 PRINT:PRINT"afspeelt op zondag, maandag en dinsdag"
+8550 PRINT:PRINT"voor as-woensdag."
+8560 PRINT:PRINT"As-woensdag is het begin van de"
+8570 PRINT:PRINT"40-daagse vastentijd voor Pasen."
+8580 PRINT:PRINT"(Synode van Benevento : 1091 n.Chr.)"
+8590 PRINT:PRINT"Op zondag werd niet gevast, daardoor"
+8600 PRINT:PRINT"komen bij de 40 dagen nog 6 zondagen."
+8610 PRINT:PRINT"Carn.zondag dus op 49 dg.voor Pasen"
+8620 GOSUB10020
+8630 PRINT:PRINT"Carnaval was de samenballing van"
+8640 PRINT:PRINT"3 feesten:"
+8650 PRINT:PRINT"- nieuwjaars-feest(jaar begon 1 maart!"
+8660 PRINT:PRINT"- lente-begin-(24 later 21 maart"
+8670 PRINT:PRINT"- initiatie-feest(jongens worden man)"
+8680 PRINT:PRINT"De geestelijkheid probeerde deze"
+8690 PRINT:PRINT"heidense feesten in de kerkelijke"
+8700 PRINT:PRINT"kalender en liturgie te integreren."
+8710 GOSUB10020
+8720 PRINT:PRINT"Na veel ups en downs komt de tijd van"
+8730 PRINT:PRINT"de Franse bezetting van Italie en het"
+8740 PRINT:PRINT"Rijnland. (1796-1814)"
+8750 PRINT:PRINT"Vanuit Italie dringt de carnavalsbacil"
+8760 PRINT:PRINT"door naar het Rijnland:"
+8770 PRINT:PRINT"Keulen(1823)-Mainz(1838) en naar ons:"
+8780 PRINT:PRINT"Maastricht(Momus:1840)-Venlo(Jocus:1842"
+8790 PRINT:PRINT"Deze vieringen hebben een Rijnlands"
+8800 PRINT:PRINT"karakter: romantisch/hoofs/uniformen."
+8810 GOSUB10020
+8820 PRINT:PRINT"In Brabant begint de herleving iets"
+8830 PRINT:PRINT"eerder:1816-Bergen op Zoom (Krabbegat)"
+8840 PRINT:PRINT"en officieel:Den Bosch in 1882"
+8850 PRINT:PRINT"In Brabant heeft de viering een meer"
+8860 PRINT:PRINT"eigen, een volkser karakter:"
+8870 PRINT:PRINT"Oeteldonk en Krabbegat kiezen niet voor"
+8880 PRINT:PRINT"het uniform, maar voor de eenvoudige"
+8890 PRINT:PRINT"maar wel uniforme boerenkiel."
+8900 GOSUB10020
+8910 PRINT:PRINT"Carnaval is geen datum maar 'n toestand"
+8920 PRINT:PRINT"met vele aspekten:"
+8930 PRINT:PRINT"-kinderlijke verkleed-rage"
+8940 PRINT:PRINT"-narren-wijsheid =verzet tegen gezag"
+8950 PRINT:PRINT" met humor,spot,relativiteitszin"
+8960 PRINT:PRINT"-zucht naar macht en pronk"
+8970 PRINT:PRINT"-zucht naar vrijheid (uit de sleur)"
+8980 PRINT:PRINT"-gezelligheid,plezier,gek doen"
+8990 PRINT:PRINT"-trots zijn iets gepresteerd te hebben."
+9000 GOSUB10020
+9010 PRINT:PRINT"-uiting van talenten:"
+9020 PRINT:PRINT"        muziek"
+9030 PRINT:PRINT"        dichten"
+9040 PRINT:PRINT"        toneel"
+9050 PRINT:PRINT"        cabaret"
+9060 PRINT:PRINT" de sprekerd in de ton of buut"
+9070 GOSUB10020:GOTO6000
+10000 REM --------------------
+10010 REM ** PAGINERINGS-ROUTINE **
+10020 HO=0:VE=VT-1:GOSUB110
+10030 FORQ=1 TO38
+10040 PRINT"-";
+10050 NEXTQ
+10060 PRINT:PRINT"             Druk toets =>";
+10070 GOSUB210:GOSUB100
+10080 RETURN
+10090 REM
+25000 DATA1699,22,2,1799,23,3,1899,23,4
+25010 DATA2099,24,5,2199,24,6
+30000 REM *****************************
+30010 REM * LITERATUUR:               *
+30020 REM * JONGENS I.D.VRIJE NATUUR  *
+30030 REM * J.C.ALDERS-THIEME-1942    *
+30040 REM *                           *
+30050 REM * BEKN.GESCH.DER WISKUNDE   *
+30060 REM * J.VERSLUYS-AMSTERDAM 1902 *
+30070 REM *                           *
+30080 REM * BEKN.LEERB.ALG.GESCH.I    *
+30090 REM * AUG.C.J.COMMISSARIS       *
+30100 REM * MALMBERG                  *
+30110 REM *                           *
+30120 REM * CARNAVAL ONTMASKERD?      *
+30130 REM * DRS.THEO FRANSEN          *
+30140 REM * MAASBREE (Z.J.)           *
+30150 REM *                           *
+30160 REM *****************************
+32000 REM *** DOOR H.EYCK / NEER   ***
+32010 REM *** 7 FEBR.1988          ***
+32020 REM *** OP COMMODORE 64      ***
+32030 REM
+32040 REM TROS-RADIO dd 890201
+32050 REM herhaling  dd 890208

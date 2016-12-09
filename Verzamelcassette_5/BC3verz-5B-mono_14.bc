@@ -1,0 +1,305 @@
+
+1000 A=1000:GOTO20:REM ** PSYCHO-ANALYSE **
+1010 DIMML(12),D$(7),M$(12)
+1020 HT=HO:VT=VE:RESTORE:U$=""
+1030 FORI=1 TO12:ML(I)=28+VAL(MID$("303232332323",I,1))
+1040 NEXTI
+1050 FORI=1 TO7:READD$(I):NEXTI
+1060 FORI=1 TO12:READM$(I):NEXTI
+1070 SR$="PSYCHO-ANALYSE":GOSUB150:PRINT:PRINT
+1080 PRINT"Dit programma stelt u een aantal vragen"
+1090 PRINT"en maakt uit uw antwoorden een complete"
+1100 PRINT"karakterbeschrijving van u.":PRINT:PRINT
+1110 GOSUB2010
+1120 GOSUB4010
+1130 GOTO950
+2000 REM **invoergedeelte **
+2010 TC=0:REM totaalscore
+2020 REM **1**
+2030 PRINT"Ik heb enkele persoonlijke gegevens"
+2040 PRINT"van u nodig. Vanzelfsprekend worden"
+2050 PRINT"deze gegevens strikt vertrouwelijk"
+2060 PRINT"behandeld."
+2070 PRINT:INPUT"Wat is uw achternaam ";AN$
+2080 IFAN$="" THEN GOSUB250:GOTO2070
+2090 TC=TC+ASC(LEFT$(AN$,1))
+2100 PRINT:PRINT"Ik heb ook twee data nodig."
+2110 PRINT:PRINT"Uw geboortedatum:"
+2120 PRINT:GOSUB6010:REM DATUMINVOER
+2130 G=(J*12+M)*32+D:TC=TC+G/1.7:PRINT
+2140 PRINTD;" ";M$(M);" ";J;" viel op een ";D$(R);"."
+2150 PRINT:PRINT"En de datum van vandaag:"
+2160 GOSUB6010:REM DATUMINVOER
+2170 PRINT:PRINT"Vandaag is het dus ";D$(R);"."
+2180 V1=M*32+D:V=J*12*32+V1:TC=TC-V*3.17
+2190 L=INT((V-G)/384)
+2200 IFV>G THEN2250
+2210 PRINT:PRINT"U bent blijkbaar nog niet geboren."
+2220 PRINT"We kunnen hier dus wel stoppen."
+2230 GOSUB210:GOTO950
+2240 REM **2**
+2250 PRINT:INPUT"Wat is uw huisnummer ";HN$
+2260 IFHN$="" THEN GOSUB250:GOTO2250
+2270 TC=TC+.029*ASC(LEFT$(HN$,1))
+2280 PRINT:INPUT"Wat is uw postcode   ";SR$
+2290 GOSUB330:PC=VAL(LEFT$(SR$,4))
+2300 IF(PC<1000)OR(PC>9999) THEN GOSUB250:GOTO2280
+2310 PC$=SR$:TC=TC+PC/4
+2320 REM **3**
+2330 PRINT:PRINT"Wat is de leeftijd van uw moeder"
+2340 PRINT"(als zij overleden is, moet u"
+2350 INPUT" als antwoord 0 intikken) ";LM
+2360 TC=TC+SGN(LM)
+2370 IFLM=0 THEN2460
+2380 GL=INT(LM-(V-G)/384):TC=TC+GL*3.141592
+2390 IFGL>15 THEN2460
+2400 PRINT"U hebt wel een erg jonge moeder":PRINT
+2410 IFGL<0 THEN2460
+2420 PRINT"Zij was pas ";GL;" toen u geboren werd"
+2430 GOTO2460
+2440 PRINT"Zij is jonger dan u zelf bent en dat"
+2450 PRINT"is erg ongebruikelijk!"
+2460 TC=ABS(TC)
+2470 REM **4**
+2480 PRINT:PRINT"Bent u getrouwd ";:GOSUB5000
+2490 TC=TC*2:IFNOT(JN) THENTC=TC*.6:GOTO2650
+2500 PRINT:PRINT"Hebt u kinderen ";:GOSUB5000
+2510 TC=TC*1.3:IFNOT(JN) THENTC=TC*.82:GOTO2620
+2520 PRINT:INPUT"Hoe oud is de oudste ";L1
+2530 IFL1<L THEN2580
+2540 PRINT:PRINT"Die is dan ouder dan uzelf."
+2550 PRINT"Dat wijst derhalve voor u"
+2560 PRINT"op een leugenachtig karakter!":PRINT
+2570 TC=TC*.3
+2580 PRINT:INPUT"Hoe oud is de jongste";L2
+2590 TC=TC+L1-L2:IFL1>=L2 THEN2620
+2600 GOSUB250:PRINT"De jongste is meestal jonger"
+2610 PRINT"dan de oudste !":PRINT:GOTO2520
+2620 PRINT:PRINT"Hebt u wel eens verschil van"
+2630 PRINT"mening met uw vrouw ";:GOSUB5000
+2640 TC=TC+SGN(JN):PRINT:PRINT"Dat dacht ik al."
+2650 TC=TC+6
+2660 REM **5**
+2670 PRINT:INPUT"Wat is uw haarkleur ";HK$
+2680 IFHK$="" THEN GOSUB250:GOTO2670
+2690 TC=TC+.3*ASC(LEFT$(HK$,1))
+2700 PRINT:INPUT"Wat is uw schoenmaat";SM
+2710 TC=TC+INT(SM-40)/5
+2720 PRINT:PRINT"Hoe laat is het nu :"
+2730 INPUT"    de uren (0-23) ";U
+2740 IF(U<>INT(U))OR(U<0)OR(U>23) THEN GOSUB250:GOTO2730
+2750 INPUT" de minuten (0-59) ";V
+2760 IF(V<>INT(V))OR(V<0)OR(V>59) THEN GOSUB250:GOTO2750
+2770 IFU<8 THENPRINT:PRINT"U bent al vroeg op!":TC=TC+1
+2780 IFU>22 THENPRINT:PRINT"U bent nog laat bezig!":TC=TC-1
+2790 REM **6**
+2800 PRINT:INPUT"Welk merk computer is dit ";CM$
+2810 PRINT:PRINT"Nou ja, misschien krijgt u nog wel"
+2820 PRINT"eens een andere."
+2830 PRINT:PRINT"Hoeveel K RAM zit hier volgens"
+2840 INPUT"de verkoper in ";KR
+2850 GOSUB270:FR=INT(FR/1024)
+2860 IFFR<KR THEN2900
+2870 PRINT:PRINT"Dan heb ik goed nieuws, want op"
+2880 PRINT"dit moment is er zelfs ";FR;" K vrij."
+2890 GOTO2930
+2900 IFFR>KR/10 THEN2930
+2910 PRINT:PRINT"Dat ziet er somber uit, want op dit"
+2920 PRINT"moment is er nog maar ";FR;" K over"
+2930 PRINT:PRINT
+2940 REM **7**
+2950 PRINT"We moeten nu even de snelheid van"
+2960 PRINT"uw computer timen. Daarvoor kunt u een"
+2970 PRINT"echte stopwatch gebruiken, maar met een"
+2980 PRINT"gewoon horloge gaat het ook.":PRINT
+2990 PRINT"Telkens moet u met een druk op de"
+3000 PRINT"spatiebalk aangeven wanneer ik moet"
+3010 PRINT"starten. Enige tijd later geef ik met"
+3020 PRINT"een piepje aan dat ik klaar ben en moet"
+3030 PRINT"u opgeven hoe lang het geduurd heeft."
+3040 PRINT:PRINT"De streeftijd is circa 1 minuut."
+3050 PRINT:PRINT"We gaan beginnen.":E=500:PRINT
+3060 GOSUB120:PRINT"Druk de spatie om te starten..."
+3070 GOSUB210:IFIN<>32 THEN3070
+3080 FORSR=E TO1 STEP-1:GOSUB300:A=(32*55-12/16)^3.7
+3090 GOSUB110:PRINTSR$;" ";:NEXTSR
+3100 GOSUB250:PRINT:PRINT"Duurde dit:":PRINT
+3110 PRINT" 1  Korter dan 30 seconden"
+3120 PRINT" 2  Korter dan 55 seconden"
+3130 PRINT" 3  Tussen 55 en 65 seconden"
+3140 PRINT" 4  Langer dan 65 seconden"
+3150 PRINT" 5  Langer dan 2 minuten"
+3160 PRINT:PRINT"nummer ? ";
+3170 GOSUB210:IF(IN<49)OR(IN>53) THEN3170
+3180 PRINTIN$:ONIN-48 GOTO3190,3200,3270,3210,3220
+3190 E=E*2:GOTO3230
+3200 E=E*1.15:GOTO3230
+3210 E=E*.88:GOTO3230
+3220 E=E*.5
+3230 PRINT:PRINT"Dat duurde dan te ";
+3240 IFIN<51 THENPRINT"kort.":GOTO3260
+3250 PRINT"lang."
+3260 PRINT"We proberen het nog eens.":PRINT:GOTO3060
+3270 PRINT:PRINT"Dan weet ik genoeg; bedankt voor"
+3280 PRINT"de medewerking.":RETURN
+4000 REM **analyse en uitslag**
+4010 PRINT:PRINT:SR$="Druk op de spatie":GOSUB150
+4020 GOSUB210:IFIN<>32 THEN4020
+4030 GOSUB100:SR$="Uw analyse":GOSUB150
+4040 PRINT:PRINT:PRINT"Uw ruwe score is ";INT(TC)
+4050 PRINT:PRINT"Ik reken even..."
+4060 IM=1:GOSUB7010
+4070 IFV1<125 THEN4110
+4080 IFV1>159 THEN4250
+4090 IFV1>131 THEN4230
+4100 ONINT(V1-124) GOTO4150,4160,4170,4200,4200,4220,4220
+4110 PRINT"Het is al meer dan 10 maanden geleden"
+4120 PRINT"dat dit programma is uitgezonden."
+4130 PRINT"De theorie is inmiddels helaas geheel"
+4140 PRINT"achterhaald.":GOTO4300
+4150 IW=8:GOSUB8010:GOTO4300
+4160 IW=3:GOSUB8010:IW=7:GOSUB8040:GOTO4300
+4170 IW=3:GOSUB8010:IM=1777-60*U-M:IW=6
+4180 IFU>22 THENIM=194:IW=5
+4190 GOSUB8040:GOSUB7010:IW=10:GOSUB8040:GOTO4300
+4200 IW=3:GOSUB8010:IW=4:GOSUB8040
+4210 IM=32:GOSUB7010:IW=10:GOSUB8040:GOTO4300
+4220 IW=9:GOSUB8010:GOTO4300
+4230 IW=1:GOSUB8010:IM=43:GOSUB7010:IW=2:GOSUB8040
+4240 GOTO4300
+4250 PRINT"De maand ";M$(M);" is minder"
+4260 PRINT"geschikt voor deze analyse."
+4270 PRINT"Heb nog enkele maanden geduld"
+4280 PRINT"en probeer het eind maart nog"
+4290 PRINT"eens."
+4300 PRINT:PRINT:SR$="Druk op de spatie":GOSUB150
+4310 GOSUB210:IFIN<>32 THEN4310
+4320 GOTO950
+5000 INPUT"(Ja/Nee) ";JN$
+5010 IFJN$="" THEN GOSUB250:GOTO5000
+5020 SR$=LEFT$(JN$,1):GOSUB330
+5030 JN=(SR$="J"):RETURN
+6000 REM SUBROUTINE DATUMINVOER
+6010 INPUT"Het jaartal  : ";Y$:J=VAL(Y$)
+6020 IF(J<=0)OR(J<>INT(J)) THEN GOSUB250:GOTO6010
+6030 IFJ<100 THENJ=J+1900
+6040 IF(J<1850)OR(J>1992) THEN GOSUB250:GOTO6010
+6050 GOSUB6200:REM test schrikkeljaar
+6060 INPUT"Maand (1-12) : ";M$:M=VAL(M$)
+6070 IF(M<1)OR(M>12) THEN GOSUB250:GOTO6060
+6080 IFM<>INT(M) THEN GOSUB250:GOTO6060
+6090 INPUT"  Dag (1-31) : ";D$:D=VAL(D$)
+6100 IF(D<1)OR(D>ML(M)) THEN GOSUB250:GOTO6090
+6110 IFD<>INT(D) THEN GOSUB250:GOTO6090
+6120 IFM<3 THEN6140
+6130 V=INT((306*M-324)/10):GOTO6150
+6140 V=(M-1)*31:SJ=0
+6150 Z=SJ+(J-1)*365+INT((J-1)/4)
+6160 Z=Z-INT((J-1)/100)+INT((J-1)/400)
+6170 S=Z+V+D:R=1+S-INT(S/7)*7
+6180 RETURN
+6190 REM TEST OP SCHRIKKELJAAR
+6200 IFJ<>4*INT(J/4) THEN6240
+6210 IFJ<>100*INT(J/100) THEN6230
+6220 IFJ<>400*INT(J/400) THEN6240
+6230 ML(2)=29:SJ=1:RETURN:REM IS SCHRIKKELJAAR
+6240 SJ=0:RETURN:REM GEEN SCHRIKKELJAAR
+7000 REM **REAKTIEROUTINE**
+7010 IW=0:FR=1:GOSUB280:PRINT:GOSUB120
+7020 FORI=1 TOIM:GOSUB110:PRINTI;
+7030 SD=600
+7040 GOSUB450:IFSD<=0 THEN7150
+7050 PRINT:IW=IW+1:ONIW GOTO7060,7070,7080,7100
+7060 PRINT"Even geduld, ik ben aan het rekenen.":GOTO7140
+7070 PRINT"Rustig maar, ik ben nog niet klaar.":GOTO7140
+7080 PRINT"Dat is de derde keer al."
+7090 PRINT"U bent wel een erg ongeduldig type!":GOTO7140
+7100 PRINT"Op zo'n manier gaat het niet."
+7110 PRINT"U blijft me maar lastigvallen."
+7120 PRINT"Ik kap ermee, zoek het zelf maar uit."
+7130 GOSUB210:GOTO950
+7140 PRINT:GOSUB120:GOTO7040
+7150 NEXTI:FR=0:GOSUB280
+7160 RETURN
+8000 REM **UITSLAG ANALYSE**
+8010 PRINT
+8020 PRINT"Nu volgt het resultaat van de analyse:"
+8030 PRINT:PRINT
+8040 SR=IW:GOSUB300
+8050 IFU$<>SR$ THENREADU$:GOTO8050
+8060 SR=IW+1:GOSUB300:D$=""
+8070 READU$:IFU$=SR$ THENPRINTD$:RETURN
+8080 IFD$<>"" THEND$=D$+" "
+8090 FORI=1 TOLEN(U$)
+8100 C=ASC(MID$(U$,I,1))
+8110 IFC>64 THENC=C-1
+8120 D$=D$+CHR$(C):NEXTI
+8130 IFLEN(D$)<HT THEN8070
+8140 I=HT:IFLEN(D$)=HT THENPRINTD$:D$="":GOTO8070
+8150 IFMID$(D$,I,1)<>" " THENI=I-1:GOTO8150
+8160 PRINTLEFT$(D$,I-1)
+8170 D$=RIGHT$(D$,LEN(D$)-I):GOTO8130
+25000 DATA"Zondag","Maandag","Dinsdag","Woensdag"
+25010 DATA"Donderdag","Vrijdag","Zaterdag","Januari"
+25020 DATA"Februari","Maart","April","Mei","Juni","Juli"
+25030 DATA"Augustus","September","Oktober","November"
+25040 DATA"December"
+25050 DATA"1","Jl lsjkh {ffs tufsl ef joesvl ebu fs fshfot"
+25060 DATA"ffo wjsvt jo vx dpnqvufs {ju. Jl hb qspcfsfo pn"
+25070 DATA"ifu potdibefmjkl uf nblfo, nbbs ebu lbo xfm fwfo"
+25080 DATA"evsfo.","2","Wpmhfot njk jt ifu wjsvt ov"
+25090 DATA"wfsxjkefse. Tdiblfm ef dpnqvufs ov vju fo mbbu"
+25100 DATA"ifn njotufot 12 vvs vju tubbo bmwpsfot ifn xffs"
+25110 DATA"jo uf tdiblfmfo.","3","Jl npfu ef epps v hfhfwfo"
+25120 DATA"gfjufo dpouspmfsfo fo bobmztfsfo. Ppl vx"
+25130 DATA"sfblujftofmifje cjk ifu hfwfo wbo ef bouxppsefo"
+25140 DATA"tqffmu ebbscjk ffo spm, fwfobmt ef tuboe efs"
+25150 DATA"tufssfo fo qmbofufo pq vx hfcppsufebuvn. Ifu"
+25160 DATA"{jko bmmfnbbm {ffs hfdpnqmjdffsef cfsflfojohfo"
+25170 DATA"fo ebu lbo evt xfm fwfo evsfo. Bmt xf ef"
+25180 DATA"tofmifje wbo ef{f dpnqvufs hpfe ifccfo"
+25190 DATA"pqhfnfufo,","4","evvsu ifu pohfwffs 32 njovufo."
+25200 DATA"V ifcu updi xfm {p mboh hfevme?","5","evvsu ef"
+25210 DATA"cfsflfojoh pohfwffs esjf vvs fo wffsujfo"
+25220 DATA"njovufo.","6","evvsu ifu upu npshfowspfh uvttfo"
+25230 DATA"ibmg {ft fo lxbsu wpps {ft. Mbbu ef dpnqvufs"
+25240 DATA"nbbs bbo tubbo fo {fu ef npojups vju. Upu"
+25250 DATA"npshfo!","7","evvsu ifu njotufot boefsibmwf ebh."
+25260 DATA"Ebu iffgu evt hffo {jo. Ifu {pv fdiufs iffm hpfe"
+25270 DATA"lvoofo ebu bmt v npshfo pg pwfsnpshfo eju"
+25280 DATA"qsphsbnnb pqojfvx tubsu, ebu ifu ebo tofmmfs"
+25290 DATA"hbbu. Nfu obnf ob 18.00 vvs jt ef ofutqboojoh"
+25300 DATA"wffm tubcjfmfs fo ebo hbbu ifu tuvllfo cfufs."
+25310 DATA"Hsbbh upu {bufsebh evt.","8","Ef tuboe wbo ef"
+25320 DATA"nbbo jt wboebbh uf pohvotujh. Xf tupqqfo fsnff."
+25330 DATA"Qspcffsu v ifu pwfs ffo ebh pg esjf oph ffot"
+25340 DATA"pqojfvx.","9","V ibe eju qsphsbnnb hjtufsfo pg"
+25350 DATA"oph ffsefs npfufo svoofo. Wppsubbo npfu v ef"
+25360 DATA"pqhfopnfo CBTJDPEF-qsphsbnnb't fdiu ffsefs"
+25370 DATA"vjuqspcfsfo. V cfou cmjklcbbs ophbm mblt"
+25380 DATA"vjuhfwbmmfo; ffo tmfdiuf fjhfotdibq!","10"
+25390 DATA"Ebdiu v fdiu ebu eju ffo tfsjfvt qsphsbnnb jt?"
+25400 DATA"Ljkl ffot pq ef lbmfoefs!","11"
+30000 REM
+30010 REM De psycho-analyse werd oor-
+30020 REM spronkelijk ontwikkeld door
+30030 REM Sigmund Freud.
+30040 REM
+30050 REM Dit programma,ontwikkeld in
+30060 REM de periode van 4 september tot
+30070 REM 17 december 1988, is gebaseerd
+30080 REM op het baanbrekend en uiterst
+30090 REM vernieuwende, dus aanbevolen
+30100 REM werk van Prof.Dr. N.R.N. Kapp
+30110 REM van de universiteit van
+30120 REM Augiasburg, gepubliceerd in
+30130 REM zijn boek 'Die Gestalt'.
+30140 REM (Augiasburg, Februar 1988)
+32000 REM
+32010 REM Auteur en copyright:
+32020 REM
+32030 REM Drs. N. Lirpa
+32040 REM 1489 HA Ringsla (Fr.)
+32050 REM oktober 1988
+32060 REM
+32070 REM TROS-RADIO dd 890401-3

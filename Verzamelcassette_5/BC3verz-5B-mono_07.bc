@@ -1,0 +1,308 @@
+
+1000 A=200:GOTO20:REM  LISSAJOUS
+1010 TH=HO:TV=VE:GH=HG:GV=VG:P1=3.1415927:P2=P1/180
+1020 GOSUB1110:REM  ***TITEL***
+1030 GOSUB8010:REM  ***VOORWOORD***
+1040 GOSUB7010:REM  ***SCHERM 1***
+1050 GOSUB7510:REM  ***SCHERM 2***
+1060 GOSUB6010:REM  ***TEKST***
+1070 GOSUB2020:REM  ***HOOFDROUTINE***
+1080 GOSUB2510:REM  ***STOP/MEER***
+1090 GOTO950
+1100 REM  ***TITEL***
+1110 T$="LISSAJOUS FIGUREN":SR$=T$
+1120 HO=1+INT((TH-6-LEN(T$))/2)
+1130 VE=0:GOSUB110:GOSUB150
+1140 VE=2:HO=0:GOSUB110
+1150 RETURN
+1200 REM  ***PRINT***
+1210 HO=0:VE=VE+1:GOSUB110:IFVE>=TV-2 THEN1230
+1220 PRINTP$:GOTO1240
+1230 PRINTP$:GOSUB1310
+1240 RETURN
+1300 REM  ***SCHERM VOL***
+1310 VE=TV:HO=TH-16:GOSUB110
+1320 U$="<<TOETS>>":SR$=U$
+1330 GOSUB150:GOSUB210:GOSUB100
+1340 GOSUB1110
+1350 RETURN
+1400 REM  ***WACHT***
+1410 SD=1:GOSUB450
+1420 RETURN
+1500 REM  ***SIN & COS***
+1510 X=COS(I*P2)
+1520 Y=SIN(I*P2)
+1530 V=COS((G+I/F)*P2)
+1540 W=SIN((G+I/F)*P2)
+1550 RETURN
+1600 REM  ***TWEE CIRKELPUNTEN***
+1610 HO=H1:VE=V1:GOSUB620
+1620 HO=H1+X*EH:VE=V1-Y*EV
+1630 M=VE:GOSUB630
+1640 HO=H2:VE=V2:GOSUB620
+1650 HO=H2+V*FH:VE=V2-W*FV
+1660 L=HO:GOSUB630
+1670 RETURN
+2000 REM  ***HOOFDROUTINE***
+2010 REM  ***INVOER F,A,G,R***
+2020 GOSUB100:INPUT"FREKW.VERH.= ";F
+2030 INPUT"AMPL.VERH.= ";A
+2040 INPUT"FASEHOEK= ";G
+2050 INPUT"AANT.RONDEN= ";R
+2060 REM  ***'CONSTANTEN'***
+2070 H1=.225:V1=.3:H2=.7:V2=.699
+2080 CV=.16:CH=.12:DV=CV/A:DH=CH/A
+2090 GOSUB600:CN=0
+2100 REM  ***PRINT INVOER***
+2110 SR=F:GOSUB300:VE=.52:HO=0
+2120 SR$="F= "+SR$:GOSUB650
+2130 SR=A:GOSUB300:VE=.57:HO=0
+2140 SR$="A= "+SR$:GOSUB650
+2150 SR=G:GOSUB300:VE=.62:HO=0
+2160 SR$="G= "+SR$:GOSUB650
+2170 SR=R:GOSUB300:VE=.67:HO=0
+2180 SR$="R= "+SR$:GOSUB650
+2190 REM  ***TEKEN CIRKELS***
+2200 FORI=0 TO360 STEP15
+2210 GOSUB1510
+2220 VE=V1-Y*CV:HO=H1+X*CH:GOSUB620
+2230 VE=V2-Y*DV:HO=H2+X*DH:GOSUB620
+2240 NEXTI
+2250 REM  ***WIJZERS***
+2260 EV=.9*CV:EH=.9*CH
+2270 FV=.9*DV:FH=.9*DH
+2280 FORI=0 TOR*360 STEP10
+2290 GOSUB1510:GOSUB1610
+2300 HO=L:VE=M:GOSUB620:REM  THIS PLOTS THE POINT
+2310 CN=1:GOSUB1410:GOSUB1610:CN=0
+2320 NEXTI
+2330 SD=20:GOSUB450
+2340 GOSUB100
+2350 RETURN
+2500 REM  ***STOP/MEER***
+2510 GOSUB1310:GOSUB100:VE=10:HO=13:GOSUB110
+2520 SR$="Nog meer? (J/N)":GOSUB150
+2530 GOSUB210
+2540 IFIN=74 THEN1070
+2560 GOSUB100:GOSUB600:GOSUB2710
+2570 SR$="Tot de volgende keer!"
+2580 VE=.85:HO=.25:GOSUB650
+2590 SD=50:GOSUB450:GOSUB100
+2600 RETURN
+2700 REM  ***EIND FIGUUR***
+2710 FORS=1 TO2
+2720 FORJ=-3 TO3
+2730 G=J*30
+2740 HO=.68:VE=.5+SIN(G*P2)*.24
+2750 CN=1:GOSUB620:CN=0
+2760 FORI=0 TO360 STEP15
+2770 X=COS(I*P2)
+2780 Y=SIN((G+I)*P2)
+2790 HO=.5+.18*X:VE=.5+.24*Y:GOSUB630
+2800 NEXTI
+2810 IFS=1 THENSD=5:GOSUB450:GOSUB100:GOSUB600
+2820 NEXTJ
+2830 NEXTS
+2840 RETURN
+5000 REM  ***DEMO***
+5010 F=1:A=1:R=1
+5020 FORJ=-3 TO3 STEP1.5
+5030 G=J*47:GOSUB2070
+5040 NEXTJ
+5050 RETURN
+6000 REM  ***TEKST***
+6010 GOSUB1110:VE=2:HO=0:GOSUB110
+6020 RESTORE:FORI=1 TO10:READP$:NEXTI
+6030 IA=14:GOSUB9500
+6040 GOSUB1310:VE=2:HO=0:GOSUB110
+6050 IA=20:GOSUB9500
+6060 GOSUB210
+6070 IFIN=74 THEN GOSUB100:GOSUB7510:GOSUB1310
+6080 IA=15:GOSUB9500
+6090 GOSUB1310:VE=1:HO=0:GOSUB110
+6100 IA=13:GOSUB9500
+6110 GOSUB1310:VE=1:HO=0:GOSUB110
+6120 IA=4:GOSUB9500
+6130 VE=VE+1
+6140 IA=8:GOSUB9500
+6150 GOSUB1310:VE=1:HO=0:GOSUB110
+6160 IA=7:GOSUB9500
+6170 GOSUB1310
+6180 IA=3:GOSUB9500
+6190 SD=100:GOSUB450
+6200 IFIN=68 THEN GOSUB5010:REM D
+6210 GOSUB100:VE=VE+1
+6220 READP$:GOSUB1210
+6230 VE=VE+2
+6240 IA=5:GOSUB9500
+6250 VE=VE+1
+6260 READP$:GOSUB1210
+6270 GOSUB1310
+6280 RETURN
+7000 REM  ***TITELSCHERM 1***
+7010 GOSUB600:CN=0:FORI=0 TO360 STEP15
+7020 Y=SIN(I*P2)
+7030 X=COS(I*P2)
+7040 VE=.3:HO=.3:GOSUB620
+7050 VE=.3-.25*Y:HO=.3+.75*.25*X:GOSUB630
+7060 VE=.7:HO=.75:GOSUB620
+7070 HO=.75+.75*.25*X:VE=.7-.25*Y:GOSUB630
+7080 NEXTI
+7090 VE=.2:HO=.64
+7100 SR$="S P E L E N":GOSUB650
+7110 VE=.3:HO=.7
+7120 SR$="M E T":GOSUB650
+7130 VE=.4:HO=.56
+7140 SR$="L I S S A J O U S":GOSUB650
+7150 SD=30:GOSUB450:GOSUB100
+7160 RETURN
+7500 REM  ***TITELSCHERM 2***
+7510 GOSUB600:FORI=0 TO360 STEP9
+7520 Y=SIN(I*P2):X=COS(I*P2)
+7530 VE=.3:HO=.225:GOSUB620
+7540 VE=.3-.25*Y:HO=.225+.75*.25*X:GOSUB630
+7550 HO=.5+I*.001:GOSUB620
+7560 VE=.3:GOSUB620
+7570 NEXTI
+7580 VE=.6:HO=.495
+7590 SR$="I N":GOSUB650
+7600 VE=.8:HO=.33
+7610 SR$="B A S I C O D E - 3":GOSUB650
+7620 SD=30:GOSUB450:GOSUB100
+7630 RETURN
+8000 REM  ***VOORWOORD***
+8010 P$="VOORWOORD":VE=3:HO=INT((TH-9)/2)
+8020 GOSUB110:PRINTP$
+8030 VE=5:HO=0:GOSUB110:RESTORE
+8040 IA=10:GOSUB9500
+8050 GOSUB1310
+8060 RETURN
+9500 FORI=1 TOIA
+9510 READP$:GOSUB1210
+9520 NEXTI
+9530 RETURN
+25000 DATA"Aanzet tot dit programma was een recente"
+25010 DATA"tv-uitzending waarin op een controleta-"
+25020 DATA"fel een monitor schijnbaar ingewikkelde"
+25030 DATA"figuren te zien gaf. Toen ik zei dat"
+25040 DATA"die eenvoudig op mijn oscilloscoop na te"
+25050 DATA"maken waren moest dat natuurlijk bewezen"
+25060 DATA"worden. Even denken deed me echter ver-"
+25070 DATA"moeden dat Basicode-3 ook best in staat"
+25080 DATA"moest zijn een imitatie te leveren."
+25090 DATA"Hierbij het resultaat van mijn peinzen."
+25100 REM ---
+25110 DATA"In de techniek worden soms verschillende"
+25120 DATA"eenvoudige trillingen samengevoegd met,"
+25130 DATA"voor buitenstaanders, schijnbaar zeer"
+25140 DATA"ingewikkelde resultaten. Dat kan bijv."
+25150 DATA"gedaan worden op een oscilloscoop om de"
+25160 DATA"frequenties, faseverschillen, amplituden"
+25170 DATA"van 2 signalen te vergelijken."
+25180 DATA"Het resulterend figuurtje op het scherm"
+25190 DATA"verklapt die geheimen. Omgekeerd kunnen"
+25200 DATA"de gegevens van trillingen gevarieerd"
+25210 DATA"worden om bepaalde figuren op het scherm"
+25220 DATA"te tekenen."
+25230 DATA"Dit laatste wordt in dit Basicode-3 pro-"
+25240 DATA"gramma geimiteerd."
+25250 DATA"Allereerst een korte verklaring."
+25260 DATA"Stel u voor een regelmatig draaiende"
+25270 DATA"wijzer (zoals een seconden wijzer), met"
+25280 DATA"een lichtende punt. Als we normaal op"
+25290 DATA"dit spul kijken zien we het licht een"
+25300 DATA"cirkel beschrijven. Zijwaarts gezien"
+25310 DATA"schijnt het licht echter slechts langs"
+25320 DATA"een rechte lijn heen en weer te bewegen."
+25330 DATA"Door het lampje te vervangen door een"
+25340 DATA"pen-mechanisme kan die rechte lijn op"
+25350 DATA"papier gezet worden. Door nu ook nog"
+25360 DATA"het papier te bewegen kunnen allerlei"
+25370 DATA"figuren verkregen worden. Als bijv. het"
+25380 DATA"papier gelijkmatig in het eigen vlak,"
+25390 DATA"maar loodrecht op de penlijn bewogen"
+25400 DATA"wordt, dan komt de welbekende sinus-"
+25410 DATA"curve te voorschijn. Dit werd gesimu-"
+25420 DATA"leerd op het tweede titelscherm."
+25430 DATA"Indien u dat scherm nog eens wilt zien,"
+25440 DATA"toets dan NU een J in."
+25450 DATA"Verder gaan we weer."
+25460 DATA"Door nu de horizontale beweging ook door"
+25470 DATA"een draaiende wijzer te laten besturen"
+25480 DATA"krijgen we de gewenste figuren."
+25490 DATA"Deze samenvoeging en zichtbaar making"
+25500 DATA"van twee loodrecht op elkaar staande"
+25510 DATA"'harmonische bewegingen' werd eerst"
+25520 DATA"gepresteerd door: "
+25530 DATA"       Jules Antoine Lissajous,"
+25540 DATA"die leefde van 4.3.1822 tot 19.1.1880"
+25550 DATA"en o.a. prof. in de natuurkunde was te"
+25560 DATA"Parijs. Zijn publicatie over dit onder-"
+25570 DATA"werp was:"
+25580 DATA"Etude optique des mouvements vibratoires"
+25590 DATA"Dus vandaar figuren van Lissajous."
+25600 DATA"Nu enige termen die in het programma"
+25610 DATA"gebruikt worden."
+25620 DATA"Allereerst de frekwentie(F). Dit is een"
+25630 DATA"maat voor de snelheid waarmee de wijzer"
+25640 DATA"ronddraait. Hier zijn we alleen geinte-"
+25650 DATA"resseerd in de VERHOUDING tussen de"
+25660 DATA"draaisnelheden van de twee wijzers. Een"
+25670 DATA"getal groter dan 1 betekent dat de lin-"
+25680 DATA"ker wijzer sneller draait dan de rechter"
+25690 DATA" "
+25700 DATA"De werkelijke draaisnelheid hangt van de"
+25710 DATA"computer af, maar kan vertraagd worden"
+25720 DATA"door de SD in regel 1410 te verhogen."
+25730 DATA"Nu de AMPLITUDE (A). Een mooi woord voor"
+25740 DATA"grootte. Hier de VERHOUDING tussen de"
+25750 DATA"stralen van de twee cirkels. Gebruik"
+25760 DATA"altijd getallen of breuken 1 of hoger."
+25770 DATA"Vervolgens de PHASEHOEK (G). Dit be-"
+25780 DATA"paalt waar de rechter wijzer begint te"
+25790 DATA"draaien. Met 0 (graden) beginnen beide"
+25800 DATA"wijzers horizontaal wijzend naar rechts."
+25810 DATA"Invoer van 90 (graden) zet de tweede"
+25820 DATA"wijzer aanvankelijk recht naar boven."
+25830 DATA"Best bij F=1 en A=1, maar niet noodza-"
+25840 DATA"kelijk."
+25850 DATA"Tenslotte het 'AANTAL RONDEN' (R)."
+25860 DATA"R is het aantal malen de linker wijzer"
+25870 DATA"ronddraait voor het programma stopt. De"
+25880 DATA"bedoeling is (zo mogelijk) juist een ge-"
+25890 DATA"sloten figuur te maken. Het programma"
+25900 DATA"zou dit kunnen berekenen, maar wordt aan"
+25910 DATA"de gebruiker overgelaten als experiment."
+25920 DATA"Om u op weg te helpen: tik NU een D"
+25930 DATA"om een demonstratie te zien,"
+25940 DATA"anders gaat het programma gewoon door."
+25950 DATA"En nu is het uw beurt!"
+25960 DATA"P.S."
+25970 DATA"Als het u te lang duurt of u de ruimte"
+25980 DATA"tussen de punten anders wilt: verander"
+25990 DATA"de STEP in regels 2200 & 2280. Ze be-"
+26000 DATA"hoeven niet gelijk te zijn."
+26010 DATA"      Veel plezier!"
+26020 REM ---
+30000 REM  LISSAJOUS FIGUREN
+30010 REM
+30020 REM    GESCHREVEN
+30030 REM        IN
+30040 REM    BASICODE-3
+30050 REM      OP EEN
+30060 REM    ZX-SPECTRUM
+30070 REM
+30080 REM   OCTOBER 1988
+30090 REM
+32000 REM
+32100 REM    LOUIS PAYNE
+32110 REM     HIGH VIEW
+32120 REM  SHAWCROSS ROAD
+32130 REM    WEST RUNTON
+32140 REM      CROMER
+32150 REM      NORFOLK
+32160 REM     NR27 9NA
+32170 REM
+32180 REM     ENGELAND
+32190 REM
+32200 REM TROS-RADIO dd 890301

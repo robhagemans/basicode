@@ -1,0 +1,193 @@
+
+1000 A=200:GOTO20:REM ** BC-BOEK - Toelichting **
+1010 VT=VE
+1020 LY$="":FORI=1 TO39:LY$=LY$+"-":NEXTI
+1030 REM toelichting BC-BOEK *******
+1040 REM
+1050 READT$:IFLEFT$(T$,1)<>"*" THENPRINTT$
+1060 IFT$="*" THEN GOSUB2030
+1070 IFT$="**" THEN GOSUB2030:GOTO950
+1080 GOTO1050
+2000 REM
+2010 REM scherm afsluiten ==========
+2020 REM
+2030 VE=VT-1:HO=0:GOSUB110:PRINTLY$
+2040 VE=VT:HO=2:GOSUB110
+2050 PRINT"spatie = verder  p = print scherm ";:GOSUB210
+2060 IF(IN<>32)AND(IN<>80) THEN2040
+2070 IFIN=80 THEN GOSUB20030
+2080 GOSUB100:RETURN
+20000 REM
+20010 REM schermprint routine ======
+20020 REM
+20030 FORVE=0 TOVT-2
+20040 SR$=""
+20050 FORHO=0 TO39
+20060 GOSUB220:SR$=SR$+CHR$(IN)
+20070 NEXTHO
+20080 GOSUB350:GOSUB360
+20090 NEXTVE
+20100 RETURN
+25000 DATA"Toelichting op BC-Boek"
+25010 DATA"======================"
+25020 DATA"  "
+25030 DATA"BC-boek is een eenvouding boek-"
+25040 DATA"houdprogramma, waarmee een kleine"
+25050 DATA"boekhouing verwerkt kan worden."
+25060 DATA"Het programma kan 20 rekeningen en"
+25070 DATA"ca. 200 boekingen bevatten."
+25080 DATA"Afhankelijk van het computer-"
+25090 DATA"geheugen kan dit worden aagepast."
+25100 DATA"BC-boek is menugestuurd, na elke"
+25110 DATA"handeling wordt naar het menu"
+25120 DATA"teruggekeerd. Na het starten"
+25130 DATA"kan een bestand worden ingelezen."
+25140 DATA"Wordt dit niet gedaan, dan zijn"
+25150 DATA"alleen de onderdelen invoeren "
+25160 DATA"rekeningschema en info te gebruiken."
+25170 DATA"Bij de eerste start moet er"
+25180 DATA"eerst een rekeningschema worden"
+25190 DATA"ingevoerd voordat er verder met"
+25200 DATA"dit programma gewerkt kan worden."
+25210 DATA"*"
+25220 DATA"Handelingen in BC-boek"
+25230 DATA"----------------------"
+25240 DATA" "
+25250 DATA"0. stoppen"
+25260 DATA" "
+25270 DATA"Na het aanroepen van deze handeling"
+25280 DATA"wordt eerst het bestand wegge-"
+25290 DATA"schreven en daarna het programma"
+25300 DATA"gestopt. Het is verstandig om"
+25310 DATA"altijd via deze handeling het"
+25320 DATA"programma te verlaten, om te"
+25330 DATA"te voorkomen dat er gegevens"
+25340 DATA"verloren gaan."
+25350 DATA"*"
+25360 DATA"1. invoeren rekeningschema"
+25370 DATA" "
+25380 DATA"Deze keuze geeft de mogelijkheid het"
+25390 DATA"door U gekozen rekeningschema in te"
+25400 DATA"voeren. Per rekening wordt een naam"
+25410 DATA"gevraagd; in het bovenste gedeelte"
+25420 DATA"van het invoerscherm laat de computer"
+25430 DATA"zien welke rekeningen zijn ingevoerd"
+25440 DATA"en welke nummers hieraan zijn toe-"
+25450 DATA"gekend. Een rekeningnaam mag niet"
+25460 DATA"meer dan twaalf letters bevatten."
+25470 DATA" "
+25480 DATA"2. corrigeren rekeningschema"
+25490 DATA" "
+25500 DATA"Deze keuze geeft de mogelijkheid"
+25510 DATA"de namen van reeds ingevoerde"
+25520 DATA"rekeningen te corrigeren. Door het"
+25530 DATA"ingeven van het rekeningnummer"
+25540 DATA"wordt de te corrigeren rekening"
+25550 DATA"opgeroepen."
+25560 DATA"*"
+25570 DATA"3. invoeren boekingen"
+25580 DATA" "
+25590 DATA"Nadat het rekeningschema is ingevoerd"
+25600 DATA"kunnen boekingen worden ingevoerd."
+25610 DATA"Per boeking wordt gevraagd om een"
+25620 DATA"datum, soort boeking (uitgave of "
+25630 DATA"inkomst), het nummer van de post "
+25640 DATA"waarop de boeking plaatsvindt (kas,"
+25650 DATA"bank enz.), tegenpost (aard van"
+25660 DATA"de boeking bv. huisvesting,auto enz.),"
+25670 DATA"een omschrijving en het bedrag."
+25680 DATA"Het is alleen mogelijk om enkel-"
+25690 DATA"voudige boekingen te maken d.w.z"
+25700 DATA"boekingen bestaande uit een post"
+25710 DATA"en een tegenpost."
+25720 DATA"Beginsaldi kunnen worden ingebracht"
+25730 DATA"door voor een debetsaldo de in-"
+25740 DATA"komstencode te kiezen en bij de tegen-"
+25750 DATA"post een 0 in te toetsen."
+25760 DATA"Voor een creditsaldo is het de uit-"
+25770 DATA"gavencode en bij de tegenpost een 0."
+25780 DATA"*"
+25790 DATA"4. printen boekingen"
+25800 DATA" "
+25810 DATA"De ingevoerde boekingen kunnen via"
+25820 DATA"deze keuze afgedrukt worden."
+25830 DATA"Voordat het afdrukken begint moet"
+25840 DATA"aangegeven worden vanaf welk nummer"
+25850 DATA"tot welk nummer afgedrukt moet worden."
+25860 DATA"Nadat het scherm vol is kan door een"
+25870 DATA"P in te toetsen dit scherm op de prin-"
+25880 DATA"ter afgedrukt worden, waarna het vol-"
+25890 DATA"op het beeld verschijnt. Wordt op de"
+25900 DATA"spatiebalk gedrukt dan verschijnt"
+25910 DATA"direkt het volgende gedeelte in beeld."
+25920 DATA"*"
+25930 DATA"5. afsluiten boekingen"
+25940 DATA" "
+25950 DATA"Indien het bestand vol is of als het"
+25960 DATA"einde van de boekingsperiode is bereikt"
+25970 DATA"kan met dit nummer worden afgesloten."
+25980 DATA"Per rekening moet worden aaagegeven of"
+25990 DATA"de totalen, het saldi of niets be-"
+26000 DATA"waard moet worden. Hierna worden"
+26010 DATA"alle boekingen gewist en komen de"
+26020 DATA"gegevens met de totalen en de saldi"
+26030 DATA"in het bestand."
+26040 DATA"Het is aanbevelenswaardig voor de af-"
+26050 DATA"sluiting eerst een kopie van het be-"
+26060 DATA"stand te maken."
+26070 DATA"*"
+26080 DATA"6. standen overzicht"
+26090 DATA" "
+26100 DATA"Via dit nummer kan een standenoverzicht"
+26110 DATA"per rekening opgevraagd worden."
+26120 DATA"Voor alle rekeningen worden de stan-"
+26130 DATA"den en de saldi berekend."
+26140 DATA"Ook kan hier weer een scherm naar de"
+26150 DATA"printer gestuurd worden."
+26160 DATA" "
+26170 DATA"7. rekeningoverzicht"
+26180 DATA" "
+26190 DATA"Met deze optie kan een overzicht per"
+26200 DATA"rekening worden samengesteld met ook"
+26210 DATA"hier de mogelijkheid tot het aangeven"
+26220 DATA"van de periode en het afdrukken van"
+26230 DATA"een scherm."
+26240 DATA"*"
+26250 DATA"8. resultatatenoverzicht"
+26260 DATA" "
+26270 DATA"Een resultatenoverzicht bestaat uit"
+26280 DATA"het samentellen van een aantal reke-"
+26290 DATA"ningen. Per rekening en voor het totaal"
+26300 DATA"wordt een ook saldo bepaald."
+26310 DATA"In het rekeningschema moet aangeven"
+26320 DATA"worden welke rekeningen in dit resul-"
+26330 DATA"tatenoverzicht moeten worden opgeno-"
+26340 DATA"men. Ook hier wordt weer naar de peri-"
+26350 DATA"ode gevraagd waarover dit overzicht"
+26360 DATA"wordt samengesteld. Evenals bij de"
+26370 DATA"vorige keuzes is het ook hier mogelijk"
+26380 DATA"een scherm op de printer af te "
+26390 DATA"drukken."
+26400 DATA"*"
+26410 DATA"9. info"
+26420 DATA" "
+26430 DATA"Met de laatste keuze kunnen gegevens"
+26440 DATA"over het gebruikte aantal rekeningen,"
+26450 DATA"het aantal ingevoerde boekingen"
+26460 DATA"en het aantal nog in te voeren boe-"
+26470 DATA"kingen opgevraagd worden."
+29999 DATA"**"
+32000 REM **************************
+32010 REM *                        *
+32020 REM *        auteur:         *
+32030 REM *                        *
+32040 REM *   J. van Mersbergen    *
+32050 REM *     Velddreef 200      *
+32060 REM *   2727 CR Zoetermeer   *
+32070 REM *    tel: 079 -317408    *
+32080 REM *                        *
+32090 REM *    computer: MSX-1     *
+32100 REM *                        *
+32110 REM **************************
+32120 REM
+32130 REM TROS-RADIO dd 890329

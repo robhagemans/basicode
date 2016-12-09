@@ -1,0 +1,301 @@
+
+1000 A=500:GOTO20:REM UITLEG BELEGGINGEN
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1340:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Wilt u het bulletin op"
+1060 PRINT:PRINT"   1  Het beeldscherm,"
+1070 PRINT"   2  De printer."
+1080 PRINT:PRINT"Welk nummer kiest u ";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1180
+1100 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1110 PRINT"begin van elke regel ";:INPUTHL
+1120 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1130 PRINT"u op elke regel ";:INPUTI:HR=HL+I-1
+1140 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1150 PRINT"laten overslaan ";:INPUTVL
+1160 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+1170 PRINT"elk blad ";:INPUTVR:VR=VR+VL-3
+1180 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1190 GOSUB1310:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1290
+1200 IFLEN(R$)>HR-HL THEN GOSUB1690
+1210 GOSUB1370:IFR$<>"" THENR$=R$+" "
+1220 R$=R$+D$:GOTO1200
+1230 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1250
+1240 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1250 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1260 IFSC=1 THEN1310
+1270 IFVL>0 THENFORI=1 TOVL:GOSUB360:NEXTI
+1280 AL=VL
+1290 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1230
+1300 SR$="":GOSUB1230:AL=VL:RETURN
+1310 HO=3:VE=VT:GOSUB110
+1320 SR$="VERVOLG: druk op <return>":GOSUB150
+1330 GOSUB210:IFIN<>13 THEN1330
+1340 GOSUB100:AL=VL:SR$=T$
+1350 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1360 PRINT:PRINT:RETURN
+1370 READD$:IFLEFT$(D$,1)="." THEN1400
+1380 IFLEFT$(D$,1)<>" " THENRETURN
+1390 D$=RIGHT$(D$,LEN(D$)-1):J=1:GOTO1630
+1400 IFD$<>".E" THEN1460
+1410 J=1:GOSUB1630:T$="Einde van dit bulletin"
+1420 PRINT:PRINTT$:IFSC=1 THEN GOSUB1310:GOTO950
+1430 SR$=T$:GOSUB1230:T$=""
+1440 SR$="":GOSUB1230:IFAL<>VL THEN1440
+1450 GOTO950
+1460 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+1470 IFDD$<>"R" THEN1520
+1480 IFSC=2 THENRETURN
+1490 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1230:R$=""
+1500 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1510 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1370
+1520 IFDD$<>"M" THEN1550
+1530 I=VAL(D$):MM$="":IFI+HL=0 THEN1370
+1540 MM$=LEFT$(S$,I+HL):GOTO1370
+1550 IFDD$="P" THENJ=VAL(D$):GOSUB1630:GOSUB1650:GOTO1370
+1560 IFDD$="T" THENT$=D$:GOTO1370
+1570 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1370
+1580 IFDD$<>"F" THEN1620
+1590 J=VAL(D$):GOSUB1630
+1600 J=J-1:IFJ>-1 THENSR$="":GOSUB1230:GOTO1600
+1610 GOTO1370
+1620 GOTO1370
+1630 GOSUB1690:IFR$<>"" THENSR$=R$:GOSUB1230:R$="":J=J-1
+1640 RETURN
+1650 IF(SC=1)OR(AL+J>VR) THEN1670
+1660 SR$="":GOSUB1230:GOSUB1230:RETURN
+1670 IFAL<>VL THENSR$="":GOSUB1230:GOTO1670
+1680 RETURN
+1690 IFLEN(R$)<=HR-HL+1 THENRETURN
+1700 K=HR-HL+1-LEN(MM$)
+1710 IFMID$(R$,K,1)=" " THEN1740
+1720 K=K-1:IFK>0 THEN1710
+1730 SR$="":GOTO1750
+1740 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+1750 GOSUB1230:GOTO1690
+25000 DATA"Uitleg beleggingen",".F3"
+25010 DATA"Inleiding",".F1","=========",".F2"
+25020 DATA"In deze uitleg gaat het over het gebruik en"
+25030 DATA"de mogelijkheden van het programma",".F4"
+25040 DATA".RBELEGGINGEN",".P8",".F2"
+25050 DATA"Het programma is geschreven om aan (kleine)"
+25060 DATA"beleggingclubs de mogelijkheid te bieden,"
+25070 DATA"de aandelen welke zij in portefeuille hebben"
+25080 DATA"en de contributies die daartoe van de leden"
+25090 DATA"worden ontvangen, te beheren.",".F2"
+25100 DATA"Men kan de leden muteren door namen"
+25110 DATA"in- en af te voeren, fondsen muteren bij"
+25120 DATA"in- en verkoop van aandelen"
+25130 DATA"en informatie verkrijgen over resultaten bij"
+25140 DATA"eventuele verkoop.",".F2"
+25150 DATA"Daarnaast produceert het, na ingave van diverse"
+25160 DATA"inkomsten- en uigaveposten, een (eenvoudige)"
+25170 DATA"balans en verlies- en winstrekening."
+25180 DATA".P9",".F2",".RBELANGRIJK"
+25190 DATA".F2","Nauwkeurigheid is voor dit programma"
+25200 DATA"zeer essentieel. Bij de meeste merken is dit"
+25210 DATA"geen probleem. Bij de MSX-computers,"
+25220 DATA"de P-2000 en de IBM(-compatibles) zal"
+25230 DATA"een aanpassing van het programma noodzakelijk"
+25240 DATA"zijn."," Om deze nauwkeurigheid te"
+25250 DATA"bewerkstelligen moet u bij de MSX-merken"
+25260 DATA"in regel 21 het commando: DEFSNGA-Z"
+25270 DATA"verwijderen.",".F2","Voor de andere 2 merken"
+25280 DATA"gelieve u de handboeken te raadplegen."
+25290 DATA".P9",".RBeleggingen"
+25310 DATA".F2","Het hoofdmenu bestaat uit de"
+25320 DATA"volgende mogelijkheden:",".F3"
+25330 DATA"    A. Laden/saven bestanden"
+25340 DATA"    B. Ledenbestand"
+25350 DATA"    C. Fondsbestand"
+25360 DATA"    D. Algemene informatie"
+25370 DATA"    E. Printergebruik",".P9"
+25380 DATA"ad A  Laden/saven Bestanden.",".F2"
+25390 DATA"U kunt uw bestanden op 3 manieren"
+25400 DATA"laden en saven, nl.:",".F1"
+25410 DATA"    1 of 4 => BASICODE - de gegevens worden"
+25420 DATA"in BASICODE ''geload'' of ''gesaved'' en zijn"
+25430 DATA"dus uitwisselbaar met computers met een andere"
+25440 DATA"basictaal.",".F1"
+25450 DATA"    2 of 5 => CASSETTE - de gegevens worden"
+25460 DATA"in de eigen basictaal op cassette worden"
+25470 DATA"''geload'' of ''gesaved''.",".F1"
+25480 DATA"    3 of 6 => DISK     - de gegevens worden"
+25490 DATA"in de eigen basictaal op disk worden"
+25500 DATA"''geload'' of ''gesaved''.",".F2"
+25510 DATA"Indien bij ''BESTANDSNAAM'' <RETURN>"
+25520 DATA"wordt gegeven, dan wordt het eerste"
+25530 DATA"programma (dat afhankelijk van de keuze is"
+25540 DATA"gesaved) geladen of het programma wordt"
+25550 DATA"zonder naam weggeschreven.",".F2",".P9"
+25560 DATA"ad B  Ledenbestand.",".F2"
+25570 DATA"Binnen deze functie zijn de volgende"
+25580 DATA"mogelijkheden van toepassing.",".F2"
+25590 DATA"  1.Invoeren nieuw lid"
+25600 DATA"  2.Raadplegen ledenbestand"
+25610 DATA"  3.Afvoeren lid",".F3"
+25620 DATA"De uitvoering van deze functie zal geen"
+25630 DATA"problemen opleveren.",".P9"
+25640 DATA"In het programma is een maximum voor het"
+25650 DATA"aantal leden meegegeven. Men kan dit"
+25660 DATA"maximum wijzigen door de variabele ML in"
+25670 DATA"regel 1010 aan te passen.",".F2"
+25680 DATA"Een ledenbestand van meer dan 20"
+25690 DATA"personen geeft verwerkingsproblemen"
+25700 DATA"en moet dan ook afgeraden worden.",".P9"
+25710 DATA"ad C  Fondsbestand.",".F3"
+25720 DATA"Functies:",".F1"
+25730 DATA"  1.Invoeren nieuwe fondsen."
+25740 DATA" Na ingave van fondsnaam en aantal gekocht"
+25750 DATA"wordt de totale aankoopprijs berekend"
+25760 DATA"(die bij een eventueel verschil aangepast"
+25770 DATA"kan worden) en wordt de prijs per aandeel"
+25780 DATA"en het break-even-point getoond.",".F1"
+25790 DATA"  2.Uitbreiden bestaande fondsen."
+25800 DATA" Deze functie is van toepassing bij UITBREIDING"
+25810 DATA"van reeds in bezit zijnde fondsen en heeft"
+25820 DATA"dezelfde werkwijze als functie 1.",".F1"
+25830 DATA"  3.Raadplegen fondsen."
+25840 DATA" Deze functie behoeft geen nadere uitleg.",".F1"
+25850 DATA"  4.Invoeren verkopen van fondsen."
+25860 DATA" Na opgave van het betreffende fonds wordt de"
+25870 DATA"verkoopprijs (die bij een eventueel verschil"
+25880 DATA"aangepast kan worden), de winst en het"
+25890 DATA"winstpercentage berekend. Daarna wordt een"
+25900 DATA"overzicht met totaalgegevens getoond.",".F1"
+25910 DATA"  5.Raadplegen verkochte fondsen."
+25920 DATA" Deze functie behoeft geen nadere uitleg."
+25930 DATA".P9","  6.Imaginaire gegevens."
+25940 DATA" Deze functie geeft relevante gegevens over"
+25950 DATA"huidige beurswaarde en het ongerealiseerd"
+25960 DATA"resultaat en daarnaast actuele informatie zoals"
+25970 DATA"opbrengsten en resultaten bij eventuele"
+25980 DATA"verkoop.",".F2","Bij gebruik van de functie"
+25990 DATA"''Balansgegevens'' moeten deze gegevens"
+26000 DATA"bijgewerkt zijn."
+26010 DATA".P9","Bij de berekeningen van de"
+26020 DATA"diverse waarden wordt gebruik gemaakt"
+26030 DATA"van formules die gebaseerd zijn op vaste en"
+26040 DATA"variabele in- en verkoopkosten.",".F2"
+26050 DATA"Vaste kosten:",".F1"
+26060 DATA" -notakosten      fl  7,50"
+26070 DATA" -mutatiekosten   fl  5,02(incl.BTW)"
+26080 DATA"                  --------",".F1"
+26090 DATA" -Totaal          fl 12,52  = MU",".P9"
+26100 DATA"Variabele kosten:",".F1"," -Provisie"
+26110 DATA"   t/m 5000               1.5% = X1"
+26120 DATA"   van 5000 t/m 20000     1.0% = X2"
+26130 DATA"   van 20000 tot 1000000  0.7% = X3",".F2"
+26140 DATA"-Beursbelasting"
+26150 DATA"   over het hele bedrag   0.12%= X4",".F4"
+26160 DATA"De variabelen MU(vaste kosten),"
+26170 DATA"X1, X2, X3 en X4(variabele kosten) kunnen bij"
+26180 DATA"wijziging van de tarieven in regel 1190"
+26190 DATA"worden aangepast.",".P9"
+26200 DATA"Het aantal fondsen in dit programma is aan"
+26210 DATA"een maximum gebonden. Voor aanpassing van"
+26220 DATA"dit maximum kunt u in regel 1010 de"
+26230 DATA"variabele M wijzigen.",".P9"
+26240 DATA"Ad D  Algemene informatie.",".F2"
+26250 DATA"Bij het opstarten van de hiernavolgende"
+26260 DATA"functie is het belangrijk dat de functies"
+26270 DATA"''Ledenbestand'' en ''Fondsbestand''"
+26280 DATA"tot en met de door u gewenste"
+26290 DATA"verwerkingsdatum zijn bijgewerkt.",".P9"
+26300 DATA"Algemene informatie.",".F2"
+26310 DATA"Hierin kunnen",".F2","1) inkomsten en uitgaven"
+26320 DATA"ingevoerd worden en",".F2","2) balansgegevens"
+26330 DATA"opgevraagd worden.",".P9"
+26340 DATA"  ad 1. Inkomsten en uitgaven.",".F3"
+26350 DATA"Inkomsten:",".F2","Als inkomsten kent dit"
+26360 DATA"programma:","     -nog te ontvangen"
+26370 DATA"     -dividenden"
+26380 DATA"     -overige inkomsten",".F2"
+26390 DATA"In ''nog te ontvangen'' kunt u de te innen"
+26400 DATA"en de ge-inde contributie van de leden"
+26410 DATA"bijhouden.",".F2","Verhoging? JA : Aan het"
+26420 DATA"begin van elke maand kan de vordering op"
+26430 DATA"alle leden in een keer worden verhoogd."
+26440 DATA".F2","Verlagen? JA :Bij betaling van de"
+26450 DATA"contributie kunt u per lid de mutatie"
+26460 DATA"inbrengen.",".F2","NB: In het programma staat op"
+26470 DATA"regel 1010 de variabele BY die de maandelijkse"
+26480 DATA"contributie van de club voorstelt.",".F2"
+26490 DATA"Bij ''overige inkomsten'' kunnen de niet"
+26500 DATA"(in de hiervoor beschreven inkomstenfuncties)"
+26510 DATA"te plaatsen inkomsten worden ingevoerd.",".F2"
+26520 DATA".P9","Uitgaven:",".F2","Als uitgaven kent dit"
+26530 DATA"programma:","     -nog te betalen"
+26540 DATA"     -overige uitgaven",".F2"
+26550 DATA"In ''nog te betalen'' kunt u de eventueel uit"
+26560 DATA"te betalen clubwinsten als schuld per lid"
+26570 DATA"inbrengen en later bij uitbetaling muteren."
+26580 DATA".F2","Voor ''overige uitgaven'' geldt"
+26590 DATA"hetzelfde als beschreven bij ''overige"
+26600 DATA"inkomsten''.",".P9"
+26610 DATA"  ad 2. Balansgevens",".F3"
+26620 DATA"Balans:",".F2","Na inbreng van het"
+26630 DATA"laatstbekende giro- of banksaldo"
+26640 DATA"toont het programma een eenvoudige balans."
+26650 DATA".F3","Verlies- en winstrekening:",".F2"
+26660 DATA"Deze simpele V/W-rekening geeft het"
+26670 DATA"uiteindelijke exploitatieresultaat.",".P9"
+26680 DATA"ad E  Printergebruik.",".F2","Wat het"
+26690 DATA"gebruik zelf betreft behoeft deze functie"
+26700 DATA"geen nadere uitleg.",".F2","Binnen deze functie"
+26710 DATA"kunt u ook de tekst voor een kopregel meegeven."
+26720 DATA".F2","Om te voorkomen dat men steeds naar"
+26730 DATA"het hoofdmenu terug moet om het"
+26740 DATA"printergebruik op te starten, komt deze"
+26750 DATA"mogelijkheid op elk menu voor."
+26760 DATA".F2",".P9",".RTenslotte",".F2"
+26770 DATA"Tenslotte nog enige aanwijzingen welke ik"
+26780 DATA"niet in de voorgaande hoofdstukken kwijt kon."
+26790 DATA".F2","1) Bij het gebruik van de diverse"
+26800 DATA"''invoer-''functies gaan deze over in"
+26810 DATA"de ''raadpleeg-''functies, zodat de invoer"
+26820 DATA"in het bestand gecontroleerd kan worden."
+26830 DATA".F2","2) Bij het raadplegen zal het beeld enkele"
+26840 DATA"seconden blijven staan alvorens naar het"
+26850 DATA"volgende beeld wordt overgegaan. Indien deze"
+26860 DATA"tijdsduur te kort is, dan kunt u in regel"
+26870 DATA"9760 de variabele SD daartoe aanpassen."
+26880 DATA"(Standaard=6 sec.)",".P14"
+26890 DATA"3) Bij de volgende functies is het gebruik"
+26900 DATA"van de printer van toepassing:",".F2"
+26910 DATA"       -Raadplegen fondsen"
+26920 DATA"       -Raadplegen verkochte fondsen"
+26930 DATA"       -Imaginaire gegevens"
+26940 DATA"       -Raadplegen nog te ontvangen"
+26950 DATA"       -Raadplegen dividenden"
+26960 DATA"       -Raadplegen overige inkomsten"
+26970 DATA"       -Raadplegen nog te betalen"
+26980 DATA"       -Raadplegen overige uitgaven"
+26990 DATA"       -Balans"
+27000 DATA"       -Verlies- en winstrekening",".P9"
+27010 DATA"4) Aangezien dit programma bestemd is voor"
+27020 DATA"kleine beleggingclubs, kunnen bedragen die"
+27030 DATA"de fl 1.000.000 te boven gaan, niet worden"
+27040 DATA"verwerkt.",".P9"
+27050 DATA"Ik ben mij ervan bewust dat dit programma"
+27060 DATA"best wat tekortkomingen zal hebben, waarvoor"
+27070 DATA"als voornaamste oorzaak de kleine capaciteit"
+27080 DATA"van mijn computer aan te geven is.",".F2"
+27090 DATA"Het programma zelf is alleen toepasbaar op"
+27100 DATA"de handel van aandelen op de Amsterdamse"
+27110 DATA"beurs.",".F2"
+27120 DATA"Hoewel de laatste tijd vele malen getest, zullen"
+27130 DATA"er best nog fouten in het programma zitten. Bij"
+27140 DATA"constatering van fouten verneem ik dat graag."
+27150 DATA".F2",".P9","Ik hoop met dit programma het werk"
+27160 DATA"te hebben vergemakkelijkt voor de penningmeester"
+27170 DATA"van de (kleine) beleggingclub.",".F3"
+27180 DATA"          Veel succes",".F2"
+32000 DATA"Amsterdam,"
+32010 DATA" 10 november 1988",".F2"
+32020 DATA" P.Terreehorst"
+32030 DATA" tel. 020-241159"," (na 18.00 uur)",".E"
+32040 REM
+32050 REM TROS-RADIO dd 890104

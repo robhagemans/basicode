@@ -1,0 +1,482 @@
+
+1000 A=500:GOTO20:REM HAND-LIJNEN
+1010 DIMTL(75),H(9,75),V(9,75),TE(75):FL=0
+1020 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" "
+1030 NEXTI:HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1040 GOSUB1350:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1050 GOSUB150:PRINT:PRINT:PRINT
+1060 PRINT"Wilt u de tekst op"
+1070 PRINT:PRINT"   1  Het beeldscherm,"
+1080 PRINT"   2  De printer."
+1090 PRINT:PRINT"Welk nummer kiest u ";:GOSUB210
+1100 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1190
+1110 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1120 PRINT"begin van elke regel ";:INPUTHL
+1130 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1140 PRINT"u op elke regel ";:INPUTI:HR=HL+I-1
+1150 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1160 PRINT"laten overslaan ";:INPUTVL
+1170 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+1180 PRINT"elk blad ";:INPUTVR:VR=VR+VL-3
+1190 GOTO2010
+1200 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1210 GOSUB1320:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1300
+1220 IFLEN(R$)>HR-HL THEN GOSUB1720
+1230 GOSUB1380:IFR$<>"" THENR$=R$+" "
+1240 R$=R$+D$:GOTO1220
+1250 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1270
+1260 PRINTM$;SR$:HL=0
+1270 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1280 IFSC=1 THEN1320
+1290 FORI=1 TOVL:GOSUB360:NEXTI:AL=VL
+1300 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1250
+1310 SR$="":GOSUB1250:AL=VL:RETURN
+1320 HO=3:VE=VT:GOSUB110
+1330 SR$="VERVOLG: druk op <return>":GOSUB150
+1340 GOSUB210:IFIN<>13 THEN1340
+1350 GOSUB100:AL=VL:SR$=T$
+1360 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1370 PRINT:PRINT:RETURN
+1380 IF(FL=0) THENREADD$
+1390 IF(FL=1) THEN GOSUB9600
+1400 IFLEFT$(D$,1)<>"." THENRETURN
+1410 IFD$<>".E" THEN1470
+1420 J=1:GOSUB1660:T$="Einde van dit fragment."
+1430 PRINT:PRINTT$:IFSC=1 THEN GOSUB1320:GOTO3510
+1440 SR$=T$:GOSUB1250:SR$="":T$=""
+1450 GOSUB1250:IFAL<>VL THEN1450
+1460 GOTO950
+1470 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+1480 IFDD$<>"R" THEN1530
+1490 IFSC=2 THENRETURN
+1500 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1250:R$=""
+1510 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1520 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1380
+1530 IFDD$<>"M" THEN1560
+1540 I=VAL(D$):MM$="":IFI+HL=0 THEN1380
+1550 MM$=LEFT$(S$,I+HL):GOTO1380
+1560 IFDD$="P" THENJ=VAL(D$):GOSUB1660:GOSUB1680
+1570 IF(HM=1)AND(DD$="P") THEN1380
+1580 IF(HM>1)AND(HM<10)AND(DD$="P") THEN3510
+1590 IFDD$="T" THENT$=D$:GOTO1380
+1600 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1380
+1610 IFDD$<>"F" THEN1650
+1620 J=VAL(D$):GOSUB1660
+1630 J=J-1:IFJ>-1 THENSR$="":GOSUB1250:GOTO1630
+1640 GOTO1380
+1650 GOTO1380
+1660 GOSUB1720:IFR$<>"" THENSR$=R$:GOSUB1250:R$="":J=J-1
+1670 RETURN
+1680 IF(SC=1)OR(AL+J>VR) THEN1700
+1690 SR$="":GOSUB1250:GOSUB1250:RETURN
+1700 IFAL<>VL THENSR$="":GOSUB1250:GOTO1700
+1710 RETURN
+1720 IFLEN(R$)<=HR-HL THENRETURN
+1730 K=HR-HL+1
+1740 IFMID$(R$,K,1)=" " THEN1770
+1750 K=K-1:IFK>0 THEN1740
+1760 SR$="":GOTO1780
+1770 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+1780 GOSUB1250:GOTO1720
+2000 REM *** ARRAY'S MAKEN ***
+2010 GOSUB100:HO=10:VE=10:GOSUB110
+2020 PRINT"--- Even geduld ---"
+2030 HO=10:VE=13:GOSUB110
+2040 PRINT"- Ik haal de data -"
+2500 REM *** TEKST-ARRAY'S VULLEN ***
+2510 FORI=1 TO267:READA$:NEXTI
+2520 FORK=2 TO8
+2530 READD$:IFD$<>".P8" THEN2530
+2540 NEXTK
+3000 REM *** GRAF.ARRAY'S VULLEN ***
+3010 FORK=2 TO8
+3020 I=1:TE(K)=0
+3030 READH(K,I)
+3040 IFH(K,I)=-2 THEN3080
+3050 READV(K,I)
+3060 I=I+1:TE(K)=TE(K)+1
+3070 GOTO3030
+3080 NEXTK
+3500 REM *** HOOFD-MENU ***
+3510 GOSUB100:HO=10:VE=2:GOSUB110
+3520 SR$="HOOFD-MENU":GOSUB150
+3530 HO=0:VE=5:GOSUB110
+3540 PRINT"1. tekst":PRINT"2. levenslijn"
+3550 PRINT"3. hoofdlijn":PRINT"4. hartlijn"
+3560 PRINT"5. Saturnuslijn":PRINT"6. Apollolijn"
+3570 PRINT"7. Mercuriuslijn":PRINT"8. slotconclusie"
+3580 PRINT"9. stoppen"
+3590 HO=0:VE=22:GOSUB110
+3600 PRINT"Geef het nummer van Uw keuze";
+3610 GOSUB210:HM=IN-48:PRINTHM
+3620 IFHM>7 THEN3640
+3630 ONHM GOTO4010,4510,5010,5510,6010,6510,7010
+3640 ONHM-7 GOTO8010,950
+4000 REM *** TEKST AFDRUKKEN ***
+4010 RESTORE:FL=0
+4020 GOSUB600:REM * GRAFISCH BEDRIJF *
+4030 FORI=1 TO397:READA$:NEXTI
+4040 CN=1:READH:HO=H/1000:READV:VE=V/1000:GOSUB620
+4050 READH:HO=H/1000:IFH=-1 THEN4080
+4060 IFH=-2 THEN4040
+4070 READV:VE=V/1000:CN=0:GOSUB630:GOTO4050
+4080 CN=1:HO=.5:VE=.9:GOSUB620
+4090 SR$="HAND-LIJNEN =>":CN=0:GOSUB650
+4100 GOSUB210:GOSUB100:RESTORE:GOTO1200
+4500 REM *** LEVENSLIJN ***
+4510 A=2:GOSUB8020:A=3:GOSUB8030
+4520 SR$="2. LEVENS-LIJN =>":GOSUB9010
+4530 A=A-1:GOTO9510
+5000 REM *** HOOFDLIJN ***
+5010 A=2:GOSUB8020:A=4:GOSUB8030
+5020 SR$="3. HOOFDLIJN =>":GOSUB9010
+5030 A=A-1:GOTO9510
+5500 REM *** HARTLIJN ***
+5510 A=2:GOSUB8020:A=5:GOSUB8030
+5520 SR$="4. HARTLIJN =>":GOSUB9010
+5530 A=A-1:GOTO9510
+6000 REM *** SATURNUSLIJN ***
+6010 A=2:GOSUB8020:A=6:GOSUB8030
+6020 SR$="5. SATURNUSLIJN =>":GOSUB9010
+6030 A=A-1:GOTO9510
+6500 REM *** APOLLOLIJN ***
+6510 A=2:GOSUB8020:A=7:GOSUB8030
+6520 SR$="6. APOLLOLIJN =>":GOSUB9010
+6530 A=A-1:GOTO9510
+7000 REM *** MERCURIUSLIJN ***
+7010 A=2:GOSUB8020:A=8:GOSUB8030
+7020 SR$="7. MERCURIUSLIJN =>":GOSUB9010
+7030 A=A-1:GOTO9510
+8000 REM *** SLOTCONCLUSIE ***
+8010 A=8:GOTO9510
+8020 GOSUB600:REM * GRAFISCH BEDRIJF *
+8030 B=1:CN=1:HO=H(A,B)/1000:VE=V(A,B)/1000:GOSUB620
+8040 IFB=TE(A) THENRETURN
+8050 HO=H(A,B+1)/1000:VE=V(A,B+1)/1000:CN=0:GOSUB630
+8060 B=B+1:GOTO8040
+9000 REM * TEKST BIJ TEKENING *
+9010 CN=1:HO=.5:VE=.9:GOSUB620:CN=0:GOSUB650
+9020 GOSUB210:GOSUB100:RETURN
+9500 REM * TEKST-PAGINA *
+9510 RESTORE
+9520 READD$:IFD$<>".E" THEN9520
+9530 IFA=2 THEN9560
+9540 READD$:IFD$<>".P8" THEN9540
+9550 A=A-1:IFA>2 THEN9540
+9560 FL=1:GOTO1200
+9600 READD$
+9610 RETURN
+25000 DATA"HAND-LIJNEN",".F2","Chirologie",".F2"
+25010 DATA"In China, India, Egypte, Griekenland enz. was"
+25020 DATA"eeuwen geleden de chirologie een wetenschap."
+25030 DATA"De vorsten raadpleegden een handlijnkundige"
+25040 DATA"om te weten te komen of hun rampspoed"
+25050 DATA"of voorspoed te wachten stond.",".P8"
+25060 DATA"Tegenwoordig zijn er 5 soorten"
+25070 DATA"handlijnkundigen:",".M3",".F2"
+25080 DATA"- spirituele handlijnkundigen",".M3",".F1"
+25090 DATA"- wetenschappelijke handl.k.",".M3",".F1"
+25100 DATA"- handl.k. van vader op zoon",".M3",".F1"
+25110 DATA"- charlatans",".M3",".F1"
+25120 DATA"- handl.k. die de hand gebruiken",".M5",".F1"
+25130 DATA"als inductor, zoals 'n psychometrist",".M5"
+25140 DATA".F1","een voorwerp vasthoudt",".M5"
+25150 DATA".F1","en dan zijn duiding geeft.",".M0",".P8"
+25160 DATA".RTAAK van HANDLIJNKUNDIGE.",".F2"
+25170 DATA"De belangrijkste taak van de"
+25180 DATA"chirologie is, als richtsnoer te dienen"
+25190 DATA"voor praktische mensenkennis. (Hirsch)"
+25200 DATA".F2","Anderen formuleren het zo:",".F2"
+25210 DATA"Doel: geestelijke en lichamelijke"
+25220 DATA"gesteldheid vaststellen van de persoon,"
+25230 DATA"om de persoon te stimuleren een betere"
+25240 DATA"levenshouding te hebben of om zijn"
+25250 DATA"moeilijkheden beter te kunnen laten"
+25260 DATA"overwinnen.",".F2"
+25270 DATA"Het leven moet als een te beleven"
+25280 DATA"avontuur worden gezien, niet als"
+25290 DATA"een aaneenschakeling van teleurstellingen."
+25300 DATA".P8","Het begin moet zijn een grondige"
+25310 DATA"analyse van wat men ziet, gevolgd door"
+25320 DATA"een combinatie van de verschillende"
+25330 DATA"uitkomsten.",".F2"
+25340 DATA"Een goede chiroloog moet beseffen dat"
+25350 DATA"COMBINEREN niet verward mag worden met"
+25360 DATA"FANTASEREN ! Intuitie en techniek moeten"
+25370 DATA"hand in hand gaan.",".F2"
+25380 DATA"Trek niet te snel conclusies.",".F2"
+25390 DATA"Als het onderwerp u interesseert, vindt u"
+25400 DATA"uitgebreide literatuur in de bibliotheek.",".P8"
+25410 DATA".RDE ZEVEN HANDVORMEN",".F2"
+25420 DATA"Het verdient aanbeveling een vaste"
+25430 DATA"volgorde aan te houden bij het bekijken"
+25440 DATA"van de handen:",".F2"
+25450 DATA"- 1.soort, grootte, hoedanigheid en",".F1"
+25460 DATA"    kleur van de hand.",".F1"
+25470 DATA"- 2.de HANDVORM",".F1"
+25480 DATA"- 3.de duim",".F1"
+25490 DATA"- 4.de vingers",".F1"
+25500 DATA"- 5.de nagels",".F1"
+25510 DATA"- 6.hoedanigheid, grootte en",".F1"
+25520 DATA"-   kleur van de handpalm",".F1"
+25530 DATA"- 7.bijzonderheden v.d.handbergen",".F1"
+25540 DATA"- 8.verloop, vorm en",".F1"
+25550 DATA"    eigenaardigheden der LIJNEN",".F1"
+25560 DATA"- 9.de tekens (kruisen, gaffels enz.)",".P8"
+25570 DATA"Bekijk steeds beide handen.",".F2"
+25580 DATA"In de linkerhand vindt men aanwijzingen"
+25590 DATA"omtrent de eigenschappen en de aanleg"
+25600 DATA"die het leven ons heeft mee gegeven."
+25610 DATA".F2","In de rechterhand de werkelijkheid."
+25620 DATA"Dat is dat, wat een mens van zijn aanleg"
+25630 DATA"heeft gemaakt.",".F2"
+25640 DATA"Dit programma beperkt zich tot de"
+25650 DATA"hand-VORM en de hand-LIJNEN. De rest"
+25660 DATA"kan men in boeken vinden,als men de"
+25670 DATA"smaak te pakken heeft.",".P8"
+25680 DATA"Het is wel handig de namen te weten"
+25690 DATA"van de vingers volgens de astrologie"
+25700 DATA"en de Griekse mythologie.",".F2"
+25710 DATA"- wijsvinger  = Jupiter-vinger",".F1"
+25720 DATA"- middelvinger= Saturnus-vinger",".F1"
+25730 DATA"- ringvinger  = Apollo-vinger",".F1"
+25740 DATA"- pink        = Mercurius-vinger",".P8"
+25750 DATA".RDE ZEVEN HAND-VORMEN",".F2"
+25760 DATA"De vorm van de hand is aangeboren en"
+25770 DATA"daardoor onveranderlijk.",".P8"
+25780 DATA".R1 DE ELEMENTAIRE HAND",".F2"
+25790 DATA"KENMERKEN:",".F1"
+25800 DATA"Breed, dik, plomp en zonder zachtheid."
+25810 DATA"Weinig lijnen, brede handpalm, korte vingers,"
+25820 DATA"korte, dikke duim.",".F2"
+25830 DATA"KARAKTER:",".F1"
+25840 DATA"Eenvoudig, bescheiden, sober met voorkeur"
+25850 DATA"voor zware lichamelijke arbeid."
+25860 DATA"Volgzaam. Werk=leven!",".P8"
+25870 DATA".R2 DE VIERKANTE HAND",".F2"
+25880 DATA"KENMERKEN:",".F1"
+25890 DATA"Hand is hoekig en vierkant."
+25900 DATA"Palm is groot, breed en dik. Korte"
+25910 DATA"vingers en platte brede nagels.",".F2"
+25920 DATA"KARAKTER:",".F1"
+25930 DATA"Nuttigheid, praktische aanleg,"
+25940 DATA"waarheidsliefde, plichtsbesef, discipline,"
+25950 DATA"ordelijkheid en nauwkeurigheid."
+25960 DATA"Analytisch, logisch, kritisch.",".P8"
+25970 DATA".R3 DE SPATELVORMIGE HAND",".F2"
+25980 DATA"KENMERKEN:",".F1"
+25990 DATA"Groot, stevig, knokig. Onregelmatige"
+26000 DATA"vingers, brede, spatelvormige duim.",".F2"
+26010 DATA"KARAKTER:",".F1"
+26020 DATA"Ruimdenkend, energiek, zelfverzekerd,"
+26030 DATA"vasthoudend, helder van geest, avontuurlijk."
+26040 DATA".P8",".R4 DE FILOSOFISCHE HAND",".F2"
+26050 DATA"KENMERKEN:",".F1"
+26060 DATA"Slanke hand met knoestige vingers."
+26070 DATA"Lange ronde nagels.",".F2"
+26080 DATA"KARAKTER:",".F1"
+26090 DATA"Evenwichtig, logisch, realistisch,"
+26100 DATA"abstrakt redenerend, doorzetter, grondig,"
+26110 DATA"idealistisch, gezond verstand.",".P8"
+26120 DATA".R5 DE CONISCHE (sensibele) HAND",".F2"
+26130 DATA"KENMERKEN:",".F1"
+26140 DATA"Gladde slanke vingers met conische"
+26150 DATA"toppen en een afgeronde, goed gevormde"
+26160 DATA"duim.Harmonieuze kegelvormige zachte hand."
+26170 DATA".F2","KARAKTER:",".F1"
+26180 DATA"Kunstzinnig, gevoelig, fantasierijk,"
+26190 DATA"impulsief, edelmoedig, wispelturig,"
+26200 DATA"geestdriftig, idealistisch, hartstochtelijk."
+26210 DATA".P8",".R6 DE PSYCHISCHE HAND",".F2"
+26220 DATA"KENMERKEN:",".F1"
+26230 DATA"Smalle veerkrachtige hand met tere"
+26240 DATA"handromp, gladde, buigzame vingers met"
+26250 DATA"spitse toppen. Slanke duim. Fraaie smalle"
+26260 DATA"nagels.",".F2"
+26270 DATA"KARAKTER:",".F1"
+26280 DATA"Geestelijke ontwikkeling, energie,"
+26290 DATA"uithoudingsvermogen en standvastigheid."
+26300 DATA"Idealistisch, poetisch, dromerig, charmant"
+26310 DATA"tolerant, vriendelijk, naief.",".P8"
+26320 DATA".R7 DE GEMENGDE HAND",".F2"
+26330 DATA"KENMERKEN:",".F1"
+26340 DATA"Meerdere typen met elkaar vermengd."
+26350 DATA"Vaak treedt een type op de voorgrond."
+26360 DATA".F2","KARAKTER:",".F1"
+26370 DATA"Invloed van het type dat overheerst."
+26380 DATA"De combinatie is van belang."
+26390 DATA"Veelzijdig, mogelijkheid tot aanpassing."
+26400 DATA"Geestig, sympathiek, kollegiaal."
+26410 DATA"Minder genie, meer doorsnee mens, die"
+26420 DATA"op vele terreinen inpasbaar is.",".P8"
+26430 DATA".RDE HAND-LIJNEN",".F2"
+26440 DATA"De lijnen in de hand geven een indikatie"
+26450 DATA"van onze talenten,onze toekomstperspektieven."
+26460 DATA"De lijnen vormen onze persoonlijke"
+26470 DATA"routekaart voor ons leven. We hebben de"
+26480 DATA"eigen vrije wil om van deze route af te"
+26490 DATA"wijken.",".F2"
+26500 DATA"Het netwerk van lijnen is reeds in"
+26510 DATA"embryonale toestand in de hand aanwezig."
+26520 DATA"Maar nieuwe lijnen kunnen optreden,"
+26530 DATA"bestaande kunnen van vorm veranderen.",".F2"
+26540 DATA"De handvorm en de hoofdlijnen zijn"
+26550 DATA"aangeboren.",".P8"
+26560 DATA"Dit programma geeft als eerste aanzet"
+26570 DATA"alleen de 6 HOOFDLIJNEN. In de literatuur"
+26580 DATA"vindt men nog een aantal nevenlijnen"
+26590 DATA"(Venusring, Marslijn, Melkweg enz.)",".F2"
+26600 DATA"- levenslijn",".F1","- hoofdlijn",".F1"
+26610 DATA"- hartlijn",".F1","- Saturnuslijn",".F1"
+26620 DATA"- Apollolijn",".F1","- Mercuriuslijn",".E"
+26630 REM
+27000 DATA".RDE LEVENSLIJN",".F2","De levenslijn"
+27010 DATA"geeft aanwijzingen betreffende de"
+27020 DATA"constitutie, gezondheid, vitaliteit,"
+27030 DATA"en psychische gesteldheid.",".F2"
+27040 DATA"Een brede levenslijn wijst op vitaliteit,"
+27050 DATA"levensvreugde, optimisme, evenwichtig en"
+27060 DATA"standvastig karakter. Ook goede gezondheid."
+27070 DATA".F2","Een lange scherpe levenslijn wijst op:"
+27080 DATA"vaak depressief, humeurig, zwakke gezondheid,"
+27090 DATA"weinig weerstand.",".F2"
+27100 DATA"Een korte levenslijn kan wijzen op verval"
+27110 DATA"van krachten.Een nauwe levenslijn op"
+27120 DATA"koelbloedige en ongevoelige persoonlijkheid."
+27130 DATA".P8"
+27140 REM
+27150 DATA".RDE HOOFDLIJN",".F2","Deze lijn geeft"
+27160 DATA"ons aanwijzingen omtrent verstand,"
+27170 DATA"intelligentie, energie en wilskracht."
+27180 DATA"De hoofdlijn toont hoe we tegen het leven"
+27190 DATA"aankijken.",".F2"
+27200 DATA"Als de hoofdlijn en de levenslijn in het"
+27210 DATA"begin samenvallen, duidt dit op een sterke"
+27220 DATA"overheersing van de geest op het lichaam,"
+27230 DATA"logika, zelfbeheersing, takt, gesloten"
+27240 DATA"karakter.",".F2","zijn de lijnen niet"
+27250 DATA"verbonden dan kan dat wijzen op een meer"
+27260 DATA"luchtige en avontuurlijke instelling.",".F2"
+27270 DATA"Een lange, diepe, rechte hoofdlijn kan"
+27280 DATA"wijzen op een helder, logisch verstand,"
+27290 DATA"een realistische kijk op het leven en een"
+27300 DATA"scherp geheugen.",".P8"
+27310 REM
+27320 DATA".RDE HARTLIJN",".F2","De hartlijn kan"
+27330 DATA"uitsluitsel geven omtrent ons gevoels-"
+27340 DATA"en zieleleven, over de geestelijke"
+27350 DATA"gesteldheid en die van de innerlijke"
+27360 DATA"organen zoals hart en galwegen."
+27370 DATA"Begint de hartlijn onder de wijsvinger"
+27380 DATA"dan kan er sprake zijn van een normaal"
+27390 DATA"gelukkig liefdesleven. Begint de lijn"
+27400 DATA"halverwege tussen wijs- en middelvinger"
+27410 DATA"dan is men wat roekelozer in de liefde."
+27420 DATA"een lange, licht gebogen hartlijn duidt op"
+27430 DATA"een prettige natuur vol romantiek en"
+27440 DATA"warmte.",".P8"
+27450 REM
+27460 DATA".RDE SATURNUSLIJN",".F2","De Saturnuslijn"
+27470 DATA"zegt iets over de gemoedsgesteldheid,"
+27480 DATA"betreffende de energie en daadkracht en"
+27490 DATA"in verband hiermee de zelfstandigheid."
+27500 DATA"Daarom ook wel 'lotslijn' genoemd."
+27510 DATA"Hoe krachtiger de lijn, des te sterker"
+27520 DATA"zijn we van het lot afhankelijk.",".F2"
+27530 DATA"Zijn hoofd-, hart- en levenslijn sterker"
+27540 DATA"dan de Saturnuslijn, dan laat men weinig"
+27550 DATA"aan het lot over. Is de lijn aan het begin"
+27560 DATA"verbonden met de levenslijn dan duidt dat"
+27570 DATA"op iemand, die zijn leven zelf bepaalt.",".P8"
+27580 REM
+27590 DATA".RDE APOLLOLIJN",".F2","Vroeger kende men"
+27600 DATA"deze lijn een prognostische betekenis toe:"
+27610 DATA".F1","Apollolijn = gelukslijn. Tegenwoordig"
+27620 DATA"neemt men aan dat de lijn iets zegt omtrent"
+27630 DATA"artistieke aanleg en begaafdheid, fantasie"
+27640 DATA"en psychische kracht.",".F2"
+27650 DATA"Loopt de lijn regelrecht door naar de"
+27660 DATA"ringvinger, dan hebben we wellicht te maken"
+27670 DATA"met een zeer kunstzinnig iemand.",".P8"
+27680 REM
+27690 DATA".RDE MERCURIUSLIJN",".F2","Deze lijn"
+27700 DATA"staat in de literatuur bekend als de"
+27710 DATA"gezondheidslijn, de lever- of miltlijn."
+27720 DATA"Zij geeft aan hoe het staat met onze"
+27730 DATA"lichamelijke constitutie, de kracht van"
+27740 DATA"ons zenuwstelsel en van de inwendige"
+27750 DATA"organen. Het ontbreken van deze lijn is"
+27760 DATA"geen ongunstig teken! Het wijst op een"
+27770 DATA"krachtig gestel en een goed weerstandsvermogen."
+27780 DATA".F2","Als de Mercuriuslijn vanaf de"
+27790 DATA"pink schuin in de richting van de"
+27800 DATA"levenslijn loopt, een driehoek vormt met"
+27810 DATA"de levenslijn en de hoofdlijn, dan spreekt"
+27820 DATA"men wel van een 'geluksdriehoek'.",".P8"
+27830 REM
+27840 DATA".RSLOT-CONCLUSIE",".F2"
+27850 DATA"Wat de hand onthult aangaande onze aanleg"
+27860 DATA"is onveranderlijk. Dat kan niet gezegd"
+27870 DATA"worden van de resultaten, die wij met die"
+27880 DATA"aanleg bereiken!",".F2"
+27890 DATA"De goede of slechte aanleg is niet"
+27900 DATA"beslissend in het leven. Doorslag geeft in"
+27910 DATA"hoeverre wij van onze goede aanleg profijt"
+27920 DATA"trekken ofwel de slechte aanleg weten te"
+27930 DATA"bestrijden.",".F2"
+27940 DATA"Uit de hand kunnen wij hoogstens lezen,"
+27950 DATA"hoe het karakter van een mens is, hoe zijn"
+27960 DATA"gevoelens, wensen, talenten en neigingen"
+27970 DATA"zijn, niet hoe deze eigenschappen worden"
+27980 DATA"gebruikt!",".F6"
+27990 DATA"Voor waarzeggerij en dubieuze voorspiegelingen"
+28000 DATA"moet men niet bij de handlijnkunde,"
+28010 DATA"maar OP DE KERMIS zijn!",".P8"
+28020 REM
+28500 REM *** GRAFISCHE DATA ***
+28510 DATA15,800,84,615,136,423,194,323,263,184,305,123
+28520 DATA321,130,326,161,326,192
+28530 DATA315,230,305,269,273,346,221,438,221,453,236,446
+28540 DATA421,230,600,84,621,76,631,84,636,103,631,130
+28550 DATA618,169,579,207,410,390,410,405,421,392,631,169
+28560 DATA684,123,700,126,705,138,710,153,705,176
+28570 DATA631,284,473,476,468,492,484,484,621,330
+28580 DATA684,277,726,261,742,269,747,284,684,369
+28590 DATA594,476,463,600,468,615,547,538,621,476
+28600 DATA668,446,678,453,684,461,657,515,631,538
+28610 DATA578,600,510,661,447,769,421,807,368,846
+28620 DATA289,915,252,923,210,938,157,984,-2
+28630 REM *** LEVENSLIJN ***
+28640 DATA78,884,105,869,131,846,157,815,184,784,210,746
+28650 DATA236,692,252,653,268,615,278,576,289,538,294,500
+28660 DATA305,384,-2
+28670 REM *** HOOFDLIJN  ***
+28680 DATA315,353,326,384,331,423,342,461,357,500
+28690 DATA368,538,378,576,384,653,389,730,394,807,-2
+28700 REM *** HARTLIJN ***
+28710 DATA400,400,394,423,384,500,389,538,394,576
+28720 DATA400,615,405,653,421,692,436,730,452,769,-2
+28730 REM *** SATURNUSLIJN ***
+28740 DATA157,807,263,692,331,615,384,538,421,461,-2
+28750 REM *** APOLLOLIJN ***
+28760 DATA300,692,457,546,-2
+28770 REM *** MERCURIUSLIJN ***
+28780 DATA184,784,457,630,-2,1,1
+28790 DATA-1,-1
+30000 REM
+30010 REM ****************************
+30020 REM * LITERATUUR:              *
+30030 REM *        DE TOEKOMST LIGT  *
+30040 REM *        IN UW HANDEN!     *
+30050 REM *        MARIGOLD-LEERDAM  *
+30060 REM *        ----------------  *
+30070 REM * HANDENTAAL               *
+30080 REM * A.E.HIRSCH               *
+30090 REM * BIGOT & VAN ROSSUM       *
+30100 REM * BLARICUM                 *
+30110 REM ****************************
+30120 REM
+32000 REM ** HARRY EYCK / NEER **
+32010 REM ** SEPT.'88   / C.64 **
+32020 REM
+32030 REM TROS-RADIO dd 890222

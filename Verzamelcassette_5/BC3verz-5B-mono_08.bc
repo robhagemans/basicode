@@ -1,0 +1,273 @@
+
+1000 A=100:GOTO20:REM HAAIEN EN VISSEN
+1010 HM=HO:VM=VE:REM maximaal scherm
+1020 XM=HM:YM=VM-2:REM ZEE-MATEN bijna gelijk aan scherm
+1030 REM in de nu volgende regel kunnen
+1040 REM XM en YM naar behoeven worden verkleind, bijv.:
+1050 XM=15:YM=15
+1060 DIMZ(XM*YM),Z1(XM*YM):REM zee-cellen
+1070 DIMH(XM*YM,2),H1(XM*YM,2):REM haaienbestand
+1080 DIMVZ(3),LZ(3):REM vis-zoek-plaatsen
+1090 AV=INT(0.45*XM*YM):REM start aantal vissen
+1100 AH=INT(0.1*AV):REM start aantal haaien
+1110 NV=3:REM vis geeft nieuwevis na NV dagen
+1120 NH=9:REM haai geeft nieuwehaai na NH dagen
+1130 HD=3:REM haai dood na HD dagen vasten
+1140 HX=12:REM haai overlijdt na HX dagen
+1150 GOSUB6030:REM ev. uitleg
+1160 REM
+1170 REM maak de zee leeg
+1180 REM
+1190 GOSUB100
+1200 PRINT:PRINT"Even geduld a.u.b. ..."
+1210 IH=0:REM start index H()
+1220 FORI=0 TOXM*YM
+1230 Z1(I)=0:REM alles leeg
+1240 NEXTI
+1250 REM
+1260 REM bouw random een beginstand op
+1270 REM
+1280 FORI=1 TOAV
+1290 GOSUB260:X=INT(RV*XM)
+1300 GOSUB260:Y=INT(RV*YM)
+1310 C=X+Y*XM
+1320 I=I-1:IFZ1(C)<>0 THEN1340
+1330 GOSUB260:Z1(C)=INT(RV*(NV+3)):I=I+1
+1340 NEXTI
+1350 FORI=1 TOAH
+1360 GOSUB260:X=INT(RV*XM)
+1370 GOSUB260:Y=INT(RV*YM)
+1380 C=X+Y*XM
+1390 I=I-1:IFZ1(C)<>0 THEN1430
+1400 GOSUB260:Z1(C)=-INT(RV*(NH+HD)):I=I+1
+1410 GOSUB260:H1(IH,0)=X:H1(IH,1)=Y:H1(IH,2)=INT(HD*RV)
+1420 IH=IH+1
+1430 NEXTI
+1440 D=0:REM aantal gedane cycli (=dagnummer)
+1450 GOSUB100
+2000 REM
+2010 REM HOOFDCYCLUS VAN HET PROGRAMMA
+2020 REM I: kopieer en toon de situatie
+2030 REM
+2040 AV=0:AH=0
+2050 FORY=0 TOYM-1:CY=Y*XM
+2060 HO=0:VE=Y:GOSUB110
+2070 FORX=0 TOXM-1:C=X+CY
+2080 Z(C)=Z1(C):Z1(C)=0:REM copieer en ledig
+2090 H(C,0)=H1(C,0):H(C,1)=H1(C,1):H(C,2)=H1(C,2)
+2100 IFZ(C)=0 THENPRINT" ";:GOTO2130
+2110 IFZ(C)>0 THENPRINT".";:AV=AV+1:GOTO2130
+2120 PRINT"*";:AH=AH+1
+2130 NEXTX
+2140 NEXTY
+2150 HO=0:VE=VM:GOSUB110
+2160 SR=D:GOSUB300:PRINT"Dag ";SR$;": ";
+2170 SR=AV:GOSUB300:PRINTSR$;" vissen en ";
+2180 SR=AH:GOSUB300:PRINTSR$;" haaien ";
+2190 REM desgewenst kunnen de waarden van AV en AH
+2200 REM tegen het dagnummer D worden geplot
+2210 REM
+2220 REM II : bereken nieuwe situatie
+2230 REM
+2240 JH=0:REM nieuwe haaienindex
+2250 REM
+2260 REM eerst de vissen
+2270 REM
+2280 C=0:FORY=0 TOYM-1
+2290 FORX=0 TOXM-1
+2300 IFZ(C)>0 THEN GOSUB4030:REM verwerk deze vis
+2310 C=C+1:NEXTX:NEXTY
+2320 REM
+2330 REM nu de haaien
+2340 REM
+2350 FORIH=0 TOAH-1
+2360 GOSUB3030:REM er is een haai
+2370 NEXTIH
+2380 REM
+2390 REM nieuwe toestand gevonden
+2400 REM print deze en copieer in oude
+2410 REM plot eventueel AV en AH op het scherm
+2420 REM bijv: PLOT69,D*4,32+AV:PLOT69,D*4,300+1.5*AH
+2430 D=D+1
+2440 GOTO2040:REM herhaling
+3000 REM
+3010 REM haaien-subroutine
+3020 REM
+3030 GV=0:REM aantal visburen
+3040 GL=0:REM aantal lege buurcellen
+3050 X=H(IH,0):Y=H(IH,1)
+3060 C=X+XM*Y:REM positie in Z
+3070 Z(C)=Z(C)-1:REM wordt dagje ouder
+3080 IFZ(C)<-HX THENZ(C)=0:RETURN:REM te oud
+3090 FORI=0 TO3:REM zoek vissen
+3100 GOSUB5010:REM Bepaal Zoek-X, -Y en -C
+3110 IFZ1(ZC)>0 THENVZ(GV)=I:GV=GV+1
+3120 IF(Z(ZC)=0)AND(Z1(ZC)=0) THENLZ(GL)=I:GL=GL+1
+3130 NEXTI
+3140 IFGV>0 THEN3250:REM vis, dus eten!
+3150 H(IH,2)=H(IH,2)-1:REM verlaag resttijd
+3160 IFH(IH,2)<=0 THENZ(C)=0:RETURN:REM hongerdood
+3170 IFGL>0 THEN3210:REM beweeg naar vrije cel
+3180 H1(JH,0)=X:H1(JH,1)=Y:H1(JH,2)=H(IH,2)
+3190 Z1(C)=Z(C):JH=JH+1:RETURN:REM geen verandering
+3200 REM zoek een willekeurige lege buurcel
+3210 GOSUB260:MI=INT(RV*GL)
+3220 I=LZ(MI)
+3230 GOTO3310:REM haai naar lege cel
+3240 REM er was vis te eten dus zoek welke
+3250 GOSUB260:MI=INT(RV*GV)
+3260 I=VZ(MI)
+3270 GOSUB5010
+3280 REM haai gaat vis eten
+3290 H(IH,2)=HD:REM herstart hongerdoodtijd
+3300 REM breng haai naar nieuwe positie ZX,ZY,ZC
+3310 Z(ZC)=Z(C):Z1(ZC)=Z(C):Z(C)=0
+3320 H1(JH,0)=ZX:H1(JH,1)=ZY:H1(JH,2)=H(IH,2):JH=JH+1
+3330 REM
+3340 REM laat eventueel een jonkie achter
+3350 REM
+3360 IFZ(ZC)>=-NH THENRETURN:REM nog niet vruchtbaar
+3370 Z(C)=-1:Z1(C)=-1
+3380 H1(JH,0)=X:H1(JH,1)=Y:H1(JH,2)=HD:JH=JH+1
+3390 RETURN:REM klaar met deze haai en jonkie
+4000 REM
+4010 REM vissen-subroutine
+4020 REM
+4030 Z(C)=Z(C)+1:REM ouder
+4040 GL=0:REM gevonden lege plaatsen
+4050 FORI=0 TO3:REM zoek vrije plaatsen
+4060 GOSUB5010
+4070 IF(Z(ZC)=0)AND(Z1(ZC)=0) THENVZ(GL)=I:GL=GL+1
+4080 NEXTI
+4090 IFGL=0 THENZ1(C)=Z(C):Z(C)=0:RETURN:REM blijf staan
+4100 GOSUB260:MI=INT(RV*GL)
+4110 I=VZ(MI)
+4120 GOSUB5010
+4130 Z1(ZC)=Z(C):Z(C)=0:REM verplaats vis
+4140 IFZ1(ZC)<=NV THENRETURN:REM geen jonkie
+4150 Z1(C)=1:REM jonkie
+4160 RETURN:REM klaar met deze vis
+5000 REM pointers buurplaats bepalen
+5010 ONI+1 GOTO5020,5040,5060,5080
+5020 ZY=Y:IFX>0 THENZX=X-1:ZC=C-1:RETURN
+5030 ZX=XM-1:ZC=C+XM-1:RETURN
+5040 ZX=X:IFY<YM-1 THENZY=Y+1:ZC=C+XM:RETURN
+5050 ZY=0:ZC=X:RETURN
+5060 ZY=Y:IFX<XM-1 THENZX=X+1:ZC=C+1:RETURN
+5070 ZX=0:ZC=C-XM+1:RETURN
+5080 ZX=X:IFY>0 THENZY=Y-1:ZC=C-XM:RETURN
+5090 ZY=YM-1:ZC=ZX+ZY*XM:RETURN
+6000 REM
+6010 REM uitlegroutine
+6020 REM
+6030 GOSUB7030
+6070 PRINT"Op een merkwaardige manier kunnen de"
+6080 PRINT"aantallen van bepaalde diersoorten"
+6090 PRINT"elkaar in evenwicht houden.":PRINT
+6100 PRINT"Dit programma is geinspireerd op een"
+6110 PRINT"artikel van A.Dewdney in de rubriek"
+6120 PRINT"'Computer Recreations' in het blad"
+6130 PRINT"'Scientific American'.":PRINT
+6140 PRINT"We denken in dit geval aan een zee waar"
+6150 PRINT"vissen in leven die zich voeden uit een"
+6160 PRINT"onbeperkte voorraad plankton. Behalve"
+6170 PRINT"deze vissen zwemmen er ook haaien in de"
+6180 PRINT"zee, die zich uitsluitend voeden met de"
+6190 PRINT"eerder genoemde vissen.":PRINT
+6200 PRINT"De zee is zichtbaar op het scherm. Elke"
+6210 PRINT"vis wordt daar als een . weergegeven en"
+6220 PRINT"elke haai als een *":GOSUB7000
+6230 PRINT"Bovendien loopt de zee in een dubbele"
+6240 PRINT"kring rond: een vis die aan de linker-"
+6250 PRINT"kant uit het scherm zwemt, komt meteen"
+6260 PRINT"aan de rechterkant weer binnen en dat"
+6270 PRINT"gebeurt ook met de onder- en bovenkant."
+6280 PRINT"(Het scherm stelt in feite een TORUS"
+6290 PRINT" voor.) Elke schermpositie stelt een"
+6300 PRINT"plek voor (een cel) waar zich een vis"
+6310 PRINT"of een haai kan bevinden. In het begin"
+6320 PRINT"wordt het scherm willekeurig gevuld met"
+6330 PRINT"vissen en haaien.":PRINT
+6340 PRINT"Eenmaal per dag schrikken alle dieren"
+6350 PRINT"in de zee even wakker. Een haai kijkt"
+6360 PRINT"of er een vis in een cel naast haar/hem"
+6370 PRINT"zit. Zo ja verplaats de haai zich naar"
+6380 PRINT"die cel en eet de vis op. Is er geen"
+6390 PRINT"cel met een vis, dan verplaatst de haai"
+6400 PRINT"zich desondanks naar een buurcel,"
+6410 PRINT"tenzij al die buurcellen al een haai"
+6420 PRINT"bevatten.":GOSUB7000
+6430 PRINT"Iets soortgelijks gebeurt met de"
+6440 PRINT"vissen. Ook deze schepselen eten van"
+6450 PRINT"het volop beschikbare plankton en"
+6460 PRINT"verplaatsen zich zo mogelijk naar een"
+6470 PRINT"buurcel.":PRINT
+6480 PRINT"Verder kunnen beide soorten zich"
+6490 PRINT"voortplanten. Als een dier de"
+6500 PRINT"vruchtbare leeftijd heeft bereikt, dan"
+6510 PRINT"zal hij/zij zich niet alleen naar een"
+6520 PRINT"buurcel verplaatsen, maar tevens in de"
+6530 PRINT"cel waar zij/hij zich bevond een jonkie"
+6540 PRINT"achterlaten.":PRINT
+6550 PRINT"Bovendien gelden voor de haaien twee"
+6560 PRINT"extra regels: als zo'n dier gedurende"
+6570 PRINT"een bepaald aantal dagen geen vis heeft"
+6580 PRINT"kunnen verschalken, gaat deze haai van"
+6590 PRINT"de honger dood en verdwijnt. Daarnaast"
+6600 PRINT"kunnen haaien ook van pure ouderdom"
+6610 PRINT"doodgaan."
+6620 GOSUB7000
+6630 PRINT"Eenvoudige spelregels. U kunt"
+6640 PRINT"desgewenst de vruchtbare leeftijd van"
+6650 PRINT"beide diersoorten alsmede de leeftijd"
+6660 PRINT"waarop een haai de hongerdood sterft in"
+6670 PRINT"het begin van het programma veranderen."
+6680 PRINT"Experimenteer gerust met wat er"
+6690 PRINT"gebeurt. Dit programma geeft een ideale"
+6700 PRINT"manier om op een milieubewuste wijze"
+6710 PRINT"dierproeven te doen. Wie liever geen"
+6720 PRINT"haaien op zijn scherm ziet, mag ook aan"
+6730 PRINT"katten en muizen denken, of aan haviken"
+6740 PRINT"en konijnen, of aan ... en ..."
+6750 PRINT
+6760 PRINT"Veel plezier !"
+7000 HO=0:VE=VM:GOSUB110
+7010 PRINT"spatie voor vervolg ...";
+7020 GOSUB210:IFIN<>32 THEN7020
+7030 GOSUB100
+7040 SR$="PROOI-/ROOFDIER-CYCLUS"
+7050 HO=5:VE=0:GOSUB110:GOSUB150
+7060 PRINT:PRINT
+7070 RETURN
+30000 REM De zeeinhoud staat in Z(..)
+30010 REM Z(..)=0 : lege cel
+30020 REM Z(..)>0 :  visseleeftijd
+30030 REM Z(..)<0 : -haaieleeftijd
+30040 REM de index in Z(..) is steeds
+30050 REM X+Y*XM en heet
+30060 REM  C of ZC in het programma.
+30070 REM Van elke haai staat in:
+30080 REM  H(..,0) : de X-coordinaat
+30090 REM  H(..,1) : de Y-coordinaat
+30100 REM  H(..,2) : aantal vastdagen
+30110 REM
+30120 REM elke dag wordt uit
+30130 REM   H(..,..) en Z(..)
+30140 REM de volgende dag berekend en in
+30150 REM H1(..,..) en Z1(..) geplaatst
+30160 REM
+32000 REM ****************************
+32010 REM *                          *
+32020 REM * Auteur en copyright:     *
+32030 REM *                          *
+32040 REM *    J.G.A. Haubrich       *
+32050 REM *    p/a:                  *
+32060 REM *    Stichting BASICODE    *
+32070 REM *    Postbus 1410          *
+32080 REM *    5602 BK EINDHOVEN     *
+32090 REM *                          *
+32100 REM *      juni 1988           *
+32110 REM *                          *
+32120 REM ****************************
+32130 REM
+32140 REM TROS-RADIO dd. 890315
