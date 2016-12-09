@@ -879,10 +879,10 @@ try:
             print '- Pass (checksum %02x)' % tapestream.last_checksum()[0]
             print
         else:
-            print '- Checksum: required %02x calculated %02x' % tapestream.last_checksum()
+            print '- Checksum: expected %02x observed %02x' % tapestream.last_checksum()
             print '- Errors: %d' % tapestream.errors
             print
-            ext = 'x%02x'% tapestream.last_checksum()[0]
+            ext = 'x%02xo%02x'% tapestream.last_checksum()
         with open('%s_%02d.%s' % (trunk, track, ext), 'wb') as f:
             f.write(s)
 except EndOfTape:
