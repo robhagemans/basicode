@@ -69,3 +69,8 @@ Source                              Medium      Basicode version    Language
 
 *Many of the above sources additionally contain translation programs, encoded in the native modulation for each computer.
 These are not included here.*
+
+Acknowledgements
+----------------
+
+A big thank you to **Janny Looyenga**, **Jan Bredenbeek**, **André van der Leeden** and many others for history, BASICODE recordings and background information!
