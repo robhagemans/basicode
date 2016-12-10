@@ -276,7 +276,7 @@
 26060 DATA"      --------------"
 26070 DATA"Een geboorte-horoscoop is een kaart"
 26080 DATA"van het hemel-gewelf, waarop de stand"
-26090$DATA"van de hemellichamen op het ogenblik"
+26090 DATA"van de hemellichamen op het ogenblik"
 26100 DATA"van de geboorte in beeld is gebracht."," "
 26110 DATA"Er zijn 12 Sterrenbeelden en"
 26120 DATA"12 'Planeten', die op elkaar invloed"
