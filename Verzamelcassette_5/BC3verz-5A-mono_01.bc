@@ -43,7 +43,7 @@
 2000 PRINT"            TWEETAKT-MOTOR"
 2010 PRINT:PRINT
 2020 PRINT"ODP = Onderste Dode Punt"
-2030 PRINT"BDP = Bovenste Dode Runt"
+2030 PRINT"BDP = Bovenste Dode Punt"
 2040 PRINT
 2050 PRINT"We zullen beginnen bij het aanzuigen"
 2060 PRINT"van het mengsel (benzine/lucht)."
@@ -91,7 +91,7 @@
 3120 PRINT"de expansie of arbeidsslag."
 3130 PRINT"Door de neergaande beweging van de"
 3140 PRINT"zuiger komt de uitlaatpoort vrij"
-3150 PRINT"en wordmn de verbrande gassen"
+3150 PRINT"en worden de verbrande gassen"
 3160 PRINT"door het verse mengsel naar buiten"
 3170 PRINT"gedrukt."
 3180 PRINT
