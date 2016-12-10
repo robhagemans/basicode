@@ -1,0 +1,178 @@
+
+1000 A=500:GOTO20:REM UITLEG bij PUNTENLIJST
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1340:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Wilt u deze uitleg op"
+1060 PRINT:PRINT"   1  Het beeldscherm,"
+1070 PRINT"   2  De printer."
+1080 PRINT:PRINT"Welk nummer kiest u ";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1180
+1100 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1110 PRINT"begin van elke regel ";:INPUTHL
+1120 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1130 PRINT"u op elke regel ";:INPUTI:HR=HL+I-1
+1140 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1150 PRINT"laten overslaan ";:INPUTVL
+1160 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+1170 PRINT"elk blad ";:INPUTVR:VR=VR+VL-3
+1180 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1190 GOSUB1310:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1290
+1200 IFLEN(R$)>HR-HL THEN GOSUB1730
+1210 GOSUB1370:IFR$<>"" THENR$=R$+" "
+1220 R$=R$+D$:GOTO1200
+1230 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1250
+1240 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1250 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1260 IFSC=1 THEN1310
+1270 IFVL>0 THENFORI=1 TOVL:GOSUB360:NEXTI
+1280 AL=VL
+1290 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1230
+1300 SR$="":GOSUB1230:AL=VL:RETURN
+1310 HO=3:VE=VT:GOSUB110
+1320 SR$="VERVOLG: druk op <return>":GOSUB150
+1330 GOSUB210:IFIN<>13 THEN1330
+1340 GOSUB100:AL=VL:SR$=T$
+1350 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1360 PRINT:PRINT:RETURN
+1370 READD$
+1380 IFD$="" THEN1370
+1390 IFLEFT$(D$,1)="." THEN1440
+1400 IFLEFT$(D$,1)<>"!" THENRETURN
+1410 IFD$="!" THEND$="":GOTO1430
+1420 D$=RIGHT$(D$,LEN(D$)-1)
+1430 GOSUB1670:GOTO1380
+1440 IFD$<>".E" THEN1490
+1450 J=1:GOSUB1670:T$="Einde van deze uitleg"
+1460 SR$="":GOSUB1230:GOSUB1230:SR$=T$:GOSUB1230:T$=""
+1470 SR$="":GOSUB1230:IFAL<>VL THEN1470
+1480 GOTO950
+1490 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+1500 IFDD$<>"R" THEN1550
+1510 IFSC=2 THENRETURN
+1520 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1230:R$=""
+1530 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1540 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1370
+1550 IFDD$<>"M" THEN1580
+1560 I=VAL(D$):MM$="":IFI+HL=0 THEN1370
+1570 MM$=LEFT$(S$,I+HL):GOTO1370
+1580 IFDD$="P" THENJ=VAL(D$):GOSUB1670:GOSUB1690:GOTO1370
+1590 IFDD$="T" THENT$=D$:J=10:GOSUB1670:GOSUB1690:GOTO1510
+1600 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1370
+1610 IFDD$<>"F" THEN1640
+1620 J=VAL(D$):GOSUB1670
+1630 J=J-1:IFJ>-1 THENSR$="":GOSUB1230:GOTO1630
+1640 IFDD$<>"C" THEN1660
+1650 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1230
+1660 GOTO1370
+1670 GOSUB1730:SR$=R$:GOSUB1230:R$="":J=J-1
+1680 RETURN
+1690 IF(SC=1)OR(AL+J>VR) THEN1710
+1700 SR$="":GOSUB1230:GOSUB1230:RETURN
+1710 IFAL<>VL THENSR$="":GOSUB1230:GOTO1710
+1720 RETURN
+1730 K=HR-HL+1-LEN(M$)
+1740 IFLEN(R$)<=K THENRETURN
+1750 IFMID$(R$,K,1)=" " THEN1780
+1760 K=K-1:IFK>0 THEN1750
+1770 SR$="":GOTO1790
+1780 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+1790 GOSUB1230:GOTO1730
+25000 DATA"PUNTENLIJST"
+25010 DATA"!!Het programma 'PUNTENLIJST' is speciaal"
+25020 DATA"gemaakt voor docenten. Het berekent de"
+25030 DATA"gemiddeldes van de punten die de leerlingen"
+25040 DATA"halen. De namen en punten kunnen PER KLAS"
+25050 DATA"bewaard op cassette of diskette."
+25060 DATA"!!Leerlingen kunnen het programma gebruiken om"
+25070 DATA"per vak hun punten bij te houden en op elk"
+25080 DATA"moment voor alle vakken te zien hoe ze ervoor"
+25090 DATA"staan."
+25100 DATA"!!.RWat u moet weten"
+25110 DATA"!!U kunt in de computer maar EEN KLAS TEGELIJK"
+25120 DATA"bewerken."
+25130 DATA"!Als u het programma opstart moet u RUN"
+25140 DATA"gebruiken. Bedenk ook als u het programma stopt"
+25150 DATA"of breakt, dat dan alle gegevens gewist kunnen"
+25160 DATA"worden."
+25170 DATA"!!--> ALS",".M4","U EEN KLAS IN DG COMPUTER"
+25180 DATA"HEEFT STAAN, EN U WILT EEN NIEUWE KLAS INVOEREN,"
+25190 DATA"BEEINDIG DAN HET PROGRAMMA MET MENUKEUZE 9, EN"
+25200 DATA"START OPNIEUW MET RUN!","!.M0"
+25210 DATA"!Er kunnen maximaal 30 leerlingen met ieder 25"
+25220 DATA"punten in de computer. Dit kunt u uitbreiden,"
+25230 DATA"maar er moeten minimaal 18 punten zijn. Dit"
+25240 DATA"omdat de computer leerling '0' zelf gebruikt. U"
+25250 DATA"kunt de dimensies wijzigen in regel 1260. Maar"
+25260 DATA"er moet wel telkens een veld en een record meer"
+25270 DATA"gedimensioneerd worden dan u gebruikt."
+25280 DATA".TMenukeuze 1: Namen invoeren"
+25290 DATA"!!Deze functie heeft u nodig als u een nieuwe"
+25300 DATA"klas wil aanmaken."
+25310 DATA"!Als u '#' invoert stopt de computer met"
+25320 DATA"invoeren."
+25330 DATA".TMenukeuze 2: Namen wijzigen"
+25340 DATA"!!Als u hier het nummer van een leerling uit de"
+25350 DATA"lijst geeft, dan kunt u deze wijzigen. Bij 0"
+25360 DATA"kunt een nieuw leerlingenaantal invoeren."
+25370 DATA"!Als u een hoger nummer dan het leerlingenaantal"
+25380 DATA"invoert kunt u een naam toevoegen."
+25390 DATA".TMenukeuze 3 en 4: Laden/Saven"
+25400 DATA"!!U kunt een klas die u net heeft aangemaakt of"
+25410 DATA"bijgewerkt opslaan op een extern geheugen,"
+25420 DATA"namelijk:"
+25430 DATA"!!1. Basicode-3 cassette"
+25440 DATA"!2. Cassette van uw computer"
+25450 DATA"!3. Diskette"
+25460 DATA"!!Met keuze 1 kunt u de bestanden volgens de"
+25470 DATA"BASICODE-3 standaard opslaan. Met als voordeel"
+25480 DATA"dat de bestanden uitwisselbaar zijn met andere"
+25490 DATA"BASICODE-3 computers."
+25500 DATA"!Keuze 2 werkt hetzelfde, maar alleen voor uw"
+25510 DATA"eigen computer. De bestanden worden bij keuze 1"
+25520 DATA"en 2 onder de naam 'PUNTEN' weggeschreven. Bij"
+25530 DATA"keuze 3 (diskette) kunt u zelf een naam meegeven"
+25540 DATA"aan het bestand."
+25550 DATA".TMenukeuze 5: Puntenlijst"
+25560 DATA"!!U krijgt de vraag of u een printer heeft. Bij"
+25570 DATA"'nee' gaat alles naar scherm. Bij 'ja' gaat"
+25580 DATA"alles naar printer. Na het invullen van gegevens"
+25590 DATA"voor het uitprinten kunt u ook een naam"
+25600 DATA"uitprinten met alle punten."
+25610 DATA".TMenukeuze 6: Punten bijschrijven"
+25620 DATA"!!Met -1 beeindigt u hier het bijschrijven van"
+25630 DATA"punten voor een leerling."
+25640 DATA"!Met -2 verbetert u het laatst ingetikte cijfer."
+25650 DATA".TMenukeuze 7: Zoeken"
+25660 DATA"!!Als u een gedeelte van de achternaam van een"
+25670 DATA"leerling invult dan kunt u de punten van die"
+25680 DATA"leerling bijschrijven. Ook is het mogelijk als"
+25690 DATA"er in het bestand een leerling staat met een"
+25700 DATA"naam achter elkaar (bv.JANSEN) staat deze te"
+25710 DATA"vinden."
+25720 DATA".TMenukeuze 8: Statistische geg."
+25730 DATA"!!Met deze functie berekent de computer"
+25740 DATA"automatisch allerlei gegevens. Om dit goed te"
+25750 DATA"laten werken moet u minstens TWEE leerlingen met"
+25760 DATA"ieder minstens EEN punt in het klasbestand"
+25770 DATA"hebben staan.",".Tooo"
+30000 DATA"!.C***********************"
+30010 DATA".C*   Het basicode-3    *"
+30020 DATA".C*     programma       *"
+30030 DATA".C*  PUNTENLIJST-UITLEG *"
+30040 DATA".C***********************"
+30050 DATA".C*  is gemaakt op een  *"
+30060 DATA".C*      Sinclair       *"
+30070 DATA".C*   ZX-Spectrum 48K   *"
+30080 DATA".C*        in           *"
+30090 DATA".C*     maart 1989      *"
+30100 DATA".C***********************"
+30110 DATA".C*      door:          *"
+32000 DATA".C***********************"
+32010 DATA".C*   P. Corstanje      *"
+32020 DATA".C*  Veldekestraat 66b  *"
+32030 DATA".C*   4819 ER BREDA     *"
+32040 DATA".C***********************",".E"
+32050 REM
+32060 REM TROS-RADIO dd 891018

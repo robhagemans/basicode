@@ -1,0 +1,145 @@
+
+1000 A=1000:GOTO20:REM ** ZOEKPUZZEL WATEREN **
+1010 F=0:GOSUB1620
+1020 GOSUB600:CN=0:HO=.001:VE=.001:GOSUB620
+1030 HO=.4:GOSUB630:VE=.61:GOSUB630
+1040 HO=.001:GOSUB630:VE=.001:GOSUB630
+1050 V=.015:H=.012:PL=0
+1060 READSR$:IFSR$="**" THEN1100
+1070 PL=PL+1:HO=H:VE=V:GOSUB650:H=H+.05
+1080 IFPL=8 THENPL=0:V=V+.05:H=.012
+1090 GOTO1060
+1100 IFF=1 THEN1450
+1110 READA$:IFA$="***" THEN1130
+1120 R=R+1:GOTO1100
+1130 DIMA$(R):W=0:B=0:T=0:V=.069:H=.51
+1140 RESTORE
+1150 READSR$:IFSR$<>"**" THEN1150
+1170 SR$=" * = STOPPEN ":VE=.865:HO=.052:GOSUB650
+1180 SR$="GEVONDEN WOORDEN":VE=.001:HO=.55:GOSUB650
+1190 FORI=1 TOR:READA$(I):NEXTI
+1200 SR$="Welk woord heeft u gevonden"
+1210 CN=0:HO=.001:VE=.682:GOSUB650:SR$=""
+1220 GOSUB210:IFIN=13 THEN1250
+1230 IFIN$="*" THENF=1:GOSUB100:RESTORE:GOTO1020
+1240 SR$=SR$+IN$:GOTO1220
+1250 GOSUB330:VE=.735:HO=.002:SR$=SR$:GOSUB650
+1260 IFW=1 THENW=0:GOTO1280
+1270 SD=10:GOSUB450:W=1:CN=1:GOTO1250
+1280 J=1
+1290 IFSR$=A$(J)THEN1360
+1300 J=J+1:IFJ<=R THEN1290
+1310 CN=0:SR$="":IN$=""
+1320 SR$="Dit woord komt niet in de puzzel voor"
+1330 HO=.002:VE=.735:GOSUB650
+1340 IFW=1 THENW=0:GOTO1200
+1350 SD=10:GOSUB450:W=1:CN=1:GOTO1320
+1360 IFT=0 THENT=T+1:GOTO1380
+1370 T=T+1:V=V+.06
+1380 CN=0:HO=H:VE=V:GOSUB650
+1390 A$(J)=""
+1400 IFT=R THEN1430
+1410 IFT=14 THENH=.75:V=.007
+1420 SR$="":IN$="":GOTO1220
+1430 SR$="U heeft alle woorden gevonden"
+1440 HO=.002:VE=.765:GOSUB650:GOTO1540
+1450 CN=0:SR$="NIET GEVONDEN:"
+1460 VE=.001:HO=.51:GOSUB650
+1470 T=1:H=.51:V=.069
+1480 FORI=1 TOR
+1490 IFA$(I)="" THEN1530
+1500 SR$=A$(I):CN=0:HO=H:VE=V:GOSUB650
+1510 V=V+.06:T=T+1
+1520 IFT=14 THENH=.75:V=.069
+1530 NEXTI
+1540 SR$="DRUK EEN TOETS"
+1550 HO=.052:VE=.865:GOSUB650:GOSUB210
+1560 GOSUB100:VE=6:HO=13:GOSUB110:PRINT"*************"
+1570 VE=7:GOSUB110:PRINT"*           *"
+1580 VE=8:GOSUB110:PRINT"* TOT ZIENS *"
+1590 VE=9:GOSUB110:PRINT"*           *"
+1600 VE=10:GOSUB110:PRINT"*************"
+1610 SD=30:GOSUB450:GOTO950
+1620 GOSUB100:VE=4:HO=8:GOSUB110
+1630 PRINT"????? ????? ????? ?   ?"
+1640 VE=5:GOSUB110:PRINT"    ? ?   ? ?     ?  ?"
+1650 VE=6:GOSUB110:PRINT"   ?  ?   ? ?     ? ?"
+1660 VE=7:GOSUB110:PRINT"  ?   ?   ? ????  ???"
+1670 VE=8:GOSUB110:PRINT" ?    ?   ? ?     ?  ?"
+1680 VE=9:GOSUB110:PRINT"????? ????? ????? ?   ?"
+1690 VE=13:HO=2:GOSUB110
+1700 PRINT"????? ?   ? ????? ????? ????? ?"
+1710 VE=14:GOSUB110
+1720 PRINT"?   ? ?   ?     ?     ? ?     ?"
+1730 VE=15:GOSUB110
+1740 PRINT"?   ? ?   ?    ?     ?  ?     ?"
+1750 VE=16:GOSUB110
+1760 PRINT"????? ?   ?   ?     ?   ????  ?"
+1770 VE=17:GOSUB110
+1780 PRINT"?     ?   ?  ?     ?    ?     ?"
+1790 VE=18:GOSUB110
+1800 PRINT"?     ????? ????? ????? ????? ?????"
+1810 SD=30:GOSUB450:GOSUB100:PRINT:PRINT
+1820 PRINT"Dit is een computeruitgave van de"
+1830 PRINT"zoekpuzzels die men meestal in"
+1840 PRINT"puzzelboekjes vindt."
+1850 PRINT"Het is dus ook hier de bedoeling"
+1860 PRINT"om een aantal woorden te vinden"
+1870 PRINT"die verborgen staan in deze puzzel"
+1880 PRINT"De woorden staan zowel horizontaal,"
+1890 PRINT"verticaal, diagonaal, van rechts"
+1900 PRINT"naar links en van boven naar beneden"
+1910 PRINT"en omgekeerd, sommige letters worden"
+1920 PRINT"meer dan een keer gebruikt en er"
+1930 PRINT"staan er ook een aantal in die niets"
+1940 PRINT"met de puzzel te maken hebben."
+1950 PRINT"Heeft men een woord gevonden dan"
+1960 PRINT"voert men dit via het toetsenbord"
+1970 PRINT"in, na return/enter wordt het woord"
+1980 PRINT"op het scherm getoond."
+1990 PRINT:PRINT"       DRUK EEN TOETS";:GOSUB210
+2000 GOSUB100:PRINT:PRINT:PRINT
+2010 PRINT"Is het woord goed, dan wordt het"
+2020 PRINT"naast de puzzel onder GEVONDEN WOORDEN"
+2030 PRINT"getoond, is het fout dan volgt daarop"
+2040 PRINT"een melding."
+2050 PRINT"Als alle woorden zijn gevonden, dan"
+2060 PRINT"wordt dit door de computer gemeld."
+2070 PRINT"Heb je nog niet alle woorden, maar wil"
+2080 PRINT"je ermee stoppen druk dan op de *"
+2090 PRINT"toets. Hierna laat de computer nogmaals"
+2100 PRINT"de puzzel zien en geeft daarbij een"
+2110 PRINT"lijst van de nog niet gevonden woorden."
+2120 PRINT"In deze puzzel zitten woorden van een"
+2130 PRINT"aantal nederlandse rivieren en meren."
+2140 PRINT:PRINT:PRINT"Veel puzzelplezier."
+2150 PRINT"DRUK EEN TOETS":GOSUB210:RETURN
+25000 DATA"B","S","A","A","M","K","E","R"
+25010 DATA"E","G","N","O","D","L","W","Y"
+25020 DATA"R","D","A","A","E","I","U","N"
+25030 DATA"E","E","E","S","H","L","O","E"
+25040 DATA"E","K","S","W","Y","O","G","A"
+25050 DATA"M","Y","B","G","R","U","N","M"
+25060 DATA"L","E","Y","D","H","E","L","S"
+25070 DATA"E","L","Z","O","O","M","M","T"
+25080 DATA"T","E","K","I","L","M","S","E"
+25090 DATA"E","E","M","M","A","J","T","L"
+25100 DATA"K","E","E","B","U","E","L","E"
+25110 DATA"D","R","A","L","L","O","D","K","**"
+25120 DATA"AMSTEL","TJAMME","IJSSEL","GOUWE","MAAS"
+25130 DATA"KETELMEER","MERWEDE","DONGE","NOORDZEE"
+25140 DATA"DOLLARD","LEUBEEK","LEK","RYN","LEY","AA"
+25150 DATA"EE","EEM","RUN","KIL","ZOOM","***"
+32000 REM ************************
+32010 REM *                      *
+32020 REM *     R.J. V/D ZEE     *
+32030 REM *                      *
+32040 REM *      BRAAMKAMP 40    *
+32050 REM *                      *
+32060 REM *   7206 HB ZUTPHEN    *
+32070 REM *                      *
+32080 REM *   Tel. 05750-21736   *
+32090 REM *                      *
+32100 REM ****** BASICODE 3 ******
+32110 REM
+32120 REM TROS-RADIO dd 900808

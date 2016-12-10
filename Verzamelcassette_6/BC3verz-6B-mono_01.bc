@@ -1,0 +1,262 @@
+
+1000 A=500:GOTO20:REM UITLEG bij MAANBAAN
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1340:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Wilt u deze uitleg op"
+1060 PRINT:PRINT"   1  Het beeldscherm,"
+1070 PRINT"   2  De printer."
+1080 PRINT:PRINT"Welk nummer kiest u ";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1180
+1100 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1110 PRINT"begin van elke regel ";:INPUTHL
+1120 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1130 PRINT"u op elke regel ";:INPUTI:HR=HL+I-1
+1140 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1150 PRINT"laten overslaan ";:INPUTVL
+1160 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+1170 PRINT"elk blad ";:INPUTVR:VR=VR+VL-3
+1180 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1190 GOSUB1310:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1290
+1200 IFLEN(R$)>HR-HL THEN GOSUB1730
+1210 GOSUB1370:IFR$<>"" THENR$=R$+" "
+1220 R$=R$+D$:GOTO1200
+1230 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1250
+1240 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1250 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1260 IFSC=1 THEN1310
+1270 IFVL>0 THENFORI=1 TOVL:GOSUB360:NEXTI
+1280 AL=VL
+1290 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1230
+1300 SR$="":GOSUB1230:AL=VL:RETURN
+1310 HO=3:VE=VT:GOSUB110
+1320 SR$="VERVOLG: druk op <return>":GOSUB150
+1330 GOSUB210:IFIN<>13 THEN1330
+1340 GOSUB100:AL=VL:SR$=T$
+1350 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1360 PRINT:PRINT:RETURN
+1370 READD$
+1380 IFD$="" THEN1370
+1390 IFLEFT$(D$,1)="." THEN1440
+1400 IFLEFT$(D$,1)<>"!" THENRETURN
+1410 IFD$="!" THEND$="":GOTO1430
+1420 D$=RIGHT$(D$,LEN(D$)-1)
+1430 GOSUB1670:GOTO1380
+1440 IFD$<>".E" THEN1490
+1450 J=1:GOSUB1670:T$="Einde van deze uitleg"
+1460 SR$="":GOSUB1230:GOSUB1230:SR$=T$:GOSUB1230:T$=""
+1470 SR$="":GOSUB1230:IFAL<>VL THEN1470
+1480 GOTO950
+1490 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+1500 IFDD$<>"R" THEN1550
+1510 IFSC=2 THENRETURN
+1520 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1230:R$=""
+1530 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1540 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1370
+1550 IFDD$<>"M" THEN1580
+1560 I=VAL(D$):MM$="":IFI+HL=0 THEN1370
+1570 MM$=LEFT$(S$,I+HL):GOTO1370
+1580 IFDD$="P" THENJ=VAL(D$):GOSUB1670:GOSUB1690:GOTO1370
+1590 IFDD$="T" THENT$=D$:J=10:GOSUB1670:GOSUB1690:GOTO1510
+1600 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1370
+1610 IFDD$<>"F" THEN1640
+1620 J=VAL(D$):GOSUB1670
+1630 J=J-1:IFJ>-1 THENSR$="":GOSUB1230:GOTO1630
+1640 IFDD$<>"C" THEN1660
+1650 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1230
+1660 GOTO1370
+1670 GOSUB1730:SR$=R$:GOSUB1230:R$="":J=J-1
+1680 RETURN
+1690 IF(SC=1)OR(AL+J>VR) THEN1710
+1700 SR$="":GOSUB1230:GOSUB1230:RETURN
+1710 IFAL<>VL THENSR$="":GOSUB1230:GOTO1710
+1720 RETURN
+1730 K=HR-HL+1-LEN(M$)
+1740 IFLEN(R$)<=K THENRETURN
+1750 IFMID$(R$,K,1)=" " THEN1780
+1760 K=K-1:IFK>0 THEN1750
+1770 SR$="":GOTO1790
+1780 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+1790 GOSUB1230:GOTO1730
+25000 DATA"MAANVLUCHT PER COMPUTER"
+25010 DATA".RMaanvlucht per computer"
+25020 DATA"!!Met het programma 'MAANBAAN' kunnen we een"
+25030 DATA"ruimtevlucht nabootsen in het zwaartekrachtveld"
+25040 DATA"van een planeet met zijn maan. Het programma"
+25050 DATA"bevat enige vereenvoudigingen ten opzichte van"
+25060 DATA"de werkelijkheid:"
+25070 DATA"! 1. Er",".M4","wordt alleen rekening gehouden"
+25080 DATA"met de planeet en zijn maan. De zon en andere"
+25090 DATA"planeten spelen dus geen rol. Anders zou het"
+25100 DATA"programma te ingewikkeld worden en de rekentijd"
+25110 DATA"veel te groot.",".M0"
+25120 DATA"! 2. De",".M4","planeet heeft geen atmosfeer en"
+25130 DATA"de baanberekeningen vinden plaats in een plat"
+25140 DATA"vlak.",".M0"
+25150 DATA"! 3. Verder",".M4","nemen we aan dat de maan en"
+25160 DATA"de planeet een cirkelbaan beschrijven om een"
+25170 DATA"gemeenschappelijk zwaartepunt.",".M0"
+25180 DATA"!!Dit zit als volgt in elkaar."
+25190 DATA"!!Massa's trekken elkaar aan met een kracht die"
+25200 DATA"evenredig is met de grootte van die massa's en"
+25210 DATA"omgekeerd evenredig met het kwadraat van de"
+25220 DATA"afstand tussen de zwaartepunten van die massa's"
+25230 DATA"(Wet van NEWTON). Dat de maan niet naar de aarde"
+25240 DATA"valt komt omdat de maan een beweging uitvoert"
+25250 DATA"die een hoek maakt met de richting van de"
+25260 DATA"aantrekkingskracht. Bij onze maan is die hoek"
+25270 DATA"zelfs groot: in de buurt van 90 graden. Het"
+25280 DATA"gevolg is dat de maan, die vanwege de"
+25290 DATA"traagheidswetten eigenlijk rechtuit zou willen"
+25300 DATA"doorvliegen, voortdurend de bocht om getrokken"
+25310 DATA"wordt. Als we in ons programma een cirkelbaan"
+25320 DATA"aannemen, dan betekent dit dat deze"
+25330 DATA"om-de-bocht-trek-kracht (ook wel middelpunt"
+25340 DATA"zoekende kracht genoemd, alsof het een op"
+25350 DATA"zichzelf staand verschijnsel zou zijn) precies"
+25360 DATA"even groot is als de aantrekking tussen planeet"
+25370 DATA"en maan."
+25380 DATA"!!Hetzelfde verhaal geldt voor de aarde, die"
+25390 DATA"door de maan de bocht om getrokken wordt. De"
+25400 DATA"beweging gaat rond een relatief onbeweeglijk"
+25410 DATA"zwaartepunt. De afstanden vanaf dat punt tot de"
+25420 DATA"zwaartepunten van planeet en maan hangen samen"
+25430 DATA"met de omlooptijd en de massa's. In het bij deze"
+25440 DATA"uitleg behorende programma worden deze afstanden"
+25450 DATA"uitgerekend in de subroutine tussen de regels"
+25460 DATA"6100-6180. Het gemeenschappelijk zwaartepunt van"
+25470 DATA"het aarde-maan stelsel blijkt binnen de aardbol"
+25480 DATA"te liggen. De exacte plaats wordt door het"
+25490 DATA"programma aangegeven."
+25500 DATA"!!.RInzoomen"
+25510 DATA"!!Het programma tekent, als het eenmaal aan het"
+25520 DATA"rekenen is, op het grafisch scherm op bepaalde"
+25530 DATA"tijden de positie van de hemellichamen, alsof we"
+25540 DATA"met een telescoop vanuit een punt boven het"
+25550 DATA"rotatievlak van het stelsel omlaag kijken. De"
+25560 DATA"optische as is gericht op het gemeenschappelijke"
+25570 DATA"zwaartepunt, hetwelk geprojecteerd wordt op de"
+25580 DATA"coordinaten x0, y0 van regel 1760. Met de"
+25590 DATA"variabele PP in regel 1720 kunnen we als het"
+25600 DATA"ware de vergrotingsfactor van de telescoop"
+25610 DATA"instellen. Met PP=.005 past het hele gebeuren"
+25620 DATA"mooi op het scherm. Iemand die een beetje"
+25630 DATA"ingewerkt is met het programma zou PP zodanig"
+25640 DATA"kunnen vergroten dat de plaatsverandering van de"
+25650 DATA"planeet tengevolge van de stelselrotatie"
+25660 DATA"duidelijk te zien zou zijn: het"
+25670 DATA"rotatie-zwaartepunt blijkt bij de aarde"
+25680 DATA"inderdaad onder het planeetoppervlak te liggen."
+25690 DATA"!!Verder kunnen we desgewenst inzoomen op de"
+25700 DATA"aarde of op de maan. Deze extra"
+25710 DATA"vergrotingsfactor is in te stellen met ZP op"
+25720 DATA"regel 1680. ZP=.05 geeft een goed compromis"
+25730 DATA"tussen grootte en gezichtsveld: de planeet of de"
+25740 DATA"maan verschijnt als een klein cirkeltje op het"
+25750 DATA"scherm waardoor het langsscherende projectiel"
+25760 DATA"enige tijd in het blikveld zal zijn."
+25770 DATA"!!.RDe lancering en de vlucht"
+25780 DATA"!!Vanuit een punt in de ruimte kunnen we een"
+25790 DATA"projectiel afschieten. Het programma vraagt na"
+25800 DATA"opstarten om de lanceergegevens. Aangeraden"
+25810 DATA"wordt om in het begin uit te gaan van de door"
+25820 DATA"het programma gepresenteerde voorbeeldgetallen."
+25830 DATA"!!De vlucht door de ruimte wordt met tussenpozen"
+25840 DATA"van DT (regel 1640) seconden doorgerekend. Dit"
+25850 DATA"gebeurt in de subroutine tussen de regels 8000"
+25860 DATA"en 8200, waar aan de hand van de momentele"
+25870 DATA"afstanden AA (planeet-projectiel) en AM"
+25880 DATA"(maan-projectiel) de optredende krachten,"
+25890 DATA"snelheden en verplaatsingen berekend worden. De"
+25900 DATA"computer bepaalt telkens, uitgaande van de"
+25910 DATA"laatste rekencyclus, hoe de positie van planeet,"
+25920 DATA"maan en projectiel wordt aan het einde van de"
+25930 DATA"tijdstap DT van dat moment, en begint daarna aan"
+25940 DATA"de volgende cyclus."
+25950 DATA"!!De waarde van DT in het afgedrukte programma"
+25960 DATA"is 1000 seconden. De rekentijd is te verkorten"
+25970 DATA"door DT groter te maken. Dit gaat dan wel ten"
+25980 DATA"koste van de rekennauwkeurigheid. Als per"
+25990 DATA"rekencyclus de baanverandering groot is"
+26000 DATA"(dichtbij de planeet of de maan) dan kan een"
+26010 DATA"grote DT tot rekenproblemen leiden."
+26020 DATA"!!Handige programmeurs zouden met een IF...THEN"
+26030 DATA"statement een variabele waarde voor DT kunnen"
+26040 DATA"inbouwen (tussen regels 4010 en 4020),"
+26050 DATA"afhankelijk van waar het projectiel zich"
+26060 DATA"bevindt. Nabij een hemellichaam zijn de"
+26070 DATA"veranderingen in de vlucht per rekencyclus"
+26080 DATA"groot, waardoor een kleine DT wenselijk is. In"
+26090 DATA"de vrije ruimte zou DT groter mogen zijn. De"
+26100 DATA"afstanden zijn in de subroutine van 6100-6180"
+26110 DATA"berekend."
+26120 DATA"!!Desgewenst kunnen actuele vluchtgegevens door"
+26130 DATA"het indrukken van toets 'D' opgeroepen worden."
+26140 DATA"Om computertijd te sparen worden de posities van"
+26150 DATA"de planeet en de maan slechts zo nu en dan"
+26160 DATA"geplot. De actuele positie kan opgeroepen worden"
+26170 DATA"door 'P' (Plot) in te drukken. De vlucht wordt"
+26180 DATA"onderbroken met 'B' (Breek af)."
+26190 DATA"!!.RRelatieve beweging"
+26200 DATA"!!Als gekozen is voor het inzoomen op de maan of"
+26210 DATA"de planeet, dan kunnen we een impressie krijgen"
+26220 DATA"van relatieve bewegingen in de ruimte. Doordat"
+26230 DATA"de 'inzoom-telescoop' als het ware meebeweegt"
+26240 DATA"met de maan, zien we het projectiel bij het"
+26250 DATA"ronden van de maan schijnbaar een geheel andere"
+26260 DATA"baan beschrijven dan wat waargenomen wordt via"
+26270 DATA"de telescoop die op het gemeenschappelijke"
+26280 DATA"zwaartepunt van het stelsel gericht blijft."
+26290 DATA"!!Dit verschijnsel wordt nog duidelijker wanneer"
+26300 DATA"het projectiel in een baan rond de maan gebracht"
+26310 DATA"wordt. Ten opzichte van het stelsel lijkt het"
+26320 DATA"projectiel echter langs een slingerbaan te gaan."
+26330 DATA"!!Het zal nog wel even duren voordat de"
+26340 DATA"astronauten zo bedreven worden dat ze een"
+26350 DATA"ruimteschip op het gevoel kunnen besturen."
+26360 DATA"Voorlopig blijft het computerwerk!"
+26370 DATA"!!De posities en snelheden zijn gerelateerd aan"
+26380 DATA"een coordinatenstelsel waarvan de assen"
+26390 DATA"evenwijdig zijn aan de randen van het"
+26400 DATA"beeldscherm. Wat betreft het astronomische"
+26410 DATA"rekenwerk geldt het gemeenschappelijke"
+26420 DATA"zwaartepunt als referentie, terwijl de"
+26430 DATA"plotcoordinaten vanzelfsprekend overeen komen"
+26440 DATA"met de BASICODE-3 norm: in de linkerbovenhoek"
+26450 DATA"van het scherm zijn de x en de y beiden nul. Zie"
+26460 DATA"voor verdere details de verduidelijkende"
+26470 DATA"tekeningen in MENS EN WETENSCHAP nr.4 van 1989,"
+26480 DATA"blz. 290."
+26490 DATA"!!Ook de lanceersnelheid is gedefinieerd ten"
+26500 DATA"opzichte van het genoemde coordinatenstelsel."
+26510 DATA"Bij een lancering vanaf het planeet- of"
+26520 DATA"maanoppervlak moet er dus rekening mee gehouden"
+26530 DATA"worden dat deze hemellichamen ten opzichte van"
+26540 DATA"het lanceerpunt bewegen bij hun gezamenlijke"
+26550 DATA"rondedans."
+26560 DATA"!!.RAndere werelden"
+26570 DATA"!!Met de opdrachten op regels 1520 tot 1590 kan"
+26580 DATA"gewerkt worden in een ander, zelf te bedenken,"
+26590 DATA"stelsel door andere planeet- en maangegevens te"
+26600 DATA"kiezen."
+26610 DATA"!!Door bijvoorbeeld de omlooptijd (MT in regel"
+26620 DATA"1590) op 3 dagen te brengen ontstaat een stelsel"
+26630 DATA"waarbij de hemellichamen met grote snelheid om"
+26640 DATA"elkaar cirkelen. Gebruik PP (regel 1720) om de"
+26650 DATA"gebeurtenissen beter te zien.",".P10"
+30000 DATA"!-------------------------------------"
+30010 DATA"!! een uitgebreide toelichting bij dit"
+30020 DATA"! programma staat in"
+30030 DATA"! 'MENS EN WETENSCHAP' 16-e jaargang"
+30040 DATA"!                      nummer 4"
+30050 DATA"!!-------------------------------------",".P8"
+32000 DATA".C----------------------------"
+32010 DATA".C "
+32020 DATA".C OGE KRUIJT"
+32030 DATA".C PR. W. DE ZWIJGERLAAN 2"
+32040 DATA".C 3991 BR HOUTEN"
+32050 DATA".C "
+32060 DATA".C----------------------------",".E"
+32070 REM
+32080 REM TROS-RADIO dd 890913

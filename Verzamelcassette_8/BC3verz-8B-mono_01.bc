@@ -1,0 +1,568 @@
+
+1000 A=200:GOTO20:REM    *tellen*
+1010 REM    *tekstscherm aan*
+1020 CN=0:FO=0:GS=0:CS=0
+1030 FR=1:GOSUB280
+1040 REM    titel
+1050 GOSUB250:GOSUB100
+1060 VE=5:HO=10:GOSUB110:PRINT"TELLEN tot 1O"
+1070 VE=VE+5:GOSUB110:PRINT"(c) 199O"
+1080 VE=VE+3:GOSUB110:PRINT"J.A.M. Nuijten"
+1090 GOSUB4020
+2000 REM    *menu 1*
+2010 GOSUB100
+2020 VE=2:HO=2:GOSUB110
+2030 PRINT"Wilt u :"
+2040 VE=VE+3:GOSUB110
+2050 PRINT"1. Getal plaatsen bij blokjes."
+2060 VE=VE+2:GOSUB110
+2070 PRINT"2. Blokjes plaatsen bij getal."
+2080 VE=VE+2:GOSUB110
+2090 PRINT"3. Verder tellen vanaf getal."
+2100 VE=VE+2:GOSUB110
+2110 PRINT"4. Stoppen."
+2120 REM    toets getal in,geef enter
+2130 MA=2:MG$="4":GOSUB4410
+2140 IFSR$="" THEN2010
+2150 M1=VAL(SR$):IF(M1<1)OR(M1>4)THEN2010
+2160 IFM1=4 THEN9010
+2170 SR=M1:GOSUB300
+2180 GOSUB5310
+2190 M1$=SR$
+2200 REM    *menu 2*
+2210 GOSUB100
+2220 VE=2:HO=2:GOSUB110:PRINT"Wilt u :"
+2230 VE=VE+3:GOSUB110:PRINT"1. Geen O erbij."
+2240 VE=VE+2:GOSUB110:PRINT"2. Wel de O erbij."
+2250 MA=2:MG$="2":GOSUB4410:IFSR$="" THEN2210
+2260 M2=VAL(SR$):IF(M2<1)OR(M2>2)THEN2210
+2270 SR=M2:GOSUB300:GOSUB5310:M2$=SR$
+2300 REM    *menu 3*
+2310 GOSUB100
+2320 REM    toets getal in en geef enter
+2330 PRINT"Wat is het grootste getal"
+2340 PRINT"waarmee u wilt werken (max. 1O) : "
+2350 VE=1:HO=24:GOSUB110
+2360 MA=3:MG$="9":GOSUB4410:IFSR$="" THEN2310
+2370 M3=VAL(SR$):IF(M3<1)OR(M3>10)THEN2310
+2380 SR=M3:GOSUB300:GOSUB5310:M3$=SR$
+2400 REM    *menu 4*
+2410 GOSUB100
+2420 REM    toets getal in en geef enter
+2430 PRINT"Hoeveel sommen wilt u"
+2440 PRINT"laten maken  (max. 1OO) : "
+2450 MA=4:MG$="9":GOSUB4410:IFSR$="" THEN2410
+2460 M4=VAL(SR$):IF(M4<1)OR(M4>100)THEN2410
+2470 SR=M4:GOSUB300:GOSUB5310
+2480 M4$=SR$
+2600 REM    ***hoofdprogramma***
+2610 GOSUB100
+2620 GOSUB4220
+2630 VE=2:HO=0:GOSUB110:PRINT"Hallo,"
+2640 PRINT"hoe is je naam : "
+2650 VE=VE+1:HO=17:GOSUB110:INPUTN$
+2660 GOSUB250
+2670 VE=VE+4:HO=0:GOSUB110
+2680 PRINT"Zullen we beginnen ?"
+2690 GOSUB4020
+2700 SC=0:SC$="O":GS=1:CS=1
+3000 FORK=1 TOM4
+3010 GOSUB260
+3020 IFM2=1 THEN3050
+3030 G1=INT(RV*(M3+1))
+3040 GOSUB260:G2=INT(RV*G1):GOTO3070
+3050 G1=INT(RV*M3)+1
+3060 GOSUB260:G2=INT(RV*(G1-1))+1
+3070 SR=K:GOSUB300:GOSUB5310:K$=SR$
+3080 PO=0
+3090 GOSUB6510
+3100 IF(FO=1)AND(PO=0)THENPO=1:GOSUB6510
+3110 IF(FO=1)AND(PO=1)THEN GOSUB8510
+3120 IF(FO=0)AND(PO=0)THEN GOSUB5730
+3130 IF(FO=0)AND(PO=1)THEN GOSUB5820
+3140 CN=1:GOSUB4310:CN=0
+3150 IF(FO=1)THENSD=10:GOSUB450
+3160 IF(FO=1)AND(PO=1)THENSD=25:GOSUB450
+3170 NEXTK
+3810 GS=0:JA=(1=0):GOSUB5010
+3820 GOSUB250
+3830 GOSUB4710
+3840 GOSUB4810:IFJA THEN GOSUB5010
+3850 VE=22:HO=0:GOSUB110
+3860 SR$="hetzelfde nog een keer ? j / n"
+3870 GOSUB150
+3880 GOSUB250
+3890 GOSUB4810:IFJA THEN2610
+3900 GOTO1000
+4000 REM    *druk een toets in*
+4010 REM    tekstscherm
+4020 VE=22:HO=0:GOSUB110
+4030 SR$="     Druk een toets in    "
+4040 GOSUB150:GOSUB210:GOSUB250
+4050 RETURN
+4100 REM    grafisch scherm
+4110 VE=22/24:HO=8/32
+4120 SR$="Druk een toets in":GOSUB650
+4130 GOSUB210:GOSUB250
+4140 RETURN
+4200 REM    *geef antwoord,druk op RETURN*
+4210 REM    tekstscherm
+4220 VE=22:HO=0:GOSUB110
+4230 SR$="Geef antwoord,druk op RETURN"
+4240 GOSUB150
+4250 RETURN
+4300 REM    grafisch scherm
+4310 VE=22/24:HO=4/32
+4320 SR$="Geef antwoord,druk op RETURN"
+4330 GOSUB650
+4340 RETURN
+4400 REM    *inputsimulatie*
+4410 IFGS=0 THEN GOSUB4220
+4420 IFGS=1 THEN GOSUB4310
+4430 IV$=""
+4440 IFCS=1 THENMA=3
+4450 FORJ=1 TOMA
+4460 GOSUB200
+4470 IFCS=1 THENVE=3/24:HO=(10+J*6)/32:GOSUB200
+4480 IFCS=0 THEN GOSUB210
+4490 IF(CS=1)AND(IN=0)THEN4470
+4500 IFIN=13 THENJ=MA:GOTO4590
+4510 IF(IN$="")OR(IN$<"0")OR(IN$>MG$)THEN4450
+4520 IF(CS=1)AND(J=3)AND(IN<>13)THEN4460
+4530 SS$=IN$:IFSS$="0" THENSS$="O"
+4540 IFCS=1 THENX=VAL(SS$)
+4550 IFCS=0 THENPRINTSS$;:GOSUB7910
+4560 IFCS=1 THEN GOSUB6310
+4570 IV$=IV$+IN$
+4580 GOSUB200
+4590 NEXTJ
+4600 IFIV$="" THEN4450
+4610 SR$=IV$
+4620 IFCS=0 THEN GOSUB250
+4630 IFCS=1 THEN GOSUB7810
+4640 RETURN
+4700 REM    *overzicht op printer*
+4710 VE=22:HO=0:GOSUB110
+4720 SR$="deze lijst uitprinten ?  j / n"
+4730 GOSUB150
+4740 RETURN
+4800 REM    * j / n *
+4810 GOSUB210:IF(IN<>74)AND(IN<>78)THEN4810
+4820 JA=(IN=74)
+4830 RETURN
+5000 REM    *afdrukken overzicht*
+5010 GOSUB100
+5020 IFM1=1 THENSR$="Getal plaatsen bij blokjes."
+5030 IFM1=2 THENSR$="Blokjes plaatsen bij getal."
+5040 IFM1=3 THENSR$="Verder tellen vanaf getal."
+5050 GOSUB5210
+5060 IFM2=1 THENSR$="Geen O erbij."
+5070 IFM2=2 THENSR$="Wel O erbij."
+5080 GOSUB5210:SR$="Grootste getal : "+M3$
+5090 GOSUB5210:SR$="Aantal sommen  : "+M4$
+5100 GOSUB5210:SR$="Behaalde score : "+SC$
+5110 GOSUB5210:SR$="Naam v/d leerling : "+N$
+5120 GOSUB5210:SR$="Voldoende !"
+5130 IFSC/M4>=.80 THENSR$="Goed zo !"
+5140 IFSC/M4<.60 THENSR$="Nog onvoldoende !"
+5150 GOSUB5210
+5160 RETURN
+5200 REM    *scherm of printer*
+5210 IFJA THEN GOSUB350:GOSUB360:GOSUB360:RETURN
+5220 PRINTSR$:PRINT
+5230 RETURN
+5300 REM    *vervangen 0 door O*
+5310 LE=LEN(SR$)
+5320 FORJ=1 TOLE
+5330 SS$=MID$(SR$,J,1)
+5340 IFSS$<>"0" THEN5390
+5350 IFLE=1 THENSR$="O":GOTO5390
+5360 IFJ=1 THENSR$="O"+RIGHT$(SR$,LE-1)
+5370 IFLE=J THENSR$=LEFT$(SR$,LE-1)+"O"
+5380 IF(J>1)AND(J<LE)THEN GOSUB5420
+5390 NEXTJ
+5400 RETURN
+5410 REM    *bepalen SR$*
+5420 SR$=LEFT$(SR$,J-1)+"O"+RIGHT$(SR$,LE-J)
+5430 RETURN
+5500 REM    *score op het scherm*
+5510 REM    tekstscherm
+5520 VE=0:HO=0:GOSUB110
+5530 SR$="Som : "+K$+"  "+"Score : "+SC$
+5540 GOSUB150
+5550 RETURN
+5600 REM    grafisch scherm
+5610 VE=0:HO=0
+5620 SR$="Som : "+K$+"  "+"Score : "+SC$:GOSUB650
+5630 RETURN
+5700 REM    *beloning*
+5710 REM    punt erbij
+5720 REM    tekstscherm
+5730 IFGS=1 THEN5770
+5740 SC=SC+1:SR=SC:GOSUB300:GOSUB5310:SC$=SR$
+5750 GOSUB5520
+5760 REM    grafisch scherm
+5770 IFGS=0 THEN5820
+5780 CN=1:GOSUB5610
+5790 SC=SC+1:SR=SC:GOSUB300:GOSUB5310:SC$=SR$
+5800 CN=0:GOSUB5610
+5810 REM    *beloningsmuziek*
+5820 GOSUB600
+5825 GOSUB5610
+5830 HO=0.2:VE=0.2:GOSUB620
+5840 HO=0.8:GOSUB630:VE=0.7:GOSUB630
+5850 HO=0.2:GOSUB630:VE=0.2:GOSUB630
+5860 HO=0.3:VE=0.3:GOSUB620
+5870 HO=0.4:GOSUB630:VE=0.4:GOSUB630
+5880 HO=0.3:GOSUB630:VE=0.3:GOSUB630
+5890 HO=0.6:VE=0.3:GOSUB620
+5900 HO=0.7:GOSUB630:VE=0.4:GOSUB630
+5910 HO=0.6:GOSUB630:VE=0.3:GOSUB630
+5920 HO=0.3:VE=0.5:GOSUB620:HO=0.4:VE=0.6:GOSUB630
+5930 HO=0.6:VE=0.6:GOSUB630:HO=0.7:VE=0.5:GOSUB630
+5940 VE=22/24:HO=11/32
+5950 SR$="g o e d   z o"
+5960 GOSUB650
+5970 VE=10/24:HO=2/32
+5980 RESTORE
+5990 FORI=1 TO78:READSR$:NEXTI
+6000 FORI=1 TO11:READSP,SD,SV:GOSUB400:NEXTI
+6010 SD=10:GOSUB450
+6020 GOSUB600
+6030 RETURN
+6100 REM    *straf*
+6110 VE=9/24:HO=2/32
+6120 SR$="f o u t":GOSUB650
+6130 VE=10/24:HO=2/32
+6140 SR$="=======":GOSUB650
+6150 RESTORE
+6160 FORI=1 TO78:READSR$:NEXTI
+6170 FORI=1 TO11:READSP,SD,SV:NEXTI
+6180 FORI=1 TO3:READSP,SD,SV:GOSUB400:NEXTI
+6190 SD=20:GOSUB450
+6200 RETURN
+6300 REM    *getal op het scherm*
+6310 IF(M1=1)AND(FO=0)THEN GOSUB7910
+6320 RESTORE
+6330 FORI=1 TOX*7+1:READSR$:NEXTI
+6340 FORI=1 TO7:READSR$:GOSUB650:VE=VE+1/24:NEXTI
+6350 IF(M1=1)AND(FO=0)THEN GOSUB7910
+6360 RETURN
+6400 REM    *blokjes op scherm*
+6410 IFB=2*INT(B/2)THENVE=14/24:GOTO6430
+6420 VE=18/24
+6430 HO=(4+4*INT((B-1)/2))/32
+6440 H1=HO:H2=HO+2/32
+6450 FORVE=VE TOVE+2/24 STEP1/90
+6460 HO=H1:GOSUB620:HO=H2:GOSUB630
+6470 NEXTVE
+6480 RETURN
+6500 REM    *naar de juiste som*
+6510 ONM1 GOSUB7010,7510,7510
+6520 RETURN
+7000 REM    *getal bij blokjes*
+7010 GOSUB600:GOSUB5610
+7020 FO=0
+7030 GOSUB7210
+7040 IFG1<>0 THEN GOSUB7120
+7050 VE=4/24:HO=0
+7060 SR$="Tel de blokjes :":GOSUB650
+7070 GOSUB250
+7080 GOSUB4410
+7090 IFVAL(SR$)<>G1 THENFO=1:GOSUB6110
+7100 RETURN
+7110 REM    *G1 op scherm*
+7120 FORB=1 TOG1:GOSUB6410:NEXTB
+7130 RETURN
+7200 REM    *kader om getal*
+7210 VE=2/24:HO=16/32:GOSUB620
+7220 VE=11/24:GOSUB630:HO=28/32:GOSUB630
+7240 VE=2/24:GOSUB630:HO=16/32:GOSUB630
+7300 REM    *kader om getalbeeld*
+7310 VE=13/24:HO=2/32:GOSUB620
+7320 VE=21/24:GOSUB630:HO=28/32:GOSUB630
+7340 VE=13/24:GOSUB630:HO=2/32:GOSUB630
+7360 RETURN
+7500 REM    *blokjes bij getal*
+7510 GOSUB600:GOSUB5610
+7520 GOSUB7210
+7530 B1=1
+7540 IFM1=3 THEN GOSUB8020
+7550 VE=4/24:HO=0:SR$="Zet evenveel":GOSUB650
+7560 VE=5/24:SR$="blokjes weg als":GOSUB650
+7570 VE=6/24:SR$="het getal":GOSUB650
+7580 VE=7/24:SR$="aangeeft : ":GOSUB650
+7590 VE=3/24:HO=16/32
+7600 X=G1:GOSUB6310:GOSUB4310
+7610 GOSUB250
+7620 FO=0
+7630 IFM1=2 THENAW=0
+7640 IFM1=3 THENAW=G2
+7650 GOSUB200
+7660 FORB=B1 TO12
+7670 GOSUB200:IFIN=0 THEN7670
+7680 IFIN=13 THENB=12:GOTO7730
+7690 GOSUB7910
+7700 AW=B
+7710 GOSUB6410
+7720 GOSUB200
+7730 NEXTB
+7740 GOSUB7810
+7750 IFAW<>G1 THENFO=1:GOSUB6110
+7760 RETURN
+7800 REM    *muziek na RETURN*
+7810 SD=1:SV=7
+7820 SP=72:GOSUB400:SP=74:GOSUB400:SP=84:GOSUB400
+7830 RETURN
+7900 REM    *pieptoon*
+7910 SD=1:SV=7:SP=84:GOSUB400
+7920 RETURN
+8000 REM    *tellen vanaf getal*
+8010 REM  Maak hier de voorgrondkleur groen
+8020 B1=G2
+8030 IFB1=0 THEN8050
+8040 FORB=1 TOB1:GOSUB6410:NEXTB
+8050 B1=G2+1
+8060 REM  Herstel hier de voorgrondkleur
+8070 RETURN
+8500 REM    *uitkomst tonen*
+8510 GOSUB600:GOSUB5610
+8520 GOSUB7210
+8530 IFG1<>0 THEN GOSUB7120
+8540 VE=4/24:HO=2/32
+8550 SR$="Hier staat  :":GOSUB650
+8560 X=G1
+8570 VE=3/24:HO=16/32:GOSUB6310
+8580 GOSUB250
+8590 RETURN
+9000 REM    *stoppen*
+9010 GOSUB100
+9020 PRINT"Als U toch wilt doorgaan,"
+9030 PRINT"toets dan 'RUN' in en druk"
+9040 PRINT"op de ENTER- of RETURNtoets."
+9050 SD=50:GOSUB450
+9060 FR=0:GOSUB280
+9070 GOTO950
+9080 REM    ***einde programma****
+25000 REM    *data cijfers*
+25010 DATA""
+25020 DATA"  **** "
+25030 DATA" *    *"
+25040 DATA" *    *"
+25050 DATA" *    *"
+25060 DATA" *    *"
+25070 DATA" *    *"
+25080 DATA"  **** "
+25090 DATA"    *  "
+25100 DATA"   **  "
+25110 DATA"    *  "
+25120 DATA"    *  "
+25130 DATA"    *  "
+25140 DATA"    *  "
+25150 DATA"   *** "
+25160 DATA"  ***  "
+25170 DATA" *   * "
+25180 DATA"     * "
+25190 DATA"    *  "
+25200 DATA"   *   "
+25210 DATA"  *    "
+25220 DATA" ***** "
+25230 DATA"  **** "
+25240 DATA" *    *"
+25250 DATA"      *"
+25260 DATA"   *** "
+25270 DATA"      *"
+25280 DATA" *    *"
+25290 DATA"  **** "
+25300 DATA" *     "
+25310 DATA" *     "
+25320 DATA" *  *  "
+25330 DATA" *  *  "
+25340 DATA" ******"
+25350 DATA"    *  "
+25360 DATA"    *  "
+25370 DATA" ***** "
+25380 DATA" *     "
+25390 DATA" ***** "
+25400 DATA"      *"
+25410 DATA"      *"
+25420 DATA" *    *"
+25430 DATA"  **** "
+25440 DATA"   *** "
+25450 DATA"  *    "
+25460 DATA" *     "
+25470 DATA" ***** "
+25480 DATA" *    *"
+25490 DATA" *    *"
+25500 DATA"  **** "
+25510 DATA" ******"
+25520 DATA"      *"
+25530 DATA"     * "
+25540 DATA"    *  "
+25550 DATA"   *   "
+25560 DATA"  *    "
+25570 DATA"  *    "
+25580 DATA"  **** "
+25590 DATA" *    *"
+25600 DATA" *    *"
+25610 DATA"  **** "
+25620 DATA" *    *"
+25630 DATA" *    *"
+25640 DATA"  **** "
+25650 DATA"  **** "
+25660 DATA" *    *"
+25670 DATA" *    *"
+25680 DATA"  *****"
+25690 DATA"      *"
+25700 DATA"     * "
+25710 DATA"  ***  "
+25720 DATA"    *     **** "
+25730 DATA"   **    *    *"
+25740 DATA"    *    *    *"
+25750 DATA"    *    *    *"
+25760 DATA"    *    *    *"
+25770 DATA"    *    *    *"
+25780 DATA"   ***    **** "
+25790 DATA60,1,7,64,1,7,67,2,7
+25800 DATA67,2,7,67,2,7,72,2,7
+25810 DATA67,1,7,69,1,7,67,1,7
+25820 DATA65,1,7,64,2,7
+25830 DATA67,4,7,65,4,7,64,6,7
+30000 REM  *PROGRAMMA-HANDLEIDING*
+30010 REM  Dit programma is be-
+30020 REM  doeld voor de eerste
+30030 REM  drie groepen van het
+30040 REM  basisonderwijs en de
+30050 REM  eerste groepen van het
+30060 REM  speciaal onderwijs.
+30070 REM  Met dit programma kan
+30080 REM  het tellen en de
+30090 REM  kennis van de cijfers
+30100 REM  worden bevorderd.
+30110 REM  U kunt kiezen uit vier
+30120 REM  mogelijkheden
+30130 REM  1. GETAL PLAATSEN BIJ
+30140 REM     BLOKJES.
+30150 REM     In het onderste
+30160 REM     kader verschijnt
+30170 REM     een aantal blokjes.
+30180 REM     Tel de blokjes en
+30190 REM     toets het bijbeho-
+30200 REM     rende getal in.
+30210 REM     Druk vervolgens op
+30220 REM     de RETURN- of
+30230 REM     ENTER-toets.
+30240 REM  2. BLOKJES PLAATSEN
+30250 REM     BIJ EEN GETAL.
+30260 REM     In het bovenste ka-
+30270 REM     der verschijnt een
+30280 REM     getal. Door telkens
+30290 REM     op een toets (niet
+30300 REM     RETURN of ENTER) te
+30310 REM     drukken kunt u
+30320 REM     blokjes in het on-
+30330 REM     derste kader plaat-
+30340 REM     sen. Druk op RETURN
+30350 REM     of ENTER als het
+30360 REM     aantal overeenkomt
+30370 REM     met het getal.
+30380 REM  3. VERDER TELLEN VANAF
+30390 REM     EEN GETAL.
+30400 REM     In het onderste vak
+30410 REM     verschijnen blokjes
+30420 REM     en in het bovenste
+30430 REM     kader verschijnt
+30440 REM     een getal. Vul het
+30450 REM     aantal blokjes aan
+30460 REM     door op een toets
+30470 REM     te drukken. Als het
+30480 REM     getal overeenkomt
+30490 REM     met het aantal
+30500 REM     blokjes, druk dan op
+30510 REM     RETURN of ENTER.
+30520 REM  4. STOPPEN.
+30530 REM     Het programma stopt
+30540 REM     en kan nu ook ge-
+30550 REM     LIST worden. Ook
+30560 REM     kunt u eigen aan-
+30570 REM     vullingen invoegen.
+30580 REM  RESULTAATBEOORDELING.
+30590 REM  Als een som goed ge-
+30600 REM  maakt is, krijgt u een
+30610 REM  punt erbij en wordt er
+30620 REM  een kort muziekje ge-
+30630 REM  speeld. Als de som fout
+30640 REM  is, wordt dit aangege-
+30650 REM  ven. U moet dezelfde
+30660 REM  som opnieuw maken en
+30670 REM  u kunt geen punt meer
+30680 REM  verdienen.
+30690 REM  Indien het weer fout
+30700 REM  is, laat de computer de
+30710 REM  juiste oplossing zien.
+30720 REM  Na afloop wordt een
+30730 REM  overzicht van de re-
+30740 REM  sultaten gegeven. Dit
+30750 REM  overzicht kunt u des-
+30760 REM  gewenst uit laten
+30770 REM  printen.
+30780 REM  Als de score minder
+30790 REM  dan 60% is, krijgt u
+30800 REM  een onvoldoende.
+30810 REM  Een score van 60-79%
+30820 REM  is voldoende. Een score
+30830 REM  van 80-100% is goed.
+30840 REM  Deze normering wordt
+30850 REM  berekend in regel 5130
+30860 REM  en in regel 5140.
+30870 REM  Indien gewenst kunt u
+30880 REM  deze regels aanpassen.
+30890 REM  ENKELE TIPS.
+30900 REM  In regel 8010 kunt u
+30910 REM  de voorgrondkleur wij-
+30920 REM  zigen. In regel 8060
+30930 REM  moet de voorgrondkleur
+30940 REM  weer hersteld worden.
+30950 REM  De eerst geplaatste
+30960 REM  vallen dan beter op
+30970 REM  bij tellen vanaf een
+30980 REM  getal.
+30990 REM  Handige aanvullingen
+31000 REM  zijn
+31010 REM  - uitschakelen repe-
+31020 REM    teerfunctie van de
+31030 REM    toetsen.
+31040 REM  - Computer in de klei-
+31050 REM    ne letterstand.
+31060 REM  Voor de ZX Spectrum
+31070 REM  moet u hiervoor geven
+31080 REM  POKE 23561,255
+31090 REM  POKE 23658,0
+31100 REM  Verder ;8010 INK 4
+31110 REM          8060 INK 7
+31120 REM  CBM 64-gebruikers moe-
+31130 REM  de toetsenbordbuffer
+31140 REM  verkleinen tot 1.
+31150 REM  Mocht U bij de menu's
+31160 REM  een tikfout maken, dan
+31170 REM  kunt U niet DELETE-en.
+31180 REM  Toets dan een viertal
+31190 REM  getallen in en u kunt
+31200 REM  opnieuw intoetsen.
+32000 REM  **********************
+32010 REM  *                    *
+32020 REM  * (c) 199O           *
+32030 REM  *                    *
+32040 REM  * J.A.M. Nuijten     *
+32050 REM  *                    *
+32060 REM  * Bovendonksestr. 87 *
+32070 REM  *                    *
+32080 REM  * 4741 EE   Hoeven   *
+32090 REM  *                    *
+32100 REM  * Tel. O1659 - 4348  *
+32110 REM  *                    *
+32120 REM  * ZX Spectrum 48k    *
+32130 REM  *                    *
+32140 REM  **********************
+32150 REM
+32160 REM TROS-RADIO dd 900613

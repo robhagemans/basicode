@@ -1,0 +1,357 @@
+
+1000 A=500:GOTO20:REM ++ ACCOORDEN ++
+1010 DIMNN$(12,2):REM nootnamen
+1020 DIMAC$(17,5):REM accoorden
+1030 DIMAC(4):REM accoord omkeren
+1040 HT=HO:VT=VE
+1050 SP$="                                        "
+1060 REM lees noten uit DATA
+1070 FORI=1 TO12
+1080 READSR$,NN$(I,2)
+1090 NN$(I,0)=SR$:GOSUB330:NN$(I,1)=SR$
+1100 REM NN$(I+12,0)=NN$(I,0)
+1110 REM NN$(I+12,1)=NN$(I,1)
+1120 REM NN$(I+12,2)=NN$(I,2)
+1130 NEXTI
+1140 SR$="ACCOORDEN":HO=INT((HT-15)/2):VE=INT(VT/2)
+1150 GOSUB110:GOSUB150
+1160 REM lees accoorden uit DATA
+1170 FORAN=1 TO17
+1180 SP=60+AN:SV=7:SD=1:GOSUB400
+1190 READAC$(AN,0),AC$(AN,1),AC$(AN,5)
+1200 FORI=1 TO3
+1210 AC(I)=VAL(MID$(AC$(AN,1),I,1))
+1220 NEXTI
+1230 FORMK=2 TO4
+1240 GOSUB4030:REM maak omkering van AC()
+1250 AC$(AN,MK)=AC$
+1260 NEXTMK
+1270 NEXTAN
+1500 REM
+1510 REM ++ Hoofdmenu ++
+1520 REM
+1530 GOSUB100
+1540 SR$="ACCOORDEN":HO=INT((HT-15)/2):VE=0
+1550 GOSUB110:GOSUB150
+1560 PRINT:PRINT:PRINT"Menu :":PRINT:PRINT
+1570 PRINT" 1  Toelichting"
+1580 PRINT" 2  Accoord herkennen"
+1590 PRINT" 3  Accoord geven"
+1600 PRINT" 4  Stoppen":PRINT
+1610 PRINT"Uw keuze : ";:GOSUB120
+1620 GOSUB110:PRINT"   ";:GOSUB110
+1630 GOSUB210:PRINTIN$
+1640 IF(IN<49)OR(IN>52) THEN GOSUB250:GOTO1620
+1650 IFIN=52 THEN950
+1660 ONIN-48 GOSUB8030,2030,6030
+1670 GOTO1530
+2000 REM
+2010 REM ++ Hoofdlus voor herkennen ++
+2020 REM
+2030 GOSUB100
+2040 PRINT"Geef de noten van het gezochte accoord:"
+2050 PRINT"(voor de vierde noot desgewenst"
+2060 PRINT" niets of alleen - )":PRINT
+2070 I$="eerste":GOSUB5030:AC(1)=F
+2080 I$="tweede":GOSUB5030:AC(2)=F
+2090 I$="derde ":GOSUB5030:AC(3)=F
+2100 I$="vierde":GOSUB5030:AC(4)=F
+2110 PRINT:PRINT"Dat zoek ik voor je uit ";
+2120 AC(0)=0
+2130 REM bepaal intervallen
+2140 FORI=0 TO3
+2150 AC(I)=AC(I+1)-AC(I)
+2160 IFAC(I)<0 THENAC(I)=AC(I)+12
+2170 NEXTI
+2180 IFAC(4)=0 THENAC(3)=0
+2190 SO=AC(1)+AC(2)+AC(3)
+2200 REM te groot, dus herleiden
+2210 JJ=2:IFAC(3)=0 THENJJ=1
+2220 AC(2)=AC(2)+AC(1):IFAC(2)>12 THENAC(2)=AC(2)-12
+2230 AC(3)=AC(3)+AC(2):IFAC(3)>12 THENAC(3)=AC(3)-12
+2240 FORI=1 TO2:REM sorteren
+2250 FORJ=1 TOJJ
+2260 IFAC(J)>AC(J+1) THENH=AC(J):AC(J)=AC(J+1):AC(J+1)=H
+2270 NEXTJ
+2280 NEXTI
+2290 IFAC(4)=0 THENAC(3)=0:GOTO2310
+2300 AC(3)=AC(3)-AC(2)
+2310 AC(2)=AC(2)-AC(1)
+2320 REM invoer is herleid, ga zoeken
+2330 REM bouw string
+2340 GOSUB4070
+2350 IFRIGHT$(AC$,1)="0" THENAC$=LEFT$(AC$,2)
+2360 GV=0:REM nog niet gevonden
+2370 VA=1:REM vooralsnog wel volledig accoord
+2380 L=LEN(AC$):REM lengte
+2390 IFL=3 THEN2430:REM zoek meteen bij vierklanken
+2400 I0=10:I1=17:GOSUB3030:REM drieklanken afzoeken
+2410 REM  IFGV=1 THEN2510:REM gevonden, dus stoppen
+2420 VA=3:REM probeer omkeringen van onvolledige vierklank
+2430 I0=1:I1=9:GOSUB3030:REM vierklanken afzoeken
+2440 IFGV=1 THEN2470:REM gevonden, dus stoppen
+2450 PRINT:PRINT
+2460 PRINT"Jammer, maar dit accoord ken ik niet"
+2470 PRINT:PRINT"Nog een (J/N) ?";
+2480 GOSUB210:IFIN=74 THEN2030
+2490 RETURN
+3000 REM
+3010 REM ++ zoek accoord op van I0 tot I1 ++
+3020 REM
+3030 FORVO=1 TOVA:REM gegeven accoord omkeren
+3040 FORRS=0 TO3:REM ook omkeringen
+3050 FORIZ=I0 TOI1:REM drie- of vierklanken
+3060 IFLEFT$(AC$,L)<>LEFT$(AC$(IZ,RS+1),L) THEN3280
+3070 IFGV=0 THENPRINT:PRINT
+3080 IFRS=0 THENAC=AC(0):GOTO3160
+3090 A1=VAL(MID$(AC$(IZ,RS+1),1,1))
+3100 A2=VAL(MID$(AC$(IZ,RS+1),2,1))
+3110 A3=VAL(MID$(AC$(IZ,RS+1),3,1))
+3120 IFRS=1 THENAC=AC(0)+A1+A2+A3
+3130 IFRS=2 THENAC=AC(0)+A1+A2
+3140 IFRS=3 THENAC=AC(0)+A1
+3150 IFAC>12 THENAC=AC-12
+3160 PRINTNN$(AC,0);" ";AC$(IZ,0);
+3170 IFVA=1 THEN3260:REM drieklank gevonden
+3180 PRINT:PRINTTAB(10);"(onvolledig: ";NN$(AC,0);
+3190 NH=AC:FORI=1 TO3
+3200 NH=NH+VAL(MID$(AC$(IZ,1),I,1))
+3210 IFNH>12 THENNH=NH-12
+3220 PRINT"-";NN$(NH,0);
+3230 NEXTI
+3240 PRINT")";
+3250 GOTO3270
+3260 IFRS>0 THENPRINT" (";RS;"-e omk.)";
+3270 PRINT:GV=1
+3280 NEXTIZ
+3290 IF(I0>9)AND(RS=2) THENRS=3
+3300 NEXTRS
+3310 GOSUB4030:AC(0)=AC(0)+SO-AC(1)
+3320 IFAC(0)>12 THENAC(0)=AC(0)-12
+3330 NEXTVO
+3340 RETURN
+4000 REM
+4010 REM ++ maak omkering van AC() ++
+4020 REM
+4030 SO=AC(1)+AC(2)+AC(3)
+4040 AC(1)=AC(2):AC(2)=AC(3):AC(3)=12-SO
+4050 IFAC(2)=0 THENAC(2)=12-SO:AC(3)=0
+4060 REM ++ ingang subroutine ++
+4070 AC$=""
+4080 FORI=1 TO3
+4090 SR=AC(I):GOSUB300
+4100 AC$=AC$+SR$
+4110 NEXTI
+4120 RETURN
+5000 REM
+5010 REM ++ herkenning en controle ++
+5020 REM
+5030 PRINT"De ";I$;" noot : ";
+5040 IFI$="vierde" THENPRINT"(of -) : ";
+5050 INPUTSR$:GOSUB330
+5060 IF(I$="vierde")AND((SR$="")OR(SR$="-")) THENF=0:RETURN
+5070 DE=0:IFLEN(SR$)<4 THEN5120:REM standaard
+5080 H$=RIGHT$(SR$,2)
+5090 IFH$="IS" THENDE=1:SR$=LEFT$(SR$,LEN(SR$)-2)
+5100 IFH$="ES" THENDE=-1:SR$=LEFT$(SR$,LEN(SR$)-2)
+5110 IFDE=0 THEN5170
+5120 F=0:FORI=1 TO12
+5130 IFNN$(I,1)=SR$ THENF=I+DE
+5140 IFNN$(I,2)=SR$ THENF=I+DE
+5150 NEXTI
+5160 IFF>0 THENRETURN:REM gevonden
+5170 GOSUB250:PRINT"Deze ken ik niet;"
+5180 PRINT"Geef s.v.p. een betere"
+5190 GOTO5030
+6000 REM
+6010 REM ++ Accoord geven ++
+6020 REM
+6030 GOSUB100:SR$="ACCOORDEN GEVEN":HO=9:VE=0
+6040 GOSUB110:GOSUB150
+6050 HO=0:VE=1:GOSUB110
+6060 PRINT"GRONDTOON: MOGELIJKE SEPTIEMACCOORDEN:";
+6070 HO=10:VE=12:GOSUB110:PRINT"MOGELIJKE DRIEKLANKEN:"
+6080 FORI=1 TO12
+6090 HO=3:VE=I+2:IFVE>7 THENVE=VE+1
+6100 GOSUB110:PRINTNN$(I,0);
+6110 NEXTI
+6120 FORI=1 TO17
+6130 HO=12:VE=I+1:IFVE>10 THENVE=VE+2
+6140 GOSUB110:PRINTAC$(I,5);
+6150 NEXTI
+6160 CO=0:IT=1:IA=1:HO=0:REM Startindices
+6170 PS=0:REM niet overslaan
+6180 HO=0:VE=22:GOSUB110
+6190 PRINT"Aanwijzen met CURSOR - Spelen met RETURN";
+6200 HO=CO
+6210 IFHO=9 THEN6340
+6220 REM ++ grondtoon ++
+6230 VE=IT+2:IFVE>7 THENVE=VE+1
+6240 SR$=NN$(IT,0):GOSUB110:GOSUB150
+6250 IFPS=0 THEN GOSUB210
+6260 IFIN=29 THENCO=9:GOTO6200
+6270 IFIN=13 THEN6450:REM Spelen
+6280 GOSUB110:PRINT"   ";NN$(IT,0);"   ";
+6290 IF(IN=31)AND(IT>1) THENIT=IT-1:GOTO6170
+6300 IF(IN=30)AND(IT<12) THENIT=IT+1:GOTO6170
+6310 IF(IN=31)OR(IN=30) THENIT=13-IT:GOTO6170
+6320 RETURN
+6330 REM accoordtype
+6340 VE=IA+1:IFVE>10 THENVE=VE+2
+6350 SR$=AC$(IA,5):GOSUB110:GOSUB150
+6360 IFPS=0 THEN GOSUB210
+6370 IFIN=28 THENCO=0:GOTO6170
+6380 IFIN=13 THEN6450:REM Spelen
+6390 GOSUB110:PRINT"   ";AC$(IA,5);"   ";
+6400 IF(IN=31)AND(IA>1) THENIA=IA-1:GOTO6170
+6410 IF(IN=30)AND(IA<17) THENIA=IA+1:GOTO6170
+6420 IF(IN=30)OR(IN=31) THENIA=18-IA:GOTO6170
+6430 RETURN
+6440 REM Spelen
+6450 HO=0:VE=22:GOSUB110:PRINTSP$;:GOSUB110
+6460 PRINT"Dit accoord bestaat uit: ";
+6470 SP=59+IT:SD=3:SV=15
+6480 FORI=1 TO4
+6490 NH=SP-59:IFNH>12 THENNH=NH-12
+6500 PRINTNN$(NH,0);:GOSUB400
+6510 DS=VAL(MID$(AC$(IA,1),I,1))
+6520 IFDS=0 THENI=4:GOTO6550
+6530 PRINT;"-";
+6540 SP=SP+DS
+6550 NEXTI
+6560 GOSUB210:IFIN=13 THEN6450
+6570 GOSUB110:PRINTSP$;
+6580 GOSUB110
+6590 PS=1:GOTO6180
+8000 REM
+8010 REM ++ Toelichting ++
+8020 REM
+8030 RESTORE
+8040 READSR$:IFSR$<>"!!!" THEN8040
+8050 GOSUB8180:READTR$
+8060 READSR$:IFSR$="!!" THENPRINTTR$:GOTO8160
+8070 IFSR$="!" THENPRINTTR$:PRINT:J=J+2:READSR$:TR$=""
+8080 TR$=TR$+" "+SR$
+8090 IFJ>VT THEN GOSUB8160
+8100 IFLEN(TR$)<HT THEN8060
+8110 I=HT
+8120 IFMID$(TR$,I,1)<>" " THENI=I-1:GOTO8120
+8130 PRINTLEFT$(TR$,I-1):J=J+1
+8140 TR$=RIGHT$(TR$,LEN(TR$)-I)
+8150 GOTO8090
+8160 HO=3:VE=VT:GOSUB110:PRINT"<spatie voor vervolg>";
+8170 GOSUB210:IFIN<>32 THEN8170
+8180 GOSUB100:HO=INT(HT/2)-15:VE=0:GOSUB110
+8190 SR$="   A C C O O R D E N   "
+8200 GOSUB150:PRINT:PRINT:J=4:RETURN
+25000 REM de nootnamen
+25010 DATA"C","C","Cis","DES","D","D","Es","DIS"
+25020 DATA"E","E","F","F","Fis","GES","G","G"
+25030 DATA"As","GIS","A","A","Bes","AIS","B","B"
+25040 REM de 9 vierklanken
+25050 REM aantal accoorden,naam,aantal tonen
+25060 DATA"dominant septiem (7)","433"
+25070 DATA"Dominant             7 "
+25080 DATA"klein septiem (m7)","343"
+25090 DATA"Klein               m7 "
+25100 DATA"groot septiem (maj7)","434"
+25110 DATA"Groot              maj7"
+25120 DATA"verminderd septiem (dim)","333"
+25130 DATA"Verminderd          dim"
+25140 DATA"halfverminderd septiem (m7b5)","334"
+25150 DATA"Halfverminderd     m7b5"
+25160 DATA"overmatig septiem (maj7+5)","443"
+25170 DATA"Overmatig        maj7+5"
+25180 DATA"klein-groot septiem (mima)","344"
+25190 DATA"Klein-groot        mima"
+25200 DATA"hardverminderd septiem (7b5)","424"
+25210 DATA"Hardverminderd      7b5"
+25220 DATA"overmatig dominant septiem (7+5)","442"
+25230 DATA"Overmatig dominant  7+5"
+25240 REM de 8 drieklanken
+25250 DATA"groot (maj)","430"
+25260 DATA"Groot           "
+25270 DATA"klein (m)","340"
+25280 DATA"Klein           "
+25290 DATA"verminderd","330"
+25300 DATA"Verminderd      "
+25310 DATA"dubbelverminderd","240"
+25320 DATA"Dubbelverminderd"
+25330 DATA"hardverminderd (b5)","420"
+25340 DATA"Hardverminderd  "
+25350 DATA"overmatig (+5)","440"
+25360 DATA"Overmatig       "
+25370 DATA"sus2","250"
+25380 DATA"Sus2            "
+25390 DATA"sus4","520"
+25400 DATA"Sus4            "
+25410 REM einde notendata, begin toelichting
+26000 DATA"!!!"
+26010 DATA"Accoorden komen in de muziek erg vaak voor. De"
+26020 DATA"meestgebruikte accoorden bestaan uit drie of"
+26030 DATA"vier verschillende noten: de drieklanken en de"
+26040 DATA"vierklanken. Je kunt daarvoor niet 'zomaar' drie"
+26050 DATA"of vier noten nemen, want dan 'klinkt' het niet."
+26060 DATA"Volgens de muziektheorie zijn er 19"
+26070 DATA"verschillende drieklanken en 31 verschillende"
+26080 DATA"vierklanken die wel goed klinken, die dus vak"
+26090 DATA"gebruikt worden en die daarom ook een naam"
+26100 DATA"hebben en op een bepaalde manier worden"
+26110 DATA"aangeduid. Daar zit dus nog wel het een en ander"
+26120 DATA"aan vast.","!","Bekijken we bijvoorbeeld het"
+26130 DATA"zogenaamde C-groot accoord. Dat bestaat (van"
+26140 DATA"laag naar hoog) uit de noten C-E-G. Maar soms"
+26150 DATA"wordt dit gespeeld als E-G-C of als G-C-E. Men"
+26160 DATA"spreekt dan van de eerste resp. de tweede"
+26170 DATA"omkering van het C-groot accoord. Bij de"
+26180 DATA"vierklanken zijn er op deze manier zelfs drie"
+26190 DATA"omkeringen van elk accoord denkbaar. Als we de"
+26200 DATA"omkeringen niet apart tellen, dan worden er nog"
+26210 DATA"slechts 8 drieklanken en 9 vierklanken"
+26220 DATA"onderscheiden.","!","Daarmee zijn we er nog"
+26230 DATA"niet. Laten we maar eens naar het G-7 accoord"
+26240 DATA"kijken. Dat bestaat in principe uit de noten"
+26250 DATA"G-B-D-F. Van dit accoord zijn er niet alleen"
+26260 DATA"drie omkeringen denkbaar (B-D-F-G, D-F-G-B en"
+26270 DATA"F-G-B-D) maar wat ook vaak gebeurt is dat zo'n"
+26280 DATA"accoord slechts gedeeltelijk wordt gespeeld,"
+26290 DATA"bijvoorbeeld alleen G-B-F. Het is dan nog altijd"
+26300 DATA"een G-7 accoord, maar we noemen het dan een"
+26310 DATA"onvolledig G-7 accoord.","!","Wie voor het eerst"
+26320 DATA"accoorden tegenkomt, heeft het maar moeilijk. Er"
+26330 DATA"komt heel wat telwerk aan te pas en je vergist"
+26340 DATA"je o zo gemakkelijk. Dit programma biedt een"
+26350 DATA"flinke dosis gemak: u behoeft slechts de drie of"
+26360 DATA"vier noten van een accoord in te tikken en het"
+26370 DATA"programma meldt u precies welk accoord het is,"
+26380 DATA"wat de grondtoon is, welke omkering het"
+26390 DATA"eventueel is en wat de grondtoon van het accoord"
+26400 DATA"is. Waar mogelijk krijgt u zelfs meer"
+26410 DATA"antwoorden. Met name als u een drieklank"
+26420 DATA"invoert, zijn er meestal diverse mogelijkheden"
+26430 DATA"en die worden allemaal genoemd.","!","Met dit"
+26440 DATA"programma kunt u niet alleen accoorden laten"
+26450 DATA"identificeren, u kunt ook zelf een bepaald type"
+26460 DATA"accoord opgeven en bij elke grondtoon opvragen"
+26470 DATA"welke noten er dan in dat accoord zitten. De"
+26480 DATA"computer noemt de noten niet alleen, hij speelt"
+26490 DATA"ze ook nog voor u. Welk accoord en welke"
+26500 DATA"grondtoon kunt u daarbij eenvoudig via de"
+26510 DATA"cursortoetsen aangeven.","!","Veel muzikaal"
+26520 DATA"genoegen met dit programma.","!!"
+30000 REM +++++++++++++++++++++++
+30010 REM +                     +
+30020 REM +  A C C O O R D E N  +
+30030 REM +                     +
+30040 REM +  voor het opvragen  +
+30050 REM +  en het herkennen   +
+30060 REM +  van drieklanken    +
+30070 REM +  en vierklanken     +
+30080 REM +                     +
+30090 REM +    J. Haubrich      +
+30100 REM +     Eindhoven       +
+30110 REM +    januari 1989     +
+30120 REM +                     +
+30130 REM +++++++++++++++++++++++
+30140 REM
+30150 REM TROS-RADIO dd 890426

@@ -1,0 +1,573 @@
+
+1000 A=600:GOTO20:REM *** VLIEGERS ***
+1010 VT=VE:CN=0
+1020 GOSUB100:PRINT:PRINT
+1030 PRINT" ***VLIEGERS*** MENU ***VLIEGERS***":PRINT:PRINT
+1040 PRINT" A -- Algemene informatie":PRINT
+1050 PRINT" S -- stoppen":PRINT
+1060 PRINT" 1 -- Sleevlieger (normale wind)":PRINT
+1070 PRINT" 2 -- Doosvlieger (zware wind)  ":PRINT
+1080 PRINT" 3 -- Deltavlieger (lichte wind)":PRINT:PRINT
+1090 SR$="-- Maak uw keuze ":GOSUB150
+1100 GOSUB210
+1110 IFIN=49 THEN8000
+1120 IFIN=65 THEN7000
+1130 IFIN=50 THEN9000
+1140 IFIN=51 THEN10000
+1150 IFIN=83 THEN950
+1160 GOSUB250:GOTO1100
+2000 REM ***** SLEEVLIEGER *****
+2010 GOSUB600
+2020 VE=.2:HO=.3:GOSUB620
+2030 HO=.7:GOSUB630
+2040 HO=.85:VE=.4:GOSUB630
+2050 HO=.7:VE=.9:GOSUB630
+2060 VE=.2:GOSUB630
+2070 HO=.7:VE=.9:GOSUB620
+2080 HO=.3:GOSUB630
+2090 VE=.2:GOSUB630
+2100 HO=.15:VE=.4:GOSUB630
+2110 HO=.3:VE=.9:GOSUB630
+2120 VE=.1:HO=.29:SR$="+":GOSUB650
+2130 HO=.48:SR$="40":GOSUB650
+2140 HO=.69:SR$="+":GOSUB650
+2150 HO=.75:SR$="20":GOSUB650
+2160 HO=.84:SR$="+":GOSUB650
+2170 HO=.85:VE=.25:SR$="15":GOSUB650
+2180 VE=.7:SR$="30":GOSUB650
+2190 VE=.85:SR$="+":GOSUB650
+2200 HO=.15:VE=.39:SR$="o":GOSUB650
+2210 HO=.83:SR$="o":GOSUB650
+2220 HO=0:VE=.35:SR$="toom":GOSUB650
+2230 HO=.08:VE=.39:SR$="=>":GOSUB650
+2240 HO=.87:SR$="<=":GOSUB650
+2250 HO=.35:VE=0:SR$="SLEEVLIEGER      Tek 1":GOSUB650
+2260 HO=.88:VE=.35:SR$="toom":GOSUB650
+2270 HO=0:VE=.42:SR$="punt":GOSUB650
+2280 HO=.89:SR$="punt":GOSUB650
+2290 HO=.32:VE=.7:SR$="<= stokjes =>":GOSUB650
+2300 HO=.43:VE=.74:SR$="4 mm":GOSUB650
+2310 SR$="toets: v=verder m=menu ":HO=0:VE=.95:GOSUB650
+2320 GOSUB210
+2330 IFIN=77 THEN1020
+2340 IFIN<>86 THEN GOSUB250:GOTO2320
+2350 GOSUB600
+2360 HO=.05:VE=0
+2370 SR$="Toompuntbevestiging SLEE":GOSUB650
+2380 HO=.85:SR$="Tek 2":GOSUB650
+2390 HO=.1:VE=.1:GOSUB620
+2400 HO=.3:VE=.3:GOSUB630
+2410 HO=.1:VE=.5:GOSUB630
+2420 HO=.25:VE=.34:GOSUB620
+2430 VE=.26:GOSUB630
+2440 HO=HO-.01:GOSUB630
+2450 VE=.34:GOSUB630
+2460 HO=HO+.01:GOSUB630
+2470 VE=VE-.015:GOSUB620
+2480 HO=.18:GOSUB630
+2490 VE=.275:GOSUB630
+2500 HO=.25:GOSUB630
+2510 HO=.6:VE=.1:GOSUB620
+2520 HO=.75:VE=.26:GOSUB630
+2530 HO=.7:VE=.3:GOSUB630
+2540 HO=.75:VE=.34:GOSUB630
+2550 HO=.6:VE=.5:GOSUB630
+2560 HO=.75:VE=.34:GOSUB620
+2570 VE=.26:GOSUB630
+2580 HO=.73:VE=.275:GOSUB620
+2590 HO=.68:GOSUB630
+2600 VE=.325:GOSUB630
+2610 HO=.73:GOSUB630
+2620 HO=.3:VE=.5:GOSUB620
+2630 HO=.45:VE=.66:GOSUB630
+2640 VE=.74:GOSUB630
+2650 HO=.3:VE=.9:GOSUB630
+2660 HO=.45:VE=.74:GOSUB620
+2670 HO=.37:GOSUB630
+2680 VE=.66:GOSUB630
+2690 HO=.45:GOSUB630
+2700 SR$="o":HO=.42:VE=.68:GOSUB650
+2710 HO=.44:VE=.7:GOSUB620:HO=.8:GOSUB630
+2720 HO=.5:VE=.75:SR$="toomdraad":GOSUB650
+2730 SR$="1":HO=.2:VE=.15:GOSUB650
+2740 SR$="2":HO=.7:GOSUB650
+2750 SR$="3":HO=.4:VE=.55:GOSUB650
+2760 SR$="toets: t=terug  m=menu ":HO=0:VE=.95:GOSUB650
+2770 GOSUB210
+2780 IFIN=84 THEN2010
+2790 IFIN=77 THEN1020
+2800 GOSUB250:GOTO2770
+3000 REM ***** DOOSVLIEGER *****
+3010 GOSUB600
+3020 HO=.1:VE=.1:GOSUB620
+3030 HO=.3:GOSUB630
+3040 VE=.8:GOSUB630
+3050 HO=.1:GOSUB630
+3060 VE=.1:GOSUB630
+3070 H0=.1:VE=.35:GOSUB620
+3080 HO=.3:GOSUB630
+3090 VE=.55:GOSUB620
+3100 HO=.1:GOSUB630
+3110 HO=.6:VE=.5:GOSUB620
+3120 HO=.8:GOSUB630
+3130 VE=.75:GOSUB630
+3140 HO=.6:GOSUB630
+3150 VE=.5:GOSUB630
+3160 HO=.8:VE=.75:GOSUB630
+3170 HO=.8:VE=.5:GOSUB620
+3180 HO=.6:VE=.75:GOSUB630
+3190 HO=.3:VE=.1:GOSUB620
+3200 HO=.7:GOSUB630
+3210 HO=.3:VE=.55:GOSUB630
+3220 HO=.09:VE=.03:SR$="+":GOSUB650
+3230 HO=.17:SR$="40":GOSUB650
+3240 HO=.29:SR$="+":GOSUB650
+3250 HO=.4:VE=0:SR$="DOOSVLIEGER":GOSUB650
+3260 HO=.84:SR$="Tek 1":GOSUB650
+3270 HO=.35:VE=.1:GOSUB620
+3280 VE=.2:SR$="40":GOSUB650
+3290 VE=.33:SR$="+":GOSUB650
+3300 VE=.4:SR$="30":GOSUB650
+3310 VE=.53:SR$="+":GOSUB650
+3320 VE=.67:SR$="40":GOSUB650
+3330 VE=.78:SR$="+":GOSUB650
+3340 HO=.4:VE=.11:SR$="1 meter":GOSUB650
+3350 HO=.59:VE=.82:SR$="bovenaanzicht":GOSUB650
+3360 VE=.42:SR$="+":GOSUB650
+3370 HO=.68:SR$="40":GOSUB650
+3380 HO=.79:SR$="+":GOSUB650
+3390 HO=.83:VE=.49:SR$="+":GOSUB650
+3400 VE=.61:SR$="40":GOSUB650
+3410 VE=.74:SR$="+":GOSUB650
+3420 HO=.8:VE=.5:GOSUB620
+3430 HO=.99999:VE=.3:GOSUB630
+3440 HO=.75:VE=.35:SR$="toom=>":GOSUB650
+3450 HO=.58:VE=.25:SR$="<=toom":GOSUB650
+3460 HO=.13:VE=.22:SR$="cel 1":GOSUB650
+3470 VE=.66:SR$="cel 2":GOSUB650
+3480 SR$="toets: v=verder m=menu ":HO=0:VE=.95:GOSUB650
+3490 GOSUB210
+3500 IFIN=77 THEN1020
+3510 IFIN<>86 THEN GOSUB250:GOTO3490
+3520 GOSUB600
+3530 HO=.1:VE=.15:GOSUB620
+3540 HO=.4:GOSUB630
+3550 VE=.2:GOSUB630
+3560 HO=.28:GOSUB630
+3570 HO=.26:VE=.18:GOSUB630
+3580 HO=.24:GOSUB630
+3590 HO=.22:VE=.2:GOSUB630
+3600 HO=.1:GOSUB630
+3610 VE=.15:GOSUB630
+3620 REM *** STOKKEN DOOS ***
+3630 HO=.88:VE=.28:GOSUB620
+3640 VE=.1:GOSUB630
+3650 HO=.9:GOSUB630
+3660 VE=.9:GOSUB630
+3670 HO=.88:GOSUB630
+3680 VE=.8:GOSUB630
+3690 HO=.87:VE=.2:GOSUB620
+3700 HO=.91:GOSUB630
+3710 VE=.24:GOSUB630
+3720 HO=.87:VE=.27:GOSUB630
+3730 HO=.84:GOSUB630
+3740 VE=.23:GOSUB630
+3750 HO=.87:GOSUB630
+3760 VE=.2:GOSUB630
+3770 HO=.88:VE=.24:GOSUB620
+3780 HO=.5:GOSUB630
+3790 VE=.26:GOSUB630
+3800 HO=.88:GOSUB630
+3810 HO=.45:VE=.28:GOSUB620
+3820 HO=.9:GOSUB630
+3830 HO=.45:VE=.8:GOSUB620
+3840 HO=.9:GOSUB630
+3850 HO=.87:VE=.9:GOSUB620
+3860 HO=.91:GOSUB630
+3870 VE=.86:GOSUB630
+3880 HO=.87:VE=.82:GOSUB630
+3890 HO=.84:GOSUB630
+3900 VE=.86:GOSUB630
+3910 HO=.87:GOSUB630
+3920 VE=.9:GOSUB630
+3930 HO=.88:VE=.83:GOSUB620
+3940 HO=.5:GOSUB630
+3950 VE=.85:GOSUB630
+3960 HO=.88:GOSUB630
+3970 HO=.1:VE=.22:SR$="Plastic":GOSUB650
+3980 VE=.26:SR$="slang 6x8":GOSUB650
+3990 HO=.09:VE=.11:SR$="+   4 cm   +":GOSUB650
+4000 HO=.56:VE=.1:SR$="staander =>":GOSUB650
+4010 VE=.14:SR$="  6 mm":GOSUB650
+4020 HO=.5:VE=.2:SR$="kruisstok":GOSUB650
+4030 VE=.5:SR$="onderste cel":GOSUB650
+4040 VE=.54:SR$="  (cel 2)":GOSUB650
+4050 HO=.4:VE=0:SR$="DOOSVLIEGER":GOSUB650
+4060 HO=.9:SR$="Tek 2":GOSUB650
+4070 SR$="toets: t=terug m=menu ":HO=0:VE=.95:GOSUB650
+4080 GOSUB210
+4090 IFIN=84 THEN3010
+4100 IFIN=77 THEN1020
+4110 GOSUB250:GOTO4080
+5000 REM ***** DELTAVLIEGER *****
+5010 GOSUB600
+5020 HO=.5:VE=.1:GOSUB620
+5030 HO=.05:VE=.7:GOSUB630
+5040 HO=.125:VE=.82:GOSUB630
+5050 HO=.2:VE=.72:GOSUB630
+5060 HO=.275:VE=.82:GOSUB630
+5070 HO=.35:VE=.72:GOSUB630
+5080 HO=.425:VE=.82:GOSUB630
+5090 HO=.5:VE=.7:GOSUB630
+5100 HO=.575:VE=.82:GOSUB630
+5110 HO=.65:VE=.72:GOSUB630
+5120 HO=.725:VE=.82:GOSUB630
+5130 HO=.8:VE=.72:GOSUB630
+5140 HO=.875:VE=.82:GOSUB630
+5150 HO=.95:VE=.7:GOSUB630
+5160 HO=.5:VE=.1:GOSUB630
+5170 VE=.7:GOSUB630
+5180 HO=.36:VE=.45:GOSUB630
+5190 VE=.4:GOSUB630
+5200 HO=.5:VE=.24:GOSUB630
+5210 HO=.37:VE=.4:GOSUB620
+5220 VE=.42:GOSUB620
+5230 VE=.44:GOSUB620
+5240 HO=.43:VE=.2:GOSUB620
+5250 HO=.44:VE=.205:GOSUB630
+5260 HO=.06:VE=.705:GOSUB630
+5270 HO=.57:VE=.2:GOSUB620
+5280 HO=.56:VE=.205:GOSUB630
+5290 HO=.94:VE=.705:GOSUB630
+5300 HO=.15:VE=.35:SR$="X => o":GOSUB650
+5310 HO=.69:SR$="o <= X":GOSUB650
+5320 HO=.05:VE=0:SR$="DELTAVLIEGER":GOSUB650
+5330 HO=.84:SR$="Tek 1":GOSUB650
+5340 HO=0:VE=.63:SR$="x":GOSUB650
+5350 HO=.025:VE=.66:GOSUB650
+5360 HO=.4:VE=.16:GOSUB650
+5370 HO=.46:VE=.05:GOSUB650
+5380 HO=.6:VE=.09:SR$="+":GOSUB650
+5390 VE=.36:GOSUB650
+5400 HO=.95:VE=.09:GOSUB650
+5410 VE=.69:GOSUB650
+5420 VE=.00:GOSUB650
+5430 VE=.85:GOSUB650
+5440 HO=.04:GOSUB650
+5450 HO=.52:VE=.23:GOSUB650
+5460 VE=.68:GOSUB650
+5470 HO=.15:VE=.5:SR$="a":GOSUB650
+5480 HO=.42:VE=.1:SR$="b":GOSUB650
+5490 HO=.6:VE=.15:SR$="c":GOSUB650
+5500 HO=.95:VE=.35:SR$="d":GOSUB650
+5510 VE=.74:SR$="e":GOSUB650
+5520 HO=.49:VE=.85:SR$="f":GOSUB650
+5530 HO=.52:VE=.45:SR$="g":GOSUB650
+5540 HO=.42:VE=.28:SR$="h":GOSUB650
+5550 VE=.6:SR$="j":GOSUB650
+5560 HO=.39:VE=.41:SR$="<i>":GOSUB650
+5570 HO=0:VE=.95
+5580 SR$="toets: m=menu  2=tek2  3=tek3":GOSUB650
+5590 GOSUB210
+5600 IFIN=51 THEN5880
+5610 IFIN=77 THEN1020
+5620 IFIN<>50 THEN GOSUB250:GOTO5590
+5630 REM *** TEK 2 DELTAVLIEGER **
+5640 GOSUB600
+5650 HO=.05:VE=0:SR$="DELTAVLIEGER":GOSUB650
+5660 HO=.84:SR$="Tek 2":GOSUB650
+5670 HO=.2:VE=.1:SR$=" maat 1    maat 2":GOSUB650
+5680 HO=.1:VE=.2:SR$="a --- 46 3mm*   69 4mm*":GOSUB650
+5690 VE=.25:SR$="b --- 56        85":GOSUB650
+5700 VE=.3:SR$="c --- 18        27":GOSUB650
+5710 VE=.35:SR$="d --- 40 6mm*   60 10mm*":GOSUB650
+5720 VE=.4:SR$="e ---  8        12":GOSUB650
+5730 VE=.45:SR$="f --- 80       120":GOSUB650
+5740 VE=.5:SR$="g --- 30        45":GOSUB650
+5750 VE=.55:SR$="h --- 18        27":GOSUB650
+5760 VE=.6:SR$="i --- 12        18":GOSUB650
+5770 VE=.65:SR$="j --- 24        36":GOSUB650
+5780 VE=.7:SR$="X-X --40 6mm*   60 10mm*":GOSUB650
+5790 VE=.8:SR$="* = ramin rondhout":GOSUB650
+5800 VE=.85:SR$="maten in cm.":GOSUB650
+5810 SR$="toets: m=menu  1=tek1  3=tek3"
+5820 HO=0:VE=.95:GOSUB650
+5830 GOSUB210
+5840 IFIN=49 THEN5010
+5850 IFIN=77 THEN1020
+5860 IFIN<>51 THEN GOSUB250:GOTO5830
+5870 REM **** TEK 3 DELTAVLIEGER ****
+5880 GOSUB600
+5890 HO=.05:VE=0:SR$="DELTAVLIEGER":GOSUB650
+5900 HO=.84:SR$="Tek 3":GOSUB650
+5910 HO=.05:VE=.3:GOSUB620
+5920 HO=.3:GOSUB630
+5930 VE=VE+.01:GOSUB630
+5940 HO=HO-.015:VE=VE+.015:GOSUB630
+5950 VE=VE+.015:GOSUB630
+5960 HO=HO+.015:VE=VE+.015:GOSUB630
+5970 VE=.55:GOSUB630
+5980 HO=.55:VE=.3:GOSUB620
+5990 HO=.31:GOSUB630
+6000 VE=VE+.01:GOSUB630
+6010 HO=HO+.015:VE=VE+.015:GOSUB630
+6020 VE=VE+.015:GOSUB630
+6030 HO=HO-.015:VE=VE+.015:GOSUB630
+6040 VE=.37:GOSUB630
+6050 HO=.292:VE=.313:SR$="o":GOSUB650
+6060 REM DELTA RUGSTOK
+6070 HO=.7:VE=.4:GOSUB620
+6080 HO=.4:VE=.8:GOSUB630
+6090 HO=HO+.015:GOSUB620
+6100 HO=.715:VE=.4:GOSUB630
+6110 HO=.75:VE=.6:GOSUB620
+6120 HO=.57:GOSUB630
+6130 VE=VE+.015:GOSUB630
+6140 HO=.75:GOSUB630
+6150 HO=.62:VE=.59:GOSUB620
+6160 VE=.625:GOSUB630
+6170 HO=.56:GOSUB630
+6180 HO=.525:VE=.67:GOSUB630
+6190 HO=.50:VE=.645:GOSUB630
+6200 HO=.54:VE=.60:GOSUB630
+6210 HO=.57:VE=.59:GOSUB630
+6220 HO=.62:GOSUB630
+6230 HO=.1:VE=.25
+6240 SR$="dwarsdoorsnede":GOSUB650
+6250 HO=.1:VE=.4:SR$="kiel =>":GOSUB650
+6260 HO=.33:VE=.32:SR$="<= stok d":GOSUB650
+6270 HO=.65:VE=.5:SR$="<= stok a":GOSUB650
+6280 HO=.75:VE=.59:SR$="<=stok X-X":GOSUB650
+6290 HO=.25:VE=.6:SR$="punt X =>":GOSUB650
+6300 HO=.5:VE=.8:SR$="detail rugstok":GOSUB650
+6310 SR$="toets: m=menu  1=tek1  2=tek2"
+6320 HO=0:VE=.95:GOSUB650
+6330 GOSUB210
+6340 IFIN=49 THEN5010
+6350 IFIN=50 THEN5640
+6360 IFIN=77 THEN1020
+6370 GOSUB250:GOTO6330
+7000 GOSUB100:REM ALGEMENE INFO
+7010 PRINT:PRINT"          ALGEMENE INFORMATIE"
+7020 PRINT:PRINT"De vliegers die hier beschreven worden,"
+7030 PRINT"kunnen gemaakt worden van verschillende"
+7040 PRINT"materialen. Het meest eenvoudige is van"
+7050 PRINT"een vuilniszak. Dit materiaal is licht"
+7060 PRINT"en toch stevig. De stokken die hier ge-"
+7070 PRINT"bruikt worden zijn van ramin. Om de"
+7080 PRINT"zaak aan elkaar te plakken kun je ge-"
+7090 PRINT"bruik maken van cellotape. Een nuttige"
+7100 PRINT"tip: Plak altijd het plakband aan bei-"
+7110 PRINT"de zijden van het plastik. Hierdoor"
+7120 PRINT"verkrijg je een duurzame verbinding,"
+7130 PRINT"welke niet door UV-licht wordt"
+7140 PRINT"aangetast."
+7150 PRINT"Er zijn natuurlijk nog andere materia-"
+7160 PRINT"len die sterker en mooier zijn. Zo kun"
+7170 PRINT"je vliegers maken van parachute-nylon"
+7180 PRINT"en nog sterker van spinaker-nylon."
+7190 GOSUB11000
+7200 PRINT"De laatste 2 stoffen worden uiteraard"
+7210 PRINT"niet meer geplakt, maar op een naaima-"
+7220 PRINT"chine genaaid. Je verkrijgt hierdoor"
+7230 PRINT"een ijzersterke vlieger die tegen een"
+7240 PRINT"stoot je kan. Een derde materiaal is"
+7250 PRINT"Tyvek. Het is goedkoop, sterk, te lij-"
+7260 PRINT"men met hobbylijm en te schilderen met"
+7270 PRINT"acrylverf."
+7280 PRINT"Alle stokverbindingen zijn demontabel"
+7290 PRINT"Hierdoor is het makkelijk een vlieger"
+7300 PRINT"te vervoeren als een klein handzaam"
+7310 PRINT"rolletje. De verbinding tussen 2 stok-"
+7320 PRINT"ken is gemaakt met behulp van een"
+7330 PRINT"stukje plastikslang. Zie voor details"
+7340 PRINT"de doosvlieger welke 16 van zulke"
+7350 PRINT"slangetjes heeft. Probeer altijd zo"
+7360 PRINT"symmetrisch mogelijk te werken. "
+7370 PRINT"Hierdoor verkrijg je een vlieger die"
+7380 PRINT"mooi stabiel vliegt."
+7390 GOSUB11000
+7400 PRINT"De vliegers die hier beschreven zijn"
+7410 PRINT"vliegen allen zonder staart. Alleen de"
+7420 PRINT"sleevlieger heeft bij harde wind wel"
+7430 PRINT"eens een staartje nodig."
+7440 GOSUB11000
+7450 PRINT"      De toming en het vliegertouw":PRINT
+7460 PRINT"Het vliegertouw is een belangrijke"
+7470 PRINT"schakel tussen de vlieger en de persoon"
+7480 PRINT"die vliegert. Een te lichte draad lijdt"
+7490 PRINT"zeker tot een breuk en een te zware"
+7500 PRINT"draad tot het niet opstijgen van de"
+7510 PRINT"vlieger. Voor de sleevlieger kun je"
+7520 PRINT"volstaan met een katoenen draad of met"
+7530 PRINT"draad dat in speelgoedwinkels verkrijg-"
+7540 PRINT"baar is. Voor de wat zwaardere vliegers"
+7550 PRINT"ben je toch aangewezen o` gevlochten"
+7560 PRINT"nylontouw van 0. 5 tot 1 mm."
+7570 PRINT"O ja, de Nederlandse wet schrijft voor"
+7580 PRINT"dat een vliegertouw niet langer mag"
+7590 PRINT"zijn dan 100 meter. Wat een haspel be-"
+7600 PRINT"treft: Een haspel kun je het beste"
+7610 PRINT"maken van een stukje multiplex, met aan"
+7620 PRINT"beide uiteinden een stukje rondhout van"
+7630 PRINT"3 cm."
+7640 GOSUB11000
+7650 PRINT"De toming van een vlieger bepaalt hoe"
+7660 PRINT"een vlieger vliegt. Een te lage toming"
+7670 PRINT"resulteert in een vlieger die niet op-"
+7680 PRINT"stijgt. Een te hoge toming in een vlie-"
+7690 PRINT"ger die laag in de lucht gaat staan."
+7700 PRINT"Bij een goede toming zal de vlieger een"
+7710 PRINT"een hoge vlucht maken met een 'minimum'"
+7720 PRINT"aan trekkracht. Een kwestie van"
+7730 PRINT"proberen dus."
+7740 PRINT:PRINT"     We gaan terug naar het menu"
+7750 GOSUB11000:GOTO1020
+8000 GOSUB100:PRINT"     DE SLEEVLIEGER":PRINT
+8010 PRINT"De sleevlieger wordt meestal gemaakt"
+8020 PRINT"van een vuilniszak of een ander stukje"
+8030 PRINT"dun plastik. De tekening spreekt voor"
+8040 PRINT"zichzelf wat de maten betreft. De"
+8050 PRINT"raminstokjes worden gewoon geplakt met"
+8060 PRINT"cellotape. Een ekstra versteviging op"
+8070 PRINT"de uiteinden voorkomt loslaten van de"
+8080 PRINT"stokjes. Een blik op tek. 2 geeft te"
+8090 PRINT"zien hoe de toomdraden worden beves-"
+8100 PRINT"tigd. Begin met een stukje van een"
+8110 PRINT"kaasprikkertje, om daar een stukje tape"
+8120 PRINT"om te doen. Vervolgens dit stokje op"
+8130 PRINT"een hoekje te leggen om daarna het"
+8140 PRINT"hoekje om de kaasprikker te vouwen. Nu"
+8150 PRINT"nogmaals een stukje tape over het"
+8160 PRINT"hoekje plakken en klaar is Kees. Nu"
+8170 PRINT"doen we dat ook aan de andere zijde."
+8180 GOSUB11000
+8190 PRINT"Neem nu een stuk draad van van 1.5"
+8200 PRINT"meter en steek die met een stopnaald"
+8210 PRINT"achter de kaasprikker. Andere kant van"
+8220 PRINT"de draad aan de andere zijde. Even een"
+8230 PRINT"knoopje erop en u heeft een ijzersterke"
+8240 PRINT"toomverbinding. Rest ons nog het midden"
+8250 PRINT"van de draad te bepalen en daar een"
+8260 PRINT"lusje in te knopen en klaar is de"
+8270 PRINT"sleevlieger.":PRINT
+8280 PRINT"veel sukses met de bouw."
+8290 GOSUB11000:GOTO2010
+9000 GOSUB100:REM DOOSVLIEGER
+9010 PRINT:PRINT"          DE DOOSVLIEGER":PRINT
+9020 PRINT"Een doosvlieger bestaat uit 2 gelijke"
+9030 PRINT"cellen. Een onder, en een boven. Beide"
+9040 PRINT"cellen zijn gelijk aan elkaar, zodat we"
+9050 PRINT"er maar een hoeven te beschrijven. Voor"
+9060 PRINT"een doosvlieger die wat harde wind kan"
+9070 PRINT"hebben, kun je het best een stevig stuk"
+9080 PRINT"plastik nemen. De maten van een cel"
+9090 PRINT"zijn rechtuit rechtaan. Voor de naad 2"
+9100 PRINT"cm meer nemen zodat we een dubbele"
+9110 PRINT"plaknaad krijgen. Stokken er ook weer"
+9120 PRINT"inplakken met tape. Hou er van te voren"
+9130 PRINT"rekening mee dat de stokken er aan de"
+9140 PRINT"onder- en bovenkant 3 a 4 cm uitsteken."
+9150 PRINT"Dit voor de slangetjes om de kruisstok-"
+9160 PRINT"ken vast te zetten. De stokken moeten"
+9170 PRINT"wel aan de binnenkant van de cellen"
+9180 PRINT"geplakt worden. De lengte van de kruis-"
+9190 PRINT"stokken kan pas bepaald worden als de"
+9200 PRINT"vlieger bijna klaar is."
+9210 GOSUB11000
+9220 PRINT"Hiermee bedoelen we dat de slangetjes"
+9230 PRINT"er aan zitten en dat de cellen aan de"
+9240 PRINT"staanders geplakt zijn. Zijn de kruis-"
+9250 PRINT"stokken op maat, rest ons nog alleen de"
+9260 PRINT"toom aan te brengen. Dit is een makke-"
+9270 PRINT"lijke vlieger, die ook goed van stof te"
+9280 PRINT"maken is. Men kan deze ook maken van"
+9290 PRINT"katoen of van spinakernylon. Neem dan"
+9300 PRINT"wat meer stof om er een zoom langs te"
+9310 PRINT"maken van 1 cm. Om de stokken op hun"
+9320 PRINT"plaats te houden moeten er tunnels"
+9330 PRINT"genaaid worden in de hoeken om de stok-"
+9340 PRINT"ken door te steken. Hier worden ook de"
+9350 PRINT"stukjes slang gebruikt om de kruis-"
+9360 PRINT"stokken te bevestigen."
+9370 PRINT:PRINT"   Hierna volgen de tekeningen welke"
+9380 PRINT"   voor zichzelf spreken."
+9390 GOSUB11000:GOTO3010
+10000 GOSUB100:REM SLEEVLIEGER
+10010 PRINT"     DE DELTAVLIEGER":PRINT
+10020 PRINT"De delta is een mooie vlieger die iets"
+10030 PRINT"moeilijker te maken is. Bij deze vlie-"
+10040 PRINT"ger komt een goede symmetrie om de hoek"
+10050 PRINT"kijken. In tekening 2 staat een tabel"
+10060 PRINT"met twee maten. De kleinste is van"
+10070 PRINT"plastik te maken, de grootste beter van"
+10080 PRINT"duurzamer materiaal. Tyvek en spinaker"
+10090 PRINT"doen het hier ideaal. Als we tek. 1"
+10100 PRINT"goed bekijken, zien we dat een delta 4"
+10110 PRINT"stokken heeft. 2 vleugelstokken (a), 1"
+10120 PRINT"rugstok (x-x), en een staander (d). Om"
+10130 PRINT"deze delta goed te laten vliegen dienen"
+10140 PRINT"de vleugelstokken en de staander in"
+10150 PRINT"tunnels te zitten. Een overslag van 2.5"
+10160 PRINT"cm geeft al een tunnel van 8 mm. De"
+10170 PRINT"kiel van de delta geplakt/genaaid tus-"
+10180 PRINT"sen de 2 vleugels. De kiel kan het best"
+10190 PRINT"van dubbel materiaal worden genomen,"
+10200 PRINT"omdat hier grote krachten op komen."
+10210 GOSUB11000
+10220 PRINT"Als we goed op tek. 1 kijken, zien we"
+10230 PRINT"dat de vleugelstokken niet helemaal"
+10240 PRINT"doorlopen tot aan de neus. De delta"
+10250 PRINT"verkrijgt hierdoor een flexibel karak-"
+10260 PRINT"ter. Voordat de vleugelstokken op hun"
+10270 PRINT"plaats gemonteerd worden, moeten er op"
+10280 PRINT"de punten X een uitsparing gemaakt zijn"
+10290 PRINT"voor de slangetjes van de rugstok. Als"
+10300 PRINT"nu de delta geheel in elkaar zit, kan"
+10310 PRINT"de maat van de rugstok worden bepaald."
+10320 PRINT"Deze stok mag eigenlijk de vlieger niet"
+10330 PRINT"opspannen. De vleugels gaan dan beter"
+10340 PRINT"bol in de wind staan, waardoor de delta"
+10350 PRINT"beter vliegt."
+10360 GOSUB11000
+10370 PRINT"   De toming van de deltavlieger."
+10380 PRINT"Als we tek. 1 goed bekijken, zien we"
+10390 PRINT"aan de onderkant van de kiel 3 punten"
+10400 PRINT"staan. Dit zijn de 3 toompunten. Deze"
+10410 PRINT"punten worden gekozen afhankelijk van"
+10420 PRINT"de wind. Bij een lichte wind wordt het"
+10430 PRINT"achterste genomen en bij een zware wind"
+10440 PRINT"het voorste toompunt. Deze toompunten"
+10450 PRINT"worden ekstra verstevigd en voorzien"
+10460 PRINT"van een holnietje of een zeiloogje. Een"
+10470 PRINT"staart is niet nodig maar geeft wel een"
+10480 PRINT"fraai gezicht. Een staart van 10 mtr is"
+10490 PRINT"een mooi plaatje in de lucht. Voor deze"
+10500 PRINT"staart kun je afspanband nemen, die je"
+10510 PRINT"wel een tegenkomt langs wegen."
+10520 PRINT:PRINT"  Zo nu vlug aan de slag"
+10530 GOSUB11000:GOTO5010
+11000 HO=5:VE=VT:GOSUB110
+11010 SR$="druk op een toets .....":GOSUB150
+11020 GOSUB210:GOSUB100:PRINT:RETURN
+30000 REM ***********************
+30010 REM *                     *
+30020 REM * VLIEGERS ZELF MAKEN *
+30030 REM *                     *
+30040 REM *   HARM VAN VEEN     *
+30050 REM *                     *
+30060 REM *    IN BASICODE 3    *
+30070 REM *                     *
+32000 REM * door BRAM LUTEIJN   *
+32010 REM *                     *
+32020 REM *   RIVIERENPARK 48   *
+32030 REM *                     *
+32040 REM *  4535 EJ TERNEUZEN  *
+32050 REM *                     *
+32060 REM *     01150-18149     *
+32070 REM *                     *
+32080 REM * OP EEN COMMODORE 64 *
+32090 REM *                     *
+32100 REM ***********************
+32110 REM
+32120 REM TROS-RADIO dd 900926

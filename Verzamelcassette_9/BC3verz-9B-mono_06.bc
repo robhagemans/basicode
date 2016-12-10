@@ -1,0 +1,315 @@
+
+1000 A=500:GOTO20:REM === Zinsontleding ===
+1010 DIMZ$(3),W$(10),NR(10):FT=0:GOSUB100
+1020 D=0:REM --- data tellen ---
+1030 READD$:IFD$="*" THEN1060
+1040 IFD$="." THEND=D+1
+1050 GOTO1030
+1060 DIMS(D+1)
+1070 PRINT"ZINSONTLEDING VOOR BEGINNERS"
+1080 PRINT"----------------------------":PRINT
+1090 PRINT"We maken het niet te moeilijk,"
+1100 PRINT"maar een paar zaken moeten we toch"
+1110 PRINT"even grondig bekijken:":PRINT
+1120 PRINT"EEN ZIN is een groep woorden,"
+1130 PRINT"die met elkaar iets betekenen"
+1140 PRINT"(anders is het ONZIN).":PRINT
+1150 PRINT"Je kunt heel veel zinnen bedenken,"
+1160 PRINT"maar die zitten toch op dezelfde"
+1170 PRINT"manier in elkaar.":PRINT
+1180 PRINT"Om dat te begrijpen, gaan we zinnen"
+1190 PRINT"ONTLEDEN, dat wil zeggen:"
+1200 PRINT"we gaan bekijken uit welke delen"
+1210 PRINT"de zin bestaat, en wat ze doen."
+1220 GOSUB5070
+1230 PRINT"Het ONDERWERP":PRINT"-------------":PRINT
+1240 PRINT"Laat je niet in de war brengen."
+1250 PRINT"Neem nou deze zin:":PRINT
+1260 PRINT"  De krant vermeldt de uitslagen van"
+1270 PRINT"  alle voetbalwedstrijden.":PRINT
+1280 PRINT"Je zou denken dat hier die uitslagen"
+1290 PRINT"het onderwerp zijn? Mis!":PRINT
+1300 PRINT"Bij zinsontleding is 'het onderwerp'"
+1310 PRINT"van deze zin DE KRANT. Hoe dat zit?"
+1320 PRINT"Daarvoor moet je het GEZEGDE zoeken!":PRINT
+1330 GOSUB5070
+1340 PRINT"In de meeste zinnen wordt iets"
+1350 PRINT"gedaan, er gebeurt iets. Hier ook:":PRINT
+1360 PRINT"  De krant VERMELDT...":PRINT
+1370 PRINT"De krant DOET het, en daarom is"
+1380 PRINT"'de krant' het ONDERWERP van de zin.":PRINT
+1390 PRINT"WAT de krant doet, kun je zien"
+1400 PRINT"aan 'vermeldt' - dat is het GEZEGDE.":PRINT
+1410 PRINT"Dus:":PRINT
+1420 PRINT"ONDERWERP = WIE HET DOET"
+1430 PRINT"------------------------":PRINT
+1440 PRINT"GEZEGDE = WAT GEDAAN WORDT"
+1450 PRINT"--------------------------":PRINT
+1460 GOSUB5070
+1470 PRINT"Het GEZEGDE is altijd een WERKWOORD"
+1480 PRINT"(soms met nog iets er bij), en dat"
+1490 PRINT"gezegde verandert als je de zin in"
+1500 PRINT"een andere tijd zet.":PRINT
+1510 PRINT"  De krant VERMELDT de uitslagen."
+1520 PRINT"  De krant VERMELDDE de uitslagen.":PRINT
+1530 PRINT"Ook als je de zin in het meervoud"
+1540 PRINT"zet, verandert het gezegde:":PRINT
+1550 PRINT"  De kranten VERMELDEN de uitslagen.":PRINT
+1560 PRINT"Het gezegde kun je dus makkelijk"
+1570 PRINT"vinden. En dan hoef je alleen maar"
+1580 PRINT"te vragen 'WIE doet het' en je hebt"
+1590 PRINT"het ONDERWERP van de zin te pakken."
+1600 GOSUB5070
+1610 REM --- oefeningen onderwerp ---
+1620 GOSUB5010:FORK=1 TOD:P=S(K)
+1630 PRINT"Bekijk deze zin:":PRINT
+1640 GOSUB5140:GOSUB5290:PRINT
+1650 PRINT"Tik nu het ONDERWERP van de zin:":PRINT
+1660 INPUTSR$:PRINT
+1670 GOSUB5100:X$=I$:SR$=W$(1):GOSUB5100
+1680 IFX$=I$ THENPRINT"Dat is goed":GOTO1740
+1690 PRINT"Het onderwerp is: ";W$(1):PRINT:FT=FT+1
+1700 PRINT"want het gezegde is: ";W$(2):PRINT
+1710 PRINTW$(1);W$(2)
+1720 FORN=1 TOLEN(W$(1))-1:PRINT"-";:NEXTN:PRINT
+1730 PRINT
+1740 GOSUB5070:NEXTK
+1750 GOSUB5320:ONIN-48 GOTO1070,1620,2000
+2000 PRINT"Het LIJDEND VOORWERP"
+2010 PRINT"--------------------":PRINT
+2020 PRINT"'Jan geeft Kees een schop.'":PRINT
+2030 PRINT"Wat is het lijdend voorwerp? Nee,"
+2040 PRINT"NIET Kees, al zou je dat denken!":PRINT
+2050 PRINT"Het LIJDEND VOORWERP kun je vinden,"
+2060 PRINT"door ook weer eerst het gezegde te"
+2070 PRINT"zoeken. En dan vraag je:":PRINT
+2080 PRINT"WIE of WAT  WORDT GE.....?":PRINT
+2090 PRINT"Het gezegde is hier 'geeft' en als"
+2100 PRINT"je vraagt WAT er gegeven wordt, dan"
+2110 PRINT"is dat natuurlijk die schop."
+2120 GOSUB5070
+2130 PRINT"In een zin zit lang niet altijd"
+2140 PRINT"een lijdend voorwerp.":PRINT
+2150 PRINT"Als je vindt dat in een van de"
+2160 PRINT"volgende zinnen  G E E N  lijdend"
+2170 PRINT"voorwerp zit, dan tik je gewoon"
+2180 PRINT"op de RETURN toets als antwoord":PRINT
+2190 PRINT"Dan weet de computer wat je bedoelt!"
+2200 GOSUB5070
+2210 REM --- oefeningen lijdend voorwerp ---
+2220 GOSUB5010:FORK=1 TOD:P=S(K)
+2230 PRINT"Bekijk deze zin:":PRINT
+2240 GOSUB5140:GOSUB5290:PRINT
+2250 PRINT"Tik nu het LIJDEND VOORWERP"
+2260 PRINT"(als het er niet is alleen RETURN):":PRINT
+2270 INPUTI$:SR$=I$:PRINT:FT=FT+1
+2280 IF(SR$<>"")AND(W$(4)<>"")THEN2330
+2290 IF(SR$="")AND(W$(4)="")THENX$=I$:GOTO2340
+2300 IF(W$(4)<>"")THEN2350
+2310 PRINT"Dit is niet goed, want"
+2320 PRINT"er is geen lijdend voorwerp":GOTO2390
+2330 GOSUB5100:X$=I$:SR$=W$(4):GOSUB5100
+2340 IFX$=I$ THENPRINT"Dat is goed":FT=FT-1:GOTO2390
+2350 PRINT"Lijdend voorwerp is: ";W$(4):PRINT
+2360 PRINT"want het gezegde is: ";W$(2):PRINT
+2370 PRINTW$(4);W$(0)
+2380 FORN=1 TOLEN(W$(4))-1:PRINT"-";:NEXTN:PRINT
+2390 GOSUB5070:NEXTK
+2400 GOSUB5320:ONIN-48 GOTO1070,2220,3000
+3000 PRINT"Het MEEWERKEND VOORWERP"
+3010 PRINT"-----------------------":PRINT
+3020 PRINT"'Ik geef (aan) HEM een appel'":PRINT
+3030 PRINT"'Ik koop (voor) HEM een appel'":PRINT
+3040 PRINT"In deze twee zinnen is HEM het"
+3050 PRINT"MEEWERKEND VOORWERP":PRINT
+3060 PRINT"In de zinnen gaat 'een appel' van"
+3070 PRINT"het onderwerp (ik) naar iemand toe,"
+3080 PRINT"of is voor hem bestemd.":PRINT
+3090 PRINT"Je kunt voor het meewerkend voorwerp"
+3100 PRINT"AAN of VOOR zetten, of het weglaten.":PRINT
+3110 PRINT"In 'Jan geeft (aan) Piet een klap' is"
+3120 PRINT"Piet dus het MEEWERKEND VOORWERP en"
+3130 PRINT"niet het lijdend voorwerp!"
+3140 GOSUB5070
+3150 REM --- oefeningen meewerkend voorwerp ---
+3160 GOSUB5010:FORK=1 TOD:P=S(K)
+3170 PRINT"Bekijk deze zin:":PRINT
+3180 GOSUB5140:GOSUB5290:PRINT
+3190 PRINT"Tik het MEEWERKEND VOORWERP"
+3200 PRINT"(als het er niet is alleen RETURN):":PRINT
+3210 INPUTI$:SR$=I$:PRINT:FT=FT+1
+3220 IF(SR$<>"")AND(W$(3)<>"")THEN3270
+3230 IF(SR$="")AND(W$(3)="")THENX$=I$:GOTO3280
+3240 IF(W$(3)<>"")THEN3290
+3250 PRINT"Dit is niet goed, want"
+3260 PRINT"er is geen meewerkend voorwerp":GOTO3320
+3270 GOSUB5100:X$=I$:SR$=W$(3):GOSUB5100
+3280 IFX$=I$ THENPRINT"Dat is goed":FT=FT-1:GOTO3320
+3290 PRINT"Meewerkend voorwerp is: ";W$(3)
+3300 PRINT"want je kunt er 'aan' voor denken"
+3310 PRINT:PRINT"aan ";W$(3):PRINT"---"
+3320 GOSUB5070:NEXTK
+3330 GOSUB5320:ONIN-48 GOTO1070,3160,4000
+4000 PRINT"BEPALINGEN":PRINT"----------":PRINT
+4010 PRINT"Behalve onderwerp, gezegde, lijdend"
+4020 PRINT"voorwerp en meewerkend voorwerp kun"
+4030 PRINT"je in een zin BEPALINGEN vinden.":PRINT
+4040 PRINT"  Op het dak zit een ooievaar":PRINT
+4050 PRINT"  een ooievaar - onderwerp"
+4060 PRINT"  zit          - gezegde"
+4070 PRINT"  op het dak   - bepaling":PRINT
+4080 PRINT"Een BEPALING zegt wat over de"
+4090 PRINT"plaats, over de tijd of over de"
+4100 PRINT"manier waarop iets gebeurt."
+4110 GOSUB5070
+4120 PRINT"Een ooievaar kan overal zitten,"
+4130 PRINT"'Een ooievaar zit' zegt niet"
+4140 PRINT"zo veel. De BEPALING zegt hier"
+4150 PRINT"iets over de plaats waar de"
+4160 PRINT"ooievaar zit":PRINT
+4170 PRINT"We onderscheiden de bepalingen"
+4180 PRINT"vaak nog als"
+4190 PRINT"BEPALING VAN PLAATS,"
+4200 PRINT"BEPALING VAN TIJD enzovoort,"
+4210 PRINT"maar dat laten we hier maar zitten."
+4220 GOSUB5070
+4230 PRINT"In lang niet iedere zin zit een"
+4240 PRINT"bepaling, maar in een zin kunnen"
+4250 PRINT"ook best meerdere bepalingen"
+4260 PRINT"voorkomen.":PRINT
+4270 PRINT"Maar je kunt ze nu vast wel vinden."
+4280 PRINT"Als oefening krijg je telkens een"
+4290 PRINT"zin - en daaruit een zinsdeel:":PRINT
+4300 PRINT"Je mag dan dat zinsdeel 'benoemen'"
+4310 PRINT"Het kan van alles zijn wat we tot"
+4320 PRINT"nu toe behandeld hebben."
+4330 GOSUB5070
+4340 REM --- oefening zinsdelen benoemen ---
+4350 GOSUB5010:FORK=1 TOD:P=S(K)
+4360 PRINT"Bekijk deze zin:":PRINT
+4370 GOSUB5140:GOSUB5290:PRINT
+4380 GOSUB260:Q=INT(RV*2+1):ONQ GOTO4390,4400
+4390 Q=5:IFW$(Q)<>"" THEN4410
+4400 GOSUB260:Q=INT(RV*8)+1:IFW$(Q)="" THEN4400
+4410 PRINT" === ";W$(Q);" ===":PRINT
+4420 PRINT"Hoe heet dit zinsdeel?":PRINT
+4430 PRINT" 1 = onderwerp"
+4440 PRINT" 2 = gezegde"
+4450 PRINT" 3 = meewerkend voorwerp"
+4460 PRINT" 4 = lijdend voorwerp"
+4470 PRINT" 5 = bepaling":PRINT
+4480 PRINT" Tik 1, 2, 3, 4 of 5:  ";
+4490 GOSUB210:IF(IN$<"1")OR(IN$>"5")THEN4490
+4500 PRINTIN$:PRINT:H=VAL(IN$)
+4510 IFH=Q THENPRINT" Dat is goed":GOTO4530
+4520 FT=FT+1:PRINT" Dat is niet goed, het is nr ";Q
+4530 GOSUB5070
+4540 NEXTK
+4550 GOSUB5320:ONIN-48 GOTO1070,4350,4560
+4560 PRINT"EINDE VAN DIT PROGRAMMA"
+4570 PRINT"_______________________":PRINT
+4580 GOSUB5070:GOTO950
+5000 REM --- schudroutine ---
+5010 FORN=2 TOD+1:S(N)=N-1:NEXTN
+5020 FORN=1 TOD-1:GOSUB260
+5030 X=N+1+INT(RV*(D+1-N))
+5040 S(N)=S(X):S(X)=S(N+1)
+5050 NEXTN:S(D)=S(D+1):RETURN
+5060 REM --- tik op een toets ---
+5070 PRINT:PRINT"   Tik op een toets ";
+5080 GOSUB210:GOSUB100:RETURN
+5090 REM--- maak hoofdletters, strip spaties ---
+5100 GOSUB330:H$=SR$:I$="":SR$=" ":FORM=1 TOLEN(H$)
+5110 Q$=MID$(H$,M,1):IFQ$<>" " THENI$=I$+Q$
+5120 NEXTM:RETURN
+5130 REM --- zin behandelen ---
+5140 V=0:RESTORE
+5150 IFV=P-1 THEN5180
+5160 READD$:IFD$<>"." THEN5160
+5170 V=V+1:GOTO5150
+5180 FORN=0 TO9:W$(N)="":NEXTN:Z$="":I$="":T=1:U=1:Z$(U)=""
+5190 READD$:IFD$="." THENRETURN
+5200 A=VAL(LEFT$(D$,1)):L=LEN(D$)
+5210 IFA=0 THENW$(0)=RIGHT$(D$,L-1):GOTO5190
+5220 IFL=1 THENE$="":GOTO5240
+5230 E$=RIGHT$(D$,L-1)+" "
+5240 W$(A)=W$(A)+E$:NR(T)=A::T=T+1
+5250 IFLEN(Z$(U))+LEN(E$)>38 THENU=U+1:Z$(U)=""
+5260 Z$(U)=Z$(U)+E$
+5270 GOTO5190
+5280 REM --- zin afdrukken ---
+5290 FORN=1 TOU:PRINTZ$(N):NEXTN:PRINT:PRINT
+5300 RETURN
+5310 REM --- beoordeling oefening ---
+5320 PRINT"EINDE VAN DEZE OEFENING"
+5330 PRINT"-----------------------":PRINT
+5340 PRINT"Je hebt ";D;" zinnen gedaan.":PRINT
+5350 IFFT=0 THENPRINT"Je had ze ALLEMAAL GOED !":GOTO5370
+5360 PRINT"Je hebt je ";FT;" keer vergist"
+5370 PRINT:PRINT"Wil je:":PRINT
+5380 PRINT"  1 Opnieuw vooraan beginnen":PRINT
+5390 PRINT"  2 Deze oefening herhalen":PRINT
+5400 PRINT"  3 Verder gaan ...":PRINT
+5410 PRINT"  4 Stoppen":PRINT
+5420 PRINT"             Tik 1, 2, 3 of 4:  ";
+5430 GOSUB210:IF(IN$<"1")OR(IN$>"4")THEN5430
+5440 PRINTIN$:FORN=1 TO200:NEXTN
+5450 IFIN$="4" THEN950
+5460 GOSUB100:FT=0:RETURN
+25000 DATA"1Het paard","2springt"
+25010 DATA"5over de hindernis","."
+25020 DATA"1De jongen","2kust","4het meisje"
+25030 DATA"0WORDT gekust","."
+25040 DATA"3De burgemeester","2werd","1een schilderij"
+25050 DATA"2aangeboden","5door de burgerij","."
+25060 DATA"5Op de hoogste verdieping","2woont"
+25070 DATA"1mijn vriend","."
+25080 DATA"5Waarom","2moet","1Noortje","4de zolder"
+25090 DATA"2opruimen","9?","0WORDT opgeruimd","."
+25100 DATA"1De hond","2beet","4de postbode"
+25110 DATA"5in zijn broek","0WORDT gebeten","."
+25120 DATA"1Ik","2breng","3mijn zieke tante"
+25130 DATA"5morgenmiddag","4een bos bloemen"
+25140 DATA"0WORDT gebracht","."
+25150 DATA"1Jan","2kreeg","5van Karel","4een klap"
+25160 DATA"0WORDT gekregen","."
+25170 DATA"1Ik","2gaf","3hem","5in de pauze"
+25180 DATA"4een sinaasappel","0WORDT gegeven","."
+25190 DATA"5Er","2was","1niemand","2op straat","."
+25200 DATA"5Gisteren","2bracht","1hij","4de boeken"
+25210 DATA"2terug","6naar de bibliotheek"
+25220 DATA"0WERDEN terug gebracht","."
+25230 DATA"5Over drie dagen","2moet","1ik","3mijn broer"
+25240 DATA"4de fiets","2terug geven"
+25250 DATA"0WORDT terug gegeven","."
+25260 DATA"1Hij","2was er","5als de kippen","2bij","."
+25270 DATA"5Morgen","2krijg","1ik","4mijn zakgeld"
+25280 DATA"0WORDT gekregen","."
+25290 DATA"5Heel snel","2schroefde","1de monteur"
+25300 DATA"4de nieuwe pomp","6aan de wasmachine"
+25310 DATA"0WORDT geschroefd","."
+25320 DATA"*"
+30000 REM----------------------------------------------
+30010 REM Het aantal DATA zinnen is vrij, het programma
+30020 REM telt ze zelf.
+30030 REM De volgorde van de zinnen wordt voor ieder
+30040 REM programmadeel opnieuw geschud.
+30050 REM De zinsdelen staan in afzonderlijke strings,
+30060 REM voorafgegaan door het code-nummer
+30070 REM 1 = onderwerp
+30080 REM 2 = gezegde (meerdere delen, zelfde nummer!)
+30090 REM 3 = meewerkend voorwerp
+30100 REM 4 = lijdend voorwerp
+30110 REM 5, evt 6,7,8 bepalingen
+30120 REM 9 = vraagteken, uitroepteken
+30130 REM 0 = WORDT/WORDEN ge... (bij lijd.vw)
+30140 REM De laatste string van een zin bevat een punt
+30150 REM (dit is de DATA -telstring)
+30160 REM De DATA worden afgesloten met een sluitstring
+30170 REM die alleen een * bevat
+30180 REM----------------------------------------------
+32000 REM  Ch.W.Brederode
+32010 REM  Von Bonninghausenlaan 33
+32020 REM  2161 ES  LISSE
+32030 REM
+32040 REM TROS-RADIO dd 901017

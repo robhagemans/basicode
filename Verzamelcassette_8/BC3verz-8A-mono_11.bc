@@ -1,0 +1,258 @@
+
+1000 A=500:GOTO20:REM TOELICHTING OP BC-SCORE
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1340:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Wilt u het bulletin op"
+1060 PRINT:PRINT"   1  Het beeldscherm,"
+1070 PRINT"   2  De printer."
+1080 PRINT:PRINT"Welk nummer kiest u ";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1180
+1100 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1110 PRINT"begin van elke regel ";:INPUTHL
+1120 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1130 PRINT"u op elke regel ";:INPUTI:HR=HL+I-1
+1140 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1150 PRINT"laten overslaan ";:INPUTVL
+1160 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+1170 PRINT"elk blad ";:INPUTVR:VR=VR+VL-3
+1180 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1190 GOSUB1310:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1290
+1200 IFLEN(R$)>HR-HL THEN GOSUB1730
+1210 GOSUB1370:IFR$<>"" THENR$=R$+" "
+1220 R$=R$+D$:GOTO1200
+1230 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1250
+1240 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1250 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1260 IFSC=1 THEN1310
+1270 IFVL>0 THENFORI=1 TOVL:GOSUB360:NEXTI
+1280 AL=VL
+1290 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1230
+1300 SR$="":GOSUB1230:AL=VL:RETURN
+1310 HO=3:VE=VT:GOSUB110
+1320 SR$="VERVOLG: druk op <return>":GOSUB150
+1330 GOSUB210:IFIN<>13 THEN1330
+1340 GOSUB100:AL=VL:SR$=T$
+1350 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1360 PRINT:PRINT:RETURN
+1370 READD$
+1380 IFD$="" THEN1370
+1390 IFLEFT$(D$,1)="." THEN1440
+1400 IFLEFT$(D$,1)<>"!" THENRETURN
+1410 IFD$="!" THEND$="":GOTO1430
+1420 D$=RIGHT$(D$,LEN(D$)-1)
+1430 GOSUB1670:GOTO1380
+1440 IFD$<>".E" THEN1490
+1450 J=1:GOSUB1670:T$="Einde van dit bulletin"
+1460 SR$="":GOSUB1230:GOSUB1230:SR$=T$:GOSUB1230:T$=""
+1470 SR$="":GOSUB1230:IFAL<>VL THEN1470
+1480 GOTO950
+1490 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+1500 IFDD$<>"R" THEN1550
+1510 IFSC=2 THENRETURN
+1520 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1230:R$=""
+1530 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1540 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1370
+1550 IFDD$<>"M" THEN1580
+1560 I=VAL(D$):MM$="":IFI+HL=0 THEN1370
+1570 MM$=LEFT$(S$,I+HL):GOTO1370
+1580 IFDD$="P" THENJ=VAL(D$):GOSUB1670:GOSUB1690:GOTO1370
+1590 IFDD$="T" THENT$=D$:J=10:GOSUB1670:GOSUB1690:GOTO1510
+1600 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1370
+1610 IFDD$<>"F" THEN1640
+1620 J=VAL(D$):GOSUB1670
+1630 J=J-1:IFJ>-1 THENSR$="":GOSUB1230:GOTO1630
+1640 IFDD$<>"C" THEN1660
+1650 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1230
+1660 GOTO1370
+1670 GOSUB1730:SR$=R$:GOSUB1230:R$="":J=J-1
+1680 RETURN
+1690 IF(SC=1)OR(AL+J>VR)THEN1710
+1700 SR$="":GOSUB1230:GOSUB1230:RETURN
+1710 IFAL<>VL THENSR$="":GOSUB1230:GOTO1710
+1720 RETURN
+1730 K=HR-HL+1-LEN(M$)
+1740 IFLEN(R$)<=K THENRETURN
+1750 IFMID$(R$,K,1)=" " THEN1780
+1760 K=K-1:IFK>0 THEN1750
+1770 SR$="":GOTO1790
+1780 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+1790 GOSUB1230:GOTO1730
+25000 DATA"BC-SCORE - STANDENPROGRAMMA"
+25010 DATA".RInleiding"
+25020 DATA"!!BC-SCORE is een in BASICODE-3 geschreven"
+25030 DATA"programma dat het mogelijk maakt op eenvoudige"
+25040 DATA"wijze de standen van een of meerdere"
+25050 DATA"competities-poules bij te houden. Het programma"
+25060 DATA"kan poules van maximaal 16 ploegen bevatten met"
+25070 DATA"een volledige dubbele competitie van 240"
+25080 DATA"wedstrijden.","!!Dit programma kent dezelfde"
+25090 DATA"structuur als het eerder uitgebrachte programma"
+25100 DATA"BC-BOEK. Het bestaat uit een hoofdmenu waarin"
+25110 DATA"d.m.v. van een cijfer wordt aangegeven welke"
+25120 DATA"keuze moet worden uitgevoerd.","!!Hieronder"
+25130 DATA"volgt een toelichting op deze keuzes:",".P9"
+25140 DATA".R0 = Stoppen","!!Door het indrukken van deze"
+25150 DATA"toets wordt het programma gestopt. Dit is echter"
+25160 DATA"alleen mogelijk indien geen gegevens meer"
+25170 DATA"aanwezig zijn. Wordt toch geprobeerd het"
+25180 DATA"programma te stoppen, dan volgt er een"
+25190 DATA"mededeling dat er nog gegevens aanwezig zijn en"
+25200 DATA"na een druk op de spatiebalk komt het hoofdmenu"
+25210 DATA"weer op het scherm.",".P9"
+25220 DATA".R1 = Inlezen poule","!!Dit kan alleen"
+25230 DATA"uitgevoerd worden als er geen poule geladen is."
+25240 DATA"Zijn er geen gegevens aanwezig, dan wordt"
+25250 DATA"gevraagd van welk achtergrondgeheugen gelezen"
+25260 DATA"moet worden. Vervolgens wordt gevraagd welke"
+25270 DATA"poule geladen moet worden. Door het ingeven van"
+25280 DATA"de gewenste poulenaam wordt het bestand geladen."
+25290 DATA"NB.: dit geldt niet voor bestanden op cassette"
+25300 DATA"in het BASICODE-formaat; hierbij wordt steeds"
+25310 DATA"het eerstvolgende bestand geladen. Na het"
+25320 DATA"inlezen van de gegevens komt het hoofdmenu weer"
+25330 DATA"op het scherm.",".P9"
+25340 DATA".R2 = Wegschrijven poule","!!Hier geldt het"
+25350 DATA"omgekeerde als bij punt 1. Alleen als er een"
+25360 DATA"poule aanwezig is kan er geschreven worden."
+25370 DATA"Voordat het programma gestopt kan worden dient"
+25380 DATA"er natuurlijk altijd eerst geschreven te worden."
+25390 DATA"De bestanden worden weggeschreven onder hun"
+25400 DATA"poulenaam.",".P9"
+25410 DATA".R3 = Invoeren poule","!!Op het bovenste deel"
+25420 DATA"van het scherm verschijnt een ruimte waarin de"
+25430 DATA"ploegen komen te staan. Indien deze handeling"
+25440 DATA"voor het eerst voor een poule wordt uitgevoerd"
+25450 DATA"zal eerst naar de naam van de poule gevraagd"
+25460 DATA"worden. Is deze opgegeven, dan kunnen daarna de"
+25470 DATA"ploegen worden ingevoerd. Het verlaten van deze"
+25480 DATA"handeling geschiedt door bij de ploegnaam een 0"
+25490 DATA"in te toetsen.",".P9"
+25500 DATA".R4 = Corrigeren poule","!!Evenals bij het"
+25510 DATA"invoeren komen in het bovenste gedeelte van het"
+25520 DATA"scherm de ingevoerde ploegen te staan. Door een"
+25530 DATA"nummer in te geven bepaalt men welke ploegnaam"
+25540 DATA"gecorrigeerd gaat worden.","!!Door geen nieuwe"
+25550 DATA"naam in te toetsen kan een ploeg uit dit schema"
+25560 DATA"verwijderd worden. Het ploegnummer blijft dan"
+25570 DATA"leeg. Dit ploegnummer mag daarna uitteraard bij"
+25580 DATA"de invoer van de uitslagen niet meer gebruikt"
+25590 DATA"worden!","!!Het wijzigen van de poulenaam kan"
+25600 DATA"gebeuren door 17 in te geven.",".P9"
+25610 DATA".R5 = Invoeren uitslagen","!!Bij het invoeren"
+25620 DATA"van de uitslagen wordt achtereenvolgens gevraagd"
+25630 DATA"naar het nummer van de thuisploeg, het nummer"
+25640 DATA"van de uitspelende ploeg, het aantal doelpunten"
+25650 DATA"van de thuisploeg en het aantal doelpunten voor"
+25660 DATA"de uitspelende ploeg.","!!Daarna moet er nog"
+25670 DATA"worden aangegeven of een van de ploegen punten"
+25680 DATA"in mindering krijgt. Deze puntenmindering kan"
+25690 DATA"bijv. worden opgelegd als een ploeg niet is"
+25700 DATA"opgekomen of als men met (een) ongerechtigde"
+25710 DATA"speler(s) uitkomt. Geen van de ploegen wordt"
+25720 DATA"aangegeven door een 0 in te toetsen, een 1 is"
+25730 DATA"voor puntenmindering voor de thuisploeg en een 2"
+25740 DATA"is voor puntenmindering voor de uitploeg. Bij de"
+25750 DATA"berekening van de stand wordt met eventule"
+25760 DATA"puntenmindering rekening gehouden. Na deze vraag"
+25770 DATA"moet nog een bevestiging worden gegeven of de"
+25780 DATA"gegevens juist zijn. Indien dit niet het geval"
+25790 DATA"zou zijn, kan de invoer van deze uitslag opnieuw"
+25800 DATA"plaatsvinden. Zijn de gegevens wel juist, dan"
+25810 DATA"volgt de vraag naar een nieuwe uitslag. Gestopt"
+25820 DATA"wordt hier door bij de vraag naar de thuisploeg"
+25830 DATA"de inmiddels bekende 0 in te toetsen.",".P9"
+25840 DATA".R6 = Printen uitslagen","!!Punt nummer 6 geeft"
+25850 DATA"de mogelijheid de ingevoerde uitslagen uit te"
+25860 DATA"printen. Onder dit nummer wordt eerst gevraagd"
+25870 DATA"naar de datum van de dag waarop deze gegevens"
+25880 DATA"worden opgevraagd, dan volgt de vraag vanaf welk"
+25890 DATA"uitslagnummer tot en met welk uitslagnummer moet"
+25900 DATA"worden afgedrukt.","!!Voor de datum zijn zes"
+25910 DATA"posities gereserveerd, het formaat is ddmmjj;"
+25920 DATA"b.v. 13 november 1989 is dus 131189.","!!De"
+25930 DATA"uitslagen krijgen het volgnummer van de volgorde"
+25940 DATA"waarin zij zijn ingevoerd.Het laagste nummer is"
+25950 DATA"hierbij nummer 1 en het hoogste nummer is het"
+25960 DATA"nummer van de laatst ingevoerde uitslag. Worden"
+25970 DATA"bij de vraag naar de nummers geen waarden"
+25980 DATA"ingegeven dan wordt er van de eerste tot en met"
+25990 DATA"de laatste uitslag geprint.","!!De uitslagen"
+26000 DATA"verschijnen op het scherm. Is het scherm vol dan"
+26010 DATA"men kan de volgende reeks op scherm laten"
+26020 DATA"verschijnen door op de spatiebalk te drukken of"
+26030 DATA"men kan het scherm naar de printer sturen door"
+26040 DATA"op de letter P te drukken. Is het scherm"
+26050 DATA"afgedrukt dan komt de volgende serie uitslagen"
+26060 DATA"op het scherm. Volgnummers die gewist zijn (zie"
+26070 DATA"punt 7 van het hoofdmenu), worden bij deze keuze"
+26080 DATA"niet getoond.",".P9"
+26090 DATA".R7 = Corrigeren uitslagen","!!Bij deze keuze"
+26100 DATA"kan men door het bestand bladeren tot men de te"
+26110 DATA"wijzigen uitslag gevonden heeft. Deze keuze"
+26120 DATA"bevat een submenu. Hier is de 0 voor stoppen, de"
+26130 DATA"1 is om een scherm vooruit te gaan, de 2 voor"
+26140 DATA"een scherm terug, de 3 naar het beginscherm, de"
+26150 DATA"4 naar het eindscherm en de 5 is een uitslag"
+26160 DATA"wijzigen. Heeft men dit laatste punt gekozen,"
+26170 DATA"dan wordt naar het nummer van die uitslag"
+26180 DATA"gevraagd. Is dit nummer ingegeven, dan wordt"
+26190 DATA"gevraagd of dit de juiste uitslag is. Vervolgens"
+26200 DATA"wordt de uitslag gewist en kan deze opnieuw"
+26210 DATA"ingevoerd worden. Dit invoeren gaat analoog aan"
+26220 DATA"het invoeren van uitslagen volgens punt 5 van"
+26230 DATA"het hoofdmenu. Is dit afgehandeld dan wordt"
+26240 DATA"teruggekeerd naar het submenu.",".P9"
+26250 DATA".R8 = Printen standen","!!Bij deze keuze wordt"
+26260 DATA"weer eerst om een datum gevraagd"
+26270 DATA"(ddmmjj-formaat) en vervolgens tot welk"
+26280 DATA"volgnummer de stand berekend moet worden. Wordt"
+26290 DATA"geen nummer ingegeven, dan wordt de stand"
+26300 DATA"berekend tot en met de laatste uitslag. Na het"
+26310 DATA"ingeven van bovenstaande gegevens, worden de"
+26320 DATA"uitslagen gelezen, er loopt een teller mee, die"
+26330 DATA"aangeeft welke nummer gelezen wordt. Na het"
+26340 DATA"inlezen verschijnt de mededeling dat het soteren"
+26350 DATA"begint. Nadat dit gebeurd is komt de stand op"
+26360 DATA"het scherm. Hier bestaat, evenals bij punt 7 de"
+26370 DATA"mogelijkheid dit scherm naar de printer te"
+26380 DATA"sturen.","!!Verklaring van de kopregel bij de"
+26390 DATA"uitslagen:"
+26400 DATA"!!ws = aantal gespeelde wedstrijden,"
+26410 DATA"!pt = aantal behaalde punten,"
+26420 DATA"!vr = doelpunten voor,"
+26430 DATA"!tg = doelpunten tegen en"
+26440 DATA"!so = doelpunten-saldo.",".P9"
+26450 DATA".R9 = Informatie","!!Dit laatste punt geeft op"
+26460 DATA"het scherm informatie over de poule die"
+26470 DATA"ingelezen is, het aantal ploegen dat deze poule"
+26480 DATA"bevat, het aantal ingevoerde wedstrijden en het"
+26490 DATA"aantal wedstrijden dat nog ingevoerd kan worden."
+26500 DATA"!!.ROpmerking","!!De menu-keuzes 2, 4, 5, 6, 7"
+26510 DATA"en 8 kunnen alleen gebruikt worden als er een"
+26520 DATA"poule aanwezig is. Is dit niet het geval, dan"
+26530 DATA"blijft het hoofdmenu in beeld staan. De keuzes"
+26540 DATA"1, 3 en 9 zijn wel te gebruiken  zonder dat er"
+26550 DATA"gegevens ingelezen zijn.",".P9"
+26560 DATA".RVerzoek","!!Hoewel ik de grootste zorg heb"
+26570 DATA"besteed aan de samenstelling van dit programma,"
+26580 DATA"kan het voorkomen dat er toch nog fouten in"
+26590 DATA"zitten. Mocht u iets vinden dat niet juist is,"
+26600 DATA"dan stel ik het op prijs als U mij hierover"
+26610 DATA"inlicht. U vindt mijn adres hierna."
+26620 DATA"!!.RGEBRUIKTIP:","!!Met dit programma kan het"
+26630 DATA"verloop van het WK voetbal in Italie bijgehouden"
+26640 DATA"worden!",".P9"
+32000 DATA".C************************"
+32010 DATA".C*                      *"
+32020 DATA".C*  J. van Mersbergen   *"
+32030 DATA".C*  Velddreef 200       *"
+32040 DATA".C*  2727 CR Zoetermeer  *"
+32050 DATA".C*  tel. 079-317408     *"
+32060 DATA".C*                      *"
+32070 DATA".C*   computer: MSX-1    *"
+32080 DATA".C*                      *"
+32090 DATA".C************************",".E"
+32100 REM
+32110 REM TROS-RADIO dd 900516

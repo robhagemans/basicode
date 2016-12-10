@@ -1,0 +1,323 @@
+
+1000 A=1000:GOTO20:REM STERRENBEELD
+1010 GOSUB100:DIMDR$(12),CA$(96),SB$(12),B(13)
+1020 DIMA$(100):FT=0
+1030 HO=1:VE=3:GOSUB110
+1040 PRINT"Sterrenbeeld of Chin.dier-type"
+1050 PRINT" ------------------------------"
+1060 HO=1:VE=6:GOSUB110
+1070 PRINT"Even geduld,ik haal de data....."
+1100 REM ---- LEES DIEREN-NAAM IN ---
+1110 FORI=1 TO12:READDR$(I):NEXTI
+1120 REM ---- LEES BEGIN- EN EINDDATUM -
+1130 FORI=1 TO90:READCA$
+1140 BG=VAL(LEFT$(CA$,2))
+1150 CA$(BG)=CA$:NEXTI
+1160 REM ---- LEES STERRENBEELDEN ----
+1170 FORI=1 TO12:READSB$(I):NEXTI
+1180 FORI=1 TO13:READB(I):NEXTI
+1190 REM ---- LEES UITLEG IN ----------
+1200 I=1
+1210 READA$(I):IFA$(I)="zzz" THEN2000
+1220 I=I+1:GOTO1210
+1990 REM ---- MENU ROUTINE ------------
+2000 GOSUB100:REM --- WIS SCHERM ---
+2010 HO=1:VE=3:GOSUB110
+2020 PRINT"Chinese Astrologie en Sterrenbeelden."
+2030 VE=4:GOSUB110
+2040 PRINT"====================================="
+2050 HO=8:VE=8:GOSUB110:PRINT"MENU."
+2060 VE=10:GOSUB110:PRINT"1. Chinese Astrologie"
+2070 VE=12:GOSUB110:PRINT"2. Sterrenbeeld"
+2080 VE=14:GOSUB110:PRINT"3. Uitleg"
+2090 VE=16:GOSUB110:PRINT"4. Stoppen"
+2100 VE=21:GOSUB110:PRINT"---------------"
+2110 VE=23:GOSUB110
+2120 PRINT"Geef nummer van Uw keuze: ";
+2130 GOSUB210
+2140 K=VAL(IN$):PRINTK
+2150 IF(K<1)OR(K>4)THENPRINT"Foute invoer";:GOTO2170
+2160 GOTO2200
+2170 HO=8:VE=23:GOSUB110
+2180 PRINT"Geef nummer van Uw keuze:  ";:GOTO2130
+2200 ONK GOTO9000,9080,8010,8720
+3000 REM -- GEBOORTE-DATUM INVOEREN --
+3010 GOSUB100
+3020 HO=1:VE=3:GOSUB110
+3030 PRINTTT$
+3040 VE=4:GOSUB110
+3050 PRINT"------------------"
+3060 FT=0:VE=7:GOSUB110
+3070 INPUT"Geef geb.jaar (1900-1990):    19";J
+3080 GOSUB3520:IFFT=1 THEN3210
+3090 FT=0:VE=9:GOSUB110
+3100 INPUT"Geef geb.maand (1-12):          ";M
+3110 GOSUB3560:IFFT=1 THEN3260
+3120 FT=0:VE=11:GOSUB110
+3130 INPUT"Geef geb.dag (1-28,29,30 of 31):";D
+3140 GOSUB3600:IFFT=1 THEN3310
+3150 ONK GOTO4020,5010
+3200 REM -- JAAR FOUT - KIES OPNIEUW --
+3210 VE=7:GOSUB110
+3220 PRINT"                                      "
+3230 GOTO3060
+3240 REM ------------------------------
+3250 REM -- MAAND FOUT- KIES OPNIEUW --
+3260 VE=9:GOSUB110
+3270 PRINT"                                      "
+3280 GOTO3090
+3290 REM ------------------------------
+3300 REM -- DAG FOUT  - KIES OPNIEUW --
+3310 VE=11:GOSUB110
+3320 PRINT"                                      "
+3330 GOTO3120
+3340 REM ------------------------------
+3500 REM -CONTROLE-BLOK INVOER-GEGEVENS -
+3510 REM -- JAAR TUSSEN 1900 EN 1990 --
+3520 IF(J<0)OR(J>90)THENFT=1
+3530 RETURN
+3540 REM ------------------------------
+3550 REM ---- MAAND TUSSEN 1 EN 12 ----
+3560 IF(M<1)OR(M>12)THENFT=1
+3570 RETURN
+3580 REM ------------------------------
+3590 REM --- DAG,AFH.V.SCHRIKKELJAAR --
+3600 IFM<>2 THEN3640
+3610 AD=28
+3620 IF(J/4-INT(J/4))=0 THENAD=29
+3630 GOTO3660
+3640 AD=31
+3650 IF(M=4)OR(M=6)OR(M=9)OR(M=11)THENAD=30
+3660 IF(D<1)OR(D>AD)THENFT=1
+3670 RETURN
+3680 REM ------------------------------
+4000 REM -- CHIN.ASTR.-ZOEK-ACTIE --
+4010 REM-- 1STE FASE=NA 19/2=JAAR TELT
+4020 GD=100*M+D:REM -- GEB.DD=MMDD --
+4030 IFGD>219 THEN4510:REM - AFDRUK -
+4040 REM-- 2DE FASE=TUSSEN 1/1 EN 20/1
+4050 IF(GD>=101)AND(GD<=120)THENJ=J-1:GOSUB4510
+4060 REM --- 3E FASE=TUSSEN 20/1-19/2 -
+4070 BG=VAL(MID$(CA$(J),3,4))
+4080 ED=VAL(RIGHT$(CA$(J-1),4))
+4090 IF(GD>BG)AND(GD<1232)THEN4510
+4100 IF(GD>0)AND(GD<=ED)THENJ=J-1:GOTO4510
+4500 REM --- DRUK RESULTAAT AF --------
+4510 HO=5:VE=15:GOSUB110
+4520 SR$="Uw dier-type is : ":GOSUB150
+4530 GOSUB7080:HO=24:GOSUB110
+4540 SR$=DR$(X):GOSUB150
+4550 GOTO7010:REM - NOG EEN KEER? --
+4990 REM ------------------------------
+5000 REM -- STERRENBEELD-ZOEK-ACTIE --
+5010 GD=100*M+D
+5020 IF(M=12)AND(GD>=B(13))THENZ=1:GOTO6010
+5030 IF(M=12)AND(GD<B(13))THENZ=12:GOTO6010
+5040 IF(M=1)AND(GD<B(2))THENZ=1:GOTO6010
+5050 IF(GD>=B(M+1))AND(GD<B(M+2))THENZ=M+1:GOTO6010
+5060 Z=M:GOTO6010
+5070 REM -----------------------------
+6000 REM --- DRUK RESULTAAT AF -------
+6010 HO=5:VE=15:GOSUB110
+6020 SR$="Sterrenbeeld: ":GOSUB150
+6030 HO=21:GOSUB110
+6040 SR$=SB$(Z):GOSUB150
+6050 GOTO7010:REM - NOG EEN KEER ? -
+6060 REM ------------------------------
+7000 REM -- NOG EEN KEER ? ------------
+7010 HO=1:VE=20:GOSUB110
+7020 VE=22:GOSUB110
+7030 PRINT"Nog eens proberen ? (j/n)";
+7040 GOSUB210:IFIN=74 THEN2000
+7050 GOTO8720
+7060 REM ------------------------------
+7070 REM --- BEPAAL DIER-TYPE ---------
+7080 X=(J-12*INT(J/12))+1
+7090 RETURN
+7100 REM ------------------------------
+8000 REM ---- UITLEG  ---------------
+8010 GOSUB100:PRINT
+8020 FORU=1 TO82
+8030 T$=A$(U):IFT$="zzz" THENU=81:GOTO8060
+8040 IFT$="ppp" THEN GOSUB8510:GOTO8060
+8050 PRINTA$(U):PRINT
+8060 NEXTU
+8070 GOSUB8510:GOTO2000:REM -- NAAR MENU ---
+8080 REM -----------------------------
+8500 REM ---- NIEUWE PAGINA AFDRUK ---
+8510 HO=30:VE=23:GOSUB110
+8520 PRINT"=>";:GOSUB210:GOSUB100:PRINT
+8530 RETURN
+8700 REM -----------------------------
+8710 REM ---- EINDE-PAGINA ----------
+8720 GOSUB100
+8730 HO=10:VE=12:GOSUB110
+8740 PRINT"Tot Ziens ....":GOSUB8510
+8750 GOTO950
+8760 REM ----------------------------
+8990 REM ---- TITEL BOVEN INVOER ----
+9000 TT$="Chinese Astrologie"
+9010 GOSUB100
+9020 HO=1:VE=5:GOSUB110
+9030 PRINTTT$
+9040 VE=6:GOSUB110
+9050 PRINT"------------------"
+9060 GOTO3010
+9070 REM ----------------------------
+9080 TT$="-- Sterrenbeeld --"
+9090 GOTO9010
+9100 REM ----------------------------
+25000 REM ----- DATA-BLOK ------------
+25010 DATA"Rat","Buffel","Tijger","Haas","Draak","Slang"
+25020 DATA"Paard","Schaap","Aap","Haan","Hond","Zwijn"
+25030 REM ----- RAT -------
+25040 DATA"000131 - 010219","120218 - 130206"
+25050 DATA"240205 - 250125","361024 - 370211"
+25060 DATA"480210 - 490129","600128 - 610215"
+25070 DATA"720219 - 730203","840202 - 850219"
+25080 REM ---- BUFFEL -----
+25090 DATA"010219 - 020208","130206 - 140126"
+25100 DATA"250125 - 260213","370211 - 380131"
+25110 DATA"490129 - 500205","610215 - 620205"
+25120 DATA"730203 - 740123","850220 - 860209"
+25130 REM ---- TIJGER -----
+25140 DATA"020208 - 030129","140126 - 150214"
+25150 DATA"260213 - 270202","380131 - 390219"
+25160 DATA"500217 - 510206","620205 - 630125"
+25170 DATA"740123 - 750211","860209 - 870129"
+25180 REM ---- HAAS -----
+25190 DATA"030129 - 040216","150214 - 160203"
+25200 DATA"270202 - 280123","390219 - 400208"
+25210 DATA"510206 - 520127","630125 - 640213"
+25220 DATA"750211 - 760131","870129 - 880217"
+25230 REM ---- DRAAK -----
+25240 DATA"040216 - 050204","160203 - 170123"
+25250 DATA"280123 - 290210","400208 - 410127"
+25260 DATA"520127 - 530214","640213 - 650201"
+25270 DATA"760131 - 770218","880217 - 890206"
+25280 REM ---- SLANG -----
+25290 DATA"050214 - 060125","170123 - 180211"
+25300 DATA"290210 - 300130","410127 - 420215"
+25310 DATA"530214 - 540203","650201 - 660121"
+25320 DATA"770217 - 780207","890206 - 900127"
+25330 REM ---- PAARD -----
+25340 DATA"060125 - 070213","180211 - 190201"
+25350 DATA"300130 - 310217","420215 - 430205"
+25360 DATA"540203 - 550124","660121 - 670209"
+25370 DATA"780207 - 790128"
+25380 REM ---- SCHAAP -----
+25390 DATA"070213 - 080202","190201 - 200121"
+25400 DATA"310217 - 320206","430205 - 440125"
+25410 DATA"550124 - 560212","670209 - 680129"
+25420 DATA"790128 - 800216"
+25430 REM ---- AAP -----
+25440 DATA"080202 - 090122","200121 - 210208"
+25450 DATA"320206 - 330126","440125 - 450213"
+25460 DATA"560212 - 570131","680129 - 690216"
+25470 DATA"800216 - 810205"
+25480 REM ---- HAAN ------
+25490 DATA"090122 - 100210","210208 - 220128"
+25500 DATA"330126 - 340214","450213 - 460202"
+25510 DATA"570131 - 580219","690216 - 700206"
+25520 DATA"810205 - 820125"
+25530 REM ---- HOND -----
+25540 DATA"100210 - 110130","220128 - 230216"
+25550 DATA"340214 - 350204","460202 - 470122"
+25560 DATA"580219 - 590208","700206 - 710127"
+25570 DATA"820125 - 830213"
+25580 REM ---- ZWIJN ------
+25590 DATA"110130 - 120218","230216 - 240205"
+25600 DATA"350204 - 360124","470122 - 480210"
+25610 DATA"590208 - 600128","710127 - 720219"
+25620 DATA"830213 - 840202"
+25630 REM ===== DATA-BLOK STERRENBEELDEN ======
+25640 DATA"Steenbok","Waterman","Vissen","Ram","Stier"
+25650 DATA"Tweeling","Kreeft","Leeuw","Maagd"
+25660 DATA"Weegschaal","Schorpioen","Boogschutter"
+25670 REM ---- DATUM STERRENBEELD -----
+25680 DATA101,121,220,321,422,522,622,724,824,924
+25690 DATA1024,1123,1222
+25700 REM --- TEKST UITLEG ------------
+25710 DATA"***  Uitleg Astrologie ***"
+25720 DATA" ","'Ik ben een Tijger of ik ben een Vis.'"
+25730 DATA"Zo'n uitdrukking zegt dat u belang-"
+25740 DATA"stelling heeft voor ASTROLOGIE."
+25750 DATA"Dit programmaatje wil UITSLUITEND voor"
+25760 DATA"u berekenen welk 'Beest' (Chinese"
+25770 DATA"Astrologie) of welk 'Sterrenbeeld'"
+25780 DATA"(Tekens van de Dierenriem) u bent."
+25790 DATA"VERDER NIETS !","ppp"
+25800 DATA"Chinezen vertellen dat Boeddha eens"
+25810 DATA"wenste dat alle dieren naar hem toe"
+25820 DATA"zouden komen. Er kwamen er slechts 12"
+25830 DATA"opdagen: Rat-Buffel-Tijger-Haas"
+25840 DATA"         Draak-Slang-Paard-Schaap"
+25850 DATA"         Aap-Haan-Hond-Zwijn"
+25860 DATA"Sindsdien wordt elk jaar in deze"
+25870 DATA"volgorde genoemd naar een van deze"
+25880 DATA"dieren.","ppp"
+25890 DATA"Volgens de Chin.Astr. bestaat er een"
+25900 DATA"verband tussen het karakter van't dier"
+25910 DATA"waarnaar 't jaar genoemd is en de mens"
+25920 DATA"die in dat jaar geboren is."
+25930 DATA" "
+25940 DATA"Op de avond van 26 jan.1990 begint het"
+25950 DATA"jaar van het IJZEREN PAARD."," "
+25960 DATA"Wij functioneren op basis van ons"
+25970 DATA"'GEBOORTE-JAAR-BEEST' verschillend in"
+25980 DATA"het lopende jaar-'beest'.","ppp"
+25990 DATA"Doordat de Chinese jaar-indeling NIET"
+26000 DATA"gelijk loopt met onze jaar-telling, is"
+26010 DATA"het bepalen in welk jaar men geboren"
+26020 DATA"is, een moeilijke kwestie. Dit"
+26030 DATA"programma rekent dit voor u uit.","ppp"
+26040 REM ---- UITLEG STERRENBEELDEN --
+26050 DATA" ","      Sterrenbeelden"
+26060 DATA"      --------------"
+26070 DATA"Een geboorte-horoscoop is een kaart"
+26080 DATA"van het hemel-gewelf, waarop de stand"
+26090$DATA"van de hemellichamen op het ogenblik"
+26100 DATA"van de geboorte in beeld is gebracht."," "
+26110 DATA"Er zijn 12 Sterrenbeelden en"
+26120 DATA"12 'Planeten', die op elkaar invloed"
+26130 DATA"hebben.","ppp"
+26140 DATA"Zon      -Leeuw          -Leo"
+26150 DATA"Maan     -Kreeft         -Cancer"
+26160 DATA"Mercurius-Tweeling/Maagd-Gemini-Virgo"
+26170 DATA"Venus   -Stier/Weegschaal-Taurus/Libra"
+26180 DATA"Mars     -Ram            -Aries"
+26190 DATA"Jupiter  -Boogschutter   -Saggitarius"
+26200 DATA"Saturnus -Steenbok       -Capricornus"
+26210 DATA"Uranus   -Waterman       -Aquarius"
+26220 DATA"Neptunus -Vissen         -Pisces"
+26230 DATA"Pluto    -Schorpioen     -Scorpio"
+26240 DATA"ppp"
+26250 DATA"Dit programma berekent in welk"
+26260 DATA"TEKEN van de DIEREN-RIEM"
+26270 DATA"de zon stond bij uw geboorte."," "
+26280 DATA"Aardige literatuur voor de leek:"," "
+26290 DATA"-Astrologie in 100 lessen-Joan Negus"
+26300 DATA"Schors-Amsterdam:ISBN 90 6378 115 6"
+26310 DATA"-Astrologie-Geddes-Spectrum"
+26320 DATA"-Veen's Astrologie voor iedereen"
+26330 DATA"Ankh-Hermes-Deventer","ppp"
+26340 DATA"Vervolg literatuur:"," "
+26350 DATA"-Bijbel en Astrologie -Go Verburg"
+26360 DATA"Ankh-Hermes-Deventer"
+26370 DATA"-Televizier Special :1990 volgens de"
+26380 DATA"Chinese Astrologie-Josien en Hans Vos"
+26390 DATA"-Met het oog op 1990-art.in Alg.Dagbl."
+26400 DATA"Zaterdag 30 december 1989.","zzz"
+32000 REM -----------------
+32010 REM -----------------
+32020 REM -- HARRY EYCK  --
+32030 REM - VISSEBERG 32 --
+32040 REM - 6086 CT NEER --
+32050 REM -----------------
+32060 REM --  OP C.64    --
+32070 REM --JANUARI 1990 --
+32080 REM -----------------
+32090 REM -----------------
+32100 REM
+32110 REM TROS-RADIO dd 900613
+32120 REM incl corr. dd 900619

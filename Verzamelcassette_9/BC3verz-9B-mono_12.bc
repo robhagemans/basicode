@@ -1,0 +1,355 @@
+
+1000 A=700:GOTO20:REM ** BASICODE-3 UITLEG **
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 DIMA$(12):H=0:T=0:X=0:SX=0:W=0:Z=0:FR=1:GOSUB280
+1030 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1040 GOSUB1450:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1050 GOSUB150:PRINT:PRINT:PRINT:T$="BASICODE"
+1060 PRINT"Wilt u de uitleg op "
+1070 PRINT:PRINT"   1  Het beeldscherm,"
+1080 PRINT"   2  De printer."
+1090 PRINT:PRINT"Welk nummer kiest u ";:GOSUB210
+1100 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1230
+1110 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1120 INPUT"begin van elke regel ";HL
+1130 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1140 INPUT"u op elke regel ";I:HR=HL+I-1
+1150 PRINT:PRINT"Hoeveel regels tekst wilt u op"
+1160 INPUT"elk blad ";VR:VR=VR-3
+1170 PRINT"Gebruikt u (K)ettingpapier of"
+1180 PRINT"           (L)osse vellen  (K/L)"
+1190 GOSUB210:IFIN=76 THENVL=-1:GOTO1230
+1200 IFIN<>75 THEN GOSUB250:GOTO1170
+1210 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1220 INPUT"laten overslaan ";VL:VR=VR+VL
+1230 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1240 GOSUB1390:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1370
+1250 IFLEN(R$)>HR-HL THEN GOSUB1910
+1260 GOSUB1480:IFR$<>"" THENR$=R$+" "
+1270 R$=R$+D$:GOTO1250
+1280 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1300
+1290 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1300 M$=MM$:AL=AL+1:IFAL<VR THENRETURN
+1310 IFSC=1 THEN1390
+1320 IFVL>=0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOTO1360
+1330 PRINT"Leg een nieuw vel in de printer en"
+1340 PRINT"druk dan op RETURN/ENTER"
+1350 GOSUB210:IFIN<>13 THEN1350
+1360 AL=VL
+1370 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1280
+1380 SR$="":GOSUB1280:AL=VL:RETURN
+1390 HO=3:VE=VT:GOSUB110
+1400 PRINT"<RETURN> = vervolg,<S> = schermdump";
+1410 GOSUB210:IFIN=13 THEN1450
+1420 IFIN<>83 THEN1410
+1430 FORVE=0 TOVT:SR$="":FORHO=0 TOHT:GOSUB220
+1440 SR$=SR$+CHR$(IN):NEXTHO:GOSUB350:GOSUB360:NEXTVE
+1450 GOSUB100:AL=VL
+1460 SR$=T$:PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1470 PRINT:PRINT:RETURN
+1480 READD$
+1490 IF(D$="*")AND(SC=2)THENSX=1:X=1:GOTO1980
+1500 IF(D$="*")OR(D$="?")THEND$="":GOTO1980
+1510 IFD$="" THEN1480
+1520 IFLEFT$(D$,1)="." THEN1590
+1530 IFLEFT$(D$,1)="=" THEN GOSUB1850:GOTO1560
+1540 IFLEFT$(D$,1)<>"!" THENRETURN
+1550 IFD$="!" THEND$="":GOTO1570
+1560 D$=MID$(D$,2)
+1570 GOSUB1850:IFAL+3>VR THENJ=3:GOSUB1870
+1580 GOTO1510
+1590 IFD$<>".E" THEN1640
+1600 J=1:GOSUB1850:T$="Tot de volgende keer"
+1610 SR$="":GOSUB1280:GOSUB1280:SR$=T$:GOSUB1280:T$=""
+1620 SR$="":GOSUB1280:IFAL<>VL THEN1620
+1630 GOTO950
+1640 IFD$=".Q" THENR$=R$+CHR$(34):GOTO1480
+1650 DD$=MID$(D$,2,1):D$=MID$(D$,3)
+1660 IFDD$<>"R" THEN1710
+1670 IFSC=2 THENRETURN
+1680 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1280:R$=""
+1690 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1700 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1480
+1710 IFDD$<>"M" THEN1740
+1720 I=VAL(D$):MM$="":IFI+HL=0 THEN1480
+1730 MM$=LEFT$(S$,I+HL):GOTO1480
+1740 IFDD$="P" THENJ=VAL(D$):GOSUB1850:GOSUB1870:GOTO1480
+1750 IFDD$="T" THENT$=D$:J=10:GOSUB1850:GOSUB1870:GOTO1670
+1760 IFDD$="X" THENT$=T$:J=10:GOSUB1850:GOSUB1870
+1770 IFDD$="A" THEN GOSUB1850:GOTO1480
+1780 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1480
+1790 IFDD$<>"F" THEN1820
+1800 J=VAL(D$):GOSUB1850
+1810 J=J-1:IFJ>-1 THENSR$="":GOSUB1280:GOTO1810
+1820 IFDD$<>"C" THEN1840
+1830 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1280
+1840 GOTO1480
+1850 GOSUB1910:SR$=R$:GOSUB1280:R$="":J=J-1
+1860 RETURN
+1870 IF(SC=1)OR(AL+J>VR)THEN1890
+1880 SR$="":GOSUB1280:GOSUB1280:RETURN
+1890 IFAL<>VL THENSR$="":GOSUB1280:GOTO1890
+1900 RETURN
+1910 K=HR-HL+1-LEN(M$)
+1920 IFLEN(R$)<=K THENRETURN
+1930 IFMID$(R$,K,1)=" " THEN1960
+1940 K=K-1:IFK>0 THEN1930
+1950 SR$="":GOTO1970
+1960 SR$=LEFT$(R$,K-1):R$=MID$(R$,K+1)
+1970 GOSUB1280:GOTO1910
+1980 READA
+1990 IFX=1 THENX=0:GOSUB2610
+2000 IF(A=1)AND(SC=2)THENZ=1:GOSUB2030
+2010 IFSX=1 THENSX=0:GOTO1510
+2020 ONA GOTO2030
+2030 M=12:FORI=1 TOM
+2040 READA$(I)
+2050 NEXTI:IFZ=1 THENRETURN
+2060 REM ** MENU CASSETTE/DISKETTE **
+2070 GOSUB100:VE=2:HO=3:GOSUB110
+2080 SR$="Welk soort opslag gebruikt u":GOSUB150
+2090 PRINT:PRINT:PRINT"  1 Basicode-3 cassette"
+2100 PRINT:PRINT"  2 Eigen systeem cassette"
+2110 PRINT:PRINT"  3 Eigen systeem diskette"
+2120 PRINT:PRINT"  4 Diskette"
+2130 PRINT:PRINT"  5 Stoppen"
+2140 PRINT:PRINT"  Welk nummer kiest u  ";
+2150 GOSUB210:PRINTIN$:I=VAL(IN$)
+2160 IF(I<1)OR(I>5)THEN GOSUB250:GOTO2150
+2170 ONI GOTO2180,2190,2200,2210,1380
+2180 L=0:S=1:C=1:GOTO2230
+2190 L=2:S=3:C=1:GOTO2230
+2200 L=2:S=3:C=0:GOTO2230
+2210 L=4:S=5:C=0
+2220 REM ** MENU LEZEN/SCHRIJVEN **
+2230 PRINT:PRINT"  1 schrijven"
+2240 PRINT:PRINT"  2 lezen"
+2250 PRINT:PRINT"  3 terug naar vorig-menu"
+2260 PRINT:PRINT"  welk nummer kiest u :";
+2270 GOSUB210:PRINTIN$:I=VAL(IN$)
+2280 NF=S:VE=4:HO=10:GOSUB110
+2290 ONI GOTO2310,2400,2070
+2300 REM ** FILE SCHRIJVEN **
+2310 GOSUB100:VE=2:HO=14:GOSUB110
+2320 SR$="SAVEN":GOSUB150
+2330 NF=S:VE=4:HO=10:GOSUB110
+2340 INPUT"Geef de bestandsnaam ";NF$
+2350 IFC=1 THEN GOSUB2560
+2360 GOSUB500:IFIN=-1 THEN2310
+2370 FORJ=1 TOM:SR$=A$(J):GOSUB560:NEXTJ
+2380 GOSUB580:J=M:GOTO2070
+2390 REM ** FILE LEZEN **
+2400 GOSUB100:J=1:VE=2:HO=14:GOSUB110
+2410 SR$="LEZEN":GOSUB150
+2420 NF=L:VE=4:HO=10:GOSUB110
+2430 INPUT"Geef de bestandsnaam ";NF$
+2440 IFC=1 THEN GOSUB2560
+2450 GOSUB500:IFIN=-1 THEN2400
+2460 GOSUB540:A$(J)=IN$
+2470 IFIN=1 THEN2490
+2480 J=J+1:GOTO2460
+2490 GOSUB580:M=J:V=6:H=0
+2500 FORJ=1 TOM
+2510 IFJ=8 THENV=V+2:H=0
+2520 VE=V:HO=H:GOSUB110:PRINTA$(J);
+2530 L=LEN(A$(J)):H=H+L
+2540 NEXTJ
+2550 GOTO1380
+2560 VE=18:HO=3:GOSUB110
+2570 PRINT"Zet de cassete aan het"
+2580 VE=20:GOSUB110:PRINT"begin van het bestand"
+2590 VE=22:GOSUB110:PRINT"en druk een toets.";:GOSUB210
+2600 RETURN
+2610 D$="=Wordt op het scherm getoond.":RETURN
+25000 DATA"BASICODE uitlegprogramma deel 6"
+25010 DATA"=In de vorige afleveringen zijn we met de"
+25020 DATA"subroutines gekomen tot de routine GOSUB 450."
+25030 DATA"!We gaan nu verder met de subroutines 500, 540,"
+25040 DATA"560, 580",".TGOSUB 500/540/560/580"
+25050 DATA"=Via deze routines kunt u een"
+25060 DATA"bestand openen naar disk of cassette.","!De"
+25070 DATA"bestandsnaam komt dan in de variabele NF$ te"
+25080 DATA"staan en het aan te spreken opslagmedium in de"
+25090 DATA"variabele NF. De waarden voor de variabele NF"
+25100 DATA"zijn als volgt verdeeld:","=NF=0 : openen voor"
+25110 DATA"invoer vanaf BASICODE-cassette","!NF=1 : openen"
+25120 DATA"voor uitvoer naar BASICODE-cassette","!NF=2 :"
+25130 DATA"openen voor invoer vanaf eigen"
+25140 DATA"achtergrondgeheugen"
+25150 DATA"!NF=3 : openen voor uitvoer naar eigen"
+25160 DATA"achtergrondgeheugen","!NF=4 : openen voor"
+25170 DATA"invoer vanaf diskette","!NF=5 : openen voor"
+25180 DATA"uitvoer naar diskette","!NF=6 : openen voor"
+25190 DATA"invoer van diskette","!NF=7 : openen voor"
+25200 DATA"uitvoer naar diskette.","=In het kort wil dit"
+25210 DATA"dus zeggen:","=Even nummers   = invoer"
+25220 DATA"!Oneven nummers = uitvoer","!Nummers 0 en 1 :"
+25230 DATA"cassette in BASICODE-formaat","!Nummers 2 en 3"
+25240 DATA": diskette of cassette op de manier waarop de"
+25250 DATA"computer het normaal zelf doet.","!Nummers 4 en"
+25260 DATA"5 : een tweede bestand, hetgeen alleen mogelijk"
+25270 DATA"is naar diskette.","!Nummers 6 en 7 : een derde"
+25280 DATA"bestand, wederom alleen op diskette.","=Alleen"
+25290 DATA"bestanden gemaakt in het BASICODE-formaat,"
+25300 DATA"kunnen door alle computers vanaf cassette worden"
+25310 DATA"gelezen.","=De besproken variabelen moeten dus"
+25320 DATA"in een programma worden verwerkt, zodat de"
+25330 DATA"gebruiker alle mogelijkheden kan benutten."
+25340 DATA"!Dit kunt u ondermeer doen door het volgende"
+25350 DATA"voorbeeld in een programma te verwerken."
+25360 DATA".X","!2000 REM ** MENU CASSETTE/DISKETTE"
+25370 DATA"**","!2010 GOSUB 100:VE=2:HO=3:GOSUB 110","!2020"
+25380 DATA"SR$=",".QWelk soort opslag gebruikt u",".Q:GOSUB"
+25390 DATA"150","!2030 PRINT:PRINT:PRINT ",".Q  1"
+25400 DATA"Basicode-3 Cassette",".Q","!2040 PRINT:PRINT "
+25410 DATA".Q  2 Eigen systeem Cassette",".Q","!2050"
+25420 DATA"PRINT:PRINT ",".Q  3 Eigen systeem Diskette",".Q"
+25430 DATA"!2060 PRINT:PRINT ",".Q  4 Diskette",".Q","!2070"
+25440 DATA"PRINT:PRINT ",".Q  5 Stoppen",".Q","!2080"
+25450 DATA"PRINT:PRINT ",".Q  Welk nummer kiest u ",".Q;"
+25460 DATA"!2090 GOSUB 210:PRINT IN$:I=VAL(IN$)","!2100 IF"
+25470 DATA"(I<1) OR (I>5) THEN GOSUB 250:GOTO 2010","!2110"
+25480 DATA"ON I GOTO 2120,2130,2140,2150,4000","!2120"
+25490 DATA"L=0:S=1:C=1:GOTO 2170","!2130 L=2:S=3:C=1:GOTO"
+25500 DATA"2170","!2140 L=2:S=3:C=0:GOTO 2170","!2150"
+25510 DATA"L=4:S=5:C=0","=In dit voorbeeld wordt er eerst"
+25520 DATA"gevraagd wat voor opslag men gebruikt en na"
+25530 DATA"invoer hiervan wordt er gesprongen naar de"
+25540 DATA"regels 2120 t/m 2150 waarbij de variabele S"
+25550 DATA"staat voor saven, de L voor laden en de C voor"
+25560 DATA"cassette."
+25570 DATA"=Daarna gaan we verder met het programma."
+25580 DATA".X","=2160 REM ** MENU LEZEN/SCHRIJVEN **"
+25590 DATA"!2170 PRINT:PRINT ",".Q  1 Schrijven",".Q"
+25600 DATA"!2180 PRINT:PRINT ",".Q  2 Lezen",".Q","!2190"
+25610 DATA"PRINT:PRINT ",".Q  3 Terug naar vorig menu",".Q"
+25620 DATA"!2200 PRINT:PRINT ",".Q  Welk nummer kiest u :"
+25630 DATA".Q;","!2210 GOSUB 210:I=VAL(IN$)","!2220 IF"
+25640 DATA"(I<1) OR (I>3) THEN GOSUB 250:GOTO 2010","!2230"
+25650 DATA"ON I GOTO 2300,2500,2010","=In dit gedeelte"
+25660 DATA"van de listing vragen we dus wat men wil gaan"
+25670 DATA"doen en na invoer hiervan wordt dan ook naar de"
+25680 DATA"desbetreffende regel in het programma"
+25690 DATA"gesprongen."
+25700 DATA".X","=2240 REM ** FILE SCHRIJVEN **","!2300"
+25710 DATA"GOSUB"
+25720 DATA"100:VE=2:HO=14:GOSUB 110","!2310 SR$=",".QSAVEN"
+25730 DATA".Q:GOSUB 150","!2320 NF=S","!2330 INPUT "
+25740 DATA".QGeef de bestandsnaam ",".Q;NF$","!2340 IF C=1"
+25750 DATA"THEN GOSUB 2950","!2350 GOSUB 500:IF IN=-1 THEN"
+25760 DATA"2010","!2360 FOR J=1 TO M:SR$=A$(J):GOSUB"
+25770 DATA"560:NEXT J","!2370 GOSUB 580:J=M:GOTO 2010"
+25780 DATA"=In dit gedeelte, dat dient voor het"
+25790 DATA"wegschrijven van een bestand, gebeurt het"
+25800 DATA"volgende.","!De regels 2300 en 2310 dienen voor"
+25810 DATA"de schermopmaak. Daarna wordt in regel 2320 de"
+25820 DATA"in het eerste menu opgegeven opslagmedium"
+25830 DATA"omgezet naar de variabele NF.","!In regel 2330"
+25840 DATA"wordt gevraagd om de bestandsnaam. Die wordt"
+25850 DATA"dan gezet in de variabele NF$."
+25860 DATA"In regel 2340 kijkt het programma of de"
+25870 DATA"variabele C de waarde van 1 heeft. Zo ja, dan"
+25880 DATA"wordt er gesprongen naar regel 2950 waar wordt"
+25890 DATA"gevraagd de cassette startklaar te zetten (hier"
+25900 DATA"over later meer).","!Daarna komen we bij regel"
+25910 DATA"2340 waar het bestand wordt geopend voor in- of"
+25920 DATA"uitvoer (in dit geval uitvoer), achter GOSUB"
+25930 DATA"500 staat IF IN=-1 THEN 2010.","!Daar wil ik nog"
+25940 DATA"even iets over vertellen.","!Na afloop van de"
+25950 DATA"subroutine geeft deze een statuscode af in de"
+25960 DATA"variabele IN. Is alles OK dan is de waarde van"
+25970 DATA"IN=0, is er iets mis gegaan dan wordt de waarde"
+25980 DATA"van IN=-1.","!Om nu te voorkomen dat een"
+25990 DATA"programma stopt door zo'n foutmelding kunt u in"
+26000 DATA"het programma inbouwen dat als IN=-1 is het"
+26010 DATA"programma teruggaat naar het begin, in dit geval"
+26020 DATA"het eerste menu.","!Tevens moet u er bij de"
+26030 DATA"schermopbouw aan denken dat u de onderste regel"
+26040 DATA"niet gebruikt tijdens het lezen en schrijven"
+26050 DATA"voor een door u zelf gemaakte opmerking.","!Deze"
+26060 DATA"regel wordt namelijk door de computer zelf"
+26070 DATA"gebruikt om meldingen op het scherm te zetten"
+26080 DATA"als er iets mis gaat of als er bijv. wordt"
+26090 DATA"gevraagd de playtoets van de cassette in te"
+26100 DATA"drukken."
+26110 DATA"!Bij sommige computers is het ook niet mogelijk"
+26120 DATA"de meldingen over bestanden te verwerken als"
+26130 DATA"de computer in de grafische mode staat. U kunt"
+26140 DATA"dit dus beter niet doen.","!Als u dus met"
+26150 DATA"bestanden gaat werken vanuit de grafische mode,"
+26160 DATA"kunt u beter eerst de opdracht GOSUB 100 geven."
+26170 DATA"!Bij regel 2360 nemen we even aan dan we een"
+26180 DATA"bestand bestaande uit A$(J) hebben met een"
+26190 DATA"totaal aan posten in de variabele M."
+26200 DATA"!We gaan nu het bestand wegschrijven via de"
+26210 DATA"subroutine 560."
+26220 DATA"!Deze routine schrijft dus een bestand naar het"
+26230 DATA"opslagmedium zoals aangegeven in het eerste"
+26240 DATA"menu.","!Dit wegschrijven wordt gedaan in de"
+26250 DATA"variabele SR$, zodat we A$(J) moeten omzetten"
+26260 DATA"naar SR$.","In regel 2370 sluiten we het"
+26270 DATA"bestand met de subroutine 580 af en gaan we"
+26280 DATA"verder met het programma.",".X","=2380 REM **"
+26290 DATA"FILE LEZEN **"
+26300 DATA"!2500 GOSUB 100:J=1:VE=2:HO=14:GOSUB"
+26310 DATA"110","!2510 SR$=",".QLEZEN",".Q:GOSUB 150"
+26320 DATA"!2520 NF=L","!2530 INPUT ",".QGeef de"
+26330 DATA"bestandsnaam ",".Q;NF$","!2540 IF C=1 THEN GOSUB"
+26340 DATA"2950","!2550 GOSUB 500:IF IN=-1 THEN 2500"
+26350 DATA"!2560"
+26360 DATA"GOSUB 540:A$(J)=IN$","!2570 IF IN=1 THEN 2600"
+26370 DATA"!2580 J=J+1:GOTO 2560","!2590 GOSUB 580:M=J"
+26380 DATA"=In dit gedeelte van de listing wordt er een"
+26390 DATA"bestand gelezen van een opslagmedium.","!De"
+26400 DATA"werking hiervan is bijna gelijk aan de listing"
+26410 DATA"voor het wegschrijven van een bestand.","!Toch"
+26420 DATA"zijn er een paar kleine verschillen bij het"
+26430 DATA"inlezen.","=Bij het inlezen gebeurt dat via de"
+26440 DATA"subroutine GOSUB 540 in de variabele IN$."
+26450 DATA"!Hier moeten we dus IN$ gaan omzetten naar A$(J)"
+26460 DATA"om weer een bestand in het geheugen van de"
+26470 DATA"computer te krijgen. Als het bestand is"
+26480 DATA"ingelezen, heeft IN de waarde 1.","!In regel"
+26490 DATA"2570 ziet u ook dat we deze waarde gebruiken om"
+26500 DATA"verder te gaan met het programma."
+26510 DATA".X","=Het laatste"
+26520 DATA"gedeelte uit onze listing is het gedeelte dat"
+26530 DATA"wordt aangeroepen als u heeft opgegeven dat u"
+26540 DATA"een cassetterecorder gebruikt.","!Dit gedeelte"
+26550 DATA"spreekt verder voor zichzelf. Een opmerking"
+26560 DATA"hierbij is wel dat dit gedeelte een subroutine"
+26570 DATA"is. Dit gedeelte wordt namelijk aangeroepen via"
+26580 DATA"GOSUB 2950 en aan het eind van deze listing"
+26590 DATA"staat dan ook RETURN.","=2950 VE=18:HO=3:GOSUB"
+26600 DATA"110","!2960 PRINT ",".QZet de cassette aan het"
+26610 DATA".Q","!2970 VE=20:GOSUB 110:PRINT ",".Qbegin van"
+26620 DATA"het bestand",".Q","!2980 VE=22:GOSUB 110:PRINT "
+26630 DATA".Qen druk een toets.",".Q:GOSUB 210","!2990"
+26640 DATA"RETURN",".X","=Ik hoop dat het u zo duidelijk"
+26650 DATA"is."
+26660 DATA"!U mag natuurlijk altijd deze listings overnemen"
+26670 DATA"om in uw eigen programma te gebruiken, al dan"
+26680 DATA"niet aangepast aan uw eigen wensen. U heeft door"
+26690 DATA"deze listing in ieder geval een leidraad hoe u"
+26700 DATA"zoiets kunt opzetten.","!We gaan de besproken"
+26710 DATA"listing eens in de praktijk proberen. Het"
+26720 DATA"bestand mag u zelf een naam geven, de tekst in"
+26730 DATA"het bestand bestaat uit de volgende zin:"
+26740 DATA"=DIT IS EEN VOORBEELD VAN HET LADEN EN SAVEN"
+26750 DATA"IN BASICODE 3"
+26760 DATA"=Probeert u het maar eens.",".X","*",1
+26770 DATA"DIT ","IS ","EEN ","VOORBEELD ","VAN ","HET "
+26780 DATA"LADEN ","EN ","SAVEN ","IN ","BASICODE ","3."
+26790 DATA".TBASICODE","==Einde van het zesde deel.",".P14"
+26800 DATA"Dit was:","="
+32000 DATA".C**************************"
+32010 DATA".C*                        *"
+32020 DATA".C*        BASICODE-3      *"
+32030 DATA".C*                        *"
+32040 DATA".C*    Uitleg programma    *"
+32050 DATA".C*                        *"
+32060 DATA".C*      RZ-Software       *"
+32070 DATA".C*      Braamkamp 40      *"
+32080 DATA".C*    7206 HB ZUTPHEN     *"
+32090 DATA".C*                        *"
+32100 DATA".C**************************",".E"

@@ -1,0 +1,264 @@
+
+1000 A=500:GOTO20:REM UITLEG BIJ * POSTZEGELS *
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1340:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Wilt u het bulletin op"
+1060 PRINT:PRINT"   1  Het beeldscherm,"
+1070 PRINT"   2  De printer."
+1080 PRINT:PRINT"Welk nummer kiest u ";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1180
+1100 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1110 INPUT"begin van elke regel ";HL
+1120 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1130 INPUT"u op elke regel ";I:HR=HL+I-1
+1140 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1150 INPUT"laten overslaan ";VL
+1160 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+1170 INPUT"elk blad ";VR:VR=VR+VL-3
+1180 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1190 GOSUB1310:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1290
+1200 IFLEN(R$)>HR-HL THEN GOSUB1730
+1210 GOSUB1370:IFR$<>"" THENR$=R$+" "
+1220 R$=R$+D$:GOTO1200
+1230 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1250
+1240 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1250 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1260 IFSC=1 THEN1310
+1270 IFVL>0 THENFORI=1 TOVL:GOSUB360:NEXTI
+1280 AL=VL
+1290 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1230
+1300 SR$="":GOSUB1230:AL=VL:RETURN
+1310 HO=3:VE=VT:GOSUB110
+1320 SR$="VERVOLG: druk op <return>":GOSUB150
+1330 GOSUB210:IFIN<>13 THEN1330
+1340 GOSUB100:AL=VL:SR$=T$
+1350 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1360 PRINT:PRINT:RETURN
+1370 READD$
+1380 IFD$="" THEN1370
+1390 IFLEFT$(D$,1)="." THEN1440
+1400 IFLEFT$(D$,1)<>"!" THENRETURN
+1410 IFD$="!" THEND$="":GOTO1430
+1420 D$=RIGHT$(D$,LEN(D$)-1)
+1430 GOSUB1670:GOTO1380
+1440 IFD$<>".E" THEN1490
+1450 J=1:GOSUB1670:T$="Einde van dit bulletin"
+1460 SR$="":GOSUB1230:GOSUB1230:SR$=T$:GOSUB1230:T$=""
+1470 SR$="":GOSUB1230:IFAL<>VL THEN1470
+1480 GOTO950
+1490 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+1500 IFDD$<>"R" THEN1550
+1510 IFSC=2 THENRETURN
+1520 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1230:R$=""
+1530 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1540 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1370
+1550 IFDD$<>"M" THEN1580
+1560 I=VAL(D$):MM$="":IFI+HL=0 THEN1370
+1570 MM$=LEFT$(S$,I+HL):GOTO1370
+1580 IFDD$="P" THENJ=VAL(D$):GOSUB1670:GOSUB1690:GOTO1370
+1590 IFDD$="T" THENJ=10:GOSUB1670:GOSUB1690:GOTO1510
+1595 IFDD$="X" THENT$=D$:J=10:GOSUB1670:GOSUB1690:GOTO1510
+1600 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1370
+1610 IFDD$<>"F" THEN1640
+1620 J=VAL(D$):GOSUB1670
+1630 J=J-1:IFJ>-1 THENSR$="":GOSUB1230:GOTO1630
+1640 IFDD$<>"C" THEN1660
+1650 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1230
+1660 GOTO1370
+1670 GOSUB1730:SR$=R$:GOSUB1230:R$="":J=J-1
+1680 RETURN
+1690 IF(SC=1)OR(AL+J>VR) THEN1710
+1700 SR$="":GOSUB1230:GOSUB1230:RETURN
+1710 IFAL<>VL THENSR$="":GOSUB1230:GOTO1710
+1720 RETURN
+1730 K=HR-HL+1-LEN(M$)
+1740 IFLEN(R$)<=K THENRETURN
+1750 IFMID$(R$,K,1)=" " THEN1780
+1760 K=K-1:IFK>0 THEN1750
+1770 SR$="":GOTO1790
+1780 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+1790 GOSUB1230:GOTO1730
+25000 DATA"UITLEG POSTZEGEL-PROGRAMMA"
+25010 DATA"!!Dit programma is bedoeld voor uw"
+25020 DATA"postzegelverzameling."
+25030 DATA"!Het programma verwerkt de catalogusnummers"
+25040 DATA"en de waarden van de zegels."
+25050 DATA"!Daarna kan men het bestand op het scherm"
+25060 DATA"of op de printer weergeven."
+25070 DATA"!De ingevoerde waarden van de zegels worden"
+25080 DATA"dan bij elkaar opgeteld en weergegeven,"
+25090 DATA"zodat men precies kan zien hoeveel een"
+25100 DATA"bepaalde groep postzegels waard is."
+25110 DATA"!De postzegels worden in dit programma"
+25120 DATA"verdeeld in groepen per land, verderop meer"
+25130 DATA"hierover."
+25140 DATA"!Het hele programma werkt via een hoofdmenu"
+25150 DATA"en enkele submenu's."
+25160 DATA"!Hierna volgt de uitleg van het hoofdmenu in"
+25170 DATA"de volgorde van 1 t/m 9."
+25180 DATA".THOOFDMENU","!!"
+25200 DATA".C1 nieuw/aanvullen bestand"
+25210 DATA".C2 lezen/schrijven        "
+25220 DATA".C3 printen                "
+25230 DATA".C4 bestand bekijken       "
+25240 DATA".C5 sorteren               "
+25250 DATA".C6 wijzigen/wissen        "
+25260 DATA".C7 overzicht rubrieken    "
+25270 DATA".C8 postzegels             "
+25280 DATA".C9 einde programma        "
+25290 DATA"!!           ",".RFILE :"
+25300 DATA".T1 NIEUW/AANVULLEN BESTAND"
+25310 DATA"!!Bij een nieuw te maken bestand begint de"
+25320 DATA"telling altijd bij nr. 1, de naam van het"
+25330 DATA"bestand wordt pas bij het wegschrijven"
+25340 DATA"toegevoegd."
+25350 DATA"!Bij aanvullen van het bestand begint de"
+25360 DATA"telling bij het laatste nummer van het"
+25370 DATA"ingelezen bestand."
+25380 DATA"!De gegevens over de postzegel (catalogusnr."
+25390 DATA"en waarde) voert men in volgens het"
+25400 DATA"onderstaand voorbeeld.","!!.RVOORBEELD"
+25420 DATA"!          I      I             I"
+25430 DATA"!    10*1111 - 9999 met plakker /45.78"
+25440 DATA"!    ^       ^           ^         ^"
+25450 DATA"!  gr.nr.   catl.nr.     evt.opm   bedrag"
+25460 DATA"!!De waarde van de zegel voert men in na een"
+25470 DATA".R/","streep onder de laatste",".RI","streep."
+25480 DATA"!gr.nr.= groepsnummer"
+25490 DATA"!calt.nr.= catalogusnummer"
+25500 DATA"!evt.opm = eventuele opmerkingen over de zegel"
+25510 DATA"!Bij het intikken geen komma's gebruiken."
+25520 DATA"!Door het intikken van een X komt men weer in"
+25530 DATA"het hoofdmenu terug."
+25540 DATA"!Zorg er voor dat het geheugen leeg is voor"
+25550 DATA"er aan een nieuw bestand wordt begonnen."
+25560 DATA"!Eventueel eerst wissen via optie nr. 6 van"
+25570 DATA"het hoofdmenu."
+25580 DATA".T2 LEZEN/SCHRIJVEN"
+25590 DATA"!!Dit is op zich duidelijk, alleen zijn er"
+25600 DATA"regels waar u zich aan moet houden om een"
+25610 DATA"goede werking van het programma te krijgen."
+25620 DATA"!Bij het inlezen of wegschrijven van een"
+25630 DATA"bestand moet de naam hiervan volgens een"
+25640 DATA"vaststaand protocol worden ingevoerd."
+25650 DATA"!Er wordt gevraagd naar het land, de groep"
+25660 DATA"en het jaartal."
+25670 DATA"!Bij de vraag ''welk land'' voert men niet de"
+25680 DATA"hele naam in, maar een afkorting volgens de"
+25690 DATA"onderstaande lijst."
+25700 DATA".TVOORBEELD"
+25710 DATA"!!.RLAND ","            ",".RINTIKKEN"
+25720 DATA"!!  NEDERLAND                   NED"
+25730 DATA"!  INDONESIE                   IND"
+25740 DATA"!  REPUBLIEK SURINAME          REP SUR"
+25750 DATA"!  EUROPA-ZEGELS               EURO"
+25760 DATA"!  NEDERLANDS NIEUW-GUINEA     NED NIEUW"
+25770 DATA"!  NEDERLANDSE ANTILLEN        NED ANT"
+25780 DATA"!  CURACAO                     CUR"
+25790 DATA"!  SURINAME                    SUR"
+25800 DATA"!  BOEKEN ENZ.                 BOEKEN"
+25810 DATA"!  TOTAAL OVERZICHT            OVERZ"
+25820 DATA"!!Bij de vraag ''welke groep'' voert u het"
+25830 DATA"groepsnummer in."
+25840 DATA"!!Bij de vraag ''welk jaar'' voert u het"
+25850 DATA"jaartal in dat betrekking heeft op het"
+25860 DATA"bestand."
+25870 DATA"!Het jaartal is van belang als u een"
+25880 DATA"overzicht van alle in uw bezit zijnde"
+25890 DATA"postzegels moet maken voor bijv. de"
+25900 DATA"verzekering."
+25910 DATA".T3 PRINTEN"
+25920 DATA"!!Via deze optie kunt u het bestand op de"
+25930 DATA"printer laten afdrukken."
+25940 DATA"!U krijgt dan weer de keuze welke groep er"
+25950 DATA"uitgeprint moet worden, deze groep moet dan"
+25960 DATA"wel eerst in het geheugen worden geladen."
+25970 DATA"!Verder wordt er gevraagd wat voor een soort"
+25980 DATA"papier u gebruikt (ketting of losse vellen)."
+25990 DATA"!Het kan zijn dat het lettertype bij uw"
+26000 DATA"printer anders is dan bij die van mij,"
+26010 DATA"(SEIKOSHA SP-1600AI), waardoor het aantal"
+26020 DATA"regels per vel niet meer klopt."
+26030 DATA"!Dit kunt u veranderen door in de regels"
+26040 DATA"9100 tot 9120 de waarde van",".RRE"
+26050 DATA"te wijzigen in de voor u geldende waarden."
+26060 DATA".T4 BESTAND BEKIJKEN"
+26070 DATA"!!Via deze funktie komt u in een submenu,"
+26080 DATA"van hieruit kunt u het bestand van boven"
+26090 DATA"naar beneden bekijken en omgekeerd."
+26100 DATA"!De bedoeling hiervan is om een regel op te"
+26110 DATA"kunnen zoeken die men wil wijzigen of wissen."
+26120 DATA"!Ook het hele bestand kan worden getoond."
+26130 DATA".T5 SORTEREN"
+26140 DATA"!!Deze funktie heeft u alleen nodig als het"
+26150 DATA"bestand wordt aangevuld."
+26160 DATA"!U heeft bijv. de postzegels (catl.nr.) 100"
+26170 DATA"t/m 130 en bent nu in het bezit gekomen van"
+26180 DATA"de nummers 80 t/m 100."
+26190 DATA"!Bij het aanvullen komen deze zegels onderaan"
+26200 DATA"de lijst te staan."
+26210 DATA"!Door de funktie sorteren komen ze nu op de"
+26220 DATA"goede plaats te staan."
+26230 DATA".T6 WIJZIGEN/WISSEN"
+26240 DATA"!!Hierbij komt men ook ik een submenu van"
+26250 DATA"waaruit men een regel kan wissen of wijzigen."
+26260 DATA"!Er wordt dan gevraagd naar een regel nummer"
+26270 DATA"die, indien men deze niet weet, kan worden"
+26280 DATA"opgezocht via de funktie bestand bekijken."
+26290 DATA".T7 OVERZICHT RUBRIEKEN"
+26300 DATA"!!Deze funktie laat u de verdeling zien van"
+26310 DATA"de groepen per land zoals die worden gebruikt"
+26320 DATA"in dit programma."
+26330 DATA"!Mocht u andere landen en/of een andere"
+26340 DATA"groepsindeling wensen, dan kunt u dit naar"
+26350 DATA"eigen inzicht wijzigen in de regels"
+26360 DATA"3220 t/m 3900 en 3980 t/m 4390."
+26370 DATA".T8 POSTZEGELS"
+26380 DATA"!!Voor deze funktie geldt hetzelfde als bij"
+26390 DATA"het printen, alleen wordt het bestand nu op"
+26400 DATA"het scherm getoond."
+26410 DATA"!Aan het eind van het bestand volgt dan de"
+26420 DATA"eindtelling."
+26430 DATA".T9 EINDE PROGRAMMA"
+26440 DATA"!!Dit is het einde van het programma, maar"
+26450 DATA"als er nog een bestand in het geheugen zit"
+26460 DATA"wordt er eerst gevraagd of u dit wel heeft"
+26470 DATA"wegeschreven naar disk of cassette, daarna"
+26480 DATA"stopt het programma."
+26490 DATA".TFILE :","!Hierachter komt de naam te staan"
+26500 DATA"van het bestand waarmee u op dat moment aan"
+26510 DATA"het werk bent."
+26520 DATA".TTOT SLOT"
+26530 DATA"!!Het aantal posten dat u kunt invoeren hangt"
+26540 DATA"af van de grote van het computergeheugen."
+26550 DATA"!Het programma rekent zelf uit hoeveel posten"
+26560 DATA"er kunnen worden ingevoerd en geeft ook aan"
+26570 DATA"als dit aantal is bereikt."
+26580 DATA"!Bij het wegschrijven kunt u het hierop"
+26590 DATA"volgende bestand aangeven door bijvoorbeeld"
+26600 DATA"achter de groep een A of B te zetten."
+26610 DATA"!Voorbeeld : NEDERLAND 06A 1989."
+26620 DATA"!Mocht u verder nog op of aanmerkingen"
+26630 DATA"hebben op dit programma (verbeteringen mag"
+26640 DATA"ook) dan zou ik die gaarne van u vernemen."
+26650 DATA"!Mijn adres staat aan het einde van dit"
+26660 DATA"bulletin."
+26670 DATA"!Rest mij nog u veel plezier te wensen met"
+26680 DATA"dit postzegelprogramma."
+26690 DATA"!!",".C ROB V/D ZEE"
+26960 DATA".P14","Dit was:","!"
+32000 DATA".C**************************"
+32010 DATA".C*                        *"
+32020 DATA".C*  BASICODE-3  Bulletin  *"
+32030 DATA".C*         Uitleg         *"
+32040 DATA".C*   Postzegelprogramma   *"
+32050 DATA".C*                        *"
+32060 DATA".C*       R.J. v/d Zee     *"
+32070 DATA".C*       Braamkamp 40     *"
+32080 DATA".C*      7206 HB Zutphen   *"
+32090 DATA".C*                        *"
+32100 DATA".C**************************",".E"
+32110 REM
+32120 REM TROS-RADIO dd 900110

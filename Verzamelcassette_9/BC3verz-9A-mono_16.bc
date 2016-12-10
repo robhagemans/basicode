@@ -1,0 +1,111 @@
+
+1000 A=200:GOTO20:REM DETERMINEREN DEEL 2
+1010 GOSUB100:SR$="                         "
+1020 GOSUB150:PRINT:SR$="D E T E R M I N E R E N  (Deel 2)"
+1030 GOSUB150:PRINT
+1040 SR$="*************************"
+1050 GOSUB150:PRINT:PRINT
+1060 PRINT"    D E    W O R T E L :"
+1070 PRINT"  ===========================":PRINT:PRINT
+1080 PRINT"De wortel heeft:":PRINT:PRINT
+1090 PRINT" -geen tussenschotten of leden.":PRINT
+1100 PRINT" -geen knopen(plaats waar op een sten-"
+1110 PRINT"  gel bladen (kunnen) zitten.":PRINT
+1120 PRINT" -geen knoppen(plaats waar tussen blad-"
+1130 PRINT"  steel en stengel een verdikking zit,"
+1140 PRINT"  die kan uitgroeien tot een ander"
+1150 PRINT"  plantendeel).":GOSUB2010
+1160 PRINT"SOORTEN:":PRINT"--------":PRINT:PRINT
+1170 PRINT"  1) Echte wortels.":PRINT:PRINT:PRINT
+1180 PRINT"  2) Gewijzigde wortels.":PRINT:PRINT:PRINT
+1190 PRINT:PRINT"Wilt u meer weten over  (1)":PRINT
+1200 PRINT"Of wilt u verder naar   (2)"
+1210 MK=2:VE=21:GOSUB2510
+1220 ONKZ GOSUB1240,1410
+1230 REM ECHTE WORTELS
+1240 PRINT"Echte wortels:"
+1250 PRINT"**************":PRINT:PRINT
+1260 PRINT"-hoofdwortel: 1e wortel die uit de kiem"
+1270 PRINT"              komt en meestal recht om-"
+1280 PRINT"              laag de bodem ingaat.":PRINT
+1290 PRINT"-zijwortels : zitten op de hoofdwortel,"
+1300 PRINT"              meest zijwaarts groeiend.":PRINT
+1310 PRINT"-bijwortels : ontstaan  o p  de stengel"
+1320 PRINT"              , stengeldelen(zie bij   "
+1330 PRINT"              gewijzigde stengeldelen)"
+1340 PRINT"              of bladeren. Let op mais,"
+1350 PRINT"              stekken.":PRINT:PRINT
+1360 PRINT"Terug naar het begin            =(1)":PRINT
+1370 PRINT"Verder naar gewijzigde wortels  =(2)":PRINT
+1380 MK=2:VE=21:GOSUB2510
+1390 ONKZ GOTO1000,1410
+1400 REM GEWIJZIGDE WORTELS
+1410 PRINT"Gewijzigde wortels:"
+1420 PRINT"*******************":PRINT
+1430 PRINT"a)knolvormige  : bij overjarige planten"
+1440 PRINT"                 met reservevoedsel"
+1450 PRINT"                 voor de winter."
+1460 PRINT"                 Oorspronkelijk hoofd-"
+1470 PRINT"                 wortels(peen,biet en"
+1480 PRINT"                 radijs).":PRINT
+1490 PRINT"b)wortelknollen: dikke bijwortels(bijv."
+1500 PRINT"                 dahlia).":PRINT
+1510 PRINT"c)hechtwortels : aan stengels om vast"
+1520 PRINT"                 te houden(bijv.klimop)":PRINT
+1530 PRINT"d)steunwortels : om de plant boven de"
+1540 PRINT"                 grond te steunen(mais)"
+1550 GOSUB2010
+1560 PRINT"e)zuigwortels  : bij parasieten zoals"
+1570 PRINT"                 bremraap,maretak."
+1580 PRINT"                 Zuigen voedsel uit de"
+1590 PRINT"                 stengel of wortel van"
+1600 PRINT"                 andere planten.":PRINT
+1610 PRINT"f)symbiotische : wortels bij bijv."
+1620 PRINT"                 vlinderbloemigen(zoals"
+1630 PRINT"                 lupine, klaver), die"
+1640 PRINT"                 samenleven(=symbiose)"
+1650 PRINT"                 met bacterien of blauw"
+1660 PRINT"                 wieren om voor beiden"
+1670 PRINT"                 nuttige bouwstoffen te"
+1680 PRINT"                 maken(stikstof-"
+1690 PRINT"                 bemesting)":PRINT:PRINT
+1700 PRINT">>>Dit was het over de wortel.<<<":GOSUB2010
+1710 PRINT"Wilt u terug naar echte wortels (1)":PRINT
+1720 PRINT"Of naar gewijzigde wortels      (2)":PRINT
+1730 PRINT"Of wilt u stoppen               (3)":PRINT
+1740 MK=3:VE=20:GOSUB2510
+1750 ONKZ GOTO1240,1410,1800
+1800 HO=10:VE=10:GOSUB110
+1810 PRINT">>> Einde deel 2  <<<"
+1820 GOSUB2010:GOTO950
+2000 REM SPATIEBALK
+2010 GOSUB120:VE=23:HO=0:GOSUB110
+2020 PRINT"****> Druk op spatiebalk <****";
+2030 GOSUB2090:IFIN<>32 THEN2030
+2040 VE=23:HO=0:GOSUB110
+2050 PRINT"                                     ";
+2060 GOSUB100
+2070 RETURN
+2080 REM INPUT MET LEGE BUFFER
+2090 GOSUB200:IFIN$<>"" THEN2090
+2100 GOSUB210
+2110 RETURN
+2500 REM KEUZE-OPVRAGEN
+2510 HO=0:VE=VE+1:GOSUB110
+2520 PRINT"Wat is uw keuze   ";
+2530 HO=17:VE=VE:GOSUB110
+2540 INPUTKZ$:KZ=VAL(KZ$)
+2550 IF(KZ<1)OR(KZ>MK)OR(KZ<>INT(KZ))THEN2510
+2560 GOSUB100
+2570 RETURN
+32000 REM *****   DETERMINEREN    *****
+32010 REM *****      DEEL 2       *****
+32020 REM *****                   *****
+32030 REM     *********************
+32040 REM     *                   *
+32050 REM     * JAN DE JONG       *
+32060 REM     * MR. STRIJBOSSTR 5 *
+32070 REM     * 6001 ST WEERT     *
+32080 REM     *********************
+32120 REM
+32130 REM TROS-RADIO dd 900919

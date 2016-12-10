@@ -1,0 +1,147 @@
+
+1000 A=200:GOTO20:REM===PROCENTEN===
+1010 DIMK(100),S(12):A=ASC("o"):B=ASC("*")
+1020 GOSUB100
+1030 PRINT"PROCENTEN":PRINT"=========":PRINT:PRINT
+1040 PRINT"CENT is eigenlijk een vreemd woord.":PRINT
+1050 PRINT"Het betekent HONDERD !":PRINT
+1060 PRINT"PRO is ook een vreemd woord, en dat":PRINT
+1070 PRINT"betekent hier VAN ELKE.":PRINT:PRINT:PRINT
+1080 PRINT"EEN PROCENT  betekent dus hetzelfde":PRINT
+1090 PRINT"als   EEN  VAN  ELKE  HONDERD .":PRINT
+1100 PRINT"Dat moet je goed onthouden.":PRINT:PRINT
+1110 GOSUB2310
+1120 R=10:T=100:V=1:GOSUB2610:GOSUB2410
+1130 HO=0:VE=12:GOSUB110
+1140 PRINT"Dit zijn 100 knikkers, maar let op!":PRINT
+1150 PRINT"EEN  VAN  DE  HONDERD  knikkers  is":PRINT
+1160 PRINT"anders  dan alle andere. Kijk maar!":PRINT
+1170 PRINT"1 PROCENT VAN DE KNIKKERS is anders":PRINT
+1180 PRINT"dan alle andere."
+1190 GOSUB2310:GOSUB2710:F=5:G=1
+1200 R=10:T=100:W=1:GOSUB2210
+1210 IF(F>10)OR(G=10)THEN1020
+1220 IFF>0 THEN1200
+1230 REM ----
+1240 GOSUB100
+1250 PRINT"We hadden precies honderd knikkers.":PRINT
+1260 PRINT"Maar als we er nu eens 50 nemen?":PRINT
+1270 PRINT:PRINT
+1280 PRINT"Als we dan EEN rare knikker hebben,":PRINT
+1290 PRINT"dan is dat niet EEN van ELKE HONDERD":PRINT
+1300 PRINT"Dat is dus NIET een procent!":PRINT
+1310 GOSUB2310
+1320 PRINT"We moeten weten, hoeveel van de 100":PRINT
+1330 PRINT"knikkers anders zijn.":PRINT:PRINT
+1340 PRINT"Als we onze vijftig knikkers 2 maal":PRINT
+1350 PRINT"nemen, dan zijn het er wel honderd.":PRINT
+1360 PRINT"Maar dan hebben we ook TWEE van die":PRINT
+1370 PRINT"rare knikkers, dus TWEE PROCENT !":PRINT:PRINT
+1380 PRINT"     1      2"
+1390 PRINT"    --  =  ---  =  2 procent."
+1400 PRINT"    50     100"
+1410 GOSUB2310:GOSUB2710:F=5:G=1
+1420 R=5:T=50:W=2:GOSUB2210
+1430 IF(F>10)OR(G=10)THEN1020
+1440 IFF>0 THEN1420
+1450 REM -----
+1460 GOSUB100
+1470 PRINT"We hadden hiervoor vijftig knikkers.":PRINT
+1480 PRINT"Maar als we er nu eens 20 nemen?":PRINT
+1490 PRINT:PRINT
+1500 PRINT"Als we dan EEN rare knikker op de 20":PRINT
+1510 PRINT"knikkers, dan is dat natuurlijk VIJF":PRINT
+1520 PRINT"op de HONDERD!":PRINT
+1530 PRINT:PRINT
+1540 PRINT"     1      5"
+1550 PRINT"    --  =  ---  =  5 procent."
+1560 PRINT"    20     100"
+1570 GOSUB2310:GOSUB2710:F=5:G=1
+1580 R=2:T=20:W=5:GOSUB2210
+1590 IF(F>10)OR(G=10)THEN1020
+1600 IFF>0 THEN1580
+1610 REM ----
+1620 GOSUB100
+1630 PRINT"We kunnen elk aantal knikkers nemen":PRINT
+1640 PRINT"dat we maar willen":PRINT:PRINT
+1650 PRINT"Het percentage rare knikkers kunnen":PRINT
+1660 PRINT"we zo uitrekenen:":PRINT:PRINT
+1670 PRINT"We tellen het aantal rare knikkers,":PRINT
+1680 PRINT"en delen dat door het totale aantal":PRINT
+1690 PRINT"en vermenigvuldigen dat met 100.":PRINT:PRINT
+1700 GOSUB2110:GOSUB2310
+1710 REM ----
+1720 GOSUB100:GOSUB2110
+1730 PRINT"Ik heb 4 knikkers en een daarvan is"
+1740 PRINT"van ijzer. Hoeveel procent van mijn"
+1750 PRINT"knikkers is van ijzer ";:GOSUB120
+1760 AW=25:GOSUB2010:PRINT:PRINT
+1770 PRINT"Ik heb  80 knikkers en daarvan zijn"
+1780 PRINT"er 4 rood. Hoeveel procent van mijn"
+1790 PRINT"knikkers is rood ";:GOSUB120
+1800 AW=5:GOSUB2010:PRINT:PRINT
+1810 PRINT"Ik heb 2 knikkers, een witte en een"
+1820 PRINT"gevlekte.  Hoeveel procent van mijn"
+1830 PRINT"knikkers is gevlekt ";:GOSUB120
+1840 AW=50:GOSUB2010:PRINT:PRINT
+1850 PRINT"Prima: Jij bent klaar met deze les!"
+1860 GOSUB2310:PRINT"TOT ZIENS!":PRINT:PRINT
+1870 GOSUB210:GOTO950
+2000 REM --- sbr.antwoord ---
+2010 GOSUB110
+2020 INPUTIP:IFIP=AW THENRETURN
+2030 GOSUB110:PRINT"      "
+2040 GOTO2010
+2100 REM --- sbr.formule ---
+2110 PRINT"              rare"
+2120 PRINT"Percentage = ------ x 100 procent"
+2130 PRINT"             totaal":PRINT:PRINT
+2140 RETURN
+2200 REM --- sbr.vragen stellen ---
+2210 V=S(G):G=G+1
+2220 GOSUB2610:GOSUB2410
+2230 HO=0:VE=12:GOSUB110
+2240 PRINT"Hoeveel rare knikkers zie je nu ";
+2250 GOSUB2510
+2260 PRINT"Hoeveel procent is dat ";
+2270 V=V*W:GOSUB2510
+2280 GOSUB2310
+2290 RETURN
+2300 REM --- sbr.toets ---
+2310 HO=8:VE=22:GOSUB110:PRINT"Tik op een toets ";
+2320 GOSUB210:GOSUB100
+2330 RETURN
+2400 REM --- sbr.teken knikkers ---
+2410 HO=22:VE=2:GOSUB110:SR=T:GOSUB300:PRINTSR$;" knikkers"
+2420 VE=4:GOSUB110:PRINT"1 knikker = ";
+2430 SR=100/T:GOSUB300:PRINTSR$;" %"
+2440 HO=0:VE=0:GOSUB110
+2450 GOSUB2610:FORN=0 TO9:FORM=0 TOR-1
+2460 PRINT" ";CHR$(K(M+R*N));:NEXTM
+2470 PRINT:NEXTN
+2480 RETURN
+2500 REM --- sbr.antwoord ---
+2510 GOSUB120:H1=HO:V1=VE
+2520 INPUTAW:IFAW=V THEN2550
+2530 F=F+1:HO=H1:VE=V1:GOSUB110:PRINT"      "
+2540 GOSUB110:GOTO2520
+2550 PRINT:PRINT"GOED GEDAAN !":PRINT:IFF>0 THENF=F-1
+2560 RETURN
+2600 REM --- knikkers veranderen ---
+2610 FORN=0 TO100:K(N)=A:NEXTN
+2620 S=INT(T/V)-1:P=0
+2630 FORM=1 TOV:GOSUB260:P=P+1+INT(RV*S):K(P)=B:NEXTM
+2640 RETURN
+2700 REM --- 2-10 schudden ---
+2710 FORJ=2 TO10:S(J+1)=J:NEXTJ
+2720 FORJ=1 TO8:GOSUB260
+2730 X=INT(2+RV*(10-J)+J)
+2740 S(J)=S(X):S(X)=S(J+2)
+2750 NEXTJ:S(9)=S(11)
+2760 RETURN
+2770 REM------------------------------
+32000 REM Ch.W.Brederode
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES  LISSE
+32030 REM
+32040 REM TROS-RADIO dd 900822

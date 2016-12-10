@@ -1,0 +1,59 @@
+
+1000 A=200:GOTO20:REM DATA> BASICODE-3 bestand
+1010 GOSUB100
+1020 RESTORE
+1030 PRINT"Dit programma zet DATA-regels om in"
+1040 PRINT"een BASICODE-3 bestand."
+1050 READNF$:REM lees eerst bestandsnaam
+1060 IFLEN(NF$)>7 THENNF$=LEFT$(NF$,7)
+1070 PRINT:PRINT"Bestandsnaam: ";NF$
+1080 NF=3:GOSUB500
+1090 READSR$:REM lees bestandsinhoud tot .E
+1100 IFSR$=".E" THEN1140
+1110 GOSUB560:IFIN=0 THEN1090
+1120 PRINT"Er is een fout opgetreden !"
+1130 PRINT"Probeer het nogmaals."
+1140 IFIN=0 THEN GOSUB580:GOTO1160
+1150 GOSUB580:IN=1
+1160 PRINT"Het programma is ";
+1170 IFIN=0 THENPRINT"correct ";
+1180 PRINT"beeindigd."
+1190 PRINT"Nogmaals ? (J of N)"
+1200 GOSUB210:IFIN=0 THEN1200
+1210 IF(IN<>74)AND(IN<>78)THEN1200
+1220 IFIN=74 THEN1000
+1230 GOTO950
+25000 DATA"DETOEK"
+25010 DATA"De toekomst"
+25020 DATA"Bram Vermeulen"
+25030 DATA"KANT A"
+25040 DATA"Laat me"
+25050 DATA"De nachtploeg"
+25060 DATA"Tien uur geleden"
+25070 DATA"Ren voor je leven"
+25080 DATA"Wedstrijd tegen de tijd"
+25090 DATA"Pas op"
+25100 DATA"Burgerman"
+25110 DATA"De zin"
+25120 DATA"Aardige man"
+25130 DATA"Joanna"
+25140 DATA"#"
+25150 DATA"Killroy kil 19961 kl"
+25160 DATA"Frank Boeijen Groep"
+25170 DATA"KANT B"
+25180 DATA"Blok aan mijn been"
+25190 DATA"Vrijdagavond"
+25200 DATA"Transport uit Bangkok"
+25210 DATA"Dit is de nacht"
+25220 DATA"Ze vroeg of ik meeging"
+25230 DATA"Ik haat jou"
+25240 DATA"Een keer"
+25250 DATA"Donker leven"
+25260 DATA"Zoek de verschillen"
+25270 DATA"De prijs"
+25280 DATA"'s nachts wanneer ik waak"
+25290 DATA"Verjaardagsfeest"
+25300 DATA"Doe wat de dokter zegt"
+25310 DATA"#"
+25320 DATA".E"
+30000 REM TROS-RADIO dd 900425

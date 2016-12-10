@@ -1,0 +1,154 @@
+
+1000 A=100:GOTO20:REM * REKENTRAINING *
+1010 DIMA$(20),SR$(3):HT=HO:ZV=0
+1020 GOSUB100
+1030 SR$="REKENTRAINING":GOSUB150
+1040 A$(4)="1 = Optellen":A$(6)="2 = Aftrekken"
+1050 A$(8)="3 = Vermenigvuldigen":A$(10)="4 = Delen"
+1060 A$(12)="5 = Aanwijzingen":A$(14)="6 = Einde"
+1070 A$(16)="":A$(18)=""
+1080 A$(20)="         MAAK UW KEUZE !"
+1090 HO=6:FORVE=4 TO20 STEP2:GOSUB110:PRINTA$(VE):NEXTVE
+1100 M1=0:M2=0:GOSUB200:IF(IN<49)OR(IN>54)THEN1100
+1110 ONIN-48 GOTO2020,2520,3020,3520,4510,1120
+1120 GOSUB250:GOTO950:REM einde
+2000 REM -------------------------------
+2010 REM   **** OPTELLEN ****
+2020 SR$="O P T E L L E N"
+2030 P1=1:VZ$="+":T1$="termen"
+2040 T2$="1-e term:":T3$="2-e term:"
+2050 GOSUB4010:GOTO1020
+2500 REM -------------------------------
+2510 REM   **** AFTREKKEN ****
+2520 SR$="A F T R E K K E N"
+2530 P1=2:VZ$="-":T1$="termen"
+2540 T2$="1-e term:":T3$="2-e term:"
+2550 GOSUB4010:GOTO1020
+3000 REM -------------------------------
+3010 REM   **** VERMENIGVULDIGEN ****
+3020 SR$="V E R M E N I G V U L D I G E N"
+3030 P1=3:VZ$="*":T1$="faktoren"
+3040 T2$="1-e faktor:":T3$="2-e faktor:"
+3050 GOSUB4010:GOTO1020
+3500 REM -------------------------------
+3510 REM   **** DELEN ****
+3520 SR$="D E L E N"
+3530 P1=4:VZ$=":":T1$="faktoren"
+3540 T2$="deeltal:":T3$="deler:"
+3550 GOSUB4010:GOTO1020
+3560 REM -------------------------------
+4000 REM   ****  werkprogramma ***
+4010 GOSUB100:HO=INT((HT-LEN(SR$)-6))/2
+4020 VE=0:GOSUB110:GOSUB150:PRINT
+4030 PRINT:PRINT"Geef de bovengrens voor de ";T1$
+4040 VE=6:HO=0:GOSUB110
+4050 PRINTT2$;:INPUTM1
+4060 PRINTT3$;:INPUTM2
+4070 PRINT:PRINT"Klopt het tot zover ? (j/n)"
+4080 VE=9:HO=34:GOSUB110:GOSUB210
+4090 IFIN<>74 THEN4010
+4100 GOSUB100:HO=1:VE=0:GOSUB110:GOSUB150
+4110 PRINT:PRINT
+4120 PRINT"Maximum eerste getal:";M1
+4130 PRINT"Maximum tweede getal:";M2
+4140 PRINT:PRINT"Ik geef je nu 10 opgaven":VE=7
+4150 FORI=1 TO10
+4160 GOSUB5020:REM random getallen
+4170 HO=1:VE=VE+1:GOSUB110:IFI<10 THENPRINT" ";
+4180 PRINTI;". ";Z1;VZ$;Z2;"=";:INPUTZE
+4190 IFZE=Z3 THENZV=ZV+1:HO=25:GOSUB110:PRINT"OK!":GOTO4210
+4200 HO=25:GOSUB110:GOSUB250:PRINT"FOUT !";Z3
+4210 ZE=0:NEXTI
+4220 GOSUB5520:VE=VE+1
+4230 FORI=1 TO3:HO=0:VE=VE+1:GOSUB110:SR$=SR$(I):GOSUB150
+4240 NEXTI
+4250 VE=23:HO=12:GOSUB110:PRINT"Verder --> druk een toets";
+4260 GOSUB200:IFIN=0 THEN4260
+4270 GOSUB100:RETURN
+4280 REM -------------------------------
+4500 REM AANWIJZINGEN
+4510 GOSUB100:SR$="    AANWIJZINGEN    "
+4520 GOSUB150:PRINT:PRINT
+4530 PRINT"Met dit programma kun je de vier"
+4540 PRINT"basisbewerkingen van het rekenen"
+4550 PRINT"oefenen. Eerst moet je opgeven hoe"
+4560 PRINT"groot de getallen mogen worden. De"
+4570 PRINT"computer geeft dan 10 opgaven van het"
+4580 PRINT"gewenste soort. Tik vervolgens je"
+4590 PRINT"antwoord in en druk op <ENTER>."
+4600 PRINT"Bij een fout komt na de foutmelding"
+4610 PRINT"ook het goede antwoord."
+4620 PRINT"Als je ze alle 10 gemaakt hebt,"
+4630 PRINT"beoordeelt de computer je prestatie"
+4640 PRINT"en geeft je nog enkele tips."
+4650 PRINT"Let er op, dat er ook negatieve"
+4660 PRINT"getallen aan te pas kunnen komen."
+4670 PRINT"Om bij delen ook de uitkomst geheel"
+4680 PRINT"te houden, is een test ingebouwd."
+4690 PRINT"Daardoor kan het bij grotere"
+4700 PRINT"getallen even duren voordat de"
+4710 PRINT"opgave verschijnt."
+4720 PRINT"            Dat was het, veel plezier !"
+4730 PRINT
+4740 PRINT"                         MENU --> Toets";
+4750 GOSUB250
+4760 GOSUB210
+4770 GOTO1020
+5000 REM ------------------------------
+5010 REM ****** RANDOM GETALLEN *******
+5020 GOSUB260:Z1=INT(RV*M1)+1
+5030 GOSUB260:Z2=INT(RV*M2)+1
+5040 IFP1=1 THENZ3=Z1+Z2:RETURN
+5050 IFP1=2 THENZ3=Z1-Z2:RETURN
+5060 IFP1=3 THENZ3=Z1*Z2:RETURN
+5070 IFP1=4 THEN GOSUB5120:Z3=Z1/Z2
+5080 IFZ3<>INT(Z3)THEN5020
+5090 RETURN
+5100 REM -------------------------------
+5110 REM ****  TEST  ****
+5120 IFZ1<Z2 THENZ4=Z2:Z5=Z1:Z1=Z4:Z2=Z5
+5130 IFZ2=0 THENZ2=3:GOTO5120
+5140 RETURN
+5500 REM -------------------------------
+5510 REM *** BEOORDELING ***
+5520 SR=ZV:GOSUB300:V$=SR$:IFZV=10 THEN5570
+5530 IFZV>7 THEN5610
+5540 IFZV>5 THEN5650
+5550 IFZV>0 THEN5690
+5560 GOTO5730
+5570 SR$(1)="Prima, alle antwoorden goed !     "
+5580 SR$(2)="Je zou ook wel eens wat moeilijker"
+5590 SR$(3)="opgaven kunnen proberen !         "
+5600 ZV=0:RETURN
+5610 SR$(1)="Dat was best goed. Je had "+V$
+5620 SR$(2)="antwoorden goed ! Bedenk wel,"
+5630 SR$(3)="je kunt nog beter worden !   "
+5640 ZV=0:RETURN
+5650 SR$(1)="Ik denk dat je nog eens wat moet "
+5660 SR$(2)="nakijken! "+V$+" goede antwoorden"
+5670 SR$(3)="moet wel een waarschuwing zijn ! "
+5680 ZV=0:RETURN
+5690 SR$(1)="Huilen met de pet op ! Slechts "+V$
+5700 SR$(2)="antwoorden goed ! Probeer het maar"
+5710 SR$(3)="eens met gemakkelijker sommen !   "
+5720 ZV=0:RETURN
+5730 SR$(1)="Je bent echt een hopeloos geval !!"
+5740 SR$(2)="Helemaal niets (!) had je goed !  "
+5750 SR$(3)="Terug naar de eerste klas !       "
+5760 ZV=0:RETURN
+5770 REM -------------------------------
+32000 REM *****************************
+32010 REM *                           *
+32020 REM * Auteur  BURKHARDT PREUSS  *
+32040 REM *         FRANKFURT  (ODER) *
+32050 REM *         DDR               *
+32060 REM *                           *
+32070 REM * Dit programma werd op     *
+32080 REM * 17.01.1990  op een        *
+32090 REM * C-64 gemaakt.             *
+32100 REM *                           *
+32110 REM *****************************
+32120 REM
+32130 REM Erstausstrahlung Radio DDR
+32140 REM 900207
+32150 REM TROS-RADIO dd 900620

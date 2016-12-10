@@ -1,0 +1,103 @@
+
+1000 A=100:GOTO20:REM * LEBENDE BILDER *
+1010 FR=1:GOSUB280:Q=HG/2:FL=0:VT=VE:HT=HO:GOSUB1490
+1020 DIMA(Q,1),B(Q,1)
+1030 HS=HG/20:VS=VG/20
+1040 GOSUB600
+1050 FORJ=0 TO1
+1060 GOSUB260:A(0,J)=RV
+1070 GOSUB260:B(0,J)=RV
+1080 NEXTJ
+1090 A=(RV-.5)/HS:B=(RV-.5)/VS
+1100 FORI=1 TOQ:GOSUB200:IFIN=0 THEN1150
+1110 IFIN<>80 THENI=Q:GOTO1150
+1120 REM------------------------
+1130 GOSUB20000:REM Screendump
+1140 REM------------------------
+1150 IFFL=0 THEN1180
+1160 CN=1:HO=A(I,0):VE=B(I,0):GOSUB620
+1170 HO=A(I,1):VE=B(I,1):GOSUB630
+1180 FORJ=0 TO1
+1190 X=A(I-1,J)+A
+1200 IF(X>=0)AND(X<1)THEN1270
+1210 GOSUB260:A=(RV-.5)/HS:GOSUB260:X=A(I-1,J)+A
+1220 IF(X<0)OR(X>=1)THEN1210
+1230 IFJX>1 THENY=X:GOTO1350
+1240 IFJX>-1 THENJ=JX:GOTO1350
+1250 IFJY>0 THEN GOSUB260:Y=RV
+1260 IFMV=1 THEN GOSUB260:JY=INT(RV*4)-1
+1270 Y=B(I-1,J)+B
+1280 IF(Y>=0)AND(Y<1)THEN1350
+1290 GOSUB260:B=(RV-.5)/VS:GOSUB260:Y=B(I-1,J)+B
+1300 IF(Y<0)OR(Y>=1)THEN1290
+1310 IFJY>1 THENX=Y:GOTO1350
+1320 IFJY>-1 THENJ=JY:GOTO1350
+1330 IFJX>0 THEN GOSUB260:X=RV
+1340 IFMV=1 THEN GOSUB260:JX=INT(RV*4)-1
+1350 A(I,J)=X:B(I,J)=Y
+1360 NEXTJ:CN=0
+1370 HO=X:VE=Y:GOSUB620
+1380 HO=A(I,0):VE=B(I,0):GOSUB630
+1390 NEXTI
+1400 IFIN=83 THEN1050:REM S
+1410 IFIN<>0 THEN1000
+1420 REM Lijnen wissen
+1430 FL=1:CN=1:HO=A(0,0):VE=B(0,0):GOSUB620
+1440 HO=A(0,1):VE=B(0,1):GOSUB630
+1450 A(0,0)=A(Q,0):A(0,1)=A(Q,1)
+1460 B(0,0)=B(Q,0):B(0,1)=B(Q,1):GOTO1100
+1470 REM
+1480 REM ** UITLEG **
+1490 HO=HT/2-9:VE=1:SR$="BEWEGENDE LIJNEN":GOSUB110:GOSUB150
+1500 PRINT:PRINT
+1510 PRINT"Dit programma laat u fraai"
+1520 PRINT"bewegende lijnen op"
+1530 PRINT"het scherm zien."
+1540 PRINT"U kunt met toetsen B t/m Z"
+1550 PRINT"de bewegingen veranderen."
+1560 PRINT"Drukt u echter op toets <S>"
+1570 PRINT"dan worden nieuwe"
+1580 PRINT"begincoordinaten gekozen."
+1590 PRINT"Het oude beeld"
+1600 PRINT"blijft nog even op het"
+1610 PRINT"scherm."
+1620 REM
+1630 REM
+1640 PRINT:PRINT"TOETS":GOSUB210:GOSUB100
+1650 PRINT"Herhaald indrukken van de S-toets"
+1660 PRINT"beinvloedt het geheugen van uw computer."
+1670 PRINT"Is een printer aangesloten, dan"
+1680 PRINT"start de P-toets een screendump."
+1690 PRINT"De printopdracht moet u zelf"
+1700 PRINT"voor uw type computer vanaf"
+1710 PRINT"regelnr. 20000 invoeren."
+1720 PRINT"Andere toetsen laten dit menu zien!"
+1730 PRINT
+1740 PRINT
+1750 PRINT"Toets B t/m Z / Toets A=einde :";
+1760 GOSUB210:IF(IN<65)OR(IN>90)THEN1760
+1770 MV=90-IN:IFMV=25 THEN950
+1780 JX=INT(MV/5)-1
+1790 JY=MV-5*JX-6
+1800 RETURN
+20000 REM Hardcopy fuer Ihren COMPUTER
+20010 REM  PRINTCHR$(15)  beim KC85
+20020 RETURN
+32000 REM******************************
+32010 REM*      LEBENDE BILDER        *
+32020 REM*         --------           *
+32030 REM* Programmiert auf dem KC85  *
+32040 REM*                            *
+32050 REM*   Uwe Zierott              *
+32070 REM*   Lehnin 1804              *
+32080 REM*                            *
+32090 REM*   10-01-90                 *
+32100 REM*                            *
+32110 REM******************************
+32120 REM
+32130 REM Erstausstrahlung Radio DDR
+32140 REM 900221
+32150 REM-----------------------------
+32160 REM Vertaling P.Knops HEERLEN dd.900420
+32170 REM-----------------------------
+32180 REM TROS-RADIO dd 900620

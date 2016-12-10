@@ -1,0 +1,566 @@
+
+1000 A=999:GOTO20:REM cassette-labels
+1010 VM=VE:HM=HO
+1020 DIMA1$(37),B1$(37)
+1030 GOSUB9030:REM printercodes ophalen
+1040 AD$="a:":MO=2:REM act.drive/pointer opslagmedium
+1050 SP$="                                        "
+1100 REM *************
+1110 REM * hoofdmenu *
+1120 REM *************
+1130 GOSUB100
+1140 VE=1:SR$="M E N U":GOSUB7030
+1150 HO=HO+1
+1160 VE=4:GOSUB110:PRINT"1 - Invoer"
+1170 VE=6:GOSUB110:PRINT"2 - Uitvoer"
+1180 VE=8:GOSUB110:PRINT"3 - Wijzigen"
+1190 VE=12:GOSUB110:PRINT"0 - Stop"
+1200 MX=3:GOSUB7630
+1210 IFCH>MX THEN950
+1220 ONCH GOTO2030,3030,4030
+2000 REM **************
+2010 REM * invoermenu *
+2020 REM **************
+2030 IFA1$(1)="" THEN2100
+2040 PRINT"Bestand:"
+2050 SR$=A1$(1):GOSUB150:PRINT
+2060 PRINT"is nog in het geheugen."
+2070 SR$="Wilt u dat wegschrijven ?"
+2080 GOSUB7230:GOSUB100
+2090 IFIN=74 THEN GOSUB8030
+2100 VE=1:SR$="INVOERMENU":GOSUB7030
+2110 HO=HO+1
+2120 VE=4:GOSUB110:PRINT"1 - Keyboard"
+2130 VE=6:GOSUB110:PRINT"2 - Opslagmedium"
+2140 VE=10:GOSUB110:PRINT"0 - M E N U"
+2150 MX=2:GOSUB7630
+2160 IFCH>MX THEN1130
+2170 REM maak A1$() en B1$() leeg
+2180 FORI=1 TO36:A1$(I)="":B1$(I)="":NEXTI
+2190 ONCH GOTO2230,2830
+2200 REM ***********************
+2210 REM * invoer van keyboard *
+2220 REM ***********************
+2230 A1$(3)="KANT A":B1$(3)="KANT B":I=4
+2240 SR$=A1$(3):GOSUB150:PRINT
+2250 PRINT"Titel:";:GOSUB120
+2260 GOSUB110:PRINTLEFT$(SP$,34);
+2270 GOSUB110:INPUTA1$(1)
+2280 IFA1$(1)="" THEN2260
+2290 PRINT"Artiest(en):";:GOSUB120
+2300 GOSUB110:PRINTLEFT$(SP$,28);
+2310 GOSUB110:INPUTA1$(2)
+2320 IFA1$(2)="" THEN2300
+2330 VE=23:HO=0:GOSUB110
+2340 PRINT"@n = herstel nr.n    # = einde";
+2350 J=0
+2360 IFI<4 THENI=4
+2370 VE=I:IFVE>20 THENVE=I-16
+2380 VE=I:HO=0:GOSUB110
+2390 PRINT"Nr.";I-3;" ";:GOSUB120
+2400 GOSUB110:PRINTLEFT$(SP$,32);
+2410 GOSUB110:INPUTA1$(I)
+2420 IFJ<>0 THENI=J:GOTO2350
+2430 IFA1$(I)="#" THEN2490
+2440 IFLEN(A1$(I))<=1 THEN2480
+2450 IFLEFT$(A1$(I),1)<>"@" THEN2480
+2460 A1$(I)=RIGHT$(A1$(I),LEN(A1$(I))-1)
+2470 J=I:I=VAL(A1$(J))+3:GOTO2360
+2480 I=I+1:IFI<36 THEN2360
+2490 A1$(I)="#"
+2500 GOSUB100
+2510 SR$=B1$(3):GOSUB150:PRINT:I=0
+2520 INPUT"Titel ";B1$(1)
+2530 INPUT"Artiest(en) ";B1$(2)
+2540 VE=23:HO=0:GOSUB110
+2550 PRINT"@n = herstel nr.n    # = einde";
+2560 J=0
+2570 IFI<4 THENI=4
+2580 VE=I:IFVE>20 THENVE=I-16
+2590 VE=I:HO=0:GOSUB110
+2600 PRINT"Nr.";I-3;" ";:GOSUB120
+2610 GOSUB110:PRINTLEFT$(SP$,32);
+2620 GOSUB110:INPUTB1$(I)
+2630 IFJ<>0 THENI=J:GOTO2560
+2640 IFB1$(I)="#" THEN2700
+2650 IFLEN(B1$(I))<=1 THEN2690
+2660 IFLEFT$(B1$(I),1)<>"@" THEN2690
+2670 B1$(I)=RIGHT$(B1$(I),LEN(B1$(I))-1)
+2680 J=I:I=VAL(B1$(J))+3:GOTO2570
+2690 I=I+1:IFI<36 THEN2570
+2700 B1$(I)="#"
+2710 GOTO1130
+2800 REM ***************************
+2810 REM * invoer van opslagmedium *
+2820 REM ***************************
+2830 VE=1:SR$="Bestand lezen":GOSUB7030:PRINT
+2840 GOSUB8530:IFSR$="GEEN" THEN1130
+2850 MX=0:GOSUB3240
+2860 MX=0:GOSUB3500
+2870 GOTO1130
+3000 REM ***************
+3010 REM * uitvoermenu *
+3020 REM ***************
+3030 IFA1$(1)<>"" THEN3060
+3040 PRINT"Huidige bestand is leeg !";
+3050 CS=1:GOSUB7430:GOTO1130
+3060 VE=1:SR$="UITVOERMENU":GOSUB7030
+3070 HO=HO+1
+3080 VE=4:GOSUB110:PRINT"1 - Monitor"
+3090 VE=6:GOSUB110:PRINT"2 - Opslagmedium"
+3100 VE=8:GOSUB110:PRINT"3 - Printer"
+3110 VE=12:GOSUB110:PRINT"0 - M E N U"
+3120 MX=3:GOSUB7630
+3130 IFCH>MX THEN1130
+3140 ONCH GOTO3230,3930,6030
+3200 REM ***********************
+3210 REM * uitvoer naar scherm *
+3220 REM ***********************
+3230 MX=0:GOSUB3240:MX=0:GOSUB3500:GOTO1130
+3240 BG=4
+3250 VE=0:HO=0:GOSUB110
+3260 SR$="  ":H1$=A1$(3):GOSUB3730
+3270 VE=1:GOSUB110
+3280 SR$="":H1$="Titel: "+A1$(1):GOSUB3730
+3290 VE=2:GOSUB110
+3300 SR$="":H1$="Artiest: "+A1$(2):GOSUB3730
+3310 VE=3:GOSUB110
+3320 PRINT"----------------------------------------";
+3330 M1=0:FORI=BG TOBG+15
+3340 VE=I:IFI>19 THENVE=I-BG+4
+3350 IFI>36 THENMX=1:GOTO3400
+3360 HO=0:GOSUB110
+3370 H1$=A1$(I):GOSUB3710
+3380 IF(A1$(I)="#")AND(MX=0)THENMX=I
+3390 IF(A1$(I)="#")AND(MX=-1)THENM1=I-BG+5
+3400 NEXTI:IFMX=0 THENBG=BG+16
+3410 CS=SGN(MX):IFCS>-1 THEN GOSUB7430
+3420 IFMX=0 THEN3330
+3430 IFM1>0 THENMX=M1
+3440 RETURN
+3500 BG=4
+3510 VE=0:HO=0:GOSUB110
+3520 SR$="  ":H1$=B1$(3):GOSUB3730
+3530 VE=1:GOSUB110
+3540 SR$="":H1$="Titel: "+B1$(1):GOSUB3730
+3550 VE=2:GOSUB110
+3560 SR$="":H1$="Artiest: "+B1$(2):GOSUB3730
+3570 VE=3:GOSUB110
+3580 PRINT"----------------------------------------";
+3590 M1=0:FORI=BG TOBG+15
+3600 VE=I:IFI>19 THENVE=I-BG+4
+3610 IFI>36 THENMX=1:GOTO3660
+3620 HO=0:GOSUB110
+3630 H1$=B1$(I):GOSUB3710
+3640 IF(B1$(I)="#")AND(MX=0)THENMX=I
+3650 IF(B1$(I)="#")AND(MX=-1)THENM1=I-BG+5
+3660 NEXTI:IFMX=0 THENBG=BG+16
+3670 CS=SGN(MX):IFCS>-1 THEN GOSUB7430
+3680 IFMX=0 THEN3590
+3690 IFM1>0 THENMX=M1
+3700 RETURN
+3710 CT=2:CN=0:SR=I-3:GOSUB310
+3720 IFH1$="" THENSR$=""
+3730 SR$=SR$+" "+H1$+SP$
+3740 SR$=LEFT$(SR$,40)
+3750 PRINTSR$;:RETURN
+3900 REM *****************************
+3910 REM * uitvoer naar opslagmedium *
+3920 REM *****************************
+3930 VE=1:SR$="Schrijf bestand":GOSUB7030
+3940 GOSUB8030
+3950 GOTO1130
+4000 REM ******************
+4010 REM * wijzigingsmenu *
+4020 REM ******************
+4030 VE=1:SR$="WIJZIGINGSMENU":GOSUB7030
+4040 HO=HO+1
+4050 VE=4:GOSUB110:PRINT"1 - Wijzig file"
+4060 VE=6:GOSUB110:PRINT"2 - Wijzig opslagmedium"
+4070 VE=8:GOSUB110:PRINT"3 - Wis file"
+4080 VE=12:GOSUB110:PRINT"0 - M E N U"
+4090 MX=3:GOSUB7630
+4100 IFCH>MX THEN1130
+4110 ONCH GOTO4230,5030,5430
+4200 REM ******************
+4210 REM * wijzig bestand *
+4220 REM ******************
+4230 VE=1:SR$="Wijzig bestand":GOSUB7030
+4240 IF(A1$(1)<>"")AND(IN<>78)THEN4260
+4250 GOSUB8530:IFSR$="GEEN" THEN1130
+4260 PRINT"Het huidige bestand :"
+4270 SR$=A1$(1):GOSUB150:PRINT
+4280 SR$="wijzigen ?"
+4290 GOSUB7230:IFIN=74 THEN4320
+4300 GOSUB100:GOTO4230
+4310 REM wijzig kant a
+4320 GOSUB100:MX=-1:GOSUB3240
+4330 GOSUB4700:REM subr.kiezen
+4340 IFIN=87 THEN4480:REM "W"
+4350 IFIN=86 THEN GOSUB3250:VE=4:HO=2:REM "V"
+4360 IFIN=74 THEN4320:REM "J"
+4370 IFIN=78 THEN4520:REM "N"
+4380 IFIN<>84 THEN4430:REM <>"T"
+4390 HO=0:GOSUB110:PRINTSP$;
+4400 GOSUB110:INPUT"Titel:";A1$(1)
+4410 IFA1$(1)="" THEN4390
+4420 GOTO4320
+4430 IFIN<>65 THEN4470:REM <>"A"
+4440 HO=0:GOSUB110:PRINTSP$;
+4450 GOSUB110:INPUT"Artiest:";A1$(2)
+4460 GOTO4320
+4470 GOTO4330
+4480 GOSUB110:INPUTA1$(CH)
+4490 IFCH=MX THENA1$(CH+1)="#"
+4500 GOSUB4910:IFIN=74 THEN4320
+4510 REM wijzig kant b
+4520 GOSUB100:MX=-1:GOSUB3500
+4530 GOSUB4700:REM subr.kiezen
+4540 IFIN=87 THEN4650:REM "W"
+4550 IFIN=86 THEN GOSUB3510:VE=4:HO=2:REM "V"
+4560 IFIN=74 THEN4520:REM "J"
+4570 IFIN=78 THEN4680:REM "N"
+4580 IFIN<>84 THEN4610:REM <>"T"
+4590 HO=0:GOSUB110:INPUT"Titel:";B1$(1)
+4600 GOTO4520
+4610 IFIN<>65 THEN4640:REM <>"A"
+4620 HO=0:GOSUB110:INPUT"Artiest:";B1$(2)
+4630 GOTO4520
+4640 GOTO4530
+4650 GOSUB110:INPUTB1$(CH)
+4660 IFCH=MX THENB1$(CH+1)="#"
+4670 GOSUB4910:IFIN=74 THEN4520
+4680 GOTO1130
+4690 REM subr.kiezen
+4700 VE=22:HO=0:GOSUB110
+4710 PRINT"pijl=kies Wijzig Titel Artiest          ";
+4720 HO=32:GOSUB110:IFMX=-1 THENPRINT"Verder";
+4730 VE=4:HO=2
+4740 GOSUB110
+4750 GOSUB210:IF(IN=86)AND(MX>-1)THEN4750
+4760 GOSUB110:PRINT" "
+4770 IFIN=30 THENVE=VE+1:GOTO4840:REM omlaag
+4780 IFIN=31 THENVE=VE-1:GOTO4840:REM omhoog
+4790 IFIN=87 THENCH=BG+VE-4:GOTO4900:REM "W"
+4800 IFIN=86 THENBG=BG+16:RETURN:REM "V"
+4810 IFIN=65 THENVE=2:RETURN:REM "A"
+4820 IFIN=84 THENVE=1:RETURN:REM "T"
+4830 GOTO4750
+4840 IF(MX>0)AND(VE>MX-1)THEN4910
+4850 IF(MX<0)AND(VE>19)THENVE=4
+4860 IF(VE<4)AND(MX>0)THENVE=MX-1
+4870 IF(VE<4)AND(MX=-1)THENVE=19
+4880 IFIN<>86 THEN4740
+4890 GOTO4700
+4900 HO=3:GOSUB110:PRINTLEFT$(SP$,37);:RETURN
+4910 VE=22:HO=0:GOSUB110
+4920 SR$="Nog meer veranderen ?"
+4930 GOSUB7230:RETURN
+5000 REM ***********************
+5010 REM * wijzig opslagmedium *
+5020 REM ***********************
+5030 VE=1:SR$="Wijzig opslagmedium":GOSUB7030:PRINT
+5040 PRINT"Huidige opslagmedium:"
+5050 SR$="COMPUTER-AFHANKELIJK"
+5060 IFMO<2 THENSR$="CASSETTE"
+5070 IFMO>3 THENSR$="DISKDRIVE "+AD$
+5080 GOSUB150:PRINT
+5090 PRINT:PRINT"Welk opslagmedium wilt u ?"
+5100 PRINT:PRINT"Voer het gewenste cijfer in:"
+5110 PRINT" 0 of 1    Cassette"
+5120 PRINT" 2 of 3    Computer-afhankelijk"
+5130 PRINT" 4....7    Disk"
+5140 GOSUB200:IF(IN<48)OR(IN>55)THEN5140
+5150 MO=VAL(IN$):IFMO<2 THEN1130
+5160 PRINT:PRINT"Wilt u nummer of letter van"
+5170 SR$="opslagmedium wijzigen ?"
+5180 GOSUB7230:IFIN=78 THEN1130
+5190 PRINT:PRINT"Huidige drive: ";AD$
+5200 PRINT"Voer gewenste aanduiding in :";:GOSUB120
+5210 GOSUB110:INPUT" ";AD$
+5220 GOTO1130
+5400 REM ****************
+5410 REM * wis een file *
+5420 REM ****************
+5430 VE=1:SR$="Wis een bestand":GOSUB7030
+5440 IFMO>1 THEN5510
+5450 PRINT"Zoek het bestand op uw cassette-band op."
+5460 PRINT"Zet de recorder in opname stand."
+5470 PRINT"Zet de recorder aan totdat u bij het eind"
+5480 PRINT"van de file bent gekomen."
+5490 PRINT"(LET OP DE TELLER !)"
+5500 GOTO5630
+5510 GOSUB8530:IFSR$="GEEN" THEN1130
+5520 H1$=SR$
+5530 PRINT"Bestand ":GOSUB150:PRINT:SR$="wissen ?"
+5540 GOSUB7230:IFIN=78 THEN5630
+5550 SR$=H1$
+5560 PRINT:PRINT"Het bestand ";:GOSUB150
+5570 PRINT" wordt verwijderd !"
+5580 SR$="Weet u zeker dat u dat wilt ?"
+5590 GOSUB7230:IFIN=78 THEN1130
+5600 GOSUB100:PRINTNF$;" wordt gewist !"
+5610 GOSUB20230
+5620 GOSUB100:PRINTNF$;" is gewist !"
+5630 CS=1:GOSUB7430:GOTO1130
+6000 REM ***********
+6010 REM * printen *
+6020 REM ***********
+6030 VE=1:SR$="PRINTROUTINE":GOSUB7030:PRINT
+6040 IF(A1$(1)<>"")AND(IN<>78)THEN6060
+6050 GOSUB8530:IFSR$="GEEN" THEN1130
+6060 PRINT"Het huidige bestand :"
+6070 SR$=A1$(1):GOSUB150:PRINT
+6080 SR$="printen ?"
+6090 GOSUB7230:IFIN=74 THEN6110
+6100 GOSUB100:GOTO6030
+6110 GOSUB100
+6120 SR$=RS$+SA$+LS$:GOSUB350:GOSUB360
+6130 SR$="+---------------------------------------+"
+6140 GOSUB6680
+6150 H1$=A1$(2):H2$=B1$(2):J=1
+6160 IFJ=1 THENSR$="!"+"A:"+H1$
+6170 IFJ=2 THENSR$="!"+"  ":IFH1$<>"" THENSR$=SR$+H1$
+6180 IFLEN(SR$)<21 THENH1$="":GOTO6230
+6190 FORI=20 TO1 STEP-1
+6200 IFMID$(SR$,I,1)<>" " THEN6220
+6210 H1$=RIGHT$(SR$,LEN(SR$)-I):SR$=LEFT$(SR$,I):I=0
+6220 NEXTI
+6230 IFLEN(SR$)<20 THENSR$=SR$+" ":GOTO6230
+6240 IFJ=1 THENSR$=SR$+"!"+"B:"+H2$
+6250 IFJ=2 THENSR$=SR$+"!"+"  ":IFH2$<>"" THENSR$=SR$+H2$
+6260 IFLEN(SR$)<41 THENH2$="":GOTO6310
+6270 FORI=40 TO1 STEP-1
+6280 IFMID$(SR$,I,1)<>" " THEN6300
+6290 H2$=RIGHT$(SR$,LEN(SR$)-I):SR$=LEFT$(SR$,I):I=0
+6300 NEXTI
+6310 GOSUB6660
+6320 IFJ=1 THENJ=2:GOTO6160
+6330 SR$="+-------------------!-------------------+"
+6340 GOSUB6680
+6350 A=4:B=4:J=4
+6360 H1$=A1$(A):H2$=B1$(B)
+6370 SR$="!"+H1$:IFLEN(SR$)<21 THENH1$="":GOTO6420
+6380 FORI=20 TO1 STEP-1
+6390 IFMID$(SR$,I,1)<>" " THEN6410
+6400 H1$="   "+RIGHT$(SR$,LEN(SR$)-I):SR$=LEFT$(SR$,I):I=0
+6410 NEXTI
+6420 IFLEN(SR$)<20 THENSR$=SR$+" ":GOTO6420
+6430 SR$=SR$+"!"+H2$:IFLEN(SR$)<41 THENH2$="":GOTO6480
+6440 FORI=40 TO1 STEP-1
+6450 IFMID$(SR$,I,1)<>" " THEN6470
+6460 H2$="   "+RIGHT$(SR$,LEN(SR$)-I):SR$=LEFT$(SR$,I):I=0
+6470 NEXTI
+6480 GOSUB6660
+6490 IFH1$="" THENA=A+1:H1$=A1$(A):IFH1$="#" THENH1$=""
+6500 IFH2$="" THENB=B+1:H2$=B1$(B):IFH2$="#" THENH2$=""
+6510 J=J+1:IFJ>36 THEN6610
+6520 IFJ<>30 THEN6370
+6530 SR$="+---------------------------------------+"
+6540 GOSUB6680
+6550 SR$="!                                       !"
+6560 GOSUB6680
+6570 SR$="!"+A1$(3)+":"+A1$(2):GOSUB6660
+6580 SR$="!"+"       "+A1$(1):GOSUB6660
+6590 SR$="!"+B1$(3)+":"+B1$(2):GOSUB6660
+6600 SR$="!"+"       "+B1$(1):GOSUB6660
+6610 SR$="+---------------------------------------+"
+6620 GOSUB6680
+6630 IFJ<36 THEN6370
+6640 SR$=RS$:GOSUB350:GOSUB360
+6650 GOTO1130
+6660 IFLEN(SR$)<40 THENSR$=SR$+" ":GOTO6660
+6670 SR$=SR$+"!"
+6680 GOSUB350:GOSUB360:PRINTLEFT$(SR$,40):RETURN
+7000 REM *************************
+7010 REM * print sr$ gecentreerd *
+7020 REM *************************
+7030 LE=LEN(SR$)
+7040 HO=INT((HM-LE-7)/2):GOSUB110:GOSUB150
+7050 RETURN
+7200 REM ******************
+7210 REM * j/n subroutine *
+7220 REM ******************
+7230 SR$=SR$+"  (J of N)"+SP$:SR$=LEFT$(SR$,40):PRINTSR$;
+7240 GOSUB200:IF(IN<>74)AND(IN<>78)THEN7240
+7250 RETURN
+7400 REM ****************************
+7410 REM * druk op enter subroutine *
+7420 REM ****************************
+7430 VE=23:HO=20:GOSUB110:PRINT"Druk op ENTER";
+7440 GOSUB200:IFIN<>13 THEN7440
+7450 IFCS=1 THEN GOSUB100
+7460 GOSUB110:PRINT"             ";
+7470 RETURN
+7600 REM **********************
+7610 REM * menukiessubroutine *
+7620 REM **********************
+7630 VE=19:HO=0:GOSUB110
+7640 PRINT"CURSOR=kiezen    ENTER=uitvoeren"
+7650 VE=21:HO=0:GOSUB110:PRINT"Actuele medium: ";
+7660 IFMO<2 THENPRINT"cassette":GOTO7690
+7670 IFMO>1 THENPRINT"drive ";
+7680 PRINTAD$
+7690 VE=22:HO=0:GOSUB110:PRINT"Actuele file:   ";
+7700 SR$=LEFT$(A1$(1)+SP$,24):PRINTSR$;
+7710 VE=4:HO=INT((HM-LE)/2)-5
+7720 GOSUB110:PRINT"=>";
+7730 GOSUB200:IFIN=0 THEN7730
+7740 IFIN=13 THENCH=INT(VE/2)-1:GOSUB100:RETURN
+7750 GOSUB110:PRINT"  ";
+7760 IFIN=30 THENVE=VE+2
+7770 IFIN=31 THENVE=VE-2
+7780 IF(VE=2*MX+4)AND(IN=30)THENVE=VE+2
+7790 IF(VE=2*MX+4)AND(IN=31)THENVE=VE-2
+7800 IFVE>2*MX+6 THENVE=4
+7810 IFVE<4 THENVE=2*MX+6
+7820 GOTO7720
+8000 REM *****************************
+8010 REM * uitvoer naar opslagmedium *
+8020 REM *****************************
+8030 NF$="":FORI=1 TOLEN(A1$(1))
+8040 IFMID$(A1$(1),I,1)=" " THEN8070
+8050 IFMID$(A1$(1),I,1)="." THEN8070
+8060 NF$=NF$+MID$(A1$(1),I,1)
+8070 NEXTI
+8080 IFLEN(NF$)>7 THENNF$=LEFT$(NF$,7)
+8090 PRINT"Het huidige bestand :"
+8100 SR$=NF$:GOSUB150:PRINT
+8110 PRINT"naar ";
+8120 SR$="computer-afhankelijk medium."
+8130 IFMO<2 THENSR$="cassette."
+8140 IFMO>3 THENSR$="diskette."
+8150 PRINTSR$
+8160 NF=MO:IFNF/2=INT(NF/2)THENNF=NF+1
+8170 GOSUB500
+8180 FORI=1 TO36
+8190 SR$=A1$(I):GOSUB560
+8200 IF(A1$(I)="#")OR(IN<>0)THENI=40
+8210 NEXTI:IFIN=-1 THEN GOSUB580:GOSUB250:GOTO8160
+8220 FORI=1 TO36
+8230 SR$=B1$(I):GOSUB560
+8240 IF(B1$(I)="#")OR(IN<>0)THENI=40
+8250 NEXTI:IFIN=-1 THEN GOSUB580:GOSUB250:GOTO8160
+8260 GOSUB580:RETURN
+8500 REM ***************************
+8510 REM * lees bestand subroutine *
+8520 REM ***************************
+8530 GOSUB20030:IFMO<2 THEN8600
+8540 PRINT"Welk bestand zoekt u ";:GOSUB120
+8550 PRINT:PRINT"(GEEN = terug naar menu)"
+8560 GOSUB110:PRINT"               ";
+8570 GOSUB110:INPUTNF$:IFNF$="" THENNF$="geen"
+8580 IFLEN(NF$)>7 THEN8560
+8590 SR$=NF$:GOSUB330:IFSR$="GEEN" THENRETURN
+8600 NF=MO:IFNF/2<>INT(NF/2)THENNF=NF-1
+8610 GOSUB500
+8620 FORI=1 TO36
+8630 GOSUB540:A1$(I)=IN$
+8640 IF(A1$(I)="#")OR(IN<>0)THENI=40
+8650 NEXTI
+8660 FORI=1 TO36
+8670 GOSUB540:B1$(I)=IN$
+8680 IF(B1$(I)="#")OR(IN<>0)THENI=40
+8690 NEXTI
+8700 GOSUB580:GOSUB100:RETURN
+9000 REM **********************
+9010 REM * printer-variabelen *
+9020 REM **********************
+9030 RS$="":REM string voor 'reset printer'
+9040 READPV:IFPV>=0 THENRS$=RS$+CHR$(PV):GOTO9040
+9050 SA$="":REM string voor 'superscript aan'
+9060 READPV:IFPV>=0 THENSA$=SA$+CHR$(PV):GOTO9060
+9070 LS$="":REM string voor 'linespace 6/72'
+9080 READPV:IFPV>=0 THENLS$=LS$+CHR$(PV):GOTO9080
+9090 RETURN
+20000 REM ******************
+20010 REM * list bestanden *
+20020 REM ******************
+20030 IFMO<2 THENRETURN
+20040 SR$="Wilt u een directory ?"
+20050 GOSUB7230:GOSUB100:IFIN=78 THEN20180
+20060 PRINT"Zet op deze regels (va.20060) de"
+20070 PRINT"routine(s) die er voor zorgen dat u"
+20080 PRINT"de inhouds-opgave van uw medium krijgt."
+20090 PRINT:PRINT"Voorbeelden:"
+20100 PRINT"PC:  20060 FILES AD$+";CHR$(34);"*.";CHR$(34)
+20110 PRINT:PRINT"SPECTRUM:  20060 MD=VAL(AD$)"
+20120 PRINT"          20070 CAT MD"
+20130 PRINT"Daarna regels t/m 20140 verwijderen.":PRINT
+20140 GOSUB7430:GOTO950
+20150 REM
+20160 REM
+20170 REM
+20180 RETURN
+20200 REM ****************
+20210 REM * wis een file *
+20220 REM ****************
+20230 PRINT"Op deze regels (va.20230) moet u de"
+20240 PRINT"opdracht(en) zetten die nodig zijn om"
+20250 PRINT"een file te wissen."
+20260 PRINT:PRINT"Voorbeelden:"
+20270 PRINT"PC:   20230 NF$=AD$+NF$"
+20280 PRINT"      20240 KILL NF$"
+20290 PRINT:PRINT"SPECTRUM:  20230 MD=VAL(AD$)"
+20300 PRINT"          20240 ERASE M;MD;NF$"
+20310 PRINT:PRINT"Daarna regels t/m 20320 verwijderen."
+20320 GOSUB7430:GOTO950
+20330 REM
+20340 REM
+20350 RETURN
+25000 REM ---------------------------------------------
+25010 REM ! PRINTERCODES VOOR BIJZONDERE INSTELLINGEN !
+25020 REM ---------------------------------------------
+25030 REM ! Pas deze codes eventueel aan voor uw      !
+25040 REM ! eigen printer. Raadpleeg de handleiding   !
+25050 REM ! van uw printer !                          !
+25060 REM ---------------------------------------------
+25070 REM codes voor 'reset printer' :
+25080 DATA 27,64,-1
+25090 REM codes voor 'superscript aan' :
+25100 DATA 27,83,48,-1
+25110 REM codes voor 'linespace 6/72' :
+25120 DATA 27,65,6,27,50,-1
+30000 REM
+30010 REM ---------------------------------------------
+30020 REM ! Gebruikte Basicode variabelen:            !
+30030 REM ! VE  = hoogte bepalend                     !
+30040 REM ! HO  = kolom bepalend                      !
+30050 REM ! SR$ = voor diverse print acties           !
+30060 REM ! IN  = input-code                          !
+30070 REM ! IN$ = input-string                        !
+30080 REM ! NF  = in/uitvoer-code                     !
+30090 REM ! NF$ = file-naam (in/uitvoer)              !
+30100 REM ---------------------------------------------
+30110 REM ! Gebruikte overige variabelen:             !
+30120 REM ! VM  = maximum schermhoogte                !
+30130 REM ! HM  = maximum schermbreedte               !
+30140 REM ! IT  = initialisatie-signalering           !
+30150 REM ! MX  = maximum aantal keuzemogelijkheden   !
+30160 REM ! A1$()= namen kant A                       !
+30170 REM ! B1$()= namen kant B                       !
+30180 REM ! I   = (FOR-NEXT) lusteller                !
+30190 REM ! J   = hulpteller                          !
+30200 REM ! AD$ = actuele drive                       !
+30210 REM ! H1$ = hulpstring 1                        !
+30220 REM ! H2$ = hulpstring 2                        !
+30230 REM ! LE  = lengte SR$                          !
+30240 REM ! MO  = bepaling opslagmedium               !
+30250 REM ---------------------------------------------
+30260 REM ! Gebruikte variabelen voor printercodes:   !
+30270 REM ! RS$ = reset                               !
+30280 REM ! SA$ = subscript                           !
+30290 REM ! LS$ = linespace (6/72,1/12,12/144 of 3/36)!
+30300 REM ---------------------------------------------
+32000 REM  Gemaakt door:
+32010 REM  K. v.d. Wissel
+32020 REM  Nieuwstraat 306
+32030 REM  3201 EG Spijkenisse
+32040 REM  01880-13398
+32050 REM
+32060 REM  Ontwikkeld op
+32070 REM  LASER-XT2 PC
+32080 REM  09-1989
+32090 REM
+32100 REM TROS-RADIO dd 900425
+32110 REM incl.corr. dd 900510

@@ -1,0 +1,103 @@
+
+1000 A=100:GOTO20:REM ** UITLEG MUZIEKBESTANDEN **
+1010 T$="U I T L E G    MUZIEKBESTANDEN"
+1020 X=LEN(T$):FORY=1 TOX:L$=L$+" ":NEXTY
+1030 VE=1:HO=0:GOSUB110:SR$=L$:GOSUB150
+1040 VE=2:GOSUB110:SR$=T$:GOSUB150
+1050 VE=3:GOSUB110:SR$=L$:GOSUB150
+1060 VE=6:HO=0:GOSUB110
+1070 PRINT"Op (P)apier of op (S)cherm";
+1080 GOSUB210:SR$=IN$:GOSUB330
+1090 IFSR$="S" THEN2000
+1100 IFSR$="P" THEN3000
+1110 GOSUB250:GOTO1080
+2000 GOSUB100:X=0
+2010 X=X+1:READA$
+2020 IFA$="%" THEN GOSUB210:GOTO950
+2030 PRINTA$:IFX=20 THEN2050
+2040 GOTO2010
+2050 VE=22:HO=10:GOSUB110:SR$="toets":GOSUB150
+2060 GOSUB210:GOTO2000
+3000 GOSUB100
+3010 INPUT"Geef kantlijnbreedte <40:";KB
+3020 IFKB>39 THEN GOSUB250:GOTO3000
+3030 PRINT:PRINT"Zet de printer klaar en druk '*'";
+3040 GOSUB210
+3050 IFIN$<>"*" THEN1000
+3060 SR$="":READA$:IFA$="%" THEN950
+3070 IFKB<1 THEN3090
+3080 FORX=0 TOKB:SR$=SR$+" ":NEXTX:GOSUB350
+3090 SR$=A$:GOSUB350:GOSUB360:GOTO3060
+25000 DATA"U I T L E G      MUZIEKBESTANDEN"
+25010 DATA"********************************",""
+25020 DATA"Het programma 'muziekbestanden' is"
+25030 DATA"verdeeld in 2 afzonderlijk werkende"
+25040 DATA"BASICODE-3 programma's.",""
+25050 DATA"         > composer"
+25060 DATA"         > playback",""
+25070 DATA"Deze twee programma's kunnen via een"
+25080 DATA"bestand werken met muziek."
+25090 DATA"","C O M P O S E R"
+25100 DATA"---------------"
+25110 DATA"Allereerst wordt u in dit programma"
+25120 DATA"gevraagd waarmee u wilt werken."
+25130 DATA"(Dus hoe uw bestand later weggeschre-"
+25140 DATA"ven moet worden!)"
+25150 DATA"Daarna kunt u beginnen met spelen."
+25160 DATA"Een toetsenbord geeft aan welke noten"
+25170 DATA"er onder de betreffende toetsen zitten."
+25180 DATA"Alle tonen krijgen 1 tel. Als u een"
+25190 DATA"langere toon wilt maken moet u dezelfde"
+25200 DATA"toon weer aanslaan, net zoveel keer"
+25210 DATA"als de toon aan tellen lang is."
+25220 DATA"Het playback-programma maakt hier later"
+25230 DATA"een lange toon van die langzaam of"
+25240 DATA"snel wegsterft. (Al naar gelang uw"
+25250 DATA"keuze)"
+25260 DATA"U kunt een fout aangeslagen toon"
+25270 DATA"verbeteren door '#' te typen."
+25280 DATA"Als u klaar bent typt u '%'"
+25290 DATA"U krijgt de 'kale' melodie te horen"
+25300 DATA"en daarna wordt die weggeschreven."
+25310 DATA"U kunt het muziekstuk later altijd"
+25320 DATA"weer horen met het playback-programma.","","",""
+25330 DATA"P L A Y B A C K","---------------"
+25340 DATA"Ook hier wordt eerst gevraagd waar u"
+25350 DATA"mee werkt. Als u de voorbeelden van"
+25360 DATA"de radio wilt beluisteren dan moet"
+25370 DATA"u natuurlijk met (B)asicode-bestanden"
+25380 DATA"werken. Vervolgens leest de computer"
+25390 DATA"het betreffende bestand in."
+25400 DATA"Dit kan, afhankelijk van de lengte van"
+25410 DATA"het stuk, even duren!"
+25420 DATA"Daarna kunt u het tempo aangeven."
+25430 DATA"Ook wordt gevraagd of de melodie met"
+25440 DATA"(N)agalm of (S)taccato moet worden"
+25450 DATA"gespeeld, d.w.z. met naklinkende tonen"
+25460 DATA"of met korte 'droge' tonen."
+25470 DATA"Hierna brengt de computer het stuk ten"
+25480 DATA"gehore."
+25490 DATA"Na het stuk kunt u het opnieuw belui-"
+25500 DATA"steren waarbij u weer de manier van"
+25510 DATA"spelen kunt bepalen."
+25520 DATA"U kunt ook stoppen, waarbij u de moge-"
+25530 DATA"lijkheid hebt het stuk opnieuw weg te"
+25540 DATA"schrijven naar hetzelfde of een ander"
+25550 DATA"systeem."
+25560 DATA"","Veel muzikaal plezier met"
+25570 DATA"         COMPOSER en PLAYBACK!","","",""
+25580 DATA"                Walther v.d. Elshout."
+25590 DATA"%"
+32000 REM &&&&&&&&&&&&&&&&&&&&&&&&&&&&
+32010 REM &                          &
+32020 REM & *UITLEG MUZIEKB.*  DOOR  &
+32030 REM &  ---------------         &
+32040 REM & Walther van den Elshout  &
+32050 REM & Generaal Wicherslaan 14  &
+32060 REM & 5623 GS  EINDHOVEN       &
+32070 REM & Tel. 040 - 451098        &
+32080 REM &                          &
+32090 REM & Okt.'89 < > Commodore 64 &
+32100 REM & TROS d.d. 14-2-1990      &
+32110 REM &                          &
+32120 REM &&&&&&&&&&&&&&&&&&&&&&&&&&&&

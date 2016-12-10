@@ -1,0 +1,501 @@
+
+1000 A=2000:GOTO20:REM AFRIKA
+1010 AL=48:REM aantal landen
+1020 REM wanneer u niet genoeg geheugen
+1030 REM ruimte heeft,kunt u de
+1040 REM volgende instructie intikken:
+1050 REM DELETE 400-599
+1060 REM initialisatie *****************
+1070 DIMA$(AL),AA$(10),A(4)
+1080 FORX=1 TOAL:READA$(X)
+1090 FORY=2 TO10:READA$:NEXTY
+1100 FORY=1 TO4:READA:NEXTY:NEXTX
+1110 REM hoofdmenu *********************
+1120 GOSUB2350:REM kop
+1130 PRINT"Hoofdmenu":PRINT"---------"
+1140 PRINT" Noord-Afrika"
+1150 PRINT" West-Afrika"
+1160 PRINT" Midden-Afrika"
+1170 PRINT" Oost-Afrika"
+1180 PRINT" Zuidelijk Afrika"
+1190 PRINT" Informatie"
+1200 PRINT" Stoppen":PRINT
+1210 SR$="Maak keuze mbv cursor en return":GOSUB150
+1220 HO=0:V=4
+1230 VE=V:GOSUB110:PRINT">";:GOSUB210
+1240 IFIN=13 THEN1300
+1250 IFIN=30 THENV=V+1
+1260 IFIN=31 THENV=V-1
+1270 IFV<4 THENV=10
+1280 IFV>10 THENV=4
+1290 GOSUB110:PRINT" ":GOTO1230
+1300 IFV=9 THEN2390
+1310 IFV=10 THEN950
+1320 GOSUB2350
+1330 IFV=4 THENB=1:E=7:S$="Noord-"
+1340 IFV=5 THENB=8:E=23:S$="West-"
+1350 IFV=6 THENB=24:E=31:S$="Midden-"
+1360 IFV=7 THENB=32:E=37:S$="Oost-"
+1370 IFV=8 THENB=38:E=48:S$="Zuidelijk "
+1380 REM submenu **********************
+1390 PRINT"Menu ";S$;"Afrika"
+1400 Q=11+LEN(S$):GOSUB2280
+1410 FORX=B TOE:PRINT" ";A$(X):NEXTX
+1420 PRINT" Hoofdmenu":PRINT
+1430 SR$="Maak keuze mbv cursor en return":GOSUB150
+1440 HO=0:V=4
+1450 VE=V:GOSUB110:PRINT">";:GOSUB210
+1460 IFIN=13 THEN1520
+1470 IFIN=30 THENV=V+1
+1480 IFIN=31 THENV=V-1
+1490 IFV<4 THENV=E-B+5
+1500 IFV>E-B+5 THENV=4
+1510 GOSUB110:PRINT" ":GOTO1450
+1520 IFV=E-B+5 THEN1120
+1530 REM landinformatie tonen *********
+1540 GOSUB2350:JB=B+V-4:HO=10:VE=0
+1550 GOSUB110:PRINT" ";A$(JB)
+1560 RESTORE
+1570 READA$
+1580 IFA$=A$(JB) THEN1630
+1590 FORY=2 TO10:READB$:NEXTY
+1600 FORY=1 TO4:READB:NEXTY
+1610 GOTO1570
+1620 REM
+1630 FORX=2 TO10:READAA$(X):NEXTX
+1640 FORX=1 TO4:READA(X):NEXTX
+1650 REM
+1660 HO=0:VE=1:GOSUB110
+1670 PRINT"Onafhankelijk";:Q=26:GOSUB2280:B$=AA$(2)
+1680 GOSUB2310:PRINTAA$(2):PRINT"Staatsvorm";
+1690 Q=29:GOSUB2280
+1700 B$=AA$(3):GOSUB2310:PRINTAA$(3):
+1710 PRINT"Officiele naam";
+1720 Q=25:GOSUB2280:B$=AA$(4):GOSUB2310:PRINTAA$(4)
+1730 PRINT"Hoofdstad";
+1740 Q=30:GOSUB2280
+1750 B$=AA$(5):GOSUB2310
+1760 PRINTAA$(5)
+1770 PRINT"Inwonertal";
+1780 Q=29:GOSUB2280
+1790 B$=AA$(6):GOSUB2310
+1800 PRINTAA$(6)
+1810 IFLEN(AA$(7))>8 THENPRINT"Talen";:GOTO1830
+1820 PRINT"Taal ";
+1830 Q=34:GOSUB2280
+1840 B$=AA$(7):GOSUB2310
+1850 PRINTAA$(7)
+1860 PRINT"Godsdienst";
+1870 Q=29:GOSUB2280
+1880 B$=AA$(8):GOSUB2310
+1890 PRINTAA$(8)
+1900 PRINT"Geletterden";
+1910 SR=A(1):GOSUB300
+1920 Q=-(26-LEN(SR$)):GOSUB2280
+1930 PRINTSR$;" %"
+1940 PRINT"Oppervlakte";
+1950 SR=A(2):GOSUB300
+1960 Q=-(24-LEN(SR$)):GOSUB2280
+1970 PRINTSR$;" km2"
+1980 PRINT"Grondstoffen";
+1990 Q=27:GOSUB2280
+2000 B$=AA$(9):GOSUB2310
+2010 PRINTAA$(9)
+2020 PRINT"Middelen van bestaan";
+2030 Q=19:GOSUB2280
+2040 B$=AA$(10):GOSUB2310
+2050 PRINTAA$(10)
+2060 PRINT"Energieverbruik";
+2070 IFA(3)=0 THENQ=-15:GOSUB2280:PRINT" Onbekend":GOTO2110
+2080 SR=A(3):GOSUB300
+2090 Q=-(7-LEN(SR$)):GOSUB2280
+2100 PRINTSR$;" kg steenk.equiv."
+2110 PRINT"Gemiddeld inkomen";
+2120 SR=A(4):GOSUB300
+2130 IFA(4)=0 THENQ=-13:GOSUB2280:PRINT" Onbekend":GOTO2170
+2140 Q=-(20-LEN(SR$)):GOSUB2280
+2150 IFA(4)=0 THENPRINT"Onbekend":GOTO2170
+2160 PRINT"$ ";SR$
+2170 HO=34:VE=0:GOSUB110:PRINT"[M/P]";
+2180 GOSUB210
+2190 IF(IN=13)OR(IN=77) THEN1120
+2200 IFIN=80 THEN2220
+2210 GOTO2180
+2220 FORY=0 TO23
+2230 FORX=0 TO40
+2240 HO=X:VE=Y:GOSUB220
+2250 SR$=CHR$(IN):GOSUB350
+2260 NEXTX:GOSUB360:NEXTY
+2270 GOTO2180
+2280 FORX=1 TOABS(Q):PRINT"-";:NEXTX
+2290 IFQ>0 THENPRINT
+2300 RETURN
+2310 IFLEN(B$)=39 THENRETURN
+2320 FORX=1 TO39-LEN(B$):PRINT" ";:NEXTX
+2330 RETURN
+2340 REM kop **************************
+2350 GOSUB100:HO=0:VE=0:GOSUB110
+2360 SR$="AFRIKA":GOSUB150:HO=0:VE=2
+2370 GOSUB110:RETURN
+2380 REM informatie *******************
+2390 GOSUB2350:REM kop
+2400 PRINT"Informatie":PRINT"----------"
+2410 PRINT"Dit programma biedt U de mogelijkheid"
+2420 PRINT"informatie in te winnen over alle"
+2430 PRINT"Afrikaanse landen."
+2440 PRINT
+2450 PRINT"Het enige wat U hoeft te doen is uw"
+2460 PRINT"keuze kenbaar maken in twee pull-down"
+2470 PRINT"menu's."
+2480 PRINT
+2490 PRINT"Wanneer de informatie getoond is,wordt"
+2500 PRINT"het scherm met een druk op de 'P'"
+2510 PRINT"geprint en met de 'M' of return gaat U"
+2520 PRINT"terug naar het hoofdmenu."
+2530 PRINT
+2540 SR$="Toets":GOSUB150:GOSUB210
+2550 GOTO1120
+25000 DATA"Algerije","3 juli 1962 (Frankrijk)"
+25010 DATA"Socialistische republiek,eenpartijstaat"
+25020 DATA"El Djemhouria El Djazairia Eddemokr.Ech"
+25030 DATA"Algiers","18.120.000 (Arabieren en Berbers)"
+25040 DATA"Arabisch,Frans en Berber-dialecten","Sunni islam"
+25050 DATA"fosfaat,aardolie,aardgas,ijzer,looderts"
+25060 DATA"veeteelt,land-,bos-en mijnbouw"
+25070 DATA36,2381741,687,1110
+25080 DATA"Egypte","28 februari 1922 (Groot-Brittannie)"
+25090 DATA"Eenpartijstaat","Arabische Republiek van Egypte"
+25100 DATA"Kairo"
+25110 DATA"42.000.000 (Arabieren,Hamieten,Nubiers)"
+25120 DATA"Arabisch","islam"
+25130 DATA"olie,gerst,katoen,mais,rijst,tarwe"
+25140 DATA"landbouw,mijnbouw,industrie",44,1001449,463,310
+25150 DATA"Libie","24 december 1951 (Italie)"
+25160 DATA"Militaire republiek,eenpartijstaat"
+25170 DATA"Al Libya Al Shabiya Al-Ishtirakiya"
+25180 DATA"Tripoli","2.708.000 (Arabieren en Berbers)"
+25190 DATA"Arabisch en Italiaans","Sunni islam"
+25200 DATA"aardolie","oliewinning",40,1759540,1889,6910
+25210 DATA"Marokko","2 maart 1956 (Frankrijk)","Monarchie"
+25220 DATA"Al-Mamlaka Al-Maghribiyah","Rabat"
+25230 DATA"19.550.000 (Arabieren,6.5 milj.Berbers)"
+25240 DATA"Arabisch","Sunni islam"
+25250 DATA"fosfaat,steenkool,olie,ijzer,lood,zink"
+25260 DATA"landbouw,mijnbouw,industrie",24,446550,285,670
+25270 DATA"Soedan","1 januari 1956 (Groot-Brittannie)"
+25280 DATA"Eenpartijstaat"
+25290 DATA"Jamhuryat es-Sudan Al Democratia","Khartoem"
+25300 DATA"17.400.000 (Arabieren,Niloten,Fulani)"
+25310 DATA"Arabisch en Engels"
+25320 DATA"Sunni islam en traditionele godsd."
+25330 DATA"katoen,suiker,aardnoten,mineralen"
+25340 DATA"landbouw en veeteelt",20,2505813,172,320
+25350 DATA"Tunesie","20 maart 1956 (Frankrijk)"
+25360 DATA"Parlementaire republiek"
+25370 DATA"Al-Djoumhouria Attunusia","Tunis"
+25380 DATA"6.841.000 (Arabieren en Berbers)"
+25390 DATA"Arabisch","Sunni islam"
+25400 DATA"graan,olijven,wijn,espartogras,fruit"
+25410 DATA"landbouw en toerisme",40,163610,543,950
+25420 DATA"Westelijke Sahara","5 maart 1976 (Spanje)"
+25430 DATA"Republiek"
+25440 DATA"Saharaanse Arabische Democratische Rep."
+25450 DATA"El Ajun","750.000 a 1.000.000 (Sharawi's)"
+25460 DATA"Spaans,Arabisch en Hasania","islam","fosfaat"
+25470 DATA"fosfaatwinning,visserij en veeteelt",35,266000
+25480 DATA0,0,"Benin","1 augustus 1960 (Frankrijk)"
+25490 DATA"Volksrepubliek","Republique Populaire du Benin"
+25500 DATA"Porto Novo"
+25510 DATA"3.380.000 (Ewe,Aizo,Fong,Yoruba,Bariba)"
+25520 DATA"Frans en lokale talen","islam en christendom"
+25530 DATA"olie,palmbomen,koffie,katoen en mais"
+25540 DATA"landbouw en veeteelt",20,112622,56,230
+25550 DATA"Boven-Volta","5 augustus 1960 (Frankrijk)"
+25560 DATA"Militair regiem","Republique de Haute-Volta"
+25570 DATA"Ouagadougou"
+25580 DATA"6.554.000 (Mossi,Bobo,Gurma,Toeareg)"
+25590 DATA"Frans en lokale talen"
+25600 DATA"islam,r-k en traditionele godsdiensten"
+25610 DATA"aardnoten,hout,katoen","landbouw",7,274200,25,110
+25620 DATA"Gambia","18 februari 1965 (Groot-Brittannie)"
+25630 DATA"Presidentiele republiek","The Gambia","Banjul"
+25640 DATA"559.000 (Mandingo,Woloff,Fula)"
+25650 DATA"Engels en lokale talen"
+25660 DATA"80% islam,christelijke minderheden"
+25670 DATA"aardnoten,rijst"
+25680 DATA"veeteelt,land- en bosbouw",12,11570,0,200
+25690 DATA"Ghana","6 maart 1957 (Groot-Brittannie)"
+25700 DATA"Meerpartijen-democratie","Ghana","Accra"
+25710 DATA"11.000.000 (Ashanti,Ewe,Ga,Fulani)"
+25720 DATA"Engels en lokale talen"
+25730 DATA"12% islamieten,43% christenen,38% trad."
+25740 DATA"cacao,koffie,aardnoten,mais,palmprod."
+25750 DATA"veeteelt,land- en mijnbouw",30,238537,165,390
+25760 DATA"Guinee","2 oktober 1958 (Frankrijk)"
+25770 DATA"Eenpartijstaat"
+25780 DATA"Rep.Populaire et Revolutionaire de G."
+25790 DATA"Conakry","5.822.000 (Fulani,Malinke,Soussou)"
+25800 DATA"Frans en acht lokale talen"
+25810 DATA"islam,Afrikaanse godsdiensten,christ."
+25820 DATA"bauxiet,hout,ijzererts,koffie,aardnoten"
+25830 DATA"land- en mijnbouw,veeteelt",15,245857,91,210
+25840 DATA"Guinee-Bissau","24 september 1973 (Portugal)"
+25850 DATA"Eenpartijstaat","Guinee-Bissau","Bissau"
+25860 DATA"777.214 (Balante,Fulani,Mandyako)"
+25870 DATA"Portugees en Afrikaanse talen"
+25880 DATA"35% islam,5% christenen,60% trad."
+25890 DATA"aardnoten,palmpitten,rijst"
+25900 DATA"landbouw en veeteelt",3,36925,0,140
+25910 DATA"Ivoorkust","7 augustus 1960 (Frankrijk)"
+25920 DATA"Presidentiele republiek,eenpartijstaat"
+25930 DATA"Republique de la Cote d'Ivoire"
+25940 DATA"Abidjan"
+25950 DATA"7.800.000 (Akan,Mande,Senoufou,Malinke)"
+25960 DATA"Frans en Dioula"
+25970 DATA"25% islam,12% christenen en trad.godsd."
+25980 DATA"cacao,koffie,katoen,aardnoten,palmprod."
+25990 DATA"land- en mijnbouw,veeteelt",22,322463,357,840
+26000 DATA"Liberia","26 juli 1847 (door Amerik. ex-slaven)"
+26010 DATA"Militair regiem","Liberia","Monrovia"
+26020 DATA"2.125.000 (Vai,Kru,Cola en Kpelle)"
+26030 DATA"Engels en lokale talen"
+26040 DATA"islam,christendom en trad. godsd."
+26050 DATA"ijzer,rubber en hout","land-,mijnbouw",18,111369
+26060 DATA395,460,"Mali","22 steptember 1960 (Frankrijk)"
+26070 DATA"Eenpartijstaat","Republique de Mali","Bamako"
+26080 DATA"6.661.000 (Bambara,Fulani,Marka,Songai)"
+26090 DATA"Frans,Touareg,Arabisch,Bambara"
+26100 DATA"christendom,islam en trad. godsd."
+26110 DATA"katoen,aardnoten,vis,vee,fosfaat,ijzer"
+26120 DATA"landbouw,visserij,veeteelt",10,1240000,10,120
+26130 DATA"Mauretanie","28 november 1960 (Frankrijk)"
+26140 DATA"Militair regiem"
+26150 DATA"Republique Islamique de Mauretanie","Nouakchott"
+26160 DATA"1.664.000 (Moren,Woloff,Soninke)"
+26170 DATA"Arabisch,Frans,Woloff en Soninke","islam","ijzer"
+26180 DATA"landbouw,veeteelt,visserij,bosbouw",10,1030700
+26190 DATA203,270,"Niger","3 augustus 1960 (Frankrijk)"
+26200 DATA"Militair regiem","Republique du Niger","Niamey"
+26210 DATA"4.925.000 (75% Hausa en Hamieten)"
+26220 DATA"Frans,Hausa en Djerma"
+26230 DATA"85% islam en traditionele godsdiensten"
+26240 DATA"aardnoten,katoen,vee,uranium,tin,ijzer"
+26250 DATA"landbouw en veeteelt",5,1267000,38,610
+26260 DATA"Nigeria","1 oktober 1960 (Groot-Brittannie)"
+26270 DATA"Presid. rep.,meerpartijendemocratie"
+26280 DATA"Federale Republiek Nigeria","Lagos"
+26290 DATA"Tussen 67 en 100 miljoen (Hausa,Fulani)"
+26300 DATA"Engels,Hausa,Yoruba en Ibo"
+26310 DATA"47% islam,35% christenen,18% trad.godsd"
+26320 DATA"olie,aardgas,waterkracht,tin,steenkool"
+26330 DATA"land- en mijnbouw",25,923768,106,560
+26340 DATA"Senegal","20 juni 1960 (Frankrijk)"
+26350 DATA"Presid. rep.,meerpartijendemocratie"
+26360 DATA"Republiqe Senegalais","Dakar"
+26370 DATA"5.847.000 (Woloff,Fula,Serer,Tukulor)"
+26380 DATA"Frans en Woloff","80% islam en christenen"
+26390 DATA"aardnoten,fosfaat,katoen","landbouw en veeteelt"
+26400 DATA10,196192,181,340,"Sierra Leone","27 april (GBr.)"
+26410 DATA"Eenpartijstaat","Sierra Leone","Freetown"
+26420 DATA"3.072.000 (Mende,Temme,creolen)","Engels,Krio"
+26430 DATA"islam,christenen,trad. godsdiensten"
+26440 DATA"rijst,palmprodukten,diamant en ijzer"
+26450 DATA"land- en mijnbouw",15,71740,100,210
+26460 DATA"Togo","27 april 1960(Frankrijk)","Eenpartijstaat"
+26470 DATA"Togo","Lome","2.470.000 (Ewe,Adja,Kabre-Losso)"
+26480 DATA"Frans,Ewegbe,Twi en Hausa"
+26490 DATA"islam,christenen,trad. godsd."
+26500 DATA"aardnoten,cacao,katoen,palmpr.,fosfaat"
+26510 DATA"land- en mijnbouw",18,56000,96,320
+26520 DATA"Tsjaad","11 augustus 1960 (Frankrijk)"
+26530 DATA"Militair regiem","Republique du Tchad"
+26540 DATA"tot 1973 Fort Lamy,daarna N'Djamena"
+26550 DATA"4.405.000 (Arabieren,Sara","Frans,Turku en Sara"
+26560 DATA"45% islam,5% christenen en 50% tradit."
+26570 DATA"katoen","landbouw en veeteelt",15,1284000,22,140
+26580 DATA"Burundi","1 juli 1962 (Duitsland/Belgie)"
+26590 DATA"Militair regiem,eenpartijstaat","Burundi"
+26600 DATA"Bujumbura","4.500.000 (Hutu en Tutsi)"
+26610 DATA"Kirundi en Frans"
+26620 DATA"60% christenen,ca.40% trad.godsdiensten"
+26630 DATA"koffie en thee","landbouw en veeteelt",18,27834
+26640 DATA12,130,"Centraalafrikaanse Rep."
+26650 DATA"13 augustus 1960 (Frankrijk)","Republiek"
+26660 DATA"Republique Centre-Africaine","Bangui"
+26670 DATA"1.891.000 (Banda,Baya,Mandja en Ubangi)"
+26680 DATA"Frans en Sangho"
+26690 DATA"35% christenen,5% islam,60% trad.godsd."
+26700 DATA"koffie,katoen,aardnoten,mais,hout"
+26710 DATA"veeteelt,land-,bos- en mijnbouw",16,622984,44,250
+26720 DATA"Equatoriaal Guinee","12 oktober 1968 (Spanje)"
+26730 DATA"Presidentiele republiek","Equatoriaal Guinee"
+26740 DATA"Malabo (vroeger Santa Isabel)"
+26750 DATA"340.000 (Fang,Kombe,Bengas en Bujebas)"
+26760 DATA"Spaans en lokale talen","80% rooms katholiek"
+26770 DATA"cacao,koffie,palmolie,bananen en hout"
+26780 DATA"visserij,land- en bosbouw",20,27972,0,340
+26790 DATA"Gabon","17 augustus 1960 (Frankrijk)"
+26800 DATA"Eenpartijdemocratie","Republique Gabonaise"
+26810 DATA"Libreville","1.027.529(Fang,Eshira,Mbede,Pygmee)"
+26820 DATA"Frans,Fang","50% christenen,40% trad. godsd."
+26830 DATA"cacao,aardnoten,hout,olie,gas,mangaan"
+26840 DATA"land-,bos- en mijnbouw",40,267667,0,0
+26850 DATA"Kameroen","1 jan.1960 (Fra.) 1 okt.1961 (GBr.)"
+26860 DATA"Eenpartijstaat","Republique Unie du Cameroun"
+26870 DATA"Yaounde","8.100.000(Bamilike,Bamoen,Fulani,Eton)"
+26880 DATA"Engels,Frans en lokale talen"
+26890 DATA"21% rk,14% prot.,20% islam,45% tr.godsd"
+26900 DATA"olie,aardgas,cacao,koffie,bananen,hout"
+26910 DATA"land- en mijnbouw",20,475442,119,340
+26920 DATA"Kongo","15 augustus 1960 (Frankrijk)"
+26930 DATA"Eenpartijstaat","Republique Populaire du Congo"
+26940 DATA"Brazzaville","1.600.000 (Bakongo,Bateke,Mboshi)"
+26950 DATA"Frans,Lingala en Mouman Kutuba"
+26960 DATA"christenen en traditionele godsd."
+26970 DATA"olie,hout,potas,lood,zink,ijzer"
+26980 DATA"land- en mijnbouw",40,342000,175,540
+26990 DATA"Rwanda","1 juli 1962 (Duitsland/Belgie)"
+27000 DATA"Eenpartijstaat","Rwanda","Kigali"
+27010 DATA"4.992.000 (Hutu,Tutsi,Twa(Pygmeeen))"
+27020 DATA"Frans,Swahili en Kinyarwanda"
+27030 DATA"30% r-k,6% prot. en trad.godsdiensten"
+27040 DATA"koffie,thee,wolfram","landbouw",25,26338,17,65
+27050 DATA"Zaire","30 juni 1960 (Belgie)","Eenpartijstaat"
+27060 DATA"Zaire","Kinshasa","26.724.000 (Bantoe)"
+27070 DATA"Frans,Lingala,Kingwana,Kokongo,Tshiluba"
+27080 DATA"rooms-katholiek en trad.godsdiensten"
+27090 DATA"koper,kobalt,diamant,goud,tin,palmolie"
+27100 DATA"land- en mijnbouw",30,2345409,69,130
+27110 DATA"Djibouti","27 juni 1977 (Frankrijk)"
+27120 DATA"Parlementaire democratie","Djibouti","Djibouti"
+27130 DATA"220.000 (Issa en Afar)","Somali,Afar en Frans"
+27140 DATA"islam","geen","visserij,doorvoerhandel,veeteelt"
+27150 DATA35,21783,0,1000,"Ethiopie"
+27160 DATA"1e eeuw na Chr."
+27170 DATA"Socialistische rep. met militair regiem"
+27180 DATA"Ethiopie","Addis Abeba"
+27190 DATA"31.000.000 (Amhara,Tigrai,Galla,e.a.)"
+27200 DATA"Amhara en Galla"
+27210 DATA"Koptische christ.,islam,joden,r-k,trad."
+27220 DATA"gerst,koffie,katoen,aardnoten en hout"
+27230 DATA"land- en bosbouw",7,1223600,20,120
+27240 DATA"Kenia","12 december 1963 (Groot-Brittannie)"
+27250 DATA"Eenpartijstaat","Djumhuri ya Kenya","Nairobi"
+27260 DATA"15.322.000 (Kikuyu en Luo)","Engels en Swahili"
+27270 DATA"25% christ. en traditionele godsdienst"
+27280 DATA"koffie,thee,sisal en pyrethrum","landbouw"
+27290 DATA40,582646,139,270,"Somalie"
+27300 DATA"1 juli 1960 (Groot-Brittannie+Italie)"
+27310 DATA"Socialistische republiek,eenpartijstaat"
+27320 DATA"Al-Jumhouriya as-Somaliya al-Democradia"
+27330 DATA"Mogadiscio","3.342.000 (Somali)","Somali"
+27340 DATA"Sunni islam","bananen,suiker en olie"
+27350 DATA"veeteelt,landbouw,visserij",5,637657,55,130
+27360 DATA"Tanzania","9 december 1961 (Groot-Brittannie)"
+27370 DATA"Eenpartijstaat","Verenigde Republiek Tanzania"
+27380 DATA"Dar es Salaam","16.259.000 (Bantoe)"
+27390 DATA"Swahili en Engels"
+27400 DATA"christenen en traditionele godsdiensten"
+27410 DATA"koffie,katoen,sisal,diamant,thee,tabak"
+27420 DATA"landbouw",37,945087,65,230
+27430 DATA"Uganda","9 oktober 1961 (Groot-Brittannie)"
+27440 DATA"Parlementaire democratie","Jamhuri ya Uganda"
+27450 DATA"Kampala","12.566.000 (Ganda,Hamieten,Niloten)"
+27460 DATA"Engels en Swahili"
+27470 DATA"christenen,islam en traditionele godsd"
+27480 DATA"koffie,katoen,thee","landbouw",25,236036,48,280
+27490 DATA"Angola","11 november 1975 (Portugal)","Republiek"
+27500 DATA"Volksrepubliek Angola","Luanda"
+27510 DATA"6.790.000 (Ovimbundu,Mbundu,Kongo,e.a.)"
+27520 DATA"Portugees en Afrikaanse talen"
+27530 DATA"40% r-k,12% prot.,traditionele godsd."
+27540 DATA"aardolie,ijzererts,mangaan,diamant"
+27550 DATA"landbouw,visserij,veeteelt,mijnbouw",12,1246700
+27560 DATA192,330,"Botswana"
+27570 DATA"30 september 1966 (Groot-Brittannie)"
+27580 DATA"Presidentiele rep.,parlementaire democr"
+27590 DATA"Botswana","Gaborone"
+27600 DATA"740.000 (Bamangwoto,Bangwaketsi,e.a.)"
+27610 DATA"Engels en Setswana"
+27620 DATA"christenen en traditionele godsdiensten"
+27630 DATA"diamant,nikkel,koper en steenkool"
+27640 DATA"veeteelt,land- en mijnbouw",27,600372,0,440
+27650 DATA"Lesotho","4 oktober 1966 (Groot-Brittannie)"
+27660 DATA"Koninkrijk,eenpartijstaat","Lesotho","Maseru"
+27670 DATA"1.390.000 (Sesotho)","Engels en Sesotho"
+27680 DATA"70% christenen,traditionele godsd."
+27690 DATA"diamant en waterkracht","landbouw,veeteelt"
+27700 DATA50,30355,0,280,"Madagascar"
+27710 DATA"26 juni 1960 (Frankrijk)","Eenpartijstaat"
+27720 DATA"Repoblika Demokratika n'i Madagaskar"
+27730 DATA"Antananarivo"
+27740 DATA"9.300.000 (Merina,Betsimisaraka,B.leo)"
+27750 DATA"Frans en Malagassisch"
+27760 DATA"30% christenen,5% islam en trad.godsd."
+27770 DATA"rijst,koffie,kruidnagelen,vanilla,thee"
+27780 DATA"landbouw en visserij",45,587041,78,250
+27790 DATA"Malawi","6 juli 1964 (Groot-Brittannie)"
+27800 DATA"Eenpartijstaat","Malawi","Lilongwe"
+27810 DATA"5.700.000 (Chewa,Nyanja,Yac,Ngoni)"
+27820 DATA"Engels en Chichewa"
+27830 DATA"10% prot.,10% r-k,15% islam,trad.godsd."
+27840 DATA"thee,tabak,aardnoten,suiker,katoen","landbouw"
+27850 DATA25,118484,52,180,"Mozambique"
+27860 DATA"25 juni 1975 (Portugal)","Volksrepubliek"
+27870 DATA"Mozambique","Maputo (vroeger Lourenco Marques)"
+27880 DATA"10.412.000 (Maku,Lomue,Neto en Tsonga)"
+27890 DATA"Portugees en lokale talen"
+27900 DATA"christenen,islam en traditionele godsd."
+27910 DATA"suiker,katoen,kopra,sisal,thee)","landbouw",10
+27920 DATA783000,151,140,"Namibie"
+27930 DATA"1989(Duitsland/Zuid Afrika)","onbekend","Namibie"
+27940 DATA"Windhoek","1.052.000 (Afrik.,kleurlingen,blank)"
+27950 DATA"Afrikaans,Engels,Duits,Afrikaanse talen"
+27960 DATA"merendeels christenen"
+27970 DATA"diamant,uranium,koper,lood,zink en tin"
+27980 DATA"landbouw,visserij,veeteelt en mijnbouw",35,824292
+27990 DATA0,1080,"Swaziland"
+28000 DATA"6 september 1968 (Groot-Brittannie)"
+28010 DATA"Traditionele monarchie","Swaziland","Mbabane"
+28020 DATA"552.000 (Swazi-Ama Swazi/Bantu Bakwa N)"
+28030 DATA"Siswati en Engels"
+28040 DATA"christenen en traditionele godsdiensten"
+28050 DATA"suiker,citrus,hout,ijzer,asbest,steenk."
+28060 DATA"land- en mijnbouw",36,17363,0,580
+28070 DATA"Zambia","24 oktober 1964 (Groot-Brittannie)"
+28080 DATA"Presidentiele republiek","Zambia","Lusaka"
+28090 DATA"5.383.000 (Bemba,Lozi,Mambwe,Tonga,e.a)"
+28100 DATA"Engels,Bemba en andere Afrikaanse talen"
+28110 DATA"26% christenen,4% islam,traditionele g."
+28120 DATA"koper,kobalt,zink,lood,emerald,amethyst"
+28130 DATA"land- en mijnbouw",49,752614,474,480
+28140 DATA"Zimbadwe","18 april 1980 (Groot-Brittannie)"
+28150 DATA"Parlementaire democratie","Zimbadwe"
+28160 DATA"Harare (Salisbury)","6.900.000 (Shona,Ndebele)"
+28170 DATA"Engels,Shoan en Ndebele","merendeels christenen"
+28180 DATA"goud,asbest,koper,chroom,nikkel,tin"
+28190 DATA"land- en mijnbouw,veeteelt",30,390580,579,480
+28200 DATA"Zuid-Afrika","30 mei 1910 c.q.31 mei 1931 (GBr.)"
+28210 DATA"Blank:parl.democr./Anders:politiestaat"
+28220 DATA"Republiek van Suid-Afrika","Pretoria"
+28230 DATA"27.700.000 (72% Afrikanen,14% blanken)"
+28240 DATA"Engels,Afrikaans en Bantutalen"
+28250 DATA"voornamelijk christenen"
+28260 DATA"o.a. goud,diamant,ijzer,steenkool,uraan"
+28270 DATA"land-,mijnbouw,veeteelt,visserij,indus."
+28280 DATA50,1221037,0,1480
+30000 REM ****************************
+30010 REM *          AFRIKA          *
+30020 REM *   Uw eigen encyclopedie  *
+30030 REM ****************************
+30040 REM
+32000 REM Gemaakt door:
+32010 REM Jan Benjamin
+32020 REM Stationstraat 26
+32030 REM 1815 TC ALKMAAR
+32040 REM (072-123809)
+32050 REM Op een:
+32060 REM Philips VG8020 MSX1 Computer
+32070 REM ****************************
+32080 REM
+32090 REM TROS-RADIO dd 891025

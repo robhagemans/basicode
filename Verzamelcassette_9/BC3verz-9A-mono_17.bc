@@ -1,0 +1,183 @@
+
+1000 A=200:GOTO20:REM DETERMINEREN DEEL 3
+1010 GOSUB100:SR$="                         "
+1020 GOSUB150:PRINT:SR$="D E T E R M I N E R E N  (Deel 3)"
+1030 GOSUB150:PRINT
+1040 SR$="*************************"
+1050 GOSUB150:PRINT:PRINT
+1060 PRINT"   D E     S T E N G E L    :"
+1070 PRINT"  ============================="
+1080 PRINT"De stengel: Meestal bovengronds deel"
+1090 PRINT"van een plant waaraan blad, bloem en"
+1100 PRINT"vrucht kan komen.":PRINT
+1110 PRINT"-1. Samenstelling ":PRINT
+1120 PRINT"-2. Doorsnede     ":PRINT
+1130 PRINT"-3. Groeirichting ":PRINT
+1140 PRINT"-4. Gewijzigde    ":PRINT
+1150 PRINT"-5. Beharing      ":PRINT
+1160 PRINT"Waar wilt U meer over weten? 1,2,3,4,of 5"
+1170 MK=5:VE=22:GOSUB9510
+1180 ONKZ GOTO1200,1500,1670,1910,2310
+1190 REM SAMENSTELLING V.D.STENGEL
+1200 PRINT"Samenstelling van de stengel:":PRINT:PRINT
+1210 PRINT" -houtachtig: bij boom en heester waar-"
+1220 PRINT"              bij stam en tak meestal"
+1230 PRINT"              volledig verhout zijn."
+1240 PRINT:PRINT
+1250 PRINT" -kruidachtig:groen, sappig en meestal"
+1260 PRINT"              buigzaam.":PRINT:PRINT
+1270 PRINT" -twijgen    :eerste-jaars tak, is meer"
+1280 PRINT"              kruidachtig en wordt na 1"
+1290 PRINT"              jaar houtig.":PRINT:PRINT
+1300 PRINT"          <<zie verder>>":GOSUB9010
+1310 PRINT" -holle stengels:  bij snelgroeiende"
+1320 PRINT"                   planten (wel gevulde"
+1330 PRINT"                   tussenschotten)"
+1340 PRINT"                   bijv. zonnebloem.":PRINT:PRINT
+1350 PRINT" -massieve  ''  :  zijn gevuld.":PRINT:PRINT
+1360 PRINT" -kaal of (dun-)behaard, verspreid-"
+1370 PRINT"  behaard, plukvormig, stervormig"
+1380 PRINT"  gespleten of klierachtig behaard met"
+1390 PRINT"  aan de top een klier met vaak kleve-"
+1400 PRINT"  rig vocht (zonnedauw) of een verdikt"
+1410 PRINT"  uiteinde.":PRINT
+1420 PRINT" <<Einde samenstelling stengel>>":PRINT
+1430 PRINT"Wilt u verder gaan met stengel (1)"
+1440 PRINT"Of terug naar het begin        (2)"
+1450 MK=2:VE=21:GOSUB9510
+1460 ONKZ GOTO1500,1000
+1470 REM ***
+1480 REM ***
+1490 REM DOORSNEDE VAN EEN STENGEL
+1500 PRINT"Doorsnede van een stengel:":PRINT
+1510 PRINT:PRINT"De stengel-doorsnede kan zijn:"
+1520 PRINT:PRINT" = cylindrisch of rond"
+1530 PRINT:PRINT" = gegroefd (gleuven in de lengte)"
+1550 PRINT:PRINT" = gevleugeld (in de lengte smal"
+1560 PRINT"   uitstekende rand of lijst)"
+1570 PRINT:PRINT" = kantig (zowel drie- als"
+1580 PRINT"   vierkantig."
+1590 PRINT:PRINT" = samengedrukt of ovaal, dan ook"
+1600 PRINT"   vaak kantig.":PRINT
+1610 PRINT"<<Einde doorsnede stengel>>":PRINT
+1620 PRINT"Wilt u verder met stengel (1)"
+1630 PRINT"  of terug naar het begin (2)":PRINT
+1640 MK=2:VE=22:GOSUB9510
+1650 ONKZ GOTO1670,1000
+1660 REM***
+1670 PRINT"Groeirichting v.d.stengel:"
+1680 PRINT:PRINT"-Opgaand     (=verticaal omhoog)"
+1690 PRINT:PRINT"-Opstijgend  (=eerst schuin, dan omhoog)"
+1700 PRINT:PRINT"-Kruipend    (vaak met uitlopers vanuit"
+1710 PRINT"              de moederplant (aardbei))"
+1720 PRINT:PRINT"-Hangend     (treurvormen bij bomen,"
+1730 PRINT"              hangplanten"
+1740 PRINT:PRINT"-Liggend     (niet met wortels o.a.muur)"
+1750 PRINT:PRINT"-Gaffelvormig (stengel splitst zich"
+1760 PRINT" vertakt       telkens in tweeen)"
+1770 PRINT:PRINT"  << zie verder >>":GOSUB9010
+1780 PRINT:PRINT"-Lianen     (houtige klimmers"
+1790 PRINT"              o.a.bosrank)"
+1800 PRINT:PRINT"-Windend    (meestal linksomdraaiend"
+1810 PRINT"            om elk niet te dik ding om-"
+1820 PRINT"            hoog. Soms rechtsom: kampfer-"
+1830 PRINT"            foelie."
+1840 PRINT:PRINT"-Klimmend   (zonder draai o.a. klim-op)"
+1850 PRINT:PRINT"<<Einde groeirichting>>":PRINT
+1860 PRINT"Wilt u verder met stengel (1)"
+1870 PRINT"  of terug naar het begin (2)"
+1880 MK=2:VE=20:GOSUB9510
+1890 ONKZ GOTO1910,1000
+1900 REM GEWIJZIGDE STENGELS
+1910 PRINT" Gewijzigde stengels:":PRINT
+1920 PRINT:PRINT"-Uitlopers  : kruipende stengel,"
+1930 PRINT"              wortelend op de knopen"
+1940 PRINT"              (kruipgras, zilverschoon)"
+1950 PRINT:PRINT"-Bladachtige: schijfvormig zonder blad"
+1960 PRINT" stengel      bijv. eendekroos"
+1970 PRINT:PRINT"-Wortelstok : ondergronds vaak verdikte"
+1980 PRINT"              stengel, meestal horizon-"
+1990 PRINT"              taal. Bevat voedselreser-"
+2000 PRINT"              ve voor de winter.(haag-"
+2010 PRINT"              winde, kweekgras)."
+2020 PRINT:PRINT"-Stengelrank: dun draaiend stengel-"
+2030 PRINT"              einde (druif)"
+2040 PRINT:PRINT"   <<zie verder>>":GOSUB9010
+2050 PRINT"-Stengelknol: korte sterk verdikte"
+2060 PRINT"              stengel met reservevoed-"
+2070 PRINT"              sel en met knoppen en/of"
+2080 PRINT"              bladeren of vlezige schub"
+2090 PRINT"              ben en rokken(dit bij de"
+2100 PRINT"              gladiool, knoppen bij de"
+2110 PRINT"              aardappel, bladeren bij"
+2120 PRINT"              de meiknol)":PRINT:PRINT
+2130 PRINT:PRINT"-Bolschijf  : tot een schijf ver-"
+2140 PRINT"  (of bol)    korte stengel samen met"
+2150 PRINT"              wortels en bladeren en"
+2160 PRINT"              bloemknop 'bol'genoemd:"
+2170 PRINT"              Ui, tulp, prei enz.)":PRINT
+2180 PRINT"       <<zie verder>>":GOSUB9010
+2190 PRINT"-Takdoorn   : scherpe zijstengel"
+2200 PRINT"  of doorn    vanuit de stengelkern:"
+2210 PRINT"              Meidoorn."
+2220 PRINT:PRINT"-Stekel     : Groeit aan de bui-"
+2230 PRINT"              tenkant v.d. stengel:"
+2240 PRINT"              Roos, distel."
+2250 PRINT:PRINT"<<Einde gewijzigde stengel>>":PRINT
+2260 PRINT"Wilt u verder met stengel  (1)"
+2270 PRINT"Of terug naar het begin    (2)"
+2280 MK=2:VE=22:GOSUB9510
+2290 ONKZ GOTO2310,1000
+2300 REM BEHARING STENGEL
+2310 PRINT"Beharing:":PRINT
+2330 PRINT" -  verspreid":PRINT
+2340 PRINT" -  plukvormig":PRINT
+2350 PRINT" -  gespleten":PRINT
+2360 PRINT" -  haakvormig":PRINT
+2370 PRINT" -  stervormig":PRINT
+2380 PRINT" -  klierachtig"
+2390 PRINT"    (met aan de top een verdikking of"
+2400 PRINT"    een druppel (kleverig) vocht)"
+2410 PRINT:PRINT
+2420 PRINT"    <<Einde stengel>>":PRINT:PRINT
+2430 PRINT"Wilt u terug naar het begin (1)"
+2440 PRINT"Of wilt u stoppen           (2)"
+2450 MK=2:VE=23:GOSUB9510
+2460 ONKZ GOTO1000,2470
+2470 VE=10:HO=10:GOSUB110
+2480 PRINT">>> Einde deel 3 <<<"
+2490 GOSUB9010:GOTO950
+9000 REM SPATIEBALK
+9010 GOSUB120:VE=23:HO=0:GOSUB110
+9020 PRINT"****> Druk op spatiebalk <****";
+9030 GOSUB9090:IFIN<>32 THEN9030
+9040 VE=23:HO=0:GOSUB110
+9050 PRINT"                                     ";
+9060 GOSUB100
+9070 RETURN
+9080 REM INPUT MET LEGE BUFFER
+9090 GOSUB200:IFIN$<>"" THEN9090
+9100 GOSUB210
+9110 RETURN
+9500 REM KEUZE-OPVRAGEN
+9510 HO=0:VE=VE+1:GOSUB110
+9520 PRINT"Wat is uw keuze   ";
+9530 HO=17:VE=VE:GOSUB110
+9540 INPUTKZ$:KZ=VAL(KZ$)
+9550 IF(KZ<1)OR(KZ>MK)OR(KZ<>INT(KZ))THEN9510
+9560 GOSUB100
+9570 RETURN
+32000 REM *****  DETERMINEREN     *****
+32010 REM *****      DEEL 3       *****
+32020 REM *****                   *****
+32030 REM     *********************
+32040 REM     *                   *
+32050 REM     * JAN DE JONG       *
+32060 REM     * MR. STRIJBOSSTR 5 *
+32070 REM     * 6001 ST WEERT     *
+32080 REM     * COMMODORE-64      *
+32090 REM     *  APRIL 1990       *
+32100 REM     *                   *
+32110 REM     *********************
+32120 REM
+32130 REM TROS-RADIO dd 900919

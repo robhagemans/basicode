@@ -1,0 +1,294 @@
+
+1000 A=500:GOTO20:REM PIANOINSTRUKTEUR
+1010 SH=VE
+1020 GOSUB100
+1030 FORVE=0 TOSH-1:HO=0:GOSUB110
+1040 SR$="                                  ":GOSUB150
+1050 NEXTVE
+1060 VE=8:HO=6:GOSUB110
+1070 PRINT"P I A N O"
+1080 VE=12:HO=14:GOSUB110
+1090 PRINT"I N S T R U K T E U R"
+1100 SD=3:SV=15
+1110 FORSP=60 TO72:GOSUB400:NEXTSP
+1120 GOSUB100
+1130 VE=8:HO=6:GOSUB110
+1140 PRINT"P I A N O"
+1150 VE=12:HO=14:GOSUB110
+1160 PRINT"I N S T R U K T E U R"
+1170 FORSP=72 TO60 STEP-1:GOSUB400:NEXTSP
+1180 REM *** UITLEG ***
+1190 GOSUB100:VE=0:HO=0:GOSUB110
+1200 SR$="PIANO-INSTRUKTEUR":GOSUB150
+1210 VE=3:GOSUB110
+1220 PRINT"Hallo beste pianist,"
+1230 PRINT:PRINT"    Tenminste, ik hoop dat je een"
+1240 PRINT"beste pianist wordt !"
+1250 PRINT"Ik geef je wat pianolessen zodat je"
+1260 PRINT"jezelf kunt leren spelen op alles wat"
+1270 PRINT"pianotoetsen heeft."
+1280 PRINT:PRINT"Uit het menu kies je welke les je wilt."
+1290 PRINT:PRINT"Zorg dat je een piano-toetsenbord"
+1300 PRINT"bij de hand hebt !!!"
+1310 GOSUB5510
+2000 REM * MENU *
+2010 GOSUB100
+2020 VE=0:HO=0:GOSUB110
+2030 SR$="MAAK EEN KEUZE UIT DEZE LESSEN":GOSUB150
+2040 FORVE=3 TO6:HO=10:GOSUB110
+2050 PRINT"Les <";:SR=VE-2:GOSUB300:PRINTSR$;:PRINT">"
+2060 NEXTVE
+2070 VE=8:GOSUB110:PRINT"Stoppen = <0>"
+2080 VE=18:HO=0:GOSUB110:SR$="Nummer:":GOSUB150:GOSUB210
+2090 RESTORE
+2100 VE=22:HO=20:GOSUB110:PRINT"Momentje ..."
+2110 READA$:IFA$=IN$ THEN3010
+2120 IFA$="*" THEN2140
+2130 GOTO2110
+2140 GOSUB100:GOSUB250
+2150 VE=10:HO=0:GOSUB110
+2160 SR$="Deze les heb ik niet !!!":GOSUB150
+2170 GOSUB5510:GOTO2010
+3000 REM * LESSEN OP BEELDSCHERM *
+3010 GOSUB100
+3020 READA$
+3030 IFA$="S" THEN5010
+3040 IFA$="#" THEN GOSUB5510:GOTO3020
+3050 IFA$="&" THENREADA$:GOSUB3510:GOTO3020
+3060 IFA$="%" THEN5010
+3070 IFA$="'" THEN GOSUB100:GOTO3020
+3080 IFA$<>"()" THEN3110
+3090 GOSUB120:READSR$:GOSUB150
+3100 HO=0:VE=VE+1:GOSUB110:GOTO3020
+3110 IFA$="!" THEN GOSUB210:GOTO3020
+3120 PRINTA$:GOTO3020
+3500 REM * TOONGENERATOR *
+3510 IFA$="a" THEN4000
+3520 IFA$="b" THEN4100
+3530 IFA$="c" THEN4200
+3540 IFA$="d" THEN4300
+3550 IFA$="e" THENV=0:GOTO4400
+3560 IFA$="f" THENV=2:GOTO4400
+3570 IFA$="g" THENV=4:GOTO4400
+3580 IFA$="h" THENV=5:GOTO4400
+3590 IFA$="i" THENV=7:GOTO4400
+3600 IFA$="j" THENV=9:GOTO4400
+3610 IFA$="k" THENV=11:GOTO4400
+4000 SD=8
+4010 SP=60:GOSUB400:SP=72:GOSUB400:SP=84:GOSUB400
+4020 RETURN
+4100 SP=60:GOSUB400:SP=62:GOSUB400:SP=64:GOSUB400
+4110 SP=65:GOSUB400:SP=67:GOSUB400:SP=69:GOSUB400
+4120 SP=71:GOSUB400:SP=72:GOSUB400:RETURN
+4200 SP=72:GOSUB400:SP=71:GOSUB400:SP=69:GOSUB400
+4210 SP=67:GOSUB400:SP=65:GOSUB400:SP=64:GOSUB400
+4220 SP=62:GOSUB400:SP=60:GOSUB400:RETURN
+4300 SD=4:READSP:IFSP=0 THENRETURN
+4310 IFSP<0 THENSP=-SP:SD=8
+4320 GOSUB400:GOTO4300
+4400 SD=8:SP=60+V:GOSUB400
+4410 SP=64+V:GOSUB400:SP=67+V:GOSUB400:SP=72+V:GOSUB400
+4420 SP=72+V:GOSUB400:SP=67+V:GOSUB400:SP=64+V
+4430 GOSUB400:SP=60+V:GOSUB400
+4440 RETURN
+5000 REM * EINDE LES *
+5010 IFA$="S" THEN950
+5020 GOSUB5510:GOSUB100
+5030 VE=8:HO=0:GOSUB110
+5040 PRINT"EINDE VAN DEZE LES"
+5050 PRINT"=================="
+5060 GOSUB5510
+5070 GOTO2010
+5500 REM * WACHT OP TOETS *
+5510 VE=SH:HO=15:SR$="DRUK OP EEN TOETS":GOSUB110:GOSUB150
+5520 GOSUB210
+5530 SR$="-----------------":GOSUB110:GOSUB150:RETURN
+25000 DATA"1"
+25010 DATA"()","LES 1:","",""
+25020 DATA"        Ga voor het klavier zitten."
+25030 DATA"Je ziet witte en zwarte toetsen."
+25040 DATA"De zwarte toetsen zitten als volgt:",""
+25050 DATA"2-3-2-3-2-3-2-3-2-3-2-3-etc."
+25060 DATA"oftewel zo:","","()"
+25070 DATA" ** *** ** *** ** *** ** ***  etc.","()"
+25080 DATA"^      ^      ^      ^      ^     "
+25090 DATA"","Op de plaats van dit ^ pijltje ligt de"
+25100 DATA"C. Sla alle C's maar eens aan van"
+25110 DATA"links naar rechts."
+25120 DATA"#","'"
+25130 DATA"Je hoort ongeveer dit:"
+25140 DATA"&","a","#"
+25150 DATA"'","Een pianoklavier is dus verdeeld in"
+25160 DATA"gelijke stukken. Elk stuk loopt van"
+25170 DATA"C tot de volgende C."
+25180 DATA"Met de C's erbij geteld heeft zo'n"
+25190 DATA"stuk dus 8 tonen:"
+25200 DATA"","C - D - E - F - G - A - B - C."
+25210 DATA"","Zo'n stuk noemen we","","()"
+25220 DATA"==>       OKTAAF       <==","",""
+25230 DATA"Speel maar eens zo'n oktaaf ...","#"
+25240 DATA"'","Dit klinkt ongeveer zo ..."
+25250 DATA"&","b","#","'"
+25260 DATA"Doe het nu maar eens andersom, van"
+25270 DATA"boven naar beneden ..."
+25280 DATA"#","'"
+25290 DATA"Dat klinkt ongeveer zo ..."
+25300 DATA"&","c","#"
+25310 DATA"'","()","DE VINGERZETTING"
+25320 DATA"","","Dit doen we nog eens maar dan met de"
+25330 DATA"goede vingerzetting."
+25340 DATA"Neem de rechterhand. Zet je duim op de"
+25350 DATA"C. Ga nu als volgt naar boven:"
+25360 DATA"","()","D W M D W M R P"
+25370 DATA"","()","(D=duim, W=wijsvinger, etc.)"
+25380 DATA"","","Je hoort weer dit ...","#","&","b"
+25390 DATA"'","Nu naar beneden, precies hetzelfde:"
+25400 DATA"","()","P R M W D M W D",""
+25410 DATA"","En je hoort ...","#","&","c"
+25420 DATA"#","'","()","O E F E N S T O F","",""
+25430 DATA"Oefen deze toonladder van C net zo vaak"
+25440 DATA"tot het makkelijk en soepel gaat,"
+25450 DATA"voordat je aan de volgende les begint."
+25460 DATA"","","Veel sukses !"
+25470 DATA"%"
+26000 DATA"2","()","LES 2","",""
+26010 DATA"       Probeer eens het volgende na"
+26020 DATA"te spelen (begin bij de laagste C)"
+26030 DATA"#","&","a","'","SPEEL NU MAAR ...","#"
+26040 DATA"'","Zet je pink van je rechterhand op de C"
+26050 DATA"en speel de volgende melodie ..."
+26060 DATA"#","&","c","#","'"
+26070 DATA"En nu begin je met de duim."
+26080 DATA"Luister maar ...","#","&","b","#","'"
+26090 DATA"Zo, dit was een korte herhaling van"
+26100 DATA"les 1. We gaan in les 2 wat andere"
+26110 DATA"toonladders oefenen."
+26120 DATA"Bij elke toonladder mag je voor je"
+26130 DATA"rechterhand een goede vingerzetting"
+26140 DATA"zoeken."
+26150 DATA"","LET OP:"
+26160 DATA"       Als je bij de C begint krijg je"
+26170 DATA"alleen maar witte toetsen. Als je"
+26180 DATA"bij een andere toon begint en je wilt"
+26190 DATA"een goede toonladder spelen dan komen"
+26200 DATA"er zwarte toetsen bij."
+26210 DATA"De zwarte toetsen geef ik de volgende"
+26220 DATA"namen: * *     * * *"
+26230 DATA"       c d     f g a"
+26240 DATA"       i i     i i i"
+26250 DATA"       s s     s s s"
+26260 DATA"#"
+26270 DATA"'","()"
+26280 DATA"Toonladders en hun noten:"
+26290 DATA"","()","========================="
+26300 DATA"","","()"
+26310 DATA"C > c   d   e   f   g   a   b   c"
+26320 DATA"","()"
+26330 DATA"D > d   e   fis g   a   b   cis d"
+26340 DATA"","()"
+26350 DATA"E > e   fis gis a   b   cis dis e"
+26360 DATA"","()"
+26370 DATA"F > f   g   a   ais c   d   e   f"
+26380 DATA"","()"
+26390 DATA"G > g   a   b   c   d   e   fis g"
+26400 DATA"","()"
+26410 DATA"A > a   b   cis d   e   fis gis e"
+26420 DATA"","()"
+26430 DATA"B > b   cis dis e   fis gis ais b"
+26440 DATA"",""
+26450 DATA"OEFEN DEZE TOONLADDERS ZO GOED DAT JE"
+26460 DATA"NA EEN TIJDJE DIT LIJSTJE NIET MEER"
+26470 DATA"NODIG HEBT !!!"
+26480 DATA"%"
+27000 DATA"3"
+27010 DATA"LES 3:"
+27020 DATA"       Met deze les gaan we een liedje"
+27030 DATA"proberen te spelen. Ik kan niet horen"
+27040 DATA"of het goed is. Luister dus zelf"
+27050 DATA"goed naar wat je speelt."
+27060 DATA"Ik geef de notennamen en jij speelt"
+27070 DATA"de tonen. Probeer zoveel mogelijk"
+27080 DATA"de geleerde vingerzetting te handhaven."
+27090 DATA"Noten met een + moet je langer"
+27100 DATA"aanhouden."
+27110 DATA"#","'","()"
+27120 DATA"OLD MAC DONALD"
+27130 DATA"","","","()"
+27140 DATA"c c c g a a g+ e e d d c+"
+27150 DATA"","","()"
+27160 DATA"c c c g a a g+ e e d d c+"
+27170 DATA"","","()"
+27180 DATA"g c c c+ c c c+ c c c c c c c g"
+27190 DATA"","","()"
+27200 DATA"c c c g a a g+ e e d d c+"
+27210 DATA"","",""
+27220 DATA"Probeer het goed op je gehoor te spelen"
+27230 DATA"want ik geef niet aan of je omhoog of"
+27240 DATA"omlaag gaat ... dus:"
+27250 DATA"","()","GEBRUIK JE OREN !!!"
+27260 DATA"#","&"
+27270 DATA"d",60,60,60,55,57,57,-55
+27280 DATA64,64,62,62,-60,55,60,60,60,55
+27290 DATA57,57,-55,64,64,62,62,-60,0
+27300 DATA"%"
+28000 DATA"4"
+28010 DATA"LES 4:"
+28020 DATA"","()","AKKOORDEN OP DE PIANO"
+28030 DATA"",""
+28040 DATA"Deze les gaan we akkoorden spelen."
+28050 DATA"Een akkoord is een samenstelling van"
+28060 DATA"een aantal tonen die een goede klank"
+28070 DATA"vormen. Je kunt dit zelf proberen op je"
+28080 DATA"gehoor, maar ik zal je ook een paar"
+28090 DATA"voorbeelden geven."
+28100 DATA"","Akkoorden worden vaak gebruikt als"
+28110 DATA"mensen samen musiceren. Zo weet elke"
+28120 DATA"muzikant welke tonen wel of niet"
+28130 DATA"in het akkoord passen."
+28140 DATA"Als je dit niet goed snapt dan vraag"
+28150 DATA"je het maar eens aan een gitarist."
+28160 DATA"Die weet er alles van."
+28170 DATA"#"
+28180 DATA"'","Luister maar eens goed."
+28190 DATA"Ik ga voorbeelden geven van het akkoord"
+28200 DATA"wat je nu hoort:","#"
+28210 DATA"&","e"
+28220 DATA"'","Hier komen de akkoorden."
+28230 DATA"Probeer ze maar te spelen met 1 hand."
+28240 DATA"Druk telkens op een toets voor het"
+28250 DATA"volgende akkoord ..."
+28260 DATA"","()"
+28270 DATA"C    E    G    C","!",""
+28280 DATA"&","e","()"
+28290 DATA"D    FIS  A    D","!",""
+28300 DATA"&","f","()"
+28310 DATA"E    GIS  B    E","!",""
+28320 DATA"&","g","()"
+28330 DATA"F    A    C    F","!",""
+28340 DATA"&","h","()"
+28350 DATA"G    B    D    G","!",""
+28360 DATA"&","i","()"
+28370 DATA"A    CIS  E    A","!",""
+28380 DATA"&","j","()"
+28390 DATA"B    DIS  FIS  B","!"
+28400 DATA"&","k","%"
+28410 DATA"0","","","","","","",""
+28420 DATA"()","EINDE VAN DEZE PIANO-CURSUS"
+28430 DATA"","",""
+28440 DATA"Dit programma werd gemaakt in BC-3 door"
+28450 DATA"","","Walther van den Elshout"
+28460 DATA"Gen. Wicherslaan 14"
+28470 DATA"5623 GS  Eindhoven"
+28480 DATA"------------------"
+28490 DATA"#","S","*"
+32000 REM ***************************
+32010 REM * PIANO-INSTRUKTEUR DOOR  *
+32020 REM * WALTHER VAN DEN ELSHOUT *
+32030 REM * GEN. WICHERSLAAN 14     *
+32040 REM * 5623 GS  EINDHOVEN      *
+32050 REM * TEL: 040 - 451098       *
+32060 REM * COMMODORE 64            *
+32070 REM * JANUARI 1989            *
+32080 REM ***************************
+32090 REM
+32100 REM TROS-RADIO dd 890705

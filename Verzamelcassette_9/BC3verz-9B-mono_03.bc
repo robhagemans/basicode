@@ -1,0 +1,292 @@
+
+1000 A=100:GOTO20:REM VIDEODAT DEMO
+1010 CO=(65=ASC("A"))
+1020 FO=0:IFHG<300 THEN1100
+1030 PRINT"Uw computer heeft in horizontale"
+1040 PRINT"richting ";HG;" beeldpunten per"
+1050 PRINT"lijn."
+1060 PRINT"Voor de tekening zijn er maar"
+1070 PRINT"147 nodig."
+1080 PRINT"Schakel zo mogelijk om naar een"
+1090 PRINT"lagere resolutie.":PRINT:FO=1
+1100 IFHG>146 THEN1180
+1110 PRINT"Uw computer heeft in horizontale"
+1120 PRINT"richting ";HG;" beeldpunten per"
+1130 PRINT"lijn."
+1140 PRINT"Voor deze tekening zijn er"
+1150 PRINT"147 nodig."
+1160 PRINT"Ik probeer er het beste"
+1170 PRINT"van te maken.":PRINT:HG=150:FO=1
+1180 IFVG<390 THEN1240
+1190 GOSUB100:PRINT"Uw computer heeft in verticale"
+1200 PRINT"richting ";VG;" beeldlijnen."
+1210 PRINT"Voor de tekening zijn er maar 192 nodig."
+1220 PRINT"Schakel zo mogelijk om naar een lagere"
+1230 PRINT"resolutie.":PRINT:FO=1
+1240 IFVG>191 THEN1300
+1250 PRINT"Uw computer heeft in verticale"
+1260 PRINT"richting ";VG;" beeldlijnen."
+1270 PRINT"Voor de tekening zijn er 192 nodig."
+1280 PRINT"Ik probeer er het beste van te maken."
+1290 PRINT:VG=193:FO=1
+1300 IFFO=0 THEN2030
+1310 PRINT:PRINT"<spatie> voor verder, anders einde";
+1320 GOSUB210:IFIN<>32 THEN950
+2000 REM
+2010 REM hoofdprogramma
+2020 REM
+2030 GOSUB600:CN=0:VP=.3:VE=VP/VG
+2040 FORN=1 TO6:READA$:NEXTN
+2050 REM de eerste zes gegevens bevatten geen tekendata
+2060 READD$:IFD$<>"" THEN2090
+2070 SR$="=>":HO=.906:VE=.958:GOSUB650
+2080 GOSUB210:GOTO950
+2090 HP=.3:REM nieuwe regel vooraan
+2100 FORN=1 TOLEN(D$)
+2110 GOSUB3180
+2120 IFBY>63 THEN GOSUB3090:GOTO2120
+2130 FORI=1 TO6
+2140 BT=INT(BY/2):IFBY<>BT+BT THEN GOSUB3030
+2150 HP=HP+1:BY=BT:NEXTI
+2160 NEXTN
+2170 VP=VP+1:VE=VP/VG:GOTO2060
+3000 REM
+3010 REM tekenroutines
+3020 REM
+3030 HO=HP/HG:GOSUB620:RETURN
+3040 CN=1:GOSUB3030:CN=0:RETURN
+3050 HO=HP/HG:GOSUB630:RETURN
+3060 REM
+3070 REM ** dekompressie **
+3080 REM
+3090 IFBY>75 THEN3160
+3100 IFBY>71 THEN3140
+3110 K=(BY-68)*95:N=N+1:GOSUB3180:GOSUB3040
+3120 HP=HP+6*(K+BY)-1:GOSUB3050:HP=HP+1:N=N+1
+3130 GOSUB3180:RETURN
+3140 K=(BY-72)*95:N=N+1:GOSUB3180:VP=VP+K+BY:VE=VP/VG
+3150 HP=.3:BY=0:RETURN
+3160 K=(BY-76)*95:N=N+1:GOSUB3180:HP=HP+6*(K+BY)
+3170 N=N+1:GOSUB3180:RETURN
+3180 BY=ASC(MID$(D$,N,1))-32
+3190 IFBY<33 THENRETURN
+3200 IFCO THEN3240
+3210 IFBY>128 THENBY=BY-128:RETURN
+3220 IFBY>58 THENRETURN
+3230 BY=BY+32
+3240 IFBY=90 THENBY=2
+3250 RETURN
+25000 DATA"BILD"
+25010 DATA"MSX onmogelijke constructie"
+25020 DATA"H147"
+25030 DATA"V192"
+25040 DATA"KOMPRESS"
+25050 DATA""
+25060 DATA" Pd5+"
+25070 DATA" Pd53"
+25080 DATA" Xd5I"
+25090 DATA" Xd55!"
+25100 DATA" \d5Jz"
+25110 DATA" \d54%"
+25120 DATA" ^d4?Jz"
+25130 DATA" ^d4?5%"
+25140 DATA" d5OJz"
+25150 DATA"l+^/l(_/5!"
+25160 DATA" JJJJJJJJJ*_'JJJJJJJ*_GJ"
+25170 DATA" JJJJJJJJJ*_7JJJJJJJ*_75!"
+25180 DATA" HJJJJJJJJJ_CJJJJJJJJ_KJ"
+25190 DATA" HJJJJJJJJB_3JJJJJJJB_35"
+25200 DATA" HJJJJJJJJR_IHJJJJJJR_I*"
+25210 DATA" HJJJJJJJJR_5IJJJJJJR_55"
+25220 DATA" @JJJJJJJJZ_HHJJJJJJZ_J*"
+25230 DATA" @JJJJJJJJX_4IJJJJJJX_4%"
+25240 DATA" @JJJJJJJJ\?JJJJJJJJ\?Jz"
+25250 DATA" @Jzl&\?5!l&\?5%"
+25260 DATA"  JBJzl$^/JBJzl$^OJz"
+25270 DATA"  J*5!l$^/5!5!l$^/5!"
+25280 DATA"  J*Jzl$_GJ(Jzl$_GJ"
+25290 DATA"  J*5%l$_75)5%l$_75!"
+25300 DATA"  H*J*l#@_CJ(J*l#@_KJ"
+25310 DATA"  HJ4%l#@_35*4%l#@_35"
+25320 DATA"  HJH*l#P_I*JH*l#P_I*"
+25330 DATA"  HJ45l#P_55J45l#P_55"
+25340 DATA"  @JHJl#X_H*JHJl#X_J*"
+25350 DATA"  @J25!  X_4EJ05l#X_4%"
+25360 DATA"  @JBJl#\?JBJBJl#\?Jz"
+25370 DATA"  @J25!  \?5%J25!  \?5%"
+25380 DATA"l#JBJz  ^/JzJBJz  ^OJz"
+25390 DATA"l#J*5!  ^/5!Jz5!  ^/5!"
+25400 DATA"l#J*Jz  _GJ J*Jz  _GJ"
+25410 DATA"l#J*5%  _75!H*5%  _75!"
+25420 DATA"l#H*J* @_CJ H*J* @_KJ"
+25430 DATA"l#HJ4% @_35 H*4% @_35"
+25440 DATA"l#HJH* P_I* HJH* P_I*"
+25450 DATA"l#HJ45 P_55 @J45 P_55"
+25460 DATA"l#@JHJ X_H* @JHJ X_J*"
+25470 DATA"l#@J25 X_4% @J05 X_4%"
+25480 DATA"l#@JBJ \?Jz @JBJ \?Jz"
+25490 DATA"l#@J25!\?5%  J25!\?5%"
+25500 DATA"l$JBJz^/Jz  JBJz^OJz"
+25510 DATA"l$J*5!^/5!  Jz5!^/5!"
+25520 DATA"l$J*Jz_GJl#J*Jz_GJ"
+25530 DATA"l$J*5%_75!  H*5%_75!"
+25540 DATA"l$H*JB_CJl#H*JJ_KJ"
+25550 DATA"l$HJ4E_35l#H*4%_35"
+25560 DATA"l$HJHJ_I*l#HJH*_I*"
+25570 DATA"l$HJ45_55l#@J45^55"
+25580 DATA"l$@JHJ^H*l#@JHJ^J*"
+25590 DATA"l$@J25^4%l#@J05\4%"
+25600 DATA"l$@JBJ>Jzl#@JBJ<Jz"
+25610 DATA"l$@J25=5%l$J2595%"
+25620 DATA"l%JBJ*Jzl$JBJJJz"
+25630 DATA"l%Jz5)5!l$Jz5%5!"
+25640 DATA"l%J*JBJl%J*JJJ"
+25650 DATA"l%J*5%l&H*555!"
+25660 DATA"l%H*JZd&I*JJJ"
+25670 DATA"l%H*4Yd&K*455"
+25680 DATA"l%HJH\d&CJHJ*"
+25690 DATA"l%HJ4]d&GJ455"
+25700 DATA"l%@JH^d&GJHJ*"
+25710 DATA"l%@J0^d&OJ05%"
+25720 DATA"l%@J0d'/JJJz"
+25730 DATA"l%@Jzd'?Jz5!"
+25740 DATA"l&JBd( @Jz"
+25750 DATA"l&Jzl(^/5!"
+25760 DATA"l&JJJJJJJJJ*_GJ"
+25770 DATA"l&JJJJJJJJJ*_75"
+25780 DATA"l&HJJJJJJJJJ_CJ"
+25790 DATA"l&HJJJJJJJJB_35"
+25800 DATA"l&HJJJJJJJJR_I*"
+25810 DATA"l&HJJJJJJJJR_55"
+25820 DATA"l&@JJJJJJJJZ_J*"
+25830 DATA"l&@JJJJJJJJX_4%"
+25840 DATA"l&@JJJJJJJJ\?Jz"
+25850 DATA"l&@Jzl&\?5%"
+25860 DATA"l'JBJzl$^OJz"
+25870 DATA"l'Jz5!l$^/5!"
+25880 DATA"l'J*Jzl$_GJ z"
+25890 DATA"l'J*5%l$_75!z"
+25900 DATA"l'H*J*l#@_KJ z"
+25910 DATA"l'H*4%l#@_35 z"
+25920 DATA"l'HJH*l#P_I* F$"
+25930 DATA"l'HJ45l#P_55 *%"
+25940 DATA"l'@JHJl#X_J* *z"
+25950 DATA"l'@J05l#X_4% &!"
+25960 DATA"l'@JBJl#\?Jz @"
+25970 DATA"l'@J25!  \?5%"
+25980 DATA"l(JBJz  ^OJz"
+25990 DATA"l(Jz5!  ^/5!"
+26000 DATA"l(J*Jz  _GJ"
+26010 DATA"l(J*5%  _75!"
+26020 DATA"l(H*J* @_KJ"
+26030 DATA"l(H*4% @_35  G/"
+26040 DATA"l(HJH* P_I* @H0"
+26050 DATA"l(HJ05 P_55 @@0"
+26060 DATA"l(@JHJ X_J* @@/"
+26070 DATA"l(@J05 X_4% @@0"
+26080 DATA"l(@JBJ \?Jz @@0"
+26090 DATA"l(@J25!\?5! @@0"
+26100 DATA"l)JBJz^OJz  _/"
+26110 DATA"l)Jz5!^/5!  @"
+26120 DATA"l)J*Jz_GJl#@"
+26130 DATA"l)J*5%_75!  @"
+26140 DATA"l)H*JJ_KJl#@"
+26150 DATA"l)H*4%_35l#@"
+26160 DATA"l)HJH*_I*l#@"
+26170 DATA"l)HJ45^5%l#@"
+26180 DATA"l)@JHJ^J*"
+26190 DATA"l)@J05\4%"
+26200 DATA"l)@JBJ<Jz"
+26210 DATA"l)@Jz595!"
+26220 DATA"l*JBJJJz"
+26230 DATA"l*Jz5!5!"
+26240 DATA"l*J*JBJ"
+26250 DATA"l*J*555!"
+26260 DATA"l*H*JJJ"
+26270 DATA"l*H*455"
+26280 DATA"l*HJHJ*"
+26290 DATA"l*HJ455"
+26300 DATA"l*@JHJ*"
+26310 DATA"l*@J05%"
+26320 DATA"l*@JBJz"
+26330 DATA"l*@Jz5%"
+26340 DATA"l+JBJz"
+26350 DATA"l+Jz5!"
+26360 DATA"l+J*J"
+26370 DATA"l+J*5!"
+26380 DATA"l+H*J"
+26390 DATA"l+H*4"
+26400 DATA"l+HJ("
+26410 DATA"l+HJ4"
+26420 DATA"l+@J("
+26430 DATA"l+@J"
+26440 DATA"l+@Jz"
+26450 DATA""
+26460 DATA""
+26470 REM -------------------------------
+30000 REM gebruikte variabelen ...
+30010 REM
+30020 REM D$  string uit DATA
+30030 REM N   bytenummer in D$
+30040 REM BY  byte uit D$ minus 32
+30050 REM VP  verticale plotpositie
+30060 REM HP  horizontale plotpositie
+30070 REM -------------------------------
+30080 REM VIDEODAT wordt door de WDR
+30090 REM gebruikt om via het TV-signaal
+30100 REM gegevens uit te zenden.
+30110 REM Elke beeldlijn van het te
+30120 REM tekenen beeld wordt als een
+30130 REM tekstregel verzonden door
+30140 REM telkens 6 naast elkaar liggende
+30150 REM pixels volgens 1-2-4-8-16-32
+30160 REM op te tellen en daar nog 32
+30170 REM bij op te tellen om in het
+30180 REM gebied van de printbare tekens
+30190 REM te komen (32-95).
+30200 REM De regels kunnen in elke
+30210 REM computer weer worden terug-
+30220 REM vertaald.
+30230 REM Er is ook nog een 'Kompress'
+30240 REM systeem bedacht:
+30250 REM Meer dan 2 opvolgende 6-tallen
+30260 REM zwarte pixels (=meer dan 2
+30270 REM spaties) worden vervangen door
+30280 REM CHR$(96)+(aantalbyte) waarin de
+30290 REM aantalbyte=CHR$(32+aantal).
+30300 REM Zijn er meer dan 95 spaties
+30310 REM dan wordt de code
+30320 REM CHR$(96+aantal DIV 95) +
+30330 REM CHR$(32+aantal MOD 95).
+30340 REM Ook voor witte pixels is er
+30350 REM zo'n code. Het eerste karakter
+30360 REM is dan CHR$(100+aantal DIV 95).
+30370 REM Tenslotte worden lege (zwarte)
+30380 REM beeldlijnen op dezelfde manier
+30390 REM verpakt met
+30400 REM CHR$(104+aantal DIV 95) als
+30410 REM eerste en CHR$(32+aantal MOD 95)
+30420 REM als tweede.
+30430 REM N.B. In deze demo is in de DATA
+30440 REM CHR$(34) vervangen door CHR$(122),
+30450 REM dit wordt bij het decoderen weer
+30460 REM hersteld. Verder is CHR$(96) door
+30470 REM CHR$(108) vervangen, dit wegens
+30480 REM specifieke C-64 problemen.
+30490 REM ---------------------------------
+30500 REM Misschien brengt deze wijze van
+30510 REM codering u op een idee?
+30520 REM Of kunt u de te tekenen gegevens
+30530 REM nog compacter coderen?
+30540 REM ---------------------------------
+32000 REM Tekening naar een WDR voorbeeld
+32010 REM opnieuw getekend en gecodeerd door
+32020 REM   Ch.W.Brederode
+32030 REM   Von Bonninghausenlaan 33
+32040 REM   2161 ES  LISSE
+32050 REM Basicode-3 aanpassing in
+32060 REM samenwerking met J.Haubrich
+32070 REM
+32080 REM TROS RADIO dd 901010
+32090 REM correcties dd 901014
+32100 REM TROS RADIO dd 901017

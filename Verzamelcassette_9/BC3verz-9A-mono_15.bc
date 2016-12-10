@@ -1,0 +1,150 @@
+
+1000 A=500:GOTO20:REM "Determineren"
+1010 GOSUB100:SR$="                         "
+1020 GOSUB150:PRINT:SR$="D E T E R M I N E R E N  (Deel 1)"
+1030 GOSUB150:PRINT
+1040 SR$="*************************"
+1050 GOSUB150:PRINT:PRINT
+1060 PRINT"Dit programma is bedoeld als voorkennis"
+1070 PRINT"om te kunnen determineren."
+1080 PRINT"Heeft men zich deze stof 'eigen' ge-"
+1090 PRINT"maakt, dan zal het echte determineren"
+1100 PRINT"U veel minder problemen geven.":PRINT
+1110 PRINT"Om het programma ook werkzaam te laten"
+1120 PRINT"zijn op komputers met weinig geheugen"
+1130 PRINT"werd gekozen voor een opbouw in delen "
+1140 PRINT"te weten:":PRINT
+1150 PRINT" Deel 1. Inleiding en algemeen."
+1160 PRINT"         (Wat u nu dus leest)"
+1170 PRINT" Deel 2. De wortel."
+1180 PRINT" Deel 3. De stengel."
+1190 PRINT" Deel 4. De bloem."
+1200 PRINT" Deel 5. Het blad."
+1210 PRINT" Deel 6. De vrucht."
+1220 GOSUB2040:PRINT:PRINT
+1230 PRINT"Determineren="
+1240 PRINT"*************":PRINT
+1250 PRINT"Familie-,geslachts- + soortnaam bepa-"
+1260 PRINT"len van een plant."
+1270 PRINT"Dit gebeurt meestal met behulp van een"
+1280 PRINT"   ''F l o r a''":PRINT:PRINT
+1290 PRINT"Flora="
+1300 PRINT"*************":PRINT
+1310 PRINT"Naam van de Romeinse godin van de bloe-"
+1320 PRINT"men, de lente en de plantenwereld.":PRINT
+1330 PRINT"Nu bedoelt men er meestal de plantenwe-"
+1340 PRINT"reld mee + de boeken waarin die planten"
+1350 PRINT"beschreven staan.":GOSUB2040
+1360 HO=0:VE=7:GOSUB110
+1370 PRINT"In deze boeken staan tabellen waarmee"
+1380 PRINT"men door meerkeuzevragen achter de naam"
+1390 PRINT"van een onbekende plant kan komen.":PRINT
+1400 PRINT"Men moet dan wel de namen van allerlei"
+1410 PRINT"onderdelen van planten kennen en weten"
+1420 PRINT"hoe de flora(zowel plantenwereld+boek)"
+1430 PRINT"is ingedeeld.(Linnaeus)":GOSUB2040
+1440 REM INDELING PLANTENRIJK
+1450 PRINT"INDELING VAN HET PLANTENRIJK"
+1460 PRINT"+++++++++++++++++++++++++++++":PRINT
+1470 PRINT"Hoofdafdelingen:"
+1480 PRINT"----------------":PRINT:PRINT
+1490 PRINT"                   Bacterien"
+1500 PRINT"1.Splijtplanten:   Blauwwieren":PRINT:PRINT
+1510 PRINT"                   Zwammen"
+1520 PRINT"                   Paddestoelen"
+1530 PRINT"2.Sporeplanten :   Wieren of algen"
+1540 PRINT"                   Mosplanten"
+1550 PRINT"                   Varenplanten":PRINT:PRINT
+1560 PRINT"3.Zaadplanten  :   Naakt-zadigen"
+1570 PRINT"                   Bedektzadigen":GOSUB2040
+1580 PRINT"De verdere splitsing vanuit de hoofd-"
+1590 PRINT"afdelingen(in het vorige schema dus na"
+1600 PRINT"de dubbele punt) noemt men afdelingen.":PRINT
+1610 PRINT:PRINT"Deze gaat men weer verder indelen"
+1620 PRINT"en wel in:":PRINT:PRINT
+1630 PRINT"  Klasse  ":PRINT
+1640 PRINT"  Orde    ":PRINT
+1650 PRINT"  Geslacht":PRINT
+1660 PRINT"  Soort   ":PRINT
+1670 GOSUB2040
+1680 PRINT"Een voorbeeld:"
+1690 PRINT"..............":PRINT
+1700 PRINT"Hoofdafd.:     Zaadplanten"
+1710 PRINT"----------     ^          ^"
+1720 PRINT"Afdeling :  Naaktzadigen  Bedektzadigen"
+1730 PRINT"----------  ^               ^"
+1740 PRINT"Klasse   :Naaldbomen  a)1-zaadlobbige"
+1750 PRINT"----------  ^         ^ b)2-zaadlobbige"
+1760 PRINT"Orde     :Denachtig   a)met losbladige"
+1770 PRINT"----------           /  bloemkroon"
+1780 PRINT"                   /  b)met vergroeid-"
+1790 PRINT"                 /    ^ bladige"
+1800 PRINT"               /      ^ bloemkroon"
+1810 PRINT"Familie:a)kruisbloe-  b)ruwbladigen"
+1820 PRINT"--------  migen"
+1830 PRINT"          ^           ^"
+1840 PRINT"Geslacht:Mosterd     Vergeet-mij-nietje"
+1850 PRINT"--------- ^           ^"
+1860 PRINT"Soort   :Herik       Kromhals"
+1870 PRINT"---------"
+1880 GOSUB2040
+1890 REM PLANTEN-ONDERDELEN(VOORNAAMSTE DELEN)
+1900 SR$="PLANTEN-ONDERDELEN"
+1910 GOSUB150:PRINT
+1920 PRINT"   (voornaamste delen)":PRINT:PRINT
+1930 PRINT"                 1- Wortel.":PRINT
+1940 PRINT"                 2- Stengel.":PRINT
+1950 PRINT"                 3- Blad.":PRINT:PRINT
+1960 PRINT"                 4- Bloem."
+1970 PRINT"Bij zaadplanten:"
+1980 PRINT"                 5- Vrucht.":PRINT:PRINT
+1990 PRINT"Bij sporeplanten:6- Sporenkapsels "
+2000 PRINT"                    + sporen.":GOSUB2040
+2010 HO=10:VE=10:GOSUB110:PRINT">> Einde deel 1. "
+2020 GOSUB2040:GOSUB100:GOTO950
+2030 REM SPATIEBALK
+2040 GOSUB120:VE=23:HO=0:GOSUB110
+2050 PRINT"****> Druk op spatiebalk <****";
+2060 GOSUB2120:IFIN<>32 THEN2060
+2070 VE=23:HO=0:GOSUB110
+2080 PRINT"                                     ";
+2090 GOSUB100
+2100 RETURN
+2110 REM INPUT MET LEGE BUFFER
+2120 GOSUB200:IFIN$<>"" THEN2120
+2130 GOSUB210
+2140 RETURN
+2150 REM
+30000 REM
+30010 REM
+30020 REM
+30030 REM ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+30040 REM ; DE GEGEVENS VAN DIT PRO-  ;
+30050 REM ; MA ZIJN AFKOMSTIG UIT EEN ;
+30060 REM ; EEN STENCIL VAN DHR H.PIL ;
+30070 REM ; UIT NEDERWEERT(LID I.V.N.);
+30080 REM ; DIE HET PRIMA VOND DAT ER ;
+30090 REM ; EEN BASICODE-PROGRAMMA VAN;
+30100 REM ; GEMAAKT WERD, WAARVOOR    ;
+30110 REM ; NATUURLIJK HARTELIJK DANK.;
+30120 REM ;                           ;
+30130 REM ; OOK BEDANKT DHR P.JACOBS, ;
+30140 REM ; WEERT VOOR ZIJN HULP.     ;
+30150 REM ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+30160 REM
+30170 REM
+30180 REM
+32000 REM *****  DETERMINEREN     *****
+32010 REM *****      (DEEL 1)     *****
+32020 REM *****                   *****
+32030 REM     *********************
+32040 REM     *                   *
+32050 REM     *  JAN DE JONG      *
+32060 REM     *  MR.STRIJBOSSTR 5 *
+32070 REM     *  6001 ST WEERT    *
+32080 REM     *  COMMODORE-64     *
+32090 REM     *   APRIL 1990      *
+32100 REM     *                   *
+32110 REM     *********************
+32120 REM
+32130 REM TROS-RADIO dd 900919

@@ -1,0 +1,49 @@
+
+1000 A=100:GOTO20:REM ### Hydra ###
+1010 HT=HO:PRINT"Hydra-Problem":PRINT:GOSUB5000
+1020 INPUT"Eingabe einer Zahl:  0 fuer Ende";Z
+1030 IFZ=0 THEN950:REM Ende
+1040 IF(Z<>INT(Z))OR(Z<2) THENPRINT"Fehler":GOTO1020
+1050 Y=Z/2:IFY=INT(Y) THENZ=Y:GOTO1070
+1060 Z=Z+Z+Z+1
+1070 PRINTZ;" ";
+1080 GOSUB120:IFHO+7>HT THENPRINT
+1090 IFZ>1 THEN1040
+1100 PRINT:GOTO1020
+1110 REM ----Programm-Ende------
+5000 PRINT"Het HYDRA-probleem is afkomstig van"
+5010 PRINT"Mc Carthy. Hij had het vermoeden dat"
+5020 PRINT"elk geheel getal via een bepaald reken-"
+5030 PRINT"proces uiteindelijk op het getal 1 uit"
+5040 PRINT"komt. Hoe is dat rekenproces?"
+5050 PRINT"- als het getal even is, dan wordt het"
+5060 PRINT"  door 2 gedeeld."
+5070 PRINT"- als het getal oneven is, dan wordt"
+5080 PRINT"  het met 3 vermenigvuldigd waarna er"
+5090 PRINT"  nog 1 bij wordt opgeteld."
+5100 PRINT"- met het nu ontstane getal wordt weer"
+5110 PRINT"  hetzelfde gedaan, totdat de waarde 1"
+5120 PRINT"  bereikt is."
+5130 PRINT"Alles wat er met computers aan gerekend"
+5140 PRINT"is, wijst erop dat er op den duur echt"
+5150 PRINT"altijd 1 uitkomt, maar een echt bewijs"
+5160 PRINT"heeft nog niemand kunnen vinden."
+5170 PRINT"Let bij het doorrekenen vooral op het"
+5180 PRINT"toe- en afnemen van de getallen."
+5190 PRINT"Neem als getal bijv. 1055 of 1071."
+5200 PRINT"Veel plezier.":PRINT:RETURN
+30000 REM Das Hydra-Problem stammt von McCarthy.
+30010 REM Es wird vermutet, dass alle ganzzahligen
+30020 REM Eingaben zu 1 und damit zum Ende fuehren.
+30030 REM Ein Beweis steht bis heute aus.
+30040 REM Infolge der endlichen Arithmetik kann
+30050 REM ein Rechner-Programm nur fuer einige Zahlen
+30060 REM diese Hypothese unterstuetzen.
+30070 REM Beobachten Sie das Zu- und Abnehmen
+30080 REM der Zahlenwerte und versuchen Sie
+30090 REM das Programm zu verstehen.
+32000 REM -----------------------
+32010 REM H. Voelz; 9.5.89; fuer Rundfunk
+32020 REM XT-compatibler Rechner
+32030 REM
+32040 REM TROS-RADIO dd 891011

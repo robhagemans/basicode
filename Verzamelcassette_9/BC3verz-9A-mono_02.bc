@@ -1,0 +1,278 @@
+
+1000 A=1300:GOTO20:REM ** MAANFASE **
+1010 REM ** LOGO **
+1020 GOSUB100:VE=4:HO=0:GOSUB110
+1030 PRINT"o   o oooo oooo o   o oooo oooo ooo ooo"
+1040 PRINT"oo oo o  o o  o oo  o o    o  o o   o"
+1050 PRINT"o o o oooo oooo o o o ooo  oooo ooo ooo"
+1060 PRINT"o   o o  o o  o o  oo o    o  o   o o"
+1070 PRINT"o   o o  o o  o o   o o    o  o ooo ooo"
+1080 VE=12:HO=15:GOSUB110
+1090 PRINT"ASTROLOGIE"
+1100 SD=30:GOSUB450
+1110 REM ** INSTRUCTIE **
+1120 GOSUB100:VE=2:HO=10:GOSUB110
+1130 PRINT"MAANFASE ASTROLOGIE"
+1140 PRINT:PRINT"Is een astrologische theorie die te ma-"
+1150 PRINT"ken heeft met de stand van de maan op"
+1160 PRINT"het moment van de geboorte."
+1170 PRINT"Die stand zou een zeer belangrijke in-"
+1180 PRINT"vloed hebben op de ontwikkeling van het"
+1190 PRINT"karakter van de mens."
+1200 PRINT"De maanfase laat zien hoe de persoon"
+1210 PRINT"zich met zijn zieleleven instelt tegen-"
+1220 PRINT"over de totaliteit van zijn medemensen."
+1230 GOSUB2330
+1240 GOSUB100:VE=2:HO=0:GOSUB110
+1250 PRINT"Welke rol hij speelt in de maatschappij"
+1260 PRINT"en wat zijn missie in de wereld is."
+1270 PRINT"Ze worden verdeeld in drie hoofdgroepen:"
+1280 VE=7:HO=12:GOSUB110:PRINT"1 wassende  maan"
+1290 VE=9:GOSUB110:PRINT"2 volle     maan"
+1300 VE=11:GOSUB110:PRINT"3 afnemende maan"
+1310 GOSUB2330
+1320 GOSUB100:VE=1:HO=0:GOSUB110
+1330 PRINT"Op basis hiervan ontstaan ook drie typen"
+1340 PRINT"mensen:"
+1350 VE=5:HO=12:GOSUB110
+1360 PRINT"INDIVIDUALISTEN:"
+1370 VE=7:HO=5:GOSUB110
+1380 PRINT"geboren onder de wassende maan"
+1390 VE=9:HO=14:GOSUB110
+1400 PRINT"SOCIALISTEN:"
+1410 VE=11:HO=7:GOSUB110
+1420 PRINT"geboren onder de volle maan"
+1430 VE=13:HO=15:GOSUB110
+1440 PRINT"BEHERENDE:"
+1450 VE=15:HO=4:GOSUB110
+1460 PRINT"geboren onder de afnemende maan"
+1470 GOSUB2330
+1480 GOSUB100:VE=0:HO=0:GOSUB110
+1490 PRINT"Deze drie types kunnen weer worden onder"
+1500 PRINT"verdeeld in 12 categorieen:"
+1510 VE=5:HO=3:GOSUB110:PRINT"1.ARBITER":HO=22:GOSUB110
+1520 PRINT"7.REVOLUTIONAIR"
+1530 VE=7:HO=3:GOSUB110:PRINT"2.ARTIEST":HO=22:GOSUB110
+1540 PRINT"8.RIDDER"
+1550 VE=9:HO=3:GOSUB110:PRINT"3.APOSTEL":HO=22:GOSUB110
+1560 PRINT"9.SAMENTREKKER"
+1570 VE=11:HO=3:GOSUB110:PRINT"4.GEZAGSDRAGER";
+1580 HO=21:GOSUB110:PRINT"10.SLEUTELDRAGER"
+1590 VE=13:HO=3:GOSUB110:PRINT"5.PROFEET":HO=21:GOSUB110
+1600 PRINT"11.SPIRITUALIST"
+1610 VE=15:HO=3:GOSUB110:PRINT"6.REALIST":HO=21:GOSUB110
+1620 PRINT"12.VOORTREKKER"
+1630 GOSUB2330
+1640 GOSUB100:VE=1:HO=0:GOSUB110
+1650 PRINT"Dit programma rekent na invoering van"
+1660 PRINT"uw geboortedatum uit, onder welke"
+1670 PRINT"maanfase u valt."
+1680 GOSUB1870
+1690 GOSUB2190
+1700 REM ** NOG EEN KEER **
+1710 VE=13:HO=10:GOSUB110
+1720 PRINT"nog een keertje j/n";
+1730 GOSUB210:IFIN=74 THEN1640
+1740 REM ** EINDE PROGRAMMA **
+1750 GOSUB100:VE=8:HO=13:GOSUB110
+1760 PRINT"*************"
+1770 VE=9:GOSUB110
+1780 PRINT"*           *"
+1790 VE=10:GOSUB110
+1800 PRINT"* TOT ZIENS *"
+1810 VE=11:GOSUB110
+1820 PRINT"*           *"
+1830 VE=12:GOSUB110
+1840 PRINT"*************"
+1850 SD=30:GOSUB450:GOTO950
+1860 REM ** DATUM INVOEREN **
+1870 VE=7:HO=3:GOSUB110
+1880 PRINT"                                   "
+1890 VE=7:GOSUB110
+1900 PRINT"geboortedag   ";:INPUTD$
+1910 IFVAL(D$)=0 THEN1870
+1920 D=VAL(D$):IFD>31 THEN1870
+1930 VE=9:GOSUB110
+1940 PRINT"                                   "
+1950 VE=9:GOSUB110
+1960 PRINT"geboortemaand ";:INPUTM$
+1970 IFVAL(M$)=0 THEN1930
+1980 M=VAL(M$):IFM>12 THEN1930
+1990 VE=11:GOSUB110
+2000 PRINT"het jaar volledig invullen dus (1986)"
+2010 VE=13:GOSUB110
+2020 PRINT"                                  "
+2030 VE=13:GOSUB110
+2040 PRINT"geboortejaar  ";:INPUTJ$
+2050 L=LEN(J$):IF(L>4)OR(L<4)THEN2010
+2060 IFVAL(J$)=0 THEN2010
+2070 J=VAL(J$)
+2080 IFM<3 THENM=M+12:J=J-1
+2090 REM ** BEREKENING **
+2100 T=INT(365.25*J)+INT(30.6*(M+1))+D-694038
+2110 T=T/36525
+2120 A=350.737486+1236*T*360
+2130 A=A+307*T+6*T/60
+2140 A=A+51.18*T/3600-5.17*T*T/3600
+2150 A=A-INT(A/360)*360
+2160 A=INT(A+.5)
+2170 RETURN
+2180 REM ** UITVOERING **
+2190 IF(A>=0)AND(A<=15)THEN2360
+2200 IF(A>15)AND(A<=45)THEN2450
+2210 IF(A>45)AND(A<=75)THEN2540
+2220 IF(A>75)AND(A<=105)THEN2640
+2230 IF(A>105)AND(A<=135)THEN2740
+2240 IF(A>135)AND(A<=165)THEN2840
+2250 IF(A>165)AND(A<=195)THEN2940
+2260 IF(A>195)AND(A<=225)THEN3030
+2270 IF(A>225)AND(A<=255)THEN3140
+2280 IF(A>255)AND(A<=285)THEN3260
+2290 IF(A>285)AND(A<=315)THEN3370
+2300 IF(A>315)AND(A<=360)THEN3460
+2310 RETURN
+2320 REM ** DRUK EEN TOETS ROUTINE **
+2330 VE=20:HO=13:GOSUB110:PRINT"druk een toets"
+2340 GOSUB210:RETURN
+2350 REM ** VOORTREKKER **
+2360 GOSUB100:VE=2:HO=12:GOSUB110
+2370 PRINT"VOORTREKKER"
+2380 PRINT:PRINT"Deze personen lopen altijd voorop , hun"
+2390 PRINT"doelgerichtheid kan hen soms stijfkop-"
+2400 PRINT"pig laten zijn."
+2410 PRINT"Deze personen zijn erg eenzijdig."
+2420 PRINT"Dit is soms hun sterke kant."
+2430 RETURN
+2440 REM ** REALIST **
+2450 GOSUB100:VE=2:HO=17:GOSUB110
+2460 PRINT"REALIST"
+2470 PRINT:PRINT"Deze mensen staan bekend onder de"
+2480 PRINT"nuchteren in onze samenleving."
+2490 PRINT"Ze staan met beide benen op de grond."
+2500 PRINT"Ze denken dat alles verklaard kan wor-"
+2510 PRINT"den op basis van fysische verschijnselen"
+2520 RETURN
+2530 REM ** ARTIEST **
+2540 GOSUB100:VE=2:HO=16:GOSUB110
+2550 PRINT"ARTIEST"
+2560 PRINT:PRINT"Deze mensen veranderen materialen op"
+2570 PRINT"hun geheel eigen wijze."
+2580 PRINT"Zij scheppen kunstwerken maar ook ont-"
+2590 PRINT"werpen zij nieuwe produkten."
+2600 PRINT"Het is bij de artiest vaak te doen om"
+2610 PRINT"nieuwe vormen."
+2620 RETURN
+2630 REM ** SLEUTELDRAGER **
+2640 GOSUB100:VE=2:HO=13:GOSUB110
+2650 PRINT"SLEUTELDRAGER"
+2660 PRINT:PRINT"Deze mensen voelen zich verantwoorde-"
+2670 PRINT"lijk voor hun medemensen,vooral voor"
+2680 PRINT"de mensen die anders vergeten zouden"
+2690 PRINT"worden."
+2700 PRINT"Ze zijn dus behulpzaam en zorgen voor"
+2710 PRINT"anderen"
+2720 RETURN
+2730 REM ** RIDDER **
+2740 GOSUB100:VE=2:HO=17:GOSUB110
+2750 PRINT"RIDDER"
+2760 PRINT:PRINT"Deze mensen zijn min of meer roekeloze"
+2770 PRINT"avonturiers,altijd op zoek naar nieuwe"
+2780 PRINT"ontdekkingen."
+2790 PRINT"Het zijn idealisten met een sterk eer-"
+2800 PRINT"gevoel.,,...De ridder zonder vrees of"
+2810 PRINT"blaam."
+2820 RETURN
+2830 REM ** REVOLUTIONAIR **
+2840 GOSUB100:VE=2:HO=13:GOSUB110
+2850 PRINT"REVOLUTIONAIR"
+2860 PRINT:PRINT"Deze mensen zijn meestal ontevreden"
+2870 PRINT"met de wereld waarin zij leven."
+2880 PRINT"Ze hebben de neiging alles van de"
+2890 PRINT"slechte zijde te zien en willen de"
+2900 PRINT"wereld veranderen, zij aanvaarden"
+2910 PRINT"geen enkel compromis."
+2920 RETURN
+2930 REM ** SAMENTREKKER **
+2940 GOSUB100:VE=2:HO=14:GOSUB110
+2950 PRINT"SAMENTREKKER"
+2960 PRINT:PRINT"Deze mensen houden ervan om met anderen"
+2970 PRINT"samen te zijn,maar ze voelen dat ze"
+2980 PRINT",,more equal''zijn dan hun metgezellen."
+2990 PRINT"Ze zijn romantisch en houden erg van"
+3000 PRINT"het gezinsleven."
+3010 RETURN
+3020 REM ** SPIRITUALIST **
+3030 GOSUB100:VE=2:HO=14:GOSUB110
+3040 PRINT"SPIRITUALIST"
+3050 PRINT:PRINT"Deze mensen zijn eigelijk niet van"
+3060 PRINT"deze wereld."
+3070 PRINT"Het zijn bij uitstek de zoekers naar"
+3080 PRINT"het onbekende."
+3090 PRINT"Bovendien verwachten zij een verras-"
+3100 PRINT"singselement van dat onbekende dat"
+3110 PRINT"zij als een wonder zullen verwelkomen."
+3120 RETURN
+3130 REM ** APOSTEL **
+3140 GOSUB100:VE=2:HO=17:GOSUB110
+3150 PRINT"APOSTEL"
+3160 PRINT:PRINT"Deze mensen zijn zelf niet erg creatief"
+3170 PRINT"maar ze dragen eerder de ideeen van"
+3180 PRINT"anderen over de aarde."
+3190 PRINT"Het is niet een eigen vinding,maar een"
+3200 PRINT"andermans idee, waarvoor de aandacht"
+3210 PRINT"wordt gevraagd."
+3220 PRINT"Hiervoor wordt dan ook met grote toe-"
+3230 PRINT"wijding ,,reklame'' gemaakt."
+3240 RETURN
+3250 REM ** GEZAGSDRAGER **
+3260 GOSUB100:VE=2:HO=14:GOSUB110
+3270 PRINT"GEZAGSDRAGER"
+3280 PRINT:PRINT"Deze mensen nemen verantwoordelijkheid"
+3290 PRINT"op zich, maar dan met het doel het leven"
+3300 PRINT"en gedrag van anderen te beinvloeden."
+3310 PRINT"Ze kijken vooruit waar anderen liever"
+3320 PRINT"terug zouden zien."
+3330 PRINT"Hun stijl wordt door het woord gebod"
+3340 PRINT"gekarakteriseerd."
+3350 RETURN
+3360 REM ** ARBITER **
+3370 GOSUB100:VE=2:HO=17:GOSUB110
+3380 PRINT"ARBITER"
+3390 PRINT:PRINT"Deze mensen oordelen graag over ander-"
+3400 PRINT"mans doen en laten."
+3410 PRINT"Ze voorspellen niet, maar als ze een"
+3420 PRINT"beslissing nemen verwachten ze dat"
+3430 PRINT"die ook geeerbiedigd wordt."
+3440 RETURN
+3450 REM ** PROFEET **
+3460 GOSUB100:VE=2:HO=17:GOSUB110
+3470 PRINT"PROFEET"
+3480 PRINT:PRINT"Deze mensen beschouwen onze wereld als"
+3490 PRINT"het ware van bovenaf."
+3500 PRINT"Ze voorspellen de toekomst."
+3510 PRINT"Echter er wordt niet altijd naar hun"
+3520 PRINT"geluisterd."
+3530 PRINT"Niet voor niets luidt het spreekwoord"
+3540 PRINT",,profeten worden niet in eigen land"
+3550 PRINT"geeerd''."
+3560 RETURN
+30000 REM 
+30010 REM DE VERWERKTE GEGEVENS IN DIT
+30020 REM PROGRAMMA ZIJN GEHAALD UIT
+30030 REM HET BOEK MAANFASE PSYCHOLOGIE
+30040 REM GESCHREVEN DOOR DR.I.J.VAN
+30050 REM SLOOTEN & ELSE PARKER.
+30060 REM 
+32000 REM ************************
+32010 REM *                      *
+32020 REM *     R.J. V/D ZEE     *
+32030 REM *                      *
+32040 REM *      BRAAMKAMP 40    *
+32050 REM *                      *
+32060 REM *   7206 HB ZUTPHEN    *
+32070 REM *                      *
+32080 REM *   Tel. 05750-21736   *
+32090 REM *                      *
+32100 REM ****** BASICODE 3 ******
+32110 REM
+32120 REM TROS-RADIO dd 900815

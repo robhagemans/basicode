@@ -1,0 +1,264 @@
+
+1000 A=1000:GOTO20:REM * SEX-QUOTIENT *
+1010 VT=VE:HT=HO:GOSUB100
+1020 DIMB(25),A(20,26),E(10):F=1
+1030 RESTORE:FORI=1 TO25:READB(I):NEXTI
+1040 FORI=1 TOHT:PRINT"-";:NEXTI
+1050 FORI=1 TO18:READA$:PRINTA$:NEXTI
+1060 FORI=1 TOHT:PRINT"-";:NEXTI
+1070 PRINT:PRINT
+1080 PRINT" *  Aantal Kandidaten:";
+1090 PRINT:PRINT
+1100 FORI=1 TOHT:PRINT"-";:NEXTI
+1110 GOSUB120:VE=VE-2:HO=23:GOSUB110
+1120 GOSUB210:IF(IN<49)OR(IN>57)THEN1120
+1130 N=IN-48:GOSUB100
+1140 REM *** VRAGEN ***
+1150 FORI=1 TOHT-1:VE=1:HO=I:GOSUB110
+1160 PRINT"*";:VE=VT:GOSUB110:PRINT"*";
+1170 VE=VT-4:GOSUB110:PRINT"*";
+1180 NEXTI
+1190 FORI=2 TOVT-1:HO=1:VE=I:GOSUB110
+1200 PRINT"*";:HO=HT-1:GOSUB110:PRINT"*";:NEXTI
+1210 FORI=1 TOVT-4:HO=HT-10:VE=I:GOSUB110
+1220 PRINT"*";:NEXTI
+1230 FORHO=3 TOHT-12:VE=3:GOSUB110
+1240 PRINT"-";:VE=VT-6:GOSUB110:PRINT"-";
+1250 NEXTHO
+1260 FORI=3 TOVT-6:HO=3:VE=I:GOSUB110
+1270 PRINT"I";:HO=HT-12:GOSUB110
+1280 PRINT"I";:NEXTI
+1290 FORI=3 TO18:READA$:HO=HT-8
+1300 VE=I:GOSUB110:PRINTA$;:NEXTI
+1310 REM -- VRAGEN LEZEN ---
+1320 I=1:READA$
+1330 IFA$="g" THENX=0:GOTO1370
+1340 X=X+1
+1350 HO=4:VE=X+4:GOSUB110:PRINTA$
+1360 GOTO1320
+1370 HO=6:VE=VT-2:GOSUB110
+1380 PRINT"Kandidaat ";I;" : ";
+1390 GOSUB120:PRINT" ";:GOSUB110
+1400 GOSUB210
+1410 IFF<>25 THEN1450
+1420 PRINTIN$;
+1430 IFIN$>"3" THENA(I,F)=1
+1440 A(I,F)=0:GOTO1480
+1450 IF(IN<>74)AND(IN<>78)THEN GOSUB250:GOTO1400
+1460 PRINTIN$
+1470 IFIN=74 THENA(I,F)=1
+1480 I=I+1:IFI<=N THEN1370
+1490 F=F+1
+1500 FORVE=5 TOVT-8:HO=4:GOSUB110
+1510 FORH=3 TOHT-14:PRINT" ";
+1520 NEXTH
+1530 NEXTVE
+1540 IFF<=25 THEN1320
+2000 REM *** EVALUATIE ***
+2010 FORI=1 TON
+2020 FORF=1 TO25
+2030 IFA(I,F)=B(F)THENE(I)=E(I)+1
+2040 NEXTF:NEXTI
+2050 FORI=1 TON:GOSUB100
+2060 PRINT:PRINT"    UITSLAG VAN DE TEST"
+2070 PRINT:PRINT"    Kandidaat ";I:PRINT
+2080 IFE(I)<20 THEN2170
+2090 PRINT" U bent een soort EINSTEIN in"
+2100 PRINT" de liefde, een genie in bed,"
+2110 PRINT" een partner waarop men met"
+2120 PRINT" sluimerende verlangens"
+2130 PRINT" wacht. Wie u in het"
+2140 PRINT" bed beleeft, zal nooit meer"
+2150 PRINT" wat anders willen, dan door u"
+2160 PRINT" te worden bemind.":GOTO2810
+2170 IFE(I)<15 THEN2290
+2180 PRINT" Bravo! Uw partner is te be-"
+2190 PRINT" nijden. U bezit alle vaardig-"
+2200 PRINT" heden waarmee men een medemens"
+2210 PRINT" gelukkig kan maken. U verzuimt"
+2220 PRINT" bij zo goed als geen gelegen-"
+2230 PRINT" heid, het gemeenschappelijke"
+2240 PRINT" hoogtepunt en elke sexuele"
+2250 PRINT" ontmoeting tot een geweldige"
+2260 PRINT" belevenis te maken. Het is"
+2270 PRINT" werkelijk een genoegen, met"
+2280 PRINT" u de liefde te bedrijven.":GOTO2810
+2290 IFE(I)<10 THEN2400
+2300 PRINT" U bent, als het om SEX gaat,"
+2310 PRINT" er helemaal bij! U hebt geen"
+2320 PRINT" nare remmingen en u begrijpt"
+2330 PRINT" iets van de liefde. Uw partner"
+2340 PRINT" zal u vaak vertellen, dat u"
+2350 PRINT" het goed gedaan hebt. Soms"
+2360 PRINT" ontbreekt het u aan geduld"
+2370 PRINT" en tederheid, maar door de"
+2380 PRINT" bank genomen hoort u bij de"
+2390 PRINT" goede minnaars.":GOTO2810
+2400 IFE(I)<8 THEN2490
+2410 PRINT" U mag zich in bed of in de wei"
+2420 PRINT" of waar u zich ook verder nog"
+2430 PRINT" mag bevinden, als een goede"
+2440 PRINT" middelmaat beschouwen. Uw"
+2450 PRINT" partner zal met u weliswaar"
+2460 PRINT" geen hemelse geneugten mogen"
+2470 PRINT" verwachten, maar toch in ieder"
+2480 PRINT" geval degelijk liefdeswerk.":GOTO2810
+2490 IFE(I)<6 THEN2620
+2500 PRINT" U bent een beetje benauwd"
+2510 PRINT" en tamelijk fantasieloos."
+2520 PRINT" Verander dat onmiddellijk!"
+2530 PRINT" Laat gerust het licht aan als"
+2540 PRINT" u uw partner in de armen neemt."
+2550 PRINT" Probeer eens anders tegenover de"
+2560 PRINT" sexualiteit te staan. Liefde"
+2570 PRINT" is toch niet iets onbehoorlijks,"
+2580 PRINT" wat je stiekem en met een kwaad"
+2590 PRINT" geweten moet bedrijven. Liefde"
+2600 PRINT" is iets, waaraan men steeds op-"
+2610 PRINT" nieuw met overgave begint.":GOTO2810
+2620 IFE(I)<3 THEN2720
+2630 PRINT" Waarom hebt u zo weinig plezier"
+2640 PRINT" van SEX? U bent net een onder-"
+2650 PRINT" ontwikkeld land. In u schuilen"
+2660 PRINT" fantastische mogelijkheden maar"
+2670 PRINT" ze zijn allemaal nog verborgen"
+2680 PRINT" en moeten eerst nog worden op-"
+2690 PRINT" gedolven. SEX is geen vervelend"
+2700 PRINT" ritueel, maar plezierig en een"
+2710 PRINT" bron van levensvreugde.":GOTO2810
+2720 PRINT" Kouder als u bent bestaat"
+2730 PRINT" niet. In uw omgeving bevriest"
+2740 PRINT" iedere levende hand. Voor u"
+2750 PRINT" is SEX niets anders dan een"
+2760 PRINT" kwestie van hormoonspiegels"
+2770 PRINT" die bestuurd moeten worden als"
+2780 PRINT" een auto. Neemt u zo gauw mo-"
+2790 PRINT" gelijk een spoedcursus in"
+2800 PRINT" tederheid !"
+2810 GOSUB210:NEXTI
+2820 PRINT"Nog een keer? (J/N)":GOSUB210
+2830 IFIN=74 THEN1000
+2840 GOTO950
+25000 DATA0,1,0,0,1,1,1,0,1,0,0,1,1,1,0,0,1,1,1,0,1,1,1,0,1
+25010 DATA" Iedereen weet, dat de intelligentie"
+25020 DATA" van iemand gemeten kan worden. De"
+25030 DATA" maat daarvoor heet:","  INTELLIGENTIE-QUOTIENT"
+25040 DATA" Engelse wetenschappers hebben"
+25050 DATA" een testmethode ontwikkeld, waarmee"
+25060 DATA" men zijn Sex-Quotient kan meten."
+25070 DATA" Daarmee is nu eindelijk meetbaar"
+25080 DATA" of men in bed tot de kampioenen be-"
+25090 DATA" hoort, een goede middelmaat is of"
+25100 DATA" een ijsblok, dat ook de heetste"
+25110 DATA" liefdesnacht niet kan ontdooien."
+25120 DATA" Hoe groter het Sex-Quotient"
+25130 DATA" bij u is, des te beter bent u."
+25140 DATA" Bepaalt u daarom hier en nu uw"
+25150 DATA"     SEX - QUOTIENT"
+25160 DATA" door steeds alleen met"
+25170 DATA" J(a) of N(een) te antwoorden."
+25180 DATA" ss","s","sss -","  s","ss  Q","    u"
+25190 DATA"eee o","e   t","ee  i","e   e","eee n"
+25200 DATA"    t","x x"," x  -"," x","x x"
+25210 DATA"1.Gelooft u, dat men"
+25220 DATA" door het andere ge-"
+25230 DATA" slacht gerespecteerd"
+25240 DATA" wordt als men terug-"
+25250 DATA" houdend is ?","g"
+25260 DATA"2.Is SEX ook zonder"
+25270 DATA" ","     LIEFDE"," "
+25280 DATA" bevredigend ?","g"
+25290 DATA"3.Is maagdelijkheid"
+25300 DATA" het kostbaarste be-"
+25310 DATA" zit van een meisje ?","g"
+25320 DATA"4.Zou het voor u"
+25330 DATA" wat uitmaken, een"
+25340 DATA" partner te hebben die"
+25350 DATA" geen maagd meer is?","g"
+25360 DATA"5.Bent u sexueel"
+25370 DATA" snel opgewonden ?","g"
+25380 DATA"6.Denkt u iedere"
+25390 DATA" dag aan SEX ?","g"
+25400 DATA"7.Vindt u dat men voor"
+25410 DATA" het huwelijk sexuele"
+25420 DATA" ervaringen gehad moet"
+25430 DATA" hebben ?","g"
+25440 DATA"8.Bent u tegen"
+25450 DATA" intieme kontakten"
+25460 DATA" voor het huwelijk?","g"
+25470 DATA"9.Kijkt u graag"
+25480 DATA" naar SEX-foto's?","g"
+25490 DATA"10.Voelt u zich te-"
+25500 DATA" genover het andere"
+25510 DATA" geslacht nerveus ?","g"
+25520 DATA"11.Bent u geremd als"
+25530 DATA" in een gesprek SEX"
+25540 DATA" ter sprake komt?","g"
+25550 DATA"12.Zouden vrouwen"
+25560 DATA" vaak agressiever"
+25570 DATA" moeten zijn ?","g"
+25580 DATA"13.Zoekt u uw plezier"
+25590 DATA" overal waar u het"
+25600 DATA" maar vindt ?","g"
+25610 DATA"14.Moet aan een mens"
+25620 DATA" behoedzaam de liefde"
+25630 DATA" worden geleerd?","g"
+25640 DATA"15.Worden er op de t.v"
+25650 DATA" te veel erotische"
+25660 DATA" films vertoond ?","g"
+25670 DATA"16.Moest er voor"
+25680 DATA" ","    SEX-Films"," "
+25690 DATA" een filmkeuring zijn?","g"
+25700 DATA"17.Is absolute trouw"
+25710 DATA" in het huwelijk net"
+25720 DATA" zo slecht als het"
+25730 DATA"  celibaat ?"," "
+25740 DATA" Celibaat=sexuele ont-"
+25750 DATA" houding bij R.K."
+25760 DATA" geestelijken","g"
+25770 DATA"18.Zijn lichamelijke"
+25780 DATA" relaties het belang-"
+25790 DATA" rijkste deel van het"
+25800 DATA" huwelijk ?","g"
+25810 DATA"19.Maakt het u niet"
+25820 DATA" uit of uw partner u"
+25830 DATA" trouw is: hoofdzaak,"
+25840 DATA" hij komt terug ?","g"
+25850 DATA"20.Vindt u de gedach-"
+25860 DATA" te aan partnerruil"
+25870 DATA" vervelend ?","g"
+25880 DATA"21.Zou u voor elke"
+25890 DATA" nacht wel een andere"
+25900 DATA" partner willen ?","g"
+25910 DATA"22.Vindt u SEX met"
+25920 DATA" een andere partner"
+25930 DATA" het prettigst ?","g"
+25940 DATA"23.Kunt u alleen"
+25950 DATA" 's nachts vrijen ?","g"
+25960 DATA"24.Bent u te vinden"
+25970 DATA" voor bepaalde sexuele"
+25980 DATA" spelletjes ?","g"
+25990 DATA"25.Hoe vaak zou u het"
+26000 DATA" liefst SEX hebben:"
+26010 DATA" 1. eenmaal per maand"
+26020 DATA" 2. eenmaal per week"
+26030 DATA" 3. tweemaal per week"
+26040 DATA" 4. tot 5 maal per week"
+26050 DATA" 5. elke dag"
+26060 DATA" 6. meermalen per dag","g"
+30000 REM -------------------------
+30010 REM -------------------------
+30020 REM - DIT PROGRAMMA WERD OP -
+30030 REM - EEN KC/85 IN BASICODE -
+30040 REM - OMGEWERKT.            -
+32000 REM -------------------------
+32010 REM - STEFFEN KRAUSE        -
+32020 REM - STORKOW               -
+32030 REM - DDR                   -
+32040 REM -------------------------
+32050 REM
+32060 REM Erstausstrahlung Radio DDR
+32070 REM-spezial 900426
+32080 REM Ned.vertaling Ch.W.Brederode
+32090 REM
+32100 REM TROS-RADIO dd 900912

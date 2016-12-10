@@ -1,0 +1,263 @@
+
+1000 A=200:GOTO20:REM ASCIISHIFT
+1010 HT=HO:VT=VE:P=0
+1020 GOSUB1110:REM **TITLE**
+1030 GOSUB1510:REM **TEXT**
+1040 GOSUB5010:REM **PRINTER?**
+1050 GOSUB4010:REM **PRINT HEADER**
+1060 GOSUB1610:REM **PAGES**
+1070 GOSUB2110:REM **CODEMESSAGE**
+1080 GOTO950
+1090 REM -----------------------
+1100 REM **TITLE**
+1110 SR$="ASCII-SHIFTS"
+1120 HO=INT((HT-18)/2)
+1130 VE=0:GOSUB110:GOSUB150
+1140 VE=2:HO=0:GOSUB110
+1150 RETURN
+1160 REM -----------------------
+1200 REM **PRINT**
+1210 HO=0:VE=VE+1:GOSUB110:IFVE>=VT-1 THEN1230
+1220 PRINTSR$:GOSUB4210:RETURN
+1230 PRINTSR$:GOSUB4210
+1240 REM -----------------------
+1300 REM **SCREEN FULL**
+1310 VE=VT:HO=HT-16:GOSUB110
+1320 SR$="<<TOETS>>":GOSUB150
+1330 GOSUB210:GOSUB100
+1340 GOSUB1110
+1350 RETURN
+1360 REM -----------------------
+1400 REM **READ**
+1410 FORI=1 TORE
+1420 READSR$:GOSUB1210
+1430 NEXTI
+1440 RETURN
+1450 REM -----------------------
+1500 REM **TEXT**
+1510 GOSUB1110:VE=2:HO=0:GOSUB110
+1520 RESTORE:RE=7:GOSUB1410
+1530 VE=VE+1:RE=15:GOSUB1410
+1540 VE=VE+1:RE=10:GOSUB1410
+1550 VE=VE+1:RE=6:GOSUB1410
+1560 VE=VE+1:RE=3:GOSUB1410
+1570 RE=5:GOSUB1410:GOSUB1310:RE=5:GOSUB1410
+1580 VE=VE+1:RE=9:GOSUB1410:GOSUB1310
+1590 RETURN
+1595 REM -----------------------
+1600 REM **PAGES/LINES**
+1610 FORB=1 TO6:REM PAGES
+1620 FORRE=1 TO16:REM LINES
+1630 T=31+(B-1)*16+RE
+1640 IFT>126 THEN1690
+1650 GOSUB2010:REM **ASSEMBLE LINE**
+1660 NEXTRE
+1670 GOSUB1310:SR$="":VE=0:GOSUB1210
+1680 NEXTB
+1690 GOSUB1310
+1700 RETURN
+1710 REM -----------------------
+2000 REM **ASSEMBLE LINES**
+2010 P$="":SR=T:GOSUB300:P$=P$+SR$
+2020 IFLEN(P$)<3 THENP$=" "+P$
+2030 P$=P$+"="+CHR$(T)+"     "
+2040 G=T:GOSUB3010:REM DEC->BIN
+2050 GOSUB3210:REM CHAR AFTER FLIP
+2060 SR$=P$:GOSUB1210
+2070 RETURN
+2080 REM -----------------------
+2100 REM **CODE MESSAGE**
+2110 GOSUB100:VE=0:HO=0:GOSUB110
+2120 RESTORE:FORI=1 TO60:READX$:NEXTI
+2130 FORI=1 TO21
+2140 READP$:PRINTP$
+2150 NEXTI
+2160 GOSUB1310
+2170 Y=1
+2180 RESTORE
+2190 FORI=1 TO81:READX$:NEXTI
+2200 REM **ENCODING**
+2210 VE=3+Y:HO=0:GOSUB110
+2220 READA$:IFA$="***" THEN2350
+2230 SR$="":GOSUB2510:REM **RANDOMBIT**
+2240 FORQ=1 TOLEN(A$)
+2250 Z$=MID$(A$,Q,1)
+2260 G=ASC(Z$)-1:K=G
+2270 GOSUB3010
+2280 IFMID$(B$,J,1)="1" THENH=K-E:GOTO2300
+2290 H=K+E
+2300 IF(H<32)OR(H>126) THENH=63
+2310 SR$=SR$+CHR$(H)
+2320 NEXTQ
+2330 PRINTSR$;"  ";
+2340 GOTO2220
+2350 VE=20:HO=0:GOSUB110
+2360 SR$="Nog een? (J/N)":GOSUB150
+2370 GOSUB210:IFIN<>74 THENRETURN
+2380 VE=20:HO=0:GOSUB110:PRINT"                 "
+2390 Y=Y+1
+2400 IFY<=6 THEN2180
+2410 VE=20:HO=0:GOSUB110
+2420 PRINT"Dat moet maar genoeg zijn!!"
+2430 GOSUB210
+2440 RETURN
+2450 REM -----------------------
+2500 REM **RANDOM BIT NUMBER**
+2510 GOSUB260
+2520 J=INT(7*RV):IFJ=5 THEN2510
+2530 E=2^J:J=7-J
+2540 RETURN
+2550 REM -----------------------
+3000 REM **DEC->BIN**
+3010 B$=""
+3020 FORI=6 TO0 STEP-1
+3030 D=2^I
+3040 U=INT(G/D):IFU=0 THENB$=B$+"0":GOTO3080
+3050 B$=B$+"1"
+3060 R=G-D:IFR=0 THEN GOSUB3110:GOTO3080
+3070 G=R
+3080 NEXTI
+3090 RETURN
+3100 REM -----------------------
+3110 IFLEN(B$)<7 THENB$=B$+"0":GOTO3110
+3120 I=-1
+3130 RETURN
+3140 REM -----------------------
+3200 REM **CHAR AFTER FLIP**
+3210 FORI=6 TO0 STEP-1
+3220 IFMID$(B$,7-I,1)="0" THENS=T+2^I:GOTO3240
+3230 S=T-2^I
+3240 IF(S<32)OR(S>126) THENS=32
+3250 P$=P$+CHR$(S)+"  "
+3260 NEXTI
+3270 RETURN
+3280 REM -----------------------
+4000 REM **PRINT HEADERS**
+4010 HO=0:VE=-1:GOSUB110
+4020 SR$=" A      A S C I I - S H I F T S         "
+4030 GOSUB4310
+4040 SR$=" S  c                                   "
+4050 GOSUB4310
+4060 SR$=" C  h                                   "
+4070 GOSUB4310
+4080 SR$=" I  a         Bit flipped              "
+4090 GOSUB4310
+4100 SR$=" I  r     6  5  4  3  2  1  0           "
+4110 GOSUB4310
+4120 SR$="----------------------------------------"
+4130 GOSUB4310
+4140 RETURN
+4150 REM -----------------------
+4200 REM **PRINTER**
+4210 IFP=1 THEN GOSUB350:GOSUB360
+4220 RETURN
+4230 REM -----------------------
+4300 REM **HEADER PRINT**
+4310 HO=0:VE=VE+1:GOSUB110
+4320 PRINTSR$
+4330 GOSUB4210
+4340 RETURN
+4350 REM -----------------------
+5000 REM **PRINTER?**
+5010 GOSUB100
+5020 PRINT"Output ook naar printer? (J/N)":GOSUB210
+5030 GOSUB100:IFIN=74 THENP=1
+5040 RETURN
+5050 REM -----------------------
+25000 DATA"Hier in Norfolk aan de Engelse oostkust"
+25010 DATA"boffen we erg dat de 'Hilversumse' mid-"
+25020 DATA"dengolf zenders zeer sterk en praktisch"
+25030 DATA"ongestoord doorkomen (beter dan de"
+25040 DATA"meeste BBC stations). Toch komen er zo"
+25050 DATA"nu en dan fouten voor in opgenomen"
+25060 DATA"BASICODE programmas."
+25070 DATA"Jarenlange ervaring daarmee heeft me"
+25080 DATA"doen inzien dat de corrupte tekens dik-"
+25090 DATA"wijls in een eenvoudige betrekking"
+25100 DATA"staan tot de juiste."
+25110 DATA"Het schijnt dat slechts 1 bit per byte"
+25120 DATA"omslaat van 0 naar 1 of omgekeerd."
+25130 DATA"Dit heeft natuurlijk tot gevolg dat de"
+25140 DATA"tientallige waarde van een byte met 1,"
+25150 DATA"2, 4, 8, 16, 32 of 64 vermeerderd of"
+25160 DATA"verminderd wordt. Het achtste bit"
+25170 DATA"blijft hier buiten beschouwing, want"
+25180 DATA"de ASCII-code gebruikt slechts de 7"
+25190 DATA"bits 0 tot 6 (32-127). 127 blijft er"
+25200 DATA"ook buiten, want dat heeft een speci-"
+25210 DATA"ale functie."
+25220 DATA"Een tabel met de ASCII-tekens en de"
+25230 DATA"daaruit met een '1-bit flip' afgeleide"
+25240 DATA"is een handig hulpmiddel bij het be-"
+25250 DATA"kijken van binnengehaalde programmas."
+25260 DATA"Daarbij moet zo'n tabel natuurlijk wel"
+25270 DATA"op papier ter beschikking staan. Dit"
+25280 DATA"programma stelt die tabel samen en"
+25290 DATA"biedt ook een printer optie. Daar niet"
+25300 DATA"alle printers dezelfde tekens geven als"
+25310 DATA"het scherm toont, verschijnen beide."
+25320 DATA"Mocht een printer helaas schitteren"
+25330 DATA"door afwezigheid dan zal het wel op"
+25340 DATA"overschrijven uitlopen! Bekijk echter"
+25350 DATA"eerst eens de ASCII-tabel in Appendix 4"
+25360 DATA"van het BASICODE handboek, want die"
+25370 DATA"staat al in een tamelijk bruikbare vorm."
+25380 DATA"Als uw machine een non-ASCII codering"
+25390 DATA"gebruikt zult u dit programma moeten "
+25400 DATA"aanpassen of maar vergeten."
+25410 DATA"Tot besluit: aan het eind van dit pro-"
+25420 DATA"gramma heb ik dit idee gebruikt om een"
+25430 DATA"zeer kort zinnetje te coderen. Wie er"
+25440 DATA"de tijd voor heeft kan proberen het te"
+25450 DATA"ontcijferen."
+25460 DATA"VOORBEELD van een 'flip'"
+25470 DATA"De ASCII code voor hoofdletter C is 67"
+25480 DATA"tweetallig is dat 01000011 en door"
+25490 DATA"bit 1, het tweede van rechts, om te zet-"
+25500 DATA"ten krijgen we 01000001, dat is 65, A."
+25510 DATA"Slaat bit 5 om dan wordt het verschil"
+25520 DATA"32, de stap van hoofd- naar kleine let-"
+25530 DATA"ter. Dit verklaart waarom dikwijls een"
+25540 DATA"hoofdletter opduikt midden in een woord"
+25550 DATA"in kleine letters en vv. Ook verandert"
+25560 DATA"een d vaak in t of v in f. Ik beschul-"
+25570 DATA"digde daarom programmeurs dikwijls van"
+25580 DATA"slechte spelling tot ik de ware oorzaak"
+25590 DATA"ontdekte!"
+25600 DATA"In het programma is een kort zinnetje"
+25610 DATA"verborgen, dat de computer nu gaat"
+25620 DATA"coderen. Hopelijk kunt u dat met be-"
+25630 DATA"hulp van de tabel ontcijferen."
+25640 DATA" "
+25650 DATA"De computer KAN per woord een andere"
+25660 DATA"coderings sleutel kiezen. Ook kan"
+25670 DATA"iedere volgende poging een ander resul-"
+25680 DATA"taat geven, altijd uit dezelfde tekst."
+25690 DATA"Hoofdletter/kleine letter omzetting zou"
+25700 DATA"de oplossing te eenvoudig maken en"
+25710 DATA"wordt daarom uitgefiltreerd. Geef de"
+25720 DATA"computer dus even tijd."
+25730 DATA" "
+25740 DATA"Een ? kan 'echt' zijn of een onprint-"
+25750 DATA"baar teken voorstellen."
+25760 DATA" "
+25770 DATA"     Nu maar zoeken!"
+25780 DATA" "
+25790 DATA"P.S. Vergeet niet dat ik gewoonlijk"
+25800 DATA"niet in het Nederlands schrijf!!"
+29000 DATA"B","ibqqz","ofx","zfbs","up","zpv","bmm/","***"
+32000 REM ****************
+32010 REM * ASCII-SHIFTS *
+32020 REM *  WRITTEN IN  *
+32030 REM *  BASICODE 3  *
+32040 REM *     ON A     *
+32050 REM * 48K SPECTRUM *
+32060 REM *  MARCH 1989  *
+32070 REM *      BY      *
+32080 REM * LOUIS PAYNE  *
+32090 REM * WEST RUNTON  *
+32100 REM *   NORFOLK    *
+32110 REM *   NR27 9NA   *
+32120 REM ****************
+32130 REM
+32140 REM TROS-RADIO dd 891227

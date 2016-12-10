@@ -1,0 +1,85 @@
+
+1000 A=200:GOTO20:REM === ZOEK DUBBEL ===
+1010 DIMA(7),A$(6):G=0:M=-1
+1020 REM --- schudden 1 tm 6 ---
+1030 FORN=2 TO7:A(N)=N-1:NEXTN
+1040 FORN=1 TO5
+1050 GOSUB260:X=N+1+INT(RV*(7-N))
+1060 A(N)=A(X):A(X)=A(N+1)
+1070 NEXTN
+1080 A(6)=A(7):M=M+1
+1090 REM --- array vullen ---
+1100 READA$(1):IFA$(1)="*" THEN1480
+1110 FORN=2 TO5:READA$(N):NEXTN
+1120 GOSUB260:T=1+INT(RV*5):T$=A$(T)
+1130 REM --- kies een woord ---
+1140 GOSUB260:T=1+INT(RV*5):T$=A$(T)
+1150 REM --- verdubbel dat ---
+1160 FORN=5 TOT STEP-1:A$(N+1)=A$(N):NEXTN
+1170 REM --- bepaal de posities ---
+1180 P1=1
+1190 IFA(P1)<>T THENP1=P1+1:GOTO1190
+1200 P1=2+P1*2
+1210 P2=1
+1220 IFA(P2)<>T+1 THENP2=P2+1:GOTO1220
+1230 P2=2+P2*2
+1240 REM --- stel de vraag ---
+1250 GOSUB100:PRINT
+1260 PRINT"Welk woord staat hier 2 keer?"
+1270 PRINT"_____________________________"
+1280 HO=20:VE=4
+1290 FORN=1 TO6:GOSUB110:PRINTA$(A(N)):VE=VE+2:NEXTN
+1300 REM --- cursor ---
+1310 HO=17:VE=4:GOSUB110:PRINT"*";
+1320 GOSUB200
+1330 IF(IN=30)AND(VE<14)THENVV=2:GOSUB1710:GOTO1320
+1340 IF(IN=31)AND(VE>4)THENVV=-2:GOSUB1710:GOTO1320
+1350 IF(IN=13)OR(IN>31)THEN1380
+1360 GOTO1320
+1370 REM --- raak of niet? ---
+1380 R=0:IF(VE=P1)OR(VE=P2)THENR=1
+1390 REM --- wijs aan ---
+1400 VE=P1:GOSUB110:PRINT">"
+1410 VE=P2:GOSUB110:PRINT">"
+1420 HO=4:VE=20:GOSUB110
+1430 IFR=1 THENPRINT"GOED":G=G+1
+1440 IFR=0 THENPRINT"MIS"
+1450 PRINT:PRINT"Tik op een toets ";
+1460 GOSUB210:GOTO1030
+1470 REM --- de uitslag ---
+1480 GOSUB100:PRINT:PRINT
+1490 PRINT" Je hebt ";M;" series gedaan":PRINT
+1500 PRINT" Je had er ";G;" goed":PRINT
+1510 F=M-G
+1520 IFF=0 THENPRINT" Dat is heel mooi!"
+1530 IFF=1 THENPRINT" Jammer van dat foutje"
+1540 IFF=2 THENPRINT" Dat kun je beter, joh"
+1550 IFF=3 THENPRINT" Word eens wakker!"
+1560 IFF>3 THENPRINT" Beter kijken dus!"
+1570 PRINT:PRINT" Nog een keer (J/N) ";
+1580 GOSUB210:IFIN=74 THENG=0:M=-1:RESTORE:GOTO1030
+1590 IFIN=78 THEN950
+1600 GOTO1580
+1700 REM === sbr.verplaats de cursor ===
+1710 GOSUB110:PRINT" ":VE=VE+VV:GOSUB110:PRINT"*";:RETURN
+25000 REM === de data ===
+25010 DATA"klap","plak","klop","krap","klas"
+25020 DATA"hand","hond","band","bank","balk"
+25030 DATA"stal","stil","stad","stap","last"
+25040 DATA"boek","boer","koek","hoek","koel"
+25050 DATA"pond","hond","pomp","homp","pont"
+25060 DATA"werk","kerk","merk","melk","merg"
+25070 DATA"luid","duit","kuil","luis","buit"
+25080 DATA"lamp","ramp","damp","dans","gans"
+25090 DATA"vlak","vlag","valk","velg","vilt"
+25100 DATA"geur","gier","gaar","guur","deur"
+25110 DATA"*"
+25120 REM ===============================
+25130 REM Het aantal series van 5 is vrij
+25140 REM Laatste dataregel moet "*" zijn
+25150 REM ===============================
+32000 REM Ch.W.Brederode
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES  LISSE
+32030 REM
+32040 REM TROS-RADIO dd 900829

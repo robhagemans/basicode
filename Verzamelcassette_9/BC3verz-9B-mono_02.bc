@@ -1,0 +1,221 @@
+
+1000 A=500:GOTO20:REM * ONDERNEMER *
+1010 GOSUB4530:REM VARIABELEN
+1020 WO=WO+1
+1030 GOSUB2530:REM uitvoer
+1040 GOSUB3530:REM werknemers
+1050 GOSUB2530:REM uitvoer
+1060 GOSUB3030:REM productie
+1070 GOSUB2530:REM uitvoer
+1080 GOSUB2030:REM verkoop
+1090 GOSUB1530:REM toeval
+1100 KA=KA-LO*AZ
+1110 GOTO1020
+1500 REM
+1510 REM *** TOEVAL ***
+1520 REM
+1530 GOSUB260:IFRV<0.45 THEN1630
+1540 PRINT:PRINT"   "
+1550 GOSUB260:AA=INT(RV*7)+1
+1560 PRINT
+1570 PRINT"De vakbonden eisen ";AA;"% loonsverhoging"
+1580 LO=INT(100*LO*(1+AA/100))/100
+1590 SD=17:GOSUB450
+1600 PRINT"Het arbeidsloon is nu Fl ";LO
+1610 PRINT:PRINT
+1620 SD=50:GOSUB450
+1630 GOSUB260:IFRV<0.85 THEN1770
+1640 PRINT"Een overstroming verwoestte een deel"
+1650 PRINT"van uw voorraad !!!"
+1660 PRINT:PRINT"Het magazijn meldt:"
+1670 PRINT"-------------------"
+1680 SD=6:GOSUB450
+1690 GOSUB260:BB=INT(RV*LA/2)+1
+1700 LA=LA-BB
+1710 PRINT
+1720 PRINT"Vernielde voorraad:"
+1730 PRINTBB;" zibbies ter waarde van Fl ";BB*VP
+1740 SD=50:GOSUB450
+1750 PRINT"De voorraad is nu nog ";LA;" stuks"
+1760 SD=50:GOSUB450
+1770 GOSUB260:IFRV>0.3 THEN1980
+1780 PRINT"Uw toeleverancier meldt prijsverhogingen"
+1790 GOSUB260:CC=INT(RV*100*KO/7)/100
+1800 IFCC<0.01 THEN1790
+1810 PRINT"de produktiekosten stijgen met Fl ";CC
+1820 PRINT"per stuk !"
+1830 SD=50:GOSUB450
+1840 KO=KO+CC
+1850 PRINT"Zibbies kosten nu Fl ";KO;" aan"
+1860 PRINT"productiekosten.":SD=50:GOSUB450
+1870 GOSUB260:IFRV<0.5 THENRETURN
+1880 PRINT"U kunt tot een prijsverhoging"
+1890 PRINT"besluiten. Zibbies kosten tot nu"
+1900 PRINT"toe Fl ";VP;" per stuk."
+1910 GOSUB260:YY=INT(RV*10)*KO/CC
+1920 INPUT"Hoeveel % moet daar bovenop ";D
+1930 IFD>YY THENPRINT"De markt laat maar ";YY;"% toe!":D=YY
+1940 IFD>0 THENZ=Z+AA
+1950 VP=INT(100*VP+D*VP)/100
+1960 PRINT"Zibbies kosten nu Fl ";VP
+1970 SD=50:GOSUB450
+1980 RETURN
+2000 REM
+2010 REM *** VERKOOP ***
+2020 REM
+2030 PRINT"TOTAAL IN VOORRAAD ";LA
+2040 SD=50:GOSUB450
+2050 GOSUB100:PRINT:PRINT
+2060 PRINTTAB(3);"De verkoopafdeling meldt:"
+2070 PRINTTAB(3);"-------------------------"
+2080 PRINT:PRINT
+2090 GOSUB260:E=INT(RV*100*LA/Z)+1
+2100 IFE>LA THEN2090
+2110 PRINT" Totale verkoop was ";E;" stuks"
+2120 LA=LA-E
+2130 PRINT" Totale omzet was Fl ";E*VP
+2140 KA=KA+E*VP
+2150 SD=50:GOSUB450
+2160 PRINT:RETURN
+2500 REM
+2510 REM *** UITVOER ***
+2520 REM
+2530 GOSUB100
+2540 IFKA+LA<1 THEN5030:REM failliet
+2550 IFKA>999999 THEN5530
+2560 PRINT"Weekrapport over week ";WO
+2570 PRINT"--------------------------"
+2580 PRINT:PRINT
+2590 PRINT"Liquide kapitaal is Fl ";KA
+2600 PRINT
+2610 PRINT"In voorraad zijn ";LA;" zibbies"
+2620 PRINT
+2630 PRINT"De verkoopprijs per stuk Fl ";VP
+2640 PRINT"De fabricagekosten zijn  Fl ";KO
+2650 PRINT
+2660 PRINT"Het aantal werknemers is ";AZ
+2670 PRINT
+2680 PRINT"Hun gemiddeld loon is Fl ";LO
+2690 PRINT"De loonsom voor deze week Fl ";LO*AZ
+2700 PRINT
+2710 PRINT"Produktie per persoon: ";PR;" stuks"
+2720 PRINT"Totale weekproduktie : ";PR*AZ;" stuks"
+2730 PRINT
+2740 RETURN
+3000 REM
+3010 REM *** PRODUCTIE ***
+3020 REM
+3030 INPUT"Hoeveel zibbies wilt u produceren ";XX
+3040 IFXX=0 THENRETURN
+3050 IFXX*KO>KA THENPRINT"TE WEINIG GELD !":GOTO3030
+3060 IFXX>PR*AZ THENPRINT"TE WEINIG WERKNEMERS":GOTO3030
+3070 PRINT"Doelstelling voor week ";WO;" is ";XX
+3080 GOSUB260:XX=XX-INT(RV*XX*Z/500)
+3090 SD=10:GOSUB450
+3100 PRINT"In week ";WO;" werden er ";XX;" gemaakt"
+3110 LA=LA+XX
+3120 KA=KA-KO*XX
+3130 SD=50:GOSUB450
+3140 RETURN
+3500 REM
+3510 REM *** WERKNEMERS ***
+3520 REM
+3530 PRINT"Hoeveel werknemers moeten er"
+3540 INPUT"aangenomen worden ";AA
+3550 AZ=AZ+AA
+3560 PRINT"Er zijn nu ";AZ;" werknemers"
+3570 SD=50:GOSUB450
+3580 IFAA>0 THENRETURN
+3590 GOSUB2530
+3600 PRINT"Hoeveel werknemers moeten er"
+3610 INPUT"ontslagen worden ";AA
+3620 IFAA=0 THEN3680
+3630 IFAA>AZ THEN3600
+3640 GOSUB260:AA=INT(RV*AA+1)
+3650 SD=10:GOSUB450
+3660 PRINT"U mag er ";AA;" ontslaan"
+3670 AZ=AZ-AA
+3680 SD=50:GOSUB450
+3690 RETURN
+4000 REM
+4010 REM *** NOG EEN KEER? ***
+4020 REM
+4030 PRINT"Tik op 'J' voor een nieuwe poging;"
+4040 PRINT
+4050 PRINT"tik op 'N' voor stoppen"
+4060 GOSUB210
+4070 IFIN=74 THEN1000
+4080 IFIN=78 THEN950
+4090 GOSUB250:GOTO4060
+4500 REM
+4510 REM *** VARIABELEN ***
+4520 REM
+4530 GOSUB260:KA=500+INT(RV*50)
+4540 GOSUB260:LA=100+INT(RV*50)
+4550 GOSUB260:VP=10+INT(RV*5)
+4560 GOSUB260:KO=2+INT(RV*5)
+4570 IFKO>VP THEN4560
+4580 GOSUB260:AZ=7+INT(RV*10)
+4590 GOSUB260:LO=12+INT(RV*VP*5)
+4600 GOSUB260:PR=5+INT(RV*6)
+4610 WO=0
+4620 Z=1
+4630 RETURN
+5000 REM
+5010 REM *** EIND-FAILLIET ***
+5020 REM
+5030 GOSUB100:PRINT
+5040 PRINT" *************************************"
+5050 PRINT" *                                   *"
+5060 PRINT" *                                   *"
+5070 PRINT" *        F A I L L I E T  ! !       *"
+5080 PRINT" *                                   *"
+5090 PRINT" *                                   *"
+5100 PRINT" *************************************"
+5110 PRINT:PRINT:PRINT
+5120 PRINTTAB(6);"Dat is jammer - ":PRINT
+5130 PRINTTAB(6);"maar u hebt het ";WO-1;" weken als"
+5140 PRINT:PRINTTAB(6);"ondernemer uitgehouden."
+5150 FORII=1 TO5:PRINT:NEXTII
+5160 GOTO4030
+5500 REM
+5510 REM EIND-Miljonair
+5520 REM
+5530 GOSUB100:PRINT
+5540 PRINT" ***********************************"
+5550 PRINT" *                                 *"
+5560 PRINT" *                                 *"
+5570 PRINT" *       U bent Miljonair !!!      *"
+5580 PRINT" *                                 *"
+5590 PRINT" *                                 *"
+5600 PRINT" ***********************************"
+5610 PRINT:PRINT:PRINT
+5620 PRINTTAB(6);"Hartelijk gefeliciteerd -"
+5630 PRINT
+5640 PRINTTAB(6);"Dat hebt u in ";WO-1;" weken"
+5650 PRINT
+5660 PRINTTAB(6);"weten te bereiken."
+5670 FORII=1 TO5:PRINT:NEXTII
+5680 GOTO4030
+5690 REM
+30000 REM ***************************
+30010 REM *                         *
+30020 REM *   ONDERNEMERSSPEL VAN   *
+30030 REM *   T.HARTNELL            *
+30040 REM *   /ZX-SPEKTRUM          *
+30050 REM *                         *
+32000 REM ***************************
+32010 REM *                         *
+32020 REM *   naar BASICODE-3       *
+32030 REM *   bewerkt door          *
+32040 REM *                         *
+32050 REM *    MICHAEL FIEDLER      *
+32060 REM *     DDR - ZOERBIG       *
+32070 REM *                         *
+32080 REM *   op een KC85/3         *
+32090 REM *    op 22.12.89          *
+32100 REM *                         *
+32110 REM ***************************
+32120 REM Erstausstrahlung Radio DDR
+32130 REM-spezial 900525
+32140 REM TROS-RADIO dd 901003

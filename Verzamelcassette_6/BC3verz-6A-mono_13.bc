@@ -1,0 +1,156 @@
+
+1000 A=1000:GOTO20:REM TEMPOTYPEN
+1010 REM  init
+1020 MP=HO-1:LE=5:PN=0:IFMP>40 THENMP=40
+1030 X=0:L=0:K=0:PL=0:LL=0:FT=0:L$="":LL$="":PN=0:SC=0:W=0
+1040 VF=0:I=0:X$="":WA=0:K$="":WD$=""
+1050 REM instukties en beeldscherm opbouwen
+1060 GOSUB6010:GOSUB100:GOSUB4010
+1070 GOSUB2510:GOSUB3010:GOSUB3510
+1500 REM   hoofdloop
+1510 GOSUB260:RESTORE:FORX=1 TOINT(RV*110)+1:READWD$:NEXTX
+1520 L=LEN(WD$):VF=0
+1530 IFK=4 THEN GOSUB3510:K=0:GOSUB1550
+1540 K=K+1
+1550 PL=MP
+1560 LL=1
+1570 GOSUB2000
+1580 IFFT=0 THEN GOSUB5010:GOTO1630
+1590 LE=LE-1:GOSUB3010
+1600 IFFT=2 THENSP=11:SD=3:SV=15:GOSUB400
+1610 IFFT=1 THENSP=60:SD=3:SV=15:GOSUB400
+1620 FT=0
+1630 GOSUB4510:GOTO1510
+2000 SD=0
+2010 L=LEN(WD$):L$=LEFT$(WD$,1)
+2020 LL$=LEFT$(WD$,LL)
+2030 SR$=LEFT$(LL$,1):GOSUB330:L$=SR$
+2040 HO=PL-LL:VE=5:GOSUB110:PRINTLL$;"  ";
+2050 IFHO=PN+1 THENFT=1:RETURN
+2060 IFSD=0 THEN GOSUB200
+2070 IFIN$="" THEN2160
+2080 SR$=IN$:GOSUB330:IN$=SR$
+2090 IFVF=1 THENIFIN$<>L$ THENFT=2:RETURN
+2100 IFIN$<>L$ THENVF=1:GOTO2160
+2110 LL=LL-1
+2120 IFL=1 THEN2140
+2130 WD$=RIGHT$(WD$,L-1):SC=SC+5:GOTO2160
+2140 SC=SC+8:HO=PL-LL-1:VE=5
+2150 GOSUB110:PRINT"   ";:RETURN
+2160 LL=LL+1
+2170 GOSUB2510
+2180 FORW=1 TOWA:NEXTW:REM wachtlus
+2190 GOTO2010
+2500 REM printen score
+2510 SR=SC:GOSUB300:VE=17:HO=10:GOSUB110:PRINTSR$
+2520 RETURN
+3000 REM leven eraf en printen levens
+3010 IFLE>-1 THEN3080
+3020 PRINT:PRINT"GAME OVER":PRINT:PRINT:PRINT"<J> Nog eens"
+3030 PRINT:PRINT"<N> Stoppen"
+3040 PRINT:PRINT:PRINT" druk de toets in.."
+3050 GOSUB210:IFIN=74 THEN1000
+3060 IFIN=78 THEN950
+3070 GOTO3050
+3080 VE=18:HO=10:GOSUB110
+3090 FORX=1 TOLE:PRINT"*";:NEXTX:PRINT" "
+3100 RETURN
+3500 REM printen van halt-lijn en dichterbij komen ervan
+3510 IFPN>MP-5 THENRETURN
+3520 I=2:GOTO3550
+3530 IFPN+5>MP-5 THENI=5:GOTO3550
+3540 I=MP-PN
+3550 FORX=PN TOPN+I
+3560 HO=X
+3570 FORY=1 TO15
+3580 VE=Y:GOSUB110:PRINT" >"
+3590 NEXTY
+3600 NEXTX
+3610 PN=PN+I
+3620 RETURN
+4000 REM beeldscherm
+4010 VE=17:HO=2:GOSUB110:PRINT"Score :"
+4020 VE=18:HO=2:GOSUB110:PRINT"Levens:"
+4030 X$="":FORX=0 TOMP:X$=X$+"=":NEXTX
+4040 VE=0:HO=0:GOSUB110:PRINTX$
+4050 VE=21:HO=MP-11:GOSUB110:PRINT"(C) JELsoft";
+4060 VE=16:HO=0:GOSUB110:PRINTX$;
+4070 VE=19:HO=0:GOSUB110:PRINTX$;
+4500 REM 'schoonmaken' van regel 5
+4510 X$="":FORX=1 TOPN+1:X$=X$+" ":NEXTX
+4520 X$=X$+">":FORX=PN+3 TOPL:X$=X$+" ":NEXTX
+4530 HO=0:VE=5:GOSUB110:PRINTX$;
+4540 RETURN
+5000 REM toontje hoger !! en lager) !!
+5010 SD=1:SV=15
+5020 FORSP=100 TO98 STEP-2:GOSUB400:NEXTSP
+5030 FORSP=100 TO102:GOSUB400:NEXTSP
+5040 RETURN
+6000 REM uitleg
+6010 GOSUB100:SR$="TEMPO TYPEN":GOSUB150
+6020 PRINT:PRINT
+6030 PRINT"Welkom bij Tempotypen !"
+6040 PRINT"= het bekende spel van TV ="
+6050 PRINT:PRINT"Typ de woorden weg voordat ze"
+6060 PRINT"tegen de 22000 volt muur vliegen !"
+6070 PRINT:PRINT".. straks wordt je de wachttijd .."
+6080 PRINT".. gevraagd, druk op RETURN voor.."
+6090 PRINT".. het snelste SPEL !           .."
+6100 PRINT
+6110 PRINT
+6120 PRINT:PRINT"Veel SUCCES....!"
+6130 PRINT:PRINT" -  wachttijd - ";
+6140 INPUTWA
+6150 IF(WA<0)OR(WA>10) THENPRINT"Tussen 1 en 10 !":GOTO6130
+6160 WA=WA*50:REM pas eventueel aan uw computer aan!
+6170 RETURN
+25000 REM DATA's (111 woordjes)
+25010 REM
+25020 DATA"autoped","alarm","alibi","argwaan","aanwijzing"
+25030 DATA"amen"
+25040 DATA"brandweer","bierbuik","braam","berk","blazer"
+25050 DATA"computer","complex","centen"
+25060 DATA"drent","driehoek","dahlia","demonstratie"
+25070 DATA"egel","eekhoorn","etalage","evenaar","evenredig"
+25080 DATA"flensje","fotografie","formaat","flodder","foei"
+25090 DATA"fokkemast"
+25100 DATA"garage","gaaf","gebabbel","goedlachs","grafiek"
+25110 DATA"gram"
+25120 DATA"hallo","haast","hangen","hoppa","heerschappij"
+25130 DATA"idioot","iemand","instampen"
+25140 DATA"juwelierszaak","jojoverkoop","justitie","jaloers"
+25150 DATA"kabinet","kampioen","kandelaar","kniebroek"
+25160 DATA"kleptomaan"
+25170 DATA"lantaarn","langzaam","leven","lopen","lak"
+25180 DATA"machine","mens","massa","moeilijk"
+25190 DATA"naargeestig","naaktfoto","nudist","noppes"
+25200 DATA"opa","overgrootvader","oom","opium"
+25210 DATA"plaats","patat","praatpaal","pechvogel"
+25220 DATA"quitte","quiz","quickstep","quasi"
+25230 DATA"rabbi","roeibootje","race","rabbijn","rente"
+25240 DATA"rammen"
+25250 DATA"stoppen","schaar","schneider","scheel"
+25260 DATA"schrikkeljaar"
+25270 DATA"televisie","transistor","tempen","tellen"
+25280 DATA"uitglijden","uitvoer","uranium","uitzicht"
+25290 DATA"vliegtuig","vervelen","viva","vluiter"
+25300 DATA"water","wasmachine","wind","wierd","warm"
+25310 DATA"xylofoon"
+25320 DATA"yoghurt"
+25330 DATA"zendmast","zaken","zeef","zieleknijper"
+30000 REM  ***************************
+30010 REM *                           *
+30020 REM *   T E M P O typen         *
+30030 REM *                           *
+32000 REM *gemaakt door: Jelte Jansons*
+32010 REM *              parcours 30  *
+32020 REM *         9285 SC Buitenpost*
+32030 REM *         tel: 05115-2729   *
+32040 REM *                           *
+32050 REM * op een Schneider CPC 6128 *
+32060 REM *                           *
+32070 REM  ***************************
+32080 REM *               JELsoft 1989*
+32090 REM  ***************************
+32100 REM
+32110 REM TROS-RADIO dd 890628

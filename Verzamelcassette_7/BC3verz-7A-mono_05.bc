@@ -1,0 +1,172 @@
+
+1000 A=100:GOTO20:REM MUZ. BEGELEIDER
+1010 DIMT$(24):FORI=1 TO24:READT$(I):NEXTI
+1020 GOSUB100
+1030 PRINT"Een ogenblikje geduld s.v.p."
+1040 PRINT"Ik lees 5 begeleidingen in ..."
+1050 DIMRR(5,48):FORH=1 TO5
+1060 VE=7:HO=10:GOSUB110
+1070 PRINT"=> ";
+1080 SR=H:GOSUB300:PRINTSR$
+1090 FORI=1 TO48:READRR(H,I):NEXTI
+1100 NEXTH
+1110 GOSUB100
+1120 PRINT"Welk merk computer gebruikt u ?"
+1130 PRINT:PRINT"1 = Acorn BBC           7 = P2000M"
+1140 PRINT:PRINT"2 = Acorn Electron      8 = P2000T"
+1150 PRINT:PRINT"3 = Apple II-familie    9 = Sinclair Sp"
+1160 PRINT:PRINT"4 = Commodore 64        10= Tandy TRS80"
+1170 PRINT:PRINT"5 = Exidy               11= Sp.Video"
+1180 PRINT:PRINT"6 = MSX                 12= Ander merk"
+1190 PRINT:PRINT"Maak uw keuze <+ RETURN>";
+1200 INPUTMC
+1210 IF(MC<1)OR(MC>12) THEN GOSUB250:GOTO1110
+1220 LT=VAL(MID$("121224240024241224242400",2*MC-1,2))
+1230 GOSUB100
+1240 SR$="                                 "
+1250 GOSUB150:PRINTSR$
+1260 SR$="       MUZIKAAL BEGELEIDER       "
+1270 VE=1:HO=0:GOSUB110:GOSUB150:PRINTSR$
+1280 SR$="           < walsen >            "
+1290 VE=2:HO=0:GOSUB110:GOSUB150:PRINTSR$
+1300 SR$="                                 "
+1310 VE=3:HO=0:GOSUB110:GOSUB150:PRINTSR$
+1320 PRINT"Met dit programma kunt u een muzikale"
+1330 PRINT"begeleiding leren spelen op een Wals-"
+1340 PRINT"melodie. Er zijn erg veel verschillende"
+1350 PRINT"accoordenschema's hiervoor."
+1360 PRINT"Ik ben uitgegaan van de volgende"
+1370 PRINT"accoorden per maat:"
+1380 PRINT:PRINT"C - E - Am - Dm - C - G - C - C -"
+1390 PRINT:PRINT"Omdat er nogal wat verschillende bege-"
+1400 PRINT"leidingen zijn kunt u ze ook op andere"
+1410 PRINT"accoorden toepassen. U moet dan alfa-"
+1420 PRINT"betisch een aantal letters bijtellen"
+1430 PRINT"of aftrekken. Als ik bijvoorbeeld van"
+1440 PRINT"C > E maak dan moet ik van F > A maken"
+1450 PRINT"van G > B, enz."
+1460 VE=22:HO=36:GOSUB110:PRINT"=>";:GOSUB210
+1470 HO=0:FORVE=4 TO22:GOSUB110
+1480 PRINT"                                       "
+1490 NEXTVE:VE=4:GOSUB110
+1500 PRINT"U kunt kiezen uit verschillende bege-"
+1510 PRINT"leidingsmanieren. U hoort de tonen,"
+1520 PRINT"en tegelijk laat het beeldscherm de"
+1530 PRINT"gespeelde noten zien."
+1540 PRINT:PRINT"De noten zijn verdeeld over 2 oktaven"
+1550 PRINT"en worden als volgt genoteerd:"
+1560 PRINT:PRINT"+----------------------------+---------"
+1570 PRINT"!       -> 1e okt. <-        !>2e okt.<"
+1580 PRINT"+----------------------------+---------"
+1590 PRINT"!C-C#-D-D#-E-F-F#-G-G#-A-A#-B!c-c#-d .."
+1600 PRINT"+----------------------------+---------"
+1610 PRINT:PRINT"VEEL MUZIKAAL PLEZIER"
+1620 PRINT"            MET DIT PROGRAMMA!"
+1630 PRINT:PRINT"Walther van den Elshout"
+1640 VE=22:HO=36:GOSUB110:PRINT"=>";:GOSUB210
+1650 HO=0:FORVE=4 TO22:GOSUB110
+1660 PRINT"                                       "
+1670 NEXTVE:VE=4:GOSUB110
+1680 PRINT:PRINT"Ik heb 5 begeleidingsmanieren in mijn"
+1690 PRINT"geheugen. Welke wilt u horen <1-5>"
+1700 PRINT"=> STOPPEN = 0";
+1710 GOSUB210
+1720 IF(IN<48)OR(IN>53) THEN GOSUB250:GOTO1710
+1730 IFIN=48 THEN2050
+1740 Z=IN-48
+1750 HO=0:FORVE=4 TO22:GOSUB110
+1760 PRINT"                                       "
+1770 NEXTVE:VE=4:GOSUB110
+1780 BN$=IN$
+1790 PRINT:PRINT"Begeleiding nummer: ";BN$
+1800 PRINT"=====================":PRINT
+1810 SD=2:SV=6
+1820 FORI=1 TO48
+1830 X=RR(Z,I)-59
+1840 PRINTT$(X);" - ";:IFI/6=INT(I/6) THENPRINT
+1850 SP=RR(Z,I)-LT:GOSUB400
+1860 SV=6
+1870 IFI/3=INT(I/3) THENSV=12
+1880 NEXTI
+1890 VE=21:HO=10:GOSUB110
+1900 PRINT"Druk voor uitprinten op '*'"
+1910 VE=22:HO=10:GOSUB110
+1920 PRINT"Zoniet, dan andere toets =>";
+1930 GOSUB210
+1940 IFIN$="*" THEN1960
+1950 GOTO1650
+1960 SR$="Begeleiding nummer: ":GOSUB350
+1970 SR$=BN$:GOSUB350:GOSUB360
+1980 SR$="=====================":GOSUB350:GOSUB360:GOSUB360
+1990 FORI=1 TO48
+2000 X=RR(Z,I)-59
+2010 SR$=T$(X):GOSUB350:SR$=" - ":GOSUB350
+2020 IFI/6=INT(I/6) THEN GOSUB360
+2030 NEXTI
+2040 GOSUB360:GOSUB360:GOTO1650
+2050 HO=0:FORVE=4 TO22:GOSUB110
+2060 PRINT"                                       "
+2070 NEXTVE:VE=9:GOSUB110
+2080 PRINT"     ***************************"
+2090 PRINT"     * Walther van den Elshout *"
+2100 PRINT"     * Generaal Wicherslaan 14 *"
+2110 PRINT"     * 5623 GS       Eindhoven *"
+2120 PRINT"     ***************************"
+2130 SD=1000:GOSUB450:GOTO950
+25000 DATA"C","C#","D","D#","E"
+25010 DATA"F","F#","G","G#","A"
+25020 DATA"A#","B"
+25030 DATA"c","c#","d","d#","e"
+25040 DATA"f","f#","g","g#","a"
+25050 DATA"a#","b"
+25060 DATA60,64,67,72,67,64
+25070 DATA64,68,71,76,71,68
+25080 DATA69,72,76,81,76,69
+25090 DATA62,65,69,74,69,66
+25100 DATA60,64,67,72,67,64
+25110 DATA67,71,74,79,74,71
+25120 DATA60,64,67,72,67,64
+25130 DATA60,64,67,72,72,72
+25140 DATA60,67,67,62,67,67
+25150 DATA64,71,71,68,71,70
+25160 DATA69,76,76,72,76,75
+25170 DATA62,69,69,69,65,62
+25180 DATA60,72,72,72,71,69
+25190 DATA67,74,74,79,77,74
+25200 DATA72,67,67,64,67,64
+25210 DATA60,64,67,72,60,60
+25220 DATA60,62,64,67,69,67
+25230 DATA64,66,68,71,72,71
+25240 DATA69,71,72,76,77,76
+25250 DATA62,64,65,69,71,69
+25260 DATA60,62,64,67,69,67
+25270 DATA67,69,71,74,76,74
+25280 DATA60,69,67,65,64,62
+25290 DATA60,64,67,72,67,60
+25300 DATA60,64,65,67,69,70
+25310 DATA71,68,66,64,66,68
+25320 DATA69,64,62,60,64,69
+25330 DATA69,65,64,62,64,65
+25340 DATA67,64,62,60,62,64
+25350 DATA67,69,67,65,64,62
+25360 DATA60,64,67,69,67,64
+25370 DATA72,67,64,60,60,60
+25380 DATA67,64,62,60,62,64
+25390 DATA71,68,66,64,66,68
+25400 DATA76,72,71,69,71,72
+25410 DATA74,69,65,62,65,69
+25420 DATA67,64,62,60,62,64
+25430 DATA67,69,67,65,64,62
+25440 DATA60,64,67,69,67,64
+25450 DATA67,64,62,60,60,60
+32000 REM ###########################
+32010 REM # DIT PROGRAMMA WERD GE-  #
+32020 REM # SCHREVEN DOOR:          #
+32030 REM # WALTHER VAN DEN ELSHOUT #
+32040 REM # GENERAAL WICHERSLAAN 14 #
+32050 REM # 5623 GS       EINDHOVEN #
+32060 REM # TEL: 040 - 451098       #
+32070 REM # AUG.'89    COMMODORE 64 #
+32080 REM ###########################
+32090 REM
+32100 REM TROS-RADIO dd 891129

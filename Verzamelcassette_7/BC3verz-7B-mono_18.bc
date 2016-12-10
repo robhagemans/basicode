@@ -1,0 +1,116 @@
+
+1000 A=200:GOTO20:REM kanstabel dobbelstenen
+1010 DIMA(80),B(80)
+1020 FORN=0 TO80:A(N)=0:NEXTN
+1030 A(6)=1
+1040 REM --- input aantal ---
+1050 PRINT"KANSTABELLEN voor DOBBELSTENEN"
+1060 PRINT:PRINT"---> S = stoppen <---"
+1070 PRINT:PRINT"Wil je uitleg (J/N) ";:INPUTQ$
+1080 IF(Q$="J")OR(Q$="j") THEN GOSUB1460
+1090 IF(Q$="S")OR(Q$="s") THEN950
+1100 GOSUB100:INPUT"hoeveel stenen (1 ... 10) ";NR
+1110 IF(NR<1)OR(NR>10) THEN1100
+1120 PRINT:PRINT"naar de printer (J/N) ";:INPUTQ$
+1130 P=0:IF(Q$="J")OR(Q$="j") THENP=1
+1140 REM --- de berekening ---
+1150 PRINT:PRINT"ik reken.... ";
+1160 FORNM=1 TONR
+1170 C=0
+1180 FORT=6 TO6*(NM+1)
+1190 C=C+A(T)-A(T-6)
+1200 B(T)=C
+1210 NEXTT
+1220 FORR=6 TO6*(NM+1):A(R)=B(R):B(R)=0:NEXTR
+1230 NEXTNM
+1240 TT=6^NR
+1250 REM --- tabel printen ---
+1260 GOSUB100:SR=NR:GOSUB300
+1270 SR$=SR$+" DOBBELSTENEN":PRINTSR$:PRINT:PRINT
+1280 IFP=1 THEN GOSUB350:GOSUB360:GOSUB360
+1290 K$="ogen frekw":PRINTK$
+1300 IFP=1 THENSR$=K$:GOSUB350:GOSUB360:GOSUB360
+1310 PT=NR:HO=0:VE=5
+1320 FORN=6 TO(NR+1)*6-NR
+1330 GOSUB110:SR=PT:CT=2:CN=0:GOSUB310
+1340 PRINTSR$;:IFP=1 THEN GOSUB350
+1350 SR=A(N):CT=8:GOSUB310:PRINTSR$
+1360 IFP=1 THEN GOSUB350:GOSUB360
+1370 PT=PT+1:VE=VE+1:GOSUB110
+1380 IFVE=23 THENVE=3:HO=HO+13:GOSUB110:PRINTK$:VE=5
+1390 NEXTN:SR=TT:GOSUB300
+1400 SR$="/ "+SR$:L=LEN(SR$)
+1410 HO=HO+10-L:VE=VE+1:GOSUB110:PRINTSR$;
+1420 IFP=1 THEN GOSUB350:GOSUB360
+1430 GOSUB210
+1440 GOTO1000
+1450 REM == subr. uitleg ==
+1460 RESTORE:FORN=1 TO4:GOSUB100
+1470 READA$:IFA$="*" THEN1490
+1480 PRINTA$:GOTO1470
+1490 HO=5:VE=20:GOSUB110
+1500 PRINT"Tik op een toets... ";
+1510 GOSUB210:NEXTN
+1520 RETURN
+25000 DATA"KANSTABELLEN VOOR DOBBELSTENEN",
+25010 DATA"Een dobbelsteen is een instrument van"
+25020 DATA"het onvoorspelbare toeval."
+25030 DATA"Hoewel, onvoorspelbaar.....",
+25040 DATA"Je kunt met een dobbelsteen nooit hoger"
+25050 DATA"dan 6 en nooit lager dan 1 gooien."
+25060 DATA"En verder hebben alle zes getallen"
+25070 DATA"gelijke kansen om gegooid te worden."
+25080 DATA"Deze wetten kunnen we samenvatten in"
+25090 DATA"een kanstabel."
+25100 DATA"*"
+25110 DATA"1 DOBBELSTEEN              ogen frekw"
+25120 DATA"                             1    1"
+25130 DATA"Dit is zo'n tabel.           2    1"
+25140 DATA"Het bereik is 1 tot 6 ogen   3    1"
+25150 DATA"en de  frekwentie zegt dat   4    1"
+25160 DATA"elke waarde een kans heeft   5    1"
+25170 DATA"van 1 op 6 om op te treden   6    1"
+25180 DATA"                                  /6"
+25190 DATA"(We kunnen het ook anders"
+25200 DATA"opschrijven, als we de frekwenties"
+25210 DATA"door 6 delen wordt de waarschijnlijk-"
+25220 DATA"heid per waarde 0.166666 )"
+25230 DATA"*"
+25240 DATA"Dit programma kan de kanstabellen"
+25250 DATA"berekenen voor 1 tot 10 dobbelstenen,"
+25260 DATA"waarbij het niet uitmaakt of er in"
+25270 DATA"een keer met dat aantal stenen wordt"
+25280 DATA"gegooid, of met een steen dat aantal"
+25290 DATA"worpen wordt gedaan - en opgeteld."
+25300 DATA"Uit de tabel voor 5 dobbelstenen kun"
+25310 DATA"je bijvoorbeeld aflezen dat de kans"
+25320 DATA"op 30 ogen maar 1 op 7776 is !"
+25330 DATA"25 of meer is in (126 +70 +35 +15"
+25340 DATA"+5 +1) = 252 op de 7776 gevallen te"
+25350 DATA"verwachten, dat is in 3,24 % van"
+25360 DATA"de gevallen."
+25370 DATA"*"
+25380 DATA"Het programma kan de tabellen ook op"
+25390 DATA"papier zetten, als je een printer"
+25400 DATA"hebt aangesloten."
+25410 DATA""
+25420 DATA"Misschien kun je aan de hand van de"
+25430 DATA"tabellen leuke dobbelspelletjes"
+25440 DATA"bedenken.",
+25450 DATA"                Sukses !"
+25460 DATA"*"
+25470 REM--------------------------
+30000 REM LET OP! sommige computers
+30010 REM verliezen bij erg grote
+30020 REM getallen hun nauwkeurig-
+30030 REM heid, waardoor de tabellen
+30040 REM worden verminkt.
+30050 REM Voor MSX helpt wijziging
+30060 REM van regel 1010 in:
+30070 REM 1010 DEFDBLA-Z:DIMA(80),B(80)
+30080 REM--------------------------
+32000 REM Ch.W.Brederode    -MSX-
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES LISSE
+32030 REM
+32040 REM TROS-RADIO dd 900404

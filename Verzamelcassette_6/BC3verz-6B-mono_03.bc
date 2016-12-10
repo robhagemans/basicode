@@ -1,0 +1,421 @@
+
+1000 A=300:GOTO20:REM ** MATEN/GEWICHTEN **
+1010 DIMA$(6,70),Q(6),B$(6),B(9),K$(15):SB=HO
+1020 HO=5:VE=2:GOSUB110
+1030 PRINT"Even geduld...Ik lees de data..."
+1040 P=1:Q=1
+1100 REM *** TITEL-PAGINA ***
+1110 B$(1)="****************"
+1120 B$(2)="*              *"
+1130 B$(3)="*  MATEN       *"
+1140 B$(4)="*     en       *"
+1150 B$(5)="*    GEWICHTEN *"
+1160 FORI=1 TO9:READB(I):NEXTI
+1170 REM *** DATA-LEZEN ***
+1180 READA$(P,Q)
+1190 IFA$(P,Q)="#" THENQ(P)=Q:P=P+1:Q=0
+1200 IFA$(P,Q)="$" THEN1510
+1210 Q=Q+1:GOTO1180
+1500 REM *** PRINT TITEL-PAGINA ***
+1510 GOSUB100:HO=12:VE=8
+1520 FORI=1 TO9
+1530 GOSUB110:PRINTB$(B(I)):VE=VE+1
+1540 NEXTI
+1550 GOSUB6010
+2000 REM *** MENU ***
+2010 GOSUB100:HO=12:VE=2:GOSUB110:PRINTB$(1)
+2020 VE=3:GOSUB110:PRINTB$(3)
+2030 VE=4:GOSUB110:PRINTB$(4)
+2040 VE=5:GOSUB110:PRINTB$(5)
+2050 VE=6:GOSUB110:PRINTB$(1)
+2060 HO=16:VE=8:GOSUB110:PRINT"MENU":PRINT
+2070 PRINT"       1. omrekenings-tabel"
+2080 PRINT"       2. omrekenings-programma's"
+2090 PRINT"       3. lengte-maten"
+2100 PRINT"       4. vlakte-maten"
+2110 PRINT"       5. inhouds-maten"
+2120 PRINT"       6. gewichten"
+2130 PRINT"       7. keuken-maten"
+2140 PRINT"       8. stoppen"
+2150 Z=8:REM *** MAX.KEUZE-GETAL ***
+2160 GOSUB6110
+2170 REM *** OMREKENINGS-TABEL-DATA ***
+2180 K$(1)=" kilometers   * 0.62    = miles"
+2190 K$(2)=" meters       * 3.28    = feet"
+2200 K$(3)=" meters       * 1.09    = yards"
+2210 K$(4)=" centimeters  * 0.03937 = inches"
+2220 K$(5)=" hectares     * 2.47    = acres"
+2230 K$(6)=" vierk.meters * 10.76   = sq.feet"
+2240 K$(7)=" vierk.km     * 0.40    = sq.miles"
+2250 K$(8)=" grammen      * 0.035   = ounces"
+2260 K$(9)=" kilogrammen  * 2.20    = pounds"
+2270 K$(10)=" tonnen       * 0.98    = tons"
+2280 K$(11)=" milliliters  * 0.03    =fluid ounces"
+2290 K$(12)=" liters       * 0.22    = gallons"
+2300 K$(13)=" Celsius * 1.8 + 32     = Fahrenheit"
+2310 ONIN GOTO2510,3010,5030,5040,5050,5060,5070,7510
+2500 REM *** OMREKENINGS-TABEL ***
+2510 K$="Omrekenings-TABEL (Ned.-Eng.)"
+2520 GOSUB100:GOSUB6210:REM * KOP-AFDRUK *
+2530 HO=0:VE=3:GOSUB110
+2540 FORI=1 TO7:GOSUB6310:NEXTI:PRINT
+2550 FORI=8 TO10:GOSUB6310:NEXTI:PRINT
+2560 FORI=11 TO12:GOSUB6310:NEXTI:PRINT
+2570 I=13:GOSUB6310:GOSUB6010:GOTO2010
+3000 REM ** OMREKENINGS-PROGRAMMA'S **
+3010 K$="Omrekenings-PROGRAMMA'S"
+3020 GOSUB100:GOSUB6210:REM ** KOPAFDRUK **
+3030 HO=0:VE=3:GOSUB110
+3040 FORI=1 TO7:GOSUB6310:NEXTI:PRINT
+3050 FORI=8 TO10:GOSUB6310:NEXTI:PRINT
+3060 FORI=11 TO12:GOSUB6310:NEXTI:PRINT
+3070 I=13:GOSUB6310:PRINT"n.  naar menu":GOSUB6410
+3080 IFK>8 THEN3100
+3090 ONK GOTO4010,4070,4130,4190,4250,4310,4370,4430
+3100 ONK-8 GOTO4490,4550,4610,4670,4730,2010
+3110 HO=0:VE=23:GOSUB110:FORI=0 TO39:PRINT" ";:NEXTI
+3120 PRINT"foutieve keuze";:GOSUB6010:GOTO3020
+4000 REM *** KILOMETERS <--> MILES ***
+4010 K$="km <--> miles":L$="km":M=0.62:N$="miles"
+4020 GOSUB6510
+4030 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4040 IFIN=74 THEN4010
+4050 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4060 REM *** METERS <--> FEET  ***
+4070 K$="m <--> feet":L$="m":M=3.28:N$="feet"
+4080 GOSUB6510
+4090 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4100 IFIN=74 THEN4070
+4110 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4120 REM *** METERS <--> YARDS ***
+4130 K$="m <--> yards":L$="m":M=1.09:N$="yards"
+4140 GOSUB6510
+4150 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4160 IFIN=74 THEN4130
+4170 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4180 REM *** CENTIMETERS <--> INCHES  ***
+4190 K$="cm <--> inches":L$="cm":M=0.03937:N$="inches"
+4200 GOSUB6510
+4210 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4220 IFIN=74 THEN4190
+4230 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4240 REM *** HECTARES <--> ACRES ***
+4250 K$="ha <--> acres":L$="ha":M=2.47:N$="acres"
+4260 GOSUB6510
+4270 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4280 IFIN=74 THEN4250
+4290 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4300 REM *** VIERK.METERS <--> SQ.FEET ***
+4310 K$="m^2 <--> sq.feet":L$="m^2":M=10.76:N$="sq.feet"
+4320 GOSUB6510
+4330 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4340 IFIN=74 THEN4310
+4350 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4360 REM *** VIERK.KM <--> SQ.MILES ***
+4370 K$="km^2 <--> sq.miles":L$="km^2":M=0.40:N$="sq.miles"
+4380 GOSUB6510
+4390 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4400 IFIN=74 THEN4370
+4410 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4420 REM *** GRAMMEN <--> OUNCES ***
+4430 K$="grammen <--> ounces":L$="gram":M=0.035:N$="ounces"
+4440 GOSUB6510
+4450 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4460 IFIN=74 THEN4430
+4470 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4480 REM *** KILOGRAM <--> POUNDS ***
+4490 K$="kilogram <--> pounds":L$="kg":M=2.20:N$="pounds"
+4500 GOSUB6510
+4510 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4520 IFIN=74 THEN4490
+4530 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4540 REM *** TONNEN <-> TONS ***
+4550 K$="tonnen <--> tons":L$="tonnen"
+4560 M=0.98:N$="tons":GOSUB6510
+4570 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4580 IFIN=74 THEN4550
+4590 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4600 REM *** MILLILITER <-> FLUID OUNCES ***
+4610 K$="m.liter <--> fl.ounces":L$="m.liter"
+4620 M=0.03:N$="fl.ounces":GOSUB6510
+4630 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4640 IFIN=74 THEN4610
+4650 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4660 REM *** LITERS <-> GALLONS ***
+4670 K$="liters <--> gallons":L$="liter"
+4680 M=0.22:N$="gallons":GOSUB6510
+4690 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4700 IFIN=74 THEN4670
+4710 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+4720 REM *** CELSIUS <-> FAHRENHEIT ***
+4730 K$="Celsius <--> Fahrenheit":L$="Celsius"
+4740 N$="Fahrenh.":GOSUB7310
+4750 IFIN=3 THEN3010:REM ** PRGR.MENU **
+4760 IFIN=74 THEN4730
+4770 IN=0:IN$="":GOTO2010:REM ** HOOFD-MENU **
+5000 REM
+5010 REM *** NAAR DATA ***
+5020 REM
+5030 P=1:GOTO7410:REM *** LENGTE-MATEN ***
+5040 P=2:GOTO7410:REM *** VLAKTE-MATEN ***
+5050 P=3:GOTO7410:REM *** INHOUDSMATEN ***
+5060 P=4:GOTO7410:REM *** GEWICHTEN    ***
+5070 P=5:GOTO7410:REM *** KEUKEN-MATEN ***
+6000 REM *** DRUK TOETS-SUBROUTINE ***
+6010 HO=0:VE=22:GOSUB110:FORI=1 TO39
+6020 PRINT"-";:NEXTI
+6030 PRINT:PRINT"DRUK TOETS...";:GOSUB210:RETURN
+6100 REM *** KEUZE-VRAAG -ROUTINE ***
+6110 D$="":C$="-":FORI=2 TOSB:D$=D$+C$:NEXTI
+6120 HO=0:VE=21:GOSUB110:PRINTD$
+6130 HO=0:VE=23:GOSUB110:PRINT"Geef nummer van Uw keuze:";
+6140 GOSUB210:PRINTIN$;:IN=VAL(IN$)
+6150 IF(IN<1)OR(IN>Z) THEN6170:REM ** Z=MAX.KEUZE **
+6160 RETURN
+6170 HO=0:VE=23:GOSUB110:FORI=0 TO39:PRINT" ";:NEXTI
+6180 GOTO6130
+6200 REM *** KOP-AFDRUK-ROUTINE ***
+6210 HO=INT(SB/2-18):IF(HO<0) THENHO=0
+6220 VE=0:GOSUB110
+6230 SR$=K$:GOSUB150
+6240 RETURN
+6300 REM ** TITEL-GENEREREN ***
+6310 PRINTCHR$(64+I);". ";K$(I)
+6320 RETURN
+6400 REM ** KEUZE-ROUTINE LETTERS ***
+6410 D$="":C$="-":FORI=2 TOSB:D$=D$+C$:NEXTI
+6420 HO=0:VE=21:GOSUB110:PRINTD$
+6430 HO=0:VE=23:GOSUB110:PRINT"Geef letter van Uw keuze:";
+6440 GOSUB210:SR$=IN$:GOSUB330:REM *INV.HOOFDLETTER *
+6450 K=ASC(SR$)-ASC("A")+1
+6460 RETURN
+6500 REM *** KOP PROGRAMMA'S ***
+6510 GOSUB100:GOSUB6210
+6520 HO=3:VE=5:GOSUB110:PRINT"1. ";L$;" <--> ";N$
+6530 VE=7:GOSUB110:PRINT"2. ";N$;" <--> ";L$
+6540 VE=9:GOSUB110:PRINT"3. terug naar MENU"
+6550 Z=3:GOSUB6110:GOTO6920
+6600 REM *** NOG EEN KEER ?-ROUTINE **
+6610 D$="":C$="-":FORI=2 TOSB:D$=D$+C$:NEXTI
+6620 HO=0:VE=22:GOSUB110:PRINTD$
+6630 VE=23:GOSUB110:PRINT"Nog een keer ? (j/n):";
+6640 GOSUB210:RETURN
+6700 REM *** PROGRAMMA AFDRUK 1 ***
+6710 GOSUB100:Q$="":Q$=L$+" <--> "+N$:K$=Q$:GOSUB6210
+6720 HO=3:VE=7:GOSUB110
+6730 PRINT"hoeveel ";L$;" : ";:INPUTA
+6740 VE=9:GOSUB110:PRINTA;" ";L$;" = ";A;" * ";M;" ";N$
+6750 VE=11:GOSUB110:PRINTA;" ";L$;" = ";A*M;" ";N$:RETURN
+6760 RETURN
+6800 REM *** PROGRAMMA AFDRUK 2 ***
+6810 GOSUB100:Q$="":Q$=N$+" <--> "+L$:K$=Q$:GOSUB6210
+6820 HO=3:VE=7:GOSUB110
+6830 PRINT"hoeveel ";N$;" : ";:INPUTA
+6840 VE=9:GOSUB110:PRINTA;" ";N$;" = ";A;" / ";M;" ";L$
+6850 VE=11:GOSUB110:PRINTA;" ";N$;" = ";A/M;" ";L$:RETURN
+6900 REM *** ANTW/VRAAG/KOP-PRGR. ***
+6910 REM
+6920 IFIN=1 THEN GOSUB6710:GOSUB6610:RETURN
+6930 IFIN=2 THEN GOSUB6810:GOSUB6610:RETURN
+6940 RETURN
+7000 REM
+7010 REM *** NU VOLGT CELSIUS ***
+7020 REM
+7030 IFIN=1 THEN GOSUB7110:GOSUB6610:RETURN
+7040 IFIN=2 THEN GOSUB7210:GOSUB6610:RETURN
+7050 RETURN
+7100 REM *** PROGRAMMA AFDRUK 1 CELSIUS ***
+7110 GOSUB100:Q$="":Q$=L$+" <--> "+N$:K$=Q$:GOSUB6210
+7120 HO=0:VE=7:GOSUB110
+7130 PRINT"hoeveel ";L$;" : ";:INPUTA
+7140 VE=9:GOSUB110
+7150 PRINTA;" ";L$;" = ";A;"*1.8+32 ";N$
+7160 VE=11:GOSUB110
+7170 PRINTA;" ";L$;"=";A*1.8+32;" ";N$:RETURN
+7180 RETURN
+7200 REM *** PROGRAMMA AFDRUK 2 CELSIUS ***
+7210 GOSUB100:Q$="":Q$=N$+" <--> "+L$:K$=Q$:GOSUB6210
+7220 HO=0:VE=7:GOSUB110
+7230 PRINT"hoeveel ";N$;" : ";:INPUTA
+7240 VE=9:GOSUB110
+7250 PRINTA;" ";N$;" =(";A;"-32)/1.8";" ";L$
+7260 VE=11:GOSUB110
+7270 PRINTA;" ";N$;" = ";(A-32)/1.8;" ";L$:RETURN
+7300 REM *** KOP PROGRAMMA'S CELSIUS ***
+7310 GOSUB100:GOSUB6210
+7320 HO=3:VE=5:GOSUB110:PRINT"1. ";L$;" <--> ";N$
+7330 VE=7:GOSUB110:PRINT"2. ";N$;" <--> ";L$
+7340 VE=9:GOSUB110:PRINT"3. terug naar MENU"
+7350 Z=3:GOSUB6110:GOTO7030
+7400 REM *** PRINT DE DATA ***
+7410 GOSUB100:K$=A$(P,1):GOSUB6210:PRINT
+7420 Z=0:FORQ=2 TOQ(P)-1:Z=Z+1
+7430 IFZ=21 THEN GOSUB6010:GOSUB100:Z=0:GOSUB7610
+7440 PRINTA$(P,Q)
+7450 NEXTQ:GOSUB6010:GOTO2010
+7500 REM *** STOP-PAGINA ***
+7510 GOSUB100:HO=12:VE=8:GOSUB110:PRINTB$(1)
+7520 VE=9:GOSUB110:PRINTB$(2)
+7530 VE=10:GOSUB110:PRINT"*  TOT ZIENS ! *"
+7540 VE=11:GOSUB110:PRINTB$(2)
+7550 VE=12:GOSUB110:PRINTB$(1)
+7560 GOSUB6010:GOTO950
+7600 REM *** EXTRA KOP - DATA-LIJST **
+7610 GOSUB100:K$=A$(P,1):GOSUB6210
+7620 VE=3:GOSUB110:PRINT" ":RETURN
+25000 DATA1,2,3,2,4,2,5,2,1,"LENGTE-MATEN"," "
+25010 DATA"1 meter = het 40-miljioenste deel van"
+25020 DATA"          de omtrek van de aarde"
+25030 DATA"1 kilometer = 1  km = 1000 m"
+25040 DATA"1 hectometer= 1  hm =  100 m"
+25050 DATA"1 decameter = 1 dam =   10 m"
+25060 DATA"1 decimeter = 1  dc =    0.1   m"
+25070 DATA"1 centimeter= 1  cm =    0.01  m"
+25080 DATA"1 millimeter= 1  mm =    0.001 m"," ","MIJL"
+25090 DATA" ","1 geografische mijl = 4 zee-mijlen ="
+25100 DATA"   1/15 middelbare meridiaan-graad ="
+25110 DATA"   7407,407 m"
+25120 DATA"1 zee-mijl = 1/4 geogr.mijl = 1851.85 m"
+25130 DATA"1 Eng.mijl       = 1609.34 m"
+25140 DATA"1 mile           = 1609    m"
+25150 DATA"1 nautical mile  = 1853.18 m"
+25160 DATA"1 werst (Rusland)= 1067    m"
+25170 DATA"( 1 knoop = 1 zee-mijl per uur)"
+25180 DATA"kabellengte (b.d.Marine)= 1/10 zee-mijl"
+25190 DATA"            = 185 m ( elders:120 vadem"
+25200 DATA"            = 225 m)"," ","VOET"," "
+25210 DATA"Amsterdamse voet =    0.283 m"
+25220 DATA"Rijnlandse voet  =    0.314 m"
+25230 DATA"Engelse voet=foot=    0.3048m"
+25240 DATA"        = 12 duim = 12 inches"
+25250 DATA"Amsterdamse vadem=6 Amst.voet  =1.699m"
+25260 DATA"Rijnlandse roede =12 Rijnl.voet=3.767m"
+25270 DATA"fathom = 6 feet = 1.829  m"
+25280 DATA"yard   = 3 feet = 0.9144 m"
+25290 DATA"inch   = 0.0254 m"
+25300 DATA"Franse duim = pouce = 0.027 m","#"
+25310 DATA"VLAKTE-MATEN"," "
+25320 DATA"hectare = ha = Ned.bunder = 10.000 m^2"
+25330 DATA"    are =  a = 100 m^2"
+25340 DATA"centiare= ca = vierk.meter = 1 m^2"," "
+25350 DATA"acre (Eng.)     = 4047 m^2"
+25360 DATA"square inch     = 6.4516 cm^2"
+25370 DATA"square foot = 144 sq.inch= 9.2903 dm^2"
+25380 DATA"square yard = 9 sq.foot= 0.836126 m^2"
+25390 DATA"square mile = 640 acres"," "
+25400 DATA"Rijnlandse morgen = 8516 m^2"," "
+25410 DATA"riem (papier) = 20 boek a 25 vel"
+25420 DATA"              (elders: 480 vel)","#"
+25430 DATA"INHOUDS-MATEN"," "
+25440 DATA"kubieke meter = stere =    1000 liter"
+25450 DATA"hecto-liter   = vat = mud = 100 liter"
+25460 DATA"deca-liter    = schepel   =  10 liter"
+25470 DATA"liter = kan = kop = 1 dm^3"
+25480 DATA"kubieke dm = 1000 cm^3 = 1 liter"
+25490 DATA"deci-liter = maatje = 0.1 liter"
+25500 DATA"centi-liter= vingerhoed = 0.01 liter"," "
+25510 DATA"bushel = 8 Eng.gallons= 36.34768 liter"
+25520 DATA"gallon(Eng.)=4 quarts = 8 pints"
+25530 DATA"            =160 fluid =4.54346 liter"
+25540 DATA"gallon(Am.) =4 fluid quarts ="
+25550 DATA"            =8 fluid pints = 3.78533 L"
+25560 DATA"barrel = afhankelijk van de stof die"
+25570 DATA"         gemeten wordt."," "
+25580 DATA"cubic inch= 16.387 cm^3"
+25590 DATA"cubic foot= 1728 c.inch= 0.0288317 m^3"
+25600 DATA"cubic yard= 27 c.foot= 0.764553 m^3"
+25610 DATA"ton(oorlogschepen)= 1 m^3 waterverpl."
+25620 DATA"ton(binnenvaart.) = 1 m^3"
+25630 DATA"register ton(zee-schepen) ="
+25640 DATA"         100 cubic feet = 2.83 m^3"," "
+25650 DATA"1 anker = 45 tot 48 flessen","#"
+25660 DATA"GEWICHTEN"," "
+25670 DATA"scheeps-last   = 2000 kg"
+25680 DATA"ton (t)        = 1000 kg"
+25690 DATA"centenaar      =  100 kg"," "
+25700 DATA"kilogram  = 1 kg  =   1000 gram"
+25710 DATA"pond      = 5 ons =    500 gram"
+25720 DATA"hectogram = 1 ons= 10 loodjes = 100 gr"
+25730 DATA"decagram  = 1 lood= 10 wichtjes=10 gr."
+25740 DATA"gram=gewicht van 1 cm^3 gedestilleerd"
+25750 DATA"     water van 4 gr.Celsius"
+25760 DATA"decigram  = korrel = 0.1 gram"," "
+25770 DATA"ton (Eng.) = long ton = 20 cwt ="
+25780 DATA"           = 1016.048 kg"
+25790 DATA"ton (USA)  = short ton = 20 cwt ="
+25800 DATA"           = 2000 lbs = 907.2 kg"
+25810 DATA"barrel = afh.van de stof (bijv."
+25820 DATA"   barrel beef     = 200 lbs"
+25830 DATA"   barrel rozijnen = 112 lbs.)"
+25840 DATA"long hundredweight (cwt) = 4 quarters"
+25850 DATA"     = 8 stones = 112 lbs = 50.802 kg"
+25860 DATA"short hundredweight (USA)= 100 lbs"
+25870 DATA"     = 45.36 kg"
+25880 DATA"quarter = 28 lbs = 12.7  kg"
+25890 DATA"stone   = 14 lbs =  6.35 kg"
+25900 DATA"pound   = lb = 16 oz = 7000 grains"
+25910 DATA"        = 0.4536 kg"
+25920 DATA"ounce   = oz = 16 drams = 28.35 gram"
+25930 DATA"dram    = dr = 1.77 gram"
+25940 DATA"grain   = 0.0648 gram","#"
+25950 DATA"KEUKEN-MATEN"," "
+25960 DATA"eet-lepel    = 15 cm^3 = 15 cc"
+25970 DATA"thee-lepel   =  3 cm^3 =  3 cc"
+25980 DATA"pap-lepel    =  8 cm^3 =  8 cc"
+25990 DATA"dessertlepel = 10 cm^3 = 10 cc"," "
+26000 DATA"wijn-glas = 6.6 eetlepel = 100  cc"
+26010 DATA"borrelglas= 2.5 eetlepel = 37.5 cc"
+26020 DATA"water-glas= 13.3 eetlepel= 200  cc"
+26030 DATA"sherryglas=  3.3 eetlepel=  50  cc"
+26040 DATA"( 100 cc = 1 deciliter)"," "
+26050 DATA"kan    = 1 liter"
+26060 DATA"maatje = 1 deciliter = 1 dl"," "
+26070 DATA"1 kilocalorie (kcal) = 4.2 kilojoules"," "
+26080 DATA"lepel = AFGESTREKEN lepel"," "
+26090 DATA"eetlepel bloem ongev.10 gram"
+26100 DATA"eetlepel rozijnen -  20 gram"
+26110 DATA"eetlepel suiker   -  13 gram"
+26120 DATA"eetlepel boter    -  17 gram"
+26130 DATA"eetlepel zout     -  12 gram"
+26140 DATA"theelepel zout,bakpoeder,van.suik.=2 g"
+26150 DATA" ","1 dl vloeistof = 6 eetlepels","#","$"
+30000 REM ---------------------------
+30010 REM - DIT PROGRAMMA IS EEN    -
+30020 REM - POGING OM ZOVEEL MOGE-  -
+30030 REM - LIJK GEBRUIK TE MAKEN   -
+30040 REM - VAN SUB-ROUTINES.       -
+30050 REM ---------------------------
+30060 REM - INDIEN DIVERSE BRONNEN  -
+30070 REM - VERSCHILLENDE MATEN     -
+30080 REM - GEVEN,HEB IK EEN KEUZE  -
+30090 REM - MOETEN MAKEN.           -
+30100 REM ---------------------------
+30110 REM - LITERATUUR:             -
+30120 REM -                         -
+30130 REM - BEAUTIFUL BRITISH       -
+30140 REM - COLUMBIA-MAGAZINE       -
+30150 REM - SPRING 1989 - POBOX 3000-
+30160 REM - VICTORIA BC V8W3K7      -
+30170 REM - CANADA                  -
+30180 REM -                         -
+30190 REM - NUTTALL'S STANDARD      -
+30200 REM - DICTIONARY OF THE       -
+30210 REM - ENGLISH LANGUAGE.       -
+30220 REM - FREDERICKWARNE & CO LTD.-
+30230 REM - LONDON AND NEW YORK     -
+30240 REM -                         -
+30250 REM - DIVERSE KOOKBOEKEN.     -
+30260 REM -                         -
+30270 REM ---------------------------
+30280 REM
+32000 REM ***************
+32010 REM *             *
+32020 REM * HARRY EYCK  *
+32030 REM *    NEER     *
+32040 REM *             *
+32050 REM * C64-APR.89  *
+32060 REM *             *
+32070 REM ***************
+32080 REM
+32090 REM TROS-RADIO dd 890927
+32100 REM incl.corr. dd 890930

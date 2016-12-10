@@ -1,0 +1,141 @@
+
+1000 A=2000:GOTO20:REM ** KENTEKENS **
+1010 GOTO1400
+1020 REM ** LANDEN INLEZEN **
+1030 GOSUB100:PRINT"Even geduld A.U.B."
+1040 READA$:IFA$<>"**" THENW=W+1:GOTO1040
+1050 DIMC$(W):RESTORE:G=0:V=2:H=0
+1060 FORX=1 TOW:READC$(X):NEXTX
+1070 REM ** OPGAVE ZOEKSTRING **
+1080 GOSUB100:VE=2:HO=15:GOSUB110
+1090 PRINT" *=stoppen "
+1100 VE=5:HO=3:GOSUB110
+1110 INPUT"Geef de letter(s) die u weet ";SR$
+1120 GOSUB330:GOSUB100:SR$=SR$:L=LEN(SR$)
+1130 IFSR$="*" THEN1370
+1140 PRINT"    Ben aan het zoeken naar ";SR$
+1150 REM ** ZOEKROUTINE **
+1160 J=1
+1170 N=LEN(C$(J))
+1180 I=1
+1190 IFSR$=MID$(C$(J),I,L)THEN1250
+1200 I=I+1:IFI<N-L+2 THEN1190
+1210 N=0:J=J+1:IFJ<=W THEN1170
+1220 IFG<1 THEN1290
+1230 GOTO1320
+1240 REM ** GEVONDEN TONEN **
+1250 G=G+1:IFSR$="" THENPRINTC$(J):GOTO1210
+1260 VE=V:HO=H:GOSUB110:PRINTC$(J)
+1270 V=V+1:IFV=18 THENV=2:H=23:GOTO1210
+1280 GOTO1210
+1290 VE=20:HO=0:GOSUB110
+1300 PRINT"NIET GEVONDEN     DRUK EEN TOETS ";
+1310 GOSUB210:GOTO1080
+1320 IFSR$="" THEN1350
+1330 VE=20:HO=3:GOSUB110:PRINT" Ik kan niet meer vinden"
+1340 VE=22:GOSUB110:PRINT"DRUK EEN TOETS";
+1350 GOSUB210:G=0:V=2:H=3:GOTO1080
+1360 REM ** EINDE PROGRAMMMA **
+1370 VE=8:HO=10:GOSUB110:PRINT"TOT ZIENS";
+1380 SD=20:GOSUB450:GOTO950
+1390 REM ** LOGO **
+1400 GOSUB100:VE=7:HO=13:GOSUB110
+1410 PRINT"LANDKENTEKENS"
+1420 VE=9:HO=18:GOSUB110
+1430 PRINT"VOOR"
+1440 VE=11:HO=12:GOSUB110
+1450 PRINT"MOTORVOERTUIGEN":SD=20:GOSUB450
+1460 REM ** UITLEG **
+1470 GOSUB100:PRINT:PRINT:PRINT
+1480 PRINT"Hoevaak heeft u niet achter een auto"
+1490 PRINT"gereden met vreemd landkenteken"
+1500 PRINT"waarbij u dacht waar komt die nou"
+1510 PRINT"vandaan?."
+1520 PRINT"Met dit programma is dat probleem"
+1530 PRINT"opgelost."
+1540 PRINT"Ook al weet u maar een letter, dit"
+1550 PRINT"programma zoekt voor u uit wat"
+1560 PRINT"daarbij in de buurt komt."
+1570 PRINT"Geeft u alleen return dan krijgt"
+1580 PRINT"alle landen te zien die in dit"
+1590 PRINT"programma zitten."
+1600 PRINT:PRINT"Veel zoekplezier met dit programma."
+1610 PRINT:PRINT:PRINT"DRUK EEN TOETS";:GOSUB210:GOTO1030
+25000 REM ** DATA LANDEN **
+25010 DATA"AA  koninklijk huis","A   oostenrijk"
+25020 DATA"ADN zuid jemen","AL  albanie"
+25030 DATA"AFG afghanistan","AN  angola","AND andorra"
+25040 DATA"AS  saoedi-arabie","AUS australie","B   belgie"
+25050 DATA"BDS barbados","BG  bulgarije","BH  belize"
+25060 DATA"BM  bermuda","BOL bolivie","BR  brazilie"
+25070 DATA"BRN bahrein","BRU brunei"
+25080 DATA"BS  bahama-eilanden","BUR birma","C   cuba"
+25090 DATA"CAM kameroen","CDN canada","CH  zwitserland"
+25100 DATA"CD  off.buitenl. vert."
+25110 DATA"CDJ intern. gerechtshof"
+25120 DATA"CI  ivoorkust","CL  srilanka","CNB sabah"
+25130 DATA"CNB labuan","CO  colombia","CR  costa rica"
+25140 DATA"CS  tsjechoslowakije","CY  cyprus"
+25150 DATA"D   duitse bondsrepubliek"
+25160 DATA"DDR duitse dem. replubliek"
+25170 DATA"DK  denemarken","DOM dominicaanse republiek"
+25180 DATA"DZ  algerije","E   spanje","EAK kenia"
+25190 DATA"EAT tanzania","EAU oeganda","EAZ zanzibar"
+25200 DATA"EC  ecuador","ES  elsalvador","ET  egypte"
+25210 DATA"ETH ethiopie","F   frankrijk"
+25220 DATA"FL  liechtenstein","G   guatemala"
+25230 DATA"GB  groot-brittannie","GB  noord ierland"
+25240 DATA"GBA alderney","GBG guernsey","GBJ jersey"
+25250 DATA"GBM eiland man","GBZ gibraltar","GH  ghana"
+25260 DATA"GR  griekenland","GUY guyana","H   hongarije"
+25270 DATA"HK  hongkong","I   italie","IL  israel"
+25280 DATA"IND india","IR  iran","IRL ierland"
+25290 DATA"IRQ irak","IS  ijsland","J   japan"
+25300 DATA"JA  jamaica","JOR jordanie","K   cambodja"
+25310 DATA"KL  koninklijke landmacht"
+25320 DATA"KN  koninklijke landmacht"
+25330 DATA"KZ  koninklijke landmacht"
+25340 DATA"KM  koninklijke marine"
+25350 DATA"KWT koeweit","L   luxemburg","LAO laos"
+25360 DATA"LAR libie","LB  liberia","LS  lesotho"
+25370 DATA"LM  koninklijke luchtmacht","M   malta"
+25380 DATA"MA  marokko","MC  monaco","MEX mexico"
+25390 DATA"MC  korps mobiele colonnes"
+25400 DATA"MS  mauritius","MW  malawi","N   noorwegen"
+25410 DATA"NL  nederland"
+25420 DATA"NA  ned. antillen","NIC nicaraqua"
+25430 DATA"NZ  nieuw-zeeland","P   portugal","PA  panama"
+25440 DATA"PAK pakistan","PE  peru","PL  polen"
+25450 DATA"PNG papoea nw.-guinea","PY  paraguay"
+25460 DATA"RA  argentinie","RB  botswana","RC  taiwan"
+25470 DATA"RCA ctr.afr. republiek","RCB kongo"
+25480 DATA"RCH chili","RH  haiti","RI  indonesie"
+25490 DATA"RIM mauretanie","RL  libanon","RM  malagasie"
+25500 DATA"RMM mali","RN  niger","RO  roemenie"
+25510 DATA"RP  filippijnen","RPB benin","RSM san marino"
+25520 DATA"RWA roeanda","S   zweden","SCV vaticaanstad"
+25530 DATA"SD  swaziland","SF  finland","SGP singapore"
+25540 DATA"SK  sarawak","SME suriname","SN  senegal"
+25550 DATA"SP  somalie","SU  sovjet-unie","SUD soedan"
+25560 DATA"SY  seychellen","SYR syrie","T   thailand"
+25570 DATA"TG  togo","TJ  china","TN  tunesie","TR  turkije"
+25580 DATA"TT  trinidad","TT  tobago","U   uruguay"
+25590 DATA"USA ver.st.v. amerika"
+25600 DATA"VN  vietnam","WAL sierra leone","WAN nigeria"
+25610 DATA"WD  dominica","WG  granada","WL  st-lucia"
+25620 DATA"WS  samoa","WV  st-vincent","YU  joegoslavie"
+25630 DATA"YV  venezuela","Z   zambia","ZA  zuid-afrika"
+25640 DATA"ZRE zaire","ZW  zimbabwe","**"
+32000 REM ************************
+32010 REM *                      *
+32020 REM *     R.J. V/D ZEE     *
+32030 REM *                      *
+32040 REM *      BRAAMKAMP 40    *
+32050 REM *                      *
+32060 REM *   7206 HB ZUTPHEN    *
+32070 REM *                      *
+32080 REM *   Tel. 05750-21736   *
+32090 REM *                      *
+32100 REM ****** BASICODE 3 ******
+32110 REM
+32120 REM TROS-RADIO dd 900801

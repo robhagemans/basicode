@@ -1,0 +1,38 @@
+
+1000 A=200:GOTO20:REM TEXTDUMP
+1010 HT=HO:VT=VE:SR$="TEXTDUMP"
+1020 GOSUB150:HO=0:VE=2:GOSUB110
+1030 PRINT"Dit programma bestaat uit een "
+1040 PRINT"voorbeeld en, waar het eigenlijk om"
+1050 PRINT"gaat, een subroutine."
+1060 PRINT"Met deze subroutine bent u, geheel "
+1070 PRINT"volgens het BASICODE-3 protocol,"
+1080 PRINT"in staat om een screendump van het"
+1090 PRINT"tekstscherm, een zgn. TEXTDUMP "
+1100 PRINT"te maken"
+1110 PRINT
+1120 SR$="S=SCREENDUMP":GOSUB150
+1130 GOSUB210
+1140 IFIN=83 THEN GOSUB5010
+1150 GOTO950
+1160 REM
+5000 REM SUBROUTINE TEXTDUMP
+5010 FORVE=0 TOVT:SR$="":FORHO=0 TOHT
+5020 GOSUB220:SR$=SR$+CHR$(IN)
+5030 NEXTHO:GOSUB350:GOSUB360:NEXTVE:RETURN
+5040 REM
+30000 REM ****************************
+30010 REM *        TEXTDUMP          *
+30020 REM *   (c) JBSoft, Alkmaar    *
+30030 REM ****************************
+30040 REM
+32000 REM Gemaakt door:
+32010 REM Jan Benjamin
+32020 REM Stationstraat 26
+32030 REM 1815 TC ALKMAAR
+32040 REM (072-123809)
+32050 REM Op een:
+32060 REM Philips VG8020 MSX-1 Computer
+32070 REM ****************************
+32080 REM
+32090 REM TROS-RADIO dd 891025/891213

@@ -1,0 +1,212 @@
+
+1000 A=300:GOTO20:REM "drie woorden"
+1010 DIML$(26),W$(3),NN(4),NM$(25),FT$(25)
+1020 A=ASC("a"):CN=0:NN=1:MS=0:MG=100
+1030 NN=NN-1:SV=0:SP=0:SD=20:REM wachttijd
+1040 GOSUB100:S=0:BL=0:TK=0:FT=0
+1050 REM -- intro --
+1060 GOSUB100:PRINT:PRINT:IFNN<25 THENNN=NN+1
+1070 SR$=" 3 WOORDEN ":GOSUB150:SR$="":PRINT:PRINT
+1080 REM -- naam invoer --
+1090 INPUT" Hoe heet jij ";SR$:PRINT
+1100 IFSR$="" THEN1090
+1110 IFSR$="!" THEN GOSUB3610:GOTO1060
+1120 GOSUB330:N$=SR$:NM$(NN)=LEFT$(N$+"            ",10)
+1130 PRINT" Goed zo, dag ";N$
+1140 GOSUB400:GOSUB100:PRINT:PRINT
+1150 PRINT" Je krijgt 10 keer drie woorden.":PRINT
+1160 PRINT" Jij mag kiezen wat je dan wilt:":PRINT
+1170 PRINT"   1. Woordnummers tikken":PRINT
+1180 PRINT"   2. Woordnummers tikken als de":PRINT
+1190 PRINT"      woorden al uitgeveegd zijn":PRINT
+1200 PRINT"   3. Woorden na-typen":PRINT
+1210 PRINT"   4. Woorden  na-typen,  als de":PRINT
+1220 PRINT"      woorden al uitgeveegd zijn":PRINT
+1230 PRINT"              Tik 1, 2, 3 of 4 ";
+1240 C$="  ":GOSUB210:IFIN=83 THEN1030
+1250 IF(IN<49)OR(IN>52) THEN1240
+1260 KZ=VAL(IN$)
+1270 IFIN=50 THENC$="W ":BL=1
+1280 IFIN=51 THENC$="T ":TK=1
+1290 IFIN=52 THENC$="WT":BL=1:TK=1
+1300 NM$(NN)=NM$(NN)+C$
+1310 REM -- lettercodes inlezen --
+1320 RESTORE:FORN=0 TO26:READL$(N):NEXTN
+2000 REM -- 10 beurten --
+2010 FORBT=1 TO10
+2020 REM -- lees 3 woorden in --
+2030 FORN=1 TO3:READW$(N):NEXTN
+2040 REM -- nrs schudden --
+2050 FORN=1 TO3:NN(N+1)=N:NEXTN
+2060 FORN=1 TO2:GOSUB260:R=INT(1+RV*(4-N)+N)
+2070 NN(N)=NN(R)
+2080 FORM=R TON+1 STEP-1:NN(M)=NN(M-1):NEXTM
+2090 NEXTN:NN(3)=NN(4)
+2100 REM -- kies woordnummer --
+2110 GOSUB260:WN=1+INT(RV*3)
+2120 REM == schermpresentatie ==
+2130 GOSUB600
+2140 REM -- plaats drie genummerde woorden --
+2150 FORK=1 TO3:WD=NN(K)
+2160 X=0:Y=(K-1)*.2:SR=K:GOSUB300:SR$="   "+SR$+" ="
+2170 HO=X:VE=Y+.1:GOSUB650:X=X+.2
+2180 T$=W$(WD):X$=L$(0):GOSUB3410
+2190 NEXTK:HO=0:VE=.65
+2200 IFBL=0 THEN2270
+2210 REM -- blind, dan woorden wissen --
+2220 SR$="Tik op de SPATIEBALK":GOSUB650
+2230 GOSUB210:IFIN=83 THEN1030
+2240 IFIN<>32 THEN2230
+2250 GOSUB600
+2260 REM -- stel de vraag --
+2270 IFKZ>2 THEN2410
+2280 SR$="welk nummer stond voor dit woord?"
+2290 IFBL=0 THENSR$="Welk nummer staat voor het woord"
+2300 GOSUB650:X=.2:Y=.7:T$=W$(NN(WN)):X$=L$(0):GOSUB3410
+2310 REM -- antwoord met nummer --
+2320 HO=.2:VE=.9:SR$="Tik 1, 2 of 3:  ":V$=SR$:GOSUB650
+2330 GOSUB210:IFIN=83 THEN1030
+2340 AW=VAL(IN$):IF(AW<1)OR(AW>3) THEN2330
+2350 SR$=SR$+IN$:GOSUB650
+2360 IFAW=WN THEN2390
+2370 CN=1:GOSUB650:CN=0:SR$=V$:GOSUB650
+2380 FT=FT+1:GOTO2320
+2390 GOTO2450
+2400 REM -- woord intypen --
+2410 SR$=W$(NN(WN)):GOSUB330:VR$=SR$
+2420 GOSUB3810:IFS=1 THEN1030
+2430 SR$=AW$+"   ":IFMS=1 THEN2460
+2440 REM -- even wachten --
+2450 SR$=SR$+" GOED ZO!":GOSUB650
+2460 MS=0:GOSUB400:NEXTBT
+2470 SR=FT:GOSUB300:FT$(NN)="  "+SR$+" mis"
+2480 GOSUB100
+2490 PRINTN$;", je bent klaar.":PRINT
+2500 IFFT>0 THEN2520
+2510 PRINT"Je hebt je niet een keer vergist!":PRINT
+2520 PRINT"Nu mag de volgende.":PRINT
+2530 PRINT"     Tik op de SPATIEBALK";
+2540 GOSUB210:IFIN<>32 THEN2540
+2550 GOTO1040
+3000 REM == sbr. decoderen ==
+3010 Z=(ASC(MID$(X$,P,1))-A)/MG:P=P+1:RETURN
+3100 REM == sbr. punt op i en j ==
+3110 HM=HO:VM=VE:P=2
+3120 GOSUB3010:HO=X+Z+1/MG:GOSUB3010:VE=Y+Z-2/100
+3130 GOSUB620:HO=HM:VE=VM:GOSUB620:RETURN
+3200 REM == sbr. dwarsstreep t ==
+3210 HM=HO:VM=VE:HO=X+2/MG:VE=Y+7/MG:GOSUB620
+3220 HO=X+8/MG:GOSUB630:HO=HM:VE=VM:GOSUB620
+3230 RETURN
+3300 REM == sbr. spatie ==
+3310 X=X+.05:X$=L$(0)
+3320 P=1:GOSUB3010:HO=X+Z:GOSUB3010:VE=Y+Z:GOSUB620
+3330 RETURN
+3400 REM == sbr. schrijf een woord ==
+3410 P=1:GOSUB3010:HO=X+Z:GOSUB3010:VE=Y+Z:GOSUB620
+3420 FORL=1 TOLEN(T$):C$=MID$(T$,L,1)
+3430 IFC$=" " THEN GOSUB3310:GOTO3510
+3440 NR=ASC(C$)-A+1
+3450 X$=L$(NR):P=1:GOSUB3010:B=Z:REM letterbreedte
+3460 FORN=2 TOLEN(X$) STEP2
+3470 GOSUB3010:HO=X+Z:GOSUB3010:VE=Y+Z:GOSUB630
+3480 NEXTN:IF(NR=9)OR(NR=10) THEN GOSUB3110
+3490 IFNR=20 THEN GOSUB3210
+3500 X=X+B
+3510 NEXTL:RETURN
+3600 REM == sbr. overzicht ==
+3610 NN=NN-1:GOSUB100:PRINT"3 WOORDEN":PRINT
+3620 IFNN=0 THENPRINT"Register nog leeg":GOTO3640
+3630 FORN=1 TONN:PRINTNM$(N);FT$(N):NEXTN
+3640 PRINT:PRINT"(S = stoppen met dit programma)"
+3650 PRINT:PRINT"Naar de printer? J/N (of S)"
+3660 GOSUB210:IFIN=78 THENRETURN
+3670 IFIN=83 THEN950
+3680 IFIN<>74 THEN3660
+3690 SR$="3 WOORDEN":GOSUB350:GOSUB360:GOSUB360
+3700 FORN=1 TONN:SR$=NM$(N)+FT$(N):GOSUB350:GOSUB360
+3710 NEXTN:RETURN
+3800 REM == sbr. input op graf.scherm ==
+3810 SR=WN:GOSUB300:WN$=SR$
+3820 HO=.2:VE=.7:SR$="Tik woord nr. "+WN$:GOSUB650
+3830 HO=.3:VE=.85:P$="":LP=0
+3840 GOSUB210
+3850 REM -- 127=delete --
+3860 IFIN<>127 THEN3910
+3870 IFLP=0 THEN3840
+3880 CN=1:SR$=P$:GOSUB650:LP=LP-1
+3890 P$=LEFT$(P$,LP):SR$=P$:CN=0:GOSUB650:GOTO3840
+3900 REM -- 13=cr --
+3910 IFIN<>13 THEN4000
+3920 IF(P$="S")OR(P$="s") THENS=1:RETURN
+3930 AW$=P$:SR$=P$:GOSUB330:IFSR$=VR$ THENRETURN
+3940 IFBL=0 THEN3970
+3950 FT=FT+1:MS=1:VE=.95
+3960 SR$="Jammer, het was "+VR$:GOSUB650:GOSUB400:RETURN
+3970 VE=.75:SR$="Nog een keer":GOSUB650:VE=.85
+3980 FT=FT+1:CN=1:SR$=P$:GOSUB650:CN=0:P$="":LP=0:GOTO3840
+3990 REM -- letters --
+4000 IF(IN<65)OR(IN>90) THEN3840
+4010 LP=LP+1:P$=P$+IN$:SR$=P$:GOSUB650:GOTO3840
+25000 REM == de schrijflettercodes ==
+25010 DATA"am"
+25020 DATA"jejgijigiejcmcpeqfqhojihoiqjq"
+25030 DATA"ifhidiahagbcncpdqeqgoikijhififigj"
+25040 DATA"iejgihiijikhlikijhigiejcmcpeqfqhp"
+25050 DATA"jejgijigiejcmcpeqfqholchoiqjq"
+25060 DATA"idogmikijhifidjcmcpeqfqhp"
+25070 DATA"gghjdjaiahbbtbwcxdwetenclgm"
+25080 DATA"jejgijigiejcmcpeqfqhojifuewdxcxbvctjp"
+25090 DATA"jfhidiahagbbqdkejgihijjhpiqjq"
+25100 DATA"ffidodpeqfq"
+25110 DATA"hhiducxbxawavhp"
+25120 DATA"jfhidiahagbbqdkejgihijjilgmdmhnhpiqjq"
+25130 DATA"ffhidiahagbcncpdqeqfp"
+25140 DATA"ndjeififkdqfkgjiijjjkhqjkkjminjlpmqnq"
+25150 DATA"ldjeififkdqfkgjhijiljjpkqlq"
+25160 DATA"kejgiejcmcpeqfqiojliigikj"
+25170 DATA"keiaudlgiiikjipjqkq"
+25180 DATA"jejgijigiejcmcpeqfqhojifujp"
+25190 DATA"iejfigjhjiigogphqip"
+25200 DATA"hhigjhlhofqeqdoeqfqho"
+25210 DATA"feigecocpfqgp"
+25220 DATA"jeicocpdqfqhojihohpiqjq"
+25230 DATA"kejfigigjepfqgqhpjjjikj"
+25240 DATA"ndjeififjdpeqfqgphmgphqiqjpljlimj"
+25250 DATA"jejfigihjfpeqdqcpdqeqfphjjikjjihjfpgqip"
+25260 DATA"jdjeifjdpeqfqhojifuewdxcxbvctjp"
+25270 DATA"jdjeifigjiicqfphqjp"
+25280 REM--------------------------------------
+25290 REM hier 10 x 3 woorden in kleine letters
+25300 REM--------------------------------------
+25310 DATA"laars","paard","kaart"
+25320 DATA"beer","heer","heet"
+25330 DATA"land","band","tand"
+25340 DATA"boek","boer","voet"
+25350 DATA"kier","dier","pier"
+25360 DATA"kous","koud","goud"
+25370 DATA"muis","huis","buis"
+25380 DATA"neus","deur","deuk"
+25390 DATA"dans","kans","lans"
+25400 DATA"voor","boor","boot"
+30000 REM--------------------------------------
+30010 REM De lettercodes worden gelezen als cijfers
+30020 REM van a=0 tot z=25. Elke lettercode begint
+30030 REM met de letterbreedte en dan telkens de x,y
+30040 REM van punten in een 25 x 25 matrix, die door
+30050 REM rechte lijnen worden verbonden.
+30060 REM--------------------------------------
+30070 REM De 10 x 3 woorden kunnen door andere
+30080 REM worden vervangen.
+30090 REM--------------------------------------
+30100 REM De resultaten van max. 25 series worden
+30110 REM onthouden. Door in de intro een '!' in te
+30120 REM voeren als naam wordt een overzicht op
+30130 REM het scherm geplaatst, dat daarna ook kan
+30140 REM worden uitgeprint.
+30150 REM--------------------------------------
+32000 REM Ch.W.Brederode
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES  LISSE
+32030 REM
+32040 REM TROS-RADIO dd 900117

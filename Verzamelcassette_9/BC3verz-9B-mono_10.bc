@@ -1,0 +1,278 @@
+
+1000 A=700:GOTO20:REM ** BASICODE-3 UITLEG **
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 SX=0:H=0:V=0:T=0:X=0:FR=1:GOSUB280:GOSUB270
+1030 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1040 GOSUB1450:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1050 GOSUB150:PRINT:PRINT:PRINT:T$="BASICODE"
+1060 PRINT"Wilt u de uitleg op "
+1070 PRINT:PRINT"   1  Het beeldscherm,"
+1080 PRINT"   2  De printer."
+1090 PRINT:PRINT"Welk nummer kiest u ";:GOSUB210
+1100 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1230
+1110 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1120 INPUT"begin van elke regel ";HL
+1130 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1140 INPUT"u op elke regel ";I:HR=HL+I-1
+1150 PRINT:PRINT"Hoeveel regels tekst wilt u op"
+1160 INPUT"elk blad ";VR:VR=VR-3
+1170 PRINT"Gebruikt u (K)ettingpapier of"
+1180 PRINT"           (L)osse vellen  (K/L)"
+1190 GOSUB210:IFIN=76 THENVL=-1:GOTO1230
+1200 IFIN<>75 THEN GOSUB250:GOTO1170
+1210 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1220 INPUT"laten overslaan ";VL:VR=VR+VL
+1230 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1240 GOSUB1390:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1370
+1250 IFLEN(R$)>HR-HL THEN GOSUB1920
+1260 GOSUB1480:IFR$<>"" THENR$=R$+" "
+1270 R$=R$+D$:GOTO1250
+1280 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1300
+1290 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1300 M$=MM$:AL=AL+1:IFAL<VR THENRETURN
+1310 IFSC=1 THEN1390
+1320 IFVL>=0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOTO1360
+1330 PRINT"Leg een nieuw vel in de printer en"
+1340 PRINT"druk dan op RETURN/ENTER"
+1350 GOSUB210:IFIN<>13 THEN1350
+1360 AL=VL
+1370 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1280
+1380 SR$="":GOSUB1280:AL=VL:RETURN
+1390 HO=3:VE=VT:GOSUB110
+1400 PRINT"<RETURN> = vervolg,<S> = schermdump";
+1410 GOSUB210:IFIN=13 THEN1450
+1420 IFIN<>83 THEN1410
+1430 FORVE=0 TOVT:SR$="":FORHO=0 TOHT:GOSUB220
+1440 SR$=SR$+CHR$(IN):NEXTHO:GOSUB350:GOSUB360:NEXTVE
+1450 GOSUB100:AL=VL
+1460 SR$=T$:PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1470 PRINT:PRINT:RETURN
+1480 READD$
+1490 IF(D$="*")AND(SC=2)THENSX=1:X=1:GOTO1990
+1500 IFD$="*" THEND$="":GOTO1990
+1510 IFD$="" THEN1480
+1520 IFLEFT$(D$,1)="." THEN1600
+1530 IFLEFT$(D$,1)="=" THEN GOSUB1860:GOTO1560
+1540 IFLEFT$(D$,1)<>"!" THENRETURN
+1550 IFD$="!" THEND$="":GOTO1570
+1560 D$=MID$(D$,2)
+1570 GOSUB1860:IFAL+3>VR THENJ=3:GOSUB1880
+1580 GOTO1510
+1590 D$="=Wordt op het scherm getoond.":RETURN
+1600 IFD$<>".E" THEN1650
+1610 J=1:GOSUB1860:T$="Tot de volgende keer"
+1620 SR$="":GOSUB1280:GOSUB1280:SR$=T$:GOSUB1280:T$=""
+1630 SR$="":GOSUB1280:IFAL<>VL THEN1630
+1640 GOTO950
+1650 IFD$=".Q" THENR$=R$+CHR$(34):GOTO1480
+1660 DD$=MID$(D$,2,1):D$=MID$(D$,3)
+1670 IFDD$<>"R" THEN1720
+1680 IFSC=2 THENRETURN
+1690 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1280:R$=""
+1700 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1710 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1480
+1720 IFDD$<>"M" THEN1750
+1730 I=VAL(D$):MM$="":IFI+HL=0 THEN1480
+1740 MM$=LEFT$(S$,I+HL):GOTO1480
+1750 IFDD$="P" THENJ=VAL(D$):GOSUB1860:GOSUB1880:GOTO1480
+1760 IFDD$="T" THENT$=D$:J=10:GOSUB1860:GOSUB1880:GOTO1680
+1770 IFDD$="X" THENT$=T$:GOSUB1860:GOSUB1880
+1780 IFDD$="A" THEN GOSUB1860:GOTO1480
+1790 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1480
+1800 IFDD$<>"F" THEN1830
+1810 J=VAL(D$):GOSUB1860
+1820 J=J-1:IFJ>-1 THENSR$="":GOSUB1280:GOTO1820
+1830 IFDD$<>"C" THEN1850
+1840 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1280
+1850 GOTO1480
+1860 GOSUB1920:SR$=R$:GOSUB1280:R$="":J=J-1
+1870 RETURN
+1880 IF(SC=1)OR(AL+J>VR)THEN1900
+1890 SR$="":GOSUB1280:GOSUB1280:RETURN
+1900 IFAL<>VL THENSR$="":GOSUB1280:GOTO1900
+1910 RETURN
+1920 K=HR-HL+1-LEN(M$)
+1930 IFLEN(R$)<=K THENRETURN
+1940 IFMID$(R$,K,1)=" " THEN1970
+1950 K=K-1:IFK>0 THEN1940
+1960 SR$="":GOTO1980
+1970 SR$=LEFT$(R$,K-1):R$=MID$(R$,K+1)
+1980 GOSUB1280:GOTO1920
+1990 READA
+2000 IFX=1 THENX=0:GOSUB1590
+2010 IFSX=1 THENSX=0:GOTO1510
+2020 ONA GOTO2030,2050,2080,2130
+2030 VE=3:HO=6:GOSUB110:PRINTFR
+2040 AL=6:VE=6:GOSUB110:GOTO1480
+2050 VE=3:HO=5:GOSUB110:PRINT"Dit zijn 6 getallen"
+2060 D=6:VE=5:HO=5:GOSUB110:PRINT"Dit zijn ";D;" getallen"
+2070 AL=6:VE=6:GOSUB110:GOTO1480
+2080 VE=3:HO=5:GOSUB110:PRINT"Dit zijn 6 getallen"
+2090 D=6:VE=5:HO=5:GOSUB110:PRINT"Dit zijn ";D;"getallen"
+2100 SR=D:GOSUB300:VE=7:HO=5:GOSUB110
+2110 PRINT"Dit zijn ";SR$;" getallen"
+2120 AL=9:VE=9:GOSUB110:GOTO1480
+2130 SR=0:A=0:CT=7:CN=2:R=AL+3:V=R+3
+2140 VE=R:HO=0:GOSUB110:INPUT"Voer een bedrag in ";SR
+2150 A=A+1:B=B+SR:GOSUB310
+2160 VE=V:HO=20:GOSUB110:PRINTSR$
+2170 VE=3:GOSUB110:PRINT"       "
+2180 IFA=5 THENV=V+2:GOTO2200
+2190 V=V+2:SR=0:GOTO2140
+2200 SR=B:GOSUB310
+2210 VE=V:HO=6:GOSUB110
+2220 PRINT"Het totaal is ";SR$
+2230 GOTO1390
+25000 DATA"BASICODE uitlegprogramma deel 4"
+25010 DATA"=In de vorige afleveringen zijn we met de"
+25020 DATA"subroutines gekomen tot routine GOSUB 260."
+25030 DATA"!We gaan nu verder met de subroutines"
+25040 DATA"270, 280, 300 en 310."
+25050 DATA".TGOSUB 270","=Deze routine meldt de nog vrije"
+25060 DATA"geheugenruimte.","!Bij grote programma's kan"
+25070 DATA"men dus eerst testen of de benodigde"
+25080 DATA"geheugenruimte voor variabelen en teksten wel"
+25090 DATA"aanwezig is. Een klein voorbeeld hoe men dit in"
+25100 DATA"een programma kan verwerken.","=Voorbeeld:"
+25110 DATA"=2000 GOSUB 270","!2010 A=INT((FR-2000)/50:IF"
+25120 DATA"A<10 THEN 3000","!2020 DIM T$(A)","!GOTO 4000"
+25130 DATA"!3000 PRINT ",".QER IS NIET GENOEG RUIMTE VOOR"
+25140 DATA"DIT PROGRAMMA",".Q","!3010 (programma stoppen)"
+25150 DATA"!----","!4000 (verder met het programma)"
+25160 DATA"=Via de regels 2000 en 2010 wordt er gekeken of"
+25170 DATA"er genoeg ruimte is, aangenomen dat er voor elke"
+25180 DATA"gebruikte string 50 geheugenplaatsen nodig"
+25190 DATA"zijn, waarbij rekening moet worden gehouden dat"
+25200 DATA"er voor de andere doeleinden nog 2000 bytes"
+25210 DATA"beschikbaar blijven (FR-2000).","!In regel 2010"
+25220 DATA"wordt tevens gekeken of het aantal strings niet"
+25230 DATA"kleiner wordt dan 10. Is dit wel zo, dan springt"
+25240 DATA"het programma naar regel 3000 en volgt er een"
+25250 DATA"melding op het scherm en daarna wordt het"
+25260 DATA"programma gestopt.","!Is het aantal strings"
+25270 DATA"groter dan 10, dan wordt het programma verder"
+25280 DATA"afgewerkt via regel 4000.",".X","*",1,"=Het"
+25290 DATA"getal wat u nu op het scherm ziet is de waarde"
+25300 DATA"van FR die gemeten is aan het begin van dit"
+25310 DATA"programma. Als u de geheugenruimte opvraagt via"
+25320 DATA"GOSUB 270 komt deze in de variabele FR te staan."
+25330 DATA".TGOSUB 280","=Via deze subroutine kan men als"
+25340 DATA"men dat wil de stop/break-toets uitschakelen."
+25350 DATA"!Dit kan van nut zijn bij programma's die op"
+25360 DATA"scholen worden gebruikt en waarbij de leerling"
+25370 DATA"het programma niet mag onderbreken.","!Om deze"
+25380 DATA"mogelijkheid in werking te stellen geeft u in"
+25390 DATA"het programma het volgende op:","=2000"
+25400 DATA"FR=1:GOSUB 280","=Met de opdracht FR=0:GOSUB 280"
+25410 DATA"is de stoptoets weer ingeschakeld.",".X","=Maar"
+25420 DATA".RPAS OP:"
+25430 DATA"als u de subroutines 270 en 280 samen in een"
+25440 DATA"programma wilt gebruiken moet u eerst opgeven"
+25450 DATA"FR=1:GOSUB 280 en daarna pas via GOSUB 270 de"
+25460 DATA"geheugenruimte opvragen. Dit is nodig omdat"
+25470 DATA"beide routines de variabele FR gebruiken."
+25480 DATA"!Als u namelijk eerst de geheugenruimte opvraagt"
+25490 DATA"en daarna opgeeft FR=1:GOSUB 280 dan zal bij het"
+25500 DATA"opvragen van de geheugenruimte deze altijd 1"
+25510 DATA"zijn.",".TGOSUB 300"
+25520 DATA"=Deze routine zet het getal dat in de variabele"
+25530 DATA"SR staat om in een stringvariabele SR$."
+25540 DATA"!Dit kan gebruikt worden om de leesbaarheid"
+25550 DATA"van een getal in bijv. een zin in een goede vorm"
+25560 DATA"te zetten.","!Ik zal u uitleggen waarom."
+25570 DATA"!Als u in een zin een getal wilt weergeven dan"
+25580 DATA"kunt u dat op de volgende manier doen."
+25590 DATA"=Voorbeeld:","=2000 D=6:PRINT ",".QDit zijn "
+25600 DATA".Q;D;",".Q getallen",".Q","=Als u dit zo in een"
+25610 DATA"programma opgeeft zou er op het scherm het"
+25620 DATA"volgende moeten staan.","=Dit zijn 6 getallen"
+25630 DATA"=Laten we nu eens gaan kijken hoe uw computer"
+25640 DATA"deze zin op het scherm zet.",".X","*",2
+25650 DATA"=Het kan zijn dat de tweede zin er net zo staat"
+25660 DATA"als de eerste, maar het is ook mogelijk dat er"
+25670 DATA"een spatie meer of minder tussen de 6 en de"
+25680 DATA"rest van de zin staat. Dit maakt het geheel er"
+25690 DATA"niet mooier op.","!Als u de subroutine GOSUB"
+25700 DATA"300 gebruikt zult u zien dat het getal er altijd"
+25710 DATA"goed tussen staat.","=Kijkt u maar:",".X","*",3
+25720 DATA"=Als het klopt zijn de eerste en de laatste zin"
+25730 DATA"hetzelfde en wijkt de middelste zin af."
+25740 DATA"!Om dit te bereiken moet u dit als volgt in het"
+25750 DATA"programma opgeven.","=2000 D=6:SR=D:GOSUB 300"
+25760 DATA"!2010 PRINT ",".QDit zijn ",".Q;SR$;",".Q"
+25770 DATA"getallen",".Q","!2020         (let op de spatie)"
+25780 DATA"!----","!4000 (verder met het programma)"
+25790 DATA".TGOSUB 310","=Deze routine geeft net als de"
+25800 DATA"vorige routine een getal terug in de variabele"
+25810 DATA"SR$. Alleen deze routine formatteert het getal"
+25820 DATA"naar een vaste lengte, opgegeven in de variabele"
+25830 DATA"CT, waarbij in de variabele CN wordt opgegeven"
+25840 DATA"hoeveel karakters er na de decimale punt moeten"
+25850 DATA"komen.","=Voorbeeld:"
+25860 DATA"=2000 CT=7:CN=2:SR=80.67:GOSUB 310","!2010 PRINT"
+25870 DATA"SR$","!----","!4000 (verder met het programma)"
+25880 DATA"=Dit geeft als resultaat op het scherm 80.67 te"
+25890 DATA"zien. Als nu de opgegeven waarde van SR groter"
+25900 DATA"is dan die van CT wordt dit op het scherm in"
+25910 DATA"sterren weergegeven.","=Voorbeeld:","=2000"
+25920 DATA"CT=6:CN=2:SR=60100.88:GOSUB 310","!2010 PRINT"
+25930 DATA"SR$","=Geeft als resultaat op het scherm ******"
+25940 DATA"te zien.","=Maakt men de waarde van CN=0 dan"
+25950 DATA"komt het geheel er zo uit te zien:","=Voorbeeld:"
+25960 DATA"!2000 CT=6:CN=0:SR=80.67:GOSUB 310","!2010 PRINT"
+25970 DATA"SR$","=En het resultaat ziet er zo uit ",".Q   "
+25980 DATA"81",".Q","=Zo kan men dus via deze routine een"
+25990 DATA"aantal bedragen invoeren en bij elkaar laten"
+26000 DATA"optellen. De bedragen komen dan netjes onder"
+26010 DATA"elkaar te staan.","=Voert u maar eens vijf"
+26020 DATA"willekeurige bedragen in."
+26030 DATA"=Bij het invoeren geen komma gebruiken",".X","*"
+26040 DATA4,"=Het programmagedeelte dat nodig is om de"
+26060 DATA"bedragen in te voeren en op te tellen, ziet er"
+26070 DATA"als volgt uit:","=2000 GOSUB"
+26080 DATA"100:SR=0:A=0:B=0:I=5:CT=7:CN=2"
+26090 DATA"!2010 VE=3:HO=0:GOSUB 110:INPUT ",".QVoer"
+26100 DATA"een bedrag in ",".Q;SR"
+26110 DATA"!2020 A=A+1:B=B+SR:GOSUB 310"
+26120 DATA"!2030 VE=I:HO=20:GOSUB 110:PRINT SR$"
+26130 DATA"!2040 VE=3:GOSUB 110:PRINT ",".Q      ",".Q"
+26140 DATA"!2050 IF A=5 THEN I=I+2:GOTO 4000","!2060"
+26150 DATA"I=I+2:SR=0:GOTO 2010","!----","!4000"
+26160 DATA"SR=B:GOSUB 310","!4010 VE=I:HO=6:GOSUB 310"
+26170 DATA"!4020 PRINT ",".QHet totaal is ",".Q;SR$"
+26180 DATA"!----","=Een kleine uitleg:","=In regel 2000"
+26190 DATA"wordt het scherm gewist en aan een aantal"
+26200 DATA"variabelen een waarde meegegeven. (Dit kan ook"
+26210 DATA"aan het begin van het programma bijv. in regel"
+26220 DATA"1010)","!In regel 2010 wordt via de inputroutine"
+26230 DATA"gevraagd om de invoer van de bedragen. (Let op:"
+26240 DATA"geen komma gebruiken in het bedrag maar een"
+26250 DATA"punt.)","!Dit bedrag komt meteen in de variabele"
+26260 DATA"SR te staan die we nodig hebben voor de"
+26270 DATA"subroutine 310.","!De variabele A houdt bij"
+26280 DATA"hoe vaak er een bedrag is ingevoerd. In regel"
+26290 DATA"2050 wordt gekeken of dit al 5 keer is gebeurd."
+26300 DATA"Is dit nog geen 5 keer dan gaat het programma"
+26310 DATA"verder met regel 2060, als het 5 keer is springt"
+26320 DATA"het programma naar regel 4000 en volgt het"
+26330 DATA"totaal van het bedrag. Dit totaalbedrag is"
+26340 DATA"opgeteld via de variabele B in regel 2020 B=B+SR"
+26350 DATA"!De variabele I dient ervoor om het bedrag"
+26360 DATA"steeds twee regels lager op het scherm te"
+26370 DATA"zetten.","Als u de routine aanroept blijven de"
+26380 DATA"opgegeven waarden van CT en CN ongewijzigd."
+26390 DATA"De waarde van CT mag nooit groter zijn dan 20 en"
+26400 DATA"de waarde van CN moet tenminste 2 kleiner zijn"
+26410 DATA"dan CT.",".TBASICODE","==Einde van het vierde"
+26420 DATA"deel.",".P14","Dit was:","="
+32000 DATA".C**************************"
+32010 DATA".C*                        *"
+32020 DATA".C*        BASICODE-3      *"
+32030 DATA".C*                        *"
+32040 DATA".C*    Uitleg programma    *"
+32050 DATA".C*                        *"
+32060 DATA".C*      RZ-Software       *"
+32070 DATA".C*      Braamkamp 40      *"
+32080 DATA".C*    7206 HB ZUTPHEN     *"
+32090 DATA".C*                        *"
+32100 DATA".C**************************",".E"

@@ -1,0 +1,93 @@
+
+1000 A=1000:GOTO20:REM ## SATELLIETEN ##
+1010 N=0
+1020 READA$,A$:IFA$<>"*" THENN=N+1:GOTO1020
+1030 RESTORE:DIMA$(N),B$(N):RE=6370:RS=42248
+1040 FORL=1 TON:READA$(L),B$(L):NEXTL:GOSUB100
+1050 SR$="Satellietberekening":GOSUB150:PRINT
+1060 PRINT:FORL=1 TON:PRINTA$(L);TAB(21);"(";L;")":NEXTL
+1070 PRINT:PRINT"Nr. van de satelliet "
+1080 INPUT" ( 0 voor Einde) ";L:GOSUB100
+1090 IFL=0 THEN950
+1100 PRINT"Voor de berekeningen zijn de"
+1110 PRINT"geografische lengte en breedte nodig"
+1120 PRINT"van het ontvangststation"
+1130 PRINT" (opgave in graden)."
+1140 PRINT:PRINT"S.v.p. alleen oosterlengte en"
+1150 PRINT"noorderbreedte opgeven!"
+1160 PRINT:INPUT"Noorderbreedte ";BR:PP=3.14159265359
+1170 INPUT"Oosterlengte ";LA:PRINT
+1180 AQ=VAL(B$(L)):IFRIGHT$(B$(L),4)="West" THENAQ=-AQ
+1190 AQ=AQ/180*PP:BR=BR/180*PP:LA=LA/180*PP
+1200 PX=RS*COS(AQ):PY=RS*SIN(AQ)
+1210 XX=RE*COS(LA)*COS(BR):XY=RE*SIN(LA)*COS(BR)
+1220 XZ=RE*SIN(BR)
+1230 SX=RS*COS(LA):SY=RS*SIN(LA)
+1240 EX=XX/RE:EY=XY/RE:EZ=XZ/RE
+1250 D=(PX-XX)*EX+(PY-XY)*EY-XZ*EZ:IFD<0 THEN1500
+1260 FX=PX-D*EX:FY=PY-D*EY:FZ=-D*EZ
+1270 ZE=SQR((PX-FX)^2+(PY-FY)^2+FZ*FZ)
+1280 ZE=ZE/SQR((PX-XX)^2+(PY-XY)^2+XZ*XZ)
+1290 PH=ATN(ZE/SQR(1-ZE*ZE))
+1300 D=(SX-XX)*EX+(SY-XY)*EY-XZ*EZ
+1310 KX=SX-D*EX:KY=SY-D*EY:KZ=-D*EZ
+1320 AA=SQR((KX-FX)^2+(KY-FY)^2+(KZ-FZ)^2)/2
+1330 AB=SQR((FX-XX)^2+(FY-XY)^2+(FZ-XZ)^2)/2
+1340 AC=SQR((KX-XX)^2+(KY-XY)^2+(KZ-XZ)^2)/2
+1350 ZE=(AB*AB+AC*AB-AA*AA)/(2*AB*AC):IFZE>1 THENZE=1
+1360 AZ=ATN(SQR(1-ZE*ZE)/ZE)
+1370 PH=180*PH/PP:AZ=180*AZ/PP:IFLA>AQ THENAZ=-AZ
+1380 GOSUB100:PRINT"Bij de ingevoerde locatie gelden"
+1390 PRINT"voor de ";A$(L):CT=6:CN=2:SR=180-AZ:GOSUB310
+1400 PRINT"de volgende waarden:":PRINT
+1410 PRINT"Azimuth  : ";SR$;" Grad":SR=PH:GOSUB310
+1420 PRINT"Elevatie : ";SR$;" Grad"
+1430 PRINT:PRINT"Verklaring:":PRINT
+1440 PRINT"Azimuth :  90 graden = oosten"
+1450 PRINT"          180 graden = zuiden":PRINT
+1460 PRINT"Elevatie :  0 graden = horizon"
+1470 PRINT"           90 graden = zenith"
+1480 GOTO1510
+1490 REM SATELLIET ONDER HORIZON
+1500 GOSUB100:PRINT:PRINT"De satelliet is onder de horizon!"
+1510 PRINT:PRINT"Toets = RUN"
+1520 PRINT:GOSUB250:GOSUB210:GOSUB100:GOTO1050
+25000 REM SATELLIET, LENGTE IN GRADEN
+25010 DATA"Kopernikus 1 (DFS 1)","23.5 Oost"
+25020 DATA"Astra 1 A","19.2 Oost"
+25030 DATA"Eutelsat I-F 1","16.0 Oost"
+25040 DATA"Eutelsat I-F 2"," 7.0 Oost"
+25050 DATA"Eutelsat I-F 4","13.0 Oost"
+25060 DATA"Eutelsat I-F 5","10,0 Oost"
+25070 DATA"Intelsat VA-F 6","18.0 West"
+25080 DATA"Intelsat VA-F 11","27.5 West"
+25090 DATA"Intelsat VA-F 12"," 1.0 West"
+25100 DATA"Intelsat VA-F 15","60.0 Oost"
+25110 DATA"Telecom 1 A"," 8.0 West"
+25120 DATA"Telecom 1 C"," 5.0 West"
+25130 DATA"PanAmSat","45.0 West"
+25140 DATA"*","*"
+30000 REM -----------------------------
+30010 REM u kunt zelf nieuwe satellieten
+30020 REM toevoegen met opgave van de
+30030 REM lengtegraad. Vergeet daarbij
+30040 REM niet Oost c.q. West erbij!
+30080 REM
+32000 REM **************************
+32010 REM *                        *
+32020 REM * Geprogrammeerd op een  *
+32030 REM * C64 met gebruik van de *
+32040 REM * Hesseschen normaalvorm *
+32050 REM * voor hypervlakken.     *
+32060 REM *                        *
+32070 REM *  HUBERTUS BOENKE       *
+32080 REM *  DDR - PIRNA (SACHSEN) *
+32090 REM *                        *
+32100 REM *     28.03.1990         *
+32110 REM *                        *
+32120 REM **************************
+32130 REM
+32140 REM Erstausstrahlung Radio DDR
+32150 REM-spezial 900525
+32160 REM
+32170 REM TROS-RADIO dd 900905

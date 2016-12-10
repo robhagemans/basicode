@@ -1,0 +1,381 @@
+
+1000 A=500:GOTO20:REM BASICODE-3 COMPUTERBULLETIN
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1440:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Wilt u het bulletin op"
+1060 PRINT:PRINT"   1  Het beeldscherm,"
+1070 PRINT"   2  De printer."
+1080 PRINT:PRINT"Welk nummer kiest u ";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1220
+1100 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1110 INPUT"begin van elke regel ";HL
+1120 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1130 INPUT"u op elke regel ";I:HR=HL+I-1
+1140 PRINT:PRINT"Hoeveel regels tekst wilt u op"
+1150 INPUT"elk blad ";VR:VR=VR-3
+1160 PRINT"Gebruikt u (K)ettingpapier of"
+1170 PRINT"           (L)osse vellen  (K/L)"
+1180 GOSUB210:IFIN=76 THENVL=-1:GOTO1220
+1190 IFIN<>75 THEN GOSUB250:GOTO1160
+1200 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1210 INPUT"laten overslaan ";VL:VR=VR+VL
+1220 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1230 GOSUB1380:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1360
+1240 IFLEN(R$)>HR-HL THEN GOSUB1850
+1250 GOSUB1470:IFR$<>"" THENR$=R$+" "
+1260 R$=R$+D$:GOTO1240
+1270 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1290
+1280 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1290 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1300 IFSC=1 THEN1380
+1310 IFVL>=0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOTO1350
+1320 PRINT"Leg een nieuw vel in de printer en"
+1330 PRINT"druk dan op RETURN/ENTER"
+1340 GOSUB210:IFIN<>13 THEN1340
+1350 AL=VL
+1360 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1270
+1370 SR$="":GOSUB1270:AL=VL:RETURN
+1380 HO=3:VE=VT:GOSUB110
+1390 PRINT"<RETURN> = vervolg, <S> = schermdump";
+1400 GOSUB210:IFIN=13 THEN1440
+1410 IFIN<>83 THEN1400
+1420 FORVE=0 TOVT:SR$="":FORHO=0 TOHT:GOSUB220
+1430 SR$=SR$+CHR$(IN):NEXTHO:GOSUB350:GOSUB360:NEXTVE
+1440 GOSUB100:AL=VL:SR$=T$
+1450 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1460 PRINT:PRINT:RETURN
+1470 READD$
+1480 IFD$="" THEN1470
+1490 IFLEFT$(D$,1)="." THEN1560
+1500 IFLEFT$(D$,1)="=" THEN GOSUB1790:GOTO1530
+1510 IFLEFT$(D$,1)<>"!" THENRETURN
+1520 IFD$="!" THEND$="":GOTO1540
+1530 D$=MID$(D$,2)
+1540 GOSUB1790:IFAL+3>VR THENJ=3:GOSUB1810
+1550 GOTO1480
+1560 IFD$<>".E" THEN1610
+1570 J=1:GOSUB1790:T$="Einde van dit bulletin"
+1580 SR$="":GOSUB1270:GOSUB1270:SR$=T$:GOSUB1270:T$=""
+1590 SR$="":GOSUB1270:IFAL<>VL THEN1590
+1600 GOTO950
+1610 DD$=MID$(D$,2,1):D$=MID$(D$,3)
+1620 IFDD$<>"R" THEN1670
+1630 IFSC=2 THENRETURN
+1640 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1270:R$=""
+1650 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1660 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1470
+1670 IFDD$<>"M" THEN1700
+1680 I=VAL(D$):MM$="":IFI+HL=0 THEN1470
+1690 MM$=LEFT$(S$,I+HL):GOTO1470
+1700 IFDD$="P" THENJ=VAL(D$):GOSUB1790:GOSUB1810:GOTO1470
+1710 IFDD$="T" THENT$=D$:J=10:GOSUB1790:GOSUB1810:GOTO1630
+1720 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1470
+1730 IFDD$<>"F" THEN1760
+1740 J=VAL(D$):GOSUB1790
+1750 J=J-1:IFJ>-1 THENSR$="":GOSUB1270:GOTO1750
+1760 IFDD$<>"C" THEN1780
+1770 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1270
+1780 GOTO1470
+1790 GOSUB1850:SR$=R$:GOSUB1270:R$="":J=J-1
+1800 RETURN
+1810 IF(SC=1)OR(AL+J>VR) THEN1830
+1820 SR$="":GOSUB1270:GOSUB1270:RETURN
+1830 IFAL<>VL THENSR$="":GOSUB1270:GOTO1830
+1840 RETURN
+1850 K=HR-HL+1-LEN(M$)
+1860 IFLEN(R$)<=K THENRETURN
+1870 IFMID$(R$,K,1)=" " THEN1900
+1880 K=K-1:IFK>0 THEN1870
+1890 SR$="":GOTO1910
+1900 SR$=LEFT$(R$,K-1):R$=MID$(R$,K+1)
+1910 GOSUB1270:GOTO1850
+25000 DATA"BASICODE-3 VERZAMELBULLETIN 27-45"
+25010 DATA"Dit verzamelbulletin bevat die gegevens uit de"
+25020 DATA"bulletins 27 tot en met 45, die voor u van"
+25030 DATA"belang kunnen zijn. Niet opgenomen zijn"
+25040 DATA"boekbesprekingen, produktinformatie en"
+25050 DATA"verbeteringen in programmas."
+25060 DATA".TCONTACTADVERTENTIES"
+25070 DATA"=Ontvangst van de radio geeft wel eens storing"
+25080 DATA"en soms vergeet je een uitzending op te nemen of"
+25090 DATA"ben je met vakantie. Wie met anderen samenwerkt"
+25100 DATA"heeft het voordeel dat als de een wat mist, de"
+25110 DATA"ander het wel opgenomen heeft en omgekeerd."
+25120 DATA"Bovendien is samendoen nog wel zo gezellig. Via"
+25130 DATA"een contactadvertentie in onze Bulletins kunt u"
+25140 DATA"daartoe anderen leren kennen. Stuur een"
+25150 DATA"briefkaart met uw gegevens naar de Stichting"
+25160 DATA"BASICODE en uw oproep komt in het eerstvolgende"
+25170 DATA"uit te zenden Bulletin."
+25180 DATA".TCORRECTIES"
+25190 DATA"=Af en toe zit er in een uitgezonden programma"
+25200 DATA"een foutje. Binnen enkele dagen na de uitzending"
+25210 DATA"krijgen we dan de nodige reakties. In overleg"
+25220 DATA"met de auteur wordt bekeken welke verbeteringen"
+25230 DATA"er in het programma nodig zijn. Deze worden dan"
+25240 DATA"zo spoedig mogelijk in een Bulletin bekend"
+25250 DATA"gemaakt. Soms zijn het kleine schoonheidsfoutjes"
+25260 DATA"of blijkt een programma met wat kleine"
+25270 DATA"wijzigingen opeens een stukje fraaier te werken."
+25280 DATA"Zulke verbeteringen worden niet via een Bulletin"
+25290 DATA"uitgezonden, maar wel verwerkt in de versie"
+25300 DATA"zoals die uiteindelijk op de verzamelcassette"
+25310 DATA"komt te staan. Via de verzamelcassette krijgt u"
+25320 DATA"dus steeds de allerlaatste versie."
+25330 DATA".TJOS-TEL"
+25340 DATA"=In Warns (Friesland) staat een bijzonder"
+25350 DATA"Bulletin Board. Het heet JOS-TEL, is van maandag"
+25360 DATA"tot vrijdag bereikbaar van 21.00-07.30 uur en op"
+25370 DATA"vrijdag tot en met zondag van 20.00-12.00 uur."
+25380 DATA"Het werkt volgens het Teletype systeem en kan"
+25390 DATA"overweg met 1200/75 baud, 75/1200 baud en"
+25400 DATA"300/300 baud. Het telefoonnummer van JOS-TEL is:"
+25410 DATA"05149-1837."
+25420 DATA"=Bel vooral niet buiten de genoemde tijden, want"
+25430 DATA"Jos de Boer, de beheerder van het systeem,"
+25440 DATA"gebruikt de telefoonlijn dan voor zijn"
+25450 DATA"privezaken."
+25460 DATA"=In zijn BBS staan interessante dingen, vooral"
+25470 DATA"voor MSX-computers. U kunt ook programma's"
+25480 DATA"downloaden, onder andere het"
+25490 DATA"MSX-vertaalprogramma. Voor een aantal"
+25500 DATA"programma's moet u echter een klein bedrag"
+25510 DATA"betalen. Dat lijkt commercieel, maar alle"
+25520 DATA"opbrengsten worden volledig overgemaakt aan de"
+25530 DATA"Nederlandse Multiple Sclerose Stichting, die dit"
+25540 DATA"geld gebruikt voor onderzoek naar oorzaak en"
+25550 DATA"behandeling van Multiple Sclerose."
+25560 DATA"=Voor wie het niet wist: Multiple Sclerose is"
+25570 DATA"een aandoening van het centrale zenuwstelsel,"
+25580 DATA"waarvan de oorzaak nog steeds onbekend is en"
+25590 DATA"waarvoor nog geen genezing is gevonden. Wie"
+25600 DATA"zonder op JOS-TEL in te loggen een bijdrage wil"
+25610 DATA"storten, kan dit doen op girorekening 6989 ten"
+25620 DATA"name van de Stichting Vrienden MS-Research in"
+25630 DATA"Den Haag."
+25640 DATA".TTIPS VOOR P2000T"
+25650 DATA"=Gebruikers van de P2000T, die discdrives hebben"
+25660 DATA"aangesloten en gebruik maken van het"
+25670 DATA"hulpprogramma JWS klagen erover dat met BASICODE"
+25680 DATA"de disc niet meer werkt. Voor wie niet beter"
+25690 DATA"weet lijkt het daar inderdaad op. Maar het enige"
+25700 DATA"dat gebeurt is dat de functietoetsen die nodig"
+25710 DATA"zijn voor het BASICODE-3 vertaalprogramma, niet"
+25720 DATA"voor twee dingen tegelijk gebruikt kunnen"
+25730 DATA"worden. De disc kan na het runnen van het"
+25740 DATA"vertaalprogramma alleen nog met commando's"
+25750 DATA"bedreven worden."
+25760 DATA"=Dat gaat zo:"
+25770 DATA"=om een programma in BASICODE dat in het"
+25780 DATA"geheugen staat op de disc te zetten type je:"
+25790 DATA"=:#SAVE",".Qprogrammanaam",".Q "
+25800 DATA"=om een programma van disc in het geheugen te"
+25810 DATA"zetten nadat het BASICODE vertaalprogramma is"
+25820 DATA"ge-RUN-d type je:"
+25830 DATA"=:#RUN",".Qprogrammanaam",".Q "
+25840 DATA"=Er volgt dan een foutmelding omdat de"
+25850 DATA"subroutines er nog niet zijn, maar deze kan"
+25860 DATA"worden genegeerd."
+25870 DATA"=Om de een of andere reden werkt :#LOAD niet."
+25880 DATA"Dat heeft Johan Strikkers blijkbaar niet"
+25890 DATA"helemaal goed geprogrammeerd."
+25900 DATA"=De inhoudsopgave van de schijf kan als volgt"
+25910 DATA"worden bekeken:"
+25920 DATA"= DEF USR = 5 : PRINT USR(0)"
+25930 DATA"=op het scherm komt te staan welke schijfeenheid"
+25940 DATA"aktief is. Druk vervolgens de ZOEK-toets in en"
+25950 DATA"de schijfinhoud verschijnt nu op het scherm."
+25960 DATA"=Het kiezen van een andere drive gaat op"
+25970 DATA"dezelfde manier."
+25980 DATA"=Het wissen van bestanden op schijf blijkt niet"
+25990 DATA"te werken."
+26000 DATA"=Met versie 3.2 van het vertaalprogramma is het"
+26010 DATA"mogelijk een BASICODE-3 programma compleet met"
+26020 DATA"de subroutines op schijf te zetten. Tegelijk"
+26030 DATA"wordt daarbij het programma on-LIST-baar"
+26040 DATA"gemaakt. Dit is dus iets voor wie een BASICODE"
+26050 DATA"programma op de P2000 wil laten gebruiken door"
+26060 DATA"anderen zonder dat die daar in mogen 'rommelen'."
+26070 DATA"=Dit gaat als volgt: RUN het vertaalprogramma en"
+26080 DATA"lees het BASICODE-3 programma in. Druk dan op de"
+26090 DATA"toets OPN, en druk op CODE (niet op ENTER dus!)."
+26100 DATA"Nu is het programma on-LIST-baar en als geheel"
+26110 DATA"op minicassette of op disc te zetten."
+26120 DATA"=.RBasicode-2 op de P2000"
+26130 DATA"=Omdat oude BASICODE-2 programma's niet eindigen"
+26140 DATA"via regel 950 maar nog met END, blijven de"
+26150 DATA"subroutineregels aan het hoofdprogramma vast"
+26160 DATA"zitten. Omdat deze verwijderd moeten worden"
+26170 DATA"voordat het programma ge-SAVE-d wordt is het"
+26180 DATA"nodig alsnog de sprong naar regel 950 te maken."
+26190 DATA"Dit kan door direct voordat u het programma wilt"
+26200 DATA"SAVE-n in te typen: GOTO 950. De regels 10 t/m"
+26210 DATA"999 zijn dan weer afgekoppeld. Nog beter is het"
+26220 DATA"natuurlijk om overal waar END in het programma"
+26230 DATA"staat, dit te veranderen in GOTO950."
+26240 DATA".TBESTANDEN IN C-64"
+26250 DATA"=Er zit een foutje in de subroutines bij het"
+26260 DATA"C-64 vertaalprogramma, althans in de oude versie"
+26270 DATA"zoals die op de cassette staat bij de eerste"
+26280 DATA"druk van het BASICODE-3 boek. Door dat foutje"
+26290 DATA"werken de bestanden niet goed. Gelukkig is het"
+26300 DATA"gemakkelijk te verhelpen. U moet dan in 2 regels"
+26310 DATA"een stukje verwijderen en in een derde regel een"
+26320 DATA"stukje veranderen. Het betreft de volgende"
+26330 DATA"regels, die er als volgt uit moeten komen te"
+26340 DATA"zien:"
+26350 DATA"=502 IF(X%AND1)=0 THEN OPEN X%,8,X%,",".QB"
+26360 DATA".Q+NF$+",".Q,S,R",".Q : IN=0 : RETURN"
+26370 DATA"=503 OPEN X%,8,X%,",".Q@0:B",".Q+NF$+"
+26380 DATA".Q,S,W",".Q : IN=0 : RETURN"
+26390 DATA"=561 PRINT#NF,CHR$(34)+SR$+CHR$(34) : IN=0 :"
+26400 DATA"RETURN"
+26410 DATA"=NB.: de spaties kunt u weglaten"
+26420 DATA"=Let wel: u behoeft deze regels alleen maar te"
+26430 DATA"veranderen in programma's die met bestanden"
+26440 DATA"werken. In de regels 502 en 503 moet dus het"
+26450 DATA"stukje  OPEN15,8,15  verdwijnen en in 561"
+26460 DATA"verandert er ietsje meer."
+26470 DATA".TBESTANDEN IN DE PC"
+26480 DATA"=Bestanden geven ook op de PC soms problemen. De"
+26490 DATA"oplossing staat in de gebruiksaanwijzing en in"
+26500 DATA"het BASICODE-3 boek op bladzijde 89. Bij het"
+26510 DATA"(vanuit MSDOS) opstarten van GWBASIC moet u (als"
+26520 DATA"er bestanden worden gebruikt) dat niet doen door"
+26530 DATA"alleen maar GWBASIC in te tikken, maar door"
+26540 DATA"GWBASIC /F:8 in te tikken. Zonder dat kan"
+26550 DATA"GWBASIC namelijk alleen met filenummers tot 3"
+26560 DATA"overweg en met de toevoeging lukt het ook met"
+26570 DATA"hogere filenummers. In BASICODE worden"
+26580 DATA"filenummers tot 8 gebruikt en dat werkt in"
+26590 DATA"GWBASIC pas als deze op de beschreven manier"
+26600 DATA"wordt opgestart. Zodoende."
+26610 DATA".TTIPS VOOR MSX-GEBRUIKERS"
+26620 DATA"=Enkele trucs om in MSX-machines toch nog"
+26630 DATA"vooruit te kunnen bij programma's die eigenlijk"
+26640 DATA"net iets te lang zijn en daardoor melden 'Out of"
+26650 DATA"memory'."
+26660 DATA"=Truc nummer 1: verwijder alle REM-opdrachten"
+26670 DATA"uit het programma. Dat levert vaak veel ruimte"
+26680 DATA"op. In MSX-machines kan dat vrij gemakkelijk via"
+26690 DATA"het vertaalprogramma en het zogenaamde"
+26700 DATA"tekstgeheugen, waar het programma na het inlezen"
+26710 DATA"toch al te vinden is. Wees echter zo verstandig,"
+26720 DATA"de originele versie ook te bewaren. U kunt dan"
+26730 DATA"ergens op terugvallen als u per ongeluk ook een"
+26740 DATA"programma-opdracht verwijdert die er beter in"
+26750 DATA"had kunnen blijven."
+26760 DATA"=Truc nummer 2: verwijder van de verwijderde"
+26770 DATA"REM-regels ook de regelnummers. Het is wat"
+26780 DATA"handwerk maar het levert weer wat ruimte op."
+26790 DATA"=Truc nummer 3: experimenteer in regel 1000 met"
+26800 DATA"de opdracht 'A=<getal>' en kijk of het programma"
+26810 DATA"nog werkt als <getal> wat kleiner wordt gekozen."
+26820 DATA"Let op: bij een TE kleine waarde komt een"
+26830 DATA"foutmelding 'Out of stringspace'."
+26840 DATA"=Truc nummer 4, alleen voor MSX-disk gebruikers:"
+26850 DATA"voeg de volgende regel aan het vertaalde"
+26860 DATA"programma toe:"
+26870 DATA"=1 IF PEEK(&H....)=0 THEN 10 ELSE FOR I=&HFD9A"
+26880 DATA"TO &HFFCA STEP 5 : POKE I,201 : NEXTI : CLEAR"
+26890 DATA"200,&HF380"
+26900 DATA"=Dit dient als een aaneengesloten regel te"
+26910 DATA"worden ingetikt en dus niet als drie aparte"
+26920 DATA"regels. Op de puntjes na &H moeten de juiste"
+26930 DATA"tekens worden ingevuld. Welke dat zijn, vindt u"
+26940 DATA"in regel 11 van het vertaalde programma, meteen"
+26950 DATA"na de eerste &H in die regel. Save dan eerst het"
+26960 DATA"programma op disk. Na een RUN wordt door deze"
+26970 DATA"regel de disk geheel afgekoppeld en dat geeft"
+26980 DATA"flink wat extra vrij geheugen."
+26990 DATA"=Truc nummer 5: houd bij het aanzetten van de"
+27000 DATA"computer de CTRL-toets ingedrukt. Er komt dan 4K"
+27010 DATA"meer vrij geheugen beschikbaar en dan werken ook"
+27020 DATA"de wat grotere programma's keurig!"
+27030 DATA"=Truc nummer 6: houd bij het opstarten of"
+27040 DATA"resetten de beide toetsen CTRL en SHIFT"
+27050 DATA"ingedrukt. Daarmee worden alle diskdrives geheel"
+27060 DATA"uitgeschakeld zodat een maximale geheugenruimte"
+27070 DATA"overblijft. Nadeel is helaas dat in dat geval de"
+27080 DATA"floppy niet meer te gebruiken is."
+27090 DATA".TBASICODE in de DDR"
+27100 DATA"=Sinds woensdag 6 september 1989 zendt Radio-DDR"
+27110 DATA"in het tweewekelijkse programma"
+27120 DATA"'REM-Computermagazine' programmatuur in"
+27130 DATA"BASICODE-3 uit. De uitzending is op woensdag van"
+27140 DATA"17.00 tot 17.30 uur via Radio DDR-2 op FM."
+27150 DATA"=De regionale FM-kanalen zijn te horen via de"
+27160 DATA"volgende zenders:"
+27170 DATA"=Frankfurt/O  87.6   Putbus     88.6"
+27180 DATA"!Helpterberg  90.5   Marlow     91.0"
+27190 DATA"!Sonneberg    91.7   Dresden    92.2"
+27200 DATA"!Inselsberg   92.5   Schwerin   92.8"
+27210 DATA"!K.M.-Stadt   92.8   Suhl       93.7"
+27220 DATA"!Leipzig      93.9   Brocken    94.6"
+27230 DATA"!Dequede      94.9   Loebau     98.2"
+27240 DATA"!Cottbus      98.6   Berlin     99.7"
+27250 DATA"!Hoyerswerda 100.4   Marlow    102.0"
+27260 DATA"=De FM-zenders zijn in Nederland niet te"
+27270 DATA"ontvangen, maar als u in de vakantietijd wat"
+27280 DATA"dichter in de buurt (of helemaal ter plaatse)"
+27290 DATA"bent, kunt u ze wel ontvangen."
+27300 DATA"=Sinds vrijdag 5 januari is er naast de genoemde"
+27310 DATA"uitzendingen om de 14 dagen ook nog een"
+27320 DATA"uitzending met BASICODE programmatuur van 23.05"
+27330 DATA"tot 23.20 uur via Radio-DDR-2. Deze zendt"
+27340 DATA"behalve op FM ook uit op 576 kHz en 1044 kHz, al"
+27350 DATA"zal de ontvangst in Nederland niet geheel"
+27360 DATA"vlekkeloos verlopen."
+27370 DATA"=Radio DDR stelt ons alle aldaar uitgezonden"
+27380 DATA"programma's ter beschikking en dat betekent dat"
+27390 DATA"we die programma's bij gelegenheid ook hier"
+27400 DATA"zullen uitzenden."
+27410 DATA"=.RHet duitse BASICODE-boek"
+27420 DATA"=Voor de luisteraars in de DDR wordt door Verlag"
+27430 DATA"Technik in Oost-Berlijn een duits Basicode-3"
+27440 DATA"boek geproduceerd. De prijs wordt ietsje boven"
+27450 DATA"de 20,- (Ost)Mark. De vertaalprogramma's komen"
+27460 DATA"op een grammofoonplaat om de simpele reden dat"
+27470 DATA"die in de DDR veel goedkoper te maken zijn dan"
+27480 DATA"cassettebandjes. Deze plaat zal de nieuwste"
+27490 DATA"versies voor de volgende computers bevatten:"
+27500 DATA"=KC 85/1-4 en KC 87"
+27510 DATA"!Z 1013 (64 k versie)"
+27520 DATA"!AC 1"
+27530 DATA"!Commodore C-64"
+27540 DATA"!Sinclair ZX-Spectrum"
+27550 DATA"!Schneider CPC"
+27560 DATA"!Atari 600XL, 800XL, 65XE en 130XE"
+27570 DATA"!Commodore C-16 en Plus/4"
+27580 DATA"=Wanneer het boek uitkomt, is op dit moment nog"
+27590 DATA"niet definitief bekend. Naar verwachting wordt"
+27600 DATA"dat juli 1990."
+29000 DATA".TINLICHTINGEN"
+29010 DATA"!!Over algemene zaken in verband met het"
+29020 DATA"radioprogramma",".RBASICODE COMPUTERMAGAZINE"
+29030 DATA"kunt u zich richten tot de TROS. Daar kunt u"
+29040 DATA"ook (per briefkaart) een informatiepakket"
+29050 DATA"aanvragen waarin u allerlei gegevens over"
+29060 DATA"BASICODE nog eens rustig kunt nalezen."
+29070 DATA".P10"," Het adres:","!"
+29080 DATA".C***********************"
+29090 DATA".C*                     *"
+29100 DATA".C*     TROS-RADIO      *"
+29110 DATA".C*     BASICODE-3      *"
+29120 DATA".C*     Postbus 450     *"
+29130 DATA".C*  1200 AL HILVERSUM  *"
+29140 DATA".C*                     *"
+29150 DATA".C***********************",".P8","Over"
+29160 DATA"specifieke problemen met BASICODE en/of met"
+29170 DATA"uitgezonden of uit te zenden programma's kunt u"
+29180 DATA"schrijven naar de Stichting BASICODE:"
+29190 DATA".P10","!"
+32000 DATA".C**************************"
+32010 DATA".C*                        *"
+32020 DATA".C*   Stichting BASICODE   *"
+32030 DATA".C*   Postbus 1410         *"
+32040 DATA".C*   5602 BK EINDHOVEN    *"
+32050 DATA".C*                        *"
+32060 DATA".C**************************",".E"

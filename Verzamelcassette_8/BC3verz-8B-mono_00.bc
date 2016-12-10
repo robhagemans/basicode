@@ -1,0 +1,82 @@
+
+1000 A=200:GOTO20:REM download-hulp
+1010 K=13:REM aantal kolommen, AANPASSEN
+1020 REM --- uitleg ---
+1030 GOSUB1480
+1040 REM --- ASCII onthouden ---
+1050 GOSUB100:PP=0:PRINT"S = stoppen":PRINT
+1060 INPUT"Geef de ASCII-code ";P$
+1070 IF(P$="S")OR(P$="s")THEN950
+1080 P$="ASCII "+P$+": ,"
+1090 PRINT:PRINT"naar de printer (J/N) ";
+1100 GOSUB210:IFIN=74 THENPP=1
+1110 REM --- raster ---
+1120 GOSUB100:CN=0
+1130 FORHO=0 TOK*2 STEP2
+1140 FORVE=0 TO16 STEP2
+1150 GOSUB110:PRINT".";
+1160 NEXTVE:NEXTHO
+1170 HO=0:VE=20:GOSUB110:PRINTP$;:GOSUB120:HH=HO:VV=VE
+1180 REM --- cursor ---
+1190 HO=1:VE=1:GOSUB110
+1200 GOSUB210
+1210 IF(IN=28)AND(HO>1)THENHO=HO-2
+1220 IF(IN=29)AND(HO<(K-1)*2)THENHO=HO+2
+1230 IF(IN=30)AND(VE<14)THENVE=VE+2
+1240 IF(IN=31)AND(VE>1)THENVE=VE-2
+1250 GOSUB110
+1260 IFIN>32 THENPRINT"O":GOSUB110
+1270 IFIN=32 THENPRINT" ":GOSUB110
+1280 IFIN=13 THEN1310
+1290 GOTO1200
+1300 REM --- berekening ---
+1310 IFPP=1 THENSR$=P$:GOSUB350
+1320 FORHO=1 TOK*2 STEP2
+1330 B=256:REM voor sommige printers B=.5
+1340 W=0:FORVE=1 TO15 STEP2
+1350 B=B/2:REM voor sommige printers B=B*2
+1360 GOSUB220:IFIN=79 THENW=W+B
+1370 NEXTVE
+1380 REM --- uitvoer naar scherm/printer ---
+1390 HU=HO:VU=VE
+1400 SR=W:GOSUB300:SR$=SR$+",":P$=SR$
+1410 IFPP=1 THEN GOSUB350
+1420 HO=HH:VE=VV:GOSUB110:PRINTP$;:GOSUB120:HH=HO:VV=VE
+1430 HO=HU:VE=VU
+1440 NEXTHO:IFPP=1 THEN GOSUB360:GOSUB360
+1450 GOSUB210
+1460 GOTO1050
+1470 REM --- uitleg ---
+1480 GOSUB100
+1490 PRINT"DOWNLOAD-HULP":PRINT
+1500 PRINT"In de meeste dot matrix printers"
+1510 PRINT"kunnen zelf-ontworpen characters"
+1520 PRINT"worden ge-DOWNLOAD.":PRINT
+1530 PRINT"Behalve de vaste codes die in de"
+1540 PRINT"handleiding van de printer staan"
+1550 PRINT"moet ook  het gecodeerde patroon"
+1560 PRINT"van de letter naar de printer.":PRINT
+1570 PRINT"Dit programma berekent deze code"
+1580 PRINT"uit de tekening die je maakt.":PRINT
+1590 PRINT"      Tik op een toets";:GOSUB210:GOSUB100
+1600 PRINT"Pas in regel 1010 de constante K"
+1610 PRINT"aan aan het aantal bytes dat aan"
+1620 PRINT"lettercode wordt gevraagd.":PRINT
+1630 PRINT"RUN dan het programma en maak de"
+1640 PRINT"letters die je nodig hebt.":PRINT
+1650 PRINT"Teken  de letter door middel van"
+1660 PRINT"de  cursor en  een  willekeurige"
+1670 PRINT"lettertoets.  Fouten  herstel je"
+1680 PRINT"met de spatiebalk.":PRINT
+1690 PRINT"Als het ontwerp klaar is, tik je"
+1700 PRINT"op RETURN en de berekende waarde"
+1710 PRINT"van de  benodigde  bytes komt op"
+1720 PRINT"het scherm  -  een afdruk via de"
+1730 PRINT"printer is ook mogelijk.":PRINT
+1740 PRINT"Sukses! ";:GOSUB210:GOSUB100:RETURN
+1750 REM-----------------------------
+32000 REM Ch.W.Brederode
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES  LISSE
+32030 REM
+32040 REM TROS-RADIO dd 900606

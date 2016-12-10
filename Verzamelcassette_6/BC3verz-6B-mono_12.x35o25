@@ -1,0 +1,545 @@
+
+1000 A=1000:GOTO20:REM * LINGO *
+1010 DIMW$(580),GC(70),N$(16),F$(12)
+1020 DIMA$(6),B$(6),C$(6),D$(6),T1(2)
+1030 DIMK1$(6,6),K2$(6,6)
+1040 TM=0:WN=0
+1050 FR=1:GOSUB280:HO=8:VE=6:GOSUB110
+1060 PRINT"1. GEMAKKELIJKE woorden.":PRINT
+1070 VE=8:GOSUB110
+1080 PRINT"2. Ook MOEILIJKE woorden.":PRINT
+1090 VE=10:GOSUB110
+1100 PRINT"3. UITLEG.":PRINT
+1110 VE=12:GOSUB110
+1120 PRINT"4. STOPPEN."
+1130 GOSUB210:IF(IN<49)OR(IN>52) THEN1130
+1140 IFIN=52 THEN950
+1150 GG=310:IFIN=50 THENGG=580
+1160 IFIN=51 THEN3030:REM uitleg
+1170 GOSUB100
+1180 HO=12:VE=10:GOSUB110
+1190 PRINT" Even geduld!"
+1200 GOSUB260:PL=INT(RV*2)+1
+1210 FORX=1 TO16:READN$(X):NEXTX
+1220 FORX=1 TO12:READF$(X):NEXTX
+1230 FORX=1 TO580:READW$(X):NEXTX
+1240 RESTORE
+1250 LI$="LINGO"
+1260 GOSUB600:CN=0
+1270 GOSUB4010:GOTO2570
+1280 FORN=1 TO2:TM=N:GOSUB5110:NEXTN
+1290 GOSUB260:NN=INT(RV*16)+1:N$=N$(NN)
+1300 FORX=1 TO2:TM=X:Q=1
+1310 GOSUB6010:GOSUB5210:GOSUB6210:GOSUB4910
+1320 CN=1:GOSUB4910:GOSUB6010:GOSUB5210:CN=0
+1330 NEXTX:TM=PL
+1340 W1=0:W2=0:CN=0:W3=W3-1
+1350 GOSUB260:G=INT(RV*GG)+1
+1360 IFW$(G)="***" THEN1350
+1370 SR$=W$(G):GOSUB330:A$=SR$
+1380 W$(G)="***"
+1390 Z$=MID$(A$,1,1)+"....":GOSUB5010
+1400 FORN=1 TO6:B$(N)="":NEXTN
+1410 R=0:W1=W1+1:Q=3:GOSUB6010:GOSUB7510
+1420 HO=.84:VE=.75:X1=0:X=0
+1430 X=X+1
+1440 SD=10:GOSUB450:X1=X1+10-SD:IFIN>0 THEN1510
+1450 IFX1<300 THEN1440
+1460 CN=1:Q=3:GOSUB6010:Z1$=B$(W1):GOSUB4810
+1470 B$(W1)="":CN=0:W1=W1-1
+1480 Q=11:GOSUB6010
+1490 IFCN=0 THENSD=10:GOSUB450:CN=1:GOTO1480
+1500 CN=0:TM=3-TM:GOTO1410
+1510 IFIN=63 THEN GOSUB100:GOTO1050:REM ? = menu
+1520 IF(IN<65)OR(IN>90) THEN1440
+1530 SR$=IN$:GOSUB330
+1540 IF(X=1)AND(MID$(A$,1,1)<>SR$) THEN1440
+1550 A$(X)=MID$(A$,X,1)
+1560 D$(X)=SR$:C$(X)=""
+1570 IFA$(X)=D$(X) THENC$(X)="*":A$(X)=" ":R=R+1
+1580 B$(W1)=B$(W1)+SR$:SR$=B$(W1):GOSUB650
+1590 IFX<5 THEN1430
+1600 CN=1:WN=1:GOSUB7510:GOSUB5010:CN=0
+1610 Z$=B$(W1):GOSUB5010:Z1$=Z$
+1620 CN=1:Q=3:GOSUB6010:GOSUB4810:CN=0
+1630 H$="":H1$=""
+1640 FORX=1 TO5:FORY=1 TO5
+1650 IFD$(X)=A$(Y) THENC$(X)="-":A$(Y)=" "
+1660 NEXTY:NEXTX
+1670 FORX=1 TO5
+1680 IFC$(X)<>"*" THEN1710
+1690 GOSUB4610:H$=H$+MID$(A$,X,1)
+1700 H1$=H1$+MID$(A$,X,1):GOTO1750
+1710 IFC$(X)="-" THEN GOSUB4710
+1720 IFR<4 THENR=4:H1$=H1$+MID$(A$,X,1):GOTO1740
+1730 H1$=H1$+"."
+1740 H$=H$+"."
+1750 NEXTX:IFR=5 THEN1860
+1760 IFW1=5 THEN1810
+1770 IFW1=6 THENW1=5:GOTO2330
+1780 W2=W2+1
+1790 IFW2>Q THENW2=4
+1800 Z$=H$:GOSUB5010:GOTO1410
+1810 Q=7:GOSUB6010:GOSUB4910
+1820 CN=1:Q=7:GOSUB6010:GOSUB4910
+1830 Z$=B$(5):GOSUB5010
+1840 CN=0:Z$=H1$:GOSUB5010
+1850 TM=3-TM:GOTO1410
+1860 IFW1=6 THENW1=5:B$(5)=B$(6)
+1870 Q=10:GOSUB6010
+1880 CN=1:GOSUB5110:CN=0
+1890 T1(TM)=T1(TM)+50
+1900 GOSUB5110:GOSUB4910
+1910 CN=1:Q=10:GOSUB6010:GOSUB4910
+1920 FORF=1 TOW1:W2=F-1:Z$=B$(F)
+1930 GOSUB5010:NEXTF:CN=0
+1940 Q=1:GOSUB6010:GOSUB5210:X=0
+1950 X=X+1:GOSUB5410
+1960 M=0:M1=5
+1970 M=M+1:FORN=1 TO5
+1980 IF(TM=1)AND(K1$(N,M)="*") THENL1=L1+1
+1990 IF(TM=2)AND(K2$(N,M)="*") THENL1=L1+1
+2000 IF(TM=1)AND(K1$(M,N)="*") THENL2=L2+1
+2010 IF(TM=2)AND(K2$(M,N)="*") THENL2=L2+1
+2020 IFM1<=0 THEN2080
+2030 IF(TM=1)AND(K1$(N,N)="*") THENL3=L3+1
+2040 IF(TM=2)AND(K2$(N,N)="*") THENL3=L3+1
+2050 IF(TM=1)AND(K1$(N,M1)="*") THENL4=L4+1
+2060 IF(TM=2)AND(K2$(N,M1)="*") THENL4=L4+1
+2070 M1=M1-1
+2080 NEXTN
+2090 IFL1=5 THENZ=1:GOTO2220
+2100 IFL2=5 THENZ=2:GOTO2220
+2110 IFL3=5 THENZ=3:GOTO2220
+2120 IFL4=5 THENZ=4:GOTO2220
+2130 L1=0:L2=0:L3=0:L4=0
+2140 IFM<5 THENM1=M1-1:GOTO1970
+2150 IFX<2 THEN1950
+2160 Q=6:GOSUB6010:GOSUB4910
+2170 L1=0:L2=0:L3=0:L4=0:CN=1
+2180 Q=1:GOSUB6010:Q=6:GOSUB6010:GOSUB4910
+2190 GOSUB5210
+2200 IFW3=1 THENCN=0:GOTO2420
+2210 GOTO1340
+2220 ONZ GOSUB6510,6810,7010,7210
+2230 CN=1:GOSUB5110:CN=0
+2240 T1(TM)=T1(TM)+100
+2250 GOSUB5110:GOSUB4910
+2260 L1=0:L2=0:L3=0:L4=0:PL=TM
+2270 CN=1:Q=1:GOSUB6010:GOSUB4910:GOSUB5210
+2280 IFW3=1 THENCN=0:GOTO2420
+2290 CN=0:Q=8:GOSUB6010
+2300 GOSUB4310:GOSUB4410
+2310 CN=1:Q=1:GOSUB6010:Q=8:GOSUB6010
+2320 CN=0:GOTO1290
+2330 Q=7:GOSUB6010:GOSUB4910
+2340 CN=1:GOSUB6010:GOSUB4910:CN=0
+2350 Q=5:GOSUB6010:GOSUB4910
+2360 CN=1:Q=5:GOSUB6010:GOSUB4910
+2370 FORF=1 TOW1:W2=F-1
+2380 Z$=B$(F):IFF=5 THENZ$=B$(6)
+2390 GOSUB5010:NEXTF
+2400 IFW3<>1 THEN1340
+2410 CN=0
+2420 SR$="SPELER 1...":HO=.35:VE=.75:Q=9
+2430 IFT1(1)<T1(2) THENSR$="SPELER 2...":Q=9:GOTO2450
+2440 IFT1(1)=T1(2) THENSR$="SPELER 1 en SPELER 2":HO=2:Q=12
+2450 GOSUB650
+2460 GOSUB6010:GOSUB4910
+2470 IFCN=0 THENCN=1:GOTO2420
+2480 PL=TM
+2490 FORN=1 TO2:TM=N:GOSUB5110:NEXTN
+2500 T1(1)=0:T1(2)=0:CN=0
+2510 CN=0
+2520 HO=.065:VE=.75
+2530 SR$="     Nog een spel < J / N >":GOSUB650
+2540 IFCN=1 THEN2570
+2550 GOSUB210:IFIN=78 THEN950
+2560 IFIN<>74 THEN2550
+2570 HO=.2:VE=.85
+2580 SR$="    Hoeveel woorden?":GOSUB650
+2590 HO=.1:VE=.95
+2600 SR$="A=1   B=2   C=3   D=4 ... Z=26":GOSUB650
+2610 IFCN=1 THENCN=0:GOTO2650
+2620 GOSUB210:IF(IN<65)OR(IN>90) THEN2620
+2630 W3=IN-63
+2640 IFCN=0 THENCN=1:GOTO2520
+2650 Q=8:GOSUB6010:CN=1
+2660 GOSUB4310:GOSUB4410
+2670 CN=1:Q=8:GOSUB6010
+2680 REMFORN=1TO2:TM=N:GOSUB6600:NEXTN
+2690 REMT1(1)=0:T1(2)=0:CN=0
+2700 L1=0:L2=0:L3=0:L4=0
+2710 CN=0:GOTO1280
+3000 REM
+3010 REM * UITLEG *
+3020 REM
+3030 GOSUB100
+3040 HO=12:VE=0:GOSUB110
+3050 SR$="L I N G O":GOSUB150
+3060 HO=0:VE=2:GOSUB110
+3070 PRINT" Bij LINGO moeten twee spelers woorden"
+3080 PRINT" van vijf letters raden."
+3090 PRINT:PRINT" Een vierkantje om een letter betekent,"
+3100 PRINT" dat deze op de JUISTE plaats staat."
+3110 PRINT" Een streepje onder een letter geeft"
+3120 PRINT" aan, dat deze NIET op de juiste plaats"
+3130 PRINT" staat, maar WEL in het woord voorkomt."
+3140 PRINT:PRINT" De ij moet als y worden ingetypt."
+3150 PRINT:PRINT" Als een woord is geraden, worden twee"
+3160 PRINT" getallen op de Lingo-kaart vervangen"
+3170 PRINT" door sterretjes."
+3180 PRINT" Vijf sterretjes horizontaal, verticaal"
+3190 PRINT" of diagonaal geven LINGO."
+3200 PRINT:PRINT" Als een woord niet BINNEN 30 sec. is"
+3210 PRINT" ingetypt, gaat de beurt over naar de"
+3220 PRINT" andere speler.":HO=27:VE=22:GOSUB110
+3230 PRINT"< SPATIE >"
+3240 GOSUB210:IFIN<>32 THEN3240
+3250 GOSUB100:GOTO1050
+3500 REM
+3510 REM * SUBROUTINES *
+3520 REM
+4000 REM * TEKENT DIAGRAM *
+4010 SR$="LINGO"
+4020 HO=.43:VE=0:GOSUB650
+4030 H2=.7:V2=.65:HO=.3:FORX=1 TO6
+4040 VE=.1:GOSUB620:VE=V2:GOSUB630
+4050 H1=X*.08:HO=.3+H1:NEXTX:VE=.1
+4060 FORX=1 TO6
+4070 HO=.3:GOSUB620:HO=H2:GOSUB630
+4080 V1=X*.11:VE=.1+V1:NEXTX
+4090 A=.0825:B=.35:C=.195:D=.3:GOSUB4210
+4100 A=A+.645:GOSUB4210
+4110 A=.1125:B=.555:C=.135:D=.08:GOSUB4210
+4120 A=A+.645:GOSUB4210
+4130 A=.145:B=.45:C=.065:D=.08:GOSUB4210
+4140 A=A+.645:GOSUB4210
+4150 HO=.095:VE=.38:SR$="SPELER":GOSUB650
+4160 HO=HO+.645:GOSUB650
+4170 HO=.165:VE=.475:SR$="1":GOSUB650
+4180 HO=HO+.645:SR$="2":GOSUB650
+4190 RETURN
+4200 REM * TEKENT RECHTHOEKEN *
+4210 HO=A:VE=B:GOSUB620:HO=HO+C
+4220 GOSUB630
+4230 VE=VE+D:GOSUB630:HO=HO-C:GOSUB630
+4240 VE=VE-D:GOSUB630
+4250 RETURN
+4300 REM * VERWIJDERT STERRETJES *
+4310 FORB=1 TO2
+4320 FORI=1 TO5:FORJ=1 TO5
+4330 IFB=1 THENK1$(I,J)=""
+4340 IFB=2 THENK2$(I,J)=""
+4350 NEXTJ:NEXTI:NEXTB
+4360 RETURN
+4400 REM * EVEN EN ONEVEN *
+4410 FORA=1 TO70:GC(A)=0:NEXTA
+4420 FORB=1 TO2
+4430 FORI=1 TO5:FORJ=1 TO5
+4440 GOSUB260:SR=INT(RV*7)+1
+4450 SR=SR+(I-1)*7:SR=SR*2
+4460 IFB=1 THENSR=SR-1
+4470 IFGC(SR)=1 THEN4440
+4480 GOSUB300
+4490 IFB=1 THENK1$(I,J)=SR$
+4500 IFB=2 THENK2$(I,J)=SR$
+4510 GC(SR)=1:NEXTJ:NEXTI:NEXTB
+4520 RETURN
+4600 REM * ZET HOKJE OM LETTER *
+4610 A=.315:B=.196:C=.05:D=.075
+4620 HO=A+(X-1)*.08:VE=B+W2*.11:GOSUB620:HO=HO+C
+4630 GOSUB630
+4640 VE=VE-D:GOSUB630:HO=HO-C:GOSUB630
+4650 VE=VE+D:GOSUB630
+4660 RETURN
+4700 REM * ZET STREEP ONDER LETTER *
+4710 A=.315:B=.196
+4720 HO=A+(X-1)*.08:VE=B+W2*.11:GOSUB620:HO=HO+.05:GOSUB630
+4730 RETURN
+4800 REM * WIST GERADEN WOORD *
+4810 HO=.84:VE=.75:SR$=Z1$:GOSUB650
+4820 RETURN
+4900 REM * SPATIE VOOR VERVOLG *
+4910 HO=.75:VE=.95:SR$="< SPATIE >":GOSUB650
+4920 IFCN=1 THENRETURN
+4930 GOSUB210:IFIN<>32 THEN4930
+4940 RETURN
+5000 REM * WIST VORIGE WOORD *
+5010 FORX=1 TO5
+5020 HO=.245+X*.08:VE=.142+W2*.11
+5030 SR$=MID$(Z$,X,1):GOSUB650
+5040 IF(CN=0)OR(WN=1) THEN5060
+5050 GOSUB4610:REM wis hok
+5060 NEXTX:WN=0:RETURN
+5100 REM * PLAATST SCORE *
+5110 HO=.14+(TM-1)*.645:VE=.58
+5120 SR=T1(TM)
+5130 IFSR=0 THENHO=HO+.03
+5140 IFSR>950 THEN5160
+5150 IFSR=50 THENHO=HO+.015
+5160 GOSUB300:GOSUB650
+5170 RETURN
+5200 REM * ZET CIJFERS *
+5210 FORJ=1 TO5:FORI=1 TO5
+5220 IFTM=1 THENSR$=K1$(I,J)
+5230 IFTM=2 THENSR$=K2$(I,J)
+5240 HO=.232+I*.08:VE=.032+J*.11
+5250 IFLEN(SR$)<2 THENHO=HO+.013
+5260 GOSUB650:NEXTI:NEXTJ
+5270 RETURN
+5400 REM * PLAATST LINGO-CIJFERS *
+5410 V=.15:SD=15:GOSUB450
+5420 GOSUB260:I=INT(RV*5)+1
+5430 GOSUB260:J=INT(RV*5)+1
+5440 IF(TM=1)AND(K1$(I,J)="*") THEN5420
+5450 IF(TM=2)AND(K2$(I,J)="*") THEN5420
+5460 HO=.14+(TM-1)*.645:VE=V
+5470 IFTM=1 THENSR$=K1$(I,J)
+5480 IFTM=2 THENSR$=K2$(I,J)
+5490 IFLEN(SR$)<2 THENHO=HO+.013
+5500 GOSUB650:CN=1
+5510 HO=.232+I*.08:VE=.032+J*.11
+5520 IFLEN(SR$)<2 THENHO=HO+.013
+5530 GOSUB650:CN=0
+5540 SD=15:GOSUB450
+5550 HO=.232+I*.08+.013
+5560 SR$="*":GOSUB650:CN=1
+5570 HO=.14+(TM-1)*.645:VE=V
+5580 IFTM=1 THENSR$=K1$(I,J)
+5590 IFTM=2 THENSR$=K2$(I,J)
+5600 IFLEN(SR$)<2 THENHO=HO+.013
+5610 GOSUB650:CN=0
+5620 IFTM=1 THENK1$(I,J)="*"
+5630 IFTM=2 THENK2$(I,J)="*"
+5640 RETURN
+6000 REM * GOED ENZ *
+6010 HO=0:VE=.85
+6020 IFQ<5 THENVE=.75
+6030 SR$=F$(Q)
+6040 IF(TM=2)AND(Q=1) THENSR$=F$(Q+1)
+6050 IF(TM=2)AND(Q=3) THENSR$=F$(Q+1)
+6060 IFQ=5 THENSR$=F$(Q)+A$
+6070 GOSUB650
+6080 IF(Q<9)OR(CN=1) THENRETURN
+6090 GOSUB250:FORX=1 TO40
+6100 NEXTX:RETURN
+6200 REM * HORIZONTAAL *
+6210 FORT=1 TO16 STEP2
+6220 I=ASC(MID$(N$,T,1)):I=I-48
+6230 J=ASC(MID$(N$,T+1,1)):J=J-48
+6240 HO=.232+I*.08
+6250 VE=.032+J*.11
+6260 CN=1
+6270 IFTM=1 THENSR$=K1$(I,J)
+6280 IFTM=2 THENSR$=K2$(I,J)
+6290 IFLEN(SR$)<2 THENHO=HO+.013
+6300 GOSUB650:CN=0
+6310 IFLEN(SR$)>=2 THENHO=HO+.013
+6320 SR$="*":GOSUB650
+6330 IFTM=1 THENK1$(I,J)="*"
+6340 IFTM=2 THENK2$(I,J)="*"
+6350 SD=5:GOSUB450:NEXTT:RETURN
+6500 REM * ZET 8 STERRETJES *
+6510 VE=.032+M*.11:FORX=1 TO5:CN=1
+6520 HO=.232+X*.08:HO=HO+.013:SR$="*":GOSUB650
+6530 NEXTX:CN=0
+6540 FORZ=1 TO7
+6550 FORX=1 TO5:HO=.232+X*.08:HO=HO+.013
+6560 SR$=MID$(LI$,X,1):GOSUB650
+6570 IFTM=1 THENK1$(X,M)=SR$
+6580 IFTM=2 THENK2$(X,M)=SR$
+6590 NEXTX
+6600 IFCN=0 THENCN=1:GOSUB250:NEXTZ:GOTO6620
+6610 CN=0:NEXTZ
+6620 RETURN
+6800 REM * VERTICAAL *
+6810 HO=.232+M*.08:HO=HO+.013:FORX=1 TO5:CN=1
+6820 VE=.032+X*.11:SR$="*":GOSUB650
+6830 NEXTX:CN=0
+6840 FORZ=1 TO7
+6850 FORX=1 TO5:VE=.032+X*.11
+6860 SR$=MID$(LI$,X,1):GOSUB650
+6870 IFTM=1 THENK1$(M,X)=SR$
+6880 IFTM=2 THENK2$(M,X)=SR$
+6890 NEXTX
+6900 IFCN=0 THENCN=1:GOSUB250:NEXTZ:GOTO6920
+6910 CN=0:NEXTZ
+6920 RETURN
+7000 REM * DIAGONAAL LI/RE *
+7010 FORX=1 TO5:CN=1
+7020 HO=.232+X*.08:HO=HO+.013:VE=.032+X*.11
+7030 SR$="*":GOSUB650:NEXTX:CN=0
+7040 FORZ=1 TO7:FORX=1 TO5
+7050 HO=.232+X*.08:HO=HO+.013:VE=.032+X*.11
+7060 SR$=MID$(LI$,X,1):GOSUB650
+7070 IFTM=1 THENK1$(X,X)=SR$
+7080 IFTM=2 THENK2$(X,X)=SR$
+7090 NEXTX
+7100 IFCN=0 THENCN=1:GOSUB250:NEXTZ:GOTO7120
+7110 CN=0:NEXTZ
+7120 RETURN
+7200 REM * DIAGONAAL RE/LI *
+7210 Y=0:FORX=5 TO1 STEP-1:Y=Y+1:CN=1
+7220 HO=.232+X*.08:HO=HO+.013:VE=.032+Y*.11
+7230 SR$="*":GOSUB650:NEXTX:CN=0
+7240 FORZ=1 TO7
+7250 Y=0:FORX=5 TO1 STEP-1:Y=Y+1
+7260 HO=.232+X*.08:HO=HO+.013:VE=.032+Y*.11
+7270 SR$=MID$(LI$,Y,1):GOSUB650
+7280 IFTM=1 THENK1$(X,Y)=SR$
+7290 IFTM=2 THENK2$(X,Y)=SR$
+7300 NEXTX
+7310 IFCN=0 THENCN=1:GOSUB250:NEXTZ:GOTO7330
+7320 CN=0:NEXTZ
+7330 RETURN
+7500 REM * NOG N WOORDEN *
+7510 HO=0:VE=0:SR$=" NOG ":GOSUB650
+7520 VE=.05:HO=.05:SR=W3:GOSUB300:GOSUB650
+7530 RETURN
+25000 DATA"2151321343342555"
+25010 DATA"1151322343145435"
+25020 DATA"1141322353341545"
+25030 DATA"3112522343341555"
+25040 DATA"1151322343341555"
+25050 DATA"3122421353244435"
+25060 DATA"1121422353541535"
+25070 DATA"3141225314341555"
+25080 DATA"3151121343244555"
+25090 DATA"1151325213442535"
+25100 DATA"1141522314243555"
+25110 DATA"2151125334441545"
+25120 DATA"1131425243142555"
+25130 DATA"2151223213541545"
+25140 DATA"3151221353441535"
+25150 DATA"3151122334441555"
+25160 DATA"    LINGO-kaart van speler 1"
+25170 DATA"    LINGO-kaart van speler 2"
+25180 DATA"Speler 1 - Raad het woord:"
+25190 DATA"Speler 2 - Raad het woord:"
+25200 DATA"     Het woord is.. : "
+25210 DATA"        Nog GEEN Lingo !"
+25220 DATA"     Jammer, NIET geraden!!"
+25230 DATA" Ik maak (nieuwe) LINGO-kaarten."
+25240 DATA"  PROFICIAT, JE HEBT GEWONNEN!"
+25250 DATA"        G E R A D E N !!"
+25260 DATA"         Je tijd is om!!"
+25270 DATA"  JULLIE HEBBEN GELIJK GESPEELD!"
+26000 DATA"adres","agent","album","altyd","angel","angst"
+26010 DATA"anker","april","arend","aster","avond","barst"
+26020 DATA"begin","bingo","blank","blauw","blind","bloed"
+26030 DATA"bloem","blond","bocht","bodem","bonus","borst"
+26040 DATA"boter","boven","brand","breuk","brief","broek"
+26050 DATA"brons","bruid","bruin","chaos","cyfer","clown"
+26060 DATA"datum","dicht","divan","dorst","dozyn","drank"
+26070 DATA"dreun","druif","dutje","dwars","dweil","dwerg"
+26080 DATA"eland","enorm","ernst","extra","fabel","fiets"
+26090 DATA"flauw","flink","flits","fluit","friet","fruit"
+26100 DATA"galop","garen","gazon","gebak","gebit","gebod"
+26110 DATA"gelyk","geluk","gemak","gerst","gutal","gewas"
+26120 DATA"gezin","ginds","giraf","gleuf","grauw","grens"
+26130 DATA"griep","grind","groen","groep","groet","grond"
+26140 DATA"hagel","halte","hamer","haven","haver","havik"
+26150 DATA"helft","hoera","hoest","hotel","hulst","humor"
+26160 DATA"hyena","jacht","jager","japon","jarig","jeugd"
+26170 DATA"joker","juist","kabel","kamer","kaper","kapot"
+26180 DATA"kater","kerst","kieuw","klant","klauw","klein"
+26190 DATA"kleur","klier","klomp","kluif","kluit","knots"
+26200 DATA"koers","koets","kogel","koper","koren","korst"
+26210 DATA"kramp","krans","krant","kreng","krent","kring"
+26220 DATA"kroeg","kruid","kruin","kruis","kruit","kunst"
+26230 DATA"kwart","kwast","lakei","laken","langs","larve"
+26240 DATA"later","lenig","licht","linde","links","liter"
+26250 DATA"loket","loper","lucht","luier","macht","mager"
+26260 DATA"markt","melig","metro","myter","mixer","model"
+26270 DATA"molen","nacht","nagel","navel","nicht","niets"
+26280 DATA"nieuw","nydig","nodig","oksel","omdat","omweg"
+26290 DATA"onder","onwys","opzet","orgel","parel","party"
+26300 DATA"pasen","pauze","piano","pinda","plank","plant"
+26310 DATA"plein","ploeg","plons","pluim","pluis","poema"
+26320 DATA"priem","prima","prins","proef","pruik","pruim"
+26330 DATA"psalm","puist","radys","radio","raket","ravyn"
+26340 DATA"rebus","recht","ryles","roest","ronde","rotje"
+26350 DATA"route","rugby","ruine","ruzie","sabel","salto"
+26360 DATA"samen","schar","schat","schep","schyf","schil"
+26370 DATA"schip","schok","schop","schor","schot","schub"
+26380 DATA"schuw","score","slang","slank","slurf","snert"
+26390 DATA"snoek","snoep","snoer","snuit","speld","spier"
+26400 DATA"spion","spoed","spoel","sport","sprei","spuit"
+26410 DATA"stand","stang","stank","steil","sterk","stier"
+26420 DATA"stoel","stoep","stoer","stomp","storm","straf"
+26430 DATA"strak","stryd","strik","strip","strop","tafel"
+26440 DATA"tarwe","tempo","terug","thuis","tyger","toren"
+26450 DATA"trein","troep","trouw","vacht","vader","varen"
+26460 DATA"vyand","vlieg","vlies","vloed","vloei","vloek"
+26470 DATA"vloer","vocht","vogel","vorst","vroeg","vrouw"
+26480 DATA"vuist","wacht","wafel","wagen","wagon","wapen"
+26490 DATA"water","watje","wyzer","winst","woest","worst"
+26500 DATA"zacht","zadel","zalig","zebra","zelfs","zyweg"
+26510 DATA"zomer","zonde","zwart","zwerm"
+26520 DATA"abuis","actie","afgod","afrit","afzet","amper"
+26530 DATA"ander","animo","anjer","armoe","asiel","avery"
+26540 DATA"bacil","bajes","baken","balie","banjo","baret"
+26550 DATA"barok","baron","bazig","bazin","beits","bekaf"
+26560 DATA"benul","berin","beton","bivak","bizar","bizon"
+26570 DATA"bolus","bravo","brein","bries","bruto","bugel"
+26580 DATA"buste","citer","cobra","coupe","danig","debat"
+26590 DATA"decor","delta","depot","dikte","diner","dogma"
+26600 DATA"drang","drift","dwang","email","exact","fagot"
+26610 DATA"fakir","ficus","filet","firma","fjord","flank"
+26620 DATA"flets","fleur","flora","fluor","fonds","forel"
+26630 DATA"forum","frank","frats","front","fusie","gaper"
+26640 DATA"garde","gelid","gemis","genot","geval","gevat"
+26650 DATA"gewis","glans","glimp","globe","gloed","godin"
+26660 DATA"griet","gryns","groef","groei","gruis","gunst"
+26670 DATA"harem","harig","hevig","hinde","holte","hopje"
+26680 DATA"horde","hulde","imker","index","inham","inleg"
+26690 DATA"inval","inzet","islam","kader","kandy","kapel"
+26700 DATA"karig","karwy","kavel","kledy","klont","kluis"
+26710 DATA"komyn","komst","kopie","koran","korps","kozyn"
+26720 DATA"krats","kroes","larie","latyn","lepra","lyzig"
+26730 DATA"lotus","lover","lunch","magie","manie","marge"
+26740 DATA"matig","menig","moker","morel","motel","motie"
+26750 DATA"mythe","nader","naief","natie","nerts","nobel"
+26760 DATA"nogal","notie","nozem","odeur","okapi","omzet"
+26770 DATA"onryp","onwel","onwil","opdat","opera","ophef"
+26780 DATA"opium","oprit","optie","oxyde","palet","pater"
+26790 DATA"peluw","pyler","pioen","piste","plint","poets"
+26800 DATA"poker","polis","polka","porie","pover","prauw"
+26810 DATA"prent","prive","proza","puber","rafel","ratel"
+26820 DATA"rayon","reuma","riant","ribes","ryweg","ritme"
+26830 DATA"robyn","roman","rotan","rozyn","rumba","sajet"
+26840 DATA"saldo","salon","salvo","satyn","schel","schyn"
+26850 DATA"schik","schim","schol","schut","sepia","serum"
+26860 DATA"sfinx","shirt","sjeik","sjerp","sjiek","sleur"
+26870 DATA"sloep","smart","snauw","snoet","sober","soldy"
+26880 DATA"spalk","split","spore","sprot","stage","stern"
+26890 DATA"steun","steur","stola","stolp","stram","stulp"
+26900 DATA"suite","super","tabel","taboe","takel","tango"
+26910 DATA"tapir","tenor","thans","thema","tydig","tiran"
+26920 DATA"trema","trend","troef","truck","uitje","uniek"
+26930 DATA"urine","veraf","vyzel","virus","visum","vlerk"
+26940 DATA"vlier","vryaf","vurig","wasem","wazig","wodka"
+26950 DATA"woerd","wrang","wulps","zager","zedig","zenuw"
+26960 DATA"zicht","zodat","zucht","zurig","zwerk","zwoel"
+30000 REM
+30010 REM
+30020 REM *** TROS BASICODE-3 ****
+30030 REM *                      *
+30040 REM *      * LINGO *       *
+30050 REM                        *
+30060 REM P     22 JUNI 1989     *
+30070 REM O
+30080 REM S    COMMODORE 64      4
+30090 REM T                      5
+30100 REM B   INGEZONDEN DOOR :  0
+30110 REM U
+32000 REM S   P.A. KESTELOO      *
+32010 REM     REEDE 34           *
+32020 REM *   3232 CV BRIELLE    *
+32030 REM *                      *
+32040 REM *   TEL.01810-15569    *
+32050 REM *                      *
+32060 REM ****** HILVERSUM *******
+32070 REM
+32080 REM TROS-RADIO dd 891108

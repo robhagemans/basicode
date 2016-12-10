@@ -1,0 +1,188 @@
+
+1000 A=500:GOTO20:REM ** UITLEG bij CASSETTE-LABELS **
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1410:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Wilt u deze uitleg op"
+1060 PRINT:PRINT"   1  Het beeldscherm,"
+1070 PRINT"   2  De printer."
+1080 PRINT:PRINT"Welk nummer kiest u ";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1220
+1100 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+1110 INPUT"begin van elke regel ";HL
+1120 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+1130 INPUT"u op elke regel ";I:HR=HL+I-1
+1140 PRINT:PRINT"Hoeveel regels tekst wilt u op"
+1150 INPUT"elk blad ";VR:VR=VR-3
+1160 PRINT"Gebruikt u (K)ettingpapier of"
+1170 PRINT"           (L)osse vellen  (K/L)"
+1180 GOSUB210:IFIN=76 THENVL=-1:GOTO1220
+1190 IFIN<>75 THEN GOSUB250:GOTO1160
+1200 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+1210 INPUT"laten overslaan ";VL:VR=VR+VL
+1220 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1230 GOSUB1380:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1360
+1240 IFLEN(R$)>HR-HL THEN GOSUB1800
+1250 GOSUB1440:IFR$<>"" THENR$=R$+" "
+1260 R$=R$+D$:GOTO1240
+1270 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1290
+1280 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1290 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1300 IFSC=1 THEN1380
+1310 IFVL>=0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOTO1350
+1320 PRINT"Leg een nieuw vel in de printer en"
+1330 PRINT"druk dan op RETURN/ENTER"
+1340 GOSUB210:IFIN<>13 THEN1340
+1350 AL=VL
+1360 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1270
+1370 SR$="":GOSUB1270:AL=VL:RETURN
+1380 HO=3:VE=VT:GOSUB110
+1390 SR$="VERVOLG: druk op <return>":GOSUB150
+1400 GOSUB210:IFIN<>13 THEN1400
+1410 GOSUB100:AL=VL:SR$=T$
+1420 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1430 PRINT:PRINT:RETURN
+1440 READD$
+1450 IFD$="" THEN1440
+1460 IFLEFT$(D$,1)="." THEN1510
+1470 IFLEFT$(D$,1)<>"!" THENRETURN
+1480 IFD$="!" THEND$="":GOTO1500
+1490 D$=MID$(D$,2)
+1500 GOSUB1740:GOTO1450
+1510 IFD$<>".E" THEN1560
+1520 J=1:GOSUB1740:T$="Einde van de uitleg"
+1530 SR$="":GOSUB1270:GOSUB1270:SR$=T$:GOSUB1270:T$=""
+1540 SR$="":GOSUB1270:IFAL<>VL THEN1540
+1550 GOTO950
+1560 DD$=MID$(D$,2,1):D$=MID$(D$,3)
+1570 IFDD$<>"R" THEN1620
+1580 IFSC=2 THENRETURN
+1590 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1270:R$=""
+1600 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1610 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1440
+1620 IFDD$<>"M" THEN1650
+1630 I=VAL(D$):MM$="":IFI+HL=0 THEN1440
+1640 MM$=LEFT$(S$,I+HL):GOTO1440
+1650 IFDD$="P" THENJ=VAL(D$):GOSUB1740:GOSUB1760:GOTO1440
+1660 IFDD$="T" THENT$=D$:J=10:GOSUB1740:GOSUB1760:GOTO1580
+1670 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1440
+1680 IFDD$<>"F" THEN1710
+1690 J=VAL(D$):GOSUB1740
+1700 J=J-1:IFJ>-1 THENSR$="":GOSUB1270:GOTO1700
+1710 IFDD$<>"C" THEN1730
+1720 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1270
+1730 GOTO1440
+1740 GOSUB1800:SR$=R$:GOSUB1270:R$="":J=J-1
+1750 RETURN
+1760 IF(SC=1)OR(AL+J>VR)THEN1780
+1770 SR$="":GOSUB1270:GOSUB1270:RETURN
+1780 IFAL<>VL THENSR$="":GOSUB1270:GOTO1780
+1790 RETURN
+1800 K=HR-HL+1-LEN(M$)
+1810 IFLEN(R$)<=K THENRETURN
+1820 IFMID$(R$,K,1)=" " THEN1850
+1830 K=K-1:IFK>0 THEN1820
+1840 SR$="":GOTO1860
+1850 SR$=LEFT$(R$,K-1):R$=MID$(R$,K+1)
+1860 GOSUB1270:GOTO1800
+25000 DATA"Handleiding CASLABEL"
+25010 DATA"!Met het programma CASLABEL is het mogelijk"
+25020 DATA"labels voor (muziek)cassettes te printen."
+25030 DATA"Er is uitgegaan van een 80-koloms printer."
+25040 DATA"De printer moet wel de volgende printopties"
+25050 DATA"hebben:"
+25060 DATA"!! 1  reset"
+25070 DATA"! 2  superscript"
+25080 DATA"! 3  linespace  (1/12, 3/36, 6/72 of 12/144)"
+25090 DATA"!!Ontbreken de laatste twee dan is het programma"
+25100 DATA"helaas onbruikbaar.",".P9"
+25110 DATA"Het programma bewaart de ingevoerde gegevens"
+25120 DATA"op een door u te kiezen opslagmedium. Later"
+25130 DATA"kunnen gegevens verwijderd, gewijzigd en/of"
+25140 DATA"toegevoegd worden."
+25150 DATA"!Het programma start met het Hoofdmenu:"
+25160 DATA"!.C 1 - Invoer  ",".C 2 - Uitvoer "
+25170 DATA".C 3 - Wijzigen","!.C 0 - Stop    "
+25180 DATA"!!Hierna volgt uitleg van de verschillende"
+25190 DATA"menukeuzes."
+25200 DATA".T 1 - Invoer"
+25210 DATA"!!Na deze keuze controleert het programma of er"
+25220 DATA"al/nog een bestand in het geheugen staat."
+25230 DATA"!Zoja, dan vraagt het programma of dat bestand"
+25240 DATA"weggeschreven moet worden."
+25250 DATA"!Het Invoermenu vraagt:"
+25260 DATA"!.C 1 - Keyboard    ",".C 2 - Opslagmedium"
+25270 DATA"!.C 0 - M E N U     ",".P9"
+25280 DATA"!!Keuze 1 laat u gegevens vanaf het toetsenbord"
+25290 DATA"invoeren (max.30 titels per kant)."
+25300 DATA"!!Keuze 2 geeft de mogelijkheid een eerder"
+25310 DATA"gemaakt bestand vanaf uw opslagmedium te laden."
+25320 DATA"!!Keuze 0 laat u terugkeren naar het Hoofdmenu."
+25330 DATA".T 2 - Uitvoer"
+25340 DATA"!!Ook bij deze keuze wordt gecontroleerd of een"
+25350 DATA"bestand in het geheugen aanwezig is."
+25360 DATA"!Het submenu Uitvoer vraagt:"
+25370 DATA"!.C 1 - Monitor     ",".C 2 - Opslagmedium"
+25380 DATA".C 3 - Printer     ","!.C 0 - M E N U     "
+25390 DATA".P9"
+25400 DATA"!!Keuze 1 drukt het bestand af op uw monitor."
+25410 DATA"!!Keuze 2 schrijft het bestand naar uw"
+25420 DATA"opslagmedium."
+25430 DATA"!!Keuze 3 maakt een afdruk via de printer."
+25440 DATA"!De benodigde codes voor het printen worden"
+25450 DATA"door het programma gelezen uit de DATA-regels"
+25460 DATA"vanaf 25000. U dient in die regels de codes"
+25470 DATA"aan uw printer aan te passen voordat u het"
+25480 DATA"programma gaat gebruiken.",".P9"
+25490 DATA"!De afdruk is (als het goed is) klaar om"
+25500 DATA"uitgeknipt en in een cassettedoosje gedaan te"
+25510 DATA"worden.","!Titels die niet op 1 regel passen"
+25520 DATA"worden afgebroken en op de volgende regel(s)"
+25530 DATA"ingesprongen verder afgedrukt.","!Door"
+25540 DATA"superscript en een kleine linespace te"
+25550 DATA"gebruiken kunnen veel titels vermeld worden."
+25560 DATA"Ik ben nog geen LP tegen gekomen waarvan de"
+25570 DATA"titels niet op de label pasten."
+25580 DATA"!!Keuze 0 laat u terugkeren naar het Hoofdmenu."
+25590 DATA".T 3 - Wijzigen"
+25600 DATA"!!Het submenu Wijzigen biedt de volgende keuzes:"
+25610 DATA"!.C 1 - Wijzig file        "
+25620 DATA".C 2 - Wijzig opslagmedium"
+25630 DATA".C 3 - Wis file           "
+25640 DATA"!.C 0 - M E N U            ",".P9"
+25650 DATA"!!Keuze 1 controleert welk bestand u wilt"
+25660 DATA"wijzigen en toont vervolgens de reeds ingevoerde"
+25670 DATA"titels/namen. Eerst kunnen de titels van kant A"
+25680 DATA"gewijzigd worden. Door met de pijltoetsen de"
+25690 DATA"aanwijzer naar de laatste regel te brengen"
+25700 DATA"geeft u aan dat u klaar bent met wijzigen."
+25710 DATA"!Op dezelfde wijze komt kant B aan de beurt."
+25720 DATA".P9","!!Keuze 2 laat zien welk opslagmedium in"
+25730 DATA"gebruik is en vraagt vervolgens welk medium"
+25740 DATA"het moet worden."
+25750 DATA"!!Keuze 3 is machine-afhankelijk als een ander"
+25760 DATA"medium dan een cassetterecorder wordt gebruikt,"
+25770 DATA" daarom is de routine in de regelnummers vanaf"
+25780 DATA"20000 gepland. Twee voorbeelden (voor PC en"
+25790 DATA"Spectrum) zijn in REM-regels opgenomen."
+25800 DATA"!!Keuze 0 keert weer terug naar Hoofdmenu."
+25810 DATA".TProefbestand"
+25820 DATA"!Er is een apart programma waarmee een"
+25830 DATA"proefbestand",".RDE TOEK","aangemaakt wordt."
+25840 DATA"Het bestaat uit de titels van de LP"
+25850 DATA"De Toekomst van Bram Vermeulen."
+25860 DATA"!De filenaam wordt door het programma"
+25870 DATA"automatisch samengesteld uit de eerste"
+25880 DATA"zeven letters van de titel van kant A."
+25890 DATA"!Laat de titel op kant A dus nooit leeg!!"
+25900 DATA".T Auteur","!"
+32000 DATA".C Karel van der Wissel"
+32010 DATA".C Nieuwstraat 306     "
+32020 DATA".C 3201 EG  Spijkenisse"
+32030 DATA".C 01880 - 13398       "
+32040 DATA"!Het programma werd ontwikkeld op een"
+32050 DATA"IBM-compatible PC LASER XT2 in september 1989."
+32060 DATA".E"
+32070 REM
+32080 REM TROS-RADIO dd 900425

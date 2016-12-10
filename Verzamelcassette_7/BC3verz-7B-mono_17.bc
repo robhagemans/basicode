@@ -1,0 +1,68 @@
+
+1000 A=200:GOTO20:REM === let-ter-gre-pen ===
+1010 DIMG(11),WD$(10),R$(10)
+1020 GD=0:FO=0
+1030 PRINT"EVEN GEDULD":T=0
+1040 REM --- woorden tellen ---
+1050 READA$:IFA$<>"ZZZ" THENT=T+1:GOTO1050
+1060 W=INT(T/10)
+1070 REM --- getallen 1-10 schudden ---
+1080 FORN=1 TO10:G(1+N)=N:NEXTN
+1090 FORN=1 TO9:GOSUB260:X=N+1+INT(RV*(11-N))
+1100 G(N)=G(X):G(X)=G(N+1):NEXTN
+1110 G(10)=G(11)
+1120 REM --- lees 10 woorden uit DATA ---
+1130 RESTORE:FORM=1 TO10
+1140 GOSUB260:N=1+INT(RV*W)
+1150 FORH=1 TON:READA$:NEXTH:WD$(M)=A$
+1160 IFN<W THENFORH=1 TO(W-N):READA$:NEXTH
+1170 NEXTM
+1180 REM === hoofdlus ===
+1190 FORM=1 TO10:GOSUB100
+1200 HO=5:VE=5:GOSUB110:PRINT"Ver-deel in let-ter-gre-pen:"
+1210 REM --- haal een woord op ---
+1220 P=G(M):X$=WD$(P):SR$=X$:GOSUB330:XC$=SR$
+1230 REM --- verwijder de streepjes ---
+1240 Y$="":FORN=1 TOLEN(X$)
+1250 L$=MID$(X$,N,1):IFL$<>"-" THENY$=Y$+L$
+1260 NEXTN
+1270 HO=5:VE=9:GOSUB110:PRINTY$
+1280 HO=5:VE=13:GOSUB110:INPUTZ$:SR$=Z$:GOSUB330:ZC$=SR$
+1290 HO=5:VE=17:GOSUB110
+1300 IFZC$<>XC$ THEN1320
+1310 PRINT"GOED GEDAAN":GD=GD+1:R$(P)=" +  ":GOTO1330
+1320 PRINT"Mis, het is ";X$:FO=FO+1:R$(P)=" -  "
+1330 HO=5:VE=21:GOSUB110:PRINT"Tik op de SPATIEBALK";
+1340 GOSUB210:IFIN<>32 THEN1340
+1350 NEXTM:GOSUB100
+1360 PRINT"Je had er ";GD;" goed en ";FO;" fout."
+1370 FORN=1 TO10:PRINT:PRINTR$(G(N));WD$(G(N)):NEXTN
+1380 PRINT:PRINT"Wil je nog een keer (J/N) ";
+1390 GOSUB210:IFIN=74 THEN1000
+1400 GOTO950
+1410 REM--------------------------------------------------
+25000 DATA"ha-mer","spij-ker","ko-pen","ze-ker","ke-ver"
+25010 DATA"pom-pen","win-nen","rij-den","vol-gen","ra-den"
+25020 DATA"vlie-gen","val-len","gra-ven","hap-pen","ma-ken"
+25030 DATA"ste-ken","vul-len","pie-pen","hou-den","kij-ken"
+25040 DATA"bin-den","den-ken","rui-ken","hoek-je","vin-ger"
+25050 DATA"stok-je","boek-je","wa-ter","deu-ren","mu-ren"
+25060 DATA"tan-den","o-ren","ste-nen","wie-len","klok-ken"
+25070 DATA"vis-sen","knik-ker","ne-gen","au-to","klim-men"
+25080 DATA"ZZZ"
+25090 REM------------------------
+30000 REM Het  programma kiest 10
+30010 REM DATAwoorden, die in een
+30020 REM geschudde volgorde wor-
+30030 REM den aangeboden.
+30040 REM De  woorden  mogen door
+30050 REM andere worden vervangen
+30060 REM het aantal is vrij maar
+30070 REM het moet een tienvoud
+30080 REM zijn + sluitwoord "ZZZ"
+30090 REM------------------------
+32000 REM Ch.W.Brederode
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES  LISSE
+32030 REM
+32040 REM TROS-RADIO dd 900328
