@@ -132,8 +132,9 @@ class BasicodeStream(object):
                 raise EndOfTape()
         if self.filetype == 'D':
             record_num = self.bitstream.read_byte()
+            print record_num
             if record_num != self.record_num:
-                logging.debug('Record number does not match')
+                logging.error('Record number does not match')
         self.record_num += 1
         self.record_stream = io.BytesIO()
         # xor sum includes STX byte

@@ -1,0 +1,300 @@
+
+1000 A=1000:GOTO20:REM WERELDKAMPIOEN WIELRENNEN
+1010 REM INITIALISATIE
+1020 AK=62:JR=1927
+1030 DIMA$(AK,6)
+1040 FORX=0 TOAK
+1050 FORY=1 TO6:READA$(X,Y):NEXTY:NEXTX
+1060 GOSUB1640:REM BEGINSCHERM
+1070 REM
+1080 REM MENU
+1090 GOSUB1590
+1100 PRINT"Menu"
+1110 PRINT"----"
+1120 HO=0:VE=5:GOSUB110
+1130 IF(JR=1926)OR(JR=1990) THENPRINT"----> STOP":GOTO1150
+1140 PRINT"Jaar:";JR
+1150 HO=0:VE=7:GOSUB110
+1160 SR$="Maak keuze mbv cursor en return"
+1170 GOSUB150:PRINT:PRINT
+1180 Q$="           "
+1190 PRINTQ$;"[Up]    = Jaar+1"
+1200 PRINTQ$;"[Right] = Jaar+10"
+1210 PRINTQ$;"[Down]  = Jaar-1"
+1220 PRINTQ$;"[Left]  = Jaar-10"
+1230 PRINT
+1240 HO=6:VE=5:GOSUB110:GOSUB210
+1250 IFIN=13 THEN1340
+1260 IFIN=29 THENJR=JR+10
+1270 IFIN=28 THENJR=JR-10
+1280 IFIN=30 THENJR=JR-1
+1290 IFIN=31 THENJR=JR+1
+1300 IFJR<1926 THENJR=1926
+1310 IFJR>1990 THENJR=1990
+1320 GOTO1120
+1330 REM
+1340 IF(JR=1926)OR(JR=1990) THEN950
+1350 KZ=JR-1927:GOSUB1590:REM KOP
+1360 SR$="Jaar   ":GOSUB150
+1370 SR=JR:GOSUB300:PRINTSR$
+1380 SR$="Plaats ":GOSUB150
+1390 PRINTA$(KZ,1)
+1400 SR$="Land   ":GOSUB150
+1410 PRINTA$(KZ,2)
+1420 SR$="Afstand":GOSUB150
+1430 PRINTA$(KZ,3);" km."
+1440 PRINT
+1450 FORX=4 TO6
+1460 SR=X-3:GOSUB300:GOSUB150
+1470 PRINTA$(KZ,X)
+1480 NEXTX
+1490 REM
+1500 HO=8:VE=22:GOSUB110
+1510 SR$="[M]enu [P]rinten ":GOSUB150
+1520 GOSUB210
+1530 IFIN=13 THEN1090
+1540 IFIN=77 THEN1090
+1550 IFIN<>80 THEN1520
+1560 REM
+1570 FORVE=0 TO10:FORHO=0 TO40:GOSUB220:SR$=CHR$(IN)
+1580 GOSUB350:NEXTHO:GOSUB360:NEXTVE:GOTO1500
+1590 GOSUB100
+1600 HO=4:VE=0:SR$="WERELDKAMPIOEN WIELRENNEN"
+1610 GOSUB110:GOSUB150
+1620 HO=0:VE=2:GOSUB110
+1630 RETURN
+1640 CN=0:GOSUB600
+1650 READX,Y
+1660 HO=X/200:VE=.25+Y/400
+1670 GOSUB620
+1680 READX,Y
+1690 IF(X=-1)AND(Y=-1) THEN1650
+1700 IF(X=-2)AND(Y=-2) THEN1750
+1710 HO=X/200:VE=.25+Y/400
+1720 GOSUB630
+1730 GOTO1680
+1740 REM
+1750 HO=.24:VE=.75
+1760 SR$="W I E L R E N N E N"
+1770 GOSUB650:GOSUB210
+1780 REM
+1790 GOSUB1590:REM KOP
+1800 PRINT"Algemeen"
+1810 PRINT"--------"
+1820 REM
+1830 SR$="Organis.":GOSUB150
+1840 PRINT"Belgie      8x"
+1850 SR$="Landen  ":GOSUB150
+1860 PRINT"Frankrijk   7x"
+1870 Q$="              "
+1880 PRINTQ$;"Italie      7x"
+1890 PRINTQ$;"Zwitserland 7x"
+1900 PRINTQ$;"Nederland   5x"
+1910 PRINTQ$;"BRD         4x"
+1920 PRINTQ$;"Denemarken  4x"
+1930 PRINTQ$;"Spanje      3x"
+1940 PRINTQ$;"DDR         2x"
+1950 PRINTQ$;"Engeland    2x"
+1960 PRINT
+1970 SR$="Winnende":GOSUB150
+1980 PRINT"Belgie     22x"
+1990 SR$="Landen  ":GOSUB150
+2000 PRINT"Italie     14x"
+2010 PRINTQ$;"Nederland   7x"
+2020 PRINTQ$;"Frankrijk   5x"
+2030 PRINTQ$;"BRD         2x"
+2040 PRINTQ$;"USA         2x"
+2050 PRINTQ$;"Zwitserland 2x"
+2060 PRINTQ$;"Engeland    1x"
+2070 PRINTQ$;"Ierland     1x    [toets]";
+2080 GOSUB210
+2090 REM
+2100 GOSUB1590
+2110 PRINT"Algemeen"
+2120 PRINT"--------"
+2130 SR$="Wereld- ":GOSUB150
+2140 PRINT"Alfredo BINDA (I)    3x"
+2150 SR$="kampioen":GOSUB150
+2160 PRINT"Rik V.STEENBERGEN (B)3x"
+2170 Q$="              "
+2180 PRINTQ$;"Eddy MERCKX (B)      3x"
+2190 PRINTQ$;"Georges RONSSE (B)   2x"
+2200 PRINTQ$;"Brik SCHOTTE (B)     2x"
+2210 PRINTQ$;"Rik VAN LOOY (B)     2x"
+2220 PRINTQ$;"Freddy MAERTENS (B)  2x"
+2230 PRINTQ$;"Greg LEMOND (USA)    2x"
+2240 PRINT
+2250 SR$="Afstand ":GOSUB150
+2260 PRINT"Gemidd. 262.05 km"
+2270 SR$="Snelheid":GOSUB150
+2280 PRINT"Gemidd. 36.820 km"
+2290 PRINT
+2300 HO=30:VE=22:GOSUB110
+2310 PRINT"[toets]";:GOSUB210
+2320 RETURN
+2330 REM
+25000 DATA"Adenau (Nurburgring)","Duitsland","182.480"
+25010 DATA"Alfredo BINDA (I)","Constante GIRARDENGO (I)"
+25020 DATA"Domenico PIEMONTESI (I)","Boedapest","Hongarije"
+25030 DATA"192","Georges RONSSE (B)","Herbert NEBE (D)"
+25040 DATA"Bruno WOLKE (D)","Zurich","Zwitserland","200"
+25050 DATA"Georges RONSSE (B)","Nicolas FRANTZ (Lux)"
+25060 DATA"ALfredo BINDA (I)","Luik","Belgie","210"
+25070 DATA"Alfredo BINDA (I)","Learco GUERRA (I)"
+25080 DATA"Georges RONSSE (B)","Kopenhagen","Denemarken"
+25090 DATA"172","Learco GUERRA (I)","Ferdinand LE DROGO (F)"
+25100 DATA"Albert BUCHI (Zwi)","Rome","Italie","206.1"
+25110 DATA"Alfredo BINDA (I)","Remo BERTONI (I)"
+25120 DATA"Nicolas FRANTZ (Lux)","Montlhery","Frankrijk"
+25130 DATA"250","Georges SPEICHER (F)","Antonin MAGNE (I)"
+25140 DATA"Marinus VALENTIJN (Ned)","Leipzig","Duitsland"
+25150 DATA"225.6","Karel KAERS (B)","Learco GUERRA (I)"
+25160 DATA"Gustave DANNEELS (B)","Floreffe","Belgie","216"
+25170 DATA"Jean AERTS (B)","Luciano MONTERO (Sp)"
+25180 DATA"Gustave DANNEELS (B)","Bern","Zwitserland"
+25190 DATA"218.4","Antonin MAGNE (I)","Aldo BINI (I)"
+25200 DATA"Theo MIDDELKAMP (Ned)","Kopenhagen","Denemarken"
+25210 DATA"297.5","Eloi MEULENBERG (B)","Emil KIJEWSKI (D)"
+25220 DATA"Paul EGLI (Zwi)","Valkenburg","Nederland","273"
+25230 DATA"Marcel KINT (B)","Paul EGLI (Zwi)"
+25240 DATA"Leo AMBERG","Niet verreden ivm WOII","-","-","-"
+25250 DATA"-","-","Niet verreden ivm WOII","-","-","-","-"
+25260 DATA"-","Niet verreden ivm WOII","-","-","-","-","-"
+25270 DATA"Niet verreden ivm WOII","-","-","-","-","-"
+25280 DATA"Niet verreden ivm WOII","-","-","-","-","-"
+25290 DATA"Niet verreden ivm WOII","-","-","-","-","-"
+25300 DATA"Niet verreden ivm WOII","-","-","-","-","-"
+25310 DATA"Zurich","Zwitserland","270","Hans KNECHT (Zwi)"
+25320 DATA"Marcel KINT (B)","Rik VAN STEENBERGEN (B)"
+25330 DATA"Reims","Frankrijk","274","Theo MIDDELKAMP (Ned)"
+25340 DATA"Berten SERCU (B)","Jefke JANSEN (Ned)"
+25350 DATA"Valkenburg","Nederland","266.8"
+25360 DATA"Brik SCHOTTE (B)","Apo LAZARIDES (F)"
+25370 DATA"Lucien TEISSEIRE (F)","Kopenhagen (Lyngby)"
+25380 DATA"Denemarken","290","Rik VAN STEENBERGEN (B)"
+25390 DATA"Ferdi KUBLER (Zwi)","Fausto COPPI (I)"
+25400 DATA"Moorslede","Belgie","284","Brik SCHOTTE (B)"
+25410 DATA"Theo MIDDELKAMP (Ned)","Fedri KUBLER (Zwi)"
+25420 DATA"Varese","Italie","295.2","Fedri KUBLER (Zwi)"
+25430 DATA"Fiorenze MAGNI (I)","Antonio BEVILACQUE (I)"
+25440 DATA"Luxemburg","Luxemburg","280","Heinz MULLER (D)"
+25450 DATA"Gottfried WEILENMANN (Zwi)","Ludwig HORMANN (D)"
+25460 DATA"Lugano","Zwitserland","270","Fausto COPPI (I)"
+25470 DATA"Germain DERYCKE (B)","Stan OCKERS (B)"
+25480 DATA"Solingen","West-Duitsland","240"
+25490 DATA"Louison BOBET (Fr)","Fritz SCHAER (Zwi)"
+25500 DATA"Charlie GAUL (Lux)","Frascati","Italie","293.1"
+25510 DATA"Stan OCKERS (B)","Jempi SCHMITZ (Lux)"
+25520 DATA"Germain DERYCKE (B)","Kopenhagen","Denemarken"
+25530 DATA"285.1","Rik VAN STEENBERGEN (B)"
+25540 DATA"Rik VAN LOOY (B)","Gerrit SCHULTE (Ned)"
+25550 DATA"Waregem","Belgie","285.6"
+25560 DATA"Rik VAN STEENBERGEN (B)","Louison BOBET (F)"
+25570 DATA"Andre DARRIGADE (F)","Reims","Frankrijk","276.8"
+25580 DATA"Ercole BALDINI (I)","Louison BOBET (F)"
+25590 DATA"Andre DARRIGADE (F)","Zandvoort","Nederland"
+25600 DATA"292","Andre DARRIGADE (F)","Michele GISMONDI (I)"
+25610 DATA"Noel FORE (B)","Hohenstein-Ernstthal","DDR"
+25620 DATA"279.392","Rik VAN LOOY (B)","Andre DARRIGADE (F)"
+25630 DATA"Pino CERAMI (B)","Bern","Zwitserland","285.252"
+25640 DATA"Rik VAN LOOY (B)","Nino DEFILIPPIS (I)"
+25650 DATA"Raymond POULIDOR (F)","Salo","Italie","296.240"
+25660 DATA"Jean STABLINSKI (F)","Seamus ELLIOTT (Irl)"
+25670 DATA"Jos HOEVENAARS (B)","Ronse","Belgie","278.8"
+25680 DATA"Benoni BEHEYT (B)","Rik VAN LOOY (B)"
+25690 DATA"Jo DE HAAN (Ned)","Sallanches","Frankrijk","290"
+25700 DATA"Jan JANSSEN (Ned)","Vittorio ADORNI (I)"
+25710 DATA"Raymond POULIDOR (F)","Lasarte","Spanje","276.4"
+25720 DATA"Tommy SIMPSON (GBr)","Rudi ALTIG (D)"
+25730 DATA"Roger SWERTS (B)","Adenau (Nurburgring)"
+25740 DATA"Duitsland","273.72","Rudi ALTIG (D)"
+25750 DATA"Jacques ANQUETIL (F)","Raymond POULIDOR (F)"
+25760 DATA"Heerlen","Nederland","265.18","Eddy MERCKX (B)"
+25770 DATA"Jan JANSSEN (Ned)","Ramon SAEZ (Sp)","Imola"
+25780 DATA"Italie","277.318","Vittorio ADORNI (I)"
+25790 DATA"Herman VAN SPRINGEL (B)","Michele DANCELLI (I)"
+25800 DATA"Zolder","Belgie","262.86","Harm OTTENBROS (Ned)"
+25810 DATA"Julien STEVENS (B)","Michele DANCELLI (I)"
+25820 DATA"Leicester","ENGELAND","272","Jempi MONSERE (B)"
+25830 DATA"Leif MORTENSEN (Den)","Felice GIMONDI (I)"
+25840 DATA"Mendrisio","Zwitserland","269","Eddy MERCKX (B)"
+25850 DATA"Felice GIMONDI (I)","Cyrille GUIMARD (F)","Gap"
+25860 DATA"Frankrijk","272.574","Marino BASSO (I)"
+25870 DATA"Franco BITOSSI (I)","Cyrille GUIMARD (F)"
+25880 DATA"Barcelona","Spanje","248.7","Felice GIMONDI (I)"
+25890 DATA"Freddy MAERTENS (B)","Luis OCANA (Sp)"
+25900 DATA"Montreal","Canada","262.5","Eddy MERCKX (B)"
+25910 DATA"Raymond POULIDOR (F)","Mariano MARTINEZ (Sp)"
+25920 DATA"Yvoir","Belgie","266","Hennie KUIPER (Ned)"
+25930 DATA"Roger DE VLAEMINCK (B)"
+25940 DATA"Jean-Pierre DANGUILLAUME (F)","Ostuni","Italie"
+25950 DATA"288","Freddy MAERTENS (B)","Francesco MOSER (I)"
+25960 DATA"Constantino CONTI (I)","San Cristobal"
+25970 DATA"Venezuela","255","Francesco MOSER (I)"
+25980 DATA"Dietrich THURAU (D)","Franco BITOSSI (I)"
+25990 DATA"Adenau (Nurburgring)","BRD","273.720"
+26000 DATA"Gerrie KNETEMANN (Ned)","Francesco MOSER (I)"
+26010 DATA"Jorgen MARCUSSEN (Den)","Valkenburg","Nederland"
+26020 DATA"274.8","Jan RAAS (Ned)","Dietrich THURAU (D)"
+26030 DATA"Jean-Rene BERNAUDEAU (F)","Domancy","Frankrijk"
+26040 DATA"268","Bernard HINAULT (F)"
+26050 DATA"Gianbattista BARONCHELLI (I)"
+26060 DATA"Juan FERNANDEZ (Sp)","Praag","Tsjechoslowakije"
+26070 DATA"281.4","Freddy MAERTENS (B)"
+26080 DATA"Giuseppe SARONNI (I)","Bernard HINAULT (F)"
+26090 DATA"Chichester","Engeland","275"
+26100 DATA"Giuseppe SARONNI (I)","Greg LEMOND (USA)"
+26110 DATA"Sean KELLY (Irl)","Altenrhein","Zwitserland"
+26120 DATA"269.9","Greg LEMOND (USA)","Adri V/D POEL (Ned)"
+26130 DATA"Stephen ROCHE (Irl)","Montjuich","Spanje","257"
+26140 DATA"Claude CRIQUIELION (B)","Claudio CORTI (I)"
+26150 DATA"Steve BAUER (Can)","Giavera del Montello"
+26160 DATA"Italie","265.5","Joop ZOETEMELK (Ned)"
+26170 DATA"Greg LEMOND (USA)","Moreno ARGENTIN (I)","?","?"
+26180 DATA"?","Moreno ARGENTIN (I)","Charly MOTTET (F)","?"
+26190 DATA"?","?","?","Stephen ROCHE (Irl)","?","?"
+26200 DATA"Ronsse","Belgie","?","Maurizio FONDRIEST (I)"
+26210 DATA"?","?","Chambery","Frankrijk","259.35"
+26220 DATA"Greg LEMOND (USA)","Dimitri KONYTCHEV (Sov)"
+26230 DATA"Sean Kelly (Irl)",0,0,10,80,15,40,20,80,30,0,-1
+26240 DATA-1,60,0,35,0,35,40,55,40,35,40,35,80,60,80,-1,-1
+26250 DATA70,80,70,0,85,0,92,3,96,7,100,14,100,25,97,32,90
+26260 DATA37,80,40,70,40,100,80,-1,-1,135,0,105,0,105,40
+26270 DATA125,40,105,40,105,80,135,80,-1,-1,140,0,140,80
+26280 DATA170,80,-1,-1,175,0,185,0,196,4,199,13,199,25,199
+26290 DATA63,199,72,194,76,185,80,175,80,175,0,-1,-1,5,90,5
+26300 DATA170,-1,-1,25,90,5,130,25,170,-1,-1,30,170,40,90
+26310 DATA45,130,35,130,45,130,50,170,-1,-1,55,170,55,90,65
+26320 DATA130,75,90,75,170,-1,-1,80,170,80,90,85,90,91,94
+26330 DATA96,99,100,105,100,115,96,121,91,126,85,130,80,130
+26340 DATA-1,-1,110,90,120,90,115,90,115,170,110,170,120
+26350 DATA170,-1,-1,130,105,135,95,140,90,145,95,150,105
+26360 DATA150,155,145,165,140,170,135,165,130,155,130,105
+26370 DATA-1,-1,175,90,155,90,155,130,167,130,155,130,155
+26380 DATA170,175,170,-1,-1,180,170,180,90,199,170,199,90
+26390 DATA-2,-2
+30000 REM
+30010 REM ****************************
+30020 REM *      WERELDKAMPIOEN      *
+30030 REM *        Wielrennen        *
+30040 REM *   (c) JBSoft, Alkmaar    *
+30050 REM ****************************
+30060 REM
+30070 REM Bronnen:
+30080 REM WERELDKAMPIOEN WIELRENNEN
+30090 REM De strijd om de regenboogtrui
+30100 REM (1927-1984)
+30110 REM Wim van Eyle
+30120 REM &
+30130 REM Archief J.BENJAMIN SR.
+30140 REM
+32000 REM Gemaakt door:
+32010 REM Jan Benjamin
+32020 REM Stationstraat 26
+32030 REM 1815 TC ALKMAAR
+32040 REM
+32050 REM Op een:
+32060 REM Philips VG8020 MSX-1 Computer
+32070 REM ****************************
+32080 REM
+32090 REM TROS-RADIO dd 900103
