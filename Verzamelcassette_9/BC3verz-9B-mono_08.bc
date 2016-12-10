@@ -305,7 +305,7 @@
 26320 DATA"combinatie met de vorige twee subroutines"
 26330 DATA"gebruikt worden."
 26340 DATA"=Een voorbeeld;","=2000 SR$=",".QBASICODE",".Q"
-26350 DATA"!2010 VE=5:HO=10:GOSUB 110:GOSUB 150",&!2020"
+26350 DATA"!2010 VE=5:HO=10:GOSUB 110:GOSUB 150","!2020"
 26360 DATA"GOSUB 120","!2030 VE=VE+5:GOSUB 110:GOSUB 150"
 26370 DATA"=We laten dit even op het scherm zien.",".X","*"
 26380 DATA6,"=Let er wel op dat deze subroutine niet teveel"

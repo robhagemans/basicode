@@ -1,0 +1,145 @@
+
+1000 A=200:GOTO20:REM DETERMINEREN DEEL 6
+1010 GOSUB100:SR$="                         "
+1020 GOSUB150:PRINT:SR$="D E T E R M I N E R E N   (Deel 6)"
+1030 GOSUB150:PRINT
+1040 SR$="*************************"
+1050 GOSUB150:PRINT:PRINT
+1060 PRINT"   D E    V R U C H T   :"
+1070 PRINT"  ==========================":PRINT
+1080 PRINT"De vrucht: het vruchtbeginsel kan uit-"
+1090 PRINT"groeien tot een vrucht waarin, als de"
+1100 PRINT"bloem bevrucht is, 1 of meer zaden zit-"
+1110 PRINT"ten.":PRINT:PRINT
+1120 PRINT"Bevruchting:":PRINT
+1130 PRINT" -door kruisbestuiving: stuifmeel van"
+1140 PRINT"  een andere bloem komt op de stempel,"
+1150 PRINT"  beweegt zich door de stijl naar de"
+1160 PRINT"  eicellen."
+1170 PRINT" -door zelfbestuiving: met eigen stuif-"
+1180 PRINT"  meel,waarbij soms de bloem gesloten"
+1190 PRINT"  blijft:cleistogame bloemen."
+1200 GOSUB9010
+1210 PRINT"Het zaad: bestaat uit een kiem met 1 of"
+1220 PRINT"2 zaadlobben of kiembladen met reserve-"
+1230 PRINT"voesel,omgeven door 'n zaadhuid(bedekt-"
+1240 PRINT"zadig) of zonder zaadhuid(naaktzadig).":PRINT
+1250 PRINT"De zaadplanten worden ingedeeld in:":PRINT
+1260 PRINT"- 1-zaadlobbigen (o.a.de grassen,"
+1270 PRINT"  lelie-achtigen en orchideeen).":PRINT
+1280 PRINT"- 2-zaadlobbigen."
+1290 GOSUB9010
+1300 PRINT"Soorten van vruchten:"
+1310 PRINT"----------------------":PRINT:PRINT
+1320 PRINT"I. Naaktzadigen :vruchtbladen of zaad-"
+1330 PRINT"                 schubben houtig= kegel"
+1340 PRINT"                 (spar,den, ceder)"
+1350 PRINT"                 zacht = kegelbes"
+1360 PRINT"                 (jeneverbes)"
+1370 PRINT:PRINT:PRINT"II.Bedektzadigen ":PRINT
+1375 PRINT"   Hierover verderop meer.":GOSUB9010
+1376 PRINT"   Bedektzadigen:":PRINT
+1380 PRINT"   A) Eenzaadlobbigen:graanvrucht waar-"
+1390 PRINT"      van vruchthuid met zaadhuid samen"
+1400 PRINT"      gegroeid zijn.Droge,niet open-"
+1410 PRINT"      springende vrucht.":PRINT
+1420 PRINT"   B) Twee-zaadlobbigen:"
+1430 PRINT"      1.Droge vruchten."
+1440 PRINT"      2.Vlezige vruchten."
+1460 PRINT"      Over deze 2 soorten verderop meer"
+1470 PRINT"      bijzonderheden.":PRINT
+1480 PRINT"   C) Schijnvrucht:"
+1490 PRINT"      Als andere bloem- of stengeldelen"
+1500 PRINT"      uitgroeien samen met de vrucht:"
+1510 PRINT"      bij de aardbei groeit de bloembo-"
+1520 PRINT"      dem uit tot schijnvrucht en zit-"
+1530 PRINT"      ten de zaadjes als dopvrucht te-"
+1540 PRINT"      gen de buitenkant."
+1550 PRINT:PRINT"  <<zie verder>>"
+1560 GOSUB9010
+1570 PRINT"1.Droge vruchten:":PRINT
+1580 PRINT" a.Niet openspringend:":PRINT
+1590 PRINT"   -dopvrucht met 1 zaad en zaadhuid"
+1600 PRINT"    niet vergroeid met vruchtwand bijv."
+1610 PRINT"    aarbei, zonnebloem.":PRINT
+1620 PRINT"   -splitvrucht:splitst zich in aparte"
+1630 PRINT"    dopvruchten,bijv.kaasjeskruid.":PRINT
+1640 PRINT"   -noot: dopvrucht met houtige vrucht-"
+1650 PRINT"    wand bijv. eikel, berk."
+1660 GOSUB9010
+1670 PRINT" b.Openspringend:":PRINT
+1680 PRINT"   -kluisvrucht heeft hokjes met 1 zaad"
+1690 PRINT"    bv ooievaarsbek,geranium."
+1700 PRINT"   -doosvrucht heeft meer zaden p.hokje"
+1710 PRINT"    onderscheiden in:":PRINT
+1720 PRINT"   1.Echte doosvrucht met kleppen."
+1730 PRINT"      (viooltje)"
+1740 PRINT"   2.Kokervrucht:gevormd door 1 vrucht-"
+1750 PRINT"     blad met overlangse naad,die open-"
+1760 PRINT"     springt(ridderspoor)."
+1770 PRINT"   3.Peul: 1 vruchtblad met 2 kleppen."
+1780 PRINT"     (peulen,bonen,erwten)."
+1790 PRINT"   4.Hauw:2 vr.bladen met vals tussen-"
+1800 PRINT"     schot v.d.voet naar de top open-"
+1810 PRINT"     springend, lengte meer dan 3 maal"
+1820 PRINT"     breedte(kool)."
+1830 PRINT"   5.Hauwtje:is kleiner dan 3x breedte."
+1840 PRINT"     (herderstasje)."
+1850 GOSUB9010
+1860 PRINT"2.Vlezige vruchten:"
+1870 PRINT" -steenvrucht:als de laag vruchtvlees"
+1880 PRINT"  om het zaad hard is(pruim,kers)."
+1890 PRINT" -pitvrucht: met hoornachtige laag"
+1900 PRINT"  vruchtvlees als klokhuis om het zaad "
+1910 PRINT"  (appel, ook lijsterbes)."
+1920 PRINT" -besvrucht: als de binnenlaag vrucht-"
+1930 PRINT"  vlees vliezig en meestal sappig is en"
+1940 PRINT"  de zaadwand hard(druif)."
+1950 PRINT" -komkommervrucht: als de vruchtwand"
+1960 PRINT"  taai is en de zaden in rijen liggen."
+1970 PRINT"  (komkommer)."
+1980 PRINT" -oranjevrucht: als de vruchtwand ge-"
+1990 PRINT"  kleurd is en in schijven verdeeld."
+2000 PRINT"  (sinaasappel)."
+2010 PRINT:PRINT"<<< Einde vrucht >>>"
+2020 PRINT:PRINT"wilt u terug naar het begin (1)"
+2030 PRINT:PRINT"          of wilt u stoppen (2)"
+2040 MK=2:VE=23:GOSUB9550
+2050 ONKZ GOTO1000,2060
+2060 HO=10:VE=10:GOSUB110
+2070 PRINT">>>> Einde deel 6 <<<<"
+2080 GOSUB9010:GOTO950
+9000 REM SPATIEBALK
+9010 GOSUB120:VE=23:HO=0:GOSUB110
+9020 PRINT"****> Druk op spatiebalk <****";
+9030 GOSUB9510:IFIN<>32 THEN9030
+9040 VE=23:HO=0:GOSUB110
+9050 PRINT"                                     ";
+9060 GOSUB100
+9070 RETURN
+9500 REM INPUT MET LEGE BUFFER
+9510 GOSUB200:IFIN$<>"" THEN9510
+9520 GOSUB210
+9530 RETURN
+9540 REM KEUZE-OPVRAGEN
+9550 HO=0:VE=VE+1:GOSUB110
+9560 PRINT"Wat is uw keuze   ";
+9570 HO=17:VE=VE:GOSUB110
+9580 INPUTKZ$:KZ=VAL(KZ$)
+9590 IF(KZ<1)OR(KZ>MK)OR(KZ<>INT(KZ))THEN9550
+9600 GOSUB100
+9610 RETURN
+32000 REM *****   DETERMINEREN    *****
+32010 REM *****       DEEL 6      *****
+32020 REM *****                   *****
+32030 REM     *********************
+32040 REM     *                   *
+32050 REM     * JAN DE JONG       *
+32060 REM     * MR. STRIJBOSSTR 5 *
+32070 REM     * 6001 ST WEERT     *
+32080 REM     * COMMODORE-64      *
+32090 REM     *  APRIL 1990       *
+32100 REM     *                   *
+32110 REM     *********************
+32120 REM
+32130 REM TROS-RADIO dd 900919
