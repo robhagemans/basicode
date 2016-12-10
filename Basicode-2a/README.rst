@@ -36,7 +36,7 @@ BASICODE-2A
 | 2. Zeeslag                            | 2. Sea Wars                           |
 | 3. Manneken Pis                       | 3. Belgian naughty (D)                |
 | 4. Akkoorden                          | 4. Chords                             |
-| 5. Kalender                           | 5. Calender (D)                       |
+| 5. Kalender                           | 5. Calendar (D)                       |
 | 6. Simpelpac                          | 6. Simplepac                          |
 | 7. Zoek 't woord                      | 7. Word Search (D)                    |
 | 8. Functie-analyse                    | 8. Function analyser                  |
@@ -46,7 +46,7 @@ BASICODE-2A
 | 12. Crazy Kong                        | 12. Crazy Kong                        |
 | 13. Radioactief verval                | 13. Radio-active decay (D)            |
 | 14. Autorace                          | 14. Car race                          |
-| 15. Vermeigvuldigen                   | 15. Multiplication puzzle (D)         |
+| 15. Vermenigvuldigen                  | 15. Multiplication puzzle (D)         |
 | 16. Factoren                          | 16. Factors                           |
 | 17. Besluitvorming                    | 17. Decision maker (D)                |
 | 18. Woordenspel                       | 18. Word game                         |
