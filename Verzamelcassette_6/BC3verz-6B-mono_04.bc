@@ -1,0 +1,431 @@
+
+1000 A=5000:GOTO20:REM STEMWIJZER
+1010 REM stuurmodule
+1020 GOSUB2000:REM initialisatie
+1030 GOSUB9010:REM kop
+1040 GOSUB8010:REM intro
+1050 GOSUB8510:REM toetsdruk
+1060 GOSUB3010:REM invoeren
+1070 GOSUB9010:REM kop
+1080 GOSUB5010:REM uitslag
+1090 GOSUB8510:REM toetsdruk
+1100 GOTO950
+2000 DIMN$(15),N(15,2),V$(7)
+2010 REM
+2020 PT=0:TL=0:FORX=1 TO15
+2030 READN$(X)
+2040 READN(X,1)
+2050 READN(X,2)
+2060 NEXTX
+2070 RETURN
+3000 REM invoeren
+3010 FORX=1 TO60
+3020 GOSUB9010:REM kop
+3030 Y=1
+3040 IF(X>=N(Y,1))AND(X<=N(Y,2)) THENPRINTN$(Y):GOTO3070
+3050 Y=Y+1
+3060 GOTO3040
+3070 FORZ=1 TOLEN(N$(Y))-1:PRINT"-";:NEXTZ:PRINT">";X
+3080 READV:FORI=1 TOV:READV$(I):NEXTI:READP,P$
+3090 FORY=1 TOV:PRINTV$(Y):NEXTY
+3100 HO=2:VE=12:GOSUB110
+3110 SR$="Bent u het hiermee eens [J/N]"
+3120 GOSUB150:GOSUB210
+3130 IFIN=74 THEN4010
+3140 IFIN<>78 THEN3100
+3150 HO=0:VE=14:GOSUB110:PRINT"Partij --->";:SR$=P$
+3160 GOSUB150:SD=10:GOSUB450
+3170 NEXTX:GOSUB9010:REM kop
+3180 PRINT"BONUSVRAAG"
+3190 PRINT"---------> 61"
+3200 PRINT"Stemt u alleen op een partij die zeker"
+3210 PRINT"een of meer zetels in de Tweede Kamer"
+3220 PRINT"zal halen?"
+3230 PRINT
+3240 HO=14:VE=12:GOSUB110
+3250 SR$="[J/N]":GOSUB150
+3260 GOSUB210
+3270 IF(IN=74)OR(IN=78) THEN3290
+3280 GOTO3260
+3290 JN$=IN$
+3300 GOSUB200:IFIN<>0 THEN3300
+3310 RETURN
+3320 REM
+4000 REM mee eens
+4010 PT=PT+P
+4020 TL=TL+1
+4030 REM
+4040 GOTO3150
+5000 REM uitslag
+5010 PRINT"Uitslag"
+5020 PRINT"-------"
+5030 PRINT:IFTL=0 THENTL=1
+5040 P=PT/TL
+5050 PRINT"Uw puntentotaal is:";P
+5060 PRINT
+5070 IFP<5 THEN5200
+5080 IFP<14 THEN5400
+5090 IFP<21 THEN5500
+5100 IFP<29 THEN5600
+5110 IFP<36 THEN5700
+5120 IFP<38 THEN5800
+5130 IFP<40 THEN5900
+5140 GOTO6000
+5150 PRINT
+5160 REM
+5200 PRINT"U heeft een anarchistische of zelfs"
+5210 PRINT"revolutionair-linkse smaak.Waarschijn-"
+5220 PRINT"lijk vindt u deze test maar onzin,"
+5230 PRINT"evenals de verkiezingen;maar als u wel"
+5240 PRINT"gaat stemmen en u heeft bonusvraag 61"
+5250 PRINT"met 'nee' beantwoord, dan komen voor u"
+5260 PRINT"in aanmerking de Socialistiese"
+5270 PRINT"Arbeiderspartij (SAP), het verbond van"
+5280 PRINT"Communisten in Nederland (VCN) of de"
+5290 PRINT"Socialistiese Partij (SP) - de SAP is"
+5300 PRINT"het meest revolutionair en het kleinst,"
+5310 PRINT"de SP het grootst en het meest gematigd"
+5320 PRINT"Indien u echter vraag 61 met 'ja'"
+5330 PRINT"beantwoordt, dan moet u Groen Links"
+5340 PRINT"kiezen - die komt zeker in de Kamer."
+5350 RETURN
+5400 PRINT"U bent een echte Groen Links kiezer;"
+5410 PRINT"maar als u op bonusvraag 61 'nee'"
+5420 PRINT"antwoordde en u het eens bent met"
+5430 PRINT"uitspraak 1 en u vindt dat van het"
+5440 PRINT"grootste belang, dan hoort u thuis bij"
+5450 PRINT"de Groenen; bent u het eens met"
+5460 PRINT"uitspraak 10 en vindt u dat het aller-"
+5470 PRINT"belangrijkste en u zei 'nee' op 61,"
+5480 PRINT"dan past de Vrouwenpartij beter bij u."
+5490 RETURN
+5500 PRINT"U hoort thuis bij de Partij van de"
+5510 PRINT"Arbeid, maar stel: U antwoordde op"
+5520 PRINT"bonusvraag 61 'nee' en u bent het eens"
+5530 PRINT"met uitspraak 1 en u vindt dat van het"
+5540 PRINT"grootste belang, dan hoort u thuis bij"
+5550 PRINT"de Groenen; bent u het eens met"
+5560 PRINT"uitspraak 10 en vindt u dat het aller-"
+5570 PRINT"belangrijkst en zei u 'nee' op 61, dan"
+5580 PRINT"past de Vrouwenpartij beter bij u."
+5590 RETURN
+5600 PRINT"U behoort tot het politieke midden of"
+5610 PRINT"een pietsje links daarvan, dus"
+5620 PRINT"Democraten 66.Groenen en Vrouwenpartij"
+5630 PRINT"kunnen echter ook nog aantrekkings-"
+5640 PRINT"kracht op u uitoefenen, (dat blijkt"
+5650 PRINT"wanneer u het sterk eens bent met"
+5660 PRINT"uitspraak 1 resp. 10) indien u 'nee'"
+5670 PRINT"antwoordde op bonusvraag 61."
+5680 RETURN
+5700 PRINT"U denkt dat u tot het midden behoort,"
+5710 PRINT"maar eigenlijk bent u een beetje rechts"
+5720 PRINT"het Christen Democratisch Appel(CDA)is"
+5730 PRINT"uw partij indien u het eens bent met"
+5740 PRINT"uitspraak 40 en 36; anders voelt u zich"
+5750 PRINT"waarschijnlijk meer thuis bij de"
+5760 PRINT"Volkspartij voor Vrijheid en Democratie"
+5770 PRINT"(VVD)."
+5780 RETURN
+5800 PRINT"Bent u het eens met uitspraak 40, dan"
+5810 PRINT"past het Gereformeerd Politiek Verbond"
+5820 PRINT"(GPV) het beste bij u; echter, als u"
+5830 PRINT"uitspraak 40 afwijst, behoort u eerder"
+5840 PRINT"tot de uiterste rechtervleugel van de"
+5850 PRINT"VVD."
+5860 RETURN
+5900 PRINT"De Reformatorische Politieke Federatie"
+5910 PRINT"(RPF) staat het dichtst bij u;maar bent"
+5920 PRINT"het oneens met uitspraak 40 en zegt u"
+5930 PRINT"'nee' tegen vraag 61, dan zoudt u"
+5940 PRINT"Realisten Nederland kunnen proberen."
+5950 RETURN
+6000 PRINT"U staat zeer rechts in politiek Neder-"
+6010 PRINT"land:de Staatkundig Gereformeerde"
+6020 PRINT"Partij (SGP) komt het meest met uw"
+6030 PRINT"smaak overeen; tenzij u op vraag 40"
+6040 PRINT"niet en op vraag 29 en 61 wel bevesti-"
+6050 PRINT"gend reageerde, dan bent u waarschijn-"
+6060 PRINT"lijk een Centrumdemocraat of kunt u"
+6070 PRINT"beter uw eigen partij oprichten."
+6080 RETURN
+8000 REM intro
+8010 PRINT"Intro"
+8020 PRINT"-----"
+8030 PRINT"Woensdag 6 september waren de Tweede"
+8040 PRINT"Kamer verkiezingen."
+8050 PRINT"Wanneer u een van de velen was, die"
+8060 PRINT"niet echt wijs kon worden uit al die"
+8070 PRINT"partijprogramma's hebben wij hier"
+8080 PRINT"voor u een (laat) stemadvies."
+8090 PRINT
+8100 PRINT"Na een stelling uit een willekeurig"
+8110 PRINT"partijprogramma gezien te hebben,"
+8120 PRINT"wordt u gevraagd of u het hiermee eens"
+8130 PRINT"bent. Zo ja, toets dan 'J', zo nee 'N'."
+8140 PRINT
+8150 RETURN
+8160 REM
+8500 REM toetsdruk
+8510 HO=28:VE=22:GOSUB110
+8520 SR$="toets":GOSUB150
+8530 GOSUB210
+8540 RETURN
+8550 REM
+9000 REM kop
+9010 GOSUB100
+9020 HO=11:VE=0:GOSUB110
+9030 SR$="STEMWIJZER":GOSUB150
+9040 HO=0:VE=2:GOSUB110
+9050 RETURN
+25000 DATA"MILIEU EN ENERGIE",1,4
+25010 DATA"WERKGELEGENHEID",5,12
+25020 DATA"ALGEMEEN ECONOMISCH BELEID",13,16
+25030 DATA"ARBEIDSVERHOUDINGEN/MEDEZEGGENSCHAP",17,21
+25040 DATA"ZEDEN EN JUSTITIE",22,26
+25050 DATA"EMANCIPATIE HOMO'S/VROUWEN",27,28
+25060 DATA"MINDERHEDEN",29,31
+25070 DATA"BUITENLAND",32,35
+25080 DATA"VOLKSGEZONDHEID",36,39
+25090 DATA"CULTUUR,WELZIJN EN MEDIA",40,43
+25100 DATA"ONDERWIJS",44,49
+25110 DATA"HUISVESTING",50,52
+25120 DATA"DEFENSIE",53,56
+25130 DATA"OVERHEID EN BESTUUR",57,58
+25140 DATA"VERVOER",59,60
+25150 REM
+25160 DATA3,"Om het milieu te redden moeten we de"
+25170 DATA"economische produktie inkrimpen: het"
+25180 DATA"milieu komt op de eerste plaats.",10,"Groenen"
+25190 DATA4,"Milieubeleid krijgt de komende jaren"
+25200 DATA"even veel aandacht als werk-"
+25210 DATA"gelegenheid, financieringstekort en"
+25220 DATA"economische groei.",30,"CDA"
+25230 DATA2,"Kernenergie blijft nodig als aanvulling"
+25240 DATA"op olie, kolen en aardgas.",30,"CDA"
+25250 DATA1,"Alle kerncentrales worden gesloten."
+25251 DATA5,"Groen Links"
+25260 DATA7,"Aan een bijstandsuitkering als gevolg"
+25270 DATA"van langdurige werkloosheid dient voor"
+25280 DATA"personen tot 35 jaar de plicht te"
+25290 DATA"worden gekoppeld drie dagen per week"
+25300 DATA"werk te verrichten in de non-"
+25310 DATA"profitsector en een dag in de week aan"
+25320 DATA"her- of bijscholing.",45,"RPF"
+25330 DATA2,"Ouders zijn zelf verantwoordelijk voor"
+25340 DATA"het regelen van kinderopvang.",30,"CDA"
+25350 DATA2,"De overheid moet zorgen voor voldoende"
+25360 DATA"kinderopvang.",15,"PvdA"
+25370 DATA3,"Ter wille van de werkgelegenheid moet"
+25380 DATA"het recht om te ontslaan versoepeld"
+25390 DATA"worden.",35,"VVD"
+25400 DATA2,"Bij vervulling van vacatures krijgen"
+25410 DATA"kostwinners voorrang.",50,"SGP"
+25420 DATA4,"De helft van alle functies in beleids-"
+25430 DATA"en bestuurorganen moet door vrouwen"
+25440 DATA"worden ingenomen. De overheid geeft"
+25450 DATA"hierin het voorbeeld.",10,"Vrouwenpartij"
+25460 DATA2,"Algemene arbeidduurverkorting mag niet"
+25470 DATA"bij wet opgelegd worden.",35,"VVD"
+25480 DATA4,"De arbeidsduur moet via een kaderwet"
+25490 DATA"in elk geval verkort worden tot 32 uur"
+25500 DATA"per week; maar liever nog tot 25 uur"
+25510 DATA"per week.",5,"Groen Links"
+25520 DATA5,"Privatisering van overheidsproduktie"
+25530 DATA"en - dienstverlening wordt"
+25540 DATA"gestimuleerd:d.w.z. overheidsbedrijven"
+25550 DATA"kunnen beter particuliere bedrijven"
+25560 DATA"worden.",35,"VVD"
+25570 DATA3,"Overheidsbedrijven moeten niet"
+25580 DATA"geprivatiseerd, maar gedemocratiseerd"
+25590 DATA"worden.",5,"Groen Links"
+25600 DATA4,"De sociale uitkeringen moeten de"
+25610 DATA"komende tijd niet sneller stijgen dan"
+25620 DATA"de lonen; zo nodig blijven ze iets"
+25630 DATA"achter.",30,"CDA"
+25640 DATA4,"Minimumuitkeringen moeten met 15%"
+25650 DATA"verhoogd worden, ook als dat belasting-"
+25660 DATA"verhoging voor andere inkomensgroepen"
+25670 DATA"zou vereisen.",5,"Groen Links"
+25680 DATA3,"Stakingen en werkonderbrekingen moeten"
+25690 DATA"in beginsel worden afgewezen en bij de"
+25700 DATA"overheid worden verboden.",45,"RPF"
+25710 DATA5,"Het stakingsrecht voor ambtenaren"
+25720 DATA"dient in een wet te worden vastgelegd,"
+25730 DATA"waarbij de ononderbroken levering van"
+25740 DATA"voor de samenleving noodzakelijke"
+25750 DATA"diensten is verzekerd.",35,"VVD"
+25760 DATA3,"De ondernemingsraad kan bij belang-"
+25770 DATA"rijke investeringsbeslissingen advies"
+25780 DATA"uitbrengen (dus niet meebeslissen).",30,"CDA"
+25790 DATA7,"In grote en middelgrote bedrijven dient"
+25800 DATA"een democratisch gekozen personeels-"
+25810 DATA"vertegenwoordiging (ondernemingsraad)"
+25820 DATA"het hoogste orgaan te worden;"
+25830 DATA"beslissingen over fusies, directie-"
+25840 DATA"benoemingen en reorganisaties worden"
+25850 DATA"daar genomen.",5,"Groen Links"
+25860 DATA4,"Grote bedrijven en banken moeten"
+25870 DATA"eigendom zijn van de gemeenschap en"
+25880 DATA"geleid worden door mensen die gekozen"
+25890 DATA"zijn door de werkers in dat bedrijf.",0,"SP"
+25900 DATA2,"De overheid moet gokken tegengaan en"
+25910 DATA"de Staatsloterij beeindigen.",40,"GPV"
+25920 DATA3,"In gevangenissen dienen radio en"
+25930 DATA"televisie en inspraak van de gevangenen"
+25940 DATA"te worden afgeschaft.",45,"RPF"
+25950 DATA2,"De zgn. sex(06)lijnen van de PTT"
+25960 DATA"moeten verdwijnen.",40,"GPV"
+25970 DATA2,"Alle 06 (amusements)lijnen van de PTT"
+25980 DATA"moeten opgeheven worden.",50,"SGP"
+25990 DATA3,"De overheid is gerechtigd als Gods"
+26000 DATA"dienares de doodstraf op te leggen"
+26010 DATA"voor een zwaar misdrijf als moord.",45,"RPF"
+26020 DATA4,"Homosexuele of lesbische paren krijgen"
+26030 DATA"dezelfde rechten op ouderschap,adoptie,"
+26040 DATA"alimentatie,pensioen en zo meer"
+26050 DATA"als traditionele gezinnen.",15,"PvdA"
+26060 DATA2,"Het huwelijk mag niet gelijk gesteld"
+26070 DATA"worden met andere samenlevingsvormen.",40,"GPV"
+26080 DATA3,"Pas als er geen Nederlandse"
+26090 DATA"sollicitanten zijn,komen mensen van de"
+26100 DATA"minderheden in aanmerking voor werk.",60,"CD"
+26110 DATA3,"Het kiesrecht voor buitenlanders bij"
+26120 DATA"gemeenteraadsverkiezingen moet ongedaan"
+26130 DATA"gemaakt worden.",45,"RPF"
+26140 DATA5,"Buitenlanders die langer dan vijf jaar"
+26150 DATA"duurzaam in Nederland wonen,krijgen"
+26160 DATA"actief kiesrecht,niet alleen voor de"
+26170 DATA"gemeenteraad,maar ook voor Provinciale"
+26180 DATA"Staten en Tweede Kamer.",15,"PvdA"
+26190 DATA6,"Nederland dient de vreedzame verande-"
+26200 DATA"ring van apartheid in Zuid-Afrika te"
+26210 DATA"steunen,niet door boycot-maatregelen,"
+26220 DATA"maar juist door intensievere culturele"
+26230 DATA"contacten;geen steun aan geweldadige"
+26240 DATA"bevrijdingsbewegingen zoals het ANC.",40,"GPV"
+26250 DATA6,"Om het apartheidsregime snel af te"
+26260 DATA"breken moeten boycot-maatregelen tegen"
+26270 DATA"Zuid-Afrika genomen worden;anti-apart-"
+26280 DATA"heidsbewegingen als het ANC dienen"
+26290 DATA"humanitaire steun te krijgen"
+26300 DATA"(geen wapens).",25,"D66"
+26310 DATA3,"Nederland moet de Palestijnse staat,"
+26320 DATA"zoals die door de PLO is uitgeroepen,"
+26330 DATA"erkennen.",5,"Groen Links"
+26340 DATA3,"Zolang de PLO Israel niet ondubbel-"
+26350 DATA"zinnig erkent,zijn contacten tussen de"
+26360 DATA"PLO en Nederland onaanvaardbaar.",45,"RPF"
+26370 DATA4,"Euthanasie - in de zin van opzettelijk"
+26380 DATA"een ander op diens verzoek van het"
+26390 DATA"leven beroven - is een misdrijf en"
+26400 DATA"behoort dat te blijven.",45,"RPF"
+26410 DATA5,"Euthanasie - ofwel hulp bij zelfdoding"
+26420 DATA"of doding van een patient op diens"
+26430 DATA"uitdrukkelijke verzoek - moet niet meer"
+26440 DATA"strafbaar zijn wanneer sprake is van"
+26450 DATA"een uitzichtloze situatie.",25,"D66"
+26460 DATA2,"Geen vergoedingen van ziekenfonds voor"
+26470 DATA"abortus en sterilisatie.",40,"GPV"
+26480 DATA2,"Het gebruik van drugs moet legaal"
+26490 DATA"worden.",5,"Groen Links"
+26500 DATA4,"De christelijke visie op de mens zou"
+26510 DATA"bepalend moeten zijn voor het"
+26520 DATA"overheidsbeleid t.a.v. welzijn,cultuur"
+26530 DATA"en onderwijs.",30,"CDA"
+26540 DATA4,"Het omroepsbestel moet plaats bieden"
+26550 DATA"voor commerciele netten;reclame mag,"
+26560 DATA"ook op zondag en voor lokale en"
+26570 DATA"regionale omroepen.",35,"VVD"
+26580 DATA4,"De STER-reclame dient afgeschaft te"
+26590 DATA"worden;het omroepbestel moet"
+26600 DATA"uitsluitend bekostigd worden door"
+26610 DATA"kijkers/luisteraars.",50,"SGP"
+26620 DATA4,"Godslasterlijke,zedenkwetsende of"
+26630 DATA"gezagsondermijnende boeken worden niet"
+26640 DATA"toegelaten tot de openbare"
+26650 DATA"bibliotheek.",50,"SGP"
+26660 DATA4,"Voorlopig geen middenschool of"
+26670 DATA"uitgebreide basisvorming,maar ver-"
+26680 DATA"schillende schooltypen in voortgezet"
+26690 DATA"onderwijs,ook LBO,MAVO en gymnasium.",25,"D66"
+26700 DATA3,"Voor 12-16 jarigen wordt een"
+26710 DATA"middenschool (basisvorming) de enige"
+26720 DATA"onderwijsvorm.",5,"Groen Links"
+26730 DATA4,"De actie 'Kies exact' wordt gestopt;"
+26740 DATA"het is helemaal niet nodig zogenaamde"
+26750 DATA"mannelijke en vrouwelijke rolpatronen"
+26760 DATA"in het onderwijs te doorbreken.",50,"SGP"
+26770 DATA3,"Ouders en leerlingen moeten meer"
+26780 DATA"invloed krijgen op het beheer van"
+26790 DATA"scholen.",25,"D66"
+26800 DATA2,"De laatste school in een dorp of"
+26810 DATA"streek moet openbaar zijn.",15,"PvdA"
+26820 DATA3,"Bij het verlenen van studiebeurzen"
+26830 DATA"moet rekening gehouden worden met het"
+26840 DATA"inkomen van de ouders.",40,"GPV"
+26850 DATA3,"De huurbescherming moet beperkt"
+26860 DATA"worden om het verhuren van kamers"
+26870 DATA"aantrekkelijker te maken.",35,"VVD"
+26880 DATA4,"Er moeten meer goedkope huurwoningen"
+26890 DATA"gebouwd worden,vooral voor jongeren,"
+26900 DATA"woongroepen,een- en twee persoons-"
+26910 DATA"huishoudens",5,"Groen Links"
+26920 DATA2,"Er moeten meer koopwoningen gebouwd"
+26930 DATA"worden,vooral voor grote gezinnen.",50,"SGP"
+26940 DATA3,"Defensieuitgaven moeten met minstens"
+26950 DATA"2% per jaar stijgen;kernwapens moeten"
+26960 DATA"gemoderniseerd worden.",45,"RPF"
+26970 DATA4,"Defensieuitgaven moeten bescheiden"
+26980 DATA"groeien;de beslissing over moderni-"
+26990 DATA"sering van kernwapens zal afhangen van"
+27000 DATA"de internationale situatie.",30,"CDA"
+27010 DATA4,"Defensieuitgaven moeten niet verhoogd"
+27020 DATA"worden;kernwapens mogen voorlopig nog"
+27030 DATA"in Nederland blijven,maar moeten niet"
+27040 DATA"gemoderniseerd worden.",15,"PvdA"
+27050 DATA4,"De krijgsmacht moet omgevormd tot een"
+27060 DATA"vredesleger voor rampenbestrijding en"
+27070 DATA"vredesdienst, uiteraard zonder"
+27080 DATA"kernwapens.",5,"Groen Links"
+27090 DATA3,"De minister-president moet rechtstreeks"
+27100 DATA"door de burgers gekozen worden en"
+27110 DATA"vervolgens zelf een kabinet vormen.",25,"VVD"
+27120 DATA3,"Invoering van het referendum op"
+27130 DATA"nationaal niveau (directe democratie)"
+27140 DATA"is ongewenst.",35,"D66"
+27150 DATA4,"De kosten voor woon-werkverkeer"
+27160 DATA"(reiskostenforfait) blijven aftrekbaar"
+27170 DATA"van de belastingen,ook voor"
+27180 DATA"autogebruikers.",35,"VVD"
+27190 DATA3,"Openbaar vervoer moet uiteindelijk"
+27200 DATA"gratis worden - waarbij de kosten door"
+27210 DATA"autogebruikers gedragen worden."
+27220 DATA5,"Groen Links"
+27230 DATA10,30,30,5,45,30,15,35,50,10
+27240 DATA35,5,35,5,30,5,45,35,30,5
+27250 DATA0,40,45,40,50,45,15,40,60,45
+27260 DATA15,40,25,5,45,45,25,40,5,30
+27270 DATA35,50,50,25,5,50,25,15,40,35
+27280 DATA5,50,45,30,15,5,25,35,35,5
+27290 REM
+30000 REM *****************************
+30010 REM *        STEMWIJZER         *
+30020 REM *   (c) computerversie      *
+30030 REM *      JBSoft,Alkmaar       *
+30040 REM *****************************
+30050 REM
+30060 REM Bepaal uw politieke kleur
+30070 REM aan de hand van 61 vragen
+30080 REM uit partijprogramma's
+30090 REM
+32000 REM Gemaakt door:
+32010 REM Jan Benjamin
+32020 REM Stationstraat 26
+32030 REM 1815 TC ALKMAAR
+32040 REM (072-123809)
+32050 REM Op een:
+32060 REM Philips VG8020 MSX-1 Computer
+32070 REM *****************************
+32080 REM
+32090 REM TROS-RADIO dd 891011

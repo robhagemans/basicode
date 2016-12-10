@@ -1,0 +1,371 @@
+
+1000 A=500:GOTO20:REM ** tips c-64 ** Bulletin-39 **
+1010 SR$="  TIPS VOOR DE C-64":GOSUB150:PRINT
+1020 PRINT:PRINT"Naar (B)eeldscherm"
+1030 PRINT:PRINT"Naar (P)rinter"
+1040 PRINT:PRINT"Naar (S)chema"
+1050 PRINT:PRINT"Tips voor C64 be(E)indigen"
+1060 PRINT:PRINT"U kiest?:(B),(P),(S) of (E)?";
+1070 GOSUB210
+1080 IFIN=83 THEN4030:REM S
+1090 IFIN=80 THEN3010:REM P
+1100 IFIN=69 THEN950:REM E
+1110 IFIN=66 THEN2010:REM B
+1120 GOSUB250:GOTO1070
+2000 REM * naar beeldscherm *
+2010 GOSUB100:N=2
+2020 SR$="T I P S  V O O R  C - 6 4":GOSUB150
+2030 PRINT:PRINT
+2040 READP$:IFP$=">>>>>" THEN GOSUB3170:GOTO1000
+2050 N=N+1:IFN=20 THEN GOSUB3170:N=0
+2060 PRINTP$:GOTO2040
+3000 REM * naar printer *
+3010 GOSUB100
+3020 INPUT"  Hoeveel regels per pagina ";L
+3030 L=L-2
+3040 PRINT:PRINT"  Printer inschakelen en op de   "
+3050 PRINT"  RETURN-toets drukken a.u.b....";
+3060 GOSUB210:IFIN<>13 THEN GOSUB250:GOTO3060
+3070 N=0:PG=1
+3080 GOSUB100:VE=9:GOSUB110
+3090 SR$="De tekst wordt afgedrukt....":GOSUB150
+3100 SR$="TIPS VOOR DE C-64 PAGINA: 1"
+3110 GOSUB350:GOSUB360:GOSUB360
+3120 READP$:N=N+1:IFP$=">>>>>" THEN1000
+3130 IFN>L THEN GOSUB3230:N=0
+3140 SR$=P$:GOSUB350:GOSUB360
+3150 GOTO3120
+3160 REM * beeldscherm is vol *******
+3170 VE=22:HO=0:GOSUB110
+3180 SR$="DRUK OP <V> VOOR VERDER......"
+3190 GOSUB150:GOSUB210
+3200 IFIN<>86 THEN GOSUB250:GOTO3170
+3210 GOSUB100:RETURN
+3220 REM * printerpapier is vol *****
+3230 PG=PG+1
+3240 GOSUB360:GOSUB360:HO=0:VE=VE-1:GOSUB110
+3250 PRINT:PRINT" Zet nu de printer op de volgende"
+3260 PRINT" pagina en druk daarna op de   "
+3270 PRINT" de <RETURN> toets......";
+3280 GOSUB210:IFIN<>13 THEN GOSUB250:GOTO3280
+3290 SR$="TIPS VOOR DE C-64 PAGINA:. ":GOSUB350
+3300 SR=PG:GOSUB300:GOSUB350:GOSUB360:GOSUB360
+3310 GOSUB100:VE=9:HO=0:GOSUB110
+3320 SR$="De tekst wordt afgedrukt...."
+3330 GOSUB150:RETURN
+4000 REM ****************************
+4010 REM ** teken het schema **
+4020 REM ****************************
+4030 HO=0:VE=0:GOSUB600:REM * grafiek *
+4040 CN=0:VE=.3:GOSUB620:HO=.2:GOSUB630
+4050 HO=.15:GOSUB620:VE=.05:GOSUB630
+4060 HO=.25:GOSUB630:VE=0:GOSUB630
+4070 VE=.1:GOSUB630:HO=.27:GOSUB620
+4080 VE=0:GOSUB630
+4090 VE=.05:GOSUB620:HO=.37:GOSUB630
+4100 VE=.15:GOSUB630:HO=.32:GOSUB630
+4110 VE=.135:GOSUB630:VE=.165:GOSUB630
+4120 HO=.22:GOSUB630:VE=.135:GOSUB630
+4130 HO=.32:GOSUB630
+4140 HO=.22:GOSUB620:VE=.15:GOSUB620
+4150 HO=HO-.065:GOSUB630
+4160 HO=HO+.045:VE=VE+.065:GOSUB620
+4170 VE=VE+.3:GOSUB630
+4180 HO=HO+.15:VE=VE-.15:GOSUB630
+4190 HO=HO-.15:VE=VE-.15:GOSUB630
+4200 VE=VE+.22:GOSUB620:HO=HO-.05:GOSUB630
+4210 VE=VE+.1:GOSUB630:HO=HO-.01:GOSUB630
+4220 HO=HO+.02:GOSUB630:VE=VE+.13:GOSUB630
+4230 HO=HO-.02:GOSUB630:VE=VE-.13:GOSUB630
+4240 VE=VE+.13:HO=HO+.01:GOSUB620
+4250 VE=VE+.1:GOSUB630
+4260 SR$="+":GOSUB650
+4270 VE=VE-.4:HO=HO+.2:GOSUB620
+4280 HO=HO+.02:GOSUB630:VE=VE-.21:GOSUB630
+4290 VE=VE+.4:GOSUB630:HO=HO-.01:GOSUB630
+4300 HO=HO+.02:GOSUB630:VE=VE+.13:GOSUB630
+4310 HO=HO-.02:GOSUB630:VE=VE-.13:GOSUB630
+4320 VE=VE+.13:HO=HO+.01:GOSUB620
+4330 VE=VE+.06:GOSUB630:HO=HO-.02:GOSUB630
+4340 HO=HO+.04:GOSUB630
+4350 VE=VE+.015:HO=HO-.03:GOSUB620
+4360 HO=HO+.02:GOSUB630
+4370 VE=VE+.018:HO=HO-.01:GOSUB620
+4380 HO=HO+.002:GOSUB630
+4390 HO=HO-.003:VE=.05:GOSUB620
+4400 HO=HO+.1:GOSUB630:VE=VE+.06:GOSUB630
+4410 HO=HO+.01:GOSUB630:HO=HO-.02:GOSUB630
+4420 VE=VE+.12:GOSUB630:HO=HO+.02:GOSUB630
+4430 VE=VE-.12:GOSUB630
+4440 VE=VE+.12:HO=HO-.01:GOSUB620
+4450 VE=VE+.05:GOSUB630:HO=HO-.03:GOSUB630
+4460 VE=VE+.05:GOSUB630:VE=VE-.1:GOSUB630
+4470 HO=HO-.016:GOSUB620:VE=VE+.1:GOSUB630
+4480 VE=VE-.05:GOSUB630:HO=HO-.05:GOSUB630
+4490 HO=HO+.096:GOSUB620:HO=HO+.03:GOSUB630
+4500 VE=VE-.05:GOSUB630:HO=HO-.008:GOSUB630
+4510 HO=HO+.016:GOSUB630:VE=VE-.12:GOSUB630
+4520 HO=HO-.016:GOSUB630:VE=VE+.12:GOSUB630
+4530 VE=VE-.12:HO=HO+.008:GOSUB620
+4540 VE=VE-.06:GOSUB630:HO=HO+.04:GOSUB630
+4550 VE=VE+.23:GOSUB630:HO=HO+.02:GOSUB630
+4560 VE=VE-.23:HO=HO-.02:GOSUB620
+4570 HO=HO+.1:GOSUB630:VE=VE+.05:GOSUB630
+4580 VE=VE-.1:GOSUB630:HO=HO+.02:GOSUB620
+4590 VE=VE+.1:GOSUB630:VE=VE-.05:GOSUB630
+4600 HO=HO+.1:GOSUB630:VE=VE+.1:GOSUB630
+4610 HO=HO-.05:GOSUB630:VE=VE+.015:GOSUB630
+4620 VE=VE-.03:GOSUB630:HO=HO-.1:GOSUB630
+4630 VE=VE+.03:GOSUB630:HO=HO+.1:GOSUB630
+4640 HO=HO-.1:VE=VE-.015:GOSUB620
+4650 HO=HO-.07:GOSUB630:HO=HO+.22:GOSUB620
+4660 VE=VE+.4:GOSUB630:HO=HO+.01:GOSUB630
+4670 HO=HO-.02:GOSUB630:VE=VE+.14:GOSUB630
+4680 HO=HO+.02:GOSUB630:VE=VE-.14:GOSUB630
+4690 VE=VE+.14:HO=HO-.01:GOSUB620
+4700 VE=VE+.055:GOSUB630:HO=HO-.02:GOSUB630
+4710 HO=HO+.04:GOSUB630
+4720 VE=VE+.016:HO=HO-.01:GOSUB620
+4730 HO=HO-.02:GOSUB630
+4740 VE=VE+.015:HO=HO+.01:GOSUB620
+4750 HO=HO+.002:GOSUB630
+4760 HO=HO-.2:VE=VE-.5:GOSUB620
+4770 VE=VE-.07:GOSUB630:VE=VE+.30:GOSUB630
+4780 HO=HO+.15:VE=VE-.15:GOSUB630
+4790 HO=HO+.045:GOSUB630:HO=HO-.045:GOSUB620
+4800 HO=HO-.15:VE=VE-.15:GOSUB630
+4810 VE=VE+.23:GOSUB620:HO=HO-.02:GOSUB630
+4820 VE=VE+.1:GOSUB630:HO=HO-.01:GOSUB630
+4830 HO=HO+.02:GOSUB630:VE=VE+.13:GOSUB630
+4840 HO=HO-.02:GOSUB630:VE=VE-.13:GOSUB630
+4850 VE=VE+.13:HO=HO+.01:GOSUB620
+4860 VE=VE+.1:GOSUB630:SR$="+":GOSUB650
+4870 HO=HO+.22:VE=VE-.49:GOSUB620
+4880 HO=HO+.05:GOSUB630:VE=VE+.05:GOSUB630
+4890 VE=VE-.1:GOSUB630:HO=HO+.017:GOSUB620
+4900 VE=VE+.1:GOSUB630:VE=VE-.05:GOSUB630
+4910 HO=HO+.08:GOSUB630
+4920 SD=10:GOSUB450:REM ** timer **
+5000 REM ** druk componentencode af **
+5010 HO=0:VE=VE-.012:SR$="<-R6":GOSUB650
+5020 HO=.18:VE=0:SR$="C2":GOSUB650
+5030 HO=.49:SR$="R11":GOSUB650
+5040 HO=.68:SR$="C4":GOSUB650
+5050 HO=.18:VE=.095:SR$="R8":GOSUB650
+5060 HO=.37:SR$="R10":GOSUB650
+5070 HO=.68:SR$="R13":GOSUB650
+5080 HO=.38:VE=.189:SR$="C3":GOSUB650
+5090 HO=.77:SR$="C5":GOSUB650
+5100 HO=.17:VE=.314:SR$="2":GOSUB650:HO=.53:GOSUB650
+5110 HO=.345:VE=.324:SR$="1":GOSUB650:HO=.734:GOSUB650
+5120 HO=.195:VE=.349:SR$="IC1-1":GOSUB650
+5130 HO=.556:SR$="IC2-1":GOSUB650
+5140 HO=.172:VE=.449:SR$="3":GOSUB650:HO=.561:GOSUB650
+5150 HO=.082:VE=.599:SR$="R7":GOSUB650
+5160 HO=.304:SR$="R9":GOSUB650
+5170 HO=.443:SR$="R12":GOSUB650
+5180 HO=.665:SR$="R14":GOSUB650
+5190 HO=0:VE=.82:SR$=" DEELSCHEMA DATASETTE C2N OF 1530"
+5200 GOSUB650
+5210 SD=50:GOSUB450:REM ** timer **
+5220 SR$=" DEELSCHEMA DATASETTE C2N OF 1530"
+5230 CN=1:GOSUB650
+5240 SR$="UITBREIDING DATASETTE C2N OF 1530"
+5250 CN=0:GOSUB650:HO=0:REM ** cursor links **
+5260 REM ** teken de uitbreiding in **
+5270 HO=.37:VE=VE-.32:GOSUB620
+5280 HO=.42:GOSUB630:VE=VE-.05:GOSUB630
+5290 VE=VE+.1:GOSUB630:HO=HO+.016:GOSUB620
+5300 VE=VE-.1:GOSUB630:VE=VE+.05:GOSUB630
+5310 HO=HO+.05:GOSUB630:VE=VE-.05:GOSUB630
+5320 HO=HO+.02:VE=VE-.05:GOSUB630
+5330 HO=HO-.02:GOSUB620:VE=VE-.11:GOSUB630
+5340 HO=HO-.09:VE=VE+.12:SR$="Cx  S":GOSUB650
+5350 HO=0:VE=.87:SR$="DRUK <V> VOOR VERDER":GOSUB650
+5360 GOSUB210:IFIN<>86 THEN5360
+5370 GOSUB600:REM ** wis grafiek **
+5380 REM ** beschrijf componenten **
+5390 HO=0:VE=0:SR$=" C2 = 180 pF / 250 V":GOSUB650
+5400 VE=.05:SR$=" C3 = 0,002 uF / 250 V":GOSUB650
+5410 HO=HO+.325:VE=.082:SR$="'":GOSUB650
+5420 HO=0:VE=.103:SR$=" C4 = 150 pF / 250 V":GOSUB650
+5430 HO=0:VE=.153:SR$=" C5 = 0,1 uF / 16 V":GOSUB650
+5440 HO=.27:VE=.184:SR$="'":GOSUB650
+5450 HO=0:VE=.205:SR$=" R6 = 7,5 k (niet getekend)":GOSUB650
+5460 VE=.255:SR$=" R7 = 47 k":GOSUB650
+5470 VE=.305:SR$=" R8 = 47 k":GOSUB650
+5480 VE=.355:SR$=" R9 = 2,7 k":GOSUB650
+5490 VE=.405:SR$=" R10 = 330 k":GOSUB650
+5500 VE=.455:SR$=" R11 = 3,9 k":GOSUB650
+5510 VE=.505:SR$=" R12 = 47 k":GOSUB650
+5520 VE=.555:SR$=" R13 = 56 k":GOSUB650
+5530 VE=.605:SR$=" R14 = 2,7 k":GOSUB650
+5540 VE=.705:SR$=" Cx =  0,22 uF / 250 V (uitbreiding)"
+5550 GOSUB650
+5560 HO=.325:VE=VE+.03:SR$="'":GOSUB650
+5570 HO=0:VE=VE+.02
+5580 SR$=" S  =  Schakelaartje 1-polig":GOSUB650
+5590 VE=VE+.1:SR$=" DRUK <V> VOOR VERDER, <T> VOOR TERUG"
+5600 GOSUB650
+5610 GOSUB210
+5620 IFIN=84 THEN4030
+5630 IFIN=86 THEN1000
+5640 GOSUB250:GOTO5610
+25000 DATA"De Commodore 64 (128) is nog steeds"
+25010 DATA"een populaire micro-computer, ondanks"
+25020 DATA"de opmars van de PC-klonen en andere"
+25030 DATA"''zwaardere'' home-computers.",""
+25040 DATA"Ook is deze computer een veel voor-"
+25050 DATA"komende verschijning in het Basicode"
+25060 DATA"gebeuren.",""
+25070 DATA"Er is echter vanaf het begin een vrij"
+25080 DATA"onbetrouwbare schakel geleverd bij"
+25090 DATA"deze computer, namelijk de cassette-"
+25100 DATA"recorder, door Commodore DATASETTE"
+25110 DATA"genoemd.",""
+25120 DATA"Hoewel er in het algemeen mechanisch"
+25130 DATA"weinig aan mankeert (behalve het"
+25140 DATA"vaak enigszins ''scheef'' staan van"
+25150 DATA"de opneem/weergeefkop), is de echte"
+25160 DATA"boosdoener de z.g. INTERFACE, het"
+25170 DATA"electronisch gedeelte dus.",""
+25180 DATA"Bij het inlezen ''kijkt'' de inter-"
+25190 DATA"face namelijk naar de PIEKEN van het"
+25200 DATA"signaal, dat op de band staat en dat"
+25210 DATA"heeft vaak nare konsequenties bij het"
+25220 DATA"inlezen van Basicode(3) programma's."
+25230 DATA""
+25240 DATA"Bij het inlezen van Basicode pro-"
+25250 DATA"gramma's, die via het FM-net worden"
+25260 DATA"uitgezonden heeft men in het algemeen"
+25270 DATA"niet zo veel last bij het ''kijken''"
+25280 DATA"naar de pieken van het signaal.",""
+25290 DATA"Eventuele leesfouten zijn vaak simpel"
+25300 DATA"te corrigeren en een herhaald in-"
+25310 DATA"lezen heeft meestal een foutloos ver-"
+25320 DATA"loop.",""
+25330 DATA"Bij het inlezen van Basicode pro-"
+25340 DATA"gramma's, die via de middengolf (AM)"
+25350 DATA"worden uitgezonden heeft dit echter"
+25360 DATA"het effekt, dat onze C-64 niet duide-"
+25370 DATA"lijk de enen en nullen en dus de"
+25380 DATA"start- en stopbits kan onderscheiden,"
+25390 DATA"met alle nare gevolgen vandien.",""
+25400 DATA"Dit wordt voornamelijk veroorzaakt"
+25410 DATA"door de vele (fase)vervormingen in"
+25420 DATA"het via de MG ontvangen signaal"
+25430 DATA"zoals:",""
+25440 DATA"- Fading, het sterker en zwakker"
+25450 DATA"  worden van het signaal.",""
+25460 DATA"- Vonken, b.v. onweer of storing van"
+25470 DATA"  electrische apparaten.",""
+25480 DATA"- Extra vervormingen die vaak"
+25490 DATA"  optreden bij het omzetten van de"
+25500 DATA"  MG-band naar de FM-band door de"
+25510 DATA"  kabel-exploitant (C.A.I.)",""
+25520 DATA"  Bovendien:"
+25530 DATA"- De specifieke eigenschappen van de"
+25540 DATA"  cassetterecorder waarmee opgenomen"
+25550 DATA"  wordt. Polariteitsproblemen en/of"
+25560 DATA"  nieuwe vervormingen, geintrodu-"
+25570 DATA"  ceerd door b.v. correctiefilters.",""
+25580 DATA"Ook vraagt de DATASETTE een vrij"
+25590 DATA"''hard'' signaal om de piek-detectie"
+25600 DATA"vlot te doen verlopen. Ook dit levert"
+25610 DATA"weer vervorming op.","","",""
+25620 DATA"NULDOORGANGSDETECTIE"
+25630 DATA"---------------------"
+25640 DATA"Om deze narigheid het hoofd te bieden"
+25650 DATA"bestaat er een methode, om over te"
+25660 DATA"schakelen van piekdetectie naar"
+25670 DATA"NULDOORGANGSDETECTIE.",""
+25680 DATA"Hiertoe dient over de condensator C3"
+25690 DATA"een condensator van 0,22 microfarad"
+25700 DATA"via een schakelaartje parallel te"
+25710 DATA"worden geschakeld (zie Cx in schema)."
+25720 DATA"Bij het ingeschakeld staan van deze"
+25730 DATA"condensator treden de volgende eigen-"
+25740 DATA"schappen op:",""
+25750 DATA"- Via F3 maakt het vrijwel geen ver-"
+25760 DATA"  schil of het programma via de FM-"
+25770 DATA"  band of Radio-5 (middengolf) werd"
+25780 DATA"  uitgezonden.",""
+25790 DATA"- Een matige fading heeft geen"
+25800 DATA"  nadelige gevolgen meer bij het in-"
+25810 DATA"  lezen.",""
+25820 DATA"- Het opname-niveau kan aanzienlijk"
+25830 DATA"  lager zijn. Een niveau van -2 tot"
+25840 DATA"  +1 dB blijkt ruim voldoende te"
+25850 DATA"  zijn.",""
+25860 DATA"- Lagere gevoeligheid voor de eerder"
+25870 DATA"  vermelde storingen.",""
+25880 DATA"Het is dus NIET het schakelaartje,"
+25890 DATA"dat beschreven werd in Bulletin 11"
+25900 DATA"van TROS BASICODE-3,"
+25910 DATA"doch werd eerder vermeld in de"
+25920 DATA"NOS Beeldkrant ''C-64 BASICODE"
+25930 DATA"UTILITIES'' van de hand van"
+25940 DATA"Arwin Vosselman.","",""
+25950 DATA"ADDER ONDER HET GRAS"
+25960 DATA"--------------------"
+25970 DATA"Helaas is ook hier een addertje"
+25980 DATA"onder het gras. Er bestaan (minstens)"
+25990 DATA"3 verschillende versies van deze"
+26000 DATA"DATASETTE, namelijk de C2N, C2N-a,"
+26010 DATA"1530 en mogelijk nog andere.",""
+26020 DATA"Daarom kan onmogelijk de juiste po-"
+26030 DATA"sitie voor Cx op de printplaat worden"
+26040 DATA"aangegeven. Geduldig speurwerk en mo-"
+26050 DATA"gelijk advies van een gebruikersgroep"
+26060 DATA"is hier op zijn plaats.",""
+26070 DATA"ARSENAAL VAN LEESPOKE'S"
+26080 DATA"-----------------------"
+26090 DATA"Om het inlezen van Basicode onder"
+26100 DATA"moeilijke kondities te verbeteren"
+26110 DATA"staan ons een arsenaal van leespoke's"
+26120 DATA"ter beschikking om mee te experimen-"
+26130 DATA"teren, t.w.:",""
+26140 DATA"Vertaalprogramma bij 1e druk van het"
+26150 DATA"Basicode-3 boek:"
+26160 DATA"- POKE 6632,66 : POKE 6636,114"
+26170 DATA"- POKE 6632,66 : POKE 6636,102"
+26180 DATA"- POKE 6632,86 : POKE 6636,102"
+26190 DATA"- POKE 6632,86 : POKE 6636,86"
+26200 DATA"- POKE 6632,90 : POKE 6636,90",""
+26210 DATA"Vertaalprogramma bij 2e druk van het"
+26220 DATA"Basicode-3 boek:"
+26230 DATA"- POKE 6104,66 : POKE 6108,114"
+26240 DATA"- POKE 6104,66 : POKE 6108,102"
+26250 DATA"- POKE 6104,86 : POKE 6108,102"
+26260 DATA"- POKE 6104,86 : POKE 6108,86"
+26270 DATA"- POKE 6104,90 : poke 6108,90",""
+26280 DATA"Waarden van 86 t/m 90 kunnnen soms"
+26290 DATA"blokkades oproepen bij de Basicode-3"
+26300 DATA"bestands-I/O in Basicode cassette-"
+26310 DATA"formaat.",""
+26320 DATA"Experimenteert u hier eens rustig mee"
+26330 DATA"en zoek een zo gunstig mogelijk"
+26340 DATA"resultaat.   VEEL SUCCES!"
+26350 DATA">>>>>"
+30000 REM *****************************
+30010 REM *                           *
+30020 REM * tips voor c-64 gebruikers *
+30030 REM * geraadpleegde citaten van:*
+30040 REM *                           *
+30050 REM *      arwin vosselman      *
+30060 REM *             &             *
+30070 REM *      melis van deelen     *
+30080 REM *                           *
+30090 REM *           door :          *
+32000 REM *                           *
+32010 REM *       a.j. van donk       *
+32020 REM *       meiland 30          *
+32030 REM *     3075 sj rotterdam     *
+32040 REM *      12 october 1989      *
+32050 REM *                           *
+32060 REM *    dit is public domain   *
+32070 REM *          software         *
+32080 REM *                           *
+32090 REM *****************************
+32100 REM
+32110 REM TROS-RADIO dd 891101
