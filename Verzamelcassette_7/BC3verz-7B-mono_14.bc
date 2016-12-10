@@ -1,0 +1,250 @@
+
+1000 A=1000:GOTO20:REM ** STRIPPENKAART **
+1010 REM ******** Menu ********
+1020 SR$="Bereken uw reiskosten met"
+1030 GOSUB150:PRINT
+1040 SR$="tram en bus in Nederland."
+1050 GOSUB150:PRINT:PRINT:PRINT:PRINT
+1060 PRINT" 1. Reiskosten uitrekenen":PRINT:PRINT
+1070 PRINT" 2. Reiskosten uitprinten":PRINT:PRINT
+1080 PRINT" 3. Toelichting op scherm":PRINT:PRINT
+1090 PRINT" 4. Toelichting printen":PRINT:PRINT
+1100 PRINT" 5. Stoppen":PRINT
+1110 PRINT:PRINT:SR$="Maak uw keuze;":GOSUB150
+1120 GOSUB210:IN=IN-48
+1130 IF(IN<1)OR(IN>5) THEN1120
+1140 GOSUB100:ONIN GOTO1160,2020,4010,4010,5010
+1150 REM ******** Reiskosten op scherm ********
+1160 RESTORE
+1170 INPUT"Aantal gereisde zones ";ZO
+1180 PRINT
+1190 PRINT"Voor reizen binnen ";ZO;" zones moet je"
+1200 PRINT:PRINT
+1210 ZO=ZO+1:SR=ZO:GOSUB300:GOSUB150
+1220 SR$="strippen afstempelen":GOSUB150
+1230 PRINT:PRINT:PRINT
+1240 SR$="Soort kaart   Prijs    Reiskosten":GOSUB150
+1250 PRINT:PRINT
+1260 READBS,ME$,PS:IFME$="*" THEN1370
+1270 IFBS>0 THEN1300
+1280 SR$=ME$:PRINT:GOSUB150
+1290 PRINT:PRINT:GOTO1260
+1300 SR=BS:CT=2:CN=0:GOSUB310:PRINTSR$;
+1310 PRINT" - ";ME$;:SR=PS:CT=5:CN=2:GOSUB310
+1320 GOSUB120:HO=17:GOSUB110:PRINT"f. ";SR$;
+1330 KO=ZO*PS/BS
+1340 SR=KO:GOSUB310
+1350 GOSUB120:HO=28:GOSUB110:PRINT"f. ";SR$
+1360 GOTO1260
+1370 HO=0:VE=24:GOSUB110:SR$="Nog eens?":GOSUB150
+1380 GOSUB210:GOSUB100:IFIN<>78 THEN1160
+1390 GOTO1000
+2000 REM ******** Uitprinten ********
+2010 REM
+2020 RESTORE
+2030 SR$="** REISKOSTENOVERZICHT STRIPPENKAART ":GOSUB350
+2040 SR$=" - Basicode3 - (C) Eduard Bekker **":GOSUB350
+2050 GOSUB360:SR$="*":GOSUB3010
+2060 FORX=1 TO20:SR$=" ":GOSUB350:NEXTX
+2070 READBS,ME$,PS
+2080 IFME$="*" THEN2130
+2090 IF(BS<>0)OR(PS<>0) THEN2120
+2100 SR$="       ":GOSUB350:SR$=ME$:GOSUB350
+2110 SR$="   ":GOSUB350
+2120 GOTO2070
+2130 GOSUB360:SR$="-":GOSUB3010
+2140 SR$="  Zones     Strippen  ":GOSUB350
+2150 RESTORE
+2160 READPS,ME$,BS:IFME$="*" THEN2220
+2170 IFPS=0 THENSR$="   |":GOSUB350:GOTO2210
+2180 SR$=" ":SR=PS:CT=4:CN=0
+2190 GOSUB310:GOSUB350
+2200 SR$=" ":GOSUB350:SR$=LEFT$(ME$,3):GOSUB350
+2210 GOTO2160
+2220 GOSUB360:SR$="=":GOSUB3010
+2230 FORZO=2 TO25:RESTORE
+2240 SR$="     ":GOSUB350
+2250 SR=ZO-1:CT=3:CN=0:GOSUB310:GOSUB350
+2260 SR$="   ":GOSUB350
+2270 SR=ZO:GOSUB310:ZO$=SR$:SR$="     ":GOSUB350
+2280 SR$=ZO$:GOSUB350:SR$="   ":GOSUB350
+2290 READPS,ME$,BS
+2300 IFME$="*" THENSR$="  ":GOSUB350:GOSUB360:GOTO2350
+2310 IFPS=0 THENSR$="   |":GOSUB350:GOTO2290
+2320 SR=ZO*BS/PS
+2330 CT=8:CN=2:GOSUB310:GOSUB350
+2340 GOTO2290
+2350 NEXTZO
+2360 SR$="*":GOSUB3010
+2370 GOTO1000
+3000 REM ***** Lijn uitprinten *****
+3010 FORX=1 TO72:GOSUB350:NEXTX:GOSUB360:RETURN
+4000 REM ******** Toelichting *******
+4010 A=500:RESTORE
+4020 READSR$:IFSR$<>"*" THEN4020
+4030 READSR$
+4040 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+4050 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+4060 GOSUB4330:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+4070 GOSUB150:PRINT:PRINT:PRINT
+4080 IFIN=3 THENSC=1:GOTO4180
+4090 SC=2
+4100 PRINT:PRINT"Hoeveel spaties wilt u aan het"
+4110 INPUT"begin van elke regel ";HL
+4120 PRINT:PRINT"Hoeveel tekens echte tekst wilt"
+4130 INPUT"u op elke regel ";I:HR=HL+I-1
+4140 PRINT:PRINT"Hoeveel regels wilt u bij de scheurlijn"
+4150 INPUT"laten overslaan ";VL
+4160 PRINT:PRINT"Hoeveel echte tekstregels wilt u op"
+4170 INPUT"elk blad ";VR:VR=VR+VL-3
+4180 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+4190 GOSUB4300:M$=MM$:AL=VL:IFSC=2 THEN GOSUB4280
+4200 IFLEN(R$)>HR-HL THEN GOSUB4660
+4210 GOSUB4360:IFR$<>"" THENR$=R$+" "
+4220 R$=R$+D$:GOTO4200
+4230 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO4250
+4240 PRINTM$;SR$:HL=0
+4250 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+4260 IFSC=1 THEN4300
+4270 FORI=1 TOVL:GOSUB360:NEXTI:AL=VL
+4280 SR$=LEFT$(S$,(HR-LEN(T$))/2)+T$:GOSUB4230
+4290 SR$="":GOSUB4230:AL=VL:RETURN
+4300 HO=3:VE=VT:GOSUB110
+4310 SR$="VERVOLG: druk op <return>":GOSUB150
+4320 GOSUB210:IFIN<>13 THEN4320
+4330 GOSUB100:AL=VL:SR$=T$
+4340 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+4350 PRINT:PRINT:RETURN
+4360 READD$:IFLEFT$(D$,1)<>"." THENRETURN
+4370 IFD$<>".E" THEN4430
+4380 J=1:GOSUB4600
+4390 IFSC=1 THEN GOSUB4300:GOTO1000
+4400 SR$=T$:GOSUB4230:SR$="":T$=""
+4410 GOSUB4230:IFAL<>VL THEN4410
+4420 GOTO1000
+4430 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+4440 IFDD$<>"R" THEN4490
+4450 IFSC=2 THENRETURN
+4460 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB4230:R$=""
+4470 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+4480 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO4360
+4490 IFDD$<>"M" THEN4520
+4500 I=VAL(D$):MM$="":IFI+HL=0 THEN4360
+4510 MM$=LEFT$(S$,I+HL):GOTO4360
+4520 IFDD$="P" THENJ=VAL(D$):GOSUB4600:GOSUB4620:GOTO4360
+4530 IFDD$="T" THENT$=D$:GOTO4360
+4540 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO4360
+4550 IFDD$<>"F" THEN4590
+4560 J=VAL(D$):GOSUB4600
+4570 J=J-1:IFJ>-1 THENSR$="":GOSUB4230:GOTO4570
+4580 GOTO4360
+4590 GOTO4360
+4600 GOSUB4660:IFR$<>"" THENSR$=R$:GOSUB4230:R$="":J=J-1
+4610 RETURN
+4620 IF(SC=1)OR(AL+J>VR) THEN4640
+4630 SR$="":GOSUB4230:GOSUB4230:RETURN
+4640 IFAL<>VL THENSR$="":GOSUB4230:GOTO4640
+4650 RETURN
+4660 IFLEN(R$)<=HR-HL THENRETURN
+4670 K=HR-HL+1
+4680 IFMID$(R$,K,1)=" " THEN4710
+4690 K=K-1:IFK>0 THEN4680
+4700 SR$="":GOTO4720
+4710 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+4720 GOSUB4230:GOTO4660
+5000 REM ******* Stoppen ********
+5010 SD=50:RESTORE:VE=5
+5020 READSR$:IFSR$<>".E" THEN5020
+5030 HO=5:VE=VE+1:GOSUB110
+5040 READSR$:IFSR$<>".E" THENPRINTSR$:GOTO5030
+5050 GOSUB450
+5060 GOTO950
+25000 REM Strippen,Soort,Prijs
+25010 DATA0,"Bij de bestuurder",0
+25020 DATA3,"vol  tarief",2.65
+25030 DATA10,"vol  tarief",8.85
+25040 DATA0,"Voorverkoop",0
+25050 DATA15,"vol  tarief",8.85
+25060 DATA45,"vol  tarief",25.85
+25070 DATA15,"red. tarief",4.45
+25080 DATA0,"*",0
+26000 DATA"DE STRIPPENKAART"
+26010 DATA"Mensen die met het openbaar vervoer"
+26020 DATA"reizen, die kennen hem wel."
+26030 DATA"Sinds enkele jaren kun je overal in"
+26040 DATA"Nederland met 1 type kaart - de"
+26050 DATA"zogeheten strippenkaart - in bus, tram"
+26060 DATA"of metro stappen.",".F2"
+26070 DATA"Die strippenkaart is voor mensen die"
+26080 DATA"niet vaak met tram of bus reizen een"
+26090 DATA"beetje raadselachtig.",".F2"
+26100 DATA"Vroeger kocht je bij de bestuurder een"
+26110 DATA"retourtje Tiel en je wist meteen"
+26120 DATA"wat dat kostte.",".F1"
+26130 DATA"Tegenwoordig moet je een aantal strippen"
+26140 DATA"laten afstempelen en je beseft vaak niet"
+26150 DATA"wat je dan aan reiskosten kwijt bent."
+26160 DATA"Die reiskosten hangen dan ook nog eens"
+26170 DATA"af van het type strippenkaart dat je"
+26180 DATA"gebruikt.",".F2"
+26190 DATA"Dit programma rekent voor je uit wat je"
+26200 DATA"aan reiskosten kwijt bent als je van de"
+26210 DATA"kaart gebruik maakt.",".F1"
+26220 DATA"Bovendien kun je hierna lezen hoe je"
+26230 DATA"met de strippenkaart moet omgaan.",".F2"
+26240 DATA"Handig voor mensen die na jaren voor"
+26250 DATA"het eerst weer eens gebruik maken van"
+26260 DATA"het openbaar vervoer, zoals automobilisten,"
+26270 DATA"van wie de auto stuk is, of die om"
+26280 DATA"milieuredenen liever met het openbaar"
+26290 DATA"vervoer willen reizen.",".F2"
+26300 DATA"N.B. In de tabellen staan de afkortingen"
+26310 DATA".R'vol'","en",".R'red'","voor het",".Rvolledige"
+26320 DATA"c.q. het",".Rgereduceerde","tarief."
+26330 DATA"Let vooral op het grote prijsverschil"
+26340 DATA"tussen de aanschaf van de strippenkaart"
+26350 DATA"in de voorverkoop en bij de chauffeur."
+26360 DATA".P1"
+26370 DATA".RGEBRUIK VAN DE STRIPPENKAART",".F2"
+26380 DATA"Bij vrijwel iedere halte tref je wel een"
+26390 DATA"eenvoudige kaart aan van de omgeving aan,"
+26400 DATA"waarop ook de routes van de spoor-, tram"
+26410 DATA"en buslijnen staan vermeld."
+26420 DATA"De kaart is opgedeeld in dikke roodomrande"
+26430 DATA"gebieden. Dat zijn de zones."
+26440 DATA"Heel Nederland is opgedeeld in deze zones,"
+26450 DATA"die allen een eigen nummer hebben.",".F2"
+26460 DATA"Kijk op de kaart in welke zone je reisdoel ligt."
+26470 DATA"Ligt je bestemming in dezelfde zone, dan reis"
+26480 DATA"je slechts 1 zone. Ligt je reisdoel in een"
+26490 DATA"aangrenzende zone, dan reis je 2 zones.",".F1"
+26500 DATA"Ligt tussen de zone waar je staat te wachten"
+26510 DATA"en de zone van je bestemming nog een zone,"
+26520 DATA"dan moet je drie zones reizen, etc. ,etc."
+26530 DATA".F2","Het aantal strippen dat je nu moet"
+26540 DATA"afstempelen is het aantal zones + een"
+26550 DATA"basisstrip.",".F2"
+26560 DATA"Dus:",".RAantal strippen = zones +1.",".F2"
+26570 DATA"Overigens vind je achter op de strippenkaart"
+26580 DATA"ook een duidelijke gebruiksaanwijzing.",".F2"
+26590 DATA"Succes!",".F3"
+26600 DATA"P.S.: Let goed op bij het gebruik van een"
+26610 DATA"45-strippenkaart: begin bij de voorkant"
+26620 DATA"en gebruik deze het eerst op. Doe je dit niet,"
+26630 DATA"door eerst op de achterkant te beginnen,"
+26640 DATA"of halverwege op de achterkant verder te gaan,"
+26650 DATA"dan is de voorkant niet meer te gebruiken!!!"
+26660 DATA".E"
+30000 DATA"**************************"
+30010 DATA"*                        *"
+30020 DATA"*  Dit programma werd    *"
+30030 DATA"*  gemaakt op een BBC-B  *"
+30040 DATA"*  computer door         *"
+30050 DATA"*                        *"
+32000 DATA"*  Eduard Bekker         *"
+32010 DATA"*  te Den Haag op        *"
+32020 DATA"*  7 november 1989       *"
+32030 DATA"*                        *"
+32040 DATA"**************************"
+32050 DATA".E"
+32060 REM TROS-RADIO dd 900314
