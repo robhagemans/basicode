@@ -1,19 +1,17 @@
-.. rubric:: BASICODE file format
-   :name: basicode-file-format
+BASICODE file format
+====================
 
-Files on BASICODE cassettes are stored as frequency-modulated sound. By
-contrast to the IBM cassette format, BASICODE bits all have the same
-duration of 1/1200 s.
+Modulation
+----------
 
-.. rubric:: Modulation
-   :name: basicode-modulation
+Files on BASICODE cassettes are stored as frequency-modulated sound.
+BASICODE bits all have the same duration of 1/1200 s.
 
 -  A 1-bit is represented by two wave periods at 2400 Hz.
 -  A 0-bit is represented by a single wave period at 1200 Hz.
 
-.. rubric:: Byte format
-   :name: basicode-byte
-
+Byte format
+-----------
 
 +--------+---------+------------------------------------------------------------------------+
 | Bits   | Value   | Function                                                               |
@@ -28,9 +26,8 @@ duration of 1/1200 s.
 +--------+---------+------------------------------------------------------------------------+
 
 
-.. rubric:: Program file format
-   :name: basicode-program
-
+Program file format
+-------------------
 
 +---------+----------------+--------------------------------------------------------------------+
 | Bytes   | Format         | Meaning                                                            |
@@ -49,14 +46,23 @@ duration of 1/1200 s.
 +---------+----------------+--------------------------------------------------------------------+
 
 
-.. rubric:: Data file format
-   :name: basicode-data
+Data file format
+----------------
 
-Data files are split into blocks of 1024 bytes each. The specification
-does not indicate how to determine the length of a stored file; note
-that BASICODE data files are exceedingly rare so it is not clear how
-this limitation was dealt with in practice.
+Data files are split into blocks of 1024 bytes each. The stated reason for this
+is to avoid needing a sentinel value to indicate the end of the block; however,
+the header information does not include the number of blocks nor the length of
+the last block.
 
+Therefore, the end of the file needs to be indicated with an ``ETH`` (``04``) byte.
+According to Dr. Völz's description, all further bytes in the block should be
+``ETH``; however, the BASICODE-3 book leaves these bytes unspecified and states they could
+be anything. In practice, they often are values other than ``ETH``.
+
+This means that, despite the 1024-byte block structure of the files, this protocol
+is not suited to transfer binary files, since it is not possible to transmit a ``04``
+without indicating the end of the file. In practice, all files in BASICODE-3 format
+are ASCII files, so this problem does not arise.
 
 +---------+----------------+----------------------------------------------------------------------------------+
 | Bytes   | Format         | Meaning                                                                          |
