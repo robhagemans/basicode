@@ -15,6 +15,7 @@ Integrale Huishoud Rekening
 | NOS-Radio/Hobbyscoop-produktie – Uitgave NOS – afd. Communicatie
 | Auteur B. Rintjema, prod. Ingrid Drissen / Hans G. Janssen
 
+
 Kant A:
 
 1. `Toelichting no. 1`_
