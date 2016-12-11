@@ -42,7 +42,7 @@ Kant A met lengte in K-byte:
 Kant B met lengte in K-byte:
 
 ======================================= =====
-16. Vermeigvuldigen                     3.6
+16. Vermenigvuldigen                    3.6
 17. Breuken                             3.1
 18. Ontbinden in faktoren               1.7
 19. Staartdelingen                      16.2
