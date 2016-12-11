@@ -8,15 +8,12 @@ Alleen dient u dan te beschikken over een Basicode vertaalprogramma. Dat is er a
 zo'n 35 computers. Als u niet weet of het er al voor uw merk computer is, schrijf dan naar
 het radioprogramma NOS-Hobyscoop, Postbus 1200, 1200 BE in Hilversum.**
 
+| NOS-Radio/Hobbyscoop-produktie, met dank aan vele, vaste luisteraars.
+| Uitgave NOS-afd. Communicatie.
+| Presentatie: Ingrid Drissen.
+| Produktie: Lidy Martin, dr. Pieter Vijlbrief en Hans G. Janssen.
 
-NOS-Radio/Hobbyscoop-produktie, met dank aan vele, vaste luisteraars.
-
-Uitgave NOS-afd. Communicatie.
-
-Presentatie: Ingrid Drissen.
-
-Produktie: Lidy Martin, dr. Pieter Vijlbrief en Hans G. Janssen.
-
+----------------------------------
 
 Kant A met lengte in K-byte:
 
@@ -58,4 +55,6 @@ Kant B met lengte in K-byte:
 10. Latin verbs              30.8
 ============================ =====
 
-**Alle rechten voorbehouden NOS-radio/Hobbyscoop**
+----------------------------------
+
+Alle rechten voorbehouden NOS-radio/Hobbyscoop
