@@ -15,7 +15,7 @@ Integrale Huishoud Rekening
 | NOS-Radio/Hobbyscoop-produktie – Uitgave NOS – afd. Communicatie
 | Auteur B. Rintjema, prod. Ingrid Drissen / Hans G. Janssen
 
-..
+------------------------------
 
 Kant A:
 
@@ -36,6 +36,8 @@ Kant B:
 4. Universeel print progr.
 5. Jaaroverzicht no. 1
 6. Jaaroverzicht no. 2
+
+------------------------------
 
 Alle rechten voorbehouden NOS-radio Hobbyscoop
 
