@@ -8,18 +8,18 @@ Alleen dient u dan te beschikken over een Basicode vertaalprogramma. Dat is er a
 zo'n 35 computers. Als u niet weet of het er al voor uw merk computer is, schrijf dan naar
 het radioprogramma NOS-Hobyscoop, Postbus 1200, 1200 BE in Hilversum.**
 
+| NOS-Radio/Hobbyscoop-produktie, met dank aan vele, vaste luisteraars.  
+| Presentatie: Ingrid Drissen.
+| Produktie: Lidy Martin, dr. Pieter Vijlbrief en Hans G. Janssen.
+| Uitgave NOS-afd. Communicatie.
 
-NOS-Radio/Hobbyscoop-produktie, met dank aan vele, vaste luisteraars.  
-Presentatie: Ingrid Drissen.
-Produktie: Lidy Martin, dr. Pieter Vijlbrief en Hans G. Janssen.
-Uitgave NOS-afd. Communicatie.
-
+-----------------------------------------
 
 Kant A met lengte in K-byte:
 
 =================================== =====
- 1. Inleiding Best of Basicode	    1.0
- 2. Rekenen (Basisschool)	        2.8
+ 1. Inleiding Best of Basicode 	    1.0
+ 2. Rekenen (Basisschool)	          2.8
  3. Taartdelen                      3.1
  4. Breuken I                       24.1
  5. Breuken II                      4.3
@@ -51,3 +51,7 @@ Kant B met lengte in K-byte:
  9. Tijdverschijnselen              8.0
 10. Typelessen                      17.6
 =================================== =====
+
+-----------------------------------------
+
+Alle rechten voorbehouden NOS-radio / Hobbyscoop
