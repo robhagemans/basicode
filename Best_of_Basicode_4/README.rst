@@ -9,14 +9,12 @@ zo'n 35 computers. Als u niet weet of het er al voor uw merk computer is, schrij
 het radioprogramma NOS-Hobyscoop, Postbus 1200, 1200 BE in Hilversum.**
 
 
-NOS-Radio/Hobbyscoop-produktie, met dank aan vele, vaste luisteraars.
+| NOS-Radio/Hobbyscoop-produktie, met dank aan vele, vaste luisteraars.
+| Uitgave NOS-afd. Communicatie.
+| Presentatie: Marjanne Wassink.
+| Produktie: Lidy Martin, dr. Pieter Vijlbrief en Hans G. Janssen.
 
-Uitgave NOS-afd. Communicatie.
-
-Presentatie: Marjanne Wassink.
-
-Produktie: Lidy Martin, dr. Pieter Vijlbrief en Hans G. Janssen.
-
+---------------------------------------------
 
 Kant A met lengte in K-byte:
 
@@ -54,4 +52,6 @@ Kant B met lengte in K-byte:
 25. Simulator 8085                      26.0
 ======================================= =====
 
-**Alle rechten voorbehouden NOS-radio/Hobbyscoop**
+---------------------------------------------
+
+Alle rechten voorbehouden NOS-radio/Hobbyscoop
