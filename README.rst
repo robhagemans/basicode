@@ -90,5 +90,8 @@ References
 
 - *BASICODE Hobbyscoop 2*, Nederlandse Omroep Stichting, 1984.
 - *Het BASICODE-3 Boek*, Kluwer Technische Boeken, Deventer, 1986
-- **Janny Looyenga**'s documentation of the [BASICODE format](http://www.nostalgia8.nl/basicode.htm)
-- **Prof. Dr. Horst Völz**'s documentation of the [BASICODE cassette file format](http://www.kc85emu.de/scans/rfe0190/Basicode.htm)
+- **Janny Looyenga**'s documentation of the `BASICODE format`_
+- **Prof. Dr. Horst Völz**'s documentation of the `BASICODE cassette file format`_
+
+.. _BASICODE format: http://www.nostalgia8.nl/basicode.htm
+.. _BASICODE cassette file format: http://www.kc85emu.de/scans/rfe0190/Basicode.htm
