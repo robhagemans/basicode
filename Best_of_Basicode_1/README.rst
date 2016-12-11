@@ -12,9 +12,8 @@ het radioprogramma NOS-Hobyscoop, Postbus 1200, 1200 BE in Hilversum.**
 Integrale Huishoud Rekening
 ---------------------------
 
-NOS-Radio/Hobbyscoop-produktie ­– Uitgave NOS – afd. Communicatie
-
-Auteur B. Rintjema, prod. Ingrid Drissen / Hans G. Janssen
+| NOS-Radio/Hobbyscoop-produktie – Uitgave NOS – afd. Communicatie
+| Auteur B. Rintjema, prod. Ingrid Drissen / Hans G. Janssen
 
 Kant A:
 
@@ -36,7 +35,7 @@ Kant B:
 5. Jaaroverzicht no. 1
 6. Jaaroverzicht no. 2
 
- Alle rechten voorbehouden NOS-radio Hobbyscoop
+Alle rechten voorbehouden NOS-radio Hobbyscoop
 
 .. _`Toelichting no. 1`: A01_Toelichting_1.bc2
 .. _`Toelichting no. 2`: A02_Toelichting_2.bc2
