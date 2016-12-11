@@ -78,7 +78,17 @@ Source                              Medium      Basicode version    Language
 *Many of the above sources additionally contain translation programs, encoded in the native modulation for each computer.
 These are not included here.*
 
+
 Acknowledgements
 ----------------
 
 A big thank you to **Janny Looyenga**, **Jan Bredenbeek**, **André van der Leeden** and many others for history, BASICODE recordings and background information!
+
+
+References
+----------
+
+- *BASICODE Hobbyscoop 2*, Nederlandse Omroep Stichting, 1984.
+- *Het BASICODE-3 Boek*, Kluwer Technische Boeken, Deventer, 1986
+- **Janny Looyenga**'s documentation of the [BASICODE format](http://www.nostalgia8.nl/basicode.htm)
+- **Prof. Dr. Horst Völz**'s documentation of the [BASICODE cassette file format](http://www.kc85emu.de/scans/rfe0190/Basicode.htm)
