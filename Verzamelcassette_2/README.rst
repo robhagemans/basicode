@@ -1,4 +1,4 @@
-Basicode 3 Verzamelcassette 2
+BASICODE-3 Verzamelcassette 2
 =============================
 
 SIDE A
@@ -20,22 +20,23 @@ SIDE A
 
 SIDE B
 ------
-1. Kalender
-2. Multiklok
-3. Sinus
-4. Sinus-Cosinus
-5. Vreemd geld
-6. R-W-L tekst
-7. Speeldoos
-8. Computerbulletin 11
-9. Verenigde Staten
-10. Breuken 2
-11. Tekenen
-12. Computerbulletin 12
-13. Teksten bulletin 12
-14. Cijferagenda
-15. Kogelbaan
-16. Autosimulator 1
-17. Autosimulator 2
-18. Autosimulator 3
-19. Autosimulator 4
+1. Arabesque
+2. Kalender
+3. Multiklok
+4. Sinus
+5. Sinus-Cosinus
+6. Vreemd geld
+7. R-W-L tekst
+8. Speeldoos
+9. Computerbulletin 11
+10. Verenigde Staten
+11. Breuken 2
+12. Tekenen
+13. Computerbulletin 12
+14. Teksten bulletin 12
+15. Cijferagenda
+16. Kogelbaan
+17. Autosimulator 1
+18. Autosimulator 2
+19. Autosimulator 3
+20. Autosimulator 4
