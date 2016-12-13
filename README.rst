@@ -96,7 +96,7 @@ Online resources
 ----------------
 
 - Janny Looyenga, `BASICODE`_.
-- Prof. Dr. Horst Völz, `Datenaustausch mit BASICODE`_.
+- Prof. Dr. Horst Völz, `Datenaustausch mit BASICODE`_, *Radio Fernsehen Elektronik* **1** 1990.
 - Victor Reijs, `Overview of BASICODE-3`_.
 - Lennart Benschop, `BASICODE: an example of Dutch computer folklore`_.
 - Thomas Rademacher, `BasiCode – Software für alle`_.
