@@ -85,13 +85,25 @@ Acknowledgements
 A big thank you to **Janny Looyenga**, **Jan Bredenbeek**, **André van der Leeden** and many others for history, BASICODE recordings and background information!
 
 
-References
-----------
+Books
+-----
 
 - *BASICODE Hobbyscoop 2*, Nederlandse Omroep Stichting, 1984.
-- *Het BASICODE-3 Boek*, Kluwer Technische Boeken, Deventer, 1986
-- **Janny Looyenga**'s documentation of the `BASICODE format`_
-- **Prof. Dr. Horst Völz**'s documentation of the `BASICODE cassette file format`_
+- *Het BASICODE-3 Boek*, Kluwer Technische Boeken, Deventer, 1986.
+- Michael Wiegand, Heike u. Manfred Fillinger, *BASICODE. Mit Programmkassette*, Ravensburger Buchverlag, Ravensburg, 1986.
 
-.. _BASICODE format: http://www.nostalgia8.nl/basicode.htm
-.. _BASICODE cassette file format: http://www.kc85emu.de/scans/rfe0190/Basicode.htm
+Online resources
+----------------
+
+- Janny Looyenga, `BASICODE`_.
+- Prof. Dr. Horst Völz, `Datenaustausch mit BASICODE`_.
+- Victor Reijs, `Overview of BASICODE-3`_.
+- Lennart Benschop, `BASICODE: an example of Dutch computer folklore`_.
+- Thomas Rademacher, `BasiCode – Software für alle`_.
+
+.. _BASICODE: http://www.nostalgia8.nl/basicode.htm
+.. _`Datenaustausch mit BASICODE`: http://www.kc85emu.de/scans/rfe0190/Basicode.htm
+.. _`BASICODE: an example of Dutch computer folklore`: https://lennartb.home.xs4all.nl/basicode.html
+.. _`Overview of BASICODE-3`: http://www.iol.ie/~geniet/eng/BASICODE3sub.htm
+.. _`BasiCode – Software für alle`: http://www.joyce.de/basicode/
+
