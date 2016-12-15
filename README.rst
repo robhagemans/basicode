@@ -49,7 +49,7 @@ Source                              Medium      Basicode version    Language
 `BASICODE-3 Verzamelcassette 4`_    Tape        BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 5`_    Tape        BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 6`_    Tape        BASICODE-3          Dutch
-`BASICODE-3 Verzamelcassette 7`_    Tape        BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 7`_    Tape        BASICODE-3          Dutch and German
 `BASICODE-3 Verzamelcassette 8`_    Tape        BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 9`_    Tape        BASICODE-3          Dutch
 ==================================  ==========  ==================  ==================
