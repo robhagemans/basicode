@@ -1,8 +1,8 @@
-SIG/M    Volume 235     BASICODE Radio Communications (in Dutch)
-================================================================
+SIG/M    Volume 235     
+===================
 
-released       July 19, 1985
-
+BASICODE Radio Communications (in Dutch)
+----------------------------------------
 
 ======= ================== ===== ====== ============================================
 index   name               size  crc    description
