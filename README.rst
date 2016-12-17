@@ -35,6 +35,7 @@ Title                               Medium      Year  Standard            Langua
 `Chip Shop BASICODE 2`_             Tape        1984  BASICODE-2          English
 `Wiegand & Fillinger - Basicode`_   Tape        1984  BASICODE-2          German
 `BASICODE-2A`_                      Tape        1985  BASICODE-2          English and Dutch
+`SIG/M volume 235: BASICODE`_       ARPANET     1985  BASICODE-2          English and Dutch
 `The Best of BASICODE 1`_           Tape        1985  BASICODE-2          Dutch
 `The Best of BASICODE 2`_           Tape        1985  BASICODE-2          Dutch
 `The Best of BASICODE 3`_           Tape        1986  BASICODE-2          Dutch
@@ -57,6 +58,7 @@ Title                               Medium      Year  Standard            Langua
 .. _BASICODE-2A: Basicode-2a/
 .. _Chip Shop BASICODE 2: Chip_Shop_Basicode_2/
 .. _Wiegand & Fillinger - Basicode: Wiegand_Fillinger_Basicode_2/
+.. _`SIG/M volume 235: BASICODE`: SIGM-235/
 .. _The Best of BASICODE 1: Best_of_Basicode_1/
 .. _The Best of BASICODE 2: Best_of_Basicode_2/
 .. _The Best of BASICODE 3: Best_of_Basicode_3/
