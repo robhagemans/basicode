@@ -37,15 +37,15 @@ Source                              Medium      Year  Basicode version    Langua
 `BASICODE-2A`_                      Tape        1985  BASICODE-2          English and Dutch
 `BASICODE-3`_                       Tape        1986  BASICODE-3          Dutch
 `The Best of BASICODE 1`_           Tape        1985  BASICODE-2          Dutch
-`The Best of BASICODE 2`_           Tape              BASICODE-2          Dutch
+`The Best of BASICODE 2`_           Tape        1985  BASICODE-2          Dutch
 `The Best of BASICODE 3`_           Tape        1986  BASICODE-2          Dutch
 `The Best of BASICODE 4`_           Tape        1987  BASICODE-2          Dutch
 `The Best of BASICODE 5`_           CD          1988  BASICODE-2          Dutch
 `The Best of BASICODE 6`_           Diskette    1991  BASICODE-2          Dutch
 `The Best of BASICODE 7`_           Diskettes   1992  Text only           Dutch
-`BASICODE-3 Verzamelcassette 1`_    Tape              BASICODE-3          Dutch
-`BASICODE-3 Verzamelcassette 2`_    Tape              BASICODE-3          Dutch
-`BASICODE-3 Verzamelcassette 3`_    Tape              BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 1`_    Tape        1987  BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 2`_    Tape        1987  BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 3`_    Tape        1988  BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 4`_    Tape        1988  BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 5`_    Tape        1989  BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 6`_    Tape        1989  BASICODE-3          Dutch
