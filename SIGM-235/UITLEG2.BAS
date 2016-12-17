@@ -1,0 +1,253 @@
+10 GOTO 1000
+20 REM
+21 GOTO 1010
+22 REM COMPUTERS DIE DIT NODIG HEBBEN
+23 REM MOETEN OP REGEL 20 HEBBEN STAAN:
+24 REM     CLEAR A
+25 GOTO 1010
+100 PRINT CHR$(26);:RETURN
+101 REM 100:VEEG HET SCHERM SCHOON
+102 REM    OP APPLE : HOME
+103 REM    OP TRS   : CLS
+104 REM    OP CBM/PET : PRINTCHR$(147)
+105 REM    OP ....  : ....
+106 :
+1000 A=500:GOTO 20
+1010 GOTO 2300
+1020 :
+1030 PL=0:AR=0
+1040 READ RE$
+1050 IF RE$="***"THEN END
+1060 BK=1
+1070 IF BK>LEN(RE$)THEN 1040
+1080 AK=0
+1090 AK=AK+1
+1100 IF BK+AK>LEN(RE$)THEN 1120
+1110 IF MID$(RE$,BK+AK,1)<>" "THEN 1090
+1120 WO$=MID$(RE$,BK,AK)
+1130 BK=BK+LEN(WO$)+1
+1140 IF PL+LEN(WO$)>=RL THEN GOSUB 1230
+1150 IF WO$="&"THEN WO$="":GOSUB 1230:GOTO 1190
+1160 IF WO$<>"#"THEN 1190
+1170 GOSUB 1230:IF AR<>0 THEN 1170
+1180 GOTO 1070
+1190 PRINT WO$;
+1200 PL=PL+LEN(WO$)+1
+1210 IF PL<RL-1 THEN PRINT" ";
+1220 GOTO 1070
+1230 PRINT
+1240 AR=AR+1
+1250 IF AR<SH-2 THEN 1310
+1260 PRINT
+1270 PRINT"  VERVOLG: 'n TOETS en <return>";
+1280 INPUT SP$
+1290 AR=0
+1300 GOSUB 100
+1310 PL=0
+1320 RETURN
+1330 :
+2300 GOSUB 100
+2310 PRINT"Hoeveel karakters kunnen bij Uw computer"
+2320 PRINT"op een regel ? ";
+2330 INPUT RL
+2340 PRINT:PRINT
+2350 PRINT"Hoeveel regels kunnen bij Uw computer"
+2360 PRINT"op het scherm ? ";
+2370 INPUT SH
+2380 GOSUB 100
+2390 PL=0:AR=0
+2400 GOTO 1030
+2410 :
+3000 DATA"Hallo, daar zijn we weer met deel 2."
+3010 DATA"& & Dit deel geeft een overzicht van het"
+3020 DATA"BASICODE-2 protocol. & Zodra de nieuwe lees-"
+3030 DATA"en schrijf- routines zijn uitgezonden zal"
+3040 DATA"HOBBYSCOOP verder volgens dit protocol werken. &"
+3050 DATA"& Het protocol bestaat uit een aantal vaste"
+3060 DATA"subroutines waarvoor de regels met nummers onder"
+3070 DATA"1000 zijn gereserveerd. & Daarnaast enkele"
+3080 DATA"praktische regels, bedoeld om de leesbaarheid"
+3090 DATA"van de programma's te verbeteren. &"
+3100 DATA"& Luisteraars die programma's ter uitzending"
+3110 DATA"willen aanbieden (en dat zijn er gelukkig steeds"
+3120 DATA"meer), zullen hun programma's aan het protocol"
+3130 DATA"moeten aanpassen. & & Allereerst een overzicht"
+3140 DATA"van de subroutines. #"
+3150 DATA"GOSUB 100 & & Met deze opdracht kunt U voortaan"
+3160 DATA"het scherm"
+3170 DATA"laten schoonwissen en de cursor links boven"
+3180 DATA"in de hoek plaatsen. & & Op regel 100 zal voor"
+3190 DATA"Uw computer dus staan: & -HOME   of &"
+3200 DATA"-CLS   of & -PRINT CHR$(12)   of &"
+3210 DATA"-PRINT CHR$(147)   of & & nou ja, ga zo maar"
+3220 DATA"door. & & Op dezelfde regel na een : of op de"
+3230 DATA"volgende regel staat dus een RETURN #"
+3240 DATA"GOSUB 110 & & Deze opdracht kunt U gebruiken om"
+3250 DATA"de cursor op een gewenste plaats van het scherm"
+3260 DATA"te zetten. Daar hoort dus nog wat bij: &"
+3270 DATA"De bovenste schermregel heet voortaan regel 0,"
+3280 DATA"de volgende is regel 1, enz. & De meest linkse"
+3290 DATA"plaats op elke regel is plaats 0, en evenzo"
+3300 DATA"oplopend tot 39 bij een scherm met 40 karakters"
+3310 DATA"per regel. & & De bedoeling is nu, dat U in de"
+3320 DATA"variabele  HO  aangeeft op welke plaats in de"
+3330 DATA"HOrizontale richting de cursor moet komen en"
+3340 DATA"in de variabele  VE  op welke regel in VErticale"
+3350 DATA"richting.
+3360 DATA"# Een voorbeeld: & & VE=2 : HO=4 : GOSUB 110 &"
+3370 DATA"& Hiermee komt de cursor op regel 2 (dus de derde"
+3380 DATA"regel van boven) en op die regel op plaats 4, dus"
+3390 DATA"op het vijfde karakter van die regel."
+3400 DATA"& Hierna zal het eerste karakter van een volgend"
+3410 DATA"PRINT - statement op die aangegeven plaats"
+3420 DATA"terecht moeten komen. #"
+3430 DATA"GOSUB 120 & & Deze subroutine doet juist het"
+3440 DATA"omgekeerde van de vorige: & Nadat Uw programma"
+3450 DATA"deze subroutine heeft aangeroepen staat in VE"
+3460 DATA"en HO de juiste positie van de cursor op dat"
+3470 DATA"moment."
+3480 DATA"& & Door dan bij VE en/of HO iets op te tellen"
+3490 DATA"of af te trekken en daarna GOSUB 110 te geven"
+3500 DATA"plaatst U de cursor ten opzichte van de oude"
+3510 DATA"plaats. #"
+3520 DATA"GOSUB 200 & & Dit is een subroutine die voor U"
+3530 DATA"kijkt of er een toets van het toetsenbord was"
+3540 DATA"ingedrukt. & Als er eentje was ingedrukt dan"
+3550 DATA"wordt in de variabele IN$ aangegeven welke toets,"
+3560 DATA"als er geen was ingedrukt dan zal IN$ een lege"
+3570 DATA"string worden. #"
+3580 DATA"GOSUB 210 & & Deze subroutine lijkt wat op de"
+3590 DATA"vorige. Nu wordt echter door de subroutine"
+3600 DATA"gewacht totdat er een toets is ingedrukt"
+3610 DATA"en pas dan wordt de ingedrukte toets als IN$"
+3620 DATA"weer aan Uw programma afgegeven. #"
+3630 DATA"GOSUB 250 & & Met deze aanroep kan een"
+3640 DATA"BASICODE - programma voortaan een piepje geven."
+3650 DATA"& Bij computers waar geen luidspreker is"
+3660 DATA"ingebouwd doet deze subroutine natuurlijk niets."
+3670 DATA"& & Met deze subroutine kan geen muziek worden"
+3680 DATA"gemaakt. De toonhoogte en duur van het piepje"
+3690 DATA"is niet vastgesteld. & De subroutine is alleen"
+3700 DATA"bedoeld, de mogelijkheid tot een hoorbaar"
+3710 DATA"signaal te bieden. #"
+3720 DATA"GOSUB 260 & & Het aanroepen van deze"
+3730 DATA"subroutine leidt tot een antwoord in de variabele"
+3740 DATA"RV & & In RV wordt namelijk een random getal"
+3750 DATA"afgeleverd. Het kleinste getal dat de routine"
+3760 DATA"kan afleveren is 0, alle afgeleverde getallen"
+3770 DATA"zijn kleiner dan 1. & & Deze subroutine is"
+3780 DATA"opgenomen omdat de RND functie in diverse micro's"
+3790 DATA"nogal verschillend blijkt te werken. #"
+3800 DATA"GOSUB 270 & & Met deze aanroep worden afgedankte"
+3810 DATA"strings opgeruimd en wordt in de variabele FR"
+3820 DATA"als antwoord gegeven hoeveel bytes er nog"
+3830 DATA"ongebruikt zijn. & Tekstprogramma's kunnen"
+3840 DATA"hiermee tijdig zien aankomen of het geheugen"
+3850 DATA"vol dreigt te raken en eventueel een passende"
+3860 DATA"melding produceren. #"
+3870 DATA"GOSUB 300 & & Alvorens deze subroutine aan te"
+3880 DATA"roepen moet U de variabele met de naam SR een"
+3890 DATA"(getals-)waarde hebben gegeven. & Als antwoord"
+3900 DATA"geeft deze subroutine U de STR$(SR). &"
+3910 DATA"& Dit lijkt wat overbodig, maar er is nogal wat"
+3920 DATA"variatie in wat de STR$ functie op diverse"
+3930 DATA"machines doet: de een geeft wel een spatie na het"
+3940 DATA"laatste cijfer, de ander niet. & Sommigen geven"
+3950 DATA"bij positieve getallen een spatie op de plaats"
+3960 DATA"van het teken, andere beginnen met het eerste"
+3970 DATA"cijfer. & & Deze nieuwe BASICODE subroutine"
+3980 DATA"geeft GEEN SPATIES, niet ervoor en niet erna. #"
+3990 DATA"GOSUB 310 & & Dit is wel een hele mooie, althans"
+4000 DATA"voor een aantal computers die dit niet van"
+4010 DATA"huis uit kennen: & Het getal dat U in SR meegeeft"
+4020 DATA"wordt omgezet in een SR$ door de subroutine."
+4030 DATA"& De lengte van SR$ is na afloop gelijk aan"
+4040 DATA"wat U tevoren in CT had opgegeven en als U in"
+4050 DATA"CN een getal groter dan 0 had vermeld dan"
+4060 DATA"bevat SR$ een decimale punt met daarna nog CN"
+4070 DATA"cijfers. & Een voorbeeldje: #"
+4080 DATA"SR=123.4567 : CT=7 : CN=2 : GOSUB 310 & &"
+4090 DATA"Dit levert als antwoord SR$=' 123.46'"
+4100 DATA"& & SR=-1e-3 : CT=7 : CN=3 : GOSUB 310 & &"
+4110 DATA"levert als resultaat SR$=' -0.001' & &"
+4120 DATA"SR=98765 : CT=5 : CN=1 : GOSUB 310 & &"
+4130 DATA"geeft als reaktie SR$='*****' & &"
+4140 DATA"SR=98765 : CT=5 : CN=0 : GOSUB 310 & &"
+4150 DATA"geeft als reaktie SR$='98765' & &"
+4160 DATA"U ziet: CT is steeds het totale aantal cijfers"
+4170 DATA"in het resultaat en na de punt staan nog CN"
+4180 DATA"cijfers. Als het niet mogelijk is komen er"
+4190 DATA"CT sterretjes en het antwoord is steeds in"
+4200 DATA"cijfernotatie en netjes afgerond."
+4210 DATA"& & Dit is natuurlijk bedoeld om mooie tabellen"
+4220 DATA"te kunnen produceren. #"
+4230 DATA"GOSUB 350 & & Zorgt ervoor dat SR$ wordt geprint"
+4240 DATA"op de printer. & SR$ kan zijn bepaald door"
+4250 DATA"de subroutine op regel 300 of 310 maar"
+4260 DATA"natuurlijk ook door Uw eigen programma. &"
+4270 DATA"Na het printen van SR$ wordt NIET automatisch"
+4280 DATA"een linefeed naar de printer gestuurd. #"
+4290 DATA"Daartoe dient & & GOSUB 360 & & die dus"
+4300 DATA"niets anders doet dan de 'carriage return' en"
+4310 DATA"de 'linefeed' naar de printer geven. #"
+4320 DATA"Dat waren de subroutines. & De vrije regelnummers"
+4330 DATA"zijn voor eventuele latere uitbredingen. &"
+4340 DATA"De functies die deze subroutines vervullen mogen"
+4350 DATA"dus niet meer rechtstreeks worden gedaan."
+4360 DATA"Uw programma zou op minstens enkele micro's"
+4370 DATA"niet goed werken ! & & BASICODE-2 stelt"
+4380 DATA"naast deze subroutines nog enkele eisen: #"
+4390 DATA"Ten eerste: & Uw programma moet starten op regel"
+4400 DATA"1000. & Daartoe staat op regel 10 de opdracht:"
+4410 DATA"GOTO 1000. & Op regel 1000 kan een opdracht"
+4420 DATA"staan als: A=1000 : GOTO 20 &"
+4430 DATA"Schrik dan niet: op regel 20 staat voor"
+4440 DATA"sommige computers die dat nodig hebben een"
+4450 DATA"CLEAR A opdracht waarmee stringruimte wordt"
+4460 DATA"vrijgemaakt. Andere computers hebben dat niet"
+4470 DATA"nodig: die hebben op regel 20 alleen maar"
+4480 DATA"staan: & GOTO 1010. #"
+4490 DATA"Wat Uw programma na regel 1000 doet is niet van"
+4500 DATA"belang. We hebben wel enkele aanbevelingen: &"
+4510 DATA"& Veel programma's beginnen met initialisatie. &"
+4520 DATA"Dat kan zijn: allerlei DIM opdrachten, enkele"
+4530 DATA"variabelen op een beginwaarde zetten, met READ"
+4540 DATA"allerlei DATA inlezen, uitleg geven aan de"
+4550 DATA"gebruiker enzovoort. &"
+4560 DATA"Aangezien al deze dingen door hun aard slechts"
+4570 DATA"eenmaal gedaan worden verdient het aanbeveling,"
+4580 DATA"al deze opdrachten aan het eind van het programma"
+4590 DATA"te zetten. Op regel 1010 staat dan bij U"
+4600 DATA"bijvoorbeeld de opdracht GOTO 8000. &"
+4610 DATA"Vanaf regel 8000 staat de initialisatie en de"
+4620 DATA"laatste regel daarvan is dan weer GOTO 1020 & &"
+4630 DATA"Op 1020 begint de kern van het programma dan. & &"
+4640 DATA"Een tweede advies is, alle DATA-regels weer na de"
+4650 DATA"initialisatie te plaatsen. & &"
+4660 DATA"De derde tip is om daarna dan weer de benodigde"
+4670 DATA"REM opdrachten met programma uitleg te zetten,"
+4680 DATA"afgesloten met REM's waarin Uw naam en adres"
+4690 DATA"staan vermeld. Iemand die het programma LIST"
+4700 DATA"ziet dan vanzelf de laatste 20 regels waarin"
+4710 DATA"juist staat hoe het programma heet en wie het"
+4720 DATA"wanneer heeft geschreven. #"
+4730 DATA"Bekijkt U gewoon eens een aantal nieuwe"
+4740 DATA"programma's"
+4750 DATA"om dit in de vingers te krijgen. #"
+4760 DATA"Tot slot: & De benodigde subroutines worden U"
+4770 DATA"door het nieuwe BASICODE leesprogramma geleverd."
+4780 DATA"& Hoe dat precies gaat staat in dat"
+4790 DATA"leesprogramma."
+4800 DATA"Neemt U het zorgvuldig op wanneer het wordt"
+4810 DATA"uitgezonden, als het opnemen niet lukt kunt"
+4820 DATA"U na de uitzending een listing aanvragen bij &"
+4830 DATA"& HOBBYSCOOP & Postbus 1200 &"
+4840 DATA"1200 BE  HILVERSUM #"
+4850 DATA"***"
+5000 REM        HOBBYSCOOP
+5010 REM    UITLEG BASICODE-2
+5020 REM      (TWEEDE DEEL)
+5030 REM    VRIJ VAN COPYRIGHT
+5040 REM          1983
+OBBYSCOOP
+5010 

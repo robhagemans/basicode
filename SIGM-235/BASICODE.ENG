@@ -1,0 +1,57 @@
+                            BASICODE
+                          April 8, 1985
+
+
+BASICODE is part of a system used by computer enthusiasts in the 
+Netherlands, primarily to Broadcast computer programs. The 
+Netherlands National Broadcasting service has a weekly computer 
+show (HOBBYSCOOP?) that includes data broadcasts on AM radio of 
+BASIC programs. The idea is that you record the broadcast prgrams 
+on a cassette recorder and then load them into your computer. 
+data is broadcast at 1200 bps. 
+
+BASICODE is a "subset" of BASIC that should allow programs 
+written in the BASICODE subset to be executed on nearly any of 
+the personal computers that have a Microsoft flavoured BASIC on 
+them. This certainly includes things like Apples, Commodores, 
+Ataris and of course CP/M and PC/MSDOS computers, and no doubt 
+many, many others. So BASICODE is also a way of ensuring 
+portability of BASIC programs between widely differing machines.
+
+This disk is volume 4 of the Netherland CP/M User Group (CPMNL) 
+collection and has the details of BASICODE-2 for CP/M computers. 
+I'm not how BASICODE-2 differs from BASICODE-1.
+
+Unfortunately most of the information on BASICODE is in Dutch, a 
+language I don't speak. I once attended a lecture at one of the 
+local computer education groups on BASICODE, given by one of the 
+orginal developers of it (that's the only reason I can even 
+attempt this introduction). My wife speaks Indonesioan (she 
+taught it at High School) and so can at least recognise some of 
+the Dutch words and that has helped also.
+
+It struck me at the time I first heard about it that BASICODE was 
+really an idea whose time had yet to come. So in the hope that 
+this material will motivate someone in the English speaking CP/M 
+community to take a closer look at BASICODE and its implications, 
+I am dressing this up with what little English documentation I 
+can, plus an English catalogue of sorts.
+
+If you can provide translations of any of the Dutch language 
+material or other support material on BASICODE (on disk please), 
+I'd appreciate a copy. There is some mention of additional 
+material on CPMNL volume 5 (505). If you have this volume, or 
+know of anyone who does, please send me a copy!
+
+Special thanks to Phil Coull in the United Kingdom who brought 
+this material to my attention and sent me CPMNL volume 4!
+
+
+                    Bill Bolton,
+                    Software Tools RCPM,
+                    P.O. Box 357,
+                    Kenmore,
+                    QLD, 4069,
+                    AUSTRALIA
+
+                    Phone +61 7 378-9530  CCITT V.21 300 bps

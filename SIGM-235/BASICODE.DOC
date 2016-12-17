@@ -1,0 +1,462 @@
+
+
+
+                       De NOS BASICODE voor CP/M systemen.
+                       ==================================
+
+                                             Albert van der Horst
+                                             Henk Wevers
+                                             april 1983
+
+
+        Achtereenvolgens zullen we in deze gebruiksaanwijzing de volgende 
+        punten behandelen:
+
+        1.   Hoe gebruik ik de programma's.
+        2.   Hoe pas ik de programma's aan voor mijn systeem.
+
+
+
+        De  BASICODE  programmatuur  voor CP/M systemen  bestaat  uit  de 
+        volgende programma's:
+
+        - BCREAD  .COM
+        - BCWRITE .COM
+        - BCTEST  .COM
+        - CONVERT .COM
+        - BC2     .BAS
+
+        Bovenstaande  programma's zijn voor het daadwerkelijk gebruik van 
+        BASICODE.
+
+        Op  de  bij  de  CP/M gebruikersgroep  van  de  HCC  verkrijgbare 
+        diskette staan ook nog de programma's
+
+        - BCREAD  .ASM
+        - BCWRITE .ASM
+        - BCTEST  .ASM
+        - CONVERT .BAS
+
+        Deze programma's zijn bedoeld om de programmatuur aan tev  passen 
+        aan  een  specifiek CP/M systeem.  We verwachten dat  binnen  een 
+        gebruikersgroep voor de meeste systemen deze aanpassing snel voor 
+        elkaar  zal  zijn,  zodat voor de meeste computers kant en  klare 
+        programmatuur beschikbaar zal zijn.
+
+        Naast  deze  programmatuur is er nog een  vrij  eenvoudig  stukje 
+        hardware  nodig  om een casetterecorder op uw computer te  kunnen 
+        aansluiten. Daarover later meer.
+
+        In  ieder geval dient U voor het gebruik van BASICODE onder  CP/M 
+        te   beschikken   over   een  CP/M  computer   met   minimaal   1 
+        parallelpoort.   Vooor  dit  laatste  is  een  parallel   printer 
+        aansluiting (b.v. Centronix type) bruikbaar.
+        Tevens  is  een  BASIC  interpreter van  bij  voorkeur  Microsoft 
+        noodzakelijk (MBASIC).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             Het werken met BASICODE
+
+        Het lezen.
+        ---------
+
+        - Sluit de casseterecorder via de speciale interface aan.
+        - Tik BCREAD filenaam.bas
+        - Start de recorder zodra dat wordt aangegeven
+        - Stop de recorder zodra dat wordt aangegeven
+
+        Het BASICODEprogramma staat nu op de diskette als een z.g. ASCII-
+        file. 
+
+        Het  lezen  van de cassette kan zowel bij lezen  als  bij  testen 
+        onderbroken  worden,  door een willekeurige toets in te  drukken, 
+        maar alleen als de recorder stil staat. 
+
+        We  moeten  nu het programma geschikt maken voor BASICODE  II  en 
+        voor  de  Basicinterpreter.  Deze laatste vraagt  spaties  om  de 
+        sleutelwoorden,  terwijl  dit  niet  is  geeist  in  de  BASICODE 
+        standaard.
+
+        - Tik CONVERTEER filenaam    (dus zonder .BAS !)
+
+        Het  programma wordt nu van spaties voorzien zoals op het  scherm 
+        zichtbaar  is.  Het  gewijzigde programma staat nu onder de  naam 
+        FILENAAM.BAS op de diskette, het orginele programma onder de naam 
+        FILENAAM.BAK.
+
+        - Start nu de BASIC interpreter met b.v.  MBASIC
+
+        - Tik LOAD "FILENAAM" (de file wordt geladen)
+        - Tik MERGE "BC2"     (BASICODE2 wordt geladen"
+
+        U  kunt het programma nu starten met RUN en/of eventueel naar  de 
+        diskette  wegschrijven.  Na  dit wegschrijven  is  het  programma 
+        zonder enig probleem uitvoerbaar met b.v. MBASIC FILENAAM
+             
+
+        Het wegschrijven van een programma naar de casetterecorder
+        ----------------------------------------------------------
+
+        - Sluit de cassetterecorder aan via de speciale interface
+        - Zorg dat het weg te schrijven programma geen regelnummers
+          onder de 1000 meer heeft, eventueel voor het saven onder
+          basic eerst DELETEn !
+        - Start de recorder
+        - Tik BCWRITE filenaam.bas
+        - Stop de recorder zodra de prompt (A>) zichtbaar wordt.
+        - Let erop dat BASICprogramma's weggeschreven moeten zijn met de 
+          A (ASCII) optie !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Het aanpassen van de programmatuur
+        ---------------------------------
+
+        De  file BC2.BAS bevat de routines voor het BASICODEII  protocol. 
+        Deze  file moet als een ASCII-file op de diskette  staan,  anders 
+        kunnen  we  de  regels niet mergen.  Eventueel  na  wijzigen  dus 
+        wegschrijven met SAVE "FILENAAM",A.
+
+        Deze  routines  moeten  worden  aangepast  voor  wat  betreft  de 
+        cursorbesturing, screenclear, en het ophalen van de cursorpositie 
+        voor de terminal die U gebruikt.
+        De betreffende regels zijn:
+
+        100 - 110 screenclear
+        110 - 120 cursorbesturing (HO en VE bevatten de positie, 0,0 is
+                  linksboven)
+        120 - 130 ophalen van de cursorpositie in HO en VE
+
+        Mocht  Uw  terminal  niet in staat zijn de  cursorpositie  op  te 
+        halen, wijzig dan deze regels in:
+
+        120 IF HO > (uw regellengte) THEN HO = (uw regellengte)
+        121 IF VE > (uw aantal regels) THEN VE = (uw aantal regels)
+        122 RETURN
+
+        De overige regels kunt U voor MBASIC zo overnemen.
+
+
+        Aanpassing van BCREAD en BCWRITE en BCTEST
+        ------------------------------------------
+
+        Hiervoor  hebt  U  de assemblerfiles nodig en de  standaard  CP/M 
+        assembler  ASM.COM.  Voor wat betreft de timing van  het  geheel, 
+        hier  dient  U enigszins te  experimenteren.  De  aanlooppieptoon 
+        heeft een bepaalde lengte,  probeer die zo nauwkeurig mogelijk te 
+        realiseren.
+
+        BCTEST
+        -----
+
+        Voor het testen van een tape is er het programma BCTEST.COM.
+
+        Dit is heel simpel:
+
+        - type UCTEST en start de cassette
+
+        Nu verschijnt er een beeld als volgt op het scherm:
+                        *                    *
+
+                       *                      *
+
+        Wanneer  de linkse en rechtse sterren mooi onder elkaar staan  en 
+        het  goed te zien is welke bij welke hoort dan komt de band  goed 
+        door. Ze mogen wel iets op en neer gaan, maar van elke ster dient 
+        duidelijk te zijn aan welke kant hij hoort.
+
+
+
+
+
+
+
+
+
+
+
+        Uitleg:
+        De linkse sterren geven de lengte aan van de korte 2400 perioden, 
+        de rechtse van de lange 1200 perioden.  De onderste twee zijn van 
+        de  halve periode dat het signaal 0 is en de bovenste 2 horen bij 
+        5 volt signaal. 
+
+
+        Normaal  heeft een tekstfile onder CP/M zowel Carriage Return als 
+        Linefeed  tussen de regels staan.  Ten behoeve van BASICODE wordt 
+        hier de linefeed afgehaald bij schrijven en teruggezet bij lezen.  
+        Verder wordt,  wanneer de FIG optie aan staat er om de 64 charac-
+        ters een Carriage Return toegevoegd. Dit zal men alleen gebruiken 
+        bij  FIGFORTH schermen.  Bij het lezen met de FIG  opties  worden 
+        regels aangevuld tot 64 characters.
+
+        BCREAD en BCWRITE
+        -----------------
+
+        De  programmas  kunnen met de normale DIGITAL RESEARCH  assembler 
+        ASM  geassembleerd  worden.  Er is geen gebruik gemaakt  van  Z80 
+        codes.
+        De programmas zijn voldoende gedocumenteerd om modifikaties moge-
+        lijk  te  maken.  Het volgende is bedoeld om degenen  op  weg  te 
+        helpen  die wellicht geintimideerd worden door een assembler lis-
+        ting,  maar toch best in staat zijn om de eenvoudige  wijzigingen 
+        door te voeren voor hun eigen systeem.  Dit laatste vooropgesteld 
+        dat  er geen uitgebreidere modifikatie nodig zijn,  zoals bij  de 
+        Osborne het geval was.   
+        Met enig geluk is het voldoende de z.g. 'assembler switchen' om te
+        zetten. Bijvoorbeeld wordt door 
+
+                LET    OSBRN    0
+
+        alles wat op de Osborne betrekking heeft uitgeschakeld.
+        Verder moet met 
+
+                LET     MEMMAP  0 i.p.v. 1 gezet worden
+
+        wanneer  de  Centronics  poort op een I/O  poort  staat,  hetgeen 
+        normaal het geval zal zijn en moet met
+
+        PAPORT  EQU     XXXX
+
+        het poort adres ingesteld worden.  Dit laatste zal dus een  getal 
+        kleiner dan 256 zijn bij I/O poorten.
+        Op  dezelfde  manier  moet ook voor  'SCREEN'  een  geheugenadres 
+        ingevuld  worden,  dat  direct op het scherm te zien is (als  dit 
+        z.g. 'memory mapped video' aanwezig is)
+
+        ------------- ALS HET MOEILIJK WORDT ----------------------
+
+        Hieronder  volgen  enige opmerkingen om behulpzaam  te  zijn  bij 
+        verdere problemen.
+        Wanneer  er geen memory mapped video is,  zullen de verschillende 
+        handigheidjes  die laten zien wat er verstuurd wordt,  niet  snel 
+
+
+
+
+
+
+
+
+
+
+
+        genoeg zijn en achterwege moeten blijven.
+
+        Tijdens de testfase kan men, m.b.v. 
+
+                LET     DEBUG   1   
+
+        meer informatie op het scherm krijgen.
+
+        Dit  werkt  alleen bij memory mapped video en  niet  te  langzame 
+        processors.
+        Omdat  er met software loops getimed wordt,  zijn alle interrupts 
+        uitgeschakeld.  Bij  de Osborne betekent dit bijv.  dat  de  disk 
+        drive  niet  uitgeschakeld  wordt tijdens het schrijven  van  een  
+        cassette.  (Als  men dat vervelend vindt,  kan men met  schrijven 
+        wachten tot het diskdrive lampje uitgaat)
+        Bij andere computers moet wellicht,  telkens wanneer de  computer 
+        naar het toetsenbord moet kijken, de interrupts even ingeschakeld 
+        worden.
+        De  grenzen voor de vertragings loops zijn gebaseerd op 4MHz  Z80 
+        zonder  'wait  states'.  Men kan aan de trailer en  header,die  5 
+        seconden moeten duren,  de constante 'DEL24' controleren en even-
+        tueel  bijstellen.  In eerste instantie kan men dan voor  'DEL12' 
+        het dubbele van 'DEL24' nemen. Met een klein testprogrammatje die 
+        een vast aantal periodes schrijft (m.b.v.  BEEPV) kan men dit nog 
+        controleren. 
+        Bij  het  lezen is er alleen de constante 'CRIT',  die  de  grens 
+        aangeeft tussen wat als een 1 en wat als 0 beschouwd wordt.
+        Bij redelijke hardware blijkt deze vrij ongevoelig te zijn. 
+        'CRIT' kan men ook evenredig bijstellen. Een betere (en tijdrove-
+        nde ) procedure is: de grenzen bepalen waartussen 'CRIT' zich mag 
+        bewegen, en daar het midden van kiezen.
+        Bij  de UCTEST tenslotte kan men de horizontale schaal  eventueel 
+        halveren  of verdubbelen,  door arithmetische shifts in te voeren 
+        of weg te laten.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        BENODIGDE HARDWARE
+        ------------------
+
+        De hardware is zeer simpel en bevat geen voeding. 
+        We  gaan  uit  van de aanwezigheid van een  Centronics  interface  
+        poort.   Deze bevat (o.a.) 8 bits data uitvoer naar de printer en 
+        1 bit invoer ( ready signaal ).   Deze worden  gebruikt,   zonder  
+        verdere  modifikatie   of aansturingscommando's.   Dit heeft  tot 
+        gevolg   dat  het  interface  voor alle CP/M  machines  hetzelfde  
+        kan   zijn.   De  pintelling zoals die in het  volgende  gebruikt 
+        wordt  is die van de 'normale' Centronics  connector  zoals   die  
+        b.v.  in de  Epson printers etc. wordt toegepast (36-polig Amphe-
+        nol)
+
+         CENTRONICS                                                             
+                                                                                
+                                                                                
+          BIT 0   _________                              
+          _______|   1K    |_________                             
+             ->  |_________|         |                                                
+                                     |                                          
+          BIT 1   _________          |      _________       ->  CAS INPUT  
+          _______|   3K    |_________|_____|  5K6    |_________
+             ->  |_________|         |     |_________|   |                            
+                  (optioneel)        |                  ___                            
+                                     |                 |   |          
+                                  ------               |1K |          
+                                  ------  56nF         |   |          
+                                     |                 |   |          
+                                     |                  ---           
+                                     |                   |            
+          ___________________________|_________________________
+                                                            ->  CAS AARDE 
+
+        De 3 Kohm weerstand wordt nu nog niet gebruikt,  maar is  bedoeld 
+        om  in de toekomst voor een golfvormverbetering te kunnen  zorgen 
+        door  2  bits te gebruiken.  Wellicht is dat niet  haalbaar  voor 
+        langzame processoren.
+                                                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          PRINTER READY                      ________                
+          ___________________________ ______| 22 OHM |_________   
+             <-       |              |      |________|      <-  CAS LUID-
+                      |              |                          SPREKER
+                      | DUG          | ZENER 4.7V                            
+                    _____          ______                                       
+                      .              .  |                                       
+                     / \            / \                                         
+                    /   \          /   \
+                   /_____\        /_____\                                       
+                      |              |                                          
+                      |              |                                          
+          _____________________________________________________  CAS AARDE      
+                                                             <-                 
+
+
+        Men dient een stevig signaal toe te voeren aan dit interface. Dit 
+        is  geen probleem als men de luidsprekeruitgang gebruikt van  het 
+        soort  goedkope  cassette  recorders waar 4 1.5  Volt  cellen  in 
+        kunnen  (dus 6 Volt voeding ) De HiFi apparaten geven i.h.a. toch 
+        heel slechte resultaten als  opslagmedium !
+        Deze  apparaten hebben een ingebouwde opnamesterkteregeling,  dat 
+        is  ook een zorg minder.  Hoewel het test programma het  mogelijk 
+        maakt eens te bekijken wat het effekt van de regelknoppen is, kan 
+        men zonder meer de zaak op zijn hardst zetten.
+
+        Voor de niet-elektronici:
+
+        het  schema  bevat niets magisch en er gebeurt bijna  niets   Bij 
+        lezen  van de cassette wordt alleen de computer  beveiligd  tegen 
+        verkeerde  spanning  Bij schrijven wordt het signaal verzwakt  en 
+        de hoge tonen nog eens extra.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

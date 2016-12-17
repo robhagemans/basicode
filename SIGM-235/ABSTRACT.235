@@ -1,0 +1,51 @@
+                     ABSTRACTS OF BASICCODE MATERIAL
+		FROM NETHERLANDS CP/M USER GROUP VOLUME 504
+
+		(Anyone fluent in Dutch and English is invited
+		 to translate this into English for the rest
+		 of us!)
+
+
+BASICODE
+
+BASICODE is een initiatief van (o.a.) de NOS HOBBYSCOOP en de HCC 
+om tot een universeel cassette opslag systeem te komen voor BASIC 
+programmas. Echter er is een veel groter toepassingsgebied, omdat 
+elke tekstfile opgeslagen en gelezen kan worden in de vorm van 
+BASICODE.
+
+Er zijn 4 programmas, voor lezen, schrijven en testen. Zoals 
+gezegd, kan men deze ook voor willekeurige ASCII tekstfiles 
+gebruiken.
+
+BCREAD , BCTEST , BCWRIT voor standerd basicode en
+BCWRITE voor basicode forth versie
+
+Deze programmas kunnen met de normale DIGITAL RESEARCH assembler 
+ASM geassembleerd worden. Er is geen gebruik gemaakt van Z80 codes.
+De programmas zijn voldoende gedocumenteerd om modifikaties moge
+lijk te maken. 
+
+De benodigde hardware is zeer simpel en bevat geen voeding. We 
+gaan uit van de aanwezigheid van een Centronics interface poort. 
+Deze wordt gebruikt, zonder verdere modifikatie of aansturingscom-
+mando's. Dit heeft tot gevolg dat het interface voor alle CP/M 
+machines hetzelfde kan zijn. 
+
+Volg de publikaties van de HCC (nieuwsbrief en bladen van de CP/M 
+en Osborne gg) voor het beschikbaar komen van kabels.
+
+Convert.com  dit programma converteerd  de basicode file naar een 
+file die MBASIC kan lezen
+Convert heeft Function.dat en keywords.dat nodig als files
+Convert.bas  source code van convert in  CB80  (Cbasic compiler )
+
+BC2.BAS ,  BC2.OSB ,BC2.OSI  aanpassing van het basicode prog aan 
+de te gebruiken machine voor scherm grote,cursor aansturing ,etc. 
+zie UITLEG1.BAS en UITLEG2.BAS
+
+TESTBC2.BAS test prog voor basicode aanpassing van uw machine
+
+De rest van de basic prog op schijf zijn voorbeelden in basicode
+zie ook 505 voor meer basicode prog. .
+
