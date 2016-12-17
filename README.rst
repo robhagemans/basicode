@@ -29,30 +29,30 @@ for non-commercial purposes.
 
 This repository contains BASICODE programs from the following sources:
 
-==================================  ==========  ==================  ==================
-Source                              Medium      Basicode version    Language
-==================================  ==========  ==================  ==================
-`Chip Shop BASICODE 2`_             Tape        BASICODE-2          English
-`Wiegand & Fillinger - Basicode`_   Tape        BASICODE-2          German
-`BASICODE-2A`_                      Tape        BASICODE-2          English and Dutch
-`BASICODE-3`_                       Tape        BASICODE-3          Dutch
-`The Best of BASICODE 1`_           Tape        BASICODE-2          Dutch
-`The Best of BASICODE 2`_           Tape        BASICODE-2          Dutch
-`The Best of BASICODE 3`_           Tape        BASICODE-2          Dutch
-`The Best of BASICODE 4`_           Tape        BASICODE-2          Dutch
-`The Best of BASICODE 5`_           CD          BASICODE-2          Dutch
-`The Best of BASICODE 6`_           Diskette    BASICODE-2          Dutch
-`The Best of BASICODE 7`_           Diskettes   Text only           Dutch
-`BASICODE-3 Verzamelcassette 1`_    Tape        BASICODE-3          Dutch
-`BASICODE-3 Verzamelcassette 2`_    Tape        BASICODE-3          Dutch
-`BASICODE-3 Verzamelcassette 3`_    Tape        BASICODE-3          Dutch
-`BASICODE-3 Verzamelcassette 4`_    Tape        BASICODE-3          Dutch
-`BASICODE-3 Verzamelcassette 5`_    Tape        BASICODE-3          Dutch
-`BASICODE-3 Verzamelcassette 6`_    Tape        BASICODE-3          Dutch
-`BASICODE-3 Verzamelcassette 7`_    Tape        BASICODE-3          Dutch and German
-`BASICODE-3 Verzamelcassette 8`_    Tape        BASICODE-3          Dutch
-`BASICODE-3 Verzamelcassette 9`_    Tape        BASICODE-3          Dutch
-==================================  ==========  ==================  ==================
+==================================  ==========  ===== ==================  ==================
+Source                              Medium      Year  Basicode version    Language
+==================================  ==========  ===== ==================  ==================
+`Chip Shop BASICODE 2`_             Tape        1984  BASICODE-2          English
+`Wiegand & Fillinger - Basicode`_   Tape        1984  BASICODE-2          German
+`BASICODE-2A`_                      Tape        1985  BASICODE-2          English and Dutch
+`BASICODE-3`_                       Tape        1986  BASICODE-3          Dutch
+`The Best of BASICODE 1`_           Tape        1985  BASICODE-2          Dutch
+`The Best of BASICODE 2`_           Tape              BASICODE-2          Dutch
+`The Best of BASICODE 3`_           Tape        1986  BASICODE-2          Dutch
+`The Best of BASICODE 4`_           Tape        1987  BASICODE-2          Dutch
+`The Best of BASICODE 5`_           CD                BASICODE-2          Dutch
+`The Best of BASICODE 6`_           Diskette    1991  BASICODE-2          Dutch
+`The Best of BASICODE 7`_           Diskettes   1992  Text only           Dutch
+`BASICODE-3 Verzamelcassette 1`_    Tape              BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 2`_    Tape              BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 3`_    Tape              BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 4`_    Tape        1988  BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 5`_    Tape        1989  BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 6`_    Tape        1989  BASICODE-3          Dutch
+`BASICODE-3 Verzamelcassette 7`_    Tape        1990  BASICODE-3          Dutch and German
+`BASICODE-3 Verzamelcassette 8`_    Tape        1990  BASICODE-3          Dutch and German
+`BASICODE-3 Verzamelcassette 9`_    Tape        1990  BASICODE-3          Dutch and German
+==================================  ==========  ===== ==================  ==================
 
 .. _BASICODE-2A: Basicode-2a/
 .. _Chip Shop BASICODE 2: Chip_Shop_Basicode_2/
@@ -106,4 +106,3 @@ Online resources
 .. _`BASICODE: an example of Dutch computer folklore`: https://lennartb.home.xs4all.nl/basicode.html
 .. _`Overview of BASICODE-3`: http://www.iol.ie/~geniet/eng/BASICODE3sub.htm
 .. _`BasiCode – Software für alle`: http://www.joyce.de/basicode/
-
