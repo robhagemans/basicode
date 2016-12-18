@@ -21,13 +21,19 @@ use the program transmitted.
 
 *NOS* started BASICODE transmissions in 1982 on medium wave Dutch radio. Other broadcasters followed suit:
 Dutch broadcasters *NOS* and *TROS*, the British *BBC*, the West German *WDR* and
-the East German *Rundfunk der DDR* all at one time or another performed regular BASICODE transmissions.
+the East German *Radio DDR* all at one time or another performed regular BASICODE transmissions.
+In re-unified Germany, *Deutschlandsender Kultur* continued to transmit BASICODE until around 1992.
+
+BASICODE programs were also distributed on collection recordings: mostly these were cassette tapes, but there were audio CDs and
+gramophone records as well, as well as diskette sets. Many of these sources additionally contained translation programs for one
+or more platforms.
 
 While the authors and broadcasters retained copyrights on the programs, they encouraged them to be shared widely
 for non-commercial purposes.
 
-
-This repository contains BASICODE programs from the following sources:
+This repository contains BASICODE programs from a number of sources. I have decoded them from
+the original audio recording, where available, and corrected transmission failures using context,
+alternative sources and checksums. The following titles are included:
 
 ==================================  ==========  ===== ==================  ==================
 Title                               Medium      Year  Standard            Language
@@ -35,7 +41,7 @@ Title                               Medium      Year  Standard            Langua
 `Chip Shop BASICODE 2`_             Tape        1984  BASICODE-2          English
 `Wiegand & Fillinger - Basicode`_   Tape        1984  BASICODE-2          German
 `BASICODE-2A`_                      Tape        1985  BASICODE-2          English and Dutch
-`SIG/M volume 235: BASICODE`_       ARPANET     1985  BASICODE-2          English and Dutch
+`SIG/M volume 235: BASICODE`_       Diskette    1985  BASICODE-2          English and Dutch
 `The Best of BASICODE 1`_           Tape        1985  BASICODE-2          Dutch
 `The Best of BASICODE 2`_           Tape        1985  BASICODE-2          Dutch
 `The Best of BASICODE 3`_           Tape        1986  BASICODE-2          Dutch
@@ -53,6 +59,7 @@ Title                               Medium      Year  Standard            Langua
 `BASICODE-3 Verzamelcassette 7`_    Tape        1990  BASICODE-3          Dutch and German
 `BASICODE-3 Verzamelcassette 8`_    Tape        1990  BASICODE-3          Dutch and German
 `BASICODE-3 Verzamelcassette 9`_    Tape        1990  BASICODE-3          Dutch and German
+`BasiCode Sammelsurium`             Diskettes   1998  BASICODE-2, 3, 3C   German
 ==================================  ==========  ===== ==================  ==================
 
 .. _BASICODE-2A: Basicode-2a/
@@ -76,15 +83,14 @@ Title                               Medium      Year  Standard            Langua
 .. _BASICODE-3 Verzamelcassette 7: Verzamelcassette_7/
 .. _BASICODE-3 Verzamelcassette 8: Verzamelcassette_8/
 .. _BASICODE-3 Verzamelcassette 9: Verzamelcassette_9/
+.. _`BasiCode Sammelsurium`: Sammelsurium/
 
-*Many of the above sources additionally contain translation programs, encoded in the native modulation for each computer.
-These are not included here.*
 
 
 Acknowledgements
 ----------------
 
-A big thank you to **Janny Looyenga**, **Jan Bredenbeek**, **André van der Leeden** and many others for history, BASICODE recordings and background information!
+A big thank you to **Janny Looyenga**, **Jan Bredenbeek**, **André van der Leeden**, **Thomas Rademacher** and many others for history, BASICODE recordings and background information!
 
 
 Books
