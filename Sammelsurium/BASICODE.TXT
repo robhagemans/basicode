@@ -1,0 +1,127 @@
+                         Bˇ  Aˇ  Sˇ  Iˇ  Cˇ  Oˇ  Dˇ  Eˇ             Blatt 1
+
+     Leerzeichen werden entfernt, Ausnahme vor GOSUB, GOTO und THEN, sofern
+     davor nicht ":" oder ")" steht.
+     Eine  BASICODE-Zeile  darf (einschlie·lich Zeilennummer und Space) nur
+     sechzig Zeichen enthalten.
+     Jedes BASICODE-Programm beginnt in Zeile 1000. A (Byte) legt die Grî·e
+     des  zu  reservierenden Stringraums fest, sollte nicht kleiner als 100
+     sein.  Zeile 1000 enthÑlt ein "GOTO 20". Dort wird der Rechner initia-
+     lisiert und ein RÅcksprung zur Zeile 1010 veranla·t.
+     In Zeile 1010 beginnt die Abarbeitung des "eigentlichen" BASICODE-Pro-
+     gramms.
+     Das Programm endet mit "GOTO 950" - die Befehle RUN, END und STOP sind
+     verboten.  Der  Rechner  wird wieder in den normalen BASIC-Zustand zu-
+     rÅckversetzt.
+     Ab Zeile 30000 stehen ErklÑrungen zum Programm, ab Zeile 32000 formale
+     Fakten (Autor, Datum, Versionsnummer, verwendeter Rechner...) s.a.Bl.2
+     
+                      In BASICODE gÅltige BASIC - Befehle
+
+     ABS     DATA    IF      LOG     PRINT   SGN     THEN    /       >=
+     AND     DIM     INPUT   MID$    READ    SIN     TO      ^       <>
+     ASC     EXP     INT     NEXT    REM     SQR     VAL     =
+     ATN     FOR     LEFT$   NOT     RESTORE STEP    +       <
+     CHR$    GOSUB   LEN     ON      RETURN  TAB     -       >
+     COS     GOTO    LET     OR      RIGHT$  TAN     *       <=
+
+                                EinschrÑnkungen:
+
+     AND  darf  nur auf logische AusdrÅcke (Vergleiche) bezogen werden, die
+     geklammert  werden  sollten,  Zuweisungen von logischen Ergebnissen an
+     eine Variable sind zulÑssig.
+     ASC   liefert  nicht  bei  allen  Computern  in allen FÑllen exakt den
+     gleichen Wert, jedoch bei (Gro·-)Buchstaben weitgehend erfÅllt, 
+     CHR$ Vorsicht bei Werten < 32 (Steuerzeichen!). 
+     DEF FN name nur in  der einfachen Form  mit einer Variablen anwendbar,
+     nicht rekursiv anwendbar. 
+     DIM vor Nutzung von Feldern erforderlich, maximal zwei Dimensionen zu-
+     lÑssig, ZÑhlung beginnt beim nullten Element. 
+     FOR ... TO ... STEP ... NEXT   Die  Schleife  wird  mindestens  einmal
+     durchlaufen. Ohne STEP zahl ist die Schrittweite 1. Nach NEXT mu· die
+     zugehîrige  Variable  stehen. Nur ein NEXT zulÑssig, Schleife darf nur
+     an einer einzigen Stelle verlassen werden. Aus der Schleife darf nicht
+     herausgesprungen  werden - vorzeitiges Verlassen durch Laufparameter =
+     Endwert, Sprung zum NEXT. 
+     GOSUB Zeilennummer darf keine Variable sein, Zeilennummer mu· existie-
+     ren. IF ... THEN GOSUB. 
+     GOTO siehe GOSUB, Ausnahme 20 und 950. IF ... THEN zeilennummer. 
+     INPUT nur fÅr eine Variable. 
+     LOG hat Basis e, LN darf nicht verwendet werden. 
+     MID$ erfordert drei oder zwei Werte. MID$(A$,5) ist erlaubt. 
+     NEXT siehe FOR. 
+     NOT siehe AND. 
+     ON die Variable darf nur die zulÑssigen Werte annehmen, also von 1 bis
+     zur Anzahl der nach GOTO bzw. GOSUB stehenden Adressen. 
+     OR siehe AND. 
+     PRINT Formatierung  nur mit ",", ":", und TAB. Empfehlung, "," und TAB
+     durch GOSUB 110 zu ersetzen. Nicht durch "?" ersetzbar. 
+     REM nicht durch "'" ersetzbar, kein ":" in REM-Zeile. 
+     RESTORE nur ohne Zeilennummer. 
+     TAB TAB(0) nicht erlaubt. Sicherer GOSUB 110. 
+     VAL nimmt bei nicht rein numerischen Argumenten in verschiedenen Rech-
+     nern unterschiedliche Werte an (vgl. ASC).
+
+                         Bˇ  Aˇ  Sˇ  Iˇ  Cˇ  Oˇ  Dˇ  Eˇ             Blatt 2
+      
+                          BASICODE - GOSUB - Routinen 
+
+      20  Programmstart, System-Reset, Variable lîschen ...
+     100  Text-Modus einschalten und Bildschirm lîschen.
+     110  Cursor auf die Position HO, VE.
+     120  Cursor-Position in HO,VE zurÅckholen
+     150  AuffÑlliges Anzeigen von SR$; rechts und links drei Spaces.
+     200  Daten einer eventuell gedrÅckten Taste in IN$ und IN.
+     210  wie 200, jedoch mit Warten auf Tastendruck.
+     220  Holen des Zeichens aus Schirmposition HO, VE auf IN.
+     250  Erzeugen eines kurzen Aufmerksamkeitstones.
+     260  Zufallsvariable in RV mit 0 <= RV < 1.
+     270  AusfÅhren von garbage collection und Speicherplatz in FR.
+     280  Aus- bzw. Einschalten der STOP/BRK - Taste FR = 0 bzw. 1.
+     300  SR wird ohne Space in SR$ gewandelt.
+     310  wie 300, jedoch als Zahl mit CT und CN formatiert.
+     330  Alle Kleinbuchstaben in SR$ in Gro·buchstaben wandeln.
+     350  öbergabe von SR$ an den Drucker.
+     360  In neue Zeile mit Drucker (CRLF).
+     400  Erzeugung eines Tons gemÑ· SV, SD und SP.
+     450  Warten von maximal SD * 0,1 s auf einen Tastendruck.
+     500  Erîffnen eines Files mit dem Namen NF$ gemÑ· NF.
+     540  Aus dem File wird ein String in IN$ Åbergeben.
+     560  SR$ wird in das File geschrieben.
+     580  Man schlie·e den Bestand mit Code NF ab.
+     600  Graphischen Betrieb und Bildschirm lîschen.
+     620  Setzen eines Punktes in die Position HO, VE mit Farbe CN.
+     630  Zeichnen einer Linie zum Punkt HO, VE in Farbe CN.
+     650  SR$ an der Position HO, VE anzeigen (Grafik-Mode).
+     950  Beenden des Basicode-Mode.
+      
+                        Zeilen-Verwendung beim BASICODE
+
+         0 -   999  Bascoder (fÅr jeden Computer anders). 
+              1000  Erste Zeile des BASICODE-Programms.
+                    Sie mu· folgende Form haben:
+                    1000 A=<Wert>:GOTO 20:REM <Programmname> 
+      1010 - 19999  Eigentliches BASICODE-Programm. 
+     20000 - 24999  Subroutinen,  welche  unerlaubte Befehle verwenden. Sie
+                    sollen  mîglichst vermieden, zumindest aber in REM-Zei-
+                    len genau erklÑrt werden (z.B. farbige Bilder, in BASI-
+                    CODE-3 nicht mîglich). 
+     25000 - 29999  Eventuell benîtigte DATA-Zeilen. 
+     30000 - 31999  REM-Zeilen, z.B. kurze Programmbeschreibung, Literatur 
+     32000 - 32767  REM-Zeilen  fÅr den Namen und die Anschrift des Autors,
+                    Datum und andere formale Bemerkungen. 
+
+      ZeilenlÑnge einschlie·lich Zeilennummer und Space maximal 60 Zeichen
+
+                        In BASICODE verbotene Variablen 
+
+     1. Alle Variablen, die mit dem Buchstaben O beginnen.
+     2. AS, AT, DI, DI$, DS, DS$, EI, EI$, EL, ER, FN, GO, GR, IF, LN, SQ,
+        SQ$, ST, TI, TI$, TO. 
+     3. PI, enthÑlt aber nicht den Zahlenwert 3.14159. 
+
+           Im Bascoder verwendete Variablen mit besonderer Bedeutung
+
+                      A, CN, CT, FR, HG, HO, IN, IN$, NF,
+                     NF$, RV, SD, SP, SR, SR$, SV, VE, VG. 
+

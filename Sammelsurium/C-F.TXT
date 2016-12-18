@@ -1,0 +1,151 @@
+	Thomas Rademacher   Roststraáe 4  99086 Erfurt
+
+
+
+
+  
+Thomas Rademacher   Roststraáe 4  99086 Erfurt
+    
+Computer-Flohmarkt
+Postfach 66
+
+7ÿ5ÿ4ÿ3ÿ0ÿ  Mÿaÿuÿlÿbÿrÿoÿnÿnÿ
+
+
+
+
+
+
+110 Amstrad CPC
+			       
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+
+300 Amstrad Joyce
+
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+Hat jemand einen Joyce-Bascoder? Unter CP/M
+Nutzung bis BasiCode Version 2 m”glich.
+
+510 Apple II
+
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+Wer hat BasiCode Version 3 fr Apple II / II e?
+
+700 Macintosh
+
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+Hat jemand Erfahrung mit BasiCode auf dem
+Macintosh?
+
+910 Acorn
+
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+Hat jemand Erfahrung mit BasiCode auf dem
+Archimedes?
+
+1110 Atari XL/XE
+
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+Hat jemand Erfahrung mit BasiCode auf dem
+Atari?
+
+1310 Atari ST/TT/Falcon
+
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+Hat jemand Erfahrung mit BasiCode auf dem
+Atari?
+
+1500 Casio
+
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+Hat jemand einen Casio-Bascoder?
+
+1711 Software Anwendungen AMIGA
+
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+Hat jemand einen AMIGA-Bascoder?
+
+1911 Software Anwendungen C64
+
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+
+2110 C16/116/Plus4
+
+BasiCode - ein umfangreicher Pool von Freeware!
+Ausfhrliche Infos in Rubrik 6000.
+Bascoder und Programme auch vorhanden beim
+Plus-4-Club.
+
+BASIC 6000 Software
+
+BasiCode - ein Esperanto fr Heimcomputer
+Die meisten Computerfreaks haben wohl mit Basic
+als erster Programmiersprache begonnen -
+und sp„ter festgestellt, daá ihre Programme auf
+einem andersartigen Computer nicht verwendbar
+sind. Dieses rgernis fhrte schon in den 80er
+Jahren ein H„uflein niederl„ndischer Spezialisten
+dahin, eine Sprache zu entwickeln, die (wie heute
+Java) auf unterschiedlichen Plattformen benutzt
+werden kann. Dieses Konzept, BasiCode, wurde bis
+Anfang der 90er Jahre weiter ausgebaut.
+Das Prinzip ist, daá durch ein computerspezifisches
+Programm, den sog. Bascoder, eine einheitliche
+Bedienoberfl„che bereitgestellt wird. In dieser
+Betriebsart k”nnen dann Programme geladen werden,
+die nicht mehr von Dialektunterschieden
+beeintr„chtigt sind, tats„chlich auf unterschiedlichen
+Computern gleich laufen. Es weist also Parallelen
+zum Betriebssystem CP/M auf, das auch auf unter-
+schiedlicher Hardware Zugriff auf einen gemeinsamen
+Softwarepool bietet, doch mit dem Unterschied, daá
+das auch schon mit 8-bit-Oldies klappt, die "nur"
+Kassetten als Speichermedium benutzen k”nnen - der
+Bascoder beinhaltet auch ein vereinheitlichtes
+Aufzeichnungsprotokoll. Auáer in den Niederlanden
+entstand seinerzeit in der DDR eine Hochburg
+des BasiCode-Systems, doch auch der WDR strahlte
+eine Zeitlang Programme ber den Rundfunk aus.
+Mittlerweile ist die Anwendung nicht mehr auf
+Kassetten eingeschr„nkt, selbstverst„ndlich lassen
+sich Programme auch ber Disketten oder DFš verbreiten,
+weitere M”glichkeiten bieten sich  durch die Emulation
+"historischer" Computer auf IBM-Kompatiblen.
+BasiCode bietet somit die Chance, daá die treuen
+Anh„nger von Heimcomputern der Pionierzeit sich
+systembergreifend miteinander austauschen k”nnen
+und nicht jeder sein Sppchen fr sich kochen
+mssen. Sie brauchen gegenber der zahlenm„áigen
+šbermacht der High-Tech-Fetischisten nicht
+zu resignieren, sondern k”nnen mit diesen sogar
+kooperieren, denn Bascoder gibt es auch fr den PC.
+Verblffend ist die Anwendungsvielfalt: es l„át sich
+alles machen, was mit Basic m”glich ist - Textverar-
+beitung, Malprogramme, 2D- und 3D-Funktionsdar-
+stellungen, Datenverwaltung, Musik, Spiele ... UND 
+ALLES LUFT GLEICHERMAáEN AUF DEN UNTER-
+SCHIEDLICHSTEN 8-BIT-GERTEN!
+Wir, Nutzer von vier unterschiedlichen 8-bit-Computern,
+haben Best„nde an BasiCode-Programmen (die Freeware
+sind!) zusammengetragen (drei 3 1/2 Zoll-Disketten mit 
+Textdateien) und versenden sie an andere 8-bit-Clubs.
+Wer Interesse an diesem interessanten Konzept hat,
+kann sich gern an mich wenden und gegen Erstattung
+von Porto- und Materialkosten wahlweise ein zweiseitig
+bedrucktes A4-Blatt mit den BasiCode-Regeln (kostenlos,
+auch ohne Porto), ein 24-seitiges A5-BasiCode-Manual
+und/oder die drei PC-Disketten zugeschickt bekommen:
+	Thomas Rademacher
+	Roststraáe 4
+	99086 Erfurt
+

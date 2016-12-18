@@ -1,0 +1,148 @@
+                  Geht nicht gibts nicht
+                         oder
+        selbst ein PC kann zu etwas ntze sein...
+  šbertragung von BASIC-Programmen auf fremde Computer
+
+  Was reizt uns an der Besch„ftigung mit Computer-Oldies aus der 8-bit-ra?
+  Es gengt uns nicht, Icons anzuklicken und st„ndig Updates oder die neuesten
+  Programme zu erwerben, damit wir uns fr die souver„nen Beherrscher modern-
+  ster High-Tech halten k”nnen. Wir sind auch nicht sp„testens aller zwei 
+  Jahre der Meinung, die Hardware máte entscheidend aufgerstet oder noch
+  besser komplett neu angeschafft werden.
+  Stattdessen bleiben wir unseren alten Heimcomputern treu, die auf Floh-
+  m„rkten zu Preisen angeboten werden, die einst gerade fr ein Zehnerpack
+  Disketten reichten. Warum, aus Geiz? Nein, es stellt uns nicht zufrieden,
+  die Bildchen anzuklicken, die uns Bill Gates' Leute vorsetzen, wir wollen
+  auch nachvollziehen, was sich im Inneren des Computers tut. Wir wollen uns
+  nicht von fertigen Programmen besch„ftigen lassen, sondern eigene Ziel-
+  stellungen so formulieren, daá sie der Computer fr uns l”sen kann.
+  So stehen wir als Sonderlinge da, doch st”rt uns das? Nein, uns st”rt
+  etwas anderes: wir Sonderlinge sind trotz eigentlich gleicher Interessen
+  noch einmal in Dutzende Grppchen aufgespalten. Ein C 64-Programm ntzt
+  mir am Atari nichts, mit einem ZX-Programm kann ich am Schneider nichts
+  anfangen. Oder doch?
+  Bei den attraktivsten Programmen wird das zutreffen, sie nutzen die Hard-
+  ware-Eigenheiten und Systemroutinen des jeweiligen Computers und k”nnen
+  h”chstens mit viel Arbeit auf einen andersartigen Computer bertragen
+  werden, wenn man sich mit beiden Ger„ten perfekt auskennt.
+  Doch arbeitet nicht fast jeder Heimcomputer mit BASIC? K”nnen sich BASIC-
+  Programme bertragen lassen? Jein! BASIC ist nicht genormt - jeder Herstel-
+  ler hat einen anderen Dialekt auf dem Markt geworfen und verwendet vor allem
+  andere Token. Trotzdem, hier l„át sich etwas machen, Programme k”nnen
+  schlieálich auch in Textform abgespeichert werden, und wenigstens ASCII
+  konnte sich als Standard etablieren.
+  Viele Heimcomputer sind CP/M-f„hig, gnstige Voraussetzungen fr einen
+  Austausch. šbrigens ist sogar so etwas wie ein Kassetten-CP/M erfunden
+  worden. Dieses Konzept heiát BasiCode, es stellt fr unterschiedliche
+  Heimcomputer eine einheitliche Bedienoberfl„che und ein einheitliches
+  Kassettenaufzeichnungsverfahren bereit und umschifft auch manche Klippe
+  der Dialektunterschiede. BasiCode-Programme (die Freeware sind) gibt es
+  fr unterschiedlichste Anwendungsgebiete, obwohl man sich zun„chst
+  Beschr„nkungen auferlegen muáte, damit die šbertragbarkeit gew„hrleistet
+  werden konnte. Ein BasiCode-Programm, das am C 64 geschrieben und auf
+  Kassette abgespeichert wurde, kann tats„chlich von dieser Kassette in
+  den Atari, in den ZX und in den Schneider eingelesen und dort genauso
+  benutzt werden!
+  Doch sind wir nicht alle bequem geworden, seit wir mit Disketten arbeiten?
+  Wollen wir uns noch das Gefiepse anh”ren? Und wie lange das dauert! Die
+  šbertragung von Computer zu Computer kann auch per Diskette geschehen,
+  BasiCode ist dann nur noch fr die Sprachvereinheitlichung zust„ndig.
+  Ebenso k”nnen wir uns auch ganz von BasiCode l”sen, aber dann mssen
+  wir uns um die Sprachanpassung kmmern. Dafr bieten sich Textverarbeitungen
+  an, WordStar unter CP/M oder der DOS-Editor reichen aus.
+  Ein idealer Weg zur Programmbertragung ist natrlich auch die serielle
+  Kopplung, doch mancher traut sich hier nicht ran, weil es ihm zu kompliziert 
+  ist oder er frchtet, die Hardware k”nnte Schaden nehmen, weil irgendetwas
+  nicht klappt.
+  Fassen wir zusammen: BASIC-Programme (oder berhaupt Texte) k”nnen wir
+  mit Disketten von einem Heimcomputer zu einem andersartigen bertragen,
+  doch mssen wir die Eigenheiten der jeweiligen Ger„te noch bercksich-
+  tigen. Zum Beispiel kann jede ZX81-Zeile nur einen BASIC-Befehl aufnehmen,
+  eine KC85-Zeile darf nicht l„nger als 60 Zeichen sein. hnlich unterschied-
+  lich reagieren diese beiden Computer auf die Dimensionierung einer schon di-
+  mensionierten Variablen: der ZX81 dimensioniert sie eben neu, doch der KC85
+  meldet einen Fehler DD ("Doubly defined array") usw.
+  Natrlich gibt es noch Unmengen an unterschiedlichen Diskettenformaten,
+  doch hier zeigt sich, das sogar ein PC zu etwas zu gebrauchen ist. SYDEX
+  vertreibt beispielsweise das Programm 22DISK, das ziemlich alle denkbaren
+  CP/M-Formate verarbeiten kann. Vielleicht reicht schon die Shareware-
+  Version. Ein File wird aus einem CP/M-Format in DOS kopiert und aus diesem
+  wieder in ein anderes CP/M-Format bertragen.
+  Ein Problem bleiben die Disketten von Commodore-Laufwerken, hier ist das
+  Aufzeichnungsprinzip v”llig anders, doch es gibt drei Wege zur L”sung.
+  Der erste ist die schon erw„hnte serielle Kopplung. Zweitens soll auf
+  einem C 128 die šbertragung machbar sein, da dieser im selben Laufwerk
+  beide Aufzeichnungsverfahren anwenden kann. Drittens, hier sind wir wieder
+  bei dem Punkt, daá auch PCs ntzlich sein k”nnen, besteht die M”glichkeit,
+  mit Emulatorprogrammen, die es fr viele "historische" Computertypen gibt,
+  Programme PC-lesbar zu bekommen oder umgekehrt.
+  Wichtig ist, daá das BASIC-Programm in ASCII-Form und nicht in Token abge-
+  speichert wird. Bei manchem Computer gengt es, dafr die Option A fr
+  den SAVE-Befehl anzugeben, bei anderen ger„t es weniger handlich. Zum
+  Beispiel ist beim C 64 folgende Sequenz erforderlich: OPEN 1,8,1,"0:pro-
+  grammname,S,W":CMD 1:LIST:CLOSE 1:CLOSE 1. Der entscheidende Punkt ist
+  CMD 1, ab hier gehen die Ausgaben nicht mehr auf den Monitor, sondern auf
+  das Floppy-Drive. Deswegen mssen auch die Befehle in einem Zug angegeben
+  werden, sonst wrde jede Ausgabe "READY." auch auf der Diskette landen.
+  Geht es um BasiCode, muá brigens statt LIST angegeben werden LIST 1000-.
+  Die BASIC-Zeilen unter 1000 sind beim BasiCode-Konzept computerspezifisch,
+  nur die Zeilen ab 1000 sind auf fremden Computern nutzbar. Wenn der C 64
+  Programme erhalten soll, muá ein Diskettenmonitorprogramm benutzt werden,
+  um aus Text- in Tokenform umzuwandeln, von vornherein ist er nicht fr
+  diese M”glichkeit eingerichtet.
+  Auch beim KC 85 ist das ein wenig umst„ndlich. Das Lesen geht noch, egal,
+  ob von Tape oder Disc, das Programm wird mit LOAD#1"filename" geladen.
+  Allerdings kann der KC es nur als Programm in ASCII-Form erkennen, wenn es
+  die Namenserweiterung ".UUU" hat. In irgendeiner Phase muá man also fr eine
+  solche Umbenennung sorgen. Der Computer liest es ein und schreibt es dabei
+  auf den Monitor, w„hrend er es in interne Darstellungsweise umwandelt.
+  Hierbei h„lt das Scrolling zus„tzlich auf. Man kann Zeit sparen, indem man
+  vor dem Laden PRINT CHR$(17) ausfhren l„át, dann wird nicht mehr gescrollt,
+  sondern wieder von oben berschrieben, wenn die letzte Zeile gefllt ist.
+  Zwar sieht das dann eigenartig aus, doch beeintr„chtigt es nicht die
+  Funktion. Mit PRINT CHR$(18) kann man hinterher das Scrolling wieder zulas-
+  sen.
+  Das ASCII-Speichern auf dem KC ist noch aufwendiger: NULL 0:OPENO #1"file-
+  name":LIST #1"filename":CLOSEO #1. Diese Befehle k”nnen aber auch einzeln
+  eingegeben werden, bei BasiCode ist wieder, das gilt fr alle Computer,
+  darauf zu achten, nur ab Zeile 1000 abzuspeichern.
+  Zuletzt ein šberblick ber schon erreichte Erfolge und in Bearbeitung be-
+  findliche Vorhaben: ein am ZX-Spectrum abgesavtes BasiCode-Programm lieá
+  sich unproblematisch in den KC 85/4 einladen und war, einschlieálich Teilen
+  der HRG-Graphik, nutzbar. ASCII-Listings von BASIC-Programmen fr den KC 85,
+  die uns auf 3 1/2"-Diskette vorlagen, benannten wir in *.UUU um, brachten
+  sie via 22DISK auf ein 5 1/4"-Diskette im MicroDOS-Format (in 22DISK hat das
+  Format die Abkrzung HCL1) und konnten sie mit dem LOAD#1-Befehl am KC 85/4
+  einlesen und benutzen. Zwei BasiCode-Programme vom C+4, die zun„chst wie oben
+  beschrieben in ASCII-Form gespeichert worden waren, wurden unter Nutzung
+  eines C64-Emulators in den PC geladen und ebenfalls auf dem DISK22-Weg auf
+  KC-Diskette gespeichert. Der umgekehrte Weg "funktioniert mittlerweile ast-
+  rein, und zwar mit Hilfe eines von James Hehl entwickelten 'Seq to Prg'-
+  Konverters, der nicht allein den Directory-Eintrag von Seq zu Prg „ndert,
+  sondern das File wirklich Zeile fr Zeile umschreibt" - Zitat vom C+4-
+  Club-Info-Redakteur Erich Laber. Anhand des umfangreichen ZX81-BASIC-Pro-
+  gramms TECSTAT, das Peter Liebert-Adelt am PC mittels des ZX81-Emulators in
+  ASCII-Form umwandelt, wollen wir auch die šbertragung von ZX81-Programmen
+  auf den KC 85 wagen. Anschlieáend nehmen wir den umgekehrten Weg in Angriff,
+  wobei den gr”áten Anteil der Arbeit vermutlich der ZX81-Emulator leisten
+  muá. Gut so, denn auf dem BasiCode-Weg h„tten wir einiges zu tun: als erstes
+  RENUMBER, damit alle Zeilennummern ber 999 liegen, evtl. Aufspalten zu
+  langer Zeilen und "Tarnen" von Befehlen, die als nicht vereinbart bem„ngelt
+  werden, durch Davorsetzen von REM, und das alles nach der šbertragung wieder
+  rckg„ngig machen... Mit solchen Kunstgriffen gelang die šbertragung von
+  SWING.SSS vom KC 85 auf einen CPC-Computer. Dieses Programm spielt zwei-
+  kanalig den Glenn-Miller-Titel "In The Mood", hier kam noch hinzu, daá die
+  Parameter des SOUND-Befehls umgerechnet und umsortiert werden muáten.
+  Trotzdem ging die šbertragung durch BasiCode schneller als Abtippen des
+  Programms und der vielen DATAs und war auáerdem weniger fehlertr„chtig.
+  Ein Problem w„re hier vor allem noch, daá wir zwar die BasiCode-Save-Routine
+  fr den ZX81, aber noch nicht die fr dessen Arbeit erforderliche Hardware-
+  Erweiterung haben.
+
+  
+                                         Henning R„der, Oberhausen
+                                     Peter Liebert-Adelt, Braunschweig
+                                         Thomas Rademacher, Erfurt
+                                         
+
+

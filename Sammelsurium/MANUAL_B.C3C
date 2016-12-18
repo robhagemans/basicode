@@ -1,0 +1,719 @@
+BASICODE           Manual
+-------------------------------------------------
+
+BASICODE     ein    Esperanto
+           fÅr Computer
+
+Zusammengestellt aus "Basicode / Computerclub-REM
+                      von Prof. Dr. H. Voelz"
+durch: J. Augustinat  R.-Koch-Str. 30
+       17036 Neubrandenburg  (C) NBDB(G)-Soft
+4ergÑnzt um Farbversion (BASICODE-3C, 1991) 
+           nach Friedrich Dormeier Berlin 39
+           (Passagen kursiv gekennzeichnet)
+durch: Th. Rademacher   Roststr. 4   99086 Erfurt5
+
+1. Einleitung
+-------------
+BASICODE (entwickelt bis BASICODE-3C, 1991, wenig 
+spÑter Auflîsung der Nederlandse omroep Stichting
+<NOS>) ist eine spezielle BASIC-Version. In circa
+fÅnfzig Befehlen ist BC identisch mit BASIC. Wei-
+tere drei·ig Befehle werden indirekt  Åber GOSUB-
+Routinen realisiert.  Mit BC wird die Nutzung von
+BC-Programmen  auf vielen Kleinrechnern  mîglich,
+wobei  die  QualitÑt  der  Grafikbearbeitung  vom
+Rechnertyp abhÑngt.  Da immer nur die Mîglichkei-
+ten der schwÑcheren Rechner als Grundlage dienen,
+gibt es  einige EinschrÑnkungen  (z.B.  nur einen
+Tonkanal).  Alle BC-Programme werden auf Kassette
+aufgezeichnet und kînnen dann auch problemlos auf
+anderen Rechnern  eingeladen  werden.  In der BC-
+Version wurden Programme Åber den Rundfunk DDR-II
+ausgestrahlt.
+Sofern  noch  zeilenorientierte   BASIC-Versionen
+(BASICA, GW-BASIC) verwendet werden,  kînnen auch
+Verbindungen  zu  DOS-Computern  gehalten werden,
+eine weitere Kontaktmîglichkeit sind mittlerweile
+Programme,  die 8-bit-Rechner  auf moderneren PCs 
+emulieren.
+Nachteilig ist,  da· ohne "Bascoder",  der vorher
+geladen wird, die Programme nicht laufen.  Dieser
+"Coder"   wird  rechnerspezifisch  erstellt.  Das
+
+                                               3
+
+BASICODE           Manual
+-------------------------------------------------
+
+Programmieren in BC  ist ungewohnt  und erfordert
+die Beachtung  einiger  Vorschriften.  Unerlaubte
+Befehle,  die auf anderen Rechnern  nicht laufen,
+werden  4nicht5  erkannt. Bei einigen Rechnern kann
+ein Interface zur Anpassung der Datasette notwen-
+dig sein.
+
+2. Betrieb in BASICODE
+----------------------
+Da rechnerspezifische Bascoder entwickelt wurden,
+kann nur auf GrundsÑtze eingegangen werden.
+BC wird im Direktmodus  (Basic)  geladen  und mit 
+RUN gestartet.  BC-Programme  werden  nachgeladen
+(bei +4 Åber "F2")  und stehen dann ab Zeilennum-
+mer 1000 im Rechner. Der Bascoder belegt die Zei-
+lennummern bis 999  (dazu Maschinencodeteil).  In
+BC-Programmen  erfolgt  eine Beendigung  mit GOTO
+950.
+
+Beispiel:
+  1000 A=100:GOTO 20:REM Hydra
+  1010 PRINT"Hydra-Problem"
+  1020 INPUT"Zahl (0=Ende)";Z
+  1030 IF Z=0 THEN GOTO 950:REM Ende
+  1040 IF (Z<>INT(Z)) OR (Z<2) THEN PRINT"Fehler"
+  1050 Y=Z/2:IF Y=INT(Y) THEN Z=Y:GOTO 1070
+  1060 Z=Z+Z+Z+1
+  1070 PRINT Z;:IF Z>1 THEN 1040
+  1080 GOTO 1020
+  30000  REM   Hydra = alle ganzzahligen Eingaben
+               fÅhren zu 1
+
+Es mu· immer eine Zeile 1000 und 1010 existieren!
+In 1000 wird  der notwendige Stringraum definiert
+und dann  Sprung zur  Zeile 20.  In 20 werden die
+Anzahl  der  mîglichen  Zeilen-1 (VE),  Spalten-1
+(HO)  und Pixel-X (HG) / Y (VG) Åbernommen.  Dann
+erfolgt ein Sprung zur Zeile 1010.  Ab 1010 steht
+das entsprechende Programm.
+
+4
+
+BASICODE           Manual
+-------------------------------------------------
+
+Weitere Festlegungen:
+Leerzeichen werden entfernt,  Ausnahme vor GOSUB,
+GOTO und THEN,  sofern davor nicht  ":"  oder ")"
+steht.
+Eine BASICODE-Zeile darf  (einschlie·lich Zeilen-
+nummer und Space)  nur sechzig Zeichen enthalten.
+Jedes  BASICODE-Programm  beginnt  in Zeile 1000.
+A (Byte)  legt  die Grî·e  des  zu reservierenden
+Stringraums  fest,  sollte nicht  kleiner als 100
+sein.
+Das Programm endet mit  "GOTO 950"  - die Befehle
+RUN, END  und STOP  sind verboten.   Der  Rechner
+wird wieder in den normalen BASIC-Zustand zurÅck-
+versetzt.
+Ab Zeile 30000  stehen ErklÑrungen  zum Programm,
+ab Zeile 32000 formale Fakten (Autor, Datum, Ver-
+sionsnummer, verwendeter Rechner...)
+
+3. Einige Befehle
+-----------------
+Da BC auf allen Rechnern laufen soll,  werden ei-
+nige Basicbefehle Åber GOSUB aufgerufen.
+Textmodus:
+- GOSUB 100  Lîschen des Bildschirms,  Setzen des
+Textmodus. 4Die Hintergrundfarbe wird entsprechend
+der in der Variablen CC(1) abgelegten Code-Ziffer
+(Default-Einstellung 0: Schwarz) und die Zeichen-
+farbe entsprechend  dem Wert  der Variablen CC(0)
+(Default-Einstellung 7: Wei·) eingestellt.  Diese
+Farben werden  bis zum Programmende  oder bis zur
+nÑchstfolgenden GOSUB 100-Anweisung beibehalten.5
+- GOSUB 110  Positionierung  des Textcursors  auf
+einer bestimmten Bildschirmposition (LOCATE, CHAR
+bzw. PRINT AT).  Die Position wird in den Variab-
+len HO / VE Åbergeben  (maximale Werte werden be-
+achtet).
+- GOSUB 120  Die  augenblickliche  Position   des 
+Textcursors wird ermittelt  und  in den Variablen
+HO und VE abgelegt.
+
+                                               5
+
+BASICODE           Manual
+-------------------------------------------------
+
+- GOSUB 150 Ein Befehl, der nur bei wenigen Rech-
+nern Åber Basic realisiert wird.  Dabei wird eine
+in SR$  abgelegte Zeichenkette invers mit 3 Leer-
+zeichen  an Anfang  und Ende  dargestellt  (nicht
+Åber Zeilenende hinausgehend). 4Werden hierbei fÅr
+CC(0) und/oder CC(1) neue Werte festgelegt,  gel-
+ten sie nur fÅr diese hervorgehobene Textausgabe, 
+CC(0)=4:CC(1)=1:SR$="TEST":GOSUB 150   gibt  z.B.
+das Wort TEST  in Blau auf grÅnem Untergrund aus.
+FÅr den weiteren Ablauf des Programmes  bleibt es
+bei den  vor der letzten  GOSUB 100-Anweisung mit
+CC(0) und CC(1)  eingestellten Farben. énderungen
+haben  bis zum nÑchsten GOSUB 100  keinen Einflu·
+auf die normale Zeichendarstellung.5 
+- GOSUB 200  öbernahme der Daten  einer eventuell
+gedrÅckten Taste in IN / IN$.  Die Routine wartet
+nicht auf einen Tastendruck (GET).  Wenn bei Auf-
+ruf  keine  Taste  gedrÅckt  wird,  ist IN=0  und
+IN$="". Sonst werden in IN die ASCII-Werte leicht
+modifiziert Åbernommen (Werte fÅr Gro·buchstaben,
+auch  wenn Kleinbuchstaben  betÑtigt werden).  In
+IN$ werden die Zeichen Åbernommen sowie die Steu-
+erzeichen fÅr:  RETURN/ENTER=13        DELETE=127    
+                Cursor links=28     Cursor auf=31  
+                   Cursor ab=30  Curser rechts=29
+Diese öbergaben sind rechnerspezifisch!
+4Durch HinzufÅgen der Variablen CN (Wert computer-
+abhÑngig, in den Subroutinen festgelegt) wird die
+Gro·- bzw. Kleinschreibung  berÅcksichtigt.  Beim
+Lauf  von BASICODE-3C-Programmen  mit einem BASI-
+CODE-3(!)-öbersetzungsprogramm  kînnen allerdings
+KompatibilitÑtsprobleme auftreten.
+In der Version -3C  kînnen auch die - sofern vor-
+handenen - Funktionstasten betÑtigt und zur Steu-
+erung des Programmablaufs verwendet werden.  öber
+die Routinen 200, 210 und 450 wird IN$="" und fÅr
+ F1 : IN = -1
+ F2 : IN = -2
+ F3 : IN = -3   usw. zurÅckgegeben.5
+
+6
+
+BASICODE           Manual
+-------------------------------------------------
+
+- GOSUB 210  arbeitet  bezÅglich   der  Variablen
+analog,  es wird aber eine TastenbetÑtigung abge-
+wartet (GETKEY bzw. INKEY).
+- GOSUB 220  liest  Zeichen,  die  auf dem  Bild-
+schirm  stehen,  in die Variable IN  zurÅck,  IN$
+bleibt unverÑndert. Dabei werden die Besonderhei-
+ten von GOSUB 200 / 210 wirksam.
+- GOSUB 300  SR wird  in SR$  umgewandelt,  dabei
+werden alle Leerzeichen (Spaces) aus SR entfernt.
+- GOSUB 310  formatierte Ausgabe von Zahlen,  die 
+in der Variablen SR stehen  (PRINT USING).  Dabei
+sind  mit CT  die Anzahl der darzustellenden Zei-
+chen (GesamtlÑnge von SR$) und  mit CN die hinter
+dem  Dezimalpunkt  festzulegen.  Der String  kann
+mehr Stellen als die auszugebende Zahl enthalten.
+- GOSUB 330  wandelt alle Kleinbuchstaben, die in
+SR$  enthalten  sind,  in Gro·buchstaben um.  Das
+kann  vorteilhaft sein,  wenn Sortierroutinen ge-
+nutzt werden sollen.
+
+Grafikmodus:
+- GOSUB 600  lîscht  den Bildschirm  und schaltet
+den Grafikmodus ein. Die Befehle unter GOSUB 110,
+120, 150, 220  sowie PRINT, INPUT und File-Arbeit
+sind nicht zulÑssig!  FÅr Textdarstellung ist der
+Textmodus  mit  GOSUB 100  einzuschalten  (Grafik
+ausschalten).
+FÅr  die Koordinatenaufteilung  wird unter BC der
+Punkt 0:0  oben links festgelegt.  Die Mitte  ist
+0,5:0,5  und unten rechts ist  1:1  (zulÑssig ist
+nur <1).  Die Werte werden in HG / VG Åbernommen.
+Das LÑngen-Hîhen-VerhÑltnis ist 4:3!
+4Der Bildschirm zeigt nach dem Lîschen  die Farbe,
+die in CC(1) codiert ist.5
+- GOSUB 620  setzt  einen Punkt  entsprechend  an
+HO / VE (DRAW / PSET) und setzt  den Grafikcursor
+an diese Stelle.
+FÅr  die Grafikbefehle  kann Åber CN ein Farbwert
+Åbergeben werden. CN=0 ist Vordergrundfarbe  (im-
+
+                                               7
+
+BASICODE           Manual
+-------------------------------------------------
+
+mer wei·)    und   CN=1    ist   Hintergrundfarbe
+(schwarz).  Mehr Farben sind in BC-III nicht mîg-
+lich! FÅr Farbdarstellungen mu· auf die Spezifika
+des Rechners zurÅckgegriffen werden.  Dies sollte
+nur ausnahmsweise  erfolgen  und dann in den Zei-
+lennummerm 20000 bis 24999 mit Kommentar.
+4FÅr das Programmieren in BASICODE-3C gilt:
+CN=0 - Grafik / Text  wird  in  der Farbe  darge-
+stellt, die in CC(0) festgelegt ist.
+CN=1 - Grafik / Text wird gelîscht,  d.h.  in der
+Farbe dargestellt,  die vor dem letzten GOSUB 600
+in CC(1) codiert war.5
+- GOSUB 630  zeichnet  eine Linie  vom Punkt  des
+aktuellen Grafikcursors  zum  Punkt  HO / VE  und
+setzt den Grafikcursor dorthin (LINE).
+- GOSUB 650  Darstellung von Text im Grafikmodus.
+Der Text  wird vorher in SR$ Åbergeben.  Der Gra-
+fikcursor  steht  an der  linken oberen Ecke  des
+Schriftbeginns.  Der  Text  darf  nicht  Åber den
+rechten Rand reichen. Anschlie·end steht der Cur-
+sor an der in HO, VE definierten Position.
+
+4. Die Tonausgabe
+-----------------
+- GOSUB 250  Erzeugen  eines  kurzen  Aufmerksam-
+keitstons
+- GOSUB 400  Die Ausgabe ist  auf einen Kanal be-
+schrÑnkt.  öber drei Parameter  wird eine Vorein-
+stellung vorgenommen: 
+SP Tonhîhe  (0-127)  in Halbtonabstufungen mit 69
+als Kammerton a (ca. 400 Hz)
+SD Tondauer  (1-255)  in Stufen  zu  0,1 Sekunden
+SV LautstÑrke (0-15)
+In der Regel sind mehrere Oktaven mîglich,  wobei
+der mittlere Bereich sinnvoll ist.
+Da MusikstÅcke meist in DATA-Zeilen abgelegt wer-
+den, noch zwei Hinweise:        Zeilennummern fÅr 
+DATA's = 25000-29999,   die maximale EingabelÑnge
+fÅr Programmzeilen betrÑgt nur 60 Zeichen!
+
+8
+
+BASICODE           Manual
+-------------------------------------------------
+
+5. Umgang mit Daten-Files
+-------------------------
+Daten werden als sequentielle Files auf Disk oder
+Kassette abgespeichert.  Dazu wird eine Datei ge-
+îffnet  (OPEN)  und nach Bearbeitung  geschlossen
+(CLOSE). Der Dateiname wird in NF$ Åbergeben (ma-
+ximal 7 Zeichen lang).  In der Variablen NF  wird
+definiert, ob eine Datei gelesen (NF=gerade) oder
+geschrieben (NF=ungerade) wird. Es kînnen mehrere
+Speicher genutzt werden.
+Arbeit auf Kassette:
+- Name in NF$,  NF=1,  GOSUB 500 - Datei erîffnen
+(OPEN)
+Statusmeldung erfolgt Åber IN mit:
+ IN=0  - Fehlerfreier Verlauf
+ IN=1  - Letzter String wurde gelesen
+ IN=-1 - Fehler
+Mit dem Code NF werden vorbereitet:
+ NF=0  - Lesen BC-Kassette
+ NF=1  - Schreiben BC-Kassette
+ NF=2  - Lesen externer Speicher
+ NF=3  - Schreiben auf externen Speicher
+ NF=4  - Lesen von Diskdrive
+ NF=5  - Schreiben auf Disk
+ NF=6  - Lesen zweites Diskdrive
+ NF=7  - Schreiben auf zweites Diskdrive
+FÅr NF= 0 / 1 ist universelle Lesbarkeit unter BC
+garantiert.
+- Åbernehmen der Daten  als SR$  aus dem RAM  und
+GOSUB 560  -  schreiben  der Daten  auf Kassette,
+wobei  der Schritt  entsprechend der Daten-Anzahl 
+wiederholt werden kann.
+- Datei schlie·en mit GOSUB 580 (CLOSE)
+Lesen:
+- eingeben  von  NF=0,  NF$,  GOSUB 500  (OPEN) -
+prÅft,  ob NF$  als File vorhanden ist  und setzt
+dann IN=0 (bei IN=-1 ist ein Fehler aufgetreten).
+- einlesen der Daten durch GOSUB 540 mit öbergabe
+der Strings an IN$.  Im Normalfall  ist  IN=0 und
+
+                                               9
+
+BASICODE           Manual
+-------------------------------------------------
+
+IN$ enthÑlt  den  gelesenen  String.  Der  letzte
+String wird mit IN=1 an IN$ Åbergeben,  wenn wei-
+tergelesen wird,  ist IN=1 und IN$ wird ein Leer-
+string.
+- Abschlie·en mit GOSUB 580 (CLOSE)
+
+6. ErgÑnzung zum Bascoder
+-------------------------
+Der Bascoder stellt die Maschinenroutine  fÅr das
+einheitliche BC-Kassetteninterface bereit.  Dabei
+wird eine 0  durch eine 1200 Hz-Welle  und eine 1
+durch zwei 2400 Hz-Wellen dargestellt. Die Daten-
+Åbertragung  erfolgt  asynchron  mit einem Start-
+und  zwei Stoppbit.  ZusÑtzlich wird  jedes achte
+Datenbit  invertiert.  BC-öbertragungen sind sehr
+zuverlÑssig  und werden  im ASCII-Format  gespei-
+chert.  Abspeichern bei C+4  mit "F5",  wobei die
+voreingestellten Zeilennummern  mit RETURN  Åber-
+nommen werden.
+
+7. Weitere GOSUB-Routinen
+-------------------------
+- GOTO 20  mu· in  Zeile 1000  stehen  und  setzt
+Zeilen- / Spaltenzahl sowie Pixelzahl.  Die RÅck-
+kehr fÅhrt zu Zeile 1010.
+- GOSUB 260  Erzeugung  von Zufallswerten  (RND).
+Abgelegt wird der Wert in RV ( 0 <= RV < 1 ).
+- GOSUB 270  FÅhrt eine  garbage collection durch 
+und berechnet  den freien Stringspeicherplatz als
+Variable FR.
+- GOSUB 280  sperrt die RUN/STOP-Taste.  Dazu mu·
+vorher die Variable FR mit "1" belegt werden. Bei
+FR=0 ist die STOP-Taste wirksam.
+- GOSUB 350  Sendet  den String SR$  an den Druk-
+ker. Initialisierungsroutinen enthÑlt BC nicht. 
+- GOSUB 360  Sendet  Newline (0D,0A) an den Druk-
+ker.
+
+
+
+10
+
+BASICODE           Manual
+-------------------------------------------------
+
+4Als Beispiel einer  Hardcopy-Routine  fÅr  BC-3C-
+Programme bietet sich an:
+   
+   1010 HT=HO:VT=VE: REM Schirmgrî·e
+   :
+   21000 CN=0: REM wenn bc-3c-prog. mit
+   21010     : REM bc-3(!)- routinen laufen
+   21020 FOR VE=0 TO VT:SR$=""
+   21030     FOR HO=0 TO HT
+   21040         GOSUB 220
+   21050         SR$=SR$+CHR$(IN+CN)
+   21060     NEXT HO
+   21070     GOSUB 350:GOSUB 360 
+   21080 NEXT VE
+   21090 RETURN5
+
+- GOSUB 450  Programmwarteschleife,   wobei   die
+PausenlÑnge in SD (SD*0,1 Sek.)  festgelegt wird.
+Abbruch ist  mit Tastendruck mîglich,  dabei wird
+in SD  die  verbliebene Zeit  zurÅckgegeben.  Mit
+SV=0 wird eine Unterbrechung verhindert.
+- GOTO 950  beendet den Basicode-Mode                         
+
+8. Hinweise zu den Variablen
+----------------------------
+Variablen bestehen aus ein oder zwei Zeichen, wo-
+bei der erste ein Gro·buchstabe sein mu· (#, !, %
+sind verboten).  Alle Variablen besitzen das For-                         
+mat real  mit mindestens  sechs Mantissenfeldern. 
+Strings werden mit "$" gekennzeichnet.
+Logische Variablen werden indirekt realisiert und                         
+kînnen nur "wahr"  oder "falsch" sein.  Mit ihnen
+darf nicht  numerisch gerechnet  werden.  Deshalb
+ist etwa  A=3*(B=1) nicht erlaubt.  Statt dessen:
+A=0:IF B=1 THEN A=3.
+Jeder Variablen  mu· vor der Verwendung  ein Wert
+zugewiesen werden.  Oft gebrauchte  Variablen zu-
+erst  belegen  (evtl.  mit Dummy-Werten).  Arrays
+sollten ebenfalls vor  jeder Anwendung  dimensio-
+
+                                             11
+
+BASICODE           Manual
+-------------------------------------------------
+
+niert werden  (maximal zwei Dimensionen,  ZÑhlung
+beginnt beim nullten Element).
+
+9. Hinweise zu den erlaubten Basic-Befehlen
+-------------------------------------------
+AND: darf wie OR, NOT  nur auf  logische AusdrÅk-
+ke  (Vergleiche)  bezogen werden,  die geklammert
+werden  sollten,  z. B. (X>45) AND (X<75), Zuwei-
+sungen von logischen Ergebnissen an eine Variable
+sind zulÑssig.
+ASC: liefert nicht  bei allen Computern  in allen
+FÑllen exakt den gleichen Wert,  insbesondere bei
+Commodore  gibt es hier  Abweichnungen der Werte,
+jedoch bei  (Gro·-)Buchstaben weitgehend erfÅllt,
+die Nutzung sollte  mit Umsicht  und nur fÅr  ein 
+Zeichen erfolgen.
+CHR$: Vorsicht bei Werten < 32 (Steuerzeichen!). 
+DEF FNname: nur in  der einfachen Form  mit einer
+Variablen anwendbar, nicht rekursiv anwendbar. 
+DIM: vor Nutzung von Feldern erforderlich,  maxi-
+mal  zwei Dimensionen  zulÑssig,  ZÑhlung beginnt
+beim nullten Element. 
+FOR ... TO ... STEP ... NEXT:  Die Schleife  wird
+mindestens  einmal  durchlaufen.  Ohne  STEP zahl
+ist die Schrittweite 1. Nach NEXT mu· die zugehî-
+rige  Variable  stehen.  Nur  ein NEXT  zulÑssig,
+Schleife darf nur  an einer einzigen Stelle  ver-
+lassen werden.  Aus der Schleife  darf nicht her-
+ausgesprungen  werden   -  vorzeitiges  Verlassen
+durch Laufparameter = Endwert, Sprung zum NEXT. 
+GOSUB: Zeilennummer  darf  keine  Variable  sein,
+Zeilennummer mu· existieren. IF ... THEN GOSUB. 
+GOTO: siehe GOSUB,  Ausnahme  20 und 950.  IF ...
+THEN zeilennummer. 
+INPUT: nur fÅr eine Variable. 
+LOG: hat Basis e, LN darf nicht verwendet werden.
+MID$: erfordert drei oder zwei Werte.  MID$(A$,5)
+ist erlaubt. 
+NEXT: siehe FOR. 
+
+12
+
+BASICODE           Manual
+-------------------------------------------------
+
+NOT: siehe AND. 
+ON: die Variable  darf nur  die zulÑssigen  Werte
+annehmen, also von 1 bis zur Anzahl der nach GOTO
+bzw. GOSUB stehenden Adressen. 
+OR: siehe AND. 
+PRINT: Formatierung  nur  mit  ",", ";", und TAB.
+Empfehlung, "," und TAB durch GOSUB 110 zu erset-
+zen. Nicht durch "?" ersetzbar. 
+REM: nicht durch "'" ersetzbar,  kein ":" in REM-
+Zeile. 
+RESTORE: nur ohne Zeilennummer. 
+TAB: TAB(0) nicht erlaubt. Sicherer GOSUB 110. 
+VAL: nimmt bei  nicht rein numerischen Argumenten
+in verschiedenen Rechnern  unterschiedliche Werte
+an (vgl. ASC).
+
+410. Neuerungen von BASICODE-3C
+------------------------------
+Diese Erweiterung ist durch folgende Merkmale ge-
+kennzeichnet:
+Darstellung  von Text  oder Grafik  auf dem Bild-
+schirm in wahlweise acht Farben  - nur in Verbin-
+dung mit einem Farbmonitor / TV!
+Herstellung eines Screendumps (Textbetrieb)
+Nutzung evtl. vorhandener Funktionstasten                         
+Ein fÅr die Anwendung  wichtiges Merkmal  ist die
+absolute KompatibilitÑt von BASICODE-3  und BASI-
+CODE-3C:
+   Aufgestellt:  >     Ablauf:
+----------------------------------
+BC-3        s/w  >  BC-3C     s/w
+BC-3C      Farbe >  BC-3      s/w
+BASICODE-3C-Programme werden, falls nur ein mono-
+chromer Monitor (TV) vorhanden ist,  mit schwarz/
+wei·em Text bzw. Grafik dargestellt.
+Programmieren mit Farbe                         
+Wie schon in der Version 3  werden  die hier not-
+wendigen Anweisungen durch Subroutinen ersetzt.5
+
+
+                                             13
+
+BASICODE           Manual
+-------------------------------------------------
+
+4Es sind folgende Farben zugelassen:
+  Code Farbe
+------------------------
+    0  Schwarz
+    1  Blau
+    2  Rot
+    3  Violett (Magenta)
+    4  GrÅn
+    5  Hellblau (Cyan)
+    6  Gelb
+    7  Wei·
+
+Die Code-Ziffern werden den Variablen  CC(0)  und
+CC(1)  zugewiesen;  als Default-Einstellung gilt:
+CC(0)=7  > Zeichenfarbe - Wei·
+CC(1)=0  > Hintergrund  - Schwarz
+Um einen  hinreichenden Kontrast  der Darstellung
+zu erreichen,  empfiehlt sich ein Unterschied von
+"4" zwischen den Variablen in CC(0) und CC(1).
+Der Variablenname  "CC" gilt im Sinne des BASICO-
+DE-Protokolls als verboten!5
+                         
+ Anhang
+--------------
+Tabelle 1  GÅltige Basic-Befehle
+
+     ABS     GOSUB   NEXT    SGN     -       
+     AND     GOTO    NOT     SIN     *
+     ASC     IF      ON      SQR     /
+     ATN     INPUT   OR      STEP    ^
+     CHR$    INT     PRINT   TAB     =
+     COS     LEFT$   READ    TAN     <
+     DATA    LEN     REM     THEN    >
+     DIM     LET     RESTORE TO      <=
+     EXP     LOG     RETURN  VAL     >=
+     FOR     MID$    RIGHT$  +       <>
+
+In begrenztem Umfang ist DEF FN mîglich.                         
+
+
+14
+
+BASICODE           Manual
+-------------------------------------------------
+
+Tabelle 2  öbersicht GOSUB + Ñquivalente Befehle
+
+ 20  Programmstart,  System-Reset,  Variable  lî-
+     schen ...                              CLEAR
+100  Text-Modus  einschalten  und  Bildschirm lî-
+     schen.                           SCNCLR, CLS
+110  Cursor auf die Position HO, VE.       LOCATE
+120  Cursor-Position in HO,VE zurÅckholen
+                                        POS, VGET
+150  AuffÑlliges  Anzeigen  von SR$;  rechts  und
+     links drei Spaces.
+200  Daten einer  eventuell  gedrÅckten  Taste in
+     IN$ und IN.                       GET, INKEY
+210  wie 200, jedoch mit Warten auf Tastendruck.
+                                           GETKEY
+220  Holen des Zeichens aus Schirmposition HO, VE
+     auf IN.                                VGET$
+250  Erzeugen eines kurzen Aufmerksamkeitstones.
+                                             BEEP
+260  Zufallsvariable in RV mit 0 <= RV < 1.   RND
+270  AusfÅhren von  garbage collection  und Spei-
+     cherplatz in FR.                      FRE(X)
+280  Aus- bzw. Einschalten  der  STOP/BRK - Taste
+     FR = 0 bzw. 1.
+300  SR wird ohne Space in SR$ gewandelt.    STR$
+310  wie 300,  jedoch als Zahl mit CT und CN for-
+     matiert.                               USING
+330  Alle Kleinbuchstaben in SR$  in Gro·buchsta-
+     ben wandeln.
+350  öbergabe von SR$ an den Drucker.      PRINT#
+360  In neue Zeile mit Drucker (CRLF).
+400  Erzeugung eines Tons gemÑ· SV, SD und SP.
+                                            SOUND
+450  Warten von maximal  SD * 0,1 s auf einen Ta-
+     stendruck.                             PAUSE
+500  Erîffnen eines Files mit dem Namen NF$ gemÑ·
+     NF.                                     OPEN
+540  Aus dem File wird ein String  in IN$ Åberge-
+     ben.                                   LOAD*
+
+                                             15
+
+BASICODE           Manual
+-------------------------------------------------
+
+560  SR$ wird in das File geschrieben.      SAVE*
+580  Man schlie·e den Bestand mit Code NF ab.
+                                            CLOSE
+600  Graphischen Betrieb und Bildschirm lîschen.
+                                  GRAPHIC, SCREEN
+620  Setzen eines Punktes  in die Position HO, VE
+     mit Farbe CN.                     DRAW, PSET
+630  Zeichnen  einer Linie  zum Punkt  HO, VE  in
+     Farbe CN.                         DRAW, LINE
+650  SR$ an der Position HO, VE anzeigen (Grafik-
+     Mode).                                  CHAR
+950  Beenden des Basicode-Mode.               END
+
+
+
+
+Tabelle 3  Nicht erlaubte Basicbefehle      
+
+    
+    !        CONT     KEY      PEEK       STOP
+    AT       CSAVE    KEYLIST  PI         STRING$
+    BEEP     CSRLIN   LINE     POKE       STR$
+    BLOAD    DEEK     LINES    POSE       SWITCH
+    BORDER   DOKE     LIST#    PRESET     TROFF
+    BYE      END      LOAD#    PRINT#     TRON
+    CALL     FRE      LOAD*    PSET       USR
+    CIRCLE   INK      LOCATE   RND        VGET$
+    COLOR    INKEY    NULL     RANDOMIZE  VPEEK
+    CLEAR    INP      OPEN     RENUMBER   VPOKE
+    CLOAD    INPUT#   OUT      RUN        WAIT
+    CLOSE    INSTR    PAPER    SOUND      WIDTH
+    CLS      JOYST    PAUSE    SPC        WINDOW
+
+
+LN durch LOG ersetzt.  Weitere Basicbefehle,  die
+spezifisch vorhanden  sind  und hier nicht aufge-
+fÅhrt wurden,  sollten auch nicht genutzt werden,
+um eine  universelle Austauschbarkeit  zu gewÑhr-
+leisten.
+
+16
+
+BASICODE           Manual
+-------------------------------------------------
+
+Tabelle 4  Zeilenaufbau BASICODE
+
+      0 -   999  Bascoder (fÅr jeden Computer an-
+                 ders). 
+           1000  Erste  Zeile  des  BASICODE-Pro-
+                 gramms.  Sie  mu· folgende  Form
+                 haben:
+        1000 A=<Wert>:GOTO 20:REM <Programmname> 
+   1010 - 19999  Eigentliches BASICODE-Programm. 
+  20000 - 24999  Subroutinen,  welche  unerlaubte
+                 Befehle  verwenden.  Sie  sollen
+                 mîglichst  vermieden,  zumindest
+                 aber in REM-Zeilen genau erklÑrt
+                 werden  (z.B. farbige Bilder, in
+                 BASICODE-3 nicht mîglich). 
+  25000 - 29999  Eventuell benîtigte DATA-Zeilen. 
+  30000 - 31999  REM-Zeilen, z.B. kurze Programm-
+                 beschreibung, Literatur 
+  32000 - 32767  REM-Zeilen  fÅr  den  Namen  und
+                 die Anschrift des Autors,  Datum
+                 und andere formale Bemerkungen. 
+
+ZeilenlÑnge einschlie·lich Zeilennummer und Space
+maximal 60 Zeichen
+
+Tabelle 5  Verbotene Variablen 
+
+  1. Alle Variablen, die mit dem Buchstaben O be-
+     ginnen.
+  2. AS, AT, DI, DI$, DS, DS$, EI, EI$, EL, ER,
+     FN, GO, GR, IF, LN, SQ, SQ$, ST, TI, TI$, TO 
+  3. PI,  enthÑlt   aber  nicht   den  Zahlenwert
+     3.14159
+
+Tabelle 6  In BASICODE  verwendete Variablen  mit
+           besonderer Bedeutung:
+
+    A, 4CC,5 CN, CT, FR, HG, HO, IN, IN$, NF,
+      NF$, RV, SD, SP, SR, SR$, SV, VE, VG
+
+                                            17
+
+BASICODE           Manual
+-------------------------------------------------
+
+Hinweise zu PC-Bascodern
+
+Ein   zeilenorientiertes  Basic   (z.B. GW-BASIC,
+BASICA) wird vorausgesetzt  -  QBASIC oder VISUAL
+BASIC sind  nicht verwendbar.   Zum Arbeiten  mit
+DatenbestÑnden  ist   der  Interpreter   mit  der
+Option /f:8 zu starten.
+FÅr den Programmtransfer bietet sich die Diskette
+an,  ggf. auch unter Nutzung existierender Emula-
+tionsprogramme einschlie·lich  der Emulation  von
+CP/M unter DOS. Dem Konzept von BASICODE entspre-
+chend mÅssen Programme,  die zum Weitergeben vor-
+gesehen sind, nur ab Zeile 1000 und unbedingt als
+ASCII-Listing  abgespeichert werden,  weder Token
+noch der Bascoder  sind auf fremde Computer Åber-
+tragbar!
+Eine weitere denkbare öbertragungsmîglichkeit ist
+die serielle Kopplung.
+Jedoch ist sogar die Nutzung von Kassetten an ei-
+nem relativ unkompliziert aufgebauten  Interface,
+das am parallelen Druckerport angeschlossen wird,
+mîglich.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+18
