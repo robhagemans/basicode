@@ -1,23 +1,21 @@
 BASICODE
 ========
 
-.. image:: http://robhagemans.github.io/basicode/zwart1.jpg
+The purpose of BASICODE was to enable radio-transmission of software to owners of numerous
+mutually incompatible 8-bit platforms. It was developed in 1980 by Dutch broadcaster *NOS* for its 
+hobby-electronics radio programme Hobbyscoop.
 
-BASICODE was developed in 1980 by Dutch broadcaster *NOS* for its hobby-electronics radio programme Hobbyscoop.
-Its purpose was to enable radio-transmission of software that could be used on the various different 8-bit
-micro-computers that were popular at the time.
-
-The BASICODE project consisted of the following elements:
+BASICODE consists of the following elements:
 
 - A subset of classic Microsoft BASIC common to the BASIC dialects of the target platforms
-- A standard set of subroutines to provide functionality for which no common BASIC syntax existed
+- A standard set of subroutines to provide functionality for which no common BASIC syntax exists
 - An audio modulation format intended to be readable by data cassette players
-- A native program for the target platform, which would decode the common audio format and supplement the
-  resulting BASICODE program with the platform's implementation of the standard subroutines.
 
-BASICODE users would tape record the modulated program from the radio and use their copy of the translation program
-and their computer's cassette player to read the tape. If everything went well, they would then be able to run and
-use the program transmitted.
+.. image:: http://robhagemans.github.io/basicode/zwart1.jpg
+
+BASICODE users would tape record the modulated program from the radio. They would need a native *translation program* 
+for their platform, which would decode the common audio format and supplement the BASICODE program with the platform
+implementation of the standard subroutines. If everything went well, they would then be able to run and use the program.
 
 *NOS* started BASICODE transmissions in 1982 on medium wave Dutch radio. Other broadcasters followed suit:
 Dutch broadcasters *NOS* and *TROS*, the British *BBC*, the West German *WDR* and
