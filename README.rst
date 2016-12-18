@@ -32,8 +32,9 @@ While the authors and broadcasters retained copyrights on the programs, they enc
 for non-commercial purposes.
 
 This repository contains BASICODE programs from a number of sources. I have decoded them from
-the original audio recording, where available, and corrected transmission failures using context,
-alternative sources and checksums. The following titles are included:
+the original audio recordings, where available, and corrected transmission failures using context,
+alternative sources and checksums. I have concentrated on the portable BASICODE sources and have
+omitted platform-specific code such as translation programs. The following titles are included:
 
 ==================================  ==========  ===== ==================  ==================
 Title                               Medium      Year  Standard            Language
@@ -48,7 +49,7 @@ Title                               Medium      Year  Standard            Langua
 `The Best of BASICODE 4`_           Tape        1987  BASICODE-2          Dutch
 `The Best of BASICODE 5`_           CD          1988  BASICODE-2          Dutch
 `The Best of BASICODE 6`_           Diskette    1991  BASICODE-2          Dutch
-`The Best of BASICODE 7`_           Diskettes   1992  Text only           Dutch
+`The Best of BASICODE 7`_           Diskette    1992  Text only           Dutch
 `BASICODE-3`_                       Tape        1986  BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 1`_    Tape        1987  BASICODE-3          Dutch
 `BASICODE-3 Verzamelcassette 2`_    Tape        1987  BASICODE-3          Dutch
@@ -59,7 +60,7 @@ Title                               Medium      Year  Standard            Langua
 `BASICODE-3 Verzamelcassette 7`_    Tape        1990  BASICODE-3          Dutch and German
 `BASICODE-3 Verzamelcassette 8`_    Tape        1990  BASICODE-3          Dutch and German
 `BASICODE-3 Verzamelcassette 9`_    Tape        1990  BASICODE-3          Dutch and German
-`BasiCode Sammelsurium`             Diskettes   1998  BASICODE-2, 3, 3C   German
+`BasiCode Sammelsurium`_            Diskette    1998  BASICODE-2, 3, 3C   German
 ==================================  ==========  ===== ==================  ==================
 
 .. _BASICODE-2A: Basicode-2a/
