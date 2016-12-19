@@ -1,0 +1,369 @@
+
+1000 A=200:GOTO20:REM DETERMINEREN DEEL 4
+1010 GOSUB100:SR$="                         "
+1020 GOSUB150:PRINT:SR$="D E T E R M I N E R E N   (Deel 4)"
+1030 GOSUB150
+1040 SR$="*************************"
+1050 GOSUB150:PRINT:PRINT
+1060 PRINT"  D E    B L O E M    :"
+1070 PRINT"  ======================":PRINT
+1080 PRINT"Bloemen zijn vaak de meest opvallende"
+1090 PRINT"delen van een plant."
+1100 PRINT"Ze dienen voor de vermenigvuldiging of"
+1110 PRINT"instandhouding v.d. soort door vrucht-"
+1120 PRINT"vorming."
+1130 PRINT"De bevruchting geschiedt vaak door die-"
+1140 PRINT"ren, die op kleur (en geur) afkomen en"
+1150 PRINT"ongewild ''bestuiving'' veroorzaken.":PRINT
+1160 PRINT"1.De bloem-onderdelen."
+1170 PRINT"2.De bloem-vormen."
+1180 PRINT"3.De bloem-stand."
+1190 PRINT"4.De voortplantingsorganen."
+1200 PRINT"5.De bloei-wijzen.":PRINT
+1210 MK=5:VE=21:GOSUB9510
+1220 ONKZ GOTO1240,2080,2470,2780,3600
+1230 REM DE BLOEMONDERDELEN
+1240 PRINT"De bloem-onderdelen:":PRINT
+1250 PRINT"1.De bloem- :het verbrede eind van"
+1260 PRINT"  bodem     :    de bloemsteel."
+1270 PRINT"             Daaraan zit:"
+1280 PRINT"2.De kelk-  :vaak groen en klein.  Ze"
+1290 PRINT"  bladen    :vormen samen de bloemkelk"
+1300 PRINT"3.De bloem- :meestal gekleurd.Ze vormen"
+1310 PRINT"  bladen    :de bloemkroon of kroon"
+1320 PRINT"  bladen    :de bloemkroon of kroon"
+1330 PRINT"4.De meel-  :mannelijk deel v.d. bloem,"
+1340 PRINT"  draden    :met stuifmeel dat in de"
+1350 PRINT"             helmknoppen zit."
+1360 PRINT"5.De vrucht-:vormen het vrouwelijk deel"
+1370 PRINT"  bladen    :meestal vervormd tot 1 of"
+1380 PRINT"             meer stampers."
+1390 PRINT"  De stamper bestaat uit:stempel,stijl,"
+1400 PRINT"  vruchtbeginsel met daarin eicellen."
+1410 GOSUB9010
+1420 REM NADERE INFORMATIE OVER BLOEM-ONDERDELEN""
+1430 PRINT"De kroonbladen vormen samen met de kelk"
+1440 PRINT"bladen de bloembekleedsels.  Het zijn"
+1450 PRINT"bladachtige delen,die de voortplantings"
+1460 PRINT"organen omgeven die zelf ook van oor-"
+1470 PRINT"sprong bladachtig zijn: bij zgn. dubbe-"
+1480 PRINT"le bloemen zijn de meeldraden en vaak"
+1490 PRINT"ook de stamper weer bladachtig geworden":PRINT
+1500 PRINT"Losse bloembladen: hebben een plaat"
+1510 PRINT"(het vlakke deel)+ een nagel(het meest-"
+1520 PRINT"al smallere aanhechtingsdeel).":PRINT
+1530 PRINT"Vergroeide kroonbladen: hebben meestal"
+1540 PRINT"een kroonbuis(onderste deel), een zoom"
+1550 PRINT"(bovenste deel) vaak verdeeld in slip-"
+1560 PRINT"pen met tussen buis en zoom de keel,die"
+1570 PRINT"vaak keelschubben,keelknobbels of haar-"
+1580 PRINT"kransen heeft.":PRINT
+1590 PRINT"Sommige bloemen hebben een bijkroon:een"
+1600 PRINT"op'n kroon lijkende vergroeiing(narcis)"
+1610 GOSUB9010
+1620 PRINT"Sporen zijn buisvormige verlengingen v."
+1630 PRINT"d. bloemkroon met nectar (oa viooltje,"
+1640 PRINT"leeuwenbekje).":PRINT
+1650 PRINT"Het honingmerk:  bestaat uit strepen,"
+1660 PRINT"vlekken of felgekleurde bloemdelen, die"
+1670 PRINT"de weg naar de nektar wijzen.":PRINT
+1680 PRINT"Als er maar 1 soort bloembekleedsel is"
+1690 PRINT"heet dat een bloemdek. Alleen kroonbla-"
+1700 PRINT"den(tulp), alleen kelkbladen(pluimpapa-"
+1710 PRINT"ver).":PRINT
+1720 GOSUB9010
+1730 PRINT"De kelkbladen: meestal groene blaadjes"
+1740 PRINT"onder de bloemkroon,die als knopbladen"
+1750 PRINT"hebben gediend,waarbinnen zich de bloem"
+1760 PRINT"vormde."
+1770 PRINT"Soms vallen ze af als de bloem opengaat"
+1780 PRINT"(klaproos).Soms bestaan ze uit slechts"
+1790 PRINT"enkele haren (composieten).":PRINT
+1800 PRINT"Een bijkelk bestaat uit steunblaadjes,"
+1810 PRINT"die vaak op kelkblaadjes lijken + onder"
+1820 PRINT"de eigenlijke kelk zitten(aardbei).":PRINT
+1830 PRINT"Dekschubben zitten vaak aan de voet van"
+1840 PRINT"de kelk(composieten).":PRINT
+1850 PRINT"Kelkvormen:"
+1860 PRINT"-Losbladig,soms teruggeslagen(klimroos)"
+1870 PRINT" afstaand(koolzaad), meestal aanliggend"
+1880 PRINT"-Vergroeidbladig,meestal trechtervormig"
+1890 PRINT" soms buikig(struikhei),soms opgeblazen"
+1900 PRINT" (blaassilene), generfd(voederwikke),"
+1910 PRINT" getand(klaver), 2-lippig(salie)."
+1920 GOSUB9010
+1930 PRINT"De kroonvorm kan zijn:":PRINT
+1940 PRINT"-A.Veelzijdig symmetrisch:opveel manie-"
+1950 PRINT"   ren in 2 gelijke delen te snijden.":PRINT
+1960 PRINT"-B.Tweezijdig symmetrisch:op 1 manier"
+1970 PRINT"   alleen in 2 gelijke delen te snijden":PRINT
+1980 PRINT:PRINT"De bloembladen kunnen zijn :":PRINT
+1990 PRINT"-1.Vergroeidbladig: als de bloembladen"
+2000 PRINT"   geheel of gedeeltelijk aaneen zitten"
+2010 PRINT"-2.Losbladig      : als de bloembladen"
+2020 PRINT"   aaneen zitten.":PRINT
+2030 PRINT"Verder met de bloem       (1)"
+2040 PRINT"Of terug naar het begin   (2)"
+2050 MK=2:VE=21:GOSUB9510
+2060 ONKZ GOTO2080,1000
+2070 REM DE BLOEMVORMEN
+2080 PRINT"De bloemvorm:":PRINT
+2090 PRINT"a.stervormig    :met3,4,5,6 en soms nog"
+2100 PRINT"                 meer losbladige kroon-"
+2110 PRINT"                 bladen."
+2120 PRINT"b.klokvormig    :kroonbladen vergroeid"
+2130 PRINT"                 tot klokvorm."
+2140 PRINT"c.kroesvormig   :idem tot kroesvorm,ook"
+2150 PRINT"                 buikig genoemd."
+2160 PRINT"d.trechtervormig:idem tot trechter."
+2170 PRINT"e.trompetachtig :idem tot trompetvorm."
+2180 PRINT"f.vioolachtig   :5 ongelijke bloembla-"
+2190 PRINT"                 den en ongelijk ver-"
+2200 PRINT"                 deeld."
+2210 PRINT"g.lipbloemig    :met 1 of 2 onderlippen"
+2220 PRINT"                 De 2-lippigen met open"
+2230 PRINT"                 bloemkroon waar men in"
+2240 PRINT"                 kan kijken, of met ge-"
+2250 PRINT"                 sloten=grijnzend."
+2260 GOSUB9010
+2270 PRINT"h.vlinder-      :bestaande uit: vlag="
+2280 PRINT"  bloemigen     :bovenste kroonblad."
+2290 PRINT"                 Zwaard=2 zijdelingse"
+2300 PRINT"                 kroonbladen.Kiel= 2"
+2310 PRINT"                 onderste samengegroei-"
+2320 PRINT"                 de kroonbladen."
+2330 PRINT"i.Composieten   :veel kleine bloempjes"
+2340 PRINT"                 bij elkaar op een"
+2350 PRINT"                 bloemhoofd dit is een"
+2360 PRINT"                 breed uitgegroeide"
+2370 PRINT"                 bloembodem."
+2380 PRINT"De kleine bloempjes zijn straalbloemen"
+2390 PRINT"als ze een lintvormig deel of buisbloe-"
+2400 PRINT"men als ze dat niet hebben."
+2410 PRINT:PRINT"<<Einde bloemvorm>>":PRINT
+2420 PRINT"Wilt u verder met de bloem (1)"
+2430 PRINT"Of terug naar het begin    (2)"
+2440 MK=2:VE=21:GOSUB9510
+2450 ONKZ GOTO2470,1000
+2460 REM DE BLOEMSTAND
+2470 PRINT"De bloemstand:":PRINT
+2480 PRINT"= Stand v.d.bloemen t.o.v. de stengel,"
+2490 PRINT"  centrale as of hoofdas,niet onderbro-"
+2500 PRINT"  ken door bladeren, hoogstens schut-"
+2510 PRINT"  blaadjes:"
+2520 PRINT"Onderdelen:"
+2530 PRINT"-op de hoofdas:zij-assen v.d.1-ste orde"
+2540 PRINT" = bloemstelen."
+2550 PRINT"-op de bloemstelen staan bloemsteeltjes"
+2560 PRINT" zij-assen v.d.2de of 3de orde."
+2570 PRINT"-schutblad: kleiner en vaak anders van"
+2580 PRINT" vorm a.h.begin v.d.bloemstand.(Ook aan"
+2590 PRINT" de voet van bloemstelen)."
+2600 PRINT"-schutblaadje a.d.voet van de bloem-"
+2610 PRINT" steeltjes."
+2620 PRINT"-omwindsel(blaadjes):krans van schut-"
+2630 PRINT" blaadjes."
+2640 PRINT"-omwindseltjes:krans van (kleinere)"
+2650 PRINT" schutblaadjes onder de verder vertakte"
+2660 PRINT" bloeiwijze.":PRINT
+2670 GOSUB9010
+2680 PRINT:PRINT"-steelblaadje:blad op d.bloemsteel"
+2690 PRINT" of bloemsteeltjes."
+2700 PRINT"-stroschubben:schubjes tussen buisbloe-"
+2710 PRINT" men van composieten.":PRINT
+2720 PRINT"<<Einde bloemstand>>":PRINT
+2730 PRINT"Wilt u verder met de bloem (1)"
+2740 PRINT"Of terug naar het begin    (2)"
+2750 MK=2:VE=21:GOSUB9510
+2760 ONKZ GOTO2780,1000
+2770 REM DE VOORTPLANTINGSORGANEN
+2780 PRINT"De voortplantings-organen:":PRINT:PRINT
+2790 PRINT"1.Meeldraden:":PRINT
+2800 PRINT"Mannelijke voortplantingsorganen,kunnen"
+2810 PRINT"soms kroonbladen worden, bij gekweekte"
+2820 PRINT"planten(rozen).":PRINT
+2830 PRINT"Delen:helmdraad met helmknoppen waarin"
+2840 PRINT"stuifmeel(pollen).":PRINT
+2850 PRINT"Aantal: wisselend (goed kenmerk bij het"
+2860 PRINT"determineren.":PRINT
+2870 PRINT"Lengte:2 korte + 2 lange=2-machtig"
+2880 PRINT"                         (Lipbloemen)."
+2890 PRINT"       2 korte + 4 lange=4-machtig"
+2900 PRINT"                         (kruisbloemen)":PRINT
+2910 GOSUB9010
+2920 PRINT"Vergroeiing:":PRINT
+2930 PRINT"*1-broederig=alle meeldraden vergroeid"
+2940 PRINT" tot 1 buis(goudenregen).":PRINT
+2950 PRINT"*2-broederig=vergroeid in 2 groepen(oa"
+2960 PRINT" bonen).":PRINT
+2970 PRINT"*Saamhelmig=helmknoppen vergroeid(bijv."
+2980 PRINT" viooltje, composieten).":PRINT
+2990 PRINT"*Veelbroederig=vergroeid tot 3 of meer"
+3000 PRINT" bundels(bijv.hertshooi).":PRINT
+3010 PRINT"*Helmstijlig=helmknoppen vergroeid met"
+3020 PRINT" de stijl (bijv.orchideeen)>"
+3030 GOSUB9010
+3040 PRINT"2.Vruchtbladen: evenals de meeldraden"
+3050 PRINT"  van oorsprong bladeren, die vergroei-"
+3060 PRINT"  en tot 1 of meer stampers:het vrouwe-"
+3070 PRINT"  lijke voortplantingsorgaan.":PRINT:PRINT
+3080 PRINT"Delen:":PRINT
+3090 PRINT"-Vruchtbeginsel, dat later uitgroeien"
+3100 PRINT" kan tot vrucht.":PRINT
+3110 PRINT"-Stijl  : een holle buis.":PRINT
+3120 PRINT"-Stempel: bovenste, meestal kleverig"
+3130 PRINT" deel dat zeer gevarieerde + mooie vor-"
+3140 PRINT" men hebben kan: gespleten, geveerd,"
+3150 PRINT" knots- of knopvormig enz.."
+3160 GOSUB9010
+3170 PRINT"Stand  (vruchtbladen) :":PRINT:PRINT
+3180 PRINT"-1.Bovenstandig:vruchtbeginsel (=vb)"
+3190 PRINT"   staat boven de aanhechtings van de"
+3200 PRINT"   kelkbladen en/of kroonbladen(bijv."
+3210 PRINT"   composieten).":PRINT
+3220 PRINT"-2.Onderstandig:  vb onder de bloem-"
+3230 PRINT"   bekleedsels(bastaardwederik,wilgen-"
+3240 PRINT"   roosje).":PRINT
+3250 PRINT"-3.Middenstandig:als het vb deels met  "
+3260 PRINT"   de kelk vergroeid is, deels erboven"
+3270 PRINT"   uitkomt.":PRINT
+3280 PRINT"Sommige bloemen hebben soms lokbloemen"
+3290 PRINT"die op een bloem lijken, maar geen ge-"
+3300 PRINT"slachtsorganen hebben. Ze dienen alleen"
+3310 PRINT"om bestuivers naar echte bloemen te"
+3320 PRINT"lokken."
+3330 GOSUB9010
+3340 PRINT"Bloemen zonder kelk, kroon of bloemdek"
+3350 PRINT"noemen we ''naaktbloeiers''.":PRINT
+3360 PRINT"Bloemen zonder geslachtsorganen zijn"
+3370 PRINT"''steriele of onvruchtbare''bloemen.":PRINT
+3380 PRINT"De meeste bloemen zijn 'tweeslachtig':"
+3390 PRINT"ze hebben stamper en meeldraad bij el-"
+3400 PRINT"kaar op een bloembodem staan.":PRINT
+3410 PRINT"Sommige bloemen zijn 'eenslachtig':"
+3420 PRINT"alleen meeldraden OF alleen stampers.":PRINT
+3430 PRINT"De meeste planten zijn ' 1-huizig ':"
+3440 PRINT"mannelijke en vrouwelijke samen op"
+3450 PRINT"een plant.":PRINT
+3460 PRINT"Sommige zijn ' 2-huizig ' :mann. en"
+3470 PRINT"vrouw. bloemen op een eigen plant."
+3480 GOSUB9010
+3490 PRINT"Let op:":PRINT
+3500 PRINT" 1 en 2-slachtig geldt voor bloemen.":PRINT
+3510 PRINT" 1 en 2-huizig geldt voor planten, maar"
+3520 PRINT" vaak hoort men bloemen zeggen als er"
+3530 PRINT" planten bedoeld zijn.":PRINT
+3540 PRINT"<<Einde voortplantingsorganen>>":PRINT:PRINT
+3550 PRINT"Wilt u verder met de bloem  (1)"
+3560 PRINT"    of terug naar het begin (2)"
+3570 MK=2:VE=21:GOSUB9510:GOSUB100:PRINT
+3580 ONKZ GOTO3600,1000
+3590 REM DE BLOEIWIJZE
+3600 PRINT"De bloei-wijze:":PRINT
+3610 PRINT"A) Enkelvoudige: als de zij-assen niet"
+3620 PRINT"                 vertakt zijn:(no.1-8):":PRINT
+3630 PRINT"-1.Tros: hoofdas lang met lange zij-as-"
+3640 PRINT"   sen op verschillende hoogte.Diverse"
+3650 PRINT"   onderscheidingen: eenzijdig(vogel-"
+3660 PRINT"   wikke),ineengedrongen(moerasrolkla-"
+3670 PRINT"   ver), of ijl(rapunzelklokje)."
+3680 PRINT"   Schermvormig als de onderse bloem-"
+3690 PRINT"   stelen langer zijn.":PRINT
+3700 PRINT"-2.Aar: hoofdas lang,geen of korte zij-"
+3710 PRINT"   assen,bloemen op verschillende hoog-"
+3720 PRINT"   te(weegbree,grassen).Bloemen ver van"
+3730 PRINT"   elkaar:ijle aar(borstelgras,freesia)"
+3740 PRINT"   Onderbroken rij bloemen: afgebroken"
+3750 PRINT"   aar(vogelnestje).":PRINT
+3760 GOSUB9010
+3770 PRINT"-3.Bloei- of bloemkolf(of kolf):"
+3780 PRINT"   Aarvormig met dikke hoofd-as, het"
+3790 PRINT"   schutblad vaak als schede gevormd."
+3800 PRINT"   (mais, aronskelk)."
+3810 PRINT"-4.Katje:hangende of zittende aarvorm,"
+3820 PRINT"   eenslachtig(els,wilg).":PRINT
+3830 PRINT"-5.Scherm:(enkelvoudig, zie ook B 3):"
+3840 PRINT"   even lange zij-assen op de top v.d."
+3850 PRINT"   hoofdas(sleutelbloem).":PRINT
+3860 PRINT"-6.Korfje: hoofdas vergroeid tot scho-"
+3870 PRINT"   telvormige algemene bloembodem met"
+3880 PRINT"   duidelijk omwindsel.Bloembodem kan"
+3890 PRINT"   vlak(zonnebloem)gewelfd(paardebloem)"
+3900 PRINT"   halfbol(echte kamille)og kegelvormig"
+3910 PRINT"   (rudbeckia) zijn."
+3920 GOSUB9010
+3930 PRINT"-7.Hoofdje: als korfje maar bloembodem"
+3940 PRINT"   klein en gewelfd, geen omwinsel."
+3950 PRINT"   (klaver).":PRINT:PRINT
+3960 PRINT"-8.Krans:3 of meer bloemen om de hoofd-"
+3970 PRINT"   as(op gelijke hoogte) zonder tussen-"
+3980 PRINT"   bladeren (salie).":PRINT
+3990 PRINT"<<zie verder>>"
+4000 GOSUB9010
+4010 PRINT"B) Samengestelde: als de zij-assen ook"
+4020 PRINT"   vertakt zijn: no.1-6 :":PRINT
+4030 PRINT"-1.Samengestelde tros of pluim:meerdere"
+4040 PRINT"   trossen op de hoofdas vormen een ke-"
+4050 PRINT"   gel- of bolvormige bloeiwijze(marjo-"
+4060 PRINT"   lein, sering).":PRINT
+4070 PRINT"-2.Samengestelde aar of aarpluim:ineen-"
+4080 PRINT"   gedrongen aar met aartjes op korte"
+4090 PRINT"   vertakte steeltjes rond de hoofdas"
+4100 PRINT"   (vossestaart).":PRINT
+4110 PRINT"-3.Samengesteld scherm: zij-aasen ver-"
+4120 PRINT"   takt tot schermpjes vaak met omwind-"
+4130 PRINT"   seltjes(en omwindsels onder de zij-"
+4140 PRINT"   assen) o.a. engelwortel.":PRINT
+4150 PRINT"-4.Schicht: eentakkig bijscherm,vertak-"
+4160 PRINT"   king afwisselend links en rechts,"
+4170 PRINT"   vaak spiraalvormig(smeerwortel)."
+4180 GOSUB9010
+4190 PRINT"-5.Schijnschermen: gevorkt schijnscherm"
+4200 PRINT"   (kroontjeskruid)."
+4210 PRINT"   Schermvormige tros(gewone vogelmelk)"
+4220 PRINT"   Tuil: korte en lange bloemsteeltjes"
+4230 PRINT"   (moerasspirea).":PRINT
+4240 PRINT"-6.Kluwen: als 3 maar kortgesteeld"
+4250 PRINT"   (engels gras).":PRINT:PRINT
+4260 PRINT"<<Einde van de bloem>>":PRINT
+4270 PRINT"Wilt u terug naar het begin(1)"
+4280 PRINT"    of wilt u stoppen      (2)"
+4290 MK=2:GOSUB9510
+4300 ONKZ GOTO1000,4310
+4310 HO=10:VE=10:GOSUB110
+4320 PRINT">>> Einde deel 4 <<<"
+4330 GOSUB9010:GOTO950
+9000 REM SPATIEBALK
+9010 GOSUB120:VE=23:HO=0:GOSUB110
+9020 PRINT"****> Druk op spatiebalk <****";
+9030 GOSUB9090:IFIN<>32 THEN9030
+9040 VE=23:HO=0:GOSUB110
+9050 PRINT"                                     ";
+9060 GOSUB100
+9070 RETURN
+9080 REM INPUT MET LEGE BUFFER
+9090 GOSUB200:IFIN$<>"" THEN9090
+9100 GOSUB210
+9110 RETURN
+9500 REM KEUZE-OPVRAGEN
+9510 HO=0:VE=VE+1:GOSUB110
+9520 PRINT"Wat is uw keuze   ";
+9530 HO=17:VE=VE:GOSUB110
+9540 INPUTKZ$:KZ=VAL(KZ$)
+9550 IF(KZ<1)OR(KZ>MK)OR(KZ<>INT(KZ))THEN9510
+9560 GOSUB100
+9570 RETURN
+32000 REM *****  DETERMINEREN     *****
+32010 REM *****     DEEL 4        *****
+32020 REM *****                   *****
+32030 REM     *********************
+32040 REM     *                   *
+32050 REM     * JAN DE JONG       *
+32060 REM     * MR. STRIJBOSSTR 5 *
+32070 REM     * 6001 ST WEERT     *
+32080 REM     * COMMODORE-64      *
+32090 REM     *  APRIL 1990       *
+32100 REM     *                   *
+32110 REM     *********************
+32120 REM
+32130 REM TROS-RADIO dd 900919
