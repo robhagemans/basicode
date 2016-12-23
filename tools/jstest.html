@@ -74,8 +74,7 @@
         }
 
         //////////////////////////////////////////////////////////////////////
-        // expression parser
-
+        // tokens
 
         function tokenBracket(bracket_char)
         {
@@ -89,7 +88,7 @@
             this.payload = op_char;
             switch (op_char) {
                 case '^':
-                    this.operation = function opPower(x, y) { return pow(x, y); };
+                    this.operation = function opPower(x, y) { return Math.pow(x, y); };
                     this.precedence = 12;
                     this.narity = 2;
                     break;
@@ -113,7 +112,8 @@
                 case '-':
                     // - can be unary negation or binary subtraction
                     this.operation = function opSubtractOrNegate(x, y) {
-                        if (y === null) return -x;
+                        console.log('minus ' + x + ' ' + y);
+                        if (y === undefined) return -x;
                         else return x - y;
                     };
                     this.precedence = 8;
@@ -197,6 +197,92 @@
             this.payload = value;
         }
 
+        const OPERATOR_SYMBOLS = {
+            '^': true,
+            '*': true,
+            '/': true,
+            '+': true,
+            '-': true,
+            '>': true,
+            '<': true,
+            '=': true,
+        }
+
+        //////////////////////////////////////////////////////////////////////
+        // lexer
+
+
+        function tokenise(expr_string)
+        // convert expression string to list of tokens
+        {
+            var pos = 0;
+
+            function readString() {
+                var start_pos = pos;
+                // skip start and closing quotes
+                for (++pos; (pos < expr_string.length && expr_string[pos] !== '"'); ++pos);
+                if (pos === expr_string.length) {
+                    throw 'Syntax error: no closing `"`';
+                }
+                return expr_string.slice(start_pos+1, pos);
+            }
+
+            function readNumber(dot) {
+                var start_pos = pos;
+                for (; pos < expr_string.length-1; ++pos){
+                    var char2 = expr_string[pos+1];
+                    if ((char2 < '0' || char2 > '9') && char2 !== dot) {
+                        break;
+                    }
+                }
+                return expr_string.slice(start_pos, pos+1);
+            }
+
+            var expr_list = [];
+            for (pos=0; pos < expr_string.length; ++pos) {
+                var char = expr_string[pos];
+                // double quotes, starts a string
+                if (char === '"') {
+                    expr_list.push(new tokenLiteral(readString()));
+                }
+                // numeric character, starts a number literal
+                else if (char >= '0' && char <= '9') {
+                    var mantissa = readNumber('.');
+                    var exponent = 0;
+                    char = expr_string[pos];
+                    if (char === 'E' || char === 'e') {
+                        ++pos;
+                        exponent = readNumber();
+                    }
+                    expr_list.push(new tokenLiteral(parseFloat(mantissa+'e'+exponent)));
+                }
+                else if (char in OPERATOR_SYMBOLS) {
+                    var operator = char;
+                    if (char == '<' || char == '>') {
+                        if (pos+1 < expr_string.length) {
+                            var char2 = expr_string[pos+1];
+                            if (char2 == '<' || char2 == '>' || char2 == '=') {
+                                operator += char2;
+                                ++pos;
+                            }
+                        }
+                    }
+                    expr_list.push(new tokenOperator(operator));
+                }
+                else if (char == '(' || char == ')') {
+                    expr_list.push(new tokenBracket(char));
+                }
+                else {
+                    //TODO: names, functions, statements
+
+                }
+            }
+            return expr_list;
+        }
+
+        //////////////////////////////////////////////////////////////////////
+        // expression parser
+
         function Node(func, args)
         {
             this.func = func;
@@ -223,9 +309,9 @@
             // perhaps we could call a nextToken ''generator''
             // instead of lexing separately, then looping over a list of tokens
 
+            this.parse = function(expr_list)
             // parse expression from a list of tokens to an AST
             // variation of Dijkstra's shunting-yard algorithm, following PC-BASIC
-            this.parse = function(expr_list)
             {
                 var stack = [];
                 var units = [];
@@ -381,7 +467,18 @@
             ];
             var parser = new ExpressionParser(null);
             var ast = parser.parse(expr_list);
-            app.write('\n' + ast.evaluate().toString(10));
+            app.write('evaluate: ' + ast.evaluate() + '\n');
+
+            // lexer test
+            var expr_str = input;
+            expr_list = tokenise(expr_str);
+            var str2 = '';
+            for (var i=0; i < expr_list.length; ++i) {
+                str2 += expr_list[i].token_type +' ' + expr_list[i].payload+',';
+            }
+            ast = parser.parse(expr_list);
+            app.write('evaluate' + expr_str + '=' + ast.evaluate() + '\n');
+            console.log('done');
         };
     </script>
 </body>
