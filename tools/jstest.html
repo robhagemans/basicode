@@ -2,26 +2,43 @@
 <html>
 <head>
     <meta charset="utf-8">
+
     <style>
+        .screen-wrapper {
+            font-size: 1rem;
+            width: 79ch;
+            padding:0;
+            display:table;
+            padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+            border-radius: 0.8rem;
+            border: 1px solid lightblue;
+            text-align: center;
+            background-color: white;
+        }
         #input, #output {
+            text-align: left;
+            vertical-align: middle;
             font-family: monospace;
             font-size: 1rem;
-            padding: 0.5rem;
             outline: none;
             overflow: hidden;
+            border: 0;
+            padding: 0;
+            margin: auto;
+            transform: scaleX(2);
+            background-color: lightblue;
         }
         #input {
             width: 40ch;
             height: 2rem;
-            border: 1px solid red;
             resize: none;
         }
         #output {
             width: 40ch;
             height: 24rem;
-            border: 1px solid black;
         }
     </style>
+
     <script>
         "use strict";
 
@@ -423,9 +440,11 @@
 </head>
 
 <body>
-    <textarea id="input"></textarea>
+    <div class="screen-wrapper"><textarea id="input"></textarea></div>
     <button id="get_output">Test</button>
-    <pre id="output">Output here</pre>
+    <div class="screen-wrapper">
+        <pre id="output">Output here</pre>
+    </div>
 
     <script>
         "use strict";
