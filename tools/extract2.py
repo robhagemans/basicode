@@ -315,10 +315,24 @@ def main():
         track += 1
         try:
             with tapestream.open() as inp:
-                print 'Found file of type %s in track %d' % (inp.file_type, track)
-                ext = 'bc' if inp.file_type == 'A' else 'dat'
-                with open('%s_%02d.%s' % (trunk, track, ext), 'wb') as out:
-                    out.write(inp.read())
+                content = inp.read()
+                name = ''
+                if inp.file_type == 'A':
+                    ext = 'bc'
+                    print 'Track %02d: program' % (track,),
+                    # text after a REM in the first line should be the file name
+                    try:
+                        name = content.split('\r')[1].split('REM')[1].strip()
+                        print '[%s]' % name
+                        name = ''.join(c for c in name if c.isalnum() or c in (' ', '-', '_'))
+                        name = ''.join(('_' if c == ' ' else c) for c in name.strip())
+                    except IndexError:
+                        print '(no name)'
+                else:
+                    ext = 'dat'
+                    print 'Track %02d: data' % (track,),
+                with open('%s_%02d_%s.%s' % (trunk, track, name, ext), 'wb') as out:
+                    out.write(content)
         except IOError:
             break
 
