@@ -231,9 +231,10 @@
                 var units = [];
                 var token = null;
                 var exit_loop = false;
-                for (var pos = 0; pos < expr_list.length; ++pos) {
+                //for (var pos = 0; pos < expr_list.length; ++pos) {
+                while (expr_list.length > 0) {
                     var last = token;
-                    token = expr_list[pos];
+                    token = expr_list.shift();
                     if (token.token_type === 'operator') {
                         // only a unary operator after another operator or at the start
                         var narity = 2;
@@ -260,10 +261,11 @@
                                 break;
                             case '(':
                                 // recursive call, gets a Node object containing AST
-
-                                // will `this` be defined correctly??
-                                // correct slice syntax for expr_list[pos:] ??
-                                units.push(this.parse(expr_list.slice(pos+1)));
+                                units.push(this.parse(expr_list));
+                                var bracket = expr_list.shift(token);
+                                if (bracket.token_type !== ')') {
+                                    throw 'Syntax error: expected `)`, got `' + bracket.payload + '`';
+                                }
                                 break;
                             case 'literal':
                                 units.push(new Node(token.operation, [token.payload]));
@@ -277,11 +279,13 @@
                                 units.push(new Node(opRetrieve, [token.payload], indices));
                                 break;
                             default:
+                                expr_list.unshift(token);
                                 exit_loop = true;
                                 break;
                         }
                     }
                     else {
+                        expr_list.unshift(token);
                         break;
                         //throw 'Syntax error: unexpected unit ' + token.payload;
                     }
@@ -373,7 +377,7 @@
                 new tokenLiteral(3), new tokenOperator('+'),
                 new tokenLiteral(4), new tokenOperator('*'), new tokenLiteral(2),
                 new tokenBracket(')'),
-                new tokenOperator('/'), new tokenLiteral(3),
+                new tokenOperator('/'), new tokenLiteral(5),
             ];
             var parser = new ExpressionParser(null);
             var ast = parser.parse(expr_list);
