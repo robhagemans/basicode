@@ -244,36 +244,21 @@
                 return expr_string.slice(start_pos+1, pos);
             }
 
-            function readNumber(dot) {
+            function isNumberChar(char) { return (char >= '0' && char <= '9'); };
+
+            function readInteger() {
                 var start_pos = pos;
                 for (; pos < expr_string.length-1; ++pos){
-                    var char2 = expr_string[pos+1];
-                    if ((char2 < '0' || char2 > '9') && char2 !== dot) {
-                        break;
-                    }
+                    if (!isNumberChar(expr_string[pos+1])) break;
                 }
                 return expr_string.slice(start_pos, pos+1);
             }
 
+
             var expr_list = [];
             for (pos=0; pos < expr_string.length; ++pos) {
                 var char = expr_string[pos];
-                // double quotes, starts a string
-                if (char === '"') {
-                    expr_list.push(new tokenLiteral(readString()));
-                }
-                // numeric character, starts a number literal
-                else if (char >= '0' && char <= '9') {
-                    var mantissa = readNumber('.');
-                    var exponent = 0;
-                    char = expr_string[pos];
-                    if (char === 'E' || char === 'e') {
-                        ++pos;
-                        exponent = readNumber();
-                    }
-                    expr_list.push(new tokenLiteral(parseFloat(mantissa+'e'+exponent)));
-                }
-                else if (char in OPERATOR_SYMBOLS) {
+                if (char in OPERATOR_SYMBOLS) {
                     var operator = char;
                     if (char == '<' || char == '>') {
                         if (pos+1 < expr_string.length) {
@@ -288,6 +273,42 @@
                 }
                 else if (char == '(' || char == ')') {
                     expr_list.push(new tokenBracket(char));
+                }
+                // double quotes, starts a string
+                else if (char === '"') {
+                    expr_list.push(new tokenLiteral(readString()));
+                }
+                // numeric character, starts a number literal
+                // for VAL(), we should also accept a - here later
+                else if (isNumberChar(char) || char === '.') {
+                    var mantissa = 0;
+                    var decimal = 0;
+                    var exponent = 0;
+                    if (isNumberChar(char)) {
+                        mantissa = readInteger();
+                    }
+                    if (pos+1 < expr_string.length && expr_string[pos+1] === '.') {
+                        ++pos;
+                        if (pos+1 < expr_string.length && isNumberChar(expr_string[pos+1])) {
+                            ++pos;
+                            decimal = readInteger();
+                        }
+                    }
+                    if (pos+1 < expr_string.length && (expr_string[pos+1] === 'E' || expr_string[pos+1] === 'e')) {
+                        ++pos;
+                        if (pos+1 < expr_string.length && (isNumberChar(expr_string[pos+1]) || expr_string[pos+1] === '-')) {
+                            ++pos;
+                            if (expr_string[pos+1] === '-') {
+                                ++pos;
+                                exponent = '-' + readInteger();
+                            }
+                            else {
+                                exponent = readInteger();
+                            }
+                        }
+                    }
+                    expr_list.push(new tokenLiteral(
+                        parseFloat(mantissa + '.' + decimal + 'e' + exponent)));
                 }
                 else {
                     //TODO: names, functions, statements
