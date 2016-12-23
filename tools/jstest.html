@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        #input, #output {
+            font-family: monospace;
+            font-size: 1rem;
+            padding: 0.5rem;
+            outline: none;
+            overflow: hidden;
+        }
+        #input {
+            width: 40ch;
+            height: 2rem;
+            border: 1px solid red;
+            resize: none;
+        }
+        #output {
+            width: 40ch;
+            height: 24rem;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        "use strict";
+
+        ///////////////////////////////////////////////////////////////////////
+        // interpreter state objects
+
+        function Data()
+        {
+            this.store = [];
+            this.pointer = 0;
+
+            this.read = function()
+            {
+                if (this.pointer < this.store.length) {
+                    this.pointer += 1;
+                    return this.store[this.pointer-1];
+                }
+                else {
+                    throw 'Out of Data';
+                }
+            };
+
+            this.restore = function()
+            {
+                this.pointer = 0;
+            };
+
+            this.data = function(new_data)
+            {
+                this.store = this.store.concat(new_data);
+            }
+
+        }
+
+        function Variables()
+        {
+            this.scalars = {};
+
+            // set a variable
+            this.assign = function(name, value)
+            {
+                this.scalars[name] = value;
+            };
+
+            // retrieve a variable
+            this.retrieve = function(name)
+            {
+                return this.scalars[name];
+            };
+        }
+
+        //////////////////////////////////////////////////////////////////////
+        // expression parser
+
+
+        function tokenBracket(bracket_char)
+        {
+            this.token_type = bracket_char;
+            this.payload = bracket_char;
+        }
+
+        function tokenOperator(op_char)
+        {
+            this.token_type = 'operator';
+            this.payload = op_char;
+            switch (op_char) {
+                case '^':
+                    this.operation = function opPower(x, y) { return pow(x, y); };
+                    this.precedence = 12;
+                    this.narity = 2;
+                    break;
+                case '*':
+                    this.operation = function opMultiply(x, y) { return x * y; };
+                    this.precedence = 11;
+                    this.narity = 2;
+                    break;
+                case '/':
+                    this.operation = function opDivide(x, y) { return x / y; };
+                    this.precedence = 11;
+                    this.narity = 2;
+                    break;
+                case '+':
+                    // + adds numbers or concatenates strings
+                    // does BASICODE accept unary + ?
+                    this.operation = function opAddOrConcatenate(x, y) { return x + y; };
+                    this.precedence = 8;
+                    this.narity = 2;
+                    break;
+                case '-':
+                    // - can be unary negation or binary subtraction
+                    this.operation = function opSubtractOrNegate(x, y) {
+                        if (y === null) return -x;
+                        else return x - y;
+                    };
+                    this.precedence = 8;
+                    this.narity = null;
+                    break;
+                case '>':
+                    this.operation = function opGreaterThan(x, y) {
+                        return (x > y);
+                    };
+                    this.precedence = 7;
+                    this.narity = 2;
+                    break;
+                case '>=':
+                    this.operation = function opGreaterThanOrEqual(x, y) {
+                        return (x >= y);
+                    };
+                    this.precedence = 7;
+                    this.narity = 2;
+                    break;
+                case '<':
+                    this.operation = function opLessThan(x, y) {
+                        return (x > y);
+                    };
+                    this.precedence = 7;
+                    this.narity = 2;
+                    break;
+                case '<=':
+                    this.operation = function opLessThanOrEqual(x, y) {
+                        return (x <= y);
+                    };
+                    this.precedence = 7;
+                    this.narity = 2;
+                    break;
+                case '=':
+                    this.operation = function opEqual(x, y) {
+                        return (x === y);
+                    };
+                    this.precedence = 7;
+                    this.narity = 2;
+                    break;
+                case '<>':
+                    this.operation = function opNotEqual(x, y) {
+                        return (x !== y);
+                    };
+                    this.precedence = 7;
+                    this.narity = 2;
+                    break;
+                case 'NOT':
+                    // logical (not bitwise) NOT
+                    this.operation = function opNot(x) {
+                        return (!x);
+                    };
+                    this.precedence = 6;
+                    this.narity = 1;
+                    break;
+                case 'AND':
+                    // logical (not bitwise) AND
+                    this.operation = function opAnd(x, y) {
+                        return (x && y);
+                    };
+                    this.precedence = 5;
+                    this.narity = 2;
+                    break;
+                case 'OR':
+                    // logical (not bitwise) OR
+                    this.operation = function opOr(x, y) {
+                        return (x || y);
+                    };
+                    this.precedence = 4;
+                    this.narity = 2;
+                    break;
+                default:
+                    throw 'Syntax error: expected an operator, got ' + op_char;
+            }
+        }
+
+        function tokenLiteral(value)
+        {
+            this.token_type = 'literal';
+            this.operation = function opLiteral(x) { return x; };
+            this.payload = value;
+        }
+
+        function Node(func, args)
+        {
+            this.func = func;
+            this.args = args;
+
+            // traverse AST to evaluate this node and all its subnodes
+            this.evaluate = function()
+            {
+                var args = this.args.slice()
+                for (var i = 0; i < args.length; ++i) {
+                    if (typeof args[i] !== 'number') {
+                        args[i] = args[i].evaluate();
+                    }
+                }
+                // call the function with the array supplied as arguments
+                return this.func.apply(this, args);
+            };
+        }
+
+        function ExpressionParser(state)
+        {
+            this.state = state;
+
+            // perhaps we could call a nextToken ''generator''
+            // instead of lexing separately, then looping over a list of tokens
+
+            // parse expression from a list of tokens to an AST
+            // variation of Dijkstra's shunting-yard algorithm, following PC-BASIC
+            this.parse = function(expr_list)
+            {
+                var stack = [];
+                var units = [];
+                var token = null;
+                var exit_loop = false;
+                for (var pos = 0; pos < expr_list.length; ++pos) {
+                    var last = token;
+                    token = expr_list[pos];
+                    if (token.token_type === 'operator') {
+                        // only a unary operator after another operator or at the start
+                        var narity = 2;
+                        if (last === null || last.token_type === 'operator') {
+                            // narity 1: prefix, 2: binary infix
+                            // narity null is for - which can be prefix or infix
+                            narity = 1;
+                        }
+                        if (token.narity !== null && token.narity !== narity) {
+                            throw 'Syntax error: unexpected operator type';
+                        }
+                        if (narity === 2) {
+                            // drain stack until precedence is matched
+                            this.drain(token.precedence, stack, units);
+                        }
+                        // (copy and?) override the narity of - before pushing
+                        token.narity = narity;
+                        stack.push(token)
+                    }
+                    else if (last === null || last.token_type === 'operator') {
+                        switch (token.token_type) {
+                            case 'function':
+                                // TODO
+                                break;
+                            case '(':
+                                // recursive call, gets a Node object containing AST
+
+                                // will `this` be defined correctly??
+                                // correct slice syntax for expr_list[pos:] ??
+                                units.push(this.parse(expr_list.slice(pos+1)));
+                                break;
+                            case 'literal':
+                                units.push(new Node(token.operation, [token.payload]));
+                                break;
+                            case 'name':
+                                // TODO: could be an array element...
+
+                                indices = null;
+                                // we should get the state into opRetrieve somehow
+                                // use some kind of closure?
+                                units.push(new Node(opRetrieve, [token.payload], indices));
+                                break;
+                            default:
+                                exit_loop = true;
+                                break;
+                        }
+                    }
+                    else {
+                        break;
+                        //throw 'Syntax error: unexpected unit ' + token.payload;
+                    }
+                    if (exit_loop) {
+                        break;
+                    }
+                }
+                this.drain(0, stack, units);
+                return units[0];
+            };
+
+            this.drain = function(precedence, stack, units)
+            {
+                while ((stack.length > 0)) {
+
+                    if (precedence > stack[stack.length-1].precedence) {
+                        break;
+                    }
+                    var token = stack.pop();
+                    var args = units.slice(units.length - token.narity);
+                    // we need to pop without slicing the units
+                    // to affect the mutable argument
+                    for (var i=0; i < args.length; ++i) {
+                        units.pop();
+                    }
+                    units.push(new Node(token.operation, args));
+                }
+                return units;
+            };
+        };
+
+        function App(output_element, input_element)
+        {
+            this.clear = function() {
+                output_element.innerHTML = '';
+            };
+
+            this.write = function(output) {
+                output_element.innerHTML += output.replace('<', '&lt;').replace('>', '&gt;');
+            };
+
+            this.read = function() {
+                return input_element.value;
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <textarea id="input"></textarea>
+    <button id="get_output">Test</button>
+    <pre id="output">Output here</pre>
+
+    <script>
+        "use strict";
+
+        var app = new App(
+            document.getElementById("output"),
+            document.getElementById("input"));
+
+        document.getElementById("get_output").onclick = function () {
+            // screen + input test
+            var input = app.read();
+            app.clear();
+            app.write('you typed: ' + input + '\n');
+            app.write('We can write <br>\n');
+            app.write('We can write \\\n');
+
+            // variable test
+            var vars = new Variables();
+            vars.assign('A$', 10);
+            app.write('A$ = ' + vars.retrieve('A$') + '\n');
+
+            // data reader test
+            var data = new Data();
+            data.data([1,2,3,4,5]);
+            app.write(data.read().toString(10) + data.read().toString(10)+ '\n');
+
+            // evaluate test
+            var node = new Node(function(a, b) { return a+b; }, [1, 5]);
+            var node2 = new Node(function(a, b) { return a*b; }, [node, 5]);
+            app.write(node2.evaluate().toString(10) + '\n');
+
+            // expression parser test
+            var expr_list = [
+                new tokenBracket('('),
+                new tokenLiteral(3), new tokenOperator('+'),
+                new tokenLiteral(4), new tokenOperator('*'), new tokenLiteral(2),
+                new tokenBracket(')'),
+                new tokenOperator('/'), new tokenLiteral(3),
+            ];
+            var parser = new ExpressionParser(null);
+            var ast = parser.parse(expr_list);
+            app.write('\n' + ast.evaluate().toString(10));
+        };
+    </script>
+</body>
+</html>
