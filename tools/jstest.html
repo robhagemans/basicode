@@ -102,7 +102,7 @@
         //////////////////////////////////////////////////////////////////////
         // tokens
 
-        function tokenBracket(bracket_char)
+        function tokenSeparator(bracket_char)
         {
             this.token_type = bracket_char;
             this.payload = bracket_char;
@@ -282,8 +282,8 @@
                     }
                     expr_list.push(SYMBOLS[operator]());
                 }
-                else if (char == '(' || char == ')') {
-                    expr_list.push(new tokenBracket(char));
+                else if (char == '(' || char == ')' || char == ',' || char == ';' || char == ':') {
+                    expr_list.push(new tokenSeparator(char));
                 }
                 // double quotes, starts a string
                 else if (char === '"') {
@@ -354,7 +354,7 @@
             {
                 var args = this.args.slice()
                 for (var i = 0; i < args.length; ++i) {
-                    if (typeof args[i] !== 'number') {
+                    if (args[i] instanceof Node) {
                         args[i] = args[i].evaluate();
                     }
                 }
@@ -374,6 +374,11 @@
             // parse expression from a list of tokens to an AST
             // variation of Dijkstra's shunting-yard algorithm, following PC-BASIC
             {
+                function opRetrieve(name) {
+                    console.log('retrieving ' + name + '(' + arguments[1] +','+ arguments[2] +')');
+                    return state.retrieve(name);
+                }
+
                 var stack = [];
                 var units = [];
                 var token = null;
@@ -420,10 +425,11 @@
                             case 'name':
                                 // TODO: could be an array element...
 
-                                indices = null;
+                                var indices = this.parseArguments(expr_list);
                                 // we should get the state into opRetrieve somehow
                                 // use some kind of closure?
-                                units.push(new Node(opRetrieve, [token.payload], indices));
+                                console.log('indices: ' + indices);
+                                units.push(new Node(opRetrieve, [token.payload].concat(indices)));
                                 break;
                             default:
                                 expr_list.unshift(token);
@@ -443,6 +449,27 @@
                 this.drain(0, stack, units);
                 return units[0];
             };
+
+            this.parseArguments = function(expr_list)
+            {
+                var args = [];
+                if (expr_list.length > 0 && expr_list[0].token_type === '(') {
+                    expr_list.shift();
+                    while (expr_list.length > 0) {
+                        console.log('argument: ' + expr_list);
+                        args.push(this.parse(expr_list));
+                        var token = expr_list.shift();
+                        if (token.token_type === ')') break;
+                        if (token.token_type !== ',') {
+                            throw 'Syntax error: expected `,`, got `'+token.payload+'`';
+                        }
+                    }
+                    if (token.token_type !== ')') {
+                        throw 'Syntax error: missing `)`';
+                    }
+                }
+                return args;
+            }
 
             this.drain = function(precedence, stack, units)
             {
@@ -522,13 +549,13 @@
 
             // expression parser test
             var expr_list = [
-                new tokenBracket('('),
+                new tokenSeparator('('),
                 new tokenLiteral(3), SYMBOLS['+'](),
                 new tokenLiteral(4), SYMBOLS['*'](), new tokenLiteral(2),
-                new tokenBracket(')'),
+                new tokenSeparator(')'),
                 SYMBOLS['/'](), new tokenLiteral(5),
             ];
-            var parser = new ExpressionParser(null);
+            var parser = new ExpressionParser(vars);
             var ast = parser.parse(expr_list);
             app.write('evaluate: ' + ast.evaluate() + '\n');
 
