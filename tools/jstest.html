@@ -186,30 +186,6 @@
                     this.precedence = 7;
                     this.narity = 2;
                     break;
-                case 'NOT':
-                    // logical (not bitwise) NOT
-                    this.operation = function opNot(x) {
-                        return (!x);
-                    };
-                    this.precedence = 6;
-                    this.narity = 1;
-                    break;
-                case 'AND':
-                    // logical (not bitwise) AND
-                    this.operation = function opAnd(x, y) {
-                        return (x && y);
-                    };
-                    this.precedence = 5;
-                    this.narity = 2;
-                    break;
-                case 'OR':
-                    // logical (not bitwise) OR
-                    this.operation = function opOr(x, y) {
-                        return (x || y);
-                    };
-                    this.precedence = 4;
-                    this.narity = 2;
-                    break;
                 default:
                     throw 'Syntax error: expected an operator, got ' + op_char;
             }
@@ -220,6 +196,40 @@
             this.token_type = 'literal';
             this.operation = function opLiteral(x) { return x; };
             this.payload = value;
+        }
+
+        function tokenName(value)
+        {
+            this.token_type = 'name';
+            this.payload = value;
+        }
+
+        function newFunctionToken(keyword) {
+            return (function() {
+                return (new function tokenFunction() {
+                    this.token_type = 'function';
+                    this.payload = keyword;
+                }() );
+            } );
+        }
+        function newStatementToken(keyword) {
+            return (function() {
+                return (new function tokenStatement() {
+                    this.token_type = 'statement';
+                    this.payload = keyword;
+                }() );
+            } );
+        }
+        function newOperatorToken(keyword, narity, precedence, operation) {
+            return (function() {
+                return (new function tokenOperator() {
+                    this.token_type = 'operator';
+                    this.payload = keyword;
+                    this.narity = narity;
+                    this.precedence = precedence;
+                    this.operation = operation;
+                }() );
+            } );
         }
 
         const OPERATOR_SYMBOLS = {
@@ -233,6 +243,51 @@
             '=': true,
         }
 
+        const KEYWORDS = {
+            'ABS': newFunctionToken('ABS'),
+            'AND': newOperatorToken('AND', 2, 5, function opAnd(x, y) { return (x && y); }),
+            'ASC': newFunctionToken('ASC'),
+            'ATN': newFunctionToken('ATN'),
+            'CHR$': newFunctionToken('CHR$'),
+            'COS': newFunctionToken('COS'),
+            'DATA': newStatementToken('DATA'),
+            'DIM': newStatementToken('DIM'),
+            'EXP': newFunctionToken('EXP'),
+            'FOR': newStatementToken('FOR'),
+            'GOSUB': newStatementToken('GOSUB'),
+            'GOTO': newStatementToken('GOTO'),
+            'IF': newStatementToken('IF'),
+            'INPUT': newStatementToken('INPUT'),
+            'INT': newFunctionToken('INT'),
+            'LEFT$': newFunctionToken('LEFT$'),
+            'LEN': newFunctionToken('LEN'),
+            'LET': newStatementToken('LET'),
+            'LOG': newFunctionToken('LOG'),
+            'MID$': newFunctionToken('MID$'),
+            'NEXT': newStatementToken('NEXT'),
+            'NOT': newOperatorToken('NOT', 1, 6, function opNot(x) { return (!x); }),
+            'ON': newStatementToken('ON'),
+            'OR': newOperatorToken('OR', 2, 4, function opOr(x, y) { return (x || y); }),
+            'PRINT': newStatementToken('PRINT'),
+            'READ': newStatementToken('READ'),
+            'REM': newStatementToken('REM'),
+            'RESTORE': newStatementToken('RESTORE'),
+            'RETURN': newStatementToken('RETURN'),
+            'RIGHT$': newFunctionToken('RIGHT$'),
+            'SGN': newFunctionToken('SGN'),
+            'SIN': newFunctionToken('SIN'),
+            'SQR': newFunctionToken('SQR'),
+            'STEP': newStatementToken('STEP'),
+            'TAB': newFunctionToken('TAB'),
+            'TAN': newFunctionToken('TAN'),
+            'THEN': newStatementToken('THEN'),
+            'TO': newStatementToken('TO'),
+            'VAL': newFunctionToken('VAL'),
+        }
+
+        // additional reserved words: AS, AT, FN, GR, IF, LN, PI, ST, TI, TI$
+
+
         //////////////////////////////////////////////////////////////////////
         // lexer
 
@@ -242,7 +297,19 @@
         {
             var pos = 0;
 
+
+            function isNumberChar(char)
+            {
+                return (char >= '0' && char <= '9');
+            }
+
+            function isAlphaChar(char)
+            {
+                return (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z');
+            }
+
             function readString() {
+                // read a double-quoted string literal
                 var start_pos = pos;
                 // skip start and closing quotes
                 for (++pos; (pos < expr_string.length && expr_string[pos] !== '"'); ++pos);
@@ -252,12 +319,25 @@
                 return expr_string.slice(start_pos+1, pos);
             }
 
-            function isNumberChar(char) { return (char >= '0' && char <= '9'); };
-
             function readInteger() {
+                // read an unsigned integer literal (i.e. a string of numbers)
                 var start_pos = pos;
                 for (; pos < expr_string.length-1; ++pos){
                     if (!isNumberChar(expr_string[pos+1])) break;
+                }
+                return expr_string.slice(start_pos, pos+1);
+            }
+
+            function readName() {
+                // read a name (variable or keyword)
+                var start_pos = pos;
+                for (; pos < expr_string.length-1; ++pos){
+                    // the name can end in at most one number character
+                    if (isNumberChar(expr_string[pos+1])) {
+                        ++pos;
+                        break;
+                    }
+                    if (!isAlphaChar(expr_string[pos+1])) break;
                 }
                 return expr_string.slice(start_pos, pos+1);
             }
@@ -319,6 +399,16 @@
                     }
                     expr_list.push(new tokenLiteral(
                         parseFloat(mantissa + '.' + decimal + 'e' + exponent)));
+                }
+                else if (isAlphaChar(char)) {
+                    var name = readName();
+                    if (name in KEYWORDS) {
+                        // call function that calls new on a constructor
+                        expr_list.push(KEYWORDS[name]());
+                    }
+                    else {
+                        expr_list.push(new tokenName(name));
+                    }
                 }
                 else if (char !== ' ') {
                     //TODO: names, functions, statements
@@ -526,6 +616,9 @@
             app.write((parser.parse(tokenise('-.5')).evaluate() == -0.5) + '\n');
             app.write((parser.parse(tokenise('1.2e2')).evaluate() == 120) + '\n');
             app.write((parser.parse(tokenise('1.2e-2')).evaluate() == 0.012) + '\n');
+            app.write((parser.parse(tokenise('((1=1)) OR (1=0)')).evaluate() == true) + '\n');
+            app.write((parser.parse(tokenise('((1=1)) AND (1=0)')).evaluate() == false) + '\n');
+            app.write((parser.parse(tokenise('NOT 0')).evaluate() == true) + '\n');
 
             var expr_str = input;
             expr_list = tokenise(expr_str);
