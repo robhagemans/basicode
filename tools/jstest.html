@@ -255,12 +255,12 @@
                 // read a name (variable or keyword)
                 var start_pos = pos;
                 for (; pos < expr_string.length-1; ++pos){
-                    // the name can end in at most one number character
-                    if (isNumberChar(expr_string[pos+1])) {
+                    // the name can end in at most one $
+                    if (expr_string[pos+1] === '$') {
                         ++pos;
                         break;
                     }
-                    if (!isAlphaChar(expr_string[pos+1])) break;
+                    if (!isAlphaChar(expr_string[pos+1]) && !isNumberChar(expr_string[pos+1])) break;
                 }
                 return expr_string.slice(start_pos, pos+1);
             }
@@ -335,7 +335,6 @@
                     }
                 }
                 else if (char !== ' ') {
-                    //TODO: names, functions, statements
                     throw 'Syntax error: unexpected symbol `'+ char + '`';
                 }
             }
