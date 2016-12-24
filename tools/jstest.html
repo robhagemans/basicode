@@ -129,7 +129,6 @@
                 case '-':
                     // - can be unary negation or binary subtraction
                     this.operation = function opSubtractOrNegate(x, y) {
-                        console.log('minus ' + x + ' ' + y);
                         if (y === undefined) return -x;
                         else return x - y;
                     };
@@ -254,7 +253,6 @@
                 return expr_string.slice(start_pos, pos+1);
             }
 
-
             var expr_list = [];
             for (pos=0; pos < expr_string.length; ++pos) {
                 var char = expr_string[pos];
@@ -287,6 +285,9 @@
                     if (isNumberChar(char)) {
                         mantissa = readInteger();
                     }
+                    else {
+                        --pos;
+                    }
                     if (pos+1 < expr_string.length && expr_string[pos+1] === '.') {
                         ++pos;
                         if (pos+1 < expr_string.length && isNumberChar(expr_string[pos+1])) {
@@ -310,9 +311,9 @@
                     expr_list.push(new tokenLiteral(
                         parseFloat(mantissa + '.' + decimal + 'e' + exponent)));
                 }
-                else {
+                else if (char !== ' ') {
                     //TODO: names, functions, statements
-
+                    throw 'Syntax error: unexpected symbol `'+ char + '`';
                 }
             }
             return expr_list;
