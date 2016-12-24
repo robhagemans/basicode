@@ -511,6 +511,13 @@
             app.write('evaluate: ' + ast.evaluate() + '\n');
 
             // lexer test
+            app.write((parser.parse(tokenise('1-2')).evaluate() == -1) + '\n');
+            app.write((parser.parse(tokenise('-1')).evaluate() == -1) + '\n');
+            app.write((parser.parse(tokenise('.5')).evaluate() == 0.5) + '\n');
+            app.write((parser.parse(tokenise('-.5')).evaluate() == -0.5) + '\n');
+            app.write((parser.parse(tokenise('1.2e2')).evaluate() == 120) + '\n');
+            app.write((parser.parse(tokenise('1.2e-2')).evaluate() == 0.012) + '\n');
+
             var expr_str = input;
             expr_list = tokenise(expr_str);
             var str2 = '';
@@ -518,7 +525,13 @@
                 str2 += expr_list[i].token_type +' ' + expr_list[i].payload+',';
             }
             ast = parser.parse(expr_list);
-            app.write('evaluate' + expr_str + '=' + ast.evaluate() + '\n');
+
+            var rem = 'remainder of expr: ';
+            for (var i=0; i < expr_list.length; ++i)
+                rem += expr_list[i].payload;
+            console.log(rem);
+
+            app.write('evaluate ' + expr_str + ' = ' + ast.evaluate() + '\n');
             console.log('done');
         };
     </script>
