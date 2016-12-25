@@ -220,11 +220,12 @@
             this.payload = value;
         }
 
-        function newFunctionToken(keyword) {
+        function newFunctionToken(keyword, operation) {
             return (function() {
                 return (new function tokenFunction() {
                     this.token_type = 'function';
                     this.payload = keyword;
+                    this.operation = operation;
                 }() );
             } );
         }
@@ -249,7 +250,7 @@
         }
 
         const SYMBOLS = {
-            '^': newOperatorToken('^', 2, 12, function opPower(x, y) { return Math.pow(x, y); }),
+            '^': newOperatorToken('^', 2, 12, Math.pow),
             '*': newOperatorToken('*', 2, 11, function opMultiply(x, y) { return x * y; }),
             '/': newOperatorToken('/', 2, 11, function opDivide(x, y) { return x / y; }),
             // + adds numbers or concatenates strings
@@ -266,26 +267,26 @@
         }
 
         const KEYWORDS = {
-            'ABS': newFunctionToken('ABS'),
+            'ABS': newFunctionToken('ABS', Math.abs),
             'AND': newOperatorToken('AND', 2, 5, function opAnd(x, y) { return (x && y); }),
-            'ASC': newFunctionToken('ASC'),
-            'ATN': newFunctionToken('ATN'),
-            'CHR$': newFunctionToken('CHR$'),
-            'COS': newFunctionToken('COS'),
+            'ASC': newFunctionToken('ASC', function fnAsc(x) { return x.charCodeAt(0); } ),
+            'ATN': newFunctionToken('ATN', Math.atan),
+            'CHR$': newFunctionToken('CHR$', String.fromCharCode),
+            'COS': newFunctionToken('COS', Math.cos),
             'DATA': newStatementToken('DATA'),
             'DIM': newStatementToken('DIM'),
-            'EXP': newFunctionToken('EXP'),
+            'EXP': newFunctionToken('EXP', Math.exp),
             'FOR': newStatementToken('FOR'),
             'GOSUB': newStatementToken('GOSUB'),
             'GOTO': newStatementToken('GOTO'),
             'IF': newStatementToken('IF'),
             'INPUT': newStatementToken('INPUT'),
-            'INT': newFunctionToken('INT'),
-            'LEFT$': newFunctionToken('LEFT$'),
-            'LEN': newFunctionToken('LEN'),
+            'INT': newFunctionToken('INT', Math.trunc),
+            'LEFT$': newFunctionToken('LEFT$', function fnLeft(x, n) { return x.slice(0, n); }),
+            'LEN': newFunctionToken('LEN', function fnLen(x, n) { return x.length; }),
             'LET': newStatementToken('LET'),
-            'LOG': newFunctionToken('LOG'),
-            'MID$': newFunctionToken('MID$'),
+            'LOG': newFunctionToken('LOG', Math.log),
+            'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start, n); }),
             'NEXT': newStatementToken('NEXT'),
             'NOT': newOperatorToken('NOT', 1, 6, function opNot(x) { return (!x); }),
             'ON': newStatementToken('ON'),
@@ -295,16 +296,16 @@
             'REM': newStatementToken('REM'),
             'RESTORE': newStatementToken('RESTORE'),
             'RETURN': newStatementToken('RETURN'),
-            'RIGHT$': newFunctionToken('RIGHT$'),
-            'SGN': newFunctionToken('SGN'),
-            'SIN': newFunctionToken('SIN'),
-            'SQR': newFunctionToken('SQR'),
+            'RIGHT$': newFunctionToken('RIGHT$', function fnRight(x, n) { return x.slice(-n); }),
+            'SGN': newFunctionToken('SGN', Math.sign),
+            'SIN': newFunctionToken('SIN', Math.sin),
+            'SQR': newFunctionToken('SQR', Math.sqrt),
             'STEP': newStatementToken('STEP'),
-            'TAB': newFunctionToken('TAB'),
-            'TAN': newFunctionToken('TAN'),
+            'TAB': newFunctionToken('TAB'), //TODO
+            'TAN': newFunctionToken('TAN', Math.tan),
             'THEN': newStatementToken('THEN'),
             'TO': newStatementToken('TO'),
-            'VAL': newFunctionToken('VAL'),
+            'VAL': newFunctionToken('VAL'), //TODO
         }
 
         // additional reserved words: AS, AT, FN, GR, IF, LN, PI, ST, TI, TI$
@@ -502,7 +503,11 @@
                     else if (last === null || last.token_type === 'operator') {
                         switch (token.token_type) {
                             case 'function':
-                                // TODO
+                                var args = this.parseArguments(expr_list);
+                                console.log(token.payload);
+                                console.log(token.operation);
+                                console.log(args);
+                                units.push(new Node(token.operation, args));
                                 break;
                             case '(':
                                 // recursive call, gets a Node object containing AST
