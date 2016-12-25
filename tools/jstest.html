@@ -82,20 +82,119 @@
 
         }
 
+        ///////////////////////////////////////////////////////////////////////
+        // types, variables, arrays
+
+        function defaultValue(name)
+        // default value for type given by name
+        {
+            var default_value = 0;
+            if (name.slice(-1) === '$') default_value = '';
+            return default_value;
+        }
+
+        function matchType(name, value)
+        {
+            var string_name = (name.slice(-1) === '$');
+            var string_value = typeof value === 'string';
+            if (!string_value && typeof value !== 'number') {
+                throw 'Type mismatch: unknown type';
+            }
+            if (string_name !== string_value) {
+                throw 'Type mismatch';
+            }
+        }
+
         function Variables()
         {
-            this.scalars = {};
+            this.vars = {};
+            this.dims = {};
 
-            // set a variable
-            this.assign = function(name, value)
+            this.allocate = function(name, indices)
+            // allocate an array
             {
-                this.scalars[name] = value;
+                // no redefinitions allowed
+                if (name in this.dims || name in this.vars) throw 'Duplicate definition';
+                // BASICODE arrays may have at most two indices
+                if (indices.length > 2) throw 'Subscript out of range: too many array dimensions';
+
+                // set default to empty string if string name, 0 otherwise
+                var default_value = defaultValue(name);
+
+                function allocateLevel(indices) {
+                    if (indices.length === 0) return default_value;
+                    else {
+                        // allocate subarray; BASICODE arrays span 0..x inclusive
+                        var arr = new Array(indices[0]+1);
+                        // feed remaining arguments to recursive call
+                        var argarray = indices.slice(1);
+                        // allocate deeper level
+                        for (var i=0; i < arr.length; ++i) {
+                            arr[i] = allocateLevel(argarray);
+                        }
+                        return arr;
+                    }
+                };
+
+                // I'm assuming a name is *either* a scalar *or* an array
+                // this is not true in e.g. GW-BASIC, but I think it's true in BASICODE
+                this.dims[name] = indices;
+                this.vars[name] = allocateLevel(indices);
+            }
+
+            this.checkSubscript = function(name, indices)
+            {
+                if (!(name in this.dims)) {
+                    if (indices.length === 0) {
+                        this.vars[name] = defaultValue(name);
+                        this.dims[name] = [];
+                    }
+                    else {
+                        throw 'Subscript out of range: array not dimensioned';
+                    }
+                }
+                else if (indices.length !== this.dims[name].length) {
+                    throw 'Subscript out of range: incorrect number of dimensions';
+                }
+                else {
+                    for (var i=0; i < indices.length; ++i) {
+                        if (indices[i] < 0 || indices[i] > this.dims[name][i]) {
+                            throw 'Subscript out of range: index '+i+' out of bounds';
+                        }
+                    }
+                }
+            }
+
+            this.assign = function(value, name, indices)
+            // set a variable
+            {
+                this.checkSubscript(name, indices);
+
+                if (indices.length === 0) {
+                    this.vars[name] = value;
+                }
+                else if (indices.length === 1) {
+                    this.vars[name][indices[0]] = value;
+                }
+                else {
+                    this.vars[name][indices[0]][indices[1]] = value;
+                }
             };
 
+            this.retrieve = function(name, indices)
             // retrieve a variable
-            this.retrieve = function(name)
             {
-                return this.scalars[name];
+                this.checkSubscript(name, indices);
+
+                if (indices.length === 0) {
+                    return this.vars[name];
+                }
+                else if (indices.length === 1) {
+                    return this.vars[name][indices[0]];
+                }
+                else {
+                    return this.vars[name][indices[0]][indices[1]];
+                }
             };
         }
 
@@ -220,7 +319,6 @@
         {
             var pos = 0;
 
-
             function isNumberChar(char)
             {
                 return (char >= '0' && char <= '9');
@@ -344,10 +442,10 @@
         //////////////////////////////////////////////////////////////////////
         // expression parser
 
-        function Node(func, args)
+        function Node(func, node_args)
         {
             this.func = func;
-            this.args = args;
+            this.args = node_args;
 
             // traverse AST to evaluate this node and all its subnodes
             this.evaluate = function()
@@ -363,22 +461,17 @@
             };
         }
 
-        function ExpressionParser(state)
+        function ExpressionParser(vars)
         {
-            this.state = state;
-
-            // perhaps we could call a nextToken ''generator''
-            // instead of lexing separately, then looping over a list of tokens
+            function opRetrieve(name) {
+                var indices = [].slice.call(arguments, 1);
+                return vars.retrieve(name, indices);
+            }
 
             this.parse = function(expr_list)
             // parse expression from a list of tokens to an AST
             // variation of Dijkstra's shunting-yard algorithm, following PC-BASIC
             {
-                function opRetrieve(name) {
-                    console.log('retrieving ' + name + '(' + arguments[1] +','+ arguments[2] +')');
-                    return state.retrieve(name);
-                }
-
                 var stack = [];
                 var units = [];
                 var token = null;
@@ -423,12 +516,7 @@
                                 units.push(new Node(token.operation, [token.payload]));
                                 break;
                             case 'name':
-                                // TODO: could be an array element...
-
                                 var indices = this.parseArguments(expr_list);
-                                // we should get the state into opRetrieve somehow
-                                // use some kind of closure?
-                                console.log('indices: ' + indices);
                                 units.push(new Node(opRetrieve, [token.payload].concat(indices)));
                                 break;
                             default:
@@ -456,7 +544,6 @@
                 if (expr_list.length > 0 && expr_list[0].token_type === '(') {
                     expr_list.shift();
                     while (expr_list.length > 0) {
-                        console.log('argument: ' + expr_list);
                         args.push(this.parse(expr_list));
                         var token = expr_list.shift();
                         if (token.token_type === ')') break;
@@ -534,8 +621,15 @@
 
             // variable test
             var vars = new Variables();
-            vars.assign('A$', 10);
-            app.write('A$ = ' + vars.retrieve('A$') + '\n');
+            vars.assign(10, 'A$', []);
+            vars.assign(11, 'A$', []);
+            vars.allocate('B$', [10]);
+            vars.assign(12, 'B$', [1]);
+            vars.allocate('C', [100,100]);
+            vars.assign(12, 'C', [1,100]);
+            app.write('A$ = ' + vars.retrieve('A$', []) + '\n');
+            app.write('B$(1) = ' + vars.retrieve('B$', [1]) + '\n');
+            app.write('C(1,100) = ' + vars.retrieve('C', [1, 100]) + '\n');
 
             // data reader test
             var data = new Data();
@@ -571,20 +665,23 @@
             app.write((parser.parse(tokenise('NOT 0')).evaluate() == true) + '\n');
 
             var expr_str = input;
-            expr_list = tokenise(expr_str);
-            var str2 = '';
-            for (var i=0; i < expr_list.length; ++i) {
-                str2 += expr_list[i].token_type +' ' + expr_list[i].payload+',';
+            if (expr_str.length) {
+                expr_list = tokenise(expr_str);
+                var str2 = '';
+                for (var i=0; i < expr_list.length; ++i) {
+                    str2 += expr_list[i].token_type +' ' + expr_list[i].payload+',';
+                }
+                ast = parser.parse(expr_list);
+
+                var rem = 'remainder of expr: ';
+                for (var i=0; i < expr_list.length; ++i)
+                    rem += expr_list[i].payload;
+                console.log(rem);
+
+                app.write('evaluate ' + expr_str + ' = ' + ast.evaluate() + '\n');
             }
-            ast = parser.parse(expr_list);
 
-            var rem = 'remainder of expr: ';
-            for (var i=0; i < expr_list.length; ++i)
-                rem += expr_list[i].payload;
-            console.log(rem);
-
-            app.write('evaluate ' + expr_str + ' = ' + ast.evaluate() + '\n');
-            console.log('done');
+            app.write('done');
         };
     </script>
 </body>
