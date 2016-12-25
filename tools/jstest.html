@@ -462,14 +462,36 @@
             };
         }
 
-        function ExpressionParser(vars)
+        function Parser(vars)
         {
-            function opRetrieve(name) {
+            function opRetrieve(name)
+            //  retrieve a variable from the Variables object provided to Parser at initialisation
+            {
                 var indices = [].slice.call(arguments, 1);
                 return vars.retrieve(name, indices);
             }
 
-            this.parse = function(expr_list)
+            function drain(precedence, stack, units)
+            // pop operator stack until matching precedence is encountered
+            {
+                while ((stack.length > 0)) {
+
+                    if (precedence > stack[stack.length-1].precedence) {
+                        break;
+                    }
+                    var token = stack.pop();
+                    var args = units.slice(units.length - token.narity);
+                    // we need to pop without slicing the units
+                    // to affect the mutable argument
+                    for (var i=0; i < args.length; ++i) {
+                        units.pop();
+                    }
+                    units.push(new Node(token.operation, args));
+                }
+                return units;
+            };
+
+            this.parseExpression = function(expr_list)
             // parse expression from a list of tokens to an AST
             // variation of Dijkstra's shunting-yard algorithm, following PC-BASIC
             {
@@ -494,7 +516,7 @@
                         }
                         if (narity === 2) {
                             // drain stack until precedence is matched
-                            this.drain(token.precedence, stack, units);
+                            drain(token.precedence, stack, units);
                         }
                         // (copy and?) override the narity of - before pushing
                         token.narity = narity;
@@ -511,7 +533,7 @@
                                 break;
                             case '(':
                                 // recursive call, gets a Node object containing AST
-                                units.push(this.parse(expr_list));
+                                units.push(this.parseExpression(expr_list));
                                 var bracket = expr_list.shift(token);
                                 if (bracket.token_type !== ')') {
                                     throw 'Syntax error: expected `)`, got `' + bracket.payload + '`';
@@ -539,7 +561,7 @@
                         break;
                     }
                 }
-                this.drain(0, stack, units);
+                drain(0, stack, units);
                 return units[0];
             };
 
@@ -549,7 +571,7 @@
                 if (expr_list.length > 0 && expr_list[0].token_type === '(') {
                     expr_list.shift();
                     while (expr_list.length > 0) {
-                        args.push(this.parse(expr_list));
+                        args.push(this.parseExpression(expr_list));
                         var token = expr_list.shift();
                         if (token.token_type === ')') break;
                         if (token.token_type !== ',') {
@@ -563,24 +585,8 @@
                 return args;
             }
 
-            this.drain = function(precedence, stack, units)
-            {
-                while ((stack.length > 0)) {
 
-                    if (precedence > stack[stack.length-1].precedence) {
-                        break;
-                    }
-                    var token = stack.pop();
-                    var args = units.slice(units.length - token.narity);
-                    // we need to pop without slicing the units
-                    // to affect the mutable argument
-                    for (var i=0; i < args.length; ++i) {
-                        units.pop();
-                    }
-                    units.push(new Node(token.operation, args));
-                }
-                return units;
-            };
+
         };
 
         function App(output_element, input_element)
@@ -654,20 +660,20 @@
                 new tokenSeparator(')'),
                 SYMBOLS['/'](), new tokenLiteral(5),
             ];
-            var parser = new ExpressionParser(vars);
-            var ast = parser.parse(expr_list);
+            var parser = new Parser(vars);
+            var ast = parser.parseExpression(expr_list);
             app.write('evaluate: ' + ast.evaluate() + '\n');
 
             // lexer test
-            app.write((parser.parse(tokenise('1-2')).evaluate() == -1) + '\n');
-            app.write((parser.parse(tokenise('-1')).evaluate() == -1) + '\n');
-            app.write((parser.parse(tokenise('.5')).evaluate() == 0.5) + '\n');
-            app.write((parser.parse(tokenise('-.5')).evaluate() == -0.5) + '\n');
-            app.write((parser.parse(tokenise('1.2e2')).evaluate() == 120) + '\n');
-            app.write((parser.parse(tokenise('1.2e-2')).evaluate() == 0.012) + '\n');
-            app.write((parser.parse(tokenise('((1=1)) OR (1=0)')).evaluate() == true) + '\n');
-            app.write((parser.parse(tokenise('((1=1)) AND (1=0)')).evaluate() == false) + '\n');
-            app.write((parser.parse(tokenise('NOT 0')).evaluate() == true) + '\n');
+            app.write((parser.parseExpression(tokenise('1-2')).evaluate() == -1) + '\n');
+            app.write((parser.parseExpression(tokenise('-1')).evaluate() == -1) + '\n');
+            app.write((parser.parseExpression(tokenise('.5')).evaluate() == 0.5) + '\n');
+            app.write((parser.parseExpression(tokenise('-.5')).evaluate() == -0.5) + '\n');
+            app.write((parser.parseExpression(tokenise('1.2e2')).evaluate() == 120) + '\n');
+            app.write((parser.parseExpression(tokenise('1.2e-2')).evaluate() == 0.012) + '\n');
+            app.write((parser.parseExpression(tokenise('((1=1)) OR (1=0)')).evaluate() == true) + '\n');
+            app.write((parser.parseExpression(tokenise('((1=1)) AND (1=0)')).evaluate() == false) + '\n');
+            app.write((parser.parseExpression(tokenise('NOT 0')).evaluate() == true) + '\n');
 
             var expr_str = input;
             if (expr_str.length) {
@@ -676,7 +682,7 @@
                 for (var i=0; i < expr_list.length; ++i) {
                     str2 += expr_list[i].token_type +' ' + expr_list[i].payload+',';
                 }
-                ast = parser.parse(expr_list);
+                ast = parser.parseExpression(expr_list);
 
                 var rem = 'remainder of expr: ';
                 for (var i=0; i < expr_list.length; ++i)
