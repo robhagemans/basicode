@@ -16,18 +16,18 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////
-// interpreter state objects
+// data store
 
 function Data()
 {
-    this.store = [];
+    this.vault = [];
     this.pointer = 0;
 
     this.read = function()
     {
-        if (this.pointer < this.store.length) {
+        if (this.pointer < this.vault.length) {
             this.pointer += 1;
-            return this.store[this.pointer-1];
+            return this.vault[this.pointer-1];
         }
         else {
             throw 'Out of Data';
@@ -39,9 +39,15 @@ function Data()
         this.pointer = 0;
     };
 
-    this.data = function(new_data)
+    this.store = function(new_data)
     {
-        this.store = this.store.concat(new_data);
+        this.vault = this.vault.concat(new_data);
+    }
+
+    this.clear = function()
+    {
+        this.vault = [];
+        this.pointer = 0;
     }
 
 }
@@ -239,7 +245,7 @@ const KEYWORDS = {
     'ATN': newFunctionToken('ATN', Math.atan),
     'CHR$': newFunctionToken('CHR$', String.fromCharCode),
     'COS': newFunctionToken('COS', Math.cos),
-    'DATA': newStatementToken('DATA'),
+    'DATA': newStatementToken('DATA', parseData, function(){}),
     'DIM': newStatementToken('DIM'),
     'EXP': newFunctionToken('EXP', Math.exp),
     'FOR': newStatementToken('FOR'),
@@ -250,23 +256,17 @@ const KEYWORDS = {
     'INT': newFunctionToken('INT', Math.trunc),
     'LEFT$': newFunctionToken('LEFT$', function fnLeft(x, n) { return x.slice(0, n); }),
     'LEN': newFunctionToken('LEN', function fnLen(x, n) { return x.length; }),
-    'LET': newStatementToken('LET', parseLet, function stLet(state, value, name, indices) { return state.variables.assign(value, name, indices); }),
+    'LET': newStatementToken('LET', parseLet, stLet),
     'LOG': newFunctionToken('LOG', Math.log),
     'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start, n); }),
     'NEXT': newStatementToken('NEXT'),
     'NOT': newOperatorToken('NOT', 1, 6, function opNot(x) { return (!x); }),
     'ON': newStatementToken('ON'),
     'OR': newOperatorToken('OR', 2, 4, function opOr(x, y) { return (x || y); }),
-    'PRINT': newStatementToken('PRINT', parsePrint, function stPrint(state) {
-        var values = [].slice.call(arguments, 1);
-        //TODO: TAB, space before number/number tostring in general
-        for (var i=0; i<values.length; ++i) {
-            state.output.write(values[i]);
-        }
-    }),
-    'READ': newStatementToken('READ'),
+    'PRINT': newStatementToken('PRINT', parsePrint, stPrint),
+    'READ': newStatementToken('READ', parseRead, stRead),
     'REM': newStatementToken('REM'),
-    'RESTORE': newStatementToken('RESTORE'),
+    'RESTORE': newStatementToken('RESTORE', function(){ return []; }, stRestore),
     'RETURN': newStatementToken('RETURN'),
     'RIGHT$': newFunctionToken('RIGHT$', function fnRight(x, n) { return x.slice(-n); }),
     'SGN': newFunctionToken('SGN', Math.sign),
@@ -453,6 +453,9 @@ function parseLet(parser, expr_list)
 // parse LET statement
 {
     var name = expr_list.shift();
+    if (name.token_type != 'name') {
+        throw 'Syntax error: expected variable name, got `' + name.payload + '`';
+    }
     var indices = parser.parseArguments(expr_list);
     var equals = expr_list.shift().payload;
     if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
@@ -482,9 +485,52 @@ function parsePrint(parser, expr_list)
     return exprs;
 }
 
+function parseData(parser, expr_list)
+// parse DATA statement
+{
+    var values = []
+    while (expr_list.length > 0) {
+        var value = expr_list.shift();
+        // only literals allowed in DATA
+        // we're not allowing empty DATA statements or repeated commas
+        if (value === null || value.token_type != 'literal') {
+            throw 'Syntax error: expected string or number literal';
+        }
+        values.push(value.payload);
+        // parse separator (,)
+        if (!expr_list.length) break;
+        if (expr_list[0].payload !== ',') break;
+        expr_list.shift();
+    }
+    // data is stored immediately upon parsing, DATA is then a no-op statement
+    parser.data.store(values);
+    return [];
+}
+
+function parseRead(parser, expr_list)
+// parse READ statement
+{
+    var names = [];
+    while (expr_list.length > 0) {
+        var name = expr_list.shift();
+        if (name.token_type != 'name') {
+            throw 'Syntax error: expected variable name, got `' + name.payload + '`';
+        }
+        var indices = parser.parseArguments(expr_list);
+        names.push([name.payload, indices])
+        if (!expr_list.length) break;
+        if (expr_list[0].payload !== ',') break;
+        expr_list.shift();
+    }
+    return names;
+}
+
 
 function Parser(state)
 {
+    // data is stored upon parsing, not evaluation
+    this.data = state.data;
+
     function opRetrieve(name)
     //  retrieve a variable from the Variables object provided to Parser at initialisation
     {
@@ -637,6 +683,46 @@ function Parser(state)
 
 };
 
+///////////////////////////////////////////////////////////////////////////////
+// statements
+
+function stLet(state, value, name, indices)
+// LET
+{
+    return state.variables.assign(value, name, indices);
+}
+
+function stPrint(state)
+// PRINT
+{
+    var values = [].slice.call(arguments, 1);
+    //TODO: TAB, space before number/number tostring in general
+    for (var i=0; i < values.length; ++i) {
+        state.output.write(values[i]);
+    }
+}
+
+function stRestore(state)
+// RESTORE
+{
+    state.data.restore();
+}
+
+function stRead(state)
+// READ
+{
+    var vars = [].slice.call(arguments, 1);
+    for (var i=0; i < vars.length; ++i) {
+        var name = vars[i][0];
+        var indices = vars[i][1];
+        var value = state.data.read()
+        state.variables.assign(value, name, indices);
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// interface
 
 function Interface(output_element, input_element)
 {
