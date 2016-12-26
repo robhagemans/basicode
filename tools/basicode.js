@@ -273,7 +273,8 @@ const KEYWORDS = {
     'SIN': newFunctionToken('SIN', Math.sin),
     'SQR': newFunctionToken('SQR', Math.sqrt),
     'STEP': newStatementToken('STEP'),
-    'TAB': newFunctionToken('TAB'), //TODO
+    // TAB only has an effect at the top level in a PRINT statement
+    'TAB': newFunctionToken('TAB', function(x) { return { 'tab': x }; }),
     'TAN': newFunctionToken('TAN', Math.tan),
     'THEN': newStatementToken('THEN'),
     'TO': newStatementToken('TO'),
@@ -722,7 +723,11 @@ function stPrint(state)
     var values = [].slice.call(arguments, 1);
     //TODO: TAB
     for (var i=0; i < values.length; ++i) {
-        if (typeof values[i] === 'string') {
+        if (typeof values[i] === 'object') {
+            // TAB object
+            state.output.setColumn(values[i].tab);
+        }
+        else if (typeof values[i] === 'string') {
             state.output.write(values[i]);
         }
         else if (values[i] < 0) {
@@ -758,19 +763,47 @@ function stRead(state)
 
 function Interface(output_element, input_element)
 {
+    this.width = 40;
+    this.height = 24;
 
     this.clear = function() {
         output_element.innerHTML = '';
-    };
+        this.row = 0;
+        this.col = 0;
+    }
+
+    function writeRaw(output) {
+        output_element.innerHTML += output.replace('<', '&lt;').replace('>', '&gt;');
+    }
 
     this.write = function(output) {
-        output = output.toString();
-        output_element.innerHTML += output.replace('<', '&lt;').replace('>', '&gt;');
-    };
+        // TODO: handle line longer than row length
+        var lines = output.toString().replace('\r\n', '\n').replace('\r', '\n').split('\n');
+        var i=1;
+        writeRaw(lines[0]);
+        for (; i < lines.length; ++i) {
+            ++this.row;
+            this.col = 0;
+            writeRaw('\n');
+            writeRaw(lines[i]);
+        }
+        this.col = lines[i-1].length;
+    }
+
+    this.setColumn = function(col)
+    // TODO: currently this does not work if col < current column
+    {
+        if (this.col < col) {
+            writeRaw(' '.repeat(col - this.col));
+            this.col = col;
+        }
+    }
 
     this.read = function() {
         return input_element.value;
     }
+
+    this.clear();
 }
 
 
