@@ -15,6 +15,7 @@
 // However, this interpreter does not take code from his.
 
 
+
 ///////////////////////////////////////////////////////////////////////////////
 // data store
 
@@ -260,7 +261,7 @@ const KEYWORDS = {
     'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start, n); }),
     'NEXT': newStatementToken('NEXT'),
     'NOT': newOperatorToken('NOT', 1, 6, function opNot(x) { return (!x); }),
-    'ON': newStatementToken('ON'),
+    'ON': newStatementToken('ON', parseOn, stOn),
     'OR': newOperatorToken('OR', 2, 4, function opOr(x, y) { return (x || y); }),
     'PRINT': newStatementToken('PRINT', parsePrint, stPrint),
     'READ': newStatementToken('READ', parseRead, stRead),
@@ -281,6 +282,8 @@ const KEYWORDS = {
     'STEP': newStatementToken('STEP'),
     'TO': newStatementToken('TO'),
 }
+
+//TODO: INPUT, FOR..NEXT, ON
 
 // THEN, STEP, TO are reserved words but not independent statements
 // additional reserved words: AS, AT, FN, GR, IF, LN, PI, ST, TI, TI$
@@ -626,17 +629,15 @@ function parseGoto(parser, expr_list)
 // parse GOTO
 {
     var line_number = expr_list.shift();
-    if (line_number.token_type !== 'literal') {
-        throw 'Syntax error: expected literal';
-    }
-    if (typeof line_number.payload !== 'number') {
-        throw 'Syntax error: expected number';
+    if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
+        throw 'Syntax error: expected line number';
     }
     return [line_number.payload];
 }
 
 function parseIf(parser, expr_list)
 // parse IF
+// TODO: IF..THEN jump
 {
     var condition = parser.parseExpression(expr_list);
     var then = expr_list.shift()
@@ -649,6 +650,32 @@ function parseIf(parser, expr_list)
     return [condition];
 }
 
+function parseOn(parser, expr_list)
+// parse ON jumps
+// TODO: ON .. GOSUB
+{
+    var condition = parser.parseExpression(expr_list);
+
+    var jump = expr_list.shift()
+    if (jump.token_type !== 'statement' || (jump.payload !== 'GOTO' && jump.payload !== 'GOSUB')) {
+        throw 'Syntax error: expected `GOTO` or `GOSUB`';
+    }
+
+    var targets = []
+    while (expr_list.length) {
+        var line_number = expr_list.shift();
+        if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
+            throw 'Syntax error: expected line number';
+        }
+        targets.push(line_number.payload);
+        var sep = expr_list.shift();
+        if (sep.token_type !== ',') {
+            expr_list.unshift(sep);
+            break;
+        }
+    }
+    return [condition].concat(targets);
+}
 
 function Parser(iface)
 {
@@ -950,7 +977,7 @@ function stReturn(state)
     state.tree.jump(target);
 }
 
-function stIf(state, condition, statements)
+function stIf(state, condition)
 // IF .. THEN
 {
     if (typeof condition !== 'number' && typeof condition !== 'boolean') {
@@ -959,6 +986,22 @@ function stIf(state, condition, statements)
     if (!condition) state.tree.skip();
 }
 
+function stOn(state, condition)
+// ON.. GOTO
+{
+    var targets = [].slice.call(arguments, 2);
+    if (typeof condition !== 'number' && typeof condition !== 'boolean') {
+        throw 'Type mismatch: expected numerical expression';
+    }
+    if (condition > 0 && condition <= targets.length) {
+        var line_number = targets[condition-1];
+        if (!(line_number in state.line_numbers)) {
+            throw 'Undefined line number ' + line_number;
+        }
+        //TODO: ON..GOSUB
+        state.tree.jump(state.line_numbers[line_number]);
+    }
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // interface
@@ -1018,3 +1061,17 @@ function BasicodeApp()
 
     this.parser = new Parser(this.iface);
 }
+
+// TODO:
+// - working screen
+// - working keyboard
+// - BASICODE subroutines
+// - type checks
+// - FOR .. NEXT
+// - ON .. GOSUB
+// - IF .. THEN jump
+
+// some potential optimisations, if needed:
+// - leave empty statements (REM, DATA) out of AST
+// - simplify leaf nodes to { return payload } to avoid type test on each Node
+// - pre-calculate jump targets (second pass of parser?)
