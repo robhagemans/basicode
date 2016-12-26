@@ -652,29 +652,26 @@ function parseIf(parser, expr_list)
 
 function parseOn(parser, expr_list)
 // parse ON jumps
-// TODO: ON .. GOSUB
 {
     var condition = parser.parseExpression(expr_list);
-
     var jump = expr_list.shift()
     if (jump.token_type !== 'statement' || (jump.payload !== 'GOTO' && jump.payload !== 'GOSUB')) {
         throw 'Syntax error: expected `GOTO` or `GOSUB`';
     }
-
-    var targets = []
+    var args = [condition, jump.operation]
     while (expr_list.length) {
         var line_number = expr_list.shift();
         if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
             throw 'Syntax error: expected line number';
         }
-        targets.push(line_number.payload);
+        args.push(line_number.payload);
         var sep = expr_list.shift();
         if (sep.token_type !== ',') {
             expr_list.unshift(sep);
             break;
         }
     }
-    return [condition].concat(targets);
+    return args;
 }
 
 function Parser(iface)
@@ -986,20 +983,16 @@ function stIf(state, condition)
     if (!condition) state.tree.skip();
 }
 
-function stOn(state, condition)
+function stOn(state, condition, jump_operation)
 // ON.. GOTO
 {
-    var targets = [].slice.call(arguments, 2);
+    var targets = [].slice.call(arguments, 3);
     if (typeof condition !== 'number' && typeof condition !== 'boolean') {
         throw 'Type mismatch: expected numerical expression';
     }
     if (condition > 0 && condition <= targets.length) {
         var line_number = targets[condition-1];
-        if (!(line_number in state.line_numbers)) {
-            throw 'Undefined line number ' + line_number;
-        }
-        //TODO: ON..GOSUB
-        state.tree.jump(state.line_numbers[line_number]);
+        jump_operation(state, line_number);
     }
 }
 
@@ -1068,7 +1061,6 @@ function BasicodeApp()
 // - BASICODE subroutines
 // - type checks
 // - FOR .. NEXT
-// - ON .. GOSUB
 // - IF .. THEN jump
 
 // some potential optimisations, if needed:
