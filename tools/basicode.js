@@ -693,7 +693,11 @@ function Parser(state)
             // check for empty statement
             if (token.token_type === ':') continue;
             if (token.token_type === '\n') break;
-            // TODO: optional LET
+            // optional LET
+            if (token.token_type === 'name') {
+                basicode.unshift(token);
+                token = KEYWORDS['LET']();
+            }
             // parse arguments in statement-specific way
             var args = token.parseStatement(this, basicode);
             // statment must have access to interpreter state,   so state is first argument
