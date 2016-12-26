@@ -620,11 +620,19 @@ function parseGoto(parser, expr_list)
 }
 
 
-function Parser(state)
+function Parser(iface)
 {
     // data fields for access by statement parsers
-    // whcih need to be stored in KEYWORDS but also need to access this state
+    // which need to be stored in KEYWORDS but also need to access this state
     // (perhaps better to move into Parser and use a separate lookup table)
+
+    // interpreter setup
+    var state = {
+        'data': new Data(),
+        'variables': new Variables(),
+        'line_numbers': {},
+        'output': iface,
+    }
 
     // data is stored upon parsing, not evaluation
     this.data = state.data;
@@ -768,7 +776,7 @@ function Parser(state)
             }
             // parse arguments in statement-specific way
             var args = token.parseStatement(this, basicode);
-            // statment must have access to interpreter state,   so state is first argument
+            // statement must have access to interpreter state, so state is first argument
             args.unshift(state);
             statements.push(new Node(token.operation, args));
             // parse separator
@@ -837,7 +845,6 @@ function stPrint(state)
 // PRINT
 {
     var values = [].slice.call(arguments, 1);
-    //TODO: TAB
     for (var i=0; i < values.length; ++i) {
         if (typeof values[i] === 'object') {
             // TAB object
@@ -944,12 +951,5 @@ function BasicodeApp()
         document.getElementById("output"),
         document.getElementById("input"));
 
-    // interpreter setup
-    this.state = {
-        'data': new Data(),
-        'variables': new Variables(),
-        'line_numbers': {},
-        'output': this.iface,
-    }
-    this.state.parser = new Parser(this.state);
+    this.parser = new Parser(this.iface);
 }

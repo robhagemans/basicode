@@ -56,9 +56,8 @@
             // setup
             var app = new BasicodeApp();
             var iface = app.iface;
-            var state = app.state;
-            var vars = state.variables;
-            var parser = state.parser;
+            //var state = app.state;
+            var parser = app.parser;
 
             // screen + input test
             var input = iface.read();
@@ -68,6 +67,7 @@
             iface.write('We can write \\\n\n');
 
             // variable test
+            var vars = new Variables();
             vars.assign(10, 'A$', []);
             vars.assign(11, 'A$', []);
             vars.allocate('B$', [10]);
@@ -145,9 +145,6 @@
             prog.tree.evaluate();
             iface.write('"'+prog.title+'"\n');
             iface.write(prog.description);
-
-
-            //TODO spacing
 
             var expr_str = input;
             if (expr_str.length) {
