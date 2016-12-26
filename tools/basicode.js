@@ -479,8 +479,9 @@ function Node(func, node_args)
     {
         var args = this.args.slice()
         for (pos = 0; pos < args.length; ++pos) {
+            if (this.root) console.log(pos);
             if (args[pos] instanceof Node) {
-                args[pos] = args[pos].evaluate();
+                args[pos] = this.args[pos].evaluate();
             }
         }
         // call the function with the array supplied as arguments
@@ -491,7 +492,13 @@ function Node(func, node_args)
     // jump instruction
     // only expected to be called at root node
     {
-        pos = target;
+        console.log('JUMP '+target);
+        pos = target-1;
+    }
+
+    this.end = function()
+    {
+        pos = this.args.length;
     }
 }
 
@@ -871,6 +878,8 @@ function stGoto(state, line_number)
 {
     // GOTO 20 is a BASICODE fixture
     if (line_number == 20) return;
+    // GOTO 950 means END
+    if (line_number == 950) state.tree.end();
     // other line numbers must be defined
     if (!(line_number in state.line_numbers)) {
         throw 'Undefined line number';
