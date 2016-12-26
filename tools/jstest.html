@@ -57,7 +57,6 @@
             var app = new BasicodeApp();
             var iface = app.iface;
             var state = app.state;
-            var data = state.data;
             var vars = state.variables;
             var parser = state.parser;
 
@@ -82,6 +81,7 @@
             iface.write((vars.retrieve('C', [1, 99]) === 0) + '\n');
 
             // data reader test
+            var data = new Data();
             data.store([1,2,3,4,5]);
             iface.write(((data.read() == 1) && (data.read() == 2)) + '\n');
             data.clear();
@@ -123,7 +123,8 @@
             iface.write((parser.parseExpression(tokenise('F')).evaluate() == 3) + '\n');
             parser.parseLine(tokenise('PRINT "print test: ";D;:print E-3;F:print f\n')).evaluate();
             // we're allowing empty lines; not necessary
-            parser.parseProgram(tokenise('1010 READ G,H,I, J\n1020 PRINT J\n 1030 :RESTORE: READ J: PRINT J\n 1035\n 1040 DATA 67,68,69,70\n1050 :\n1060 PRINT "program done"')).evaluate();
+            var prog = parser.parseProgram(tokenise('1010 READ G,H,I, J\n1020 PRINT J\n 1030 :RESTORE: READ J: PRINT J\n 1035\n 1040 DATA 67,68,69,70\n1050 :\n1060 PRINT "program done"'))
+            prog.tree.evaluate();
 
 
             var expr_str = input;

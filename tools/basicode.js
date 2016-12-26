@@ -698,9 +698,11 @@ function Parser(state)
             lines.push(this.parseLine(basicode));
             last_number = line_number.payload;
         }
-        // create a sequence node
-        return new Node(function(){}, lines);
-        // TODO: we should return a Program object that includes data, line numbers, AST
+        return {
+            // top-level sequence node
+            'tree': new Node(function(){}, lines),
+            'line_numbers': line_numbers,
+        };
     }
 
 };
