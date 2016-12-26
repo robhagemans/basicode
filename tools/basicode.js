@@ -249,7 +249,7 @@ const KEYWORDS = {
     'EXP': newFunctionToken('EXP', Math.exp),
     'FOR': newStatementToken('FOR'),
     'GOSUB': newStatementToken('GOSUB'),
-    'GOTO': newStatementToken('GOTO'),
+    'GOTO': newStatementToken('GOTO', parseGoto, stGoto),
     'IF': newStatementToken('IF'),
     'INPUT': newStatementToken('INPUT'),
     'INT': newFunctionToken('INT', Math.trunc),
@@ -472,20 +472,29 @@ function Node(func, node_args)
 {
     this.func = func;
     this.args = node_args;
+    var pos = 0;
 
     // traverse AST to evaluate this node and all its subnodes
     this.evaluate = function()
     {
         var args = this.args.slice()
-        for (var i = 0; i < args.length; ++i) {
-            if (args[i] instanceof Node) {
-                args[i] = args[i].evaluate();
+        for (pos = 0; pos < args.length; ++pos) {
+            if (args[pos] instanceof Node) {
+                args[pos] = args[pos].evaluate();
             }
         }
         // call the function with the array supplied as arguments
         return this.func.apply(this, args);
     };
+
+    this.jump = function(target)
+    // jump instruction
+    // only expected to be called at root node
+    {
+        pos = target;
+    }
 }
+
 
 
 //////////////////////////////////////////////////////////////////////
@@ -590,6 +599,20 @@ function parseRem(parser, expr_list)
     return [];
 }
 
+function parseGoto(parser, expr_list)
+// parse GOTO
+{
+    var line_number = expr_list.shift();
+    if (line_number.token_type !== 'literal') {
+        throw 'Syntax error: expected literal';
+    }
+    if (typeof line_number.payload !== 'number') {
+        throw 'Syntax error: expected number';
+    }
+    return [line_number.payload];
+}
+
+
 function Parser(state)
 {
     // data fields for access by statement parsers
@@ -599,7 +622,7 @@ function Parser(state)
     // data is stored upon parsing, not evaluation
     this.data = state.data;
     // program name and description can be extracted from REMs
-    this.line_numbers = {};
+    this.line_numbers = state.line_numbers;
     this.current_line = 999;
     this.title = '';
     this.description = '';
@@ -758,12 +781,11 @@ function Parser(state)
     {
         if (!basicode.length) return null;
         var lines = [];
-        this.line_numbers = {};
         // BASICODE only allows line numbers 1000 and up
         this.current_line = 999;
         while (basicode.length > 0) {
             var line_number = basicode.shift();
-            console.log(line_number);
+            console.log('parsing '+line_number.payload);
             if (line_number.token_type != 'literal') {
                 throw 'Illegal direct: line must start with a line number';
             }
@@ -775,13 +797,10 @@ function Parser(state)
             this.line_numbers[this.current_line] = lines.length;
             lines.push(this.parseLine(basicode));
         }
-        return {
-            // top-level sequence node
-            'tree': new Node(function(){}, lines),
-            'line_numbers': this.line_numbers,
-            'title': this.title,
-            'description': this.description,
-        };
+        state.tree = new Node(function(){}, lines);
+        state.title = this.title
+        state.description = this.description;
+        return state;
     }
 
 };
@@ -847,6 +866,18 @@ function stRead(state)
     }
 }
 
+function stGoto(state, line_number)
+// GOTO
+{
+    // GOTO 20 is a BASICODE fixture
+    if (line_number == 20) return;
+    // other line numbers must be defined
+    if (!(line_number in state.line_numbers)) {
+        throw 'Undefined line number';
+    }
+    var target = state.line_numbers[line_number];
+    state.tree.jump(target);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // interface
@@ -908,6 +939,7 @@ function BasicodeApp()
     this.state = {
         'data': new Data(),
         'variables': new Variables(),
+        'line_numbers': {},
         'output': this.iface,
     }
     this.state.parser = new Parser(this.state);

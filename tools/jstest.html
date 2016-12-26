@@ -131,11 +131,12 @@
             prog = parser.parseProgram(tokenise('1010 DIMZ(10)\n1020 Z(9)=9\n1030 PRINT Z(9)\n'))
             prog.tree.evaluate();
 
-            // REM test
-            prog = parser.parseProgram(tokenise('1000 A=2:REM test program\n1020 PRINT"test"; A: REM ignore this\n30000 REM BASICODE test program: \n300020 REM a program that tests REMs'))
+            // REM and GOTO test
+            prog = parser.parseProgram(tokenise('1000 A=2:REM test program\n1010 GOTO 1030\n1020 PRINT"this should not be visible"; A: REM ignore this\n1030 :\n30000 REM BASICODE test program: \n300020 REM a program that tests REMs'))
             prog.tree.evaluate();
             iface.write('"'+prog.title+'"\n');
             iface.write(prog.description);
+
 
             //TODO spacing
 
