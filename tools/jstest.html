@@ -193,6 +193,22 @@
             ].join('\n')));
             prog.tree.evaluate();
 
+            prog = parser.parseProgram(tokenise([
+                '1000 :',
+                '1010 IF 0=0 THEN 1040',
+                '1020 PRINT "no": GOTO 950',
+                '1040 PRINT "yes": GOTO 950',
+            ].join('\n')));
+            prog.tree.evaluate();
+
+            prog = parser.parseProgram(tokenise([
+                '1000 :',
+                '1010 FOR I = 0 TO 10 STEP 2.5',
+                '1020 PRINT I;',
+                '1030 NEXT I',
+            ].join('\n')));
+            prog.tree.evaluate();
+
             var expr_str = input;
             if (expr_str.length) {
                 expr_list = tokenise(expr_str);

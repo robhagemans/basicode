@@ -248,7 +248,7 @@ const KEYWORDS = {
     'DATA': newStatementToken('DATA', parseData, function(){}),
     'DIM': newStatementToken('DIM', parseRead, stDim),
     'EXP': newFunctionToken('EXP', Math.exp),
-    'FOR': newStatementToken('FOR'),
+    'FOR': newStatementToken('FOR', parseFor, stFor),
     'GOSUB': newStatementToken('GOSUB', parseGoto, stGosub),
     'GOTO': newStatementToken('GOTO', parseGoto, stGoto),
     'IF': newStatementToken('IF', parseIf, stIf),
@@ -259,7 +259,7 @@ const KEYWORDS = {
     'LET': newStatementToken('LET', parseLet, stLet),
     'LOG': newFunctionToken('LOG', Math.log),
     'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start, n); }),
-    'NEXT': newStatementToken('NEXT'),
+    'NEXT': newStatementToken('NEXT', parseNext, stNext),
     'NOT': newOperatorToken('NOT', 1, 6, function opNot(x) { return (!x); }),
     'ON': newStatementToken('ON', parseOn, stOn),
     'OR': newOperatorToken('OR', 2, 4, function opOr(x, y) { return (x || y); }),
@@ -282,8 +282,6 @@ const KEYWORDS = {
     'STEP': newStatementToken('STEP'),
     'TO': newStatementToken('TO'),
 }
-
-//TODO: INPUT, FOR..NEXT, ON
 
 // THEN, STEP, TO are reserved words but not independent statements
 // additional reserved words: AS, AT, FN, GR, IF, LN, PI, ST, TI, TI$
@@ -637,12 +635,16 @@ function parseGoto(parser, expr_list)
 
 function parseIf(parser, expr_list)
 // parse IF
-// TODO: IF..THEN jump
 {
     var condition = parser.parseExpression(expr_list);
     var then = expr_list.shift()
     if (then.token_type !== 'statement' || then.payload !== 'THEN') {
         throw 'Syntax error: expected `THEN`';
+    }
+    // supply a GOTO if jump target given after THEN
+    var jump = expr_list[0]
+    if (jump.token_type === 'literal') {
+        expr_list.unshift(KEYWORDS['GOTO']());
     }
     // supply a : so the parser can continue as normal
     expr_list.unshift(new tokenSeparator(':'));
@@ -654,7 +656,7 @@ function parseOn(parser, expr_list)
 // parse ON jumps
 {
     var condition = parser.parseExpression(expr_list);
-    var jump = expr_list.shift()
+    var jump = expr_list.shift();
     if (jump.token_type !== 'statement' || (jump.payload !== 'GOTO' && jump.payload !== 'GOSUB')) {
         throw 'Syntax error: expected `GOTO` or `GOSUB`';
     }
@@ -673,6 +675,48 @@ function parseOn(parser, expr_list)
     }
     return args;
 }
+
+function parseFor(parser, expr_list)
+// parse FOR
+{
+    var loop_variable = expr_list.shift();
+    if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
+        throw 'Syntax error: expected numerical variable name';
+    }
+    var equals = expr_list.shift();
+    if (equals.token_type !== 'operator' || equals.payload !== '=') {
+        throw 'Syntax error: expected `=`, got `'+equals.payload+'`';
+    }
+    var start = parser.parseExpression(expr_list);
+    var to = expr_list.shift();
+    if (to.token_type !== 'statement' || to.payload !== 'TO') {
+        throw 'Syntax error: expected `TO`, got `'+to+'`';
+    }
+    var stop = parser.parseExpression(expr_list);
+    var step = expr_list.shift();
+    if (step.token_type !== 'statement' || step.payload !== 'STEP') {
+        expr_list.unshift(step);
+        step = 1;
+    }
+    else {
+        step = parser.parseExpression(expr_list);
+    }
+    // return payload: do not retrieve the variable, just check its name
+    return [loop_variable.payload, start, stop, step];
+}
+
+function parseNext(parser, expr_list)
+// parse NEXT
+{
+    // variable is mandatory; only one variable allowed
+    var loop_variable = expr_list.shift();
+    if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
+        throw 'Syntax error: expected numerical variable name';
+    }
+    // return payload: do not retrieve the variable, just check its name
+    return [loop_variable.payload]
+}
+
 
 function Parser(iface)
 {
@@ -870,6 +914,7 @@ function Parser(iface)
         state.description = this.description;
         // GOSUB-RETURN stack for execution
         state.sub_stack = [];
+        state.for_stack = [];
         return state;
     }
 
@@ -996,6 +1041,41 @@ function stOn(state, condition, jump_operation)
     }
 }
 
+function stFor(state, loop_var, start, stop, step)
+// FOR .. TO .. STEP
+{
+    state.variables.assign(start, loop_var, []);
+    // the FOR loop is executed at least once in BASICODE
+    // unlike e.g. in GW-BASIC! so no jumping to NEXT here.
+
+    // FIXME: this will not allow jumps inside one line as in FOR .. : NEXT
+    // we should flatten the tree to allow that (i.e. no separate nodes per line)
+
+    state.for_stack.push({'loop_var': loop_var, 'stop': stop, 'step': step, 'pos': state.tree.pos});
+}
+
+function stNext(state, loop_var)
+{
+    if (!state.for_stack.length) {
+        throw '`NEXT` without `FOR`';
+    }
+    var loop_record = state.for_stack.slice(-1)[0];
+    if (loop_record.loop_var !== loop_var) {
+        throw '`FOR` without `NEXT`: expected `NEXT '+loop_record.loop_var+'`, got `NEXT '+loop_var+'`';
+    }
+    // increment counter
+    var counter = state.variables.retrieve(loop_var, []) + loop_record.step;
+    state.variables.assign(counter, loop_var, []);
+    // break condition
+    if (counter > loop_record.stop) {
+        state.for_stack.pop();
+    }
+    else {
+        state.tree.jump(loop_record.pos+1);
+    }
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // interface
 
@@ -1060,8 +1140,7 @@ function BasicodeApp()
 // - working keyboard
 // - BASICODE subroutines
 // - type checks
-// - FOR .. NEXT
-// - IF .. THEN jump
+// - INPUT, FOR .. NEXT
 
 // some potential optimisations, if needed:
 // - leave empty statements (REM, DATA) out of AST
