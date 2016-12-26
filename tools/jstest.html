@@ -229,11 +229,13 @@
                 }() );
             } );
         }
-        function newStatementToken(keyword) {
+        function newStatementToken(keyword, parseStatement, operation) {
             return (function() {
                 return (new function tokenStatement() {
                     this.token_type = 'statement';
                     this.payload = keyword;
+                    this.parseStatement = parseStatement;
+                    this.operation = operation;
                 }() );
             } );
         }
@@ -258,12 +260,23 @@
             '+': newOperatorToken('+', 2, 8, function opAddOrConcatenate(x, y) { return x + y; }),
             // - can be unary negation or binary subtraction
             '-': newOperatorToken('-', null, 8, function opSubtractOrNegate(x, y) { if (y === undefined) return -x; else return x - y; }),
-            '=': newOperatorToken('>=', 2, 7, function opEqual(x, y) { return (x === y); }),
+            '=': newOperatorToken('=', 2, 7, function opEqual(x, y) { return (x === y); }),
             '>': newOperatorToken('>', 2, 7, function opGreaterThan(x, y) { return (x > y); }),
             '>=': newOperatorToken('>=', 2, 7, function opGreaterThanOrEqual(x, y) { return (x >= y); }),
-            '<': newOperatorToken('>=', 2, 7, function opLessThan(x, y) { return (x > y); }),
-            '<=': newOperatorToken('>=', 2, 7, function opLessThanOrEqual(x, y) { return (x <= y); }),
-            '<>': newOperatorToken('>=', 2, 7, function opNotEqual(x, y) { return (x !== y); }),
+            '<': newOperatorToken('<', 2, 7, function opLessThan(x, y) { return (x > y); }),
+            '<=': newOperatorToken('<=', 2, 7, function opLessThanOrEqual(x, y) { return (x <= y); }),
+            '<>': newOperatorToken('<>', 2, 7, function opNotEqual(x, y) { return (x !== y); }),
+        }
+
+        function parseLet(parser, expr_list)
+        // parse LET statement
+        {
+            var name = expr_list.shift();
+            var indices = parser.parseArguments(expr_list);
+            var equals = expr_list.shift().payload;
+            if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
+            var value = expr_list.shift();
+            return [value.payload, name.payload, indices];
         }
 
         const KEYWORDS = {
@@ -284,7 +297,7 @@
             'INT': newFunctionToken('INT', Math.trunc),
             'LEFT$': newFunctionToken('LEFT$', function fnLeft(x, n) { return x.slice(0, n); }),
             'LEN': newFunctionToken('LEN', function fnLen(x, n) { return x.length; }),
-            'LET': newStatementToken('LET'),
+            'LET': newStatementToken('LET', parseLet, function stLet(state, value, name, indices) { return state.variables.assign(value, name, indices); }),
             'LOG': newFunctionToken('LOG', Math.log),
             'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start, n); }),
             'NEXT': newStatementToken('NEXT'),
@@ -367,6 +380,13 @@
             var expr_list = [];
             for (pos=0; pos < expr_string.length; ++pos) {
                 var char = expr_string[pos];
+                // deal with line breaks, CR, LF and CR LF all work
+                if (char === '\r') {
+                    if (pos+1 < expr_string.length && expr_string[pos+1] === '\n') {
+                        ++pos;
+                    }
+                    char = '\n';
+                }
                 if (char in SYMBOLS) {
                     var operator = char;
                     // two-symbol operators all start with lt or gt
@@ -381,7 +401,9 @@
                     }
                     expr_list.push(SYMBOLS[operator]());
                 }
-                else if (char == '(' || char == ')' || char == ',' || char == ';' || char == ':') {
+                else if (char === '(' || char === ')' ||
+                            char === ',' || char === ';' ||
+                            char === ':' || char === '\n') {
                     expr_list.push(new tokenSeparator(char));
                 }
                 // double quotes, starts a string
@@ -441,7 +463,9 @@
         }
 
         //////////////////////////////////////////////////////////////////////
-        // expression parser
+        // parser
+
+
 
         function Node(func, node_args)
         {
@@ -462,13 +486,13 @@
             };
         }
 
-        function Parser(vars)
+        function Parser(state)
         {
             function opRetrieve(name)
             //  retrieve a variable from the Variables object provided to Parser at initialisation
             {
                 var indices = [].slice.call(arguments, 1);
-                return vars.retrieve(name, indices);
+                return state.variables.retrieve(name, indices);
             }
 
             function drain(precedence, stack, units)
@@ -526,9 +550,6 @@
                         switch (token.token_type) {
                             case 'function':
                                 var args = this.parseArguments(expr_list);
-                                console.log(token.payload);
-                                console.log(token.operation);
-                                console.log(args);
                                 units.push(new Node(token.operation, args));
                                 break;
                             case '(':
@@ -585,7 +606,36 @@
                 return args;
             }
 
+            this.parseLine = function(basicode)
+            // parse a line of BASICODE
+            {
+                if (!basicode.length) return null;
 
+                var line_number = basicode.shift();
+                console.log(line_number);
+                if (line_number.token_type != 'literal') {
+                    throw 'Illegal direct: line must start with a line number';
+                }
+                // TODO: keep track of line numbers
+
+                var statements = []
+                while (basicode.length > 0) {
+                    var token = basicode.shift();
+                    // parse arguments in statement-specific way
+                    var args = token.parseStatement(this, basicode);
+                    // statment must have access to interpreter state,   so state is first argument
+                    args.unshift(state);
+                    statements.push(new Node(token.operation, args));
+                    // parse separator
+                    var sep = basicode.shift();
+                    if (sep.token_type === '\n') break;
+                    if (sep.token_type !== ':') {
+                        throw 'Syntax error: expected `:`, got `' + sep.payload + '`';
+                    }
+                }
+                // create a sequence node
+                return new Node(function(){}, statements);
+            }
 
         };
 
@@ -630,6 +680,7 @@
             app.write('We can write <br>\n');
             app.write('We can write \\\n');
 
+
             // variable test
             var vars = new Variables();
             vars.assign(10, 'A$', []);
@@ -660,7 +711,14 @@
                 new tokenSeparator(')'),
                 SYMBOLS['/'](), new tokenLiteral(5),
             ];
-            var parser = new Parser(vars);
+
+            var state = {};
+            state.variables = vars;
+
+            var parser = new Parser(state);
+            var ast0 = parser.parseLine(tokenise('10 LET D=1:LET E=2\n'));
+            ast0.evaluate();
+
             var ast = parser.parseExpression(expr_list);
             app.write('evaluate: ' + ast.evaluate() + '\n');
 
