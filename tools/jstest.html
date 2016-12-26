@@ -275,9 +275,32 @@
             var indices = parser.parseArguments(expr_list);
             var equals = expr_list.shift().payload;
             if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
-            var value = expr_list.shift();
-            return [value.payload, name.payload, indices];
+            var value = parser.parseExpression(expr_list);
+            return [value, name.payload, indices];
         }
+
+        function parsePrint(parser, expr_list)
+        // parse PRINT statement
+        {
+            var exprs = [];
+            var last = null;
+            while (expr_list.length > 0) {
+                var expr = parser.parseExpression(expr_list);
+                if (expr !== null) {
+                    exprs.push(expr);
+                    last = expr;
+                }
+                if (!expr_list.length) break;
+                if (expr_list[0].payload !== ';') break;
+                last = ';';
+                expr_list.shift();
+            }
+            if (last !== ';') {
+                exprs.push(new Node(function(){ return '\n'; }, []));
+            }
+            return exprs;
+        }
+
 
         const KEYWORDS = {
             'ABS': newFunctionToken('ABS', Math.abs),
@@ -304,7 +327,13 @@
             'NOT': newOperatorToken('NOT', 1, 6, function opNot(x) { return (!x); }),
             'ON': newStatementToken('ON'),
             'OR': newOperatorToken('OR', 2, 4, function opOr(x, y) { return (x || y); }),
-            'PRINT': newStatementToken('PRINT'),
+            'PRINT': newStatementToken('PRINT', parsePrint, function stPrint(state) {
+                var values = [].slice.call(arguments, 1);
+                //TODO: TAB, space before number/number tostring in general
+                for (var i=0; i<values.length; ++i) {
+                    state.output.write(values[i]);
+                }
+            }),
             'READ': newStatementToken('READ'),
             'REM': newStatementToken('REM'),
             'RESTORE': newStatementToken('RESTORE'),
@@ -454,6 +483,9 @@
                     else {
                         expr_list.push(new tokenName(name));
                     }
+
+                    //TODO: uppercase;
+
                 }
                 else if (char !== ' ') {
                     throw 'Syntax error: unexpected symbol `'+ char + '`';
@@ -576,14 +608,14 @@
                     else {
                         expr_list.unshift(token);
                         break;
-                        //throw 'Syntax error: unexpected unit ' + token.payload;
                     }
                     if (exit_loop) {
                         break;
                     }
                 }
                 drain(0, stack, units);
-                return units[0];
+                if (units.length) return units[0];
+                return null;
             };
 
             this.parseArguments = function(expr_list)
@@ -627,6 +659,7 @@
                     args.unshift(state);
                     statements.push(new Node(token.operation, args));
                     // parse separator
+                    if (!basicode.length) break;
                     var sep = basicode.shift();
                     if (sep.token_type === '\n') break;
                     if (sep.token_type !== ':') {
@@ -641,11 +674,13 @@
 
         function App(output_element, input_element)
         {
+
             this.clear = function() {
                 output_element.innerHTML = '';
             };
 
             this.write = function(output) {
+                output = output.toString();
                 output_element.innerHTML += output.replace('<', '&lt;').replace('>', '&gt;');
             };
 
@@ -714,10 +749,13 @@
 
             var state = {};
             state.variables = vars;
+            state.output = app;
 
             var parser = new Parser(state);
             var ast0 = parser.parseLine(tokenise('10 LET D=1:LET E=2\n'));
             ast0.evaluate();
+            parser.parseLine(tokenise('20 LET F=D+E\n')).evaluate();
+            parser.parseLine(tokenise('30 PRINT "print test: ";D;E;F:PRINT F\n')).evaluate();
 
             var ast = parser.parseExpression(expr_list);
             app.write('evaluate: ' + ast.evaluate() + '\n');
