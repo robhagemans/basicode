@@ -160,6 +160,16 @@
             prog.tree.root = true;
             prog.tree.evaluate();
 
+            prog = parser.parseProgram(tokenise([
+                '1000 A=2:REM test program 2',
+                '1010 B=1: GOTO 1030: B=600',
+                '1020 B=1000',
+                '1030 PRINT B: GOTO 950',
+                '',
+            ].join('\n')));
+            prog.tree.root = true;
+            prog.tree.evaluate();
+
 
             var expr_str = input;
             if (expr_str.length) {

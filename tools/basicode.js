@@ -491,12 +491,17 @@ function Node(func, node_args)
     // jump instruction
     // only expected to be called at root node
     {
+        this.end();
         this.pos = target-1;
     }
 
     this.end = function()
     {
         this.pos = this.args.length;
+        // traverse the tree to ensure execution stops at deeper levels too
+        for (var i = 0; i < this.args.length; ++i) {
+            if (this.args[i] instanceof Node) this.args[i].end();
+        }
     }
 }
 
