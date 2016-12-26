@@ -264,7 +264,7 @@ const KEYWORDS = {
     'OR': newOperatorToken('OR', 2, 4, function opOr(x, y) { return (x || y); }),
     'PRINT': newStatementToken('PRINT', parsePrint, stPrint),
     'READ': newStatementToken('READ', parseRead, stRead),
-    'REM': newStatementToken('REM'),
+    'REM': newStatementToken('REM', parseRem, function(){}),
     'RESTORE': newStatementToken('RESTORE', function(){ return []; }, stRestore),
     'RETURN': newStatementToken('RETURN'),
     'RIGHT$': newFunctionToken('RIGHT$', function fnRight(x, n) { return x.slice(-n); }),
@@ -273,6 +273,8 @@ const KEYWORDS = {
     'SQR': newFunctionToken('SQR', Math.sqrt),
     'STEP': newStatementToken('STEP'),
     // TAB only has an effect at the top level in a PRINT statement
+    // TODO: ensure we throw an error if called elsewhere -- string/number type checks would do the trick
+    // or move TAB parsing to print parser (less hacky)
     'TAB': newFunctionToken('TAB', function(x) { return { 'tab': x }; }),
     'TAN': newFunctionToken('TAN', Math.tan),
     'THEN': newStatementToken('THEN'),
@@ -307,11 +309,22 @@ function Lexer(expr_string)
     {
         var start_pos = pos;
         // skip start and closing quotes
-        for (++pos; (pos < expr_string.length && expr_string[pos] !== '"'); ++pos);
-        if (pos === expr_string.length) {
+        for (++pos; (pos < expr_string.length && expr_string[pos] !== '"'  && expr_string[pos] !== '\n'); ++pos);
+        if (pos === expr_string.length || expr_string[pos] !== '"') {
             throw 'Syntax error: no closing `"`';
         }
         return expr_string.slice(start_pos+1, pos);
+    }
+
+    function readComment()
+    // read a comment until end of line
+    {
+        // skip single space after REM, if any
+        var start_pos = ++pos;
+        for (++pos; (pos < expr_string.length && expr_string[pos] !== '\n'); ++pos);
+        --pos;
+        if (expr_string[start_pos] === ' ') ++start_pos;
+        return expr_string.slice(start_pos, pos+1);
     }
 
     function readInteger()
@@ -429,6 +442,9 @@ function Lexer(expr_string)
                 if (name in KEYWORDS) {
                     // call function that calls new on a constructor
                     expr_list.push(KEYWORDS[name]());
+                    if (name === 'REM') {
+                        expr_list.push(new tokenLiteral(readComment()));
+                    }
                 }
                 else {
                     expr_list.push(new tokenName(name));
@@ -535,13 +551,12 @@ function parseData(parser, expr_list)
 }
 
 
-// index list evaluation operation
-function evalIndex() { return [].slice.call(arguments); }
-
-
 function parseRead(parser, expr_list)
-// parse READ statement
+// parse READ or DIM statement
 {
+    // index list evaluation operation
+    function evalIndex() { return [].slice.call(arguments); }
+
     var names = [];
     while (expr_list.length > 0) {
         var name = expr_list.shift();
@@ -557,14 +572,37 @@ function parseRead(parser, expr_list)
     return names;
 }
 
-// parse DIM statement
-//var parseDim = parseRead;
-
+function parseRem(parser, expr_list)
+// parse REM
+{
+    var rem = expr_list.shift();
+    if (rem.token_type !== 'literal') {
+        throw 'Syntax error: expected literal';
+    }
+    // BASICODE standard: title in REM on line 1000
+    // description and copyrights in REMS on lines 30000 onwards
+    if (parser.current_line === 1000) {
+        parser.title = rem.payload;
+    }
+    else if (parser.current_line >= 30000) {
+        parser.description += rem.payload + '\n';
+    }
+    return [];
+}
 
 function Parser(state)
 {
+    // data fields for access by statement parsers
+    // whcih need to be stored in KEYWORDS but also need to access this state
+    // (perhaps better to move into Parser and use a separate lookup table)
+
     // data is stored upon parsing, not evaluation
     this.data = state.data;
+    // program name and description can be extracted from REMs
+    this.line_numbers = {};
+    this.current_line = 999;
+    this.title = '';
+    this.description = '';
 
     function opRetrieve(name)
     //  retrieve a variable from the Variables object provided to Parser at initialisation
@@ -720,27 +758,29 @@ function Parser(state)
     {
         if (!basicode.length) return null;
         var lines = [];
-        var line_numbers = {};
+        this.line_numbers = {};
         // BASICODE only allows line numbers 1000 and up
-        var last_number = 999;
+        this.current_line = 999;
         while (basicode.length > 0) {
             var line_number = basicode.shift();
             console.log(line_number);
             if (line_number.token_type != 'literal') {
                 throw 'Illegal direct: line must start with a line number';
             }
-            if (line_number.payload <= last_number) {
+            if (line_number.payload <= this.current_line) {
                 throw 'Line numbers must be 1000 or greater and increase monotonically';
             }
+            this.current_line = line_number.payload;
             // keep track of line numbers
-            line_numbers[line_number.payload] = lines.length;
+            this.line_numbers[this.current_line] = lines.length;
             lines.push(this.parseLine(basicode));
-            last_number = line_number.payload;
         }
         return {
             // top-level sequence node
             'tree': new Node(function(){}, lines),
-            'line_numbers': line_numbers,
+            'line_numbers': this.line_numbers,
+            'title': this.title,
+            'description': this.description,
         };
     }
 
