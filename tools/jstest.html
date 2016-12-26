@@ -403,7 +403,7 @@
                     }
                     if (!isAlphaChar(expr_string[pos+1]) && !isNumberChar(expr_string[pos+1])) break;
                 }
-                return expr_string.slice(start_pos, pos+1);
+                return expr_string.slice(start_pos, pos+1).toUpperCase();
             }
 
             var expr_list = [];
@@ -483,9 +483,6 @@
                     else {
                         expr_list.push(new tokenName(name));
                     }
-
-                    //TODO: uppercase;
-
                 }
                 else if (char !== ' ') {
                     throw 'Syntax error: unexpected symbol `'+ char + '`';
@@ -707,36 +704,45 @@
             document.getElementById("output"),
             document.getElementById("input"));
 
+        var data = new Data();
+        var vars = new Variables();
+
+        var state = {};
+        state.variables = vars;
+        state.output = app;
+
+        var parser = new Parser(state);
+
+
         document.getElementById("get_output").onclick = function () {
             // screen + input test
             var input = app.read();
             app.clear();
             app.write('you typed: ' + input + '\n');
             app.write('We can write <br>\n');
-            app.write('We can write \\\n');
-
+            app.write('We can write \\\n\n');
 
             // variable test
-            var vars = new Variables();
             vars.assign(10, 'A$', []);
             vars.assign(11, 'A$', []);
             vars.allocate('B$', [10]);
             vars.assign(12, 'B$', [1]);
             vars.allocate('C', [100,100]);
             vars.assign(12, 'C', [1,100]);
-            app.write('A$ = ' + vars.retrieve('A$', []) + '\n');
-            app.write('B$(1) = ' + vars.retrieve('B$', [1]) + '\n');
-            app.write('C(1,100) = ' + vars.retrieve('C', [1, 100]) + '\n');
+            //TODO: implement type mismatch checks
+            app.write((vars.retrieve('A$', []) === 11) + '\n');
+            app.write((vars.retrieve('B$', [1]) === 12) + '\n');
+            app.write((vars.retrieve('C', [1, 100]) === 12) + '\n');
+            app.write((vars.retrieve('C', [1, 99]) === 0) + '\n');
 
             // data reader test
-            var data = new Data();
             data.data([1,2,3,4,5]);
-            app.write(data.read().toString(10) + data.read().toString(10)+ '\n');
+            app.write(((data.read() == 1) && (data.read() == 2)) + '\n');
 
             // evaluate test
             var node = new Node(function(a, b) { return a+b; }, [1, 5]);
             var node2 = new Node(function(a, b) { return a*b; }, [node, 5]);
-            app.write(node2.evaluate().toString(10) + '\n');
+            app.write((node2.evaluate() == 30) + '\n');
 
             // expression parser test
             var expr_list = [
@@ -746,30 +752,28 @@
                 new tokenSeparator(')'),
                 SYMBOLS['/'](), new tokenLiteral(5),
             ];
-
-            var state = {};
-            state.variables = vars;
-            state.output = app;
-
-            var parser = new Parser(state);
-            var ast0 = parser.parseLine(tokenise('10 LET D=1:LET E=2\n'));
-            ast0.evaluate();
-            parser.parseLine(tokenise('20 LET F=D+E\n')).evaluate();
-            parser.parseLine(tokenise('30 PRINT "print test: ";D;E;F:PRINT F\n')).evaluate();
-
             var ast = parser.parseExpression(expr_list);
-            app.write('evaluate: ' + ast.evaluate() + '\n');
+            app.write((ast.evaluate() == 2.2) + '\n');
 
-            // lexer test
+            // lexer tests
             app.write((parser.parseExpression(tokenise('1-2')).evaluate() == -1) + '\n');
             app.write((parser.parseExpression(tokenise('-1')).evaluate() == -1) + '\n');
             app.write((parser.parseExpression(tokenise('.5')).evaluate() == 0.5) + '\n');
             app.write((parser.parseExpression(tokenise('-.5')).evaluate() == -0.5) + '\n');
             app.write((parser.parseExpression(tokenise('1.2e2')).evaluate() == 120) + '\n');
             app.write((parser.parseExpression(tokenise('1.2e-2')).evaluate() == 0.012) + '\n');
+
+            // expression lexer+parser tests
             app.write((parser.parseExpression(tokenise('((1=1)) OR (1=0)')).evaluate() == true) + '\n');
             app.write((parser.parseExpression(tokenise('((1=1)) AND (1=0)')).evaluate() == false) + '\n');
             app.write((parser.parseExpression(tokenise('NOT 0')).evaluate() == true) + '\n');
+
+            // statement tests
+            parser.parseLine(tokenise('10 LET D=1:LET E=2\n')).evaluate();
+            app.write((parser.parseExpression(tokenise('E')).evaluate() == 2) + '\n');
+            parser.parseLine(tokenise('20 LET F=D+E\n')).evaluate();
+            app.write((parser.parseExpression(tokenise('F')).evaluate() == 3) + '\n');
+            parser.parseLine(tokenise('30 PRINT "print test: ";D;E;F:PRINT F\n')).evaluate();
 
             var expr_str = input;
             if (expr_str.length) {
