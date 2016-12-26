@@ -117,13 +117,13 @@
             iface.write((parser.parseExpression(tokenise('cos(0)')).evaluate() == 1) + ' ');
 
             // statement tests
-            parser.parseLine(tokenise('10 LET D=1:LET E=2\n')).evaluate();
+            parser.parseLine(tokenise('LET D=1:LET E=2\n')).evaluate();
             iface.write((parser.parseExpression(tokenise('E')).evaluate() == 2) + ' ');
-            parser.parseLine(tokenise('20 LET F=D+E\n')).evaluate();
+            parser.parseLine(tokenise('LET F=D+E\n')).evaluate();
             iface.write((parser.parseExpression(tokenise('F')).evaluate() == 3) + '\n');
-            parser.parseLine(tokenise('30 PRINT "print test: ";D;:print E-3;F:print f\n')).evaluate();
-
-            parser.parseLine(tokenise('40 READ G,H,I,J: PRINT J: RESTORE: READ J: PRINT J: DATA 67,68,69,70')).evaluate();
+            parser.parseLine(tokenise('PRINT "print test: ";D;:print E-3;F:print f\n')).evaluate();
+            // we're allowing empty lines; not necessary
+            parser.parseProgram(tokenise('1010 READ G,H,I, J\n1020 PRINT J\n 1030 :RESTORE: READ J: PRINT J\n 1035\n 1040 DATA 67,68,69,70\n1050 :\n1060 PRINT "program done"')).evaluate();
 
 
             var expr_str = input;

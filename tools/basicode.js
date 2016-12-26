@@ -652,18 +652,13 @@ function Parser(state)
     this.parseLine = function(basicode)
     // parse a line of BASICODE
     {
-        if (!basicode.length) return null;
-
-        var line_number = basicode.shift();
-        console.log(line_number);
-        if (line_number.token_type != 'literal') {
-            throw 'Illegal direct: line must start with a line number';
-        }
-        // TODO: keep track of line numbers
-
         var statements = []
         while (basicode.length > 0) {
             var token = basicode.shift();
+            // check for empty statement
+            if (token.token_type === ':') continue;
+            if (token.token_type === '\n') break;
+            // TODO: optional LET
             // parse arguments in statement-specific way
             var args = token.parseStatement(this, basicode);
             // statment must have access to interpreter state,   so state is first argument
@@ -679,6 +674,33 @@ function Parser(state)
         }
         // create a sequence node
         return new Node(function(){}, statements);
+    }
+
+    this.parseProgram = function(basicode)
+    // parse a BASICODE program
+    {
+        if (!basicode.length) return null;
+        var lines = [];
+        var line_numbers = {};
+        // BASICODE only allows line numbers 1000 and up
+        var last_number = 999;
+        while (basicode.length > 0) {
+            var line_number = basicode.shift();
+            console.log(line_number);
+            if (line_number.token_type != 'literal') {
+                throw 'Illegal direct: line must start with a line number';
+            }
+            if (line_number.payload <= last_number) {
+                throw 'Line numbers must be 1000 or greater and increase monotonically';
+            }
+            // keep track of line numbers
+            line_numbers[line_number.payload] = lines.length;
+            lines.push(this.parseLine(basicode));
+            last_number = line_number.payload;
+        }
+        // create a sequence node
+        return new Node(function(){}, lines);
+        // TODO: we should return a Program object that includes data, line numbers, AST
     }
 
 };
@@ -707,7 +729,6 @@ function stPrint(state)
         else {
             state.output.write(' ' + values[i].toString(10) + ' ');
         }
-
     }
 }
 
