@@ -248,7 +248,7 @@ const KEYWORDS = {
     'DIM': newStatementToken('DIM', parseRead, stDim),
     'EXP': newFunctionToken('EXP', Math.exp),
     'FOR': newStatementToken('FOR'),
-    'GOSUB': newStatementToken('GOSUB'),
+    'GOSUB': newStatementToken('GOSUB', parseGoto, stGosub),
     'GOTO': newStatementToken('GOTO', parseGoto, stGoto),
     'IF': newStatementToken('IF'),
     'INPUT': newStatementToken('INPUT'),
@@ -266,7 +266,7 @@ const KEYWORDS = {
     'READ': newStatementToken('READ', parseRead, stRead),
     'REM': newStatementToken('REM', parseRem, function(){}),
     'RESTORE': newStatementToken('RESTORE', function(){ return []; }, stRestore),
-    'RETURN': newStatementToken('RETURN'),
+    'RETURN': newStatementToken('RETURN', function(){ return []; }, stReturn),
     'RIGHT$': newFunctionToken('RIGHT$', function fnRight(x, n) { return x.slice(-n); }),
     'SGN': newFunctionToken('SGN', Math.sign),
     'SIN': newFunctionToken('SIN', Math.sin),
@@ -472,16 +472,15 @@ function Node(func, node_args)
 {
     this.func = func;
     this.args = node_args;
-    var pos = 0;
+    this.pos = 0;
 
     // traverse AST to evaluate this node and all its subnodes
     this.evaluate = function()
     {
         var args = this.args.slice()
-        for (pos = 0; pos < args.length; ++pos) {
-            if (this.root) console.log(pos);
-            if (args[pos] instanceof Node) {
-                args[pos] = this.args[pos].evaluate();
+        for (this.pos = 0; this.pos < args.length; ++this.pos) {
+            if (this.args[this.pos] instanceof Node) {
+                args[this.pos] = this.args[this.pos].evaluate();
             }
         }
         // call the function with the array supplied as arguments
@@ -492,13 +491,12 @@ function Node(func, node_args)
     // jump instruction
     // only expected to be called at root node
     {
-        console.log('JUMP '+target);
-        pos = target-1;
+        this.pos = target-1;
     }
 
     this.end = function()
     {
-        pos = this.args.length;
+        this.pos = this.args.length;
     }
 }
 
@@ -677,7 +675,6 @@ function Parser(iface)
         var units = [];
         var token = null;
         var exit_loop = false;
-        //for (var pos = 0; pos < expr_list.length; ++pos) {
         while (expr_list.length > 0) {
             var last = token;
             token = expr_list.shift();
@@ -813,8 +810,10 @@ function Parser(iface)
             lines.push(this.parseLine(basicode));
         }
         state.tree = new Node(function(){}, lines);
-        state.title = this.title
+        state.title = this.title;
         state.description = this.description;
+        // GOSUB-RETURN stack for execution
+        state.sub_stack = [];
         return state;
     }
 
@@ -884,16 +883,41 @@ function stGoto(state, line_number)
 // GOTO
 {
     // GOTO 20 is a BASICODE fixture
-    if (line_number == 20) return;
+    if (line_number === 20) return;
     // GOTO 950 means END
-    if (line_number == 950) state.tree.end();
+    if (line_number === 950) {
+        state.tree.end();
+        return;
+    }
     // other line numbers must be defined
     if (!(line_number in state.line_numbers)) {
-        throw 'Undefined line number';
+        throw 'Undefined line number ' + line_number;
     }
     var target = state.line_numbers[line_number];
     state.tree.jump(target);
 }
+
+function stGosub(state, line_number)
+// GOSUB
+{
+    if (!(line_number in state.line_numbers)) {
+        throw 'Undefined line number';
+    }
+    var target = state.line_numbers[line_number];
+    state.sub_stack.push(state.tree.pos+1);
+    state.tree.jump(target);
+}
+
+function stReturn(state)
+// RETURN
+{
+    if (!state.sub_stack.length) {
+        throw 'RETURN without GOSUB';
+    }
+    var target = state.sub_stack.pop();
+    state.tree.jump(target);
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // interface
