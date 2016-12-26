@@ -52,7 +52,7 @@ function Data()
 
 }
 
-///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 // types, variables, arrays
 
 function defaultValue(name)
@@ -167,7 +167,7 @@ function Variables()
     };
 }
 
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 // tokens
 
 function tokenSeparator(bracket_char)
@@ -250,7 +250,7 @@ const KEYWORDS = {
     'FOR': newStatementToken('FOR'),
     'GOSUB': newStatementToken('GOSUB', parseGoto, stGosub),
     'GOTO': newStatementToken('GOTO', parseGoto, stGoto),
-    'IF': newStatementToken('IF'),
+    'IF': newStatementToken('IF', parseIf, stIf),
     'INPUT': newStatementToken('INPUT'),
     'INT': newFunctionToken('INT', Math.trunc),
     'LEFT$': newFunctionToken('LEFT$', function fnLeft(x, n) { return x.slice(0, n); }),
@@ -271,21 +271,22 @@ const KEYWORDS = {
     'SGN': newFunctionToken('SGN', Math.sign),
     'SIN': newFunctionToken('SIN', Math.sin),
     'SQR': newFunctionToken('SQR', Math.sqrt),
-    'STEP': newStatementToken('STEP'),
     // TAB only has an effect at the top level in a PRINT statement
     // TODO: ensure we throw an error if called elsewhere -- string/number type checks would do the trick
     // or move TAB parsing to print parser (less hacky)
     'TAB': newFunctionToken('TAB', function(x) { return { 'tab': x }; }),
     'TAN': newFunctionToken('TAN', Math.tan),
-    'THEN': newStatementToken('THEN'),
-    'TO': newStatementToken('TO'),
     'VAL': newFunctionToken('VAL', function(x) { return new Lexer(x).readValue(); }),
+    'THEN': newStatementToken('THEN'),
+    'STEP': newStatementToken('STEP'),
+    'TO': newStatementToken('TO'),
 }
 
+// THEN, STEP, TO are reserved words but not independent statements
 // additional reserved words: AS, AT, FN, GR, IF, LN, PI, ST, TI, TI$
 
 
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 // lexer
 
 
@@ -465,7 +466,7 @@ function tokenise(expr_string)
     return new Lexer(expr_string).tokenise()
 }
 
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 // AST
 
 function Node(func, node_args)
@@ -487,6 +488,18 @@ function Node(func, node_args)
         return this.func.apply(this, args);
     };
 
+    this.end = function()
+    // skip to end
+    // only expected to be called at root or sequence node
+    // only makes sense when this.func is a no-op
+    {
+        this.pos = this.args.length;
+        // traverse the tree to ensure execution stops at deeper levels too
+        for (var i = 0; i < this.args.length; ++i) {
+            if (this.args[i] instanceof Node) this.args[i].end();
+        }
+    }
+
     this.jump = function(target)
     // jump instruction
     // only expected to be called at root node
@@ -495,13 +508,13 @@ function Node(func, node_args)
         this.pos = target-1;
     }
 
-    this.end = function()
+    this.skip = function(target)
+    // skip to next line
+    // only expected to be called at root node
     {
-        this.pos = this.args.length;
-        // traverse the tree to ensure execution stops at deeper levels too
-        for (var i = 0; i < this.args.length; ++i) {
-            if (this.args[i] instanceof Node) this.args[i].end();
-        }
+        var pos = this.pos;
+        this.end();
+        this.pos = pos;
     }
 }
 
@@ -620,6 +633,20 @@ function parseGoto(parser, expr_list)
         throw 'Syntax error: expected number';
     }
     return [line_number.payload];
+}
+
+function parseIf(parser, expr_list)
+// parse IF
+{
+    var condition = parser.parseExpression(expr_list);
+    var then = expr_list.shift()
+    if (then.token_type !== 'statement' || then.payload !== 'THEN') {
+        throw 'Syntax error: expected `THEN`';
+    }
+    // supply a : so the parser can continue as normal
+    expr_list.unshift(new tokenSeparator(':'));
+    // rest of line is being parsed as normal, but skipped on execution if condition is false
+    return [condition];
 }
 
 
@@ -921,6 +948,15 @@ function stReturn(state)
     }
     var target = state.sub_stack.pop();
     state.tree.jump(target);
+}
+
+function stIf(state, condition, statements)
+// IF .. THEN
+{
+    if (typeof condition !== 'number' && typeof condition !== 'boolean') {
+        throw 'Type mismatch: expected numerical expression';
+    }
+    if (!condition) state.tree.skip();
 }
 
 

@@ -142,7 +142,6 @@
                 '30000 REM BASICODE test program: ',
                 '30020 REM a program that tests REMs',
             ].join('\n')));
-            prog.tree.root = true;
             prog.tree.evaluate();
             iface.write('"'+prog.title+'"\n');
             iface.write(prog.description);
@@ -153,23 +152,26 @@
                 '1020 B=6: GOSUB 10000',
                 '1025 B=7: GOSUB 10000',
                 '1030 B=7: GOTO 950',
-                '10000 PRINT B',
+                '10000 PRINT B;',
                 '10010 RETURN',
-                '',
             ].join('\n')));
-            prog.tree.root = true;
             prog.tree.evaluate();
 
             prog = parser.parseProgram(tokenise([
-                '1000 A=2:REM test program 2',
-                '1010 B=1: GOTO 1030: B=600',
+                '1000 A=2:REM test program 3',
+                '1010 B=10: GOTO 1030: B=600',
                 '1020 B=1000',
                 '1030 PRINT B: GOTO 950',
-                '',
             ].join('\n')));
-            prog.tree.root = true;
             prog.tree.evaluate();
 
+            prog = parser.parseProgram(tokenise([
+                '1000 PRINT "if test":',
+                '1010 A=0: IF A THEN PRINT 1;',
+                '1020 PRINT 2;: IF NOT A THEN PRINT 3;',
+                '1030 PRINT 4: GOTO 950',
+            ].join('\n')));
+            prog.tree.evaluate();
 
             var expr_str = input;
             if (expr_str.length) {
