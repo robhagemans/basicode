@@ -87,7 +87,6 @@ function Variables()
         if (name in this.dims || name in this.vars) throw 'Duplicate definition';
         // BASICODE arrays may have at most two indices
         if (indices.length > 2) throw 'Subscript out of range: too many array dimensions';
-
         // set default to empty string if string name, 0 otherwise
         var default_value = defaultValue(name);
 
@@ -246,7 +245,7 @@ const KEYWORDS = {
     'CHR$': newFunctionToken('CHR$', String.fromCharCode),
     'COS': newFunctionToken('COS', Math.cos),
     'DATA': newStatementToken('DATA', parseData, function(){}),
-    'DIM': newStatementToken('DIM'),
+    'DIM': newStatementToken('DIM', parseRead, stDim),
     'EXP': newFunctionToken('EXP', Math.exp),
     'FOR': newStatementToken('FOR'),
     'GOSUB': newStatementToken('GOSUB'),
@@ -356,7 +355,6 @@ function Lexer(expr_string)
             mantissa = readInteger();
         }
         else {
-            console.log('nonum:' + char);
             --pos;
         }
         if (pos+1 < expr_string.length && expr_string[pos+1] === '.') {
@@ -380,7 +378,6 @@ function Lexer(expr_string)
                 }
             }
         }
-        console.log(sign + mantissa + '.' + decimal + 'e' + exponent);
         return parseFloat(sign + mantissa + '.' + decimal + 'e' + exponent);
     }
 
@@ -486,7 +483,7 @@ function parseLet(parser, expr_list)
     var equals = expr_list.shift().payload;
     if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
     var value = parser.parseExpression(expr_list);
-    return [value, name.payload, indices];
+    return [value, name.payload].concat(indices);
 }
 
 function parsePrint(parser, expr_list)
@@ -533,6 +530,11 @@ function parseData(parser, expr_list)
     return [];
 }
 
+
+// index list evaluation operation
+function evalIndex() { return [].slice.call(arguments); }
+
+
 function parseRead(parser, expr_list)
 // parse READ statement
 {
@@ -543,13 +545,16 @@ function parseRead(parser, expr_list)
             throw 'Syntax error: expected variable name, got `' + name.payload + '`';
         }
         var indices = parser.parseArguments(expr_list);
-        names.push([name.payload, indices])
+        names.push([name.payload, new Node(evalIndex, indices)])
         if (!expr_list.length) break;
         if (expr_list[0].payload !== ',') break;
         expr_list.shift();
     }
     return names;
 }
+
+// parse DIM statement
+//var parseDim = parseRead;
 
 
 function Parser(state)
@@ -736,10 +741,22 @@ function Parser(state)
 ///////////////////////////////////////////////////////////////////////////////
 // statements
 
-function stLet(state, value, name, indices)
+function stLet(state, value, name)
 // LET
 {
+    var indices = [].slice.call(arguments, 3);
     return state.variables.assign(value, name, indices);
+}
+
+function stDim(state)
+// DIM
+{
+    var vars = [].slice.call(arguments, 1);
+    for (var i=0; i < vars.length; ++i) {
+        var name = vars[i][0];
+        var indices = vars[i][1].evaluate();
+        state.variables.allocate(name, indices);
+    }
 }
 
 function stPrint(state)
@@ -776,7 +793,7 @@ function stRead(state)
     var vars = [].slice.call(arguments, 1);
     for (var i=0; i < vars.length; ++i) {
         var name = vars[i][0];
-        var indices = vars[i][1];
+        var indices = vars[i][1].evaluate();
         var value = state.data.read()
         state.variables.assign(value, name, indices);
     }
