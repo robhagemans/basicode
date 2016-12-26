@@ -278,7 +278,7 @@ const KEYWORDS = {
     'TAN': newFunctionToken('TAN', Math.tan),
     'THEN': newStatementToken('THEN'),
     'TO': newStatementToken('TO'),
-    'VAL': newFunctionToken('VAL'), //TODO
+    'VAL': newFunctionToken('VAL', function(x) { return new Lexer(x).readValue(); }),
 }
 
 // additional reserved words: AS, AT, FN, GR, IF, LN, PI, ST, TI, TI$
@@ -288,7 +288,7 @@ const KEYWORDS = {
 // lexer
 
 
-function tokenise(expr_string)
+function Lexer(expr_string)
 // convert expression string to list of tokens
 {
     var pos = 0;
@@ -303,8 +303,9 @@ function tokenise(expr_string)
         return (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z');
     }
 
-    function readString() {
-        // read a double-quoted string literal
+    function readString()
+    // read a double-quoted string literal
+    {
         var start_pos = pos;
         // skip start and closing quotes
         for (++pos; (pos < expr_string.length && expr_string[pos] !== '"'); ++pos);
@@ -314,8 +315,9 @@ function tokenise(expr_string)
         return expr_string.slice(start_pos+1, pos);
     }
 
-    function readInteger() {
-        // read an unsigned integer literal (i.e. a string of numbers)
+    function readInteger()
+    // read an unsigned integer literal (i.e. a string of numbers)
+    {
         var start_pos = pos;
         for (; pos < expr_string.length-1; ++pos){
             if (!isNumberChar(expr_string[pos+1])) break;
@@ -323,8 +325,9 @@ function tokenise(expr_string)
         return expr_string.slice(start_pos, pos+1);
     }
 
-    function readName() {
-        // read a name (variable or keyword)
+    function readName()
+    // read a name (variable or keyword)
+    {
         var start_pos = pos;
         for (; pos < expr_string.length-1; ++pos){
             // the name can end in at most one $
@@ -337,91 +340,113 @@ function tokenise(expr_string)
         return expr_string.slice(start_pos, pos+1).toUpperCase();
     }
 
-    var expr_list = [];
-    for (pos=0; pos < expr_string.length; ++pos) {
+    this.readValue = function()
+    {
+        // for VAL(), we should also accept a - here
+        var sign = '';
+        var mantissa = 0;
+        var decimal = 0;
+        var exponent = 0;
+        if (expr_string[pos] === '-') {
+            sign = '-';
+            ++pos;
+        }
         var char = expr_string[pos];
-        // deal with line breaks, CR, LF and CR LF all work
-        if (char === '\r') {
-            if (pos+1 < expr_string.length && expr_string[pos+1] === '\n') {
+        if (isNumberChar(char)) {
+            mantissa = readInteger();
+        }
+        else {
+            console.log('nonum:' + char);
+            --pos;
+        }
+        if (pos+1 < expr_string.length && expr_string[pos+1] === '.') {
+            ++pos;
+            if (pos+1 < expr_string.length && isNumberChar(expr_string[pos+1])) {
                 ++pos;
+                decimal = readInteger();
             }
-            char = '\n';
         }
-        if (char in SYMBOLS) {
-            var operator = char;
-            // two-symbol operators all start with lt or gt
-            if (char == '<' || char == '>') {
-                if (pos+1 < expr_string.length) {
-                    var char2 = expr_string[pos+1];
-                    if (char2 == '<' || char2 == '>' || char2 == '=') {
-                        operator += char2;
-                        ++pos;
-                    }
-                }
-            }
-            expr_list.push(SYMBOLS[operator]());
-        }
-        else if (char === '(' || char === ')' ||
-                    char === ',' || char === ';' ||
-                    char === ':' || char === '\n') {
-            expr_list.push(new tokenSeparator(char));
-        }
-        // double quotes, starts a string
-        else if (char === '"') {
-            expr_list.push(new tokenLiteral(readString()));
-        }
-        // numeric character, starts a number literal
-        // for VAL(), we should also accept a - here later
-        else if (isNumberChar(char) || char === '.') {
-            var mantissa = 0;
-            var decimal = 0;
-            var exponent = 0;
-            if (isNumberChar(char)) {
-                mantissa = readInteger();
-            }
-            else {
-                --pos;
-            }
-            if (pos+1 < expr_string.length && expr_string[pos+1] === '.') {
+        if (pos+1 < expr_string.length && (expr_string[pos+1] === 'E' || expr_string[pos+1] === 'e')) {
+            ++pos;
+            if (pos+1 < expr_string.length &&
+                    (isNumberChar(expr_string[pos+1]) || expr_string[pos+1] === '-' || expr_string[pos+1] === '+')) {
                 ++pos;
-                if (pos+1 < expr_string.length && isNumberChar(expr_string[pos+1])) {
+                if (expr_string[pos+1] === '-' || expr_string[pos+1] === '+') {
                     ++pos;
-                    decimal = readInteger();
+                    exponent = expr_string[pos+1] + readInteger();
+                }
+                else {
+                    exponent = readInteger();
                 }
             }
-            if (pos+1 < expr_string.length && (expr_string[pos+1] === 'E' || expr_string[pos+1] === 'e')) {
-                ++pos;
-                if (pos+1 < expr_string.length && (isNumberChar(expr_string[pos+1]) || expr_string[pos+1] === '-')) {
-                    ++pos;
-                    if (expr_string[pos+1] === '-') {
-                        ++pos;
-                        exponent = '-' + readInteger();
-                    }
-                    else {
-                        exponent = readInteger();
-                    }
-                }
-            }
-            expr_list.push(new tokenLiteral(
-                parseFloat(mantissa + '.' + decimal + 'e' + exponent)));
         }
-        else if (isAlphaChar(char)) {
-            var name = readName();
-            if (name in KEYWORDS) {
-                // call function that calls new on a constructor
-                expr_list.push(KEYWORDS[name]());
-            }
-            else {
-                expr_list.push(new tokenName(name));
-            }
-        }
-        else if (char !== ' ') {
-            throw 'Syntax error: unexpected symbol `'+ char + '`';
-        }
+        console.log(sign + mantissa + '.' + decimal + 'e' + exponent);
+        return parseFloat(sign + mantissa + '.' + decimal + 'e' + exponent);
     }
-    return expr_list;
+
+    this.tokenise = function()
+    {
+        var expr_list = [];
+        for (pos=0; pos < expr_string.length; ++pos) {
+            var char = expr_string[pos];
+            // deal with line breaks, CR, LF and CR LF all work
+            if (char === '\r') {
+                if (pos+1 < expr_string.length && expr_string[pos+1] === '\n') {
+                    ++pos;
+                }
+                char = '\n';
+            }
+            if (char in SYMBOLS) {
+                var operator = char;
+                // two-symbol operators all start with lt or gt
+                if (char == '<' || char == '>') {
+                    if (pos+1 < expr_string.length) {
+                        var char2 = expr_string[pos+1];
+                        if (char2 == '<' || char2 == '>' || char2 == '=') {
+                            operator += char2;
+                            ++pos;
+                        }
+                    }
+                }
+                expr_list.push(SYMBOLS[operator]());
+            }
+            else if (char === '(' || char === ')' ||
+                        char === ',' || char === ';' ||
+                        char === ':' || char === '\n') {
+                expr_list.push(new tokenSeparator(char));
+            }
+            // double quotes, starts a string
+            else if (char === '"') {
+                expr_list.push(new tokenLiteral(readString()));
+            }
+            // numeric character, starts a number literal
+            else if (isNumberChar(char) || char === '.') {
+                expr_list.push(new tokenLiteral(this.readValue()));
+            }
+            else if (isAlphaChar(char)) {
+                var name = readName();
+                if (name in KEYWORDS) {
+                    // call function that calls new on a constructor
+                    expr_list.push(KEYWORDS[name]());
+                }
+                else {
+                    expr_list.push(new tokenName(name));
+                }
+            }
+            else if (char !== ' ') {
+                throw 'Syntax error: unexpected symbol `'+ char + '`';
+            }
+        }
+        return expr_list;
+    }
 }
 
+
+function tokenise(expr_string)
+// convenience function
+{
+    return new Lexer(expr_string).tokenise()
+}
 
 //////////////////////////////////////////////////////////////////////
 // AST

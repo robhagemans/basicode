@@ -115,6 +115,8 @@
             iface.write((parser.parseExpression(tokenise('((1=1)) AND (1=0)')).evaluate() == false) + ' ');
             iface.write((parser.parseExpression(tokenise('NOT 0')).evaluate() == true) + ' ');
             iface.write((parser.parseExpression(tokenise('cos(0)')).evaluate() == 1) + ' ');
+            iface.write((parser.parseExpression(tokenise('val("1e+2")')).evaluate() == 100) + ' ');
+            iface.write((parser.parseExpression(tokenise('val("1e-2")')).evaluate() == 0.01) + ' ');
 
             // statement tests
             parser.parseLine(tokenise('LET D=1:LET E=2\n')).evaluate();
