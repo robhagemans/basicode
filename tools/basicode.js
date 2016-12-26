@@ -334,6 +334,10 @@ function Lexer(expr_string)
                 ++pos;
                 break;
             }
+            if (expr_string.slice(start_pos, pos+1).toUpperCase() in KEYWORDS) {
+                // names can not start with a keyword
+                break;
+            }
             if (!isAlphaChar(expr_string[pos+1]) && !isNumberChar(expr_string[pos+1])) break;
         }
         return expr_string.slice(start_pos, pos+1).toUpperCase();

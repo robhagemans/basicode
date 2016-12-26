@@ -126,9 +126,9 @@
             parser.parseLine(tokenise('PRINT "print test: ";D;:print E-3;F:print f\n')).evaluate();
             parser.parseLine(tokenise('PRINT "TAB test: ";1;TAB(20);2;\n')).evaluate();
             // we're allowing empty lines; not necessary
-            var prog = parser.parseProgram(tokenise('1010 READ G,H,I, J\n1020 PRINT J\n 1030 :RESTORE: READ J: PRINT J\n 1035\n 1040 DATA 67,68,69,70\n1050 :\n1060 PRINT "program done"'))
+            var prog = parser.parseProgram(tokenise('1010 READG,H,I, J\n1020 PRINTJ\n 1030 :RESTORE: READ J: PRINT J\n 1035\n 1040 DATA67,68,69,70\n1050 :\n1060 PRINT"program done"'))
             prog.tree.evaluate();
-            prog = parser.parseProgram(tokenise('1010 DIM Z(10)\n1020 LET Z(9)=9\n1030 PRINT Z(9)\n'))
+            prog = parser.parseProgram(tokenise('1010 DIMZ(10)\n1020 LET Z(9)=9\n1030 PRINT Z(9)\n'))
             prog.tree.evaluate();
 
             //TODO spacing
