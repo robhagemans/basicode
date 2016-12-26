@@ -700,21 +700,21 @@
     <script>
         "use strict";
 
-        var app = new App(
-            document.getElementById("output"),
-            document.getElementById("input"));
-
-        var data = new Data();
-        var vars = new Variables();
-
-        var state = {};
-        state.variables = vars;
-        state.output = app;
-
-        var parser = new Parser(state);
-
-
         document.getElementById("get_output").onclick = function () {
+            // setup
+            var app = new App(
+                document.getElementById("output"),
+                document.getElementById("input"));
+
+            var data = new Data();
+            var vars = new Variables();
+
+            var state = {};
+            state.variables = vars;
+            state.output = app;
+
+            var parser = new Parser(state);
+
             // screen + input test
             var input = app.read();
             app.clear();
@@ -767,13 +767,14 @@
             app.write((parser.parseExpression(tokenise('((1=1)) OR (1=0)')).evaluate() == true) + '\n');
             app.write((parser.parseExpression(tokenise('((1=1)) AND (1=0)')).evaluate() == false) + '\n');
             app.write((parser.parseExpression(tokenise('NOT 0')).evaluate() == true) + '\n');
+            app.write((parser.parseExpression(tokenise('cos(0)')).evaluate() == 1) + '\n');
 
             // statement tests
             parser.parseLine(tokenise('10 LET D=1:LET E=2\n')).evaluate();
             app.write((parser.parseExpression(tokenise('E')).evaluate() == 2) + '\n');
             parser.parseLine(tokenise('20 LET F=D+E\n')).evaluate();
             app.write((parser.parseExpression(tokenise('F')).evaluate() == 3) + '\n');
-            parser.parseLine(tokenise('30 PRINT "print test: ";D;E;F:PRINT F\n')).evaluate();
+            parser.parseLine(tokenise('30 PRINT "print test: ";D;:print E;F:print f\n')).evaluate();
 
             var expr_str = input;
             if (expr_str.length) {
