@@ -54,25 +54,19 @@
 
         document.getElementById("get_output").onclick = function () {
             // setup
-            var app = new App(
-                document.getElementById("output"),
-                document.getElementById("input"));
-
-            var data = new Data();
-            var vars = new Variables();
-
-            var state = {};
-            state.variables = vars;
-            state.output = app;
-
-            var parser = new Parser(state);
+            var app = new BasicodeApp();
+            var iface = app.iface;
+            var state = app.state;
+            var data = state.data;
+            var vars = state.variables;
+            var parser = state.parser;
 
             // screen + input test
-            var input = app.read();
-            app.clear();
-            app.write('you typed: ' + input + '\n');
-            app.write('We can write <br>\n');
-            app.write('We can write \\\n\n');
+            var input = iface.read();
+            iface.clear();
+            iface.write('you typed: ' + input + '\n');
+            iface.write('We can write <br>\n');
+            iface.write('We can write \\\n\n');
 
             // variable test
             vars.assign(10, 'A$', []);
@@ -82,19 +76,19 @@
             vars.allocate('C', [100,100]);
             vars.assign(12, 'C', [1,100]);
             //TODO: implement type mismatch checks
-            app.write((vars.retrieve('A$', []) === 11) + '\n');
-            app.write((vars.retrieve('B$', [1]) === 12) + '\n');
-            app.write((vars.retrieve('C', [1, 100]) === 12) + '\n');
-            app.write((vars.retrieve('C', [1, 99]) === 0) + '\n');
+            iface.write((vars.retrieve('A$', []) === 11) + '\n');
+            iface.write((vars.retrieve('B$', [1]) === 12) + '\n');
+            iface.write((vars.retrieve('C', [1, 100]) === 12) + '\n');
+            iface.write((vars.retrieve('C', [1, 99]) === 0) + '\n');
 
             // data reader test
             data.data([1,2,3,4,5]);
-            app.write(((data.read() == 1) && (data.read() == 2)) + '\n');
+            iface.write(((data.read() == 1) && (data.read() == 2)) + '\n');
 
             // evaluate test
             var node = new Node(function(a, b) { return a+b; }, [1, 5]);
             var node2 = new Node(function(a, b) { return a*b; }, [node, 5]);
-            app.write((node2.evaluate() == 30) + '\n');
+            iface.write((node2.evaluate() == 30) + '\n');
 
             // expression parser test
             var expr_list = [
@@ -105,27 +99,27 @@
                 SYMBOLS['/'](), new tokenLiteral(5),
             ];
             var ast = parser.parseExpression(expr_list);
-            app.write((ast.evaluate() == 2.2) + '\n');
+            iface.write((ast.evaluate() == 2.2) + '\n');
 
             // lexer tests
-            app.write((parser.parseExpression(tokenise('1-2')).evaluate() == -1) + '\n');
-            app.write((parser.parseExpression(tokenise('-1')).evaluate() == -1) + '\n');
-            app.write((parser.parseExpression(tokenise('.5')).evaluate() == 0.5) + '\n');
-            app.write((parser.parseExpression(tokenise('-.5')).evaluate() == -0.5) + '\n');
-            app.write((parser.parseExpression(tokenise('1.2e2')).evaluate() == 120) + '\n');
-            app.write((parser.parseExpression(tokenise('1.2e-2')).evaluate() == 0.012) + '\n');
+            iface.write((parser.parseExpression(tokenise('1-2')).evaluate() == -1) + '\n');
+            iface.write((parser.parseExpression(tokenise('-1')).evaluate() == -1) + '\n');
+            iface.write((parser.parseExpression(tokenise('.5')).evaluate() == 0.5) + '\n');
+            iface.write((parser.parseExpression(tokenise('-.5')).evaluate() == -0.5) + '\n');
+            iface.write((parser.parseExpression(tokenise('1.2e2')).evaluate() == 120) + '\n');
+            iface.write((parser.parseExpression(tokenise('1.2e-2')).evaluate() == 0.012) + '\n');
 
             // expression lexer+parser tests
-            app.write((parser.parseExpression(tokenise('((1=1)) OR (1=0)')).evaluate() == true) + '\n');
-            app.write((parser.parseExpression(tokenise('((1=1)) AND (1=0)')).evaluate() == false) + '\n');
-            app.write((parser.parseExpression(tokenise('NOT 0')).evaluate() == true) + '\n');
-            app.write((parser.parseExpression(tokenise('cos(0)')).evaluate() == 1) + '\n');
+            iface.write((parser.parseExpression(tokenise('((1=1)) OR (1=0)')).evaluate() == true) + '\n');
+            iface.write((parser.parseExpression(tokenise('((1=1)) AND (1=0)')).evaluate() == false) + '\n');
+            iface.write((parser.parseExpression(tokenise('NOT 0')).evaluate() == true) + '\n');
+            iface.write((parser.parseExpression(tokenise('cos(0)')).evaluate() == 1) + '\n');
 
             // statement tests
             parser.parseLine(tokenise('10 LET D=1:LET E=2\n')).evaluate();
-            app.write((parser.parseExpression(tokenise('E')).evaluate() == 2) + '\n');
+            iface.write((parser.parseExpression(tokenise('E')).evaluate() == 2) + '\n');
             parser.parseLine(tokenise('20 LET F=D+E\n')).evaluate();
-            app.write((parser.parseExpression(tokenise('F')).evaluate() == 3) + '\n');
+            iface.write((parser.parseExpression(tokenise('F')).evaluate() == 3) + '\n');
             parser.parseLine(tokenise('30 PRINT "print test: ";D;:print E;F:print f\n')).evaluate();
 
             var expr_str = input;
@@ -142,10 +136,10 @@
                     rem += expr_list[i].payload;
                 console.log(rem);
 
-                app.write('evaluate ' + expr_str + ' = ' + ast.evaluate() + '\n');
+                iface.write('evaluate ' + expr_str + ' = ' + ast.evaluate() + '\n');
             }
 
-            app.write('done');
+            iface.write('done');
         };
     </script>
 </body>

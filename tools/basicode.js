@@ -232,40 +232,6 @@ const SYMBOLS = {
     '<>': newOperatorToken('<>', 2, 7, function opNotEqual(x, y) { return (x !== y); }),
 }
 
-function parseLet(parser, expr_list)
-// parse LET statement
-{
-    var name = expr_list.shift();
-    var indices = parser.parseArguments(expr_list);
-    var equals = expr_list.shift().payload;
-    if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
-    var value = parser.parseExpression(expr_list);
-    return [value, name.payload, indices];
-}
-
-function parsePrint(parser, expr_list)
-// parse PRINT statement
-{
-    var exprs = [];
-    var last = null;
-    while (expr_list.length > 0) {
-        var expr = parser.parseExpression(expr_list);
-        if (expr !== null) {
-            exprs.push(expr);
-            last = expr;
-        }
-        if (!expr_list.length) break;
-        if (expr_list[0].payload !== ';') break;
-        last = ';';
-        expr_list.shift();
-    }
-    if (last !== ';') {
-        exprs.push(new Node(function(){ return '\n'; }, []));
-    }
-    return exprs;
-}
-
-
 const KEYWORDS = {
     'ABS': newFunctionToken('ABS', Math.abs),
     'AND': newOperatorToken('AND', 2, 5, function opAnd(x, y) { return (x && y); }),
@@ -455,10 +421,9 @@ function tokenise(expr_string)
     return expr_list;
 }
 
+
 //////////////////////////////////////////////////////////////////////
-// parser
-
-
+// AST
 
 function Node(func, node_args)
 {
@@ -478,6 +443,45 @@ function Node(func, node_args)
         return this.func.apply(this, args);
     };
 }
+
+
+//////////////////////////////////////////////////////////////////////
+// parser
+
+
+function parseLet(parser, expr_list)
+// parse LET statement
+{
+    var name = expr_list.shift();
+    var indices = parser.parseArguments(expr_list);
+    var equals = expr_list.shift().payload;
+    if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
+    var value = parser.parseExpression(expr_list);
+    return [value, name.payload, indices];
+}
+
+function parsePrint(parser, expr_list)
+// parse PRINT statement
+{
+    var exprs = [];
+    var last = null;
+    while (expr_list.length > 0) {
+        var expr = parser.parseExpression(expr_list);
+        if (expr !== null) {
+            exprs.push(expr);
+            last = expr;
+        }
+        if (!expr_list.length) break;
+        if (expr_list[0].payload !== ';') break;
+        last = ';';
+        expr_list.shift();
+    }
+    if (last !== ';') {
+        exprs.push(new Node(function(){ return '\n'; }, []));
+    }
+    return exprs;
+}
+
 
 function Parser(state)
 {
@@ -633,7 +637,8 @@ function Parser(state)
 
 };
 
-function App(output_element, input_element)
+
+function Interface(output_element, input_element)
 {
 
     this.clear = function() {
@@ -648,4 +653,21 @@ function App(output_element, input_element)
     this.read = function() {
         return input_element.value;
     }
+}
+
+
+function BasicodeApp()
+{
+    // interface setup
+    this.iface = new Interface(
+        document.getElementById("output"),
+        document.getElementById("input"));
+
+    // interpreter setup
+    this.state = {
+        'data': new Data(),
+        'variables': new Variables(),
+        'output': this.iface,
+    }
+    this.state.parser = new Parser(this.state);
 }
