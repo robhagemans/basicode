@@ -696,9 +696,18 @@ function stPrint(state)
 // PRINT
 {
     var values = [].slice.call(arguments, 1);
-    //TODO: TAB, space before number/number tostring in general
+    //TODO: TAB
     for (var i=0; i < values.length; ++i) {
-        state.output.write(values[i]);
+        if (typeof values[i] === 'string') {
+            state.output.write(values[i]);
+        }
+        else if (values[i] < 0) {
+            state.output.write(values[i].toString(10) + ' ');
+        }
+        else {
+            state.output.write(' ' + values[i].toString(10) + ' ');
+        }
+
     }
 }
 

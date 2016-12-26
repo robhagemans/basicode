@@ -121,7 +121,7 @@
             iface.write((parser.parseExpression(tokenise('E')).evaluate() == 2) + ' ');
             parser.parseLine(tokenise('20 LET F=D+E\n')).evaluate();
             iface.write((parser.parseExpression(tokenise('F')).evaluate() == 3) + '\n');
-            parser.parseLine(tokenise('30 PRINT "print test: ";D;:print E;F:print f\n')).evaluate();
+            parser.parseLine(tokenise('30 PRINT "print test: ";D;:print E-3;F:print f\n')).evaluate();
 
             parser.parseLine(tokenise('40 READ G,H,I,J: PRINT J: RESTORE: READ J: PRINT J: DATA 67,68,69,70')).evaluate();
 
