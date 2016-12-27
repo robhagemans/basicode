@@ -726,7 +726,9 @@ function Parser(iface)
             this.current_line = line_number.payload;
             // keep track of line numbers
             this.line_numbers[this.current_line] = lines.length;
-            lines.push(this.parseLine(basicode));
+            // keep tree flat: no branches for lines
+            var statements = this.parseLine(basicode).args;
+            lines = lines.concat(statements);
         }
         state.tree = new Node(function(){}, lines);
         state.title = this.title;
@@ -1208,6 +1210,5 @@ function BasicodeApp()
 // - FOR .. NEXT within and across lines
 
 // some potential optimisations, if needed:
-// - leave empty statements (REM, DATA) out of AST
 // - simplify leaf nodes to { return payload } to avoid type test on each Node
 // - pre-calculate jump targets (second pass of parser?)
