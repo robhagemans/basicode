@@ -199,12 +199,11 @@ function newFunctionToken(keyword, operation) {
         }() );
     } );
 }
-function newStatementToken(keyword, parseStatement, operation) {
+function newStatementToken(keyword, operation) {
     return (function() {
         return (new function tokenStatement() {
             this.token_type = 'statement';
             this.payload = keyword;
-            this.parseStatement = parseStatement;
             this.operation = operation;
         }() );
     } );
@@ -245,29 +244,29 @@ const KEYWORDS = {
     'ATN': newFunctionToken('ATN', Math.atan),
     'CHR$': newFunctionToken('CHR$', String.fromCharCode),
     'COS': newFunctionToken('COS', Math.cos),
-    'DATA': newStatementToken('DATA', parseData, function(){}),
-    'DIM': newStatementToken('DIM', parseRead, stDim),
+    'DATA': newStatementToken('DATA', function(){}),
+    'DIM': newStatementToken('DIM', stDim),
     'EXP': newFunctionToken('EXP', Math.exp),
-    'FOR': newStatementToken('FOR', parseFor, stFor),
-    'GOSUB': newStatementToken('GOSUB', parseGoto, stGosub),
-    'GOTO': newStatementToken('GOTO', parseGoto, stGoto),
-    'IF': newStatementToken('IF', parseIf, stIf),
-    'INPUT': newStatementToken('INPUT', parseInput, stInput),
+    'FOR': newStatementToken('FOR', stFor),
+    'GOSUB': newStatementToken('GOSUB', stGosub),
+    'GOTO': newStatementToken('GOTO', stGoto),
+    'IF': newStatementToken('IF', stIf),
+    'INPUT': newStatementToken('INPUT', stInput),
     'INT': newFunctionToken('INT', Math.trunc),
     'LEFT$': newFunctionToken('LEFT$', function fnLeft(x, n) { return x.slice(0, n); }),
     'LEN': newFunctionToken('LEN', function fnLen(x, n) { return x.length; }),
-    'LET': newStatementToken('LET', parseLet, stLet),
+    'LET': newStatementToken('LET', stLet),
     'LOG': newFunctionToken('LOG', Math.log),
     'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start, n); }),
-    'NEXT': newStatementToken('NEXT', parseNext, stNext),
+    'NEXT': newStatementToken('NEXT', stNext),
     'NOT': newOperatorToken('NOT', 1, 6, function opNot(x) { return (!x); }),
-    'ON': newStatementToken('ON', parseOn, stOn),
+    'ON': newStatementToken('ON', stOn),
     'OR': newOperatorToken('OR', 2, 4, function opOr(x, y) { return (x || y); }),
-    'PRINT': newStatementToken('PRINT', parsePrint, stPrint),
-    'READ': newStatementToken('READ', parseRead, stRead),
-    'REM': newStatementToken('REM', parseRem, function(){}),
-    'RESTORE': newStatementToken('RESTORE', function(){ return []; }, stRestore),
-    'RETURN': newStatementToken('RETURN', function(){ return []; }, stReturn),
+    'PRINT': newStatementToken('PRINT', stPrint),
+    'READ': newStatementToken('READ', stRead),
+    'REM': newStatementToken('REM', function(){}),
+    'RESTORE': newStatementToken('RESTORE', stRestore),
+    'RETURN': newStatementToken('RETURN', stReturn),
     'RIGHT$': newFunctionToken('RIGHT$', function fnRight(x, n) { return x.slice(-n); }),
     'SGN': newFunctionToken('SGN', Math.sign),
     'SIN': newFunctionToken('SIN', Math.sin),
@@ -278,9 +277,9 @@ const KEYWORDS = {
     'TAB': newFunctionToken('TAB', function(x) { return { 'tab': x }; }),
     'TAN': newFunctionToken('TAN', Math.tan),
     'VAL': newFunctionToken('VAL', function(x) { return new Lexer(x).readValue(); }),
-    'THEN': newStatementToken('THEN'),
-    'STEP': newStatementToken('STEP'),
-    'TO': newStatementToken('TO'),
+    'THEN': newStatementToken('THEN', function() { throw 'Syntax error'; }),
+    'STEP': newStatementToken('STEP', function() { throw 'Syntax error'; }),
+    'TO': newStatementToken('TO', function() { throw 'Syntax error'; }),
 }
 
 // THEN, STEP, TO are reserved words but not independent statements
@@ -519,215 +518,26 @@ function Node(func, node_args)
     }
 }
 
+function Conditional(func, condition, node)
+{
+    this.condition = condition;
+    this.node = node;
+
+    this.evaluate = function()
+    {
+        if (this.condition.evaluate()) this.node.evaluate();
+    };
+
+    this.end = function()
+    {
+        this.node.end();
+    }
+}
 
 
 //////////////////////////////////////////////////////////////////////
 // parser
 
-
-function parseLet(parser, expr_list)
-// parse LET statement
-{
-    var name = expr_list.shift();
-    if (name.token_type != 'name') {
-        throw 'Syntax error: expected variable name, got `' + name.payload + '`';
-    }
-    var indices = parser.parseArguments(expr_list);
-    var equals = expr_list.shift().payload;
-    if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
-    var value = parser.parseExpression(expr_list);
-    return [value, name.payload].concat(indices);
-}
-
-function parsePrint(parser, expr_list)
-// parse PRINT statement
-{
-    var exprs = [];
-    var last = null;
-    while (expr_list.length > 0) {
-        var expr = parser.parseExpression(expr_list);
-        if (expr !== null) {
-            exprs.push(expr);
-            last = expr;
-        }
-        if (!expr_list.length) break;
-        if (expr_list[0].payload !== ';') break;
-        last = ';';
-        expr_list.shift();
-    }
-    if (last !== ';') {
-        exprs.push(new Node(function(){ return '\n'; }, []));
-    }
-    return exprs;
-}
-
-function parseData(parser, expr_list)
-// parse DATA statement
-{
-    var values = []
-    while (expr_list.length > 0) {
-        var value = expr_list.shift();
-        // only literals allowed in DATA
-        // we're not allowing empty DATA statements or repeated commas
-        if (value === null || value.token_type != 'literal') {
-            throw 'Syntax error: expected string or number literal';
-        }
-        values.push(value.payload);
-        // parse separator (,)
-        if (!expr_list.length) break;
-        if (expr_list[0].payload !== ',') break;
-        expr_list.shift();
-    }
-    // data is stored immediately upon parsing, DATA is then a no-op statement
-    parser.data.store(values);
-    return [];
-}
-
-
-function parseRead(parser, expr_list)
-// parse READ or DIM statement
-{
-    // index list evaluation operation
-    function evalIndex() { return [].slice.call(arguments); }
-
-    var names = [];
-    while (expr_list.length > 0) {
-        var name = expr_list.shift();
-        if (name.token_type != 'name') {
-            throw 'Syntax error: expected variable name, got `' + name.payload + '`';
-        }
-        var indices = parser.parseArguments(expr_list);
-        names.push([name.payload, new Node(evalIndex, indices)])
-        if (!expr_list.length) break;
-        if (expr_list[0].payload !== ',') break;
-        expr_list.shift();
-    }
-    return names;
-}
-
-function parseRem(parser, expr_list)
-// parse REM
-{
-    var rem = expr_list.shift();
-    if (rem.token_type !== 'literal') {
-        throw 'Syntax error: expected literal';
-    }
-    // BASICODE standard: title in REM on line 1000
-    // description and copyrights in REMS on lines 30000 onwards
-    if (parser.current_line === 1000) {
-        parser.title = rem.payload;
-    }
-    else if (parser.current_line >= 30000) {
-        parser.description += rem.payload + '\n';
-    }
-    return [];
-}
-
-function parseGoto(parser, expr_list)
-// parse GOTO
-{
-    var line_number = expr_list.shift();
-    if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
-        throw 'Syntax error: expected line number';
-    }
-    return [line_number.payload];
-}
-
-function parseIf(parser, expr_list)
-// parse IF
-{
-    var condition = parser.parseExpression(expr_list);
-    var then = expr_list.shift()
-    if (then.token_type !== 'statement' || then.payload !== 'THEN') {
-        throw 'Syntax error: expected `THEN`';
-    }
-    // supply a GOTO if jump target given after THEN
-    var jump = expr_list[0]
-    if (jump.token_type === 'literal') {
-        expr_list.unshift(KEYWORDS['GOTO']());
-    }
-    // supply a : so the parser can continue as normal
-    expr_list.unshift(new tokenSeparator(':'));
-    // rest of line is being parsed as normal, but skipped on execution if condition is false
-    return [condition];
-}
-
-function parseOn(parser, expr_list)
-// parse ON jumps
-{
-    var condition = parser.parseExpression(expr_list);
-    var jump = expr_list.shift();
-    if (jump.token_type !== 'statement' || (jump.payload !== 'GOTO' && jump.payload !== 'GOSUB')) {
-        throw 'Syntax error: expected `GOTO` or `GOSUB`';
-    }
-    var args = [condition, jump.operation]
-    while (expr_list.length) {
-        var line_number = expr_list.shift();
-        if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
-            throw 'Syntax error: expected line number';
-        }
-        args.push(line_number.payload);
-        var sep = expr_list.shift();
-        if (sep.token_type !== ',') {
-            expr_list.unshift(sep);
-            break;
-        }
-    }
-    return args;
-}
-
-function parseFor(parser, expr_list)
-// parse FOR
-{
-    var loop_variable = expr_list.shift();
-    if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
-        throw 'Syntax error: expected numerical variable name';
-    }
-    var equals = expr_list.shift();
-    if (equals.token_type !== 'operator' || equals.payload !== '=') {
-        throw 'Syntax error: expected `=`, got `'+equals.payload+'`';
-    }
-    var start = parser.parseExpression(expr_list);
-    var to = expr_list.shift();
-    if (to.token_type !== 'statement' || to.payload !== 'TO') {
-        throw 'Syntax error: expected `TO`, got `'+to+'`';
-    }
-    var stop = parser.parseExpression(expr_list);
-    var step = expr_list.shift();
-    if (step.token_type !== 'statement' || step.payload !== 'STEP') {
-        expr_list.unshift(step);
-        step = 1;
-    }
-    else {
-        step = parser.parseExpression(expr_list);
-    }
-    // return payload: do not retrieve the variable, just get its name
-    return [loop_variable.payload, start, stop, step];
-}
-
-function parseNext(parser, expr_list)
-// parse NEXT
-{
-    // variable is mandatory; only one variable allowed
-    var loop_variable = expr_list.shift();
-    if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
-        throw 'Syntax error: expected numerical variable name, got `' + loop_variable.payload + '`';
-    }
-    // return payload: do not retrieve the variable, just get its name
-    return [loop_variable.payload];
-}
-
-function parseInput(parser, expr_list)
-// parse INPUT
-{
-    var name = expr_list.shift();
-    if (name.token_type != 'name') {
-        throw 'Syntax error: expected variable name, got `' + name.payload + '`';
-    }
-    var indices = parser.parseArguments(expr_list);
-    // return payload: do not retrieve the variable, just get its name
-    return [name.payload].concat(indices);
-}
 
 
 function Parser(iface)
@@ -885,7 +695,8 @@ function Parser(iface)
                 token = KEYWORDS['LET']();
             }
             // parse arguments in statement-specific way
-            var args = token.parseStatement(this, basicode);
+            console.log(token.payload);
+            var args = PARSERS[token.payload](this, basicode);
             // statement must have access to interpreter state, so state is first argument
             args.unshift(state);
             statements.push(new Node(token.operation, args));
@@ -929,6 +740,230 @@ function Parser(iface)
         state.sub_stack = [];
         state.for_stack = [];
         return state;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // statement syntax
+
+    function parseLet(parser, expr_list)
+    // parse LET statement
+    {
+        var name = expr_list.shift();
+        if (name.token_type != 'name') {
+            throw 'Syntax error: expected variable name, got `' + name.payload + '`';
+        }
+        var indices = parser.parseArguments(expr_list);
+        var equals = expr_list.shift().payload;
+        if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
+        var value = parser.parseExpression(expr_list);
+        return [value, name.payload].concat(indices);
+    }
+
+    function parsePrint(parser, expr_list)
+    // parse PRINT statement
+    {
+        var exprs = [];
+        var last = null;
+        while (expr_list.length > 0) {
+            var expr = parser.parseExpression(expr_list);
+            if (expr !== null) {
+                exprs.push(expr);
+                last = expr;
+            }
+            if (!expr_list.length) break;
+            if (expr_list[0].payload !== ';') break;
+            last = ';';
+            expr_list.shift();
+        }
+        if (last !== ';') {
+            exprs.push(new Node(function(){ return '\n'; }, []));
+        }
+        return exprs;
+    }
+
+    function parseData(parser, expr_list)
+    // parse DATA statement
+    {
+        var values = []
+        while (expr_list.length > 0) {
+            var value = expr_list.shift();
+            // only literals allowed in DATA
+            // we're not allowing empty DATA statements or repeated commas
+            if (value === null || value.token_type != 'literal') {
+                throw 'Syntax error: expected string or number literal';
+            }
+            values.push(value.payload);
+            // parse separator (,)
+            if (!expr_list.length) break;
+            if (expr_list[0].payload !== ',') break;
+            expr_list.shift();
+        }
+        // data is stored immediately upon parsing, DATA is then a no-op statement
+        parser.data.store(values);
+        return [];
+    }
+
+    function parseRead(parser, expr_list)
+    // parse READ or DIM statement
+    {
+        // index list evaluation operation
+        function evalIndex() { return [].slice.call(arguments); }
+
+        var names = [];
+        while (expr_list.length > 0) {
+            var name = expr_list.shift();
+            if (name.token_type != 'name') {
+                throw 'Syntax error: expected variable name, got `' + name.payload + '`';
+            }
+            var indices = parser.parseArguments(expr_list);
+            names.push([name.payload, new Node(evalIndex, indices)])
+            if (!expr_list.length) break;
+            if (expr_list[0].payload !== ',') break;
+            expr_list.shift();
+        }
+        return names;
+    }
+
+    function parseRem(parser, expr_list)
+    // parse REM
+    {
+        var rem = expr_list.shift();
+        if (rem.token_type !== 'literal') {
+            throw 'Syntax error: expected literal';
+        }
+        // BASICODE standard: title in REM on line 1000
+        // description and copyrights in REMS on lines 30000 onwards
+        if (parser.current_line === 1000) {
+            parser.title = rem.payload;
+        }
+        else if (parser.current_line >= 30000) {
+            parser.description += rem.payload + '\n';
+        }
+        return [];
+    }
+
+    function parseGoto(parser, expr_list)
+    // parse GOTO or GOSUB
+    {
+        var line_number = expr_list.shift();
+        if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
+            throw 'Syntax error: expected line number';
+        }
+        return [line_number.payload];
+    }
+
+    function parseIf(parser, expr_list)
+    // parse IF
+    {
+        var condition = parser.parseExpression(expr_list);
+        var then = expr_list.shift()
+        if (then.token_type !== 'statement' || then.payload !== 'THEN') {
+            throw 'Syntax error: expected `THEN`';
+        }
+        // supply a GOTO if jump target given after THEN
+        var jump = expr_list[0]
+        if (jump.token_type === 'literal') {
+            expr_list.unshift(KEYWORDS['GOTO']());
+        }
+        // supply a : so the parser can continue as normal
+        expr_list.unshift(new tokenSeparator(':'));
+        // rest of line is being parsed as normal, but skipped on execution if condition is false
+        return [condition];
+    }
+
+    function parseOn(parser, expr_list)
+    // parse ON jumps
+    {
+        var condition = parser.parseExpression(expr_list);
+        var jump = expr_list.shift();
+        if (jump.token_type !== 'statement' || (jump.payload !== 'GOTO' && jump.payload !== 'GOSUB')) {
+            throw 'Syntax error: expected `GOTO` or `GOSUB`';
+        }
+        var args = [condition, jump.operation]
+        while (expr_list.length) {
+            var line_number = expr_list.shift();
+            if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
+                throw 'Syntax error: expected line number';
+            }
+            args.push(line_number.payload);
+            var sep = expr_list.shift();
+            if (sep.token_type !== ',') {
+                expr_list.unshift(sep);
+                break;
+            }
+        }
+        return args;
+    }
+
+    function parseFor(parser, expr_list)
+    // parse FOR
+    {
+        var loop_variable = expr_list.shift();
+        if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
+            throw 'Syntax error: expected numerical variable name';
+        }
+        var equals = expr_list.shift();
+        if (equals.token_type !== 'operator' || equals.payload !== '=') {
+            throw 'Syntax error: expected `=`, got `'+equals.payload+'`';
+        }
+        var start = parser.parseExpression(expr_list);
+        var to = expr_list.shift();
+        if (to.token_type !== 'statement' || to.payload !== 'TO') {
+            throw 'Syntax error: expected `TO`, got `'+to+'`';
+        }
+        var stop = parser.parseExpression(expr_list);
+        var step = expr_list.shift();
+        if (step.token_type !== 'statement' || step.payload !== 'STEP') {
+            expr_list.unshift(step);
+            step = 1;
+        }
+        else {
+            step = parser.parseExpression(expr_list);
+        }
+        // return payload: do not retrieve the variable, just get its name
+        return [loop_variable.payload, start, stop, step];
+    }
+
+    function parseNext(parser, expr_list)
+    // parse NEXT
+    {
+        // variable is mandatory; only one variable allowed
+        var loop_variable = expr_list.shift();
+        if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
+            throw 'Syntax error: expected numerical variable name, got `' + loop_variable.payload + '`';
+        }
+        // return payload: do not retrieve the variable, just get its name
+        return [loop_variable.payload];
+    }
+
+    function parseInput(parser, expr_list)
+    // parse INPUT
+    {
+        var name = expr_list.shift();
+        if (name.token_type != 'name') {
+            throw 'Syntax error: expected variable name, got `' + name.payload + '`';
+        }
+        var indices = parser.parseArguments(expr_list);
+        // return payload: do not retrieve the variable, just get its name
+        return [name.payload].concat(indices);
+    }
+
+    const PARSERS = {
+        'DATA': parseData,
+        'DIM': parseRead,
+        'FOR': parseFor,
+        'GOSUB': parseGoto,
+        'GOTO': parseGoto,
+        'IF': parseIf,
+        'INPUT': parseInput,
+        'LET': parseLet,
+        'NEXT': parseNext,
+        'ON': parseOn,
+        'PRINT': parsePrint,
+        'READ': parseRead,
+        'REM': parseRem,
+        'RESTORE': function(){ return []; },
+        'RETURN': function(){ return []; },
     }
 
 };
