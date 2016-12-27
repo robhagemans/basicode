@@ -1093,10 +1093,6 @@ function stFor(state, loop_var, start, stop, step)
     state.variables.assign(start, loop_var, []);
     // the FOR loop is executed at least once in BASICODE
     // unlike e.g. in GW-BASIC! so no jumping to NEXT here.
-
-    // FIXME: this will not allow jumps inside one line as in FOR .. : NEXT
-    // we should flatten the tree to allow that (i.e. no separate nodes per line)
-
     state.for_stack.push({'loop_var': loop_var, 'stop': stop, 'step': step, 'pos': state.tree.pos});
 }
 
@@ -1207,7 +1203,10 @@ function BasicodeApp()
 // - working keyboard
 // - BASICODE subroutines
 // - type checks
-// - FOR .. NEXT within and across lines
+
+// cleanups:
+// - clean up Parser.state hack (no longer needed)
+// - separate Sequence from Node (inherit prototype)
 
 // some potential optimisations, if needed:
 // - simplify leaf nodes to { return payload } to avoid type test on each Node
