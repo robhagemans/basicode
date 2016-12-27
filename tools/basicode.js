@@ -813,7 +813,7 @@ function Parser(iface)
         }
         // data is stored immediately upon parsing, DATA is then a no-op statement
         parser.data.store(values);
-        return new Node(token.operation, [state]);
+        return null;
     }
 
     function parseRead(parser, expr_list, token)
@@ -852,7 +852,7 @@ function Parser(iface)
         else if (parser.current_line >= 30000) {
             parser.description += rem.payload + '\n';
         }
-        return new Node(token.operation, [state]);
+        return null;
     }
 
     function parseGoto(parser, expr_list, token)
