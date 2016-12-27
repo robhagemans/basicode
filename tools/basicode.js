@@ -511,34 +511,6 @@ function Sequence(node_args)
         if (this.args.length) this.args[0].init()
     };
 
-    this.run = function()
-    // wait until finished, then run step-by-step
-    {
-        var that = this;
-
-        function do_run() {
-            that.init();
-            running = true;
-
-            var run_interval = window.setInterval(function() {
-                if (!that.step()) {
-                    window.clearInterval(run_interval);
-                    console.log('done');
-                    running = false;
-                }
-            }, 5);
-        }
-
-        var wait_interval = window.setInterval(function() {
-            if (!running) {
-                window.clearInterval(wait_interval);
-                console.log('start');
-                do_run();
-            };
-        }, 100);
-
-    }
-
     this.step = function()
     {
         if (this.args && this.pos < this.args.length) {
@@ -1444,6 +1416,9 @@ function BasicodeApp()
 
     this.iface = new Interface(canvas, canvas);
 
+    var inactive_delay = 100;
+    var active_delay = 5;
+
     this.load = function(code)
     // load program, parse to AST, connect to output
     {
@@ -1455,7 +1430,34 @@ function BasicodeApp()
     this.run = function()
     // execute the program
     {
-        this.program.tree.run();
+        var prog = this.program;
+
+        // exit if nothing loaded
+        if (prog === undefined || prog.tree === null) {
+            return;
+        }
+
+        function do_run() {
+            prog.tree.init();
+            running = true;
+
+            var run_interval = window.setInterval(function() {
+                if (!prog.tree.step()) {
+                    window.clearInterval(run_interval);
+                    console.log('done');
+                    running = false;
+                }
+            }, active_delay);
+        }
+
+        // wait until input/output becomes available, then run the program
+        var wait_interval = window.setInterval(function() {
+            if (!running) {
+                window.clearInterval(wait_interval);
+                console.log('start');
+                do_run();
+            };
+        }, inactive_delay);
     }
 }
 
