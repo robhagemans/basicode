@@ -61,7 +61,7 @@
             //var state = app.state;
             var parser = app.parser;
             var prog;
-
+/*
             // screen test
             iface.clear();
             iface.write('We can write <br>\n');
@@ -131,11 +131,12 @@
             // we're allowing empty lines; not necessary
             var prog = parser.parseProgram(tokenise('1010 READG,H,I, J\n1020 PRINTJ\n 1030 :RESTORE: READ J: PRINT J\n 1035\n 1040 DATA67,68,69,70\n1050 :\n1060 PRINT"program done"'))
             prog.tree.run();
-            prog = parser.parseProgram(tokenise('1010 DIMZ(10)\n1020 Z(9)=9\n1030 PRINT Z(9)\n'))
-            prog.tree.run();
 
+            var prog0 = parser.parseProgram(tokenise('1010 DIMZ(10)\n1020 Z(9)=9\n1030 PRINT Z(9)\n'))
+            prog0.tree.run();
+*/
             // REM and GOTO test
-            prog = parser.parseProgram(tokenise([
+            var prog1 = parser.parseProgram(tokenise([
                 '1000 A=2:REM test program',
                 '1010 GOTO 1030',
                 '1020 PRINT"this should not be visible"; A: REM ignore this',
@@ -145,10 +146,10 @@
                 '30000 REM BASICODE test program: ',
                 '30020 REM a program that tests REMs',
             ].join('\n')));
-            prog.tree.run();
-            iface.write('"'+prog.title+'"\n');
-            iface.write(prog.description);
-
+            prog1.tree.run();
+            iface.write('"'+prog1.title+'"\n');
+            iface.write(prog1.description);
+/*
             prog = parser.parseProgram(tokenise([
                 '1000 A=2:REM test program 2',
                 '1010 B=5: GOSUB 10000',
@@ -237,6 +238,7 @@
                 '1060 HO=0: VE=3: GOSUB 220: SR$=IN$: GOSUB 150: PRINT IN',
             ].join('\n')));
             prog.tree.run();
+
 /**/
         };
     </script>

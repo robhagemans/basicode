@@ -513,14 +513,35 @@ function Sequence(node_args)
     };
 
     this.run = function()
+    // wait until finished, then run step-by-step
     {
-        this.init();
-        while (this.step());
+        var that = this;
+
+        function do_run() {
+            that.init();
+            running = true;
+
+            var run_interval = window.setInterval(function() {
+                if (!that.step()) {
+                    window.clearInterval(run_interval);
+                    console.log('done');
+                    running = false;
+                }
+            }, 5);
+        }
+
+        var wait_interval = window.setInterval(function() {
+            if (!running) {
+                window.clearInterval(wait_interval);
+                console.log('start');
+                do_run();
+            };
+        }, 100);
     }
 
     this.step = function()
     {
-        if (this.pos < this.args.length) {
+        if (this.args && this.pos < this.args.length) {
             if (!this.args[this.pos].step()) {
                 ++this.pos;
                 if (this.pos < this.args.length) this.args[this.pos].init()
@@ -1367,6 +1388,7 @@ function Interface(output_element, input_element)
     this.clear();
 }
 
+var running = false;
 
 function BasicodeApp()
 {
