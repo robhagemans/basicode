@@ -1055,6 +1055,11 @@ function stGoto(state, line_number)
 function stGosub(state, line_number)
 // GOSUB
 {
+    if (line_number in SUBS) {
+        // execute the BASICODE subroutine, then continue
+        SUBS[line_number](state);
+        return;
+    }
     if (!(line_number in state.line_numbers)) {
         throw 'Undefined line number';
     }
@@ -1131,6 +1136,45 @@ function stInput(state, name)
     state.variables.assign(value, name, indices);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// BASICODE subroutines
+
+const SUBS = {
+    100: function(state) { state.output.clear(); },
+    110: function(state) { state.output.setColumn(state.variables.retrieve('HO', [])); state.output.setRow(state.variables.retrieve('VE', [])); },
+    120: function(state) { state.variables.assign(state.output.col, 'HO', []); state.variables.assign(state.output.row, 'VE', []); },
+    150: subWriteBold,
+    200: subReadKey,
+}
+
+function subWriteBold(state)
+// GOSUB 150
+{
+    var text = '   ' + state.variables.retrieve('SR$', []) + '   ';
+    state.output.write(' ');
+    state.output.setColour('white', 'black');
+    state.output.write(text);
+    state.output.setColour('black', 'white');
+    state.output.write(' ');
+}
+
+function subReadKey(state)
+// GOSUB 200
+// TODO: arrow keys, function keys etc.
+{
+    var key = state.input.read(1);
+    var keyval = 0;
+    if (key) {
+        keyval = key.toUpperCase().charCodeAt(0);
+    }
+    // only printable ASCII
+    if (keyval<32 || keyval>126) {
+        key = '';
+        keyval = 0;
+    }
+    state.variables.assign(keyval, 'IN', []);
+    state.variables.assign(key, 'IN$', []);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // interface
@@ -1162,7 +1206,8 @@ function Interface(output_element, input_element)
         this.col = 0;
     }
 
-    this.writeRaw = function(output) {
+    this.writeRaw = function(output)
+    {
         while (this.col + output.length > this.width) {
             var cut = this.width-this.col
             this.writeRaw(output.slice(0, cut));
@@ -1170,13 +1215,17 @@ function Interface(output_element, input_element)
             this.row += 1;
             this.col = 0;
         }
+        context.fillStyle = this.background;
+        context.fillRect(this.col*font_width, this.row*font_height,
+            output.length*font_width, font_height);
         context.fillStyle = this.foreground;
         // 0.75 seems about the right baseline offset for Chrome & Firefox...
         context.fillText(output, this.col*font_width, (this.row+0.75)*font_height);
         this.col += output.length;
     }
 
-    this.write = function(output) {
+    this.write = function(output)
+    {
         var lines = output.toString().replace('\r\n', '\n').replace('\r', '\n').split('\n');
         var i=1;
         this.writeRaw(lines[0]);
@@ -1187,16 +1236,39 @@ function Interface(output_element, input_element)
         }
     }
 
+    this.setColour = function(foreground, background)
+    {
+        this.foreground = foreground;
+        this.background = background;
+    }
+
     this.setColumn = function(col)
     {
         this.col = col;
     }
 
-    this.read = function() {
-        return input_element.value;
+    this.setRow = function(row)
+    {
+        this.row = row;
     }
 
-    this.readLine = function() {
+    this.read = function(n)
+    {
+        var out = '';
+        if (n === undefined) {
+            out = input_element.value;
+            input_element.value = '';
+        }
+        else {
+            var lines = input_element.value.replace('\r\n', '\n').replace('\r', '\n').split('\n');
+            out = input_element.value.slice(0, n);
+            input_element.value = input_element.value.slice(n);
+        }
+        return out;
+    }
+
+    this.readLine = function()
+    {
         var lines = input_element.value.replace('\r\n', '\n').replace('\r', '\n').split('\n');
         input_element.value = lines.slice(1).join('\n');
         return lines[0];

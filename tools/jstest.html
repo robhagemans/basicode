@@ -59,7 +59,7 @@
             var iface = app.iface;
             //var state = app.state;
             var parser = app.parser;
-
+/*
             // screen test
             iface.clear();
             iface.write('We can write <br>\n');
@@ -223,35 +223,17 @@
                 '1030 PRINT I;J:NEXT I: PRINT I: NEXT J: PRINT J',
             ].join('\n')));
             prog.tree.evaluate();
-
-            prog = parser.parseProgram(tokenise([
+*/
+            var prog = parser.parseProgram(tokenise([
                 '1000 :',
-                '1010 INPUT A$: PRINT "you typed: "; A$',
+                '1010 GOSUB 100: HO=10: VE=2: GOSUB 110: INPUT A$: PRINT "you typed: "; A$',
                 '1030 INPUT A: PRINT "value: "; A',
+                '1040 GOSUB 120: PRINT HO; VE;',
+                '1050 SR$="Testy": GOSUB 150',
+                '1060 GOSUB 200: SR$=IN$: GOSUB 150: PRINT IN',
             ].join('\n')));
             prog.tree.evaluate();
 
-            var input = iface.read();
-            iface.write('you typed: ' + input + '\n');
-
-            var expr_str = input;
-            if (expr_str.length) {
-                expr_list = tokenise(expr_str);
-                var str2 = '';
-                for (var i=0; i < expr_list.length; ++i) {
-                    str2 += expr_list[i].token_type +' ' + expr_list[i].payload+',';
-                }
-                ast = parser.parseExpression(expr_list);
-
-                var rem = 'remainder of expr: ';
-                for (var i=0; i < expr_list.length; ++i)
-                    rem += expr_list[i].payload;
-                console.log(rem);
-
-                iface.write('evaluate ' + expr_str + ' = ' + ast.evaluate() + '\n');
-            }
-
-            iface.write('done');
         };
     </script>
 </body>
