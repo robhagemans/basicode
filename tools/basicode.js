@@ -693,7 +693,8 @@ function Parser(iface)
                 token = KEYWORDS['LET']();
             }
             // parse arguments in statement-specific way
-            statements.push(PARSERS[token.payload](this, basicode, token));
+            var node = PARSERS[token.payload](this, basicode, token)
+            if (node) statements.push(node);
             // parse separator
             if (!basicode.length) break;
             var sep = basicode.shift();
