@@ -15,7 +15,7 @@
             text-align: center;
             background-color: lightblue;
         }
-        #input, #output {
+        #basicode {
             text-align: left;
             vertical-align: middle;
             font-family: monospace;
@@ -27,13 +27,6 @@
             margin: auto;
             transform: scaleX(2);
             background-color: white;
-        }
-        #input {
-            width: 40ch;
-            height: 2rem;
-            resize: none;
-        }
-        #output {
             background-color: lightblue;
             width: 40ch;
             height: 24rem;
@@ -44,12 +37,10 @@
 </head>
 
 <body>
-    <div class="screen-wrapper"><textarea id="input"></textarea></div>
-    <button id="get_output">Test</button>
     <div class="screen-wrapper">
-        <canvas id="output"></canvas>
-        <!--<pre id="output">Output here</pre>-->
+        <canvas id="basicode"></canvas>
     </div>
+    <button id="get_output">Run</button>
 
     <script>
         "use strict";
@@ -236,6 +227,7 @@
                 '1040 GOSUB 120: PRINT HO; VE;',
                 '1050 SR$="Testy": GOSUB 150',
                 '1060 HO=0: VE=3: GOSUB 220: SR$=IN$: GOSUB 150: PRINT IN',
+                '1070 GOTO 950',
             ].join('\n')));
             prog.tree.run();
 

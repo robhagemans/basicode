@@ -515,8 +515,6 @@ function Sequence(node_args)
     // wait until finished, then run step-by-step
     {
         var that = this;
-        //this.init();
-        //while(this.step());
 
         function do_run() {
             that.init();
@@ -1308,6 +1306,9 @@ function subReadChar(state)
 
 function Interface(output_element, input_element)
 {
+    ///////////////////////////////////////////////////////////////////////////
+    // screen
+
     this.width = 40;
     this.height = 24;
     this.foreground = 'black';
@@ -1388,30 +1389,56 @@ function Interface(output_element, input_element)
         this.row = row;
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // keyboard
+
+    // keyboard setup
+    var keyboard_buffer = '';
+
+    // make canvas element focussable to catch keypresses
+    input_element.tabIndex = 1;
+
+    input_element.addEventListener('keypress', function(event) {
+    //input_element.onkeypress = function(event) {
+        keyboard_buffer += String.fromCharCode(event.keyCode);
+        console.log(event.keyCode);
+    });
+
+    input_element.addEventListener('keydown', function(event) {
+    //input_element.onkeydown = function(event) {
+            // use this for backspace, function keys
+        console.log(event.keyCode);
+        // preventDefault will stop all keys from being caught by keypress, so use only for backspace and function keys to avoid browser actions
+        //event.preventDefault();
+    });
+
     this.keyPressed = function(key) {
-        return (input_element.value.replace('\r\n', '\r').replace('\n', '\r').search(key) !== -1);
+        return (keyboard_buffer.search(key) !== -1);
     }
 
     this.read = function(n)
     {
         var out = '';
         if (n === undefined) {
-            out = input_element.value;
-            input_element.value = '';
+            out = keyboard_buffer;
+            keyboard_buffer = '';
         }
         else {
-            var lines = input_element.value.replace('\r\n', '\n').replace('\r', '\n').split('\n');
-            out = input_element.value.slice(0, n);
-            input_element.value = input_element.value.slice(n);
+            out = keyboard_buffer.slice(0, n);
+            keyboard_buffer = keyboard_buffer.slice(n);
         }
         return out;
     }
 
     this.readLine = function()
     {
-        var lines = input_element.value.replace('\r\n', '\n').replace('\r', '\n').split('\n');
-        input_element.value = lines.slice(1).join('\n');
-        return lines[0];
+        var loc = -1;
+        while (loc == -1) {
+            loc = keyboard_buffer.search('\r')
+        }
+        var out = keyboard_buffer.slice(0, loc);
+        keyboard_buffer = keyboard_buffer.slice(loc);
+        return out;
     }
 
     this.clear();
@@ -1421,10 +1448,9 @@ var running = false;
 
 function BasicodeApp()
 {
-    // interface setup
     this.iface = new Interface(
-        document.getElementById("output"),
-        document.getElementById("input"));
+        document.getElementById("basicode"),
+        document.getElementById("basicode"));
 
     this.parser = new Parser(this.iface);
 }
