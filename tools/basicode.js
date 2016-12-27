@@ -250,7 +250,8 @@ const KEYWORDS = {
     'FOR': newStatementToken('FOR', stFor),
     'GOSUB': newStatementToken('GOSUB', stGosub),
     'GOTO': newStatementToken('GOTO', stGoto),
-    'IF': newStatementToken('IF', stIf),
+    // IF is handled by a special node, not a statement operation
+    'IF': newStatementToken('IF', null),
     'INPUT': newStatementToken('INPUT', stInput),
     'INT': newFunctionToken('INT', Math.trunc),
     'LEFT$': newFunctionToken('LEFT$', function fnLeft(x, n) { return x.slice(0, n); }),
@@ -277,9 +278,9 @@ const KEYWORDS = {
     'TAB': newFunctionToken('TAB', function(x) { return { 'tab': x }; }),
     'TAN': newFunctionToken('TAN', Math.tan),
     'VAL': newFunctionToken('VAL', function(x) { return new Lexer(x).readValue(); }),
-    'THEN': newStatementToken('THEN', function() { throw 'Syntax error'; }),
-    'STEP': newStatementToken('STEP', function() { throw 'Syntax error'; }),
-    'TO': newStatementToken('TO', function() { throw 'Syntax error'; }),
+    'THEN': newStatementToken('THEN', null),
+    'STEP': newStatementToken('STEP', null),
+    'TO': newStatementToken('TO', null),
 }
 
 // THEN, STEP, TO are reserved words but not independent statements
@@ -508,24 +509,17 @@ function Node(func, node_args)
         this.pos = target-1;
     }
 
-    this.skip = function(target)
-    // skip to next line
-    // only expected to be called at root node
-    {
-        var pos = this.pos;
-        this.end();
-        this.pos = pos;
-    }
 }
 
-function Conditional(func, condition, node)
+function Conditional(condition, node)
 {
     this.condition = condition;
     this.node = node;
 
     this.evaluate = function()
     {
-        if (this.condition.evaluate()) this.node.evaluate();
+        var condition = this.condition.evaluate();
+        if (condition) this.node.evaluate();
     };
 
     this.end = function()
@@ -534,17 +528,21 @@ function Conditional(func, condition, node)
     }
 }
 
+// inherit Node prototype
+Conditional.prototype = Object.create(Node.prototype);
+Conditional.prototype.name = "Conditional";
+Conditional.prototype.constructor = Conditional;
+
 
 //////////////////////////////////////////////////////////////////////
 // parser
-
-
 
 function Parser(iface)
 {
     // data fields for access by statement parsers
     // which need to be stored in KEYWORDS but also need to access this state
     // (perhaps better to move into Parser and use a separate lookup table)
+    // TODO: this is no longer the case, can clean up?
 
     // interpreter setup
     var state = {
@@ -881,9 +879,12 @@ function Parser(iface)
             expr_list.unshift(KEYWORDS['GOTO']());
         }
         // supply a : so the parser can continue as normal
-        expr_list.unshift(new tokenSeparator(':'));
-        // rest of line is being parsed as normal, but skipped on execution if condition is false
-        return new Node(token.operation, [state, condition]);
+        //expr_list.unshift(new tokenSeparator(':'));
+        // parse rest of line and place into conditional node
+        var node = parser.parseLine(expr_list);
+        // give back the separator so the next line parses correctly
+        expr_list.unshift(new tokenSeparator('\n'));
+        return new Conditional(condition, node);
     }
 
     function parseOn(parser, expr_list, token)
@@ -969,6 +970,7 @@ function Parser(iface)
         return new Node(token.operation, [state]);
     }
 };
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // statements
@@ -1067,15 +1069,6 @@ function stReturn(state)
     }
     var target = state.sub_stack.pop();
     state.tree.jump(target);
-}
-
-function stIf(state, condition)
-// IF .. THEN
-{
-    if (typeof condition !== 'number' && typeof condition !== 'boolean') {
-        throw 'Type mismatch: expected numerical expression';
-    }
-    if (!condition) state.tree.skip();
 }
 
 function stOn(state, condition, jump_operation)
