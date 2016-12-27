@@ -633,32 +633,26 @@ Conditional.prototype.constructor = Conditional;
 //////////////////////////////////////////////////////////////////////
 // parser
 
-function Parser(iface)
+function Parser()
 {
-    // data fields for access by statement parsers
-    // which need to be stored in KEYWORDS but also need to access this state
-    // (perhaps better to move into Parser and use a separate lookup table)
-    // TODO: this is no longer the case, can clean up?
-
-    // interpreter setup
+    // program object
     var state = {
+        'title': '',
+        'description': '',
         'data': new Data(),
         'variables': new Variables(),
+        'sub_stack': [],
+        'for_stack': [],
         'line_numbers': {},
-        'output': iface,
-        'input': iface,
+        'tree': null,
+        'output': null,
+        'input': null,
     }
 
-    // data is stored upon parsing, not evaluation
-    this.data = state.data;
-    // program name and description can be extracted from REMs
-    this.line_numbers = state.line_numbers;
-    this.current_line = 999;
-    this.title = '';
-    this.description = '';
+    var current_line = 999;
 
     function opRetrieve(name)
-    //  retrieve a variable from the Variables object provided to Parser at initialisation
+    //  retrieve a variable from the Variables object in state
     {
         var indices = [].slice.call(arguments, 1);
         return state.variables.retrieve(name, indices);
@@ -809,28 +803,23 @@ function Parser(iface)
         if (!basicode.length) return null;
         var lines = [];
         // BASICODE only allows line numbers 1000 and up
-        this.current_line = 999;
+        current_line = 999;
         while (basicode.length > 0) {
             var line_number = basicode.shift();
             if (line_number.token_type != 'literal') {
                 throw 'Illegal direct: line must start with a line number';
             }
-            if (line_number.payload <= this.current_line) {
+            if (line_number.payload <= current_line) {
                 throw 'Line numbers must be 1000 or greater and increase monotonically';
             }
-            this.current_line = line_number.payload;
+            current_line = line_number.payload;
             // keep track of line numbers
-            this.line_numbers[this.current_line] = lines.length-1;
+            state.line_numbers[current_line] = lines.length-1;
             // keep tree flat: no branches for lines
             var statements = this.parseLine(basicode).args;
             lines = lines.concat(statements);
         }
         state.tree = new Sequence(lines);
-        state.title = this.title;
-        state.description = this.description;
-        // GOSUB-RETURN stack for execution
-        state.sub_stack = [];
-        state.for_stack = [];
         return state;
     }
 
@@ -910,7 +899,7 @@ function Parser(iface)
             expr_list.shift();
         }
         // data is stored immediately upon parsing, DATA is then a no-op statement
-        parser.data.store(values);
+        state.data.store(values);
         return null;
     }
 
@@ -944,11 +933,11 @@ function Parser(iface)
         }
         // BASICODE standard: title in REM on line 1000
         // description and copyrights in REMS on lines 30000 onwards
-        if (parser.current_line === 1000) {
-            parser.title = rem.payload;
+        if (current_line === 1000) {
+            state.title = rem.payload;
         }
-        else if (parser.current_line >= 30000) {
-            parser.description += rem.payload + '\n';
+        else if (current_line >= 30000) {
+            state.description += rem.payload + '\n';
         }
         return null;
     }
@@ -1445,6 +1434,7 @@ function Interface(output_element, input_element)
     this.clear();
 }
 
+
 var running = false;
 
 function BasicodeApp()
@@ -1453,7 +1443,20 @@ function BasicodeApp()
     document.body.appendChild(canvas);
 
     this.iface = new Interface(canvas, canvas);
-    this.parser = new Parser(this.iface);
+
+    this.load = function(code)
+    // load program, parse to AST, connect to output
+    {
+        this.program = new Parser().parseProgram(code);
+        this.program.output = this.iface;
+        this.program.input = this.iface;
+    }
+
+    this.run = function()
+    // execute the program
+    {
+        this.program.tree.run();
+    }
 }
 
 
@@ -1465,8 +1468,8 @@ function launch() {
         if (scripts[i].type == 'text/basicode') {
             var app = new BasicodeApp();
             // trim seems to be necessary to avoid an Illegal Direct, not sure why
-            var prog = app.parser.parseProgram(tokenise(scripts[i].innerHTML.trim()));
-            prog.tree.run();
+            app.load(tokenise(scripts[i].innerHTML.trim()));
+            app.run();
         }
     }
 }
@@ -1490,8 +1493,6 @@ else {
 }
 
 // TODO:
-// - working screen
-// - working keyboard
 // - BASICODE subroutines
 // - type checks
 // - error handling
