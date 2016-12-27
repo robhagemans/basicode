@@ -1449,11 +1449,44 @@ var running = false;
 
 function BasicodeApp()
 {
-    this.iface = new Interface(
-        document.getElementById("basicode"),
-        document.getElementById("basicode"));
+    var canvas = document.createElement('canvas');
+    document.body.appendChild(canvas);
 
+    this.iface = new Interface(canvas, canvas);
     this.parser = new Parser(this.iface);
+}
+
+
+function launch() {
+    console.log('launch');
+    var scripts = document.getElementsByTagName("script");
+    for(var i=0; i < scripts.length; ++i) {
+        console.log(scripts[i]);
+        if (scripts[i].type == 'text/basicode') {
+            var app = new BasicodeApp();
+            // trim seems to be necessary to avoid an Illegal Direct, not sure why
+            var prog = app.parser.parseProgram(tokenise(scripts[i].innerHTML.trim()));
+            prog.tree.run();
+        }
+    }
+}
+
+// a bit of magic to run launcher() after the document is complete
+// so that it can access all the <script> tags
+// http://stackoverflow.com/questions/807878/javascript-that-executes-after-page-load
+function downloadJSAtOnload() {
+    var element = document.createElement("script");
+    element.innerHTML = 'launch();';
+    document.body.appendChild(element);
+}
+if (window.addEventListener) {
+    window.addEventListener("load", downloadJSAtOnload, false);
+}
+else if (window.attachEvent) {
+    window.attachEvent("onload", downloadJSAtOnload);
+}
+else {
+    window.onload = downloadJSAtOnload;
 }
 
 // TODO:

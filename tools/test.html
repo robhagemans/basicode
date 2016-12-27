@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="basicode.js"></script>
+</head>
+
+<body>
+    <script type="text/basicode">
+        1000 A=1: GOTO 20
+        1010 GOSUB 100: HO=10: VE=2: GOSUB 110: INPUT A$: PRINT "you typed: "; A$
+        1030 INPUT A: PRINT "value: "; A
+        1040 GOSUB 120: PRINT HO; VE;
+        1050 SR$="Testy": GOSUB 150
+        1060 HO=0: VE=3: GOSUB 220: SR$=IN$: GOSUB 150: PRINT IN
+        1070 GOTO 950
+    </script>
+
+    <script type="text/basicode">
+        1000 A=1: GOTO 20
+        1010 PRINT "basicode test 2"
+        1070 GOTO 950
+    </script>
+</body>
+</html>
