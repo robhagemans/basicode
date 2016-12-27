@@ -474,20 +474,40 @@ function Node(func, node_args)
 {
     this.func = func;
     this.args = node_args;
-    this.pos = 0;
 
     // traverse AST to evaluate this node and all its subnodes
     this.evaluate = function()
     {
         var args = this.args.slice()
-        for (this.pos = 0; this.pos < args.length; ++this.pos) {
-            if (this.args[this.pos] instanceof Node) {
-                args[this.pos] = this.args[this.pos].evaluate();
+        for (var pos = 0; pos < args.length; ++pos) {
+            if (this.args[pos] instanceof Node) {
+                args[pos] = this.args[pos].evaluate();
             }
         }
         // call the function with the array supplied as arguments
         return this.func.apply(this, args);
     };
+
+    // end calls do not affect expression nodes
+    this.end = function() {}
+}
+
+function Sequence(node_args)
+{
+    this.args = node_args;
+    this.pos = 0;
+
+    // traverse AST to evaluate this node and all its subnodes
+    this.evaluate = function()
+    {
+        while(this.pos < this.args.length) this.step();
+    };
+
+    this.step = function()
+    {
+        this.args[this.pos].evaluate();
+        ++this.pos;
+    }
 
     this.end = function()
     // skip to end
@@ -496,9 +516,7 @@ function Node(func, node_args)
     {
         this.pos = this.args.length;
         // traverse the tree to ensure execution stops at deeper levels too
-        for (var i = 0; i < this.args.length; ++i) {
-            if (this.args[i] instanceof Node) this.args[i].end();
-        }
+        for (var i = 0; i < this.args.length; ++i) this.args[i].end();
     }
 
     this.jump = function(target)
@@ -508,8 +526,13 @@ function Node(func, node_args)
         this.end();
         this.pos = target-1;
     }
-
 }
+
+// inherit Node prototype
+Sequence.prototype = Object.create(Node.prototype);
+Sequence.prototype.name = "Sequence";
+Sequence.prototype.constructor = Sequence;
+
 
 function Conditional(condition, node)
 {
@@ -704,7 +727,7 @@ function Parser(iface)
             }
         }
         // create a sequence node
-        return new Node(function(){}, statements);
+        return new Sequence(statements);
     }
 
     this.parseProgram = function(basicode)
@@ -729,7 +752,7 @@ function Parser(iface)
             var statements = this.parseLine(basicode).args;
             lines = lines.concat(statements);
         }
-        state.tree = new Node(function(){}, lines);
+        state.tree = new Sequence(lines);
         state.title = this.title;
         state.description = this.description;
         // GOSUB-RETURN stack for execution
@@ -883,10 +906,10 @@ function Parser(iface)
         // supply a : so the parser can continue as normal
         //expr_list.unshift(new tokenSeparator(':'));
         // parse rest of line and place into conditional node
-        var node = parser.parseLine(expr_list);
+        var sequence = parser.parseLine(expr_list);
         // give back the separator so the next line parses correctly
         expr_list.unshift(new tokenSeparator('\n'));
-        return new Conditional(condition, node);
+        return new Conditional(condition, sequence);
     }
 
     function parseOn(parser, expr_list, token)
