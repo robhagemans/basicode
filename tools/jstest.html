@@ -230,7 +230,7 @@
                 '1030 INPUT A: PRINT "value: "; A',
                 '1040 GOSUB 120: PRINT HO; VE;',
                 '1050 SR$="Testy": GOSUB 150',
-                '1060 GOSUB 200: SR$=IN$: GOSUB 150: PRINT IN',
+                '1060 HO=0: VE=3: GOSUB 220: SR$=IN$: GOSUB 150: PRINT IN',
             ].join('\n')));
             prog.tree.evaluate();
 

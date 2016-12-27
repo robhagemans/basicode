@@ -1145,6 +1145,9 @@ const SUBS = {
     120: function(state) { state.variables.assign(state.output.col, 'HO', []); state.variables.assign(state.output.row, 'VE', []); },
     150: subWriteBold,
     200: subReadKey,
+    //210: subWaitKey,
+    220: subReadChar,
+
 }
 
 function subWriteBold(state)
@@ -1158,8 +1161,7 @@ function subWriteBold(state)
     state.output.write(' ');
 }
 
-function subReadKey(state)
-// GOSUB 200
+function assignKey(state, key)
 // TODO: arrow keys, function keys etc.
 {
     var key = state.input.read(1);
@@ -1176,6 +1178,30 @@ function subReadKey(state)
     state.variables.assign(key, 'IN$', []);
 }
 
+function subReadKey(state)
+// GOSUB 200
+{
+    assignKey(state.input.read(1));
+}
+
+function subWaitKey(state)
+// GOSUB 210
+{
+    do {
+        var key = state.input.read(1);
+    } while (!key);
+    assignKey(key);
+}
+
+function subReadChar(state)
+// GSOUB 220
+{
+    var col = state.variables.retrieve('HO', []);
+    var row = state.variables.retrieve('VE', []);
+    var ch = state.output.getScreenChar(row, col);
+    state.variables.assign(ch.charCodeAt(0), 'IN', []);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // interface
 
@@ -1185,6 +1211,7 @@ function Interface(output_element, input_element)
     this.height = 24;
     this.foreground = 'black';
     this.background = 'white';
+    this.content = (' '.repeat(this.width)+'\n').repeat(this.height).split('\n');
 
     // resize the canvas to fit the font size
     var context = output_element.getContext('2d');
@@ -1221,6 +1248,8 @@ function Interface(output_element, input_element)
         context.fillStyle = this.foreground;
         // 0.75 seems about the right baseline offset for Chrome & Firefox...
         context.fillText(output, this.col*font_width, (this.row+0.75)*font_height);
+        // update content buffer
+        this.content[this.row] = this.content[this.row].slice(0, this.col) + output + this.content[this.row].slice(this.col+output.length);
         this.col += output.length;
     }
 
@@ -1234,6 +1263,11 @@ function Interface(output_element, input_element)
             this.col = 0;
             this.writeRaw(lines[i]);
         }
+    }
+
+    this.getScreenChar = function(row, col)
+    {
+        return this.content[row].slice(col, col+1);
     }
 
     this.setColour = function(foreground, background)
