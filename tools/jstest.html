@@ -60,7 +60,8 @@
             var iface = app.iface;
             //var state = app.state;
             var parser = app.parser;
-/*
+            var prog;
+
             // screen test
             iface.clear();
             iface.write('We can write <br>\n');
@@ -125,6 +126,8 @@
             iface.write((parser.parseExpression(tokenise('F')).evaluate() == 3) + '\n');
             parser.parseLine(tokenise('PRINT "print test: ";D;:print E-3;F:print f\n')).evaluate();
             parser.parseLine(tokenise('PRINT "TAB test: ";1;TAB(20);2;\n')).evaluate();
+
+
             // we're allowing empty lines; not necessary
             var prog = parser.parseProgram(tokenise('1010 READG,H,I, J\n1020 PRINTJ\n 1030 :RESTORE: READ J: PRINT J\n 1035\n 1040 DATA67,68,69,70\n1050 :\n1060 PRINT"program done"'))
             prog.tree.evaluate();
@@ -218,14 +221,14 @@
             prog.tree.evaluate();
 
             prog = parser.parseProgram(tokenise([
-                '1000 PRINT "FOR test"',
+                '1000 GOSUB 100: PRINT "FOR test"',
                 '1010 I=2: FOR J=1 TO 2:FOR I = 0 TO 10 STEP 2.5',
                 '1020 PRINT I;',
                 '1030 PRINT I;J:NEXT I: PRINT I: NEXT J: PRINT J',
             ].join('\n')));
             prog.tree.evaluate();
-*/
-            var prog = parser.parseProgram(tokenise([
+
+            prog = parser.parseProgram(tokenise([
                 '1000 :',
                 '1010 GOSUB 100: HO=10: VE=2: GOSUB 110: INPUT A$: PRINT "you typed: "; A$',
                 '1030 INPUT A: PRINT "value: "; A',

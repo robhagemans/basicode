@@ -1211,7 +1211,6 @@ function Interface(output_element, input_element)
     this.height = 24;
     this.foreground = 'black';
     this.background = 'white';
-    this.content = (' '.repeat(this.width)+'\n').repeat(this.height).split('\n');
 
     // resize the canvas to fit the font size
     var context = output_element.getContext('2d');
@@ -1231,10 +1230,12 @@ function Interface(output_element, input_element)
         context.fillRect(0, 0, output_element.width, output_element.height);
         this.row = 0;
         this.col = 0;
+        this.content = (' '.repeat(this.width)+'\n').repeat(this.height).split('\n');
     }
 
     this.writeRaw = function(output)
     {
+        if (this.row >= this.height) return;
         while (this.col + output.length > this.width) {
             var cut = this.width-this.col
             this.writeRaw(output.slice(0, cut));
