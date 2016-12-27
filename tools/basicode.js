@@ -1397,6 +1397,7 @@ function Interface(output_element, input_element)
 
     // make canvas element focussable to catch keypresses
     input_element.tabIndex = 1;
+    input_element.focus();
 
     input_element.addEventListener('keypress', function(event) {
     //input_element.onkeypress = function(event) {
