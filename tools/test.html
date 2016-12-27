@@ -2,6 +2,39 @@
 <html>
 <head>
     <meta charset="utf-8">
+
+    <style>
+        .screen-wrapper {
+            font-size: 1rem;
+            width: 79ch;
+            padding:0;
+            display:table;
+            padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+            border-radius: 0.8rem;
+            border: 1px solid lightgrey;
+            text-align: center;
+            background-color: lightblue;
+        }
+        .basicode {
+            text-align: left;
+            vertical-align: middle;
+            font-family: monospace;
+            font-size: 1rem;
+            outline: none;
+            overflow: hidden;
+            border: 1px solid black;
+            padding: 0;
+            margin: auto;
+            transform: scaleX(2);
+            background-color: white;
+            background-color: lightblue;
+            width: 40ch;
+            height: 24rem;
+            /* */
+            display: table;
+        }
+    </style>
+
     <script src="basicode.js"></script>
 </head>
 
@@ -21,5 +54,7 @@
         1010 PRINT "basicode test 2"
         1070 GOTO 950
     </script>
+
+    <script type="text/basicode" src="test.bc"></script>
 </body>
 </html>

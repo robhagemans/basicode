@@ -1267,6 +1267,9 @@ function subReadChar(state)
 
 function Interface(output_element, input_element)
 {
+    // only allow one program to connect at a time
+    this.busy = false;
+
     ///////////////////////////////////////////////////////////////////////////
     // screen
 
@@ -1407,14 +1410,14 @@ function Interface(output_element, input_element)
 }
 
 
-var running = false;
 
 function BasicodeApp()
 {
     var canvas = document.createElement('canvas');
+    canvas.className = 'basicode';
     document.body.appendChild(canvas);
 
-    this.iface = new Interface(canvas, canvas);
+    var iface = new Interface(canvas, canvas);
 
     var inactive_delay = 100;
     var active_delay = 5;
@@ -1423,8 +1426,8 @@ function BasicodeApp()
     // load program, parse to AST, connect to output
     {
         this.program = new Parser().parseProgram(code);
-        this.program.output = this.iface;
-        this.program.input = this.iface;
+        this.program.output = iface;
+        this.program.input = iface;
     }
 
     this.run = function()
@@ -1439,20 +1442,20 @@ function BasicodeApp()
 
         function do_run() {
             prog.tree.init();
-            running = true;
+            iface.busy = true;
 
             var run_interval = window.setInterval(function() {
                 if (!prog.tree.step()) {
                     window.clearInterval(run_interval);
                     console.log('done');
-                    running = false;
+                    iface.busy = false;
                 }
             }, active_delay);
         }
 
         // wait until input/output becomes available, then run the program
         var wait_interval = window.setInterval(function() {
-            if (!running) {
+            if (!iface.busy) {
                 window.clearInterval(wait_interval);
                 console.log('start');
                 do_run();
@@ -1465,8 +1468,8 @@ function BasicodeApp()
 function launch() {
     console.log('launch');
     var scripts = document.getElementsByTagName("script");
+    console.log(scripts);
     for(var i=0; i < scripts.length; ++i) {
-        console.log(scripts[i]);
         if (scripts[i].type == 'text/basicode') {
             var app = new BasicodeApp();
             // trim seems to be necessary to avoid an Illegal Direct, not sure why
@@ -1494,14 +1497,11 @@ else {
     window.onload = downloadJSAtOnload;
 }
 
+
 // TODO:
 // - BASICODE subroutines
 // - type checks
 // - error handling
-
-// cleanups:
-// - clean up Parser.state hack (no longer needed)
-// - separate Sequence from Node (inherit prototype)
 
 // some potential optimisations, if needed:
 // - simplify leaf nodes to { return payload } to avoid type test on each Node
