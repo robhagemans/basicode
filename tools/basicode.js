@@ -516,6 +516,8 @@ function Sequence(node_args)
     // wait until finished, then run step-by-step
     {
         var that = this;
+        //this.init();
+        //while(this.step());
 
         function do_run() {
             that.init();
@@ -537,6 +539,7 @@ function Sequence(node_args)
                 do_run();
             };
         }, 100);
+
     }
 
     this.step = function()
@@ -551,22 +554,16 @@ function Sequence(node_args)
         return false;
     }
 
-    // I think this is no longer needed
     this.end = function()
     // skip to end
-    // only expected to be called at root or sequence node
-    // only makes sense when this.func is a no-op
     {
         this.pos = this.args.length;
-        // traverse the tree to ensure execution stops at deeper levels too
-        //for (var i = 0; i < this.args.length; ++i) this.args[i].end();
     }
 
     this.jump = function(target)
     // jump instruction
     // only expected to be called at root node
     {
-        //this.end();
         this.pos = target;
         this.args[this.pos].init();
     }
@@ -800,7 +797,7 @@ function Parser(iface)
             }
             this.current_line = line_number.payload;
             // keep track of line numbers
-            this.line_numbers[this.current_line] = lines.length;
+            this.line_numbers[this.current_line] = lines.length-1;
             // keep tree flat: no branches for lines
             var statements = this.parseLine(basicode).args;
             lines = lines.concat(statements);
