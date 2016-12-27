@@ -695,11 +695,7 @@ function Parser(iface)
                 token = KEYWORDS['LET']();
             }
             // parse arguments in statement-specific way
-            console.log(token.payload);
-            var args = PARSERS[token.payload](this, basicode);
-            // statement must have access to interpreter state, so state is first argument
-            args.unshift(state);
-            statements.push(new Node(token.operation, args));
+            statements.push(PARSERS[token.payload](this, basicode, token));
             // parse separator
             if (!basicode.length) break;
             var sep = basicode.shift();
@@ -745,7 +741,25 @@ function Parser(iface)
     ///////////////////////////////////////////////////////////////////////////
     // statement syntax
 
-    function parseLet(parser, expr_list)
+    const PARSERS = {
+        'DATA': parseData,
+        'DIM': parseRead,
+        'FOR': parseFor,
+        'GOSUB': parseGoto,
+        'GOTO': parseGoto,
+        'IF': parseIf,
+        'INPUT': parseInput,
+        'LET': parseLet,
+        'NEXT': parseNext,
+        'ON': parseOn,
+        'PRINT': parsePrint,
+        'READ': parseRead,
+        'REM': parseRem,
+        'RESTORE': parseNone,
+        'RETURN': parseNone,
+    }
+
+    function parseLet(parser, expr_list, token)
     // parse LET statement
     {
         var name = expr_list.shift();
@@ -756,10 +770,11 @@ function Parser(iface)
         var equals = expr_list.shift().payload;
         if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
         var value = parser.parseExpression(expr_list);
-        return [value, name.payload].concat(indices);
+        // statement must have access to interpreter state, so state is first argument
+        return new Node(token.operation, [state, value, name.payload].concat(indices));
     }
 
-    function parsePrint(parser, expr_list)
+    function parsePrint(parser, expr_list, token)
     // parse PRINT statement
     {
         var exprs = [];
@@ -778,10 +793,10 @@ function Parser(iface)
         if (last !== ';') {
             exprs.push(new Node(function(){ return '\n'; }, []));
         }
-        return exprs;
+        return new Node(token.operation, [state].concat(exprs));
     }
 
-    function parseData(parser, expr_list)
+    function parseData(parser, expr_list, token)
     // parse DATA statement
     {
         var values = []
@@ -800,10 +815,10 @@ function Parser(iface)
         }
         // data is stored immediately upon parsing, DATA is then a no-op statement
         parser.data.store(values);
-        return [];
+        return new Node(token.operation, [state]);
     }
 
-    function parseRead(parser, expr_list)
+    function parseRead(parser, expr_list, token)
     // parse READ or DIM statement
     {
         // index list evaluation operation
@@ -821,10 +836,10 @@ function Parser(iface)
             if (expr_list[0].payload !== ',') break;
             expr_list.shift();
         }
-        return names;
+        return new Node(token.operation, [state].concat(names));
     }
 
-    function parseRem(parser, expr_list)
+    function parseRem(parser, expr_list, token)
     // parse REM
     {
         var rem = expr_list.shift();
@@ -839,20 +854,20 @@ function Parser(iface)
         else if (parser.current_line >= 30000) {
             parser.description += rem.payload + '\n';
         }
-        return [];
+        return new Node(token.operation, [state]);
     }
 
-    function parseGoto(parser, expr_list)
+    function parseGoto(parser, expr_list, token)
     // parse GOTO or GOSUB
     {
         var line_number = expr_list.shift();
         if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
             throw 'Syntax error: expected line number';
         }
-        return [line_number.payload];
+        return new Node(token.operation, [state, line_number.payload]);
     }
 
-    function parseIf(parser, expr_list)
+    function parseIf(parser, expr_list, token)
     // parse IF
     {
         var condition = parser.parseExpression(expr_list);
@@ -868,10 +883,10 @@ function Parser(iface)
         // supply a : so the parser can continue as normal
         expr_list.unshift(new tokenSeparator(':'));
         // rest of line is being parsed as normal, but skipped on execution if condition is false
-        return [condition];
+        return new Node(token.operation, [state, condition]);
     }
 
-    function parseOn(parser, expr_list)
+    function parseOn(parser, expr_list, token)
     // parse ON jumps
     {
         var condition = parser.parseExpression(expr_list);
@@ -892,10 +907,10 @@ function Parser(iface)
                 break;
             }
         }
-        return args;
+        return new Node(token.operation, [state].concat(args));
     }
 
-    function parseFor(parser, expr_list)
+    function parseFor(parser, expr_list, token)
     // parse FOR
     {
         var loop_variable = expr_list.shift();
@@ -921,10 +936,10 @@ function Parser(iface)
             step = parser.parseExpression(expr_list);
         }
         // return payload: do not retrieve the variable, just get its name
-        return [loop_variable.payload, start, stop, step];
+        return new Node(token.operation, [state, loop_variable.payload, start, stop, step]);
     }
 
-    function parseNext(parser, expr_list)
+    function parseNext(parser, expr_list, token)
     // parse NEXT
     {
         // variable is mandatory; only one variable allowed
@@ -933,10 +948,10 @@ function Parser(iface)
             throw 'Syntax error: expected numerical variable name, got `' + loop_variable.payload + '`';
         }
         // return payload: do not retrieve the variable, just get its name
-        return [loop_variable.payload];
+        return new Node(token.operation, [state, loop_variable.payload]);
     }
 
-    function parseInput(parser, expr_list)
+    function parseInput(parser, expr_list, token)
     // parse INPUT
     {
         var name = expr_list.shift();
@@ -945,27 +960,14 @@ function Parser(iface)
         }
         var indices = parser.parseArguments(expr_list);
         // return payload: do not retrieve the variable, just get its name
-        return [name.payload].concat(indices);
+        return new Node(token.operation, [state, name.payload].concat(indices));
     }
 
-    const PARSERS = {
-        'DATA': parseData,
-        'DIM': parseRead,
-        'FOR': parseFor,
-        'GOSUB': parseGoto,
-        'GOTO': parseGoto,
-        'IF': parseIf,
-        'INPUT': parseInput,
-        'LET': parseLet,
-        'NEXT': parseNext,
-        'ON': parseOn,
-        'PRINT': parsePrint,
-        'READ': parseRead,
-        'REM': parseRem,
-        'RESTORE': function(){ return []; },
-        'RETURN': function(){ return []; },
+    function parseNone(parser, expr_list, token)
+    // parse RETURN, RESTORE
+    {
+        return new Node(token.operation, [state]);
     }
-
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1103,6 +1105,7 @@ function stFor(state, loop_var, start, stop, step)
 }
 
 function stNext(state, loop_var)
+// NEXT
 {
     if (!state.for_stack.length) {
         throw '`NEXT` without `FOR`';
@@ -1124,6 +1127,7 @@ function stNext(state, loop_var)
 }
 
 function stInput(state, name)
+// INPUT
 {
     var indices = [].slice.call(arguments, 2);
     var value = state.input.readLine();
@@ -1135,6 +1139,7 @@ function stInput(state, name)
     }
     state.variables.assign(value, name, indices);
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // interface
