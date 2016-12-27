@@ -501,7 +501,6 @@ function Node(func, node_args)
     this.end = function() {}
 }
 
-
 function Sequence(node_args)
 {
     this.args = node_args;
@@ -567,6 +566,32 @@ function Sequence(node_args)
         this.pos = target;
         this.args[this.pos].init();
     }
+}
+
+
+function WaitNode(wait_condition, node)
+// execute node after waiting for condition to become true
+// unlike Conditional, the condition is evaluated every step
+// e.g. wait for a keypress
+{
+    this.wait_func = wait_condition;
+    this.node = node;
+
+    this.init = function() {}
+
+    this.step = function()
+    {
+        if (this.wait_func()) {
+            return this.node.step();
+        }
+        return true;
+    }
+
+    this.end = function()
+    {
+        this.sequence.end();
+    }
+
 }
 
 
@@ -1035,8 +1060,11 @@ function Parser(iface)
             throw 'Syntax error: expected variable name, got `' + name.payload + '`';
         }
         var indices = parser.parseArguments(expr_list);
+        // wait for ENTER kepress before engaging
+        var wait_func = function() { return state.input.keyPressed('\r'); }
         // return payload: do not retrieve the variable, just get its name
-        return new Node(token.operation, [state, name.payload].concat(indices));
+        var node = new Node(token.operation, [state, name.payload].concat(indices))
+        return new WaitNode(wait_func, node);
     }
 
     function parseNone(parser, expr_list, token)
@@ -1358,6 +1386,10 @@ function Interface(output_element, input_element)
     this.setRow = function(row)
     {
         this.row = row;
+    }
+
+    this.keyPressed = function(key) {
+        return (input_element.value.replace('\r\n', '\r').replace('\n', '\r').search(key) !== -1);
     }
 
     this.read = function(n)

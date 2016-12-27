@@ -134,7 +134,7 @@
 
             var prog0 = parser.parseProgram(tokenise('1010 DIMZ(10)\n1020 Z(9)=9\n1030 PRINT Z(9)\n'))
             prog0.tree.run();
-*/
+
             // REM and GOTO test
             var prog1 = parser.parseProgram(tokenise([
                 '1000 A=2:REM test program',
@@ -149,7 +149,7 @@
             prog1.tree.run();
             iface.write('"'+prog1.title+'"\n');
             iface.write(prog1.description);
-/*
+
             prog = parser.parseProgram(tokenise([
                 '1000 A=2:REM test program 2',
                 '1010 B=5: GOSUB 10000',
@@ -228,7 +228,7 @@
                 '1030 PRINT I;J:NEXT I: PRINT I: NEXT J: PRINT J',
             ].join('\n')));
             prog.tree.run();
-
+*/
             prog = parser.parseProgram(tokenise([
                 '1000 :',
                 '1010 GOSUB 100: HO=10: VE=2: GOSUB 110: INPUT A$: PRINT "you typed: "; A$',
