@@ -46,7 +46,8 @@
     <div class="screen-wrapper"><textarea id="input"></textarea></div>
     <button id="get_output">Test</button>
     <div class="screen-wrapper">
-        <pre id="output">Output here</pre>
+        <canvas id="output"></canvas>
+        <!--<pre id="output">Output here</pre>-->
     </div>
 
     <script>
@@ -62,7 +63,7 @@
             // screen test
             iface.clear();
             iface.write('We can write <br>\n');
-            iface.write('We can write \\\n\n');
+            iface.write('0123456789012345678901234567890123456789end\n');
 
             // variable test
             var vars = new Variables();

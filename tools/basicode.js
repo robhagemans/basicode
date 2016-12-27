@@ -716,7 +716,6 @@ function Parser(iface)
         this.current_line = 999;
         while (basicode.length > 0) {
             var line_number = basicode.shift();
-            console.log('parsing '+line_number.payload);
             if (line_number.token_type != 'literal') {
                 throw 'Illegal direct: line must start with a line number';
             }
@@ -1140,38 +1139,57 @@ function Interface(output_element, input_element)
 {
     this.width = 40;
     this.height = 24;
+    this.foreground = 'black';
+    this.background = 'white';
+
+    // resize the canvas to fit the font size
+    var context = output_element.getContext('2d');
+    var font_height = 24;
+    context.font = font_height+'px monospace';
+    var measures = context.measureText('M');
+    var font_width = measures.width;
+    output_element.width = measures.width*this.width;
+    output_element.height = font_height*this.height;
+
+    // set the context on the resized canvas
+    context = output_element.getContext('2d');
+    context.font = 'normal lighter '+font_height+'px monospace';
 
     this.clear = function() {
-        output_element.innerHTML = '';
+        context.fillStyle = this.background;
+        context.fillRect(0, 0, output_element.width, output_element.height);
         this.row = 0;
         this.col = 0;
     }
 
-    function writeRaw(output) {
-        output_element.innerHTML += output.replace('<', '&lt;').replace('>', '&gt;');
+    this.writeRaw = function(output) {
+        while (this.col + output.length > this.width) {
+            var cut = this.width-this.col
+            this.writeRaw(output.slice(0, cut));
+            output = output.slice(cut);
+            this.row += 1;
+            this.col = 0;
+        }
+        context.fillStyle = this.foreground;
+        // 0.75 seems about the right baseline offset for Chrome & Firefox...
+        context.fillText(output, this.col*font_width, (this.row+0.75)*font_height);
+        this.col += output.length;
     }
 
     this.write = function(output) {
-        // TODO: handle line longer than row length
         var lines = output.toString().replace('\r\n', '\n').replace('\r', '\n').split('\n');
         var i=1;
-        writeRaw(lines[0]);
+        this.writeRaw(lines[0]);
         for (; i < lines.length; ++i) {
             ++this.row;
             this.col = 0;
-            writeRaw('\n');
-            writeRaw(lines[i]);
+            this.writeRaw(lines[i]);
         }
-        this.col = lines[i-1].length;
     }
 
     this.setColumn = function(col)
-    // TODO: currently this does not work if col < current column
     {
-        if (this.col < col) {
-            writeRaw(' '.repeat(col - this.col));
-            this.col = col;
-        }
+        this.col = col;
     }
 
     this.read = function() {
@@ -1203,6 +1221,7 @@ function BasicodeApp()
 // - working keyboard
 // - BASICODE subroutines
 // - type checks
+// - error handling
 
 // cleanups:
 // - clean up Parser.state hack (no longer needed)
