@@ -1124,7 +1124,7 @@ function stGosub(state, line_number)
         throw 'Undefined line number';
     }
     var target = state.line_numbers[line_number];
-    state.sub_stack.push(state.tree.pos+1);
+    state.sub_stack.push(state.tree.pos);
     state.tree.jump(target);
 }
 
