@@ -488,27 +488,49 @@ function Node(func, node_args)
         return this.func.apply(this, args);
     };
 
+    // false: no further evaluation to do
+    this.step = function()
+    {
+        this.evaluate();
+        return false;
+    }
+
+    this.init = function() {}
+
     // end calls do not affect expression nodes
     this.end = function() {}
 }
 
+
 function Sequence(node_args)
 {
     this.args = node_args;
-    this.pos = 0;
 
-    // traverse AST to evaluate this node and all its subnodes
-    this.evaluate = function()
+    this.init = function()
     {
-        while(this.pos < this.args.length) this.step();
+        this.pos = 0;
+        if (this.args.length) this.args[0].init()
     };
+
+    this.run = function()
+    {
+        this.init();
+        while (this.step());
+    }
 
     this.step = function()
     {
-        this.args[this.pos].evaluate();
-        ++this.pos;
+        if (this.pos < this.args.length) {
+            if (!this.args[this.pos].step()) {
+                ++this.pos;
+                if (this.pos < this.args.length) this.args[this.pos].init()
+            }
+            return true;
+        }
+        return false;
     }
 
+    // I think this is no longer needed
     this.end = function()
     // skip to end
     // only expected to be called at root or sequence node
@@ -516,43 +538,53 @@ function Sequence(node_args)
     {
         this.pos = this.args.length;
         // traverse the tree to ensure execution stops at deeper levels too
-        for (var i = 0; i < this.args.length; ++i) this.args[i].end();
+        //for (var i = 0; i < this.args.length; ++i) this.args[i].end();
     }
 
     this.jump = function(target)
     // jump instruction
     // only expected to be called at root node
     {
-        this.end();
-        this.pos = target-1;
+        //this.end();
+        this.pos = target;
+        this.args[this.pos].init();
     }
 }
-
-// inherit Node prototype
-Sequence.prototype = Object.create(Node.prototype);
-Sequence.prototype.name = "Sequence";
-Sequence.prototype.constructor = Sequence;
 
 
 function Conditional(condition, node)
 {
     this.condition = condition;
-    this.node = node;
+    this.sequence = node;
 
-    this.evaluate = function()
+    var evaluated_condition = null;
+
+    this.init = function()
     {
-        var condition = this.condition.evaluate();
-        if (condition) this.node.evaluate();
-    };
+        evaluated_condition = this.condition.evaluate();
+        if (evaluated_condition) {
+            this.sequence.init();
+        }
+    }
+
+    this.step = function()
+    {
+        if (evaluated_condition === null) {
+            throw 'Uninitialised condition';
+        }
+        if (evaluated_condition) {
+            return this.sequence.step();
+        }
+    }
 
     this.end = function()
     {
-        this.node.end();
+        this.sequence.end();
     }
 }
 
-// inherit Node prototype
-Conditional.prototype = Object.create(Node.prototype);
+// inherit Sequence prototype
+Conditional.prototype = Object.create(Sequence.prototype);
 Conditional.prototype.name = "Conditional";
 Conditional.prototype.constructor = Conditional;
 
@@ -1141,7 +1173,7 @@ function stNext(state, loop_var)
         state.for_stack.pop();
     }
     else {
-        state.tree.jump(loop_record.pos+1);
+        state.tree.jump(loop_record.pos);
     }
 }
 
