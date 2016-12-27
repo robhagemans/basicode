@@ -1201,13 +1201,29 @@ function stInput(state, name)
 
 const SUBS = {
     100: function(state) { state.output.clear(); },
-    110: function(state) { state.output.setColumn(state.variables.retrieve('HO', [])); state.output.setRow(state.variables.retrieve('VE', [])); },
-    120: function(state) { state.variables.assign(state.output.col, 'HO', []); state.variables.assign(state.output.row, 'VE', []); },
+    110: subSetPos,
+    120: subGetPos,
     150: subWriteBold,
     200: subReadKey,
     //210: subWaitKey,
     220: subReadChar,
+    //250: subBeep,
+    260: subRandom,
+    270: subFree,
+}
 
+function subSetPos(state)
+// GOSUB 110
+{
+    state.output.setColumn(state.variables.retrieve('HO', []));
+    state.output.setRow(state.variables.retrieve('VE', []));
+}
+
+function subGetPos(state)
+// GOSUB 120
+{
+    state.variables.assign(state.output.col, 'HO', []);
+    state.variables.assign(state.output.row, 'VE', []);
 }
 
 function subWriteBold(state)
@@ -1261,6 +1277,21 @@ function subReadChar(state)
     var ch = state.output.getScreenChar(row, col);
     state.variables.assign(ch.charCodeAt(0), 'IN', []);
 }
+
+function subRandom(state)
+// GOSUB 260
+{
+    state.variables.assign(Math.random(), 'RV', []);
+}
+
+function subFree(state)
+// GOSUB 270
+{
+    // theoretically, we should garbage-collect and return free memory
+    // but let's just return some largeish (for BASICODE) number of bytes
+    state.variables.assign(65536, 'FR', []);
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // interface
@@ -1502,6 +1533,12 @@ else {
 // - BASICODE subroutines
 // - type checks
 // - error handling
+// - meta info: 32000+ is author info
+// - sound, graphics, printer
+
+// deployment: show meta-info after load
+// drag&drop loading of local files (using the File API)
+// <script src= or <object data= reading from URL (using XmlHttpRequest?)
 
 // some potential optimisations, if needed:
 // - simplify leaf nodes to { return payload } to avoid type test on each Node
