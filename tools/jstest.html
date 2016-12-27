@@ -59,10 +59,8 @@
             //var state = app.state;
             var parser = app.parser;
 
-            // screen + input test
-            var input = iface.read();
+            // screen test
             iface.clear();
-            iface.write('you typed: ' + input + '\n');
             iface.write('We can write <br>\n');
             iface.write('We can write \\\n\n');
 
@@ -208,6 +206,17 @@
                 '1030 NEXT I',
             ].join('\n')));
             prog.tree.evaluate();
+
+            prog = parser.parseProgram(tokenise([
+                '1000 :',
+                '1010 INPUT A$: PRINT "you typed: "; A$',
+                '1030 INPUT A: PRINT "value: "; A',
+            ].join('\n')));
+            prog.tree.evaluate();
+
+
+            var input = iface.read();
+            iface.write('you typed: ' + input + '\n');
 
             var expr_str = input;
             if (expr_str.length) {

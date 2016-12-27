@@ -252,7 +252,7 @@ const KEYWORDS = {
     'GOSUB': newStatementToken('GOSUB', parseGoto, stGosub),
     'GOTO': newStatementToken('GOTO', parseGoto, stGoto),
     'IF': newStatementToken('IF', parseIf, stIf),
-    'INPUT': newStatementToken('INPUT'),
+    'INPUT': newStatementToken('INPUT', parseInput, stInput),
     'INT': newFunctionToken('INT', Math.trunc),
     'LEFT$': newFunctionToken('LEFT$', function fnLeft(x, n) { return x.slice(0, n); }),
     'LEN': newFunctionToken('LEN', function fnLen(x, n) { return x.length; }),
@@ -701,7 +701,7 @@ function parseFor(parser, expr_list)
     else {
         step = parser.parseExpression(expr_list);
     }
-    // return payload: do not retrieve the variable, just check its name
+    // return payload: do not retrieve the variable, just get its name
     return [loop_variable.payload, start, stop, step];
 }
 
@@ -711,10 +711,22 @@ function parseNext(parser, expr_list)
     // variable is mandatory; only one variable allowed
     var loop_variable = expr_list.shift();
     if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
-        throw 'Syntax error: expected numerical variable name';
+        throw 'Syntax error: expected numerical variable name, got `' + loop_variable.payload + '`';
     }
-    // return payload: do not retrieve the variable, just check its name
-    return [loop_variable.payload]
+    // return payload: do not retrieve the variable, just get its name
+    return [loop_variable.payload];
+}
+
+function parseInput(parser, expr_list)
+// parse INPUT
+{
+    var name = expr_list.shift();
+    if (name.token_type != 'name') {
+        throw 'Syntax error: expected variable name, got `' + name.payload + '`';
+    }
+    var indices = parser.parseArguments(expr_list);
+    // return payload: do not retrieve the variable, just get its name
+    return [name.payload].concat(indices);
 }
 
 
@@ -730,6 +742,7 @@ function Parser(iface)
         'variables': new Variables(),
         'line_numbers': {},
         'output': iface,
+        'input': iface,
     }
 
     // data is stored upon parsing, not evaluation
@@ -927,7 +940,7 @@ function stLet(state, value, name)
 // LET
 {
     var indices = [].slice.call(arguments, 3);
-    return state.variables.assign(value, name, indices);
+    state.variables.assign(value, name, indices);
 }
 
 function stDim(state)
@@ -1075,6 +1088,18 @@ function stNext(state, loop_var)
     }
 }
 
+function stInput(state, name)
+{
+    var indices = [].slice.call(arguments, 2);
+    var value = state.input.readLine();
+    if (name.slice(-1) !== '$') {
+        // convert string to number
+        // note that this will currently simply return 0 if it can't convert
+        // no 'Redo from start'
+        value = new Lexer(value).readValue();
+    }
+    state.variables.assign(value, name, indices);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // interface
@@ -1121,6 +1146,12 @@ function Interface(output_element, input_element)
         return input_element.value;
     }
 
+    this.readLine = function() {
+        var lines = input_element.value.replace('\r\n', '\n').replace('\r', '\n').split('\n');
+        input_element.value = lines.slice(1).join('\n');
+        return lines[0];
+    }
+
     this.clear();
 }
 
@@ -1140,7 +1171,7 @@ function BasicodeApp()
 // - working keyboard
 // - BASICODE subroutines
 // - type checks
-// - INPUT, FOR .. NEXT
+// - FOR .. NEXT within and across lines
 
 // some potential optimisations, if needed:
 // - leave empty statements (REM, DATA) out of AST
