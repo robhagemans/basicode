@@ -960,14 +960,13 @@ function Parser()
         250: function() {return new Node(subBeep, [state])},
         260: function() {return new Node(subRandom, [state])},
         270: function() {return new Node(subFree, [state])},
+        //280 Disable the stop/break key (FR=1) or enable or (FR=0).
+        300: function() {return new Node(subNumberToString, [state])},
+        310: function() {return new Node(subNumberFormat, [state])},
         /*
-        // BC2:
-        280 Disable the stop/break key (FR=1) or enable or (FR=0).
-        300 Convert number SR to string, returned in SR$
-        310 Convert number SR to string with a string length of CT and with CN places after decimal point; returned in SR$,
         // does BC2 allow MID$ with only two parameters?
 
-        printer
+        // BC2: printer
         350 Print SR$ on the printer.
         360 Carriage return and line feed on the printer.
 
@@ -1357,7 +1356,31 @@ function subFree(state)
     state.variables.assign(65536, 'FR', []);
 }
 
+function subNumberToString(state)
+// GOSUB 300
+{
+    var num = state.variables.retrieve('SR', []);
+    state.variables.assign(num.toString(10), 'SR$', []);
+}
 
+function subNumberFormat(state)
+// GOSUB 310
+// 310 Convert number SR to string with a string length of CT and with CN places after decimal point; returned in SR$,
+{
+    var num = state.variables.retrieve('SR', []);
+    var len = state.variables.retrieve('CT', []);
+    var decimals = state.variables.retrieve('CN', []);
+    var str = num.toFixed(decimals);
+    if (str.length > len) {
+        // too long; replace with stars
+        str = '*'.repeat(len);
+    }
+    else if (str.length < len) {
+        // left-pad with spaces
+        str = (' '.repeat(len) + str).slice(-len);
+    }
+    state.variables.assign(str, 'SR$', []);
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1622,13 +1645,15 @@ else {
 
 
 // TODO:
-// - BASICODE subroutines
+// - arrow keys, function keys, break key (use ctrl+c)
+// - unimplemented BASICODE subroutines
+// - DEF FN
 // - type checks
 // - error handling
 // - meta info: 32000+ is author info
-// - sound, graphics, printer
+// - colour, sound, graphics, printer
 
-// deployment: show meta-info after load
+// deployment: show meta-info after load ('loader program' if nothing loaded)
 // drag&drop loading of local files (using the File API)
 // <script src= or <object data= reading from URL (using XmlHttpRequest?)
 

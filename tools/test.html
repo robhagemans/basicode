@@ -16,7 +16,11 @@
         1040 GOSUB 120: PRINT HO; VE;
         1050 SR$="Testy": GOSUB 150
         1060 HO=0: VE=4: GOSUB 220: SR$=IN$: GOSUB 150: PRINT IN
-        1070 GOTO 950
+        1080 SR=0.5: GOSUB 300: PRINT "["+SR$+"]"
+        1090 SR=0.5: CN=5: CT=10: GOSUB 310: PRINT "["+SR$+"]"
+        1100 SR=12345: CN=0: CT=10: GOSUB 310: PRINT "["+SR$+"]"
+        1110 SR=12345: CN=5: CT=10: GOSUB 310: PRINT "["+SR$+"]"
+        2000 GOTO 950
     </script>
 
     <script type="text/basicode">
