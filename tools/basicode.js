@@ -619,6 +619,7 @@ function Parser()
         'tree': null,
         'output': null,
         'input': null,
+        'printer': null,
     }
 
     var current_line = 999;
@@ -963,12 +964,11 @@ function Parser()
         //280 Disable the stop/break key (FR=1) or enable or (FR=0).
         300: function() {return new Node(subNumberToString, [state])},
         310: function() {return new Node(subNumberFormat, [state])},
+        350: function() {return new Node(subLinePrint, [state])},
+        360: function() {return new Node(subLineFeed, [state])},
+
         /*
         // does BC2 allow MID$ with only two parameters?
-
-        // BC2: printer
-        350 Print SR$ on the printer.
-        360 Carriage return and line feed on the printer.
 
         // BC2: END, RUN, STOP
         // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
@@ -1387,6 +1387,20 @@ function subNumberFormat(state)
     state.variables.assign(str, 'SR$', []);
 }
 
+function subLinePrint(state)
+// GOSUB 350
+// 350 Print SR$ on the printer.
+{
+    var text = state.variables.retrieve('SR$', []);
+    state.printer.write(text);
+}
+
+function subLineFeed(state)
+// GOSUB 360
+// 360 Carriage return and line feed on the printer.
+{
+    state.printer.write('\n');
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // interface
@@ -1397,6 +1411,7 @@ const ACTIVE_DELAY = 5;
 
 function Interface(iface_element)
 {
+    // create interface canvas, if not provided
     if (!iface_element) {
         var canvas = document.createElement('canvas');
         canvas.className = 'basicode';
@@ -1511,6 +1526,8 @@ function Interface(iface_element)
         this.row = row;
     }
 
+    this.clear();
+
     ///////////////////////////////////////////////////////////////////////////
     // keyboard
 
@@ -1565,10 +1582,33 @@ function Interface(iface_element)
         keyboard_buffer = keyboard_buffer.slice(loc);
         return out;
     }
-
-    this.clear();
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+// printer
+
+function Printer() {
+
+    // create hidden iframe for printing
+    var print_iframe = document.createElement('iframe');
+    print_iframe.hidden = true;
+    document.body.appendChild(print_iframe);
+    var print_element = document.createElement('pre');
+    print_iframe.contentDocument.body.appendChild(print_element)
+
+    this.write = function(text)
+    // add text to the print document
+    {
+        print_element.innerText += text.replace('\r\n', '\n').replace('\r', '\n');
+    }
+
+    this.flush = function()
+    // send the document (if any) to the printer
+    {
+        if (print_element.innerText) print_iframe.contentWindow.print();
+    }
+}
 
 
 function BasicodeApp()
@@ -1584,40 +1624,43 @@ function BasicodeApp()
     // execute the program
     {
         var prog = this.program;
-        if (!prog) return;
 
-        if (!(iface instanceof Interface)) {
-            iface = new Interface();
-        }
+        // exit if nothing loaded
+        if (!prog || prog.tree === null) return;
 
+        // create interface if not provided
+        if (!(iface instanceof Interface)) iface = new Interface();
         prog.output = iface;
         prog.input = iface;
 
-        // exit if nothing loaded
-        if (prog === undefined || prog.tree === null) {
-            return;
+        // create printer object
+        prog.printer = new Printer();
+
+        // interval timer for running program
+        var run_interval = null;
+
+        function close()
+        // release resources upon program end
+        {
+            window.clearInterval(run_interval);
+            iface.release();
+            prog.printer.flush();
+            console.log('done');
         }
 
-        // wait until input/output becomes available, then run the program
+        // wait until resources become available, then run the program
         iface.acquire(function() {
             prog.tree.init();
 
-            var run_interval = window.setInterval(function() {
+            run_interval = window.setInterval(function() {
                 try {
-                    if (!prog.tree.step()) {
-                        window.clearInterval(run_interval);
-                        console.log('done');
-                        iface.release();
-                    }
+                    if (!prog.tree.step()) close();
                 } catch (e) {
-                    window.clearInterval(run_interval);
                     iface.write('ERROR: ' + e + '\n');
-                    iface.release()
-                    console.log('ERROR: ' + e);
+                    close();
                 }
             }, ACTIVE_DELAY);
         });
-
     }
 }
 

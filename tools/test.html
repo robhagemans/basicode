@@ -20,7 +20,9 @@
         1090 SR=0.5: CN=5: CT=10: GOSUB 310: PRINT "["+SR$+"]"
         1100 SR=12345: CN=0: CT=10: GOSUB 310: PRINT "["+SR$+"]"
         1110 SR=12345: CN=5: CT=10: GOSUB 310: PRINT "["+SR$+"]"
-        2000 GOTO 9500
+        1120 SR$="printer": GOSUB 350: GOSUB 360
+        1130 SR$="test": GOSUB 350
+        2000 GOTO 950
     </script>
 
     <script type="text/basicode">
