@@ -955,7 +955,7 @@ function Parser()
         120: function() {return new Node(subGetPos, [state])},
         150: function() {return new Node(subWriteBold, [state])},
         200: function() {return new Node(subReadKey, [state])},
-        //210: subWaitKey,
+        210: function() {return new WaitNode(function waitForKey() { return state.input.keyPressed(); }, new Node(subReadKey, [state])); },
         220: function() {return new Node(subReadChar, [state])},
         //250: subBeep,
         260: function() {return new Node(subRandom, [state])},
@@ -1262,7 +1262,8 @@ function subWriteBold(state)
     state.output.write(' ');
 }
 
-function assignKey(state, key)
+function subReadKey(state)
+// GOSUB 200, GOSUB 210 (after wait)
 // TODO: arrow keys, function keys etc.
 {
     var key = state.input.read(1);
@@ -1277,21 +1278,6 @@ function assignKey(state, key)
     }
     state.variables.assign(keyval, 'IN', []);
     state.variables.assign(key, 'IN$', []);
-}
-
-function subReadKey(state)
-// GOSUB 200
-{
-    assignKey(state.input.read(1));
-}
-
-function subWaitKey(state)
-// GOSUB 210
-{
-    do {
-        var key = state.input.read(1);
-    } while (!key);
-    assignKey(key);
 }
 
 function subReadChar(state)
@@ -1454,21 +1440,23 @@ function Interface(iface_element)
     input_element.focus();
 
     input_element.addEventListener('keypress', function(event) {
-    //input_element.onkeypress = function(event) {
         keyboard_buffer += String.fromCharCode(event.keyCode);
-        console.log(event.keyCode);
+        event.preventDefault();
+        console.log('keypress ' + event.keyCode);
     });
 
     input_element.addEventListener('keydown', function(event) {
-    //input_element.onkeydown = function(event) {
-            // use this for backspace, function keys
-        console.log(event.keyCode);
+        // use this for backspace, function keys
+        console.log('keydown ' + event.keyCode);
         // preventDefault will stop all keys from being caught by keypress, so use only for backspace and function keys to avoid browser actions
         //event.preventDefault();
     });
 
     this.keyPressed = function(key) {
-        return (keyboard_buffer.search(key) !== -1);
+        if (key !== undefined && key !== null) {
+            return (keyboard_buffer.search(key) !== -1);
+        }
+        return keyboard_buffer.length > 0;
     }
 
     this.read = function(n)

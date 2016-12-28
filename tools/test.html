@@ -9,7 +9,8 @@
 <body>
     <script type="text/basicode">
         1000 A=1: GOTO 20
-        1010 GOSUB 100:HO=10: VE=2: GOSUB 110: SR$="Type something.": GOSUB 150
+        1010 GOSUB 100:HO=10: VE=1: GOSUB 110: SR$="Press a key.": GOSUB 150: GOSUB 210
+        1015 GOSUB 100:HO=10: VE=2: GOSUB 110: SR$="Type something.": GOSUB 150
         1020 INPUT A$: HO=10: VE=3: GOSUB 110: PRINT "you typed: "; A$
         1030 INPUT A: PRINT "value: "; A
         1040 GOSUB 120: PRINT HO; VE;
