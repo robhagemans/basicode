@@ -964,6 +964,7 @@ function Parser()
         //280 Disable the stop/break key (FR=1) or enable or (FR=0).
         300: function() {return new Node(subNumberToString, [state])},
         310: function() {return new Node(subNumberFormat, [state])},
+        330: function() {return new Node(subToUpperCase, [state])},
         350: function() {return new Node(subLinePrint, [state])},
         360: function() {return new Node(subLineFeed, [state])},
 
@@ -975,7 +976,6 @@ function Parser()
         // BC3: GOTO20 clears variables, resets & runs
 
         // BC3:
-        330 Convert all letters in SR$ to capital letters
         450 Wait SD*0.1 seconds or for a key stroke
             When ended: IN$ and IN contain the possible keystroke (see for special codes line 200). SD contains the remaining time from the moment the key was pressed or zero (if no key was pressed)
 
@@ -1385,6 +1385,14 @@ function subNumberFormat(state)
         str = ' '.repeat(len-str.length) + str;
     }
     state.variables.assign(str, 'SR$', []);
+}
+
+function subToUpperCase(state)
+// GOSUB 330
+// 330 Convert all letters in SR$ to capital letters
+{
+    var str = state.variables.retrieve('SR$', []);
+    state.variables.assign(str.toUpperCase(), 'SR$', []);
 }
 
 function subLinePrint(state)
