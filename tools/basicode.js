@@ -802,7 +802,7 @@ function Parser()
         'DATA': parseData,
         'DIM': parseRead,
         'FOR': parseFor,
-        'GOSUB': parseGoto,
+        'GOSUB': parseGosub,
         'GOTO': parseGoto,
         'IF': parseIf,
         'INPUT': parseInput,
@@ -915,13 +915,43 @@ function Parser()
     }
 
     function parseGoto(parser, expr_list, token)
-    // parse GOTO or GOSUB
+    // parse GOTO
     {
         var line_number = expr_list.shift();
         if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
-            throw 'Syntax error: expected line number';
+            throw 'Syntax error: expected line number, got `'+line_number.payload+'`';
         }
         return new Node(token.operation, [state, line_number.payload]);
+    }
+
+    function parseGosub(parser, expr_list, token)
+    // parse GOSUB
+    {
+        var line_number = expr_list.shift();
+        if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
+            throw 'Syntax error: expected line number, got `'+line_number.payload+'`';
+        }
+        else if (line_number.payload in SUBS) {
+            // attach BASICODE subroutine node
+            return SUBS[line_number.payload]();
+        }
+        else if (line_number.payload < 1000) {
+            throw 'Unknown BASICODE subroutine `GOSUB '+line_number.payload+'`';
+        }
+        return new Node(token.operation, [state, line_number.payload]);
+    }
+
+    const SUBS = {
+        100: function() {return new Node(subClearScreen, [state])},
+        110: function() {return new Node(subSetPos, [state])},
+        120: function() {return new Node(subGetPos, [state])},
+        150: function() {return new Node(subWriteBold, [state])},
+        200: function() {return new Node(subReadKey, [state])},
+        //210: subWaitKey,
+        220: function() {return new Node(subReadChar, [state])},
+        //250: subBeep,
+        260: function() {return new Node(subRandom, [state])},
+        270: function() {return new Node(subFree, [state])},
     }
 
     function parseIf(parser, expr_list, token)
@@ -1031,6 +1061,7 @@ function Parser()
     {
         return new Node(token.operation, [state]);
     }
+
 };
 
 
@@ -1115,13 +1146,8 @@ function stGoto(state, line_number)
 function stGosub(state, line_number)
 // GOSUB
 {
-    if (line_number in SUBS) {
-        // execute the BASICODE subroutine, then continue
-        SUBS[line_number](state);
-        return;
-    }
     if (!(line_number in state.line_numbers)) {
-        throw 'Undefined line number';
+        throw 'Undefined line number ' + line_number;
     }
     var target = state.line_numbers[line_number];
     state.sub_stack.push(state.tree.pos);
@@ -1199,17 +1225,10 @@ function stInput(state, name)
 ///////////////////////////////////////////////////////////////////////////////
 // BASICODE subroutines
 
-const SUBS = {
-    100: function(state) { state.output.clear(); },
-    110: subSetPos,
-    120: subGetPos,
-    150: subWriteBold,
-    200: subReadKey,
-    //210: subWaitKey,
-    220: subReadChar,
-    //250: subBeep,
-    260: subRandom,
-    270: subFree,
+function subClearScreen(state)
+// GOSUB 100
+{
+    state.output.clear();
 }
 
 function subSetPos(state)
@@ -1291,6 +1310,8 @@ function subFree(state)
     // but let's just return some largeish (for BASICODE) number of bytes
     state.variables.assign(65536, 'FR', []);
 }
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////
