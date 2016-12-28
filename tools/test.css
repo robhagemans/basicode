@@ -4,9 +4,15 @@
     padding: 0.4rem 0.2rem 0.4rem 0.2rem;
     background-color: lightsteelblue;
     border-radius: 0.4rem;
+    outline: none;
     /* this centers the screen horizontally, for some reason */
     margin: auto;
     display: table;
     /* */
     margin-top: 1rem;
+}
+
+.basicode:focus {
+    background-color: lightblue;
+    border: 1px solid lightblue;
 }
