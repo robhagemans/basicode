@@ -10,6 +10,7 @@
     <script type="text/basicode">
         1000 A=1:GOTO20
         1010 GOSUB100:HO=10:VE=1:GOSUB110:SR$="Press a key.":GOSUB150:GOSUB210
+        1012 GOSUB 280
         1015 GOSUB100:HO=10:VE=2:GOSUB110:SR$="Type something.":GOSUB150
         1020 INPUTA$:HO=10:VE=3:GOSUB110:PRINT"you typed: ";A$
         1030 INPUT A: PRINT "value: "; A
@@ -24,7 +25,7 @@
         1130 SR$="test": GOSUB 350
         2000 GOTO 950
     </script>
-
+<!--
     <script type="text/basicode">
         1000 A=1: GOTO 20
         1010 PRINT "basicode test 2"

@@ -961,7 +961,7 @@ function Parser()
         250: function() {return new Node(subBeep, [state])},
         260: function() {return new Node(subRandom, [state])},
         270: function() {return new Node(subFree, [state])},
-        //280 Disable the stop/break key (FR=1) or enable or (FR=0).
+        280: function() {return new Node(subToggleBreak, [state])},
         300: function() {return new Node(subNumberToString, [state])},
         310: function() {return new Node(subNumberFormat, [state])},
         330: function() {return new Node(subToUpperCase, [state])},
@@ -1361,6 +1361,13 @@ function subFree(state)
     state.variables.assign(65536, 'FR', []);
 }
 
+function subToggleBreak(state)
+// GOSUB 280
+// 280 Disable the stop/break key (FR=1) or enable or (FR=0).
+{
+    state.input.suppress_break = true;
+}
+
 function subNumberToString(state)
 // GOSUB 300
 {
@@ -1439,7 +1446,8 @@ function Interface(iface_element)
         var wait_interval = window.setInterval(function() {
             if (!iface.busy) {
                 window.clearInterval(wait_interval);
-                console.log('start');
+                iface.busy = true;
+                iface.break_flag = false;
                 do_run();
             };
         }, INACTIVE_DELAY);
@@ -1546,6 +1554,12 @@ function Interface(iface_element)
     input_element.tabIndex = 1;
     input_element.focus();
 
+    // suppress ctrl+break key
+    this.suppress_break = false;
+    this.break_flag = false;
+
+    var self = this;
+
     input_element.addEventListener('keypress', function(event) {
         keyboard_buffer += String.fromCharCode(event.keyCode);
         event.preventDefault();
@@ -1555,6 +1569,9 @@ function Interface(iface_element)
     input_element.addEventListener('keydown', function(event) {
         // use this for backspace, function keys
         console.log('keydown ' + event.keyCode);
+        if (event.keyCode === 19 && event.ctrlKey && !self.suppress_break) {
+            self.break_flag = true;
+        }
         // preventDefault will stop all keys from being caught by keypress, so use only for backspace and function keys to avoid browser actions
         //event.preventDefault();
     });
@@ -1653,7 +1670,6 @@ function BasicodeApp()
             window.clearInterval(run_interval);
             iface.release();
             prog.printer.flush();
-            console.log('done');
         }
 
         // wait until resources become available, then run the program
@@ -1663,8 +1679,12 @@ function BasicodeApp()
             run_interval = window.setInterval(function() {
                 try {
                     if (!prog.tree.step()) close();
+                    if (iface.break_flag) {
+                        iface.write('\nBreak\n');
+                        close();
+                    }
                 } catch (e) {
-                    iface.write('ERROR: ' + e + '\n');
+                    iface.write('\nERROR: ' + e + '\n');
                     close();
                 }
             }, ACTIVE_DELAY);
@@ -1674,9 +1694,7 @@ function BasicodeApp()
 
 
 function launch() {
-    console.log('launch');
     var scripts = document.getElementsByTagName("script");
-    console.log(scripts);
     for(var i=0; i < scripts.length; ++i) {
         if (scripts[i].type == 'text/basicode') {
             var app = new BasicodeApp();
