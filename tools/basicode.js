@@ -970,7 +970,12 @@ function Parser()
         350 Print SR$ on the printer.
         360 Carriage return and line feed on the printer.
 
+        // BC2: END, RUN, STOP
+        // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
+        // BC3: GOTO20 clears variables, resets & runs
+
         // BC3:
+        330 Convert all letters in SR$ to capital letters
         450 Wait SD*0.1 seconds or for a key stroke
             When ended: IN$ and IN contain the possible keystroke (see for special codes line 200). SD contains the remaining time from the moment the key was pressed or zero (if no key was pressed)
 
@@ -1377,7 +1382,7 @@ function subNumberFormat(state)
     }
     else if (str.length < len) {
         // left-pad with spaces
-        str = (' '.repeat(len) + str).slice(-len);
+        str = ' '.repeat(len-str.length) + str;
     }
     state.variables.assign(str, 'SR$', []);
 }
@@ -1596,13 +1601,19 @@ function BasicodeApp()
         // wait until input/output becomes available, then run the program
         iface.acquire(function() {
             prog.tree.init();
-            iface.busy = true;
 
             var run_interval = window.setInterval(function() {
-                if (!prog.tree.step()) {
+                try {
+                    if (!prog.tree.step()) {
+                        window.clearInterval(run_interval);
+                        console.log('done');
+                        iface.release();
+                    }
+                } catch (e) {
                     window.clearInterval(run_interval);
-                    console.log('done');
-                    iface.release();
+                    iface.write('ERROR: ' + e + '\n');
+                    iface.release()
+                    console.log('ERROR: ' + e);
                 }
             }, ACTIVE_DELAY);
         });
