@@ -1296,10 +1296,42 @@ function subFree(state)
 ///////////////////////////////////////////////////////////////////////////////
 // interface
 
-function Interface(output_element, input_element)
+const INACTIVE_DELAY = 100;
+const ACTIVE_DELAY = 5;
+
+
+function Interface(iface_element)
 {
+    if (!iface_element) {
+        var canvas = document.createElement('canvas');
+        canvas.className = 'basicode';
+        document.body.appendChild(canvas);
+        iface_element = canvas;
+    }
+    var output_element = iface_element;
+    var input_element = iface_element;
+
     // only allow one program to connect at a time
     this.busy = false;
+
+    this.acquire = function(do_run)
+    // acquire this interface, after the previous user released it
+    {
+        var iface = this;
+        var wait_interval = window.setInterval(function() {
+            if (!iface.busy) {
+                window.clearInterval(wait_interval);
+                console.log('start');
+                do_run();
+            };
+        }, INACTIVE_DELAY);
+    }
+
+    this.release = function()
+    // release this interface
+    {
+        this.busy = false;
+    }
 
     ///////////////////////////////////////////////////////////////////////////
     // screen
@@ -1444,34 +1476,33 @@ function Interface(output_element, input_element)
 
 function BasicodeApp()
 {
-    var canvas = document.createElement('canvas');
-    canvas.className = 'basicode';
-    document.body.appendChild(canvas);
-
-    var iface = new Interface(canvas, canvas);
-
-    var inactive_delay = 100;
-    var active_delay = 5;
 
     this.load = function(code)
     // load program, parse to AST, connect to output
     {
         this.program = new Parser().parseProgram(code);
-        this.program.output = iface;
-        this.program.input = iface;
     }
 
-    this.run = function()
+    this.run = function(iface)
     // execute the program
     {
         var prog = this.program;
+        if (!prog) return;
+
+        if (!(iface instanceof Interface)) {
+            iface = new Interface();
+        }
+
+        prog.output = iface;
+        prog.input = iface;
 
         // exit if nothing loaded
         if (prog === undefined || prog.tree === null) {
             return;
         }
 
-        function do_run() {
+        // wait until input/output becomes available, then run the program
+        iface.acquire(function() {
             prog.tree.init();
             iface.busy = true;
 
@@ -1479,19 +1510,11 @@ function BasicodeApp()
                 if (!prog.tree.step()) {
                     window.clearInterval(run_interval);
                     console.log('done');
-                    iface.busy = false;
+                    iface.release();
                 }
-            }, active_delay);
-        }
+            }, ACTIVE_DELAY);
+        });
 
-        // wait until input/output becomes available, then run the program
-        var wait_interval = window.setInterval(function() {
-            if (!iface.busy) {
-                window.clearInterval(wait_interval);
-                console.log('start');
-                do_run();
-            };
-        }, inactive_delay);
     }
 }
 
