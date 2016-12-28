@@ -957,9 +957,56 @@ function Parser()
         200: function() {return new Node(subReadKey, [state])},
         210: function() {return new WaitNode(function waitForKey() { return state.input.keyPressed(); }, new Node(subReadKey, [state])); },
         220: function() {return new Node(subReadChar, [state])},
-        //250: subBeep,
+        250: function() {return new Node(subBeep, [state])},
         260: function() {return new Node(subRandom, [state])},
         270: function() {return new Node(subFree, [state])},
+        /*
+        // BC2:
+        280 Disable the stop/break key (FR=1) or enable or (FR=0).
+        300 Convert number SR to string, returned in SR$
+        310 Convert number SR to string with a string length of CT and with CN places after decimal point; returned in SR$,
+        // does BC2 allow MID$ with only two parameters?
+
+        printer
+        350 Print SR$ on the printer.
+        360 Carriage return and line feed on the printer.
+
+        // BC3:
+        450 Wait SD*0.1 seconds or for a key stroke
+            When ended: IN$ and IN contain the possible keystroke (see for special codes line 200). SD contains the remaining time from the moment the key was pressed or zero (if no key was pressed)
+
+        sound
+        400 Produce a tone using SP, SD and SV
+            SP is frequency level: 0 = lowest, 60='central C', 127 = highest
+            SD is the tone duration in steps of 0.1 seconds
+            SV is the volume: 0=muted 7=medium, 15=loud
+            This subroutine keeps running during the time of SD.
+
+        files
+        500 Open the file NF$ according to the code in NF:
+        NF = even number: input: NF= uneven number: output
+            NF= 0 or 1 BASICODE cassette
+            NF= 2 or 3 own system memory
+            NF= 4 or 5 diskette
+            NF= 6 or 7 diskette
+            IN=0: all OK, IN=1: end of file, IN=-1: error
+        540 Read into IN$ from the opened file NF$ (in IN the status, see line 500)
+        560 Send SR$ towards the opened file NF$ (in IN the status, see line 500)
+        580 Close the file with code NF
+
+        graphics
+        600 Switch to graphic screen and clear graphic screen
+        610 Plot a point at graphic position HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
+        630 Draw a line towards point HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
+        650 Print SR$ as text from graphic position HO,VE (0<=HO<1 en 0<=VE<1). HO and VE stay the same value.
+
+        // BC3v2
+        // DEF FN
+
+        // BC3C
+        // colours
+        // return CN in GOSUB 200; function keys
+        */
     }
 
     function parseIf(parser, expr_list, token)
@@ -1287,6 +1334,13 @@ function subReadChar(state)
     var row = state.variables.retrieve('VE', []);
     var ch = state.output.getScreenChar(row, col);
     state.variables.assign(ch.charCodeAt(0), 'IN', []);
+}
+
+function subBeep(state)
+// GOSUB 250
+// TODO: sound not implemented
+{
+    console.log('BEEP');
 }
 
 function subRandom(state)
