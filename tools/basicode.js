@@ -921,6 +921,14 @@ function Parser()
         if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
             throw 'Syntax error: expected line number, got `'+line_number.payload+'`';
         }
+        // GOTO 20 is a BASICODE fixture, no-op
+        if (line_number.payload === 20) return null;
+        // GOTO 950 means END
+        else if (line_number.payload  === 950) return new Node(jumpEnd, [state]);
+        else if (line_number.payload < 1000) {
+            throw 'Unknown BASICODE jump `GOTO '+line_number.payload+'`';
+        }
+        // other line numbers are resolved at run time
         return new Node(token.operation, [state, line_number.payload]);
     }
 
@@ -1128,14 +1136,6 @@ function stRead(state)
 function stGoto(state, line_number)
 // GOTO
 {
-    // GOTO 20 is a BASICODE fixture
-    if (line_number === 20) return;
-    // GOTO 950 means END
-    if (line_number === 950) {
-        state.tree.end();
-        return;
-    }
-    // other line numbers must be defined
     if (!(line_number in state.line_numbers)) {
         throw 'Undefined line number ' + line_number;
     }
@@ -1223,7 +1223,13 @@ function stInput(state, name)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// BASICODE subroutines
+// BASICODE subroutines and jumps
+
+function jumpEnd(state)
+// GOTO 950
+{
+    state.tree.end();
+}
 
 function subClearScreen(state)
 // GOSUB 100
