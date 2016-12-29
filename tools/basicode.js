@@ -232,7 +232,7 @@ const SYMBOLS = {
     '=': newOperatorToken('=', 2, 7, function opEqual(x, y) { return (x === y); }),
     '>': newOperatorToken('>', 2, 7, function opGreaterThan(x, y) { return (x > y); }),
     '>=': newOperatorToken('>=', 2, 7, function opGreaterThanOrEqual(x, y) { return (x >= y); }),
-    '<': newOperatorToken('<', 2, 7, function opLessThan(x, y) { return (x > y); }),
+    '<': newOperatorToken('<', 2, 7, function opLessThan(x, y) { return (x < y); }),
     '<=': newOperatorToken('<=', 2, 7, function opLessThanOrEqual(x, y) { return (x <= y); }),
     '<>': newOperatorToken('<>', 2, 7, function opNotEqual(x, y) { return (x !== y); }),
 }
@@ -258,7 +258,7 @@ const KEYWORDS = {
     'LEN': newFunctionToken('LEN', function fnLen(x, n) { return x.length; }),
     'LET': newStatementToken('LET', stLet),
     'LOG': newFunctionToken('LOG', Math.log),
-    'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start, start+n); }),
+    'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start-1, start+n-1); }),
     'NEXT': newStatementToken('NEXT', stNext),
     'NOT': newOperatorToken('NOT', 1, 6, function opNot(x) { return (!x); }),
     'ON': newStatementToken('ON', stOn),
