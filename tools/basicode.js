@@ -501,10 +501,13 @@ function Node(func, node_args)
     this.end = function() {}
 }
 
-function Sequence(node_args)
+function Sequence(node_args, label)
 {
     this.args = node_args;
     this.target = null;
+    this.label = label;
+
+    var current_label = null;
 
     this.init = function()
     {
@@ -516,21 +519,31 @@ function Sequence(node_args)
     {
         // execute a jump
         if (this.target !== null) {
-            console.log('exec jump '+this.target);
             this.pos = this.target;
             this.target = null;
             this.args[this.pos].init();
+            current_label = this.args[this.pos].label;
+            console.log('jump to '+current_label+' index  ' +this.pos);
+
         }
         if (this.args && this.pos < this.args.length) {
-            console.log(this.args[this.pos]);
             if (!this.args[this.pos].step()) {
                 // child sequence has ended
 
+                // FIXME: not necessary?
                 // stay on this level if we're going to jump next
                 if (this.target !== null) return true;
 
                 ++this.pos;
-                if (this.pos < this.args.length) this.args[this.pos].init()
+                if (this.pos < this.args.length) {
+                    this.args[this.pos].init()
+                    if (this.args[this.pos].label) {
+                        current_label = this.args[this.pos].label;
+                        console.log('step to '+current_label);
+                        console.log(this.args[this.pos]);
+
+                    }
+                }
             }
             return true;
         }
@@ -548,7 +561,6 @@ function Sequence(node_args)
     // jump instruction
     // only expected to be called at root node
     {
-        console.log('request jump '+target);
         // this method is called from a step(), which modifies this.pos before exiting
         // therefore, use a separate variable to request a jump on the next step.
         this.target = target;
@@ -592,6 +604,7 @@ function Conditional(condition, node)
     this.init = function()
     {
         evaluated_condition = this.condition.evaluate();
+        console.log('condition '+evaluated_condition);
         if (evaluated_condition) {
             this.sequence.init();
         }
@@ -758,7 +771,7 @@ function Parser()
         return args;
     }
 
-    this.parseLine = function(basicode)
+    this.parseLine = function(basicode, label)
     // parse a line of BASICODE
     {
         var statements = []
@@ -784,7 +797,7 @@ function Parser()
             }
         }
         // create a sequence node
-        return new Sequence(statements);
+        return new Sequence(statements, label);
     }
 
     this.parseProgram = function(basicode)
@@ -806,11 +819,9 @@ function Parser()
             // keep track of line numbers
             state.line_numbers[current_line] = lines.length;
             console.log(current_line);
-            // keep tree flat: no branches for lines
-            var statements = this.parseLine(basicode).args;
-            lines = lines.concat(statements);
+            lines.push(this.parseLine(basicode, current_line));
         }
-        state.tree = new Sequence(lines);
+        state.tree = new Sequence(lines, 'ROOT');
         return state;
     }
 
@@ -1232,7 +1243,6 @@ function stReturn(state)
     // FIXME - this won't work if jump-off point is in Conditional node
     // IF 0=0 THEN GOSUB 1010: PRINT 1
     var target = state.sub_stack.pop()+1;
-    console.log('RETURN');
     state.tree.jump(target);
 }
 
