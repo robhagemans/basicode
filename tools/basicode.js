@@ -85,7 +85,7 @@ function Variables()
     // allocate an array
     {
         // no redefinitions allowed
-        if (name in this.dims || name in this.vars) throw 'Duplicate definition';
+        if (name in this.dims || name in this.vars) throw 'Duplicate definition of `'+name+'()`';
         // BASICODE arrays may have at most two indices
         if (indices.length > 2) throw 'Subscript out of range: too many array dimensions';
         // set default to empty string if string name, 0 otherwise
@@ -258,7 +258,7 @@ const KEYWORDS = {
     'LEN': newFunctionToken('LEN', function fnLen(x, n) { return x.length; }),
     'LET': newStatementToken('LET', stLet),
     'LOG': newFunctionToken('LOG', Math.log),
-    'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start, n); }),
+    'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start, start+n); }),
     'NEXT': newStatementToken('NEXT', stNext),
     'NOT': newOperatorToken('NOT', 1, 6, function opNot(x) { return (!x); }),
     'ON': newStatementToken('ON', stOn),
@@ -969,10 +969,9 @@ function Parser()
         360: function() {return new Node(subLineFeed, [state])},
 
         /*
-        // does BC2 allow MID$ with only two parameters?
-
         // BC2: END, RUN, STOP
         // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
+        // DDR Basicode uses INPUT "prompt"; A$
         // BC3: GOTO20 clears variables, resets & runs
 
         // BC3:
@@ -1495,8 +1494,7 @@ function Interface(iface_element)
             var cut = this.width-this.col
             this.writeRaw(output.slice(0, cut));
             output = output.slice(cut);
-            this.row += 1;
-            this.col = 0;
+            this.lineFeed();
         }
         context.fillStyle = this.background;
         context.fillRect(this.col*font_width, this.row*font_height,
@@ -1505,7 +1503,7 @@ function Interface(iface_element)
         // 0.75 seems about the right baseline offset for Chrome & Firefox...
         context.fillText(output, this.col*font_width, (this.row+0.75)*font_height);
         // update content buffer
-        this.content[this.row] = this.content[this.row].slice(0, this.col) + output + this.content[this.row].slice(this.col+output.length);
+        this.content[this.row] = this.content[this.row].slice(0, this.col) + output + this.content[this.row].slice(this.col, this.col+output.length);
         this.col += output.length;
     }
 
@@ -1515,8 +1513,7 @@ function Interface(iface_element)
         var i=1;
         this.writeRaw(lines[0]);
         for (; i < lines.length; ++i) {
-            ++this.row;
-            this.col = 0;
+            this.lineFeed();
             this.writeRaw(lines[i]);
         }
     }
@@ -1535,11 +1532,20 @@ function Interface(iface_element)
     this.setColumn = function(col)
     {
         this.col = col;
+        if (this.col >= this.width) this.lineFeed();
+    }
+
+    this.lineFeed = function()
+    {
+        ++this.row;
+        this.col = 0;
+        if (this.row >= this.height) this.row = this.height-1;
     }
 
     this.setRow = function(row)
     {
         this.row = row;
+        if (this.row >= this.height) this.row = this.height-1;
     }
 
     this.clear();
@@ -1563,12 +1569,10 @@ function Interface(iface_element)
     input_element.addEventListener('keypress', function(event) {
         keyboard_buffer += String.fromCharCode(event.keyCode);
         event.preventDefault();
-        console.log('keypress ' + event.keyCode);
     });
 
     input_element.addEventListener('keydown', function(event) {
         // use this for backspace, function keys
-        console.log('keydown ' + event.keyCode);
         if (event.keyCode === 19 && event.ctrlKey && !self.suppress_break) {
             self.break_flag = true;
         }
@@ -1725,11 +1729,12 @@ else {
 
 
 // TODO:
+// - cursor, scrolling
 // - arrow keys, function keys, break key (use ctrl+c)
 // - unimplemented BASICODE subroutines
-// - DEF FN
+// - DEF FN, RUN, END, STOP, GOTO 20
 // - type checks
-// - error handling
+// - error handling: exception type; keep line number
 // - meta info: 32000+ is author info
 // - colour, sound, graphics, printer
 
