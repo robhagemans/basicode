@@ -504,6 +504,7 @@ function Node(func, node_args)
 function Sequence(node_args)
 {
     this.args = node_args;
+    this.target = null;
 
     this.init = function()
     {
@@ -513,13 +514,27 @@ function Sequence(node_args)
 
     this.step = function()
     {
+        // execute a jump
+        if (this.target !== null) {
+            console.log('exec jump '+this.target);
+            this.pos = this.target;
+            this.target = null;
+            this.args[this.pos].init();
+        }
         if (this.args && this.pos < this.args.length) {
+            console.log(this.args[this.pos]);
             if (!this.args[this.pos].step()) {
+                // child sequence has ended
+
+                // stay on this level if we're going to jump next
+                if (this.target !== null) return true;
+
                 ++this.pos;
                 if (this.pos < this.args.length) this.args[this.pos].init()
             }
             return true;
         }
+        // sequence has reached its end
         return false;
     }
 
@@ -533,8 +548,10 @@ function Sequence(node_args)
     // jump instruction
     // only expected to be called at root node
     {
-        this.pos = target;
-        this.args[this.pos].init();
+        console.log('request jump '+target);
+        // this method is called from a step(), which modifies this.pos before exiting
+        // therefore, use a separate variable to request a jump on the next step.
+        this.target = target;
     }
 }
 
@@ -787,7 +804,8 @@ function Parser()
             }
             current_line = line_number.payload;
             // keep track of line numbers
-            state.line_numbers[current_line] = lines.length-1;
+            state.line_numbers[current_line] = lines.length;
+            console.log(current_line);
             // keep tree flat: no branches for lines
             var statements = this.parseLine(basicode).args;
             lines = lines.concat(statements);
@@ -1210,7 +1228,11 @@ function stReturn(state)
     if (!state.sub_stack.length) {
         throw 'RETURN without GOSUB';
     }
-    var target = state.sub_stack.pop();
+    // return to node after GOSUB
+    // FIXME - this won't work if jump-off point is in Conditional node
+    // IF 0=0 THEN GOSUB 1010: PRINT 1
+    var target = state.sub_stack.pop()+1;
+    console.log('RETURN');
     state.tree.jump(target);
 }
 
@@ -1254,7 +1276,10 @@ function stNext(state, loop_var)
         state.for_stack.pop();
     }
     else {
-        state.tree.jump(loop_record.pos);
+        // jump to statement after FOR
+        // this won't work if the FOR is in a conditional and the NEXT is not
+        // but that is not allowed in BASICODE
+        state.tree.jump(loop_record.pos+1);
     }
 }
 
