@@ -1108,23 +1108,27 @@ function Parser()
         var step = expr_list.shift();
         if (step.token_type !== 'statement' || step.payload !== 'STEP') {
             expr_list.unshift(step);
-            step = 1;
+            step = new Literal(1);
         }
         else {
             step = parser.parseExpression(expr_list);
         }
         // loop init
-        last.next = new Node(stLet, [new Literal(loop_variable.payload), new Literal(start-step)], state);
+        last.next = new Node(stLet, [
+                                new Node(function (x, y) { return x-y; }, [start, step], state),
+                                new Literal(loop_variable.payload)
+                            ], state);
         last = last.next;
         // increment node
         var incr = new Node(stLet, [
-                                state,
+                                new Node(function(x, y) { return x+y; }, [
+                                        new Node(opRetrieve, [new Literal(loop_variable.payload)]),
+                                        step
+                                    ], state),
                                 new Literal(loop_variable.payload),
-                                new Node(function(x) { return x+step; }, [
-                                        new Node(opRetrieve, new Literal(loop_variable.payload)),
-                                    ], state)
                             ], state);
         last.next = incr;
+        last = incr;
 
         // parse body of FOR loop until NEXT is encountered
         var token = null;
@@ -1134,6 +1138,16 @@ function Parser()
             }
             //FIXME -  remove repetition of parseLine
             // make a parseUntil (with until === '\n' for IF, and 'NEXT' for FOR, and null for parseProgram)
+
+            // parse separator
+            if (!expr_list.length) break;
+            var sep = expr_list.shift();
+            if (sep.token_type === '\n') {
+                var label = parser.parseLineNumber(expr_list, last);
+            }
+            else if (sep.token_type !== ':') {
+                throw 'Syntax error: expected `:`, got `' + sep.payload + '`';
+            }
 
             var token = expr_list.shift();
             // check for empty statement
@@ -1145,50 +1159,28 @@ function Parser()
             }
 
             if (token.payload === 'NEXT') {
+                // variable is mandatory; only one variable allowed
+                var loop_variable = expr_list.shift();
+                if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
+                    throw 'Syntax error: expected numerical variable name, got `' + loop_variable.payload + '`';
+                }
                 break;
             }
 
             // parse arguments in statement-specific way
             // statement parsers must take care of maintaining the linked list
-            last = PARSERS[token.payload](this, expr_list, token, last)
-            // parse separator
-            if (!expr_list.length) break;
-            var sep = expr_list.shift();
-            if (token.token_type === '\n') {
-                var label = this.parseLineNumber(basicode, last);
-            }
-            else if (sep.token_type !== ':') {
-                throw 'Syntax error: expected `:`, got `' + sep.payload + '`';
-            }
-
-            //
+            last = PARSERS[token.payload](parser, expr_list, token, last)
         }
 
         // create the iteration node
-        var cond = new Conditional(new Node(opLessThanOrEqual, [
-                                    new Node(opRetrieve, new Literal(loop_variable.payload), state),
-                                    new Literal(stop)
+        var cond = new Conditional(new Node(function(x, y) { return x < y; }, [
+                                    new Node(opRetrieve, [new Literal(loop_variable.payload)], state),
+                                    stop
                                 ], state));
         cond.branch = incr;
         last.next = cond;
         return cond;
     }
-
-/*
-
-    function parseNext(parser, expr_list, token, last)
-    // parse NEXT
-    {
-        // variable is mandatory; only one variable allowed
-        var loop_variable = expr_list.shift();
-        if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
-            throw 'Syntax error: expected numerical variable name, got `' + loop_variable.payload + '`';
-        }
-        // return payload: do not retrieve the variable, just get its name
-        last.next = new Node(token.operation, [new Literal(loop_variable.payload)], state);
-        return last.next;
-    }
-*/
 
     function parseInput(parser, expr_list, token, last)
     // parse INPUT
@@ -1462,7 +1454,7 @@ function subLineFeed()
 // interface
 
 const INACTIVE_DELAY = 100;
-const ACTIVE_DELAY = 50;
+const ACTIVE_DELAY = 5;
 
 
 function Interface(iface_element)
@@ -1734,6 +1726,7 @@ function BasicodeApp()
                 } catch (e) {
                     iface.write('\nERROR: ' + e + '\n');
                     close();
+                    if (typeof e !== 'string') throw e;
                 }
             }, ACTIVE_DELAY);
         });
