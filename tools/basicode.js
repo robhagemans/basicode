@@ -521,7 +521,9 @@ function Label(label)
 {
     this.label = label;
     this.next = null;
-    this.step = function() { return this.next; }
+    this.step = function() {
+        return this.next;
+    }
 }
 
 
@@ -899,23 +901,22 @@ function Parser()
     function parseRead(parser, expr_list, token, last)
     // parse READ or DIM statement
     {
-        // index list evaluation operation
-        function evalIndex() { return [].slice.call(arguments); }
-
-        var names = [];
+        var pt = last;
         while (expr_list.length > 0) {
             var name = expr_list.shift();
             if (name.token_type != 'name') {
                 throw 'Syntax error: expected variable name, got `' + name.payload + '`';
             }
             var indices = parser.parseArguments(expr_list);
-            names.push([name.payload, new Node(evalIndex, indices, state)])
+
+            last.next = new Node(token.operation, [new Literal(name.payload)].concat(indices), state);
+            last = last.next;
+
             if (!expr_list.length) break;
             if (expr_list[0].payload !== ',') break;
             expr_list.shift();
         }
-        last.next = new Node(token.operation, names, state);
-        return last.next;
+        return last;
     }
 
     function parseRem(parser, expr_list, token, last)
@@ -1143,7 +1144,8 @@ function Parser()
             if (!expr_list.length) break;
             var sep = expr_list.shift();
             if (sep.token_type === '\n') {
-                var label = parser.parseLineNumber(expr_list, last);
+                last.next = parser.parseLineNumber(expr_list, last);
+                last = last.next;
             }
             else if (sep.token_type !== ':') {
                 throw 'Syntax error: expected `:`, got `' + sep.payload + '`';
@@ -1164,6 +1166,9 @@ function Parser()
                 if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
                     throw 'Syntax error: expected numerical variable name, got `' + loop_variable.payload + '`';
                 }
+
+                last.next = new Label('NEXT '+loop_variable.payload);
+                last = last.next;
                 break;
             }
 
@@ -1194,7 +1199,7 @@ function Parser()
         var wait_func = function() { return state.input.keyPressed('\r'); }
         // return payload: do not retrieve the variable, just get its name
         var node = new Node(token.operation, [new Literal(name.payload)].concat(indices), state)
-        last.next = new WaitNode(wait_func, node);
+        last.next = new Wait(wait_func, node);
         return last.next;
     }
 
@@ -1268,17 +1273,13 @@ function stRestore()
     state.data.restore();
 }
 
-function stRead()
+function stRead(name)
 // READ
 {
     var state = this;
-    var vars = [].slice.call(arguments, 1);
-    for (var i=0; i < vars.length; ++i) {
-        var name = vars[i][0];
-        var indices = vars[i][1].evaluate();
-        var value = state.data.read()
-        state.variables.assign(value, name, indices);
-    }
+    var indices = [].slice.call(arguments, 1);
+    var value = state.data.read()
+    state.variables.assign(value, name, indices);
 }
 
 
@@ -1296,6 +1297,7 @@ function stInput(name)
     }
     state.variables.assign(value, name, indices);
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // BASICODE subroutines and jumps
@@ -1686,7 +1688,6 @@ function BasicodeApp()
     this.run = function(iface)
     // execute the program
     {
-
         var prog = this.program;
         console.log('run ');
 
