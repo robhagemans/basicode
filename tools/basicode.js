@@ -226,9 +226,9 @@ const SYMBOLS = {
     '/': newOperatorToken('/', 2, 11, function opDivide(x, y) { return x / y; }),
     // + adds numbers or concatenates strings
     // does BASICODE accept unary + ?
-    '+': newOperatorToken('+', 2, 8, function opAddOrConcatenate(x, y) { return x + y; }),
+    '+': newOperatorToken('+', 2, 8, function opPlus(x, y) { return x + y; }),
     // - can be unary negation or binary subtraction
-    '-': newOperatorToken('-', null, 8, function opSubtractOrNegate(x, y) { if (y === undefined) return -x; else return x - y; }),
+    '-': newOperatorToken('-', null, 8, function opMinus(x, y) { if (y === undefined) return -x; else return x - y; }),
     '=': newOperatorToken('=', 2, 7, function opEqual(x, y) { return (x === y); }),
     '>': newOperatorToken('>', 2, 7, function opGreaterThan(x, y) { return (x > y); }),
     '>=': newOperatorToken('>=', 2, 7, function opGreaterThanOrEqual(x, y) { return (x >= y); }),
@@ -276,7 +276,7 @@ const KEYWORDS = {
     'GOTO': newStatementToken('GOTO', null),
     'IF': newStatementToken('IF', null),
     //FIXME
-    'ON': newStatementToken('ON', stOn),
+    'ON': newStatementToken('ON', null),
     'NEXT': newStatementToken('NEXT', null),
     'RETURN': newStatementToken('RETURN', null),
     // non-statement keywords
@@ -547,6 +547,29 @@ function Conditional(condition)
 }
 
 
+function Switch(condition, branches)
+// ON node
+{
+    this.condition = condition;
+    this.branches = branches;
+    this.next = null;
+
+    this.step = function()
+    {
+        var condition = this.condition.evaluate();
+        if (typeof condition !== 'number' && typeof condition !== 'boolean') {
+            throw 'Type mismatch: expected numerical expression, got `'+ condition+'`';
+        }
+        if (condition > 0 && condition <= this.branches.length) {
+            return this.branches[condition-1];
+        }
+        else {
+            return this.next;
+        }
+    }
+}
+
+
 function Jump(target, state, is_sub)
 {
     this.target = target;
@@ -785,11 +808,9 @@ function Parser()
         var last = state.tree;
         while (basicode.length > 0) {
             var label = this.parseLineNumber(basicode, last);
-            console.log(label);
             last = this.parseLine(basicode, label);
         }
         console.log('parsing done');
-        console.log(state.tree);
         return state;
     }
 
@@ -826,8 +847,6 @@ function Parser()
         var equals = expr_list.shift().payload;
         if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
         var value = parser.parseExpression(expr_list);
-        console.log('parsing let');
-        console.log(state);
         // statement must have access to interpreter state, so state is first argument
         last.next = new Node(token.operation, [value, new Literal(name.payload)].concat(indices), state);
         return last.next;
@@ -1051,20 +1070,22 @@ function Parser()
         if (jump.token_type !== 'statement' || (jump.payload !== 'GOTO' && jump.payload !== 'GOSUB')) {
             throw 'Syntax error: expected `GOTO` or `GOSUB`';
         }
-        var args = [condition, jump.operation]
+        var is_sub = false;
+        if (jump.payload === 'GOSUB') is_sub = true;
+        var nodes = [];
         while (expr_list.length) {
             var line_number = expr_list.shift();
             if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
                 throw 'Syntax error: expected line number';
             }
-            args.push(line_number.payload);
+            nodes.push(new Jump(line_number.payload, state, is_sub));
             var sep = expr_list.shift();
             if (sep.token_type !== ',') {
                 expr_list.unshift(sep);
                 break;
             }
         }
-        last.next = new Node(token.operation, args, state);
+        last.next = new Switch(condition, nodes);
         return last.next;
     }
 
@@ -1100,9 +1121,8 @@ function Parser()
         var incr = new Node(stLet, [
                                 state,
                                 new Literal(loop_variable.payload),
-                                new Node(opAddorConcatenate, [
+                                new Node(function(x) { return x+step; }, [
                                         new Node(opRetrieve, new Literal(loop_variable.payload)),
-                                        new Literal(step)
                                     ], state)
                             ], state);
         last.next = incr;
@@ -1137,7 +1157,6 @@ function Parser()
             var sep = expr_list.shift();
             if (token.token_type === '\n') {
                 var label = this.parseLineNumber(basicode, last);
-                console.log(label);
             }
             else if (sep.token_type !== ':') {
                 throw 'Syntax error: expected `:`, got `' + sep.payload + '`';
@@ -1213,9 +1232,6 @@ function stLet(value, name)
 // LET
 {
     var state = this;
-    console.log(state);
-    console.log(value);
-    console.log(name);
     var indices = [].slice.call(arguments, 2);
     state.variables.assign(value, name, indices);
 }
@@ -1274,85 +1290,6 @@ function stRead()
     }
 }
 
-/*
-function stGosub(line_number)
-// GOSUB
-{
-    var state = this;
-    if (!(line_number in state.line_numbers)) {
-        throw 'Undefined line number ' + line_number;
-    }
-    var target = state.line_numbers[line_number];
-    state.sub_stack.push(state.tree.pos);
-    state.tree.jump(target);
-}
-
-function stReturn()
-// RETURN
-{
-    var state = this;
-    if (!state.sub_stack.length) {
-        throw 'RETURN without GOSUB';
-    }
-    // return to node after GOSUB
-    // FIXME - this won't work if jump-off point is in Conditional node
-    // IF 0=0 THEN GOSUB 1010: PRINT 1
-    var target = state.sub_stack.pop()+1;
-    state.tree.jump(target);
-}
-*/
-
-// FIXME - needs to be a node structure now
-function stOn(condition, jump_operation)
-// ON.. GOTO
-{
-    var state = this;
-    var targets = [].slice.call(arguments, 2);
-    if (typeof condition !== 'number' && typeof condition !== 'boolean') {
-        throw 'Type mismatch: expected numerical expression';
-    }
-    if (condition > 0 && condition <= targets.length) {
-        var line_number = targets[condition-1];
-        jump_operation(state, line_number);
-    }
-}
-/*
-function stFor(loop_var, start, stop, step)
-// FOR .. TO .. STEP
-{
-    var state = this;
-    state.variables.assign(start, loop_var, []);
-    // the FOR loop is executed at least once in BASICODE
-    // unlike e.g. in GW-BASIC! so no jumping to NEXT here.
-    state.for_stack.push({'loop_var': loop_var, 'stop': stop, 'step': step, 'pos': state.tree.pos});
-}
-
-function stNext(loop_var)
-// NEXT
-{
-    var state = this;
-    if (!state.for_stack.length) {
-        throw '`NEXT` without `FOR`';
-    }
-    var loop_record = state.for_stack.slice(-1)[0];
-    if (loop_record.loop_var !== loop_var) {
-        throw '`FOR` without `NEXT`: expected `NEXT '+loop_record.loop_var+'`, got `NEXT '+loop_var+'`';
-    }
-    // increment counter
-    var counter = state.variables.retrieve(loop_var, []) + loop_record.step;
-    state.variables.assign(counter, loop_var, []);
-    // break condition
-    if (counter > loop_record.stop) {
-        state.for_stack.pop();
-    }
-    else {
-        // jump to statement after FOR
-        // this won't work if the FOR is in a conditional and the NEXT is not
-        // but that is not allowed in BASICODE
-        state.tree.jump(loop_record.pos+1);
-    }
-}
-*/
 
 function stInput(name)
 // INPUT
@@ -1769,7 +1706,6 @@ function BasicodeApp()
 
         var prog = this.program;
         console.log('run ');
-        console.log(prog);
 
         // exit if nothing loaded
         if (!prog || prog.tree === null) return;
@@ -1800,7 +1736,6 @@ function BasicodeApp()
             run_interval = window.setInterval(function() {
                 try {
                     if (current) current = current.step(); else close();
-                    console.log(current);
                     if (iface.break_flag) {
                         iface.write('\nBreak\n');
                         close();
