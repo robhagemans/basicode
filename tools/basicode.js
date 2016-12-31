@@ -1348,7 +1348,7 @@ function subReadKey()
         keyval = key.toUpperCase().charCodeAt(0);
     }
     // only printable ASCII
-    if (keyval<32 || keyval>126) {
+    if ((keyval<32 || keyval>126) && keyval !== 13) {
         key = '';
         keyval = 0;
     }
