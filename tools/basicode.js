@@ -275,7 +275,6 @@ const KEYWORDS = {
     'GOSUB': newStatementToken('GOSUB', null),
     'GOTO': newStatementToken('GOTO', null),
     'IF': newStatementToken('IF', null),
-    //FIXME
     'ON': newStatementToken('ON', null),
     'NEXT': newStatementToken('NEXT', null),
     'RETURN': newStatementToken('RETURN', null),
@@ -947,7 +946,7 @@ function Parser()
         // GOTO 20 is a BASICODE fixture, no-op
         if (line_number.payload === 20) return last;
         // GOTO 950 means END
-        else if (line_number.payload  === 950) return new Node(jumpEnd, [], state);
+        else if (line_number.payload  === 950) return new End();
         else if (line_number.payload < 1000) {
             throw 'Unknown BASICODE jump `GOTO '+line_number.payload+'`';
         }
@@ -1308,14 +1307,6 @@ function stInput(name)
 
 ///////////////////////////////////////////////////////////////////////////////
 // BASICODE subroutines and jumps
-
-// FIXME - replace with End node
-function jumpEnd()
-// GOTO 950
-{
-    var state = this;
-    state.tree.end();
-}
 
 function subClearScreen()
 // GOSUB 100
