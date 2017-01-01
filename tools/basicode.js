@@ -1068,9 +1068,15 @@ function Parser()
             last.next.next.next = new Node(subReadKeyGetTimer, [], state);
             return last.next.next.next;
         },
+        600: function(last) {last.next = new Node(subClearScreen, [], state); return last.next; },
+        620: function(last) {last.next = new Node(subPlot, [], state); return last.next; },
+        630: function(last) {last.next = new Node(subDraw, [], state); return last.next; },
+        650: function(last) {last.next = new Node(subText, [], state); return last.next; },
         /*
 
         // BC3:
+        initial variable settings HO, VE
+
         files
         500 Open the file NF$ according to the code in NF:
         NF = even number: input: NF= uneven number: output
@@ -1084,10 +1090,6 @@ function Parser()
         580 Close the file with code NF
 
         graphics
-        600 Switch to graphic screen and clear graphic screen
-        610 Plot a point at graphic position HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
-        630 Draw a line towards point HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
-        650 Print SR$ as text from graphic position HO,VE (0<=HO<1 en 0<=VE<1). HO and VE stay the same value.
 
         // BC3C
         // colours
@@ -1408,7 +1410,8 @@ function subClear()
 }
 
 function subClearScreen()
-// GOSUB 100
+// GOSUB 100, GOSUB 600
+// 600 Switch to graphic screen and clear graphic screen
 {
     var state = this;
     state.output.clear();
@@ -1596,6 +1599,37 @@ function subLineFeed()
     state.printer.write('\n');
 }
 
+function subPlot()
+// 620 Plot a point at graphic position HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
+{
+    var state = this;
+    var x = state.variables.retrieve('HO', []);
+    var y = state.variables.retrieve('VE', []);
+    var c = state.variables.retrieve('CN', []);
+    state.output.plot(x, y, c);
+}
+
+function subDraw()
+// 630 Draw a line towards point HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
+{
+    var state = this;
+    var x = state.variables.retrieve('HO', []);
+    var y = state.variables.retrieve('VE', []);
+    var c = state.variables.retrieve('CN', []);
+    state.output.draw(x, y, c);
+}
+
+function subText()
+//650 Print SR$ as text from graphic position HO,VE (0<=HO<1 en 0<=VE<1). HO and VE stay the same value.
+{
+    var state = this;
+    var x = state.variables.retrieve('HO', []);
+    var y = state.variables.retrieve('VE', []);
+    var text = state.variables.retrieve('SR$', []);
+    state.output.drawText(x, y, text);
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // interface
 
@@ -1650,6 +1684,9 @@ function Interface(iface_element)
         this.row = 0;
         this.col = 0;
         this.content = (' '.repeat(this.width)+'\n').repeat(this.height).split('\n');
+        //graphics
+        this.last_x = 0;
+        this.last_y = 0;
     }
 
     this.writeRaw = function(output)
@@ -1672,6 +1709,11 @@ function Interface(iface_element)
         this.col += output.length;
     }
 
+    this.drawText = function(x, y, output)
+    {
+        context.fillStyle = this.foreground;
+        context.fillText(output, x, y);
+    }
 
     this.writeCentre = function(row, str)
     // write centred; used by the loader only
@@ -1723,6 +1765,31 @@ function Interface(iface_element)
     }
 
     this.clear();
+
+    ///////////////////////////////////////////////////////////////////////////
+    // graphics
+
+
+    this.plot = function(x, y, c)
+    {
+        this.last_x = x*output_element.width;
+        this.last_y = y*output_element.height;
+        context.fillStyle = c ? this.background : this.foreground;
+        context.fillRect(this.last_x, this.last_y, 1, 1);
+    }
+
+    this.draw = function(x, y, c)
+    {
+        var next_x = x*output_element.width;
+        var next_y = y*output_element.height;
+        context.strokeStyle = c ? this.background : this.foreground;
+        context.beginPath();
+        context.moveTo(this.last_x, this.last_y);
+        context.lineTo(next_x, next_y);
+        context.stroke();
+        this.last_x = next_x;
+        this.last_y = next_y;
+    }
 
     ///////////////////////////////////////////////////////////////////////////
     // keyboard
@@ -2137,11 +2204,9 @@ else {
 // DDR Basicode uses INPUT "prompt"; A$
 // some demo programs use bare NEXT
 // cursor and echo for INPUT
-// gosub 210 should consume key?
+// does INPUT consume its \n?
 
 // erroneous line breaks on description page?
-
-// loader/intro screen if no program
 
 // some potential optimisations, if needed:
 // - pre-calculate jump targets (second pass of parser?)
