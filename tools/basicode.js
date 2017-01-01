@@ -808,6 +808,10 @@ function Parser()
     this.parseLineNumber = function(basicode, last)
     {
         var line_number = basicode.shift();
+        // ignore empty lines
+        while (basicode.length && (line_number.token_type === '\n')) {
+            line_number = basicode.shift();
+        }
         if (line_number.token_type != 'literal') {
             console.log(line_number);
             throw 'Expected line number, got `'+line_number.payload+'`';
@@ -832,6 +836,7 @@ function Parser()
         var last = state.tree;
         while (basicode.length > 0) {
             var label = this.parseLineNumber(basicode, last);
+            console.log(label);
             last = this.parseLine(basicode, label);
         }
         console.log('parsing done');
@@ -1071,7 +1076,8 @@ function Parser()
         last.next = node;
         var then = expr_list.shift()
         if (then.token_type !== 'statement' || then.payload !== 'THEN') {
-            throw 'Syntax error: expected `THEN`';
+            console.log(then);
+            throw 'Syntax error: expected `THEN`, got `'+then.payload+'`';
         }
         // supply a GOTO if jump target given after THEN
         var jump = expr_list[0]
@@ -1507,14 +1513,6 @@ const ACTIVE_DELAY = 5;
 
 function Interface(iface_element)
 {
-    // create interface canvas, if not provided
-    if (!iface_element) {
-        var canvas = document.createElement('canvas');
-        canvas.className = 'basicode';
-        document.body.appendChild(canvas);
-        iface_element = canvas;
-    }
-
     var output_element = iface_element;
     var input_element = iface_element;
 
@@ -1712,13 +1710,13 @@ function Printer() {
     this.write = function(text)
     // add text to the print document
     {
-        print_element.innerText += text.replace('\r\n', '\n').replace('\r', '\n');
+        print_element.textContent += text.replace('\r\n', '\n').replace('\r', '\n');
     }
 
     this.flush = function()
     // send the document (if any) to the printer
     {
-        if (print_element.innerText) print_iframe.contentWindow.print();
+        if (print_element.textContent) print_iframe.contentWindow.print();
     }
 }
 
@@ -1775,8 +1773,17 @@ function Speaker()
 ///////////////////////////////////////////////////////////////////////////////
 // user interface
 
-function BasicodeApp(element)
+function BasicodeApp(script)
 {
+    // create a canvas to work on
+    var element = document.createElement('canvas');
+    element.className = 'basicode';
+    document.body.appendChild(element);
+
+    this.iface = new Interface(element);
+    // interval timer for running program
+    this.run_interval = null;
+
     this.load = function(code)
     // load program, parse to AST, connect to output
     {
@@ -1799,42 +1806,42 @@ function BasicodeApp(element)
         prog.printer = new Printer();
         prog.speaker = new Speaker();
 
-        // interval timer for running program
-        var run_interval = null;
-
-        function close()
-        // release resources upon program end
-        {
-            window.clearInterval(run_interval);
-            prog.output.release();
-            prog.printer.flush();
-        }
+        var app = this;
 
         // wait until resources become available, then run the program
         this.iface.acquire(function() {
             var current = prog.tree;
 
-            run_interval = window.setInterval(function() {
+            app.run_interval = window.setInterval(function() {
                 try {
-                    if (current) current = current.step(); else close();
+                    if (current) current = current.step(); else app.stop();
                     if (prog.input.break_flag) {
                         prog.output.write('\nBreak\n');
-                        close();
+                        app.stop();
                     }
                 } catch (e) {
                     prog.output.write('\nERROR: ' + e + '\n');
-                    close();
+                    app.stop();
                     if (typeof e !== 'string') throw e;
                 }
             }, ACTIVE_DELAY);
         });
     }
 
+    this.stop = function()
+    // release resources upon program end
+    {
+        if (this.run_interval !== null) window.clearInterval(this.run_interval);
+        this.program.output.release();
+        this.program.printer.flush();
+    }
+
+
+    // load and run any basicode provided in the element itself
 
     // TODO: trim seems to be necessary to avoid an Illegal Direct, not sure why
-    var code = element.innerHTML.trim();
-
-    this.iface = new Interface(element);
+    //var code = element.innerHTML.trim().replace('&gt;', '>').replace('&lt;','<');
+    var code = script.innerHTML;
 
     // load & run the code provided in the element, if any
     if (code !== undefined && code !== null && code) {
@@ -1842,19 +1849,47 @@ function BasicodeApp(element)
         this.run();
     }
 
-    //this.iface.addEventListener("dragenter", dragenter, false);
-    //this.iface.addEventListener("dragover", dragover, false);
-    //this.iface.addEventListener("drop", drop, false);
-}
+    // handle drag & drop of basicode files
 
+    function dragenter(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    function dragover(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    var app = this;
+    function drop(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var dt = e.dataTransfer;
+        var files = dt.files;
+
+        var reader = new FileReader();
+        reader.onload = function() {
+            app.stop();
+            app.load(reader.result);
+            app.run();
+        };
+        reader.readAsText(files[0]);
+    }
+
+    element.addEventListener("dragenter", dragenter, false);
+    element.addEventListener("dragover", dragover, false);
+    element.addEventListener("drop", drop, false);
+}
 
 function launch() {
-    var scripts = document.getElementsByClassName("basicode");
+    var scripts = document.getElementsByTagName('script');
     for(var i=0; i < scripts.length; ++i) {
-        var app = new BasicodeApp(scripts[i]);
+        if (scripts[i].type == 'text/basicode') {
+            var app = new BasicodeApp(scripts[i]);
+        }
     }
 }
-
 // a bit of magic to run launcher() after the document is complete
 // so that it can access all the <script> tags
 // http://stackoverflow.com/questions/807878/javascript-that-executes-after-page-load
