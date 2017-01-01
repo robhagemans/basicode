@@ -649,6 +649,7 @@ function Parser()
         'output': null,
         'input': null,
         'printer': null,
+        'speaker': null,
     }
     state.clear = function()
     {
@@ -1421,7 +1422,7 @@ function subBeep()
 // TODO: sound not implemented
 {
     var state = this;
-    console.log('BEEP');
+    state.speaker.sound(440, 0.1, 1);
 }
 
 function subRandom()
@@ -1726,6 +1727,58 @@ function Printer() {
 }
 
 
+///////////////////////////////////////////////////////////////////////////////
+// speaker
+
+// Safari still only has the experimental version of the Web Audio API
+// not sure if we're not breaking Safari elsewhere, though
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+
+function Speaker()
+// tone generator
+{
+    this.tones = 0;
+
+    this.isBusy = function()
+    {
+        return (this.tones > 0);
+    }
+
+    this.sound = function(frequency, duration, volume)
+    // play a sound at frequency (Hz) and volume (0--1) for duration (s)
+    // caller should check we're not busy first, otherwise first oscillator to stop
+    // will unset the busy flag
+    {
+        var context = new AudioContext();
+        // Oscillator node
+        var oscillator = context.createOscillator();
+        oscillator.type = 'square';
+        oscillator.frequency.value = frequency;
+        // Gain node
+        var gain = context.createGain();
+        gain.gain.value = volume;
+        // link nodes up
+        oscillator.connect(gain);
+        gain.connect(context.destination);
+        // play the tone
+        ++this.tones;
+        var now = context.currentTime;
+        oscillator.start(now);
+        oscillator.stop(now + duration);
+        // clean up afterwards
+        oscillator.onended = function() {
+            --this.tones;
+            oscillator.disconnect();
+            gain.disconnect();
+        };
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// user interface
+
 function BasicodeApp()
 {
 
@@ -1749,8 +1802,9 @@ function BasicodeApp()
         prog.output = iface;
         prog.input = iface;
 
-        // create printer object
+        // create other resources
         prog.printer = new Printer();
+        prog.speaker = new Speaker();
 
         // interval timer for running program
         var run_interval = null;
