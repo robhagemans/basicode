@@ -1575,6 +1575,15 @@ function Interface(iface_element)
         this.col += output.length;
     }
 
+
+    this.writeCentre = function(row, str)
+    // write centred; used by the loader only
+    {
+        this.setColumn((this.width - str.length)/2);
+        this.setRow(row);
+        this.write(str);
+    }
+
     this.write = function(output)
     {
         var lines = output.toString().replace('\r\n', '\n').replace('\r', '\n').split('\n');
@@ -1721,6 +1730,7 @@ function Printer() {
 // Safari still only has the experimental version of the Web Audio API
 // not sure if we're not breaking Safari elsewhere, though
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
 
 
 function Speaker()
@@ -1738,7 +1748,6 @@ function Speaker()
     // caller should check we're not busy first, otherwise first oscillator to stop
     // will unset the busy flag
     {
-        var context = new AudioContext();
         // Oscillator node
         var oscillator = context.createOscillator();
         oscillator.type = 'square';
@@ -1777,6 +1786,7 @@ function BasicodeApp(script)
     this.iface = new Interface(element);
     // interval timer for running program
     this.run_interval = null;
+    this.program = null;
 
     var app = this;
 
@@ -1795,31 +1805,63 @@ function BasicodeApp(script)
             this.program.printer = new Printer();
             this.program.speaker = new Speaker();
             // show title and description
-            this.iface.setColour('white', 'black');
-            this.iface.setColumn(0);
-            this.iface.setRow(0);
-            this.iface.write(' '.repeat(this.iface.width));
-            this.iface.setColumn((this.iface.width - this.program.title.length)/2);
-            this.iface.setRow(0);
-            this.iface.write(this.program.title+'\n\n');
-            this.iface.setColour('black', 'white');
-            this.iface.write(this.program.description);
-            this.iface.setColour('white', 'black');
-            this.iface.setColumn(0);
-            this.iface.setRow(this.iface.height - 1);
-            this.iface.write(' '.repeat(this.iface.width));
-            var str = '-- click to run --';
-            this.iface.setColumn((this.iface.width - str.length)/2);
-            this.iface.setRow(this.iface.height - 1);
-            this.iface.write(str);
-            this.iface.setColour('black', 'white');
+            this.show();
         } catch (e) {
             this.program = null;
             this.iface.write('\nERROR: ' + e + '\n');
             if (typeof e !== 'string') throw e;
         }
-
     }
+
+
+
+    this.show = function()
+    // show program title and description
+    {
+        this.iface.setColour('white', 'black');
+        this.iface.setColumn(0);
+        this.iface.setRow(0);
+        this.iface.write(' '.repeat(this.iface.width));
+        this.iface.writeCentre(0, this.program.title);
+        this.iface.write('\n\n');
+        this.iface.setColour('black', 'white');
+        this.iface.write(this.program.description);
+        this.iface.setColour('white', 'black');
+        this.iface.setColumn(0);
+        this.iface.setRow(this.iface.height - 1);
+        this.iface.write(' '.repeat(this.iface.width));
+        this.iface.writeCentre(this.iface.height - 1, '-- click to run --');
+        this.iface.setColour('black', 'white');
+    }
+
+    this.splash = function()
+    // intro screen if nothing was loaded
+    {
+        this.iface.setColour('white', 'black');
+        this.iface.setColumn(0);
+        this.iface.setRow(0);
+        this.iface.write(' '.repeat(this.iface.width));
+        this.iface.writeCentre(0, '(c) 2016, 2017 Rob Hagemans');
+        this.iface.setColour('black', 'white');
+        var row = 6;
+        this.iface.writeCentre(row++, '**. .*. .** .*. .** .*. **. ***');
+        this.iface.writeCentre(row++, '*.* *.* *.. .*. *.. *.* *.* *..');
+        this.iface.writeCentre(row++, '*.* *.* *.. .*. *.. *.* *.* *..');
+        this.iface.writeCentre(row++, '*.* *.* *.. .*. *.. *.* *.* *..');
+        this.iface.writeCentre(row++, '..**..***..*...*..*...*.*.*.*.**...');
+        this.iface.writeCentre(row++, '*.* *.* ..* .*. *.. *.* *.* *..');
+        this.iface.writeCentre(row++, '*.* *.* ..* .*. *.. *.* *.* *..');
+        this.iface.writeCentre(row++, '*.* *.* ..* .*. *.. *.* *.* *..');
+        this.iface.writeCentre(row++, '**. *.* **. .*. .** .*. **. ***');
+        this.iface.writeCentre(17, '---==[2017]==---');
+        this.iface.setColour('white', 'black');
+        this.iface.setColumn(0);
+        this.iface.setRow(this.iface.height - 1);
+        this.iface.write(' '.repeat(this.iface.width));
+        this.iface.writeCentre(this.iface.height - 1, '-- drag and drop to load --');
+        this.iface.setColour('black', 'white');
+    }
+
 
     this.run = function()
     // execute the program
@@ -1876,6 +1918,9 @@ function BasicodeApp(script)
     }
     else if (code) {
         this.load(code);
+    }
+    else {
+        this.splash();
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -1959,7 +2004,6 @@ else {
 // erroneous line breaks on description page?
 
 // loader/intro screen if no program
-// <script src= or <object data= reading from URL (using XmlHttpRequest?)
 
 // some potential optimisations, if needed:
 // - pre-calculate jump targets (second pass of parser?)
