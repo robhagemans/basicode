@@ -78,8 +78,11 @@ function matchType(name, value)
 
 function Variables()
 {
-    this.vars = {};
-    this.dims = {};
+    this.clear = function()
+    {
+        this.vars = {};
+        this.dims = {};
+    }
 
     this.allocate = function(name, indices)
     // allocate an array
@@ -166,6 +169,8 @@ function Variables()
             return this.vars[name][indices[0]][indices[1]];
         }
     };
+
+    this.clear();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -278,6 +283,9 @@ const KEYWORDS = {
     'ON': newStatementToken('ON', null),
     'NEXT': newStatementToken('NEXT', null),
     'RETURN': newStatementToken('RETURN', null),
+    'END': newStatementToken('END', null),
+    'STOP': newStatementToken('STOP', null),
+    'RUN':  newStatementToken('RUN', null),
     // non-statement keywords
     'THEN': newStatementToken('THEN', null),
     'STEP': newStatementToken('STEP', null),
@@ -533,6 +541,15 @@ function End()
     this.step = function() { return null; }
 }
 
+function Run(state)
+{
+    this.next = null;
+
+    this.step = function() {
+        subClear(state);
+        return state.tree;
+    }
+}
 
 function Conditional(condition)
 {
@@ -586,7 +603,7 @@ function Jump(target, state, is_sub)
     }
 }
 
-function JumpBack(state)
+function Return(state)
 // RETURN node
 {
     this.step = function()
@@ -627,12 +644,17 @@ function Parser()
         'data': new Data(),
         'variables': new Variables(),
         'sub_stack': [],
-        'for_stack': [],
         'line_numbers': {},
         'tree': null,
         'output': null,
         'input': null,
         'printer': null,
+    }
+    state.clear = function()
+    {
+        this.variables.clear();
+        this.data.restore();
+        this.sub_stack = []
     }
 
     var current_line = 999;
@@ -835,6 +857,9 @@ function Parser()
         'REM': parseRem,
         'RESTORE': parseRestore,
         'RETURN': parseReturn,
+        'END': parseEnd,
+        'STOP': parseEnd,
+        'RUN': parseRun,
     }
 
     function parseLet(parser, expr_list, token, last)
@@ -944,8 +969,12 @@ function Parser()
         if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
             throw 'Syntax error: expected line number, got `'+line_number.payload+'`';
         }
-        // GOTO 20 is a BASICODE fixture, no-op
-        if (line_number.payload === 20) return last;
+        // GOTO 20 is a BASICODE fixture, clear and jump to 1010
+        if (line_number.payload === 20) {
+            last.next = new Node(subClear, [], state);
+            last.next.next = new Jump(1010, state, false)
+            return last.next.next;
+        }
         // GOTO 950 means END
         else if (line_number.payload  === 950) return new End();
         else if (line_number.payload < 1000) {
@@ -1213,7 +1242,21 @@ function Parser()
     function parseReturn(parser, expr_list, token, last)
     // parse RETURN
     {
-        last.next = new JumpBack(state);
+        last.next = new Return(state);
+        return last.next;
+    }
+
+    function parseEnd(parser, expr_list, token, last)
+    // parse END
+    {
+        last.next = new End();
+        return last.next;
+    }
+
+    function parseRun(parser, expr_list, token, last)
+    // parse Run
+    {
+        last.next = new Run();
         return last.next;
     }
 };
@@ -1301,6 +1344,13 @@ function stInput(name)
 
 ///////////////////////////////////////////////////////////////////////////////
 // BASICODE subroutines and jumps
+
+function subClear()
+// clear variables, for GOTO 20
+{
+    var state = this;
+    state.clear();
+}
 
 function subClearScreen()
 // GOSUB 100
@@ -1770,7 +1820,7 @@ else {
 // - cursor, scrolling
 // - arrow keys, function keys, break key (use ctrl+c)
 // - unimplemented BASICODE subroutines
-// - DEF FN, RUN, END, STOP, GOTO 20
+// - DEF FN
 // - type checks
 // - error handling: exception type; keep line number
 // - meta info: 32000+ is author info
@@ -1781,5 +1831,4 @@ else {
 // <script src= or <object data= reading from URL (using XmlHttpRequest?)
 
 // some potential optimisations, if needed:
-// - simplify leaf nodes to { return payload } to avoid type test on each Node
 // - pre-calculate jump targets (second pass of parser?)
