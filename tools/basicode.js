@@ -80,7 +80,8 @@ function Variables()
 {
     this.clear = function()
     {
-        this.vars = {};
+        this.arrays = {};
+        this.scalars = {};
         this.dims = {};
     }
 
@@ -88,12 +89,11 @@ function Variables()
     // allocate an array
     {
         // no redefinitions allowed
-        if (name in this.dims || name in this.vars) throw 'Duplicate definition of `'+name+'()`';
+        if (name in this.dims || name in this.arrays) throw 'Duplicate definition of `'+name+'()`';
         // BASICODE arrays may have at most two indices
         if (indices.length > 2) throw 'Subscript out of range: too many array dimensions';
         // set default to empty string if string name, 0 otherwise
         var default_value = defaultValue(name);
-
         function allocateLevel(indices) {
             if (indices.length === 0) return default_value;
             else {
@@ -112,19 +112,18 @@ function Variables()
         // I'm assuming a name is *either* a scalar *or* an array
         // this is not true in e.g. GW-BASIC, but I think it's true in BASICODE
         this.dims[name] = indices;
-        this.vars[name] = allocateLevel(indices);
+        this.arrays[name] = allocateLevel(indices);
     }
 
     this.checkSubscript = function(name, indices)
     {
-        if (!(name in this.dims)) {
-            if (indices.length === 0) {
-                this.vars[name] = defaultValue(name);
-                this.dims[name] = [];
+        if (!indices.length) {
+            if (!(name in this.dims) && !(name in this.scalars)) {
+                this.scalars[name] = defaultValue(name);
             }
-            else {
-                throw 'Subscript out of range: array not dimensioned';
-            }
+        }
+        else if (!(name in this.dims)) {
+            throw 'Subscript out of range: array not dimensioned';
         }
         else if (indices.length !== this.dims[name].length) {
             throw 'Subscript out of range: incorrect number of dimensions';
@@ -144,13 +143,13 @@ function Variables()
         this.checkSubscript(name, indices);
 
         if (indices.length === 0) {
-            this.vars[name] = value;
+            this.scalars[name] = value;
         }
         else if (indices.length === 1) {
-            this.vars[name][indices[0]] = value;
+            this.arrays[name][indices[0]] = value;
         }
         else {
-            this.vars[name][indices[0]][indices[1]] = value;
+            this.arrays[name][indices[0]][indices[1]] = value;
         }
     };
 
@@ -160,13 +159,13 @@ function Variables()
         this.checkSubscript(name, indices);
 
         if (indices.length === 0) {
-            return this.vars[name];
+            return this.scalars[name];
         }
         else if (indices.length === 1) {
-            return this.vars[name][indices[0]];
+            return this.arrays[name][indices[0]];
         }
         else {
-            return this.vars[name][indices[0]][indices[1]];
+            return this.arrays[name][indices[0]][indices[1]];
         }
     };
 
@@ -1332,7 +1331,8 @@ function opRetrieve(name)
 {
     var state = this;
     var indices = [].slice.call(arguments, 1);
-    return state.variables.retrieve(name, indices);
+    var value = state.variables.retrieve(name, indices);
+    return value;
 }
 
 
