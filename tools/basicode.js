@@ -621,8 +621,7 @@ function Wait(wait_condition)
 
 {
     this.trigger = wait_condition;
-    this.node = null;
-    this.next = null
+    this.next = null;
 
     this.step = function()
     {
@@ -813,7 +812,6 @@ function Parser()
             line_number = basicode.shift();
         }
         if (line_number.token_type != 'literal') {
-            console.log(line_number);
             throw 'Expected line number, got `'+line_number.payload+'`';
         }
         line_number = line_number.payload;
@@ -837,10 +835,8 @@ function Parser()
         var last = state.tree;
         while (basicode.length > 0) {
             var label = this.parseLineNumber(basicode, last);
-            console.log(label);
             last = this.parseLine(basicode, label);
         }
-        console.log('parsing done');
         return state;
     }
 
@@ -1001,8 +997,7 @@ function Parser()
         }
         else if (line_number.payload in SUBS) {
             // attach BASICODE subroutine node
-            last.next = SUBS[line_number.payload]();
-            return last.next;
+            return SUBS[line_number.payload](last);
         }
         else if (line_number.payload < 1000) {
             throw 'Unknown BASICODE subroutine `GOSUB '+line_number.payload+'`';
@@ -1012,22 +1007,26 @@ function Parser()
     }
 
     const SUBS = {
-        100: function() {return new Node(subClearScreen, [], state)},
-        110: function() {return new Node(subSetPos, [], state)},
-        120: function() {return new Node(subGetPos, [], state)},
-        150: function() {return new Node(subWriteBold, [], state)},
-        200: function() {return new Node(subReadKey, [], state)},
-        210: function() {return new Wait(function waitForKey() { return state.input.keyPressed(); }, new Node(subReadKey, [], state)); },
-        220: function() {return new Node(subReadChar, [], state)},
-        250: function() {return new Node(subBeep, [], state)},
-        260: function() {return new Node(subRandom, [], state)},
-        270: function() {return new Node(subFree, [], state)},
-        280: function() {return new Node(subToggleBreak, [], state)},
-        300: function() {return new Node(subNumberToString, [], state)},
-        310: function() {return new Node(subNumberFormat, [], state)},
-        330: function() {return new Node(subToUpperCase, [], state)},
-        350: function() {return new Node(subLinePrint, [], state)},
-        360: function() {return new Node(subLineFeed, [], state)},
+        100: function(last) {last.next = new Node(subClearScreen, [], state); return last.next; },
+        110: function(last) {last.next = new Node(subSetPos, [], state); return last.next; },
+        120: function(last) {last.next = new Node(subGetPos, [], state); return last.next; },
+        150: function(last) {last.next = new Node(subWriteBold, [], state); return last.next; },
+        200: function(last) {last.next = new Node(subReadKey, [], state); return last.next; },
+        210: function(last) {
+            last.next = new Wait(function waitForKey() { return state.input.keyPressed(); });
+            last.next.next = new Node(subReadKey, [], state);
+            return last.next.next;
+     },
+        220: function(last) {last.next = new Node(subReadChar, [], state); return last.next; },
+        250: function(last) {last.next = new Node(subBeep, [], state); return last.next; },
+        260: function(last) {last.next = new Node(subRandom, [], state); return last.next; },
+        270: function(last) {last.next = new Node(subFree, [], state); return last.next; },
+        280: function(last) {last.next = new Node(subToggleBreak, [], state); return last.next; },
+        300: function(last) {last.next = new Node(subNumberToString, [], state); return last.next; },
+        310: function(last) {last.next = new Node(subNumberFormat, [], state); return last.next; },
+        330: function(last) {last.next = new Node(subToUpperCase, [], state); return last.next; },
+        350: function(last) {last.next = new Node(subLinePrint, [], state); return last.next; },
+        360: function(last) {last.next = new Node(subLineFeed, [], state); return last.next; },
 
         /*
 
@@ -1230,9 +1229,9 @@ function Parser()
         // wait for ENTER kepress before engaging
         var wait_func = function() { return state.input.keyPressed('\r'); }
         // return payload: do not retrieve the variable, just get its name
-        var node = new Node(token.operation, [new Literal(name.payload)].concat(indices), state)
-        last.next = new Wait(wait_func, node);
-        return last.next;
+        last.next = new Wait(wait_func);
+        last.next.next = new Node(token.operation, [new Literal(name.payload)].concat(indices), state)
+        return last.next.next;
     }
 
     function parseRestore(parser, expr_list, token, last)
@@ -1804,7 +1803,6 @@ function BasicodeApp(script)
             this.iface.setRow(0);
             this.iface.write(this.program.title+'\n\n');
             this.iface.setColour('black', 'white');
-            console.log(JSON.stringify(this.program.description));
             this.iface.write(this.program.description);
             this.iface.setColour('white', 'black');
             this.iface.setColumn(0);
@@ -1863,8 +1861,20 @@ function BasicodeApp(script)
     }
 
     // load & run the code provided in the element, if any
+    var url = script.getAttribute('src');
     var code = script.innerHTML;
-    if (code !== undefined && code !== null && code) {
+    if (url !== undefined && url !== null && url) {
+        var url = script.getAttribute('src');
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.onreadystatechange = function() {
+            if (request.readyState === 4 && request.status === 200) {
+                app.load(request.responseText);
+            }
+        }
+        request.send(null);
+    }
+    else if (code) {
         this.load(code);
     }
 
@@ -1874,7 +1884,6 @@ function BasicodeApp(script)
     // run file on click
 
     element.addEventListener('click', function click(e) {
-        console.log('click');
         if (app.run_interval === null) {
             app.run();
         }
@@ -1945,9 +1954,11 @@ else {
 // DDR Basicode uses INPUT "prompt"; A$
 // some demo programs use bare NEXT
 // cursor and echo for INPUT
+// gosub 210 should consume key?
 
-// deployment: show meta-info after load ('loader program' if nothing loaded)
-// drag&drop loading of local files (using the File API)
+// erroneous line breaks on description page?
+
+// loader/intro screen if no program
 // <script src= or <object data= reading from URL (using XmlHttpRequest?)
 
 // some potential optimisations, if needed:
