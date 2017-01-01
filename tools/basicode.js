@@ -1514,6 +1514,7 @@ function Interface(iface_element)
         document.body.appendChild(canvas);
         iface_element = canvas;
     }
+
     var output_element = iface_element;
     var input_element = iface_element;
 
@@ -1774,16 +1775,15 @@ function Speaker()
 ///////////////////////////////////////////////////////////////////////////////
 // user interface
 
-function BasicodeApp()
+function BasicodeApp(element)
 {
-
     this.load = function(code)
     // load program, parse to AST, connect to output
     {
-        this.program = new Parser().parseProgram(code);
+        this.program = new Parser().parseProgram(tokenise(code));
     }
 
-    this.run = function(iface)
+    this.run = function()
     // execute the program
     {
         var prog = this.program;
@@ -1792,10 +1792,8 @@ function BasicodeApp()
         // exit if nothing loaded
         if (!prog || prog.tree === null) return;
 
-        // create interface if not provided
-        if (!(iface instanceof Interface)) iface = new Interface();
-        prog.output = iface;
-        prog.input = iface;
+        prog.output = this.iface;
+        prog.input = this.iface;
 
         // create other resources
         prog.printer = new Printer();
@@ -1808,41 +1806,52 @@ function BasicodeApp()
         // release resources upon program end
         {
             window.clearInterval(run_interval);
-            iface.release();
+            prog.output.release();
             prog.printer.flush();
         }
 
         // wait until resources become available, then run the program
-        iface.acquire(function() {
+        this.iface.acquire(function() {
             var current = prog.tree;
 
             run_interval = window.setInterval(function() {
                 try {
                     if (current) current = current.step(); else close();
-                    if (iface.break_flag) {
-                        iface.write('\nBreak\n');
+                    if (prog.input.break_flag) {
+                        prog.output.write('\nBreak\n');
                         close();
                     }
                 } catch (e) {
-                    iface.write('\nERROR: ' + e + '\n');
+                    prog.output.write('\nERROR: ' + e + '\n');
                     close();
                     if (typeof e !== 'string') throw e;
                 }
             }, ACTIVE_DELAY);
         });
     }
+
+
+    // TODO: trim seems to be necessary to avoid an Illegal Direct, not sure why
+    var code = element.innerHTML.trim();
+
+    this.iface = new Interface(element);
+
+    // load & run the code provided in the element, if any
+    if (code !== undefined && code !== null && code) {
+        this.load(code);
+        this.run();
+    }
+
+    //this.iface.addEventListener("dragenter", dragenter, false);
+    //this.iface.addEventListener("dragover", dragover, false);
+    //this.iface.addEventListener("drop", drop, false);
 }
 
 
 function launch() {
-    var scripts = document.getElementsByTagName("script");
+    var scripts = document.getElementsByClassName("basicode");
     for(var i=0; i < scripts.length; ++i) {
-        if (scripts[i].type == 'text/basicode') {
-            var app = new BasicodeApp();
-            // trim seems to be necessary to avoid an Illegal Direct, not sure why
-            app.load(tokenise(scripts[i].innerHTML.trim()));
-            app.run();
-        }
+        var app = new BasicodeApp(scripts[i]);
     }
 }
 
