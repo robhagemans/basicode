@@ -193,7 +193,7 @@ function Functions()
     {
         var expr = this.exprs[name]
         var arg = this.args[name]
-        
+
     }
 
     this.clear();
@@ -677,12 +677,13 @@ function Parser()
         'input': null,
         'printer': null,
         'speaker': null,
+        'timer': null,
     }
     state.clear = function()
     {
         this.variables.clear();
         this.data.restore();
-        this.sub_stack = []
+        this.sub_stack = [];
     }
 
     var current_line = 999;
@@ -1045,7 +1046,7 @@ function Parser()
             last.next = new Wait(function waitForKey() { return state.input.keyPressed(); });
             last.next.next = new Node(subReadKey, [], state);
             return last.next.next;
-     },
+        },
         220: function(last) {last.next = new Node(subReadChar, [], state); return last.next; },
         250: function(last) {last.next = new Node(subBeep, [], state); return last.next; },
         260: function(last) {last.next = new Node(subRandom, [], state); return last.next; },
@@ -1056,12 +1057,15 @@ function Parser()
         330: function(last) {last.next = new Node(subToUpperCase, [], state); return last.next; },
         350: function(last) {last.next = new Node(subLinePrint, [], state); return last.next; },
         360: function(last) {last.next = new Node(subLineFeed, [], state); return last.next; },
-
+        450: function(last) {
+            last.next = new Node(subSetTimer, [], state);
+            last.next.next = new Wait(function waitForKeyWithTimeout() { return (state.input.keyPressed() || state.timer.elapsed()); });
+            last.next.next.next = new Node(subReadKeyGetTimer, [], state);
+            return last.next.next.next;
+        },
         /*
 
         // BC3:
-        450 Wait SD*0.1 seconds or for a key stroke
-            When ended: IN$ and IN contain the possible keystroke (see for special codes line 200). SD contains the remaining time from the moment the key was pressed or zero (if no key was pressed)
 
         sound
         400 Produce a tone using SP, SD and SV
@@ -1087,9 +1091,6 @@ function Parser()
         610 Plot a point at graphic position HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
         630 Draw a line towards point HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
         650 Print SR$ as text from graphic position HO,VE (0<=HO<1 en 0<=VE<1). HO and VE stay the same value.
-
-        // BC3v2
-        // DEF FN
 
         // BC3C
         // colours
@@ -1463,6 +1464,28 @@ function subReadKey()
     state.variables.assign(key, 'IN$', []);
 }
 
+function subSetTimer()
+//450 Wait SD*0.1 seconds or for a key stroke
+//    When ended: IN$ and IN contain the possible keystroke (see for special codes line 200).
+//    SD contains the remaining time from the moment the key was pressed or zero (if no key was pressed)
+{
+    var state = this;
+    var deciseconds = state.variables.retrieve('SD', []);
+    state.timer.set(deciseconds * 100);
+}
+
+function subReadKeyGetTimer()
+// GOSUB 450 (with timer)
+//450 Wait SD*0.1 seconds or for a key stroke
+//    When ended: IN$ and IN contain the possible keystroke (see for special codes line 200).
+//    SD contains the remaining time from the moment the key was pressed or zero (if no key was pressed)
+{
+    var state = this;
+    subReadKey.apply(this);
+    var milliseconds = state.timer.remaining();
+    state.variables.assign(milliseconds/100, 'SD', []);
+}
+
 function subReadChar()
 // GOSUB 220
 {
@@ -1831,6 +1854,38 @@ function Speaker()
     }
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// time
+
+function Timer()
+{
+    var start = null;
+    this.duration = 0;
+
+    this.set = function(duration)
+    {
+        start = new Date();
+        this.duration = duration;
+    }
+
+    this.clear = function()
+    {
+        start = null;
+        this.duration = 0;
+    }
+
+    this.elapsed = function() {
+        if (start === null) return true;
+        return (new Date() - start) > this.duration;
+    }
+
+    this.remaining = function() {
+        if (start === null) return 0;
+        var remaining = this.duration - (new Date() - start);
+        return (remaining<0) ? 0 : remaining;
+    }
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // user interface
@@ -1863,6 +1918,7 @@ function BasicodeApp(script)
             this.program.input = this.iface;
             this.program.printer = new Printer();
             this.program.speaker = new Speaker();
+            this.program.timer = new Timer();
             // show title and description
             this.show();
         } catch (e) {
