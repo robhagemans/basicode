@@ -1725,7 +1725,7 @@ function Interface(iface_element)
 
     this.write = function(output)
     {
-        var lines = output.toString().replace('\r\n', '\n').replace('\r', '\n').split('\n');
+        var lines = output.toString().split(/\r?\n/);
         var i=1;
         this.writeRaw(lines[0]);
         for (; i < lines.length; ++i) {
@@ -1877,7 +1877,7 @@ function Printer() {
     this.write = function(text)
     // add text to the print document
     {
-        print_element.textContent += text.replace('\r\n', '\n').replace('\r', '\n');
+        print_element.textContent += text.split(/\r?\n/).join('\n');
     }
 
     this.flush = function()
