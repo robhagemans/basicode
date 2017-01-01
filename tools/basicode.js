@@ -1455,9 +1455,9 @@ function subWriteBold()
     var state = this;
     var text = '   ' + state.variables.retrieve('SR$', []) + '   ';
     state.output.write(' ');
-    state.output.setColour('white', 'black');
+    state.output.invertColour();
     state.output.write(text);
-    state.output.setColour('black', 'white');
+    state.output.invertColour();
     state.output.write(' ');
 }
 
@@ -1674,8 +1674,8 @@ function Interface(iface_element)
 
     this.width = 40;
     this.height = 24;
-    this.foreground = 'black';
-    this.background = 'white';
+    this.foreground = 'white';
+    this.background = 'black';
 
     // resize the canvas to fit the font size
     var context = output_element.getContext('2d');
@@ -1751,10 +1751,11 @@ function Interface(iface_element)
         return this.content[row].slice(col, col+1);
     }
 
-    this.setColour = function(foreground, background)
+    this.invertColour = function()
     {
-        this.foreground = foreground;
-        this.background = background;
+        var buf = this.foreground;
+        this.foreground = this.background;
+        this.background = buf;
     }
 
     this.setColumn = function(col)
@@ -2057,31 +2058,31 @@ function BasicodeApp(script)
     this.show = function()
     // show program title and description
     {
-        this.iface.setColour('white', 'black');
+        this.iface.invertColour();
         this.iface.setColumn(0);
         this.iface.setRow(0);
         this.iface.write(' '.repeat(this.iface.width));
         this.iface.writeCentre(0, this.program.title);
         this.iface.write('\n\n');
-        this.iface.setColour('black', 'white');
+        this.iface.invertColour();
         this.iface.write(this.program.description);
-        this.iface.setColour('white', 'black');
+        this.iface.invertColour();
         this.iface.setColumn(0);
         this.iface.setRow(this.iface.height - 1);
         this.iface.write(' '.repeat(this.iface.width));
         this.iface.writeCentre(this.iface.height - 1, '-- click to run --');
-        this.iface.setColour('black', 'white');
+        this.iface.invertColour();
     }
 
     this.splash = function()
     // intro screen if nothing was loaded
     {
-        this.iface.setColour('white', 'black');
+        this.iface.invertColour();
         this.iface.setColumn(0);
         this.iface.setRow(0);
         this.iface.write(' '.repeat(this.iface.width));
         this.iface.writeCentre(0, '(c) 2016, 2017 Rob Hagemans');
-        this.iface.setColour('black', 'white');
+        this.iface.invertColour();
         var row = 6;
         this.iface.writeCentre(row++, '**. .*. .** .*. .** .*. **. ***');
         this.iface.writeCentre(row++, '*.* *.* *.. .*. *.. *.* *.* *..');
@@ -2093,12 +2094,12 @@ function BasicodeApp(script)
         this.iface.writeCentre(row++, '*.* *.* ..* .*. *.. *.* *.* *..');
         this.iface.writeCentre(row++, '**. *.* **. .*. .** .*. **. ***');
         this.iface.writeCentre(17, '---==[2017]==---');
-        this.iface.setColour('white', 'black');
+        this.iface.invertColour();
         this.iface.setColumn(0);
         this.iface.setRow(this.iface.height - 1);
         this.iface.write(' '.repeat(this.iface.width));
         this.iface.writeCentre(this.iface.height - 1, '-- drag and drop to load --');
-        this.iface.setColour('black', 'white');
+        this.iface.invertColour();
     }
 
 

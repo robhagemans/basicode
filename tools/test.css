@@ -1,8 +1,8 @@
 .basicode {
     transform: scaleX(1.5);
-    height: 20rem;
+    /*height: 20rem;*/
     padding: 0.4rem 0.2rem 0.4rem 0.2rem;
-    background-color: lightsteelblue;
+    background-color: grey;
     border-radius: 0.4rem;
     outline: none;
     /* this centers the screen horizontally, for some reason */
@@ -13,6 +13,10 @@
 }
 
 .basicode:focus {
-    background-color: lightblue;
-    border: 1px solid lightblue;
+    background-color: grey;
+    border: 1px solid darkgrey;
+}
+
+body {
+    background-color: darkslategrey;
 }
