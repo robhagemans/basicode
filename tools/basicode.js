@@ -173,6 +173,32 @@ function Variables()
     this.clear();
 }
 
+
+
+function Functions()
+{
+    this.clear = function()
+    {
+        this.exprs = {};
+        this.args = {};
+    }
+
+    this.store = function(name, arg, expr)
+    {
+        this.exprs[name] = expr;
+        this.args[name] = arg;
+    }
+
+    this.evaluate = function(name, arg_value)
+    {
+        var expr = this.exprs[name]
+        var arg = this.args[name]
+        
+    }
+
+    this.clear();
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // tokens
 
@@ -250,6 +276,7 @@ const KEYWORDS = {
     'CHR$': newFunctionToken('CHR$', String.fromCharCode),
     'COS': newFunctionToken('COS', Math.cos),
     'DATA': newStatementToken('DATA', function(){}),
+    'DEF': newStatementToken('DEF', function(){}),
     'DIM': newStatementToken('DIM', stDim),
     'EXP': newFunctionToken('EXP', Math.exp),
     'INPUT': newStatementToken('INPUT', stInput),
@@ -290,9 +317,9 @@ const KEYWORDS = {
     'THEN': newStatementToken('THEN', null),
     'STEP': newStatementToken('STEP', null),
     'TO': newStatementToken('TO', null),
+    'FN': newStatementToken('FN', null),
 }
 
-// THEN, STEP, TO are reserved words but not independent statements
 // additional reserved words: AS, AT, FN, GR, IF, LN, PI, ST, TI, TI$
 
 
@@ -642,6 +669,7 @@ function Parser()
         'description': '',
         'data': new Data(),
         'variables': new Variables(),
+        'fns': new Functions(),
         'sub_stack': [],
         'line_numbers': {},
         'tree': null,
@@ -863,6 +891,7 @@ function Parser()
         'END': parseEnd,
         'STOP': parseEnd,
         'RUN': parseRun,
+        'DEF': parseDefFn,
     }
 
     function parseLet(parser, expr_list, token, last)
@@ -1232,6 +1261,36 @@ function Parser()
         last.next = new Wait(wait_func);
         last.next.next = new Node(token.operation, [new Literal(name.payload)].concat(indices), state)
         return last.next.next;
+    }
+
+    function parseDefFn(parser, expr_list, token, last)
+    // parse DEF FN statement
+    {
+        var fn = expr_list.shift();
+        if (fn.token_type !== 'statement' || fn.payload !== 'FN') {
+            throw 'Syntax error: expected `FN`, got `'+to+'`';
+        }
+        var name = expr_list.shift();
+        if (name.token_type != 'name') {
+            throw 'Syntax error: expected function name, got `' + name.payload + '`';
+        }
+        var token = expr_list.shift();
+        if (token.token_type === '(') {
+            throw 'Syntax error: expected `(`, got `'+to+'`';
+        }
+        var arg = expr_list.shift();
+        if (name.token_type != 'name') {
+            throw 'Syntax error: expected parameter name, got `' + arg.payload + '`';
+        }
+        var token = expr_list.shift();
+        if (token.token_type === ')') {
+            throw 'Syntax error: expected `)`, got `'+to+'`';
+        }
+        var equals = expr_list.shift().payload;
+        if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
+        var expr = parser.parseExpression(expr_list);
+        state.fns.store(name, arg, expr);
+        return last;
     }
 
     function parseRestore(parser, expr_list, token, last)
