@@ -1256,7 +1256,7 @@ function Parser()
         }
         var indices = parser.parseArguments(expr_list);
         // wait for ENTER kepress before engaging
-        var wait_func = function() { return state.input.keyPressed('\r'); }
+        var wait_func = function() { return state.input.keyPressed(13); }
         // return payload: do not retrieve the variable, just get its name
         last.next = new Wait(wait_func);
         last.next.next = new Node(token.operation, [new Literal(name.payload)].concat(indices), state)
@@ -1450,15 +1450,11 @@ function subReadKey()
 // TODO: arrow keys, function keys etc.
 {
     var state = this;
-    var key = state.input.read(1);
-    var keyval = 0;
-    if (key) {
+    var keyval = state.input.readKey();
+    var key = '';
+    if ((keyval >= 32 && keyval <= 126) || keyval === 13) {
+        key = String.fromCharCode(keyval);
         keyval = key.toUpperCase().charCodeAt(0);
-    }
-    // only printable ASCII
-    if ((keyval<32 || keyval>126) && keyval !== 13) {
-        key = '';
-        keyval = 0;
     }
     state.variables.assign(keyval, 'IN', []);
     state.variables.assign(key, 'IN$', []);
@@ -1794,32 +1790,53 @@ function Interface(iface_element)
     ///////////////////////////////////////////////////////////////////////////
     // keyboard
 
-    // keyboard setup
-    var keyboard_buffer = '';
-
     // make canvas element focussable to catch keypresses
     input_element.tabIndex = 1;
     input_element.focus();
 
     var self = this;
 
-    input_element.addEventListener('keypress', function(event) {
-        keyboard_buffer += String.fromCharCode(event.keyCode);
-        event.preventDefault();
-    });
+    // JavaScript to BASICODE keycode dictionary
+    const KEYS = {
+        8: 127, // backspace
+        37: 28, // left
+        38: 31, // up
+        39: 29, // right
+        40: 30, // down
+        112: -1, // F1
+        113: -2, // F2
+        114: -3, // F3
+        115: -4, // F4
+        116: -5, // F5
+        117: -6, // F6
+        118: -7, // F7
+        119: -8, // F8
+        120: -9, // F9
+        121: -10, // F10
+        122: -11, // F11
+        123: -12, // F12
+    }
 
     input_element.addEventListener('keydown', function(event) {
         // use this for backspace, function keys
         if (event.keyCode === 19 && event.ctrlKey && !self.suppress_break) {
             self.break_flag = true;
         }
-        // preventDefault will stop all keys from being caught by keypress, so use only for backspace and function keys to avoid browser actions
-        //event.preventDefault();
+        if (event.keyCode in KEYS) {
+            self.buffer.push(KEYS[event.keyCode]);
+            // preventDefault will stop all keys from being caught by keypress, so use only for backspace and function keys to avoid browser actions
+            event.preventDefault();
+        }
+    });
+
+    input_element.addEventListener('keypress', function(event) {
+        self.buffer.push(event.keyCode);
+        event.preventDefault();
     });
 
     this.reset = function()
     {
-        keyboard_buffer = '';
+        this.buffer = [];
         // suppress ctrl+break key
         this.suppress_break = false;
         // break has been pressed
@@ -1828,34 +1845,23 @@ function Interface(iface_element)
 
     this.keyPressed = function(key) {
         if (key !== undefined && key !== null) {
-            return (keyboard_buffer.search(key) !== -1);
+            return (self.buffer.indexOf(key) !== -1);
         }
-        return keyboard_buffer.length > 0;
+        return self.buffer.length > 0;
     }
 
-    this.read = function(n)
+    this.readKey = function()
     {
-        var out = '';
-        if (n === undefined) {
-            out = keyboard_buffer;
-            keyboard_buffer = '';
-        }
-        else {
-            out = keyboard_buffer.slice(0, n);
-            keyboard_buffer = keyboard_buffer.slice(n);
-        }
-        return out;
+        return this.buffer.shift();
     }
 
     this.readLine = function()
     {
         var loc = -1;
-        while (loc == -1) {
-            loc = keyboard_buffer.search('\r')
-        }
-        var out = keyboard_buffer.slice(0, loc);
-        keyboard_buffer = keyboard_buffer.slice(loc);
-        return out;
+        while (loc == -1) loc = this.buffer.indexOf(13);
+        var out = this.buffer.slice(0, loc+1);
+        this.buffer = this.buffer.slice(loc+1);
+        return String.fromCharCode(out);
     }
 
     this.reset();
@@ -2193,20 +2199,20 @@ else {
 
 
 // TODO:
+// - error handling: keep line number
+// bugs: input, subscript out of range, graphics text
 // - cursor, scrolling
-// - arrow keys, function keys
-// - unimplemented BASICODE subroutines
 // - DEF FN
 // - type checks
-// - error handling: keep line number
-// - colour, graphics
+// - files, colour
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // DDR Basicode uses INPUT "prompt"; A$
 // some demo programs use bare NEXT
 // cursor and echo for INPUT
 // does INPUT consume its \n?
 
-// erroneous line breaks on description page?
+// split interface in keyboard, screen
+// clean up state/Program object
 
 // some potential optimisations, if needed:
 // - pre-calculate jump targets (second pass of parser?)
