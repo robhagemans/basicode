@@ -518,8 +518,6 @@ function Literal(value)
 }
 
 
-// do we need a retrieve node?
-
 
 
 function Node(func, node_args, state)
@@ -1879,7 +1877,8 @@ function Interface(iface_element)
     {
         var loc = -1;
         while (loc == -1) loc = this.buffer.indexOf(13);
-        var out = this.buffer.slice(0, loc+1);
+        var out = this.buffer.slice(0, loc);
+        // leave the CR out of the buffer
         this.buffer = this.buffer.slice(loc+1);
         return String.fromCharCode.apply(null, out);
     }
