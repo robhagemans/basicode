@@ -1783,7 +1783,13 @@ function BasicodeApp(script)
     this.load = function(code)
     // load program, parse to AST, connect to output
     {
-        this.program = new Parser().parseProgram(tokenise(code));
+        try {
+            this.program = new Parser().parseProgram(tokenise(code));
+        } catch (e) {
+            this.program.output.write('\nERROR: ' + e + '\n');
+            this.stop();
+            if (typeof e !== 'string') throw e;
+        }
     }
 
     this.run = function()
