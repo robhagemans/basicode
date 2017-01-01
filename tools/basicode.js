@@ -1256,12 +1256,12 @@ function Parser()
             throw 'Syntax error: expected variable name, got `' + name.payload + '`';
         }
         var indices = parser.parseArguments(expr_list);
+        last.next = new Node(function() { this.input.setEcho(this.output); }, [], state);
         // wait for ENTER kepress before engaging
-        var wait_func = function() { return state.input.keyPressed(13); }
+        last.next.next = new Wait(function() { return state.input.keyPressed(13); });
         // return payload: do not retrieve the variable, just get its name
-        last.next = new Wait(wait_func);
-        last.next.next = new Node(token.operation, [new Literal(name.payload)].concat(indices), state)
-        return last.next.next;
+        last.next.next.next = new Node(token.operation, [new Literal(name.payload)].concat(indices), state)
+        return last.next.next.next;
     }
 
     function parseDefFn(parser, expr_list, token, last)
@@ -1396,12 +1396,12 @@ function stRead(name)
     state.variables.assign(value, name, indices);
 }
 
-
 function stInput(name)
 // INPUT
 {
     var state = this;
     var indices = [].slice.call(arguments, 1);
+    state.input.unsetEcho();
     var value = state.input.readLine();
     if (name.slice(-1) !== '$') {
         // convert string to number
@@ -1847,6 +1847,7 @@ function Interface(iface_element)
 
     input_element.addEventListener('keypress', function(event) {
         self.buffer.push(event.keyCode);
+        if (self.echo !== null) self.echo.write(String.fromCharCode(event.keyCode));
         event.preventDefault();
     });
 
@@ -1857,6 +1858,8 @@ function Interface(iface_element)
         this.suppress_break = false;
         // break has been pressed
         this.break_flag = false;
+        // echo to output (for INPUT)
+        this.echo = null;
     }
 
     this.keyPressed = function(key) {
@@ -1877,7 +1880,18 @@ function Interface(iface_element)
         while (loc == -1) loc = this.buffer.indexOf(13);
         var out = this.buffer.slice(0, loc+1);
         this.buffer = this.buffer.slice(loc+1);
-        return String.fromCharCode(out);
+        return String.fromCharCode.apply(null, out);
+    }
+
+    this.setEcho = function(output)
+    {
+        output.write(String.fromCharCode(this.buffer));
+        this.echo = output;
+    }
+
+    this.unsetEcho = function(output)
+    {
+        this.echo = null;
     }
 
     this.reset();
