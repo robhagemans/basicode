@@ -1665,6 +1665,7 @@ function Interface(iface_element)
     // release this interface
     {
         this.busy = false;
+        this.curtain();
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -1697,6 +1698,11 @@ function Interface(iface_element)
         //graphics
         this.last_x = 0;
         this.last_y = 0;
+    }
+
+    this.curtain = function() {
+        context.fillStyle = 'rgba(225,225,225,0.25)';
+        context.fillRect(0, 0, output_element.width, output_element.height);
     }
 
     this.writeRaw = function(output)
@@ -2052,8 +2058,6 @@ function BasicodeApp(script)
         }
     }
 
-
-
     this.show = function()
     // show program title and description
     {
@@ -2071,6 +2075,7 @@ function BasicodeApp(script)
         this.iface.write(' '.repeat(this.iface.width));
         this.iface.writeCentre(this.iface.height - 1, '-- click to run --');
         this.iface.invertColour();
+        this.iface.curtain();
     }
 
     this.splash = function()
@@ -2099,8 +2104,8 @@ function BasicodeApp(script)
         this.iface.write(' '.repeat(this.iface.width));
         this.iface.writeCentre(this.iface.height - 1, '-- drag and drop to load --');
         this.iface.invertColour();
+        this.iface.curtain();
     }
-
 
     this.run = function()
     // execute the program
@@ -2111,6 +2116,8 @@ function BasicodeApp(script)
 
         // clear screen
         this.iface.clear();
+        // reset keyboard buffer
+        this.iface.reset();
 
         var current = prog.tree;
         app.run_interval = window.setInterval(function() {
@@ -2141,6 +2148,12 @@ function BasicodeApp(script)
             this.program.output.release();
             this.program.printer.flush();
         }
+        this.iface.invertColour();
+        this.iface.setColumn(0);
+        this.iface.setRow(this.iface.height - 1);
+        this.iface.write(' '.repeat(this.iface.width));
+        this.iface.writeCentre(this.iface.height - 1, '-- click to run again --');
+        this.iface.invertColour();
     }
 
     // load & run the code provided in the element, if any
