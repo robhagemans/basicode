@@ -1024,10 +1024,6 @@ function Parser()
         360: function() {return new Node(subLineFeed, [], state)},
 
         /*
-        // BC2: END, RUN, STOP
-        // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
-        // DDR Basicode uses INPUT "prompt"; A$
-        // BC3: GOTO20 clears variables, resets & runs
 
         // BC3:
         450 Wait SD*0.1 seconds or for a key stroke
@@ -1419,7 +1415,6 @@ function subReadChar()
 
 function subBeep()
 // GOSUB 250
-// TODO: sound not implemented
 {
     var state = this;
     state.speaker.sound(440, 0.1, 1);
@@ -1872,13 +1867,14 @@ else {
 
 // TODO:
 // - cursor, scrolling
-// - arrow keys, function keys, break key (use ctrl+c)
+// - arrow keys, function keys
 // - unimplemented BASICODE subroutines
 // - DEF FN
 // - type checks
 // - error handling: exception type; keep line number
-// - meta info: 32000+ is author info
-// - colour, sound, graphics, printer
+// - colour, graphics
+// BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
+// DDR Basicode uses INPUT "prompt"; A$
 
 // deployment: show meta-info after load ('loader program' if nothing loaded)
 // drag&drop loading of local files (using the File API)
