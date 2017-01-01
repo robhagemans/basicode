@@ -1629,10 +1629,6 @@ function Interface(iface_element)
     input_element.tabIndex = 1;
     input_element.focus();
 
-    // suppress ctrl+break key
-    this.suppress_break = false;
-    this.break_flag = false;
-
     var self = this;
 
     input_element.addEventListener('keypress', function(event) {
@@ -1648,6 +1644,15 @@ function Interface(iface_element)
         // preventDefault will stop all keys from being caught by keypress, so use only for backspace and function keys to avoid browser actions
         //event.preventDefault();
     });
+
+    this.reset = function()
+    {
+        keyboard_buffer = '';
+        // suppress ctrl+break key
+        this.suppress_break = false;
+        // break has been pressed
+        this.break_flag = false;
+    }
 
     this.keyPressed = function(key) {
         if (key !== undefined && key !== null) {
@@ -1680,6 +1685,8 @@ function Interface(iface_element)
         keyboard_buffer = keyboard_buffer.slice(loc);
         return out;
     }
+
+    this.reset();
 }
 
 
@@ -1772,10 +1779,15 @@ function BasicodeApp(script)
     // interval timer for running program
     this.run_interval = null;
 
+    var app = this;
+
     this.load = function(code)
     // load program, parse to AST, connect to output
     {
+        // clear screen
         this.iface.clear();
+        // reset keyboard buffer
+        this.iface.reset();
         try {
             // initialise program object
             this.program = new Parser().parseProgram(tokenise(code));
@@ -1785,10 +1797,24 @@ function BasicodeApp(script)
             this.program.speaker = new Speaker();
             // show title and description
             this.iface.setColour('white', 'black');
+            this.iface.setColumn(0);
+            this.iface.setRow(0);
+            this.iface.write(' '.repeat(this.iface.width));
             this.iface.setColumn((this.iface.width - this.program.title.length)/2);
+            this.iface.setRow(0);
             this.iface.write(this.program.title+'\n\n');
             this.iface.setColour('black', 'white');
+            console.log(JSON.stringify(this.program.description));
             this.iface.write(this.program.description);
+            this.iface.setColour('white', 'black');
+            this.iface.setColumn(0);
+            this.iface.setRow(this.iface.height - 1);
+            this.iface.write(' '.repeat(this.iface.width));
+            var str = '-- click to run --';
+            this.iface.setColumn((this.iface.width - str.length)/2);
+            this.iface.setRow(this.iface.height - 1);
+            this.iface.write(str);
+            this.iface.setColour('black', 'white');
         } catch (e) {
             this.program = null;
             this.iface.write('\nERROR: ' + e + '\n');
@@ -1801,15 +1827,13 @@ function BasicodeApp(script)
     // execute the program
     {
         var prog = this.program;
-        console.log('run ');
-
         // exit if nothing loaded
         if (!prog || prog.tree === null) return;
 
-        var app = this;
+        // clear screen
+        this.iface.clear();
 
         var current = prog.tree;
-
         app.run_interval = window.setInterval(function() {
             try {
                 if (current) current = current.step(); else app.stop();
@@ -1828,7 +1852,10 @@ function BasicodeApp(script)
     this.stop = function()
     // release resources upon program end
     {
-        if (this.run_interval !== null) window.clearInterval(this.run_interval);
+        if (this.run_interval !== null) {
+            window.clearInterval(this.run_interval);
+            this.run_interval = null;
+        }
         if (this.program !== null) {
             this.program.output.release();
             this.program.printer.flush();
@@ -1839,10 +1866,21 @@ function BasicodeApp(script)
     var code = script.innerHTML;
     if (code !== undefined && code !== null && code) {
         this.load(code);
-        this.run();
     }
 
-    // handle drag & drop of basicode files
+    ///////////////////////////////////////////////////////////////////////////
+    // event handlers
+
+    // run file on click
+
+    element.addEventListener('click', function click(e) {
+        console.log('click');
+        if (app.run_interval === null) {
+            app.run();
+        }
+    });
+
+    // load files on drag & drop
 
     element.addEventListener('dragenter', function dragenter(e) {
         e.stopPropagation();
@@ -1854,7 +1892,6 @@ function BasicodeApp(script)
         e.preventDefault();
     });
 
-    var app = this;
     element.addEventListener('drop', function drop(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -1863,7 +1900,6 @@ function BasicodeApp(script)
         reader.onload = function() {
             app.stop();
             app.load(reader.result);
-            app.run();
         };
         reader.readAsText(files[0]);
     });
@@ -1907,6 +1943,8 @@ else {
 // - colour, graphics
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // DDR Basicode uses INPUT "prompt"; A$
+// some demo programs use bare NEXT
+// cursor and echo for INPUT
 
 // deployment: show meta-info after load ('loader program' if nothing loaded)
 // drag&drop loading of local files (using the File API)
