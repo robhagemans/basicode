@@ -1407,6 +1407,8 @@ function subClear()
 {
     var state = this;
     state.clear();
+    state.variables.assign(state.output.width - 1, 'HO', []);
+    state.variables.assign(state.output.height - 1, 'VE', []);
 }
 
 function subClearScreen()
