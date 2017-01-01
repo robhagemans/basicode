@@ -688,14 +688,6 @@ function Parser()
 
     var current_line = 999;
 
-    // FIXME: can become a regular function now that we set `this` to state
-    function opRetrieve(name)
-    //  retrieve a variable from the Variables object in state
-    {
-        var indices = [].slice.call(arguments, 1);
-        return state.variables.retrieve(name, indices);
-    }
-
     function drain(precedence, stack, units)
     // pop operator stack until matching precedence is encountered
     {
@@ -1156,6 +1148,7 @@ function Parser()
         if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
             throw 'Syntax error: expected numerical variable name';
         }
+        loop_variable = loop_variable.payload;
         var equals = expr_list.shift();
         if (equals.token_type !== 'operator' || equals.payload !== '=') {
             throw 'Syntax error: expected `=`, got `'+equals.payload+'`';
@@ -1177,16 +1170,16 @@ function Parser()
         // loop init
         last.next = new Node(stLet, [
                                 new Node(function (x, y) { return x-y; }, [start, step], state),
-                                new Literal(loop_variable.payload)
+                                new Literal(loop_variable)
                             ], state);
         last = last.next;
         // increment node
         var incr = new Node(stLet, [
                                 new Node(function(x, y) { return x+y; }, [
-                                        new Node(opRetrieve, [new Literal(loop_variable.payload)]),
+                                        new Node(opRetrieve, [new Literal(loop_variable)], state),
                                         step
                                     ], state),
-                                new Literal(loop_variable.payload),
+                                new Literal(loop_variable),
                             ], state);
         last.next = incr;
         last = incr;
@@ -1221,13 +1214,21 @@ function Parser()
             }
 
             if (token.payload === 'NEXT') {
-                // variable is mandatory; only one variable allowed
-                var loop_variable = expr_list.shift();
-                if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
-                    throw 'Syntax error: expected numerical variable name, got `' + loop_variable.payload + '`';
+                // only one variable allowed
+                var next_variable = expr_list.shift();
+                // accept missing variable name (formally not allowed)
+                if (next_variable.token_type !== 'name') {
+                    expr_list.unshift(next_variable);
                 }
-
-                last.next = new Label('NEXT '+loop_variable.payload);
+                else {
+                    if (next_variable.payload.slice(-1) === '$') {
+                        throw 'Type mismatch: expected `NEXT` with numerical variable name, got `NEXT ' + next_variable.payload + '`';
+                    }
+                    if (loop_variable !== next_variable.payload) {
+                        throw 'Expected `NEXT `'+loop_variable+'`, got `NEXT ' + next_variable.payload + '`';
+                    }
+                }
+                last.next = new Label('NEXT '+ loop_variable);
                 last = last.next;
                 break;
             }
@@ -1239,7 +1240,7 @@ function Parser()
 
         // create the iteration node
         var cond = new Conditional(new Node(function(x, y) { return x < y; }, [
-                                    new Node(opRetrieve, [new Literal(loop_variable.payload)], state),
+                                    new Node(opRetrieve, [new Literal(loop_variable)], state),
                                     stop
                                 ], state));
         cond.branch = incr;
@@ -1324,9 +1325,22 @@ function Parser()
 
 
 ///////////////////////////////////////////////////////////////////////////////
+// variable retrieval
+
+function opRetrieve(name)
+//  retrieve a variable from the Variables object in state
+{
+    var state = this;
+    var indices = [].slice.call(arguments, 1);
+    return state.variables.retrieve(name, indices);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
 // statements
 
 // we set `this` to the current program state upon calling these
+
 
 function stLet(value, name)
 // LET
