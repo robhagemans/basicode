@@ -1057,6 +1057,11 @@ function Parser()
         330: function(last) {last.next = new Node(subToUpperCase, [], state); return last.next; },
         350: function(last) {last.next = new Node(subLinePrint, [], state); return last.next; },
         360: function(last) {last.next = new Node(subLineFeed, [], state); return last.next; },
+        400: function(last) {
+            last.next = new Node(subTone, [], state);
+            last.next.next = new Wait(function waitForTone() { return !state.speaker.isBusy(); });
+            return last.next.next;
+        },
         450: function(last) {
             last.next = new Node(subSetTimer, [], state);
             last.next.next = new Wait(function waitForKeyWithTimeout() { return (state.input.keyPressed() || state.timer.elapsed()); });
@@ -1066,14 +1071,6 @@ function Parser()
         /*
 
         // BC3:
-
-        sound
-        400 Produce a tone using SP, SD and SV
-            SP is frequency level: 0 = lowest, 60='central C', 127 = highest
-            SD is the tone duration in steps of 0.1 seconds
-            SV is the volume: 0=muted 7=medium, 15=loud
-            This subroutine keeps running during the time of SD.
-
         files
         500 Open the file NF$ according to the code in NF:
         NF = even number: input: NF= uneven number: output
@@ -1503,6 +1500,23 @@ function subBeep()
     state.speaker.sound(440, 0.1, 1);
 }
 
+function subTone()
+// GOSUB 400
+//400 Produce a tone using SP, SD and SV
+//    SP is frequency level: 0 = lowest, 60='central C', 127 = highest
+//    SD is the tone duration in steps of 0.1 seconds
+//    SV is the volume: 0=muted 7=medium, 15=loud
+//    This subroutine keeps running during the time of SD.
+{
+    var state = this;
+    var freq = state.variables.retrieve('SP', []);
+    var dur = state.variables.retrieve('SD', []);
+    var vol = state.variables.retrieve('SV', []);
+    state.speaker.sound(freq, dur*0.1, vol/15.);
+}
+
+
+
 function subRandom()
 // GOSUB 260
 {
@@ -1834,20 +1848,26 @@ function Speaker()
         var oscillator = context.createOscillator();
         oscillator.type = 'square';
         oscillator.frequency.value = frequency;
+
         // Gain node
         var gain = context.createGain();
         gain.gain.value = volume;
+
         // link nodes up
         oscillator.connect(gain);
         gain.connect(context.destination);
+
         // play the tone
         ++this.tones;
         var now = context.currentTime;
         oscillator.start(now);
         oscillator.stop(now + duration);
+
         // clean up afterwards
+        var speaker = this;
         oscillator.onended = function() {
-            --this.tones;
+            // this event seems to be missed by Chromium, occasionally
+            --speaker.tones;
             oscillator.disconnect();
             gain.disconnect();
         };
@@ -1991,7 +2011,9 @@ function BasicodeApp(script)
         var current = prog.tree;
         app.run_interval = window.setInterval(function() {
             try {
-                if (current) current = current.step(); else app.stop();
+                if (current) current = current.step(); else {
+                    app.stop();
+                }
                 if (prog.input.break_flag) {
                     prog.output.write('\nBreak\n');
                     app.stop();
