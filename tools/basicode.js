@@ -332,7 +332,7 @@ function Lexer(expr_string)
     {
         // skip single space after REM, if any
         var start_pos = ++pos;
-        for (++pos; (pos < expr_string.length && expr_string[pos] !== '\n'); ++pos);
+        for (; (pos < expr_string.length && expr_string[pos] !== '\n'); ++pos);
         --pos;
         if (expr_string[start_pos] === ' ') ++start_pos;
         return expr_string.slice(start_pos, pos+1);
@@ -823,6 +823,7 @@ function Parser()
         else if (line_number <= current_line) {
             throw 'Expected line number > `' + current_line+'`, got `'+ line_number + '`';
         }
+        current_line = line_number;
         var label = new Label(line_number);
         state.line_numbers[line_number] = label;
         last.next = label;
@@ -1076,7 +1077,6 @@ function Parser()
         last.next = node;
         var then = expr_list.shift()
         if (then.token_type !== 'statement' || then.payload !== 'THEN') {
-            console.log(then);
             throw 'Syntax error: expected `THEN`, got `'+then.payload+'`';
         }
         // supply a GOTO if jump target given after THEN
@@ -1503,7 +1503,6 @@ function subLineFeed()
 ///////////////////////////////////////////////////////////////////////////////
 // interface
 
-const INACTIVE_DELAY = 100;
 const ACTIVE_DELAY = 5;
 
 
@@ -1518,15 +1517,8 @@ function Interface(iface_element)
     this.acquire = function(do_run)
     // acquire this interface, after the previous user released it
     {
-        var iface = this;
-        var wait_interval = window.setInterval(function() {
-            if (!iface.busy) {
-                window.clearInterval(wait_interval);
-                iface.busy = true;
-                iface.break_flag = false;
-                do_run();
-            };
-        }, INACTIVE_DELAY);
+        this.busy = true;
+        this.break_flag = false;
     }
 
     this.release = function()
@@ -1783,13 +1775,26 @@ function BasicodeApp(script)
     this.load = function(code)
     // load program, parse to AST, connect to output
     {
+        this.iface.clear();
         try {
+            // initialise program object
             this.program = new Parser().parseProgram(tokenise(code));
+            this.program.output = this.iface;
+            this.program.input = this.iface;
+            this.program.printer = new Printer();
+            this.program.speaker = new Speaker();
+            // show title and description
+            this.iface.setColour('white', 'black');
+            this.iface.setColumn((this.iface.width - this.program.title.length)/2);
+            this.iface.write(this.program.title+'\n\n');
+            this.iface.setColour('black', 'white');
+            this.iface.write(this.program.description);
         } catch (e) {
-            this.program.output.write('\nERROR: ' + e + '\n');
-            this.stop();
+            this.program = null;
+            this.iface.write('\nERROR: ' + e + '\n');
             if (typeof e !== 'string') throw e;
         }
+
     }
 
     this.run = function()
@@ -1801,51 +1806,37 @@ function BasicodeApp(script)
         // exit if nothing loaded
         if (!prog || prog.tree === null) return;
 
-        prog.output = this.iface;
-        prog.input = this.iface;
-
-        // create other resources
-        prog.printer = new Printer();
-        prog.speaker = new Speaker();
-
         var app = this;
 
-        // wait until resources become available, then run the program
-        this.iface.acquire(function() {
-            var current = prog.tree;
+        var current = prog.tree;
 
-            app.run_interval = window.setInterval(function() {
-                try {
-                    if (current) current = current.step(); else app.stop();
-                    if (prog.input.break_flag) {
-                        prog.output.write('\nBreak\n');
-                        app.stop();
-                    }
-                } catch (e) {
-                    prog.output.write('\nERROR: ' + e + '\n');
+        app.run_interval = window.setInterval(function() {
+            try {
+                if (current) current = current.step(); else app.stop();
+                if (prog.input.break_flag) {
+                    prog.output.write('\nBreak\n');
                     app.stop();
-                    if (typeof e !== 'string') throw e;
                 }
-            }, ACTIVE_DELAY);
-        });
+            } catch (e) {
+                prog.output.write('\nERROR: ' + e + '\n');
+                app.stop();
+                if (typeof e !== 'string') throw e;
+            }
+        }, ACTIVE_DELAY);
     }
 
     this.stop = function()
     // release resources upon program end
     {
         if (this.run_interval !== null) window.clearInterval(this.run_interval);
-        this.program.output.release();
-        this.program.printer.flush();
+        if (this.program !== null) {
+            this.program.output.release();
+            this.program.printer.flush();
+        }
     }
 
-
-    // load and run any basicode provided in the element itself
-
-    // TODO: trim seems to be necessary to avoid an Illegal Direct, not sure why
-    //var code = element.innerHTML.trim().replace('&gt;', '>').replace('&lt;','<');
-    var code = script.innerHTML;
-
     // load & run the code provided in the element, if any
+    var code = script.innerHTML;
     if (code !== undefined && code !== null && code) {
         this.load(code);
         this.run();
@@ -1853,23 +1844,21 @@ function BasicodeApp(script)
 
     // handle drag & drop of basicode files
 
-    function dragenter(e) {
+    element.addEventListener('dragenter', function dragenter(e) {
         e.stopPropagation();
         e.preventDefault();
-    }
+    });
 
-    function dragover(e) {
+    element.addEventListener('dragover', function dragover(e) {
         e.stopPropagation();
         e.preventDefault();
-    }
+    });
 
     var app = this;
-    function drop(e) {
+    element.addEventListener('drop', function drop(e) {
         e.stopPropagation();
         e.preventDefault();
-        var dt = e.dataTransfer;
-        var files = dt.files;
-
+        var files = e.dataTransfer.files;
         var reader = new FileReader();
         reader.onload = function() {
             app.stop();
@@ -1877,11 +1866,8 @@ function BasicodeApp(script)
             app.run();
         };
         reader.readAsText(files[0]);
-    }
+    });
 
-    element.addEventListener("dragenter", dragenter, false);
-    element.addEventListener("dragover", dragover, false);
-    element.addEventListener("drop", drop, false);
 }
 
 function launch() {
