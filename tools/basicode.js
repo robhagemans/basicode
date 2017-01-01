@@ -1512,6 +1512,7 @@ function subTone()
     var freq = state.variables.retrieve('SP', []);
     var dur = state.variables.retrieve('SD', []);
     var vol = state.variables.retrieve('SV', []);
+    freq = (freq===0)?0: Math.exp(freq*0.057762 + 2.10125);
     state.speaker.sound(freq, dur*0.1, vol/15.);
 }
 
@@ -1653,7 +1654,7 @@ function Interface(iface_element)
 
     this.writeRaw = function(output)
     {
-        if (this.row >= this.height) return;
+        if ((this.row >= this.height) || (this.row<0)) return;
         while (this.col + output.length > this.width) {
             var cut = this.width-this.col
             this.writeRaw(output.slice(0, cut));
@@ -1667,7 +1668,7 @@ function Interface(iface_element)
         // 0.75 seems about the right baseline offset for Chrome & Firefox...
         context.fillText(output, this.col*font_width, (this.row+0.75)*font_height);
         // update content buffer
-        this.content[this.row] = this.content[this.row].slice(0, this.col) + output + this.content[this.row].slice(this.col, this.col+output.length);
+        this.content[this.row] = this.content[this.row].slice(0, this.col) + output + this.content[this.row].slice(this.col+output.length);
         this.col += output.length;
     }
 
@@ -2130,7 +2131,7 @@ else {
 // - unimplemented BASICODE subroutines
 // - DEF FN
 // - type checks
-// - error handling: exception type; keep line number
+// - error handling: keep line number
 // - colour, graphics
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // DDR Basicode uses INPUT "prompt"; A$
