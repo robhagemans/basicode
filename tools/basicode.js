@@ -1278,16 +1278,12 @@ function stLet(value, name)
     state.variables.assign(value, name, indices);
 }
 
-function stDim()
+function stDim(name)
 // DIM
 {
     var state = this;
-    var vars = [].slice.call(arguments);
-    for (var i=0; i < vars.length; ++i) {
-        var name = vars[i][0];
-        var indices = vars[i][1].evaluate();
-        state.variables.allocate(name, indices);
-    }
+    var indices = [].slice.call(arguments, 1);
+    state.variables.allocate(name, indices);
 }
 
 function stPrint()
