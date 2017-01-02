@@ -1004,7 +1004,7 @@ function Parser()
         // GOTO 950 means END
         else if (line_number.payload  === 950) return new End();
         else if (line_number.payload < 1000) {
-            throw 'Unknown BASICODE jump `GOTO '+line_number.payload+'`';
+            throw '`GOTO '+line_number.payload+'` not implemented';
         }
         // other line numbers are resolved at run time
         last.next = new Jump(line_number.payload, state, false);
@@ -1023,7 +1023,7 @@ function Parser()
             return SUBS[line_number.payload](last);
         }
         else if (line_number.payload < 1000) {
-            throw 'Unknown BASICODE subroutine `GOSUB '+line_number.payload+'`';
+            throw '`GOSUB '+line_number.payload+'` not implemented';
         }
         last.next = new Jump(line_number.payload, state, true);
         return last.next;
@@ -2317,8 +2317,8 @@ else {
 
 
 // TODO:
+// problems with arrays
 // - error handling: keep line number
-// - printing on position 40 does \n; \n then does another line
 // - files, colour
 // - DEF FN
 // - type checks
@@ -2328,6 +2328,7 @@ else {
 // some demo programs use bare NEXT
 
 // controls: repeat/play/pause, load, print buttons
+// scrollable info page; center info page on longest line of description
 
 // split interface in keyboard, screen
 // clean up state/Program object
