@@ -1637,7 +1637,7 @@ function subOpen()
     var state = this;
     var nf = state.variables.retrieve('NF', []);
     var name = state.variables.retrieve('NF$', []);
-    var mode = (nf%2) ? 'r' : 'w';
+    var mode = (nf%2) ? 'w' : 'r';
     var device = Math.floor(nf/2);
     var status = state.storage[device].open(name, mode) ? 0 : -1;
     state.variables.assign(status, 'IN', []);
@@ -2210,8 +2210,8 @@ function Floppy(id)
 
     this.readLine = function()
     {
-        if (this.open_line > this.open_file.length) return null;
         if (this.open_mode !== 'r') throw 'File not open for read';
+        if (this.open_line >= this.open_file.length) return null;
         return this.open_file[this.open_line++];
     }
 
