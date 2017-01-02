@@ -2149,7 +2149,10 @@ function BasicodeApp(script)
             this.iface.invertColour();
             this.iface.setColumn(0);
             this.iface.setRow(0);
-            this.iface.write(' '.repeat(this.iface.width*4));
+            this.iface.write(' '.repeat(this.iface.width));
+            this.iface.invertColour();
+            this.iface.write(' '.repeat(this.iface.width*3));
+            this.iface.invertColour();
             this.iface.setColumn(0);
             this.iface.setRow(0);
             if (e instanceof BasicError) {
@@ -2157,11 +2160,13 @@ function BasicodeApp(script)
                 var ln = e.where;
                 if (ln === null) ln = program.current_line;
                 this.iface.write(' in '+ ln +'\n');
-                this.iface.write(e.detail + '\n');
                 this.iface.invertColour();
+                this.iface.write(e.detail + '\n');
             }
             else {
-                this.iface.write('EXCEPTION\n' + e + '\n');
+                this.iface.write('EXCEPTION\n')
+                this.iface.invertColour();
+                this.iface.write(e + '\n');
                 throw e;
             }
         }
