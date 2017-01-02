@@ -1647,7 +1647,7 @@ function subText()
 ///////////////////////////////////////////////////////////////////////////////
 // interface
 
-const ACTIVE_DELAY = 5;
+const ACTIVE_DELAY = 1;
 
 
 function Interface(iface_element)
