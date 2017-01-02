@@ -997,22 +997,11 @@ function Parser()
             step = parser.parseExpression(expr_list);
         }
         // loop init
-        last.next = new Node(stLet, [
-                                new Node(function (x, y) { return x-y; }, [start, step], state),
-                                new Literal(loop_variable)
-                            ], state);
+        last.next = new Node(stLet, [new Literal(start), new Literal(loop_variable)], state);
         last = last.next;
-        // increment node
-        var incr = new Node(stLet, [
-                                new Node(function(x, y) { return x+y; }, [
-                                        new Node(opRetrieve, [new Literal(loop_variable)], state),
-                                        step
-                                    ], state),
-                                new Literal(loop_variable),
-                            ], state);
-        last.next = incr;
-        last = incr;
-
+        var for_node = new Label('FOR '+loop_variable);
+        last.next = for_node;
+        last = last.next;
         // parse body of FOR loop until NEXT is encountered
         var token = null;
         while (true) {
@@ -1066,15 +1055,23 @@ function Parser()
             // statement parsers must take care of maintaining the linked list
             last = PARSERS[token.payload](parser, expr_list, token, last)
         }
-
         // create the iteration node
         // iterate if (i*step) < (stop*step) to deal with negative steps
-        var cond = new Conditional(new Node(function(x, y, z) { return z*x < z*y; }, [
+        var cond = new Conditional(new Node(function(x, y, z) { console.log([x, y, z]); return z*x < z*y; }, [
                                     new Node(opRetrieve, [new Literal(loop_variable)], state),
                                     stop, step,
                                 ], state));
-        cond.branch = incr;
         last.next = cond;
+        // increment node
+        var incr = new Node(stLet, [
+                                new Node(function(x, y) { return x+y; }, [
+                                        new Node(opRetrieve, [new Literal(loop_variable)], state),
+                                        step
+                                    ], state),
+                                new Literal(loop_variable),
+                            ], state);
+        incr.next = for_node;
+        cond.branch = incr;
         return cond;
     }
 
@@ -1272,7 +1269,8 @@ function Variables()
         else {
             for (var i=0; i < indices.length; ++i) {
                 if (indices[i] < 0 || indices[i] > this.dims[name][i]) {
-                    throw new BasicError('Subscript out of range', 'index #'+i+' out of bounds', null);
+                    console.log(this)
+                    throw new BasicError('Subscript out of range', 'indices '+indices+' out of bounds '+this.dims[name], null);
                 }
             }
         }
