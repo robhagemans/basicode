@@ -15,188 +15,20 @@
 // However, this interpreter does not take code from his.
 
 
-
 ///////////////////////////////////////////////////////////////////////////////
-// data store
+// errors
 
-function Data()
+function BasicError(message, detail, location)
 {
-    this.vault = [];
-    this.pointer = 0;
-
-    this.read = function()
-    {
-        if (this.pointer < this.vault.length) {
-            this.pointer += 1;
-            return this.vault[this.pointer-1];
-        }
-        else {
-            throw 'Out of Data';
-        }
-    };
-
-    this.restore = function()
-    {
-        this.pointer = 0;
-    };
-
-    this.store = function(new_data)
-    {
-        this.vault = this.vault.concat(new_data);
-    }
-
-    this.clear = function()
-    {
-        this.vault = [];
-        this.pointer = 0;
-    }
-
+    this.message = message;
+    this.detail = detail;
+    this.where = location;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// types, variables, arrays
+BasicError.prototype = Object.create(Error.prototype);
+BasicError.prototype.name = "BasicError";
+BasicError.prototype.constructor = BasicError;
 
-function defaultValue(name)
-// default value for type given by name
-{
-    var default_value = 0;
-    if (name.slice(-1) === '$') default_value = '';
-    return default_value;
-}
-
-function matchType(name, value)
-{
-    var string_name = (name.slice(-1) === '$');
-    var string_value = typeof value === 'string';
-    if (!string_value && typeof value !== 'number') {
-        throw 'Type mismatch: unknown type';
-    }
-    if (string_name !== string_value) {
-        throw 'Type mismatch';
-    }
-}
-
-function Variables()
-{
-    this.clear = function()
-    {
-        this.arrays = {};
-        this.scalars = {};
-        this.dims = {};
-    }
-
-    this.allocate = function(name, indices)
-    // allocate an array
-    {
-        // no redefinitions allowed
-        if (name in this.dims || name in this.arrays) throw 'Duplicate definition of `'+name+'()`';
-        // BASICODE arrays may have at most two indices
-        if (indices.length > 2) throw 'Subscript out of range: too many array dimensions';
-        // set default to empty string if string name, 0 otherwise
-        var default_value = defaultValue(name);
-        function allocateLevel(indices) {
-            if (indices.length === 0) return default_value;
-            else {
-                // allocate subarray; BASICODE arrays span 0..x inclusive
-                var arr = new Array(indices[0]+1);
-                // feed remaining arguments to recursive call
-                var argarray = indices.slice(1);
-                // allocate deeper level
-                for (var i=0; i < arr.length; ++i) {
-                    arr[i] = allocateLevel(argarray);
-                }
-                return arr;
-            }
-        };
-
-        // I'm assuming a name is *either* a scalar *or* an array
-        // this is not true in e.g. GW-BASIC, but I think it's true in BASICODE
-        this.dims[name] = indices;
-        this.arrays[name] = allocateLevel(indices);
-    }
-
-    this.checkSubscript = function(name, indices)
-    {
-        if (!indices.length) {
-            if (!(name in this.dims) && !(name in this.scalars)) {
-                this.scalars[name] = defaultValue(name);
-            }
-        }
-        else if (!(name in this.dims)) {
-            throw 'Subscript out of range: array not dimensioned';
-        }
-        else if (indices.length !== this.dims[name].length) {
-            throw 'Subscript out of range: incorrect number of dimensions';
-        }
-        else {
-            for (var i=0; i < indices.length; ++i) {
-                if (indices[i] < 0 || indices[i] > this.dims[name][i]) {
-                    throw 'Subscript out of range: index '+i+' out of bounds';
-                }
-            }
-        }
-    }
-
-    this.assign = function(value, name, indices)
-    // set a variable
-    {
-        this.checkSubscript(name, indices);
-
-        if (indices.length === 0) {
-            this.scalars[name] = value;
-        }
-        else if (indices.length === 1) {
-            this.arrays[name][indices[0]] = value;
-        }
-        else {
-            this.arrays[name][indices[0]][indices[1]] = value;
-        }
-    };
-
-    this.retrieve = function(name, indices)
-    // retrieve a variable
-    {
-        this.checkSubscript(name, indices);
-
-        if (indices.length === 0) {
-            return this.scalars[name];
-        }
-        else if (indices.length === 1) {
-            return this.arrays[name][indices[0]];
-        }
-        else {
-            return this.arrays[name][indices[0]][indices[1]];
-        }
-    };
-
-    this.clear();
-}
-
-
-
-function Functions()
-{
-    this.clear = function()
-    {
-        this.exprs = {};
-        this.args = {};
-    }
-
-    this.store = function(name, arg, expr)
-    {
-        this.exprs[name] = expr;
-        this.args[name] = arg;
-    }
-
-    this.evaluate = function(name, arg_value)
-    {
-        var expr = this.exprs[name]
-        var arg = this.args[name]
-
-    }
-
-    this.clear();
-}
 
 ///////////////////////////////////////////////////////////////////////////////
 // tokens
@@ -347,10 +179,12 @@ function Lexer(expr_string)
         var start_pos = pos;
         // skip start and closing quotes
         for (++pos; (pos < expr_string.length && expr_string[pos] !== '"'  && expr_string[pos] !== '\n'); ++pos);
-        if (pos === expr_string.length || expr_string[pos] !== '"') {
-            throw 'Syntax error: no closing `"`';
+        var output = expr_string.slice(start_pos+1, pos);
+        if (expr_string[pos] === '\n') {
+            console.log('String literal terminated by end-of-line');
+            --pos;
         }
-        return expr_string.slice(start_pos+1, pos);
+        return output;
     }
 
     function readComment()
@@ -591,6 +425,7 @@ function Conditional(condition)
 }
 
 
+//FIXME: need state ref
 function Switch(condition, branches)
 // ON node
 {
@@ -602,7 +437,7 @@ function Switch(condition, branches)
     {
         var condition = this.condition.evaluate();
         if (typeof condition !== 'number' && typeof condition !== 'boolean') {
-            throw 'Type mismatch: expected numerical expression, got `'+ condition+'`';
+            throw new BasicError('Type mismatch', 'expected numerical expression, got `'+ condition+'`', state.current_line);
         }
         if (condition > 0 && condition <= this.branches.length) {
             return this.branches[condition-1];
@@ -622,7 +457,7 @@ function Jump(target, state, is_sub)
     this.step = function()
     {
         if (!(target in state.line_numbers)) {
-            throw 'Undefined line number ' + target;
+            throw new error('Undefined line number in `GOTO ' + target + '`', state.current_line);
         }
         if (is_sub) state.sub_stack.push(this.next);
         return state.line_numbers[target];
@@ -677,12 +512,14 @@ function Parser()
         'printer': null,
         'speaker': null,
         'timer': null,
+        'current_line': 999,
     }
     state.clear = function()
     {
         this.variables.clear();
         this.data.restore();
         this.sub_stack = [];
+        this.current_line = 999;
     }
 
     var current_line = 999;
@@ -727,7 +564,7 @@ function Parser()
                     narity = 1;
                 }
                 if (token.narity !== null && token.narity !== narity) {
-                    throw 'Syntax error: unexpected operator type';
+                    throw new BasicError('Syntax error', 'unexpected operator type', state.current_line);
                 }
                 if (narity === 2) {
                     // drain stack until precedence is matched
@@ -748,7 +585,7 @@ function Parser()
                         units.push(this.parseExpression(expr_list));
                         var bracket = expr_list.shift(token);
                         if (bracket.token_type !== ')') {
-                            throw 'Syntax error: expected `)`, got `' + bracket.payload + '`';
+                            throw new BasicError('Syntax error', 'expected `)`, got `' + bracket.payload + '`', current_line);
                         }
                         break;
                     case 'literal':
@@ -787,11 +624,11 @@ function Parser()
                 var token = expr_list.shift();
                 if (token.token_type === ')') break;
                 if (token.token_type !== ',') {
-                    throw 'Syntax error: expected `,`, got `'+token.payload+'`';
+                    throw  new BasicError('Syntax error', 'expected `,`, got `'+token.payload+'`', current_line);
                 }
             }
             if (token.token_type !== ')') {
-                throw 'Syntax error: missing `)`';
+                throw new BasicError('Syntax error', 'missing `)`', current_line);
             }
         }
         return args;
@@ -818,7 +655,7 @@ function Parser()
             var sep = basicode.shift();
             if (sep.token_type === '\n') break;
             if (sep.token_type !== ':') {
-                throw 'Syntax error: expected `:`, got `' + sep.payload + '`';
+                throw new BasicError('Syntax error', 'expected `:`, got `' + sep.payload + '`', current_line);
             }
         }
         return last
@@ -833,7 +670,7 @@ function Parser()
             while (token.token_type === '\n') token = basicode.shift();
             // we do need a line number at the start
             if (token.token_type != 'literal') {
-                throw 'Expected line number, got `'+line_number.payload+'`';
+                throw new BasicError('Syntax error', 'expected line number, got `'+line_number.payload+'`', current_line);
             }
             var line_number = token.payload;
             // ignore lines < 1000
@@ -841,7 +678,7 @@ function Parser()
             while (token.token_type !== '\n') token = basicode.shift();
         }
         if (line_number <= current_line) {
-            throw 'Expected line number > `' + current_line+'`, got `'+ line_number + '`';
+            throw new BasicError('Syntax error', 'expected line number > `' + current_line+'`, got `'+ line_number + '`', current_line);
         }
         current_line = line_number;
         var label = new Label(line_number);
@@ -893,11 +730,11 @@ function Parser()
     {
         var name = expr_list.shift();
         if (name.token_type != 'name') {
-            throw 'Syntax error: expected variable name, got `' + name.payload + '`';
+            throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
         }
         var indices = parser.parseArguments(expr_list);
         var equals = expr_list.shift().payload;
-        if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
+        if (equals !== '=') throw new BasicError('Syntax error', 'expected `=`, got `'+equals+'`', current_line);
         var value = parser.parseExpression(expr_list);
         // statement must have access to interpreter state, so state is first argument
         last.next = new Node(token.operation, [value, new Literal(name.payload)].concat(indices), state);
@@ -936,7 +773,7 @@ function Parser()
             // only literals allowed in DATA
             // we're not allowing empty DATA statements or repeated commas
             if (value === null || value.token_type != 'literal') {
-                throw 'Syntax error: expected string or number literal';
+                throw new BasicError('Syntax error', 'expected string or number literal, got `'+value.payload+'`', current_line);
             }
             values.push(value.payload);
             // parse separator (,)
@@ -956,7 +793,7 @@ function Parser()
         while (expr_list.length > 0) {
             var name = expr_list.shift();
             if (name.token_type != 'name') {
-                throw 'Syntax error: expected variable name, got `' + name.payload + '`';
+                throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
             }
             var indices = parser.parseArguments(expr_list);
 
@@ -993,7 +830,7 @@ function Parser()
     {
         var line_number = expr_list.shift();
         if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
-            throw 'Syntax error: expected line number, got `'+line_number.payload+'`';
+            throw new BasicError('Syntax error', 'expected line number, got `'+line_number.payload+'`', current_line);
         }
         // GOTO 20 is a BASICODE fixture, clear and jump to 1010
         if (line_number.payload === 20) {
@@ -1004,7 +841,7 @@ function Parser()
         // GOTO 950 means END
         else if (line_number.payload  === 950) return new End();
         else if (line_number.payload < 1000) {
-            throw '`GOTO '+line_number.payload+'` not implemented';
+            throw new BasicError('Unimplemented BASICODE', '`GOTO '+line_number.payload+'` not implemented', current_line);
         }
         // other line numbers are resolved at run time
         last.next = new Jump(line_number.payload, state, false);
@@ -1016,14 +853,14 @@ function Parser()
     {
         var line_number = expr_list.shift();
         if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
-            throw 'Syntax error: expected line number, got `'+line_number.payload+'`';
+            throw new BasicError('Syntax error', 'expected line number, got `'+line_number.payload+'`', current_line);
         }
         else if (line_number.payload in SUBS) {
             // attach BASICODE subroutine node
             return SUBS[line_number.payload](last);
         }
         else if (line_number.payload < 1000) {
-            throw '`GOSUB '+line_number.payload+'` not implemented';
+            throw new BasicError('Unimplemented BASICODE', '`GOSUB '+line_number.payload+'` not implemented', current_line);
         }
         last.next = new Jump(line_number.payload, state, true);
         return last.next;
@@ -1098,7 +935,7 @@ function Parser()
         last.next = node;
         var then = expr_list.shift()
         if (then.token_type !== 'statement' || then.payload !== 'THEN') {
-            throw 'Syntax error: expected `THEN`, got `'+then.payload+'`';
+            throw new BasicError('Syntax error', 'expected `THEN`, got `'+then.payload+'`', current_line);
         }
         // supply a GOTO if jump target given after THEN
         var jump = expr_list[0]
@@ -1121,7 +958,7 @@ function Parser()
         var condition = parser.parseExpression(expr_list);
         var jump = expr_list.shift();
         if (jump.token_type !== 'statement' || (jump.payload !== 'GOTO' && jump.payload !== 'GOSUB')) {
-            throw 'Syntax error: expected `GOTO` or `GOSUB`';
+            throw new BasicError('Syntax error', 'expected `GOTO` or `GOSUB`, got `'+jump.payload+'`', current_line);
         }
         var is_sub = false;
         if (jump.payload === 'GOSUB') is_sub = true;
@@ -1129,7 +966,7 @@ function Parser()
         while (expr_list.length) {
             var line_number = expr_list.shift();
             if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
-                throw 'Syntax error: expected line number';
+                throw new BasicError('Syntax error', 'expected line number, got `'+line_number.payload+'`', current_line);
             }
             nodes.push(new Jump(line_number.payload, state, is_sub));
             var sep = expr_list.shift();
@@ -1147,17 +984,17 @@ function Parser()
     {
         var loop_variable = expr_list.shift();
         if (loop_variable.token_type !== 'name' || loop_variable.payload.slice(-1) === '$') {
-            throw 'Syntax error: expected numerical variable name';
+            throw new BasicError('Syntax error', 'expected numerical variable name, got `'+loop_variable.payload+'`', current_line);
         }
         loop_variable = loop_variable.payload;
         var equals = expr_list.shift();
         if (equals.token_type !== 'operator' || equals.payload !== '=') {
-            throw 'Syntax error: expected `=`, got `'+equals.payload+'`';
+            throw new BasicError('Syntax error', 'expected `=`, got `'+equals.payload+'`', current_line);
         }
         var start = parser.parseExpression(expr_list);
         var to = expr_list.shift();
         if (to.token_type !== 'statement' || to.payload !== 'TO') {
-            throw 'Syntax error: expected `TO`, got `'+to+'`';
+            throw new BasicError('Syntax error', 'expected `TO`, got `'+to.payload+'`', current_line);
         }
         var stop = parser.parseExpression(expr_list);
         var step = expr_list.shift();
@@ -1189,7 +1026,7 @@ function Parser()
         var token = null;
         while (true) {
             if (!expr_list.length) {
-                throw '`FOR` without `NEXT`';
+                throw new BasicError(`Block error`, '`FOR` without `NEXT`', current_line);
             }
             //FIXME -  remove repetition of parseLine
             // make a parseUntil (with until === '\n' for IF, and 'NEXT' for FOR, and null for parseProgram)
@@ -1202,7 +1039,7 @@ function Parser()
                 last = last.next;
             }
             else if (sep.token_type !== ':') {
-                throw 'Syntax error: expected `:`, got `' + sep.payload + '`';
+                throw new BasicError(`Syntax error`, 'expected `:`, got `' + sep.payload + '`', current_line);
             }
 
             var token = expr_list.shift();
@@ -1223,10 +1060,10 @@ function Parser()
                 }
                 else {
                     if (next_variable.payload.slice(-1) === '$') {
-                        throw 'Type mismatch: expected `NEXT` with numerical variable name, got `NEXT ' + next_variable.payload + '`';
+                        throw new BasicError('Type mismatch', 'expected `NEXT` with numerical variable name, got `NEXT ' + next_variable.payload + '`', current_line);
                     }
                     if (loop_variable !== next_variable.payload) {
-                        throw 'Expected `NEXT `'+loop_variable+'`, got `NEXT ' + next_variable.payload + '`';
+                        throw new BasicError('Block error', 'Expected `NEXT `'+loop_variable+'`, got `NEXT ' + next_variable.payload + '`', current_line);
                     }
                 }
                 last.next = new Label('NEXT '+ loop_variable);
@@ -1254,7 +1091,7 @@ function Parser()
     {
         var name = expr_list.shift();
         if (name.token_type != 'name') {
-            throw 'Syntax error: expected variable name, got `' + name.payload + '`';
+            throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
         }
         var indices = parser.parseArguments(expr_list);
         // prompt
@@ -1272,26 +1109,26 @@ function Parser()
     {
         var fn = expr_list.shift();
         if (fn.token_type !== 'statement' || fn.payload !== 'FN') {
-            throw 'Syntax error: expected `FN`, got `'+to+'`';
+            throw new BasicError('Syntax error', 'expected `FN`, got `'+fn.payload+'`', current_line);
         }
         var name = expr_list.shift();
         if (name.token_type != 'name') {
-            throw 'Syntax error: expected function name, got `' + name.payload + '`';
+            throw new BasicError('Syntax error', 'expected function name, got `' + name.payload + '`', current_line);
         }
         var token = expr_list.shift();
         if (token.token_type === '(') {
-            throw 'Syntax error: expected `(`, got `'+to+'`';
+            throw new BasicError('Syntax error', 'expected `(`, got `'+to+'`', current_line);
         }
         var arg = expr_list.shift();
         if (name.token_type != 'name') {
-            throw 'Syntax error: expected parameter name, got `' + arg.payload + '`';
+            throw new BasicError('Syntax error', 'expected parameter name, got `' + arg.payload + '`', current_line);
         }
         var token = expr_list.shift();
         if (token.token_type === ')') {
-            throw 'Syntax error: expected `)`, got `'+to+'`';
+            throw new BasicError('Syntax error', 'expected `)`, got `'+to+'`', current_line);
         }
         var equals = expr_list.shift().payload;
-        if (equals !== '=') throw 'Syntax error: expected `=`, got `'+equals+'`';
+        if (equals !== '=') throw new BasicError('Syntax error', 'expected `=`, got `'+equals+'`', current_line);
         var expr = parser.parseExpression(expr_list);
         state.fns.store(name, arg, expr);
         return last;
@@ -1326,6 +1163,189 @@ function Parser()
     }
 };
 
+
+///////////////////////////////////////////////////////////////////////////////
+// data store
+
+function Data()
+{
+    this.vault = [];
+    this.pointer = 0;
+
+    this.read = function()
+    {
+        if (this.pointer < this.vault.length) {
+            this.pointer += 1;
+            return this.vault[this.pointer-1];
+        }
+        else {
+            throw new BasicError('Out of Data', '', null);
+        }
+    };
+
+    this.restore = function()
+    {
+        this.pointer = 0;
+    };
+
+    this.store = function(new_data)
+    {
+        this.vault = this.vault.concat(new_data);
+    }
+
+    this.clear = function()
+    {
+        this.vault = [];
+        this.pointer = 0;
+    }
+
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// types, variables, arrays
+
+function defaultValue(name)
+// default value for type given by name
+{
+    var default_value = 0;
+    if (name.slice(-1) === '$') default_value = '';
+    return default_value;
+}
+
+function matchType(name, value)
+{
+    var string_name = (name.slice(-1) === '$');
+    var string_value = typeof value === 'string';
+    if (!string_value && typeof value !== 'number') {
+        throw new BasicError('Type mismatch' , 'unknown type `'+typeof value+'`', null);
+    }
+    if (string_name !== string_value) {
+        throw new BasicError('Type mismatch' , '', null);
+    }
+}
+
+function Variables()
+{
+    this.clear = function()
+    {
+        this.arrays = {};
+        this.scalars = {};
+        this.dims = {};
+    }
+
+    this.allocate = function(name, indices)
+    // allocate an array
+    {
+        // no redefinitions allowed
+        if (name in this.dims || name in this.arrays) throw new BasicError('Duplicate definition', '`'+name+'()` was previously dimensioned', null);
+        // BASICODE arrays may have at most two indices
+        if (indices.length > 2) throw new BasicError('Subscript out of range', 'too many array dimensions', null);
+        // set default to empty string if string name, 0 otherwise
+        var default_value = defaultValue(name);
+        function allocateLevel(indices) {
+            if (indices.length === 0) return default_value;
+            else {
+                // allocate subarray; BASICODE arrays span 0..x inclusive
+                var arr = new Array(indices[0]+1);
+                // feed remaining arguments to recursive call
+                var argarray = indices.slice(1);
+                // allocate deeper level
+                for (var i=0; i < arr.length; ++i) {
+                    arr[i] = allocateLevel(argarray);
+                }
+                return arr;
+            }
+        };
+
+        // I'm assuming a name is *either* a scalar *or* an array
+        // this is not true in e.g. GW-BASIC, but I think it's true in BASICODE
+        this.dims[name] = indices;
+        this.arrays[name] = allocateLevel(indices);
+    }
+
+    this.checkSubscript = function(name, indices)
+    {
+        if (!indices.length) {
+            if (!(name in this.dims) && !(name in this.scalars)) {
+                this.scalars[name] = defaultValue(name);
+            }
+        }
+        else if (!(name in this.dims)) {
+            throw new BasicError('Subscript out of range', 'array was not dimensioned', null);
+        }
+        else if (indices.length !== this.dims[name].length) {
+            throw new BasicError('Subscript out of range' , 'incorrect number of dimensions', null);
+        }
+        else {
+            for (var i=0; i < indices.length; ++i) {
+                if (indices[i] < 0 || indices[i] > this.dims[name][i]) {
+                    throw new BasicError('Subscript out of range', 'index #'+i+' out of bounds', null);
+                }
+            }
+        }
+    }
+
+    this.assign = function(value, name, indices)
+    // set a variable
+    {
+        this.checkSubscript(name, indices);
+
+        if (indices.length === 0) {
+            this.scalars[name] = value;
+        }
+        else if (indices.length === 1) {
+            this.arrays[name][indices[0]] = value;
+        }
+        else {
+            this.arrays[name][indices[0]][indices[1]] = value;
+        }
+    };
+
+    this.retrieve = function(name, indices)
+    // retrieve a variable
+    {
+        this.checkSubscript(name, indices);
+
+        if (indices.length === 0) {
+            return this.scalars[name];
+        }
+        else if (indices.length === 1) {
+            return this.arrays[name][indices[0]];
+        }
+        else {
+            return this.arrays[name][indices[0]][indices[1]];
+        }
+    };
+
+    this.clear();
+}
+
+
+
+function Functions()
+{
+    this.clear = function()
+    {
+        this.exprs = {};
+        this.args = {};
+    }
+
+    this.store = function(name, arg, expr)
+    {
+        this.exprs[name] = expr;
+        this.args[name] = arg;
+    }
+
+    this.evaluate = function(name, arg_value)
+    {
+        var expr = this.exprs[name]
+        var arg = this.args[name]
+
+    }
+
+    this.clear();
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // variable retrieval
@@ -2125,9 +2145,25 @@ function BasicodeApp(script)
             // show title and description
             this.show();
         } catch (e) {
-            this.program = null;
-            this.iface.write('\nERROR: ' + e + '\n');
-            if (typeof e !== 'string') throw e;
+            this.stop();
+            this.iface.invertColour();
+            this.iface.setColumn(0);
+            this.iface.setRow(0);
+            this.iface.write(' '.repeat(this.iface.width*4));
+            this.iface.setColumn(0);
+            this.iface.setRow(0);
+            if (e instanceof BasicError) {
+                this.iface.write(e.message);
+                var ln = e.where;
+                if (ln === null) ln = program.current_line;
+                this.iface.write(' in '+ ln +'\n');
+                this.iface.write(e.detail + '\n');
+                this.iface.invertColour();
+            }
+            else {
+                this.iface.write('EXCEPTION\n' + e + '\n');
+                throw e;
+            }
         }
     }
 
@@ -2197,6 +2233,7 @@ function BasicodeApp(script)
         var current = prog.tree;
         app.run_interval = window.setInterval(function() {
             try {
+                if (current instanceof Label && typeof current.label === 'number') this.current_line = current.label
                 if (current) current = current.step(); else {
                     app.stop();
                 }
