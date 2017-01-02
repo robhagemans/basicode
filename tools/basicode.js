@@ -1005,6 +1005,7 @@ function Parser()
         // parse body of FOR loop until NEXT is encountered
         var token = null;
         while (true) {
+
             if (!expr_list.length) {
                 throw new BasicError(`Block error`, '`FOR` without `NEXT`', current_line);
             }
@@ -1023,8 +1024,11 @@ function Parser()
             }
 
             var token = expr_list.shift();
-            // check for empty statement
-            if (token.token_type === ':') continue;
+            // handle empty statement
+            if (token.token_type === ':') {
+                expr_list.unshift(token);
+                continue;
+            }
             // optional LET
             if (token.token_type === 'name') {
                 expr_list.unshift(token);
@@ -2485,7 +2489,7 @@ else {
 
 // TODO:
 // increase delay when waiting for input
-// Basicode-3 uses INPUT "prompt"; A$
+// Basicode-3 uses INPUT "prompt"; A$; also multiple INPUT A,B,C in BOKA-EI
 // can skip ; between variables and string literals in print
 // - colour
 // - scrolling
