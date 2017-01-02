@@ -712,7 +712,7 @@ function Parser()
         'INPUT': parseInput,
         'LET': parseLet,
         // NEXT is handled by FOR parser
-        'NEXT': null,
+        'NEXT': function() { throw new BasicError('Syntax error', '`NEXT` not allowed here', current_line)},
         'ON': parseOn,
         'PRINT': parsePrint,
         'READ': parseRead,
