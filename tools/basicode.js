@@ -1738,6 +1738,16 @@ function Interface(iface_element)
         context.fillText(output, x, y+0.75*font_height);
     }
 
+    var cursor_now = false;
+    this.cursor = function(value)
+    {
+        if (value !== null && value !== undefined) cursor_now = value;
+        else cursor_now = !cursor_now;
+        context.fillStyle = cursor_now?this.foreground:this.background;
+        context.fillRect(this.col*font_width, this.row*font_height,
+            font_width, font_height);
+    }
+
     this.writeCentre = function(row, str)
     // write centred; used by the loader only
     {
@@ -1894,6 +1904,7 @@ function Interface(iface_element)
     this.interact = function(output)
     //TODO: handle backspace, maybe arrow keys
     {
+        this.cursor();
         var loc = this.buffer.indexOf(13);
         var new_chars = [];
         if (loc === -1) {
@@ -1909,6 +1920,7 @@ function Interface(iface_element)
         this.line_buffer += new_str;
         output.write(new_str);
         // echo the newline, but don't return it
+        //this.cursor(false);
         if (loc !== -1) output.write('\n');
         // trigger value is true if CR has been found
         return (loc !== -1);
