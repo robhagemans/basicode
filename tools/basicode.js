@@ -1740,6 +1740,8 @@ function Interface(iface_element)
         for (var i=0; i < output.length; ++i) {
             var char = '';
             if (output.charCodeAt(i) === 127) {
+                // put a space to clear the cursor
+                this.putChar(' ');
                 --this.col;
                 this.checkPos();
                 this.putChar(' ');
