@@ -1680,6 +1680,8 @@ function Interface(iface_element)
     this.height = 24;
     this.foreground = 'white';
     this.background = 'black';
+    // number of ticks in a cursor cycle
+    this.cursor_ticks = 240/ACTIVE_DELAY;
 
     // resize the canvas to fit the font size
     var context = output_element.getContext('2d');
@@ -1738,17 +1740,17 @@ function Interface(iface_element)
         context.fillText(output, x, y+0.75*font_height);
     }
 
-    var cursor_now = false;
-    this.cursor = function(value)
+    var cursor_now = 0;
+    this.cursor = function()
     {
-        if (value !== null && value !== undefined) cursor_now = value;
-        else cursor_now = !cursor_now;
-        context.fillStyle = cursor_now?this.foreground:this.background;
-        if (cursor_now) {
+        cursor_now = (++cursor_now) % this.cursor_ticks;
+        if (cursor_now > this.cursor_ticks/2) {
+            context.fillStyle = this.foreground;
             context.fillRect(this.col*font_width+1, this.row*font_height+1,
                 font_width-2, font_height-2);
         }
         else {
+            context.fillStyle = this.background;
             context.fillRect(this.col*font_width, this.row*font_height,
                 font_width, font_height);
         }
@@ -2286,7 +2288,6 @@ else {
 // TODO:
 // - error handling: keep line number
 // - printing on position 40 does \n; \n then does another line
-// - cursor on INPUT
 // - files, colour
 // - DEF FN
 // - type checks
