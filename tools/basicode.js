@@ -1850,6 +1850,7 @@ function Interface(iface_element)
     // JavaScript to BASICODE keycode dictionary
     const KEYS = {
         8: 127, // backspace
+        13: 13, // enter
         37: 28, // left
         38: 31, // up
         39: 29, // right
@@ -1881,7 +1882,7 @@ function Interface(iface_element)
     });
 
     input_element.addEventListener('keypress', function(event) {
-        self.buffer.push(event.keyCode);
+        self.buffer.push(event.charCode);
         event.preventDefault();
     });
 
