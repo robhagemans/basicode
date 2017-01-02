@@ -1712,29 +1712,58 @@ function Interface(iface_element)
         context.fillRect(0, 0, output_element.width, output_element.height);
     }
 
+    this.write = function(output)
+    {
+        var lines = output.toString().split(/\r?\n/);
+        var i=1;
+        this.writeRaw(lines[0]);
+        for (; i < lines.length; ++i) {
+            this.lineFeed();
+            this.writeRaw(lines[i]);
+        }
+    }
+
+    this.checkPos = function()
+    {
+        if (this.col >= this.width) {
+            this.col = 0;
+            ++this.row;
+        }
+        // TODO, maybe: should we scroll?
+        if (this.row >= this.height) this.row = this.height-1;
+    }
+
     this.writeRaw = function(output)
     {
         if ((this.row >= this.height) || (this.row<0)) return;
-        while (this.col + output.length > this.width) {
-            var cut = this.width-this.col
-            this.writeRaw(output.slice(0, cut));
-            output = output.slice(cut);
-            this.lineFeed();
+
+        for (var i=0; i < output.length; ++i) {
+            var char = '';
+            if (output.charCodeAt(i) === 127) {
+                --this.col;
+                this.checkPos();
+                this.putChar(' ');
+            }
+            else if (output.charCodeAt(i) >= 32 && output.charCodeAt(i) < 127) {
+                this.putChar(output[i]);
+                ++this.col;
+                this.checkPos();
+            }
         }
-        // clear background
-        context.fillStyle = this.background;
-        context.fillRect(this.col*font_width, this.row*font_height,
-            output.length*font_width, font_height);
-        // draw text
-        this.putText(this.col*font_width, this.row*font_height, output)
+    }
+
+    this.putChar = function(char)
+    {
+        this.putText(this.col*font_width, this.row*font_height, char);
         // update content buffer
-        this.content[this.row] = this.content[this.row].slice(0, this.col) + output + this.content[this.row].slice(this.col+output.length);
-        this.col += output.length;
+        this.content[this.row] = this.content[this.row].slice(0, this.col) + char + this.content[this.row].slice(this.col+1);
     }
 
     this.putText = function(x, y, output)
     // x,y are (approximate) top left corner of text box, not baseline
     {
+        context.fillStyle = this.background;
+        context.fillRect(x-0.5, y-0.5, output.length*font_width+0.5, font_height+0.5);
         context.fillStyle = this.foreground;
         // 0.75 seems about the right baseline offset for Chrome & Firefox...
         context.fillText(output, x, y+0.75*font_height);
@@ -1762,17 +1791,6 @@ function Interface(iface_element)
         this.setColumn((this.width - str.length)/2);
         this.setRow(row);
         this.write(str);
-    }
-
-    this.write = function(output)
-    {
-        var lines = output.toString().split(/\r?\n/);
-        var i=1;
-        this.writeRaw(lines[0]);
-        for (; i < lines.length; ++i) {
-            this.lineFeed();
-            this.writeRaw(lines[i]);
-        }
     }
 
     this.getScreenChar = function(row, col)
@@ -1939,6 +1957,17 @@ function Interface(iface_element)
     {
         var line = this.line_buffer;
         this.line_buffer = '';
+        // handle backspaces
+        for (var i=0; i < line.length;) {
+            if (line.charCodeAt(i) === 127) {
+                line = line.slice(0, i-1) + line.slice(i+1);
+                --i;
+            }
+            else if (line.charCodeAt(i) < 32 || line.charCodeAt(i) > 126) {
+                line = line.slice(0, i) + line.slice(i+1);
+            }
+            else ++i;
+        }
         return line;
     }
 
