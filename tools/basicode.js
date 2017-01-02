@@ -2484,23 +2484,23 @@ else {
 
 
 // TODO:
-// negative numbers in DATA
-// - tape storage without file names
-// - colour
-// - DEF FN
-// - type checks A$=1
-// - scrolling
-// BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
+// increase delay when waiting for input
 // Basicode-3 uses INPUT "prompt"; A$
 // can skip ; between variables and string literals in print
+// - colour
+// - scrolling
+// - tape storage without file names
+// - DEF FN
+// - type checks A$=1
+// BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // sometimes next i,j is used (factors.bc2)
-// increase delay when waiting for input
 
 // BC3C
 // colours
 // return CN in GOSUB 200
 
 // controls: repeat/play/pause, load, print buttons
+// perhaps hidden elements (made visible by tabs?) for printer output, storage drives, (+debug: trace, variables, data, program text, ...)
 // scrollable info page; center info page on longest line of description
 
 // split interface in keyboard, screen
@@ -2508,3 +2508,5 @@ else {
 
 // some potential optimisations, if needed:
 // - pre-calculate jump targets (second pass of parser?)
+
+// re-extract the BC3 tape without PC-BASIC mods
