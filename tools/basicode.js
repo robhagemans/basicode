@@ -1744,8 +1744,14 @@ function Interface(iface_element)
         if (value !== null && value !== undefined) cursor_now = value;
         else cursor_now = !cursor_now;
         context.fillStyle = cursor_now?this.foreground:this.background;
-        context.fillRect(this.col*font_width, this.row*font_height,
-            font_width, font_height);
+        if (cursor_now) {
+            context.fillRect(this.col*font_width+0.5, this.row*font_height+0.5,
+                font_width-1, font_height-1);
+        }
+        else {
+            context.fillRect(this.col*font_width, this.row*font_height,
+                font_width, font_height);
+        }
     }
 
     this.writeCentre = function(row, str)
