@@ -1945,6 +1945,7 @@ function Interface(iface_element)
 
     this.readKey = function()
     {
+        if (!this.buffer.length) return 0;
         return this.buffer.shift();
     }
 
