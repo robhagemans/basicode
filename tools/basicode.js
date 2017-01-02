@@ -1257,11 +1257,13 @@ function Parser()
             throw 'Syntax error: expected variable name, got `' + name.payload + '`';
         }
         var indices = parser.parseArguments(expr_list);
-        last.next = new Node(function() { this.input.setEcho(this.output); }, [], state);
+        // prompt
+        last.next = new Node(stPrint, [new Literal('? ')], state);
         // wait for ENTER kepress before engaging
-        last.next.next = new Wait(function() { return state.input.keyPressed(13); });
+        //FIXME: Wait() has no state parameter, so we depend on declaring this here with state in a closure
+        last.next.next = new Wait(function() { return state.input.interact(state.output); });
         // return payload: do not retrieve the variable, just get its name
-        last.next.next.next = new Node(token.operation, [new Literal(name.payload)].concat(indices), state)
+        last.next.next.next = new Node(stInput, [new Literal(name.payload)].concat(indices), state);
         return last.next.next.next;
     }
 
@@ -1403,7 +1405,6 @@ function stInput(name)
 {
     var state = this;
     var indices = [].slice.call(arguments, 1);
-    state.input.unsetEcho();
     var value = state.input.readLine();
     if (name.slice(-1) !== '$') {
         // convert string to number
@@ -1865,7 +1866,6 @@ function Interface(iface_element)
 
     input_element.addEventListener('keypress', function(event) {
         self.buffer.push(event.keyCode);
-        if (self.echo !== null) self.echo.write(String.fromCharCode(event.keyCode));
         event.preventDefault();
     });
 
@@ -1876,14 +1876,11 @@ function Interface(iface_element)
         this.suppress_break = false;
         // break has been pressed
         this.break_flag = false;
-        // echo to output (for INPUT)
-        this.echo = null;
+        // interactive line buffer
+        this.line_buffer = '';
     }
 
-    this.keyPressed = function(key) {
-        if (key !== undefined && key !== null) {
-            return (self.buffer.indexOf(key) !== -1);
-        }
+    this.keyPressed = function() {
         return self.buffer.length > 0;
     }
 
@@ -1892,25 +1889,38 @@ function Interface(iface_element)
         return this.buffer.shift();
     }
 
+    // INPUT support
+
+    this.interact = function(output)
+    //TODO: handle backspace, maybe arrow keys
+    {
+        var loc = this.buffer.indexOf(13);
+        var new_chars = [];
+        if (loc === -1) {
+            new_chars = this.buffer.slice();
+            this.buffer = [];
+        }
+        else {
+            new_chars = this.buffer.slice(0, loc);
+            // leave the CR out of the buffer
+            this.buffer = this.buffer.slice(loc+1);
+        }
+        var new_str = String.fromCharCode.apply(null, new_chars);
+        if (new_chars.length) console.log(new_chars);
+        this.line_buffer += new_str;
+        if (new_chars.length) console.log(this.line_buffer);
+        output.write(new_str);
+        // echo the newline, but don't return it
+        if (loc !== -1) output.write('\n');
+        // trigger value is true if CR has been found
+        return (loc !== -1);
+    }
+
     this.readLine = function()
     {
-        var loc = -1;
-        while (loc == -1) loc = this.buffer.indexOf(13);
-        var out = this.buffer.slice(0, loc);
-        // leave the CR out of the buffer
-        this.buffer = this.buffer.slice(loc+1);
-        return String.fromCharCode.apply(null, out);
-    }
-
-    this.setEcho = function(output)
-    {
-        output.write(String.fromCharCode(this.buffer));
-        this.echo = output;
-    }
-
-    this.unsetEcho = function(output)
-    {
-        this.echo = null;
+        var line = this.line_buffer;
+        this.line_buffer = '';
+        return line;
     }
 
     this.reset();
@@ -2267,6 +2277,8 @@ else {
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // DDR Basicode uses INPUT "prompt"; A$
 // some demo programs use bare NEXT
+
+// controls: repeat/play/pause, load, print buttons
 
 // split interface in keyboard, screen
 // clean up state/Program object
