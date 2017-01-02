@@ -997,7 +997,7 @@ function Parser()
             step = parser.parseExpression(expr_list);
         }
         // loop init
-        last.next = new Node(stLet, [new Literal(start), new Literal(loop_variable)], state);
+        last.next = new Node(stLet, [start, new Literal(loop_variable)], state);
         last = last.next;
         var for_node = new Label('FOR '+loop_variable);
         last.next = for_node;
@@ -1057,7 +1057,7 @@ function Parser()
         }
         // create the iteration node
         // iterate if (i*step) < (stop*step) to deal with negative steps
-        var cond = new Conditional(new Node(function(x, y, z) { console.log([x, y, z]); return z*x < z*y; }, [
+        var cond = new Conditional(new Node(function(x, y, z) { return z*(x+z) <= z*y; }, [
                                     new Node(opRetrieve, [new Literal(loop_variable)], state),
                                     stop, step,
                                 ], state));
@@ -1269,7 +1269,6 @@ function Variables()
         else {
             for (var i=0; i < indices.length; ++i) {
                 if (indices[i] < 0 || indices[i] > this.dims[name][i]) {
-                    console.log(this)
                     throw new BasicError('Subscript out of range', 'indices '+indices+' out of bounds '+this.dims[name], null);
                 }
             }
