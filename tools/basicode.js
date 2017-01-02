@@ -670,7 +670,7 @@ function Parser()
             while (token.token_type === '\n') token = basicode.shift();
             // we do need a line number at the start
             if (token.token_type != 'literal') {
-                throw new BasicError('Syntax error', 'expected line number, got `'+line_number.payload+'`', current_line);
+                throw new BasicError('Syntax error', 'expected line number, got `'+token.payload+'`', current_line);
             }
             var line_number = token.payload;
             // ignore lines < 1000
@@ -768,14 +768,20 @@ function Parser()
     // parse DATA statement
     {
         var values = []
+        var neg = false;
         while (expr_list.length > 0) {
             var value = expr_list.shift();
             // only literals allowed in DATA
             // we're not allowing empty DATA statements or repeated commas
-            if (value === null || value.token_type != 'literal') {
+            if (value === null || (value.token_type !== 'literal' && (neg || value.payload !== '-'))) {
                 throw new BasicError('Syntax error', 'expected string or number literal, got `'+value.payload+'`', current_line);
             }
-            values.push(value.payload);
+            if (value.payload === '-') {
+                neg = true;
+                continue;
+            }
+            values.push(neg?-value.payload:value.payload);
+            neg = false;
             // parse separator (,)
             if (!expr_list.length) break;
             if (expr_list[0].payload !== ',') break;
@@ -2477,11 +2483,11 @@ else {
 
 
 // TODO:
-// problems with arrays, investigate
 // negative numbers in DATA
-// - files, colour
+// - tape storage without file names
+// - colour
 // - DEF FN
-// - type checks
+// - type checks A$=1
 // - scrolling
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // DDR Basicode uses INPUT "prompt"; A$
