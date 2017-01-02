@@ -1714,21 +1714,23 @@ function Interface(iface_element)
             output = output.slice(cut);
             this.lineFeed();
         }
+        // clear background
         context.fillStyle = this.background;
         context.fillRect(this.col*font_width, this.row*font_height,
             output.length*font_width, font_height);
-        context.fillStyle = this.foreground;
-        // 0.75 seems about the right baseline offset for Chrome & Firefox...
-        context.fillText(output, this.col*font_width, (this.row+0.75)*font_height);
+        // draw text
+        this.putText(this.col*font_width, this.row*font_height, output)
         // update content buffer
         this.content[this.row] = this.content[this.row].slice(0, this.col) + output + this.content[this.row].slice(this.col+output.length);
         this.col += output.length;
     }
 
-    this.drawText = function(x, y, output)
+    this.putText = function(x, y, output)
+    // x,y are (approximate) top left corner of text box, not baseline
     {
         context.fillStyle = this.foreground;
-        context.fillText(output, x, y);
+        // 0.75 seems about the right baseline offset for Chrome & Firefox...
+        context.fillText(output, x, y+0.75*font_height);
     }
 
     this.writeCentre = function(row, str)
@@ -1806,6 +1808,13 @@ function Interface(iface_element)
         context.stroke();
         this.last_x = next_x;
         this.last_y = next_y;
+    }
+
+    this.drawText = function(x, y, c)
+    {
+        var pixel_x = x*output_element.width;
+        var pixel_y = y*output_element.height;
+        this.putText(pixel_x, pixel_y, c);
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -2243,7 +2252,7 @@ else {
 
 // TODO:
 // - error handling: keep line number
-// bugs: input, subscript out of range, graphics text
+// bugs: graphics text
 // - cursor, scrolling
 // - DEF FN
 // - type checks
@@ -2252,7 +2261,6 @@ else {
 // DDR Basicode uses INPUT "prompt"; A$
 // some demo programs use bare NEXT
 // cursor and echo for INPUT
-// does INPUT consume its \n?
 
 // split interface in keyboard, screen
 // clean up state/Program object
