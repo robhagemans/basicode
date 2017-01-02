@@ -2123,15 +2123,17 @@ function BasicodeApp(script)
     this.run = function()
     // execute the program
     {
-        var prog = this.program;
         // exit if nothing loaded
-        if (!prog || prog.tree === null) return;
+        if (!this.program || this.program.tree === null) return;
 
         // clear screen
         this.iface.clear();
         // reset keyboard buffer
         this.iface.reset();
+        // reset program state
+        this.program.clear();
 
+        var prog = this.program;
         var current = prog.tree;
         app.run_interval = window.setInterval(function() {
             try {
