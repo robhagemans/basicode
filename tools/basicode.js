@@ -1745,8 +1745,8 @@ function Interface(iface_element)
         else cursor_now = !cursor_now;
         context.fillStyle = cursor_now?this.foreground:this.background;
         if (cursor_now) {
-            context.fillRect(this.col*font_width+0.5, this.row*font_height+0.5,
-                font_width-1, font_height-1);
+            context.fillRect(this.col*font_width+1, this.row*font_height+1,
+                font_width-2, font_height-2);
         }
         else {
             context.fillRect(this.col*font_width, this.row*font_height,
@@ -1927,8 +1927,8 @@ function Interface(iface_element)
         this.line_buffer += new_str;
         output.write(new_str);
         // echo the newline, but don't return it
-        //this.cursor(false);
-        if (loc !== -1) output.write('\n');
+        // also echo a space to remove the cursor (this is a bit of a hack);
+        if (loc !== -1) output.write(' \n');
         // trigger value is true if CR has been found
         return (loc !== -1);
     }
