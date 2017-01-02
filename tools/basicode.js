@@ -488,7 +488,9 @@ function Lexer(expr_string)
                 }
             }
             else if (char !== ' ') {
-                throw 'Syntax error: unexpected symbol `'+ char + '`';
+                // we can't throw here in case there's subroutines<1000 attached
+                expr_list.push(new tokenSeparator(char));
+                console.log('Unexpected symbol `'+ char + '` during lexing');
             }
         }
         return expr_list;
@@ -824,19 +826,21 @@ function Parser()
 
     this.parseLineNumber = function(basicode, last)
     {
-        var line_number = basicode.shift();
-        // ignore empty lines
-        while (basicode.length && (line_number.token_type === '\n')) {
-            line_number = basicode.shift();
+        if (!basicode.length) return null;
+        var token = basicode.shift();
+        while (basicode.length) {
+            // ignore empty lines
+            while (token.token_type === '\n') token = basicode.shift();
+            // we do need a line number at the start
+            if (token.token_type != 'literal') {
+                throw 'Expected line number, got `'+line_number.payload+'`';
+            }
+            var line_number = token.payload;
+            // ignore lines < 1000
+            if (line_number > 1000) break;
+            while (token.token_type !== '\n') token = basicode.shift();
         }
-        if (line_number.token_type != 'literal') {
-            throw 'Expected line number, got `'+line_number.payload+'`';
-        }
-        line_number = line_number.payload;
-        if (line_number < 1000) {
-            throw 'Expected line number >= `1000`, got `'+ line_number + '`';
-        }
-        else if (line_number <= current_line) {
+        if (line_number <= current_line) {
             throw 'Expected line number > `' + current_line+'`, got `'+ line_number + '`';
         }
         current_line = line_number;
@@ -2252,15 +2256,15 @@ else {
 
 // TODO:
 // - error handling: keep line number
-// bugs: graphics text
-// - cursor, scrolling
+// - printing on position 40 does \n; \n then does another line
+// - cursor on INPUT
+// - files, colour
 // - DEF FN
 // - type checks
-// - files, colour
+// - scrolling (?)
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // DDR Basicode uses INPUT "prompt"; A$
 // some demo programs use bare NEXT
-// cursor and echo for INPUT
 
 // split interface in keyboard, screen
 // clean up state/Program object
