@@ -943,22 +943,25 @@ function Parser()
         }
         var is_sub = false;
         if (jump.payload === 'GOSUB') is_sub = true;
+        var label = new Label('NO');
         var nodes = [];
         while (expr_list.length) {
             var line_number = expr_list.shift();
             if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
                 throw new BasicError('Syntax error', 'expected line number, got `'+line_number.payload+'`', current_line);
             }
-            nodes.push(new Jump(line_number.payload, state, is_sub));
+            var node = new Jump(line_number.payload, state, is_sub);
+            node.next = label;
+            nodes.push(node);
             var sep = expr_list.shift();
             if (sep.token_type !== ',') {
                 expr_list.unshift(sep);
                 break;
             }
         }
-        //FIXME: set the next on all nodes
         last.next = new Switch(condition, nodes);
-        return last.next;
+        last.next.next = label;
+        return label;
     }
 
     function parseFor(parser, expr_list, token, last)
@@ -1468,7 +1471,6 @@ function subWriteBold()
 
 function subReadKey()
 // GOSUB 200, GOSUB 210 (after wait)
-// TODO: arrow keys, function keys etc.
 {
     var state = this;
     var keyval = state.input.readKey();
@@ -2007,7 +2009,6 @@ function Interface(iface_element)
     // INPUT support
 
     this.interact = function(output)
-    //TODO: handle backspace, maybe arrow keys
     {
         this.cursor();
         var loc = this.buffer.indexOf(13);
@@ -2480,6 +2481,7 @@ else {
 // - scrolling
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // DDR Basicode uses INPUT "prompt"; A$
+// increase delay when waiting for input
 
 // BC3C
 // colours
