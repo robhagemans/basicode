@@ -898,33 +898,14 @@ function Parser()
             last.next.next.next = new Node(subReadKeyGetTimer, [], state);
             return last.next.next.next;
         },
+        500: function(last) {last.next = new Node(subOpen, [], state); return last.next; },
+        540: function(last) {last.next = new Node(subReadFile, [], state); return last.next; },
+        560: function(last) {last.next = new Node(subWriteFile, [], state); return last.next; },
+        580: function(last) {last.next = new Node(subClose, [], state); return last.next; },
         600: function(last) {last.next = new Node(subClearScreen, [], state); return last.next; },
         620: function(last) {last.next = new Node(subPlot, [], state); return last.next; },
         630: function(last) {last.next = new Node(subDraw, [], state); return last.next; },
         650: function(last) {last.next = new Node(subText, [], state); return last.next; },
-        /*
-
-        // BC3:
-        initial variable settings HO, VE
-
-        files
-        500 Open the file NF$ according to the code in NF:
-        NF = even number: input: NF= uneven number: output
-            NF= 0 or 1 BASICODE cassette
-            NF= 2 or 3 own system memory
-            NF= 4 or 5 diskette
-            NF= 6 or 7 diskette
-            IN=0: all OK, IN=1: end of file, IN=-1: error
-        540 Read into IN$ from the opened file NF$ (in IN the status, see line 500)
-        560 Send SR$ towards the opened file NF$ (in IN the status, see line 500)
-        580 Close the file with code NF
-
-        graphics
-
-        // BC3C
-        // colours
-        // return CN in GOSUB 200; function keys
-        */
     }
 
     function parseIf(parser, expr_list, token, last)
@@ -975,6 +956,7 @@ function Parser()
                 break;
             }
         }
+        //FIXME: set the next on all nodes
         last.next = new Switch(condition, nodes);
         return last.next;
     }
@@ -1634,6 +1616,79 @@ function subLineFeed()
     state.printer.write('\n');
 }
 
+/*
+500 Open the file NF$ according to the code in NF:
+NF = even number: input: NF= uneven number: output
+    NF= 0 or 1 BASICODE cassette
+    NF= 2 or 3 own system memory
+    NF= 4 or 5 diskette
+    NF= 6 or 7 diskette
+    IN=0: all OK, IN=1: end of file, IN=-1: error
+540 Read into IN$ from the opened file NF$ (in IN the status, see line 500)
+560 Send SR$ towards the opened file NF$ (in IN the status, see line 500)
+580 Close the file with code NF
+*/
+
+function subOpen()
+{
+    var state = this;
+    var nf = state.variables.retrieve('NF', []);
+    var name = state.variables.retrieve('NF$', []);
+    var mode = (nf%2) ? 'r' : 'w';
+    var device = Math.floor(nf/2);
+    var status = state.storage[device].open(name, mode) ? 0 : -1;
+    state.variables.assign(status, 'IN', []);
+}
+
+function subClose()
+{
+    var state = this;
+    var nf = state.variables.retrieve('NF', []);
+    var device = Math.floor(nf/2);
+    var status = state.storage[device].close() ? 0 : -1;
+    state.variables.assign(status, 'IN', []);
+}
+
+function subReadFile()
+{
+    var state = this;
+    var nf = state.variables.retrieve('NF', []);
+    var device = Math.floor(nf/2);
+    var status = 0;
+    var str = '';
+    try {
+        str = state.storage[device].readLine();
+        if (str === null) {
+            status = 1;
+            str = '';
+        }
+    }
+    catch (e) {
+        if (typeof e !== 'string') throw e;
+        status = -1;
+    }
+    state.variables.assign(status, 'IN', []);
+    state.variables.assign(str, 'IN$', []);
+}
+
+function subWriteFile()
+{
+    var state = this;
+    var nf = state.variables.retrieve('NF', []);
+    var device = Math.floor(nf/2);
+    var status = 0;
+    var str = state.variables.retrieve('SR$', []);
+    try {
+        state.storage[device].writeLine(str);
+    }
+    catch (e) {
+        if (typeof e !== 'string') throw e;
+        status = -1;
+    }
+    state.variables.assign(status, 'IN', []);
+}
+
+
 function subPlot()
 // 620 Plot a point at graphic position HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
 {
@@ -2110,6 +2165,62 @@ function Timer()
     }
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// storage
+
+function Floppy(id)
+{
+    this.id = id;
+    this.open_file = null;
+    this.open_key = null;
+    this.open_mode = '';
+    this.open_line = null;
+
+    this.open = function(name, mode)
+    {
+        this.open_key = this.id + ':' + name;
+        var string = localStorage.getItem(this.open_key);
+        this.open_mode = mode;
+        this.open_line = 0;
+        if (string === undefined || string === null) {
+            if (this.open_mode === 'r') {
+                this.open_file = null;
+                this.open_key = null;
+                return false;
+            }
+            else {
+                this.open_file = [];
+            }
+        }
+        else {
+            this.open_file = string.split('\n');
+        }
+        return true;
+    }
+
+    this.close = function()
+    {
+        if (this.open_key === null) return false;
+        localStorage.setItem(this.open_key, this.open_file.join('\n'));
+        this.open_file = null;
+        return true;
+    }
+
+    this.readLine = function()
+    {
+        if (this.open_line > this.open_file.length) return null;
+        if (this.open_mode !== 'r') throw 'File not open for read';
+        return this.open_file[this.open_line++];
+    }
+
+    this.writeLine = function(line)
+    {
+        if (this.open_mode !== 'w') throw 'File not open for write';
+        this.open_file.push(line);
+    }
+
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // user interface
@@ -2143,6 +2254,7 @@ function BasicodeApp(script)
             this.program.printer = new Printer();
             this.program.speaker = new Speaker();
             this.program.timer = new Timer();
+            this.program.storage = [new Floppy(0), new Floppy(1), new Floppy(2), new Floppy(3)]
             // show title and description
             this.show();
         } catch (e) {
@@ -2360,15 +2472,18 @@ else {
 
 
 // TODO:
-// problems with arrays
-// - error handling: keep line number
+// problems with arrays, investigate
+// negative numbers in DATA
 // - files, colour
 // - DEF FN
 // - type checks
-// - scrolling (?)
+// - scrolling
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // DDR Basicode uses INPUT "prompt"; A$
-// some demo programs use bare NEXT
+
+// BC3C
+// colours
+// return CN in GOSUB 200
 
 // controls: repeat/play/pause, load, print buttons
 // scrollable info page; center info page on longest line of description
