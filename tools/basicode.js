@@ -2240,6 +2240,34 @@ function BasicodeApp(script)
 
     var app = this;
 
+    this.handleError = function(e)
+    {
+        this.stop();
+        this.iface.invertColour();
+        this.iface.setColumn(0);
+        this.iface.setRow(0);
+        this.iface.write(' '.repeat(this.iface.width));
+        this.iface.invertColour();
+        this.iface.write(' '.repeat(this.iface.width*3));
+        this.iface.invertColour();
+        this.iface.setColumn(0);
+        this.iface.setRow(0);
+        if (e instanceof BasicError) {
+            this.iface.write(e.message);
+            var ln = e.where;
+            if (ln === null && this.program !== null) ln = this.program.current_line;
+            this.iface.write(' in '+ ln +'\n');
+            this.iface.invertColour();
+            this.iface.write(e.detail + '\n');
+        }
+        else {
+            this.iface.write('EXCEPTION\n')
+            this.iface.invertColour();
+            this.iface.write(e + '\n');
+            throw e;
+        }
+    }
+
     this.load = function(code)
     // load program, parse to AST, connect to output
     {
@@ -2259,30 +2287,7 @@ function BasicodeApp(script)
             // show title and description
             this.show();
         } catch (e) {
-            this.stop();
-            this.iface.invertColour();
-            this.iface.setColumn(0);
-            this.iface.setRow(0);
-            this.iface.write(' '.repeat(this.iface.width));
-            this.iface.invertColour();
-            this.iface.write(' '.repeat(this.iface.width*3));
-            this.iface.invertColour();
-            this.iface.setColumn(0);
-            this.iface.setRow(0);
-            if (e instanceof BasicError) {
-                this.iface.write(e.message);
-                var ln = e.where;
-                if (ln === null) ln = program.current_line;
-                this.iface.write(' in '+ ln +'\n');
-                this.iface.invertColour();
-                this.iface.write(e.detail + '\n');
-            }
-            else {
-                this.iface.write('EXCEPTION\n')
-                this.iface.invertColour();
-                this.iface.write(e + '\n');
-                throw e;
-            }
+            this.handleError(e);
         }
     }
 
@@ -2356,14 +2361,12 @@ function BasicodeApp(script)
                 if (current) current = current.step(); else {
                     app.stop();
                 }
-                if (prog.input.break_flag) {
-                    prog.output.write('\nBreak\n');
+                if (app.iface.break_flag) {
+                    app.iface.write('\nBreak\n');
                     app.stop();
                 }
             } catch (e) {
-                prog.output.write('\nERROR: ' + e + '\n');
-                app.stop();
-                if (typeof e !== 'string') throw e;
+                app.handleError(e)
             }
         }, ACTIVE_DELAY);
     }
