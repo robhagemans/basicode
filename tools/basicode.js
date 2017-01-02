@@ -1062,9 +1062,10 @@ function Parser()
         }
 
         // create the iteration node
-        var cond = new Conditional(new Node(function(x, y) { return x < y; }, [
+        // iterate if (i*step) < (stop*step) to deal with negative steps
+        var cond = new Conditional(new Node(function(x, y, z) { return z*x < z*y; }, [
                                     new Node(opRetrieve, [new Literal(loop_variable)], state),
-                                    stop
+                                    stop, step,
                                 ], state));
         cond.branch = incr;
         last.next = cond;
@@ -2357,7 +2358,7 @@ function BasicodeApp(script)
         var current = prog.tree;
         app.run_interval = window.setInterval(function() {
             try {
-                if (current instanceof Label && typeof current.label === 'number') this.current_line = current.label
+                if (current instanceof Label && typeof current.label === 'number') app.program.current_line = current.label
                 if (current) current = current.step(); else {
                     app.stop();
                 }
