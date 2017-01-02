@@ -2083,7 +2083,10 @@ function Printer() {
     this.flush = function()
     // send the document (if any) to the printer
     {
-        if (print_element.textContent) print_iframe.contentWindow.print();
+        if (print_element.textContent) {
+            print_iframe.contentWindow.print();
+            print_element.textContent = '';
+        }
     }
 }
 
