@@ -2251,9 +2251,6 @@ function BasicodeApp(script)
         this.iface.setColumn(0);
         this.iface.setRow(0);
         this.iface.write(' '.repeat(this.iface.width));
-        this.iface.invertColour();
-        this.iface.write(' '.repeat(this.iface.width*3));
-        this.iface.invertColour();
         this.iface.setColumn(0);
         this.iface.setRow(0);
         if (e instanceof BasicError) {
@@ -2262,12 +2259,20 @@ function BasicodeApp(script)
             if (ln === null && this.program !== null) ln = this.program.current_line;
             this.iface.write(' in '+ ln +'\n');
             this.iface.invertColour();
-            this.iface.write(e.detail + '\n');
+            if (e.detail) {
+                this.iface.write(' '.repeat(this.iface.width*2));
+                this.iface.setColumn(0);
+                this.iface.setRow(1);
+                this.iface.write(e.detail);
+            }
         }
         else {
             this.iface.write('EXCEPTION\n')
             this.iface.invertColour();
-            this.iface.write(e + '\n');
+            this.iface.write(' '.repeat(this.iface.width*2));
+            this.iface.setColumn(0);
+            this.iface.setRow(1);
+            this.iface.write(e);
             throw e;
         }
     }
@@ -2366,8 +2371,7 @@ function BasicodeApp(script)
                     app.stop();
                 }
                 if (app.iface.break_flag) {
-                    app.iface.write('\nBreak\n');
-                    app.stop();
+                    app.handleError(new BasicError('Break', '', null));
                 }
             } catch (e) {
                 app.handleError(e)
@@ -2487,7 +2491,9 @@ else {
 // - type checks A$=1
 // - scrolling
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
-// DDR Basicode uses INPUT "prompt"; A$
+// Basicode-3 uses INPUT "prompt"; A$
+// can skip ; between variables and string literals in print
+// sometimes next i,j is used (factors.bc2)
 // increase delay when waiting for input
 
 // BC3C
