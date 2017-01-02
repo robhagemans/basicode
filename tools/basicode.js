@@ -837,7 +837,7 @@ function Parser()
             }
             var line_number = token.payload;
             // ignore lines < 1000
-            if (line_number > 1000) break;
+            if (line_number >= 1000) break;
             while (token.token_type !== '\n') token = basicode.shift();
         }
         if (line_number <= current_line) {
@@ -1906,9 +1906,7 @@ function Interface(iface_element)
             this.buffer = this.buffer.slice(loc+1);
         }
         var new_str = String.fromCharCode.apply(null, new_chars);
-        if (new_chars.length) console.log(new_chars);
         this.line_buffer += new_str;
-        if (new_chars.length) console.log(this.line_buffer);
         output.write(new_str);
         // echo the newline, but don't return it
         if (loc !== -1) output.write('\n');
