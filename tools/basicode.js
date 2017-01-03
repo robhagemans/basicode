@@ -498,20 +498,23 @@ function Parser()
 {
     // program object
     var state = {
+        // parsing output
         'title': '',
         'description': '',
         'data': new Data(),
-        'variables': new Variables(),
         'fns': new Functions(),
-        'sub_stack': [],
         'line_numbers': {},
         'tree': null,
+        // runtime state
+        'variables': new Variables(),
+        'sub_stack': [],
+        'current_line': 999,
+        // machine
         'output': null,
         'input': null,
         'printer': null,
         'speaker': null,
         'timer': null,
-        'current_line': 999,
     }
     state.clear = function()
     {
@@ -521,6 +524,7 @@ function Parser()
         this.current_line = 999;
     }
 
+    // current line being parsed
     var current_line = 999;
 
     function drain(precedence, stack, units)
@@ -1167,13 +1171,8 @@ function Data()
 
     this.read = function()
     {
-        if (this.pointer < this.vault.length) {
-            this.pointer += 1;
-            return this.vault[this.pointer-1];
-        }
-        else {
-            throw new BasicError('Out of Data', '', null);
-        }
+        if (this.pointer < this.vault.length) return this.vault[this.pointer++];
+        else throw new BasicError('Out of Data', '', null);
     };
 
     this.restore = function()
