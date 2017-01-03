@@ -475,14 +475,13 @@ function Return(state)
 
 function Wait(wait_condition)
 // execute node after waiting for condition to become true
-// unlike Conditional, the condition is evaluated every step
+// unlike Conditional, the condition is evaluated repeatedy until true
 // e.g. wait for a keypress
-
-// TODO: can be replaced by a self-pointing Conditional Node?
 
 {
     this.trigger = wait_condition;
     this.next = null;
+    this.idle = true;
 
     this.step = function()
     {
@@ -1734,8 +1733,8 @@ function subText()
 ///////////////////////////////////////////////////////////////////////////////
 // interface
 
-const ACTIVE_DELAY = 1;
-
+const BUSY_DELAY = 1;
+const IDLE_DELAY = 60;
 
 function Interface(iface_element)
 {
@@ -1767,7 +1766,7 @@ function Interface(iface_element)
     this.foreground = 'white';
     this.background = 'black';
     // number of ticks in a cursor cycle
-    this.cursor_ticks = 240/ACTIVE_DELAY;
+    this.cursor_ticks = 480/IDLE_DELAY;
 
     // resize the canvas to fit the font size
     var context = output_element.getContext('2d');
@@ -2246,9 +2245,8 @@ function BasicodeApp(script)
     document.body.appendChild(element);
 
     this.iface = new Interface(element);
-    // interval timer for running program
-    this.run_interval = null;
     this.program = null;
+    this.running = null;
 
     var app = this;
 
@@ -2372,28 +2370,33 @@ function BasicodeApp(script)
 
         var prog = this.program;
         var current = prog.tree;
-        app.run_interval = window.setInterval(function() {
+
+        function step() {
             try {
-                if (current instanceof Label && typeof current.label === 'number') app.program.current_line = current.label
-                if (current) current = current.step(); else {
-                    app.stop();
+                if (current instanceof Label && typeof current.label === 'number') {
+                    app.program.current_line = current.label;
                 }
-                if (app.iface.break_flag) {
-                    app.handleError(new BasicError('Break', '', null));
+                if (!current) app.stop();
+                else {
+                    var delay = current.idle ? IDLE_DELAY : BUSY_DELAY;
+                    current = current.step();
+                    if (app.iface.break_flag) app.handleError(new BasicError('Break', '', null));
+                    else app.running = window.setTimeout(step, delay);
                 }
             } catch (e) {
-                app.handleError(e)
+                app.handleError(e);
             }
-        }, ACTIVE_DELAY);
+        }
+        // get started
+        window.setTimeout(step, BUSY_DELAY);
     }
 
     this.stop = function()
     // release resources upon program end
     {
-        if (this.run_interval !== null) {
-            window.clearInterval(this.run_interval);
-            this.run_interval = null;
-        }
+        console.log('stop');
+        if (this.running) window.clearTimeout(this.running);
+        this.running = null;
         if (this.program !== null) {
             this.program.output.release();
             this.program.printer.flush();
@@ -2433,9 +2436,7 @@ function BasicodeApp(script)
     // run file on click
 
     element.addEventListener('click', function click(e) {
-        if (app.run_interval === null) {
-            app.run();
-        }
+        if (!app.running) app.run();
     });
 
     // load files on drag & drop
@@ -2492,7 +2493,6 @@ else {
 
 
 // TODO:
-// increase delay when waiting for input
 // Basicode-3 uses INPUT "prompt"; A$; also multiple INPUT A,B,C in BOKA-EI
 // can skip ; between variables and string literals in print
 // - colour
