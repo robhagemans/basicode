@@ -773,10 +773,10 @@ function Parser()
             var value = expr_list.shift();
             // only literals allowed in DATA
             // we're not allowing empty DATA statements or repeated commas
-            if (value === null || (value.token_type !== 'literal' && (neg || value.payload !== '-'))) {
+            if (value === null || (value.token_type !== 'literal' && (neg || (value.token_type !== 'operator' || value.payload !== '-')))) {
                 throw new BasicError('Syntax error', 'expected string or number literal, got `'+value.payload+'`', current_line);
             }
-            if (value.payload === '-') {
+            if (value.token_type === 'operator' && value.payload === '-') {
                 neg = true;
                 continue;
             }
