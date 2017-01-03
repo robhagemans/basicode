@@ -970,6 +970,43 @@ function Parser()
         return label;
     }
 
+    this.parseUntil = function(expr_list, last, end_token)
+    //FIXME - merge with parseLine, parseProgram
+    {
+        while (expr_list.length) {
+            // parse separator
+            var sep = expr_list.shift();
+            if (sep.token_type === '\n') {
+                // parseLineNumber deals with multiple LFs
+                last.next = this.parseLineNumber(expr_list, last);
+                last = last.next;
+            }
+            else if (sep.token_type !== ':') {
+                throw new BasicError(`Syntax error`, 'expected `:`, got `' + sep.payload + '`', current_line);
+            }
+            // parse statements
+            var token = expr_list.shift();
+            if (token.payload === end_token) {
+                expr_list.unshift(token);
+                break;
+            }
+            // handle empty statement
+            if (token.token_type === ':' || token.token_type === '\n') {
+                expr_list.unshift(token);
+                continue;
+            }
+            // optional LET
+            if (token.token_type === 'name') {
+                expr_list.unshift(token);
+                token = KEYWORDS['LET']();
+            }
+            // parse arguments in statement-specific way
+            // statement parsers must take care of maintaining the linked list
+            last = PARSERS[token.payload](this, expr_list, token, last)
+        }
+        return last;
+    }
+
     function parseFor(parser, expr_list, token, last)
     // parse FOR
     {
@@ -1003,61 +1040,25 @@ function Parser()
         last.next = for_node;
         last = last.next;
         // parse body of FOR loop until NEXT is encountered
-        var token = null;
-        while (true) {
-
-            if (!expr_list.length) {
-                throw new BasicError(`Block error`, '`FOR` without `NEXT`', current_line);
+        last = parser.parseUntil(expr_list, last, 'NEXT');
+        // parse NEXT
+        token = expr_list.shift();
+        if (token === undefined || token === null || token.payload !== 'NEXT') {
+            throw new BasicError(`Block error`, '`FOR` without `NEXT`', current_line);
+        }
+        // only one variable allowed
+        var next_variable = expr_list.shift();
+        // accept missing variable name (formally not allowed)
+        if (next_variable.token_type !== 'name') {
+            expr_list.unshift(next_variable);
+        }
+        else {
+            if (next_variable.payload.slice(-1) === '$') {
+                throw new BasicError('Type mismatch', 'expected `NEXT` with numerical variable name, got `NEXT ' + next_variable.payload + '`', current_line);
             }
-            //FIXME -  remove repetition of parseLine
-            // make a parseUntil (with until === '\n' for IF, and 'NEXT' for FOR, and null for parseProgram)
-
-            // parse separator
-            if (!expr_list.length) break;
-            var sep = expr_list.shift();
-            if (sep.token_type === '\n') {
-                last.next = parser.parseLineNumber(expr_list, last);
-                last = last.next;
+            if (loop_variable !== next_variable.payload) {
+                throw new BasicError('Block error', 'Expected `NEXT `'+loop_variable+'`, got `NEXT ' + next_variable.payload + '`', current_line);
             }
-            else if (sep.token_type !== ':') {
-                throw new BasicError(`Syntax error`, 'expected `:`, got `' + sep.payload + '`', current_line);
-            }
-
-            var token = expr_list.shift();
-            // handle empty statement
-            if (token.token_type === ':') {
-                expr_list.unshift(token);
-                continue;
-            }
-            // optional LET
-            if (token.token_type === 'name') {
-                expr_list.unshift(token);
-                token = KEYWORDS['LET']();
-            }
-
-            if (token.payload === 'NEXT') {
-                // only one variable allowed
-                var next_variable = expr_list.shift();
-                // accept missing variable name (formally not allowed)
-                if (next_variable.token_type !== 'name') {
-                    expr_list.unshift(next_variable);
-                }
-                else {
-                    if (next_variable.payload.slice(-1) === '$') {
-                        throw new BasicError('Type mismatch', 'expected `NEXT` with numerical variable name, got `NEXT ' + next_variable.payload + '`', current_line);
-                    }
-                    if (loop_variable !== next_variable.payload) {
-                        throw new BasicError('Block error', 'Expected `NEXT `'+loop_variable+'`, got `NEXT ' + next_variable.payload + '`', current_line);
-                    }
-                }
-                last.next = new Label('NEXT '+ loop_variable);
-                last = last.next;
-                break;
-            }
-
-            // parse arguments in statement-specific way
-            // statement parsers must take care of maintaining the linked list
-            last = PARSERS[token.payload](parser, expr_list, token, last)
         }
         // create the iteration node
         // iterate if (i*step) < (stop*step) to deal with negative steps
