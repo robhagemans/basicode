@@ -667,11 +667,8 @@ function Parser()
     {
         while (expr_list.length) {
             // parse separator
+            if (expr_list[0].token_type !== 'literal' && expr_list[0].payload === end_token) break;
             var sep = expr_list.shift();
-            if (sep.payload === end_token) {
-                expr_list.unshift(sep);
-                break;
-            }
             if (sep.token_type === '\n') {
                 // parseLineNumber deals with multiple LFs
                 last.next = this.parseLineNumber(expr_list, last);
@@ -681,17 +678,11 @@ function Parser()
                 throw new BasicError(`Syntax error`, 'expected `:`, got `' + sep.payload + '`', current_line);
             }
             if (!expr_list.length) break;
+            if (expr_list[0].token_type !== 'literal' && expr_list[0].payload === end_token) break;
+            // handle empty statement
+            if (expr_list[0].token_type === ':' || expr_list[0].token_type === '\n') continue;
             // parse statements
             var token = expr_list.shift();
-            if (token.payload === end_token) {
-                expr_list.unshift(token);
-                break;
-            }
-            // handle empty statement
-            if (token.token_type === ':' || token.token_type === '\n') {
-                expr_list.unshift(token);
-                continue;
-            }
             // optional LET
             if (token.token_type === 'name') {
                 expr_list.unshift(token);
@@ -2484,6 +2475,9 @@ else {
 // can skip ; between variables and string literals in print
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // sometimes next i,j is used (factors.bc2)
+// auto-DIM small arrays
+// NEXT from inside a branch (i.e. as a continue statement)
+// calculate loop bounds and step only once
 
 // - colour
 // - scrolling
