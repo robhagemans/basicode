@@ -1740,6 +1740,8 @@ function subText()
 
 const BUSY_DELAY = 1;
 const IDLE_DELAY = 60;
+// minimum delay (delays are floored by the browser)
+const MIN_DELAY = 4;
 
 function Interface(iface_element)
 {
@@ -2375,26 +2377,33 @@ function BasicodeApp(script)
 
         var prog = this.program;
         var current = prog.tree;
+        var delay = 0;
 
         function step() {
             try {
-                var delay = 0;
-                while (current && !delay) {
+                while (true) {
                     if (current instanceof Label && typeof current.label === 'number') {
                         app.program.current_line = current.label;
                     }
-                    delay = current.delay;
+                    if (current.delay) delay += current.delay;
                     current = current.step();
-                    if (!current) app.stop();
+                    if (!current) {
+                        app.stop();
+                        break;
+                    }
                     if (app.iface.break_flag) throw new BasicError('Break', '', null);
-                    if (current && delay) app.running = window.setTimeout(step, delay);
+                    if (current && (delay >= MIN_DELAY)) {
+                        app.running = window.setTimeout(step, delay);
+                        delay = 0;
+                        break;
+                    }
                 };
             } catch (e) {
                 app.handleError(e);
             }
         }
         // get started
-        this.running = window.setTimeout(step, BUSY_DELAY);
+        this.running = window.setTimeout(step, MIN_DELAY);
     }
 
     this.stop = function()
