@@ -425,7 +425,6 @@ function Conditional(condition)
 }
 
 
-//FIXME: need state ref
 function Switch(condition, branches)
 // ON node
 {
@@ -437,7 +436,7 @@ function Switch(condition, branches)
     {
         var condition = this.condition.evaluate();
         if (typeof condition !== 'number' && typeof condition !== 'boolean') {
-            throw new BasicError('Type mismatch', 'expected numerical expression, got `'+ condition+'`', state.current_line);
+            throw new BasicError('Type mismatch', 'expected numerical expression, got `'+ condition+'`');
         }
         if (condition > 0 && condition <= this.branches.length) {
             return this.branches[condition-1];
@@ -457,7 +456,7 @@ function Jump(target, state, is_sub)
     this.step = function()
     {
         if (!(target in state.line_numbers)) {
-            throw new error('Undefined line number in `GOTO ' + target + '`', state.current_line);
+            throw new error('Undefined line number in `GOTO ' + target + '`');
         }
         if (is_sub) state.sub_stack.push(this.next);
         return state.line_numbers[target];
@@ -1063,7 +1062,6 @@ function Parser()
         // prompt
         last.next = new Node(stPrint, [new Literal('? ')], state);
         // wait for ENTER kepress before engaging
-        //FIXME: Wait() has no state parameter, so we depend on declaring this here with state in a closure
         last.next.next = new Wait(function() { return state.input.interact(state.output); });
         // return payload: do not retrieve the variable, just get its name
         last.next.next.next = new Node(stInput, [new Literal(name.payload)].concat(indices), state);
@@ -1256,10 +1254,10 @@ function Variables()
             this.scalars[name] = value;
         }
         else if (indices.length === 1) {
-            this.arrays[name][indices[0]] = value;
+            this.arrays[name][Math.round(indices[0])] = value;
         }
         else {
-            this.arrays[name][indices[0]][indices[1]] = value;
+            this.arrays[name][Math.round(indices[0])][Math.round(indices[1])] = value;
         }
     };
 
@@ -1272,10 +1270,10 @@ function Variables()
             return this.scalars[name];
         }
         else if (indices.length === 1) {
-            return this.arrays[name][indices[0]];
+            return this.arrays[name][Math.round(indices[0])];
         }
         else {
-            return this.arrays[name][indices[0]][indices[1]];
+            return this.arrays[name][Math.round(indices[0])][Math.round(indices[1])];
         }
     };
 
@@ -2338,8 +2336,7 @@ function BasicodeApp(script)
         // reset program state
         this.program.clear();
 
-        var prog = this.program;
-        var current = prog.tree;
+        var current = this.program.tree;
         var delay = 0;
 
         function step() {
@@ -2470,6 +2467,8 @@ else {
 
 
 // TODO:
+
+// trace and watch
 
 // Basicode-3 uses INPUT "prompt"; A$; also multiple INPUT A,B,C in BOKA-EI
 // can skip ; between variables and string literals in print
