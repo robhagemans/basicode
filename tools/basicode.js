@@ -637,33 +637,6 @@ function Parser()
         return args;
     }
 
-    this.parseLine = function(basicode, last)
-    // parse a line of BASICODE
-    {
-        while (basicode.length > 0) {
-            var token = basicode.shift();
-            // check for empty statement
-            if (token.token_type === ':') continue;
-            if (token.token_type === '\n') break;
-            // optional LET
-            if (token.token_type === 'name') {
-                basicode.unshift(token);
-                token = KEYWORDS['LET']();
-            }
-            // parse arguments in statement-specific way
-            // statement parsers must take care of maintaining the linked list
-            last = PARSERS[token.payload](this, basicode, token, last)
-            // parse separator
-            if (!basicode.length) break;
-            var sep = basicode.shift();
-            if (sep.token_type === '\n') break;
-            if (sep.token_type !== ':') {
-                throw new BasicError('Syntax error', 'expected `:`, got `' + sep.payload + '`', current_line);
-            }
-        }
-        return last
-    }
-
     this.parseLineNumber = function(basicode, last)
     {
         if (!basicode.length) return null;
@@ -684,21 +657,59 @@ function Parser()
             throw new BasicError('Syntax error', 'expected line number > `' + current_line+'`, got `'+ line_number + '`', current_line);
         }
         current_line = line_number;
+        console.log(line_number);
         var label = new Label(line_number);
         state.line_numbers[line_number] = label;
         last.next = label;
         return label;
     }
 
+    this.parse = function(expr_list, last, end_token)
+    {
+        while (expr_list.length) {
+            // parse separator
+            var sep = expr_list.shift();
+            if (sep.payload === end_token) {
+                expr_list.unshift(sep);
+                break;
+            }
+            if (sep.token_type === '\n') {
+                // parseLineNumber deals with multiple LFs
+                last.next = this.parseLineNumber(expr_list, last);
+                last = last.next;
+            }
+            else if (sep.token_type !== ':') {
+                throw new BasicError(`Syntax error`, 'expected `:`, got `' + sep.payload + '`', current_line);
+            }
+            if (!expr_list.length) break;
+            // parse statements
+            var token = expr_list.shift();
+            if (token.payload === end_token) {
+                expr_list.unshift(token);
+                break;
+            }
+            // handle empty statement
+            if (token.token_type === ':' || token.token_type === '\n') {
+                expr_list.unshift(token);
+                continue;
+            }
+            // optional LET
+            if (token.token_type === 'name') {
+                expr_list.unshift(token);
+                token = KEYWORDS['LET']();
+            }
+            // parse arguments in statement-specific way
+            // statement parsers must take care of maintaining the linked list
+            last = PARSERS[token.payload](this, expr_list, token, last)
+        }
+        return last;
+    }
+
     this.parseProgram = function(basicode)
     // parse a BASICODE program
     {
-        state.tree = new Label('ROOT');
-        var last = state.tree;
-        while (basicode.length > 0) {
-            var label = this.parseLineNumber(basicode, last);
-            last = this.parseLine(basicode, label);
-        }
+        state.tree = new Label();
+        this.parse(basicode, state.tree);
         return state;
     }
 
@@ -855,8 +866,6 @@ function Parser()
         // other line numbers are resolved at run time
         last.next = new Jump(line_number.payload, state, false);
         // put a short delay on jumps to avoid overloading the browser on loops
-        // TODO: perhaps the delay should be put on statements that access the canvas?
-        // this slows down READ loops a lot
         last.delay = BUSY_DELAY;
         return last.next;
     }
@@ -938,7 +947,8 @@ function Parser()
         }
         node.branch = new Label('THEN');
         node.next = new Label('FI');
-        var end_branch = parser.parseLine(expr_list, node.branch);
+        expr_list.unshift(new tokenSeparator(':'));
+        var end_branch = parser.parse(expr_list, node.branch, '\n');
         end_branch.next = node.next;
         // give back the separator so the next line parses correctly
         expr_list.unshift(new tokenSeparator('\n'));
@@ -977,43 +987,6 @@ function Parser()
         return label;
     }
 
-    this.parseUntil = function(expr_list, last, end_token)
-    //FIXME - merge with parseLine, parseProgram
-    {
-        while (expr_list.length) {
-            // parse separator
-            var sep = expr_list.shift();
-            if (sep.token_type === '\n') {
-                // parseLineNumber deals with multiple LFs
-                last.next = this.parseLineNumber(expr_list, last);
-                last = last.next;
-            }
-            else if (sep.token_type !== ':') {
-                throw new BasicError(`Syntax error`, 'expected `:`, got `' + sep.payload + '`', current_line);
-            }
-            // parse statements
-            var token = expr_list.shift();
-            if (token.payload === end_token) {
-                expr_list.unshift(token);
-                break;
-            }
-            // handle empty statement
-            if (token.token_type === ':' || token.token_type === '\n') {
-                expr_list.unshift(token);
-                continue;
-            }
-            // optional LET
-            if (token.token_type === 'name') {
-                expr_list.unshift(token);
-                token = KEYWORDS['LET']();
-            }
-            // parse arguments in statement-specific way
-            // statement parsers must take care of maintaining the linked list
-            last = PARSERS[token.payload](this, expr_list, token, last)
-        }
-        return last;
-    }
-
     function parseFor(parser, expr_list, token, last)
     // parse FOR
     {
@@ -1047,7 +1020,7 @@ function Parser()
         last.next = for_node;
         last = last.next;
         // parse body of FOR loop until NEXT is encountered
-        last = parser.parseUntil(expr_list, last, 'NEXT');
+        last = parser.parse(expr_list, last, 'NEXT');
         // parse NEXT
         token = expr_list.shift();
         if (token === undefined || token === null || token.payload !== 'NEXT') {
@@ -2527,8 +2500,6 @@ else {
 
 // split interface in keyboard, screen
 // clean up state/Program object
-
-// some potential optimisations, if needed:
 // - pre-calculate jump targets (second pass of parser?)
 
 // re-extract the BC3 tape without PC-BASIC mods
