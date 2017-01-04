@@ -1773,7 +1773,7 @@ function Interface(iface_element)
     this.foreground = 'white';
     this.background = 'black';
     // number of ticks in a cursor cycle
-    this.cursor_ticks = 480/IDLE_DELAY;
+    this.cursor_ticks = 640/IDLE_DELAY;
 
     // resize the canvas to fit the font size
     var context = output_element.getContext('2d');
