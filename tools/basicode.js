@@ -481,7 +481,7 @@ function Wait(wait_condition)
 {
     this.trigger = wait_condition;
     this.next = null;
-    this.idle = true;
+    this.delay = IDLE_DELAY;
 
     this.step = function()
     {
@@ -854,6 +854,10 @@ function Parser()
         }
         // other line numbers are resolved at run time
         last.next = new Jump(line_number.payload, state, false);
+        // put a short delay on jumps to avoid overloading the browser on loops
+        // TODO: perhaps the delay should be put on statements that access the canvas?
+        // this slows down READ loops a lot
+        last.delay = BUSY_DELAY;
         return last.next;
     }
 
@@ -1078,6 +1082,8 @@ function Parser()
                                     ], state),
                                 new Literal(loop_variable),
                             ], state);
+        // put a short delay on iterations to avoid overloading the browser
+        incr.delay = BUSY_DELAY;
         incr.next = for_node;
         cond.branch = incr;
         return cond;
@@ -2372,28 +2378,28 @@ function BasicodeApp(script)
 
         function step() {
             try {
-                if (current instanceof Label && typeof current.label === 'number') {
-                    app.program.current_line = current.label;
-                }
-                if (!current) app.stop();
-                else {
-                    var delay = current.idle ? IDLE_DELAY : BUSY_DELAY;
+                var delay = 0;
+                while (current && !delay) {
+                    if (current instanceof Label && typeof current.label === 'number') {
+                        app.program.current_line = current.label;
+                    }
+                    delay = current.delay;
                     current = current.step();
-                    if (app.iface.break_flag) app.handleError(new BasicError('Break', '', null));
-                    else app.running = window.setTimeout(step, delay);
-                }
+                    if (!current) app.stop();
+                    if (app.iface.break_flag) throw new BasicError('Break', '', null);
+                    if (current && delay) app.running = window.setTimeout(step, delay);
+                };
             } catch (e) {
                 app.handleError(e);
             }
         }
         // get started
-        window.setTimeout(step, BUSY_DELAY);
+        this.running = window.setTimeout(step, BUSY_DELAY);
     }
 
     this.stop = function()
     // release resources upon program end
     {
-        console.log('stop');
         if (this.running) window.clearTimeout(this.running);
         this.running = null;
         if (this.program !== null) {
