@@ -231,9 +231,9 @@ function Lexer(expr_string)
     {
         // for VAL(), we should also accept a - here
         var sign = '';
-        var mantissa = 0;
-        var decimal = 0;
-        var exponent = 0;
+        var mantissa = '0';
+        var decimal = '0';
+        var exponent = '0';
         if (expr_string[pos] === '-') {
             sign = '-';
             ++pos;
@@ -258,10 +258,10 @@ function Lexer(expr_string)
                     (isNumberChar(expr_string[pos+1]) || expr_string[pos+1] === '-' || expr_string[pos+1] === '+')) {
                 ++pos;
                 if (expr_string[pos+1] === '-' || expr_string[pos+1] === '+') {
-                    ++pos;
                     exponent = expr_string[pos+1] + readInteger();
                 }
                 else {
+                    --pos;
                     exponent = readInteger();
                 }
             }
@@ -657,7 +657,6 @@ function Parser()
             throw new BasicError('Syntax error', 'expected line number > `' + current_line+'`, got `'+ line_number + '`', current_line);
         }
         current_line = line_number;
-        console.log(line_number);
         var label = new Label(line_number);
         state.line_numbers[line_number] = label;
         last.next = label;
@@ -2480,15 +2479,17 @@ else {
 
 
 // TODO:
+
 // Basicode-3 uses INPUT "prompt"; A$; also multiple INPUT A,B,C in BOKA-EI
 // can skip ; between variables and string literals in print
+// BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
+// sometimes next i,j is used (factors.bc2)
+
 // - colour
 // - scrolling
 // - tape storage without file names
 // - DEF FN
 // - type checks A$=1
-// BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
-// sometimes next i,j is used (factors.bc2)
 
 // BC3C
 // colours
