@@ -501,7 +501,7 @@ function Program()
     this.data = new Data();
     this.fns = new Functions();
     this.line_numbers = {};
-    this.tree = null;
+    this.tree = new Label();
 
     // runtime state
     this.variables = new Variables();
@@ -708,7 +708,6 @@ function Parser()
     this.parseProgram = function(basicode)
     // parse a BASICODE program
     {
-        state.tree = new Label();
         this.parse(basicode, state.tree);
         return state;
     }
