@@ -689,7 +689,7 @@ function Parser()
             }
             // parse arguments in statement-specific way
             // statement parsers must take care of maintaining the linked list
-            last = PARSERS[token.payload](this, expr_list, token, last)
+            last = PARSERS[token.payload].call(this, expr_list, token, last)
         }
         return last;
     }
@@ -705,52 +705,29 @@ function Parser()
     ///////////////////////////////////////////////////////////////////////////
     // statement syntax
 
-    const PARSERS = {
-        'DATA': parseData,
-        'DIM': parseRead,
-        'FOR': parseFor,
-        'GOSUB': parseGosub,
-        'GOTO': parseGoto,
-        'IF': parseIf,
-        'INPUT': parseInput,
-        'LET': parseLet,
-        // NEXT is handled by FOR parser
-        'NEXT': function() { throw new BasicError('Syntax error', '`NEXT` not allowed here', current_line)},
-        'ON': parseOn,
-        'PRINT': parsePrint,
-        'READ': parseRead,
-        'REM': parseRem,
-        'RESTORE': parseRestore,
-        'RETURN': parseReturn,
-        'END': parseEnd,
-        'STOP': parseEnd,
-        'RUN': parseRun,
-        'DEF': parseDefFn,
-    }
-
-    function parseLet(parser, expr_list, token, last)
+    this.parseLet = function(expr_list, token, last)
     // parse LET statement
     {
         var name = expr_list.shift();
         if (name.token_type != 'name') {
             throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
         }
-        var indices = parser.parseArguments(expr_list);
+        var indices = this.parseArguments(expr_list);
         var equals = expr_list.shift().payload;
         if (equals !== '=') throw new BasicError('Syntax error', 'expected `=`, got `'+equals+'`', current_line);
-        var value = parser.parseExpression(expr_list);
+        var value = this.parseExpression(expr_list);
         // statement must have access to interpreter state, so state is first argument
         last.next = new Node(token.operation, [value, new Literal(name.payload)].concat(indices), state);
         return last.next;
     }
 
-    function parsePrint(parser, expr_list, token, last_node)
+    this.parsePrint = function(expr_list, token, last_node)
     // parse PRINT statement
     {
         var exprs = [];
         var last = null;
         while (expr_list.length > 0) {
-            var expr = parser.parseExpression(expr_list);
+            var expr = this.parseExpression(expr_list);
             if (expr !== null) {
                 exprs.push(expr);
                 last = expr;
@@ -767,7 +744,7 @@ function Parser()
         return last_node.next;
     }
 
-    function parseData(parser, expr_list, token, last)
+    this.parseData = function(expr_list, token, last)
     // parse DATA statement
     {
         var values = []
@@ -795,7 +772,7 @@ function Parser()
         return last;
     }
 
-    function parseRead(parser, expr_list, token, last)
+    this.parseRead = function(expr_list, token, last)
     // parse READ or DIM statement
     {
         var pt = last;
@@ -804,7 +781,7 @@ function Parser()
             if (name.token_type != 'name') {
                 throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
             }
-            var indices = parser.parseArguments(expr_list);
+            var indices = this.parseArguments(expr_list);
 
             last.next = new Node(token.operation, [new Literal(name.payload)].concat(indices), state);
             last = last.next;
@@ -816,7 +793,7 @@ function Parser()
         return last;
     }
 
-    function parseRem(parser, expr_list, token, last)
+    this.parseRem = function(expr_list, token, last)
     // parse REM
     {
         var rem = expr_list.shift();
@@ -834,7 +811,7 @@ function Parser()
         return last;
     }
 
-    function parseGoto(parser, expr_list, token, last)
+    this.parseGoto = function(expr_list, token, last)
     // parse GOTO
     {
         var line_number = expr_list.shift();
@@ -859,7 +836,7 @@ function Parser()
         return last.next;
     }
 
-    function parseGosub(parser, expr_list, token, last)
+    this.parseGosub = function(expr_list, token, last)
     // parse GOSUB
     {
         var line_number = expr_list.shift();
@@ -919,10 +896,10 @@ function Parser()
         650: function(last) {last.next = new Node(subText, [], state); return last.next; },
     }
 
-    function parseIf(parser, expr_list, token, last)
+    this.parseIf = function(expr_list, token, last)
     // parse IF
     {
-        var condition = parser.parseExpression(expr_list);
+        var condition = this.parseExpression(expr_list);
         var node = new Conditional(condition);
         last.next = node;
         var then = expr_list.shift()
@@ -937,7 +914,7 @@ function Parser()
         node.branch = new Label('THEN');
         node.next = new Label('FI');
         expr_list.unshift(new tokenSeparator(':'));
-        var end_branch = parser.parse(expr_list, node.branch, '\n');
+        var end_branch = this.parse(expr_list, node.branch, '\n');
         end_branch.next = node.next;
         // give back the separator so the next line parses correctly
         expr_list.unshift(new tokenSeparator('\n'));
@@ -945,10 +922,10 @@ function Parser()
         return node.next;
     }
 
-    function parseOn(parser, expr_list, token, last)
+    this.parseOn = function(expr_list, token, last)
     // parse ON jumps
     {
-        var condition = parser.parseExpression(expr_list);
+        var condition = this.parseExpression(expr_list);
         var jump = expr_list.shift();
         if (jump.token_type !== 'statement' || (jump.payload !== 'GOTO' && jump.payload !== 'GOSUB')) {
             throw new BasicError('Syntax error', 'expected `GOTO` or `GOSUB`, got `'+jump.payload+'`', current_line);
@@ -976,7 +953,7 @@ function Parser()
         return label;
     }
 
-    function parseFor(parser, expr_list, token, last)
+    this.parseFor = function(expr_list, token, last)
     // parse FOR
     {
         var loop_variable = expr_list.shift();
@@ -988,19 +965,19 @@ function Parser()
         if (equals.token_type !== 'operator' || equals.payload !== '=') {
             throw new BasicError('Syntax error', 'expected `=`, got `'+equals.payload+'`', current_line);
         }
-        var start = parser.parseExpression(expr_list);
+        var start = this.parseExpression(expr_list);
         var to = expr_list.shift();
         if (to.token_type !== 'statement' || to.payload !== 'TO') {
             throw new BasicError('Syntax error', 'expected `TO`, got `'+to.payload+'`', current_line);
         }
-        var stop = parser.parseExpression(expr_list);
+        var stop = this.parseExpression(expr_list);
         var step = expr_list.shift();
         if (step.token_type !== 'statement' || step.payload !== 'STEP') {
             expr_list.unshift(step);
             step = new Literal(1);
         }
         else {
-            step = parser.parseExpression(expr_list);
+            step = this.parseExpression(expr_list);
         }
         // loop init
         last.next = new Node(stLet, [start, new Literal(loop_variable)], state);
@@ -1009,7 +986,7 @@ function Parser()
         last.next = for_node;
         last = last.next;
         // parse body of FOR loop until NEXT is encountered
-        last = parser.parse(expr_list, last, 'NEXT');
+        last = this.parse(expr_list, last, 'NEXT');
         // parse NEXT
         token = expr_list.shift();
         if (token === undefined || token === null || token.payload !== 'NEXT') {
@@ -1051,14 +1028,14 @@ function Parser()
         return cond;
     }
 
-    function parseInput(parser, expr_list, token, last)
+    this.parseInput = function(expr_list, token, last)
     // parse INPUT
     {
         var name = expr_list.shift();
         if (name.token_type != 'name') {
             throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
         }
-        var indices = parser.parseArguments(expr_list);
+        var indices = this.parseArguments(expr_list);
         // prompt
         last.next = new Node(stPrint, [new Literal('? ')], state);
         // wait for ENTER kepress before engaging
@@ -1068,7 +1045,7 @@ function Parser()
         return last.next.next.next;
     }
 
-    function parseDefFn(parser, expr_list, token, last)
+    this.parseDefFn = function(expr_list, token, last)
     // parse DEF FN statement
     {
         var fn = expr_list.shift();
@@ -1093,38 +1070,62 @@ function Parser()
         }
         var equals = expr_list.shift().payload;
         if (equals !== '=') throw new BasicError('Syntax error', 'expected `=`, got `'+equals+'`', current_line);
-        var expr = parser.parseExpression(expr_list);
+        var expr = this.parseExpression(expr_list);
         state.fns.store(name, arg, expr);
         return last;
     }
 
-    function parseRestore(parser, expr_list, token, last)
+    this.parseRestore = function(expr_list, token, last)
     // parse RESTORE
     {
         last.next = new Node(token.operation, [], state);
         return last.next;
     }
 
-    function parseReturn(parser, expr_list, token, last)
+    this.parseReturn = function(expr_list, token, last)
     // parse RETURN
     {
         last.next = new Return(state);
         return last.next;
     }
 
-    function parseEnd(parser, expr_list, token, last)
+    this.parseEnd = function(expr_list, token, last)
     // parse END
     {
         last.next = new End();
         return last.next;
     }
 
-    function parseRun(parser, expr_list, token, last)
-    // parse Run
+    this.parseRun = function(expr_list, token, last)
+    // parse RUN
     {
         last.next = new Run();
         return last.next;
     }
+
+    const PARSERS = {
+        'DATA': this.parseData,
+        'DIM': this.parseRead,
+        'FOR': this.parseFor,
+        'GOSUB': this.parseGosub,
+        'GOTO': this.parseGoto,
+        'IF': this.parseIf,
+        'INPUT': this.parseInput,
+        'LET': this.parseLet,
+        // NEXT is handled by FOR parser
+        'NEXT': function() { throw new BasicError('Syntax error', '`NEXT` not allowed here', current_line)},
+        'ON': this.parseOn,
+        'PRINT': this.parsePrint,
+        'READ': this.parseRead,
+        'REM': this.parseRem,
+        'RESTORE': this.parseRestore,
+        'RETURN': this.parseReturn,
+        'END': this.parseEnd,
+        'STOP': this.parseEnd,
+        'RUN': this.parseRun,
+        'DEF': this.parseDefFn,
+    }
+
 };
 
 
@@ -2471,6 +2472,7 @@ else {
 // split interface in keyboard, screen
 // clean up state/Program object
 // pre-calculate jump targets (second pass of parser?)
+// Next node
 
 // trace and watch
 
