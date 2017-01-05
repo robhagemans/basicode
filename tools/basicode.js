@@ -491,37 +491,48 @@ function Wait(wait_condition)
 
 
 //////////////////////////////////////////////////////////////////////
-// parser
+// program object
 
-function Parser()
+function Program()
 {
-    // program object
-    var state = {
-        // parsing output
-        'title': '',
-        'description': '',
-        'data': new Data(),
-        'fns': new Functions(),
-        'line_numbers': {},
-        'tree': null,
-        // runtime state
-        'variables': new Variables(),
-        'sub_stack': [],
-        'current_line': 999,
-        // machine
-        'output': null,
-        'input': null,
-        'printer': null,
-        'speaker': null,
-        'timer': null,
-    }
-    state.clear = function()
+    // parsing output
+    this.title = '';
+    this.description = '';
+    this.data = new Data();
+    this.fns = new Functions();
+    this.line_numbers = {};
+    this.tree = null;
+
+    // runtime state
+    this.variables = new Variables();
+    this.sub_stack = [];
+    this.current_line = 999;
+
+    // machine objects
+    this.output = null;
+    this.input = null;
+    this.printer = null;
+    this.speaker = null;
+    this.timer = null;
+
+    this.clear = function()
     {
         this.variables.clear();
         this.data.restore();
         this.sub_stack = [];
         this.current_line = 999;
     }
+
+}
+
+
+//////////////////////////////////////////////////////////////////////
+// parser
+
+function Parser()
+{
+    // resulting program object
+    var state = new Program();
 
     // current line being parsed
     var current_line = 999;
