@@ -268,7 +268,8 @@ function Lexer(expr_string)
 
     this.tokenise = function()
     {
-        var expr_list = [];
+        // start with a line break to get the parser to expect a line number
+        var expr_list = [new SeparatorToken('\n')];
         for (pos=0; pos < expr_string.length; ++pos) {
             var char = expr_string[pos];
             // deal with line breaks, CR, LF and CR LF all work
@@ -469,6 +470,34 @@ function Wait(wait_condition)
         return this;
     }
 }
+
+function Next(for_node, loop_name, stop, incr, program)
+// iteration node
+{
+
+    // FIXME: bounds should be evaluated only on FOR node, read from there
+    this.loop_name = loop_name;
+    this.stop = stop;
+    this.incr = incr;
+
+    this.for_node = for_node;
+    this.next = null;
+    this.delay = BUSY_DELAY;
+
+    this.step = function()
+    {
+        var loop_var = program.variables.retrieve(this.loop_name, []);
+        var incr = this.incr.evaluate();
+        var stop = this.stop.evaluate();
+        // iterate if ((i+step)*step) < (stop*step) to deal with negative steps
+        if (incr*(loop_var+incr) <= incr*stop) {
+            program.variables.assign(loop_var + incr, this.loop_name, []);
+            return this.for_node;
+        }
+        return this.next;
+    }
+}
+
 
 
 //////////////////////////////////////////////////////////////////////
@@ -991,25 +1020,8 @@ function Parser(expr_list)
             }
         }
         // create the iteration node
-        // iterate if (i*step) < (stop*step) to deal with negative steps
-        var cond = new Conditional(new Node(function(x, y, z) { return z*(x+z) <= z*y; }, [
-                                    new Node(opRetrieve, [new Literal(loop_variable)], program),
-                                    stop, step,
-                                ], program));
-        last.next = cond;
-        // increment node
-        var incr = new Node(stLet, [
-                                new Node(function(x, y) { return x+y; }, [
-                                        new Node(opRetrieve, [new Literal(loop_variable)], program),
-                                        step
-                                    ], program),
-                                new Literal(loop_variable),
-                            ], program);
-        // put a short delay on iterations to avoid overloading the browser
-        incr.delay = BUSY_DELAY;
-        incr.next = for_node;
-        cond.branch = incr;
-        return cond;
+        last.next = new Next(for_node, loop_variable, stop, step, program);
+        return last.next;
     }
 
     this.parseNext = function()
@@ -2543,7 +2555,7 @@ else {
 // TODO:
 
 // pre-calculate jump targets (second pass of parser?)
-// Next node
+// use a single long delay of the right length for sound wait nodes rather than a frequent check
 
 // trace and watch
 
