@@ -1783,37 +1783,14 @@ function subText()
 
 
 ///////////////////////////////////////////////////////////////////////////////
-// interface
+// screen
 
-const BUSY_DELAY = 1;
-const IDLE_DELAY = 60;
-// minimum delay (nested delays are 'clamped' by the browser)
-const MIN_DELAY = 4;
 
-function Interface(iface_element)
+
+function Display(output_element)
 {
-    var output_element = iface_element;
-    var input_element = iface_element;
-
     // only allow one program to connect at a time
     this.busy = false;
-
-    this.acquire = function(do_run)
-    // acquire this interface, after the previous user released it
-    {
-        this.busy = true;
-        this.break_flag = false;
-    }
-
-    this.release = function()
-    // release this interface
-    {
-        this.busy = false;
-        this.curtain();
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    // screen
 
     this.width = 40;
     this.height = 24;
@@ -1834,6 +1811,20 @@ function Interface(iface_element)
     // set the context on the resized canvas
     context = output_element.getContext('2d');
     context.font = 'normal lighter '+font_height+'px monospace';
+
+
+    this.acquire = function(do_run)
+    // acquire this interface, after the previous user released it
+    {
+        this.busy = true;
+    }
+
+    this.release = function()
+    // release this interface
+    {
+        this.busy = false;
+        this.curtain();
+    }
 
     this.clear = function() {
         context.fillStyle = this.background;
@@ -1998,15 +1989,18 @@ function Interface(iface_element)
         var pixel_y = y*output_element.height;
         this.putText(pixel_x, pixel_y, c);
     }
+}
 
-    ///////////////////////////////////////////////////////////////////////////
-    // keyboard
+
+///////////////////////////////////////////////////////////////////////////////
+// keyboard
+
+function Keyboard(input_element)
+{
 
     // make canvas element focussable to catch keypresses
     input_element.tabIndex = 1;
     input_element.focus();
-
-    var self = this;
 
     // JavaScript to BASICODE keycode dictionary
     const KEYS = {
@@ -2030,6 +2024,8 @@ function Interface(iface_element)
         123: -12, // F12
     }
 
+    var self = this;
+
     input_element.addEventListener('keydown', function(event) {
         // use this for backspace, function keys
         if (event.keyCode === 19 && event.ctrlKey && !self.suppress_break) {
@@ -2046,6 +2042,9 @@ function Interface(iface_element)
         self.buffer.push(event.charCode);
         event.preventDefault();
     });
+
+    // Break key combination has been pressed
+    this.break_flag = false;
 
     this.reset = function()
     {
@@ -2072,7 +2071,7 @@ function Interface(iface_element)
 
     this.interact = function(output)
     {
-        this.cursor();
+        output.cursor();
         var loc = this.buffer.indexOf(13);
         var new_chars = [];
         if (loc === -1) {
@@ -2291,6 +2290,12 @@ function Floppy(id)
 ///////////////////////////////////////////////////////////////////////////////
 // user interface
 
+const BUSY_DELAY = 1;
+const IDLE_DELAY = 60;
+// minimum delay (nested delays are 'clamped' by the browser)
+const MIN_DELAY = 4;
+
+
 function BasicodeApp(script)
 {
     // create a canvas to work on
@@ -2298,7 +2303,8 @@ function BasicodeApp(script)
     element.className = 'basicode';
     document.body.appendChild(element);
 
-    this.iface = new Interface(element);
+    this.display = new Display(element);
+    this.keyboard = new Keyboard(element);
     this.program = null;
     this.running = null;
 
@@ -2307,32 +2313,32 @@ function BasicodeApp(script)
     this.handleError = function(e)
     {
         this.stop();
-        this.iface.invertColour();
-        this.iface.setColumn(0);
-        this.iface.setRow(0);
-        this.iface.write(' '.repeat(this.iface.width));
-        this.iface.setColumn(0);
-        this.iface.setRow(0);
+        this.display.invertColour();
+        this.display.setColumn(0);
+        this.display.setRow(0);
+        this.display.write(' '.repeat(this.display.width));
+        this.display.setColumn(0);
+        this.display.setRow(0);
         if (e instanceof BasicError) {
-            this.iface.write(e.message);
+            this.display.write(e.message);
             var ln = e.where;
             if (ln === null && this.program !== null) ln = this.program.current_line;
-            this.iface.write(' in '+ ln +'\n');
-            this.iface.invertColour();
+            this.display.write(' in '+ ln +'\n');
+            this.display.invertColour();
             if (e.detail) {
-                this.iface.write(' '.repeat(this.iface.width*2));
-                this.iface.setColumn(0);
-                this.iface.setRow(1);
-                this.iface.write(e.detail);
+                this.display.write(' '.repeat(this.display.width*2));
+                this.display.setColumn(0);
+                this.display.setRow(1);
+                this.display.write(e.detail);
             }
         }
         else {
-            this.iface.write('EXCEPTION\n')
-            this.iface.invertColour();
-            this.iface.write(' '.repeat(this.iface.width*2));
-            this.iface.setColumn(0);
-            this.iface.setRow(1);
-            this.iface.write(e);
+            this.display.write('EXCEPTION\n')
+            this.display.invertColour();
+            this.display.write(' '.repeat(this.display.width*2));
+            this.display.setColumn(0);
+            this.display.setRow(1);
+            this.display.write(e);
             throw e;
         }
     }
@@ -2341,14 +2347,14 @@ function BasicodeApp(script)
     // load program, parse to AST, connect to output
     {
         // clear screen
-        this.iface.clear();
+        this.display.clear();
         // reset keyboard buffer
-        this.iface.reset();
+        this.keyboard.reset();
         try {
             // initialise program object
             this.program = new Parser().parseProgram(tokenise(code));
-            this.program.output = this.iface;
-            this.program.input = this.iface;
+            this.program.output = this.display;
+            this.program.input = this.keyboard;
             this.program.printer = new Printer();
             this.program.speaker = new Speaker();
             this.program.timer = new Timer();
@@ -2363,50 +2369,50 @@ function BasicodeApp(script)
     this.show = function()
     // show program title and description
     {
-        this.iface.invertColour();
-        this.iface.setColumn(0);
-        this.iface.setRow(0);
-        this.iface.write(' '.repeat(this.iface.width));
-        this.iface.writeCentre(0, this.program.title);
-        this.iface.write('\n\n');
-        this.iface.invertColour();
-        this.iface.write(this.program.description);
-        this.iface.invertColour();
-        this.iface.setColumn(0);
-        this.iface.setRow(this.iface.height - 1);
-        this.iface.write(' '.repeat(this.iface.width));
-        this.iface.writeCentre(this.iface.height - 1, '-- click to run --');
-        this.iface.invertColour();
-        this.iface.curtain();
+        this.display.invertColour();
+        this.display.setColumn(0);
+        this.display.setRow(0);
+        this.display.write(' '.repeat(this.display.width));
+        this.display.writeCentre(0, this.program.title);
+        this.display.write('\n\n');
+        this.display.invertColour();
+        this.display.write(this.program.description);
+        this.display.invertColour();
+        this.display.setColumn(0);
+        this.display.setRow(this.display.height - 1);
+        this.display.write(' '.repeat(this.display.width));
+        this.display.writeCentre(this.display.height - 1, '-- click to run --');
+        this.display.invertColour();
+        this.display.curtain();
     }
 
     this.splash = function()
     // intro screen if nothing was loaded
     {
-        this.iface.invertColour();
-        this.iface.setColumn(0);
-        this.iface.setRow(0);
-        this.iface.write(' '.repeat(this.iface.width));
-        this.iface.writeCentre(0, '(c) 2016, 2017 Rob Hagemans');
-        this.iface.invertColour();
+        this.display.invertColour();
+        this.display.setColumn(0);
+        this.display.setRow(0);
+        this.display.write(' '.repeat(this.display.width));
+        this.display.writeCentre(0, '(c) 2016, 2017 Rob Hagemans');
+        this.display.invertColour();
         var row = 6;
-        this.iface.writeCentre(row++, '**. .*. .** .*. .** .*. **. ***');
-        this.iface.writeCentre(row++, '*.* *.* *.. .*. *.. *.* *.* *..');
-        this.iface.writeCentre(row++, '*.* *.* *.. .*. *.. *.* *.* *..');
-        this.iface.writeCentre(row++, '*.* *.* *.. .*. *.. *.* *.* *..');
-        this.iface.writeCentre(row++, '..**..***..*...*..*...*.*.*.*.**...');
-        this.iface.writeCentre(row++, '*.* *.* ..* .*. *.. *.* *.* *..');
-        this.iface.writeCentre(row++, '*.* *.* ..* .*. *.. *.* *.* *..');
-        this.iface.writeCentre(row++, '*.* *.* ..* .*. *.. *.* *.* *..');
-        this.iface.writeCentre(row++, '**. *.* **. .*. .** .*. **. ***');
-        this.iface.writeCentre(17, '---==[2017]==---');
-        this.iface.invertColour();
-        this.iface.setColumn(0);
-        this.iface.setRow(this.iface.height - 1);
-        this.iface.write(' '.repeat(this.iface.width));
-        this.iface.writeCentre(this.iface.height - 1, '-- drag and drop to load --');
-        this.iface.invertColour();
-        this.iface.curtain();
+        this.display.writeCentre(row++, '**. .*. .** .*. .** .*. **. ***');
+        this.display.writeCentre(row++, '*.* *.* *.. .*. *.. *.* *.* *..');
+        this.display.writeCentre(row++, '*.* *.* *.. .*. *.. *.* *.* *..');
+        this.display.writeCentre(row++, '*.* *.* *.. .*. *.. *.* *.* *..');
+        this.display.writeCentre(row++, '..**..***..*...*..*...*.*.*.*.**...');
+        this.display.writeCentre(row++, '*.* *.* ..* .*. *.. *.* *.* *..');
+        this.display.writeCentre(row++, '*.* *.* ..* .*. *.. *.* *.* *..');
+        this.display.writeCentre(row++, '*.* *.* ..* .*. *.. *.* *.* *..');
+        this.display.writeCentre(row++, '**. *.* **. .*. .** .*. **. ***');
+        this.display.writeCentre(17, '---==[2017]==---');
+        this.display.invertColour();
+        this.display.setColumn(0);
+        this.display.setRow(this.display.height - 1);
+        this.display.write(' '.repeat(this.display.width));
+        this.display.writeCentre(this.display.height - 1, '-- drag and drop to load --');
+        this.display.invertColour();
+        this.display.curtain();
     }
 
     this.run = function()
@@ -2416,9 +2422,9 @@ function BasicodeApp(script)
         if (!this.program || this.program.tree === null) return;
 
         // clear screen
-        this.iface.clear();
+        this.display.clear();
         // reset keyboard buffer
-        this.iface.reset();
+        this.keyboard.reset();
         // reset program state
         this.program.clear();
 
@@ -2437,7 +2443,7 @@ function BasicodeApp(script)
                         app.stop();
                         break;
                     }
-                    if (app.iface.break_flag) throw new BasicError('Break', '', null);
+                    if (app.keyboard.break_flag) throw new BasicError('Break', '', null);
                     if (current && (delay >= MIN_DELAY)) {
                         app.running = window.setTimeout(step, delay);
                         delay = 0;
@@ -2461,12 +2467,12 @@ function BasicodeApp(script)
             this.program.output.release();
             this.program.printer.flush();
         }
-        this.iface.invertColour();
-        this.iface.setColumn(0);
-        this.iface.setRow(this.iface.height - 1);
-        this.iface.write(' '.repeat(this.iface.width));
-        this.iface.writeCentre(this.iface.height - 1, '-- click to run again --');
-        this.iface.invertColour();
+        this.display.invertColour();
+        this.display.setColumn(0);
+        this.display.setRow(this.display.height - 1);
+        this.display.write(' '.repeat(this.display.width));
+        this.display.writeCentre(this.display.height - 1, '-- click to run again --');
+        this.display.invertColour();
     }
 
     // load & run the code provided in the element, if any
@@ -2554,8 +2560,6 @@ else {
 
 // TODO:
 
-// split interface in keyboard, screen
-// group functions/statements/operations
 // Lexer, Parser can be simple functions; e.g. becomes this.tree = parse(tokenise(code)) in Program constructor
 // pre-calculate jump targets (second pass of parser?)
 // Next node
