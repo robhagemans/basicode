@@ -33,20 +33,20 @@ BasicError.prototype.constructor = BasicError;
 ///////////////////////////////////////////////////////////////////////////////
 // tokens
 
-function tokenSeparator(bracket_char)
+function SeparatorToken(bracket_char)
 {
     this.token_type = bracket_char;
     this.payload = bracket_char;
 }
 
-function tokenLiteral(value)
+function LiteralToken(value)
 {
     this.token_type = 'literal';
     this.operation = function opLiteral(x) { return x; };
     this.payload = value;
 }
 
-function tokenName(value)
+function NameToken(value)
 {
     this.token_type = 'name';
     this.payload = value;
@@ -54,7 +54,7 @@ function tokenName(value)
 
 function newFunctionToken(keyword, operation) {
     return (function() {
-        return (new function tokenFunction() {
+        return (new function FunctionToken() {
             this.token_type = 'function';
             this.payload = keyword;
             this.operation = operation;
@@ -63,7 +63,7 @@ function newFunctionToken(keyword, operation) {
 }
 function newStatementToken(keyword, operation) {
     return (function() {
-        return (new function tokenStatement() {
+        return (new function StatementToken() {
             this.token_type = 'statement';
             this.payload = keyword;
             this.operation = operation;
@@ -72,7 +72,7 @@ function newStatementToken(keyword, operation) {
 }
 function newOperatorToken(keyword, narity, precedence, operation) {
     return (function() {
-        return (new function tokenOperator() {
+        return (new function OperatorToken() {
             this.token_type = 'operator';
             this.payload = keyword;
             this.narity = narity;
@@ -294,15 +294,15 @@ function Lexer(expr_string)
             else if (char === '(' || char === ')' ||
                         char === ',' || char === ';' ||
                         char === ':' || char === '\n') {
-                expr_list.push(new tokenSeparator(char));
+                expr_list.push(new SeparatorToken(char));
             }
             // double quotes, starts a string
             else if (char === '"') {
-                expr_list.push(new tokenLiteral(readString()));
+                expr_list.push(new LiteralToken(readString()));
             }
             // numeric character, starts a number literal
             else if (isNumberChar(char) || char === '.') {
-                expr_list.push(new tokenLiteral(this.readValue()));
+                expr_list.push(new LiteralToken(this.readValue()));
             }
             else if (isAlphaChar(char)) {
                 var name = readName();
@@ -310,16 +310,16 @@ function Lexer(expr_string)
                     // call function that calls new on a constructor
                     expr_list.push(KEYWORDS[name]());
                     if (name === 'REM') {
-                        expr_list.push(new tokenLiteral(readComment()));
+                        expr_list.push(new LiteralToken(readComment()));
                     }
                 }
                 else {
-                    expr_list.push(new tokenName(name));
+                    expr_list.push(new NameToken(name));
                 }
             }
             else if (char !== ' ') {
                 // we can't throw here in case there's subroutines<1000 attached
-                expr_list.push(new tokenSeparator(char));
+                expr_list.push(new SeparatorToken(char));
                 console.log('Unexpected symbol `'+ char + '` during lexing');
             }
         }
@@ -919,11 +919,11 @@ function Parser()
         }
         node.branch = new Label('THEN');
         node.next = new Label('FI');
-        expr_list.unshift(new tokenSeparator(':'));
+        expr_list.unshift(new SeparatorToken(':'));
         var end_branch = this.parse(expr_list, node.branch, '\n');
         end_branch.next = node.next;
         // give back the separator so the next line parses correctly
-        expr_list.unshift(new tokenSeparator('\n'));
+        expr_list.unshift(new SeparatorToken('\n'));
         // merge branch back into single node
         return node.next;
     }
