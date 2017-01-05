@@ -808,7 +808,7 @@ function Parser()
     {
         var rem = expr_list.shift();
         if (rem.token_type !== 'literal') {
-            throw 'Syntax error: expected literal';
+            throw new BasicError('Syntax error', 'expected literal, got `'+rem.payload+'`', current_line);
         }
         // BASICODE standard: title in REM on line 1000
         // description and copyrights in REMS on lines 30000 onwards
@@ -1013,7 +1013,7 @@ function Parser()
                 throw new BasicError('Type mismatch', 'expected `NEXT` with numerical variable name, got `NEXT ' + next_variable.payload + '`', current_line);
             }
             if (loop_variable !== next_variable.payload) {
-                throw new BasicError('Block error', 'Expected `NEXT `'+loop_variable+'`, got `NEXT ' + next_variable.payload + '`', current_line);
+                throw new BasicError('Block error', 'expected `NEXT `'+loop_variable+'`, got `NEXT ' + next_variable.payload + '`', current_line);
             }
         }
         // create the iteration node
@@ -1037,6 +1037,14 @@ function Parser()
         cond.branch = incr;
         return cond;
     }
+
+    this.parseNext = function()
+    // regular NEXT is handled by FOR parser
+    // if we encounter it unexpectedly, this is where we get
+    {
+        throw new BasicError('Block error', 'unexpected `NEXT`', current_line);
+    },
+
 
     this.parseInput = function(expr_list, token, last)
     // parse INPUT
@@ -1122,8 +1130,7 @@ function Parser()
         'IF': this.parseIf,
         'INPUT': this.parseInput,
         'LET': this.parseLet,
-        // NEXT is handled by FOR parser
-        'NEXT': function() { throw new BasicError('Syntax error', '`NEXT` not allowed here', current_line)},
+        'NEXT': this.parseNext,
         'ON': this.parseOn,
         'PRINT': this.parsePrint,
         'READ': this.parseRead,
@@ -1135,7 +1142,6 @@ function Parser()
         'RUN': this.parseRun,
         'DEF': this.parseDefFn,
     }
-
 };
 
 
@@ -1317,15 +1323,19 @@ function Functions()
     this.clear();
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
-// variable retrieval
+///////////////////////////////////////////////////////////////////////////////
+// operations, statements, functions
+
+// we set `this` to the current program state upon calling these
+
 
 function opRetrieve(name)
 //  retrieve a variable from the Variables object in state
 {
-    var state = this;
     var indices = [].slice.call(arguments, 1);
-    var value = state.variables.retrieve(name, indices);
+    var value = this.variables.retrieve(name, indices);
     return value;
 }
 
@@ -1333,43 +1343,38 @@ function opRetrieve(name)
 ///////////////////////////////////////////////////////////////////////////////
 // statements
 
-// we set `this` to the current program state upon calling these
-
 
 function stLet(value, name)
 // LET
 {
-    var state = this;
     var indices = [].slice.call(arguments, 2);
-    state.variables.assign(value, name, indices);
+    this.variables.assign(value, name, indices);
 }
 
 function stDim(name)
 // DIM
 {
-    var state = this;
     var indices = [].slice.call(arguments, 1);
-    state.variables.allocate(name, indices);
+    this.variables.allocate(name, indices);
 }
 
 function stPrint()
 // PRINT
 {
-    var state = this;
     var values = [].slice.call(arguments);
     for (var i=0; i < values.length; ++i) {
         if (typeof values[i] === 'object') {
             // TAB object
-            state.output.setColumn(values[i].tab);
+            this.output.setColumn(values[i].tab);
         }
         else if (typeof values[i] === 'string') {
-            state.output.write(values[i]);
+            this.output.write(values[i]);
         }
         else if (values[i] < 0) {
-            state.output.write(values[i].toString(10) + ' ');
+            this.output.write(values[i].toString(10) + ' ');
         }
         else {
-            state.output.write(' ' + values[i].toString(10) + ' ');
+            this.output.write(' ' + values[i].toString(10) + ' ');
         }
     }
 }
@@ -1377,32 +1382,29 @@ function stPrint()
 function stRestore()
 // RESTORE
 {
-    var state = this;
-    state.data.restore();
+    this.data.restore();
 }
 
 function stRead(name)
 // READ
 {
-    var state = this;
     var indices = [].slice.call(arguments, 1);
-    var value = state.data.read()
-    state.variables.assign(value, name, indices);
+    var value = this.data.read()
+    this.variables.assign(value, name, indices);
 }
 
 function stInput(name)
 // INPUT
 {
-    var state = this;
     var indices = [].slice.call(arguments, 1);
-    var value = state.input.readLine();
+    var value = this.input.readLine();
     if (name.slice(-1) !== '$') {
         // convert string to number
         // note that this will currently simply return 0 if it can't convert
         // no 'Redo from start'
         value = new Lexer(value).readValue();
     }
-    state.variables.assign(value, name, indices);
+    this.variables.assign(value, name, indices);
 }
 
 
@@ -1410,101 +1412,90 @@ function stInput(name)
 // BASICODE subroutines and jumps
 
 function subClear()
-// clear variables, for GOTO 20
+// GOTO 20
+// clear variables
 {
-    var state = this;
-    state.clear();
-    state.variables.assign(state.output.width - 1, 'HO', []);
-    state.variables.assign(state.output.height - 1, 'VE', []);
+    this.clear();
+    this.variables.assign(this.output.width - 1, 'HO', []);
+    this.variables.assign(this.output.height - 1, 'VE', []);
 }
 
 function subClearScreen()
 // GOSUB 100, GOSUB 600
 // 600 Switch to graphic screen and clear graphic screen
 {
-    var state = this;
-    state.output.clear();
+    this.output.clear();
 }
 
 function subSetPos()
 // GOSUB 110
 {
-    var state = this;
-    state.output.setColumn(state.variables.retrieve('HO', []));
-    state.output.setRow(state.variables.retrieve('VE', []));
+    this.output.setColumn(this.variables.retrieve('HO', []));
+    this.output.setRow(this.variables.retrieve('VE', []));
 }
 
 function subGetPos()
 // GOSUB 120
 {
-    var state = this;
-    state.variables.assign(state.output.col, 'HO', []);
-    state.variables.assign(state.output.row, 'VE', []);
+    this.variables.assign(this.output.col, 'HO', []);
+    this.variables.assign(this.output.row, 'VE', []);
 }
 
 function subWriteBold()
 // GOSUB 150
 {
-    var state = this;
-    var text = '   ' + state.variables.retrieve('SR$', []) + '   ';
-    state.output.write(' ');
-    state.output.invertColour();
-    state.output.write(text);
-    state.output.invertColour();
-    state.output.write(' ');
+    var text = '   ' + this.variables.retrieve('SR$', []) + '   ';
+    this.output.write(' ');
+    this.output.invertColour();
+    this.output.write(text);
+    this.output.invertColour();
+    this.output.write(' ');
 }
 
 function subReadKey()
 // GOSUB 200, GOSUB 210 (after wait)
 {
-    var state = this;
-    var keyval = state.input.readKey();
+    var keyval = this.input.readKey();
     var key = '';
     if ((keyval >= 32 && keyval <= 126) || keyval === 13) {
         key = String.fromCharCode(keyval);
         keyval = key.toUpperCase().charCodeAt(0);
     }
-    state.variables.assign(keyval, 'IN', []);
-    state.variables.assign(key, 'IN$', []);
+    this.variables.assign(keyval, 'IN', []);
+    this.variables.assign(key, 'IN$', []);
 }
 
 function subSetTimer()
-//450 Wait SD*0.1 seconds or for a key stroke
-//    When ended: IN$ and IN contain the possible keystroke (see for special codes line 200).
-//    SD contains the remaining time from the moment the key was pressed or zero (if no key was pressed)
+// GOSUB 450 (with subReadKeyGetTimer)
 {
-    var state = this;
-    var deciseconds = state.variables.retrieve('SD', []);
-    state.timer.set(deciseconds * 100);
+    var deciseconds = this.variables.retrieve('SD', []);
+    this.timer.set(deciseconds * 100);
 }
 
 function subReadKeyGetTimer()
-// GOSUB 450 (with timer)
-//450 Wait SD*0.1 seconds or for a key stroke
-//    When ended: IN$ and IN contain the possible keystroke (see for special codes line 200).
-//    SD contains the remaining time from the moment the key was pressed or zero (if no key was pressed)
+// GOSUB 450 (with subSetTimer)
+// Wait SD*0.1 seconds or for a key stroke
+// When ended: IN$ and IN contain the possible keystroke (see for special codes line 200).
+// SD contains the remaining time from the moment the key was pressed or zero (if no key was pressed)
 {
-    var state = this;
     subReadKey.apply(this);
-    var milliseconds = state.timer.remaining();
-    state.variables.assign(milliseconds/100, 'SD', []);
+    var milliseconds = this.timer.remaining();
+    this.variables.assign(milliseconds/100, 'SD', []);
 }
 
 function subReadChar()
 // GOSUB 220
 {
-    var state = this;
-    var col = state.variables.retrieve('HO', []);
-    var row = state.variables.retrieve('VE', []);
-    var ch = state.output.getScreenChar(row, col);
-    state.variables.assign(ch.charCodeAt(0), 'IN', []);
+    var col = this.variables.retrieve('HO', []);
+    var row = this.variables.retrieve('VE', []);
+    var ch = this.output.getScreenChar(row, col);
+    this.variables.assign(ch.charCodeAt(0), 'IN', []);
 }
 
 function subBeep()
 // GOSUB 250
 {
-    var state = this;
-    state.speaker.sound(440, 0.1, 1);
+    this.speaker.sound(440, 0.1, 1);
 }
 
 function subTone()
@@ -1515,12 +1506,11 @@ function subTone()
 //    SV is the volume: 0=muted 7=medium, 15=loud
 //    This subroutine keeps running during the time of SD.
 {
-    var state = this;
-    var freq = state.variables.retrieve('SP', []);
-    var dur = state.variables.retrieve('SD', []);
-    var vol = state.variables.retrieve('SV', []);
+    var freq = this.variables.retrieve('SP', []);
+    var dur = this.variables.retrieve('SD', []);
+    var vol = this.variables.retrieve('SV', []);
     freq = (freq===0)?0: Math.exp(freq*0.057762 + 2.10125);
-    state.speaker.sound(freq, dur*0.1, vol/15.);
+    this.speaker.sound(freq, dur*0.1, vol/15.);
 }
 
 
@@ -1528,43 +1518,38 @@ function subTone()
 function subRandom()
 // GOSUB 260
 {
-    var state = this;
-    state.variables.assign(Math.random(), 'RV', []);
+    this.variables.assign(Math.random(), 'RV', []);
 }
 
 function subFree()
 // GOSUB 270
 {
-    var state = this;
     // theoretically, we should garbage-collect and return free memory
     // but let's just return some largeish (for BASICODE) number of bytes
-    state.variables.assign(65536, 'FR', []);
+    this.variables.assign(65536, 'FR', []);
 }
 
 function subToggleBreak()
 // GOSUB 280
 // 280 Disable the stop/break key (FR=1) or enable or (FR=0).
 {
-    var state = this;
-    state.input.suppress_break = true;
+    this.input.suppress_break = true;
 }
 
 function subNumberToString()
 // GOSUB 300
 {
-    var state = this;
-    var num = state.variables.retrieve('SR', []);
-    state.variables.assign(num.toString(10), 'SR$', []);
+    var num = this.variables.retrieve('SR', []);
+    this.variables.assign(num.toString(10), 'SR$', []);
 }
 
 function subNumberFormat()
 // GOSUB 310
 // 310 Convert number SR to string with a string length of CT and with CN places after decimal point; returned in SR$,
 {
-    var state = this;
-    var num = state.variables.retrieve('SR', []);
-    var len = state.variables.retrieve('CT', []);
-    var decimals = state.variables.retrieve('CN', []);
+    var num = this.variables.retrieve('SR', []);
+    var len = this.variables.retrieve('CT', []);
+    var decimals = this.variables.retrieve('CN', []);
     var str = num.toFixed(decimals);
     if (str.length > len) {
         // too long; replace with stars
@@ -1574,77 +1559,72 @@ function subNumberFormat()
         // left-pad with spaces
         str = ' '.repeat(len-str.length) + str;
     }
-    state.variables.assign(str, 'SR$', []);
+    this.variables.assign(str, 'SR$', []);
 }
 
 function subToUpperCase()
 // GOSUB 330
 // 330 Convert all letters in SR$ to capital letters
 {
-    var state = this;
-    var str = state.variables.retrieve('SR$', []);
-    state.variables.assign(str.toUpperCase(), 'SR$', []);
+    var str = this.variables.retrieve('SR$', []);
+    this.variables.assign(str.toUpperCase(), 'SR$', []);
 }
 
 function subLinePrint()
 // GOSUB 350
 // 350 Print SR$ on the printer.
 {
-    var state = this;
-    var text = state.variables.retrieve('SR$', []);
-    state.printer.write(text);
+    var text = this.variables.retrieve('SR$', []);
+    this.printer.write(text);
 }
 
 function subLineFeed()
 // GOSUB 360
 // 360 Carriage return and line feed on the printer.
 {
-    var state = this;
-    state.printer.write('\n');
+    this.printer.write('\n');
 }
 
+function subOpen()
+// GOSUB 500
 /*
-500 Open the file NF$ according to the code in NF:
+Open the file NF$ according to the code in NF:
 NF = even number: input: NF= uneven number: output
     NF= 0 or 1 BASICODE cassette
     NF= 2 or 3 own system memory
     NF= 4 or 5 diskette
     NF= 6 or 7 diskette
     IN=0: all OK, IN=1: end of file, IN=-1: error
-540 Read into IN$ from the opened file NF$ (in IN the status, see line 500)
-560 Send SR$ towards the opened file NF$ (in IN the status, see line 500)
-580 Close the file with code NF
 */
-
-function subOpen()
 {
-    var state = this;
-    var nf = state.variables.retrieve('NF', []);
-    var name = state.variables.retrieve('NF$', []);
+    var nf = this.variables.retrieve('NF', []);
+    var name = this.variables.retrieve('NF$', []);
     var mode = (nf%2) ? 'w' : 'r';
     var device = Math.floor(nf/2);
-    var status = state.storage[device].open(name, mode) ? 0 : -1;
-    state.variables.assign(status, 'IN', []);
+    var status = this.storage[device].open(name, mode) ? 0 : -1;
+    this.variables.assign(status, 'IN', []);
 }
 
 function subClose()
+// GOSUB 540
+// Read into IN$ from the opened file NF$ (in IN the status, see line 500)
 {
-    var state = this;
-    var nf = state.variables.retrieve('NF', []);
+    var nf = this.variables.retrieve('NF', []);
     var device = Math.floor(nf/2);
-    var status = state.storage[device].close() ? 0 : -1;
-    state.variables.assign(status, 'IN', []);
+    var status = this.storage[device].close() ? 0 : -1;
+    this.variables.assign(status, 'IN', []);
 }
 
 function subReadFile()
+// GOSUB 560
+// Send SR$ towards the opened file NF$ (in IN the status, see line 500)
 {
-    var state = this;
-    var nf = state.variables.retrieve('NF', []);
+    var nf = this.variables.retrieve('NF', []);
     var device = Math.floor(nf/2);
     var status = 0;
     var str = '';
     try {
-        str = state.storage[device].readLine();
+        str = this.storage[device].readLine();
         if (str === null) {
             status = 1;
             str = '';
@@ -1654,56 +1634,56 @@ function subReadFile()
         if (typeof e !== 'string') throw e;
         status = -1;
     }
-    state.variables.assign(status, 'IN', []);
-    state.variables.assign(str, 'IN$', []);
+    this.variables.assign(status, 'IN', []);
+    this.variables.assign(str, 'IN$', []);
 }
 
 function subWriteFile()
+// GOSUB 580
+// Close the file with code NF
 {
-    var state = this;
-    var nf = state.variables.retrieve('NF', []);
+    var nf = this.variables.retrieve('NF', []);
     var device = Math.floor(nf/2);
     var status = 0;
-    var str = state.variables.retrieve('SR$', []);
+    var str = this.variables.retrieve('SR$', []);
     try {
-        state.storage[device].writeLine(str);
+        this.storage[device].writeLine(str);
     }
     catch (e) {
         if (typeof e !== 'string') throw e;
         status = -1;
     }
-    state.variables.assign(status, 'IN', []);
+    this.variables.assign(status, 'IN', []);
 }
 
-
 function subPlot()
-// 620 Plot a point at graphic position HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
+// GOSUB 620
+// Plot a point at graphic position HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
 {
-    var state = this;
-    var x = state.variables.retrieve('HO', []);
-    var y = state.variables.retrieve('VE', []);
-    var c = state.variables.retrieve('CN', []);
-    state.output.plot(x, y, c);
+    var x = this.variables.retrieve('HO', []);
+    var y = this.variables.retrieve('VE', []);
+    var c = this.variables.retrieve('CN', []);
+    this.output.plot(x, y, c);
 }
 
 function subDraw()
-// 630 Draw a line towards point HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
+// GOSUB 630
+// Draw a line towards point HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
 {
-    var state = this;
-    var x = state.variables.retrieve('HO', []);
-    var y = state.variables.retrieve('VE', []);
-    var c = state.variables.retrieve('CN', []);
-    state.output.draw(x, y, c);
+    var x = this.variables.retrieve('HO', []);
+    var y = this.variables.retrieve('VE', []);
+    var c = this.variables.retrieve('CN', []);
+    this.output.draw(x, y, c);
 }
 
 function subText()
-//650 Print SR$ as text from graphic position HO,VE (0<=HO<1 en 0<=VE<1). HO and VE stay the same value.
+// GOSUB 650
+// Print SR$ as text from graphic position HO,VE (0<=HO<1 en 0<=VE<1). HO and VE stay the same value.
 {
-    var state = this;
-    var x = state.variables.retrieve('HO', []);
-    var y = state.variables.retrieve('VE', []);
-    var text = state.variables.retrieve('SR$', []);
-    state.output.drawText(x, y, text);
+    var x = this.variables.retrieve('HO', []);
+    var y = this.variables.retrieve('VE', []);
+    var text = this.variables.retrieve('SR$', []);
+    this.output.drawText(x, y, text);
 }
 
 
@@ -1712,7 +1692,7 @@ function subText()
 
 const BUSY_DELAY = 1;
 const IDLE_DELAY = 60;
-// minimum delay (delays are floored by the browser)
+// minimum delay (nested delays are 'clamped' by the browser)
 const MIN_DELAY = 4;
 
 function Interface(iface_element)
