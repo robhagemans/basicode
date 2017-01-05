@@ -2468,6 +2468,10 @@ else {
 
 // TODO:
 
+// split interface in keyboard, screen
+// clean up state/Program object
+// pre-calculate jump targets (second pass of parser?)
+
 // trace and watch
 
 // Basicode-3 uses INPUT "prompt"; A$; also multiple INPUT A,B,C in BOKA-EI
@@ -2478,22 +2482,16 @@ else {
 // NEXT from inside a branch (i.e. as a continue statement)
 // calculate loop bounds and step only once
 
-// - colour
 // - scrolling
 // - tape storage without file names
 // - DEF FN
 // - type checks A$=1
 
-// BC3C
-// colours
-// return CN in GOSUB 200
+// BC3C: colour, return CN in GOSUB 200
 
 // controls: repeat/play/pause, load, print buttons
 // perhaps hidden elements (made visible by tabs?) for printer output, storage drives, (+debug: trace, variables, data, program text, ...)
 // scrollable info page; center info page on longest line of description
 
-// split interface in keyboard, screen
-// clean up state/Program object
-// - pre-calculate jump targets (second pass of parser?)
 
 // re-extract the BC3 tape without PC-BASIC mods
