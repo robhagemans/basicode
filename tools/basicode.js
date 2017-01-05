@@ -84,55 +84,51 @@ function newOperatorToken(keyword, narity, precedence, operation) {
 
 const SYMBOLS = {
     '^': newOperatorToken('^', 2, 12, Math.pow),
-    '*': newOperatorToken('*', 2, 11, function opMultiply(x, y) { return x * y; }),
-    '/': newOperatorToken('/', 2, 11, function opDivide(x, y) { return x / y; }),
-    // + adds numbers or concatenates strings
+    '*': newOperatorToken('*', 2, 11, opMultiply),
+    '/': newOperatorToken('/', 2, 11, opDivide),
     // does BASICODE accept unary + ?
-    '+': newOperatorToken('+', 2, 8, function opPlus(x, y) { return x + y; }),
-    // - can be unary negation or binary subtraction
-    '-': newOperatorToken('-', null, 8, function opMinus(x, y) { if (y === undefined) return -x; else return x - y; }),
-    '=': newOperatorToken('=', 2, 7, function opEqual(x, y) { return -(x === y); }),
-    '>': newOperatorToken('>', 2, 7, function opGreaterThan(x, y) { return -(x > y); }),
-    '>=': newOperatorToken('>=', 2, 7, function opGreaterThanOrEqual(x, y) { return -(x >= y); }),
-    '<': newOperatorToken('<', 2, 7, function opLessThan(x, y) { return -(x < y); }),
-    '<=': newOperatorToken('<=', 2, 7, function opLessThanOrEqual(x, y) { return -(x <= y); }),
-    '<>': newOperatorToken('<>', 2, 7, function opNotEqual(x, y) { return -(x !== y); }),
+    '+': newOperatorToken('+', 2, 8, opPlus),
+    '-': newOperatorToken('-', null, 8, opMinus),
+    '=': newOperatorToken('=', 2, 7, opEqual),
+    '>': newOperatorToken('>', 2, 7, opGreaterThan),
+    '>=': newOperatorToken('>=', 2, 7, opGreaterThanOrEqual),
+    '<': newOperatorToken('<', 2, 7, opLessThan),
+    '<=': newOperatorToken('<=', 2, 7, opLessThanOrEqual),
+    '<>': newOperatorToken('<>', 2, 7, opNotEqual),
 }
 
 const KEYWORDS = {
     'ABS': newFunctionToken('ABS', Math.abs),
-    'AND': newOperatorToken('AND', 2, 5, function opAnd(x, y) { return (x & y); }),
-    'ASC': newFunctionToken('ASC', function fnAsc(x) { return x.charCodeAt(0); } ),
+    'AND': newOperatorToken('AND', 2, 5, opAnd),
+    'ASC': newFunctionToken('ASC', fnAsc),
     'ATN': newFunctionToken('ATN', Math.atan),
     'CHR$': newFunctionToken('CHR$', String.fromCharCode),
     'COS': newFunctionToken('COS', Math.cos),
-    'DATA': newStatementToken('DATA', function(){}),
-    'DEF': newStatementToken('DEF', function(){}),
     'DIM': newStatementToken('DIM', stDim),
     'EXP': newFunctionToken('EXP', Math.exp),
     'INPUT': newStatementToken('INPUT', stInput),
     'INT': newFunctionToken('INT', Math.trunc),
-    'LEFT$': newFunctionToken('LEFT$', function fnLeft(x, n) { return x.slice(0, n); }),
-    'LEN': newFunctionToken('LEN', function fnLen(x, n) { return x.length; }),
+    'LEFT$': newFunctionToken('LEFT$', fnLeft),
+    'LEN': newFunctionToken('LEN', fnLen),
     'LET': newStatementToken('LET', stLet),
     'LOG': newFunctionToken('LOG', Math.log),
-    'MID$': newFunctionToken('MID$', function fnMid(x, start, n) { return x.slice(start-1, start+n-1); }),
-    'NOT': newOperatorToken('NOT', 1, 6, function opNot(x) { return (~x); }),
-    'OR': newOperatorToken('OR', 2, 4, function opOr(x, y) { return (x | y); }),
+    'MID$': newFunctionToken('MID$', fnMid),
+    'NOT': newOperatorToken('NOT', 1, 6, opNot),
+    'OR': newOperatorToken('OR', 2, 4, opOr),
     'PRINT': newStatementToken('PRINT', stPrint),
     'READ': newStatementToken('READ', stRead),
-    'REM': newStatementToken('REM', function(){}),
     'RESTORE': newStatementToken('RESTORE', stRestore),
-    'RIGHT$': newFunctionToken('RIGHT$', function fnRight(x, n) { return x.slice(-n); }),
+    'RIGHT$': newFunctionToken('RIGHT$', fnRight),
     'SGN': newFunctionToken('SGN', Math.sign),
     'SIN': newFunctionToken('SIN', Math.sin),
     'SQR': newFunctionToken('SQR', Math.sqrt),
-    // TAB only has an effect at the top level in a PRINT statement
-    // TODO: ensure we throw an error if called elsewhere -- string/number type checks would do the trick
-    // or move TAB parsing to print parser (less hacky)
     'TAB': newFunctionToken('TAB', fnTab),
     'TAN': newFunctionToken('TAN', Math.tan),
-    'VAL': newFunctionToken('VAL', function fnVal(x) { return new Lexer(x).readValue(); }),
+    'VAL': newFunctionToken('VAL', fnVal),
+    // declarations with no runtime effect
+    'DATA': newStatementToken('DATA', null),
+    'DEF': newStatementToken('DEF', null),
+    'REM': newStatementToken('REM', null),
     // Flow statements are handled by a special node, not a statement operation
     'FOR': newStatementToken('FOR', null),
     'GOSUB': newStatementToken('GOSUB', null),
@@ -1330,6 +1326,74 @@ function Functions()
 
 // we set `this` to the current program state upon calling these
 
+function noop() {};
+
+function opMultiply(x, y)
+{
+    return x * y;
+}
+
+function opDivide(x, y)
+{
+    return x / y;
+}
+
+function opPlus(x, y)
+// + adds numbers or concatenates strings
+{
+    return x + y;
+}
+
+function opMinus(x, y)
+// - can be unary negation or binary subtraction
+{
+    if (y === undefined) return -x; else return x - y;
+}
+
+function opEqual(x, y)
+{
+    return -(x === y);
+}
+
+function opGreaterThan(x, y)
+{
+    return -(x > y);
+}
+
+function opGreaterThanOrEqual(x, y)
+{
+    return -(x >= y);
+}
+
+function opLessThan(x, y)
+{
+    return -(x < y);
+}
+
+function opLessThanOrEqual(x, y)
+{
+    return -(x <= y);
+}
+
+function opNotEqual(x, y)
+{
+    return -(x !== y);
+}
+
+function opAnd(x, y)
+{
+    return (x & y);
+}
+
+function opNot(x)
+{
+    return (~x);
+}
+
+function opOr(x, y)
+{
+    return (x | y);
+}
 
 function opRetrieve(name)
 //  retrieve a variable from the Variables object in state
@@ -1346,6 +1410,36 @@ function fnTab(x)
 {
     this.output.setColumn(x);
     return '';
+}
+
+function fnAsc(x)
+{
+    return x.charCodeAt(0);
+}
+
+function fnMid(x, start, n)
+{
+    return x.slice(start-1, start+n-1);
+}
+
+function fnLeft(x, n)
+{
+    return x.slice(0, n);
+}
+
+function fnRight(x, n)
+{
+    return x.slice(-n);
+}
+
+function fnLen(x, n)
+{
+    return x.length;
+}
+
+function fnVal(x)
+{
+    return new Lexer(x).readValue();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
