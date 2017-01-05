@@ -130,9 +130,9 @@ const KEYWORDS = {
     // TAB only has an effect at the top level in a PRINT statement
     // TODO: ensure we throw an error if called elsewhere -- string/number type checks would do the trick
     // or move TAB parsing to print parser (less hacky)
-    'TAB': newFunctionToken('TAB', function(x) { return { 'tab': x }; }),
+    'TAB': newFunctionToken('TAB', fnTab),
     'TAN': newFunctionToken('TAN', Math.tan),
-    'VAL': newFunctionToken('VAL', function(x) { return new Lexer(x).readValue(); }),
+    'VAL': newFunctionToken('VAL', function fnVal(x) { return new Lexer(x).readValue(); }),
     // Flow statements are handled by a special node, not a statement operation
     'FOR': newStatementToken('FOR', null),
     'GOSUB': newStatementToken('GOSUB', null),
@@ -734,12 +734,12 @@ function Parser()
     this.parsePrint = function(expr_list, token, last_node)
     // parse PRINT statement
     {
-        var exprs = [];
         var last = null;
         while (expr_list.length > 0) {
             var expr = this.parseExpression(expr_list);
             if (expr !== null) {
-                exprs.push(expr);
+                last_node.next = new Node(stPrint, [expr], state);
+                last_node = last_node.next;
                 last = expr;
             }
             if (!expr_list.length) break;
@@ -748,10 +748,10 @@ function Parser()
             expr_list.shift();
         }
         if (last !== ';') {
-            exprs.push(new Node(function(){ return '\n'; }, [], state));
+            last_node.next = new Node(stPrint, [new Literal('\n')], state);
+            last_node = last_node.next;
         }
-        last_node.next = new Node(token.operation, exprs, state);
-        return last_node.next;
+        return last_node;
     }
 
     this.parseData = function(expr_list, token, last)
@@ -1339,6 +1339,14 @@ function opRetrieve(name)
     return value;
 }
 
+function fnTab(x)
+// set column to a given position during PRINT
+// outside of PRINT, this is not allowed
+// but we're not throwing any errors
+{
+    this.output.setColumn(x);
+    return '';
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // statements
@@ -1358,24 +1366,17 @@ function stDim(name)
     this.variables.allocate(name, indices);
 }
 
-function stPrint()
-// PRINT
+function stPrint(value)
+// PRINT value;
 {
-    var values = [].slice.call(arguments);
-    for (var i=0; i < values.length; ++i) {
-        if (typeof values[i] === 'object') {
-            // TAB object
-            this.output.setColumn(values[i].tab);
-        }
-        else if (typeof values[i] === 'string') {
-            this.output.write(values[i]);
-        }
-        else if (values[i] < 0) {
-            this.output.write(values[i].toString(10) + ' ');
-        }
-        else {
-            this.output.write(' ' + values[i].toString(10) + ' ');
-        }
+    if (typeof value === 'string') {
+        this.output.write(value);
+    }
+    else if (value < 0) {
+        this.output.write(value.toString(10) + ' ');
+    }
+    else {
+        this.output.write(' ' + value.toString(10) + ' ');
     }
 }
 
@@ -2460,7 +2461,8 @@ else {
 // TODO:
 
 // split interface in keyboard, screen
-// clean up state/Program object
+// group functions/statements/operations
+// Lexer, Parser can be simple functions; e.g. becomes this.tree = parse(tokenise(code)) in Program constructor
 // pre-calculate jump targets (second pass of parser?)
 // Next node
 
@@ -2473,13 +2475,12 @@ else {
 // auto-DIM small arrays
 // NEXT from inside a branch (i.e. as a continue statement)
 // calculate loop bounds and step only once
+// DEF FN
+// BC3C: colour, return CN in GOSUB 200
 
 // - scrolling
 // - tape storage without file names
-// - DEF FN
 // - type checks A$=1
-
-// BC3C: colour, return CN in GOSUB 200
 
 // controls: repeat/play/pause, load, print buttons
 // perhaps hidden elements (made visible by tabs?) for printer output, storage drives, (+debug: trace, variables, data, program text, ...)
