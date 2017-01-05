@@ -194,15 +194,6 @@ function Lexer(expr_string)
         return expr_string.slice(start_pos, pos+1);
     }
 
-    function readInteger()
-    // read an unsigned integer literal (i.e. a string of numbers)
-    {
-        var start_pos = pos;
-        for (; pos < expr_string.length-1; ++pos){
-            if (!isNumberChar(expr_string[pos+1])) break;
-        }
-        return expr_string.slice(start_pos, pos+1);
-    }
 
     function readName()
     // read a name (variable or keyword)
@@ -221,6 +212,16 @@ function Lexer(expr_string)
             if (!isAlphaChar(expr_string[pos+1]) && !isNumberChar(expr_string[pos+1])) break;
         }
         return expr_string.slice(start_pos, pos+1).toUpperCase();
+    }
+
+    function readInteger()
+    // read an unsigned integer literal (i.e. a string of numbers)
+    {
+        var start_pos = pos;
+        for (; pos < expr_string.length-1; ++pos){
+            if (!isNumberChar(expr_string[pos+1])) break;
+        }
+        return expr_string.slice(start_pos, pos+1);
     }
 
     this.readValue = function()
@@ -328,17 +329,9 @@ function Lexer(expr_string)
 }
 
 
-function tokenise(expr_string)
-// convenience function
-{
-    return new Lexer(expr_string).tokenise()
-}
-
-
 
 ///////////////////////////////////////////////////////////////////////////////
 // AST
-
 
 
 function Literal(value)
@@ -349,16 +342,13 @@ function Literal(value)
     this.evaluate = function() { return this.value; }
 }
 
-
-
-
-function Node(func, node_args, state)
+function Node(func, node_args, program)
 // used as expression or statement node
 {
     this.func = func;
     this.args = node_args;
     this.next = null;
-    this.state = state;
+    this.program = program;
 
     // traverse AST to evaluate this node and all its subnodes
     this.evaluate = function()
@@ -366,7 +356,7 @@ function Node(func, node_args, state)
         // evaluate all arguments
         var args = this.args.map(function (x) { return x.evaluate(); });
         // call the function with the array supplied as arguments
-        return this.func.apply(this.state, args);
+        return this.func.apply(this.program, args);
     };
 
     this.step = function()
@@ -376,9 +366,7 @@ function Node(func, node_args, state)
     }
 }
 
-
 // flow nodes
-
 
 function Label(label)
 // label node: no-op but can be a jump target
@@ -390,20 +378,19 @@ function Label(label)
     }
 }
 
-
 function End()
 {
     this.next = null;
     this.step = function() { return null; }
 }
 
-function Run(state)
+function Run(program)
 {
     this.next = null;
 
     this.step = function() {
-        subClear(state);
-        return state.tree;
+        subClear(program);
+        return program.tree;
     }
 }
 
@@ -419,7 +406,6 @@ function Conditional(condition)
         return this.next;
     }
 }
-
 
 function Switch(condition, branches)
 // ON node
@@ -443,28 +429,27 @@ function Switch(condition, branches)
     }
 }
 
-
-function Jump(target, state, is_sub)
+function Jump(target, program, is_sub)
 {
     this.target = target;
     this.next = null;
 
     this.step = function()
     {
-        if (!(target in state.line_numbers)) {
+        if (!(target in program.line_numbers)) {
             throw new error('Undefined line number in `GOTO ' + target + '`');
         }
-        if (is_sub) state.sub_stack.push(this.next);
-        return state.line_numbers[target];
+        if (is_sub) program.sub_stack.push(this.next);
+        return program.line_numbers[target];
     }
 }
 
-function Return(state)
+function Return(program)
 // RETURN node
 {
     this.step = function()
     {
-        return state.sub_stack.pop();
+        return program.sub_stack.pop();
     }
 }
 
@@ -525,10 +510,10 @@ function Program()
 //////////////////////////////////////////////////////////////////////
 // parser
 
-function Parser()
+function Parser(expr_list)
 {
     // resulting program object
-    var state = new Program();
+    var program = new Program();
 
     // current line being parsed
     var current_line = 999;
@@ -548,12 +533,12 @@ function Parser()
             for (var i=0; i < args.length; ++i) {
                 units.pop();
             }
-            units.push(new Node(token.operation, args, state));
+            units.push(new Node(token.operation, args, program));
         }
         return units;
     };
 
-    this.parseExpression = function(expr_list)
+    this.parseExpression = function()
     // parse expression from a list of tokens to an AST
     // variation of Dijkstra's shunting-yard algorithm, following PC-BASIC
     {
@@ -573,7 +558,7 @@ function Parser()
                     narity = 1;
                 }
                 if (token.narity !== null && token.narity !== narity) {
-                    throw new BasicError('Syntax error', 'unexpected operator type', state.current_line);
+                    throw new BasicError('Syntax error', 'unexpected operator type', program.current_line);
                 }
                 if (narity === 2) {
                     // drain stack until precedence is matched
@@ -586,12 +571,12 @@ function Parser()
             else if (last === null || last.token_type === 'operator') {
                 switch (token.token_type) {
                     case 'function':
-                        var args = this.parseArguments(expr_list);
-                        units.push(new Node(token.operation, args, state));
+                        var args = this.parseArguments();
+                        units.push(new Node(token.operation, args, program));
                         break;
                     case '(':
                         // recursive call, gets a Node object containing AST
-                        units.push(this.parseExpression(expr_list));
+                        units.push(this.parseExpression());
                         var bracket = expr_list.shift(token);
                         if (bracket.token_type !== ')') {
                             throw new BasicError('Syntax error', 'expected `)`, got `' + bracket.payload + '`', current_line);
@@ -601,8 +586,8 @@ function Parser()
                         units.push(new Literal(token.payload));
                         break;
                     case 'name':
-                        var indices = this.parseArguments(expr_list);
-                        units.push(new Node(opRetrieve, [new Literal(token.payload)].concat(indices), state));
+                        var indices = this.parseArguments();
+                        units.push(new Node(opRetrieve, [new Literal(token.payload)].concat(indices), program));
                         break;
                     default:
                         expr_list.unshift(token);
@@ -623,13 +608,13 @@ function Parser()
         return null;
     };
 
-    this.parseArguments = function(expr_list)
+    this.parseArguments = function()
     {
         var args = [];
         if (expr_list.length > 0 && expr_list[0].token_type === '(') {
             expr_list.shift();
             while (expr_list.length > 0) {
-                args.push(this.parseExpression(expr_list));
+                args.push(this.parseExpression());
                 var token = expr_list.shift();
                 if (token.token_type === ')') break;
                 if (token.token_type !== ',') {
@@ -643,13 +628,13 @@ function Parser()
         return args;
     }
 
-    this.parseLineNumber = function(basicode, last)
+    this.parseLineNumber = function(last)
     {
-        if (!basicode.length) return null;
-        var token = basicode.shift();
-        while (basicode.length) {
+        if (!expr_list.length) return null;
+        var token = expr_list.shift();
+        while (expr_list.length) {
             // ignore empty lines
-            while (token.token_type === '\n') token = basicode.shift();
+            while (token.token_type === '\n') token = expr_list.shift();
             // we do need a line number at the start
             if (token.token_type != 'literal') {
                 throw new BasicError('Syntax error', 'expected line number, got `'+token.payload+'`', current_line);
@@ -657,19 +642,19 @@ function Parser()
             var line_number = token.payload;
             // ignore lines < 1000
             if (line_number >= 1000) break;
-            while (token.token_type !== '\n') token = basicode.shift();
+            while (token.token_type !== '\n') token = expr_list.shift();
         }
         if (line_number <= current_line) {
             throw new BasicError('Syntax error', 'expected line number > `' + current_line+'`, got `'+ line_number + '`', current_line);
         }
         current_line = line_number;
         var label = new Label(line_number);
-        state.line_numbers[line_number] = label;
+        program.line_numbers[line_number] = label;
         last.next = label;
         return label;
     }
 
-    this.parse = function(expr_list, last, end_token)
+    this.parse = function(last, end_token)
     {
         while (expr_list.length) {
             // parse separator
@@ -677,7 +662,7 @@ function Parser()
             var sep = expr_list.shift();
             if (sep.token_type === '\n') {
                 // parseLineNumber deals with multiple LFs
-                last.next = this.parseLineNumber(expr_list, last);
+                last.next = this.parseLineNumber(last);
                 last = last.next;
             }
             else if (sep.token_type !== ':') {
@@ -696,45 +681,38 @@ function Parser()
             }
             // parse arguments in statement-specific way
             // statement parsers must take care of maintaining the linked list
-            last = PARSERS[token.payload].call(this, expr_list, token, last)
+            last = PARSERS[token.payload].call(this, token, last)
         }
         return last;
-    }
-
-    this.parseProgram = function(basicode)
-    // parse a BASICODE program
-    {
-        this.parse(basicode, state.tree);
-        return state;
     }
 
     ///////////////////////////////////////////////////////////////////////////
     // statement syntax
 
-    this.parseLet = function(expr_list, token, last)
+    this.parseLet = function(token, last)
     // parse LET statement
     {
         var name = expr_list.shift();
         if (name.token_type != 'name') {
             throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
         }
-        var indices = this.parseArguments(expr_list);
+        var indices = this.parseArguments();
         var equals = expr_list.shift().payload;
         if (equals !== '=') throw new BasicError('Syntax error', 'expected `=`, got `'+equals+'`', current_line);
-        var value = this.parseExpression(expr_list);
-        // statement must have access to interpreter state, so state is first argument
-        last.next = new Node(token.operation, [value, new Literal(name.payload)].concat(indices), state);
+        var value = this.parseExpression();
+        // statement must have access to interpreter state, so program is first argument
+        last.next = new Node(token.operation, [value, new Literal(name.payload)].concat(indices), program);
         return last.next;
     }
 
-    this.parsePrint = function(expr_list, token, last_node)
+    this.parsePrint = function(token, last_node)
     // parse PRINT statement
     {
         var last = null;
         while (expr_list.length > 0) {
-            var expr = this.parseExpression(expr_list);
+            var expr = this.parseExpression();
             if (expr !== null) {
-                last_node.next = new Node(stPrint, [expr], state);
+                last_node.next = new Node(stPrint, [expr], program);
                 last_node = last_node.next;
                 last = expr;
             }
@@ -744,13 +722,13 @@ function Parser()
             expr_list.shift();
         }
         if (last !== ';') {
-            last_node.next = new Node(stPrint, [new Literal('\n')], state);
+            last_node.next = new Node(stPrint, [new Literal('\n')], program);
             last_node = last_node.next;
         }
         return last_node;
     }
 
-    this.parseData = function(expr_list, token, last)
+    this.parseData = function(token, last)
     // parse DATA statement
     {
         var values = []
@@ -774,11 +752,11 @@ function Parser()
             expr_list.shift();
         }
         // data is stored immediately upon parsing, DATA is then a no-op statement
-        state.data.store(values);
+        program.data.store(values);
         return last;
     }
 
-    this.parseRead = function(expr_list, token, last)
+    this.parseRead = function(token, last)
     // parse READ or DIM statement
     {
         var pt = last;
@@ -787,9 +765,9 @@ function Parser()
             if (name.token_type != 'name') {
                 throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
             }
-            var indices = this.parseArguments(expr_list);
+            var indices = this.parseArguments();
 
-            last.next = new Node(token.operation, [new Literal(name.payload)].concat(indices), state);
+            last.next = new Node(token.operation, [new Literal(name.payload)].concat(indices), program);
             last = last.next;
 
             if (!expr_list.length) break;
@@ -799,7 +777,7 @@ function Parser()
         return last;
     }
 
-    this.parseRem = function(expr_list, token, last)
+    this.parseRem = function(token, last)
     // parse REM
     {
         var rem = expr_list.shift();
@@ -809,15 +787,15 @@ function Parser()
         // BASICODE standard: title in REM on line 1000
         // description and copyrights in REMS on lines 30000 onwards
         if (current_line === 1000) {
-            state.title = rem.payload;
+            program.title = rem.payload;
         }
         else if (current_line >= 30000) {
-            state.description += rem.payload + '\n';
+            program.description += rem.payload + '\n';
         }
         return last;
     }
 
-    this.parseGoto = function(expr_list, token, last)
+    this.parseGoto = function(token, last)
     // parse GOTO
     {
         var line_number = expr_list.shift();
@@ -826,8 +804,8 @@ function Parser()
         }
         // GOTO 20 is a BASICODE fixture, clear and jump to 1010
         if (line_number.payload === 20) {
-            last.next = new Node(subClear, [], state);
-            last.next.next = new Jump(1010, state, false)
+            last.next = new Node(subClear, [], program);
+            last.next.next = new Jump(1010, program, false)
             return last.next.next;
         }
         // GOTO 950 means END
@@ -836,13 +814,13 @@ function Parser()
             throw new BasicError('Unimplemented BASICODE', '`GOTO '+line_number.payload+'` not implemented', current_line);
         }
         // other line numbers are resolved at run time
-        last.next = new Jump(line_number.payload, state, false);
+        last.next = new Jump(line_number.payload, program, false);
         // put a short delay on jumps to avoid overloading the browser on loops
         last.delay = BUSY_DELAY;
         return last.next;
     }
 
-    this.parseGosub = function(expr_list, token, last)
+    this.parseGosub = function(token, last)
     // parse GOSUB
     {
         var line_number = expr_list.shift();
@@ -856,56 +834,56 @@ function Parser()
         else if (line_number.payload < 1000) {
             throw new BasicError('Unimplemented BASICODE', '`GOSUB '+line_number.payload+'` not implemented', current_line);
         }
-        last.next = new Jump(line_number.payload, state, true);
+        last.next = new Jump(line_number.payload, program, true);
         return last.next;
     }
 
     const SUBS = {
-        100: function(last) {last.next = new Node(subClearScreen, [], state); return last.next; },
-        110: function(last) {last.next = new Node(subSetPos, [], state); return last.next; },
-        120: function(last) {last.next = new Node(subGetPos, [], state); return last.next; },
-        150: function(last) {last.next = new Node(subWriteBold, [], state); return last.next; },
-        200: function(last) {last.next = new Node(subReadKey, [], state); return last.next; },
+        100: function(last) {last.next = new Node(subClearScreen, [], program); return last.next; },
+        110: function(last) {last.next = new Node(subSetPos, [], program); return last.next; },
+        120: function(last) {last.next = new Node(subGetPos, [], program); return last.next; },
+        150: function(last) {last.next = new Node(subWriteBold, [], program); return last.next; },
+        200: function(last) {last.next = new Node(subReadKey, [], program); return last.next; },
         210: function(last) {
-            last.next = new Wait(function waitForKey() { return state.input.keyPressed(); });
-            last.next.next = new Node(subReadKey, [], state);
+            last.next = new Wait(function waitForKey() { return program.input.keyPressed(); });
+            last.next.next = new Node(subReadKey, [], program);
             return last.next.next;
         },
-        220: function(last) {last.next = new Node(subReadChar, [], state); return last.next; },
-        250: function(last) {last.next = new Node(subBeep, [], state); return last.next; },
-        260: function(last) {last.next = new Node(subRandom, [], state); return last.next; },
-        270: function(last) {last.next = new Node(subFree, [], state); return last.next; },
-        280: function(last) {last.next = new Node(subToggleBreak, [], state); return last.next; },
-        300: function(last) {last.next = new Node(subNumberToString, [], state); return last.next; },
-        310: function(last) {last.next = new Node(subNumberFormat, [], state); return last.next; },
-        330: function(last) {last.next = new Node(subToUpperCase, [], state); return last.next; },
-        350: function(last) {last.next = new Node(subLinePrint, [], state); return last.next; },
-        360: function(last) {last.next = new Node(subLineFeed, [], state); return last.next; },
+        220: function(last) {last.next = new Node(subReadChar, [], program); return last.next; },
+        250: function(last) {last.next = new Node(subBeep, [], program); return last.next; },
+        260: function(last) {last.next = new Node(subRandom, [], program); return last.next; },
+        270: function(last) {last.next = new Node(subFree, [], program); return last.next; },
+        280: function(last) {last.next = new Node(subToggleBreak, [], program); return last.next; },
+        300: function(last) {last.next = new Node(subNumberToString, [], program); return last.next; },
+        310: function(last) {last.next = new Node(subNumberFormat, [], program); return last.next; },
+        330: function(last) {last.next = new Node(subToUpperCase, [], program); return last.next; },
+        350: function(last) {last.next = new Node(subLinePrint, [], program); return last.next; },
+        360: function(last) {last.next = new Node(subLineFeed, [], program); return last.next; },
         400: function(last) {
-            last.next = new Node(subTone, [], state);
-            last.next.next = new Wait(function waitForTone() { return !state.speaker.isBusy(); });
+            last.next = new Node(subTone, [], program);
+            last.next.next = new Wait(function waitForTone() { return !program.speaker.isBusy(); });
             return last.next.next;
         },
         450: function(last) {
-            last.next = new Node(subSetTimer, [], state);
-            last.next.next = new Wait(function waitForKeyWithTimeout() { return (state.input.keyPressed() || state.timer.elapsed()); });
-            last.next.next.next = new Node(subReadKeyGetTimer, [], state);
+            last.next = new Node(subSetTimer, [], program);
+            last.next.next = new Wait(function waitForKeyWithTimeout() { return (program.input.keyPressed() || program.timer.elapsed()); });
+            last.next.next.next = new Node(subReadKeyGetTimer, [], program);
             return last.next.next.next;
         },
-        500: function(last) {last.next = new Node(subOpen, [], state); return last.next; },
-        540: function(last) {last.next = new Node(subReadFile, [], state); return last.next; },
-        560: function(last) {last.next = new Node(subWriteFile, [], state); return last.next; },
-        580: function(last) {last.next = new Node(subClose, [], state); return last.next; },
-        600: function(last) {last.next = new Node(subClearScreen, [], state); return last.next; },
-        620: function(last) {last.next = new Node(subPlot, [], state); return last.next; },
-        630: function(last) {last.next = new Node(subDraw, [], state); return last.next; },
-        650: function(last) {last.next = new Node(subText, [], state); return last.next; },
+        500: function(last) {last.next = new Node(subOpen, [], program); return last.next; },
+        540: function(last) {last.next = new Node(subReadFile, [], program); return last.next; },
+        560: function(last) {last.next = new Node(subWriteFile, [], program); return last.next; },
+        580: function(last) {last.next = new Node(subClose, [], program); return last.next; },
+        600: function(last) {last.next = new Node(subClearScreen, [], program); return last.next; },
+        620: function(last) {last.next = new Node(subPlot, [], program); return last.next; },
+        630: function(last) {last.next = new Node(subDraw, [], program); return last.next; },
+        650: function(last) {last.next = new Node(subText, [], program); return last.next; },
     }
 
-    this.parseIf = function(expr_list, token, last)
+    this.parseIf = function(token, last)
     // parse IF
     {
-        var condition = this.parseExpression(expr_list);
+        var condition = this.parseExpression();
         var node = new Conditional(condition);
         last.next = node;
         var then = expr_list.shift()
@@ -920,7 +898,7 @@ function Parser()
         node.branch = new Label('THEN');
         node.next = new Label('FI');
         expr_list.unshift(new SeparatorToken(':'));
-        var end_branch = this.parse(expr_list, node.branch, '\n');
+        var end_branch = this.parse(node.branch, '\n');
         end_branch.next = node.next;
         // give back the separator so the next line parses correctly
         expr_list.unshift(new SeparatorToken('\n'));
@@ -928,10 +906,10 @@ function Parser()
         return node.next;
     }
 
-    this.parseOn = function(expr_list, token, last)
+    this.parseOn = function(token, last)
     // parse ON jumps
     {
-        var condition = this.parseExpression(expr_list);
+        var condition = this.parseExpression();
         var jump = expr_list.shift();
         if (jump.token_type !== 'statement' || (jump.payload !== 'GOTO' && jump.payload !== 'GOSUB')) {
             throw new BasicError('Syntax error', 'expected `GOTO` or `GOSUB`, got `'+jump.payload+'`', current_line);
@@ -945,7 +923,7 @@ function Parser()
             if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
                 throw new BasicError('Syntax error', 'expected line number, got `'+line_number.payload+'`', current_line);
             }
-            var node = new Jump(line_number.payload, state, is_sub);
+            var node = new Jump(line_number.payload, program, is_sub);
             node.next = label;
             nodes.push(node);
             var sep = expr_list.shift();
@@ -959,7 +937,7 @@ function Parser()
         return label;
     }
 
-    this.parseFor = function(expr_list, token, last)
+    this.parseFor = function(token, last)
     // parse FOR
     {
         var loop_variable = expr_list.shift();
@@ -971,28 +949,28 @@ function Parser()
         if (equals.token_type !== 'operator' || equals.payload !== '=') {
             throw new BasicError('Syntax error', 'expected `=`, got `'+equals.payload+'`', current_line);
         }
-        var start = this.parseExpression(expr_list);
+        var start = this.parseExpression();
         var to = expr_list.shift();
         if (to.token_type !== 'statement' || to.payload !== 'TO') {
             throw new BasicError('Syntax error', 'expected `TO`, got `'+to.payload+'`', current_line);
         }
-        var stop = this.parseExpression(expr_list);
+        var stop = this.parseExpression();
         var step = expr_list.shift();
         if (step.token_type !== 'statement' || step.payload !== 'STEP') {
             expr_list.unshift(step);
             step = new Literal(1);
         }
         else {
-            step = this.parseExpression(expr_list);
+            step = this.parseExpression();
         }
         // loop init
-        last.next = new Node(stLet, [start, new Literal(loop_variable)], state);
+        last.next = new Node(stLet, [start, new Literal(loop_variable)], program);
         last = last.next;
         var for_node = new Label('FOR '+loop_variable);
         last.next = for_node;
         last = last.next;
         // parse body of FOR loop until NEXT is encountered
-        last = this.parse(expr_list, last, 'NEXT');
+        last = this.parse(last, 'NEXT');
         // parse NEXT
         token = expr_list.shift();
         if (token === undefined || token === null || token.payload !== 'NEXT') {
@@ -1015,18 +993,18 @@ function Parser()
         // create the iteration node
         // iterate if (i*step) < (stop*step) to deal with negative steps
         var cond = new Conditional(new Node(function(x, y, z) { return z*(x+z) <= z*y; }, [
-                                    new Node(opRetrieve, [new Literal(loop_variable)], state),
+                                    new Node(opRetrieve, [new Literal(loop_variable)], program),
                                     stop, step,
-                                ], state));
+                                ], program));
         last.next = cond;
         // increment node
         var incr = new Node(stLet, [
                                 new Node(function(x, y) { return x+y; }, [
-                                        new Node(opRetrieve, [new Literal(loop_variable)], state),
+                                        new Node(opRetrieve, [new Literal(loop_variable)], program),
                                         step
-                                    ], state),
+                                    ], program),
                                 new Literal(loop_variable),
-                            ], state);
+                            ], program);
         // put a short delay on iterations to avoid overloading the browser
         incr.delay = BUSY_DELAY;
         incr.next = for_node;
@@ -1042,24 +1020,24 @@ function Parser()
     },
 
 
-    this.parseInput = function(expr_list, token, last)
+    this.parseInput = function(token, last)
     // parse INPUT
     {
         var name = expr_list.shift();
         if (name.token_type != 'name') {
             throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
         }
-        var indices = this.parseArguments(expr_list);
+        var indices = this.parseArguments();
         // prompt
-        last.next = new Node(stPrint, [new Literal('? ')], state);
+        last.next = new Node(stPrint, [new Literal('? ')], program);
         // wait for ENTER kepress before engaging
-        last.next.next = new Wait(function() { return state.input.interact(state.output); });
+        last.next.next = new Wait(function() { return program.input.interact(program.output); });
         // return payload: do not retrieve the variable, just get its name
-        last.next.next.next = new Node(stInput, [new Literal(name.payload)].concat(indices), state);
+        last.next.next.next = new Node(stInput, [new Literal(name.payload)].concat(indices), program);
         return last.next.next.next;
     }
 
-    this.parseDefFn = function(expr_list, token, last)
+    this.parseDefFn = function(token, last)
     // parse DEF FN statement
     {
         var fn = expr_list.shift();
@@ -1084,33 +1062,33 @@ function Parser()
         }
         var equals = expr_list.shift().payload;
         if (equals !== '=') throw new BasicError('Syntax error', 'expected `=`, got `'+equals+'`', current_line);
-        var expr = this.parseExpression(expr_list);
-        state.fns.store(name, arg, expr);
+        var expr = this.parseExpression();
+        program.fns.store(name, arg, expr);
         return last;
     }
 
-    this.parseRestore = function(expr_list, token, last)
+    this.parseRestore = function(token, last)
     // parse RESTORE
     {
-        last.next = new Node(token.operation, [], state);
+        last.next = new Node(token.operation, [], program);
         return last.next;
     }
 
-    this.parseReturn = function(expr_list, token, last)
+    this.parseReturn = function(token, last)
     // parse RETURN
     {
-        last.next = new Return(state);
+        last.next = new Return(program);
         return last.next;
     }
 
-    this.parseEnd = function(expr_list, token, last)
+    this.parseEnd = function(token, last)
     // parse END
     {
         last.next = new End();
         return last.next;
     }
 
-    this.parseRun = function(expr_list, token, last)
+    this.parseRun = function(token, last)
     // parse RUN
     {
         last.next = new Run();
@@ -1137,6 +1115,12 @@ function Parser()
         'STOP': this.parseEnd,
         'RUN': this.parseRun,
         'DEF': this.parseDefFn,
+    }
+
+    this.parseProgram = function()
+    {
+        this.parse(program.tree);
+        return program;
     }
 };
 
@@ -1326,8 +1310,6 @@ function Functions()
 
 // we set `this` to the current program state upon calling these
 
-function noop() {};
-
 function opMultiply(x, y)
 {
     return x * y;
@@ -1396,7 +1378,7 @@ function opOr(x, y)
 }
 
 function opRetrieve(name)
-//  retrieve a variable from the Variables object in state
+//  retrieve a variable from the Variables object in program (this)
 {
     var indices = [].slice.call(arguments, 1);
     var value = this.variables.retrieve(name, indices);
@@ -2352,7 +2334,7 @@ function BasicodeApp(script)
         this.keyboard.reset();
         try {
             // initialise program object
-            this.program = new Parser().parseProgram(tokenise(code));
+            this.program = new Parser(new Lexer(code).tokenise()).parseProgram();
             this.program.output = this.display;
             this.program.input = this.keyboard;
             this.program.printer = new Printer();
@@ -2560,7 +2542,6 @@ else {
 
 // TODO:
 
-// Lexer, Parser can be simple functions; e.g. becomes this.tree = parse(tokenise(code)) in Program constructor
 // pre-calculate jump targets (second pass of parser?)
 // Next node
 
