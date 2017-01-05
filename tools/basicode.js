@@ -746,9 +746,9 @@ function Parser(expr_list)
                 last = expr;
             }
             if (!expr_list.length) break;
-            if (expr_list[0].payload !== ';') break;
+            if (expr_list[0].token_type === ':' || expr_list[0].token_type === '\n') break;
             last = ';';
-            expr_list.shift();
+            if (expr_list[0].token_type === ';') expr_list.shift();
         }
         if (last !== ';') {
             last_node.next = new Node(stPrint, [new Literal('\n')], program);
@@ -777,7 +777,7 @@ function Parser(expr_list)
             neg = false;
             // parse separator (,)
             if (!expr_list.length) break;
-            if (expr_list[0].payload !== ',') break;
+            if (expr_list[0].token_type !== ',') break;
             expr_list.shift();
         }
         // data is stored immediately upon parsing, DATA is then a no-op statement
@@ -800,7 +800,7 @@ function Parser(expr_list)
             last = last.next;
 
             if (!expr_list.length) break;
-            if (expr_list[0].payload !== ',') break;
+            if (expr_list[0].token_type !== ',') break;
             expr_list.shift();
         }
         return last;
@@ -2562,12 +2562,13 @@ else {
 // Basicode-3 uses INPUT "prompt"; A$; also multiple INPUT A,B,C in BOKA-EI
 // can skip ; between variables and string literals in print
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
-// sometimes next i,j is used (factors.bc2)
 // auto-DIM small arrays
-// NEXT from inside a branch (i.e. as a continue statement)
-// calculate loop bounds and step only once
 // DEF FN
 // BC3C: colour, return CN in GOSUB 200
+
+// calculate loop bounds and step only once
+// NEXT from inside a branch (i.e. as a continue statement)
+// sometimes next i,j is used (factors.bc2)
 
 // - scrolling
 // - tape storage without file names
