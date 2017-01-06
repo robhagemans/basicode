@@ -1034,18 +1034,33 @@ function Parser(expr_list)
     this.parseInput = function(token, last)
     // parse INPUT
     {
-        var name = expr_list.shift();
-        if (name.token_type != 'name') {
-            throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
+        var prompt = ' ?';
+        // allow a prompt string literal
+        if ((expr_list[0].token_type === 'literal') && (typeof expr_list[0].payload === 'string')) {
+            prompt = expr_list.shift().payload;
+            var semicolon = expr_list.shift();
+            if (semicolon.token_type !== ';') {
+                throw new BasicError('Syntax error', 'expected `;`, got `'+semicolon.payload+'`', current_line);
+            }
         }
-        var indices = this.parseArguments();
         // prompt
         last.next = new Node(stPrint, [new Literal('? ')], program);
-        // wait for ENTER kepress before engaging
-        last.next.next = new Wait(function() { return program.input.interact(program.output); });
-        // return payload: do not retrieve the variable, just get its name
-        last.next.next.next = new Node(stInput, [new Literal(name.payload)].concat(indices), program);
-        return last.next.next.next;
+        last = last.next;
+        do {
+            var name = expr_list.shift();
+            if (name.token_type !== 'name') {
+                throw new BasicError('Syntax error', 'expected variable name, got `' + name.payload + '`', current_line);
+            }
+            var indices = this.parseArguments();
+            // wait for ENTER keypress before engaging
+            last.next = new Wait(function() { return program.input.interact(program.output); });
+            // do not retrieve the variable, just get its name
+            last.next.next = new Node(stInput, [new Literal(name.payload)].concat(indices), program);
+            last = last.next.next;
+            var comma = null;
+            if (expr_list[0].token_type === ',') comma = expr_list.shift();
+        } while (comma);
+        return last;
     }
 
     this.parseDefFn = function(token, last)
@@ -2553,12 +2568,15 @@ else {
 
 // TODO:
 
+// engineering notation not working with negatives
+// Hoofdsteden.bc3 gets into infinite loop on lexing/parsing step
 // pre-calculate jump targets (second pass of parser?)
 // use a single long delay of the right length for sound wait nodes rather than a frequent check
 
 // trace and watch
 
-// Basicode-3 uses INPUT "prompt"; A$; also multiple INPUT A,B,C in BOKA-EI
+// multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
+// IF .. GOTO
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // auto-DIM small arrays
 // DEF FN
