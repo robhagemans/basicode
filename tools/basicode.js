@@ -739,10 +739,12 @@ function Parser(expr_list)
         var last = null;
         while (expr_list.length > 0) {
             var expr = this.parseExpression();
-            if (expr === null) break;
-            last_node.next = new Node(stPrint, [expr], program);
-            last_node = last_node.next;
-            last = expr;
+            if (expr !== null) {
+                last_node.next = new Node(stPrint, [expr], program);
+                last_node = last_node.next;
+                last = expr;
+            }
+            else if (expr_list[0].token_type !== ';') break;
             if (!expr_list.length) break;
             if (expr_list[0].token_type === ':' || expr_list[0].token_type === '\n') break;
             last = ';';
