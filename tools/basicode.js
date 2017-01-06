@@ -86,8 +86,7 @@ const SYMBOLS = {
     '^': newOperatorToken('^', 2, 12, Math.pow),
     '*': newOperatorToken('*', 2, 11, opMultiply),
     '/': newOperatorToken('/', 2, 11, opDivide),
-    // does BASICODE accept unary + ?
-    '+': newOperatorToken('+', 2, 8, opPlus),
+    '+': newOperatorToken('+', null, 8, opPlus),
     '-': newOperatorToken('-', null, 8, opMinus),
     '=': newOperatorToken('=', 2, 7, opEqual),
     '>': newOperatorToken('>', 2, 7, opGreaterThan),
@@ -1346,9 +1345,9 @@ function opDivide(x, y)
 }
 
 function opPlus(x, y)
-// + adds numbers or concatenates strings
+// + adds numbers or concatenates strings; unary plus leaves unchanged
 {
-    return x + y;
+    if (y === undefined) return x; else return x + y;
 }
 
 function opMinus(x, y)
@@ -2569,8 +2568,6 @@ else {
 
 // trace and watch
 
-// engineering notation not working with negatives
-// unary plus
 // IF .. GOTO
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // auto-DIM small arrays
