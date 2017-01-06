@@ -253,14 +253,12 @@ function Lexer(expr_string)
             ++pos;
             if (pos+1 < expr_string.length &&
                     (isNumberChar(expr_string[pos+1]) || expr_string[pos+1] === '-' || expr_string[pos+1] === '+')) {
-                ++pos;
                 if (expr_string[pos+1] === '-' || expr_string[pos+1] === '+') {
-                    exponent = expr_string[pos+1] + readInteger();
+                    exponent = expr_string[pos+1];
+                    ++pos;
                 }
-                else {
-                    --pos;
-                    exponent = readInteger();
-                }
+                ++pos;
+                exponent += readInteger();
             }
         }
         return parseFloat(sign + mantissa + '.' + decimal + 'e' + exponent);
