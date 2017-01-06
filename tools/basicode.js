@@ -474,8 +474,8 @@ function Wait(wait_condition)
 function Next(for_node, loop_name, stop, incr, program)
 // iteration node
 {
-
     // FIXME: bounds should be evaluated only on FOR node, read from there
+    // store in variables? use a for stack?
     this.loop_name = loop_name;
     this.stop = stop;
     this.incr = incr;
@@ -497,7 +497,6 @@ function Next(for_node, loop_name, stop, incr, program)
         return this.next;
     }
 }
-
 
 
 //////////////////////////////////////////////////////////////////////
@@ -2560,7 +2559,6 @@ else {
 // trace and watch
 
 // Basicode-3 uses INPUT "prompt"; A$; also multiple INPUT A,B,C in BOKA-EI
-// can skip ; between variables and string literals in print
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // auto-DIM small arrays
 // DEF FN
