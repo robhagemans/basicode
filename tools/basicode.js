@@ -586,7 +586,7 @@ function Parser(expr_list)
                     narity = 1;
                 }
                 if (token.narity !== null && token.narity !== narity) {
-                    throw new BasicError('Syntax error', 'unexpected operator type', program.current_line);
+                    throw new BasicError('Syntax error', 'unexpected operator type', current_line);
                 }
                 if (narity === 2) {
                     // drain stack until precedence is matched
@@ -2569,23 +2569,24 @@ else {
 
 // TODO:
 
-// engineering notation not working with negatives
-// Hoofdsteden.bc3 gets into infinite loop on lexing/parsing step
-// pre-calculate jump targets (second pass of parser?)
-// use a single long delay of the right length for sound wait nodes rather than a frequent check
-
 // trace and watch
 
-// multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
+// engineering notation not working with negatives
+// unary plus
 // IF .. GOTO
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // auto-DIM small arrays
 // DEF FN
 // BC3C: colour, return CN in GOSUB 200
 
+// multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
+
 // calculate loop bounds and step only once
 // NEXT from inside a branch (i.e. as a continue statement)
 // sometimes next i,j is used (factors.bc2)
+
+// pre-calculate jump targets (second pass of parser?)
+// use a single long delay of the right length for sound wait nodes rather than a frequent check
 
 // - scrolling
 // - tape storage without file names
