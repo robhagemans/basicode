@@ -1517,14 +1517,20 @@ function subClear()
 // clear variables
 {
     this.clear();
+    // basicode-3
     this.variables.assign(this.output.width - 1, 'HO', []);
     this.variables.assign(this.output.height - 1, 'VE', []);
+    // basicode-3c
+    this.variables.allocate('CC', [10]);
+    this.variables.assign(7, 'CC', [0]);
+    this.variables.assign(0, 'CC', [1]);
 }
 
 function subClearScreen()
 // GOSUB 100, GOSUB 600
 // 600 Switch to graphic screen and clear graphic screen
 {
+    subSetColour.call(this);
     this.output.clear();
 }
 
@@ -1545,6 +1551,7 @@ function subGetPos()
 function subWriteBold()
 // GOSUB 150
 {
+    subSetColour.call(this);
     var text = '   ' + this.variables.retrieve('SR$', []) + '   ';
     this.output.write(' ');
     this.output.invertColour();
@@ -1761,6 +1768,7 @@ function subPlot()
 // GOSUB 620
 // Plot a point at graphic position HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
 {
+    subSetColour.call(this);
     var x = this.variables.retrieve('HO', []);
     var y = this.variables.retrieve('VE', []);
     var c = this.variables.retrieve('CN', []);
@@ -1771,6 +1779,7 @@ function subDraw()
 // GOSUB 630
 // Draw a line towards point HO,VE (0<=HO<1 en 0<=VE<1) in fore/background color CN (=0/1; normally white/black)
 {
+    subSetColour.call(this);
     var x = this.variables.retrieve('HO', []);
     var y = this.variables.retrieve('VE', []);
     var c = this.variables.retrieve('CN', []);
@@ -1781,12 +1790,32 @@ function subText()
 // GOSUB 650
 // Print SR$ as text from graphic position HO,VE (0<=HO<1 en 0<=VE<1). HO and VE stay the same value.
 {
+    subSetColour.call(this);
     var x = this.variables.retrieve('HO', []);
     var y = this.variables.retrieve('VE', []);
     var text = this.variables.retrieve('SR$', []);
     this.output.drawText(x, y, text);
 }
 
+function subSetColour()
+{
+    const COLOURS = {
+        0: 'black',
+        1: 'blue',
+        2: 'red',
+        3: 'violet',
+        4: 'green',
+        5: 'lightblue',
+        6: 'yellow',
+        7: 'white',
+    }
+
+    var fg = this.variables.retrieve('CC', [0]);
+    var bg = this.variables.retrieve('CC', [1]);
+    console.log(fg);
+    this.output.foreground = COLOURS[fg];
+    this.output.background = COLOURS[bg];
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // screen
@@ -1830,9 +1859,17 @@ function Display(output_element)
     {
         this.busy = false;
         this.curtain();
+        this.resetColours();
+    }
+
+    this.resetColours = function()
+    {
+        this.foreground = 'white';
+        this.background = 'black';
     }
 
     this.clear = function() {
+        this.resetColours();
         context.fillStyle = this.background;
         context.fillRect(0, 0, output_element.width, output_element.height);
         this.row = 0;
@@ -2572,7 +2609,7 @@ else {
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // auto-DIM small arrays
 // DEF FN
-// BC3C: colour, return CN in GOSUB 200
+// BC3C: return CN in GOSUB 200
 
 // multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
 
