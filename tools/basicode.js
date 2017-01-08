@@ -1520,6 +1520,8 @@ function subClear()
     // basicode-3
     this.variables.assign(this.output.width - 1, 'HO', []);
     this.variables.assign(this.output.height - 1, 'VE', []);
+    this.variables.assign(this.output.pixel_width, 'HG', []);
+    this.variables.assign(this.output.pixel_height, 'VG', []);
     // basicode-3c
     this.variables.allocate('CC', [10]);
     this.variables.assign(7, 'CC', [0]);
@@ -1855,6 +1857,8 @@ function Display(output_element)
     var font_width = measures.width;
     output_element.width = measures.width*this.width;
     output_element.height = font_height*this.height;
+    this.pixel_width = output_element.width;
+    this.pixel_height = output_element.height;
 
     // set the context on the resized canvas
     context = output_element.getContext('2d');
@@ -2641,3 +2645,5 @@ else {
 
 
 // re-extract the BC3 tape without PC-BASIC mods
+// re-extract BOB1
+// VC8: tracks 16,17,18,19 mis-named; missing the real track 16
