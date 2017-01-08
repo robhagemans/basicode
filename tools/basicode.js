@@ -832,11 +832,17 @@ function Parser(expr_list)
         }
         // BASICODE standard: title in REM on line 1000
         // description and copyrights in REMS on lines 30000 onwards
+        rem = rem.payload;
+        var rem_trim = rem.trim();
+        if (rem_trim[0] === '"') {
+            rem = rem_trim.slice(1);
+            if (rem[rem.length-1] === '"') rem = rem.slice(0, rem.length-1)
+        }
         if (current_line === 1000) {
-            program.title = rem.payload;
+            program.title = rem;
         }
         else if (current_line >= 30000) {
-            program.description += rem.payload + '\n';
+            program.description += rem + '\n';
         }
         return last;
     }
