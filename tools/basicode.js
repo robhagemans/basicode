@@ -1563,14 +1563,27 @@ function subWriteBold()
 function subReadKey()
 // GOSUB 200, GOSUB 210 (after wait)
 {
+    // GOSUB 200 should hold only capitals in IN$ and IN
     var keyval = this.input.readKey();
+    var cn_keyval = 0;
     var key = '';
     if ((keyval >= 32 && keyval <= 126) || keyval === 13) {
         key = String.fromCharCode(keyval);
         keyval = key.toUpperCase().charCodeAt(0);
+        cn_keyval = keyval;
+        if (key >= 'A' && key <= 'Z') {
+            cn_keyval = key.toLowerCase().charCodeAt(0);
+        }
+        key = key.toUpperCase();
     }
+    // IN$ and IN return capitalised key codes
+    // special keys generate a code in IN but not IN$
     this.variables.assign(keyval, 'IN', []);
     this.variables.assign(key, 'IN$', []);
+    // in BC-3c, CN contains the character code of the lowercase letter
+    // if an uppercase key was entered, and vice versa
+    //FIXME: we sould be able to switch this off for BC-2 and BC-3 programs
+    this.variables.assign(cn_keyval, 'CN', []);
 }
 
 function subSetTimer()
@@ -2608,7 +2621,6 @@ else {
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // auto-DIM small arrays
 // DEF FN
-// BC3C: return CN in GOSUB 200
 
 // multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
 
