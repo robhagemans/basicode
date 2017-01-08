@@ -1041,9 +1041,14 @@ function Parser(expr_list)
         }
         // create the iteration node
         last.next = new Next(for_stack[0], program);
+        // replace NEXT J,I with NEXT J: NEXT I
+        if (expr_list[0].token_type === ',') {
+            expr_list.shift();
+            expr_list.unshift(KEYWORDS['NEXT']());
+            expr_list.unshift(new SeparatorToken(':'));
+        }
         return last.next;
     },
-
 
     this.parseInput = function(token, last)
     // parse INPUT
@@ -2636,14 +2641,14 @@ else {
 // TODO:
 
 // trace and watch
+// adjustable throttle
+// adjustable height*width, pixelsize
 
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // auto-DIM small arrays
 // DEF FN
 
 // multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
-
-// sometimes next i,j is used (factors.bc2)
 
 // pre-calculate jump targets (second pass of parser?)
 // use a single long delay of the right length for sound wait nodes rather than a frequent check
