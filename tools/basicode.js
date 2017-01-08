@@ -435,7 +435,7 @@ function Jump(target, program, is_sub)
     this.step = function()
     {
         if (!(target in program.line_numbers)) {
-            throw new error('Undefined line number in `GOTO ' + target + '`');
+            throw new BasicError('Undefined line number in `GOTO ' + target + '`');
         }
         if (is_sub) program.sub_stack.push(this.next);
         return program.line_numbers[target];
@@ -864,7 +864,7 @@ function Parser(expr_list)
             return last.next.next;
         }
         // GOTO 950 means END
-        else if (line_number.payload  === 950) return new End();
+        else if (line_number.payload === 950) return new End();
         else if (line_number.payload < 1000) {
             throw new BasicError('Unimplemented BASICODE', '`GOTO '+line_number.payload+'` not implemented', current_line);
         }
@@ -1282,10 +1282,17 @@ function Variables()
             }
         }
         else if (!(name in this.dims)) {
-            throw new BasicError('Subscript out of range', 'array was not dimensioned', null);
+            //throw new BasicError('Subscript out of range', 'array was not dimensioned', null);
+            // auto-dim array at 10 for each index
+            var new_indices = [];
+            for (var i=0; i < indices.length; ++i) {
+                new_indices.push(10);
+            }
+            console.log('Auto-allocating array '+name+' with '+new_indices.length+' indices.');
+            this.allocate(name, new_indices);
         }
         else if (indices.length !== this.dims[name].length) {
-            throw new BasicError('Subscript out of range' , 'incorrect number of dimensions', null);
+            throw new BasicError('Subscript out of range' , 'expected '+this.dims[name].length+' indices, got '+indices.length, null);
         }
         else {
             for (var i=0; i < indices.length; ++i) {
@@ -2411,7 +2418,7 @@ function BasicodeApp(script)
         if (e instanceof BasicError) {
             this.display.write(e.message);
             var ln = e.where;
-            if (ln === null && this.program !== null) ln = this.program.current_line;
+            if (ln === undefined && this.program !== null) ln = this.program.current_line;
             this.display.write(' in '+ ln +'\n');
             this.display.invertColour();
             if (e.detail) {
@@ -2654,10 +2661,11 @@ else {
 // adjustable height*width, pixelsize
 
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
-// auto-DIM small arrays
 // DEF FN
 
 // multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
+// break during INPUT
+// BASICODE routines in ON..GOTO, ON..GOSUB
 
 // pre-calculate jump targets (second pass of parser?)
 // use a single long delay of the right length for sound wait nodes rather than a frequent check
@@ -2674,3 +2682,4 @@ else {
 // re-extract the BC3 tape without PC-BASIC mods
 // re-extract BOB1
 // VC8: tracks 16,17,18,19 mis-named; missing the real track 16
+// add 'neue Programme' & 'wiederentdeckte Programme' @ http://www.joyce.de/basicode/index.htm
