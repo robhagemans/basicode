@@ -468,29 +468,45 @@ function Wait(wait_condition)
     }
 }
 
-function Next(for_node, loop_name, stop, incr, program)
+function For(loop_name, start, stop, incr, program)
+{
+    this.next = null;
+
+    this.step = function()
+    {
+        program.variables.assign(start.evaluate(), loop_name, []);
+        var for_record = {
+            'name': loop_name,
+            'next': this.next,
+            'stop': stop.evaluate(),
+            'incr': incr.evaluate(),
+        }
+        program.loop_stack.unshift(for_record);
+        return this.next;
+    }
+}
+
+function Next(loop_name, program)
 // iteration node
 {
-    // FIXME: bounds should be evaluated only on FOR node, read from there
-    // store in variables? use a for stack?
-    this.loop_name = loop_name;
-    this.stop = stop;
-    this.incr = incr;
-
-    this.for_node = for_node;
     this.next = null;
     this.delay = BUSY_DELAY;
 
     this.step = function()
     {
-        var loop_var = program.variables.retrieve(this.loop_name, []);
-        var incr = this.incr.evaluate();
-        var stop = this.stop.evaluate();
+        var for_record = program.loop_stack[0];
+        if (loop_name !== for_record.name) {
+            throw ('Block error', 'Expected `NEXT '+for_record.name+'`, got `NEXT '+loop_name+'`')
+        }
+        var loop_var = program.variables.retrieve(loop_name, []);
+        var incr = for_record.incr;
+        var stop = for_record.stop;
         // iterate if ((i+step)*step) < (stop*step) to deal with negative steps
         if (incr*(loop_var+incr) <= incr*stop) {
-            program.variables.assign(loop_var + incr, this.loop_name, []);
-            return this.for_node;
+            program.variables.assign(loop_var + incr, loop_name, []);
+            return for_record.next;
         }
+        program.loop_stack.shift();
         return this.next;
     }
 }
@@ -512,6 +528,7 @@ function Program()
     // runtime state
     this.variables = new Variables();
     this.sub_stack = [];
+    this.loop_stack = [];
     this.current_line = 999;
 
     // machine objects
@@ -990,11 +1007,11 @@ function Parser(expr_list)
             step = this.parseExpression();
         }
         // loop init
-        last.next = new Node(stLet, [start, new Literal(loop_variable)], program);
+        last.next = new For(loop_variable, start, stop, step, program);
         last = last.next;
-        var for_node = new Label('FOR '+loop_variable);
-        last.next = for_node;
-        last = last.next;
+        //var for_node = new Label('FOR '+loop_variable);
+        //last.next = for_node;
+        //last = last.next;
         // parse body of FOR loop until NEXT is encountered
         last = this.parse(last, 'NEXT');
         // parse NEXT
@@ -1017,7 +1034,7 @@ function Parser(expr_list)
             }
         }
         // create the iteration node
-        last.next = new Next(for_node, loop_variable, stop, step, program);
+        last.next = new Next(loop_variable, program);
         return last.next;
     }
 
@@ -1827,7 +1844,6 @@ function subSetColour()
 
     var fg = this.variables.retrieve('CC', [0]);
     var bg = this.variables.retrieve('CC', [1]);
-    console.log(fg);
     this.output.foreground = COLOURS[fg];
     this.output.background = COLOURS[bg];
 }
@@ -2628,7 +2644,6 @@ else {
 
 // multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
 
-// calculate loop bounds and step only once
 // NEXT from inside a branch (i.e. as a continue statement)
 // sometimes next i,j is used (factors.bc2)
 
