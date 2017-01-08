@@ -913,7 +913,7 @@ function Parser(expr_list)
         var node = new Conditional(condition);
         last.next = node;
         var then = expr_list.shift()
-        if (then.token_type !== 'statement' || then.payload !== 'THEN') {
+        if (then.token_type !== 'statement' || (then.payload !== 'THEN' && then.payload !== 'GOTO')) {
             throw new BasicError('Syntax error', 'expected `THEN`, got `'+then.payload+'`', current_line);
         }
         // supply a GOTO if jump target given after THEN
@@ -2605,7 +2605,6 @@ else {
 
 // trace and watch
 
-// IF .. GOTO
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // auto-DIM small arrays
 // DEF FN
