@@ -560,6 +560,9 @@ function Parser(expr_list)
     // current line being parsed
     var current_line = 999;
 
+    // for loop variables
+    var for_stack = [];
+
     function drain(precedence, stack, units)
     // pop operator stack until matching precedence is encountered
     {
@@ -1009,13 +1012,21 @@ function Parser(expr_list)
         // loop init
         last.next = new For(loop_variable, start, stop, step, program);
         last = last.next;
-        //var for_node = new Label('FOR '+loop_variable);
-        //last.next = for_node;
-        //last = last.next;
+        // keep track of for loops while parsing
+        for_stack.unshift(loop_variable);
         // parse body of FOR loop until NEXT is encountered
         last = this.parse(last, 'NEXT');
         // parse NEXT
-        token = expr_list.shift();
+        var next = this.parseNext(expr_list.shift(), last);
+        // pop the varible off the FOR stack
+        for_stack.shift();
+        return next;
+    }
+
+    this.parseNext = function(token, last)
+    // regular NEXT is handled by FOR parser
+    // if we encounter it unexpectedly, this is where we get
+    {
         if (token === undefined || token === null || token.payload !== 'NEXT') {
             throw new BasicError(`Block error`, '`FOR` without `NEXT`', current_line);
         }
@@ -1025,24 +1036,12 @@ function Parser(expr_list)
         if (next_variable.token_type !== 'name') {
             expr_list.unshift(next_variable);
         }
-        else {
-            if (next_variable.payload.slice(-1) === '$') {
-                throw new BasicError('Type mismatch', 'expected `NEXT` with numerical variable name, got `NEXT ' + next_variable.payload + '`', current_line);
-            }
-            if (loop_variable !== next_variable.payload) {
-                throw new BasicError('Block error', 'expected `NEXT `'+loop_variable+'`, got `NEXT ' + next_variable.payload + '`', current_line);
-            }
+        else if (for_stack[0] !== next_variable.payload) {
+            throw new BasicError('Block error', 'expected `NEXT `'+loop_variable+'`, got `NEXT ' + next_variable.payload + '`', current_line);
         }
         // create the iteration node
-        last.next = new Next(loop_variable, program);
+        last.next = new Next(for_stack[0], program);
         return last.next;
-    }
-
-    this.parseNext = function()
-    // regular NEXT is handled by FOR parser
-    // if we encounter it unexpectedly, this is where we get
-    {
-        throw new BasicError('Block error', 'unexpected `NEXT`', current_line);
     },
 
 
@@ -2644,7 +2643,6 @@ else {
 
 // multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
 
-// NEXT from inside a branch (i.e. as a continue statement)
 // sometimes next i,j is used (factors.bc2)
 
 // pre-calculate jump targets (second pass of parser?)
