@@ -495,8 +495,11 @@ function Next(loop_name, program)
     this.step = function()
     {
         var for_record = program.loop_stack[0];
-        if (loop_name !== for_record.name) {
-            throw ('Block error', 'Expected `NEXT '+for_record.name+'`, got `NEXT '+loop_name+'`')
+        while (loop_name !== for_record.name) {
+            //throw ('Block error', 'Expected `NEXT '+for_record.name+'`, got `NEXT '+loop_name+'`')
+            console.log('Popping from loop stack unexpectedly, did we jump out of a loop?');
+            program.loop_stack.shift();
+            for_record = program.loop_stack[0];
         }
         var loop_var = program.variables.retrieve(loop_name, []);
         var incr = for_record.incr;
