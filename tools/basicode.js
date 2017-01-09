@@ -871,7 +871,7 @@ function Parser(expr_list)
         // other line numbers are resolved at run time
         last.next = new Jump(line_number.payload, program, false);
         // put a short delay on jumps to avoid overloading the browser on loops
-        last.delay = BUSY_DELAY;
+        last.next.delay = BUSY_DELAY;
         return last.next;
     }
 
@@ -933,6 +933,8 @@ function Parser(expr_list)
         620: function(last) {last.next = new Node(subPlot, [], program); return last.next; },
         630: function(last) {last.next = new Node(subDraw, [], program); return last.next; },
         650: function(last) {last.next = new Node(subText, [], program); return last.next; },
+        // GOSUB 950 (unofficial) same as GOTO 950
+        950: function(last) {last.next = new End(); return last.next; },
     }
 
     this.parseIf = function(token, last)
@@ -970,15 +972,12 @@ function Parser(expr_list)
             throw new BasicError('Syntax error', 'expected `GOTO` or `GOSUB`, got `'+jump.payload+'`', current_line);
         }
         var is_sub = false;
-        if (jump.payload === 'GOSUB') is_sub = true;
+        // target for RETURN and switch fallthrough
         var label = new Label('NO');
         var nodes = [];
         while (expr_list.length) {
-            var line_number = expr_list.shift();
-            if (line_number.token_type !== 'literal' || typeof line_number.payload !== 'number') {
-                throw new BasicError('Syntax error', 'expected line number, got `'+line_number.payload+'`', current_line);
-            }
-            var node = new Jump(line_number.payload, program, is_sub);
+            // create jump node of the right kind, and attach to a dummy object
+            var node = PARSERS[jump.payload].call(this, jump, {})
             node.next = label;
             nodes.push(node);
             var sep = expr_list.shift();
@@ -1591,7 +1590,7 @@ function subWriteBold()
 // GOSUB 150
 {
     subSetColour.call(this);
-    var text = '   ' + this.variables.retrieve('SR$', []) + '   ';
+    var text = '  ' + this.variables.retrieve('SR$', []) + '  ';
     this.output.write(' ');
     this.output.invertColour();
     this.output.write(text);
