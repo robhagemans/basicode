@@ -2656,25 +2656,25 @@ else {
 
 // TODO:
 
+// break during INPUT
+// BASICODE routines in ON..GOTO, ON..GOSUB (ALF-3.ASC)
+// DEF FN
+// BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
+// scrolling
+
 // trace and watch
 // adjustable throttle
 // adjustable height*width, pixelsize
 
-// BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
-// DEF FN
-
 // multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
-// break during INPUT
-// BASICODE routines in ON..GOTO, ON..GOSUB
 
 // pre-calculate jump targets (second pass of parser?)
 // use a single long delay of the right length for sound wait nodes rather than a frequent check
 
-// - scrolling
 // - tape storage without file names
 // - type checks A$=1
 
-// controls: repeat/play/pause, load, print buttons
+// controls: repeat/play/pause, load, print buttons; upload files to internal storage
 // perhaps hidden elements (made visible by tabs?) for printer output, storage drives, (+debug: trace, variables, data, program text, ...)
 // scrollable info page; center info page on longest line of description
 
