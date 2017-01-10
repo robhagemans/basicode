@@ -2675,22 +2675,18 @@ else {
 
 // scrolling
 
+// use a single long delay of the right length for sound wait nodes rather than a frequent check
+// tape storage without file names
+// multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
+// type checks A$=1; enforce argument numbers & types; catch math errors
+
 // trace and watch
 // adjustable throttle
 // adjustable height*width, pixelsize
 
-// multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
-
-// pre-calculate jump targets (second pass of parser?)
-// use a single long delay of the right length for sound wait nodes rather than a frequent check
-
-// - tape storage without file names
-// - type checks A$=1
-
 // controls: repeat/play/pause, load, print buttons; upload files to internal storage
 // perhaps hidden elements (made visible by tabs?) for printer output, storage drives, (+debug: trace, variables, data, program text, ...)
 // scrollable info page; center info page on longest line of description
-
 
 // re-extract the BC3 tape without PC-BASIC mods
 // re-extract BOB1
