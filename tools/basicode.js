@@ -1472,7 +1472,8 @@ function fnAsc(x)
 
 function fnMid(x, start, n)
 {
-    return x.slice(start-1, start+n-1);
+    if (n === undefined) return x.slice(start-1);
+    else return x.slice(start-1, start+n-1);
 }
 
 function fnLeft(x, n)
@@ -2672,7 +2673,6 @@ else {
 
 // TODO:
 
-// BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // scrolling
 
 // trace and watch
