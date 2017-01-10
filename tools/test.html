@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="test.css">
+    <script src="basicode.js"></script>
+</head>
+
+<body>
+    <script type="text/basicode">
+        1000 A=1:GOTO20
+        1010 GOSUB100:HO=10:VE=1:GOSUB110:SR$="Press a key.":GOSUB150:GOSUB 250:SD=30:GOSUB450
+        1012 GOSUB 280
+        1015 GOSUB100:HO=10:VE=2:GOSUB110:SR$="Type something.":GOSUB150
+        1020 INPUTA$:HO=10:VE=3:GOSUB110:PRINT"you typed: ";A$
+        1030 INPUT A: PRINT "value: "; A
+        1040 GOSUB 120: PRINT HO; VE;
+        1050 SR$="Testy": GOSUB 150
+        1060 HO=0: VE=4: GOSUB 220: SR$=IN$: GOSUB 150: PRINT IN
+        1080 SR=0.5: GOSUB 300: PRINT "["+SR$+"]"
+        1090 SR=0.5: CN=5: CT=10: GOSUB 310: PRINT "["+SR$+"]"
+        1100 SR=12345: CN=0: CT=10: GOSUB 310: PRINT "["+SR$+"]"
+        1110 SR=12345: CN=5: CT=10: GOSUB 310: PRINT "["+SR$+"]"
+        1120 SR$="printer": GOSUB 330: GOSUB 350: GOSUB 360
+        1130 SR$="test": GOSUB 350
+        1140 SP=60: SD=2: SV=15: GOSUB 400
+        1150 SP=80: SD=3: SV=7: GOSUB 400
+        1160 SP=60: SD=4: SV=1: GOSUB 400
+        2000 GOTO 950
+    </script>
+</body>
+</html>

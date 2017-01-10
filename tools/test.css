@@ -1,0 +1,22 @@
+.basicode {
+    transform: scaleX(1.5);
+    /*height: 20rem;*/
+    padding: 0.4rem 0.2rem 0.4rem 0.2rem;
+    background-color: grey;
+    border-radius: 0.4rem;
+    outline: none;
+    /* this centers the screen horizontally, for some reason */
+    margin: auto;
+    display: table;
+    /* */
+    margin-top: 1rem;
+}
+
+.basicode:focus {
+    background-color: grey;
+    border: 1px solid darkgrey;
+}
+
+body {
+    background-color: darkslategrey;
+}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <style>
+        .screen-wrapper {
+            font-size: 1rem;
+            width: 79ch;
+            padding:0;
+            display:table;
+            padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+            border-radius: 0.8rem;
+            border: 1px solid lightgrey;
+            text-align: center;
+            background-color: lightblue;
+        }
+        #basicode {
+            text-align: left;
+            vertical-align: middle;
+            font-family: monospace;
+            font-size: 1rem;
+            outline: none;
+            overflow: hidden;
+            border: 0;
+            padding: 0;
+            margin: auto;
+            transform: scaleX(2);
+            background-color: white;
+            background-color: lightblue;
+            width: 40ch;
+            height: 24rem;
+        }
+    </style>
+
+    <script src="basicode.js"></script>
+</head>
+
+<body>
+    <div class="screen-wrapper">
+        <canvas id="basicode"></canvas>
+    </div>
+    <button id="get_output">Run</button>
+
+    <script>
+        "use strict";
+
+        document.getElementById("get_output").onclick = function () {
+            // setup
+            var app = new BasicodeApp();
+            var iface = app.iface;
+            //var state = app.state;
+            var parser = app.parser;
+            var prog;
+/*
+            // screen test
+            iface.clear();
+            iface.write('We can write <br>\n');
+            iface.write('0123456789012345678901234567890123456789end\n');
+
+            // variable test
+            var vars = new Variables();
+            vars.assign(10, 'A$', []);
+            vars.assign(11, 'A$', []);
+            vars.allocate('B$', [10]);
+            vars.assign(12, 'B$', [1]);
+            vars.allocate('C', [100,100]);
+            vars.assign(12, 'C', [1,100]);
+            //TODO: implement type mismatch checks
+            iface.write((vars.retrieve('A$', []) === 11) + ' ');
+            iface.write((vars.retrieve('B$', [1]) === 12) + ' ');
+            iface.write((vars.retrieve('C', [1, 100]) === 12) + ' ');
+            iface.write((vars.retrieve('C', [1, 99]) === 0) + '\n');
+
+            // data reader test
+            var data = new Data();
+            data.store([1,2,3,4,5]);
+            iface.write(((data.read() == 1) && (data.read() == 2)) + '\n');
+            data.clear();
+
+            // evaluate test
+            var node = new Node(function(a, b) { return a+b; }, [1, 5]);
+            var node2 = new Node(function(a, b) { return a*b; }, [node, 5]);
+            iface.write((node2.evaluate() == 30) + '\n');
+
+            // expression parser test
+            var expr_list = [
+                new tokenSeparator('('),
+                new tokenLiteral(3), SYMBOLS['+'](),
+                new tokenLiteral(4), SYMBOLS['*'](), new tokenLiteral(2),
+                new tokenSeparator(')'),
+                SYMBOLS['/'](), new tokenLiteral(5),
+            ];
+            var ast = parser.parseExpression(expr_list);
+            iface.write((ast.evaluate() == 2.2) + '\n');
+
+            // lexer tests
+            iface.write((parser.parseExpression(tokenise('1-2')).evaluate() == -1) + ' ');
+            iface.write((parser.parseExpression(tokenise('-1')).evaluate() == -1) + ' ');
+            iface.write((parser.parseExpression(tokenise('.5')).evaluate() == 0.5) + ' ');
+            iface.write((parser.parseExpression(tokenise('-.5')).evaluate() == -0.5) + ' ');
+            iface.write((parser.parseExpression(tokenise('1.2e2')).evaluate() == 120) + ' ');
+            iface.write((parser.parseExpression(tokenise('1.2e-2')).evaluate() == 0.012) + '\n');
+
+            // expression lexer+parser tests
+            iface.write((parser.parseExpression(tokenise('((1=1)) OR (1=0)')).evaluate() == true) + ' ');
+            iface.write((parser.parseExpression(tokenise('((1=1)) AND (1=0)')).evaluate() == false) + ' ');
+            iface.write((parser.parseExpression(tokenise('NOT 0')).evaluate() == true) + ' ');
+            iface.write((parser.parseExpression(tokenise('cos(0)')).evaluate() == 1) + ' ');
+            iface.write((parser.parseExpression(tokenise('val("1e+2")')).evaluate() == 100) + ' ');
+            iface.write((parser.parseExpression(tokenise('val("1e-2")')).evaluate() == 0.01) + ' ');
+
+            // statement tests
+            parser.parseLine(tokenise('LET D=1:LET E=2\n')).run();
+            iface.write((parser.parseExpression(tokenise('E')).evaluate() == 2) + ' ');
+            parser.parseLine(tokenise('LET F=D+E\n')).run();
+            iface.write((parser.parseExpression(tokenise('F')).evaluate() == 3) + '\n');
+            parser.parseLine(tokenise('PRINT "print test: ";D;:print E-3;F:print f\n')).run();
+            parser.parseLine(tokenise('PRINT "TAB test: ";1;TAB(20);2;\n')).run();
+
+
+            // we're allowing empty lines; not necessary
+            var prog = parser.parseProgram(tokenise('1010 READG,H,I, J\n1020 PRINTJ\n 1030 :RESTORE: READ J: PRINT J\n 1035\n 1040 DATA67,68,69,70\n1050 :\n1060 PRINT"program done"'))
+            prog.tree.run();
+
+            var prog0 = parser.parseProgram(tokenise('1010 DIMZ(10)\n1020 Z(9)=9\n1030 PRINT Z(9)\n'))
+            prog0.tree.run();
+
+            // REM and GOTO test
+            var prog1 = parser.parseProgram(tokenise([
+                '1000 A=2:REM test program',
+                '1010 GOTO 1030',
+                '1020 PRINT"this should not be visible"; A: REM ignore this',
+                '1030 GOTO 950',
+                '1040 PRINT "ignore me"',
+                '1050 :',
+                '30000 REM BASICODE test program: ',
+                '30020 REM a program that tests REMs',
+            ].join('\n')));
+            prog1.tree.run();
+            iface.write('"'+prog1.title+'"\n');
+            iface.write(prog1.description);
+
+            prog = parser.parseProgram(tokenise([
+                '1000 A=2:REM test program 2',
+                '1010 B=5: GOSUB 10000',
+                '1020 B=6: GOSUB 10000',
+                '1025 B=7: GOSUB 10000',
+                '1030 B=7: GOTO 950',
+                '10000 PRINT B;',
+                '10010 RETURN',
+            ].join('\n')));
+            prog.tree.run();
+
+            prog = parser.parseProgram(tokenise([
+                '1000 A=2:REM test program 3',
+                '1010 B=10: GOTO 1030: B=600',
+                '1020 B=1000',
+                '1030 PRINT B: GOTO 950',
+            ].join('\n')));
+            prog.tree.run();
+
+            prog = parser.parseProgram(tokenise([
+                '1000 PRINT "if test":',
+                '1010 A=0: IF A THEN PRINT 1;',
+                '1020 PRINT 2;: IF NOT A THEN PRINT 3;',
+                '1030 PRINT 4: GOTO 950',
+            ].join('\n')));
+            prog.tree.run();
+
+            prog = parser.parseProgram(tokenise([
+                '1000 :',
+                '1010 A=2: ON A GOTO 1020, 1030, 1040',
+                '1015 PRINT "None": GOTO 950',
+                '1020 PRINT 1020: GOTO 950',
+                '1030 PRINT 1030: GOTO 950',
+                '1040 PRINT 1040: GOTO 950',
+            ].join('\n')));
+            prog.tree.run();
+
+            prog = parser.parseProgram(tokenise([
+                '1000 :',
+                '1010 A=3: ON A GOSUB 1020, 1030, 1040',
+                '1015 PRINT "back": GOTO 950',
+                '1020 PRINT 1020;: RETURN',
+                '1030 PRINT 1030;: RETURN',
+                '1040 PRINT 1040;: RETURN',
+            ].join('\n')));
+            prog.tree.run();
+
+            prog = parser.parseProgram(tokenise([
+                '1000 :',
+                '1010 IF 0=0 THEN 1040',
+                '1020 PRINT "no": GOTO 950',
+                '1040 PRINT "yes": GOTO 950',
+            ].join('\n')));
+            prog.tree.run();
+
+            prog = parser.parseProgram(tokenise([
+                '1000 :',
+                '1010 IF 0=0 THEN GOTO 1040: PRINT "certainly not"',
+                '1020 PRINT "no": GOTO 950',
+                '1040 PRINT "yes": GOTO 950',
+            ].join('\n')));
+            prog.tree.run();
+
+            prog = parser.parseProgram(tokenise([
+                '1000 :',
+                '1010 FOR I = 0 TO 10 STEP 2.5',
+                '1020 PRINT I;',
+                '1030 NEXT I',
+            ].join('\n')));
+            prog.tree.run();
+
+            prog = parser.parseProgram(tokenise([
+                '1000 GOSUB 100: PRINT "FOR test"',
+                '1010 I=2: FOR J=1 TO 2:FOR I = 0 TO 10 STEP 2.5',
+                '1020 PRINT I;',
+                '1030 PRINT I;J:NEXT I: PRINT I: NEXT J: PRINT J',
+            ].join('\n')));
+            prog.tree.run();
+*/
+            prog = parser.parseProgram(tokenise([
+                '1000 :',
+                '1010 GOSUB 100: HO=10: VE=2: GOSUB 110: INPUT A$: PRINT "you typed: "; A$',
+                '1030 INPUT A: PRINT "value: "; A',
+                '1040 GOSUB 120: PRINT HO; VE;',
+                '1050 SR$="Testy": GOSUB 150',
+                '1060 HO=0: VE=3: GOSUB 220: SR$=IN$: GOSUB 150: PRINT IN',
+                '1070 GOTO 950',
+            ].join('\n')));
+            prog.tree.run();
+
+/**/
+        };
+    </script>
+</body>
+</html>
