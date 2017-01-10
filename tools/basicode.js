@@ -1950,9 +1950,26 @@ function Display(output_element)
         this.last_y = 0;
     }
 
-    this.curtain = function() {
+    this.clearRow = function(row) {
+        context.fillStyle = this.background;
+        context.fillRect(0, row*font_height, output_element.width, font_height);
+        this.content[row] = ' '.repeat(this.width);
+    }
+
+    this.curtain = function()
+    {
         context.fillStyle = 'rgba(225,225,225,0.25)';
         context.fillRect(0, 0, output_element.width, output_element.height);
+    }
+
+    this.scroll = function()
+    {
+        context.drawImage(output_element,
+            0, font_height, this.pixel_width, this.pixel_height-font_height,
+            0, 0, this.pixel_width, this.pixel_height-font_height);
+        context.fillStyle = this.background;
+        context.fillRect(0, this.pixel_height-font_height, this.pixel_width, font_height);
+        this.content = this.content.slice(0, -1).concat(' '.repeat(this.width));
     }
 
     this.write = function(output)
@@ -1972,8 +1989,10 @@ function Display(output_element)
             this.col = 0;
             ++this.row;
         }
-        // TODO, maybe: should we scroll?
-        if (this.row >= this.height) this.row = this.height-1;
+        if (this.row >= this.height) {
+            this.scroll();
+            this.row = this.height-1;
+        }
     }
 
     this.writeRaw = function(output)
@@ -2060,13 +2079,19 @@ function Display(output_element)
     {
         ++this.row;
         this.col = 0;
-        if (this.row >= this.height) this.row = this.height-1;
+        if (this.row >= this.height) {
+            this.scroll();
+            this.row = this.height-1;
+        }
     }
 
     this.setRow = function(row)
     {
         this.row = row;
-        if (this.row >= this.height) this.row = this.height-1;
+        if (this.row >= this.height) {
+            this.scroll();
+            this.row = this.height-1;
+        }
     }
 
     this.clear();
@@ -2427,11 +2452,9 @@ function BasicodeApp(script)
     {
         this.stop();
         this.display.invertColour();
-        this.display.setColumn(0);
+        this.display.clearRow(0);
         this.display.setRow(0);
-        this.display.write(' '.repeat(this.display.width));
         this.display.setColumn(0);
-        this.display.setRow(0);
         if (e instanceof BasicError) {
             this.display.write(e.message);
             var ln = e.where;
@@ -2439,7 +2462,8 @@ function BasicodeApp(script)
             this.display.write(' in '+ ln +'\n');
             this.display.invertColour();
             if (e.detail) {
-                this.display.write(' '.repeat(this.display.width*2));
+                this.display.clearRow(1);
+                this.display.clearRow(2);
                 this.display.setColumn(0);
                 this.display.setRow(1);
                 this.display.write(e.detail);
@@ -2448,7 +2472,8 @@ function BasicodeApp(script)
         else {
             this.display.write('EXCEPTION\n')
             this.display.invertColour();
-            this.display.write(' '.repeat(this.display.width*2));
+            this.display.clearRow(1);
+            this.display.clearRow(2);
             this.display.setColumn(0);
             this.display.setRow(1);
             this.display.write(e);
@@ -2483,17 +2508,13 @@ function BasicodeApp(script)
     // show program title and description
     {
         this.display.invertColour();
-        this.display.setColumn(0);
-        this.display.setRow(0);
-        this.display.write(' '.repeat(this.display.width));
+        this.display.clearRow(0);
         this.display.writeCentre(0, this.program.title);
         this.display.write('\n\n');
         this.display.invertColour();
         this.display.write(this.program.description);
         this.display.invertColour();
-        this.display.setColumn(0);
-        this.display.setRow(this.display.height - 1);
-        this.display.write(' '.repeat(this.display.width));
+        this.display.clearRow(this.display.height - 1);
         this.display.writeCentre(this.display.height - 1, '-- click to run --');
         this.display.invertColour();
         this.display.curtain();
@@ -2503,9 +2524,7 @@ function BasicodeApp(script)
     // intro screen if nothing was loaded
     {
         this.display.invertColour();
-        this.display.setColumn(0);
-        this.display.setRow(0);
-        this.display.write(' '.repeat(this.display.width));
+        this.display.clearRow(0);
         this.display.writeCentre(0, '(c) 2016, 2017 Rob Hagemans');
         this.display.invertColour();
         var row = 6;
@@ -2520,9 +2539,7 @@ function BasicodeApp(script)
         this.display.writeCentre(row++, '**. *.* **. .*. .** .*. **. ***');
         this.display.writeCentre(17, '---==[2017]==---');
         this.display.invertColour();
-        this.display.setColumn(0);
-        this.display.setRow(this.display.height - 1);
-        this.display.write(' '.repeat(this.display.width));
+        this.display.clearRow(this.display.height - 1);
         this.display.writeCentre(this.display.height - 1, '-- drag and drop to load --');
         this.display.invertColour();
         this.display.curtain();
@@ -2581,9 +2598,7 @@ function BasicodeApp(script)
             this.program.printer.flush();
         }
         this.display.invertColour();
-        this.display.setColumn(0);
-        this.display.setRow(this.display.height - 1);
-        this.display.write(' '.repeat(this.display.width));
+        this.display.clearRow(this.display.height - 1);
         this.display.writeCentre(this.display.height - 1, '-- click to run again --');
         this.display.invertColour();
     }
@@ -2673,12 +2688,10 @@ else {
 
 // TODO:
 
-// scrolling
-
-// use a single long delay of the right length for sound wait nodes rather than a frequent check
 // tape storage without file names
 // multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
 // type checks A$=1; enforce argument numbers & types; catch math errors
+// use a single long delay of the right length for sound wait nodes rather than a frequent check
 
 // trace and watch
 // adjustable throttle
