@@ -2434,7 +2434,7 @@ function BasicodeApp(script)
         if (e instanceof BasicError) {
             this.display.write(e.message);
             var ln = e.where;
-            if (ln === undefined && this.program !== null) ln = this.program.current_line;
+            if ((ln === undefined || ln === null) && this.program !== null) ln = this.program.current_line;
             this.display.write(' in '+ ln +'\n');
             this.display.invertColour();
             if (e.detail) {
@@ -2555,7 +2555,7 @@ function BasicodeApp(script)
                         app.stop();
                         break;
                     }
-                    if (app.keyboard.break_flag) throw new BasicError('Break', '', null);
+                    if (app.keyboard.break_flag) throw new BasicError('Break', '');
                     if (current && (delay >= MIN_DELAY)) {
                         app.running = window.setTimeout(step, delay);
                         delay = 0;
@@ -2672,7 +2672,6 @@ else {
 
 // TODO:
 
-// break during INPUT
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // scrolling
 
