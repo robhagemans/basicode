@@ -2,7 +2,7 @@ BASICODE interpreter
 ====================
 
 This is a BASICODE interpreter in Javascript, compatible with BASICODE versions 2, 3 and 3C.
-
+There is `a live demo <http://robhagemans.github.io/basicode/>`_.
 
 Deployment
 ----------
@@ -31,3 +31,22 @@ It will scan the HTML for any ``<script type="text/basicode">`` elements and rep
 - If the element is empty, it will show a splash screen.
 
 In either case, you can drag and drop local text files containing BASICODE onto the canvas to execute them. Enjoy!
+
+
+Copyright and Licence
+---------------------
+
+Copyright © 2016—2017 Rob Hagemans.
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
+Street, Fifth Floor, Boston, MA 02110-1301 USA.
