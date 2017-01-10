@@ -143,10 +143,10 @@ const KEYWORDS = {
     'THEN': newStatementToken('THEN', null),
     'STEP': newStatementToken('STEP', null),
     'TO': newStatementToken('TO', null),
-    'FN': newStatementToken('FN', null),
+    'FN': newFunctionToken('FN', fnFn),
 }
 
-// additional reserved words: AS, AT, FN, GR, IF, LN, PI, ST, TI, TI$
+// additional reserved words: AS, AT, GR, LN, PI, ST, TI, TI$
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -586,7 +586,7 @@ function Parser(expr_list)
         return units;
     };
 
-    this.parseExpression = function()
+    this.parseExpression = function(parameter, fn_name)
     // parse expression from a list of tokens to an AST
     // variation of Dijkstra's shunting-yard algorithm, following PC-BASIC
     {
@@ -619,12 +619,14 @@ function Parser(expr_list)
             else if (last === null || last.token_type === 'operator') {
                 switch (token.token_type) {
                     case 'function':
-                        var args = this.parseArguments();
+                        if (token.payload === 'FN') var name = expr_list.shift();
+                        var args = this.parseArguments(parameter, fn_name);
+                        if (token.payload === 'FN') args.unshift(new Literal(name.payload));
                         units.push(new Node(token.operation, args, program));
                         break;
                     case '(':
                         // recursive call, gets a Node object containing AST
-                        units.push(this.parseExpression());
+                        units.push(this.parseExpression(parameter, fn_name));
                         var bracket = expr_list.shift(token);
                         if (bracket.token_type !== ')') {
                             throw new BasicError('Syntax error', 'expected `)`, got `' + bracket.payload + '`', current_line);
@@ -634,8 +636,14 @@ function Parser(expr_list)
                         units.push(new Literal(token.payload));
                         break;
                     case 'name':
-                        var indices = this.parseArguments();
-                        units.push(new Node(opRetrieve, [new Literal(token.payload)].concat(indices), program));
+                        // user function parameter, must not be array element
+                        if (parameter !== undefined && token.payload === parameter) {
+                            units.push(new Node(opRetrieveParameter, [new Literal(fn_name)], program));
+                        }
+                        else {
+                            var indices = this.parseArguments(parameter, fn_name);
+                            units.push(new Node(opRetrieve, [new Literal(token.payload)].concat(indices), program));
+                        }
                         break;
                     default:
                         expr_list.unshift(token);
@@ -656,13 +664,13 @@ function Parser(expr_list)
         return null;
     };
 
-    this.parseArguments = function()
+    this.parseArguments = function(parameter, fn_name)
     {
         var args = [];
         if (expr_list.length > 0 && expr_list[0].token_type === '(') {
             expr_list.shift();
             while (expr_list.length > 0) {
-                args.push(this.parseExpression());
+                args.push(this.parseExpression(parameter, fn_name));
                 var token = expr_list.shift();
                 if (token.token_type === ')') break;
                 if (token.token_type !== ',') {
@@ -1094,29 +1102,29 @@ function Parser(expr_list)
     // parse DEF FN statement
     {
         var fn = expr_list.shift();
-        if (fn.token_type !== 'statement' || fn.payload !== 'FN') {
+        if (fn.token_type !== 'function' || fn.payload !== 'FN') {
             throw new BasicError('Syntax error', 'expected `FN`, got `'+fn.payload+'`', current_line);
         }
         var name = expr_list.shift();
-        if (name.token_type != 'name') {
+        if (name.token_type !== 'name') {
             throw new BasicError('Syntax error', 'expected function name, got `' + name.payload + '`', current_line);
         }
         var token = expr_list.shift();
-        if (token.token_type === '(') {
-            throw new BasicError('Syntax error', 'expected `(`, got `'+to+'`', current_line);
+        if (token.token_type !== '(') {
+            throw new BasicError('Syntax error', 'expected `(`, got `'+token.payload+'`', current_line);
         }
         var arg = expr_list.shift();
-        if (name.token_type != 'name') {
+        if (name.token_type !== 'name') {
             throw new BasicError('Syntax error', 'expected parameter name, got `' + arg.payload + '`', current_line);
         }
         var token = expr_list.shift();
-        if (token.token_type === ')') {
-            throw new BasicError('Syntax error', 'expected `)`, got `'+to+'`', current_line);
+        if (token.token_type !== ')') {
+            throw new BasicError('Syntax error', 'expected `)`, got `'+token.payload+'`', current_line);
         }
         var equals = expr_list.shift().payload;
         if (equals !== '=') throw new BasicError('Syntax error', 'expected `=`, got `'+equals+'`', current_line);
-        var expr = this.parseExpression();
-        program.fns.store(name, arg, expr);
+        var expr = this.parseExpression(arg.payload, name.payload);
+        program.fns.store(name.payload, arg, expr);
         return last;
     }
 
@@ -1338,7 +1346,6 @@ function Variables()
 }
 
 
-
 function Functions()
 {
     this.clear = function()
@@ -1350,14 +1357,12 @@ function Functions()
     this.store = function(name, arg, expr)
     {
         this.exprs[name] = expr;
-        this.args[name] = arg;
     }
 
     this.evaluate = function(name, arg_value)
     {
-        var expr = this.exprs[name]
-        var arg = this.args[name]
-
+        this.args[name] = arg_value;
+        return this.exprs[name].evaluate();
     }
 
     this.clear();
@@ -1437,6 +1442,12 @@ function opOr(x, y)
     return (x | y);
 }
 
+function opRetrieveParameter(fn_name)
+// retrieve the user function parameter (only one allowed, no arrays)
+{
+    return this.fns.args[fn_name];
+}
+
 function opRetrieve(name)
 //  retrieve a variable from the Variables object in program (this)
 {
@@ -1483,6 +1494,12 @@ function fnVal(x)
 {
     return new Lexer(x).readValue();
 }
+
+function fnFn(name, x)
+{
+    return this.fns.evaluate(name, x);
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // statements
@@ -2656,8 +2673,6 @@ else {
 // TODO:
 
 // break during INPUT
-// BASICODE routines in ON..GOTO, ON..GOSUB (ALF-3.ASC)
-// DEF FN
 // BC3 (v2? 3C? see e.g. journale/STRING.ASC): MID$(A$, 2) => a[1:]
 // scrolling
 
