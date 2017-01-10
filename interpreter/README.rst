@@ -36,7 +36,9 @@ In either case, you can drag and drop local text files containing BASICODE onto 
 Copyright and Licence
 ---------------------
 
-Copyright © 2016—2017 Rob Hagemans.
+(For the avoidance of doubt, this licence only applies to the present directory; not to the whole repository.)
+
+**BASICODE interpreter in Javascript. Copyright © 2016—2017 Rob Hagemans.**
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
