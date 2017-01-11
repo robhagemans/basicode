@@ -2,7 +2,7 @@ BASICODE
 ========
 
 The purpose of BASICODE was to enable radio-transmission of software to owners of numerous
-mutually incompatible 8-bit platforms. It was developed in 1980 by Dutch broadcaster *NOS* for its 
+mutually incompatible 8-bit platforms. It was developed in 1980 by Dutch broadcaster *NOS* for its
 hobby-electronics radio programme Hobbyscoop.
 
 BASICODE consists of the following elements:
@@ -13,7 +13,7 @@ BASICODE consists of the following elements:
 
 .. image:: http://robhagemans.github.io/basicode/zwart1.jpg
 
-BASICODE users would tape record the modulated program from the radio. They would need a native *translation program* 
+BASICODE users would tape record the modulated program from the radio. They would need a native *translation program*
 for their platform, which would decode the common audio format and supplement the BASICODE program with the platform
 implementation of the standard subroutines. If everything went well, they would then be able to run and use the program.
 
@@ -107,9 +107,11 @@ Online resources
 - Victor Reijs, `Overview of BASICODE-3`_.
 - Lennart Benschop, `BASICODE: an example of Dutch computer folklore`_.
 - Thomas Rademacher, `BasiCode – Software für alle`_.
+- Jan Bredenbeek, `BASICODE wiki`_.
 
 .. _BASICODE: http://www.nostalgia8.nl/basicode.htm
 .. _`Datenaustausch mit BASICODE`: http://www.kc85emu.de/scans/rfe0190/Basicode.htm
 .. _`BASICODE: an example of Dutch computer folklore`: https://lennartb.home.xs4all.nl/basicode.html
 .. _`Overview of BASICODE-3`: http://www.iol.ie/~geniet/eng/BASICODE3sub.htm
 .. _`BasiCode – Software für alle`: http://www.joyce.de/basicode/
+.. _`BASICODE wiki`: https://github.com/janbredenbeek/Basicode/wiki
