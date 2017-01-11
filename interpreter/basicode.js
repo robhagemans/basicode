@@ -1915,7 +1915,8 @@ function subText()
     var x = this.variables.retrieve('HO', []);
     var y = this.variables.retrieve('VE', []);
     var text = this.variables.retrieve('SR$', []);
-    this.output.drawText(x, y, text);
+    var c = this.variables.retrieve('CN', []);
+    this.output.drawText(x, y, c, text);
 }
 
 function subSetColour()
@@ -2070,17 +2071,23 @@ function Display(output_element)
 
     this.putChar = function(char)
     {
-        this.putText(this.col*font_width, this.row*font_height, char);
+        this.clearText(this.col*font_width, this.row*font_height, char);
+        this.putText(this.col*font_width, this.row*font_height, 0, char);
         // update content buffer
         this.content[this.row] = this.content[this.row].slice(0, this.col) + char + this.content[this.row].slice(this.col+1);
     }
 
-    this.putText = function(x, y, output)
+    this.clearText = function(x, y, output)
     // x,y are (approximate) top left corner of text box, not baseline
     {
         context.fillStyle = this.background;
         context.fillRect(x-0.5, y-0.5, output.length*font_width+0.5, font_height+0.5);
-        context.fillStyle = this.foreground;
+    }
+
+    this.putText = function(x, y, c, output)
+    // x,y are (approximate) top left corner of text box, not baseline
+    {
+        context.fillStyle = (c===0) ? this.foreground : this.background;
         // 0.75 seems about the right baseline offset for Chrome & Firefox...
         context.fillText(output, x, y+0.75*font_height);
     }
@@ -2173,11 +2180,11 @@ function Display(output_element)
         this.last_y = next_y;
     }
 
-    this.drawText = function(x, y, c)
+    this.drawText = function(x, y, c, text)
     {
         var pixel_x = x*output_element.width;
         var pixel_y = y*output_element.height;
-        this.putText(pixel_x, pixel_y, c);
+        this.putText(pixel_x, pixel_y, c, text);
     }
 }
 
