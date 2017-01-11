@@ -1645,8 +1645,8 @@ function subClearScreen()
 function subSetPos()
 // GOSUB 110
 {
-    this.output.setColumn(this.variables.retrieve('HO', []));
-    this.output.setRow(this.variables.retrieve('VE', []));
+    this.output.setColumn(Math.round(this.variables.retrieve('HO', [])));
+    this.output.setRow(Math.round(this.variables.retrieve('VE', [])));
 }
 
 function subGetPos()
@@ -2022,7 +2022,7 @@ function Display(output_element)
             0, 0, this.pixel_width, this.pixel_height-font_height);
         context.fillStyle = this.background;
         context.fillRect(0, this.pixel_height-font_height, this.pixel_width, font_height);
-        this.content = this.content.slice(0, -1).concat(' '.repeat(this.width));
+        this.content = this.content.slice(1).concat(' '.repeat(this.width));
     }
 
     this.write = function(output)
