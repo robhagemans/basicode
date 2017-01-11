@@ -1691,7 +1691,7 @@ function subReadKey()
     // in BC-3c, CN contains the character code of the lowercase letter
     // if an uppercase key was entered, and vice versa
     //FIXME: we sould be able to switch this off for BC-2 and BC-3 programs
-    this.variables.assign(cn_keyval, 'CN', []);
+    //this.variables.assign(cn_keyval, 'CN', []);
 }
 
 function subSetTimer()
