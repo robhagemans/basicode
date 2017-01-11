@@ -2495,7 +2495,7 @@ function BasicodeApp(script)
     // create a canvas to work on
     var element = document.createElement('canvas');
     element.className = 'basicode';
-    document.body.appendChild(element);
+    document.body.insertBefore(element, script);
 
     this.display = new Display(element);
     this.keyboard = new Keyboard(element);
