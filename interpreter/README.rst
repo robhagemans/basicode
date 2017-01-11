@@ -7,24 +7,22 @@ There is `a live demo <http://robhagemans.github.io/basicode/>`_.
 Deployment
 ----------
 
-Summary::
+Quick start::
 
     <!DOCTYPE html>
     <html>
     <head>
-        <meta charset="utf-8">
         <script src="basicode.js"></script>
     </head>
     <body>
         <script type="text/basicode">
-            1000 GOTO 20
             1010 PRINT "Hello, world!"
         </script>
     </body>
     </html>
 
 
-The package consists of a single Javascript file. To embed one or more interpreters in an HTML document, link the script in the header.
+The package consists of a single Javascript file. To embed one or more interpreters in an HTML5 document, link the script in the header.
 It will scan the HTML for any ``<script type="text/basicode">`` elements and replace them with newly created canvases.
 
 - If the element contains any content or has a ``src=`` property pointing to a text file, the script will attempt to execute it as BASICODE.

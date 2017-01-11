@@ -92,18 +92,22 @@ Acknowledgements
 A big thank you to **Janny Looyenga**, **Jan Bredenbeek**, **André van der Leeden**, **Thomas Rademacher** and many others for history, BASICODE recordings and background information!
 
 
-Books
------
+Publications
+------------
 
-- *BASICODE Hobbyscoop 2*, Nederlandse Omroep Stichting, 1984.
-- *Het BASICODE-3 Boek*, Kluwer Technische Boeken, Deventer, 1986.
+- Hans G. Janssen (ed.), *BASICODE Hobbyscoop 2*, Nederlandse Omroep Stichting, Hilversum, 1983.
+- Trevor Taylor (ed.), *The Chip Shop BASICODE-2*, Broadcasting Support Services, London, 1984.
+- Jacques Haubrich (ed.), *Het BASICODE-3 Boek*, Kluwer Technische Boeken, Deventer, 1986.
 - Michael Wiegand, Heike u. Manfred Fillinger, *BASICODE. Mit Programmkassette*, Ravensburger Buchverlag, Ravensburg, 1986.
+- 'basicode-2', *Elektuur* **10** 1983.
+- Prof. Dr. Horst Völz, '`Datenaustausch mit BASICODE`_', *Radio Fernsehen Elektronik* **1** 1990.
+- Frank Veraart, 'Basicode: Co-Producing a Microcomputer Esperanto', *History of Technology* **28** 2008
+
 
 Online resources
 ----------------
 
 - Janny Looyenga, `BASICODE`_.
-- Prof. Dr. Horst Völz, `Datenaustausch mit BASICODE`_, *Radio Fernsehen Elektronik* **1** 1990.
 - Victor Reijs, `Overview of BASICODE-3`_.
 - Lennart Benschop, `BASICODE: an example of Dutch computer folklore`_.
 - Thomas Rademacher, `BasiCode – Software für alle`_.
