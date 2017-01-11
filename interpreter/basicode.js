@@ -82,7 +82,7 @@ function newOperatorToken(keyword, narity, precedence, operation) {
     } );
 }
 
-const SYMBOLS = {
+var SYMBOLS = {
     '^': newOperatorToken('^', 2, 12, Math.pow),
     '*': newOperatorToken('*', 2, 11, opMultiply),
     '/': newOperatorToken('/', 2, 11, opDivide),
@@ -96,7 +96,7 @@ const SYMBOLS = {
     '<>': newOperatorToken('<>', 2, 7, opNotEqual),
 }
 
-const KEYWORDS = {
+var KEYWORDS = {
     'ABS': newFunctionToken('ABS', Math.abs),
     'AND': newOperatorToken('AND', 2, 5, opAnd),
     'ASC': newFunctionToken('ASC', fnAsc),
@@ -496,7 +496,6 @@ function Next(loop_name, program)
     {
         var for_record = program.loop_stack[0];
         while (loop_name !== for_record.name) {
-            //throw ('Block error', 'Expected `NEXT '+for_record.name+'`, got `NEXT '+loop_name+'`')
             console.log('Popping from loop stack unexpectedly, did we jump out of a loop?');
             program.loop_stack.shift();
             for_record = program.loop_stack[0];
@@ -901,7 +900,7 @@ function Parser(expr_list)
         return last.next;
     }
 
-    const SUBS = {
+    var SUBS = {
         100: function(last) {last.next = new Node(subClearScreen, [], program); return last.next; },
         110: function(last) {last.next = new Node(subSetPos, [], program); return last.next; },
         120: function(last) {last.next = new Node(subGetPos, [], program); return last.next; },
@@ -1044,7 +1043,7 @@ function Parser(expr_list)
     // if we encounter it unexpectedly, this is where we get
     {
         if (token === undefined || token === null || token.payload !== 'NEXT') {
-            throw new BasicError(`Block error`, '`FOR` without `NEXT`', current_line);
+            throw new BasicError('Block error', '`FOR` without `NEXT`', current_line);
         }
         // only one variable allowed
         var next_variable = expr_list.shift();
@@ -1156,7 +1155,7 @@ function Parser(expr_list)
         return last.next;
     }
 
-    const PARSERS = {
+    var PARSERS = {
         'DATA': this.parseData,
         'DIM': this.parseRead,
         'FOR': this.parseFor,
@@ -1868,7 +1867,7 @@ function subText()
 
 function subSetColour()
 {
-    const COLOURS = {
+    var COLOURS = {
         0: 'black',
         1: 'blue',
         2: 'red',
@@ -2141,7 +2140,7 @@ function Keyboard(input_element)
     input_element.focus();
 
     // JavaScript to BASICODE keycode dictionary
-    const KEYS = {
+    var KEYS = {
         8: 127, // backspace
         13: 13, // enter
         37: 28, // left
@@ -2428,10 +2427,10 @@ function Floppy(id)
 ///////////////////////////////////////////////////////////////////////////////
 // user interface
 
-const BUSY_DELAY = 1;
-const IDLE_DELAY = 60;
+var BUSY_DELAY = 1;
+var IDLE_DELAY = 60;
 // minimum delay (nested delays are 'clamped' by the browser)
-const MIN_DELAY = 4;
+var MIN_DELAY = 4;
 
 
 function BasicodeApp(script)
