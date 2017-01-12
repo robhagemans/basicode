@@ -780,7 +780,7 @@ function Parser(expr_list, program)
                 last = last.next;
             }
             else if (sep.token_type !== ':') {
-                throw new BasicError(`Syntax error`, 'expected `:`, got `' + sep.payload + '`', current_line);
+                throw new BasicError('Syntax error', 'expected `:`, got `' + sep.payload + '`', current_line);
             }
             if (!expr_list.length) break;
             if (expr_list[0].token_type !== 'literal' && expr_list[0].payload === end_token) break;
