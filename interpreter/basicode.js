@@ -1742,8 +1742,6 @@ function subTone()
     this.speaker.sound(freq, dur*0.1, vol/15.);
 }
 
-
-
 function subRandom()
 // GOSUB 260
 {
@@ -1938,10 +1936,9 @@ function subSetColour()
     this.output.background = COLOURS[bg];
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 // screen
-
-
 
 function Display(output_element)
 {
@@ -2153,11 +2150,8 @@ function Display(output_element)
         }
     }
 
-    this.clear();
-
     ///////////////////////////////////////////////////////////////////////////
     // graphics
-
 
     this.plot = function(x, y, c)
     {
@@ -2186,6 +2180,9 @@ function Display(output_element)
         var pixel_y = y*output_element.height;
         this.putText(pixel_x, pixel_y, c, text);
     }
+
+    // initialise
+    this.clear();
 }
 
 
@@ -2194,7 +2191,6 @@ function Display(output_element)
 
 function Keyboard(input_element)
 {
-
     // make canvas element focussable to catch keypresses
     input_element.tabIndex = 1;
     input_element.focus();
@@ -2344,12 +2340,10 @@ function Printer() {
 ///////////////////////////////////////////////////////////////////////////////
 // speaker
 
-var context = new AudioContext();
-
-
 function Speaker()
 // tone generator
 {
+    var context = new AudioContext();
     this.tones = 0;
 
     this.isBusy = function()
@@ -2392,6 +2386,7 @@ function Speaker()
     }
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 // time
 
@@ -2423,6 +2418,7 @@ function Timer()
         return (remaining<0) ? 0 : remaining;
     }
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // storage
@@ -2740,24 +2736,3 @@ else if (window.attachEvent) {
 else {
     window.onload = downloadJSAtOnload;
 }
-
-
-// TODO:
-
-// tape storage without file names
-// multiple INPUT A,B,C in BOKA-EI - accept commas instead of enter?
-// type checks A$=1; enforce argument numbers & types; catch math errors
-// use a single long delay of the right length for sound wait nodes rather than a frequent check
-
-// trace and watch
-// adjustable throttle
-// adjustable height*width, pixelsize
-
-// controls: repeat/play/pause, load, print buttons; upload files to internal storage
-// perhaps hidden elements (made visible by tabs?) for printer output, storage drives, (+debug: trace, variables, data, program text, ...)
-// scrollable info page; center info page on longest line of description
-
-// re-extract the BC3 tape without PC-BASIC mods
-// re-extract BOB1
-// VC8: tracks 16,17,18,19 mis-named; missing the real track 16
-// add 'neue Programme' & 'wiederentdeckte Programme' @ http://www.joyce.de/basicode/index.htm
