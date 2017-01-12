@@ -2307,12 +2307,18 @@ function Keyboard(input_element)
 ///////////////////////////////////////////////////////////////////////////////
 // printer
 
-function Printer() {
+function Printer(element_id) {
 
-    // create hidden iframe for printing
-    var print_iframe = document.createElement("iframe");
-    print_iframe.hidden = true;
-    document.body.appendChild(print_iframe);
+    var print_iframe;
+    if (element_id) {
+        print_iframe = document.getElementById(element_id.value);
+    }
+    else {
+        // create hidden iframe for printing
+        print_iframe = document.createElement("iframe");
+        print_iframe.hidden = true;
+        document.body.appendChild(print_iframe);
+    }
     var print_element = document.createElement("pre");
     print_iframe.contentDocument.body.appendChild(print_element)
 
@@ -2484,11 +2490,23 @@ var MIN_DELAY = 4;
 
 function BasicodeApp(script)
 {
-    // create a canvas to work on
-    var element = document.createElement("canvas");
-    element.className = "basicode";
-    document.body.insertBefore(element, script);
+    var screen_id = script.attributes["data-canvas"];
+    var printer_id = script.attributes["data-printer"];
 
+    // obtain screen/keyboard canvas
+    var element;
+    console.log(screen_id);
+    if (screen_id) {
+        // canvas is provided
+        console.log(script.attributes);
+        element = document.getElementById(screen_id.value)
+    }
+    else {
+        // create a canvas to work on
+        element = document.createElement("canvas");
+        element.className = "basicode";
+        document.body.insertBefore(element, script);
+    }
     // make canvas element focussable to catch keypresses
     element.tabIndex = 1;
     element.focus();
@@ -2496,7 +2514,7 @@ function BasicodeApp(script)
     // set up emulator
     this.display = new Display(element);
     this.keyboard = new Keyboard(element);
-    this.printer = new Printer();
+    this.printer = new Printer(printer_id);
     this.speaker = new Speaker();
     this.timer = new Timer();
     this.storage = [new Floppy(0), new Floppy(1), new Floppy(2), new Floppy(3)]
