@@ -570,7 +570,7 @@ function Next(loop_name, program)
 //////////////////////////////////////////////////////////////////////
 // program object
 
-function Program()
+function Program(basicode)
 {
     // parsing output
     this.title = '';
@@ -580,18 +580,16 @@ function Program()
     this.line_numbers = {};
     this.tree = new Label();
 
+    // build the tree
+    var tokenised_code = new Lexer(basicode).tokenise();
+    var parser = new Parser(tokenised_code, this);
+    parser.parse(this.tree);
+
     // runtime state
     this.variables = new Variables();
     this.sub_stack = [];
     this.loop_stack = [];
     this.current_line = 999;
-
-    // machine objects
-    this.output = null;
-    this.input = null;
-    this.printer = null;
-    this.speaker = null;
-    this.timer = null;
 
     this.clear = function()
     {
@@ -601,17 +599,25 @@ function Program()
         this.current_line = 999;
     }
 
+    this.attach = function(machine)
+    // attach program to machine emulator
+    {
+        this.output = machine.display;
+        this.input = machine.keyboard;
+        this.printer = machine.printer;
+        this.speaker = machine.speaker;
+        this.timer = machine.timer;
+        this.storage = machine.storage;
+    }
 }
 
 
 //////////////////////////////////////////////////////////////////////
 // parser
 
-function Parser(expr_list)
-{
-    // resulting program object
-    var program = new Program();
 
+function Parser(expr_list, program)
+{
     // current line being parsed
     var current_line = 999;
 
@@ -1228,12 +1234,6 @@ function Parser(expr_list)
         'STOP': this.parseEnd,
         'RUN': this.parseRun,
         'DEF': this.parseDefFn,
-    }
-
-    this.parseProgram = function()
-    {
-        this.parse(program.tree);
-        return program;
     }
 };
 
@@ -2191,10 +2191,6 @@ function Display(output_element)
 
 function Keyboard(input_element)
 {
-    // make canvas element focussable to catch keypresses
-    input_element.tabIndex = 1;
-    input_element.focus();
-
     // JavaScript to BASICODE keycode dictionary
     var KEYS = {
         8: 127, // backspace
@@ -2493,8 +2489,19 @@ function BasicodeApp(script)
     element.className = 'basicode';
     document.body.insertBefore(element, script);
 
+    // make canvas element focussable to catch keypresses
+    element.tabIndex = 1;
+    element.focus();
+
+    // set up emulator
     this.display = new Display(element);
     this.keyboard = new Keyboard(element);
+    this.printer = new Printer();
+    this.speaker = new Speaker();
+    this.timer = new Timer();
+    this.storage = [new Floppy(0), new Floppy(1), new Floppy(2), new Floppy(3)]
+
+    // runtime members
     this.program = null;
     this.running = null;
 
@@ -2542,13 +2549,8 @@ function BasicodeApp(script)
         this.keyboard.reset();
         try {
             // initialise program object
-            this.program = new Parser(new Lexer(code).tokenise()).parseProgram();
-            this.program.output = this.display;
-            this.program.input = this.keyboard;
-            this.program.printer = new Printer();
-            this.program.speaker = new Speaker();
-            this.program.timer = new Timer();
-            this.program.storage = [new Floppy(0), new Floppy(1), new Floppy(2), new Floppy(3)]
+            this.program = new Program(code);
+            this.program.attach(this);
             // show title and description
             this.show();
         } catch (e) {
@@ -2646,8 +2648,8 @@ function BasicodeApp(script)
         if (this.running) window.clearTimeout(this.running);
         this.running = null;
         if (this.program !== null) {
-            this.program.output.release();
-            this.program.printer.flush();
+            this.display.release();
+            this.printer.flush();
         }
         this.display.invertColour();
         this.display.clearRow(this.display.height - 1);
