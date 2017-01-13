@@ -1,3 +1,5 @@
+/* display */
+
 .basicode {
     transform: scaleX(1.5);
     /*height: 20rem;*/
@@ -16,6 +18,35 @@
     background-color: grey;
     border: 1px solid darkgrey;
 }
+
+/* storage visualisation */
+
+.floppy {
+    width: 15em;
+    margin: 2em;
+    padding: 1em;
+    background-color: white;
+    border-radius: 0.5em;
+    float: left;
+}
+.floppy a {
+    font-family: sans;
+    font-weight: bold;
+    display: block;
+    padding: 0.5em 2em 0.5em 2em;
+    margin: 0.2em;
+    border: 0.2em solid steelblue;
+    border-radius: 0.7em;
+    background-color: steelblue;
+    color: white;
+    text-decoration: none;
+    overflow: hidden;
+};
+.floppy a:visited {
+    color: white;
+    text-decoration: none;
+}
+
 
 body {
     background-color: darkslategrey;

@@ -2425,17 +2425,47 @@ function Timer()
 ///////////////////////////////////////////////////////////////////////////////
 // storage
 
-function Floppy(id)
+function Floppy(id, element_id)
 {
+    var element = null;
+    if (element_id) element = document.getElementById(element_id.value);
+
     this.id = id;
     this.open_file = null;
     this.open_key = null;
     this.open_mode = "";
     this.open_line = null;
 
+    this.refresh = function()
+    {
+        if (!element) return;
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+        for (var i=0; i < localStorage.length; ++i) {
+            var key_list = localStorage.key(i).split(":");
+            if (key_list[0] !== "BASICODE") continue;
+            if (key_list[1] !== "" + this.id) continue;
+            // create content blob
+            var blob = new Blob([localStorage.getItem(localStorage.key(i))], {type: "text/plain"});
+            // create download link to file
+            var a = document.createElement('a');
+            a.textContent = key_list[2];
+            a.href = window.URL.createObjectURL(blob);
+            a.download = key_list[2];
+            // drag-out support
+            a.dataset.downloadurl = ["text/plain", a.download, a.href].join(":");
+            a.draggable = true;
+            a.addEventListener("dragstart", function(e) {
+                e.dataTransfer.setData("DownloadURL", a.dataset.downloadurl);
+            }, false);
+            element.appendChild(a);
+        }
+    }
+
     this.open = function(name, mode)
     {
-        this.open_key = this.id + ":" + name;
+        this.open_key = "BASICODE:" + this.id + ":" + name;
         var string = localStorage.getItem(this.open_key);
         this.open_mode = mode;
         this.open_line = 0;
@@ -2452,6 +2482,7 @@ function Floppy(id)
         else {
             this.open_file = string.split("\n");
         }
+        this.refresh();
         return true;
     }
 
@@ -2460,6 +2491,7 @@ function Floppy(id)
         if (this.open_key === null) return false;
         localStorage.setItem(this.open_key, this.open_file.join("\n"));
         this.open_file = null;
+        this.refresh();
         return true;
     }
 
@@ -2476,6 +2508,7 @@ function Floppy(id)
         this.open_file.push(line);
     }
 
+    this.refresh();
 }
 
 
@@ -2490,15 +2523,17 @@ var MIN_DELAY = 4;
 
 function BasicodeApp(script)
 {
+    // should we use .dataset here?
     var screen_id = script.attributes["data-canvas"];
     var printer_id = script.attributes["data-printer"];
+    var flop1_id = script.attributes["data-floppy-1"];
+    var flop2_id = script.attributes["data-floppy-2"];
+    var flop3_id = script.attributes["data-floppy-3"];
 
     // obtain screen/keyboard canvas
     var element;
-    console.log(screen_id);
     if (screen_id) {
         // canvas is provided
-        console.log(script.attributes);
         element = document.getElementById(screen_id.value)
     }
     else {
@@ -2517,7 +2552,7 @@ function BasicodeApp(script)
     this.printer = new Printer(printer_id);
     this.speaker = new Speaker();
     this.timer = new Timer();
-    this.storage = [new Floppy(0), new Floppy(1), new Floppy(2), new Floppy(3)]
+    this.storage = [new Floppy(0), new Floppy(1, flop1_id), new Floppy(2, flop2_id), new Floppy(3, flop3_id)]
 
     // runtime members
     this.program = null;
