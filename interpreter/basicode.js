@@ -2436,6 +2436,12 @@ function Floppy(id, element_id)
     this.open_mode = "";
     this.open_line = null;
 
+    var mime_type = "text/plain";
+    var prefix = "BASICODE"
+
+    // this is where we keep our blobs
+    var blobbery = {};
+
     this.refresh = function()
     {
         if (!element) return;
@@ -2443,18 +2449,21 @@ function Floppy(id, element_id)
             element.removeChild(element.firstChild);
         }
         for (var i=0; i < localStorage.length; ++i) {
-            var key_list = localStorage.key(i).split(":");
-            if (key_list[0] !== "BASICODE") continue;
+            var key = localStorage.key(i)
+            var key_list = key.split(":");
+            if (key_list[0] !== prefix) continue;
             if (key_list[1] !== "" + this.id) continue;
-            // create content blob
-            var blob = new Blob([localStorage.getItem(localStorage.key(i))], {type: "text/plain"});
+            // create content blob from local storage, if necessary
+            if (!(key in blobbery)) {
+                blobbery[key] = new Blob([localStorage.getItem(key)], {type: mime_type});
+            }
             // create download link to file
-            var a = document.createElement('a');
+            var a = document.createElement("a");
             a.textContent = key_list[2];
-            a.href = window.URL.createObjectURL(blob);
+            a.href = window.URL.createObjectURL(blobbery[key]);
             a.download = key_list[2];
             // drag-out support
-            a.dataset.downloadurl = ["text/plain", a.download, a.href].join(":");
+            a.dataset.downloadurl = [mime_type, a.download, a.href].join(":");
             a.draggable = true;
             a.addEventListener("dragstart", function(e) {
                 e.dataTransfer.setData("DownloadURL", a.dataset.downloadurl);
@@ -2465,7 +2474,7 @@ function Floppy(id, element_id)
 
     this.open = function(name, mode)
     {
-        this.open_key = "BASICODE:" + this.id + ":" + name;
+        this.open_key = [prefix, this.id, name].join(":");
         var string = localStorage.getItem(this.open_key);
         this.open_mode = mode;
         this.open_line = 0;
