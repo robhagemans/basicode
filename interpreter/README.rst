@@ -4,10 +4,9 @@ BASICODE interpreter
 This is a BASICODE interpreter in Javascript, compatible with BASICODE versions 2, 3 and 3C.
 There is `a live demo <http://robhagemans.github.io/basicode/>`_.
 
-Deployment
-----------
-
-Quick start::
+Quick start
+-----------
+::
 
     <!DOCTYPE html>
     <html>
@@ -22,6 +21,9 @@ Quick start::
     </html>
 
 
+Deployment
+----------
+
 The package consists of a single Javascript file. To embed one or more interpreters in an HTML5 document, link the script in the header.
 It will scan the HTML for any ``<script type="text/basicode">`` elements and replace them with newly created canvases.
 
@@ -29,6 +31,15 @@ It will scan the HTML for any ``<script type="text/basicode">`` elements and rep
 - If the element is empty, it will show a splash screen.
 
 In either case, you can drag and drop local text files containing BASICODE onto the canvas to execute them. Enjoy!
+
+
+Compatibility
+-------------
+
+The interpreter should work on reasonably recent, standards-compliant browsers. 
+You need a keyboard, so it will be difficult to use on mobile. 
+I've superficially tested it on Chrome, Firefox, Safari, and Opera. 
+It probably works fine on Edge, but I haven't tried. It does not work on Internet Explorer and likely never will.
 
 
 Copyright and Licence
