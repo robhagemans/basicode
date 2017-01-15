@@ -2352,7 +2352,7 @@ function Printer(element_id) {
 function Speaker()
 // tone generator
 {
-    var context = new AudioContext();
+    var context = AudioContext ? new AudioContext() : null;
     this.tones = 0;
 
     this.isBusy = function()
@@ -2365,6 +2365,7 @@ function Speaker()
     // caller should check we"re not busy first, otherwise first oscillator to stop
     // will unset the busy flag
     {
+        if (!context) return;
         // Oscillator node
         var oscillator = context.createOscillator();
         oscillator.type = "square";

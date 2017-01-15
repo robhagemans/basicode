@@ -2,6 +2,7 @@
 
 .basicode {
     transform: scaleX(1.5);
+    /*transform-origin: left top;*/
     /*height: 20rem;*/
     padding: 0.4rem 0.2rem 0.4rem 0.2rem;
     background-color: grey;
