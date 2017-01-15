@@ -76,6 +76,13 @@ function BasicError(message, detail, location)
     this.message = message;
     this.detail = detail;
     this.where = location;
+    // capture stack trace, see http://stackoverflow.com/questions/464359/custom-exceptions-in-javascript
+    if ("captureStackTrace" in Error) {
+        Error.captureStackTrace(this, InvalidArgumentException);
+    }
+    else {
+        this.stack = (new Error()).stack;
+    }
 }
 
 BasicError.prototype = Object.create(Error.prototype);
