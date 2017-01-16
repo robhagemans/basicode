@@ -78,7 +78,7 @@ function BasicError(message, detail, location)
     this.where = location;
     // capture stack trace, see http://stackoverflow.com/questions/464359/custom-exceptions-in-javascript
     if ("captureStackTrace" in Error) {
-        Error.captureStackTrace(this, InvalidArgumentException);
+        Error.captureStackTrace(this, BasicError);
     }
     else {
         this.stack = (new Error()).stack;
@@ -2557,7 +2557,8 @@ function BasicodeApp(script)
         // create a canvas to work on
         element = document.createElement("canvas");
         element.className = "basicode";
-        document.body.insertBefore(element, script);
+        element.innerHTML = "To use this interpreter, you need a browser that supports the CANVAS element."
+        script.parentNode.insertBefore(element, script);
     }
     // make canvas element focussable to catch keypresses
     element.tabIndex = 1;
