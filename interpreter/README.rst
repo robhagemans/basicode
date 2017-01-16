@@ -36,10 +36,10 @@ In either case, you can drag and drop local text files containing BASICODE onto 
 Compatibility
 -------------
 
-The interpreter should work on reasonably recent, standards-compliant browsers. 
-You need a keyboard, so it will be difficult to use on mobile. 
-I've superficially tested it on Chrome, Firefox, Safari, and Opera. 
-It probably works fine on Edge, but I haven't tried. It does not work on Internet Explorer and likely never will.
+The interpreter should work on reasonably recent, standards-compliant browsers.
+You need a keyboard, so it will be difficult to use on mobile.
+I've superficially tested it on Chrome, Firefox, Safari, and Opera.
+It probably works fine on Edge, but I haven't tried. It mostly works on Internet Explorer 11 (except sound) but not at all on older versions.
 
 
 Copyright and Licence
