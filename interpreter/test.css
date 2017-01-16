@@ -23,29 +23,102 @@
 /* storage visualisation */
 
 .floppy {
-    width: 15em;
-    margin: 2em;
-    padding: 1em;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 2em 1em 2em 1em;
     background-color: white;
-    border-radius: 0.5em;
-    float: left;
+    word-wrap: break-word;
 }
 .floppy a {
     font-family: sans;
-    font-weight: bold;
-    display: block;
-    padding: 0.5em 2em 0.5em 2em;
-    margin: 0.2em;
+    float:left; clear: none;
+    padding: 0.5em 3em 0.5em 3em;
+    margin: 0.2em 0.1em 0.2em 0.1em;
     border: 0.2em solid steelblue;
-    border-radius: 0.7em;
+    border-left: 1px solid lightblue;
+    border-radius: 0.3em;
     background-color: steelblue;
     color: white;
     text-decoration: none;
-    overflow: hidden;
 };
 .floppy a:visited {
     color: white;
     text-decoration: none;
+}
+
+
+/* Tabbed example */
+/* https://www.w3.org/Style/Examples/007/target.en.html#tab3 */
+div.tabs {
+    height: 41em;
+    width: 58em;
+    position: relative;
+    z-index: 0;
+    margin: auto;
+    display: table;
+
+}
+div.tabs > div {
+    display: inline;
+}
+div.tabs > div > a {
+    font-family: sans;
+    text-decoration: none;
+    color: black;
+    padding: 0.2em 2em 0.2em 2em;
+    margin: 0;
+    background: lightgrey;
+    border-bottom: 1px solid lightgrey;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+}
+/* inactive tabs */
+div.tabs > div:not(:target) > a {
+    border-bottom: 0;
+    background: darkgrey;
+}
+/* active or default tab */
+div.tabs > div:target > a,
+:target #screen > a {
+    background: lightgrey;
+    border-bottom: 1px solid lightgrey;
+}
+div.tabs > div > div {
+    background: lightgrey;
+    border: 1px solid lightgrey;
+    z-index: -2;
+    left: 0;
+    top: 1.3em;
+    bottom: 0;
+    right: 0;
+    padding: 0.3em;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+}
+
+div.tabs > div:not(:target) > div {
+    position: absolute;
+}
+div.tabs > div:target > div,
+:target #screen > div {
+    position: absolute;
+    z-index: -1
+}
+div.tabs :target {
+    outline: none;
+}
+
+#printer0 {
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
 }
 
 

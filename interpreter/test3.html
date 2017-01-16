@@ -7,13 +7,53 @@
 </head>
 
 <body>
+
+
+
     <script type="text/basicode"
         data-floppy-1="flop1"
         data-floppy-2="flop2"
+        data-printer="printer0"
+        data-canvas="canvas0"
         ></script>
 
-    <div id="flop1" class="floppy"></div>
-    <div id="flop2" class="floppy"></div>
+    <div class="tabs">
+        <!--
+        <div id="cassette">
+            <a href="#cassette">Tape</a>
+            <div>
+            </div>
+        </div>
+        -->
+        <div id="diskette1">
+            <a href="#diskette1">Drive A</a>
+            <div>
+                <div id="flop1" class="floppy"></div>
+            </div>
+        </div>
+        <div id="diskette2">
+            <a href="#diskette2">Drive B</a>
+            <div>
+                <div id="flop2" class="floppy"></div>
+            </div>
+        </div>
+
+        <div id="printer">
+            <a href="#printer">Printer</a>
+            <div>
+                <iframe id="printer0"></iframe>
+            </div>
+        </div>
+
+        <div id="screen">
+            <a href="#screen">Screen</a>
+            <div>
+                <canvas class="basicode" id="canvas0"></canvas>
+            </div>
+        </div>
+
+    </div>
+
 <!--
     <script type="text/basicode">
     1000 GOTO 20: REM TEST
