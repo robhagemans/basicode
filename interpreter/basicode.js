@@ -1995,8 +1995,8 @@ function Display(output_element)
         this.background = "black";
     }
 
-    this.clear = function() {
-        this.resetColours();
+    this.clear = function()
+    {
         context.fillStyle = this.background;
         context.fillRect(0, 0, output_element.width, output_element.height);
         this.row = 0;
@@ -2007,7 +2007,8 @@ function Display(output_element)
         this.last_y = 0;
     }
 
-    this.clearRow = function(row) {
+    this.clearRow = function(row)
+    {
         context.fillStyle = this.background;
         context.fillRect(0, row*font_height, output_element.width, font_height);
         this.content[row] = " ".repeat(this.width);
@@ -2189,6 +2190,7 @@ function Display(output_element)
     }
 
     // initialise
+    this.resetColours();
     this.clear();
 }
 
