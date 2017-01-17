@@ -2547,6 +2547,7 @@ function BasicodeApp(script)
     var flop1_id = script.dataset["floppy-1"];
     var flop2_id = script.dataset["floppy-2"];
     var flop3_id = script.dataset["floppy-3"];
+    var listing_id = script.dataset["listing"];
 
     // obtain screen/keyboard canvas
     var element;
@@ -2572,6 +2573,7 @@ function BasicodeApp(script)
     this.speaker = new Speaker();
     this.timer = new Timer();
     this.storage = [new Floppy(0), new Floppy(1, flop1_id), new Floppy(2, flop2_id), new Floppy(3, flop3_id)]
+    var listing = document.getElementById(listing_id);
 
     // runtime members
     this.program = null;
@@ -2619,6 +2621,8 @@ function BasicodeApp(script)
         this.display.clear();
         // reset keyboard buffer
         this.keyboard.reset();
+        // show program
+        if (listing) listing.value = code;
         try {
             // initialise program object
             this.program = new Program(code);
@@ -2649,6 +2653,7 @@ function BasicodeApp(script)
     this.splash = function()
     // intro screen if nothing was loaded
     {
+        if (listing) listing.value = '';
         this.display.invertColour();
         this.display.clearRow(0);
         this.display.writeCentre(0, "(c) 2016, 2017 Rob Hagemans");
@@ -2750,8 +2755,18 @@ function BasicodeApp(script)
         this.splash();
     }
 
+
     ///////////////////////////////////////////////////////////////////////////
     // event handlers
+
+    // reload code if listing changes
+    var last_code = listing.value;
+    if (listing) listing.onblur = function() {
+        if (listing.value === last_code) return;
+        last_code = listing.value;
+        app.stop();
+        app.load(listing.value);
+    }
 
     // run file on click
 

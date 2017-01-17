@@ -111,7 +111,7 @@ div.tabs :target {
     outline: none;
 }
 
-#printer0 {
+#printer0, #listing0 {
     border: none;
     margin: 0;
     padding: 0;
