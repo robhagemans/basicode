@@ -2320,7 +2320,7 @@ function Printer(element_id) {
 
     var print_iframe;
     if (element_id) {
-        print_iframe = document.getElementById(element_id.value);
+        print_iframe = document.getElementById(element_id);
     }
     else {
         // create hidden iframe for printing
@@ -2438,7 +2438,7 @@ function Timer()
 function Floppy(id, element_id)
 {
     var element = null;
-    if (element_id) element = document.getElementById(element_id.value);
+    if (element_id) element = document.getElementById(element_id);
 
     this.id = id;
     this.open_file = null;
@@ -2542,18 +2542,17 @@ var MIN_DELAY = 4;
 
 function BasicodeApp(script)
 {
-    // should we use .dataset here?
-    var screen_id = script.attributes["data-canvas"];
-    var printer_id = script.attributes["data-printer"];
-    var flop1_id = script.attributes["data-floppy-1"];
-    var flop2_id = script.attributes["data-floppy-2"];
-    var flop3_id = script.attributes["data-floppy-3"];
+    var screen_id = script.dataset["canvas"];
+    var printer_id = script.dataset["printer"];
+    var flop1_id = script.dataset["floppy-1"];
+    var flop2_id = script.dataset["floppy-2"];
+    var flop3_id = script.dataset["floppy-3"];
 
     // obtain screen/keyboard canvas
     var element;
     if (screen_id) {
         // canvas is provided
-        element = document.getElementById(screen_id.value)
+        element = document.getElementById(screen_id)
     }
     else {
         // create a canvas to work on
