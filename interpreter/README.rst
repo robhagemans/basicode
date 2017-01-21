@@ -44,7 +44,7 @@ Attribute             Setting
 ``data-columns``      Number of text columns
 ``data-rows``         Number of text rows
 ``data-speed``        Number of cycles per second in ``FOR`` loops (roughly)
-``data-canvas``       Traget ``canvas`` id for screen / keyboard
+``data-canvas``       Target ``canvas`` id for screen / keyboard
 ``data-floppy-1``     Target ``div`` id for visualisation of first floppy drive
 ``data-floppy-2``     Target ``div`` id for visualisation of second floppy drive
 ``data-floppy-3``     Target ``div`` id for visualisation of third floppy drive
