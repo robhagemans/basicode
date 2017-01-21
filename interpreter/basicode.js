@@ -91,6 +91,116 @@ BasicError.prototype.constructor = BasicError;
 
 
 ///////////////////////////////////////////////////////////////////////////////
+// IBM CGA 8x8 font
+
+var FONT = [
+    "0000000000000000",
+    "3078783030003000",
+    "6C6C6C0000000000",
+    "6C6CFE6CFE6C6C00",
+    "307CC0780CF83000",
+    "00C6CC183066C600",
+    "386C3876DCCC7600",
+    "6060C00000000000",
+    "1830606060301800",
+    "6030181818306000",
+    "00663CFF3C660000",
+    "003030FC30300000",
+    "0000000000303060",
+    "000000FC00000000",
+    "0000000000303000",
+    "060C183060C08000",
+    "7CC6CEDEF6E67C00",
+    "307030303030FC00",
+    "78CC0C3860CCFC00",
+    "78CC0C380CCC7800",
+    "1C3C6CCCFE0C1E00",
+    "FCC0F80C0CCC7800",
+    "3860C0F8CCCC7800",
+    "FCCC0C1830303000",
+    "78CCCC78CCCC7800",
+    "78CCCC7C0C187000",
+    "0030300000303000",
+    "0030300000303060",
+    "183060C060301800",
+    "0000FC0000FC0000",
+    "6030180C18306000",
+    "78CC0C1830003000",
+    "7CC6DEDEDEC07800",
+    "3078CCCCFCCCCC00",
+    "FC66667C6666FC00",
+    "3C66C0C0C0663C00",
+    "F86C6666666CF800",
+    "FE6268786862FE00",
+    "FE6268786860F000",
+    "3C66C0C0CE663E00",
+    "CCCCCCFCCCCCCC00",
+    "7830303030307800",
+    "1E0C0C0CCCCC7800",
+    "E6666C786C66E600",
+    "F06060606266FE00",
+    "C6EEFEFED6C6C600",
+    "C6E6F6DECEC6C600",
+    "386CC6C6C66C3800",
+    "FC66667C6060F000",
+    "78CCCCCCDC781C00",
+    "FC66667C6C66E600",
+    "78CC603018CC7800",
+    "FCB4303030307800",
+    "CCCCCCCCCCCCFC00",
+    "CCCCCCCCCC783000",
+    "C6C6C6D6FEEEC600",
+    "C6C66C38386CC600",
+    "CCCCCC7830307800",
+    "FEC68C183266FE00",
+    "7860606060607800",
+    "C06030180C060200",
+    "7818181818187800",
+    "10386CC600000000",
+    "00000000000000FF",
+    "3030180000000000",
+    "0000780C7CCC7600",
+    "E060607C6666DC00",
+    "000078CCC0CC7800",
+    "1C0C0C7CCCCC7600",
+    "000078CCFCC07800",
+    "386C60F06060F000",
+    "000076CCCC7C0CF8",
+    "E0606C766666E600",
+    "3000703030307800",
+    "0C000C0C0CCCCC78",
+    "E060666C786CE600",
+    "7030303030307800",
+    "0000CCFEFED6C600",
+    "0000F8CCCCCCCC00",
+    "000078CCCCCC7800",
+    "0000DC66667C60F0",
+    "000076CCCC7C0C1E",
+    "0000DC766660F000",
+    "00007CC0780CF800",
+    "10307C3030341800",
+    "0000CCCCCCCC7600",
+    "0000CCCCCC783000",
+    "0000C6D6FEFE6C00",
+    "0000C66C386CC600",
+    "0000CCCCCC7C0CF8",
+    "0000FC983064FC00",
+    "1C3030E030301C00",
+    "1818180018181800",
+    "E030301C3030E000",
+    "76DC000000000000",
+]
+
+var GLYPHS = {};
+for (var i=0; i < FONT.length;++i) {
+    // split into two-hexit substrings, convert each to binary
+    var glyph = FONT[i].match(/.{1,2}/g).map(function(x) { var bin = parseInt(x, 16).toString(2); return "0".repeat(8-bin.length) + bin;});
+    // convert to list of booleans
+    GLYPHS[String.fromCharCode(32+i)] = glyph.map( function(y) { return y.split("").map(function(x) { return x === "1" }); });
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
 // tokens
 
 function SeparatorToken(bracket_char)
@@ -1947,6 +2057,9 @@ function subSetColour()
 ///////////////////////////////////////////////////////////////////////////////
 // screen
 
+var SCALE = 4;
+var PIXELATE = true;
+
 function Display(output_element, columns, rows)
 {
     // only allow one program to connect at a time
@@ -1961,18 +2074,23 @@ function Display(output_element, columns, rows)
 
     // resize the canvas to fit the font size
     var context = output_element.getContext("2d");
-    var font_height = 24;
-    context.font = font_height+"px monospace";
-    var measures = context.measureText("M");
-    var font_width = measures.width;
-    output_element.width = measures.width*this.width;
-    output_element.height = font_height*this.height;
-    this.pixel_width = output_element.width;
-    this.pixel_height = output_element.height;
+    var font_height = 8;
+    var font_width = 8;
+
+    if (!PIXELATE) {
+        context.font = font_height*SCALE+"px monospace";
+        var measures = context.measureText("M");
+        font_width = Math.round(measures.width / SCALE);
+    }
+
+    this.pixel_width = font_width * this.width;
+    this.pixel_height = font_height*this.height;
+    output_element.width = SCALE * this.pixel_width;
+    output_element.height = SCALE * this.pixel_height;
 
     // set the context on the resized canvas
     context = output_element.getContext("2d");
-    context.font = "normal lighter "+font_height+"px monospace";
+    context.font = "normal lighter "+font_height*SCALE+"px monospace";
 
 
     this.acquire = function(do_run)
@@ -1995,6 +2113,104 @@ function Display(output_element, columns, rows)
         this.background = "black";
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // primitives
+
+    this.putPixel = function(x, y, c) {
+        x = Math.round(x);
+        y = Math.round(y);
+        context.fillStyle = (c===0) ? this.foreground : this.background;
+        context.fillRect(x*SCALE, y*SCALE, SCALE, SCALE);
+    }
+
+    this.clearText = function(x, y, output)
+    // x,y are (approximate) top left corner of text box, not baseline
+    {
+        context.fillStyle = this.background;
+        x = Math.round(x);
+        y = Math.round(y);
+        context.fillRect(x*SCALE, y*SCALE, output.length*font_width*SCALE, font_height*SCALE);
+    }
+
+    this.putText = function(x, y, c, output)
+    // x,y are (approximate) top left corner of text box, not baseline
+    {
+        x = Math.round(x);
+        y = Math.round(y);
+        if (PIXELATE) {
+            for (var k=0; k < output.length; ++k) {
+                var glyph = GLYPHS[output[k]];
+                for (var i=0; i < glyph.length; ++i) {
+                    for (var j=0; j < glyph[i].length; ++j) {
+                        if (glyph[i][j]) this.putPixel(x+k*8+j, y+i, c);
+                    }
+                }
+            }
+        }
+        else {
+            context.fillStyle = (c===0) ? this.foreground : this.background;
+            // 0.75 seems about the right baseline offset for Chrome & Firefox...
+            context.fillText(output, x*SCALE, (y+0.75*font_height)*SCALE);
+        }
+    }
+
+    this.line = function(x0, y0, x1, y1, c)
+    {
+        x0 = Math.round(x0);
+        y0 = Math.round(y0);
+        x1 = Math.round(x1);
+        y1 = Math.round(y1);
+
+        // Bresenham algorithm
+        var dx = Math.abs(x1-x0);
+        var dy = Math.abs(y1-y0);
+        var steep = dy > dx
+        if (steep) {
+            var tmp = x0;
+            x0 = y0;
+            y0 = tmp;
+            tmp = x1;
+            x1 = y1;
+            y1 = tmp;
+            tmp = dx;
+            dx = dy;
+            dy = tmp;
+        }
+        var sx = (x1 > x0) ? 1 :-1;
+        var sy = (y1 > y0) ? 1 :-1;
+        var line_error = Math.trunc(dx / 2);
+        var ry = y0;
+        for (var rx = x0; rx < x1+sx; rx += sx) {
+            if (steep) this.putPixel(ry, rx, c);
+            else this.putPixel(rx, ry, c);
+            line_error -= dy;
+            if (line_error < 0) {
+                y += sy;
+                line_error += dx;
+            }
+        }
+    }
+
+    this.curtain = function()
+    {
+        context.fillStyle = "rgba(225,225,225,0.25)";
+        context.fillRect(0, 0, output_element.width, output_element.height);
+    }
+
+    var cursor_now = 0;
+    this.cursor = function()
+    {
+        cursor_now = (++cursor_now) % this.cursor_ticks;
+        if (cursor_now > this.cursor_ticks/2) {
+            context.fillStyle = this.foreground;
+        }
+        else {
+            context.fillStyle = this.background;
+        }
+        context.fillRect(this.col*font_width*SCALE, this.row*font_height*SCALE,
+            font_width*SCALE, font_height*SCALE);
+    }
+
     this.clear = function()
     {
         context.fillStyle = this.background;
@@ -2010,25 +2226,23 @@ function Display(output_element, columns, rows)
     this.clearRow = function(row)
     {
         context.fillStyle = this.background;
-        context.fillRect(0, row*font_height, output_element.width, font_height);
+        context.fillRect(0, row*font_height*SCALE, output_element.width, font_height*SCALE);
         this.content[row] = " ".repeat(this.width);
-    }
-
-    this.curtain = function()
-    {
-        context.fillStyle = "rgba(225,225,225,0.25)";
-        context.fillRect(0, 0, output_element.width, output_element.height);
     }
 
     this.scroll = function()
     {
         context.drawImage(output_element,
-            0, font_height, this.pixel_width, this.pixel_height-font_height,
-            0, 0, this.pixel_width, this.pixel_height-font_height);
+            0, font_height*SCALE, output_element.width, output_element.height-font_height*SCALE,
+            0, 0, output_element.width, output_element.height-font_height*SCALE);
         context.fillStyle = this.background;
-        context.fillRect(0, this.pixel_height-font_height, this.pixel_width, font_height);
+        context.fillRect(0, output_element.height-font_height*SCALE, output_element.width, font_height*SCALE);
         this.content = this.content.slice(1).concat(" ".repeat(this.width));
     }
+
+
+    ///////////////////////////////////////////////////////////////////////////
+    // text
 
     this.write = function(output)
     {
@@ -2082,37 +2296,6 @@ function Display(output_element, columns, rows)
         this.content[this.row] = this.content[this.row].slice(0, this.col) + char + this.content[this.row].slice(this.col+1);
     }
 
-    this.clearText = function(x, y, output)
-    // x,y are (approximate) top left corner of text box, not baseline
-    {
-        context.fillStyle = this.background;
-        context.fillRect(x-0.5, y-0.5, output.length*font_width+0.5, font_height+0.5);
-    }
-
-    this.putText = function(x, y, c, output)
-    // x,y are (approximate) top left corner of text box, not baseline
-    {
-        context.fillStyle = (c===0) ? this.foreground : this.background;
-        // 0.75 seems about the right baseline offset for Chrome & Firefox...
-        context.fillText(output, x, y+0.75*font_height);
-    }
-
-    var cursor_now = 0;
-    this.cursor = function()
-    {
-        cursor_now = (++cursor_now) % this.cursor_ticks;
-        if (cursor_now > this.cursor_ticks/2) {
-            context.fillStyle = this.foreground;
-            context.fillRect(this.col*font_width+1, this.row*font_height+1,
-                font_width-2, font_height-2);
-        }
-        else {
-            context.fillStyle = this.background;
-            context.fillRect(this.col*font_width, this.row*font_height,
-                font_width, font_height);
-        }
-    }
-
     this.writeCentre = function(row, str)
     // write centred; used by the loader only
     {
@@ -2163,29 +2346,24 @@ function Display(output_element, columns, rows)
 
     this.plot = function(x, y, c)
     {
-        this.last_x = x*output_element.width;
-        this.last_y = y*output_element.height;
-        context.fillStyle = c ? this.background : this.foreground;
-        context.fillRect(this.last_x, this.last_y, 1, 1);
+        this.last_x = x * this.pixel_width;
+        this.last_y = y * this.pixel_height;
+        this.putPixel(this.last_x, this.last_y, c);
     }
 
     this.draw = function(x, y, c)
     {
-        var next_x = x*output_element.width;
-        var next_y = y*output_element.height;
-        context.strokeStyle = c ? this.background : this.foreground;
-        context.beginPath();
-        context.moveTo(this.last_x, this.last_y);
-        context.lineTo(next_x, next_y);
-        context.stroke();
+        var next_x = x * this.pixel_width;
+        var next_y = y * this.pixel_height;
+        this.line(this.last_x, this.last_y, next_x, next_y, c);
         this.last_x = next_x;
         this.last_y = next_y;
     }
 
     this.drawText = function(x, y, c, text)
     {
-        var pixel_x = x*output_element.width;
-        var pixel_y = y*output_element.height;
+        var pixel_x = x * this.pixel_width;
+        var pixel_y = y * this.pixel_height;
         this.putText(pixel_x, pixel_y, c, text);
     }
 
