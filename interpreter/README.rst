@@ -63,6 +63,8 @@ The following fonts are available:
 Font         Description
 ============ ====================================
 ``smooth``   Browser's native monospace font
+``spectrum`` 8x8 ZX Spectrum font
+``c64``      8x8 Commodore 64 font
 ``cga``      8x8 IBM CGA font
 ``thin``     8x8 IBM CGA thin stroke font
 ``pcjr``     8x8 IBM PCjr font
