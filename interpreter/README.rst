@@ -44,7 +44,7 @@ Attribute             Setting
 ``data-columns``      Number of text columns
 ``data-rows``         Number of text rows
 ``data-speed``        Number of cycles per second in ``FOR`` loops (roughly)
-``data-font``         Bitfont to use. Choices are ``smooth``, ``cga``.
+``data-font``         Font to use for text. See below.
 ``data-canvas``       Target ``canvas`` id for screen / keyboard
 ``data-floppy-1``     Target ``div`` id for visualisation of first floppy drive
 ``data-floppy-2``     Target ``div`` id for visualisation of second floppy drive
@@ -52,6 +52,26 @@ Attribute             Setting
 ``data-printer``      Target ``iframe`` id for printer output
 ``data-listing``      Target ``textarea`` for editable program listing
 ===================== ============================================================
+
+
+Fonts
+-----
+
+The following fonts are available:
+
+============ ====================================
+Font         Description
+============ ====================================
+``smooth``   Browser's native monospace font
+``cga``      8x8 IBM CGA font
+``thin``     8x8 IBM CGA thin stroke font
+``pcjr``     8x8 IBM PCjr font
+``tandy``    8x8 Tandy 1000 font
+``tandy2``   8x8 Tandy 1000 font, later version
+``ega``      8x14 IBM EGA font
+``mda``      9x14 Hercules and IBM MDPA font
+``olivetti`` 8x16 Olivetti M24 and AT&T 6300 font
+``vga``      9x16 IBM VGA font
 
 
 Compatibility
