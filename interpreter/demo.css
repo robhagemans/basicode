@@ -1,9 +1,9 @@
 /* display */
 
 .basicode {
-    /*transform-origin: left top;*/
-    transform: scaleX(1.5);
+    /* 4*3 aspect ratio */
     height: 36em;
+    width: 48em;
     padding: 0.4rem 0.2rem 0.4rem 0.2rem;
     background-color: grey;
     border-radius: 0.4rem;

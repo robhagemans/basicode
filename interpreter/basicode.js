@@ -1947,13 +1947,13 @@ function subSetColour()
 ///////////////////////////////////////////////////////////////////////////////
 // screen
 
-function Display(output_element)
+function Display(output_element, columns, rows)
 {
     // only allow one program to connect at a time
     this.busy = false;
 
-    this.width = 40;
-    this.height = 24;
+    this.width = columns;
+    this.height = rows;
     this.foreground = "white";
     this.background = "black";
     // number of ticks in a cursor cycle
@@ -2549,12 +2549,16 @@ var MIN_DELAY = 4;
 
 function BasicodeApp(script)
 {
+    // optional target elements
     var screen_id = script.dataset["canvas"];
     var printer_id = script.dataset["printer"];
     var flop1_id = script.dataset["floppy-1"];
     var flop2_id = script.dataset["floppy-2"];
     var flop3_id = script.dataset["floppy-3"];
     var listing_id = script.dataset["listing"];
+    // optional settings
+    var columns = script.dataset["columns"] || 40;
+    var rows = script.dataset["rows"] || 24;
 
     // obtain screen/keyboard canvas
     var element;
@@ -2574,7 +2578,7 @@ function BasicodeApp(script)
     element.focus();
 
     // set up emulator
-    this.display = new Display(element);
+    this.display = new Display(element, columns, rows);
     this.keyboard = new Keyboard(element);
     this.printer = new Printer(printer_id);
     this.speaker = new Speaker();
