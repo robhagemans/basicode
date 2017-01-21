@@ -1,9 +1,9 @@
 /* display */
 
 .basicode {
-    transform: scaleX(1.5);
     /*transform-origin: left top;*/
-    /*height: 20rem;*/
+    transform: scaleX(1.5);
+    height: 36em;
     padding: 0.4rem 0.2rem 0.4rem 0.2rem;
     background-color: grey;
     border-radius: 0.4rem;
@@ -80,8 +80,7 @@ div.tabs > div:not(:target) > a {
     background: darkgrey;
 }
 /* active or default tab */
-div.tabs > div:target > a,
-:target #screen > a {
+div.tabs > div:target > a {
     background: lightgrey;
     border-bottom: 1px solid lightgrey;
 }
@@ -97,18 +96,10 @@ div.tabs > div > div {
     border-bottom-left-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
     border-top-right-radius: 0.5em;
-}
-
-div.tabs > div:not(:target) > div {
     position: absolute;
 }
-div.tabs > div:target > div,
-:target #screen > div {
-    position: absolute;
+div.tabs > div:target > div {
     z-index: -1
-}
-div.tabs :target {
-    outline: none;
 }
 
 #printer0, #listing0 {
