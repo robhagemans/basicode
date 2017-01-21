@@ -550,7 +550,7 @@ function Next(loop_name, program)
 // iteration node
 {
     this.next = null;
-    this.delay = BUSY_DELAY;
+    this.delay = busy_delay;
 
     this.step = function()
     {
@@ -944,7 +944,7 @@ function Parser(expr_list, program)
         // other line numbers are resolved at run time
         last.next = new Jump(line_number.payload, program, false);
         // put a short delay on jumps to avoid overloading the browser on loops
-        last.next.delay = BUSY_DELAY;
+        last.next.delay = busy_delay;
         return last.next;
     }
 
@@ -2541,7 +2541,7 @@ function Floppy(id, element_id)
 ///////////////////////////////////////////////////////////////////////////////
 // user interface
 
-var BUSY_DELAY = 1;
+var busy_delay = 1;
 var IDLE_DELAY = 60;
 // minimum delay (nested delays are "clamped" by the browser)
 var MIN_DELAY = 4;
@@ -2559,6 +2559,8 @@ function BasicodeApp(script)
     // optional settings
     var columns = script.dataset["columns"] || 40;
     var rows = script.dataset["rows"] || 24;
+    // speed setting is (roughly) the number of empty loop cycles per second
+    if (script.dataset["speed"]) busy_delay = 1000 / script.dataset["speed"];
 
     // obtain screen/keyboard canvas
     var element;
