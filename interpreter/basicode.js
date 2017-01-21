@@ -2005,9 +2005,8 @@ function subSetColour()
 // screen
 
 var SCALE = 4;
-var PIXELATE = true;
 
-function Display(output_element, columns, rows)
+function Display(output_element, columns, rows, font_name)
 {
     // only allow one program to connect at a time
     this.busy = false;
@@ -2025,13 +2024,12 @@ function Display(output_element, columns, rows)
     var font_width = 8;
 
     var glyphs = null;
-    if (!PIXELATE) {
-        context.font = font_height*SCALE+"px monospace";
+    if (font_name === "smooth") {
+        context.font = font_height*SCALE + "px monospace";
         var measures = context.measureText("M");
         font_width = Math.round(measures.width / SCALE);
     }
     else {
-        var font_name = "cga";
         glyphs = buildFont(font_name);
         font_height = FONTS[font_name].height;
         font_width = FONTS[font_name].width;
@@ -2091,7 +2089,7 @@ function Display(output_element, columns, rows)
     {
         x = Math.round(x);
         y = Math.round(y);
-        if (PIXELATE) {
+        if (font_name !== "smooth") {
             for (var k=0; k < output.length; ++k) {
                 var glyph = glyphs[output[k]];
                 for (var i=0; i < glyph.length; ++i) {
@@ -2693,6 +2691,7 @@ function BasicodeApp(script)
     var rows = script.dataset["rows"] || 24;
     // speed setting is (roughly) the number of empty loop cycles per second
     if (script.dataset["speed"]) busy_delay = 1000 / script.dataset["speed"];
+    var font_name = script.dataset["font"] || "smooth";
 
     // obtain screen/keyboard canvas
     var element;
@@ -2712,7 +2711,7 @@ function BasicodeApp(script)
     element.focus();
 
     // set up emulator
-    this.display = new Display(element, columns, rows);
+    this.display = new Display(element, columns, rows, font_name);
     this.keyboard = new Keyboard(element);
     this.printer = new Printer(printer_id);
     this.speaker = new Speaker();
