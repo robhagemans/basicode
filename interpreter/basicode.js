@@ -2354,7 +2354,14 @@ function Printer(element_id) {
 function Speaker()
 // tone generator
 {
-    var context = AudioContext ? new AudioContext() : null;
+    var context = null;
+    try {
+        var context = AudioContext ? new AudioContext() : null;
+    } catch (e) {
+        // NotSupportedError if too many contexts opened on one page
+        if (e instanceof DOMException) console.log(e);
+        else throw e;
+    }
     this.tones = 0;
 
     this.isBusy = function()
@@ -2759,15 +2766,17 @@ function BasicodeApp(script)
     ///////////////////////////////////////////////////////////////////////////
     // event handlers
 
-    // reload code if listing changes
-    var last_code = listing.value;
-    if (listing) listing.onblur = function() {
-        if (listing.value === last_code) return;
-        last_code = listing.value;
-        app.stop();
-        app.load(listing.value);
-    }
+    if (listing) {
+        var last_code = listing.value;
 
+        // reload code if listing changes
+        listing.onblur = function() {
+            if (listing.value === last_code) return;
+            last_code = listing.value;
+            app.stop();
+            app.load(listing.value);
+        }
+    }
     // run file on click
 
     element.addEventListener("click", function click(e) {
