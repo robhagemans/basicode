@@ -74,6 +74,7 @@ Font         Description
 ``mda``      9x14 Hercules and IBM MDPA font
 ``olivetti`` 8x16 Olivetti M24 and AT&T 6300 font
 ``vga``      9x16 IBM VGA font
+============ ====================================
 
 
 Compatibility
