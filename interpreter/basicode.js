@@ -93,112 +93,59 @@ BasicError.prototype.constructor = BasicError;
 ///////////////////////////////////////////////////////////////////////////////
 // IBM CGA 8x8 font
 
-var FONT = [
-    "0000000000000000",
-    "3078783030003000",
-    "6C6C6C0000000000",
-    "6C6CFE6CFE6C6C00",
-    "307CC0780CF83000",
-    "00C6CC183066C600",
-    "386C3876DCCC7600",
-    "6060C00000000000",
-    "1830606060301800",
-    "6030181818306000",
-    "00663CFF3C660000",
-    "003030FC30300000",
-    "0000000000303060",
-    "000000FC00000000",
-    "0000000000303000",
-    "060C183060C08000",
-    "7CC6CEDEF6E67C00",
-    "307030303030FC00",
-    "78CC0C3860CCFC00",
-    "78CC0C380CCC7800",
-    "1C3C6CCCFE0C1E00",
-    "FCC0F80C0CCC7800",
-    "3860C0F8CCCC7800",
-    "FCCC0C1830303000",
-    "78CCCC78CCCC7800",
-    "78CCCC7C0C187000",
-    "0030300000303000",
-    "0030300000303060",
-    "183060C060301800",
-    "0000FC0000FC0000",
-    "6030180C18306000",
-    "78CC0C1830003000",
-    "7CC6DEDEDEC07800",
-    "3078CCCCFCCCCC00",
-    "FC66667C6666FC00",
-    "3C66C0C0C0663C00",
-    "F86C6666666CF800",
-    "FE6268786862FE00",
-    "FE6268786860F000",
-    "3C66C0C0CE663E00",
-    "CCCCCCFCCCCCCC00",
-    "7830303030307800",
-    "1E0C0C0CCCCC7800",
-    "E6666C786C66E600",
-    "F06060606266FE00",
-    "C6EEFEFED6C6C600",
-    "C6E6F6DECEC6C600",
-    "386CC6C6C66C3800",
-    "FC66667C6060F000",
-    "78CCCCCCDC781C00",
-    "FC66667C6C66E600",
-    "78CC603018CC7800",
-    "FCB4303030307800",
-    "CCCCCCCCCCCCFC00",
-    "CCCCCCCCCC783000",
-    "C6C6C6D6FEEEC600",
-    "C6C66C38386CC600",
-    "CCCCCC7830307800",
-    "FEC68C183266FE00",
-    "7860606060607800",
-    "C06030180C060200",
-    "7818181818187800",
-    "10386CC600000000",
-    "00000000000000FF",
-    "3030180000000000",
-    "0000780C7CCC7600",
-    "E060607C6666DC00",
-    "000078CCC0CC7800",
-    "1C0C0C7CCCCC7600",
-    "000078CCFCC07800",
-    "386C60F06060F000",
-    "000076CCCC7C0CF8",
-    "E0606C766666E600",
-    "3000703030307800",
-    "0C000C0C0CCCCC78",
-    "E060666C786CE600",
-    "7030303030307800",
-    "0000CCFEFED6C600",
-    "0000F8CCCCCCCC00",
-    "000078CCCCCC7800",
-    "0000DC66667C60F0",
-    "000076CCCC7C0C1E",
-    "0000DC766660F000",
-    "00007CC0780CF800",
-    "10307C3030341800",
-    "0000CCCCCCCC7600",
-    "0000CCCCCC783000",
-    "0000C6D6FEFE6C00",
-    "0000C66C386CC600",
-    "0000CCCCCC7C0CF8",
-    "0000FC983064FC00",
-    "1C3030E030301C00",
-    "1818180018181800",
-    "E030301C3030E000",
-    "76DC000000000000",
-]
+var FONTS = {
+    "cga": {
+        "width": 8,
+        "height": 8,
+        "glyphs": [
+            "0000000000000000", "3078783030003000", "6C6C6C0000000000", "6C6CFE6CFE6C6C00",
+            "307CC0780CF83000", "00C6CC183066C600", "386C3876DCCC7600", "6060C00000000000",
+            "1830606060301800", "6030181818306000", "00663CFF3C660000", "003030FC30300000",
+            "0000000000303060", "000000FC00000000", "0000000000303000", "060C183060C08000",
+            "7CC6CEDEF6E67C00", "307030303030FC00", "78CC0C3860CCFC00", "78CC0C380CCC7800",
+            "1C3C6CCCFE0C1E00", "FCC0F80C0CCC7800", "3860C0F8CCCC7800", "FCCC0C1830303000",
+            "78CCCC78CCCC7800", "78CCCC7C0C187000", "0030300000303000", "0030300000303060",
+            "183060C060301800", "0000FC0000FC0000", "6030180C18306000", "78CC0C1830003000",
 
-var GLYPHS = {};
-for (var i=0; i < FONT.length;++i) {
-    // split into two-hexit substrings, convert each to binary
-    var glyph = FONT[i].match(/.{1,2}/g).map(function(x) { var bin = parseInt(x, 16).toString(2); return "0".repeat(8-bin.length) + bin;});
-    // convert to list of booleans
-    GLYPHS[String.fromCharCode(32+i)] = glyph.map( function(y) { return y.split("").map(function(x) { return x === "1" }); });
+            "7CC6DEDEDEC07800", "3078CCCCFCCCCC00", "FC66667C6666FC00", "3C66C0C0C0663C00",
+            "F86C6666666CF800", "FE6268786862FE00", "FE6268786860F000", "3C66C0C0CE663E00",
+            "CCCCCCFCCCCCCC00", "7830303030307800", "1E0C0C0CCCCC7800", "E6666C786C66E600",
+            "F06060606266FE00", "C6EEFEFED6C6C600", "C6E6F6DECEC6C600", "386CC6C6C66C3800",
+            "FC66667C6060F000", "78CCCCCCDC781C00", "FC66667C6C66E600", "78CC603018CC7800",
+            "FCB4303030307800", "CCCCCCCCCCCCFC00", "CCCCCCCCCC783000", "C6C6C6D6FEEEC600",
+            "C6C66C38386CC600", "CCCCCC7830307800", "FEC68C183266FE00", "7860606060607800",
+            "C06030180C060200", "7818181818187800", "10386CC600000000", "00000000000000FF",
+
+            "3030180000000000", "0000780C7CCC7600", "E060607C6666DC00", "000078CCC0CC7800",
+            "1C0C0C7CCCCC7600", "000078CCFCC07800", "386C60F06060F000", "000076CCCC7C0CF8",
+            "E0606C766666E600", "3000703030307800", "0C000C0C0CCCCC78", "E060666C786CE600",
+            "7030303030307800", "0000CCFEFED6C600", "0000F8CCCCCCCC00", "000078CCCCCC7800",
+            "0000DC66667C60F0", "000076CCCC7C0C1E", "0000DC766660F000", "00007CC0780CF800",
+            "10307C3030341800", "0000CCCCCCCC7600", "0000CCCCCC783000", "0000C6D6FEFE6C00",
+            "0000C66C386CC600", "0000CCCCCC7C0CF8", "0000FC983064FC00", "1C3030E030301C00",
+            "1818180018181800", "E030301C3030E000", "76DC000000000000",
+        ]
+    }
 }
 
+
+function buildFont(name) {
+    var glyphs = {};
+    var font = FONTS[name].glyphs;
+    var width = FONTS[name].width;
+    function toBinary(x)
+    {
+        var bin = parseInt(x, 16).toString(2);
+        return "0".repeat(width - bin.length) + bin;
+    }
+    for (var i=0; i < font.length; ++i) {
+        // split into two-hexit substrings, convert each to binary
+        var glyph = font[i].match(/.{1,2}/g).map(toBinary);
+        // convert to list of booleans
+        glyphs[String.fromCharCode(32+i)] = glyph.map( function(y) { return y.split("").map(function(x) { return x === "1" }); });
+    }
+    return glyphs;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // tokens
@@ -2077,10 +2024,17 @@ function Display(output_element, columns, rows)
     var font_height = 8;
     var font_width = 8;
 
+    var glyphs = null;
     if (!PIXELATE) {
         context.font = font_height*SCALE+"px monospace";
         var measures = context.measureText("M");
         font_width = Math.round(measures.width / SCALE);
+    }
+    else {
+        var font_name = "cga";
+        glyphs = buildFont(font_name);
+        font_height = FONTS[font_name].height;
+        font_width = FONTS[font_name].width;
     }
 
     this.pixel_width = font_width * this.width;
@@ -2139,7 +2093,7 @@ function Display(output_element, columns, rows)
         y = Math.round(y);
         if (PIXELATE) {
             for (var k=0; k < output.length; ++k) {
-                var glyph = GLYPHS[output[k]];
+                var glyph = glyphs[output[k]];
                 for (var i=0; i < glyph.length; ++i) {
                     for (var j=0; j < glyph[i].length; ++j) {
                         if (glyph[i][j]) this.putPixel(x+k*8+j, y+i, c);
