@@ -2649,15 +2649,15 @@ function Display(output_element, columns, rows, font_name, colours)
 
     this.plot = function(x, y, c)
     {
-        this.last_x = x * this.pixel_width;
-        this.last_y = y * this.pixel_height;
+        this.last_x = Math.trunc(x * this.pixel_width);
+        this.last_y = Math.trunc(y * this.pixel_height);
         this.putPixel(this.last_x, this.last_y, c);
     }
 
     this.draw = function(x, y, c)
     {
-        var next_x = x * this.pixel_width;
-        var next_y = y * this.pixel_height;
+        var next_x = Math.trunc(x * this.pixel_width);
+        var next_y = Math.trunc(y * this.pixel_height);
         this.line(this.last_x, this.last_y, next_x, next_y, c);
         this.last_x = next_x;
         this.last_y = next_y;
@@ -2665,8 +2665,8 @@ function Display(output_element, columns, rows, font_name, colours)
 
     this.drawText = function(x, y, c, text)
     {
-        var pixel_x = x * this.pixel_width;
-        var pixel_y = y * this.pixel_height;
+        var pixel_x = Math.trunc(x * this.pixel_width);
+        var pixel_y = Math.trunc(y * this.pixel_height);
         this.putText(pixel_x, pixel_y, c, text);
     }
 
