@@ -59,22 +59,23 @@ Fonts
 
 The following fonts are available:
 
-============ ====================================
-Font         Description
-============ ====================================
-``smooth``   Browser's native monospace font
-``spectrum`` 8x8 ZX Spectrum font
-``c64``      8x8 Commodore 64 font
-``cga``      8x8 IBM CGA font
-``thin``     8x8 IBM CGA thin stroke font
-``pcjr``     8x8 IBM PCjr font
-``tandy``    8x8 Tandy 1000 font
-``tandy2``   8x8 Tandy 1000 font, later version
-``ega``      8x14 IBM EGA font
-``mda``      9x14 Hercules and IBM MDPA font
-``olivetti`` 8x16 Olivetti M24 and AT&T 6300 font
-``vga``      9x16 IBM VGA font
-============ ====================================
+============ ===== ====================================
+Font         Size  Description
+============ ===== ====================================
+``smooth``         Browser's native monospace font
+``msx``      7x8   MSX font
+``spectrum`` 8x8   ZX Spectrum font
+``c64``      8x8   Commodore 64 font
+``cga``      8x8   IBM CGA font
+``thin``     8x8   IBM CGA thin stroke font
+``pcjr``     8x8   IBM PCjr font
+``tandy``    8x8   Tandy 1000 font
+``tandy2``   8x8   Tandy 1000 font, later version
+``ega``      8x14  IBM EGA font
+``mda``      9x14  Hercules and IBM MDPA font
+``olivetti`` 8x16  Olivetti M24 and AT&T 6300 font
+``vga``      9x16  IBM VGA font
+============ ===== ====================================
 
 
 Compatibility
