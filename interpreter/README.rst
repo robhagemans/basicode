@@ -71,6 +71,7 @@ Font           Size  Description
 ``c64``        8x8   Commodore 64 font
 ``cpc``        8x8   Amstrad/Schneider CPC font
 ``spectrum``   8x8   Sinclair ZX Spectrum font
+``vic``        8x8   Commodore PET and VIC-20 font
 ``cga``        8x8   IBM CGA font
 ``thin``       8x8   IBM CGA thin stroke font
 ``pcjr``       8x8   IBM PCjr font
