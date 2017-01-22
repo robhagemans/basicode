@@ -67,6 +67,7 @@ Font           Size  Description
 ``smooth``           Browser's native monospace font
 ``apple``      7x8   Apple-II font
 ``msx``        7x8   MSX font
+``atari``      8x8   Atari 8-bit font
 ``bbc``        8x8   Acorn BBC Micro font
 ``c64``        8x8   Commodore 64 font
 ``cpc``        8x8   Amstrad/Schneider CPC font
