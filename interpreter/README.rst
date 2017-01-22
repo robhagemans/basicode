@@ -79,6 +79,8 @@ Font           Size  Description
 ``pcjr``       8x8   IBM PCjr font
 ``tandy``      8x8   Tandy 1000 font
 ``tandy2``     8x8   Tandy 1000 font, later version
+``coco``       8x12  Tandy TRS-80 CoCo v1&2 font
+``coco3``      8x12  Tandy TRS-80 CoCo v3 font
 ``ega``        8x14  IBM EGA font
 ``mda``        9x14  Hercules and IBM MDPA font
 ``olivetti``   8x16  Olivetti M24 and AT&T 6300 font
