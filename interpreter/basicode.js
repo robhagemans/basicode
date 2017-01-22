@@ -2361,7 +2361,6 @@ function Display(output_element, columns, rows, font_name, colours)
     this.width = columns;
     this.height = rows;
 
-    console.log(colours);
     // set the colour palette
     this.colours = colours;
     this.foreground = this.colours[7];
@@ -2468,7 +2467,7 @@ function Display(output_element, columns, rows, font_name, colours)
         // Bresenham algorithm
         var dx = Math.abs(x1-x0);
         var dy = Math.abs(y1-y0);
-        var steep = dy > dx
+        var steep = dy > dx;
         if (steep) {
             var tmp = x0;
             x0 = y0;
@@ -2480,16 +2479,16 @@ function Display(output_element, columns, rows, font_name, colours)
             dx = dy;
             dy = tmp;
         }
-        var sx = (x1 > x0) ? 1 :-1;
-        var sy = (y1 > y0) ? 1 :-1;
+        var sx = (x1 > x0) ? 1 : -1;
+        var sy = (y1 > y0) ? 1 : -1;
         var line_error = Math.trunc(dx / 2);
         var ry = y0;
-        for (var rx = x0; rx < x1+sx; rx += sx) {
+        for (var rx = x0; rx*sx <= x1*sx; rx += sx) {
             if (steep) this.putPixel(ry, rx, c);
             else this.putPixel(rx, ry, c);
             line_error -= dy;
             if (line_error < 0) {
-                y += sy;
+                ry += sy;
                 line_error += dx;
             }
         }
@@ -3055,10 +3054,7 @@ function BasicodeApp(script)
         6: "yellow",
         7: "white",
     }
-    for (var i=0; i<8; ++i) {
-        console.log(script.dataset["color-" + i] );
-        colours[i] = script.dataset["color-" + i] || colours[i];
-    }
+    for (var i=0; i<8; ++i) colours[i] = script.dataset["color-" + i] || colours[i];
 
     // obtain screen/keyboard canvas
     var element;
@@ -3121,6 +3117,7 @@ function BasicodeApp(script)
             this.display.setColumn(0);
             this.display.setRow(1);
             this.display.write(e);
+            console.log(e.stack);
             throw e;
         }
     }
