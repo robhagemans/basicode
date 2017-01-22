@@ -3043,15 +3043,15 @@ function BasicodeApp(script)
     var columns = script.dataset["columns"] || 40;
     var rows = script.dataset["rows"] || 24;
     var font_name = script.dataset["font"] || "smooth";
-    // palette settings
+    // palette settings, use CGA colours by default
     var colours = {
         0: "black",
-        1: "blue",
-        2: "red",
-        3: "violet",
-        4: "green",
-        5: "lightblue",
-        6: "yellow",
+        1: "#0000aa", // blue
+        2: "#aa0000", // red
+        3: "#aa00aa", // purple
+        4: "#00aa00", // green
+        5: "#00aaaa", // cyan
+        6: "#ffff55", // yellow
         7: "white",
     }
     for (var i=0; i<8; ++i) colours[i] = script.dataset["color-" + i] || colours[i];
