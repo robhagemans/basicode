@@ -1,3 +1,18 @@
+small {
+    display: block;
+    margin: 2em;
+    right: 0;
+    left: 0;
+    text-align: center;
+    color: darkgrey;
+    font-family: sans;
+}
+ 
+small a, small a:visited {
+    color: darkgrey;
+}
+ 
+
 /* display */
 
 .basicode {
