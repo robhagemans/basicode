@@ -71,6 +71,7 @@ Font           Size  Description
 ``bbc``        8x8   Acorn BBC Micro font
 ``c64``        8x8   Commodore 64 font
 ``cpc``        8x8   Amstrad/Schneider CPC font
+``pcw``        8x8   Amstrad PCW/Schneider JOYCE font
 ``spectrum``   8x8   Sinclair ZX Spectrum font
 ``vic``        8x8   Commodore PET and VIC-20 font
 ``cga``        8x8   IBM CGA font
