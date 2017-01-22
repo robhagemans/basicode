@@ -66,9 +66,10 @@ Font           Size  Description
 ============== ===== ====================================
 ``smooth``           Browser's native monospace font
 ``msx``        7x8   MSX font
-``c64``        8x8   Commodore 64 font
-``spectrum``   8x8   Sinclair ZX Spectrum font
 ``bbc``        8x8   Acorn BBC Micro font
+``c64``        8x8   Commodore 64 font
+``cpc``        8x8   Amstrad/Schneider CPC font
+``spectrum``   8x8   Sinclair ZX Spectrum font
 ``cga``        8x8   IBM CGA font
 ``thin``       8x8   IBM CGA thin stroke font
 ``pcjr``       8x8   IBM PCjr font
