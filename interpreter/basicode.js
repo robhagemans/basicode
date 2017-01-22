@@ -2341,21 +2341,10 @@ function subText()
 
 function subSetColour()
 {
-    var COLOURS = {
-        0: "black",
-        1: "blue",
-        2: "red",
-        3: "violet",
-        4: "green",
-        5: "lightblue",
-        6: "yellow",
-        7: "white",
-    }
-
     var fg = this.variables.retrieve("CC", [0]);
     var bg = this.variables.retrieve("CC", [1]);
-    this.output.foreground = COLOURS[fg];
-    this.output.background = COLOURS[bg];
+    this.output.foreground = this.output.colours[fg];
+    this.output.background = this.output.colours[bg];
 }
 
 
@@ -2364,15 +2353,20 @@ function subSetColour()
 
 var SCALE = 4;
 
-function Display(output_element, columns, rows, font_name)
+function Display(output_element, columns, rows, font_name, colours)
 {
     // only allow one program to connect at a time
     this.busy = false;
 
     this.width = columns;
     this.height = rows;
-    this.foreground = "white";
-    this.background = "black";
+
+    console.log(colours);
+    // set the colour palette
+    this.colours = colours;
+    this.foreground = this.colours[7];
+    this.background = this.colours[0];
+
     // number of ticks in a cursor cycle
     this.cursor_ticks = 640/IDLE_DELAY;
 
@@ -2398,8 +2392,6 @@ function Display(output_element, columns, rows, font_name)
     output_element.width = SCALE * this.pixel_width;
     output_element.height = SCALE * this.pixel_height;
 
-    console.log(this.pixel_width);
-
     // set the context on the resized canvas
     context = output_element.getContext("2d");
     context.font = "normal lighter "+font_height*SCALE+"px monospace";
@@ -2421,8 +2413,8 @@ function Display(output_element, columns, rows, font_name)
 
     this.resetColours = function()
     {
-        this.foreground = "white";
-        this.background = "black";
+        this.foreground = this.colours[7];
+        this.background = this.colours[0];
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -3046,12 +3038,27 @@ function BasicodeApp(script)
     var flop2_id = script.dataset["floppy-2"];
     var flop3_id = script.dataset["floppy-3"];
     var listing_id = script.dataset["listing"];
-    // optional settings
-    var columns = script.dataset["columns"] || 40;
-    var rows = script.dataset["rows"] || 24;
     // speed setting is (roughly) the number of empty loop cycles per second
     if (script.dataset["speed"]) busy_delay = 1000 / script.dataset["speed"];
+    // screen settings
+    var columns = script.dataset["columns"] || 40;
+    var rows = script.dataset["rows"] || 24;
     var font_name = script.dataset["font"] || "smooth";
+    // palette settings
+    var colours = {
+        0: "black",
+        1: "blue",
+        2: "red",
+        3: "violet",
+        4: "green",
+        5: "lightblue",
+        6: "yellow",
+        7: "white",
+    }
+    for (var i=0; i<8; ++i) {
+        console.log(script.dataset["color-" + i] );
+        colours[i] = script.dataset["color-" + i] || colours[i];
+    }
 
     // obtain screen/keyboard canvas
     var element;
@@ -3071,7 +3078,7 @@ function BasicodeApp(script)
     element.focus();
 
     // set up emulator
-    this.display = new Display(element, columns, rows, font_name);
+    this.display = new Display(element, columns, rows, font_name, colours);
     this.keyboard = new Keyboard(element);
     this.printer = new Printer(printer_id);
     this.speaker = new Speaker();
