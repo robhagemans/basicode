@@ -65,7 +65,7 @@ The following fonts are available:
 Font           Size  Description
 ============== ===== ====================================
 ``smooth``           Browser's native monospace font
-``apple``      7x8   Apple-IIe font
+``apple``      7x8   Apple-II font
 ``msx``        7x8   MSX font
 ``bbc``        8x8   Acorn BBC Micro font
 ``c64``        8x8   Commodore 64 font
