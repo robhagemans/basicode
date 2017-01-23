@@ -1242,7 +1242,7 @@ function Run(program)
     this.next = null;
 
     this.step = function() {
-        subClear(program);
+        subClear.apply(program);
         return program.tree;
     }
 }
@@ -2012,7 +2012,7 @@ function Parser(expr_list, program)
     this.parseRun = function(token, last)
     // parse RUN
     {
-        last.next = new Run();
+        last.next = new Run(program);
         return last.next;
     }
 
