@@ -2514,8 +2514,14 @@ function subClearScreen()
 function subSetPos()
 // GOSUB 110
 {
-    this.output.setColumn(Math.round(this.variables.retrieve("HO", [])));
-    this.output.setRow(Math.round(this.variables.retrieve("VE", [])));
+    var row = Math.round(this.variables.retrieve("VE", []));
+    var col = Math.round(this.variables.retrieve("HO", []))
+    if (col < 0) col = 0;
+    if (col >= this.output.width) col = this.output.width-1;
+    if (row < 0) row = 0;
+    if (row >= this.output.height) row = this.output.height-1;
+    this.output.setColumn(col);
+    this.output.setRow(row);
 }
 
 function subGetPos()
