@@ -118,7 +118,7 @@ var FONTS = {
             "080804040202", "060202020600", "040A00000000", "00000000000F",
 
             "040200000000", "00060A0A0600", "080C0A0A0C00", "000608080600",
-            "02060A0A0600", "00040A0C0600", "06080C080800", "00040A0A060C",//"00040A0A0608",
+            "02060A0A0600", "00040A0C0600", "06080C080800", "00040A0A060C",
             "080C0A0A0A00", "040004040400", "040004040408", "080A0C0A0A00",
             "040404040200", "00060E0A0A00", "000C0A0A0A00", "00040A0A0400",
             "000C0A0A0C08", "00060A0A0602", "000608080800", "000608020C00",
@@ -1617,7 +1617,9 @@ function Parser(expr_list, program)
         var token = expr_list.shift();
         while (expr_list.length) {
             // ignore empty lines
-            while (token.token_type === "\n") token = expr_list.shift();
+            while (token && (token.token_type === "\n")) token = expr_list.shift();
+            if (!token) return null;
+
             // we do need a line number at the start
             if (token.token_type != "literal") {
                 throw new BasicError("Syntax error", "expected line number, got `"+token.payload+"`", current_line);
@@ -1646,6 +1648,7 @@ function Parser(expr_list, program)
             if (sep.token_type === "\n") {
                 // parseLineNumber deals with multiple LFs
                 last.next = this.parseLineNumber(last);
+                if (!last.next) break;
                 last = last.next;
             }
             else if (sep.token_type !== ":") {
