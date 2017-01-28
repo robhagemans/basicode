@@ -65,6 +65,7 @@ The following fonts are available:
 Font           Size  Description
 ============== ===== ====================================
 ``smooth``           Browser's native monospace font
+``tiny``       6x4   A very small bitmap font
 ``apple``      7x8   Apple-II font
 ``msx``        7x8   MSX font
 ``atari``      8x8   Atari 8-bit font
