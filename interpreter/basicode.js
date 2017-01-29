@@ -1244,6 +1244,7 @@ function Lexer(expr_string)
                 console.log("Unexpected symbol `"+ char + "` during lexing");
             }
         }
+        expr_list.push(new SeparatorToken('\n'));
         return expr_list;
     }
 }
