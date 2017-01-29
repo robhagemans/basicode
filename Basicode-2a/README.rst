@@ -17,7 +17,7 @@ BASICODE-2A
 | 7. VIC-20 lezen                       | 7. VIC-20 Load                        |
 | 8. VIC-20 schrijven                   | 8. VIC-20 Save                        |
 | 9. Exidy Sorcerer                     | 9. Exidy Sorcerer                     |
-| 10. Mircoprofessor                    | 10. Mircoprofessor                    |
+| 10. Microprofessor                    | 10. Microprofessor                    |
 | 11. NewBrain lezen                    | 11. New Brain Load                    |
 | 12. NewBrain schrijven                | 12. New Brain Save                    |
 | 13. Philips P 2000                    | 13. Philips P2000                     |

@@ -61,9 +61,9 @@ Fonts
 
 The following fonts are available:
 
-============== ===== ====================================
+============== ===== ======================================
 Font           Size  Description
-============== ===== ====================================
+============== ===== ======================================
 ``smooth``           Browser's native monospace font
 ``tiny``       6x4   A very small bitmap font
 ``apple``      7x8   Apple-II font
@@ -72,6 +72,9 @@ Font           Size  Description
 ``bbc``        8x8   Acorn BBC Micro font
 ``c64``        8x8   Commodore 64 font
 ``cpc``        8x8   Amstrad/Schneider CPC font
+``exidy``      8x8   Exidy Sorcerer font
+``genie1``     8x8   EACA Colour Genie 1st font
+``genie2``     8x8   EACA Colour Genie 2nd font
 ``kc85``       8x8   Robotron KC85/1 font
 ``pcw``        8x8   Amstrad PCW/Schneider JOYCE font
 ``spectrum``   8x8   Sinclair ZX Spectrum font
@@ -81,15 +84,17 @@ Font           Size  Description
 ``pcjr``       8x8   IBM PCjr font
 ``tandy``      8x8   Tandy 1000 font
 ``tandy2``     8x8   Tandy 1000 font, later version
+``p2000``      8x10  Philips P2000T font
 ``coco``       8x12  Tandy TRS-80 CoCo v1&2 font
 ``coco3``      8x12  Tandy TRS-80 CoCo v3 font
+``mpf``        8x12  Multitech Micro-Professor MPF-I font
 ``ega``        8x14  IBM EGA font
 ``mda``        9x14  Hercules and IBM MDPA font
 ``olivetti``   8x16  Olivetti M24 and AT&T 6300 font
 ``vga``        9x16  IBM VGA font
 ``wyse-serif`` 16x16 Wyse WY-700 serif font
 ``wyse-sans``  16x16 Wyse WY-700 sans serif font
-============== ===== ====================================
+============== ===== ======================================
 
 
 Compatibility
