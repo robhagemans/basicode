@@ -3958,7 +3958,7 @@ function launch() {
     var scripts = document.getElementsByTagName("script");
     for (var i=0; i < scripts.length; ++i) {
         if (scripts[i].type == "text/basicode") {
-            apps[i] = new BasicodeApp(scripts[i]);
+            apps[scripts[i].id] = new BasicodeApp(scripts[i]);
         }
     }
 }
