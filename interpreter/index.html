@@ -4,64 +4,175 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="demo.css">
     <script src="basicode.js"></script>
+
+    <script>
+        function loadSettings() {
+            document.getElementById('showspeed').value = document.getElementById('speed').value;
+            display = new Display(
+                document.getElementById('showfont'), 16, 6,
+                document.getElementById('font').value, apps['basicode-script'].display.colours);
+            for (var i=32; i < 128; ++i) {
+                display.write(String.fromCharCode(i));
+            }
+            display.write('.');
+            settings = document.getElementById('basicode-script').dataset;
+            settings['columns'] = document.getElementById('cols').value;
+            settings['rows'] = document.getElementById('rows').value;
+            settings['speed'] = document.getElementById('speed').value;
+            settings['font'] = document.getElementById('font').value;
+            for (var i=0; i <=7; ++i) {
+                settings['color-' + i] = document.getElementById('color-' + i).value;
+            }
+            restart();
+        }
+    </script>
 </head>
 
-<body>
+<body onload="loadSettings();">
+
     <script type="text/basicode"
         data-floppy-1="flop1"
         data-floppy-2="flop2"
         data-floppy-3="flop3"
         data-printer="printer0"
         data-canvas="canvas0"
+        data-input="screen"
         data-listing="listing0"
-        data-columns=40
-        data-rows=24
-        data-speed=1000
-        data-font="cga"
+        id="basicode-script"
         ></script>
 
     <div class="tabs">
+
+        <div id="settings">
+            <a class="tab" href="#settings">Settings</a>
+            <div style="font-family: sans">
+                <form onchange="loadSettings();">
+                    <fieldset>
+                        <legend>Colours</legend>
+                        <table style="width:100%">
+                            <tr>
+                                <td></td>
+                                <th colspan="3">Background / 0</th>
+                                <th colspan="3">Foreground / 7</th>
+                            </tr>
+                            <tr>
+                                <th align="right">Basicode 2 &amp; 3</th>
+                                <td colspan="3"><input type="color" id="color-0" value="#000000" style="width: 100%" onchange="loadSettings();"></td>
+                                <td colspan="3"><input type="color" id="color-7" value="#ffffff" style="width: 100%" onchange="loadSettings();"></td>
+                            </tr>
+                            <tr>
+                                <th align="right">Basicode 3C</th>
+                                <td><input type="color" id="color-1" value="#0000aa" style="width: 100%" onchange="loadSettings();"></td>
+                                <td><input type="color" id="color-2" value="#aa0000" style="width: 100%" onchange="loadSettings();"></td>
+                                <td><input type="color" id="color-3" value="#aa00aa" style="width: 100%" onchange="loadSettings();"></td>
+                                <td><input type="color" id="color-4" value="#00aa00" style="width: 100%" onchange="loadSettings();"></td>
+                                <td><input type="color" id="color-5" value="#00aaaa" style="width: 100%" onchange="loadSettings();"></td>
+                                <td><input type="color" id="color-6" value="#ffff55" style="width: 100%" onchange="loadSettings();"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>6</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Size</legend>
+                            <input type="number" id="cols" value=40 min=20 max=400> columns by
+                            <input type="number" id="rows" value=24 min=15 max=300> rows
+                    </fieldset>
+                    <fieldset>
+                        <legend>Font</legend>
+                        <select name="font" size="10" id="font">
+                            <option value="smooth">Browser's native monospace</option>
+                            <option value="tiny">A very small bitmap</option>
+                            <option value="apple">Apple-II</option>
+                            <option value="msx">MSX</option>
+                            <option value="atari">Atari 8-bit</option>
+                            <option value="bbc">Acorn BBC Micro</option>
+                            <option value="c64">Commodore 64</option>
+                            <option value="cpc">Amstrad/Schneider CPC</option>
+                            <option value="exidy">Exidy Sorcerer</option>
+                            <option value="genie1">EACA Colour Genie 1st</option>
+                            <option value="genie2">EACA Colour Genie 2nd</option>
+                            <option value="kc85">Robotron KC85/1</option>
+                            <option value="pcw">Amstrad PCW/Schneider JOYCE</option>
+                            <option value="spectrum">Sinclair ZX Spectrum</option>
+                            <option value="vic">Commodore PET and VIC-20</option>
+                            <option value="cga" selected>IBM CGA</option>
+                            <option value="thin">IBM CGA thin stroke</option>
+                            <option value="pcjr">IBM PCjr</option>
+                            <option value="tandy">Tandy 1000</option>
+                            <option value="tandy2">Tandy 1000 font, later version
+                            <option value="p2000">Philips P2000T</option>
+                            <option value="coco">Tandy TRS-80 CoCo v1&amp;2</option>
+                            <option value="coco3">Tandy TRS-80 CoCo v3</option>
+                            <option value="mpf">Multitech Micro-Professor MPF-I</option>
+                            <option value="ega">IBM EGA</option>
+                            <option value="mda">Hercules and IBM MDPA</option>
+                            <option value="olivetti">Olivetti M24 and AT&amp;T 6300</option>
+                            <option value="vga">IBM VGA</option>
+                            <option value="wyse-serif">Wyse WY-700 serif</option>
+                            <option value="wyse-sans">Wyse WY-700 sans serif</option>
+                        </select>
+                        <canvas id="showfont" style="height: 9em; margin: 0 1em 0 1em;">
+                    </fieldset>
+                    <fieldset>
+                        <legend>Speed</legend>
+                        <input type="range" id="speed" value=1000 min=1 max=100000>
+                        <output id="showspeed">1000</output>
+                        cycles per second
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
         <div id="diskette1">
-            <a href="#diskette1">Drive A</a>
+            <a class="tab" href="#diskette1">Drive A</a>
             <div>
                 <div id="flop1" class="floppy"></div>
             </div>
         </div>
 
         <div id="diskette2">
-            <a href="#diskette2">Drive B</a>
+            <a class="tab" href="#diskette2">Drive B</a>
             <div>
                 <div id="flop2" class="floppy"></div>
             </div>
         </div>
 
         <div id="diskette3">
-            <a href="#diskette3">Drive C</a>
+            <a class="tab" href="#diskette3">Drive C</a>
             <div>
                 <div id="flop3" class="floppy"></div>
             </div>
         </div>
 
         <div id="printer">
-            <a href="#printer">Printer</a>
+            <a class="tab" href="#printer">Printer</a>
             <div>
                 <iframe id="printer0"></iframe>
             </div>
         </div>
 
         <div id="listing">
-            <a href="#listing">Listing</a>
+            <a class="tab" href="#listing">Listing</a>
             <div>
                 <textarea id="listing0"></textarea>
             </div>
         </div>
 
         <div id="screen">
-            <a href="#screen">Screen</a>
+            <a class="tab" href="#screen">Screen</a>
             <div>
                 <canvas class="basicode" id="canvas0"></canvas>
             </div>
         </div>
+
     </div>
 
     <small>
