@@ -3659,24 +3659,6 @@ function BasicodeApp(script)
     var flop2_id = script.dataset["floppy-2"];
     var flop3_id = script.dataset["floppy-3"];
     var listing_id = script.dataset["listing"];
-    // speed setting is (roughly) the number of empty loop cycles per second
-    if (script.dataset["speed"]) busy_delay = 1000 / script.dataset["speed"];
-    // screen settings
-    var columns = script.dataset["columns"] || 40;
-    var rows = script.dataset["rows"] || 24;
-    var font_name = script.dataset["font"] || "smooth";
-    // palette settings, use CGA colours by default
-    var colours = {
-        0: "black",
-        1: "#0000aa", // blue
-        2: "#aa0000", // red
-        3: "#aa00aa", // purple
-        4: "#00aa00", // green
-        5: "#00aaaa", // cyan
-        6: "#ffff55", // yellow
-        7: "white",
-    }
-    for (var i=0; i<8; ++i) colours[i] = script.dataset["color-" + i] || colours[i];
 
     // obtain screen/keyboard canvas
     var element;
@@ -3695,13 +3677,6 @@ function BasicodeApp(script)
     element.tabIndex = 1;
     element.focus();
 
-    // set up emulator
-    this.display = new Display(element, columns, rows, font_name, colours);
-    this.keyboard = new Keyboard(element);
-    this.printer = new Printer(printer_id);
-    this.speaker = new Speaker();
-    this.timer = new Timer();
-    this.storage = [new Floppy(0), new Floppy(1, flop1_id), new Floppy(2, flop2_id), new Floppy(3, flop3_id)]
     var listing = document.getElementById(listing_id);
 
     // runtime members
@@ -3709,6 +3684,40 @@ function BasicodeApp(script)
     this.running = null;
 
     var app = this;
+
+    this.reset = function()
+    {
+        // speed setting is (roughly) the number of empty loop cycles per second
+        if (script.dataset["speed"]) busy_delay = 1000 / script.dataset["speed"];
+        // screen settings
+        var columns = script.dataset["columns"] || 40;
+        var rows = script.dataset["rows"] || 24;
+        var font_name = script.dataset["font"] || "smooth";
+        // palette settings, use CGA colours by default
+        var colours = {
+            0: "black",
+            1: "#0000aa", // blue
+            2: "#aa0000", // red
+            3: "#aa00aa", // purple
+            4: "#00aa00", // green
+            5: "#00aaaa", // cyan
+            6: "#ffff55", // yellow
+            7: "white",
+        }
+        for (var i=0; i<8; ++i) colours[i] = script.dataset["color-" + i] || colours[i];
+
+        // set up emulator
+        this.display = new Display(element, columns, rows, font_name, colours);
+        this.keyboard = new Keyboard(element);
+        this.printer = new Printer(printer_id);
+        this.speaker = new Speaker();
+        this.timer = new Timer();
+        this.storage = [new Floppy(0), new Floppy(1, flop1_id), new Floppy(2, flop2_id), new Floppy(3, flop3_id)]
+
+        // stop any running program
+        this.stop();
+        this.load(listing.value);
+    }
 
     this.handleError = function(e)
     {
@@ -3784,6 +3793,7 @@ function BasicodeApp(script)
     // intro screen if nothing was loaded
     {
         if (listing) listing.value = '';
+        this.display.clear();
         this.display.invertColour();
         this.display.clearRow(0);
         this.display.writeCentre(0, "(c) 2016, 2017 Rob Hagemans");
@@ -3849,7 +3859,7 @@ function BasicodeApp(script)
         this.running = window.setTimeout(step, MIN_DELAY);
     }
 
-    this.stop = function()
+    this.release = function()
     // release resources upon program end
     {
         if (this.running) window.clearTimeout(this.running);
@@ -3858,11 +3868,22 @@ function BasicodeApp(script)
             this.display.release();
             this.printer.flush();
         }
+    }
+
+    this.stop = function()
+    // stop program
+    {
+        this.release();
         this.display.invertColour();
         this.display.clearRow(this.display.height - 1);
         this.display.writeCentre(this.display.height - 1, "-- click to run again --");
         this.display.invertColour();
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // first initialisation
+
+    this.reset();
 
     // load & run the code provided in the element, if any
     var url = script.getAttribute("src");
@@ -3932,15 +3953,21 @@ function BasicodeApp(script)
 
 }
 
-var basicode_apps = {};
+var apps = {};
 
 function launch() {
     var scripts = document.getElementsByTagName("script");
-    for(var i=0; i < scripts.length; ++i) {
+    for (var i=0; i < scripts.length; ++i) {
         if (scripts[i].type == "text/basicode") {
-            if (i in basicode_apps) basicode_apps[i].stop();
-            basicode_apps[i] = new BasicodeApp(scripts[i]);
+            apps[i] = new BasicodeApp(scripts[i]);
         }
+    }
+}
+
+function restart() {
+    var keys = Object.keys(apps);
+    for (var i in keys) {
+        apps[keys[i]].reset();
     }
 }
 
