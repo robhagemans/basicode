@@ -3716,7 +3716,7 @@ function BasicodeApp(script)
 
         // stop any running program
         this.stop();
-        this.load(listing.value);
+        if (listing) this.load(listing.value);
     }
 
     this.handleError = function(e)
