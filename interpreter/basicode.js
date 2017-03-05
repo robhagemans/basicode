@@ -3451,17 +3451,20 @@ function Printer(element_id) {
 ///////////////////////////////////////////////////////////////////////////////
 // speaker
 
+// create only a single global audiocontext
+// as they are a limited resource that can't be destroyed
+var AUDIO = null;
+try {
+    var AUDIO = AudioContext ? new AudioContext() : null;
+} catch (e) {
+    // NotSupportedError if too many contexts opened on one page
+    if (e instanceof DOMException) console.log(e);
+    else throw e;
+}
+
 function Speaker()
 // tone generator
 {
-    var context = null;
-    try {
-        var context = AudioContext ? new AudioContext() : null;
-    } catch (e) {
-        // NotSupportedError if too many contexts opened on one page
-        if (e instanceof DOMException) console.log(e);
-        else throw e;
-    }
     this.tones = 0;
 
     this.isBusy = function()
@@ -3474,23 +3477,23 @@ function Speaker()
     // caller should check we"re not busy first, otherwise first oscillator to stop
     // will unset the busy flag
     {
-        if (!context) return;
+        if (!AUDIO) return;
         // Oscillator node
-        var oscillator = context.createOscillator();
+        var oscillator = AUDIO.createOscillator();
         oscillator.type = "square";
         oscillator.frequency.value = frequency;
 
         // Gain node
-        var gain = context.createGain();
+        var gain = AUDIO.createGain();
         gain.gain.value = volume;
 
         // link nodes up
         oscillator.connect(gain);
-        gain.connect(context.destination);
+        gain.connect(AUDIO.destination);
 
         // play the tone
         ++this.tones;
-        var now = context.currentTime;
+        var now = AUDIO.currentTime;
         oscillator.start(now);
         oscillator.stop(now + duration);
 
@@ -3929,15 +3932,19 @@ function BasicodeApp(script)
 
 }
 
+var basicode_apps = {};
+
 function launch() {
     var scripts = document.getElementsByTagName("script");
     for(var i=0; i < scripts.length; ++i) {
         if (scripts[i].type == "text/basicode") {
-            var app = new BasicodeApp(scripts[i]);
+            if (i in basicode_apps) basicode_apps[i].stop();
+            basicode_apps[i] = new BasicodeApp(scripts[i]);
         }
     }
 }
-// a bit of magic to run launcher() after the document is complete
+
+// a bit of magic to run launch() after the document is complete
 // so that it can access all the <script> tags
 // http://stackoverflow.com/questions/807878/javascript-that-executes-after-page-load
 function downloadJSAtOnload() {
