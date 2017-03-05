@@ -3762,14 +3762,18 @@ function BasicodeApp(script)
         this.keyboard.reset();
         // show program
         if (listing) listing.value = code;
-        try {
-            // initialise program object
-            this.program = new Program(code);
-            this.program.attach(this);
-            // show title and description
-            this.show();
-        } catch (e) {
-            this.handleError(e);
+        if (code) {
+            try {
+                // initialise program object
+                this.program = new Program(code);
+                this.program.attach(this);
+                // show title and description
+                this.show();
+            } catch (e) {
+                this.handleError(e);
+            }
+        } else {
+            this.splash();
         }
     }
 
@@ -3894,17 +3898,12 @@ function BasicodeApp(script)
         request.open("GET", url, true);
         request.onreadystatechange = function() {
             if (request.readyState === 4 && request.status === 200) {
-                app.load(request.responseText);
+                code = request.responseText;
             }
         }
         request.send(null);
     }
-    else if (code) {
-        this.load(code);
-    }
-    else {
-        this.splash();
-    }
+    this.load(code);
 
 
     ///////////////////////////////////////////////////////////////////////////
