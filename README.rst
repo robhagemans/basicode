@@ -85,6 +85,12 @@ Title                               Medium      Year  Standard            Langua
 .. _`BasiCode Sammelsurium`: Sammelsurium/
 
 
+Interpreter
+-----------
+
+To try these programs, you can use the `online BASICODE interpreter <http://robhagemans.github.io/basicode/>`_.
+The `source code for the interpreter <https://github.com/robhagemans/basicode-interpreter>` is also available.
+
 
 Acknowledgements
 ----------------
