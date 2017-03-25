@@ -1,4 +1,4 @@
-SIG/M    Volume 235     
+SIG/M    Volume 235
 ===================
 
 BASICODE Radio Communications (in Dutch)
@@ -58,7 +58,7 @@ SIG-M Library - Catalog Volume-235, 28 Files cataloged.
 .. |UITLEG2 .BQS| replace:: ``UITLEG2 .BQS``
 
 
-.. _BOKA&EI .BQS: BOKA_EI.bc2
+.. _BOKA&EI .BQS: BOKA-EI.bc2
 .. _DELERS  .BQS: DELERS.bc2
 .. _DIGIKLOK.BQS: DIGIKLOK.bc2
 .. _FEESTEN .BQS: FEESTEN.bc2
@@ -71,6 +71,3 @@ SIG-M Library - Catalog Volume-235, 28 Files cataloged.
 .. _TIMER555.BQS: TIMER555.bc2
 .. _UITLEG1 .BQS: UITLEG1.bc2
 .. _UITLEG2 .BQS: UITLEG2.bc2
-
-
-
