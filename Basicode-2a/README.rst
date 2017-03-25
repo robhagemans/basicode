@@ -32,25 +32,67 @@ BASICODE-2A
 | **Voorbeeldprogramma's**              | **BASICODE example programs           |
 |                                       | in English except "D" = Dutch**       |
 |                                       |                                       |
-| 1. Welkom                             | 1. Welcome (D)                        |
-| 2. Zeeslag                            | 2. Sea Wars                           |
-| 3. Manneken Pis                       | 3. Belgian naughty (D)                |
-| 4. Akkoorden                          | 4. Chords                             |
-| 5. Kalender                           | 5. Calendar (D)                       |
-| 6. Simpelpac                          | 6. Simplepac                          |
-| 7. Zoek 't woord                      | 7. Word Search (D)                    |
-| 8. Functie-analyse                    | 8. Function analyser                  |
-| 9. Eendenjacht                        | 9. Duck Hunting                       |
-| 10. Levensloop                        | 10. Life expectancy                   |
-| 11. Sorteren                          | 11. Alphasort (D)                     |
-| 12. Crazy Kong                        | 12. Crazy Kong                        |
-| 13. Radioactief verval                | 13. Radio-active decay (D)            |
-| 14. Autorace                          | 14. Car race                          |
-| 15. Vermenigvuldigen                  | 15. Multiplication puzzle (D)         |
-| 16. Factoren                          | 16. Factors                           |
-| 17. Besluitvorming                    | 17. Decision maker (D)                |
-| 18. Woordenspel                       | 18. Word game                         |
-| 19. Titreren                          | 19. Titrations (D)                    |
-| 20. Torens van Hanoi                  | 20. Towers of Hanoi                   |
-| 21. Digitale klok                     | 21. Digital Clock                     |
+| 1. `Welkom`_                          | 1. `Welcome (D)`_                     |
+| 2. `Zeeslag`_                         | 2. `Sea Wars`_                        |
+| 3. `Manneken Pis`_                    | 3. `Belgian naughty (D)`_             |
+| 4. `Akkoorden`_                       | 4. `Chords`_                          |
+| 5. `Kalender`_                        | 5. `Calendar (D)`_                    |
+| 6. `Simpelpac`_                       | 6. `Simplepac`_                       |
+| 7. `Zoek 't woord`_                   | 7. `Word Search (D)`_                 |
+| 8. `Functie-analyse`_                 | 8. `Function analyser`_               |
+| 9. `Eendenjacht`_                     | 9. `Duck Hunting`_                    |
+| 10. `Levensloop`_                     | 10. `Life expectancy`_                |
+| 11. `Sorteren`_                       | 11. `Alphasort (D)`_                  |
+| 12. `Crazy Kong`_                     | 12. `Crazy Kong`_                     |
+| 13. `Radioactief verval`_             | 13. `Radio-active decay (D)`_         |
+| 14. `Autorace`_                       | 14. `Car race`_                       |
+| 15. `Vermenigvuldigen`_               | 15. `Multiplication puzzle (D)`_      |
+| 16. `Factoren`_                       | 16. `Factors`_                        |
+| 17. `Besluitvorming`_                 | 17. `Decision maker (D)`_             |
+| 18. `Woordenspel`_                    | 18. `Word game`_                      |
+| 19. `Titreren`_                       | 19. `Titrations (D)`_                 |
+| 20. `Torens van Hanoi`_               | 20. `Towers of Hanoi`_                |
+| 21. `Digitale klok`_                  | 21. `Digital Clock`_                  |
 +---------------------------------------+---------------------------------------+
+
+.. _Welkom: 01_Welkom.bc2
+.. _Welcome (D): 01_Welkom.bc2
+.. _Zeeslag: 02_Sea_Wars.bc2
+.. _Sea Wars: 02_Sea_Wars.bc2
+.. _Manneken Pis: 03_Manneken_Pis.bc2
+.. _Belgian naughty (D): 03_Manneken_Pis.bc2
+.. _Akkoorden: 04_Chords.bc2
+.. _Chords: 04_Chords.bc2
+.. _Kalender: 05_Kalender.bc2
+.. _Calendar (D): 05_Kalender.bc2
+.. _Simpelpac: 06_Simplepac.bc2
+.. _Simplepac: 06_Simplepac.bc2
+.. _Zoek 't woord: 07_Zoek_t_woord.bc2
+.. _Word Search (D): 07_Zoek_t_woord.bc2
+.. _Functie-analyse: 08_Function_analyser.bc2
+.. _Function analyser: 08_Function_analyser.bc2
+.. _Eendenjacht: 09_Duck_Hunting.bc2
+.. _Duck Hunting: 09_Duck_Hunting.bc2
+.. _Levensloop: 10_Life_expectancy.bc2
+.. _Life expectancy: 10_Life_expectancy.bc2
+.. _Sorteren: 11_Sorteren.bc2
+.. _Alphasort (D): 11_Sorteren.bc2
+.. _Crazy Kong: 12_Crazy_Kong.bc2
+.. _Radioactief verval: 13_Radioactief_verval.bc2
+.. _Radio-active decay (D): 13_Radioactief_verval.bc2
+.. _Autorace: 14_Car_race.bc2
+.. _Car race: 14_Car_race.bc2
+.. _Vermenigvuldigen: 15_Vermenigvuldigen.bc2
+.. _Multiplication puzzle (D): 15_Vermenigvuldigen.bc2
+.. _Factoren: 16_Factors.bc2
+.. _Factors: 16_Factors.bc2
+.. _Besluitvorming: 17_Besluitvorming.bc2
+.. _Decision maker (D): 17_Besluitvorming.bc2
+.. _Woordenspel: 18_Word_game.bc2
+.. _Word game: 18_Word_game.bc2
+.. _Titreren: 19_Titreren.bc2
+.. _Titrations (D): 19_Titreren.bc2
+.. _Torens van Hanoi: 20_Towers_of_Hanoi.bc2
+.. _Towers of Hanoi: 20_Towers_of_Hanoi.bc2
+.. _Digitale klok: 21_Digital_Clock.bc2
+.. _Digital Clock: 21_Digital_Clock.bc2
