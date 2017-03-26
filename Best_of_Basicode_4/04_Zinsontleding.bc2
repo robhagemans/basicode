@@ -1,259 +1,260 @@
-1000 A=500:GOTO 20:REM ONTLEDEN
+
+1000 A=500:GOTO20:REM ONTLEDEN
 1010 REM 
 1020 REM ******************
 1030 REM * HOOFDPROGRAMMA *
 1040 REM ******************
 1050 REM 
 1055 F=0
-1060 GOSUB 3700:REM DIMENSIONEREN
-1070 GOSUB 4000:REM TITELBEELD
-1080 IF (IN$="J") OR(IN$="j") THEN GOSUB 4600:REM UITLEG
-1090 GOSUB 5500:REM MENU
-1100 GOSUB 3800:REM INITIALISEREN
-1110 GOSUB 6200:REM WILLEKEURIG BEGIN
-1120 GOSUB 6400:REM ZIN INLEZEN
-1130 GOSUB 6700:REM ZIN PRINTEN
-1140 GOSUB 7000:REM VRAAG PRINTEN
-1150 IF KE=1 THEN 1170
-1160 IF (F=1) OR(F=2) THEN GOSUB 7600
-1170 GOSUB 7100:REM ANTWOORD PRINTEN
-1180 IF (IN$="S") OR(IN$="s") THEN 1360
-1190 IF (IN$="T") OR(IN$="t") THEN GOSUB 1450:GOTO 1170
-1200 GOSUB 7700:REM CONTROLE ANTWOORD
-1210 IF G=1 THEN 1280
+1060 GOSUB3700:REM DIMENSIONEREN
+1070 GOSUB4000:REM TITELBEELD
+1080 IF(IN$="J") OR(IN$="j") THENGOSUB4600:REM UITLEG
+1090 GOSUB5500:REM MENU
+1100 GOSUB3800:REM INITIALISEREN
+1110 GOSUB6200:REM WILLEKEURIG BEGIN
+1120 GOSUB6400:REM ZIN INLEZEN
+1130 GOSUB6700:REM ZIN PRINTEN
+1140 GOSUB7000:REM VRAAG PRINTEN
+1150 IFKE=1 THEN1170
+1160 IF(F=1) OR(F=2) THENGOSUB7600
+1170 GOSUB7100:REM ANTWOORD PRINTEN
+1180 IF(IN$="S") OR(IN$="s") THEN1360
+1190 IF(IN$="T") OR(IN$="t") THENGOSUB1450:GOTO1170
+1200 GOSUB7700:REM CONTROLE ANTWOORD
+1210 IFG=1 THEN1280
 1220 F=F+1:G(AR)=0
-1230 IF F=2 THEN GOSUB 3500:GOTO 1290
-1240 GOSUB 1500:REM VRAAG OM HULP
-1250 IF (IN$<>"J") AND(IN$<>"j") THEN 1270
-1260 ON AR GOSUB 1600,2100,2400,2600,2900,3200,3200,3200
-1270 IF F=1 THEN 1130
-1280 IF NV=AR THEN G(NV)=G(NV)+1
+1230 IFF=2 THENGOSUB3500:GOTO1290
+1240 GOSUB1500:REM VRAAG OM HULP
+1250 IF(IN$<>"J") AND(IN$<>"j") THEN1270
+1260 ONAR GOSUB1600,2100,2400,2600,2900,3200,3200,3200
+1270 IFF=1 THEN1130
+1280 IFNV=AR THENG(NV)=G(NV)+1
 1290 F=0:AR=AR+1
-1300 IF AR<=NV THEN 1170
-1310 FOR W=1 TO 1000:NEXT W
+1300 IFAR<=NV THEN1170
+1310 FORW=1 TO1000:NEXTW
 1320 AZ=AZ+1
-1330 IF KE=1 THEN 1120
-1340 IF (G(NV)>4) AND(NV<8) THEN GOSUB 8000:REM NIVEAU HOGER
-1350 GOTO 1120
-1360 GOSUB 8200:REM OVERZICHT EN SCORE
-1370 GOTO 1090
+1330 IFKE=1 THEN1120
+1340 IF(G(NV)>4) AND(NV<8) THENGOSUB8000:REM NIVEAU HOGER
+1350 GOTO1120
+1360 GOSUB8200:REM OVERZICHT EN SCORE
+1370 GOTO1090
 1400 REM 
 1410 REM ***************
 1420 REM * SUBROUTINES *
 1430 REM ***************
 1440 REM 
 1450 REM TUSSENSTAND
-1460 GOSUB 8200
-1470 GOSUB 6700
-1480 GOSUB 7000:GOSUB 7600
+1460 GOSUB8200
+1470 GOSUB6700
+1480 GOSUB7000:GOSUB7600
 1490 RETURN
 1500 REM VRAAG OM HULP
-1510 GOSUB 100
-1520 HO=0:VE=5:GOSUB 110
-1525 NR=AR:IF AR>6 THEN NR=6
-1530 PRINT :PRINT "Bij het onderdeel ";ZD$(NR)
-1540 PRINT :PRINT "een foutje."
-1550 PRINT :PRINT "Misschien alleen een vergissing."
-1560 PRINT :PRINT "Je krijgt aanstonds de kans"
-1570 PRINT :PRINT "om de schade te herstellen."
-1575 PRINT :PRINT 
-1580 PRINT :PRINT "Wil je eerst nog uitleg? (J/N) ";
-1590 GOSUB 210:RETURN
+1510 GOSUB100
+1520 HO=0:VE=5:GOSUB110
+1525 NR=AR:IFAR>6 THENNR=6
+1530 PRINT:PRINT"Bij het onderdeel ";ZD$(NR)
+1540 PRINT:PRINT"een foutje."
+1550 PRINT:PRINT"Misschien alleen een vergissing."
+1560 PRINT:PRINT"Je krijgt aanstonds de kans"
+1570 PRINT:PRINT"om de schade te herstellen."
+1575 PRINT:PRINT
+1580 PRINT:PRINT"Wil je eerst nog uitleg? (J/N) ";
+1590 GOSUB210:RETURN
 1600 REM PERSOONSVORM
-1610 GOSUB 100
-1620 HO=0:VE=4:GOSUB 110
-1630 PRINT :PRINT "PERSOONSVORM FOUT"
-1640 PRINT :PRINT 
-1650 PRINT :PRINT "Er zijn drie verschillende manieren"
-1660 PRINT :PRINT "om de persoonsvorm in een zin te vinden."
-1670 GOSUB 3400
-1680 PRINT :PRINT "EERSTE MANIER: VRAGEND MAKEN"
-1690 PRINT 
-1700 PRINT :PRINT "Het woord dat vooraan in de zin komt te"
-1710 PRINT :PRINT "staan, is de persoonsvorm.(Je mag geen"
-1720 PRINT :PRINT "woorden toevoegen, alleen verschuiven.)"
-1730 PRINT 
-1740 PRINT :PRINT "VOORBEELD:"
-1750 PRINT 
-1760 PRINT :PRINT "Ik HEB de man een fiets gegeven. ---->"
-1770 PRINT :PRINT "HEB ik de man een fiets gegeven? ---->"
-1780 PRINT :PRINT "HEB is dus de persoonsvorm."
-1790 PRINT "---"
-1800 GOSUB 3400
-1810 PRINT "TWEEDE MANIER: VAN TIJD VERANDEREN"
-1820 PRINT 
-1830 PRINT :PRINT "Verander de zin van TIJD; het werkwoord"
-1840 PRINT :PRINT "dat verandert, is de persoonsvorm."
-1850 PRINT 
-1860 PRINT :PRINT "VOORBEELD:"
-1870 PRINT 
-1880 PRINT :PRINT "De man LOOPT op straat. ---->"
-1890 PRINT :PRINT "De man LIEP op straat.  ---->"
-1900 PRINT :PRINT "LOOPT is dus de persoonsvorm."
-1910 PRINT "-----"
-1920 GOSUB 3400
-1930 PRINT "DERDE MANIER: VAN GETAL VERANDEREN"
-1940 PRINT 
-1950 PRINT :PRINT "Dit betekent: van het enkelvoud in het"
-1960 PRINT :PRINT "meervoud zetten of omgekeerd."
-1970 PRINT :PRINT "Het werkwoord dat dan verandert,"
-1980 PRINT :PRINT "is de persoonsvorm."
-1990 PRINT 
-2000 PRINT :PRINT "VOORBEELD:"
-2010 PRINT :PRINT "Jij LEEST een boek.    ---->"
-2020 PRINT :PRINT "Jullie LEZEN een boek. ---->"
-2030 PRINT :PRINT "LEEST is dus de persoonsvorm."
-2040 PRINT "-----"
-2050 GOSUB 3400
+1610 GOSUB100
+1620 HO=0:VE=4:GOSUB110
+1630 PRINT:PRINT"PERSOONSVORM FOUT"
+1640 PRINT:PRINT
+1650 PRINT:PRINT"Er zijn drie verschillende manieren"
+1660 PRINT:PRINT"om de persoonsvorm in een zin te vinden."
+1670 GOSUB3400
+1680 PRINT:PRINT"EERSTE MANIER: VRAGEND MAKEN"
+1690 PRINT
+1700 PRINT:PRINT"Het woord dat vooraan in de zin komt te"
+1710 PRINT:PRINT"staan, is de persoonsvorm.(Je mag geen"
+1720 PRINT:PRINT"woorden toevoegen, alleen verschuiven.)"
+1730 PRINT
+1740 PRINT:PRINT"VOORBEELD:"
+1750 PRINT
+1760 PRINT:PRINT"Ik HEB de man een fiets gegeven. ---->"
+1770 PRINT:PRINT"HEB ik de man een fiets gegeven? ---->"
+1780 PRINT:PRINT"HEB is dus de persoonsvorm."
+1790 PRINT"---"
+1800 GOSUB3400
+1810 PRINT"TWEEDE MANIER: VAN TIJD VERANDEREN"
+1820 PRINT
+1830 PRINT:PRINT"Verander de zin van TIJD; het werkwoord"
+1840 PRINT:PRINT"dat verandert, is de persoonsvorm."
+1850 PRINT
+1860 PRINT:PRINT"VOORBEELD:"
+1870 PRINT
+1880 PRINT:PRINT"De man LOOPT op straat. ---->"
+1890 PRINT:PRINT"De man LIEP op straat.  ---->"
+1900 PRINT:PRINT"LOOPT is dus de persoonsvorm."
+1910 PRINT"-----"
+1920 GOSUB3400
+1930 PRINT"DERDE MANIER: VAN GETAL VERANDEREN"
+1940 PRINT
+1950 PRINT:PRINT"Dit betekent: van het enkelvoud in het"
+1960 PRINT:PRINT"meervoud zetten of omgekeerd."
+1970 PRINT:PRINT"Het werkwoord dat dan verandert,"
+1980 PRINT:PRINT"is de persoonsvorm."
+1990 PRINT
+2000 PRINT:PRINT"VOORBEELD:"
+2010 PRINT:PRINT"Jij LEEST een boek.    ---->"
+2020 PRINT:PRINT"Jullie LEZEN een boek. ---->"
+2030 PRINT:PRINT"LEEST is dus de persoonsvorm."
+2040 PRINT"-----"
+2050 GOSUB3400
 2060 RETURN
 2100 REM GEZEGDE
-2110 GOSUB 100
-2120 PRINT "GEZEGDE FOUT"
-2130 PRINT :PRINT 
-2140 PRINT :PRINT "Er zijn twee soorten gezegdes:"
-2150 PRINT :PRINT "WERKWOORDELIJK en NAAMWOORDELIJK"
-2160 PRINT :PRINT "gezegde. Dit laatste zullen we"
-2170 PRINT :PRINT "voorlopig maar even vergeten."
-2180 PRINT :PRINT "Het werkwoordelijk gezegde bestaat"
-2190 PRINT :PRINT "uit de persoonsvorm EN alle andere"
-2200 PRINT :PRINT "werkwoorden van de zin."
-2210 GOSUB 3400
-2220 PRINT :PRINT "Het gezegde kan uit verschillende"
-2230 PRINT :PRINT "werkwoorden bestaan, kijk maar:"
-2240 PRINT :PRINT 
-2250 PRINT :PRINT "Ik zou dat nooit hebben laten doen."
-2260 PRINT :PRINT "zou                   ----> Persoonsvorm"
-2270 PRINT "zou hebben laten doen ----> Gezegde"
-2280 PRINT 
-2290 PRINT :PRINT "Hij heeft haar geen kusje durven geven"
-2300 PRINT :PRINT "heeft                 ----> Persoonsvorm"
-2310 PRINT "heeft durven geven    ----> Gezegde"
-2320 GOSUB 3400
+2110 GOSUB100
+2120 PRINT"GEZEGDE FOUT"
+2130 PRINT:PRINT
+2140 PRINT:PRINT"Er zijn twee soorten gezegdes:"
+2150 PRINT:PRINT"WERKWOORDELIJK en NAAMWOORDELIJK"
+2160 PRINT:PRINT"gezegde. Dit laatste zullen we"
+2170 PRINT:PRINT"voorlopig maar even vergeten."
+2180 PRINT:PRINT"Het werkwoordelijk gezegde bestaat"
+2190 PRINT:PRINT"uit de persoonsvorm EN alle andere"
+2200 PRINT:PRINT"werkwoorden van de zin."
+2210 GOSUB3400
+2220 PRINT:PRINT"Het gezegde kan uit verschillende"
+2230 PRINT:PRINT"werkwoorden bestaan, kijk maar:"
+2240 PRINT:PRINT
+2250 PRINT:PRINT"Ik zou dat nooit hebben laten doen."
+2260 PRINT:PRINT"zou                   ----> Persoonsvorm"
+2270 PRINT"zou hebben laten doen ----> Gezegde"
+2280 PRINT
+2290 PRINT:PRINT"Hij heeft haar geen kusje durven geven"
+2300 PRINT:PRINT"heeft                 ----> Persoonsvorm"
+2310 PRINT"heeft durven geven    ----> Gezegde"
+2320 GOSUB3400
 2330 RETURN
 2400 REM ONDERWERP
-2410 GOSUB 100
-2420 PRINT :PRINT "ONDERWERP FOUT"
-2430 PRINT 
-2440 PRINT :PRINT "Om het onderwerp van een zin te "
-2450 PRINT :PRINT "kunnen vinden, moet je de zin van getal"
-2460 PRINT :PRINT "veranderen. (Dit foefje heb je al"
-2470 PRINT :PRINT "geleerd bij het zoeken van de"
-2480 PRINT :PRINT "persoonsvorm.) Het woord dat met de"
-2490 PRINT :PRINT "persoonsvorm meeverandert, is het"
-2500 PRINT :PRINT "onderwerp."
-2510 GOSUB 3400
-2520 PRINT :PRINT 
-2530 PRINT :PRINT "VOORBEELD:"
-2540 PRINT 
-2550 PRINT :PRINT "HET MEISJE VOELT zich niet lekker."
-2560 PRINT :PRINT "DE MEISJES VOELEN zich niet lekker."
-2570 PRINT 
-2580 PRINT :PRINT "Dus 'HET MEISJE' is onderwerp."
-2590 GOSUB 3400:RETURN
+2410 GOSUB100
+2420 PRINT:PRINT"ONDERWERP FOUT"
+2430 PRINT
+2440 PRINT:PRINT"Om het onderwerp van een zin te "
+2450 PRINT:PRINT"kunnen vinden, moet je de zin van getal"
+2460 PRINT:PRINT"veranderen. (Dit foefje heb je al"
+2470 PRINT:PRINT"geleerd bij het zoeken van de"
+2480 PRINT:PRINT"persoonsvorm.) Het woord dat met de"
+2490 PRINT:PRINT"persoonsvorm meeverandert, is het"
+2500 PRINT:PRINT"onderwerp."
+2510 GOSUB3400
+2520 PRINT:PRINT
+2530 PRINT:PRINT"VOORBEELD:"
+2540 PRINT
+2550 PRINT:PRINT"HET MEISJE VOELT zich niet lekker."
+2560 PRINT:PRINT"DE MEISJES VOELEN zich niet lekker."
+2570 PRINT
+2580 PRINT:PRINT"Dus 'HET MEISJE' is onderwerp."
+2590 GOSUB3400:RETURN
 2600 REM LIJD.VOORWERP
-2610 GOSUB 100:PRINT 
-2620 PRINT :PRINT "LIJDEND VOORWERP FOUT"
-2630 PRINT 
-2640 PRINT :PRINT "Om het lijdend voorwerp te kunnen"
-2650 PRINT :PRINT "vinden, stellen we steeds de vraag:"
-2660 PRINT :PRINT 
-2670 PRINT :PRINT "***************************************"
-2680 PRINT 
-2690 PRINT :PRINT "Wie/Wat + PV + Onderwerp + Gezegde + ?"
-2700 PRINT 
-2710 PRINT :PRINT "***************************************"
-2720 GOSUB 3400
-2730 PRINT 
-2740 PRINT :PRINT "VOORBEELD:"
-2750 PRINT 
-2760 PRINT :PRINT "Hij brengt zijn vriend naar de trein."
-2770 PRINT "-------------------------------------"
-2780 PRINT 
-2790 PRINT :PRINT "Stel nu de vraag:"
-2800 PRINT 
-2810 PRINT :PRINT "Wie/Wat + brengt + hij + ?"
-2820 PRINT 
-2830 PRINT :PRINT "Het antwoord is: 'zijn vriend'."
-2840 PRINT 
-2850 PRINT :PRINT "'zijn vriend' is dus lijdend voorwerp."
-2860 GOSUB 3400
+2610 GOSUB100:PRINT
+2620 PRINT:PRINT"LIJDEND VOORWERP FOUT"
+2630 PRINT
+2640 PRINT:PRINT"Om het lijdend voorwerp te kunnen"
+2650 PRINT:PRINT"vinden, stellen we steeds de vraag:"
+2660 PRINT:PRINT
+2670 PRINT:PRINT"***************************************"
+2680 PRINT
+2690 PRINT:PRINT"Wie/Wat + PV + Onderwerp + Gezegde + ?"
+2700 PRINT
+2710 PRINT:PRINT"***************************************"
+2720 GOSUB3400
+2730 PRINT
+2740 PRINT:PRINT"VOORBEELD:"
+2750 PRINT
+2760 PRINT:PRINT"Hij brengt zijn vriend naar de trein."
+2770 PRINT"-------------------------------------"
+2780 PRINT
+2790 PRINT:PRINT"Stel nu de vraag:"
+2800 PRINT
+2810 PRINT:PRINT"Wie/Wat + brengt + hij + ?"
+2820 PRINT
+2830 PRINT:PRINT"Het antwoord is: 'zijn vriend'."
+2840 PRINT
+2850 PRINT:PRINT"'zijn vriend' is dus lijdend voorwerp."
+2860 GOSUB3400
 2870 RETURN
 2900 REM MEEW.VOORWERP
-2910 GOSUB 100:PRINT 
-2920 PRINT :PRINT "MEEWERKEND VOORWERP FOUT"
-2930 PRINT :PRINT 
-2940 PRINT :PRINT "Het meewerkend voorwerp is een"
-2950 PRINT :PRINT "zinsdeel waar je 'aan' of 'voor'"
-2960 PRINT :PRINT "voor moet kunnen denken of weg"
-2970 PRINT "----                       ---"
-2980 PRINT "moet kunnen laten. Kijk maar:"
-2990 GOSUB 3400
-3000 PRINT 
-3010 PRINT :PRINT "Wij geven jou een zure appel.     ---->"
-3020 PRINT :PRINT "Wij geven aan jou een zure appel. ---->"
-3030 PRINT 
-3040 PRINT :PRINT "'jou' is meewerkend voorwerp."
-3050 PRINT 
-3060 PRINT :PRINT "Ik koop voor mijn zus iets moois. ---->"
-3070 PRINT :PRINT "Ik koop mijn zus iets moois.      ---->"
-3080 PRINT 
-3090 PRINT :PRINT "'voor mijn zus' is meewerkend voorwerp."
-3100 GOSUB 3400:RETURN
+2910 GOSUB100:PRINT
+2920 PRINT:PRINT"MEEWERKEND VOORWERP FOUT"
+2930 PRINT:PRINT
+2940 PRINT:PRINT"Het meewerkend voorwerp is een"
+2950 PRINT:PRINT"zinsdeel waar je 'aan' of 'voor'"
+2960 PRINT:PRINT"voor moet kunnen denken of weg"
+2970 PRINT"----                       ---"
+2980 PRINT"moet kunnen laten. Kijk maar:"
+2990 GOSUB3400
+3000 PRINT
+3010 PRINT:PRINT"Wij geven jou een zure appel.     ---->"
+3020 PRINT:PRINT"Wij geven aan jou een zure appel. ---->"
+3030 PRINT
+3040 PRINT:PRINT"'jou' is meewerkend voorwerp."
+3050 PRINT
+3060 PRINT:PRINT"Ik koop voor mijn zus iets moois. ---->"
+3070 PRINT:PRINT"Ik koop mijn zus iets moois.      ---->"
+3080 PRINT
+3090 PRINT:PRINT"'voor mijn zus' is meewerkend voorwerp."
+3100 GOSUB3400:RETURN
 3200 REM BIJW.BEPALING
-3210 GOSUB 100:PRINT 
-3220 PRINT :PRINT "BIJWOORDELIJKE BEPALING FOUT"
-3230 PRINT 
-3240 PRINT :PRINT "De bijwoordelijke bepaling kun je"
-3250 PRINT :PRINT "vinden door te vragen WAAR, WANNEER"
-3260 PRINT :PRINT "of HOE iets gebeurt.(Er zijn nog meer"
-3270 PRINT :PRINT "bijwoordelijke bepalingen, maar die"
-3280 PRINT :PRINT "komen in dit programma niet voor.)"
-3290 PRINT 
-3300 PRINT :PRINT "Van elk van bovenstaande mogelijkheden"
-3310 PRINT :PRINT "volgt nu een voorbeeld:"
-3320 GOSUB 3400:PRINT :PRINT 
-3330 PRINT :PRINT "De tuinman werkt in de tuin."
-3340 PRINT :PRINT "'in de tuin' is bijwoordelijke bepaling."
-3350 PRINT :PRINT "Ik zie je om elf uur."
-3360 PRINT :PRINT "'om elf uur' is bijwoordelijke bepaling."
-3370 PRINT :PRINT "De leerlingen werken hard."
-3380 PRINT :PRINT "'hard' is bijwoordelijke bepaling."
-3390 GOSUB 3400:RETURN
+3210 GOSUB100:PRINT
+3220 PRINT:PRINT"BIJWOORDELIJKE BEPALING FOUT"
+3230 PRINT
+3240 PRINT:PRINT"De bijwoordelijke bepaling kun je"
+3250 PRINT:PRINT"vinden door te vragen WAAR, WANNEER"
+3260 PRINT:PRINT"of HOE iets gebeurt.(Er zijn nog meer"
+3270 PRINT:PRINT"bijwoordelijke bepalingen, maar die"
+3280 PRINT:PRINT"komen in dit programma niet voor.)"
+3290 PRINT
+3300 PRINT:PRINT"Van elk van bovenstaande mogelijkheden"
+3310 PRINT:PRINT"volgt nu een voorbeeld:"
+3320 GOSUB3400:PRINT:PRINT
+3330 PRINT:PRINT"De tuinman werkt in de tuin."
+3340 PRINT:PRINT"'in de tuin' is bijwoordelijke bepaling."
+3350 PRINT:PRINT"Ik zie je om elf uur."
+3360 PRINT:PRINT"'om elf uur' is bijwoordelijke bepaling."
+3370 PRINT:PRINT"De leerlingen werken hard."
+3380 PRINT:PRINT"'hard' is bijwoordelijke bepaling."
+3390 GOSUB3400:RETURN
 3400 REM DRUK OP SPATIEBALK
-3410 HO=0:VE=21:GOSUB 110
-3420 PRINT "======================================="
-3430 PRINT "Druk op de spatiebalk...";
-3440 GOSUB 210
-3450 IF IN$<>" " THEN 3440
-3460 GOSUB 100
+3410 HO=0:VE=21:GOSUB110
+3420 PRINT"======================================="
+3430 PRINT"Druk op de spatiebalk...";
+3440 GOSUB210
+3450 IFIN$<>" " THEN3440
+3460 GOSUB100
 3470 RETURN
 3500 REM WEER FOUT
-3510 GOSUB 100
-3520 HO=0:VE=9:GOSUB 110
-3530 PRINT "Je antwoord is helaas weer niet goed."
+3510 GOSUB100
+3520 HO=0:VE=9:GOSUB110
+3530 PRINT"Je antwoord is helaas weer niet goed."
 3540 F(AR)=F(AR)+1
-3550 GOSUB 3400:GOSUB 6700
-3560 GOSUB 7000:GOSUB 7600
-3570 HO=15:VE=7+2*AR:GOSUB 110
-3580 PRINT G$(AR)
+3550 GOSUB3400:GOSUB6700
+3560 GOSUB7000:GOSUB7600
+3570 HO=15:VE=7+2*AR:GOSUB110
+3580 PRINTG$(AR)
 3590 RETURN
 3600 REM BEPAAL GEZEGDE
 3610 GZ$=G$(1)
-3620 IF VC(2)>1 THEN GZ$=GZ$+" "+G$(2)
-3630 IF VC(2)>3 THEN GZ$=GZ$+" "+G$(9)
+3620 IFVC(2)>1 THENGZ$=GZ$+" "+G$(2)
+3630 IFVC(2)>3 THENGZ$=GZ$+" "+G$(9)
 3640 G$(2)=GZ$
 3650 RETURN
 3700 REM DIMENSIONEREN
-3710 DIM ZD$(6),G$(9)
-3720 DIM WO$(9),WL(9),C(9)
-3730 DIM VR$(8),A$(9),VC(9)
-3740 DIM F(8),G(8)
-3750 GOSUB 20000
+3710 DIMZD$(6),G$(9)
+3720 DIMWO$(9),WL(9),C(9)
+3730 DIMVR$(8),A$(9),VC(9)
+3740 DIMF(8),G(8)
+3750 GOSUB20000
 3760 RETURN
 3800 REM INITIALISEREN
-3810 FOR I=0 TO 8
+3810 FORI=0 TO8
 3820 F(I)=0:G(I)=0
-3830 NEXT I
+3830 NEXTI
 3840 VR$(1)="Persoonsvorm = "
 3850 VR$(2)="Gezegde      = "
 3860 VR$(3)="Onderwerp    = "
@@ -264,410 +265,410 @@
 3910 VR$(8)="Bijw. bep. 3 = "
 3920 RETURN
 4000 REM TITELBEELD
-4010 GOSUB 100
+4010 GOSUB100
 4020 ZD$(1)="PERSOONSVORM"
 4030 ZD$(2)="GEZEGDE"
 4040 ZD$(3)="ONDERWERP"
 4050 ZD$(4)="LIJD.VOORWERP"
 4060 ZD$(5)="MEEW.VOORWERP"
 4070 ZD$(6)="BIJW.BEPALING"
-4080 GOSUB 20100:REM CURSOR UIT
-4090 FOR I=0 TO 38:PRINT "*";
-4100 FOR W=1 TO 20:NEXT W:NEXT I
-4110 HO=39:FOR VE=0 TO 22:GOSUB 110
-4120 PRINT "*";:NEXT VE
-4130 VE=22:FOR HO=38 TO 1 STEP -1
-4140 GOSUB 110:PRINT "*";:NEXT HO
-4150 HO=0:FOR VE=22 TO 1 STEP -1
-4160 GOSUB 110:PRINT "*";:NEXT VE
-4170 FOR J=1 TO 6
-4180 GOSUB 260
+4080 GOSUB20100:REM CURSOR UIT
+4090 FORI=0 TO38:PRINT"*";
+4100 FORW=1 TO20:NEXTW:NEXTI
+4110 HO=39:FORVE=0 TO22:GOSUB110
+4120 PRINT"*";:NEXTVE
+4130 VE=22:FORHO=38 TO1 STEP-1
+4140 GOSUB110:PRINT"*";:NEXTHO
+4150 HO=0:FORVE=22 TO1 STEP-1
+4160 GOSUB110:PRINT"*";:NEXTVE
+4170 FORJ=1 TO6
+4180 GOSUB260
 4190 X=INT(RV*16+2)
-4200 GOSUB 260
+4200 GOSUB260
 4210 Y=INT(RV*19+2)
-4220 HO=X:VE=Y:GOSUB 110
-4230 PRINT "??? ";ZD$(J);" ???"
-4240 FOR W=1 TO 750:NEXT W
-4250 GOSUB 110
-4260 PRINT "                     ":REM 21 SPATIES
-4270 NEXT J
-4280 GOSUB 100
-4290 FOR I=1 TO 3
-4300 FOR J=0 TO 39
-4310 PRINT "*";
-4320 NEXT J:NEXT I
-4330 HO=0:VE=20:GOSUB 110
-4340 FOR I=1 TO 3
-4350 FOR J=0 TO 39
-4360 PRINT "*";
-4370 NEXT J:NEXT I
-4380 HO=0:FOR VE=3 TO 19
-4390 GOSUB 110:PRINT "****"
-4400 NEXT VE
-4410 HO=36:FOR VE=3 TO 19
-4420 GOSUB 110:PRINT "****"
-4430 NEXT VE
-4440 HO=10:VE=9:GOSUB 110
-4450 PRINT "********************"
-4460 FOR I=1 TO 3
-4470 VE=9+I:GOSUB 110
-4480 PRINT "*                  *"
-4490 NEXT I
-4500 VE=13:GOSUB 110
-4510 PRINT "********************"
-4520 HO=16:VE=11:GOSUB 110
-4530 PRINT "ONTLEDEN"
-4540 HO=10:VE=16:GOSUB 110
-4550 PRINT "Wil je weten hoe het"
-4560 HO=9:VE=18:GOSUB 110
-4570 PRINT "programma werkt? (J/N) ";
-4580 GOSUB 210
+4220 HO=X:VE=Y:GOSUB110
+4230 PRINT"??? ";ZD$(J);" ???"
+4240 FORW=1 TO750:NEXTW
+4250 GOSUB110
+4260 PRINT"                     ":REM 21 SPATIES
+4270 NEXTJ
+4280 GOSUB100
+4290 FORI=1 TO3
+4300 FORJ=0 TO39
+4310 PRINT"*";
+4320 NEXTJ:NEXTI
+4330 HO=0:VE=20:GOSUB110
+4340 FORI=1 TO3
+4350 FORJ=0 TO39
+4360 PRINT"*";
+4370 NEXTJ:NEXTI
+4380 HO=0:FORVE=3 TO19
+4390 GOSUB110:PRINT"****"
+4400 NEXTVE
+4410 HO=36:FORVE=3 TO19
+4420 GOSUB110:PRINT"****"
+4430 NEXTVE
+4440 HO=10:VE=9:GOSUB110
+4450 PRINT"********************"
+4460 FORI=1 TO3
+4470 VE=9+I:GOSUB110
+4480 PRINT"*                  *"
+4490 NEXTI
+4500 VE=13:GOSUB110
+4510 PRINT"********************"
+4520 HO=16:VE=11:GOSUB110
+4530 PRINT"ONTLEDEN"
+4540 HO=10:VE=16:GOSUB110
+4550 PRINT"Wil je weten hoe het"
+4560 HO=9:VE=18:GOSUB110
+4570 PRINT"programma werkt? (J/N) ";
+4580 GOSUB210
 4590 RETURN
 4600 REM UITLEG
-4610 GOSUB 100:PRINT 
-4620 PRINT :PRINT "De uitleg die nu volgt moet je "
-4630 PRINT :PRINT "zeer zorgvuldig en langzaam lezen."
-4640 PRINT :PRINT "Dit geldt trouwens voor elke uitleg"
-4650 PRINT :PRINT "in de loop van dit programma."
-4660 PRINT :PRINT :PRINT 
-4670 PRINT :PRINT "Bij het programma ONTLEDEN kun je"
-4680 PRINT :PRINT "kiezen uit 3 mogelijkheden."
-4690 GOSUB 3400
-4700 PRINT :PRINT "1. Je kunt een bepaald onderdeel"
-4710 PRINT :PRINT "   van het ontleden oefenen."
-4720 PRINT :PRINT "   (B.v. alleen het gezegde zoeken)."
-4730 PRINT 
-4740 PRINT :PRINT "2. Je kunt beginnen vanaf niveau 1."
-4750 PRINT :PRINT "   (Aanbevolen voor beginnelingen)."
-4760 PRINT :PRINT "   Straks krijg je hierover uitleg."
-4770 PRINT 
-4780 PRINT :PRINT "3. Je kunt zelf 't beginniveau bepalen."
-4790 PRINT :PRINT "   (Bij hernieuwd gebruik)."
-4800 GOSUB 3400
-4810 PRINT :PRINT :PRINT 
-4820 PRINT :PRINT "Na het lezen van de verdere uitleg zie"
-4830 PRINT :PRINT "je op het scherm een zin verschijnen."
-4840 PRINT :PRINT "De verschillende zinsdelen van deze zin"
-4850 PRINT :PRINT "zijn onderstreept."
-4860 PRINT :PRINT "Onder elke lijn zie je 'n cijfer staan."
-4870 PRINT :PRINT "Dit cijfer is erg belangrijk."
-4880 GOSUB 3400
-4890 PRINT :PRINT :PRINT 
-4900 PRINT :PRINT "Wordt straks b.v. gevraagd wat het"
-4910 PRINT :PRINT "gezegde is in een bepaalde zin, dan"
-4920 PRINT :PRINT "hoef je als antwoord alleen maar een"
-4930 PRINT :PRINT "cijfer in te typen en geen woorden."
-4940 PRINT :PRINT "Tik je per ongeluk het verkeerde cijfer"
-4950 PRINT :PRINT "in, dan kun je dit verbeteren met de"
-4960 PRINT :PRINT "<-- toets. (PIJLTJE naar LINKS)"
-4970 GOSUB 3400
-4980 PRINT :PRINT :PRINT 
-4990 PRINT :PRINT "Eerst krijg je de opdracht om uit een"
-5000 PRINT :PRINT "aantal zinnen de persoonsvorm te"
-5010 PRINT :PRINT "zoeken."
-5020 PRINT :PRINT "Maak je hierbij een fout, dan krijg "
-5030 PRINT :PRINT "je nog een herkansing."
-5040 PRINT :PRINT "Voor deze herkansing kun je de computer"
-5050 PRINT :PRINT "om uitleg vragen over het fout-gemaakte"
-5060 PRINT :PRINT "onderdeel."
-5070 GOSUB 3400
-5080 PRINT :PRINT :PRINT 
-5090 PRINT :PRINT "Is je antwoord daarna weer fout, dan"
-5100 PRINT :PRINT "gaat er helaas een punt van je"
-5110 PRINT :PRINT "totaal-score af."
-5120 PRINT :PRINT "Zit 'n bepaald zinsdeel niet in de zin,"
-5130 PRINT :PRINT "dan druk je gewoon op de invoertoets."
-5140 GOSUB 3400
-5150 PRINT :PRINT :PRINT 
-5160 PRINT :PRINT "Heb je vijf keer achter elkaar een goed"
-5170 PRINT :PRINT "antwoord gegeven, dan ga je over naar"
-5180 PRINT :PRINT "een hoger niveau."
-5190 PRINT :PRINT "Uit de zinnen die dan volgen moet je"
-5200 PRINT :PRINT "niet alleen de persoonsvorm zoeken,"
-5210 PRINT :PRINT "maar ook het gezegde."
-5220 GOSUB 3400
-5230 PRINT :PRINT :PRINT 
-5240 PRINT :PRINT "Doe je 5x achter elkaar alles goed, dan"
-5250 PRINT :PRINT "ga je over naar niveau 3. Dan moet je"
-5260 PRINT :PRINT "uit elke zin de persoonsvorm, het"
-5270 PRINT :PRINT "gezegde en het onderwerp zoeken."
-5280 PRINT :PRINT "Dus: hoe hoger je niveau is, hoe meer"
-5290 PRINT :PRINT "zinsdelen je moet benoemen."
-5300 PRINT :PRINT "Het hoogste niveau is 6."
-5310 GOSUB 3400
-5320 PRINT :PRINT :PRINT 
-5330 PRINT :PRINT "Wil je tijdens het programma stoppen,"
-5340 PRINT :PRINT "druk dan op de letter 's' of 'S'"
-5350 PRINT :PRINT "in plaats van op een antwoordcijfer."
-5360 PRINT :PRINT "Daarna volgt een foutenoverzicht en"
-5370 PRINT :PRINT "een waarderingscijfer."
-5380 PRINT :PRINT "Wil je tijdens het programma de"
-5390 PRINT :PRINT "tussenstand weten, druk dan op"
-5400 PRINT :PRINT "de letter 't' of 'T'."
-5410 GOSUB 3400
-5420 PRINT :PRINT :PRINT 
-5430 PRINT :PRINT "We hopen dat dit programma je kan"
-5440 PRINT :PRINT "helpen om het ontleden van een zin"
-5450 PRINT :PRINT "beter onder de knie te krijgen."
-5460 PRINT :PRINT :PRINT 
-5470 PRINT :PRINT "We wensen je veel succes."
-5480 GOSUB 3400
+4610 GOSUB100:PRINT
+4620 PRINT:PRINT"De uitleg die nu volgt moet je "
+4630 PRINT:PRINT"zeer zorgvuldig en langzaam lezen."
+4640 PRINT:PRINT"Dit geldt trouwens voor elke uitleg"
+4650 PRINT:PRINT"in de loop van dit programma."
+4660 PRINT:PRINT:PRINT
+4670 PRINT:PRINT"Bij het programma ONTLEDEN kun je"
+4680 PRINT:PRINT"kiezen uit 3 mogelijkheden."
+4690 GOSUB3400
+4700 PRINT:PRINT"1. Je kunt een bepaald onderdeel"
+4710 PRINT:PRINT"   van het ontleden oefenen."
+4720 PRINT:PRINT"   (B.v. alleen het gezegde zoeken)."
+4730 PRINT
+4740 PRINT:PRINT"2. Je kunt beginnen vanaf niveau 1."
+4750 PRINT:PRINT"   (Aanbevolen voor beginnelingen)."
+4760 PRINT:PRINT"   Straks krijg je hierover uitleg."
+4770 PRINT
+4780 PRINT:PRINT"3. Je kunt zelf 't beginniveau bepalen."
+4790 PRINT:PRINT"   (Bij hernieuwd gebruik)."
+4800 GOSUB3400
+4810 PRINT:PRINT:PRINT
+4820 PRINT:PRINT"Na het lezen van de verdere uitleg zie"
+4830 PRINT:PRINT"je op het scherm een zin verschijnen."
+4840 PRINT:PRINT"De verschillende zinsdelen van deze zin"
+4850 PRINT:PRINT"zijn onderstreept."
+4860 PRINT:PRINT"Onder elke lijn zie je 'n cijfer staan."
+4870 PRINT:PRINT"Dit cijfer is erg belangrijk."
+4880 GOSUB3400
+4890 PRINT:PRINT:PRINT
+4900 PRINT:PRINT"Wordt straks b.v. gevraagd wat het"
+4910 PRINT:PRINT"gezegde is in een bepaalde zin, dan"
+4920 PRINT:PRINT"hoef je als antwoord alleen maar een"
+4930 PRINT:PRINT"cijfer in te typen en geen woorden."
+4940 PRINT:PRINT"Tik je per ongeluk het verkeerde cijfer"
+4950 PRINT:PRINT"in, dan kun je dit verbeteren met de"
+4960 PRINT:PRINT"<-- toets. (PIJLTJE naar LINKS)"
+4970 GOSUB3400
+4980 PRINT:PRINT:PRINT
+4990 PRINT:PRINT"Eerst krijg je de opdracht om uit een"
+5000 PRINT:PRINT"aantal zinnen de persoonsvorm te"
+5010 PRINT:PRINT"zoeken."
+5020 PRINT:PRINT"Maak je hierbij een fout, dan krijg "
+5030 PRINT:PRINT"je nog een herkansing."
+5040 PRINT:PRINT"Voor deze herkansing kun je de computer"
+5050 PRINT:PRINT"om uitleg vragen over het fout-gemaakte"
+5060 PRINT:PRINT"onderdeel."
+5070 GOSUB3400
+5080 PRINT:PRINT:PRINT
+5090 PRINT:PRINT"Is je antwoord daarna weer fout, dan"
+5100 PRINT:PRINT"gaat er helaas een punt van je"
+5110 PRINT:PRINT"totaal-score af."
+5120 PRINT:PRINT"Zit 'n bepaald zinsdeel niet in de zin,"
+5130 PRINT:PRINT"dan druk je gewoon op de invoertoets."
+5140 GOSUB3400
+5150 PRINT:PRINT:PRINT
+5160 PRINT:PRINT"Heb je vijf keer achter elkaar een goed"
+5170 PRINT:PRINT"antwoord gegeven, dan ga je over naar"
+5180 PRINT:PRINT"een hoger niveau."
+5190 PRINT:PRINT"Uit de zinnen die dan volgen moet je"
+5200 PRINT:PRINT"niet alleen de persoonsvorm zoeken,"
+5210 PRINT:PRINT"maar ook het gezegde."
+5220 GOSUB3400
+5230 PRINT:PRINT:PRINT
+5240 PRINT:PRINT"Doe je 5x achter elkaar alles goed, dan"
+5250 PRINT:PRINT"ga je over naar niveau 3. Dan moet je"
+5260 PRINT:PRINT"uit elke zin de persoonsvorm, het"
+5270 PRINT:PRINT"gezegde en het onderwerp zoeken."
+5280 PRINT:PRINT"Dus: hoe hoger je niveau is, hoe meer"
+5290 PRINT:PRINT"zinsdelen je moet benoemen."
+5300 PRINT:PRINT"Het hoogste niveau is 6."
+5310 GOSUB3400
+5320 PRINT:PRINT:PRINT
+5330 PRINT:PRINT"Wil je tijdens het programma stoppen,"
+5340 PRINT:PRINT"druk dan op de letter 's' of 'S'"
+5350 PRINT:PRINT"in plaats van op een antwoordcijfer."
+5360 PRINT:PRINT"Daarna volgt een foutenoverzicht en"
+5370 PRINT:PRINT"een waarderingscijfer."
+5380 PRINT:PRINT"Wil je tijdens het programma de"
+5390 PRINT:PRINT"tussenstand weten, druk dan op"
+5400 PRINT:PRINT"de letter 't' of 'T'."
+5410 GOSUB3400
+5420 PRINT:PRINT:PRINT
+5430 PRINT:PRINT"We hopen dat dit programma je kan"
+5440 PRINT:PRINT"helpen om het ontleden van een zin"
+5450 PRINT:PRINT"beter onder de knie te krijgen."
+5460 PRINT:PRINT:PRINT
+5470 PRINT:PRINT"We wensen je veel succes."
+5480 GOSUB3400
 5490 RETURN
 5500 REM MENU
-5510 GOSUB 100
-5520 PRINT "           H O O F D M E N U"
-5530 PRINT "======================================="
-5540 PRINT :PRINT "1. Een bepaald onderdeel oefenen."
-5550 PRINT :PRINT "   (Bijv. alleen 't gezegde zoeken.)"
-5560 PRINT 
-5570 PRINT :PRINT "2. Vanaf niveau 1 beginnen."
-5580 PRINT :PRINT "   (Aanbevolen voor nieuwelingen!!!)"
-5590 PRINT 
-5600 PRINT :PRINT "3. Zelf het beginniveau bepalen."
-5610 PRINT :PRINT "   (Bij hernieuwd gebruik.)"
-5620 PRINT 
-5630 PRINT :PRINT "4. Stoppen."
-5640 PRINT :PRINT 
-5650 PRINT "======================================="
-5660 PRINT :PRINT "WAT KIES JE ? ";
-5670 GOSUB 210:KE=VAL(IN$)
-5680 IF (KE<1) OR(KE>4) THEN 5670
-5690 IF KE=4 THEN GOSUB 100:END
-5700 IF KE=2 THEN NV=1:KO=1:RETURN
-5710 IF KE=1 THEN 5900
-5720 GOSUB 100
-5730 PRINT "    K I E S   B E G I N N I V E A U"
-5740 PRINT "======================================="
-5750 PRINT :PRINT :PRINT 
-5760 PRINT :PRINT "1. Terug naar hoofdmenu."
-5770 PRINT :PRINT "2. Niveau 2 (pv en gezegde)"
-5780 PRINT :PRINT "3. Niveau 3 (pv, gezegde en onderwerp)"
-5790 PRINT :PRINT "4. Niveau 4 (pv, gez., ond., lijd.vw.)"
-5800 PRINT :PRINT "5. Niveau 5 (pv, gez., ond., lv., mv.)"
-5810 PRINT :PRINT "6. Niveau 6 (alle onderdelen)"
-5820 PRINT :PRINT :PRINT 
-5830 PRINT "======================================="
-5840 PRINT :PRINT "WAT KIES JE ? ";
-5850 GOSUB 210:KB=VAL(IN$)
-5860 IF (KB<1) OR(KB>6) THEN 5850
-5870 IF KB=1 THEN 5510
-5880 NV=KB:IF KB=6 THEN NV=8
+5510 GOSUB100
+5520 PRINT"           H O O F D M E N U"
+5530 PRINT"======================================="
+5540 PRINT:PRINT"1. Een bepaald onderdeel oefenen."
+5550 PRINT:PRINT"   (Bijv. alleen 't gezegde zoeken.)"
+5560 PRINT
+5570 PRINT:PRINT"2. Vanaf niveau 1 beginnen."
+5580 PRINT:PRINT"   (Aanbevolen voor nieuwelingen!!!)"
+5590 PRINT
+5600 PRINT:PRINT"3. Zelf het beginniveau bepalen."
+5610 PRINT:PRINT"   (Bij hernieuwd gebruik.)"
+5620 PRINT
+5630 PRINT:PRINT"4. Stoppen."
+5640 PRINT:PRINT
+5650 PRINT"======================================="
+5660 PRINT:PRINT"WAT KIES JE ? ";
+5670 GOSUB210:KE=VAL(IN$)
+5680 IF(KE<1) OR(KE>4) THEN5670
+5690 IFKE=4 THENGOSUB100:END
+5700 IFKE=2 THENNV=1:KO=1:RETURN
+5710 IFKE=1 THEN5900
+5720 GOSUB100
+5730 PRINT"    K I E S   B E G I N N I V E A U"
+5740 PRINT"======================================="
+5750 PRINT:PRINT:PRINT
+5760 PRINT:PRINT"1. Terug naar hoofdmenu."
+5770 PRINT:PRINT"2. Niveau 2 (pv en gezegde)"
+5780 PRINT:PRINT"3. Niveau 3 (pv, gezegde en onderwerp)"
+5790 PRINT:PRINT"4. Niveau 4 (pv, gez., ond., lijd.vw.)"
+5800 PRINT:PRINT"5. Niveau 5 (pv, gez., ond., lv., mv.)"
+5810 PRINT:PRINT"6. Niveau 6 (alle onderdelen)"
+5820 PRINT:PRINT:PRINT
+5830 PRINT"======================================="
+5840 PRINT:PRINT"WAT KIES JE ? ";
+5850 GOSUB210:KB=VAL(IN$)
+5860 IF(KB<1) OR(KB>6) THEN5850
+5870 IFKB=1 THEN5510
+5880 NV=KB:IFKB=6 THENNV=8
 5890 KO=1:RETURN
-5900 GOSUB 100
-5910 PRINT "      K I E S   O N D E R D E E L"
-5920 PRINT "======================================="
-5930 PRINT :PRINT 
-5940 PRINT :PRINT "1. Alleen oefenen met persoonsvorm."
-5950 PRINT :PRINT "2. Alleen oefenen met gezegde."
-5960 PRINT :PRINT "3. Alleen oefenen met onderwerp."
-5970 PRINT :PRINT "4. Alleen oefenen met lijd. voorwerp."
-5980 PRINT :PRINT "5. Alleen oefenen met meew. voorwerp."
-5990 PRINT :PRINT "6. Alleen oefenen met bijw. bepaling."
-6000 PRINT :PRINT "7. Terug naar hoofdmenu."
-6010 PRINT :PRINT :PRINT 
-6020 PRINT "======================================="
-6030 PRINT :PRINT "WAT KIES JE ? ";
-6040 GOSUB 210:KO=VAL(IN$)
-6050 IF (KO<1) OR(KO>7) THEN 6040
-6060 IF KO=7 THEN 5510
-6070 NV=KO:IF KO=6 THEN NV=8
+5900 GOSUB100
+5910 PRINT"      K I E S   O N D E R D E E L"
+5920 PRINT"======================================="
+5930 PRINT:PRINT
+5940 PRINT:PRINT"1. Alleen oefenen met persoonsvorm."
+5950 PRINT:PRINT"2. Alleen oefenen met gezegde."
+5960 PRINT:PRINT"3. Alleen oefenen met onderwerp."
+5970 PRINT:PRINT"4. Alleen oefenen met lijd. voorwerp."
+5980 PRINT:PRINT"5. Alleen oefenen met meew. voorwerp."
+5990 PRINT:PRINT"6. Alleen oefenen met bijw. bepaling."
+6000 PRINT:PRINT"7. Terug naar hoofdmenu."
+6010 PRINT:PRINT:PRINT
+6020 PRINT"======================================="
+6030 PRINT:PRINT"WAT KIES JE ? ";
+6040 GOSUB210:KO=VAL(IN$)
+6050 IF(KO<1) OR(KO>7) THEN6040
+6060 IFKO=7 THEN5510
+6070 NV=KO:IFKO=6 THENNV=8
 6080 RETURN
 6200 REM WILLEKEURIG BEGIN
-6210 GOSUB 100
-6220 HO=12:VE=11:GOSUB 110
-6230 PRINT "Even geduld ....."
-6240 GOSUB 260
+6210 GOSUB100
+6220 HO=12:VE=11:GOSUB110
+6230 PRINT"Even geduld ....."
+6240 GOSUB260
 6250 I=INT(RV*50)
-6260 FOR J=1 TO I
-6270 READ AW
-6280 IF AW=0 THEN RESTORE :GOTO 6240
-6290 FOR K=1 TO AW
-6300 READ WO$(K)
-6310 NEXT K:NEXT J
+6260 FORJ=1 TOI
+6270 READAW
+6280 IFAW=0 THENRESTORE:GOTO6240
+6290 FORK=1 TOAW
+6300 READWO$(K)
+6310 NEXTK:NEXTJ
 6320 AZ=0:REM AANTAL ZINNEN
 6330 RETURN
 6400 REM ZIN INLEZEN
 6410 AR=1:REM ANTWOORDTELLER
-6420 READ AW:REM AANTAL WOORDEN
-6430 IF AW=0 THEN RESTORE :GOTO 6420
-6440 FOR I=1 TO 9
+6420 READAW:REM AANTAL WOORDEN
+6430 IFAW=0 THENRESTORE:GOTO6420
+6440 FORI=1 TO9
 6450 WO$(I)="":G$(I)=""
-6460 NEXT I
-6470 FOR I=1 TO AW
-6480 READ WO$(I)
+6460 NEXTI
+6470 FORI=1 TOAW
+6480 READWO$(I)
 6490 WL(I)=LEN(WO$(I)):REM WOORDLENGTE
 6500 C(I)=VAL(RIGHT$(WO$(I),1)):REM WOORDCODE
 6510 G$(C(I))=LEFT$(WO$(I),WL(I)-1)
-6520 NEXT I
+6520 NEXTI
 6530 REM VRAAGCODE BEPALEN
-6540 FOR I=1 TO 9
-6550 FOR J=1 TO AW
+6540 FORI=1 TO9
+6550 FORJ=1 TOAW
 6560 VC(I)=0
-6570 IF C(J)=I THEN VC(I)=I:J=AW
-6580 NEXT J:NEXT I
+6570 IFC(J)=I THENVC(I)=I:J=AW
+6580 NEXTJ:NEXTI
 6590 VC(2)=VC(1)+VC(2)+VC(9)
-6600 GOSUB 3600:REM BEPAAL GEZEGDE
-6610 FOR I=1 TO 9
+6600 GOSUB3600:REM BEPAAL GEZEGDE
+6610 FORI=1 TO9
 6620 C(I)=0
-6630 NEXT I
+6630 NEXTI
 6640 RETURN
 6700 REM ZIN OP SCHERM
-6710 GOSUB 20100:REM CURSOR UIT
-6720 GOSUB 100:ZL=0:REM ZINSLENGTE
-6730 FOR I=1 TO AW
+6710 GOSUB20100:REM CURSOR UIT
+6720 GOSUB100:ZL=0:REM ZINSLENGTE
+6730 FORI=1 TOAW
 6740 ZL=ZL+WL(I)
-6750 IF ZL>39 THEN ZL=WL(I):HO=0:VE=4:GOSUB 110
-6760 PRINT LEFT$(WO$(I),WL(I)-1);" ";
-6770 NEXT I
+6750 IFZL>39 THENZL=WL(I):HO=0:VE=4:GOSUB110
+6760 PRINTLEFT$(WO$(I),WL(I)-1);" ";
+6770 NEXTI
 6780 REM ONDERSTREPEN
-6790 HO=0:VE=1:GOSUB 110:ZL=0
-6800 FOR I=1 TO AW
+6790 HO=0:VE=1:GOSUB110:ZL=0
+6800 FORI=1 TOAW
 6810 ZL=ZL+WL(I)
-6820 IF ZL>39 THEN ZL=WL(I):HO=0:VE=5:GOSUB 110
-6830 FOR J=1 TO WL(I)-1
-6840 PRINT "-";:NEXT J
-6850 PRINT " ";:NEXT I
+6820 IFZL>39 THENZL=WL(I):HO=0:VE=5:GOSUB110
+6830 FORJ=1 TOWL(I)-1
+6840 PRINT"-";:NEXTJ
+6850 PRINT" ";:NEXTI
 6860 REM GETAL PRINTEN
 6870 VE=2:ZL=0
-6880 FOR I=1 TO AW
+6880 FORI=1 TOAW
 6890 ZL=ZL+WL(I)
-6900 IF ZL>39 THEN ZL=WL(I):VE=6
-6910 HO=ZL-INT(WL(I)/2+.5)-1:GOSUB 110
-6920 SR=I:GOSUB 300:PRINT SR$;
-6930 NEXT I
+6900 IFZL>39 THENZL=WL(I):VE=6
+6910 HO=ZL-INT(WL(I)/2+.5)-1:GOSUB110
+6920 SR=I:GOSUB300:PRINTSR$;
+6930 NEXTI
 6940 RETURN
 7000 REM VRAAG PRINTEN
 7010 VR$(8)="Bijw. bep. 3 = "
-7020 FOR I=KO TO NV
-7030 HO=0:VE=7+2*I:GOSUB 110
-7040 PRINT VR$(I);
-7050 NEXT I
-7060 IF KE=1 THEN AR=KO
+7020 FORI=KO TONV
+7030 HO=0:VE=7+2*I:GOSUB110
+7040 PRINTVR$(I);
+7050 NEXTI
+7060 IFKE=1 THENAR=KO
 7070 RETURN
 7100 REM ANTWOORD PRINTEN
-7110 GOSUB 20200:REM CURSOR AAN
+7110 GOSUB20200:REM CURSOR AAN
 7120 A$(AR)="":AL=0:REM ANTWOORDLENGTE
 7130 A1=0:A2=0:A3=0
 7140 C1=0:C2=0:C3=0
-7150 HO=15:VE=7+2*AR:GOSUB 110
-7160 GOSUB 210
-7170 IF (IN$="S") OR(IN$="s") THEN 7420
-7180 IF (IN$="T") OR(IN$="t") THEN 7420
-7190 IF IN$=CHR$(A) THEN 7440
-7200 IF IN$=CHR$(13) THEN 7260
+7150 HO=15:VE=7+2*AR:GOSUB110
+7160 GOSUB210
+7170 IF(IN$="S") OR(IN$="s") THEN7420
+7180 IF(IN$="T") OR(IN$="t") THEN7420
+7190 IFIN$=CHR$(A) THEN7440
+7200 IFIN$=CHR$(13) THEN7260
 7210 IN=VAL(IN$)
-7220 IF (IN<1) OR(IN>AW) THEN 7160
-7230 PRINT IN$;" ";
+7220 IF(IN<1) OR(IN>AW) THEN7160
+7230 PRINTIN$;" ";
 7240 A$(AR)=A$(AR)+IN$
-7250 GOTO 7160
-7260 HO=15:GOSUB 110:PRINT "             ";
-7270 IF A$(AR)="" THEN 7400
+7250 GOTO7160
+7260 HO=15:GOSUB110:PRINT"             ";
+7270 IFA$(AR)="" THEN7400
 7280 AL=LEN(A$(AR))
 7290 A1=VAL(LEFT$(A$(AR),1))
-7300 IF (AL=2) OR(AL=3) THEN A2=VAL(MID$(A$(AR),2,1))
-7310 IF AL=3 THEN A3=VAL(RIGHT$(A$(AR),1))
-7320 GOSUB 110
-7330 PRINT LEFT$(WO$(A1),WL(A1)-1);
-7340 IF (AL=2) OR(AL=3) THEN PRINT " ";LEFT$(WO$(A2),WL(A2)-1);
-7350 IF AL=3 THEN PRINT " ";LEFT$(WO$(A3),WL(A3)-1);
+7300 IF(AL=2) OR(AL=3) THENA2=VAL(MID$(A$(AR),2,1))
+7310 IFAL=3 THENA3=VAL(RIGHT$(A$(AR),1))
+7320 GOSUB110
+7330 PRINTLEFT$(WO$(A1),WL(A1)-1);
+7340 IF(AL=2) OR(AL=3) THENPRINT" ";LEFT$(WO$(A2),WL(A2)-1);
+7350 IFAL=3 THENPRINT" ";LEFT$(WO$(A3),WL(A3)-1);
 7360 REM ANTWOORDCODE
 7370 C1=VAL(RIGHT$(WO$(A1),1))
-7380 IF (AL=2) OR(AL=3) THEN C2=VAL(RIGHT$(WO$(A2),1))
-7390 IF AL=3 THEN C3=VAL(RIGHT$(WO$(A3),1))
+7380 IF(AL=2) OR(AL=3) THENC2=VAL(RIGHT$(WO$(A2),1))
+7390 IFAL=3 THENC3=VAL(RIGHT$(WO$(A3),1))
 7400 C(AR)=C1+C2+C3
-7410 GOSUB 20100:REM CURSOR UIT
+7410 GOSUB20100:REM CURSOR UIT
 7420 RETURN
 7430 REM CORRECTIE
-7440 GOSUB 120
-7450 HO=HO-2:IF HO<=15 THEN HO=15
-7460 GOSUB 110:PRINT " ";
-7470 GOSUB 110
+7440 GOSUB120
+7450 HO=HO-2:IFHO<=15 THENHO=15
+7460 GOSUB110:PRINT" ";
+7470 GOSUB110
 7480 AL=LEN(A$(AR))
-7490 IF AL<2 THEN A$(AR)="":GOTO 7160
-7500 A$(AR)=LEFT$(A$(AR),AL-1):GOTO 7160
+7490 IFAL<2 THENA$(AR)="":GOTO7160
+7500 A$(AR)=LEFT$(A$(AR),AL-1):GOTO7160
 7600 REM ANTWOORD OPNIEUW PRINTEN
 7610 J=1
-7620 IF KE=1 THEN J=AR
-7630 IF (KE=1) AND(KO=6) THEN J=KO
-7640 FOR I=J TO AR-1
-7650 HO=15:VE=7+2*I:GOSUB 110
-7660 IF AR=1 THEN 7680
-7670 PRINT G$(I)
-7680 NEXT I
+7620 IFKE=1 THENJ=AR
+7630 IF(KE=1) AND(KO=6) THENJ=KO
+7640 FORI=J TOAR-1
+7650 HO=15:VE=7+2*I:GOSUB110
+7660 IFAR=1 THEN7680
+7670 PRINTG$(I)
+7680 NEXTI
 7690 RETURN
 7700 REM CONTROLE ANTWOORD
-7710 IF (C(AR)>5) AND(C(AR)<9) AND(VC(AR)>5) THEN 7760
-7720 IF C(AR)<>VC(AR) THEN 7750
-7730 IF (VC(2)=3) AND(AR=2) AND(AL<>2) THEN 7750
+7710 IF(C(AR)>5) AND(C(AR)<9) AND(VC(AR)>5) THEN7760
+7720 IFC(AR)<>VC(AR) THEN7750
+7730 IF(VC(2)=3) AND(AR=2) AND(AL<>2) THEN7750
 7740 G=1:RETURN
 7750 G=0:RETURN
 7760 REM CONTROLE BIJW.BEPALING
-7770 IF VC(7)+VC(8)=0 THEN 7800
-7780 IF VC(8)=0 THEN 7830
-7790 GOTO 7890
+7770 IFVC(7)+VC(8)=0 THEN7800
+7780 IFVC(8)=0 THEN7830
+7790 GOTO7890
 7800 REM 1 BIJW.BEPALING
-7810 IF C(AR)<>VC(6) THEN 7750
-7820 GOTO 7740
+7810 IFC(AR)<>VC(6) THEN7750
+7820 GOTO7740
 7830 REM 2 BIJW.BEPALINGEN
-7840 IF C(AR)=C(AR-1) THEN 7750
-7850 IF C(AR)=VC(AR) THEN 7740
+7840 IFC(AR)=C(AR-1) THEN7750
+7850 IFC(AR)=VC(AR) THEN7740
 7860 W=VC(AR+1):VC(AR+1)=VC(AR):VC(AR)=W
 7870 W$=G$(AR+1):G$(AR+1)=G$(AR):G$(AR)=W$
-7880 GOTO 7740
+7880 GOTO7740
 7890 REM 3 BIJW.BEPALINGEN
-7900 IF (C(AR)=C(AR-1)) OR(C(AR)=C(AR-2)) THEN 7750
-7910 IF C(AR)=VC(AR) THEN 7740
-7920 IF C(AR)=VC(AR+1) THEN 7860
+7900 IF(C(AR)=C(AR-1)) OR(C(AR)=C(AR-2)) THEN7750
+7910 IFC(AR)=VC(AR) THEN7740
+7920 IFC(AR)=VC(AR+1) THEN7860
 7930 W=VC(AR+2):VC(AR+2)=VC(AR):VC(AR)=W
 7940 W$=G$(AR+2):G$(AR+2)=G$(AR):G$(AR)=W$
-7950 GOTO 7740
+7950 GOTO7740
 8000 REM NIVEAU HOGER
 8010 NV=NV+1:NI=NV
-8020 IF NV>5 THEN NV=8:NI=6
-8030 GOSUB 100
-8040 PRINT "        N I V E A U   H O G E R"
-8050 PRINT "======================================="
-8060 HO=0:VE=6:GOSUB 110
-8070 PRINT "Goed zo!"
-8080 PRINT :PRINT "Het onderdeel ";ZD$(NI-1)
-8090 PRINT :PRINT "heb je onder de knie."
-8100 PRINT :PRINT "We gaan nu een stap verder,"
-8110 PRINT :PRINT "dus naar niveau ";NI;"."
-8120 PRINT :PRINT "Het hoogste niveau is 6."
-8130 GOSUB 3400
+8020 IFNV>5 THENNV=8:NI=6
+8030 GOSUB100
+8040 PRINT"        N I V E A U   H O G E R"
+8050 PRINT"======================================="
+8060 HO=0:VE=6:GOSUB110
+8070 PRINT"Goed zo!"
+8080 PRINT:PRINT"Het onderdeel ";ZD$(NI-1)
+8090 PRINT:PRINT"heb je onder de knie."
+8100 PRINT:PRINT"We gaan nu een stap verder,"
+8110 PRINT:PRINT"dus naar niveau ";NI;"."
+8120 PRINT:PRINT"Het hoogste niveau is 6."
+8130 GOSUB3400
 8140 RETURN
 8200 REM OVERZICHT EN SCORE
-8210 GOSUB 20100:REM CURSOR UIT
-8220 GOSUB 100
-8230 PRINT "     F O U T E N O V E R Z I C H T"
-8240 PRINT "======================================="
-8250 PRINT :PRINT "Aantal zinnen:";
+8210 GOSUB20100:REM CURSOR UIT
+8220 GOSUB100
+8230 PRINT"     F O U T E N O V E R Z I C H T"
+8240 PRINT"======================================="
+8250 PRINT:PRINT"Aantal zinnen:";
 8260 CT=3:CN=0
-8270 SR=AZ:GOSUB 310:PRINT SR$
-8280 IF AZ=0 THEN 8510
-8290 PRINT "Niveau       :";
-8300 NI=NV:IF NV>6 THEN NI=6
-8310 SR=NI:GOSUB 310:PRINT SR$;
-8320 PRINT "           Cijfer:";
+8270 SR=AZ:GOSUB310:PRINTSR$
+8280 IFAZ=0 THEN8510
+8290 PRINT"Niveau       :";
+8300 NI=NV:IFNV>6 THENNI=6
+8310 SR=NI:GOSUB310:PRINTSR$;
+8320 PRINT"           Cijfer:";
 8330 F=0:CT=4:CN=1
-8340 FOR I=1 TO 8
+8340 FORI=1 TO8
 8350 F=F+F(I)
-8360 NEXT I
-8370 SR=INT((AZ-F)/AZ*100)/10:GOSUB 310
-8380 IF SR<0 THEN SR=0:GOSUB 310
-8390 PRINT SR$:PRINT 
-8400 PRINT "---------------------------------------"
-8410 PRINT 
-8420 FOR I=1 TO NV
-8430 IF I=6 THEN I=8
+8360 NEXTI
+8370 SR=INT((AZ-F)/AZ*100)/10:GOSUB310
+8380 IFSR<0 THENSR=0:GOSUB310
+8390 PRINTSR$:PRINT
+8400 PRINT"---------------------------------------"
+8410 PRINT
+8420 FORI=1 TONV
+8430 IFI=6 THENI=8
 8440 VR$(8)="Bijw. bep.   = "
-8450 PRINT VR$(I);
-8460 SR=F(I):GOSUB 300
-8470 IF I>5 THEN SR=F(6)+F(7)+F(8):GOSUB 300
-8480 PRINT SR$;" x FOUT"
-8490 PRINT 
-8500 NEXT I
-8510 GOSUB 3400
+8450 PRINTVR$(I);
+8460 SR=F(I):GOSUB300
+8470 IFI>5 THENSR=F(6)+F(7)+F(8):GOSUB300
+8480 PRINTSR$;" x FOUT"
+8490 PRINT
+8500 NEXTI
+8510 GOSUB3400
 8520 RETURN
 20000 REM PAS REGEL 20060 AAN
 20010 REM VOOR UW COMPUTER.
@@ -679,111 +680,111 @@
 20070 RETURN
 20100 REM CURSOR UIT
 20110 REM VOOR COMPUTERS MET IRRITANTE CURSOR
-20120 PRINT CHR$(2);:REM P2000T
+20120 PRINTCHR$(2);:REM P2000T
 20130 RETURN
 20200 REM CURSOR AAN
 20210 REM VOOR COMPUTERS MET IRRITANTE CURSOR
-20220 PRINT CHR$(1);:REM P2000T
+20220 PRINTCHR$(1);:REM P2000T
 20230 RETURN
 25000 REM DATA ZINNEN
-25010 DATA 6,"Om elf uur6","heeft1","vader3","de tuinman5"
-25020 DATA "een kop koffie4","gebracht.2"
-25030 DATA 4,"Vanmiddag6","gaat1","de vierde klas3"
-25040 DATA "naar de film.7"
-25050 DATA 4,"Leen1","jij3","Marjolijn5","dat mooie boek?4"
-25060 DATA 5,"Bij de ingang6","gaf1","de portier3"
-25070 DATA "alle mensen5","een folder.4"
-25080 DATA 4,"Hier6","sluiten1","alle winkels3"
-25090 DATA "om zes uur.7"
-25100 DATA 4,"Gaven1","de inwoners3"
-25110 DATA "de jarige burgemeester5","een cadeau?4"
-25120 DATA 5,"In de winter6","geeft1","de boswachter3"
-25130 DATA "de dieren5","extra voedsel.4"
-25140 DATA 6,"Donderdag6","zullen1","twee leerlingen3"
-25150 DATA "oud papier4","gaan2","ophalen.9"
-25160 DATA 4,"Vader en moeder3","schreven1","oom5"
-25170 DATA "een lange brief.4"
-25180 DATA 5,"Ik3","stuur1","Annie5","elke week6"
-25190 DATA "een brief4"
-25200 DATA 4,"In grote steden6","staan1","aan de rand7"
-25210 DATA "torenhoge flats.3"
-25220 DATA 4,"Dode vissen3","verontreinigden1"
-25230 DATA "het water4","nog meer.6"
-25240 DATA 6,"Wie3","helpt1","mij5","mijn leren bal4"
-25250 DATA "straks6","zoeken?2"
-25260 DATA 5,"Al bijna een maand6","is1","die straat3"
-25270 DATA "nu7","opgebroken.2"
-25280 DATA 5,"Wij3","zagen1","de helikopter4"
-25290 DATA "op het grasveld6","landen.2"
-25300 DATA 5,"Opa en oma3","hebben1","voor alle kinderen5"
-25310 DATA "een boek4","gekocht.2"
-25320 DATA 4,"Zal1","de burgemeester3","die tentoonstelling4"
-25330 DATA "openen?2"
-25340 DATA 6,"De treinmachinist3","liet1","ons5"
-25350 DATA "alle knopjes4","in de stuurcabine6","zien.2"
-25360 DATA 5,"'s Middags6","maakt1","hij3"
-25370 DATA "direct7","zijn huiswerk.4"
-25380 DATA 4,"Vanuit de lucht6","volgde1","de helikopter3"
-25390 DATA "de wielrenners.4"
-25400 DATA 6,"'s Winters6","hang1","ik3","elke week7"
-25410 DATA "vetbollen4","in de boom.8"
-25420 DATA 5,"De bijenhouder3","liet1","zijn bezoekers5"
-25430 DATA "de zelfgemaakte korven4","zien.2"
-25440 DATA 4,"Mijn ouders3","zagen1","in de etalage6"
-25450 DATA "een mooie bank.4"
-25460 DATA 6,"Heeft1","moeder3","vandaag6"
-25470 DATA "boodschappen4","uit de stad7","gehaald?2"
-25480 DATA 4,"De badmeester3","overhandigt1"
-25490 DATA "de zwemmers5","het behaalde diploma.4"
-25500 DATA 5,"Ik3","heb1","mijn spreekbeurt4"
-25510 DATA "heel goed6","voorbereid.2"
-25520 DATA 5,"Kom1","jij3","in de vakantie6"
-25530 DATA "bij ons7","logeren?2"
-25540 DATA 4,"Vader3","timmert1","een mooi duivenhok4"
-25550 DATA "voor ons.5"
-25560 DATA 4,"De bijen3","brengen1"
-25570 DATA "de honing4","naar de korf.6"
-25580 DATA 4,"Mijn oom en tante3","geven1"
-25590 DATA "op mijn verjaardag6","leuke cadeaus.4"
-25600 DATA 6,"Heeft1","jullie bovenbuurman3","jullie5"
-25610 DATA "toen6","een boze brief4","geschreven?2"
-25620 DATA 4,"Wij3","zagen1","in het Lauwersmeer6"
-25630 DATA "grauwe ganzen.4"
-25640 DATA 5,"De vorige week6","is1","mijn oom3"
-25650 DATA "naar de stad7","verhuisd.2"
-25660 DATA 4,"De marktkoopman3","verkocht1"
-25670 DATA "moeder5","een nieuwe schaar.4"
-25680 DATA 5,"Dit jaar6","houdt1","men3"
-25690 DATA "de feestweek4","in de zomervakantie.7"
-25700 DATA 5,"Gaf1","de politie3","na het ongeluk6"
-25710 DATA "de bestuurder5","een zware boete?4"
-25720 DATA 4,"De jongens3","halen1","vanavond6"
-25730 DATA "hun fietsen.4"
-25740 DATA 6,"Heb1","ik3","dat4","nu6"
-25750 DATA "zo slecht7","gedaan?2"
-25760 DATA 5,"Onze overburen3","geven1","ons5"
-25770 DATA "vanavond6","een appel.4"
-25780 DATA 5,"De gemeente3","zal1","deze week6"
-25790 DATA "de straat4","asfalteren.2"
-25800 DATA 4,"Moeder3","brengt1"
-25810 DATA "Marjolijn5","een glas melk.4"
-25820 DATA 4,"Jan3","maait1","deze week6","het gras.4"
-25830 DATA 5,"Ze3","geven1","mijn broer5"
-25840 DATA "in het weekend6","extra geld.4"
-25850 DATA 4,"Wij3","kopen1","op de markt6"
-25860 DATA "een grote wekker.4"
-25870 DATA 4,"Peter3","schrijft1"
-25880 DATA "zijn vriend5","een brief.4"
-25890 DATA 5,"Zal1","ik3","mijn huiswerk4"
-25900 DATA "nu meteen6","maken?2"
-25910 DATA 5,"De vorige week6","stuurde1","oom Piet3"
-25920 DATA "mij5","een mooie kaart.4"
-25930 DATA 4,"Moeder3","helpt1","vader4","in de tuin.6"
-25940 DATA 4,"De politieagent3","gaf1"
-25950 DATA "de verkeersovertreder5","een bon.4"
-25960 DATA 4,"De gemeente3","plaatst1"
-25970 DATA "op de hoek6","een verkeerslicht.4"
-25980 DATA 0
+25010 DATA6,"Om elf uur6","heeft1","vader3","de tuinman5"
+25020 DATA"een kop koffie4","gebracht.2"
+25030 DATA4,"Vanmiddag6","gaat1","de vierde klas3"
+25040 DATA"naar de film.7"
+25050 DATA4,"Leen1","jij3","Marjolijn5","dat mooie boek?4"
+25060 DATA5,"Bij de ingang6","gaf1","de portier3"
+25070 DATA"alle mensen5","een folder.4"
+25080 DATA4,"Hier6","sluiten1","alle winkels3"
+25090 DATA"om zes uur.7"
+25100 DATA4,"Gaven1","de inwoners3"
+25110 DATA"de jarige burgemeester5","een cadeau?4"
+25120 DATA5,"In de winter6","geeft1","de boswachter3"
+25130 DATA"de dieren5","extra voedsel.4"
+25140 DATA6,"Donderdag6","zullen1","twee leerlingen3"
+25150 DATA"oud papier4","gaan2","ophalen.9"
+25160 DATA4,"Vader en moeder3","schreven1","oom5"
+25170 DATA"een lange brief.4"
+25180 DATA5,"Ik3","stuur1","Annie5","elke week6"
+25190 DATA"een brief4"
+25200 DATA4,"In grote steden6","staan1","aan de rand7"
+25210 DATA"torenhoge flats.3"
+25220 DATA4,"Dode vissen3","verontreinigden1"
+25230 DATA"het water4","nog meer.6"
+25240 DATA6,"Wie3","helpt1","mij5","mijn leren bal4"
+25250 DATA"straks6","zoeken?2"
+25260 DATA5,"Al bijna een maand6","is1","die straat3"
+25270 DATA"nu7","opgebroken.2"
+25280 DATA5,"Wij3","zagen1","de helikopter4"
+25290 DATA"op het grasveld6","landen.2"
+25300 DATA5,"Opa en oma3","hebben1","voor alle kinderen5"
+25310 DATA"een boek4","gekocht.2"
+25320 DATA4,"Zal1","de burgemeester3","die tentoonstelling4"
+25330 DATA"openen?2"
+25340 DATA6,"De treinmachinist3","liet1","ons5"
+25350 DATA"alle knopjes4","in de stuurcabine6","zien.2"
+25360 DATA5,"'s Middags6","maakt1","hij3"
+25370 DATA"direct7","zijn huiswerk.4"
+25380 DATA4,"Vanuit de lucht6","volgde1","de helikopter3"
+25390 DATA"de wielrenners.4"
+25400 DATA6,"'s Winters6","hang1","ik3","elke week7"
+25410 DATA"vetbollen4","in de boom.8"
+25420 DATA5,"De bijenhouder3","liet1","zijn bezoekers5"
+25430 DATA"de zelfgemaakte korven4","zien.2"
+25440 DATA4,"Mijn ouders3","zagen1","in de etalage6"
+25450 DATA"een mooie bank.4"
+25460 DATA6,"Heeft1","moeder3","vandaag6"
+25470 DATA"boodschappen4","uit de stad7","gehaald?2"
+25480 DATA4,"De badmeester3","overhandigt1"
+25490 DATA"de zwemmers5","het behaalde diploma.4"
+25500 DATA5,"Ik3","heb1","mijn spreekbeurt4"
+25510 DATA"heel goed6","voorbereid.2"
+25520 DATA5,"Kom1","jij3","in de vakantie6"
+25530 DATA"bij ons7","logeren?2"
+25540 DATA4,"Vader3","timmert1","een mooi duivenhok4"
+25550 DATA"voor ons.5"
+25560 DATA4,"De bijen3","brengen1"
+25570 DATA"de honing4","naar de korf.6"
+25580 DATA4,"Mijn oom en tante3","geven1"
+25590 DATA"op mijn verjaardag6","leuke cadeaus.4"
+25600 DATA6,"Heeft1","jullie bovenbuurman3","jullie5"
+25610 DATA"toen6","een boze brief4","geschreven?2"
+25620 DATA4,"Wij3","zagen1","in het Lauwersmeer6"
+25630 DATA"grauwe ganzen.4"
+25640 DATA5,"De vorige week6","is1","mijn oom3"
+25650 DATA"naar de stad7","verhuisd.2"
+25660 DATA4,"De marktkoopman3","verkocht1"
+25670 DATA"moeder5","een nieuwe schaar.4"
+25680 DATA5,"Dit jaar6","houdt1","men3"
+25690 DATA"de feestweek4","in de zomervakantie.7"
+25700 DATA5,"Gaf1","de politie3","na het ongeluk6"
+25710 DATA"de bestuurder5","een zware boete?4"
+25720 DATA4,"De jongens3","halen1","vanavond6"
+25730 DATA"hun fietsen.4"
+25740 DATA6,"Heb1","ik3","dat4","nu6"
+25750 DATA"zo slecht7","gedaan?2"
+25760 DATA5,"Onze overburen3","geven1","ons5"
+25770 DATA"vanavond6","een appel.4"
+25780 DATA5,"De gemeente3","zal1","deze week6"
+25790 DATA"de straat4","asfalteren.2"
+25800 DATA4,"Moeder3","brengt1"
+25810 DATA"Marjolijn5","een glas melk.4"
+25820 DATA4,"Jan3","maait1","deze week6","het gras.4"
+25830 DATA5,"Ze3","geven1","mijn broer5"
+25840 DATA"in het weekend6","extra geld.4"
+25850 DATA4,"Wij3","kopen1","op de markt6"
+25860 DATA"een grote wekker.4"
+25870 DATA4,"Peter3","schrijft1"
+25880 DATA"zijn vriend5","een brief.4"
+25890 DATA5,"Zal1","ik3","mijn huiswerk4"
+25900 DATA"nu meteen6","maken?2"
+25910 DATA5,"De vorige week6","stuurde1","oom Piet3"
+25920 DATA"mij5","een mooie kaart.4"
+25930 DATA4,"Moeder3","helpt1","vader4","in de tuin.6"
+25940 DATA4,"De politieagent3","gaf1"
+25950 DATA"de verkeersovertreder5","een bon.4"
+25960 DATA4,"De gemeente3","plaatst1"
+25970 DATA"op de hoek6","een verkeerslicht.4"
+25980 DATA0
 30000 REM **********************
 30010 REM *    Harry Engel     *
 30020 REM *   Sg. Eysenhegge   *
@@ -801,4 +802,3 @@
 30140 REM Verander zonodig regels 20060, 20120 en 20220 
 30150 REM 
 30160 REM COPYRIGHT (C) NOS HILVERSUM
-

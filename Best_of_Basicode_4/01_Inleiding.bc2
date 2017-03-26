@@ -1,74 +1,75 @@
-1000 A=200:GOTO 20:REM INLEIDING B.o.B #4
-1010 GOSUB 100
-1020 PRINT "INLEIDING BEST OF BASICODE #4"
-1030 PRINT "-----------------------------"
-1040 PRINT :PRINT "Dit bandje bevat weer een verzameling"
-1050 PRINT :PRINT "van voornamelijk edukatieve programma's"
-1060 PRINT :PRINT "samengesteld uit ingezonden werkstukken"
-1070 PRINT :PRINT "van Hobbyscoop luisteraars."
-1080 PRINT :PRINT :PRINT "Deze programma's lopen op de meeste"
-1090 PRINT :PRINT "computers, als ze met een Basicode-2"
-1100 PRINT :PRINT "vertaalprogramma zijn ingelezen."
-1110 PRINT :PRINT "Soms is echter een kleine aanpassing"
-1120 PRINT :PRINT "nodig. Dit dient U zelf uit te voeren."
-1130 GOSUB 20000
-1140 PRINT "Het kan zijn, dat uw computer een klei-"
-1150 PRINT :PRINT "ner scherm heeft dan het standaard"
-1160 PRINT :PRINT "Basicode scherm, dat 24 regels kent met"
-1170 PRINT :PRINT "elk 40 tekens."
-1180 PRINT :PRINT "Ook kan het zijn, dat de input wordt"
-1190 PRINT :PRINT "gevraagd in kleine letters, terwijl u"
-1200 PRINT :PRINT "liever hoofdletters zoudt gebruiken."
-1210 PRINT :PRINT "Welnu: verander dat dan zelf in het"
-1220 PRINT :PRINT "programma."
-1230 GOSUB 20000
-1240 PRINT "Door veel in andermans programma's te"
-1250 PRINT :PRINT "snuffelen vergaart men een hoop kennis,"
-1260 PRINT :PRINT "waarvan men gebruik kan maken bij het"
-1270 PRINT :PRINT "zelf programmeren."
-1280 GOSUB 20000
-1290 PRINT "Soms komt het voor, dat uw computer wel"
-1300 PRINT :PRINT "heel anders reageert op een programma"
-1310 PRINT :PRINT "dan de bedoeling is. Probeer dan zelf"
-1320 PRINT :PRINT "de oorzaak daarvan op te sporen."
-1330 PRINT :PRINT "Sommige computers stellen het op prijs,"
-1340 PRINT :PRINT "dat elke variabele voor het gebruik een"
-1350 PRINT :PRINT "waarde wordt toegekend, eventueel '0'."
-1360 PRINT :PRINT "Dat is trouwens een Basicode eis!"
-1370 GOSUB 20000
-1380 PRINT "Wij controleren het programma ook wel"
-1390 PRINT :PRINT "daarop, maar soms slipt er toch nog een"
-1400 PRINT :PRINT "keertje zo'n ongedefinieerde variabele"
-1410 PRINT :PRINT "door het vangnet. Dan zult u dat zelf"
-1420 PRINT :PRINT "moeten ondervangen door aan het begin"
-1430 PRINT :PRINT "van het programma de 'schuldige' de"
-1440 PRINT :PRINT "waarde '0' toe te kennen."
-1450 GOSUB 20000
-1460 PRINT "Bedenk wel: als alle programma's op dit"
-1470 PRINT :PRINT "bandje 'ideaal' zouden moeten zijn, dan"
-1480 PRINT :PRINT "zou het niet mogelijk zijn elk jaar en"
-1490 PRINT :PRINT "voor zo'n lage prijs een bandje vol met"
-1500 PRINT :PRINT "waardevolle programma's te leveren!"
-1510 GOSUB 20000
-1520 PRINT "Tenslotte:"
-1530 PRINT :PRINT "Als u zelf eens een aardig Basicode-2"
-1540 PRINT :PRINT "programma heeft gemaakt en dat graag"
-1550 PRINT :PRINT "aan anderen zoudt willen laten zien,"
-1560 PRINT :PRINT "zend het dan in aan:"
-1570 PRINT :PRINT :PRINT "NOS - HOBBYSCOOP,"
-1580 PRINT "Postbus 1200"
-1590 PRINT "1200 BE Hilversum."
-1600 GOSUB 20000
-1610 PRINT "U behoudt altijd het recht met het pro-"
-1620 PRINT :PRINT "gramma te doen, wat u zelf wilt."
-1630 PRINT :PRINT "De mededeling 'COPYRIGHT NOS HILVERSUM'"
-1640 PRINT :PRINT "dient alleen om misbruik door derden te"
-1650 PRINT :PRINT "voorkomen!"
-1660 PRINT :PRINT "Het tast op geen enkele wijze de rech-"
-1670 PRINT :PRINT "ten van de auteur op zijn programma"
-1680 PRINT :PRINT "aan!"
+
+1000 A=200:GOTO20:REM INLEIDING B.o.B #4
+1010 GOSUB100
+1020 PRINT"INLEIDING BEST OF BASICODE #4"
+1030 PRINT"-----------------------------"
+1040 PRINT:PRINT"Dit bandje bevat weer een verzameling"
+1050 PRINT:PRINT"van voornamelijk edukatieve programma's"
+1060 PRINT:PRINT"samengesteld uit ingezonden werkstukken"
+1070 PRINT:PRINT"van Hobbyscoop luisteraars."
+1080 PRINT:PRINT:PRINT"Deze programma's lopen op de meeste"
+1090 PRINT:PRINT"computers, als ze met een Basicode-2"
+1100 PRINT:PRINT"vertaalprogramma zijn ingelezen."
+1110 PRINT:PRINT"Soms is echter een kleine aanpassing"
+1120 PRINT:PRINT"nodig. Dit dient U zelf uit te voeren."
+1130 GOSUB20000
+1140 PRINT"Het kan zijn, dat uw computer een klei-"
+1150 PRINT:PRINT"ner scherm heeft dan het standaard"
+1160 PRINT:PRINT"Basicode scherm, dat 24 regels kent met"
+1170 PRINT:PRINT"elk 40 tekens."
+1180 PRINT:PRINT"Ook kan het zijn, dat de input wordt"
+1190 PRINT:PRINT"gevraagd in kleine letters, terwijl u"
+1200 PRINT:PRINT"liever hoofdletters zoudt gebruiken."
+1210 PRINT:PRINT"Welnu: verander dat dan zelf in het"
+1220 PRINT:PRINT"programma."
+1230 GOSUB20000
+1240 PRINT"Door veel in andermans programma's te"
+1250 PRINT:PRINT"snuffelen vergaart men een hoop kennis,"
+1260 PRINT:PRINT"waarvan men gebruik kan maken bij het"
+1270 PRINT:PRINT"zelf programmeren."
+1280 GOSUB20000
+1290 PRINT"Soms komt het voor, dat uw computer wel"
+1300 PRINT:PRINT"heel anders reageert op een programma"
+1310 PRINT:PRINT"dan de bedoeling is. Probeer dan zelf"
+1320 PRINT:PRINT"de oorzaak daarvan op te sporen."
+1330 PRINT:PRINT"Sommige computers stellen het op prijs,"
+1340 PRINT:PRINT"dat elke variabele voor het gebruik een"
+1350 PRINT:PRINT"waarde wordt toegekend, eventueel '0'."
+1360 PRINT:PRINT"Dat is trouwens een Basicode eis!"
+1370 GOSUB20000
+1380 PRINT"Wij controleren het programma ook wel"
+1390 PRINT:PRINT"daarop, maar soms slipt er toch nog een"
+1400 PRINT:PRINT"keertje zo'n ongedefinieerde variabele"
+1410 PRINT:PRINT"door het vangnet. Dan zult u dat zelf"
+1420 PRINT:PRINT"moeten ondervangen door aan het begin"
+1430 PRINT:PRINT"van het programma de 'schuldige' de"
+1440 PRINT:PRINT"waarde '0' toe te kennen."
+1450 GOSUB20000
+1460 PRINT"Bedenk wel: als alle programma's op dit"
+1470 PRINT:PRINT"bandje 'ideaal' zouden moeten zijn, dan"
+1480 PRINT:PRINT"zou het niet mogelijk zijn elk jaar en"
+1490 PRINT:PRINT"voor zo'n lage prijs een bandje vol met"
+1500 PRINT:PRINT"waardevolle programma's te leveren!"
+1510 GOSUB20000
+1520 PRINT"Tenslotte:"
+1530 PRINT:PRINT"Als u zelf eens een aardig Basicode-2"
+1540 PRINT:PRINT"programma heeft gemaakt en dat graag"
+1550 PRINT:PRINT"aan anderen zoudt willen laten zien,"
+1560 PRINT:PRINT"zend het dan in aan:"
+1570 PRINT:PRINT:PRINT"NOS - HOBBYSCOOP,"
+1580 PRINT"Postbus 1200"
+1590 PRINT"1200 BE Hilversum."
+1600 GOSUB20000
+1610 PRINT"U behoudt altijd het recht met het pro-"
+1620 PRINT:PRINT"gramma te doen, wat u zelf wilt."
+1630 PRINT:PRINT"De mededeling 'COPYRIGHT NOS HILVERSUM'"
+1640 PRINT:PRINT"dient alleen om misbruik door derden te"
+1650 PRINT:PRINT"voorkomen!"
+1660 PRINT:PRINT"Het tast op geen enkele wijze de rech-"
+1670 PRINT:PRINT"ten van de auteur op zijn programma"
+1680 PRINT:PRINT"aan!"
 10000 END
-20000 VE=22:HO=0:GOSUB 110
-20010 PRINT "Druk op een toets...";
-20020 GOSUB 210:GOSUB 100:RETURN
-
+20000 VE=22:HO=0:GOSUB110
+20010 PRINT"Druk op een toets...";
+20020 GOSUB210:GOSUB100:RETURN
+
