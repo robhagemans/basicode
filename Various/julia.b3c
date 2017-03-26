@@ -1,0 +1,52 @@
+ 1000 A = 200 : GOTO 20 : REM Julia Sets
+ 1010 CC(0) = 5 : CC(1) = 0 : CN = 0 :GOSUB 100
+ 1020 HO=20: VE=7:GOSUB 110: PRINT "JULIA PATTERNS"
+ 1040 SR$ = "Enter the 'real' then 'imaginary' values,"
+ 1041 SR$=SR$+" both between 1 to -1"
+ 1042 HO=0: VE=9:GOSUB 110: PRINT SR$
+ 1050 HO=10: VE=12:GOSUB 110: PRINT "REAL VAL";
+ 1060 INPUT IN$ : G = VAL(IN$)
+ 1070 HO=10: VE=14:GOSUB 110: PRINT "IMAGINARY VAL";
+ 1080 INPUT IN$ : H = VAL(IN$)
+ 1100 MC = 27: GOSUB 600
+ 1110 HO = .01 : VE = .48 : SR = G : GOSUB 300
+ 1111 SR$ = "REAL VAL: " + SR$: GOSUB 650
+ 1120 HO = .01: VE = .56 : SR = H
+ 1121 GOSUB 300 : SR$ = "IMAGINARY VAL: " + SR$: GOSUB 650
+ 1125 DE=2: REM reciproke size of picture (2 is max. height)
+ 1126 DS=2: REM Step size in pixels
+ 1127 QU=0.75
+ 1130 FOR X = -1 TO 0 STEP 1/HG*DS*DE/QU
+ 1140   FOR Y = -1 TO 1 STEP 1/VG*DS*DE
+ 1150     R = X : I = Y : CP = 0
+ 1160     REM loop
+ 1170     N = R * R - I * I + G : M = 2 * R * I + H
+ 1180     CP = CP + 1 : S = R * R + I * I : R = N : I = M
+ 1190     IF S <= 4 AND CP <= MC - 1 THEN GOTO 1160
+ 1200     IF CP > MC - 1 THEN PP  = 0: GOTO 1300
+ 1210     IF CP > 25 THEN PP  = 7 : GOTO 1300
+ 1220     IF CP > 12 THEN PP = 4 : GOTO 1300
+ 1230     IF CP > 8 THEN PP  = 1 : GOTO 1300
+ 1240     IF CP > 5 THEN PP  = 5 : GOTO 1300
+ 1250     IF CP = 5 THEN PP = 4 : GOTO 1300
+ 1260     IF CP = 4 THEN PP  = 2 : GOTO 1300
+ 1270     IF CP = 3 THEN PP  = 3 : GOTO 1300
+ 1280     IF CP = 2 THEN PP  = 6 : GOTO 1300
+ 1290     IF CP = 1 THEN PP  = 0 : GOTO 1300
+ 1300     HB = X/DE*QU : HO=.6+HB:
+ 1301     VB = Y/DE-1/VG*DS/DE/2: VE=.5+VB
+ 1302     CC(0) = PP
+ 1310     GOSUB 620
+ 1320     HO = 1.2 - HO : VE = 1 - VE: GOSUB 620
+ 1330   NEXT Y
+ 1340 NEXT X
+ 1350 CN=0: CC(0) = 5 : CC(1) = 0 : HO = .01 : VE = .64
+ 1351 SR$ = "AGAIN Y/N?": GOSUB 650
+ 1360 GOSUB 250 : GOSUB 210
+ 1370 IF IN$ = "Y" OR IN$ = "y" THEN GOTO 1010
+ 1380 GOTO 950
+32000 REM adapted from Gordon's Code to BasiCode
+32005 REM based on BBC Magazine Beebug May 1989 Vol 8 No. 1
+32015 REM BASICODE-3C program
+32020 REM by Thomas Rademacher, September 2005
+32030 REM some changes made by Victor Reijs
