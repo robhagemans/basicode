@@ -1,0 +1,349 @@
+
+1000 A=100:GOTO20:REM VERKEERSBERICHTEN
+1010 DIMMA$(12),DG$(7),AD(12),DC(13),VM(30),LS$(6),FM(30)
+1020 DC(1)=0
+1030 FORI=1 TO12
+1040 READMA$(I):READAD(I)
+1050 DC(I+1)=DC(I)+AD(I)
+1060 NEXTI
+1070 FORI=0 TO6:READDG$(I):NEXTI
+1080 FORI=1 TO6:READLS$(I):NEXTI
+1090 FORI=1 TO30:READFM(I):NEXTI
+1100 VD=0
+1110 GOSUB6040
+1120 PRINT
+1130 PRINT"Met dit programma kunt u te weten komen"
+1140 PRINT"of en waar, op de door u te kiezen tijd"
+1150 PRINT"en datum files voorkomen dan wel andere"
+1160 PRINT"omstandigheden zich voordoen welke voor"
+1170 PRINT"het wegverkeer zo belangrijk zijn dat u"
+1180 PRINT"er beslist mee op de hoogte moet zijn."
+1190 PRINT
+1200 PRINT"Wij danken de P.V.C. (Politie Verkeers-"
+1210 PRINT"Centrale)  voor het beschikbaar stellen"
+1220 PRINT"van de gegevens die voor de betrouwbare"
+1230 PRINT"werking van dit programma onontbeerlijk"
+1240 PRINT"waren."
+1250 GOSUB6000
+1260 GOSUB6040
+1270 PRINT
+1280 PRINT"Geef mij nu eerst de datum waarop u de"
+1290 PRINT"verkeersinformatie wilt hebben:"
+1300 PRINT
+1310 PRINT"Allereerst het jaartal ";
+1320 INPUTJA$
+1330 JA=VAL(JA$)
+1340 IFJA>1899 THEN1400
+1350 PRINT:PRINT
+1360 PRINT"Sorry maar voor 1900 was de intensiteit"
+1370 PRINT"van het wegverkeer nog niet zodanig dat"
+1380 PRINT"enige verkeersinformatie mogelijk was."
+1390 GOTO1250
+1400 IFJA>1983 THEN1460
+1410 PRINT:PRINT
+1420 PRINT"Sorry, maar van voor 1984 kan ik u geen"
+1430 PRINT"gegevens meer verschaffen. De archieven"
+1440 PRINT"uit die tijd heb ik niet bijgehouden."
+1450 GOTO1250
+1460 IFJA<1990 THEN1520
+1470 PRINT:PRINT
+1480 PRINT"Sorry, maar zover kan ik nu nog niet in"
+1490 PRINT"de toekomst vooruit zien. Kunt u enkele"
+1500 PRINT"jaren geduld daarmee hebben ?"
+1510 GOTO1250
+1520 GOSUB6040
+1530 PRINT
+1540 PRINT:PRINT"Dan nu het nummer van de maand"
+1550 PRINT"waar het u om te doen is ";
+1560 INPUTMA$:MA=VAL(MA$)
+1570 IF(MA=INT(MA)) AND(MA>0) AND(MA<13) THEN1620
+1580 PRINT:PRINT
+1590 PRINT"Vergissinkje?       Maandnummers kunnen"
+1600 PRINT"varieren van 1 tot 12 en niet anders ! "
+1610 GOSUB6000:GOTO1520
+1620 GOSUB6040
+1630 PRINT:PRINT"We zitten dus in ";MA$(MA);" ";JA$
+1640 PRINT:PRINT"Voor welke dag in deze maand hebt u dus"
+1650 PRINT"verkeersinformatie nodig ";
+1660 INPUTDG$:DG=VAL(DG$)
+1670 IF(DG=INT(DG)) AND(DG>0) THEN1730
+1680 PRINT:PRINT
+1690 PRINT"Wat naar, zo'n datum komt in deze maand"
+1700 PRINT"in het geheel niet voor. Misschien wilt"
+1710 PRINT"u een nieuwe keus maken ?"
+1720 GOSUB6000:GOTO1620
+1730 DA=DC(MA)+DG:JJ=JA
+1740 Y=JJ:SJ=0
+1750 IFY<>4*INT(Y/4) THEN1780
+1760 IFY=400*INT(Y/400) THENSJ=1:GOTO1780
+1770 IFY<>100*INT(Y/100) THENSJ=1
+1780 IF(MA<>2) AND(DG>AD(MA)) THEN1680
+1790 IF(MA=2) AND(DG>AD(MA)+SJ) THEN1680
+1800 M=MA:IFM<3 THENM=M+12:Y=Y-1
+1810 N=DG+M+M+INT(.6*(M+1))+Y+INT(Y/4)
+1820 N=N-INT(Y/100)+INT(Y/400)+2
+1830 N=INT((N/7-INT(N/7))*7+.5)
+1840 IFDA>60 THENDA=DA+SJ
+1850 GOSUB6040
+1860 PRINT:PRINT
+1870 PRINT"De dag waarvan U dus verkeersinformatie"
+1880 PRINT"wilt hebben is :"
+1890 PRINT:PRINT
+1900 PRINTDG$(N);", ";DG;" ";MA$(MA);" ";JA$
+1910 PRINT:PRINT
+1920 PRINT"Is dit echt uw wens, ja of nee ";
+1930 GOSUB7000
+1940 IFJN=0 THEN1110
+1950 GOSUB6040
+1960 PRINT:PRINT
+1970 PRINT"Tenslotte moet u mij opgeven rond welk"
+1980 PRINT"tijdstip op deze dag, ";
+1990 PRINTDG$(N)","
+2000 PRINTDG$;" ";MA$(MA);" ";JA$;", u behoefte heeft aan"
+2010 PRINT"de dan van belang zijnde informatie."
+2020 PRINT:PRINT"Geeft u mij de tijd in uren en minuten"
+2030 PRINT"als volgt:"
+2040 PRINT"voor '8 minuten over half zes namiddag'"
+2050 PRINT"tikt u dan in:   17.38"
+2060 PRINT:PRINT"Welke tijd wenst u ";
+2070 INPUTTY$:TY=VAL(TY$)
+2080 UR=INT(TY)
+2090 MI=INT((TY-UR+.005)*100)
+2100 TR=UR+MI/60
+2110 IF(TY<0) OR(TY>23) THEN2190
+2120 IF(MI<60) THEN2220
+2130 PRINT
+2140 SR=MI:GOSUB300
+2150 PRINTSR$;" minuten is al weer 'n uur later maar"
+2160 PRINT"dat wist U best wel . ..."
+2170 PRINT:PRINT"Schalkje, schalkje . . ."
+2180 GOSUB6000:GOTO1950
+2190 PRINT:PRINT
+2200 PRINT"Het tijdstip graag tussen 0.00 en 23.59"
+2210 GOTO2180
+2220 A=JA-19*INT(JA/19)
+2230 B=JA-4*INT(JA/4)
+2240 C=JA-7*INT(JA/19):Q=19*A+24
+2250 D=Q-30*INT(Q/30)
+2260 Q=2*B+4*C+6*D+5:E=Q-7*INT(Q/7)
+2270 P=22+D+E:IFP>=32 THEN2290
+2280 PD=DC(3):GOTO2320
+2290 P=D+E-9:IFP=26 THENP=19
+2300 IF(D=28) AND(E=6) AND(A>10) THENP=18
+2310 PD=DC(4)
+2320 PD=PD+P+SJ:CD=PD-49
+3000 IFDA=VD THEN4000
+3010 VP=0
+3020 IF(DA=CD-2) OR(DA=PD-9) OR(DA=PD+47) THENVP=1
+3030 IF(DA=CD-1) OR(DA=PD-8) OR(DA=PD+48) THENVP=-1
+3040 IF(DA=PD+38) THENVP=1
+3050 IFDA<176 THEN3080
+3060 IF(DA<220) AND((N=0) OR(N=6)) THENVP=2
+3070 IF(N<4) AND(DA=329+SJ-N-1) THENVP=1
+3080 GOSUB260:LS=INT(RV*6)+1
+3090 FORI=1 TO30
+3100 GOSUB260:VM(I)=FM(I)*RV
+3110 IF(I>9) AND(I<16) THENVM(I)=VM(I)*RV
+3120 IFI<21 THENGOSUB260:IFRV>.5 THENVM(I)=0
+3130 IF(I>20) AND(I<30) THENVM(I)=INT(VM(I))
+3140 NEXTI
+3150 FORI=1 TO9
+3160 IFVP<>0 THENVM(I)=0
+3170 NEXTI
+3180 FORI=21 TO29
+3190 IF(MA>3) AND(MA<10) THENVM(I)=0
+3200 NEXTI
+3210 IFVM(4)>0 THENVM(5)=0
+3220 IF(VM(23)=0) AND(VM(26)=0) THENVM(27)=0
+3230 IFVM(23)>0 THENVM(26)=0:VM(21)=0:VM(22)=0
+3240 IFVM(23)=0 THENVM(24)=0
+3250 IFVM(22)>0 THENVM(21)=0
+3260 IF(VM(21)=0) AND(VM(22)=0) THENVM(25)=0
+4000 VD=DA
+4010 GOSUB6040
+4020 PRINTDG$(N);" ";DG;" ";MA$(MA);" ";JA$;
+4030 PRINT", ";TY;" uur "
+4040 PRINT
+4050 VM(0)=0:FORPA=1 TO2
+4060 AF=0:FORI=2-PA TO10+10*PA
+4070 IFVM(I)=0 THEN4510
+4080 IFI=0 THEN4310
+4090 IFI<7 THEN4270
+4100 IFI<10 THEN4260
+4110 IFI<16 THEN4230
+4120 IFI<21 THEN4180
+4130 IFI<30 THEN4240
+4140 WT=VM(I)*EXP(-(((TR-14)/3)^2)):IFWT>6 THENWT=WT/2
+4150 IFVP=0 THEN4510
+4160 WT=INT(WT):IF(WT<1) THEN4510
+4170 GOTO4300
+4180 IF(TY<4) OR(TY>22) THEN4510
+4190 IF(VP=-1) AND(TY>15) THEN4510
+4200 IF(VP=1) AND(TY<16) THEN4510
+4210 IFVP=0 THEN4510
+4220 GOTO4240
+4230 IF(TY<9.2) OR(TY>16.8) THEN4510
+4240 AK=INT(VM(I)):IFI>20 THEN4290
+4250 GOTO4280
+4260 AK=INT(VM(I)*EXP(-((TR-18)^2))):GOTO4280
+4270 AK=INT(VM(I)*EXP(-((TR-8.25)^2)))
+4280 IFAK<2 THEN4510
+4290 IFPA=1 THENVM(0)=1:GOTO4510
+4300 IFAF>2 THEN4510
+4310 ON1+INT(I/5) GOTO4320,4340,4360,4380,4400,4420,4440
+4320 ONI+1 GOSUB5000,5010,5030,5050,5070
+4330 GOTO4450
+4340 ONI-4 GOSUB5090,5110,5130,5150,5170
+4350 GOTO4450
+4360 ONI-9 GOSUB5190,5210,5230,5250,5270
+4370 GOTO4450
+4380 ONI-14 GOSUB5320,5370,5410,5440,5480
+4390 GOTO4450
+4400 ONI-19 GOSUB5520,5550,5570,5600,5610
+4410 GOTO4450
+4420 ONI-24 GOSUB5620,5630,5670,5690,5710
+4430 GOTO4450
+4440 GOSUB5740:PRINT" ";WT;" uur.":GOTO4500
+4450 IF(I=0) OR(I>20) THEN4470
+4460 PRINT" ";INT(AK);" km.":GOTO4490
+4470 IF(I<21) OR(I>22) THEN4490
+4480 PRINT"in ";LS$(LS);"."
+4490 PRINT
+4500 AF=AF+SGN(I)
+4510 NEXTI
+4520 NEXTPA
+4530 IFAF>0 THEN4560
+4540 PRINT:PRINT:PRINT:PRINT
+4550 PRINT"Op dit moment zijn er geen meldingen."
+4560 GOSUB6000:GOSUB6040
+4570 GOTO1130
+5000 PRINT"Er staan files op de volgende wegen :":RETURN
+5010 PRINT"A1, Amersfoort richting Amsterdam,"
+5020 PRINT"tussen Muiden en Diemen";:RETURN
+5030 PRINT"A8, Zaandam richting Amsterdam, voor"
+5040 PRINT"de Coentunnel";:RETURN
+5050 PRINT"A9, Alkmaar richting Haarlem, voor de"
+5060 PRINT"Velsertunnel";:RETURN
+5070 PRINT"A12, Utrecht richting Den Haag, tussen"
+5080 PRINT"Zoetermeer en Nootdorp";:RETURN
+5090 PRINT"A12, Utrecht richting Den Haag, tussen"
+5100 PRINT"Zoetermeer en Voorburg";:RETURN
+5110 PRINT"A16, Breda richting Rotterdam, voor de"
+5120 PRINT"Van Brienenoordbrug";:RETURN
+5130 PRINT"A9, Amstelveen richting Alkmaar, voor"
+5140 PRINT"de Velsertunnel";:RETURN
+5150 PRINT"A10, Amsterdam richting Zaandam, voor"
+5160 PRINT"de Coentunnel";:RETURN
+5170 PRINT"A16, Rotterdam richting Breda, voor de"
+5180 PRINT"Van Brienenoordbrug";:RETURN
+5190 PRINT"A2, Utrecht richting Den Bosch, ter"
+5200 PRINT"hoogte van Vught";:RETURN
+5210 PRINT"A2, Den Bosch richting Utrecht, voor"
+5220 PRINT"het knooppunt Deil";:RETURN
+5230 PRINT"A6, Lelystad richting Emmeloord, ter"
+5240 PRINT"hoogte van de Ketelbrug";:RETURN
+5250 PRINT"A2, Utrecht richting Amsterdam, ter"
+5260 PRINT"ter hoogte van Abcoude";:RETURN
+5270 PRINT"Op de A4, Den Haag richting Amsterdam,"
+5280 PRINT"moet het verkeer ter hoogte van Leiden"
+5290 PRINT"rekening houden met vertraging. Tussen"
+5300 PRINT"Leiden en Hazerswoude staat een file"
+5310 PRINT"van";:RETURN
+5320 PRINT"Op de A58, Breda richting Tilburg, is"
+5330 PRINT"wegens een omgeval een rijbaan versperd"
+5340 PRINT"waardoor het verkeer vertraging onder-"
+5350 PRINT"vindt. Ter hoogte van Gilze-Rijen staat"
+5360 PRINT"een file van";:RETURN
+5370 PRINT"N59, Zierikzee richting Rotterdam ,"
+5380 PRINT"tussen Oude Tonge en het Hellegatsplein"
+5390 PRINT"langzaamrijdend en stilstaand verkeer"
+5400 PRINT"over een afstand van";:RETURN
+5410 PRINT"A2, Den Bosch richting Maastricht,"
+5420 PRINT"tussen de A58 en de A67, ter hoogte van"
+5430 PRINT"Eindhoven,";:RETURN
+5440 PRINT"N50, Arnhem richting Apeldoorn, tussen"
+5450 PRINT"de aansluiting met de A12 en de A50,"
+5460 PRINT"langzaamrijdend en stilstaand verkeer"
+5470 PRINT"over";:RETURN
+5480 PRINT"Het verkeer op de A12 in de richting"
+5490 PRINT"Apeldoorn wordt omgeleid via het knoop-"
+5500 PRINT"punt Velperbroek. Daardoor onstaat een"
+5510 PRINT"file van";:RETURN
+5520 PRINT"Op de A12, Arnhem richting Duitse grens"
+5530 PRINT"staat voor de grensovergang Bergh een"
+5540 PRINT"file van";:RETURN
+5550 PRINT"Mist met een zicht van 50 tot 200 meter"
+5560 PRINT"komt plaatselijk voor":RETURN
+5570 PRINT"Dichte tot zeer dichte mist, met een"
+5580 PRINT"zicht van minder dan 50 meter komt"
+5590 PRINT"plaatselijk voor":RETURN
+5600 PRINT"Door sneeuwval is het plaatselijk glad;":RETURN
+5610 PRINT"Ook elders kan gladheid ontstaan.":RETURN
+5620 PRINT"Ook elders kan mist ontstaan.":RETURN
+5630 PRINT"Door opvriezing  van natte weggedeelten"
+5640 PRINT"zijn in het hele land de op en afritten"
+5650 PRINT"bruggen,  viaducten en secundaire wegen"
+5660 PRINT"plaatselijk glad.":RETURN
+5670 PRINT"De gladheid zal in de komende uren ver-"
+5680 PRINT"dwijnen.":RETURN
+5690 PRINT"Het veer Anna-Jacobapolder - Zijpe"
+5700 PRINT"vaart niet.":RETURN
+5710 PRINT"In verband met de mist zijn de veren"
+5720 PRINT"Kruiningen - Perkpolder en Vlissingen -"
+5730 PRINT"Breskens uit de vaart genomen.":RETURN
+5740 PRINT"De wachttijd voor automobilisten in Den"
+5750 PRINT"Helder voor de boot naar Texel is thans":RETURN
+6000 HO=3:VE=23:GOSUB110
+6010 PRINT"Druk op <RETURN> voor het vervolg";
+6020 GOSUB210:IFIN$<>CHR$(13) THEN6020
+6030 RETURN
+6040 GOSUB100
+6050 PRINT"  V E R K E E R S I N F O R M A T I E  "
+6060 PRINT" ===================================== "
+6070 RETURN
+7000 GOSUB120
+7010 INPUTJN$
+7020 JN=0:JN$=LEFT$(JN$,1)
+7030 IF(JN$="n") OR(JN$="N") THENRETURN
+7040 JN=1
+7050 IF(JN$="j") OR(JN$="J") THENRETURN
+7060 IF(JN$="y") OR(JN$="Y") THENRETURN
+7070 GOSUB110:PRINT"                                  "
+7080 GOSUB110
+7090 GOTO7010
+25000 DATA"januari",31,"februari",28,"maart",31
+25010 DATA"april",30,"mei",31,"juni",30
+25020 DATA"juli",31,"augustus",31,"september",30
+25030 DATA"oktober",31,"november",30,"december",31
+25040 DATA"zaterdag","zondag","maandag","dinsdag"
+25050 DATA"woensdag","donderdag","vrijdag"
+25060 DATA"het Gooi","het noorden van het land"
+25070 DATA"het noorden en midden van het land"
+25080 DATA"het zuidoosten"
+25090 DATA"Friesland en op de Afsluitdijk."
+25100 DATA"Zeeland en delen van Zuid-Holland"
+25110 DATA5,6,4,5,5,6,3,4,4,4,4,5,4,5,7,15,6,9,9
+25120 DATA7,3,3,3,3,3,3,3,3,3,14
+30000 REM
+30010 REM"Dit programma is een iets  "
+30020 REM" verkorte versie van het   "
+30030 REM"echte verkeers-informatie- "
+30040 REM"   management-systeem,     "
+30050 REM"   (VIM-SYSTEM-2.4)        "
+30060 REM"  zoals dat sinds enkele   "
+30070 REM"jaren in gebruik is bij de "
+30080 REM"algemene verkeersdienst van"
+30090 REM"           de              "
+30100 REM"   R Y K S P O L I T I E   "
+30110 REM"           te              "
+30120 REM"    D R I E B E R G E N    "
+30130 REM"                           "
+30140 REM"                           "
+30150 REM"Aangepast aan het protocol "
+30160 REM"    van BASICODE-2 door    "
+30170 REM" J. Haubrich  te Eindhoven "
+30180 REM"                           "
+30190 REM"uitgezonden in HOBBYSCOOP  "
+30200 REM"       op 19840401.        "
+30210 REM"                           "
+30220 REM"copyright NOS - HILVERSUM  "

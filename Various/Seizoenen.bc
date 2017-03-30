@@ -1,0 +1,329 @@
+
+1000 A=500:GOTO20:REM SEIZOENEN
+1010 GOSUB2390:REM SCHERM OPMETEN
+1020 GOSUB2570:REM CHARACTER DELETE
+1030 DIMZ$(3),M$(3),DA$(6),JA$(1)
+1040 SP$="":FORI=1 TOHP:SP$=SP$+" ":NEXTI
+1050 FORI=0 TO3:READZ$(I),M$(I)
+1060 M$(I)=LEFT$((M$(I)+SP$),9):NEXTI
+1070 FORI=0 TO6:READDA$(I)
+1080 DA$(I)=LEFT$((DA$(I)+"dag"+SP$),9):NEXTI
+1090 READKO$:KO$=RIGHT$(KO$,LEN(KO$)-1)
+1100 CT=2:CN=0:P=3.14159265
+1105 RN=1E-08:JM=10:REM NAUWKEURIGHEID
+1110 GOSUB100:VE=0:SR$=KO$:GOSUB1530
+1120 VE=VP/2:SR$="Uitleg ? j/n":GOSUB1530:GOSUB1600
+1130 IF(IN$="j") OR(IN$="J") THENGOSUB1940
+1140 GOSUB100:VE=0:SR$=KO$:GOSUB1530
+1150 HO=0:VE=2:GOSUB110:PRINT"Jaartal?";:GOSUB1630
+1160 JJ=VAL(IN$):IFIN$="" THEN1350
+1170 FORK=0 TO3:GOSUB1740:FORI=0 TO1
+1180 IFJA$(I)="" THEN1340
+1190 JD=(JJ+K/4)*365.2422:JI=INT(JD):JF=JD-JI+.3
+1200 JI=JI+INT(JF)+1721141:JF=JF-INT(JF):JT=0
+1210 JT=JT+1:JG=JF:JK=JI:GOSUB2790:REM ZONSCOORDINATEN
+1220 JF=JF+58*SIN(K*P/2-Q):JI=JI+INT(JF):JF=JF-INT(JF)
+1225 IFJT>JM THEN1240:REM MAXIMAAL AANTAL ITERATIES
+1230 IF(ABS(JF-JG)>RN) OR(ABS(JI-JK)>RN) THEN1210
+1240 IFJA$(I)="j" THENJA$(I)="   Juliaans":VL=0
+1250 IFJA$(I)="g" THENJA$(I)="Gregoriaans":VL=1
+1260 GOSUB2620:REM BEREKEN DATUM EN TIJD
+1270 RE$=Z$(K)+" "+JA$(I)+"   "+DA$(WD)
+1280 HO=0:VE=4+K*4+I*2:GOSUB110:PRINTRE$
+1290 RE$=LEFT$(SP$,LEN(Z$(K))+1)
+1300 SR=DD:GOSUB310:RE$=RE$+SR$+" "+M$(K)+"  "
+1310 SR=HH:GOSUB310:RE$=RE$+SR$+"h "
+1320 SR=MI:GOSUB310:RE$=RE$+SR$+"m. "+UU$
+1330 VE=VE+1:GOSUB110:PRINTRE$
+1340 NEXTI:NEXTK
+1350 VE=VP-2:SR$="NOG EEN KEER ? j/n":GOSUB1530:GOSUB1600
+1360 IF(IN$="j") OR(IN$="J") THEN1110
+1370 REM ******** AFKONDIGING *****
+1380 GOSUB100:VE=1:SR$="TOT ZIENS !":GOSUB1530
+1390 VE=3:SR$="***************************":GOSUB1530
+1400 VE=21:GOSUB1530:SR$="*                         *"
+1410 FORVE=4 TO20:GOSUB1530:NEXTVE
+1420 SR$="Dit was:":VE=5:GOSUB1530
+1430 SR$="SEIZOENEN":VE=7:GOSUB1530
+1440 SR$="gemaakt op commodore-64":VE=9:GOSUB1530
+1450 SR$="J. Bosschieter":VE=11:GOSUB1530
+1460 SR$="Kerkstraat 131":VE=13:GOSUB1530
+1470 SR$="1511 EC Oostzaan":VE=15:GOSUB1530
+1480 SR$="02984-3991":VE=17:GOSUB1530
+1490 SR$="juli 1988":VE=19:GOSUB1530
+1500 HO=0:VE=0:GOSUB110:GOSUB210
+1510 END
+1520 REM*******SUBROUTINES********
+1530 HO=INT((HP-LEN(SR$))/2):GOSUB110
+1540 PRINTSR$;:RETURN
+1550 REM TEST INVOER
+1560 PR$="JjNn":GOTO1580
+1570 PR$="0123456789"+CHR$(13)+CD$
+1580 FL=0:FORI=1 TOLEN(PR$):IFIN$=MID$(PR$,I,1) THENFL=1
+1590 NEXTI:RETURN
+1600 GOSUB250:GOSUB210:GOSUB1560:IFFL=0 THEN1600
+1610 RETURN
+1620 REM GETALINVOER
+1630 SR$="":GOSUB120
+1640 GOSUB250:GOSUB210:GOSUB1570:IFFL=0 THEN1640
+1650 IFIN$=CHR$(13) THEN1720
+1660 IFIN$<>CD$ THEN1700
+1670 IN$="":LE=LEN(SR$):IFLE<2 THENLE=1:SR$="":GOTO1690
+1680 SR$=LEFT$(SR$,LE-1)
+1690 GOSUB110:PRINTLEFT$(SP$,LE);:GOSUB110:PRINTSR$;
+1700 IFLEN(SR$)=4 THEN1720
+1710 SR$=SR$+IN$:PRINTIN$;:GOTO1640
+1720 IN$=SR$:PRINT:RETURN
+1730 REM CONTROLEER JAARTALLEN EN MERK ZE  JA$(1)
+1740 IFJJ<1582 THEN1870
+1750 IFJJ=1582 THENONK+1 GOTO1870,1870,1870,1880
+1760 IFJJ<1702 THEN1880
+1770 IFJJ<1918 THEN1890
+1780 IFJJ<1940 THENONK+1 GOTO1890,1900,1900,1890
+1790 IFJJ=1940 THENONK+1 GOTO1890,1920,1920,1920
+1800 IFJJ<1942 THEN1920
+1810 IFJJ=1942 THENONK+1 GOTO1920,1920,1920,1910
+1820 IFJJ<1945 THENONK+1 GOTO1910,1920,1920,1910
+1830 IFJJ=1945 THENONK+1 GOTO1910,1920,1920,1920
+1840 IFJJ=1946 THENONK+1 GOTO1920,1920,1910,1910
+1850 IFJJ<1978 THEN1910
+1860 ONK+1 GOTO1910,1920,1920,1910
+1870 JA$(0)="j":JA$(1)="":UU$="  AT":RETURN
+1880 JA$(0)="j":JA$(1)="g":UU$="  AT":RETURN
+1890 JA$(0)="g":JA$(1)="":UU$="  AT":RETURN
+1900 JA$(0)="g":JA$(1)="":UU$=" AZT":RETURN
+1910 JA$(0)="g":JA$(1)="":UU$=" MET":RETURN
+1920 JA$(0)="g":JA$(1)="":UU$="MEZT":RETURN
+1930 REM BEELDKRANT
+1940 GOSUB100:RT=0:H=0:RESTORE
+1950 READBB$:IFBB$<>"Zater" THEN1950
+1960 A$="":REM PRINT DE OVERIGE DATA
+1970 READBB$
+1980 GOSUB2100:IFBB$="$$$$$" THEN2350
+1990 GOSUB2190
+2000 GOTO1980
+2010 REM AFDRUK SUBROUTINE
+2020 IFSR$="" THENRETURN
+2030 PRINTSR$
+2040 RT=RT+1:IFRT=VP-4 THENGOSUB2060
+2050 RETURN
+2060 REM SCHERM VOL
+2070 IFRT=0 THENRETURN
+2080 GOSUB2360
+2090 GOSUB100:RT=0:RETURN
+2100 IFBB$="$$$$$" THENRETURN
+2110 IFA$<>"" THENA$=A$+" "
+2120 A$=A$+BB$:READBB$
+2130 IFLEFT$(BB$,1)="#" THENH=1:RETURN
+2140 IFLEFT$(BB$,1)="." THENH=1:RETURN
+2150 IFA$=". " THENRETURN
+2160 IFLEFT$(A$,1)="#" THENRETURN
+2170 IFLEN(A$)<HP THEN2100
+2180 RETURN
+2190 REM PRINT MET AANGEPASTE REGELLENGTE
+2200 IFLEFT$(A$,1)="#" THENH=2
+2210 IF(LEFT$(A$,1)<>".") AND(H<2) THEN2250
+2220 A$=RIGHT$(A$,LEN(A$)-1)
+2230 IFH<2 THEN2250
+2240 GOSUB2060
+2250 IFA$=" " THENSR$=A$:A$="":GOSUB2010:GOTO2340
+2260 L=LEN(A$):IF(H=0) AND(L<HP) THENRETURN
+2270 IFL<HP THENSR$=A$:A$="":GOSUB2010:GOTO2330
+2280 J=0:FORI=HP TO1 STEP-1
+2290 IFMID$(A$,I,1)=" " THENJ=I:I=1
+2300 NEXTI:IFJ=0 THENJ=HP:L=L+1
+2310 SR$=LEFT$(A$,J-1):A$=RIGHT$(A$,L-J)
+2320 GOSUB2010:GOTO2260
+2330 IFH=2 THENSR$=" ":GOSUB2010
+2340 H=0:RETURN
+2350 H=1:GOSUB2190
+2360 SR$="<Toets voor verder>":VE=VP-2:GOSUB1530
+2370 GOSUB250:GOSUB210:RETURN
+2380 REM *** SCHERM OPMETEN **********
+2390 GOSUB100:A$=" meetlat ":A=LEN(A$):HP=0:VP=0
+2400 HO=HP:VE=VP:GOSUB110:PRINTA$
+2410 HO=HO+A:GOSUB110:HV=HO:GOSUB120
+2420 IFHO=HV THENHP=HP+1:GOTO2400
+2430 HP=HP+A:VP=A:HV=HP-A:A=A-1:A$=LEFT$(A$,A)
+2440 FORI=0 TOA-1:HO=HV:VE=0:GOSUB110:PRINTLEFT$(A$,A-I)
+2450 HV=HV+1
+2460 FORVE=1 TOI:HO=HP-2:GOSUB110:PRINTMID$(A$,A-I+VE,1)
+2470 NEXTVE:NEXTI:HV=1:VP=A
+2480 FORVE=HV TOHV+A-1:HO=HP-2:GOSUB110
+2490 PRINTMID$(A$,VE-HV+1,1):NEXTVE:VP=VP+1
+2500 GOSUB120:IFVE=(HV+A) THENHV=HV+1:GOTO2480
+2510 VE=HV-1:HO=HP-2:GOSUB110:PRINT" "
+2520 FORVE=HV TOVP-1:GOSUB110
+2530 PRINTMID$(A$,VE-HV+1,1);:NEXTVE
+2540 HV=HV+1:IFHV<VP-1 THEN2520
+2550 RETURN
+2560 REM ******CHARACTER DELETE ******
+2570 SR$="Druk op Character Delete !"
+2580 VE=INT(VP/2):GOSUB100:GOSUB1530
+2590 GOSUB250:GOSUB210:CD$=IN$:RETURN
+2600 REM JULIAANSE DAG NAAR KALENDER
+2610 REM TIJDCORRECTIE IN DECIMALE DAG
+2620 TC=T*(T*.4992+1.2053)+.41:TC=TC/1440
+2630 IFUU$="  AT" THENTC=1/72-TC:GOTO2670
+2640 IFUU$=" AZT" THENTC=1/18-TC:GOTO2670
+2650 IFUU$=" MET" THENTC=1/24-TC:GOTO2670
+2660 IFUU$="MEZT" THENTC=1/12-TC
+2670 JF=JF+.5+TC:JI=JI+INT(JF):JF=JF-INT(JF)
+2680 WD=(JI+1)/7:WD=INT((WD-INT(WD))*7+.5):REM WEEKDAG
+2690 A=JI:IFVL=0 THEN2720:REM JULIAANS
+2700 AA=INT((JI-1867216.25)/36524.25)
+2710 A=JI+1+AA-INT(AA/4):REM GREGORIAANS
+2720 B=A+1524:C=INT((B-122.1)/365.25):D=INT(365.25*C)
+2730 E=INT((B-D)/30.6001):DD=B-D-INT(30.6001*E)
+2740 MM=E-1:IFE>13.5 THENMM=E-13
+2750 JJ=C-4715:IFMM>2.5 THENJJ=JJ-1
+2760 MI=JF*24:HH=INT(MI):MI=INT(60*(MI-HH)+.5)
+2770 RETURN
+2780 REM ZONSCOORDINATEN L,M,E,Q
+2790 T=(JI-2415020+JF)/36525
+2800 L=T*(T*5.279621E-06+628.3319509)+4.881627973
+2810 M=T*(T*(-T*5.7595865E-08-2.61939E-06)+628.3019457)
+2820 M=M+6.256583522:C=SIN(M)
+2830 E=T*(-T*2.1991149-9-7.2954763E-07)+2.923608E-04
+2840 C=C*(T*(-T*2.443461E-07-8.3583818E-05)+.0335008969)
+2850 C=C+SIN(2*M)*(-T*1.7453293E-06+3.5070646E-04)
+2860 C=C+SIN(3*M)*5.1138147E-06
+2870 KK=4.523544355-T*33.7571461
+2880 Q=L+C-9.9309234E-05-8.3601271E-05*SIN(KK)
+2890 RETURN
+25000 DATA"Lente :","maart","Zomer :","juni"
+25010 DATA"Herfst:","september","Winter:","december"
+25020 DATA"Zon","Maan","Dins","Woens"
+25022 DATA"Donder","Vrij","Zater"
+25030 DATA"#BEGIN DER SEIZOENEN"
+25040 DATA"Dit programma rekent uit, wanneer de vier"
+25050 DATA"seizoenen beginnen."
+25060 DATA".Het geldt vanaf het jaar 0 tot en met 9999."
+25070 DATA".De nauwkeurigheid is natuurlijk omstreeks deze"
+25080 DATA"tijd het grootst. Deze kan worden beinvloed"
+25090 DATA"door verandering van de variabele RN"
+25100 DATA"op regel 1100. Groter is minder nauwkeurig."
+25105 DATA".of JM (Het maximale aantal iteraties)."
+25110 DATA".Er is rekening gehouden met de verschillende"
+25120 DATA"jaartellingen en geldende tijden volgens de"
+25130 DATA"volgende schema's."
+25140 DATA"#KALENDERSOORTEN"
+25150 DATA"Voor 1582 gold de Juliaanse jaartelling een jaar"
+25160 DATA"van 365 dagen en elk jaar waarvan het jaartal"
+25170 DATA"deelbaar was door 4, een extra schrikkeldag."
+25180 DATA".In 1582 werd de Gregoriaanse kalender"
+25190 DATA"ingevoerd, omdat de seizoenen niet meer"
+25200 DATA"met de juiste datums overeenkwamen."
+25210 DATA".Om die fout in 1 keer op te heffen, werd"
+25220 DATA"donderdag 4 oktober 1582 opgevolgd door"
+25230 DATA"vrijdag 15 oktober 1582."
+25240 DATA".Tevens werd overeengekomen, dat elk eeuwjaar,"
+25250 DATA"dat niet door 400 deelbaar was, geen"
+25260 DATA"schrikkeljaar zou zijn."
+25270 DATA".Het zou echter tot 1701 duren, voor deze"
+25280 DATA"kalender overal in Nederland was overgenomen."
+25290 DATA".Daarom worden tussen 1582 en 1701 beide"
+25300 DATA"datumsoorten vermeld."
+25310 DATA"#TIJDSOORTEN"
+25320 DATA"Leer deze van buiten voor het vervolg!",". "
+25330 DATA"  AT - Amsterdamse tijd"
+25340 DATA". AZT - Amsterdamse Zomertijd"
+25350 DATA". MET - Midden Europese Tijd"
+25360 DATA".MEZT - Midden Europese Zomer Tijd"
+25370 DATA". ",". "
+25380 DATA"AT en AZT werden vanaf maart 1937 wettelijk"
+25390 DATA"beschouwd als de Middelbare Zonnetijd"
+25400 DATA"op 5 graden oosterlengte.",". "
+25410 DATA"OMREKENING",". "
+25420 DATA"  AT = MET - 40 minuten."
+25430 DATA". AZT = MET + 20 minuten."
+25440 DATA". MET = MET."
+25450 DATA".MEZT = MET +  1 uur."
+25460 DATA"#TIJDTABELLEN"
+25470 DATA"Tot en met 1939 gold AT."
+25480 DATA".Sinds 1918 werd AZT volgens tabel ingevoerd."
+25490 DATA". ","1918 van  1 april   t/m 30 september"
+25500 DATA".1919 van  7 april   t/m 29 september"
+25510 DATA".1920 van  5 april   t/m 27 september"
+25520 DATA".1921 van  4 april   t/m 26 september"
+25530 DATA".1922 van 26 maart   t/m  8 oktober"
+25540 DATA".1923 van  1 juni    t/m  7 oktober"
+25550 DATA".1924 van 30 maart   t/m  5 oktober"
+25560 DATA".1925 van  5 juni    t/m  4 oktober"
+25570 DATA".1926 van 15 mei     t/m  3 oktober"
+25580 DATA".1927 van 15 mei     t/m  2 oktober"
+25590 DATA".1928 van 15 mei     t/m  7 oktober"
+25600 DATA".1929 van 15 mei     t/m  6 oktober"
+25610 DATA".1930 van 15 mei     t/m  5 oktober"
+25620 DATA".1931 van 15 mei     t/m  4 oktober"
+25630 DATA".1932 van 22 mei     t/m  2 oktober"
+25640 DATA".1933 van 15 mei     t/m  8 oktober"
+25650 DATA".1934 van 15 mei     t/m  7 oktober"
+25660 DATA".1935 van 15 mei     t/m  6 oktober"
+25670 DATA".1936 van 15 mei     t/m  4 oktober"
+25680 DATA".1937 van 22 mei     t/m  3 oktober"
+25690 DATA".1938 van 15 mei     t/m  2 oktober"
+25700 DATA".1939 van 15 mei     t/m  8 oktober",". "
+25710 DATA"Van 19 mei 1940  t/m 1 november 1942"
+25720 DATA"gold, vanwege de Duitsers, MEZT."
+25730 DATA".Daarna werd tot op heden MET van kracht,"
+25740 DATA"met MEZT tussen de volgende datums.",". "
+25750 DATA"1943 van 29 maart   t/m  4 oktober"
+25760 DATA".1944 van  3 april   t/m  2 oktober"
+25770 DATA".1945  van  2 april  t/m 31 december"
+25780 DATA".1946 van  1 januari t/m 15 september",". "
+25790 DATA"De volgende veranderingen gelden steeds om"
+25800 DATA"2 uur MET = 3 uur MEZT, op de vermelde dag.",". "
+25810 DATA"1978 van  2 april   t/m  1 oktober"
+25820 DATA".1979 van  1 april   t/m 30 september"
+25830 DATA".1980 van  6 april   t/m 28 september"
+25840 DATA".1981 van 29 maart   t/m 27 september"
+25850 DATA".1982 van 28 maart   t/m 26 september"
+25860 DATA".1983 van 27 maart   t/m 25 september"
+25870 DATA".1984 van 25 maart   t/m 30 september"
+25880 DATA".1985 van 31 maart   t/m 29 september"
+25890 DATA".1986 van 30 maart   t/m 28 september"
+25900 DATA".1987 van 29 maart   t/m 27 september"
+25910 DATA".1988 van 27 maart   t/m 25 september",". "
+25920 DATA"Daarna geldt waarschijnlijk:"
+25930 DATA". MET - MEZT: Laatste zondag van maart,"
+25940 DATA".MEZT -  MET: Laatste zondag van september"
+25950 DATA"#DE SEIZOENEN"
+25960 DATA"De Aarde draait om de Zon in een baan, die"
+25970 DATA"een hoek maakt van ongeveer 23.5 graden met"
+25980 DATA"het evenaarvlak. Daardoor staat de Zon in de"
+25990 DATA"winter laag en in de zomer hoog."
+26000 DATA".De Lente begint, wanneer het middelpunt"
+26010 DATA"van de Zon, op weg van laag naar hoog, precies"
+26020 DATA"in het verlengde van het evenaar vlak staat."
+26030 DATA".De Herfst is een half jaar later, als het"
+26040 DATA"middelpunt van de Zon, op weg van hoog naar"
+26050 DATA"laag in het evenaarvlak staat."
+26060 DATA".De Zomer begint, wanneer de zon op de grootste"
+26070 DATA"hoogte boven het evenaarvlak staat."
+26080 DATA".De Winter begint, wanneer de Zon op de grootste"
+26090 DATA"diepte onder het evenaarvlak staat."
+26100 DATA"$$$$$"
+30000 REM SEIZOENEN
+30010 REM GEGEVENS UIT STERRENKUNDE DEEL1
+30020 REM VAN PROF.DR. C. DE JAGER
+30030 REM FORMULES UIT ASTRONOMICAL FORMULAE FOR
+30040 REM CALCULATORS
+30050 REM VAN JEAN MEEUS.
+30060 REM *****************************
+30070 REM *                           *
+30080 REM *        SEIZOENEN          *
+30090 REM *                           *
+30100 REM * GEMAAKT OP COMMODORE-64   *
+30110 REM *                           *
+30120 REM *  DOOR  J. BOSSCHIETER     *
+30130 REM *                           *
+30140 REM *        KERKSTRAAT 131     *
+30150 REM *                           *
+30160 REM *        1511 EC OOSTZAAN   *
+30170 REM *                           *
+30180 REM *           JULI 1988       *
+30190 REM *                           *
+30200 REM *  COPYRIGHT NOS HILVERSUM  *
+30210 REM *                           *
+30220 REM *****************************
