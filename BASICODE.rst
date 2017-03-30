@@ -415,8 +415,8 @@ A status code is returned in ``IN``:
 ------  ---------------------
     0   OK
     1   End of file
-    -1   Error
-------  ---------------------
+    -1  Error
+======  =====================
 
 If a error or end-of-file occurs, ``IN$`` is set to the empty string.
 
