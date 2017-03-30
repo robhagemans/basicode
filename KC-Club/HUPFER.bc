@@ -1,0 +1,105 @@
+1000 A=100:GOTO20:REM *** HUPFER ***
+1010 GOSUB100:PRINT"Huepfer arbeitet in vier Versionen:"
+1020 PRINT:PRINT"Hinweise zu Parametern ab Zeile 30000!"
+1030 PRINT:INPUT"Bitte waehlen Sie 1,2,3,4 ";NR
+1040 IF(NR<1)OR(NR>4)THEN1010
+1050 PRINT:INPUT"Anzahl Iterationen (etwa 10000) ";IT:PRINT
+1060 INPUT"Konstante A ";D
+1070 INPUT"Konstante B ";B
+1080 INPUT"Konstante C ";C
+1090 GOSUB600:HO=0:VE=0:CN=1:GOSUB620:CN=0
+1100 HO=0.9999:VE=0:GOSUB630
+1110 HO=0.9999:VE=0.9999:GOSUB630
+1120 HO=0:VE=0.9999:GOSUB630
+1130 HO=0:VE=0:GOSUB630
+1140 X=0:Y=0:ONNR GOSUB1500,1600,1700,1800
+1150 SD=20:GOSUB450:GOSUB250
+1160 IFIN$="" THEN1150
+1170 GOSUB210:GOSUB100
+1180 PRINT"Noch einmal (Y/N) ?":GOSUB210
+1190 IFIN=89 THEN1010
+1200 GOTO950
+1490 REM ------------------ Variante 1 ----------------
+1500 FORI=1 TOIT
+1510 HO=X/HG/1.25+0.5:VE=Y/VG/1.25+0.5
+1520 IF(HO>=0)AND(HO<1)AND(VE>=0)AND(VE<1)THEN GOSUB620
+1530 XH=Y-SGN(X)*SQR(ABS(B*X-C))
+1540 Y=D-X:X=XH
+1550 NEXTI:RETURN
+1590 REM ------------------ Variante 2 ----------------
+1600 FORI=1 TOIT
+1610 HO=X/HG/2+0.5:VE=Y/VG/2+0.5
+1620 IF(HO>=0)AND(HO<1)AND(VE>=0)AND(VE<1)THEN GOSUB620
+1630 XH=Y-SGN(X)*SQR(ABS(B*C-X))
+1640 Y=D-X:X=XH
+1650 NEXTI:RETURN
+1690 REM ------------------ Variante 3 ----------------
+1700 FORI=1 TOIT
+1710 HO=2*X/HG+0.5:VE=2*Y/VG+0.5
+1720 IF(HO>=0)AND(HO<1)AND(VE>=0)AND(VE<1)THEN GOSUB620
+1730 XH=Y-SGN(X)*COS(B*X-C)
+1740 Y=D-X:X=XH
+1750 NEXTI:RETURN
+1790 REM ------------------ Variante 4 ----------------
+1800 FORI=1 TOIT
+1810 HO=X/HG+0.5:VE=Y/VG+0.5
+1820 IF(HO>=0)AND(HO<1)AND(VE>=0)AND(VE<1)THEN GOSUB620
+1830 XH=Y-B*SIN(C*X)
+1840 Y=D-X:X=XH
+1850 NEXTI:RETURN
+30000 REM Das Programm zeichnet nach den unter den Anwei-
+30010 REM sungen xh = ... angegebenen Gleichungen 
+30020 REM Fraktale Grafiken. Die Parameter A, B und C 
+30030 REM sowie die Iterationstiefe koennen interaktiv ge-
+30040 REM aendert werden.
+30050 REM 
+30060 REM Empfohlenen Werte:
+30070 REM Variante 1:           A=  45;  B=-67;  C= 55
+30080 REM Variante 2:           A= 300;  B= -1;  C=235
+30090 REM Varianten 3 und 4:    A=3.13;  B=  7;  C=  1
+30100 REM 
+30110 REM Laufzeit pro 1000 Iterationen ca. 80 Sekunden 
+30120 REM (fuer KC compact)
+30130 REM 
+30140 REM Das Ende der Berechnung wird durch einen In-
+30150 REM tervallton akustisch signalisiert. Durch ein-
+30160 REM maliges Betaetigen einer Taste wird der Ton 
+30170 REM abgeschaltet, die Grafik kann in Ruhe betrach-
+30180 REM tet werden, bei Betaetigung einer weiteren Taste
+30190 REM wird der Bildschirm geloescht und das Programm 
+30200 REM fortgesetzt.
+30210 REM Ansehnliche Grafiken ergeben sich besonders mit
+30220 REM grossen Iterationstiefen und hochaufloesenden
+30230 REM Grafikadaptern.
+30240 REM Man experimentiere mit Parametern, Iterations-
+30250 REM tiefe und den Normierungsfaktoren der HO- und
+30260 REM VE-Zuweisungen !
+30270 REM 
+32000 REM *********************************************
+32010 REM *                                           *
+32020 REM *               HUEPFER.BAC                 *
+32030 REM * Fraktale Grafiken nach einer Idee von     *
+32040 REM * B. Martin, Aston Universitaet, Birmingham *
+32050 REM *                                           *
+32060 REM * Heimo Ponnath, Hamburg 1989               *
+32070 REM *                                           *
+32080 REM *********************************************
+32090 REM *                                           *
+32100 REM * entnommen aus:                            *
+32110 REM * Ponnath,H.: Grafik - Leckerbissen fuer    *
+32120 REM *             Feinschmecker                 *
+32130 REM * in: DOS extra 12/90, Seite 135 ff.        *
+32140 REM *                                           *
+32150 REM *********************************************
+32160 REM *                                           *
+32170 REM * Anpassung an Basicode auf KC compact:     *
+32180 REM *                                           *
+32190 REM * Frank Berndt                              *
+32200 REM * Rudolf-Hable Str. 5                       *
+32210 REM * O-8106 Radeburg                           *
+32220 REM *                                           *
+32230 REM * 31.12.1990                                *
+32240 REM *                                           *
+32250 REM *********************************************
+32260 REM Erstausstrahlung: Deutschlandsender Kultur
+32270 REM-spezial 910123

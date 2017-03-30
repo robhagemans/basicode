@@ -1,0 +1,373 @@
+1000 A=500:GOTO20:REM MINENSUCHE
+1010 REM
+1020 REM GRUNDEINSTELLUNG
+1030 REM
+1040 MZ=VE-4
+1050 MS=HO-3
+1060 DIMLF(250)
+1070 DIMSF(MZ,MS)
+1080 GOTO3730
+1100 REM
+1110 REM FELD INITIALISIEREN
+1120 REM
+1130 FORI=1 TOSZ
+1140 FORJ=1 TOSS
+1150 SF(I,J)=0
+1160 NEXTJ
+1170 NEXTI
+1180 GOSUB110:PRINT0
+1190 FORI=1 TOBO
+1200 GOSUB260:ZE=INT(SZ*RV+1)
+1210 GOSUB260:SP=INT(SS*RV+1)
+1220 IFSF(ZE,SP)=-9 THEN1200
+1230 SF(ZE,SP)=-9
+1240 FORJ=ZE-1 TOZE+1
+1250 FORK=SP-1 TOSP+1
+1260 IF(J<1)OR(J>SZ)OR(K<1)OR(K>SS)THEN1280
+1270 IFSF(J,K)>-9 THENSF(J,K)=SF(J,K)-1
+1280 NEXTK
+1290 NEXTJ
+1300 GOSUB110:PRINTI
+1310 NEXTI
+1320 RETURN
+1400 REM
+1410 REM EINSTELLUNG ANFAENGER
+1420 REM
+1430 SZ=INT((2*MZ/3)+0.5)
+1440 SS=INT((MS/2)+0.5)
+1450 BO=INT((SS*SZ/7)+0.5)
+1460 XS=INT(((MS-SS)/2)+1.5)
+1470 XZ=INT(((MZ-SZ)/2)+1)
+1480 RETURN
+1500 REM
+1510 REM EINSTELLUNG FORTGESCHRITTENE
+1520 REM
+1530 SZ=MZ
+1540 SS=INT((2*MS/3)+0.5)
+1550 BO=INT((SS*SZ/7)+0.5)
+1560 XS=INT(((MS-SS)/2)+1.5)
+1570 XZ=1
+1580 RETURN
+1600 REM
+1610 REM EINSTELLUNG PROFIS
+1620 REM
+1630 SZ=MZ
+1640 SS=MS
+1650 BO=INT((SS*SZ/7)+0.5)
+1660 XS=1
+1670 XZ=1
+1680 RETURN
+1700 REM
+1710 REM MINE MARKIEREN
+1720 REM
+1730 IF(AN=BO)AND(SF(ZE,SP)>-10)THEN1780
+1740 IFSF(ZE,SP)>-10 THENAN=AN+1:GOTO1770
+1750 IFSF(ZE,SP)>-20 THENAN=AN-1:GOTO1770
+1760 SF(ZE,SP)=SF(ZE,SP)+30
+1770 SF(ZE,SP)=SF(ZE,SP)-10
+1780 RETURN
+1800 REM
+1810 REM AUFBLAETTERN
+1820 REM
+1830 Z1=ZE:S1=SP:AF=AF+1:NF=0
+1840 HO=XS+SP:VE=XZ+ZE:GOSUB110:PRINT" "
+1850 SF(ZE,SP)=1
+1860 FORI=ZE-1 TOZE+1
+1870 FORJ=SP-1 TOSP+1
+1880 IF(I<1)OR(I>SZ)OR(J<1)OR(J>SS)THEN1980
+1890 IFSF(I,J)>0 THEN1980
+1900 AF=AF+1
+1910 IFSF(I,J)>-10 THEN1950
+1920 IFSF(I,J)>-20 THENAN=AN-1:GOTO1940
+1930 SF(I,J)=SF(I,J)+10
+1940 SF(I,J)=SF(I,J)+10
+1950 B=ABS(SF(I,J)):S=J:Z=I:GOSUB2130
+1960 IFSF(I,J)=0 THENNF=NF+1:LF(NF)=100*I+J
+1970 SF(I,J)=1
+1980 NEXTJ
+1990 NEXTI
+2000 IFNF=0 THEN2050
+2010 ZE=INT(LF(NF)/100)
+2020 SP=LF(NF)-100*ZE
+2030 NF=NF-1
+2040 GOTO1850
+2050 SP=S1:ZE=Z1
+2060 RETURN
+2100 REM
+2110 REM ZEICHEN SETZEN
+2120 REM
+2130 IFB<=-20 THENB$="?":GOTO2190
+2140 IFB<=-10 THENB$="o":GOTO2190
+2150 IFB<0 THENB$=".":GOTO2190
+2160 IFB=0 THENB$=" ":GOTO2190
+2170 IFB=9 THENB$="O":GOTO2190
+2180 SR=B:GOSUB300:B$=SR$
+2190 HO=XS+S:VE=XZ+Z:GOSUB110
+2200 PRINTB$
+2210 RETURN
+2300 REM
+2310 REM ANFANGSBILD ZEICHNEN
+2320 REM
+2330 B$="........................................"
+2340 B1$="----------------------------------------"
+2350 B$=LEFT$(B$,SS):B$="I"+B$+"I":B1$=LEFT$(B1$,SS+2)
+2360 HO=XS:VE=XZ:GOSUB110:PRINTB1$
+2370 FORI=1 TOSZ:HO=XS:VE=XZ+I:GOSUB110:PRINTB$:NEXTI
+2380 HO=XS:VE=XZ+SZ+1:GOSUB110:PRINTB1$
+2390 RETURN
+2400 REM
+2410 REM FELD AUFDECKEN
+2420 REM
+2430 IFSF(ZE,SP)>0 THEN2660
+2440 IF(SF(ZE,SP)<-9)AND(SF(ZE,SP)>-10)THENAN=AN-1
+2450 IFSF(ZE,SP)<-9 THENSF(ZE,SP)=SF(ZE,SP)+10:GOTO2450
+2460 IFSF(ZE,SP)<0 THEN2490
+2470 GOSUB1830
+2480 GOTO2660
+2490 IFSF(ZE,SP)=-9 THEN2540
+2500 B=ABS(SF(ZE,SP)):S=SP:Z=ZE:GOSUB2130
+2510 AF=AF+1
+2520 SF(ZE,SP)=1
+2530 GOTO2660
+2540 FE=2
+2550 GOSUB250
+2560 GOSUB250
+2570 FORI=1 TOSZ
+2580 FORJ=1 TOSS
+2590 B=SF(I,J)
+2600 IFB<-9 THENB=B+10:GOTO2600
+2610 IFB=-9 THENB=9:Z=I:S=J:GOSUB2130
+2620 NEXTJ
+2630 NEXTI
+2640 GOSUB250
+2650 GOSUB250
+2660 RETURN
+2700 REM
+2710 REM INFORMATIONEN
+2720 REM
+2730 GOSUB100
+2740 PRINT
+2750 PRINT
+2760 PRINT"               Minensuche"
+2770 PRINT"               =========="
+2780 PRINT
+2790 PRINT"Ziel dieses Spiels ist es,  alle Minen"
+2800 PRINT"im Spielfeld zu finden.  Dazu kann man"
+2810 PRINT"sich im Spielfeld bewegen  (Figur: *)."
+2820 PRINT"Mit der SPACE-Taste kann das Feld, auf"
+2830 PRINT"dem man steht, aufgedeckt werden (noch"
+2840 PRINT"nicht aufgedecktes Feld: .). Eine Zahl"
+2850 PRINT"gibt an,  wieviele  Minen  sich in den"
+2860 PRINT"umgebenden 8 Feldern befinden. Felder,"
+2870  PRINT"auf denen man Minen vermutet,  koennen"
+2880 PRINT"mit der Taste  <ENTER> markiert werden"
+2890 PRINT"(durch: o). Eine Markierung kann durch"
+2900 PRINT"insgesamt  dreimaliges   Druecken  der"
+2910 PRINT"ENTER-Taste wieder  aufgehoben werden."
+2920 PRINT
+2930 PRINT
+2940 PRINT"                  Weiter mit Taste ..."
+2950 GOSUB210
+2960 GOSUB100
+2970 PRINT
+2980 PRINT
+2990 PRINT"Ein  ? gibt an,  dass auf  diesem Feld"
+3000 PRINT"eine  Mine  vermutet  wird.  Sie  wird"
+3010 PRINT"nicht  als  markiert  gewertet.  Ein ?"
+3020 PRINT"erhaelt man durch zweimaliges Druecken"
+3030 PRINT"der  ENTER-Taste.   Sind  alle  Felder"
+3040 PRINT"entweder  aufgedeckt   oder  als  Mine"
+3050 PRINT"markiert,  so ist  das Spiel  beendet."
+3060 PRINT"Wird eine Mine aufgedeckt,  so hat man"
+3070 PRINT"verloren. Es gibt drei Schwierigkeits-"
+3080 PRINT"stufen,  unter denen man waehlen kann."
+3090 PRINT"Vorsicht!  Man kann hoechstens soviele"
+3100 PRINT"Felder markieren,  wie Minen vorhanden"
+3110 PRINT"sind.  Die noch vorhandene Anzahl wird"
+3120 PRINT"oben angegeben."
+3130 PRINT
+3140 PRINT
+3150 PRINT"                  Weiter mit Taste ..."
+3160 GOSUB210
+3170 GOSUB100
+3180 RETURN
+3200 REM
+3210 REM TASTATURABFRAGE
+3220 REM
+3230 GOSUB200:IFIN=0 THEN3230
+3240 TA=0
+3250 IFIN=32 THENTA=6
+3260 IFIN=31 THENTA=1
+3270 IFIN=30 THENTA=2
+3280 IFIN=29 THENTA=3
+3290 IFIN=28 THENTA=4
+3300 IFIN=13 THENTA=5
+3310 IFTA=0 THEN3230
+3320 RETURN
+3400 REM
+3410 REM TITELBILD
+3420 REM
+3430 GOSUB100
+3440 PRINT
+3450 PRINT"#######################################"
+3460 PRINT"#                                     #"
+3470 PRINT"#                                     #"
+3480 PRINT"#             Minensuche              #"
+3490 PRINT"#             ==========              #"
+3500 PRINT"#                                     #"
+3510 PRINT"#                                     #"
+3520 PRINT"#     1 - Spielinformationen          #"
+3530 PRINT"#                                     #"
+3540 PRINT"#     2 - Anfaenger                   #"
+3550 PRINT"#                                     #"
+3560 PRINT"#     3 - Fortgeschrittene            #"
+3570 PRINT"#                                     #"
+3580 PRINT"#     4 - Profis                      #"
+3590 PRINT"#                                     #"
+3600 PRINT"#     5 - Spielende                   #"
+3610 PRINT"#                                     #"
+3620 PRINT"#                                     #"
+3630 PRINT"#######################################"
+3640 GOSUB200:IFIN=0 THEN3640
+3650 IF(IN<49)OR(IN>53)THEN3640
+3660 WA=IN-48
+3670 RETURN
+3700 REM
+3710 REM HAUPTPROGRAMM
+3720 REM
+3730 GOSUB3430
+3740 IFWA=5 THEN950
+3750 IFWA>1 THEN3780
+3760 GOSUB2730
+3770 GOTO3730
+3780 ONWA-1 GOSUB1430,1530,1630
+3790 GOSUB100
+3800 VE=2:HO=8:GOSUB110
+3810 IFWA=2 THENSR$="Anfaenger"
+3820 IFWA=3 THENSR$="Fortgeschrittene"
+3830 IFWA=4 THENSR$="Profis"
+3840 GOSUB150
+3850 VE=5:HO=13:GOSUB110
+3860 PRINT"Moment bitte !"
+3870 VE=10:HO=5:GOSUB110
+3880 PRINT"gelegte  Minen:"
+3890 HO=21
+3900 GOSUB1130
+3910 GOSUB100
+3920 GOSUB2330
+3930 HO=5:VE=0:GOSUB110
+3940 PRINT" Minen:"
+3950 ZE=1
+3970 AN=0:AF=0
+3980 FE=0
+4000 REM
+4010 REM SPIEL
+4020 REM
+4030 HO=12:VE=0:GOSUB110
+4040 SR=BO-AN
+4050 GOSUB300
+4060 IFLEN(SR$)<3 THENSR$=" "+SR$:GOTO4060
+4070 PRINTSR$
+4080 HO=XS+SP:VE=XZ+ZE:GOSUB220
+4090 AB$=CHR$(IN)
+4100 IFAB$="O" THENAB$="o"
+4110 GOSUB110
+4120 PRINT"*"
+4130 GOSUB3230
+4140 IFTA<5 THEN4290
+4150 IFSF(ZE,SP)>0 THEN4130
+4160 IFTA=6 THEN4250
+4170 IF(AN=BO)AND(SF(ZE,SP)=-10)THEN4220
+4180 IFAB$="?" THENAB$=".":GOTO4210
+4190 IFAB$="o" THENAB$="?":GOTO4210
+4200 IFAB$="." THENAB$="o"
+4210 GOSUB1730
+4220 HO=XS+SP:VE=XZ+ZE:GOSUB110:PRINTAB$
+4230 IFBO+AF=SS*SZ THEN4440
+4240 GOTO4030
+4250 GOSUB2430
+4260 IFFE=2 THEN4350
+4270 IFBO+AF=SS*SZ THEN4440
+4280 GOTO4030
+4290 HO=XS+SP:VE=XZ+ZE:GOSUB110:PRINTAB$
+4300 IF(TA=1)AND(ZE>1)THENZE=ZE-1
+4310 IF(TA=2)AND(ZE<SZ)THENZE=ZE+1
+4320 IF(TA=3)AND(SP<SS)THENSP=SP+1
+4330 IF(TA=4)AND(SP>1)THENSP=SP-1
+4340 GOTO4030
+4350 VE=0:HO=5:GOSUB110
+4360 PRINT"                "
+4370 HO=7
+4380 GOSUB110
+4390 SR$="VERLOREN!"
+4400 GOSUB150
+4410 HO=30:GOSUB110:PRINT"Taste..."
+4420 GOSUB200:IFIN=0 THEN4420
+4430 GOTO3730
+4440 VE=0:HO=5:GOSUB110
+4450 PRINT"                "
+4460 HO=7
+4470 GOSUB110
+4480 SR$="GEWONNEN!"
+4490 GOTO4400
+30000 REM
+30010 REM ****************************
+30020 REM *                          *
+30030 REM *                          *
+30040 REM *        Minensuche        *
+30050 REM *        ==========        *
+30060 REM *                          *
+30070 REM *                          *
+30080 REM * Ein logisches Spiel fuer *
+30090 REM *                          *
+30100 REM * jeden.   Eine  Anleitung *
+30110 REM *                          *
+30120 REM * ist  im Programm  selbst *
+30130 REM *                          *
+30140 REM * enthalten.  Dieses  Prg. *
+30150 REM *                          *
+30160 REM * wurde von  den PC's kon- *
+30170 REM *                          *
+30180 REM * vertiert.  Eine  bessere *
+30190 REM *                          z
+30200 REM * grafische Gestaltung war *
+30210 REM *                          *
+30220 REM * in  BASICODE - 3  leider *
+30230 REM *                          *
+30240 REM * noch nicht moeglich.     *
+30250 REM *                          *
+30260 REM * Ich wuensche  viel Spass *
+30270 REM *                          *
+30280 REM * mit diesem Denkspiel.    *
+30290 REM *                          *
+30300 REM *                          *
+30310 REM *              Olaf Krause *
+30320 REM *                          *
+30330 REM *                          *
+30340 REM ****************************
+30350 REM
+32000 REM
+32010 REM ****************************
+32020 REM *                          *
+32030 REM * Autor:                   *
+32040 REM * ======                   *
+32050 REM *                          *
+32060 REM *   Olaf Krause            *
+32070 REM *   H.-Heine-Str. 13/32    *
+32080 REM *   Freiberg               *
+32090 REM *   O-9200                 *
+32100 REM *                          *
+32110 REM *                          *
+32120 REM * erstellt vom 20. bis 21. *
+32130 REM * Januar 1992  in Freiberg *
+32140 REM *                          *
+32150 REM *                          *
+32160 REM * programmiert auf KC 85/4 *
+32170 REM *                          *
+32180 REM * getestet auf:  KC 85/4   *
+32190 REM *                CPC 464   *
+32200 REM *                C Plus/4  *
+32210 REM *                          *
+32220 REM ****************************
+32230 REM Erstausstrahlung: DS-Kultur
+32240 REM-spezial 920205

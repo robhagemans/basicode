@@ -1,0 +1,59 @@
+1000 A=100:GOTO20:REM *** NIMM ***
+1010 SR$="* * *  N I M M  * * *"
+1020 HO=2:VE=2:GOSUB110:GOSUB150
+1030 HO=0:VE=4:GOSUB110
+1040 PRINT"Sie kennen sicherlich dieses Spiel"
+1050 PRINT"mit Streichhoelzern."
+1060 PRINT"Von einer groesseren Anzahl Hoelzer"
+1070 PRINT"werden von 2 Spielern abwechselnd eine"
+1080 PRINT"beliebige Anzahl Hoelzer entnommen."
+1090 PRINT
+1100 PRINT"     Wer das letzte Hoelzchen nimmt"
+1110 PRINT"                  hat gewonnen!...."
+1120 PRINT:PRINT:PRINT"ICH,der COMPUTER....."
+1130 PRINT"          moechte mit Ihnen spielen.!"
+1140 PRINT
+1150 PRINT"Mit wieviel Hoelzchen soll gespielt"
+1160 INPUT"werden ";S
+1170 PRINT:PRINT"Maximale Anzahl die man nehmen"
+1180 INPUT"darf ";A
+1190 GOSUB100:HO=0:VE=2
+1200 PRINT"   Sie nehmen:  ICH nehme:    Rest"
+1210 PRINT"-------------------------------------"
+1220 INPUT"   ";B:HO=18
+1230 IF(B>A)OR(B<=0)THEN5000
+1240 S=S-B:M=S/(A+1):C=(M-INT(M))*(A+1)
+1250 IFC=0 THEN GOSUB3000
+1260 S=S-C:GOSUB110
+1270 PRINTINT(C+.5);"         ";INT(S+.5)
+1280 VE=VE+1
+1290 IFINT(S)=0 THEN2000
+1300 IFS<(A+1)THEN4000
+1310 GOTO1220
+2000 PRINT
+2010 PRINT"Es tut mir leid, Sie haben verloren..!"
+2020 GOSUB210:GOTO6000
+3000 GOSUB260:C=INT(RV*A)+1
+3010 RETURN
+4000 PRINT:SR$="GRATULIERE":GOSUB150
+4010 PRINT" Sie werden gewinnen,     wenn Sie";
+4020 PRINT" jetzt ";INT(S);" Stueck nehmen...!"
+4030 GOSUB210:GOTO6000
+5000 PRINT"     *** Betrugsversuch ***"
+5010 VE=VE+2:GOTO1220
+6000 PRINT
+6010 PRINT"Moechten Sie ein neues Spiel? (J/N)"
+6020 GOSUB210
+6030 IFIN=74 THEN1000
+6040 IFIN<>74 THEN950
+32000 REM ------- NIMM-SPIEL -------
+32010 REM AUTOR:            (C) 11/90
+32020 REM MANFRED STEUDNER
+32030 REM HEIDESTR. 166
+32040 REM O-8142 RADEBERG
+32050 REM BASICODE-3-VERSION AUF
+32060 REM COMMODORE C64
+32070 REM -----------------------------
+32080 REM
+32090 REM Erstausstrahlung: Deutschlandsender Kultur
+32100 REM-spezial 910123

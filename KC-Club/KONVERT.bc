@@ -1,0 +1,186 @@
+1000 A=500:GOTO 20:REM ***KONVERTIERUNGJOURNAL-->.TXT***
+1010 HT=HO:VT=VE:S$="":FOR I=1 TO HT:S$=S$+" ":NEXT I
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READ T$
+1030 GOSUB 1410:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB 110
+1040 GOSUB 150:PRINT :PRINT :PRINT 
+1050 PRINT "Ausdruck ueber"
+1060 PRINT :PRINT "   1  den Bildschirm,"
+1070 PRINT "   2  den Drucker oder"
+1075 PRINT "   3  in eine .TXT-Datei"
+1080 PRINT :PRINT "Welche Nummer ?";:GOSUB 210
+1090 SC=IN-48:PRINT SC:IF SC<2 OR SC>3 THEN SC=1:GOTO 1220
+1100 PRINT :PRINT "Wieviel Leerzeichen"
+1110 INPUT "am Zeilenanfang    ";HL
+1120 PRINT :PRINT "Wieviel Text-Zeichen"
+1130 INPUT "auf jeder Zeile    ";I:HR=HL+I-1
+1140 PRINT :PRINT "Wieviel Text-Zeilen"
+1150 INPUT "auf jeder Seite    ";VR:VR=VR-3
+1155 IF SC=3 THEN 1200
+1160 PRINT "(E) Endlospapier oder  "
+1170 PRINT "(L) Lose Blaetter (E/L) ";
+1180 GOSUB 210:IF IN=76 THEN VL=-1:GOTO 1220
+1190 IF IN<>69 THEN GOSUB 250:GOTO 1160
+1200 PRINT :PRINT "Wieviel Leerzeilen"
+1210 INPUT "am Seitenende      ";VL:VR=VR+VL
+1211 IF SC<>3 THEN 1220
+1212 PRINT :INPUT "Dateiname :";NF$:IF LEN(NF$)>12 THEN 1212
+1213 PRINT :PRINT "Ausgabe auf (K)ass.":PRINT TAB(13)"(D)isk."
+1214 GOSUB 210:IF NOT (IN=75 OR IN=68) THEN 1214
+1215 IF IN=75 THEN NF=3
+1216 IF IN=68 THEN NF=5
+1217 GOSUB 500:IF IN=-1 THEN 1000
+1218 SR$=".HE"+LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB 560
+1220 MM$="":IF HL>0 THEN MM$=LEFT$(S$,HL)
+1230 IF SC<>3 THEN GOSUB 1380
+1235 M$=MM$:AL=VL:IF SC=2 THEN GOSUB 1360
+1240 IF LEN(R$)>HR-HL THEN GOSUB 1820
+1250 GOSUB 1440:IF R$<>"" THEN R$=R$+" "
+1260 R$=R$+D$:GOTO 1240
+1270 IF SC=2 THEN SR$=M$+SR$:GOSUB 350:GOSUB 360:GOTO 1290
+1272 IF SC=3 THEN SR$=M$+SR$:GOSUB 560:GOTO 1290
+1280 GOSUB 120:PRINT M$;SR$;:VE=VE+1:HO=0:GOSUB 110:HL=0
+1290 M$=MM$:AL=AL+1:IF AL<=VR THEN RETURN
+1300 IF SC=1 THEN 1380
+1302 IF SC=3 THEN AL=VL:RETURN
+1310 IF VL>=0 THEN FOR I=1 TO VL:GOSUB 360:NEXT I:GOTO 1350
+1320 PRINT "Neues Blatt in Drucker einlegen"
+1330 PRINT "druecke dann       RETURN/ENTER"
+1340 GOSUB 210:IF IN<>13 THEN 1340
+1350 AL=VL
+1360 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB 1270
+1370 SR$="":GOSUB 1270:AL=VL:RETURN
+1380 HO=3:VE=VT:GOSUB 110
+1390 SR$="Weiter: druecke <RETURN/ENTER>":GOSUB 150
+1400 GOSUB 210:IF IN<>13 THEN 1400
+1410 GOSUB 100:AL=VL:SR$=T$
+1420 PRINT LEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB 150
+1430 PRINT :PRINT :RETURN
+1440 READ D$
+1450 IF D$="" THEN 1440
+1460 IF LEFT$(D$,1)="." THEN 1530
+1470 IF LEFT$(D$,1)<>">" THEN 1490
+1480 D$=LEFT$(S$,23-LEN(R$))+MID$(D$,2):RETURN
+1490 IF LEFT$(D$,1)<>"!" THEN RETURN
+1500 IF D$="!" THEN D$="":GOTO 1520
+1510 D$=MID$(D$,2)
+1520 GOSUB 1760:GOTO 1450
+1530 IF D$<>".E" THEN 1580
+1532 IF SC=3 THEN J=1:GOSUB 1760:GOSUB 580:GOTO 950
+1540 J=1:GOSUB 1760:T$="E N D E"
+1550 SR$="":GOSUB 1270:GOSUB 1270:SR$=T$:GOSUB 1270:T$=""
+1560 SR$="":GOSUB 1270:IF AL<>VL THEN 1560
+1570 GOTO 950
+1580 DD$=MID$(D$,2,1):D$=MID$(D$,3)
+1590 IF DD$<>"R" THEN 1640
+1600 IF SC>1 THEN RETURN
+1610 IF LEN(R$)+6+LEN(D$)>=HR-HL THEN SR$=R$:GOSUB 1270:R$=""
+1620 PRINT M$;R$;:SR$=D$:GOSUB 150:M$=""
+1630 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO 1440
+1640 IF DD$<>"M" THEN 1662
+1650 I=VAL(D$):MM$="":IF I+HL=0 THEN 1440
+1660 MM$=LEFT$(S$,I+HL):GOTO 1440
+1662 IF SC<>3 THEN 1670
+1663 IF DD$<>"T" THEN 1680
+1664 J=8:GOSUB 1760:GOSUB 1780
+1665 SR$=".HE"+LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB 560
+1666 SR$=MM$+D$:GOSUB 560:GOTO 1440
+1670 IF DD$="T" THEN T$=D$:J=10:GOSUB 1760:GOSUB 1780:GOTO 1600
+1680 IF DD$="P" THEN J=VAL(D$):GOSUB 1760:GOSUB 1780:GOTO 1440
+1690 IF DD$="Q" THEN R$=R$+CHR$(34)+D$:GOTO 1440
+1700 IF DD$<>"F" THEN 1730
+1710 J=VAL(D$):GOSUB 1760
+1720 J=J-1:IF J>-1 THEN SR$="":GOSUB 1270:GOTO 1720
+1730 IF DD$<>"C" THEN 1750
+1740 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB 1270
+1750 GOTO 1440
+1760 GOSUB 1820:SR$=R$:GOSUB 1270:R$="":J=J-1
+1770 RETURN
+1780 IF (SC=1)OR (AL+J>VR)THEN 1800
+1790 SR$="":GOSUB 1270:GOSUB 1270:RETURN
+1800 IF AL<>VL THEN SR$="":GOSUB 1270:GOTO 1800
+1810 RETURN
+1820 K=HR-HL+1-LEN(M$)
+1830 IF LEN(R$)<=K THEN RETURN
+1840 IF MID$(R$,K,1)=" " THEN 1870
+1850 K=K-1:IF K>0 THEN 1840
+1860 SR$="":GOTO 1880
+1870 SR$=LEFT$(R$,K-1):R$=MID$(R$,K+1)
+1880 GOSUB 1270:GOTO 1820
+1890 REM -----------------------------
+25000 DATA "Basicode-Journal"
+25010 DATA "!Dieses Journal soll fuer alle diejenigen eine"
+25020 DATA "Hilfe sein, die die Journaltexte (z.B. die"
+25030 DATA "Basicode - Journale von F.Dormeyer) auch in"
+25040 DATA "anderen Textprogrammen verwenden wollen."
+25050 DATA "Der Computer muss dazu lediglich eine Bedingung"
+25060 DATA "erfuellen: Er muss in der Lage sein, Programme"
+25070 DATA "zu mischen (Befehle waeren z.B.: LOAD#1 (KC...),"
+25080 DATA "MERGE (KC compact) usw.)"
+25090 DATA "!!Achtung!","!Eventuell muss an dieser Stelle"
+25100 DATA "mit ASCII-Files gearbeitet werden!"
+25110 DATA ".THandhabung"
+25120 DATA "!!Dieses Journal wird im BC-Format zur Sicherheit"
+25130 DATA "abgespeichert. Danach werden die DATA-Zeilen"
+25140 DATA "geloescht (z.B. DELETE 25000-). Nun speichert"
+25150 DATA "man den Journalkern (Zeilen 1000 bis 1890) im"
+25160 DATA "computertypischen Format ab, also z.B. mit"
+25170 DATA "LIST#1,'name'. Dabei muss je nach Computertyp"
+25180 DATA "entschieden werden, ob das ASCII-Format notwendig"
+25190 DATA "ist. Diese Kopie hebt man sich gut auf, sie wird"
+25200 DATA "noch mehrfach benoetigt."
+25210 DATA "!Als naechstes wird der Programmspeicher"
+25220 DATA "geloescht und das interessierende BC-Journal"
+25230 DATA "normal eingelesen, jedoch nicht gestartet"
+25240 DATA "(bzw. beim Titelbild abgebrochen)."
+25250 DATA "Jetzt wird die oben beschriebene Kopie zu der"
+25260 DATA "im Speicher befindlichen 'zugemischt'. Dadurch"
+25270 DATA "werden alle notwendigen Aenderungen und"
+25280 DATA "Ergaenzungen im Journalkern vorgenommen."
+25290 DATA "!!Das war's schon. Nun kann normal gestartet"
+25300 DATA "werden."
+25310 DATA "!!Soll nun der Journaltext als ASCII-Datei"
+25320 DATA "abgespeichert werden, muss lediglich die"
+25330 DATA "Kennziffer 3 gewaehlt werden. Alles andere"
+25340 DATA "erledigt das Programm. So werden z.B. zur"
+25350 DATA "einfacheren Weiterverarbeitung des Textes die"
+25360 DATA "Seiten schon formatiert, Kopfzeilen eingearbeitet"
+25370 DATA "und die Zeilenlaenge eingehalten. Weitere"
+25380 DATA "Angaben zur Textgestaltung (z.B. Hervorhebung,"
+25390 DATA "Zentrieren usw. fuehrt das Programm aus,"
+25400 DATA "kennzeichnet es jedoch im File nicht."
+25410 DATA ".P12","!!.RHinweis:","!!Im entstehenden Textfile"
+25420 DATA "wird jede Zeile mit einer Zeilenschaltung"
+25430 DATA "abgeschlossen, die sich im Textprogramm"
+25440 DATA "stoerend bemerkbar machen kann. Meist ist"
+25450 DATA "deshalb kein Blocksatz moeglich. Hier muss"
+25460 DATA "im Einzelschritt korregiert werden (Loeschen"
+25470 DATA "des Zeilenabschlusses bzw. Koppeln der Zeilen)."
+25480 DATA "!!Ursache dieser Erscheinung ist die Bearbeitung"
+25490 DATA "von SR$ in der Basicode - Routine #560."
+25500 DATA ".P10"
+25510 DATA "Viel Spass beim Probieren!"
+25520 DATA ".F2"
+25530 DATA "wuenscht"
+25540 DATA ".F2"
+25550 DATA "!   Andreas Garten"
+25560 DATA "!   Friedersdorfer Siedlung 2"
+25570 DATA "!   Fach 10-16"
+25580 DATA "!!   O-8514 Pulsnitz"
+29990 DATA ".E"
+32000 REM ****************************
+32010 REM *                          *
+32020 REM * modifiziertes BC-Journal *
+32030 REM *                          *
+32040 REM * Grundlage: BC-Journale   *
+32050 REM *            des Computer- *
+32060 REM *            magazins von  *
+32070 REM *            DS-Kultur     *
+32080 REM * Bearb.: Andreas Garten   *
+32090 REM *         Fried.Siedl.2    *
+32100 REM *         Fach 10-16       *
+32110 REM *         O-8514 PULSNITZ  *
+32120 REM *                          *
+32130 REM * KC compact   07.12.1990  *
+32140 REM *                          *
+32150 REM ****************************
+32160 REM 

@@ -1,0 +1,156 @@
+1000 A=500:GOTO20:REM Beschreibung d. KC-Prg. * DIRERST *
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1340:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Ausdruck ueber"
+1060 PRINT:PRINT"   - 1  den Bildschirm,"
+1070 PRINT"   - 2  den Drucker."
+1080 PRINT:PRINT"Welche Nummer ?";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1180
+1100 PRINT:PRINT"Wieviel Leerzeichen  "
+1110 PRINT"am Zeilenanfang      ";:INPUTHL
+1120 PRINT:PRINT"Wieviel Text-Zeichen "
+1130 PRINT"auf jeder Zeile      ";:INPUTI:HR=HL+I-1
+1140 PRINT:PRINT"Wieviel Leer-Zeilen  "
+1150 PRINT"am Seitenende        ";:INPUTVL
+1160 PRINT:PRINT"Wieviel Text-Zeilen  "
+1170 PRINT"auf jeder Seite      ";:INPUTVR:VR=VR+VL-3
+1180 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1190 GOSUB1310:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1290
+1200 IFLEN(R$)>HR-HL THEN GOSUB1730
+1210 GOSUB1370:IFR$<>"" THENR$=R$+" "
+1220 R$=R$+D$:GOTO1200
+1230 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1250
+1240 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1250 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1260 IFSC=1 THEN1310
+1270 IFVL>0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOSUB210
+1280 AL=VL
+1290 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1230
+1300 SR$="":GOSUB1230:AL=VL:RETURN
+1310 HO=0:VE=VT:GOSUB110
+1320 SR$="Weiter: -> <ENTER>   FFS'91":GOSUB150
+1330 GOSUB210:IFIN<>13 THEN1330
+1340 GOSUB100:AL=VL:SR$=T$
+1350 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1360 PRINT:PRINT:RETURN
+1370 READD$
+1380 IFD$="" THEN1370
+1390 IFLEFT$(D$,1)="." THEN1440
+1400 IFLEFT$(D$,1)<>"!" THENRETURN
+1410 IFD$="!" THEND$="":GOTO1430
+1420 D$=RIGHT$(D$,LEN(D$)-1)
+1430 GOSUB1670:GOTO1380
+1440 IFD$<>".E" THEN1490
+1450 J=1:GOSUB1670:T$="E N D E"
+1460 SR$="":GOSUB1230:GOSUB1230:SR$=T$:GOSUB1230:T$=""
+1470 SR$="":GOSUB1230:IFAL<>VL THEN1470
+1480 GOTO950
+1490 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+1500 IFDD$<>"R" THEN1550
+1510 IFSC=2 THENRETURN
+1520 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1230:R$=""
+1530 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1540 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1370
+1550 IFDD$<>"M" THEN1580
+1560 I=VAL(D$):MM$="":IFI+HL=0 THEN1370
+1570 MM$=LEFT$(S$,I+HL):GOTO1370
+1580 IFDD$="P" THENJ=VAL(D$):GOSUB1670:GOSUB1690:GOTO1370
+1590 IFDD$="T" THENT$=D$:J=10:GOSUB1670:GOSUB1690:GOTO1510
+1600 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1370
+1610 IFDD$<>"F" THEN1640
+1620 J=VAL(D$):GOSUB1670
+1630 J=J-1:IFJ>-1 THENSR$="":GOSUB1230:GOTO1630
+1640 IFDD$<>"C" THEN1660
+1650 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1230
+1660 GOTO1370
+1670 GOSUB1730:SR$=R$:GOSUB1230:R$="":J=J-1
+1680 RETURN
+1690 IF(SC=1)OR(AL+J>VR)THEN1710
+1700 SR$="":GOSUB1230:GOSUB1230:RETURN
+1710 IFAL<>VL THENSR$="":GOSUB1230:GOTO1710
+1720 RETURN
+1730 K=HR-HL+1-LEN(M$)
+1740 IFLEN(R$)<=K THENRETURN
+1750 IFMID$(R$,K,1)=" " THEN1780
+1760 K=K-1:IFK>0 THEN1750
+1770 SR$="":GOTO1790
+1780 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+1790 GOSUB1230:GOTO1730
+25000 DATA"DIRERST/DISK"
+25010 DATA".M1",".F2"
+25020 DATA"Vorbemerkungen:"
+25030 DATA"!!Das Programm hilft beim Erstellen,"
+25040 DATA"Verwalten und Drucken von"
+25050 DATA"Inhaltsangaben fuer Disketten und Kassetten."
+25060 DATA"!Die vorliegende Version ist fuer die"
+25070 DATA"Diskettenarbeit gedacht aber leicht"
+25080 DATA"fuer Kassette nutzbar.Dazu sollten"
+25090 DATA"nur in den Routinen 'LOAD' (ab 6000)"
+25100 DATA"und 'SAVE' (ab 7000) zum Bandstart"
+25110 DATA"-stop u.s.w. Hinweise eingebaut werden."
+25120 DATA"!Zum Programm existiert noch eine"
+25130 DATA"Zusatzroutine (ab 10000), die einzelne"
+25140 DATA"Dateien verbindet, und eine von"
+25150 DATA"Dateiprogrammen (z.B.'UNIDATEI)"
+25160 DATA"zum Verwalten und Suchen nutzbare"
+25170 DATA"neue Datei erstellt."
+25180 DATA"Diese ist aber nur mit KC 85/4 oder"
+25190 DATA"entsprechenden Erweiterungen sinnvoll."
+25200 DATA"!Ich habe mit diesen Programmen"
+25210 DATA"endlich Ordnung in mein Archiv"
+25220 DATA"gebracht (Vorteil:kurze Erklaerung"
+25230 DATA"zum Programm moeglich) und wuerde"
+25240 DATA"mich freuen, wenn es auch anderen"
+25250 DATA"nutzt."
+25260 DATA".P0",".F2"
+25270 DATA"Kurzbeschreibung:"
+25280 DATA"!!Alle Routinen werden aus dem"
+25290 DATA"Haupt- oder Untermenue durch Eingabe"
+25300 DATA"des Anfangsbuchstabens aufgerufen"
+25310 DATA"und in einigen Faellen zur Sicherheit"
+25320 DATA"nochmals abgefragt."
+25330 DATA"!!Bei der",".REINGABE","kann fuer die beiden"
+25340 DATA"haeufigsten Recordertypen eine "
+25350 DATA"Umrechnung der Zaehlwerksangaben"
+25360 DATA"erfolgen.Hier ist zu beachten,dass"
+25370 DATA"die Umrechnung nur fuer Eisenbaender"
+25380 DATA"K 60 relativ genau wird."
+25390 DATA"!!Beim",".RDRUCK","ist das Programm"
+25400 DATA"auf den Drucker K 6313 eingestellt."
+25410 DATA"Es kann zwischen dem Druck von Listen"
+25420 DATA"und Einlegeblaettern fuer Kassetten"
+25430 DATA"bzw. Disketten gewaehlt werden."
+25440 DATA"Ich denke, alle anderen Funktionen sind"
+25450 DATA"selbst zu erkennen."
+25460 DATA".P0",".F2"
+25470 DATA"Uebersicht:"
+25480 DATA"!! 100- 300      Eingabe"
+25490 DATA"!!1000-1280      Hauptprogramm"
+25500 DATA"!!3000-3800      Veraendern"
+25510 DATA"!!4000-4240      Ausgabe"
+25520 DATA"!!5000-5800      Druck"
+25530 DATA"!!6000-6150      Load"
+25540 DATA"!!7000-7200      Save"
+25550 DATA"!!1500 und 1600  Umrechnungen"
+25560 DATA"!!!Viel Spass und Tschuess"
+25570 DATA"!!   Frank"
+25580 DATA".P0",".E"
+32000 REM*****************************
+32010 REM
+32020 REM GRUNDPROGRAMM VON
+32030 REM STICHTING BASICODE EINDHOFEN
+32040 REM
+32050 REM BESCHREIBUNG DES PROGRAMMS
+32060 REM 'DIRERST' FUER KC 85/2-4
+32070 REM
+32080 REM FRANK FECHNER
+32090 REM INNERE ZWICKAUER 79
+32100 REM ZWICKAU
+32110 REM O-9571
+32120 REM
+32130 REM*****************************
+32140 REM
+32150 REM Erstausstrahlung: Deutschlandsender Kultur
+32160 REM-spezial 910612

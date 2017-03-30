@@ -1,0 +1,268 @@
+1000 A=500:GOTO20:REM BASICODE-3 JOURNAL 7
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1410:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Ausdruck ueber"
+1060 PRINT:PRINT"   1  den Bildschirm,"
+1070 PRINT"   2  den Drucker"
+1080 PRINT:PRINT"Welche Nummer ?";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1220
+1100 PRINT:PRINT"Wieviel Leerzeichen"
+1110 INPUT"am Zeilenanfang    ";HL
+1120 PRINT:PRINT"Wieviel Text-Zeichen"
+1130 INPUT"auf jeder Zeile    ";I:HR=HL+I-1
+1140 PRINT:PRINT"Wieviel Text-Zeilen"
+1150 INPUT"auf jeder Seite    ";VR:VR=VR-3
+1160 PRINT"(E) Endlospapier oder  "
+1170 PRINT"(L) Lose Blaetter (E/L) ";
+1180 GOSUB210:IFIN=76 THENVL=-1:GOTO1220
+1190 IFIN<>69 THEN GOSUB250:GOTO1160
+1200 PRINT:PRINT"Wieviel Leerzeilen"
+1210 INPUT"am Seitenende      ";VL:VR=VR+VL
+1220 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1230 GOSUB1380:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1360
+1240 IFLEN(R$)>HR-HL THEN GOSUB1820
+1250 GOSUB1440:IFR$<>"" THENR$=R$+" "
+1260 R$=R$+D$:GOTO1240
+1270 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1290
+1280 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1290 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1300 IFSC=1 THEN1380
+1310 IFVL>=0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOTO1350
+1320 PRINT"Neues Blatt in Drucker einlegen"
+1330 PRINT"druecke dann       RETURN/ENTER"
+1340 GOSUB210:IFIN<>13 THEN1340
+1350 AL=VL
+1360 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1270
+1370 SR$="":GOSUB1270:AL=VL:RETURN
+1380 HO=3:VE=VT:GOSUB110
+1390 SR$="Weiter: druecke <RETURN/ENTER>":GOSUB150
+1400 GOSUB210:IFIN<>13 THEN1400
+1410 GOSUB100:AL=VL:SR$=T$
+1420 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1430 PRINT:PRINT:RETURN
+1440 READD$
+1450 IFD$="" THEN1440
+1460 IFLEFT$(D$,1)="." THEN1530
+1470 IFLEFT$(D$,1)<>">" THEN1490
+1480 D$=LEFT$(S$,23-LEN(R$))+MID$(D$,2):RETURN
+1490 IFLEFT$(D$,1)<>"!" THENRETURN
+1500 IFD$="!" THEND$="":GOTO1520
+1510 D$=MID$(D$,2)
+1520 GOSUB1760:GOTO1450
+1530 IFD$<>".E" THEN1580
+1540 J=1:GOSUB1760:T$="E N D E"
+1550 SR$="":GOSUB1270:GOSUB1270:SR$=T$:GOSUB1270:T$=""
+1560 SR$="":GOSUB1270:IFAL<>VL THEN1560
+1570 GOTO950
+1580 DD$=MID$(D$,2,1):D$=MID$(D$,3)
+1590 IFDD$<>"R" THEN1640
+1600 IFSC=2 THENRETURN
+1610 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1270:R$=""
+1620 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1630 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1440
+1640 IFDD$<>"M" THEN1670
+1650 I=VAL(D$):MM$="":IFI+HL=0 THEN1440
+1660 MM$=LEFT$(S$,I+HL):GOTO1440
+1670 IFDD$="P" THENJ=VAL(D$):GOSUB1760:GOSUB1780:GOTO1440
+1680 IFDD$="T" THENT$=D$:J=10:GOSUB1760:GOSUB1780:GOTO1600
+1690 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1440
+1700 IFDD$<>"F" THEN1730
+1710 J=VAL(D$):GOSUB1760
+1720 J=J-1:IFJ>-1 THENSR$="":GOSUB1270:GOTO1720
+1730 IFDD$<>"C" THEN1750
+1740 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1270
+1750 GOTO1440
+1760 GOSUB1820:SR$=R$:GOSUB1270:R$="":J=J-1
+1770 RETURN
+1780 IF(SC=1)OR(AL+J>VR) THEN1800
+1790 SR$="":GOSUB1270:GOSUB1270:RETURN
+1800 IFAL<>VL THENSR$="":GOSUB1270:GOTO1800
+1810 RETURN
+1820 K=HR-HL+1-LEN(M$)
+1830 IFLEN(R$)<=K THENRETURN
+1840 IFMID$(R$,K,1)=" " THEN1870
+1850 K=K-1:IFK>0 THEN1840
+1860 SR$="":GOTO1880
+1870 SR$=LEFT$(R$,K-1):R$=MID$(R$,K+1)
+1880 GOSUB1270:GOTO1820
+1890 REM
+1900 REM UEBERSETZTE VERSION
+1910 REM
+1920 REM COMPUTER-BULLETIN NO.40 (11/89)
+1930 REM STICHTING BASICODE, EINDHOVEN
+1940 REM
+25000 DATA"Progr. in BASICODE (6)"
+25010 DATA"Der zentrale Teil im BASICODE-System -"
+25020 DATA"um die Portabilitaet der Programme zu"
+25030 DATA"gewaehrleisten - sind die Subroutinen"
+25040 DATA"(Unterprogramme). Mit ihnen wird erreicht,"
+25050 DATA"dass trotz eines unterschiedlichen Sprachumfangs"
+25060 DATA"und unterschiedlicher Anweisungen, z.B. zur"
+25070 DATA"Steuerung der Ausgabe ueber den Bildschirm,"
+25080 DATA"zum Ansprechen eines Druckers oder zur"
+25090 DATA"Verwaltung peripherer Speicher (Files), die"
+25100 DATA"Aufgabe auf allen beteiligten Computern in"
+25110 DATA"gleicher Art ausgefuehrt wird."
+25120 DATA".P0"
+25130 DATA".RSubroutinen - Uebersicht"
+25140 DATA"!!GOSUB Wirkung             Variable"
+25150 DATA"!-------------------------------------"
+25160 DATA"!# 100 Textbetrieb, Schirm"
+25170 DATA"!      loeschen,           --"
+25180 DATA"!!# 110 Positionieren des"
+25190 DATA"!      Cursors,            HO, VE"
+25200 DATA"!!# 120 Registrieren der"
+25210 DATA"!      Cursorposition,     HO, VE"
+25220 DATA"!!# 150 Bildschirm - reverse"
+25230 DATA"!      Darstellung,        SR$"
+25240 DATA"!!# 200 Tastaturabfrage,    IN$, IN"
+25250 DATA"!!# 210 Warten auf Tasten-"
+25260 DATA"!      druck,              IN$, IN",".P0"
+25270 DATA"# 220 Zeichen auf Bild-"
+25280 DATA"!      schirmposition,     HO, VE, IN"
+25290 DATA"!!# 250 Akustisches Signal  --"
+25300 DATA"!!# 260 Pseudozufallszahl,  RV"
+25310 DATA"!!# 270 Freier Speicher-"
+25320 DATA"!      platz,              FR"
+25330 DATA"!!# 280 Abschalten der"
+25340 DATA"!      Stoptaste,          FR"
+25350 DATA"!!# 300 Wandeln in String-"
+25360 DATA"!      variable,           SR, SR$"
+25370 DATA"!!# 310 Formatieren numer."
+25380 DATA"!      Variablen,          SR, SR$,"
+25385 DATA"!                          CT, CN",".P0"
+25390 DATA"# 330 Wandeln von Klein-"
+25400 DATA"!      in Grossbuchst.,    SR$"
+25410 DATA"!!# 350 Druckerausgabe,     SR$"
+25420 DATA"!!# 360 Drucker - Wagen-"
+25430 DATA"!      ruecklauf, Zeilen-"
+25435 DATA"!      vorschub,           --"
+25440 DATA"!!# 400 Tonerzeugung,       SP, SD, SV"
+25450 DATA"!!# 450 Warteroutine,       SD, IN, IN$"
+25460 DATA"!!# 500 Peripherer Speicher,"
+25470 DATA"!      Oeffnen des Kanals, NF$, NF"
+25480 DATA"!!# 540 desgl., Lesen,      IN$, IN"
+25490 DATA"!!# 550 desgl., Schreiben,  SR$, IN"
+25500 DATA"!!# 580 desgl., Abschluss,  NF",".P0"
+25510 DATA"# 600 Grafischer Betrieb,"
+25520 DATA"!      Schirm loeschen,    --"
+25530 DATA"!!# 620 Punkt (Pixel) setzen"
+25540 DATA"!      bzw. loeschen,      HO, VE, CN"
+25550 DATA"!!# 640 Linie zeichnen bzw."
+25560 DATA"!      loeschen,           HO, VE, CN"
+25570 DATA"!!# 650 Text im Grafikbe-"
+25580 DATA"!      trieb ausgeben,     SR$, HO, VE"
+25590 DATA".P0"
+25600 DATA".RTextbetrieb - Subroutine # 110"
+25610 DATA"!!Beim Start eines BASICODE-Programms wird"
+25620 DATA"der Computer in den Textbetrieb gesetzt"
+25630 DATA"(Initialisierung mit dem unbedingten Sprung"
+25640 DATA"'GOTO 20'). In dieser Beriebsart sind auf dem"
+25650 DATA"Bildschirm im Regelfall 24 Zeilen mit 40"
+25660 DATA"Zeichen/Zeile darstellbar. Da manche Computer"
+25670 DATA"bis zu 80 Zeichen/Zeile abbilden koennen, ist"
+25680 DATA"diesem Umstand evtl. durch das Programm Rechnung"
+25690 DATA"zu tragen."
+25700 DATA"!Die Belegung der Zeile 25 und die der letzten"
+25710 DATA"Position einer Bildschirmzeile ist zu vermeiden."
+25720 DATA"U.U. kann dies zu einem Scrollen des Bildschirms"
+25730 DATA"und zu einem Versetzen des Cursors in die"
+25740 DATA"naechste Bildschirmzeile fuehren."
+25750 DATA".P0"
+25760 DATA"Die Position des Cursors wird durch die"
+25770 DATA"Variablen HO (0 ... 39) und VE (0 ... 24) und"
+25780 DATA"die Subroutine  # 110 bestimmt."
+25790 DATA"!!Mit der Initialisierung, d.h. vor Beginn des"
+25800 DATA"eigentlichen Programms, werden den Variablen HO"
+25810 DATA"und VE die je nach Computermodell moeglichen"
+25820 DATA"max. Werte zugewiesen (z.B. HO=39 und VE=24)."
+25830 DATA"Die Zaehlung auf dem Bildschirm beginnt"
+25840 DATA"links oben (HO=0, VE=0)."
+25850 DATA"!!In BASICODE-3 ist nur eine monochrome"
+25860 DATA"Zeichendarstellung - je nach TV-Geraet bzw."
+25870 DATA"Monitor - moeglich (Zeichen - weiss, gruen,"
+25880 DATA"bernsteinfarben; Hintergrund - dunkel)."
+25890 DATA".P0"
+25900 DATA"Die Subroutine # 110 positioniert den"
+25910 DATA"Cursor; sie entspricht damit den Anweisungen"
+25920 DATA"'LOCATE (X,Y)' oder 'PRINT AT X,Y'."
+25930 DATA"Sinnvoll ist dieses Unterprogramm in Verbindung"
+25940 DATA"mit PRINT- oder INPUT-Anweisungen oder mit der"
+25950 DATA"Aufforderung zur Tastatur-Betaetigung ueber die"
+25960 DATA"Subroutine # 210."
+25970 DATA"!!Werden den Variablen HO und VE unzulaessige"
+25980 DATA"Werte zugewiesen (z.B. HO>39 oder VE>24),"
+25990 DATA"so wird der Cursor willkuerlich gesetzt,"
+26000 DATA"z.B. in die Mitte des Bildschirms !",".P0"
+26010 DATA".RTextbetrieb - Subroutine # 100"
+26020 DATA"!!Die Subroutine # 100 loescht den Bildschirm"
+26030 DATA"und setzt den Computer in den Textbetrieb,"
+26040 DATA"sofern vorher ueber die Subroutine # 600 der"
+26050 DATA"Grafik-Betrieb eingeschaltet war (siehe w.u.)."
+26060 DATA"Mit dem Start eines Programms (Initialisierung"
+26070 DATA"ueber den Sprung GOTO 20) wird das"
+26080 DATA"Unterprogramm # 100 automatisch aufgerufen."
+26090 DATA"!!Werte, die Variablen vor Aufruf des"
+26100 DATA"Unterprogramms zugewiesen wurden, werden nicht"
+26110 DATA"veraendert. Dies gilt auch fuer HO und VE"
+26120 DATA".P0"
+26130 DATA".RTextbetrieb - Subroutine # 120"
+26140 DATA"!!Ueber diese Subroutine kann die momentane"
+26150 DATA"Cursorposition abgefragt werden. Deren Stellung"
+26160 DATA"ergibt sich aus den Variablen HO und VE."
+26170 DATA"In Verbindung mit der Subroutine # 110"
+26180 DATA"kann die Bildschirmausgabe gesteuert werden"
+26200 DATA".P0"
+26210 DATA".RTextbetrieb - Subroutine # 150"
+26220 DATA"!!Das Unterprogramm # 150 erlaubt die reverse"
+26230 DATA"('auffallende') Darstellung eines Text-Strings."
+26240 DATA"!!Der String (A$='Titel') wird mit PRINT A$ in"
+26250 DATA"ueblicher Form dargestellt. Nach Zuweisung an"
+26260 DATA"SR$ werden am Beginn und Ende je drei"
+26270 DATA"Leerzeichen zugefuegt, die Darstellung erfolgt"
+26280 DATA"revers. Die Stringlaenge vergroessert sich um"
+26290 DATA"sechs Zeichen. Der Cursor steht nach dem"
+26300 DATA"dritten Leerzeichen nach A$ in der gleichen"
+26310 DATA"Zeile; um ihn in die naechste Zeile zu setzen,"
+26320 DATA"muss eine PRINT-Anweisung folgen. Ggf. kann der"
+26330 DATA"Cursor mit GOSUB 110 neu positioniert werden."
+26340 DATA".P0"
+26350 DATA"Beispiel:"
+26360 DATA"!! nnnn A$=",".QTitel",".Q "
+26370 DATA"! nnnn HO=10:VE=3:GOSUB 110"
+26380 DATA"! nnnn SR$=A$:GOSUB 150:PRINT"
+26390 DATA".P0"
+26400 DATA".RTextbetrieb - Subroutine # 220"
+26410 DATA"!!Mit der Subroutine # 220 wird der ASCII-Wert"
+26420 DATA"eines in der Position HO, VE dargestellten"
+26430 DATA"Zeichens an die Variable IN zurueckgegeben."
+26440 DATA"IN nimmt nur Werte von 32 - 95 an, es sei denn,"
+26450 DATA"es wurden Steuertasten betaetigt. Das bedeutet,"
+26460 DATA"dass zwischen Klein- und Grossbuchstaben nicht"
+26470 DATA"unterschieden wird. 'a' und 'A' ergeben IN=65."
+26480 DATA"Zu beruecksichtigen bleibt auch die fuer"
+26490 DATA"einzelne Computer unterschiedliche Codierung"
+26500 DATA"der Zeichen (z.B. Commodore)."
+26510 DATA"!!Eine moegliche Anwendung ist eine Hardcopy"
+26520 DATA"des Textbildschirms."
+26580 DATA".P10","Das war das","!!"
+26590 DATA".C****************************"
+26600 DATA".C*                          *"
+26610 DATA".C*   BASICODE-3   Journal   *"
+26620 DATA".C*         Nummer  7        *"
+26630 DATA".C*      25.   Mai   1990    *"
+26640 DATA".C*                          *"
+26650 DATA".C****************************",".E"
+30000 REM
+30010 REM Grundlagen von BASICODE
+30020 REM       -- Teil 6 --
+32000 REM -----------------------------
+32010 REM FRIEDRICH DORMEIER
+32020 REM D-1000 BERLIN 39
+32030 REM C64/C128 - 2/1990
+32040 REM -----------------------------
+32050 REM
+32060 REM Erstausstrahlung: Radio DDR
+32070 REM-spezial 900525

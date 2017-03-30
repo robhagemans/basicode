@@ -1,0 +1,114 @@
+1000 A=255:GOTO20:REM KREDITLAUF
+1010 ZE=VE:SP=HO
+1020 SR$="KREDITBERECHNUNGEN"
+1030 VE=1:HO=SP/2-LEN(SR$)/2-3
+1040 GOSUB110:GOSUB150:PRINT
+1050 PRINT:PRINT:PRINT
+1060 SR$=" H I N W E I S ":GOSUB150:PRINT:PRINT
+1070 PRINT"Dieses Programm soll das Laufverhalten"
+1080 PRINT"eines Kredites bei monatlicher Tilgung"
+1090 PRINT"darstellen, wobei keine Gewaehr fuer"
+1100 PRINT"die Angaben uebernommen wird. Sie die-"
+1110 PRINT"nen nur zur Einschaetzung der finan-"
+1120 PRINT"ziellen Belastung."
+1130 GOSUB210:GOSUB100
+1140 VE=4:HO=2:GOSUB110
+1150 PRINT"Angaben zum Kredit:"
+1160 PRINT:PRINT
+1170 INPUT"Kreditsumme.....(DM):";KS
+1180 IFKS>999999 THENPRINT"*** zu gross ***":GOTO1170
+1190 INPUT"Zinssatz.........(%):";ZS
+1200 IFZS>=50 THENPRINT"*** unwahrscheinlich ***":GOTO1190
+1210 INPUT"Laufzeit....(Monate):";LZ
+1220 GOSUB120:Y=VE
+1230 HO=5:VE=ZE-2:GOSUB110
+1240 PRINT"Eingaben korrekt? (J/N)";
+1250 GOSUB210
+1260 IFIN=78 THEN1000
+1270 HO=5:VE=ZE-2:GOSUB110
+1280 PRINT"                       ";
+1290 HO=1:VE=Y+3:GOSUB110
+1300 PRINT"Wollen Sie...":PRINT
+1310 PRINT"     * Zinsen verrechnen      ==> >1<"
+1320 PRINT"     * Zinsen getrennt zahlen ==> >2<"
+1330 GOSUB210
+1340 IFIN=49 THEN1630
+1350 IFIN=50 THEN1380
+1360 GOTO1330
+1370 REM *** Zinsen getrennt zahlen ***
+1380 PRINT:PRINT:PRINT:PRINT
+1390 PRINT"Mon. SALDO (DM)  ZINS (DM)  RATE (DM)"
+1400 PRINT
+1410 MR=INT(KS/LZ)+1
+1420 ZG=0:FORMO=1 TOLZ-1
+1430 Z=(KS*ZS/100)/12:ZM=INT(Z*10+0.5)/10
+1440 ZG=ZG+ZM
+1450 KS=KS-MR
+1460 CT=10:CN=2:SR=KS:GOSUB310:KS$=SR$
+1470 CT=9:CN=2:SR=ZM:GOSUB310:ZM$=SR$
+1480 CT=3:CN=0:SR=MO:GOSUB310:MO$=SR$
+1490 CT=9:CN=2:SR=MR+ZM:GOSUB310:RA$=SR$
+1500 PRINTMO$;" ";KS$;"  ";ZM$;"  ";RA$
+1510 IFMO/12=INT(MO/12)THENPRINT:GOSUB210
+1520 NEXTMO
+1530 PRINT:PRINT
+1540 PRINT"Die letzte Rate ist etwas geringer."
+1550 Z=(KS*ZS/100)/12:ZM=INT(Z*10+0.5)/10:LR=KS+ZM:ZG=ZG+ZM
+1560 CT=9:CN=2:SR=LR:GOSUB310
+1570 PRINT"Sie betraegt ";SR$;" DM."
+1580 SR=ZG:CT=9:CN=2:GOSUB310
+1590 PRINT:PRINT"Sie zahlten neben der eigentlichen"
+1600 PRINT"Kreditsumme noch ";SR$;" DM Zinsen."
+1610 GOSUB210:GOTO950
+1620 REM ---ZINSEN VERRECHNEN---
+1630 PRINT:PRINT:PRINT:PRINT
+1640 TR=INT((KS/LZ)+0.9)
+1650 ZI=INT(((KS/2*ZS*0.01)/12)+0.9)
+1660 RA=TR+ZI
+1670 PRINT"Welche monatliche Rate wollen Sie"
+1680 INPUT"zahlen (RETURN = Computervorschlag) ";RW
+1690 IFRW>=RA THENRA=RW:GOTO1810
+1700 IFRW=0 THEN1730
+1710 PRINT:PRINT"Diese Rate ist zu klein!"
+1720 PRINT"Sie deckt nicht einmal die Zinsen!"
+1730 PRINT:PRINT"Mein Vorschlag:";RA;"DM"
+1740 PRINT:PRINT"Einverstanden? (J/N)";
+1750 GOSUB210
+1760 IFIN=74 THEN1810
+1770 IFIN<>78 THEN1750
+1780 PRINT"Dann empfehle ich Ihnen ein anderes"
+1790 PRINT"Kreditinstitut oder eine geringere"
+1800 PRINT"Kreditsumme.":GOSUB210:GOTO950
+1810 PRINT:PRINT:PRINT
+1820 PRINT"Jahr/Monat    Kreditsaldo (DM)":PRINT
+1830 MO=1:JA=1
+1840 KS=KS-RA+(KS*ZS*0.01/12)
+1850 CT=11:CN=2:SR=KS:GOSUB310:KS$=SR$
+1860 CT=3:CN=0:SR=MO:GOSUB310:MO$=SR$
+1870 CT=3:CN=0:SR=JA:GOSUB310:JA$=SR$
+1880 PRINTJA$;" /";MO$,KS$
+1890 MO=MO+1:IFMO>12 THENPRINT:MO=1:JA=JA+1:GOSUB210
+1900 IFKS-RA>0 THEN1840
+1910 PRINT:PRINT"FERTIG!"
+1920 PRINT:PRINT"Die letzte Rate ist etwas geringer!"
+1930 SR=KS+KS*0.01/12:CT=7:CN=2:GOSUB310
+1940 PRINT"Sie betraegt ";SR$;" DM":PRINT
+1950 PRINT"Nach ";JA-1;" Jahr(en) und ";MO;" Monat(en)"
+1960 PRINT"ist der Kredit zurueckgezahlt."
+1970 PRINT:GOSUB210:GOTO950
+32000 REM ***************************
+32010 REM *                         *
+32020 REM *   KREDITBERECHNUNGEN    *
+32030 REM *                         *
+32040 REM * Fakultativer Kurs       *
+32050 REM *    INFORMATIK           *
+32060 REM *                         *
+32070 REM * POS "Ernst Rietschel"   *
+32080 REM * O-8514 Pulsnitz         *
+32090 REM *                         *
+32100 REM * 29.11.90        KC87    *
+32110 REM *                         *
+32120 REM ***************************
+32130 REM
+32140 REM Erstausstrahlung: Deutschlandsender Kultur
+32150 REM-spezial 910109

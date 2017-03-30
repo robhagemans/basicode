@@ -1,0 +1,258 @@
+1000 A=1000:GOTO20:REM * SEX-QUOTIENT *
+1010 VT=VE:HT=HO:GOSUB100
+1020 DIMB(25),A(20,26),E(10):F=1
+1030 RESTORE:FORI=1 TO25:READB(I):NEXTI
+1040 FORI=1 TOHT:PRINT"-";:NEXTI
+1050 FORI=1 TO18:READA$:PRINTA$:NEXTI
+1060 FORI=1 TOHT:PRINT"-";:NEXTI
+1070 PRINT:PRINT
+1080 PRINT" Anzahl der Kandidaten:";
+1090 PRINT:PRINT
+1100 FORI=1 TOHT:PRINT"-";:NEXTI
+1110 GOSUB120:VE=VE-2:HO=23:GOSUB110
+1120 GOSUB210:IF(IN<49)OR(IN>57) THEN1120
+1130 N=IN-48:GOSUB100
+1140 REM *** FRAGEN ***
+1150 FORI=1 TOHT-1:VE=1:HO=I:GOSUB110
+1160 PRINT"*";:VE=VT:GOSUB110:PRINT"*";
+1170 VE=VT-4:GOSUB110:PRINT"*";
+1180 NEXTI
+1190 FORI=2 TOVT-1:HO=1:VE=I:GOSUB110
+1200 PRINT"*";:HO=HT-1:GOSUB110:PRINT"*";:NEXTI
+1210 FORI=1 TOVT-4:HO=HT-10:VE=I:GOSUB110
+1220 PRINT"*";:NEXTI
+1230 FORHO=3 TOHT-12:VE=3:GOSUB110
+1240 PRINT"-";:VE=VT-6:GOSUB110:PRINT"-";
+1250 NEXTHO
+1260 FORI=3 TOVT-6:HO=3:VE=I:GOSUB110
+1270 PRINT"I";:HO=HT-12:GOSUB110
+1280 PRINT"I";:NEXTI
+1290 FORI=3 TO18:READA$:HO=HT-8
+1300 VE=I:GOSUB110:PRINTA$;:NEXTI
+1310 REM -- FRAGEN LESEN ---
+1320 I=1:READA$
+1330 IFA$="g" THENX=0:GOTO1370
+1340 X=X+1
+1350 HO=4:VE=X+4:GOSUB110:PRINTA$
+1360 GOTO1320
+1370 HO=6:VE=VT-2:GOSUB110
+1380 PRINT"Kandidat ";I;" : ";
+1390 GOSUB210
+1400 IFF<>25 THEN1430
+1410 IFIN$>"3" THENA(I,F)=1
+1420 A(I,F)=0:GOTO1450
+1430 IF(IN<>74)AND(IN<>78) THEN1390
+1440 IFIN=74 THENA(I,F)=1
+1450 I=I+1:IFI<=N THEN1370
+1460 F=F+1
+1470 FORVE=5 TOVT-8:HO=4:GOSUB110
+1480 FORH=3 TOHT-14:PRINT" ";
+1490 NEXTH
+1500 NEXTVE
+1510 IFF<=25 THEN1320
+1520 REM *** AUSWERTUNG ***
+1530 FORI=1 TON
+1540 FORF=1 TO25
+1550 IFA(I,F)=B(F) THENE(I)=E(I)+1
+1560 NEXTF:NEXTI
+1570 FORI=1 TON:GOSUB100
+1580 PRINT:PRINT"        ERGEBNIS DES TESTS"
+1590 PRINT:PRINT"    Kandidat ";I:PRINT
+1600 IFE(I)>=20 THEN GOSUB2300:GOTO1670
+1610 IFE(I)>=15 THEN GOSUB2190:GOTO1670
+1620 IFE(I)>=10 THEN GOSUB2090:GOTO1670
+1630 IFE(I)>=8 THEN GOSUB2010:GOTO1670
+1640 IFE(I)>=6 THEN GOSUB1890:GOTO1670
+1650 IFE(I)>=3 THEN GOSUB1800:GOTO1670
+1660 GOSUB1710
+1670 GOSUB210:NEXTI
+1680 PRINT"Noch einmal? (J/N)":GOSUB210
+1690 IFIN=74 THEN1000
+1700 GOTO950
+1710 PRINT"    Kaelter als Sie kann man nicht"
+1720 PRINT"    sein. In Ihrer Naehe gefriert"
+1730 PRINT"    jede lebende Hand ein. Fuer Sie"
+1740 PRINT"    ist SEX nichts anderes als eine"
+1750 PRINT"    Frage des Hormonspiegels, der"
+1760 PRINT"    kalt gewahrt werden muss wie"
+1770 PRINT"    ein Auto. Nehmen Sie schleu-"
+1780 PRINT"    nigst Nachhilfestunden in"
+1790 PRINT"    Zaertlichkeit !":RETURN
+1800 PRINT"    Warum macht Ihnen SEX nur so"
+1810 PRINT"    wenig Freude? Sie sind wie ein"
+1820 PRINT"    unterentwickeltes Land. Sie be-"
+1830 PRINT"    sitzen helle Faehigkeiten, aber"
+1840 PRINT"    sie sind alle noch veborgen und"
+1850 PRINT"    muessen erst mal gefordert wer-"
+1860 PRINT"    den. SEX ist keine verhasste"
+1870 PRINT"    Pflichtuebung, sondern lust-"
+1880 PRINT"    voll und lebensfreundlich.":RETURN
+1890 PRINT"    Sie sind ein wenig verklemmt"
+1900 PRINT"    und ein wenig phantasielos."
+1910 PRINT"    Aendern Sie das schnellstens!"
+1920 PRINT"    Machen Sie ruhig einmal Licht,"
+1930 PRINT"    wenn Sie den Koerper des Part-"
+1940 PRINT"    ners im Arm halten. Probieren Sie"
+1950 PRINT"    auch mal eine neue Stellung!"
+1960 PRINT"    Liebe ist doch nichts Verbote-"
+1970 PRINT"    nes, was man heimlich und mit"
+1980 PRINT"    schlechtem Gewissen tut. Liebe"
+1990 PRINT"    ist etwas, was man immer neu"
+2000 PRINT"    und reizvoll beginnen muss.":RETURN
+2010 PRINT"    Sie duerfen sich im Bett oder"
+2020 PRINT"    auf der Wiese oder wo sie sich"
+2030 PRINT"    sonst noch befinden, als guter"
+2040 PRINT"    Durchschnitt betrachten. Ihr"
+2050 PRINT"    Partner wird zwar von Ihnen"
+2060 PRINT"    keine himmelsstuermenden Ge-"
+2070 PRINT"    raeusche erwarten duefen, aber"
+2080 PRINT"    doch solides Liebeswerk.":RETURN
+2090 PRINT"    Sie sind, wenn es um SEX geht,"
+2100 PRINT"    ganz bei der Sache! Sie haben"
+2110 PRINT"    keine Hemmungen und verstehen"
+2120 PRINT"    etwas von der Liebe. Ihr Partner"
+2130 PRINT"    wird Ihnen oefters gestehen,"
+2140 PRINT"    dass er Sie gut findet. Manch-"
+2150 PRINT"    mal fehlt es Ihnen an Geduld"
+2160 PRINT"    und Zaertlichkeit, aber im "
+2170 PRINT"    Grossen und Ganzen gehoeren Sie"
+2180 PRINT"    zu den guten Liebhabern.":RETURN
+2190 PRINT"    Bravo! Ihr Partner ist zu be-"
+2200 PRINT"    neiden. Sie besitzen alle"
+2210 PRINT"    Faehigkeiten, einen Menschen"
+2220 PRINT"    gluecklich zu machen. Sie ver-"
+2230 PRINT"    passen so gut wie keine Gele-"
+2240 PRINT"    genheit, den gemeinsamen Hoehe-"
+2250 PRINT"    punkt und jedes sexuelle"
+2260 PRINT"    Erlebnis zu einer wunderschoe-"
+2270 PRINT"    nen Episode zu gestalten. Es"
+2280 PRINT"    ist wirklich eine Lust, mit"
+2290 PRINT"    Ihnen Lust zu empfinden.":RETURN
+2300 PRINT"    Sie sind eine Art EINSTEIN in"
+2310 PRINT"    der Liebe, ein Genie im Bett,"
+2320 PRINT"    ein Partner, auf den man, des"
+2330 PRINT"    Eigenen unbefriedigt, mit Sehn-"
+2340 PRINT"    suechtigkeit wartet. Wer Sie"
+2350 PRINT"    im Bett erlebt, wird nie wieder"
+2360 PRINT"    etwas anderes wollen, als von"
+2370 PRINT"    Ihnen geliebt zu werden.":RETURN
+25000 DATA0,1,0,0,1,1,1,0,1,0,0,1,1,1,0,0,1,1,1,0,1,1,1,0,1
+25010 DATA" Jeder weiss, dass man die Intelligenz"
+25020 DATA" des Menschen messen kann. Das Mass"
+25030 DATA" dafuer heisst:","    INTELLIGENZ-QUOTIENT"
+25040 DATA" Britische Wissenschaftler haben"
+25050 DATA" eine Testmethode entwickelt, mit der"
+25060 DATA" man seinen Sex-Quotienten messen kann."
+25070 DATA" Das heisst,jetzt ist endlich messbar,"
+25080 DATA" ob man im Bett zu den grossen Assen"
+25090 DATA" gehoert, guter Durchschnitt ist oder"
+25100 DATA" ein Eisblock, den  auch die heis-"
+25110 DATA" seste Liebesnacht nicht auftauen kann."
+25120 DATA" Je groesser der Sex-Quotient"
+25130 DATA" bei Ihnen ist, desto besser"
+25140 DATA" sind Sie. Also testen Sie Ihren"
+25150 DATA"     SEX-QUOTIENTEN"
+25160 DATA" indem Sie immer nur mit"
+25170 DATA" J(a) oder N(ein) antworten."
+25180 DATA" ss","s","sss -","  s","ss  Q","    u"
+25190 DATA"eee o","e   t","ee  i","e   e","eee n"
+25200 DATA"    t","x x"," x  -"," x","x x"
+25210 DATA"1.Glauben Sie, das man"
+25220 DATA"vom anderen Geschlecht"
+25230 DATA"mehr respektiert wird,"
+25240 DATA"wenn man zurueckhal-"
+25250 DATA"tend ist ?","g"
+25260 DATA"2.Ist SEX auch ohne"
+25270 DATA" ","      Liebe"," "
+25280 DATA" zufriedenstellend ?","g"
+25290 DATA"3.Ist Jungfraulichkeit"
+25300 DATA" der teuerste Besitz"
+25310 DATA" eines Maedchens ?","g"
+25320 DATA"4.Wuerde es Ihnen"
+25330 DATA" etwas ausmachen einen"
+25340 DATA" Partner zu haben,der"
+25350 DATA" nicht unberuehrt ist?","g"
+25360 DATA"5.Sind Sie sexuell"
+25370 DATA"  leicht erregbar ?","g"
+25380 DATA"6.Denken Sie jeden"
+25390 DATA" Tag an SEX ?","g"
+25400 DATA"7.Sind Sie der Meinung"
+25410 DATA" das man vor der Ehe"
+25420 DATA" sexuelle Erfahrungen"
+25430 DATA" sammeln sollte ?","g"
+25440 DATA"8.Sind Sie gegen"
+25450 DATA" intime Beziehungen"
+25460 DATA" vor der Ehe ?","g"
+25470 DATA"9.Sehen Sie sich"
+25480 DATA" gerne SEX-Fotos an?","g"
+25490 DATA"10.Sind Sie dem an-"
+25500 DATA" derem Geschlecht"
+25510 DATA" gegenueber nervoes ?","g"
+25520 DATA"11.Sind Sie gehemmt,"
+25530 DATA" wenn sich ein Ge-"
+25540 DATA" spraech um SEX dreht?","g"
+25550 DATA"12.Sollten Frauen"
+25560 DATA" manchmal agressiver"
+25570 DATA" sein ?","g"
+25580 DATA"13.Suchen Sie Ihr Ver-"
+25590 DATA" gnuegen wo Sie es"
+25600 DATA" gerade finden ?","g"
+25610 DATA"14.Sollte ein Mensch"
+25620 DATA" behutsam die Liebe"
+25630 DATA" erlernen ?","g"
+25640 DATA"15.Werden im Fernsehen"
+25650 DATA" zuviel erotische"
+25660 DATA" Filme gezeigt ?","g"
+25670 DATA"16.Sollte es bei"
+25680 DATA" ","    SEX-Filmen"," "
+25690 DATA" eine Zensur geben ?","g"
+25700 DATA"17.Ist voellige Treue"
+25710 DATA" in der Ehe genauso"
+25720 DATA" schlecht, wie das"
+25730 DATA"  Zoelibat ?"," "
+25740 DATA" Zoelibat=Ehelosigkeit"
+25750 DATA" bei roem.-kath."
+25760 DATA" Geistlichen ","g"
+25770 DATA"18.Sind koerperliche"
+25780 DATA"Beziehungen der wich-"
+25790 DATA"tigste Teil einer Ehe?","g"
+25800 DATA"19.Ist es Ihnen egal,"
+25810 DATA" ob der Partner Ihnen"
+25820 DATA" treu ist Hauptsache,"
+25830 DATA" er kommt zurueck ?","g"
+25840 DATA"20.Ist Ihnen der Ge-"
+25850 DATA" danke an Partner-"
+25860 DATA" tausch unangenehm ?","g"
+25870 DATA"21.Moechten Sie fuer"
+25880 DATA"jede Nacht einen"
+25890 DATA"anderen Partner haben?","g"
+25900 DATA"22.Macht Ihnen SEX mit "
+25910 DATA" einem anderen Partner"
+25920 DATA" am meissten Spass ?","g"
+25930 DATA"23.Koennen Sie nur"
+25940 DATA" nachts lieben ?","g"
+25950 DATA"24.Sind Sie fuer einige"
+25960 DATA" Spielarten der Liebe"
+25970 DATA" zu haben ?","g"
+25980 DATA"25.Wie oft haetten Sie"
+25990 DATA" SEX am liebsten ?"
+26000 DATA" 1. einmal im Monat"
+26010 DATA" 2. einmal in der Woche"
+26020 DATA" 3. 2 mal pro Woche"
+26030 DATA" 4. bis 5 mal pro Woche"
+26040 DATA" 5. taeglich"
+26050 DATA" 6. mehrmals taeglich","g"
+30000 REM -----------------------------
+30010 REM -----------------------------
+30020 REM - DAS PROGRAMM WURDE VON    -
+30030 REM - EINEM KC/85 IN BASICODE   -
+30040 REM - UMGESCHRIEBEN.            -
+32000 REM -----------------------------
+32010 REM - STEFFEN KRAUSE            -
+32020 REM - HANS BEIMLER STR.8        -
+32030 REM - STORKOW                   -
+32040 REM - 1233                      -
+32050 REM -----------------------------
+32060 REM
+32070 REM Erstausstrahlung: Radio DDR
+32080 REM-spezial 900426

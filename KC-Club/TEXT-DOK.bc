@@ -1,0 +1,91 @@
+1000 A=500:GOTO20:REM *** TEXT-DOKUMENTATION ***
+1010 FR=0:GOSUB280
+1020 FORQA=0 TO4
+1030 READA$:IFA$<>"#" THENPRINTA$:GOTO1030
+1040 GOSUB1070
+1050 NEXTQA
+1060 GOTO950
+1070 SR$="Weiter mit <TASTE>"
+1080 HO=5:VE=22:GOSUB110:GOSUB150
+1090 GOSUB210:GOSUB100
+1100 RETURN
+25000 DATA"   Texteditor fuer BAC854"
+25010 DATA" "
+25020 DATA" Das Programm Text besteht aus zwei"
+25030 DATA" Teilen,einem Lader und dem eigent-"
+25040 DATA" lichen Programm.Der Lader enthaelt"
+25050 DATA" drei Routinen."
+25060 DATA" "
+25070 DATA" lOAD beinhaltet die Moeglichkeit,"
+25080 DATA"      das eigentliche Textprogramm"
+25090 DATA"      nachzuladen,falls der Auto-"
+25100 DATA"      start fehlschlug."
+25110 DATA"      Der Ladevorgang des zweiten"
+25120 DATA"      Teils ist nicht auf dem"
+25130 DATA"      Schirm beobachtbar,da er in"
+25140 DATA"      das Bild1 geladen wird."
+25150 DATA" "
+25160 DATA" sAVE gestattet das Anfertigen"
+25170 DATA"      einer Sicherheitskopie."
+25180 DATA"#"
+25190 DATA" TEXT  rettet den Bereich ab "
+25200 DATA"       0BA00H in das Bild1,kopiert"
+25210 DATA"       den Editor zurueck und star-"
+25220 DATA"       tet das Programm.Nach Abruch"
+25230 DATA"       durch BRK wird der alte "
+25240 DATA"       Zustand wieder hergestellt."
+25250 DATA"#"
+25260 DATA" Der Texteditor bietet folgende"
+25270 DATA" Moeglichkeiten :"
+25280 DATA" "
+25290 DATA" Die ENTER-Taste listet 5 Zeilen."
+25300 DATA" "
+25310 DATA" Mit den Cursortasten hoch und"
+25320 DATA" runter kann man zeilenweise springen."
+25330 DATA" "
+25340 DATA" Mit den Cursortasten links und"
+25350 DATA" rechts aendert man seine Position"
+25360 DATA" in einer Programmzeile."
+25370 DATA" "
+25380 DATA" Mit den Tasten INS und DEL koennen"
+25390 DATA" Zeichen eingefuegt bzw. geloescht"
+25400 DATA" werden.Hier kann es beim Zeilen-"
+25410 DATA" ueberschreiten zu Diskrepanzen auf"
+25420 DATA" dem Bildschirm kommen.Durch die"
+25430 DATA" Tasten Cursor hoch bzw. runter"
+25440 DATA" wird das Bild aber schnell repa-"
+25450 DATA" riert."
+25460 DATA"#"
+25470 DATA" Beginnt man auf einer leeren Bild-"
+25480 DATA" schirmzeile mit einer Zeilennummer,"
+25490 DATA" so wird die neu erzeugte Programm-"
+25500 DATA" zeile in den Quelltext richtig"
+25510 DATA" eingeordnet,ohne aber die alte"
+25520 DATA" Zeile zu ueberschreiben."
+25530 DATA" "
+25540 DATA" Mit BRK erfolgt die Rueckkehr ins"
+25550 DATA" CAOS-Menue."
+25560 DATA"#"
+25570 DATA" Die Idee zu diesem Programm kam"
+25580 DATA" mir,weil einige Lesefehler,vor allem"
+25590 DATA" bei Zeilennummern,nur umstaendlich"
+25600 DATA" zu verbessern waren.Mein Bascoder"
+25610 DATA" (Schallplattenversion) sieht diese"
+25620 DATA" Moeglichkeiten noch nicht vor."
+25630 DATA" Guenstig fuer einen allgemeinen"
+25640 DATA" Ueberblick ist sicher auch die"
+25650 DATA" Moeglichkeit,den Text in beiden"
+25660 DATA" Richtungen zu scrollen.Ich hoffe,"
+25670 DATA" dass dieses Programm auch anderen"
+25680 DATA" den Nutzen bringt wie mir."
+25690 DATA"                            Maik"
+25700 DATA"#"
+32000 REM**************************
+32010 REM*    Maik Ludwig         *
+32020 REM*    Klessiner Str.2     *
+32030 REM*    Podelzig            *
+32040 REM*    O-1211              *
+32050 REM**************************
+32060 REM
+32070 REM DS-Kultur
+32080 REM-spezial 911211

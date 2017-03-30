@@ -1,0 +1,188 @@
+1000 A=500:GOTO20:REM Pascal-Literatur-Tips
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1410:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Ausdruck ueber"
+1060 PRINT:PRINT"   1  den Bildschirm,"
+1070 PRINT"   2  den Drucker"
+1080 PRINT:PRINT"Welche Nummer ?";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1220
+1100 PRINT:PRINT"Wieviel Leerzeichen"
+1110 INPUT"am Zeilenanfang    ";HL
+1120 PRINT:PRINT"Wieviel Text-Zeichen"
+1130 INPUT"auf jeder Zeile    ";I:HR=HL+I-1
+1140 PRINT:PRINT"Wieviel Text-Zeilen"
+1150 INPUT"auf jeder Seite    ";VR:VR=VR-3
+1160 PRINT"(E) Endlospapier oder  "
+1170 PRINT"(L) Lose Blaetter (E/L) ";
+1180 GOSUB210:IFIN=76 THENVL=-1:GOTO1220
+1190 IFIN<>69 THEN GOSUB250:GOTO1160
+1200 PRINT:PRINT"Wieviel Leerzeilen"
+1210 INPUT"am Seitenende      ";VL:VR=VR+VL
+1220 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1230 GOSUB1380:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1360
+1240 IFLEN(R$)>HR-HL THEN GOSUB1820
+1250 GOSUB1440:IFR$<>"" THENR$=R$+" "
+1260 R$=R$+D$:GOTO1240
+1270 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1290
+1280 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1290 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1300 IFSC=1 THEN1380
+1310 IFVL>=0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOTO1350
+1320 PRINT"Neues Blatt in Drucker einlegen"
+1330 PRINT"druecke dann       RETURN/ENTER"
+1340 GOSUB210:IFIN<>13 THEN1340
+1350 AL=VL
+1360 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1270
+1370 SR$="":GOSUB1270:AL=VL:RETURN
+1380 HO=3:VE=VT:GOSUB110
+1390 SR$="Weiter: druecke <RETURN/ENTER>":GOSUB150
+1400 GOSUB210:IFIN<>13 THEN1400
+1410 GOSUB100:AL=VL:SR$=T$
+1420 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1430 PRINT:PRINT:RETURN
+1440 READD$
+1450 IFD$="" THEN1440
+1460 IFLEFT$(D$,1)="." THEN1530
+1470 IFLEFT$(D$,1)<>">" THEN1490
+1480 D$=LEFT$(S$,23-LEN(R$))+MID$(D$,2):RETURN
+1490 IFLEFT$(D$,1)<>"!" THENRETURN
+1500 IFD$="!" THEND$="":GOTO1520
+1510 D$=MID$(D$,2)
+1520 GOSUB1760:GOTO1450
+1530 IFD$<>".E" THEN1580
+1540 J=1:GOSUB1760:T$="E N D E"
+1550 SR$="":GOSUB1270:GOSUB1270:SR$=T$:GOSUB1270:T$=""
+1560 SR$="":GOSUB1270:IFAL<>VL THEN1560
+1570 GOTO950
+1580 DD$=MID$(D$,2,1):D$=MID$(D$,3)
+1590 IFDD$<>"R" THEN1640
+1600 IFSC=2 THENRETURN
+1610 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1270:R$=""
+1620 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1630 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1440
+1640 IFDD$<>"M" THEN1670
+1650 I=VAL(D$):MM$="":IFI+HL=0 THEN1440
+1660 MM$=LEFT$(S$,I+HL):GOTO1440
+1670 IFDD$="P" THENJ=VAL(D$):GOSUB1760:GOSUB1780:GOTO1440
+1680 IFDD$="T" THENT$=D$:J=10:GOSUB1760:GOSUB1780:GOTO1600
+1690 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1440
+1700 IFDD$<>"F" THEN1730
+1710 J=VAL(D$):GOSUB1760
+1720 J=J-1:IFJ>-1 THENSR$="":GOSUB1270:GOTO1720
+1730 IFDD$<>"C" THEN1750
+1740 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1270
+1750 GOTO1440
+1760 GOSUB1820:SR$=R$:GOSUB1270:R$="":J=J-1
+1770 RETURN
+1780 IF(SC=1)OR(AL+J>VR)THEN1800
+1790 SR$="":GOSUB1270:GOSUB1270:RETURN
+1800 IFAL<>VL THENSR$="":GOSUB1270:GOTO1800
+1810 RETURN
+1820 K=HR-HL+1-LEN(M$)
+1830 IFLEN(R$)<=K THENRETURN
+1840 IFMID$(R$,K,1)=" " THEN1870
+1850 K=K-1:IFK>0 THEN1840
+1860 SR$="":GOTO1880
+1870 SR$=LEFT$(R$,K-1):R$=MID$(R$,K+1)
+1880 GOSUB1270:GOTO1820
+1890 REM
+1900 REM UEBERSETZTE VERSION
+1910 REM
+1920 REM COMPUTER-BULLETIN NO.40 (11/89)
+1930 REM STICHTING BASICODE, EINDHOVEN
+1940 REM
+25000 DATA"PASCAL-Literatur"
+25010 DATA"!1. Fuer unser KC-PASCAL gibt es leider wenig"
+25020 DATA"Literatur. Wir moechten hier auf den Beitrag von"
+25030 DATA"LENNARTZ mit dem Titel 'PASCAL fuer"
+25040 DATA"Kleincomputer' verweisen, der in der Zeitschrift"
+25050 DATA"Mikroprozessortechnik (MP) Heft 4/90 erschienen"
+25060 DATA"ist. Da das KC-PASCAL aus dem PASCAL fuer den"
+25070 DATA"SPECTRUM abgeleitet wurde, wollen wir hier noch"
+25080 DATA"das folgende Buch nennen:"
+25090 DATA"!!Dupont,R;u.a.:Pascal auf dem Spectrum."
+25100 DATA"!Duesseldorf, SYBEX-Verlag,1985."
+25110 DATA"!!Es wird aber schwer sein, dieses Buch"
+25120 DATA"auszuleihen, denn die Bibliotheken der"
+25130 DATA"ostdeutschen Laender haben es wohl kaum."
+25140 DATA".P0"
+25150 DATA"2. Fuer KC-PASCAL-Freunde haben wir uns eine"
+25160 DATA"besondere Hilfeleistung ausgedacht. Der"
+25170 DATA"Deutschlandsender plant gemeinsam mit der"
+25180 DATA"Zeitschrift 'LOG IN', die im Oldenburg-Verlag"
+25190 DATA"erscheint, die Herausgabe eines ueberarbeiteten"
+25200 DATA"Manuskripts unseres Rundfunkkurses plus Kassette"
+25210 DATA"mit Compiler und Programmen. Wir haben dabei"
+25220 DATA"auch an Lehrer und natuerlich Schueler gedacht."
+25230 DATA"Interessenten erhalten die Zeitschrift und die"
+25240 DATA"Kassette zu einem Subskriptionspreis von 15,-DM."
+25250 DATA"Ihre Bestellung (ab sofort moeglich) richten"
+25260 DATA"Sie bitte an folgende Adresse:"
+25270 DATA".P0"
+25280 DATA"Herrn Juergen Mueller"
+25290 DATA"!Redaktion der Zeitschrift LOG IN"
+25300 DATA"!Kopenhagener Str. 41"
+25310 DATA"!O - 1058 Berlin"
+25320 DATA"!!Die Bezahlung erfolgt mittels Rechnung"
+25330 DATA".Rerst",", wenn Sie die Lieferung erhalten."
+25340 DATA"!Geplanter Fertigstellungstermin ist Mitte"
+25350 DATA"Januar 1991."
+25360 DATA"!(Sonderheftpreis ohne Kassette: 10,- DM."
+25370 DATA"Versandkosten sind in beiden Preisen"
+25380 DATA"inbegriffen !).",".P0"
+25390 DATA"3. Wer nun vom KC-PASCAL auf TURBO-PASCAL fuer"
+25400 DATA"8- oder 16 bit Rechner umsteigen moechte, sieht"
+25410 DATA"sich einer Fuelle guter, aber auch teurer"
+25420 DATA"Literatur gegenueber. Wir empfehlen deshalb"
+25430 DATA"zunaechst Literatur, die auch in den"
+25440 DATA"Bibliotheken der ostdt. Laender vorhanden ist:"
+25450 DATA".P0"
+25460 DATA"-PASCAL-Serie von C.Kofer in den Heften 9/87"
+25470 DATA"bis 11/88 der Zeitschrift MP."
+25480 DATA"!!-Serie TURBO-PASCAL-Praxis von M. Zander in"
+25490 DATA"den Heften 6,8,10,12/89 und 3/90 der MP."
+25500 DATA"!!-Fahr,K.: Die Leistungsfaehigkeit von TPASCAL."
+25510 DATA"EDV-Aspekte, Heft 4/1988."
+25520 DATA"!!-Goldammer,G.: Pascal fuer die Anwendung in"
+25530 DATA"der Wirtschaft. Verlag die Wirtschaft,1987."
+25540 DATA"!!-Paulin,G.: TURBO-PASCAL. Verlag Technik"
+25550 DATA"GmbH 1988."
+25560 DATA"!!-Paulin,G.;Schiemangk,H.: Programmieren"
+25570 DATA"mit PASCAL. Akademie-Verlag, 1989."
+25580 DATA".P0"
+25590 DATA"4. Wer sich ein neues Buch ueber TURBO-PASCAL"
+25600 DATA"Version 5.0 fuer 16 bit Rechner zulegen moechte,"
+25610 DATA"wird natuerlich nach etwas Preiswertem fragen."
+25620 DATA"Hier unsere Empfehlungen:"
+25630 DATA".P0"
+25640 DATA"!!-Kaier,E.: TURBO-PASCAL griffbereit."
+25650 DATA"Vieweg-Verlag,1989 (16,80 DM)"
+25660 DATA"!!-Beisecker,M.-A.;Brickwede,P.: TURBO-PASCAL"
+25670 DATA"5.5, QuickStart-Reihe des SYBEX-Verlages,1989"
+25680 DATA" (19,80 DM)"
+25690 DATA"!!-Fuessinger,M.: Programmierkurs TURBO-"
+25700 DATA"PASCAL 5.0; SYBEX-Verlag, 1989 (39,- DM)"
+25710 DATA"!!-Rollke,K.-H.: Grundkurs in TURBO-PASCAL."
+25720 DATA" Band 1; SYBEX-Verlag, 1987 (29,- DM)"
+25730 DATA"!!-Geise,T.: Programmieren mit TURBO-PASCAL 5.5"
+25740 DATA"Reihe CHIP-Wissen, Vogel-Verlag, 1989 (35,- DM)"
+25750 DATA"!!-Steiner,j.: Schnelluebersicht TURBO-"
+25760 DATA"PASCAL 5.5; Markt&Technik Verlag, 1990 (39,- DM)"
+25770 DATA".P0"
+25780 DATA"Das ist natuerlich nur eine kleine Auswahl"
+25790 DATA"preisguenstiger Buecher. Wir hoffen, Ihnen damit"
+25800 DATA"ein wenig weitergeholfen zu haben.",".E"
+30000 REM
+30010 REM Literatur-Tips fuer PASCAL
+30020 REM
+32000 REM ---------------------------------------
+32010 REM PASCAL-Literatur zusammengestellt von:
+32020 REM Dr.Hannes Gutzer
+32030 REM Am Suedpark 581/6
+32040 REM O-4090 HALLE-NEUSTADT
+32050 REM ---------------------------------------
+32060 REM
+32070 REM Erstausstrahlung: Deutschlandsender Kultur
+32080 REM Computermagazin 901218

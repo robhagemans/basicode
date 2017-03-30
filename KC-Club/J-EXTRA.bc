@@ -1,0 +1,188 @@
+1000 A=500:GOTO20:REM # BASICODE-3 JOURNAL-EXTRA #
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1340:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Ausdruck ueber"
+1060 PRINT:PRINT"   - 1  den Bildschirm,"
+1070 PRINT"   - 2  den Drucker."
+1080 PRINT:PRINT"Welche Nummer ?";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1180
+1100 PRINT:PRINT"Wieviel Leerzeichen  "
+1110 PRINT"am Zeilenanfang      ";:INPUTHL
+1120 PRINT:PRINT"Wieviel Text-Zeichen "
+1130 PRINT"auf jeder Zeile      ";:INPUTI:HR=HL+I-1
+1140 PRINT:PRINT"Wieviel Leer-Zeilen  "
+1150 PRINT"am Seitenende        ";:INPUTVL
+1160 PRINT:PRINT"Wieviel Text-Zeilen  "
+1170 PRINT"auf jeder Seite      ";:INPUTVR:VR=VR+VL-3
+1180 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1190 GOSUB1310:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1290
+1200 IFLEN(R$)>HR-HL THEN GOSUB1730
+1210 GOSUB1370:IFR$<>"" THENR$=R$+" "
+1220 R$=R$+D$:GOTO1200
+1230 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1250
+1240 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1250 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1260 IFSC=1 THEN1310
+1270 IFVL>0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOSUB210
+1280 AL=VL
+1290 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1230
+1300 SR$="":GOSUB1230:AL=VL:RETURN
+1310 HO=0:VE=VT:GOSUB110
+1320 SR$="WEITER: druecke <RETURN/ENTER>":GOSUB150
+1330 GOSUB210:IFIN<>13 THEN1330
+1340 GOSUB100:AL=VL:SR$=T$
+1350 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1360 PRINT:PRINT:RETURN
+1370 READD$
+1380 IFD$="" THEN1370
+1390 IFLEFT$(D$,1)="." THEN1440
+1400 IFLEFT$(D$,1)<>"!" THENRETURN
+1410 IFD$="!" THEND$="":GOTO1430
+1420 D$=RIGHT$(D$,LEN(D$)-1)
+1430 GOSUB1670:GOTO1380
+1440 IFD$<>".E" THEN1490
+1450 J=1:GOSUB1670:T$="E N D E"
+1460 SR$="":GOSUB1230:GOSUB1230:SR$=T$:GOSUB1230:T$=""
+1470 SR$="":GOSUB1230:IFAL<>VL THEN1470
+1480 GOTO950
+1490 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+1500 IFDD$<>"R" THEN1550
+1510 IFSC=2 THENRETURN
+1520 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1230:R$=""
+1530 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1540 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1370
+1550 IFDD$<>"M" THEN1580
+1560 I=VAL(D$):MM$="":IFI+HL=0 THEN1370
+1570 MM$=LEFT$(S$,I+HL):GOTO1370
+1580 IFDD$="P" THENJ=VAL(D$):GOSUB1670:GOSUB1690:GOTO1370
+1590 IFDD$="T" THENT$=D$:J=10:GOSUB1670:GOSUB1690:GOTO1510
+1600 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1370
+1610 IFDD$<>"F" THEN1640
+1620 J=VAL(D$):GOSUB1670
+1630 J=J-1:IFJ>-1 THENSR$="":GOSUB1230:GOTO1630
+1640 IFDD$<>"C" THEN1660
+1650 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1230
+1660 GOTO1370
+1670 GOSUB1730:SR$=R$:GOSUB1230:R$="":J=J-1
+1680 RETURN
+1690 IF(SC=1)OR(AL+J>VR)THEN1710
+1700 SR$="":GOSUB1230:GOSUB1230:RETURN
+1710 IFAL<>VL THENSR$="":GOSUB1230:GOTO1710
+1720 RETURN
+1730 K=HR-HL+1-LEN(M$)
+1740 IFLEN(R$)<=K THENRETURN
+1750 IFMID$(R$,K,1)=" " THEN1780
+1760 K=K-1:IFK>0 THEN1750
+1770 SR$="":GOTO1790
+1780 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+1790 GOSUB1230:GOTO1730
+25000 DATA"Computerlehrgang bei DS-Kultur"
+25010 DATA"Liebe Computerfreunde!"
+25020 DATA"!!Der neue Kurs hat nun angefangen."
+25030 DATA"Vielleicht haben Sie den Auftakt am 24.9. und"
+25040 DATA"die 1. Folge gehoert. Sicher ist vieles noch"
+25050 DATA"nicht so, wie wir es wuenschten. Hier spielt"
+25060 DATA"die Hektik der Zeit keine kleine Rolle. Aber"
+25070 DATA"natuerlich machen wir weiter solange es geht."
+25080 DATA"Da vor wenigen Tagen a l l e Mitarbeiter des"
+25090 DATA"Rundfunks in der Nalepastr. ihre Kuendigung"
+25100 DATA"erhalten haben, kann ich nicht versprechen, dass"
+25110 DATA"es ab 1.1.92 noch ein Computermagazin oder"
+25120 DATA"REM-spezial geben wird. Doch gerade deshalb"
+25130 DATA"wuensche ich Ihnen viel fuer unseren neuen Kurs."
+25140 DATA".P0","!Material zum Nulltarif - Machen Sie mit"
+25150 DATA"!!   Was wir nicht koennen:"
+25160 DATA"!per Radio vermitteln, am Personalcomputer die"
+25170 DATA"elektronische Textverarbeitung zu erlernen."
+25180 DATA"!!   Was wir wollen:"
+25190 DATA"!per Radio versuchen, fuer kuenftige oder"
+25200 DATA"laufende DV-Kurse zusaetzliches Wissen zu"
+25210 DATA"vermitteln."
+25220 DATA"!!   Was wir koennen:"
+25230 DATA"!per Radio Hoerbares und per Post"
+25240 DATA"Gedrucktes bereitstellen.",".P0"
+25250 DATA"Immer mehr Menschen sind damit konfrontiert,"
+25260 DATA"sich mit Computern zu beschaeftigen."
+25270 DATA"Umschulungskurse, Weiterbildung aber auch die"
+25280 DATA"private Nutzung stehen auf der Tagesordnung."
+25290 DATA"Elektronische Text- und Datenverarbeitung sowie"
+25300 DATA"die Tabellenkalkulation nehmen weit mehr als 90%"
+25310 DATA"der Computertaetigkeit ein. Doch nicht jeder"
+25320 DATA"kommt mit der Methodik seines 'Lehrers' klar,"
+25330 DATA"fuer manchen ist die Entfernung zur naechsten"
+25340 DATA"Weiterbildungsstaette sehr weit. Und"
+25350 DATA"schliesslich-leider sehr bedauerlich- sitzen"
+25360 DATA"zahlreiche Arbeitslose tatenlos vor dem"
+25370 DATA"Fernsehgeraet. Der Deutschlandsender Kultur"
+25380 DATA"bietet eine Alternative:"
+25390 DATA".P0",".REin Computergrundkurs am Radio !"
+25400 DATA"!!Als Einstieg sind 10 Folgen zur elektronischen"
+25410 DATA"Textverarbeitung geplant. Die Sendungen laufen"
+25420 DATA"woechentlich jeweils donnerstags von 15.o5-15.2o"
+25430 DATA"Uhr - Start war am 26.9. - und werden zweimal"
+25440 DATA"wiederholt (siehe Sendeschema). Da aber hoeren"
+25450 DATA"allein nicht ausreicht, wird ein erweitertes"
+25460 DATA"Sendemanuskript praktisch kostenlos (ausser"
+25470 DATA"Porto) allen Interessenten zugeschickt. Es kann"
+25480 DATA"nicht nur dem Einsteiger sondern auch dem Profi"
+25490 DATA"nutzen, da es ein umfangreiches Glossarium und"
+25500 DATA"eine neu entwickelte Befehlsuebersicht zum"
+25510 DATA"Textverarbeitungssystem MS-Word 5.0/5.5"
+25520 DATA"enthaelt.     Wichtig:"
+25530 DATA".P0","Wer das Manuskript moechte,"
+25540 DATA"muss einen an sich selbst adressierten und mit"
+25550 DATA"1.80 DM frankierten A5-Umschlag (!) schicken."
+25560 DATA"!   Die Adresse:"
+25570 DATA"!Funkhaus Berlin","!DS-Kultur","!Kennwort:"
+25580 DATA"Computer-Kurs","!O-1160 Berlin"
+25590 DATA"!!Natuerlich erwartet die Redaktion"
+25600 DATA"auch zahlreiche Fragen, die in hot-lines von"
+25610 DATA"Experten beantwortet werden. Eine erste"
+25620 DATA"Moeglichkeit dazu bot der Auftakt zum Kurs im"
+25630 DATA"Computermagazin am 24.9. von 22.15-23.oo Uhr"
+25640 DATA"!(weitere folgen, siehe Sendeschema).",".P0"
+25690 DATA"!!Noch einige Hinweise, die nicht in der Presse"
+25700 DATA"vorab erscheinen:","!Der Kurs bezieht sich auf"
+25710 DATA"die Textverarbeitung am PC. Obwohl als Grundlage"
+25720 DATA"das System WORD 5.0 und 5.5 gewaehlt wurde, sind"
+25730 DATA"die einzelnen Folgen recht allgemein gehalten."
+25740 DATA"Autor des Kurses ist Prof. Voelz, den Sie ja"
+25750 DATA"bereits aus unseren frueheren Kursen kennen."
+25760 DATA".P0","Auch fuer das Computermagazin am 22.10."
+25770 DATA"wollen wir kompetente Experten einladen, die"
+25780 DATA"sicher nicht nur auf Fragen zu unserem Kurs"
+25790 DATA"Antwort geben koennen. Die Thematik der Sendung"
+25800 DATA"koennen S I E mitbestimmen, indem Sie uns Ihre"
+25810 DATA"Fragen schriftlich mitteilen. Zudem hat das fuer"
+25820 DATA"die redaktionelle Vorbereitung eine grosse"
+25830 DATA"Entlastung."
+25840 DATA"!!Wir freuen uns auf Ihr mitmachen."
+25850 DATA"!!  Deutschlandsender Kultur"
+25860 DATA"!     Redaktion Wissenschaft / REM"
+25870 DATA".P0","Sendeschema"
+25880 DATA"!!Erstsendung (Do) 15.05 - 15.20 Uhr"
+25890 DATA"!1.Wiederh.  (Fr)  3.05 -  3.20 Uhr"
+25900 DATA"!2.Wiederh.  (Di) 22.45 - 23.00 Uhr"
+25910 DATA"!!1)  26.9.    27.9.    1.10."
+25920 DATA"!2)  10.10.   11.10.  15.10."
+25930 DATA"!3)  17.10.   18.10.  22.10."
+25940 DATA"!4)  24.10.   25.10.  29.10."
+25950 DATA"!!      ...      ...     ..."
+25960 DATA"!!10)  5.12.    6.12.  10.12."
+25970 DATA"!!(Hot-lines am 24.9., 22.10. u. 19.11."
+25980 DATA"von 22.15-23.00 Uhr)"
+25990 DATA".P10","Das war das","!!"
+26000 DATA".C**************************"
+26010 DATA".C*                        *"
+26020 DATA".C*  BASICODE-3   Journal  *"
+26030 DATA".C*           EXTRA        *"
+26040 DATA".C*     2.Oktober 1991     *"
+26050 DATA".C*                        *"
+26060 DATA".C**************************",".E"
+32000 REM
+32010 REM BASICODE-3 JOURNAL-EXTRA
+32020 REM Informationen zum neuen Kurs Textverarbeitung
+32030 REM Erstausstrahlung:DS-Kultur
+32040 REM-spezial 910918/911002

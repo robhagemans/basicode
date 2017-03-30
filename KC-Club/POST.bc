@@ -1,0 +1,519 @@
+1000 A=200:GOTO20:REM *POSTGEBUEHREN *
+1010 GOSUB100:HO=4:VE=1:SR$="Postgebuehrenverzeichnis"
+1020 DIMA$(5),Z(5),ZZ(5):Y=0:P=0
+1030 GOSUB110:GOSUB150:A$(1)=" -         Inland"
+1040 A$(2)=" -        Ausland":A$(3)=" -  Weitere Infos"
+1050 A$(4)=" - Inlandrechnung"
+1060 A$(5)=" -           ENDE"
+1070 FORSR=1 TO5:GOSUB300:SR$=SR$+A$(SR)
+1080 HO=8:VE=5+(2*SR):GOSUB110:GOSUB150:NEXTSR:GOSUB250
+1090 GOSUB200:SR$=IN$
+1100 IF(SR$="1")OR(SR$="2")OR(SR$="3")OR(SR$="4")THEN1130
+1110 IFSR$="5" THEN950
+1120 GOTO1090
+1130 GOSUB250
+1140 ONVAL(SR$)GOTO1150,1410,1440,1460
+1150 GOSUB100:SR$="Inland":HO=13:VE=1:GOSUB110:GOSUB150
+1160 PRINT:PRINT:PRINTTAB(12);"(B)riefsendung"
+1170 PRINTTAB(12);"(P)aketsendungen"
+1180 PRINTTAB(12);"(W)eitere Leistungen"
+1190 GOSUB200:SR$=IN$:IFSR$="B" THEN1230
+1200 IFSR$="P" THEN GOSUB250:GOTO1350
+1210 IFSR$="W" THEN GOSUB250:GOTO1370
+1220 GOTO1190
+1230 GOSUB100:RESTORE:GOSUB250
+1240 READA$:IFLEFT$(A$,1)="&" THEN3090
+1250 PRINT:IFA$="#" THEN3050
+1260 IFA$="end" THEN GOSUB210:GOSUB250:GOTO1000
+1270 IFA$="%" THENPRINT:READSR$:GOTO1240
+1280 IFA$="!" THENP=2:GOSUB3130:READA$:GOTO1300
+1290 P=1
+1300 IFA$<>"+" THEN1330
+1310 GOSUB210:GOSUB250
+1320 SR$=B$:GOSUB100:GOSUB150:GOTO1240
+1330 FORI=1 TOLEN(A$):PRINTMID$(A$,I,1);:NEXTI
+1340 GOTO1240
+1350 READA$:IFA$<>"pup" THEN1350
+1360 GOSUB100:GOSUB3110:GOTO1240
+1370 READA$:IFA$<>"wl" THEN1370
+1380 GOSUB100:GOSUB1390:GOTO1240
+1390 READB$:SR$=B$
+1400 GOSUB150:RETURN
+1410 READA$:IFA$<>"al" THEN1410
+1420 READB$:SR$=B$:GOSUB100:GOSUB150
+1430 GOTO1240
+1440 READA$:IFA$<>"wi" THEN1440
+1450 GOTO1420
+1460 SR$="Berechnung der Versandkosten"
+1470 GOSUB100:HO=1:VE=2:GOSUB110:GOSUB150
+1480 SR$="im Inland":HO=10:VE=4:GOSUB110:GOSUB150
+1490 RESTORE
+1500 PRINT:PRINT"Es steht zur Auswahl:"
+1510 PRINT:PRINT"1. Briefe":PRINT"2. Drucksache"
+1520 PRINT"3. Briefdrucksache":PRINT"4. Buechersendung"
+1530 PRINT"5. Standardpaket":PRINT"6. Paket"
+1540 PRINT"7. Paeckchen"
+1550 INPUT"Eingabe:";Y$
+1560 IF(VAL(Y$)<1)OR(VAL(Y$)>7)THEN1550
+1570 GOSUB3270
+1580 ONVAL(Y$)GOTO1590,1720,1830,1940,2040,2040,2440
+1590 A$="Briefe":GOSUB2680
+1600 GOSUB100
+1610 PRINT:PRINT:INPUT"Wieviel Gramm";GM
+1620 IFGM>1000 THEN2700
+1630 IFGM<=20 THEN2730
+1640 READA,B,C:IF(GM>A)AND(GM<=B)THEN1670
+1650 IFA=0 THEN1000
+1660 GOTO1640
+1670 PRINT"Die Grundgebuehr fuer einen Brief"
+1680 PRINT"mit einem Gewicht von ";GM;"g betraegt"
+1690 PRINT;C;" DM.":PRINT:PRINT"Weitere Zuschlaege (J/N)?"
+1700 GOSUB210:Z$=IN$:IFZ$<>"J" THEN1000
+1710 GOTO2800
+1720 A$="Drucksache":GOSUB2680
+1730 GOSUB100
+1740 PRINT:PRINT:INPUT"Wieviel Gramm";GM
+1750 IFGM<50 THEN GOSUB2590
+1760 IFGM>500 THEN2700
+1770 READA,B,C:IF(GM>A)AND(GM<=B)THEN1790
+1780 GOTO1770
+1790 PRINT"Die Grundgebuehr fuer eine Drucksache"
+1800 PRINT"mit einem Gewicht von ";GM;" g betraegt"
+1810 PRINT;C;"DM.":PRINT"Weitere Zuschlaege (J/N)?"
+1820 GOSUB210:GOTO2660
+1830 A$="Briefdrucksach0
+1840 Œ100
+1850 ž:ž:„"Wieviel Gramm";GM
+1860 ŠGM³500 ©2700
+1870 ŠGMµ50 ©2620
+1880 †A,B,C:Š(GM³A)±(GMµ´B)©1900
+1890 ˆ1880
+1900 ž"Die Grundgebuehr fuer eine Briefdrucksache"
+1910 ž"mit einem Gewicht von ";GM;" g betraegt"
+1920 ž;C;"DM.":ž"Weitere Zuschlaege (J/N)?"
+1930 Œ210:ˆ2660
+1940 A$´"Buechersendung":Œ2680
+1950 Œ100
+1960 ž:ž:„"Wieviel Gramm";GM
+1970 ŠGM³2000 ©2700
+1980 †A,B,C:Š(GM³A)±(GMµ´B)©2000
+1990 ˆ1980
+2000 ž"Die Gebuehr fuer eine Buechersendung"
+2010 ž"mit einem Gewicht von ";GM;"g betraegt"
+2020 ž;C;"DM.":ž"Weitere Zuschlaege (J/N)?"
+2030 Œ210:ˆ2660
+2040 †A$:ŠA$µ³"Pakete" ©2040
+2050 YY´1.5:Œ100
+2060 ž:ž:„"Wieviel Kg";KG
+2070 ŠKG³20 ©2410
+2080 ŠKGµ0 ©2060
+2090 †M,M1,Z(1),Z(2),Z(3)
+2100 Š(KG³M)±(KGµ´M1)©2120
+2110 ˆ2090
+2120 „"Welche Zone 1,2 oder 3";ZO
+2130 IN######QG2120
+2140 ŠY´5 ©YY´0:A$´"Standardpaket"
+2150 Z(ZO)´Z(ZO)¬YY
+2160 ž:ž"Ein ";A$;" mit einem"
+2170 ž"Gewicht von ";KG;" Kg kostet in der"
+2180 ž;ZO;". Zone ";Z(ZO);" DM"
+2190 ž:ž"Weitere Zuschlaege (J/N)?"
+2200 Œ210:V$´IN$:ŠV$µ³"J" ©1000
+2210 „"Wertangabe (J/N)";W$
+2220 ŠW$µ³"J" ©2290
+2230 „"Hoehe der Wertangabe (in DM)";WE
+2240 ŠWE³100000 ©ž"Maximal 100000 DM moeglich."
+2250 ŠWE³3000 ©ž"PAKET MUSS VERSIEGELT WERDEN!"
+2260 Z(ZO)´Z(ZO)¬9:WE´WE­1000
+2270 ŠWEµ´0 ©2290
+2280 Z(ZO)´Z(ZO)¬1.2:WE´WE­500:ˆ2270
+2290 „"Schnellsendungsendgelt (J/N)";SC$
+2300 ŠSC$µ³"J" ©2330
+2310 ZZ(1)´4:ZZ(2)´4.5:ZZ(3)´5
+2320 Z(ZO)´Z(ZO)¬ZZ(ZO)
+2330 ž"Ueberschreitet das Paket die"
+2340 ž"Standardmasse *)"
+2350 „"(J/N)";ST$
+2360 ŠST$µ³"J" ©2380
+2370 Z(ZO)´Z(ZO)¬10
+2380 Œ100:ž"Dieses Paket mit einem Gewicht"
+2390 ž"von ";KG;" Kg kostet ";Z(ZO);" DM."
+2400 Œ210:ˆ1000
+2410 ž"Pakete mit einem Gewicht groesser als"
+2420 ž"20 Kg werden nicht abgenommen."
+2430 Œ210:ˆ1000
+2440 Œ100
+2450 ž:ž"Hoechstgewicht von Paeckchen 2 Kg."
+2460 ž"Hoechst und Mindestmasse wie Brief."
+2470 ž"Entgelt ..................... 4.00 DM"
+2480 ž:ž"Weitere Zuschlaege (J/N)?"
+2490 Œ210:V$´IN$:ŠV$µ³"J" ©1000
+2500 „"Einschreiben (J/N)";W$
+2510 ŠW$µ³"J" ©2530
+2520 C´4:C´C¬2.5
+2530 „"Schnellsendungsentgelt (J/N)";S$
+2540 ŠS$µ³"J" ©2560
+2550 C´C¬4
+2560 ž:ž"Das Entgelt fuer ein Paeckchen"
+2570 ž"belaeuft sich auf ";C;" DM."
+2580 Œ210:ˆ1000
+2590 ž"Standarddrucksache und -Warensendung *)"
+2600 ž"Gebuehr 0.60 DM."
+2610 ˆ2640
+2620 ž"Standardbriefdrucksache *)"
+2630 ž"Gebuehr 0.80 DM.":ž:ž
+2640 ž:ž"*) siehe unter Weitere Infos"
+2650 Œ210
+2660 Z$´IN$:ŠZ$µ³"J" ©1000
+2670 ˆ2880
+2680 †B$:ŠB$µ³A$ ©2680
+2690 
+2700 ž:ž"Postgut laeuft nicht mehr unter der "
+2710 ž"Bezeichnung ";A$;".":Œ210
+2720 ˆ1000
+2730 ž:ž"Dieser Brief ist ein Standardbrief."
+2740 ž"Einhaltung der Standardmasse.*)"
+2750 ž"Gebuehr 1.00 DM."
+2760 ž"Sonst   1.70 DM unter Einhaltung der"
+2770 ž"Hoechst- und Mindestmasse.*)"
+2780 ž:ž:ž"*) siehe unter weitere Infos"
+2790 Œ210:ˆ1000
+2800 „"Wertangabe (J/N)";W$
+2810 ŠW$µ³"J" ©2880
+2820 „"Hoehe der Wertangabe (in DM)";G
+2830 ŠG³100000 ©ž"Maximale Wertangabe 100000 DM"
+2840 ŠG³100000 ©2820
+2850 ŠG³500 ©ž"BRIEF MUSS VERSIEGELT WERDEN!"
+2860 C´C¬6
+2870 G´G­500:ŠG³0 ©C´C¬1.2:ˆ2870
+2880 „"Einschreiben (J/N)";W1$
+2890 ŠW1$µ³"J" ©2910
+2900 C´C¬2.5
+2910 ŠW1$µ³"J" ©2950
+2920 „"Rueckschein (J/N)";W2$
+2930 ŠW2$µ³"J" ©2950
+2940 C´C¬2.5
+2950 „"Eilzustellung (J/N)";W3$
+2960 ŠW3$µ³"J" ©3010
+2970 ž"1 - zwischen  6 und 22 Uhr"
+2980 ž"2 - zwischen 22 und  6 Uhr"
+2990 „"1 o. 2";UH:ŠUH´1 ©C´C¬5
+3000 ŠUH´2 ©C´C¬8
+3010 Œ100:ž:ž:ž
+3020 ž"Die Gebuehr fuer diese Sendung"
+3030 ž"mit einem Gewicht von ";GM;"g"
+3040 ž"betraegt ";C;" DM.":Œ210:ˆ1000
+3050 HO´1:VE´22:Œ110
+3060 ž"*) Siehe unter ' Weitere Infos'"
+3070 Œ210:Œ250:Œ100:SR$´B$
+3080 Œ150:ˆ1240
+3090 SR$´Î(A$,È(A$)­1):Œ150
+3100 B$´SR$:ˆ1240
+3110 †B$:SR$´Î(B$,È(B$)­1):B$´SR$
+3120 Œ150:ž
+3130 C$´"Zoneneinteilung nach besonderen":Œ3230
+3140 C$´"Entgeldverfahren in DM.":Œ3230
+3150 C$´"Standardpaket *)":Œ3250
+3160 C$´"               1.Zone   2.Zone   3.Zone"
+3170 Œ3230
+3180 C$´"              -150km    >150km   >300km"
+3190 Œ3230
+3200 C$´"                        -300km   "
+3210 Œ3230
+3220 C$´" "
+3230 I´1 ¦È(C$):žÏ(C$,I,1);:‚I:ž
+3240 
+3250 ŠP´2 ©C$´"Paket *)"
+3260 ˆ3230
+3270 HO´10:VE´16:SR$´"M O M E N T !"
+3280 Œ100:Œ110:Œ150:
+25000 ƒ"&Inlandbriefsendung              DM"
+25010 ƒ"Standardbrief *) ................ 1.00"
+25020 ƒ"Briefe     bis   50g ............ 1.70"
+25030 ƒ"ueber  50g bis  100g ............ 2.40"
+25040 ƒ"ueber 100g bis  250g ............ 3.20"
+25050 ƒ"ueber 250g bis  500g ............ 4.00"
+25060 ƒ"ueber 500g bis 1000g ............ 4.80"
+25070 ƒ"%","Postkarten"
+25080 ƒ"................................. 0.60"
+25090 ƒ"%","Standarddrucksachen & -warensendung"
+25100 ƒ"*) .............................. 0.60"
+25110 ƒ"#","%","Drucksache und Warensendung"
+25120 ƒ"           bis   50g ............ 1.00"
+25130 ƒ"ueber  50g bis  100g ............ 2.00"
+25140 ƒ"ueber 100g bis  250g ............ 2.60"
+25150 ƒ"ueber 250g bis  500g ............ 3.20"
+25160 ƒ"%","Standardbriefdrucksache"
+25170 ƒ"*) .............................. 0.80"
+25180 ƒ"%"," Briefdrucksache "
+25190 ƒ"           bis   50g ............ 1.40"
+25200 ƒ"ueber  50g bis  100g ............ 2.00"
+25210 ƒ"ueber 100g bis  250g ............ 2.60"
+25220 ƒ"ueber 250g bis  500g ............ 3.20"
+25230 ƒ"#","%"," Buechersendung "
+25240 ƒ"            bis  100g ........... 0.60"
+25250 ƒ"ueber  100g bis  250g ........... 0.80"
+25260 ƒ"ueber  250g bis  500g ........... 1.20"
+25270 ƒ"ueber  500g bis 1000g ........... 2.00"
+25280 ƒ"ueber 1000g bis 2000g ........... 3.00"
+25290 ƒ"end","pup"
+25300 ƒ"& Inland Paketsendungen & Paeckchen"
+25310 ƒ"      - 5kg ... 5.20 ... 5.50 ... 5.80"
+25320 ƒ"> 5kg - 6kg ... 5.90 ... 6.30 ... 6.70"
+25330 ƒ"> 6kg - 7kg ... 6.60 ... 7.10 ... 7.60"
+25340 ƒ"> 7kg - 8kg ... 7.30 ... 7.90 ... 8.50"
+25350 ƒ"> 8kg - 9kg ... 8.00 ... 8.70 ... 9.40"
+25360 ƒ"> 9kg -10kg ... 8.70 ... 9.50 ...10.30"
+25370 ƒ">10kg -12kg ... 9.40 ...10.30 ...11.20"
+25380 ƒ">12kg -14kg ...10.90 ...11.90 ...12.90"
+25390 ƒ">14kg -16kg ...12.40 ...13.50 ...14.60"
+25400 ƒ">16kg -18kg ...13.90 ...15.10 ...16.30"
+25410 ƒ">18kg -20kg ...15.40 ...16.70 ...18.00"
+25420 ƒ"#","!"
+25430 ƒ"      - 5kg ... 6.70 ... 7.00 ... 7.30"
+25440 ƒ"> 5kg - 6kg ... 7.40 ... 7.80 ... 8.20"
+25450 ƒ"> 6kg - 7kg ... 8.10 ... 8.60 ... 9.10"
+25460 ƒ"> 7kg - 8kg ... 8.80 ... 9.40 ...10.00"
+25470 ƒ"> 8kg - 9kg ... 9.50 ...10.20 ...10.90"
+25480 ƒ"> 9kg -10kg ...10.20 ...11.00 ...11.80"
+25490 ƒ">10kg -12kg ...10.90 ...11.80 ...12.70"
+25500 ƒ">12kg -14kg ...12.40 ...13.40 ...14.40"
+25510 ƒ">14kg -16kg ...13.90 ...15.00 ...16.10"
+25520 ƒ">16kg -18kg ...15.40 ...16.60 ...17.80"
+25530 ƒ">18kg -20kg ...16.90 ...18.20 ...19.50"
+25540 ƒ"#","%","Sperriges Paket"
+25550 ƒ"Zuschlag .....................10.00 DM"
+25560 ƒ"%","Paeckchen"
+25570 ƒ"Hoechstgewicht 2kg. Mindest- und"
+25580 ƒ"Hoechstmasse wie Brief ....... 4.00 DM"
+25590 ƒ"end","wl"
+25600 ƒ"Weitere Leistung fuer Inland    DM"
+25610 ƒ"%","Wertangabe"
+25620 ƒ"Hoechstbetrag der Wertangabe"
+25630 ƒ"100000 DM. Jedoch 10000 DM bei"
+25640 ƒ"Luftpostbefoerderung."
+25650 ƒ"%","Brief mit Wertangabe"
+25660 ƒ"Ein Brief mit einer Wertangabe bis"
+25670 ƒ"500 DM braucht nicht versiegelt zu"
+25680 ƒ"werden. Entgelt fuer die Sendung dazu"
+25690 ƒ"Wertentgelt bis 500 DM der"
+25700 ƒ"Wertangabe ...................... 6.00"
+25710 ƒ"jede weitere 500 DM ............. 1.20"
+25720 ƒ"%","Paket mit Wertangabe"
+25730 ƒ"Ein Paket mit einer Wertangabe bis"
+25740 ƒ"3000 DM braucht nicht versiegelt ZU"
+25750 ƒ"werden. Entgelt fuer die Sendung"
+25760 ƒ"dazu Wertentgelt bis 1000 DM der"
+25770 ƒ"Wertangabe ...................... 9.00"
+25780 ƒ"jede weiteren 500 DM Wertangabe . 1.20"
+25790 ƒ"+"
+25800 ƒ"%","Einschreiben"
+25810 ƒ"Nur bei Briefen' Postkarten' Paeckchen"
+25820 ƒ"und Blindensendung."
+25830 ƒ"Entgelt fuer die Sendung' dazu"
+25840 ƒ"Einschreibentgelt ............... 2.50"
+25850 ƒ"%","Rueckschein"
+25860 ƒ"Nur bei Wertbriefen und"
+25870 ƒ"eingeschriebenen Briefsendung"
+25880 ƒ"Entgelt fuer die Sendung"
+25890 ƒ"dazu besonderes Entgelt ......... 2.50"
+25900 ƒ"%","Eilzustellung"
+25910 ƒ"Entgelt fuer die Sendung dazu"
+25920 ƒ"besonderes Entgelt fuer Zustellung"
+25930 ƒ"zwischen  6.00 und 22.00 Uhr ..... 5.00"
+25940 ƒ"zwischen 22.00 und  6.00 Uhr ..... 8.00"
+25950 ƒ"+","%","Schnellsendungsentgelt"
+25960 ƒ"fuer eine Sendung"
+25970 ƒ"a) Paeckchen und Postgut ........ 4.00"
+25980 ƒ"b) Paket"
+25990 ƒ"1.Zone .......................... 4.00"
+26000 ƒ"2.Zone .......................... 4.50"
+26010 ƒ"3.Zone .......................... 5.00"
+26020 ƒ"%","Zustellentgelt fuer ein Paket"
+26030 ƒ"je Paket ........................ 2.50"
+26040 ƒ"end","al"
+26050 ƒ"Briefsendung Ausland            DM"
+26060 ƒ"Fuer Sendungen in die oesterreichischen"
+26070 ƒ"Zollausschlussgebiete Kleinwalsertal"
+26080 ƒ"(Voralberg) mit den Orten 8985 "
+26090 ƒ"Hirschegg' 8986 Mittelberg und 8984"
+26100 ƒ"Riezlern sowie 8965 Jungholz (Tirol)"
+26110 ƒ"finden die im Briefdienst Inland"
+26120 ƒ"geltenden Anwendung.","+","%"
+26130 ƒ"a) Standardbrief *)"
+26140 ƒ"in alle europaeischen Laender (Ein-"
+26150 ƒ"schliesslich der asiatischen Gebiets-"
+26160 ƒ"teile der Sowjetunion und der Tuerkei"
+26170 ƒ"sowie der Azoren' Faeroeer' Groenland'"
+26180 ƒ"der Kanarischen Inseln' Madeira und"
+26190 ƒ"der franzoesischen ueberseeischen"
+26200 ƒ"Departments Guadeloupe' Guayana'"
+26210 ƒ"Martinique' Reunion und der Gebiets-"
+26220 ƒ"koerperschaften Mayotte sowie St."
+26230 ƒ"Pierre und Miquelon) ............ 1.00"
+26240 ƒ"%","b) Standardbrief *)"
+26250 ƒ"in alle Laender ausgenommen die"
+26260 ƒ"unter a) aufgefuehrten .......... 1.40"
+26270 ƒ"#","%","Brief bis 20g"
+26280 ƒ"ohne Einhaltung der Standardmasse *)"
+26290 ƒ"in die unter a) aufgefuehrten"
+26300 ƒ"Laender ......................... 1.70"
+26310 ƒ"#","%","c) Briefe bis 50g"
+26320 ƒ"nach Anndorra' Frankreich (ein-"
+26330 ƒ"schliesslich der ueberseeischen"
+26340 ƒ"Departments Guadeloupe' Guayana'"
+26350 ƒ"Martinique' Reunion und der Gebiets-"
+26360 ƒ"koerperschaften Mayotte sowie St."
+26370 ƒ"Pierre und Miquelon)' Luxemburg und"
+26380 ƒ"Monaco .......................... 1.70"
+26390 ƒ"%","d) Briefe bis 50g"
+26400 ƒ"in alle Laender' ausgenommen die"
+26410 ƒ"unter c) aufgefuehrten .......... 2.10"
+26420 ƒ"+","%"
+26430 ƒ"Brief (in alle Laender)"
+26440 ƒ">   50g -  100g ................  2.80"
+26450 ƒ">  100g -  250g ................  5.00"
+26460 ƒ">  250g -  500g ................  9.40"
+26470 ƒ">  500g -  750g ................ 12.80"
+26480 ƒ">  750g - 1000g ................ 16.50"
+26490 ƒ"> 1000g - 1500g ................ 21.59"
+26500 ƒ"> 1500g - 2000g ................ 27.00"
+26510 ƒ"%","Postkarte"
+26520 ƒ"................................ 00.80"
+26530 ƒ"%","Ermaessigtes Entgelt fuer Postkarten"
+26540 ƒ"siehe unter a) Standardbrief ... 00.60"
+26550 ƒ"%","Standarddrucksache *)"
+26560 ƒ"................................ 00.80"
+26570 ƒ"#","%"," Drucksache "
+26580 ƒ"Hoechstgewicht 2kg. Buecher und"
+26590 ƒ"Broschueren bis 5kg."
+26600 ƒ"        -   50g ................  1.20"
+26610 ƒ">   50g -  100g ................  1.60"
+26620 ƒ">  100g -  250g ................  2.20"
+26630 ƒ">  250g -  500g ................  3.60"
+26640 ƒ">  500g -  750g ................  4.80"
+26650 ƒ">  750g - 1000g ................  6.20"
+26660 ƒ"> 1000g - 1500g ................  8.00"
+26670 ƒ"> 1500g - 2000g ................ 10.00"
+26680 ƒ"> 2000g - 3000g ................ 15.00"
+26690 ƒ"> 3000g - 4000g ................ 20.00"
+26700 ƒ"> 4000g - 5000g ................ 25.00"
+26710 ƒ"+","%","Paeckchen"
+26720 ƒ"Hoechstgewicht im Verkehr mit den"
+26730 ƒ"einzelnen Laendern unterschiedlich."
+26740 ƒ"Auskunft erhalten Sie am Schalter."
+26750 ƒ"Entgelt ........................ 12.00"
+26760 ƒ"Hoechst und Mindestmasse wie Brief."
+26770 ƒ"%","Einschreiben"
+26780 ƒ"Bei allen Briefsendungen. Entgelt fuer"
+26790 ƒ"die Sendung dazu Einschreibe-"
+26800 ƒ"entgelt ........................  2.50"
+26810 ƒ"%","Eilzustellung"
+26820 ƒ"Entgelt fuer die Briefsendung dazu"
+26830 ƒ"Eilzustellentgelt..............5.00"
+26840 ƒ"+","%","Luftpostzuschlaege"
+26850 ƒ"a) Aerogramm (Luftpostleichtbrief)"
+26860 ƒ"Gesamtbetrag (Befoerderungsentgelt"
+26870 ƒ"Luftpostzuschlag) ..............  1.65"
+26880 ƒ"Zusaetzlich zu dem Entgelt fuer die"
+26890 ƒ"Sendung","b) Luftpostzuschlag fuer auf"
+26900 ƒ"dem Luftweg befoerderte Sendung in"
+26910 ƒ"alle europaeischen Laender (ein-"
+26920 ƒ"schliesslich der asiatischen Gebiets-"
+26930 ƒ"teile der Sowjetunion und der Tuerkei"
+26940 ƒ"sowie der Azoren' Faeroer' Groenland'"
+26950 ƒ"der Kanarischen Inseln' Madeira)"
+26960 ƒ"%","Briefe und Postkarten"
+26970 ƒ"....................... zuschlagfrei"
+26980 ƒ"+","%","In aussereuropaeische Laender"
+26990 ƒ"Briefe fuer je 5g oder einen Teil"
+27000 ƒ"davon sowie Postkarten. Drucksachen"
+27010 ƒ"jeder Art einschliesslich Zeitungen'"
+27020 ƒ"Blindensendungen und Paeckchen fuer je"
+27030 ƒ"20g oder einen Teil davon"
+27040 ƒ"Laendergruppe   I*) ............ 0.25"
+27050 ƒ"Laendergruppe  II*) ............ 0.35"
+27060 ƒ"Laendergruppe III*) ............ 0.45"
+27070 ƒ" ","Luftpostzuschlaege fuer Stereodruck-"
+27080 ƒ"karten in aussereuropaeische Laender"
+27090 ƒ"wie fuer Briefe bzw. Drucksachen"
+27100 ƒ" ","*)Auskunft ueber Laendergruppen"
+27110 ƒ"  erhalten Sie am Schalter."
+27120 ƒ"+","%"," Pakete "
+27130 ƒ"des Land-/Seewegs' SAL-Paket' Luftpost-"
+27140 ƒ"bzw. Europaket"," "
+27150 ƒ"Entgelte sind' soweit der Dienst"
+27160 ƒ"angeboten wird' je Bestimmungsland"
+27170 ƒ"unterschiedlich. Naehere Auskuenfte'"
+27180 ƒ"auch ueber zusaetzlich angebotene"
+27190 ƒ"Sonderdienste' erhalten Sie am Schalter"
+27200 ƒ"end","wi","Weitere Infos fuer Inland"
+27210 ƒ"%","Hoechst und Mindestmasse fuer Briefe"
+27220 ƒ"Standardbrief'-drucksache' und"
+27230 ƒ"-warensendung"
+27240 ƒ"Gewicht bis 20g. Laenge zwischen 14"
+27250 ƒ"und 23.5 cm' Breite zwischen 9 und"
+27260 ƒ"12 cm (Breite bis 12.5 cm wird nicht"
+27270 ƒ"beanstandet)' Hoehe bis 0.5 cm"
+27280 ƒ"Laenge mindestens das 1.41 fache der"
+27290 ƒ"Breite","+","%","in rechteckiger Form"
+27300 ƒ"Hoechstmasse","Laenge 60 cm' Breite 30cm"
+27310 ƒ"oder Laenge' Breite und Hoehe zusammen"
+27320 ƒ"90 cm' jedoch in keiner Ausdehnung"
+27330 ƒ"mehr als 60cm."," ","Mindestmasse"
+27340 ƒ"bei Sendungen bis 0.5cm Hoehe:"
+27350 ƒ"Laenge 14cm' Breite 9cm"
+27360 ƒ"bei Sendungen ueber 0.5cm Hoehe:"
+27370 ƒ"Laenge 10cm' Breite 7cm","+","%"
+27380 ƒ"in Rollenform","Hoechstmasse:"
+27390 ƒ"Laenge 90cm' Durchmesser 15cm"
+27400 ƒ"Mindestmasse:"
+27410 ƒ"Laenge 10cm' Durchmesser  5cm","%"
+27420 ƒ"in Kartenform","Hoechstmasse:"
+27430 ƒ"C5 (229 x 162 mm)' bei einem Mindest-"
+27440 ƒ"flaechengewicht von 250g/m^2"
+27450 ƒ"auch bis A4","%","Postkarten"
+27460 ƒ"Hoechst und Mindestmasse"
+27470 ƒ"Laenge zwischen 14 und 16.2cm"
+27480 ƒ"Breite zwischen  9 und 11.4cm"
+27490 ƒ"Von der Post bezogene Postkarten"
+27500 ƒ"sind 14.8 x 10.5cm gross.","+","%"
+27510 ƒ"Standardpaket","%","Quaderfoermige Sendung"
+27520 ƒ"Laenge bis 70cm' Breite und Hoehe je 50"
+27530 ƒ"cm.","%"," Pakete ","%","Quaderfoermige Sendung"
+27540 ƒ"Laenge bis 120cm' Breite und"
+27550 ƒ"Hoehe je 60cm.","end"
+27560 ƒ"Briefe",20,50,1.70,50,100,2.40,100,250,3.20
+27570 ƒ250,500,4.00,500,1000,4.80
+27580 ƒ"Drucksache",0,50,1,50,100,1.4,100,250,1.8
+27590 ƒ250,500,2.4
+27600 ƒ"Briefdrucksache",0,50,1.4,50,100,2,100,250,2.6
+27610 ƒ250,500,3.2
+27620 ƒ"Buechersendung",0,100,.6,100,250,.8
+27630 ƒ250,500,1.2,500,1000,2,1000,2000,3
+27640 ƒ"Pakete",0,5,5.2,5.5,5.8,5,6,5.9,6.3,6.7
+27650 ƒ6,7,6.6,7.1,7.6,7,8,7.3,7.9,8.5
+27660 ƒ8,9,8,8.7,9.4,9,10,8.7,9.5,10.3
+27670 ƒ10,12,9.4,10.3,11.2,12,14,10.9,11.9,12.9
+27680 ƒ14,16,12.4,13.5,14.6,16,18,13.9,15.1,16.3
+27690 ƒ18,20,15.4,16.7,18
+30000 Ž****************************
+30010 Ž* entnommen der Broschuere *
+30020 Ž*   "Was kostet wieviel"   *
+30030 Ž*   Wichtige Entgelte im   *
+30040 Ž*        Ueberblick        *
+30050 Ž*     herausgegeben vom    *
+30060 Ž* Postdienst der Deutschen *
+30070 Ž*         Bundespost       *
+30080 Ž*     Stand 1. Juli 1991   *
+30090 Ž*                          *
+32000 Ž****************************
+32010 Ž*                          *
+32020 Ž*   geschrieben auf C'64   *
+32030 Ž*     von Marko Rother     *
+32040 Ž*      Schillerstr. 7      *
+32050 Ž*    Heyerode O - 5703     *
+32060 Ž*                          *
+32070 Ž****************************
+32080 Ž Erstausstrahlung: Deutschlandsender Kultur
+32090 Ž-spezial 910904

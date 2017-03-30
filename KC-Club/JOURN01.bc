@@ -1,0 +1,225 @@
+1000 A=500:GOTO20:REM  BASICODE-3 JOURNAL
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1340:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Soll das Journal auf"
+1060 PRINT:PRINT"   1  den Bildschirm,"
+1070 PRINT"   2  den Drucker."
+1080 PRINT:PRINT"Waehle 1 oder 2: ";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1180
+1100 PRINT:PRINT"Wieviel Leerzeichen sollen an"
+1110 INPUT"den Anfang jeder Zeile ";HL
+1120 PRINT:PRINT"Wieviel echte Textzeichen"
+1130 INPUT"sollen in eine Zeile ";I:HR=HL+I-1
+1140 PRINT:PRINT"Anzahl der Leerzeilen"
+1150 INPUT"am Seitenende ";VL
+1160 PRINT:PRINT"Wieviel echte Textzeilen sollen auf"
+1170 INPUT"eine Seite ";VR:VR=VR+VL-3
+1180 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1190 GOSUB1310:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1290
+1200 IFLEN(R$)>HR-HL THEN GOSUB1730
+1210 GOSUB1370:IFR$<>"" THENR$=R$+" "
+1220 R$=R$+D$:GOTO1200
+1230 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1250
+1240 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1250 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1260 IFSC=1 THEN1310
+1270 IFVL>0 THENFORI=1 TOVL:GOSUB360:NEXTI
+1280 AL=VL
+1290 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1230
+1300 SR$="":GOSUB1230:AL=VL:RETURN
+1310 HO=3:VE=VT:GOSUB110
+1320 SR$="Weiter: mit <ENTER>":GOSUB150
+1330 GOSUB210:IFIN<>13 THEN1330
+1340 GOSUB100:AL=VL:SR$=T$
+1350 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1360 PRINT:PRINT:RETURN
+1370 READD$
+1380 IFD$="" THEN1370
+1390 IFLEFT$(D$,1)="." THEN1440
+1400 IFLEFT$(D$,1)<>"!" THENRETURN
+1410 IFD$="!" THEND$="":GOTO1430
+1420 D$=RIGHT$(D$,LEN(D$)-1)
+1430 GOSUB1670:GOTO1380
+1440 IFD$<>".E" THEN1490
+1450 J=1:GOSUB1670:T$="Ende dieses Journals"
+1460 SR$="":GOSUB1230:GOSUB1230:SR$=T$:GOSUB1230:T$=""
+1470 SR$="":GOSUB1230:IFAL<>VL THEN1470
+1480 GOTO950
+1490 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+1500 IFDD$<>"R" THEN1550
+1510 IFSC=2 THENRETURN
+1520 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1230:R$=""
+1530 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1540 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1370
+1550 IFDD$<>"M" THEN1580
+1560 I=VAL(D$):MM$="":IFI+HL=0 THEN1370
+1570 MM$=LEFT$(S$,I+HL):GOTO1370
+1580 IFDD$="P" THENJ=VAL(D$):GOSUB1670:GOSUB1690:GOTO1370
+1590 IFDD$="T" THENT$=D$:J=10:GOSUB1670:GOSUB1690:GOTO1510
+1600 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1370
+1610 IFDD$<>"F" THEN1640
+1620 J=VAL(D$):GOSUB1670
+1630 J=J-1:IFJ>-1 THENSR$="":GOSUB1230:GOTO1630
+1640 IFDD$<>"C" THEN1660
+1650 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1230
+1660 GOTO1370
+1670 GOSUB1730:SR$=R$:GOSUB1230:R$="":J=J-1
+1680 RETURN
+1690 IF(SC=1)OR(AL+J>VR) THEN1710
+1700 SR$="":GOSUB1230:GOSUB1230:RETURN
+1710 IFAL<>VL THENSR$="":GOSUB1230:GOTO1710
+1720 RETURN
+1730 K=HR-HL+1-LEN(M$)
+1740 IFLEN(R$)<=K THENRETURN
+1750 IFMID$(R$,K,1)=" " THEN1780
+1760 K=K-1:IFK>0 THEN1750
+1770 SR$="":GOTO1790
+1780 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+1790 GOSUB1230:GOTO1730
+25000 DATA"BASICODE-3 JOURNAL-1"
+25010 DATA"Hallo Computerfreunde!","!!Endlich ist es da:"
+25020 DATA".RBASICODE"," im Rundfunk der DDR. Wir hoffen,"
+25030 DATA"dass BASICODE vielen Spass machen wird und"
+25040 DATA"einen umfangreichen Softwaretausch ermoeglicht."
+25050 DATA"!!Fuer die hilfreiche Unterstuetzung moechten"
+25060 DATA"wir allen Mitgliedern der niederlaendischen"
+25070 DATA"Stichting BASICODE, insbesondere aber den"
+25080 DATA"Herren",".RKlaas Robers und Jacob Haubrich"
+25090 DATA"recht herzlich danken.",".P0"
+25100 DATA"!!In diesem Computer-Journal geben wir einige"
+25110 DATA"Hinweise zur Funktion der Bascoder fuer die"
+25120 DATA"KC-Rechner und den Z-1013."
+25130 DATA".TBascoder fuer KC - Serie"
+25140 DATA"!!Die Bascoder fuer die KC-Typen sind"
+25150 DATA"BASIC-Programme mit eingebauten"
+25160 DATA"Maschinenroutinen. Sie werden"
+25170 DATA"mit:","!!  CLOAD",".QName",".Q ","!!eingelesen."
+25180 DATA"Der Name fuer die verschiedenen Typen"
+25190 DATA"ist","!!BAC853 fuer KC 85/2,3","!BAC854 fuer"
+25200 DATA"KC 85/4","!BAC87  fuer KC 85/1 und KC 87",".P0"
+25210 DATA"Der Start des Bascoders erfolgt mit RUN. Die"
+25220 DATA"Auswahl der Funktionen des Bascoders erfolgt"
+25230 DATA"durch Eingabe eines * und eines Buchstabens."
+25240 DATA"Fuer die KC 85/2-4 koennen aber auch die"
+25250 DATA"Funktionstasten benutzt werden.","!Folgende"
+25260 DATA"Funktionen werden realisiert:",".P20"
+25270 DATA"Eingabe   Funktion"
+25280 DATA"!_______________________________"
+25290 DATA"!!*         Es erscheint das Hilfsmenu mit allen"
+25300 DATA"Funktionen","!!*L  (F1)  So wird ein"
+25310 DATA"BASICODE-Programm von Kassette eingelesen,"
+25320 DATA"automatisch in das KC-BASIC uebersetzt"
+25330 DATA"und gestartet",".F2","*S  (F2)  Speichern eines"
+25340 DATA"BASICODE-Programms im KC-Format",".P0","*A  (F3)"
+25350 DATA" Einlesen eines Programms oder ASCII-files"
+25360 DATA"im BASICODE-Format. Es wird nicht"
+25370 DATA"uebersetzt und gestartet und"
+25380 DATA"ist daher zum Kopieren von BASISODE-"
+25390 DATA"files geeignet.","!!*W  (F4)  Mit dieser"
+25400 DATA"Funktion werden BASICODE-Programme auf Kassette"
+25410 DATA"gespeichert.","!!*T  (F5)  Ein im"
+25420 DATA"Speicher stehendes Programm im BASICODE-Format"
+25430 DATA"wird in das KC-BASIC transformiert.",".P0"
+25440 DATA"*C  (F6)  Ein im Speicher stehendes"
+25450 DATA"BASIC-Programm im KC-Format wird in"
+25460 DATA"ein ASCII-file (BASICODE-Format)"
+25470 DATA"convertiert.","!!*K  (F7)  Listen eines"
+25480 DATA"BASICODE-Programms","!!",".RHinweis:","Der Start"
+25490 DATA"eines BASICODE-Programms erfolgt mit  RUN,"
+25500 DATA"fortsetzen mit  CONT nach BRK, listen im KC"
+25510 DATA"Format mit LIST und BASICODE-Restart nach"
+25520 DATA"RESET mit WBASIC bzw. REBASIC und CALL*40D",".P0"
+25530 DATA"!!Die Bascoder fuer die KC-Rechner wurden von"
+25540 DATA".RUwe Zierott","(geb.1954) und"
+25550 DATA".R Andreas Zierott","(geb.1969) aus Lehnin"
+25560 DATA"entwickelt. Uwe ist Facharbeiter fuer"
+25570 DATA"Datenverarbeitung und arbeitet in einer"
+25580 DATA"KC-Vertragswerkstatt. Andreas hat den gleichen"
+25590 DATA"Beruf und arbeitet im Rechenzentrum des"
+25600 DATA"Meteorologischen Dienst / Potsdam. Beide"
+25610 DATA"computern seit ca.4 Jahren."
+25620 DATA".TBASCODER fuer Z-1013","!!! Da viele Z-1013"
+25630 DATA"Besitzer noch die 16 k Grundversion haben,"
+25640 DATA"musste fuer den Bascoder eine spezielle"
+25650 DATA"Loesung gefunden werden. Sie besteht darin, dass"
+25660 DATA"zur Arbeit mit BASICODE zwei Teilprogramme"
+25670 DATA"benoetigt werden:",".RBASCON","und der"
+25680 DATA"eigentliche",".RBASCODER","!Beide Programme"
+25690 DATA"koennen mit HEADERSAVE, MAINTAPE oder ab"
+25700 DATA"2.Vorton eingelesen werden."
+25710 DATA".TBASCON","!!L 100 EFF   Start mit J 100"
+25720 DATA"!!BASCON ist ein"
+25730 DATA"Convertierungsprogramm und stellt nach seinem"
+25740 DATA"Start folgende Funktionen bereit:","!!Einlesen"
+25750 DATA"(BC) von BASICODE-Programmen oder ASCII-files"
+25760 DATA"im BASICODE-Format","!!Save (KC) bedeutet"
+25770 DATA"Abspeichern im Arbeitsformat des Bascoders"
+25780 DATA"(KC-Format)",".P0","Load (KC) bedeutet"
+25790 DATA"einlesen von Basicode-Programmen im"
+25800 DATA"KC-Format","!!Abspeichern (BC) von"
+25810 DATA"BASICODE-Programmen im"
+25820 DATA"BC-Format","!!Textkorrektur erlaubt in"
+25830 DATA"einigen Faellen die Korrektur von"
+25840 DATA"Einlesefehlern"
+25850 DATA"der BASICODE-Programme","!!Beenden ="
+25860 DATA"Rueckkehr in den Monitor",".P0",".RHinweis"
+25870 DATA"Die Funktionsauswahl erfolgt durch Eingabe des"
+25880 DATA"jeweiligen Anfangsbuchstabens. Bei SAVE (KC) ist"
+25890 DATA"VERIFY mit Y zu quittieren. Ein Warmstart von"
+25900 DATA"BASCON kann mit J 102 erfolgen."
+25910 DATA".TZ-1013 BASCODER"
+25920 DATA"!!L 100 2AFF  Start mit J 300"
+25930 DATA"!!Der Bascoder ist ein speziell"
+25940 DATA"entwickelter Z-1013-BASICODE-Interpreter. Er"
+25950 DATA"benoetigt ein eigenes Kassettenformat, das mit"
+25960 DATA"BASCON bereitgestellt werden kann. Das Einlesen"
+25970 DATA"von BASICODE-Programmen (KC-Format) erfolgt"
+25980 DATA"mit:","!!LOAD#1",".QName",".Q ",".P0","Der"
+25990 DATA"Name muss mit dem uebereinstimmen, wie er unter"
+26000 DATA"BASCON mit SAVE (KC) abgespeichert wurde. Will"
+26010 DATA"man bereits existierende BASIC-Programme an"
+26020 DATA"BASICODE anpassen, so sind sie mit dem normalen"
+26030 DATA"10k BASIC-Interpreter mit LIST#1",".QName",".Q "
+26040 DATA"zu saven und koennen wie beschrieben in den"
+26050 DATA"Bascoder eingelesen werden. Das anzupassende"
+26060 DATA"Programm kann in Probelaeufen mit RUN auf"
+26070 DATA"unzulaessige Befehle ueberprueft werden. Ein"
+26080 DATA"Warmstart des Bascoders erfolgt mit J"
+26090 DATA"302.",".P0","Der Bascoder fuer den Z-1013 wurde"
+26100 DATA"von",".RMartin Duchrow","(geb.1954) aus Berlin"
+26110 DATA"entwickelt. Er ist Dipl.-Ing.-Oekonom und"
+26120 DATA"beschaeftigt sich seit 1986 mit dem Z"
+26130 DATA"1013.",".TBemerkung","!!Die hier"
+26140 DATA"beschriebenen Hinweise zur Benutzung der"
+26150 DATA"Bascoder stellen nur eine Minimalvariante dar."
+26160 DATA"Eine ausfuehrliche Dokumentation wird in einem"
+26170 DATA"umfangreichen BASICODE-Handbuch enthalten sein,"
+26180 DATA"das voraussichtlich Anfang naechsten Jahres vom"
+26190 DATA"Verlag Technik herausgegeben wird."
+29000 DATA".THINWEIS"
+29010 DATA"!!Fuer die weitere Gestaltung unserer Sendungen"
+29020 DATA"sind wir an Ihren Erfahrungen (Einlesbarkeit"
+29030 DATA"der Programme), Hinweisen  und"
+29040 DATA"Programmangeboten interessiert.","!Schreiben Sie"
+29050 DATA"uns bitte, welche Aufzeichnungstechnik und"
+29060 DATA"welchen Computer Sie verwenden."
+29070 DATA".P10"," Unsere Adresse:","!!"
+32000 DATA".C**************************"
+32010 DATA".C*                        *"
+32020 DATA".C*         R E M          *"
+32030 DATA".C*      RADIO DDR II      *"
+32040 DATA".C*      Nalepastr.        *"
+32050 DATA".C*      BERLIN, 1160      *"
+32060 DATA".C*                        *"
+32070 DATA".C**************************"
+32074 DATA".P10","Das war das","!!"
+32076 DATA".C**************************"
+32080 DATA".C*                        *"
+32090 DATA".C*  BASICODE-3   Journal  *"
+32100 DATA".C*        Nummer 1        *"
+32110 DATA".C*    6. September 1989   *"
+32120 DATA".C*      Acorn-Master      *"
+32130 DATA".C*                        *"
+32140 DATA".C**************************",".E"

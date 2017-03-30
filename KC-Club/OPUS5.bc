@@ -1,0 +1,78 @@
+1000 A=200:GOTO20:REM "OPUS 5" OSCAR REUTERSVAERD, SWEDEN
+1010 SC=.06:XM=.5:YM=.5:A=3.1416/6:W=SQR(3):CN=0
+1020 DIMS(11),C(11),H(11)
+1030 REM --- indextabel ---
+1040 FORN=0 TO11:H(N)=N:NEXTN
+1050 REM --- sinus, cosinustabel ---
+1060 FORN=0 TO11:S(N)=SIN(N*A):C(N)=COS(N*A):NEXTN
+1070 REM --- vertikale vergr.factor ---
+1080 F=1.2:REM naar behoefte aanpassen
+1090 REM --- vergr.en schaal verwerken ---
+1100 FORN=0 TO11:S(N)=S(N)*F*SC:NEXTN
+1110 FORN=0 TO11:C(N)=C(N)*SC:NEXTN
+1120 REM --- grafisch scherm ---
+1130 GOSUB600:FORK=1 TO3
+1140 REM ---roteer de index over 120 graden ---
+1150 FORN=0 TO11:H(N)=H(N)-4
+1160 IFH(N)<0 THENH(N)=H(N)+12
+1170 NEXTN
+1180 REM --- maak 1/3 van de tekening ---
+1190 GOSUB2010
+1200 NEXTK
+1210 REM --- tekening klaar, wacht op toets ---
+1220 GOSUB210:GOTO950
+2000 REM --- teken 3 blokjes + 2 vlakken ---
+2010 XA=XM+3*W*C(H(6)):YA=YM-3*W*S(H(6)):XB=XA:YB=YA
+2020 P=1:GOSUB2110
+2030 P=2:XA=XA+3*C(H(1)):YA=YA-3*S(H(1)):GOSUB2110
+2040 P=3:XA=XA+3*C(H(1)):YA=YA-3*S(H(1)):GOSUB2110
+2050 P=4:XA=XA+3*C(H(1)):YA=YA-3*S(H(1)):GOSUB2110
+2060 XA=XB+3*C(H(11)):YA=YB-3*S(H(11)):GOSUB2110
+2070 RETURN
+2100 REM --- Subr.vlak1 ---
+2110 HO=XA:VE=YA:GOSUB620
+2120 HO=HO+2*C(H(5)):VE=VE-2*S(H(5)):GOSUB630
+2130 HO=HO+2*C(H(1)):VE=VE-2*S(H(1)):GOSUB630
+2140 HO=HO+2*C(H(11)):VE=VE-2*S(H(11)):GOSUB630
+2150 HO=HO+2*C(H(7)):VE=VE-2*S(H(7)):GOSUB630
+2160 ONP GOSUB2210,2310,2410,2510
+2170 RETURN
+2200 REM --- Afwerking blokje 1 ---
+2210 HO=HO+2*C(H(9)):VE=VE-2*S(H(9)):GOSUB620
+2220 HO=HO+C(H(1)):VE=VE-S(H(1)):GOSUB630
+2230 HO=XA+2*C(H(1)):VE=YA-2*S(H(1)):GOSUB620
+2240 HO=HO+C(H(9)):VE=VE-S(H(9)):GOSUB630
+2250 RETURN
+2300 REM --- Afwerking blokje 2 ---
+2310 HO=HO+C(H(9)):VE=VE-S(H(9)):GOSUB630
+2320 HO=HO+2*C(H(5)):VE=VE-2*S(H(5)):GOSUB620
+2330 HO=HO+C(H(3)):VE=VE-S(H(3)):GOSUB630
+2340 HO=HO+3*C(H(11)):VE=VE-3*S(H(11))
+2350 HO=HO+C(H(9)):VE=VE-S(H(9)):GOSUB620
+2360 HO=HO+C(H(1)):VE=VE-S(H(1)):GOSUB630
+2370 HO=HO+2*C(H(3)):VE=VE-2*S(H(3)):GOSUB630
+2380 RETURN
+2400 REM --- Afwerking blokje 3 ---
+2410 HO=HO+2*C(H(9)):VE=VE-2*S(H(9)):GOSUB620
+2420 HO=HO+C(H(5)):VE=VE-S(H(5)):GOSUB630
+2430 HO=HO+C(H(3)):VE=VE-S(H(3))
+2440 HO=HO+C(H(5)):VE=VE-S(H(5)):GOSUB620
+2450 HO=HO+C(H(3)):VE=VE-S(H(3)):GOSUB630
+2460 RETURN
+2500 REM --- Geen afwerking ---
+2510 RETURN
+2520 REM-------------------------------------
+30000 REM Naar een afbeelding in de Volkskrant
+30010 REM van 14 april 1990, katern FOLIO
+30020 REM Hier worden ook andere auteurs van
+30030 REM "onmogelijke figuren" genoemd, die
+30040 REM door Bruno Ernst worden beschreven.
+30050 REM-------------------------------------
+32000 REM Ch.W.Brederode - BBC - MSX2
+32010 REM Von Bonninghausenlaan 33
+32020 REM 2161 ES  LISSE
+32030 REM
+32040 REM TROS-RADIO dd 901017
+32050 REM
+32060 REM Erstausstrahlung: Deutschlandsender Kultur
+32070 REM-spezial 910206

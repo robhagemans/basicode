@@ -1,0 +1,265 @@
+1000 A=500:GOTO20:REM FRAGE & ANTWORT
+1010 DIMF$(50,3),A$(50,3),NR(50)
+1020 Z1$="#################################"
+1030 Z2$="#                               #"
+1040 Z3$="#    #    #                     #"
+1050 Z4$="                              "
+1060 PRINTZ1$:FORZ=1 TO5:PRINTZ2$:NEXTZ:PRINTZ1$
+1070 VE=8:HO=0:GOSUB110:PRINTZ1$:VE=VE+1:GOSUB110
+1080 FORZ=1 TO5:PRINTZ2$:VE=VE+1:GOSUB110:NEXTZ:PRINTZ1$
+1090 VE=16:HO=0:GOSUB110:PRINTZ1$:VE=VE+1:GOSUB110
+1100 FORZ=1 TO5:PRINTZ3$:VE=VE+1:GOSUB110:NEXTZ:PRINTZ1$
+1110 VE=3:HO=7:GOSUB110:PRINT"EINEN MOMENT BITTE"
+1120 REM ar#QQbp*Sh*=R * *FRAGE "
+1130 VE¥23:HO¥0:å110
+1140 VE¥11:HO¥9:å110:û"Ich sortiere !"
+1400 é ===============================
+1410 ÅI1¥1 ¶50
+1420 ÜNR(I1)
+1430 ÅI2¥1 ¶3
+1440 ÜA$(I1,I2)
+1450 ÇI2
+1460 ÇI1
+1470 ÅI3¥1 ¶50
+1480 ÜNR(I3)
+1490 ÅI4¥1 ¶3
+1500 ÜF$(I3,I4)
+1510 ÇI4
+1520 VE¥11:HO¥9:å110:û"              "
+1530 ÇI3
+1540 VE¥3:HO¥5:å110:û"                      "
+1550 P¥1:å1780
+1560 å260:D1¥∑(RVÆ50)¨1
+1570 VE¥1:ÅU1¥1 ¶3:HO¥2:VE¥VE¨1
+1580 å110:ûA$(D1,U1)
+1590 ÇU1
+1600 VE¥19:HO¥1:å110:ûD1
+1610 P¥2:å1780
+1620 å260:D2¥∑(RVÆ50)¨1
+1630 VE¥19:HO¥6:å110:ûD2
+1640 VE¥9:ÅU1¥1 ¶3:HO¥2:VE¥VE¨1
+1650 å110:ûF$(D2,U1)
+1660 ÇU1
+1670 P¥3:å1780
+1680 VE¥1:ÅU1¥1 ¶3:HO¥2:VE¥VE¨1
+1690 å110:ûZ4$
+1700 ÇU1
+1710 VE¥19:HO¥1:å110:û"   "
+1720 VE¥19:HO¥6:å110:û"   "
+1730 VE¥9:ÅU1¥1 ¶3:HO¥2:VE¥VE¨1
+1740 å110:ûZ4$
+1750 ÇU1
+1760 à1550
+1770 é ===============================
+1780 VE¥18:HO¥13:å110:û"DRUECKE TASTE FUER"
+1790 å250:VE¥VE¨1:å110
+1800 äP¥1 ©û"DIE NAECHSTE FRAGE."
+1810 äP¥2 ©û"EINE NEUE  ANTWORT."
+1820 äP¥3 ©û"BILDTEXT LOESCHEN !"
+1830 VE¥VE¨2:HO¥11:å110:SR$¥"Taste  e = Ende":å150
+1840 U¥U¨.1:P¥0:å200:äU≥100 ©1880
+1850 äIN$¥"" ©1840
+1860 äIN$¥"e" ©950
+1870 U¥0:ç
+1880 å600:å200:äIN$¥"" ©1880
+1890 å100:U¥0
+1900 ûZ1$:ÅZ¥1 ¶5:ûZ2$:ÇZ:ûZ1$
+1910 VE¥8:HO¥0:å110:ûZ1$:VE¥VE¨1:å110
+1920 ÅZ¥1 ¶5:ûZ2$:VE¥VE¨1:å110:ÇZ:ûZ1$
+1930 VE¥16:HO¥0:å110:ûZ1$:VE¥VE¨1:å110
+1940 ÅZ¥1 ¶5:ûZ3$:VE¥VE¨1:å110:ÇZ:ûZ1$
+1950 SR$¥"    FRAGE  &  ANTWORT      "
+1960 VE¥23:HO¥0:å110:å150:ç
+1970 é ===============================
+25000 é         DATA - ZEILEN
+25010 É1,"Wuerden Sie nachts","mit mir durch den Wald"
+25020 É"gehen ?",2,"Haben Sie Liebes-","kummer ?",""
+25030 É3,"Haben Sie die unan-","genehme Eigenschaft,"
+25040 É"sich Geld zu borgen ?"
+25050 É4,"Waren Sie in Ihrer Ju-","gend auch so verliebt"
+25060 É"wie jetzt ?",5,"Kommen Sie manch-"
+25070 É"mal zu spaet an Ihren","Arbeitsplatz ?",6
+25080 É"Was wuerden Sie denken,","wenn ich Ihnen ploetz-"
+25090 É"lich einen Kuss gaebe ?",7,"Ziehen Sie etwa den"
+25100 É"Ring ab, wenn Sie","verreisen ?"
+25110 É8,"Kaemen Sie, unter uns","gesagt, ohne  Kur-"
+25120 É"schatten  aus ?",9,"Gehen Sie gern"
+25130 É"allein tanzen ?","",10,"Sind Sie auch poe-"
+25140 É"tisch angehaucht ?","",11,"Sind Sie leicht ent-"
+25150 É"flammt,wenn Ihnen ein jun-"
+25160 É"ges Maedchen begegnet ?",12,"Sind Sie ein Mann"
+25170 É"von raschen","Entschluessen ?",13
+25180 É"Haben Sie schon mal","die Bekanntschaft mit dem"
+25190 É"Pantoffel gemacht ?",14,"Geben Sie immer"
+25200 É"noch so gross an ?","",15,"Werden Sie leicht"
+25210 É"erregt, wenn Ihnen","jemand den Hof macht ?",16
+25220 É"Sehen Sie sich gern","Kriminalfilme an ?","",17
+25230 É"Sind Sie bei sich der","Herr im Hause ?","",18
+25240 É"Synptsye mit g#|Ax","Gesellschaften ?","",19
+25250 É"Sind Sie auch so einer","der nur selten"
+25260 É"zu spaet kommt ?",20,"Schauen Sie gern auf"
+25270 É"schoene Frauenbeine ?","",21,"Machen Sie gern"
+25280 É"zweideutige Witze ?","",22,"Trinken und essen"
+25290 É"Sie immer noch so viel ?","",23
+25300 É"Haben Sie etwa engeren","Kontakt mit Ihrem"
+25310 É"Arbeitskollegen (Kollegin) ?",24
+25320 É"Sind Sie temperament-","voll oder phlegma-"
+25330 É"tisch ?",25,"Haben Sie schon mal"
+25340 É"eine ernsthafte Liebe","gehabt ?",26
+25350 É"Koennen Sie sich leicht","vom Gelde trennen ?",""
+25360 É27,"Essen Sie gern Ham-","melfleisch mit gruenen"
+25370 É"Bohnen ?",28,"Regen Sie sich leicht"
+25380 É"auf, wenn einmal","etwas quer geht ?",29,""
+25390 É"Sind Sie streitsuechtig ?","",30
+25400 É"Sind Sie auch so ein","fanatischer Fussball-"
+25410 É"anhaenger ?",31,"Lesen Sie gern alte"
+25420 É"Schmoeker ?","",32,"","Sind Sie egoistisch ?",""
+25430 É33,"Koennen Sie verschwie-","gen sein ?","",34
+25440 É"Sind Sie recht eitel","und von sich einge-"
+25450 É"nommen ?",35,"Sind Sie etwa ruecksichts-"
+25460 É"los im Getraenge, in der","Strassenbahn usw.?"
+25470 É36,"Langen Sie uebermaessig"
+25480 É"zu, wenn Sie zum Essen","eingeladen sind ?",37
+25490 É"Legen Sie den Unter-","arm beim Essen auf"
+25500 É"den Tisch ?",38,"Vergessen Sie oft,"
+25510 É"zum Geburtstag zu","gratulieren ?",39
+25520 É"Legen Sie auch bloss den","Zeigefinger an den"
+25530 É"Hut, wenn Sie gruessen ?",40,"Koennen Sie "
+25540 É"zaertlich sein ?","",41,"Treiben Sie bestimmte"
+25550 É"Liebhabereien ?","",42,"Sind Sie schnell einge-"
+25560 É"schnappt, wenn man","Sie neckt ?",43
+25570 É"Machen Sie nach dem","Essen ein Mittag-"
+25580 É"schlaefchen ?",44,"Vertragen Sie sich"
+25590 É"gut mit Ihrer Schwie-","germutter ?",45,""
+25600 É"Sind Sie ein starker","Biertrinker ?",46,""
+25610 É"Koennen Sie treu sein ???","",47,""
+25620 É"Suchen Sie gern","andere Umgebung ?",48
+25630 É"Haben Sie schon mal","Krach mit Ihrer Ehe-"
+25640 É"haelfte gehabt ?",49,"Haben Sie bei jeder"
+25650 É"Gelegenheit etwas","auszusetzen ?",50
+25660 É"Sind Sie konsequent","im Denken und Handeln ?",""
+25670 é *** DATA ZEILEN ANTWORTEN ***
+25680 É1,"Auf keinen Fall! Das"
+25685 É "waere zu gefaehrlich.",""
+25690 É2,"Sind Sie aber neugierig!","Das werde ich Ihnen"
+25700 É"gerade aufbinden.",3,"Nein, ich moechte des-"
+25710 É"wegen keinem Sor-","gen bereiten.",4
+25720 É"Seien Sie bloss still!","Das braucht gar-"
+25730 É"niemand zu wissen.",5,"Na wenn schon! Man"
+25740 É"kennt sich schon","in dieser Beziehung.",6
+25750 É"Damit wuerde ein heiss","ersehnter Wunsch"
+25760 É"in Erfuellung gehen.",7
+25770 É"Was interessiert Sie das","schon! Das Kommt mir"
+25780 É"recht verdaechtig vor.",8,"Das kaeme nur darauf"
+25790 É"an, ob genuegend Klein-","geld vorhanden ist.",9
+25800 É"Lieber nicht, denn wenn","ich dies tue, gaebe es"
+25810 É"ohnehin Tanz zu Hause.",10
+25820 É"Aber nein! Einmal hab ich's"
+25830 É"versucht, aber da ist Schoe-"
+25840 É"nes dabei herausgekommen.",11,"Sie wissen doch,"
+25850 É"darueber bin ich laengst","hinaus !",12
+25860 É"Das schon, doch meist erst","dann,wenn ich weder"
+25870 É"ein noch aus weiss.",13,"Nicht dass ich wuesste!"
+25880 É"Zumindest habe ich davon"
+25885 É "noch nichts verspuert."
+25890 É14,"Aber woher denn, wo","ich doch im Grunde"
+25900 É"so zurueckhaltend bin.",15,"Ganz und gar nicht!"
+25910 É"Das laesst mich ziemlich","kalt!",16
+25920 É"Oh ja, vor allem muss","es von Anfang bis"
+25930 É"Ende spannend sein.",17,"Das kommt darauf an!"
+25940 É"Meist ver***sse ich um des","lieben Friedens."
+25950 É18,"Daran lasse ich es","nicht fehlen!","",19
+25960 É"Nanu! Das hat man","von mir noch nie","erwartet."
+25970 É20,"Ich werde da gerade","aus der Schule plau-"
+25980 É"dern.",21,"Nein, dazu bin ich"
+25990 É"dann doch zu","anstaendig.",22
+26000 É"Eine Leidenschaft wird","man wohl noch haben"
+26010 É"duerfen!",23,"Nicht so, wie Sie sich das"
+26020 É"denken! Jedenfalls bleibt es","im Rahmen.",24
+26030 É"Zum Donnerwetter!!!","Das muessen Sie doch"
+26040 É"merken !",25,"Wenn ich nur wuesste,"
+26050 É"was Sie mit dieser","Frage bezwecken!",26,""
+26060 É"Darin bin ich manch-","mal direkt geizig.",27
+26070 É"Das stimmt! So etwas","habe ich noch nie"
+26080 É"abgelehnt.",28,"","Nein, da kann ich"
+26090 É"mich beherrschen.",29,"Im Gegenteil! Ich"
+26100 É"moechte so etwas un-","bedingt vermeiden.",30
+26110 É"Ich bin zwar dafuer,","doch nicht so verrueckt"
+26120 É"darauf wie Sie.",31,"Im Gegenteil! Ich bin"
+26130 É"da sehr waehlerisch.","",32,"Das ist nur bedingt"
+26140 É"richtig, doch einmal muss man"
+26150 É"auch mal an sich denken.",33,"Im allgemeinen ja,"
+26160 É"wenn's auch schwer","faellt.",34
+26170 É"Das glauben Sie doch selbst"
+26180 É"nicht, dass das bei mir","zutreffen koennte.",35
+26190 É"Dazu waere ich viel zu","vernuenftig, als dass"
+26200 É"ich so etwas taete.",36,"dum}u fxaGs#piCx@wezter"
+26210 É"mich doch nicht dadurch","unmoeglich machen.",37
+26220 É"Aber nein, so unge-","schliffen bin ich denn"
+26230 É"doch nicht. ",38,"Das kommt leider vor."
+26240 É"Da muesst ihr schon mal","ein Auge zudruecken."
+26250 É39,"Aber nicht doch! Ich"
+26260 É"weiss, was sich gehoert.","",40,"Sie koennen"
+26270 É"ja mal die Probe aufs Exempel","machen.",41
+26280 É"Ja, ein Steckenpferd","hat ja schliesslich"
+26290 É"ein jeder.",42,"So eine Frage kann"
+26300 É"mich schon empoeren.","",43,"Warum nicht, wenn"
+26310 É"sich Gelegenheit dazu bietet.","",44,""
+26320 É"Warum nicht? An mir","soll's nicht liegen.",45
+26330 É"Aber hoeren Sie mal!","Wo ich in allem so"
+26340 É"maessig bin.",46,"Ich weiss nicht. Bis jetzt hat"
+26350 É"sich noch keine Gelegen-","heit dazu geboten.",47
+26360 É"Gegen eine kleine","Abwechslung haette"
+26370 É"ich auch nichts.",48,"Das bliebe ganz unter uns!"
+26380 É"Kein Mensch wuerde so","etwas wegkriegen.",49
+26390 É"","Aber wann kaeme das","schon einmal vor.",50
+26400 É"Das will ich meinen! Ich","kann sogar von vorn-"
+26410 É"herein die Folgen absehen.",51,"","",""
+30000 é******************************
+30005 é*                            *
+30010 é * DIESES KLEINE SCHERZSPIEL *
+30020 é * STAMMT AUS DEN 60-ZIGER   *
+30030 é * JAHREN UND WAR ALS KARTEN-*
+30040 é * SPIEL WEIT VERBREITET.    *
+30050 é * ES WIRD WIE FOLGT GE-     *
+30060 é * spielt:                   *
+30070 é * ES WERDEN 2 SPIELER AUSGE-*
+30080 é * WAEHLT. EIN SPIELER STELLT*
+30090 é * DIE FRAGEN, DES OBEREN    *
+30100 é * FENSTERS.DURCH TASTENDRUCK*
+30110 é * DES 2. SPIELERS WIRD EINE *
+30120 é * ZUFAELLIGE ANTWORT AUF DAS*
+30130 é * MITTLERE BILDFENSTER      *
+30140 é * GEGEBEN.                  *
+30150 é * DIE FRAGEN UND ANTWORTEN  *
+30160 é * SIND NUMERIERT, DIE NUM-  *
+30170 é * MERN WERDEN UNTEN LINKS   *
+30180 é * DARGESTELLT.RECHTS UNTEN  *
+30190 é * SIND DIE SPIELANWEISUNGEN *
+30200 é * DARGESTELLT. Wird         *
+30210 é *                           *
+30220 é * GESPIELT, WIRD DER BILD-  *
+30230 é * SCHIRM DUNKEL GESCHALTET. *
+30240 é * MIT TASTENDRUCK WIRD ER   *
+30250 é * WIEDER AKTIVIERT.VIEL     *
+30260 é * SPASS BEI DER NAECHSTEN   *
+30270 é * PARTY!                    *
+30280 é *****************************
+32000 é #############################
+32010 é #                           #
+32020 é # AUTOR: BURKHARDT  PREUSS  #
+32040 é #        H.-BEIMLER-STR.20  #
+32050 é #        FRANKFURT  (ODER)  #
+32060 é #        1200               #
+32080 é # DIESES PROGRAMM WURDE AM  #
+32090 é # 18.JANUAR 1990 AUF EINEM  #
+32100 é # C64 GESCHRIEBEN.          #
+32110 é #                           #
+32120 é # DIE TEXTE SIND DEM SPIEL  #
+32130 é # 'SPASS MUSS SEIN' (1964)  #
+32140 é # ENTNOMMEN.                #
+32150 é #                           #
+32160 é #############################
+32170 é
+32180 é ERSTAUSSTRAHLUNG: RADIO DDR
+32190 é-SPEZIAL 900202

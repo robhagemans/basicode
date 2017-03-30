@@ -1,0 +1,297 @@
+1000 A=1000:GOTO20:REM RSA - TEIL 1
+1010 DIMT$(2)
+1020 REM
+1030 U1$=" Einfuehrung "
+1040 U2$=" Oeffentlicher Schluessel "
+1050 U3$=" Speichern (WRITE) "
+1060 REM
+1070 REM --- SCHIRMGROESSE
+1080 REM
+1090 H=HO:SP=HO-1:ZE=VE-1
+1100 REM
+1110 REM --- TITEL
+1120 T$(0)="                         "
+1130 T$(1)=" Die RSA - Codierung - 1 "
+1140 T$(2)="                         "
+1150 GOSUB100
+1160 FORVE=0 TO2
+1170 L=LEN(T$(VE)):HO=INT((H-6-L)/2):GOSUB110
+1180 SR$=T$(VE):GOSUB150:PRINT
+1190 NEXTVE
+1200 REM
+1210 REM --- MENU
+1220 REM
+1230 HO=2:VE=6:GOSUB110
+1240 SR$="E":GOSUB150:PRINT"- Einfuehrung"
+1250 HO=2:VE=8:GOSUB110
+1260 SR$="B":GOSUB150:PRINT"- Berechnen des"
+1270 HO=9:VE=9:GOSUB110
+1280 PRINT"  Schluessels"
+1290 HO=2:VE=11:GOSUB110
+1300 SR$="S":GOSUB150:PRINT"- Speichern des"
+1310 HO=9:VE=12:GOSUB110
+1320 PRINT"  Schluessels"
+1330 HO=2:VE=14:GOSUB110
+1340 SR$="X":GOSUB150:PRINT"- Ende"
+1350 HO=23:VE=14:GOSUB110
+1360 GOSUB210
+1370 IFIN=69 THEN GOSUB1450:GOTO1160
+1380 IFIN=66 THEN GOSUB1680:GOTO1160
+1390 IFIN=83 THEN GOSUB2540:GOTO1160
+1400 IFIN=88 THEN950
+1410 GOSUB250:GOTO1360
+1420 REM
+1430 REM --- EINFUEHRUNG
+1440 REM
+1450 GOSUB100:RESTORE
+1460 L=LEN(U1$):HO=INT((H-6-L)/2):VE=0:GOSUB110
+1470 SR$=U1$:GOSUB150
+1480 HO=0:VE=1:GOSUB110
+1490 READR$:IFR$<>"*" THEN1480
+1500 PR$=""
+1510 READR$:IFR$="*" THEN GOSUB1550:GOTO1500
+1520 IFR$="xxx" THEN GOSUB1550:GOSUB3030:RETURN
+1530 PR$=PR$+R$:GOTO1510
+1540 REM
+1550 H0=0:H1=1:PRINT
+1560 FORI=1 TOLEN(PR$):H0=H0+1
+1570 IFMID$(PR$,I,1)<>" " THEN1590
+1580 GOSUB1600
+1590 NEXTI:GOSUB1600:PRINT:RETURN
+1600 IFH0>SP-1 THENPRINT:H0=I-H1
+1610 GOSUB120:IFVE<ZE-3 THEN1640
+1620 HO=0:VE=ZE-1:GOSUB110
+1630 GOSUB3030
+1640 PRINTMID$(PR$,H1,I-H1);" ";:H1=I+1:RETURN
+1650 REM
+1660 REM --- PRIMZAHLEN
+1670 REM
+1680 GOSUB100
+1690 L=LEN(U2$):HO=INT((H-6-L)/2):VE=0:GOSUB110
+1700 SR$=U2$:GOSUB150
+1710 REM
+1720 HO=0:VE=2:GOSUB110
+1730 PRINT"Die Wahl der Primzahlen unterliegt"
+1740 PRINT"zwei Bedingungen:":PRINT
+1750 PRINT"   1. beide Primzahlen > 50"
+1760 PRINT"(kleinere koennen evtl. zu Fehlern"
+1770 PRINT"bei der Codierung fuehren !)"
+1780 PRINT"   2. ihr Produkt < 1 Million"
+1790 PRINT"(Genauigkeit der Zahlendarstellung)"
+1800 PRINT
+1810 PRINT"Anzahl der darstellbaren Ziffern:";:L=0:INPUTL
+1820 L=INT(L/2):IFL<2 THEN GOSUB3110:GOTO1830
+1830 HO=2:VE=14:GOSUB110
+1840 P$="":PRINT"Primzahl p (z.B.103):";:INPUTP$:LP=LEN(P$)
+1850 P=INT(VAL(P$)):IFP<3 THEN1830
+1860 HO=2:VE=16:GOSUB110
+1870 Q$="":PRINT"Primzahl q (z.B.107):";:INPUTQ$:LQ=LEN(Q$)
+1880 Q=INT(VAL(Q$)):IFQ<3 THEN1860
+1890 IF(LP>L)OR(LQ>L)THEN GOSUB3110:GOTO1830
+1900 T=0:F1=0:Z=P:GOSUB3180:T=1:F2=0:Z=Q:GOSUB3180
+1910 IF(F1=1)AND(F2=1)THEN GOSUB3320:GOSUB3070:GOTO2000
+1920 IFF1<>1 THENHO=2:VE=20:GOSUB110:PRINT"p nicht prim !"
+1930 IFF2<>1 THENHO=2:VE=21:GOSUB110:PRINT"q nicht prim !"
+1940 HO=0:VE=23:GOSUB110
+1950 PRINT"Eingabe wiederholen !"
+1960 GOSUB3070:GOSUB3350:GOTO1830
+1970 REM
+1980 REM --- BERECHNUNG DES SCHLUESSELS
+1990 REM
+2000 GOSUB100
+2010 L=LEN(U2$):HO=INT((H-6-L)/2):VE=0:GOSUB110
+2020 SR$=U2$:GOSUB150
+2030 REM
+2040 HO=0:VE=2:GOSUB110
+2050 PRINT"Die zwei eingegebenen Primzahlen sind"
+2060 PRINT"geheim, ihr Produkt (der Modul) dagegen"
+2070 PRINT"oeffentlich. Um fuer Sie einen Zugriff"
+2080 PRINT"auf die Grundlagen der Bildung des"
+2090 PRINT"Schluessels moeglich zu machen, ist es"
+2100 PRINT"ratsam, diese Daten auf Diskette oder"
+2110 PRINT"als BASICODE-File unter dem Namen"
+2120 PRINT"'key' zu speichern.":PRINT
+2130 PRINT"Aus den Zahlen p und q ergibt sich der"
+2140 PRINT"Modul M = p*q und die Eulersche"
+2150 PRINT"Funktion Phi(m) = (p-1)*(q-1).":PRINT
+2160 PRINT"Schliesslich ist zur Decodierung der"
+2170 PRINT"Schluessel D (geheim) zu waehlen."
+2180 PRINT"Diese Zahl muss teilerfremd zu Phi(m),"
+2190 PRINT"p und q sein. Diese Bedingung ist z.B."
+2200 PRINT"erfuellt, wenn D > Phi(m) und eine"
+2210 PRINT"Primzahl ist."
+2220 GOSUB3070
+2230 GOSUB100
+2240 L=LEN(U2$):HO=INT((H-6-L)/2):VE=0:GOSUB110
+2250 SR$=U2$:GOSUB150
+2260 HO=0:VE=2:GOSUB110
+2270 PRINT"Berechnung:"
+2280 PRINT"----------":PRINT
+2290 M=P*Q:PM=(P-1)*(Q-1)
+2300 PRINT"Modul                         (M) =";M
+2310 PRINT"Eulersche Funkt.         (Phi(m)) =";PM
+2320 INPUT"Decodierschluessel (z.B. 157) (D) ";D
+2330 A=PM:B=D:C=0:E=1
+2340 Q=INT(A/B):R1=A-Q*B:R2=C-Q*E
+2350 A=B:B=R1:C=E:E=R2
+2360 IFR1=0 THEN2380
+2370 GOTO2340
+2380 IFC<0 THENC=C+PM:GOTO2380
+2390 PRINT"Codierschluessel     (C) =";C
+2400 PRINT
+2410 PRINT"Von diesen Zahlen werden M und C (Modul"
+2420 PRINT"und Codierschluessel) oeffentlich"
+2430 PRINT"bekannt gemacht. Mit ihnen ist die Ver-"
+2440 PRINT"schluesselung der Nachricht moeglich."
+2450 PRINT
+2460 PRINT"Die M zugrunde liegenden Primzahlen"
+2470 PRINT"bleiben geheim; der Decodierschluessel"
+2480 PRINT"ist nur dem Empfaenger der Nachricht"
+2490 PRINT"zugaenglich."
+2500 GOSUB3070:GOSUB100:RETURN
+2510 REM
+2520 REM --- SPEICHERN
+2530 REM
+2540 GOSUB100
+2550 L=LEN(U3$):HO=INT((H-6-L)/2):VE=0:GOSUB110
+2560 SR$=U3$:GOSUB150
+2570 HO=0:VE=2:GOSUB110
+2580 PRINT"Speichern des Schluessels:"
+2590 HO=2:VE=4:GOSUB110
+2600 SR$="D":GOSUB150:PRINT"- Diskette"
+2610 HO=2:VE=6:GOSUB110
+2620 SR$="C":GOSUB150:PRINT"- Cassette (BASICODE)"
+2630 HO=2:VE=8:GOSUB110
+2640 SR$="N":GOSUB150:PRINT"- NEIN"
+2650 HO=31:VE=8:GOSUB110
+2660 GOSUB210
+2670 HO=0:VE=12:GOSUB110
+2680 PRINT"                       "
+2690 HO=31:VE=10:GOSUB110
+2700 PRINT"        "
+2710 IFIN=68 THENNF=5:GOSUB2750:GOTO1160
+2720 IFIN=67 THENNF=1:GOSUB2750:GOTO1160
+2730 IFIN=78 THEN GOSUB100:GOTO1160
+2740 GOSUB250:GOTO2650
+2750 HO=0:VE=10:GOSUB110
+2760 NF$="":INPUT"Name des Files (max. 7 Zch.) ";NF$
+2770 IFLEN(NF$)>7 THEN2750
+2780 GOSUB500
+2790 SR=M:GOSUB300:GOSUB560:GOSUB3400
+2800 SR=PM:GOSUB300:GOSUB560:GOSUB3400
+2810 SR=C:GOSUB300:GOSUB560:GOSUB3400
+2820 SR=D:GOSUB300:GOSUB560:GOSUB3400
+2830 GOSUB580
+2840 HO=0:VE=12:GOSUB110
+2850 PRINT"Fuer die Codierung bzw. Decodierung"
+2860 PRINT"notwendige Schluesselzahlen auf"
+2870 IFNF=5 THENPRINT"Diskette ";:GOTO2890
+2880 IFNF=1 THENPRINT"Cassette (BASICODE)";
+2890 PRINT"gespeichert.    ";
+2900 GOSUB210:GOSUB100:RETURN
+2910 REM
+3000 REM --- SUBROUTINEN
+3010 REM
+3020 REM --------------------------------------------------
+3030 HO=H-17:VE=23:GOSUB110
+3040 SR$=" Taste => "
+3050 GOSUB150:GOSUB210:GOSUB100:RETURN
+3060 REM --------------------------------------------------
+3070 HO=20:VE=23:GOSUB110
+3080 SR$=" Taste => "
+3090 GOSUB150:GOSUB210:RETURN
+3100 REM --------------------------------------------------
+3110 PRINT:PRINT"Zahlen auf";L;"Stellen begrenzen !"
+3120 HO=2:VE=14:GOSUB110
+3130 PRINT"                                 "
+3140 HO=2:VE=16:GOSUB110
+3150 PRINT"                                 "
+3160 RETURN
+3170 REM --------------------------------------------------
+3180 HO=0:VE=18:GOSUB110
+3190 PRINT"Test auf Primeigenschaft - warten !"
+3200 Z1=Z
+3210 IFZ/2=INT(Z/2)THENZ=Z/2:GOTO3210
+3220 F=3
+3230 PP=0:IFZ/F=INT(Z/F)THENPP=1:IFF=Z1 THEN3280
+3240 IFPP=1 THENZ=Z/F:GOTO3230
+3250 F=F+2
+3260 IFF<=Z THEN3230
+3270 RETURN
+3280 IFT=0 THENHO=24:VE=14:F1=1
+3290 IFT=1 THENHO=24:VE=16:F2=1
+3300 GOSUB110:PRINT" o.k.":GOTO3270
+3310 REM --------------------------------------------------
+3320 HO=0:VE=18:GOSUB110
+3330 PRINT"                                   ":RETURN
+3340 REM --------------------------------------------------
+3350 L$=""
+3360 FORN=1 TOH:L$=L$+" ":NEXTN
+3370 FORVE=14 TO24:HO=0:GOSUB110:PRINTL$;:NEXTVE
+3380 RETURN
+3390 REM --------------------------------------------------
+3400 IF(IN=0)OR(IN=1)THENRETURN
+3410 HO=0:VE=12:GOSUB110
+3420 SR$=" Schreibfehler ! ":GOSUB150
+3430 GOSUB210:RETURN
+3440 REM --------------------------------------------------
+25000 DATA"*","Das RSA-Verfahren wurde 1978 von R. Rivest, "
+25010 DATA"A. Shamir und L. Adleman entwickelt. ","*"
+25020 DATA"Es gehoert zu den modernen kryptographischen "
+25030 DATA"Verfahren, die eine praktisch sichere Methode "
+25040 DATA"zur Verschluesselung von Nachrichten bieten.","*"
+25050 DATA"Es gilt als 'public key system', das auf bis zu "
+25060 DATA"200-stelligen Primzahlen aufbaut.","*"
+25070 DATA"Infolge der geringen Rechengenauigkeit und der "
+25080 DATA"Anzahl der dargestellten Ziffern einer Zahl "
+25090 DATA"auf den am BASICODE-System beteiligten "
+25100 DATA"Computern kann nur eine 'Demo' geboten werden."
+25110 DATA"*"
+25120 DATA"Das Programmpaket besteht aus drei Programen:"
+25130 DATA"*"
+25140 DATA" - Berechnung des oeffentl. Schluessels,","*"
+25150 DATA" - Codierung einer Nachricht und","*"
+25160 DATA" - ihre Decodierung.","*"
+25170 DATA"Fuer den, der sich mit den Grundlagen der RSA-"
+25180 DATA"Codierung beschaeftigen will, empfehlen sich "
+25190 DATA"*"
+25200 DATA" - Patrick Horster, Kryptologie, "
+25210 DATA"B.I. Wissenschaftsverlag, Mannheim, 1985","*"
+25220 DATA" - DUDEN-Informatik, Ein Sachlexikon ..., "
+25230 DATA"Duden-Verlag, Mannheim, 1989","*"
+25240 DATA" - Albrecht Beutelspacher, Kryptologie, "
+25250 DATA"Verlag Vieweg, Braunschweig, 1991","*"
+25260 DATA" - Sgarro/Wuermli, Geheimschriften, "
+25270 DATA"Weltbild Verlag, Augsburg, 1991","*"
+25280 DATA" - Thiagar Devendran, Das Beste aus dem "
+25290 DATA"Mathematischen Kabinett, Deutsche Verlags-"
+25300 DATA"Anstalt, Stuttgart, 1990","*"
+25310 DATA" - Marcel Sutter, Ein Streifzug durch die "
+25320 DATA"Kryptologie, M+K Computer, Luzern, 1990-4","*"
+25330 DATA" - Eckart Winkler, Dreifach genaeht, "
+25340 DATA"MC, Muenchen, Heft 3/1988","*"
+25350 DATA"Im uebrigen lohnt es, sich fuer ein besseres "
+25360 DATA"Verstaendnis mit Fragen der Zahlentheorie zu "
+25370 DATA"beschaeftigen. ","*"
+25380 DATA"Dies und die folgenden Programme koennen "
+25390 DATA"natuerlich nur ein Beispiel geben.","*"
+25400 DATA"xxx"
+25410 REM
+30000 REM --------------------------------------------------
+30010 REM GRUNDLAGE DIESES PROGRAMMES UND DER TEILE 2 UND 3
+30020 REM IST FOLGENDER BEITRAG:
+30030 REM
+30040 REM   MARCEL SUTTER,
+30050 REM   EIN STREIFZUG DURCH DIE KRYPTOLOGIE
+30060 REM   M+K COMPUTER, LUZERN, 1990, HEFT 4
+30070 REM
+32000 REM -------------------------------------
+32010 REM FRIEDRICH DORMEIER
+32020 REM BISMARCKSTR. 11A
+32030 REM D-1000 BERLIN 39
+32040 REM (030) 803 31 11
+32050 REM
+32060 REM C-128 - 9/1991
+32070 REM -------------------------------------
+32080 REM Erstausstrahlung: DS-Kultur
+32090 REM-spezial:911016

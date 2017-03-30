@@ -1,0 +1,128 @@
+1000 A=200:GOTO20:REM FAXICODE
+1010 GOSUB600:REM TITEL
+1020 VE=0:HO=0:CN=0:GOSUB620
+1030 READH,V:HO=H/10:VE=V/10:IFV=-1 THEN1050
+1040 GOSUB630:GOTO1030
+1050 VE=0:HO=0:GOSUB620:HO=.9:GOSUB630:VE=.9:GOSUB630
+1060 HO=0:GOSUB630:VE=0:GOSUB630
+1070 SR$="F A X I C O D E"
+1080 VE=.35:HO=.23:GOSUB650
+1090 SR$="(C) anglesoft/wallysoft"
+1100 VE=.65:HO=.12:GOSUB650
+1110 SR$="1 9 9 1"
+1120 VE=.70:HO=.35:GOSUB650
+1130 FORX=1 TO30:GOSUB260:SP=80:SV=15:SD=INT(RV*4)
+1140 GOSUB400:SP=68:SD=1:GOSUB400:NEXTX
+1150 GOSUB100:REM TEKSTGEDEELTE
+1160 READA$:IFA$="#" THEN1200
+1170 IFA$="$" THEN1210
+1180 IFA$="%" THEN1240
+1190 PRINTA$:GOTO1160
+1200 READSR$:GOSUB150:PRINT:PRINT:GOTO1160
+1210 VE=22:HO=0:GOSUB110
+1220 PRINT"Weiter mit Taste ...";:GOSUB210
+1230 GOTO1150
+1240 VE=22:HO=0:GOSUB110:PRINT"(S)toppen of (P)rinten";
+1250 GOSUB210
+1260 IFIN=83 THEN950
+1270 IFIN=80 THEN1290
+1280 GOTO1250
+1290 RESTORE
+1300 READA,B:IFA=-1 THEN1320
+1310 GOTO1300
+1320 READSR$
+1330 IF(SR$="#")OR(SR$="$")THEN1320
+1340 IFSR$="%" THEN950
+1350 GOSUB350:GOSUB360:GOTO1320
+25000 DATA1,1,2,0,3,1,4,0,5,1,6,0,7,1,8,0,9,1
+25010 DATA8,2,9,3,8,4,9,5,8,6,9,7,8,8,9,9
+25020 DATA8,8,7,9,6,8,5,9,4,8,3,9,2,8,1,9,0,8
+25030 DATA1,7,0,6,1,5,0,4,1,3,0,2,1,1,0,0,-1,-1
+25040 DATA"#","FAXICODE, was ist das ?"
+25050 DATA"","Dieses Wort setzt sich aus zwei an-"
+25060 DATA"deren Begriffen, namentlich"
+25070 DATA"FAXen und basICODE zusammen."
+25080 DATA"Wie Sie wahrscheinlich wissen, bietet"
+25090 DATA"FAXen eine Moeglichkeit, um Dokumente"
+25100 DATA"etc. per Telefon zu verschicken."
+25110 DATA"Auf der einen Seite wird ein beschrie-"
+25120 DATA"benes Papier in das FAX-Geraet einge-"
+25130 DATA"legt. Das Geraet tastet das Papier ab"
+25140 DATA"und uebersetzt es in digitale Infor-"
+25150 DATA"mationen. Diese Informationen werden"
+25160 DATA"auf der anderen Seite von einem FAX-"
+25170 DATA"Geraet empfangen und auf Papier ge-"
+25180 DATA"druckt."
+25190 DATA"$"
+25200 DATA"#","FAXICODE, Vorgeschichte"
+25210 DATA"","Seit einigen Jahren kenne ich"
+25220 DATA"Detlev Winkel aus der ehemaligen DDR."
+25230 DATA"Damals war die Grenze noch dicht, doch"
+25240 DATA"konnte er Basicode-3 ueber Mittelwelle"
+25250 DATA"empfangen."
+25260 DATA"Weil seinerzeit schon einige Programme"
+25270 DATA"von mir gesendet wurden, hat er mir"
+25280 DATA"geschrieben. Wir haben uns spaeter"
+25290 DATA"wiederholt getroffen. Bei unserem"
+25300 DATA"letzten Treff entstand die Idee, ein"
+25310 DATA"gemeinsames Programm zu schreiben,"
+25320 DATA"wobei jeder seinen Beitrag dazu leiste-"
+25330 DATA"te. Auf diese Weise entstand ein"
+25340 DATA"Gemeinschaftsprogramm. Wenn wir alle"
+25350 DATA"Programmteile auf dem Postweg ausge-"
+25360 DATA"tauscht haetten, so waere sehr viel"
+25370 DATA"Zeit vergangen.","$"
+25380 DATA"Deshalb kamen wir auf den Gedanken,"
+25390 DATA"Programmteile per Telefon zu ueber-"
+25400 DATA"mitteln. Detlev von einer Telefonzelle"
+25410 DATA"und ich von zu Hause aus."
+25420 DATA"Das ist problemlos verlaufen."
+25430 DATA"Weil das vielleicht auch andere"
+25440 DATA"Basicode-Freunde ausprobieren wollen,"
+25450 DATA"folgt eine Beschreibung, wie wir das"
+25460 DATA"gemacht haben.","$"
+25470 DATA"#","FAXEN in BASICODE:"
+25480 DATA"","Derjenige, der ein Programm ueber-"
+25490 DATA"tragen will, benoetigt einen"
+25500 DATA"Kassettenrekorder oder Walkman mit"
+25510 DATA"kleinen Kopfhoerern, die auf die"
+25520 DATA"Sprechmuschel des Telefonhoerers"
+25530 DATA"gedrueckt werden. Das Band kann gestar-"
+25540 DATA"tet werden. Man muss darauf achten,"
+25550 DATA"das die Lautstaerke nicht zu schwach"
+25560 DATA"oder zu stark ist."
+25570 DATA"Man kann die Lautstaerke folgender-"
+25580 DATA"massen justieren:"
+25590 DATA"     Kopfhoerer aufsetzen und Ton so"
+25600 DATA"     einstellen, dass er gut hoerbar,"
+25610 DATA"     klar und hell ist."
+25620 DATA
+25630 DATA"$","Der Empfaenger braucht ein Telefon-"
+25640 DATA"Mithoer-Mikrofon mit Saugnaepfchen."
+25650 DATA"(Kosten +- Gulden 5,-)"
+25660 DATA"Der Sauger ist an der Rueckseite von"
+25670 DATA"der Hoermuschel anzubringen."
+25680 DATA"Experimentieren fuehrt zum besten"
+25690 DATA"Resultat!"
+25700 DATA"Die Zuleitung ist an den Mikrofon-"
+25710 DATA"eingang des Kassettenrekorders anzu-"
+25720 DATA"schliessen."
+25730 DATA"","So hat man ein FAX oder MODEM fuer"
+25740 DATA"sehr wenig Geld."
+25750 DATA"Sehen Sie sich das Programm"
+25760 DATA"''Freundschaft'' an, seine Programm-"
+25770 DATA"zeilen sind mehrere Male 500 km"
+25780 DATA"telefonisch uebertragen worden!!!"
+25790 DATA"","Detlev Winkel & Walther van den Elshout"
+25800 DATA"#","ANGLESOFT             WALLYSOFT"
+25810 DATA"%"
+32000 REM"+-----------------------------+"
+32010 REM"! ANGLESOFT  &  WALLYSOFT     !"
+32020 REM"! D.Winkel   &  W.v.d.Elshout !"
+32030 REM"!         Kontakt:            !"
+32040 REM"!   Detlef Winkel             !"
+32050 REM"!   Am See 4                  !"
+32060 REM"!   O-5601 Berlingerode       !"
+32070 REM"+-----------------------------+"
+32080 REM
+32090 REM-spezial 910904

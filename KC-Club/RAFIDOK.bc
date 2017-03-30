@@ -1,0 +1,163 @@
+1000 A=500:GOTO20:REM PROGRAMM GRAFIK
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1340:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Ausdruck ueber"
+1060 PRINT:PRINT"   - 1  den Bildschirm,"
+1070 PRINT"   - 2  den Drucker."
+1080 PRINT:PRINT"Welche Nummer ?";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1180
+1100 PRINT:PRINT"Wieviel Leerzeichen  "
+1110 PRINT"am Zeilenanfang      ";:INPUTHL
+1120 PRINT:PRINT"Wieviel Text-Zeichen "
+1130 PRINT"auf jeder Zeile      ";:INPUTI:HR=HL+I-1
+1140 PRINT:PRINT"Wieviel Leer-Zeilen  "
+1150 PRINT"am Seitenende        ";:INPUTVL
+1160 PRINT:PRINT"Wieviel Text-Zeilen  "
+1170 PRINT"auf jeder Seite      ";:INPUTVR:VR=VR+VL-3
+1180 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1190 GOSUB1310:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1290
+1200 IFLEN(R$)>HR-HL THEN GOSUB1730
+1210 GOSUB1370:IFR$<>"" THENR$=R$+" "
+1220 R$=R$+D$:GOTO1200
+1230 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1250
+1240 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1250 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1260 IFSC=1 THEN1310
+1270 IFVL>0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOSUB210
+1280 AL=VL
+1290 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1230
+1300 SR$="":GOSUB1230:AL=VL:RETURN
+1310 HO=0:VE=VT:GOSUB110
+1320 SR$="WEITER: druecke <RETURN/ENTER>":GOSUB150
+1330 GOSUB210:IFIN<>13 THEN1330
+1340 GOSUB100:AL=VL:SR$=T$
+1350 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1360 PRINT:PRINT:RETURN
+1370 READD$
+1380 IFD$="" THEN1370
+1390 IFLEFT$(D$,1)="." THEN1440
+1400 IFLEFT$(D$,1)<>"!" THENRETURN
+1410 IFD$="!" THEND$="":GOTO1430
+1420 D$=RIGHT$(D$,LEN(D$)-1)
+1430 GOSUB1670:GOTO1380
+1440 IFD$<>".E" THEN1490
+1450 J=1:GOSUB1670:T$="E N D E"
+1460 SR$="":GOSUB1230:GOSUB1230:SR$=T$:GOSUB1230:T$=""
+1470 SR$="":GOSUB1230:IFAL<>VL THEN1470
+1480 GOTO950
+1490 DD$=MID$(D$,2,1):D$=RIGHT$(D$,LEN(D$)-2)
+1500 IFDD$<>"R" THEN1550
+1510 IFSC=2 THENRETURN
+1520 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1230:R$=""
+1530 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1540 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1370
+1550 IFDD$<>"M" THEN1580
+1560 I=VAL(D$):MM$="":IFI+HL=0 THEN1370
+1570 MM$=LEFT$(S$,I+HL):GOTO1370
+1580 IFDD$="P" THENJ=VAL(D$):GOSUB1670:GOSUB1690:GOTO1370
+1590 IFDD$="T" THENT$=D$:J=10:GOSUB1670:GOSUB1690:GOTO1510
+1600 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1370
+1610 IFDD$<>"F" THEN1640
+1620 J=VAL(D$):GOSUB1670
+1630 J=J-1:IFJ>-1 THENSR$="":GOSUB1230:GOTO1630
+1640 IFDD$<>"C" THEN1660
+1650 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1230
+1660 GOTO1370
+1670 GOSUB1730:SR$=R$:GOSUB1230:R$="":J=J-1
+1680 RETURN
+1690 IF(SC=1)OR(AL+J>VR)THEN1710
+1700 SR$="":GOSUB1230:GOSUB1230:RETURN
+1710 IFAL<>VL THENSR$="":GOSUB1230:GOTO1710
+1720 RETURN
+1730 K=HR-HL+1-LEN(M$)
+1740 IFLEN(R$)<=K THENRETURN
+1750 IFMID$(R$,K,1)=" " THEN1780
+1760 K=K-1:IFK>0 THEN1750
+1770 SR$="":GOTO1790
+1780 SR$=LEFT$(R$,K-1):R$=RIGHT$(R$,LEN(R$)-K)
+1790 GOSUB1230:GOTO1730
+25000 DATA"Beschreibung Programm GRAFIK"
+25010 DATA"Autor: Manfred Feindt,Berlin"
+25020 DATA"!geaendert von Thomas Winkler,Zschopau"
+25030 DATA"!!Funktionen:"
+25040 DATA"!!.RX-P/Y-P"
+25050 DATA"!Anzeige der Koordinaten des Bildpunktes."
+25060 DATA"Bewegung in 8 Richtungen moeglich"
+25070 DATA"(Cursor sowie SHIFT+Cursor)."
+25080 DATA"!!.RSPEED"
+25090 DATA"!Geschwindigkeit des Bildpunktes (0-9)."
+25100 DATA"!!.RP-ON/P-OFF"
+25110 DATA"!S=Bildpunkt setzen."
+25120 DATA"!R=Bildpunkt nicht setzen (loeschen)."
+25130 DATA"!!.RHCOPY"
+25140 DATA"!Drucken von Hardcopys in normaler- und"
+25150 DATA"doppelter Groesse ueber Centronics-"
+25160 DATA"Interface (EPSON-kompatibel)."
+25170 DATA"!Es lassen sich mehrere Bildinhalte"
+25180 DATA"lueckenlos aneinanderreihen."
+25190 DATA"!Anschluss des Druckers am Modul M001."
+25200 DATA"Beschaltung siehe Anleitung zum Modul."
+25210 DATA".P0"
+25220 DATA".RWRITE"
+25230 DATA"!A=Beschriften mit alphanumerischen Zeichen."
+25240 DATA"!G=Zeichnen mit Grafikzeichen."
+25250 DATA"!!.RSAVE/LOAD"
+25260 DATA"!Abspeichern und Einlesen von Bildern."
+25270 DATA"!!.RTURN"
+25280 DATA"!Drehen des Bildes um 90 Grad."
+25290 DATA"!!.REND"
+25300 DATA"!Programmende und Rueckkehr ins CAOS."
+25310 DATA"!!.RMOVE"
+25320 DATA"!Bewegen des Bildes mit Kursortasten."
+25330 DATA"!!.REXKO"
+25340 DATA"!Vertikale Bewegung von Bildteilen,"
+25350 DATA"bezueglich frei waehlbarer Horizontalen."
+25360 DATA"!!.RPAGE"
+25370 DATA"!Umblaettern zwischen 3 Bildern,bei"
+25380 DATA"Vorhandensein einer RAM-Erweiterung ab 4000H."
+25390 DATA".P0"
+25400 DATA".RLINE"
+25410 DATA"!Zeichnen einer Linie,wobei Anfangs- "
+25420 DATA"und Endpunkt mit L zu quittieren sind."
+25430 DATA"!!.RQUAD"
+25440 DATA"!Zeichnen eines Rechteckes."
+25450 DATA"!Die diagonalen Eckpunkte sind mit Q zu"
+25460 DATA"quittieren."
+25470 DATA"!!.RCIRC"
+25480 DATA"!Zeichnen eines Kreises."
+25490 DATA"!Der Mittelpunkt und Radius sind mit O"
+25500 DATA"zu quittieren."
+25510 DATA"!!.RFILL"
+25520 DATA"!Ausfuellen von geschlossenen Figuren."
+25530 DATA"!!.RPCHAR"
+25540 DATA"!Beschriften des Bildes mit kleinen"
+25550 DATA"Zeichen,auf jeder beliebigen Position."
+25560 DATA"!!.RDELETE"
+25570 DATA"!Loeschen von zusammenhaengenden Bildpunkten."
+25580 DATA"!!.RCOLOR"
+25590 DATA"!Umschalten der Hintergrundfarbe."
+25600 DATA".P0"
+25610 DATA".RINPUT"
+25620 DATA"!Direkte Eingabe von Bildpunktkoordinaten."
+25630 DATA"!!Das Bildschirmloeschen geschieht wie"
+25640 DATA"ueblich mit SHIFT/HOME."
+25650 DATA"!Der Bildpunkt wird durch ENTER in seine"
+25660 DATA"Ausgangsposition gebracht."
+25670 DATA"!!!.CVIEL SPASS BEIM ZEICHNEN",".E"
+30000 REM
+30010 REM Beschreibung - Programm GRAFIK
+30020 REM
+32000 REM *******************
+32010 REM *                 *
+32020 REM * THOMAS WINKLER  *
+32030 REM * R.-TIMME-STR.12 *
+32040 REM * O-9360 ZSCHOPAU *
+32050 REM *                 *
+32060 REM * 7.4.91  KC 85/3 *
+32070 REM *                 *
+32080 REM *******************
+32090 REM
+32100 REM Erstausstrahlung: Deutschlandsender Kultur
+32110 REM-spezial 910529

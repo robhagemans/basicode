@@ -1,0 +1,509 @@
+1000 A=1700:GOTO20:REM NIEUWSBRIEF
+1010 HP=00:VP=00:KP=00:REM PRINTER INSTELLING
+1020 DIMU(50),D$(40):GOSUB100:L=0:L$="":U$="":X=0:Y=0:U=64
+1030 FORN=1 TO30:L$=L$+"   ":U$=U$+"---":NEXTN:FORN=1 TO7
+1040 X=X+U:HO=X:VE=0:GOSUB110:GOSUB120:IFHO<>X THENX=X-U
+1050 Y=Y+U:HO=0:VE=Y:GOSUB110:GOSUB120:IFVE<>Y THENY=Y-U
+1060 U=U/2:NEXTN:IFX<37 THENY=Y-1
+1070 P=0:R=0:M3=0:Q=0:A=0:T=0:W=0:S=0:U=1:K=1:I=0:Z=0
+1080 R$="":D$="<m0":GOSUB3400:GOSUB100:RESTORE
+1100 E=ASC(D$+" "):IFE=60 THEN GOSUB1900:GOTO1100
+1110 IFE=62 THENF=2:GOSUB2200:IFG=0 THEN GOSUB2000:GOSUB2610
+1120 ONK GOTO1200,1200,1230,1070,3500
+1200 IF(I=0)AND(A<1)THEN GOSUB1700:GOTO1120
+1210 IFR$<>"" THEND$=" "+D$
+1220 R$=R$+D$:C=LEN(R$):IF(C>B)OR(A>0)THEN GOSUB1300
+1230 G=0:GOSUB1800:GOTO1100
+1300 WW=0:E=B:IFC<=B THENS$=R$:R$="":GOTO1340
+1310 FORN=B+1 TO1 STEP-1:IFMID$(R$,N,1)=" " THENE=N:N=1:WW=1
+1320 NEXTN:S$=LEFT$(R$,E-WW):R$=RIGHT$(R$,C-E)
+1330 IFP*U>0 THEN GOSUB1600
+1340 GOSUB1400:IF((C>B)OR(A*C>0))AND(K<3)THEN1300
+1350 RETURN
+1400 E=Q+KP*P:IFT>0 THENE=E+INT((B-LEN(S$))/2)
+1410 GOSUB1490:IFS*R<1 THEN1430
+1420 S$=LEFT$(U$,LEN(S$)-E):GOSUB1490
+1430 IFE=Q+KP*P THENQ=M:B=H-M3-Q
+1440 IFR*W>0 THENS$="":GOSUB1500
+1450 C=LEN(R$):RETURN
+1490 IFE>0 THENS$=LEFT$(L$,E)+S$
+1500 R=R+1:IFP=0 THENPRINTS$:GOTO1520
+1510 SR$=S$:GOSUB350:GOSUB360:L=L+1
+1520 IFR>=V+Z THEN3310
+1530 RETURN
+1600 D=LEN(S$):E=B-D:G=1:U(0)=1:B$="":FORN=M-Q+1 TOD
+1610 IFMID$(S$,N,1)=" " THENU(G)=N:G=G+1:IFG>E THENN=D
+1620 NEXTN:U(G)=D+1:G=G-1:IFG=0 THENRETURN
+1630 C=INT(E/G):E=E-C*G+.5:FORN=1 TOG+1
+1640 D=U(N-1):B$=B$+MID$(S$,D,U(N)-D):D=C-(SGN(N-E)-1)/2
+1650 IF(D>0)AND(N<=G)THENB$=B$+LEFT$(L$,D)
+1660 NEXTN:S$=B$:RETURN
+1700 C=SGN(S-1.5)+SGN(W-1.5)+4:J=0:E=H-M3-M:IN$=D$
+1710 E=INT((V-R)/C*2)*E*(1-3.3/E)-LEN(R$)+M-Q
+1720 E=E-LEN(D$):N=ASC(RIGHT$(" "+D$,1)):GOSUB1820:C=ASC(D$)
+1730 D$(I)=D$:I=I+1:IF(C<>60)AND(C<>62)AND(N<>46)THEN1720
+1740 D$=IN$:IFE<1 THEN3300
+1750 RETURN
+1800 W=W-1:S=S-1:A=A-1:T=T-1
+1810 IFI>0 THEND$=D$(J):J=J+1:I=I-1:RETURN
+1820 READD$:RETURN
+1900 F=ASC(MID$(D$,2,1)):F=F-INT(F/32)*32
+1910 F=ASC(MID$("504030000000206:0819700000",F,1))-48
+1920 IFF<9 THEN GOSUB2000
+1930 G=F:F=3:D=0:GOSUB2100:IFG=10 THENRETURN
+1940 IF(K=3)AND(G>3)THENRETURN
+1950 ONG GOTO3000,2600,2500,2400,2300,2700,2800,2900,3100
+2000 C=LEN(R$):IFC>0 THEN GOSUB1300:GOTO2000
+2010 RETURN
+2100 C=0:N=1:F=F-1
+2110 E=0:F=F+1:IFF<=LEN(D$)THENE=ASC(MID$(D$,F,1))-44
+2120 IF(E>3)AND(E<14)THENC=C*10+E-4:D=1:GOTO2110
+2130 IF(E=-1)OR(E=1)THENN=-E:GOTO2110
+2140 IF(E=2)AND(F=1)THEN2110
+2150 C=C*N:IFD=0 THEND=(N+1)/4:C=D*99998
+2200 E=LEN(D$)-F+1:IFE>0 THEND$=MID$(D$,F,E):F=1:RETURN
+2210 D$="":RETURN
+2300 A=C:RETURN
+2400 T=C:RETURN
+2500 K=4:GOSUB250:P=0:GOTO3300
+2600 D=1:M1=C:GOSUB2100:M=C:GOSUB2100:M3=C
+2610 Q=M1:B=H-M3-Q:RETURN
+2700 S=C:RETURN
+2800 U=C:RETURN
+2900 IFD<1 THENW=C:RETURN
+2910 IFC*R>0 THENS$="":GOSUB1500:C=C-1:GOTO2910
+2920 RETURN
+3000 A=0:IFK>3 THENRETURN
+3010 E=K:K=1:IFD+P=0 THEN3300
+3015 IFD=0 THENRETURN
+3020 IFR>V-6 THEN3050
+3030 IFE=1 THEN3060
+3040 F=P:P=0:GOSUB3400:GOSUB3200:P=F:GOSUB3400:K=3
+3050 GOSUB3300:IFK>2 THENRETURN
+3060 GOSUB3200:D$="":RETURN
+3100 U=0:F=C:IFF<0 THENF=B+F
+3110 IFF<LEN(R$)THEN GOSUB2000
+3120 R$=R$+RIGHT$(L$,F-LEN(R$)-1):RETURN
+3200 T=1:S=1:W=1:U=1:GOSUB1440:GOSUB2610:R$=D$:GOTO2000
+3300 GOSUB2000:IFR=0 THEN100
+3310 Z=19:IF(P=0)OR(K>2)THEN3330
+3320 C=VP-L:GOSUB2910:GOSUB100:PRINT"Nieuw printervel":L=0
+3330 GOSUB3400:HO=5:VE=Y:GOSUB110:B$="PrinterMonitor"
+3340 PRINTMID$(B$,P*7+1,7);"/All/Next/Skip/Begin/End";
+3350 GOSUB210:B$=" AaNnSsBbEeMmPp":Z=0:R=L*P:E=0
+3360 FORN=2 TO15:IFMID$(B$,N,1)=IN$ THENE=INT(N/2):N=15
+3370 NEXTN:IFE=0 THEN3350
+3380 IFE>5 THENP=E-6:GOTO3330
+3390 GOSUB100:IF(K<>4)OR(E=5)THENK=E
+3395 RETURN
+3400 IFP=0 THENH=X:V=Y-1:GOTO3470
+3410 IFHP<>0 THEN3460
+3420 GOSUB100:PRINT:PRINT"Printer instelling"
+3430 PRINT:PRINT"Aantal karakters per regel ";:INPUTHP
+3440 PRINT:PRINT"Aantal regels op een pagina ";:INPUTVP
+3450 PRINT:PRINT"Kantlijn breedte ";:INPUTKP
+3460 H=HP:V=VP-2
+3470 B=H-M3-Q:RETURN
+3500 GOTO950
+25000 DATA" ","<A<R1<C********************"
+25010 DATA"*                  *"
+25020 DATA"*    NIEUWSBRIEF   *"
+25030 DATA"*                  *"
+25040 DATA"********************"
+25050 DATA"<R1 BASICODE VERTAALPROGRAMMA C64"
+25060 DATA"<C-<R2<M2.2Toets :"
+25070 DATA"<R1A : Weergave alles"
+25080 DATA"B : Naar begin van tekst"
+25090 DATA"E : Einde programma"
+25110 DATA"P : Weergave op printer"
+25120 DATA"N : 1 paragraaf weergave"
+25130 DATA"S : 1 paragraaf overslaan","<M0"
+25140 DATA"<SHANDLEIDING BASICODE VERTAALPROGRAMMA."
+25141 DATA"<R1Dit vertaalprogramma mag vrij gekopieerd"
+25142 DATA"worden, MITS:"
+25143 DATA"<R1a-Er NIETS aan veranderd wordt."
+25144 DATA"<R1b-Het NIET met COMMERCIELE oogmerken"
+25145 DATA"verspreid zal worden."
+25150 DATA"<R1Dit is een handleiding voor het Basicode"
+25160 DATA"vertaalprogramma voor de Commodore 64 en 128."
+25170 DATA"Het vertaalprogramma is alleen voor"
+25180 DATA"deze twee computers te gebruiken.","Het"
+25190 DATA"programma is een Basicode 3 vertaalprogramma."
+25200 DATA"<R1Hiermee kunnen Basicode programma's worden"
+25210 DATA"ingelezen, geRUNd en weggeschreven."
+25220 DATA"Basicode programma's zijn BASIC programma's die"
+25230 DATA"aan een aantal regels voldoen en op een"
+25240 DATA"standaard manier op CASSETTE band staan."
+25250 DATA"Hierdoor kunnen verschillende computersoorten"
+25260 DATA"deze programma's lezen."
+25270 DATA"<R1De regels waaraan Basicode programma's moeten"
+25280 DATA"voldoen staan in het Basicode protocol."
+25370 DATA"<R1Het Basicode-3 protocol,"
+25380 DATA"wordt ondersteund door de STICHTING"
+25390 DATA"BASICODE en het radio programma TROS BASICODE 3."
+25450 DATA"<R1Via deze radio uitzendingen worden regelmatig"
+25460 DATA"Basicode computer programma's uitgezonden, die u"
+25470 DATA"op een cassette kunt opnemen."
+25480 DATA"Deze opname kunt u met dit vertaalprogramma"
+25490 DATA"inlezen en RUNnen op uw Commodore 64 of 128."
+25500 DATA"Er zijn ook diverse verzamelcassettes te koop"
+25510 DATA"met daarop via radio uitgezonden programma's."
+25550 DATA"<R1Natuurlijk kunt u ook zelf"
+25560 DATA"Basicode programma's schrijven."
+25570 DATA"Hiervoor is kennis van BASIC nodig maar ook van"
+25580 DATA"het Basicode protocol."
+25610 DATA"Het Basicode-3 protocol staat beschreven in het"
+25620 DATA"Basicode-3 boek, welke te koop is in de"
+25630 DATA"boekhandel (ISBN 90 201 2111 1)."
+25640 DATA"Zelf geschreven Basicode programma's kunt u"
+25650 DATA"aanbieden voor uitzending aan de TROS."
+25660 DATA"<SHET VERTAALPROGRAMMA","Voor de Commodore 64"
+25670 DATA"bestaan verschillende vertaalprogramma's."
+25680 DATA"Deze versie 1990-v2 is vernieuwd en uitgebreid."
+25720 DATA"Het werkt op de"
+25730 DATA"Commodore 64 en gelijke computers."
+25740 DATA"Dus ook op de SX-64 en de C 128 in 64 mode."
+25750 DATA"<SINLEZEN EN KOPIEREN"
+25790 DATA"Voor het inlezen van de cassetteversie (voor"
+25800 DATA"DATASETTE) kunt u het beste het begin van"
+25810 DATA"dit programma opzoeken.","Stop nu de tape net"
+25820 DATA"voor de eerste fluittoon."
+25830 DATA"Zet nu uw computer aan, of reset deze."
+25840 DATA"Als u een Commodore 128 bezit moet u"
+25850 DATA"overschakelen naar de 64 mode.","Geef daarna het"
+25860 DATA"commando LOAD en druk op de RETURN toets."
+25870 DATA"Het programma wordt ingelezen. Nu zal ongeveer"
+25880 DATA"3 minuten niets op het scherm te zien zijn."
+25890 DATA"<R1Als u een kopie (voor eigen gebruik) wilt"
+25900 DATA"maken moet u geen RUN geven, en beslist niet"
+25910 DATA"laden d.m.v. SHIFT+RUN/STOP."
+25920 DATA"Geef dan een passende SAVE opdracht,"
+25930 DATA"bijvoorbeeld:"
+25940 DATA"<R1SAVE''BASICODE-3 V2'' voor DATASETTE en"
+25945 DATA">SAVE''BASICODE-3 V2'',8 als u over een"
+25950 DATA"diskdrive beschikt."
+25960 DATA"<M0<SVERTAALPROGRAMMA OPSTARTEN"
+25970 DATA"Nadat u het vertaalprogramma ingelezen heeft"
+25980 DATA"kunt u het opstarten met de RUN opdracht gevolgd"
+25990 DATA"door de RETURN toets.","De computer zal nu in de"
+26000 DATA"Basicode toestand komen, op het scherm zal"
+26010 DATA"nu het Basicode menu verschijnen."
+26020 DATA"U kunt dit menu verlaten door op de spatiebalk"
+26030 DATA"te drukken, ook nu is de computer nog in de"
+26040 DATA"Basicode toestand.","<R1Basicode programma's die"
+26050 DATA"u op Commodore formaat op cassette of diskette"
+26060 DATA"opgeslagen heeft met SAVE, kunt u weer inlezen"
+26070 DATA"met LOAD en dan RUNnen.","Voor dit RUNnen MOET"
+26080 DATA"de computer in de Basicode toestand staan!"
+26090 DATA"<R1Basicode programma's roepen subroutine's aan"
+26100 DATA"om b.v. het scherm schoon te maken of iets naar"
+26110 DATA"de printer te sturen.","Voor deze subroutine's"
+26120 DATA"zijn regels 0 tot en met 999 gereserveerd."
+26130 DATA"Bij deze versie van het vertaalpogramma staan"
+26140 DATA"deze subroutine's niet als basic regels in het"
+26150 DATA"geheugen.","Het vertaalprogramma zal als een"
+26160 DATA"subroutine aangeroepen wordt, hiervoor een"
+26170 DATA"machinetaal routine uitvoeren."
+26180 DATA"Hierdoor kunt u oude Basicode programma's"
+26190 DATA"waarbij deze subroutine's wel zijn bijgevoegd"
+26200 DATA"zonder problemen geRUNd worden."
+26210 DATA"Voorwaarde is wel dat regel 10 aanwezig is."
+26220 DATA"Anders worden de in BASIC aanwezige subroutine's"
+26230 DATA"uitgevoerd in plaats van de machinetaal"
+26240 DATA"routine's.","<R1Het is mogelijk dat het Basicode"
+26250 DATA"vertaalprogramma niet goed samenwerkt met"
+26260 DATA"sommige machinetaal programma's, insteekkaarten"
+26270 DATA"of afwijkende randapparatuur."
+26320 DATA"<SHET BASICODE OF F1 MENU","Nadat Basicode in de"
+26330 DATA"computer is geinstalleerd, kan men een keuzemenu"
+26340 DATA"oproepen door op de functietoets F1 te drukken."
+26350 DATA"Functietoets F1 zal alleen werken waneer u deze"
+26360 DATA"vooraan op een regel geeft.","Als F1 niet werkt,"
+26370 DATA"drukt u dan eerst op de RETURN toets."
+26380 DATA"<R1In dat menu hebt u de volgende mogelijkheden:"
+26390 DATA"<R1<M0.4SPATIE: Met de spatiebalk wordt het"
+26400 DATA"keuzemenu weer verlaten en keert u terug naar"
+26410 DATA"basic.","U blijft in de Basicode toestand."
+26420 DATA"<R1",">F1: Met de F1-toets schrijft u een reeds"
+26430 DATA"aanwezig programma naar cassette in"
+26440 DATA"Basicode-formaat."
+26450 DATA"Dit is alleen nodig als u programma's wilt"
+26460 DATA"uitwisselen met andere computertypen.","Voor"
+26470 DATA"eigen opslag kunt u de SAVE opdracht gebruiken."
+26480 DATA"<R1Bij Basicode save controleert het"
+26490 DATA"vertaalprogramma eerst of de weg te schrijven"
+26500 DATA"programmaregels aan de belangrijkste eisen"
+26510 DATA"voldoen.","Gekeken wordt of de regellengte"
+26520 DATA"maximaal 60 tekens is en of er in het programma"
+26530 DATA"geen verboden commando's voorkomen."
+26540 DATA"Deze controle is op het scherm zichtbaar."
+26550 DATA"Als een fout gevonden wordt stopt het programma"
+26560 DATA"met een foutmelding."
+26570 DATA"U kunt nu de betreffende regel verbeteren."
+26580 DATA"Daarna kunt u opnieuw proberen het programma weg"
+26590 DATA"te schrijven.","Als er geen fouten worden"
+26600 DATA"gevonden, komt meteen na de controle een melding"
+26610 DATA"dat u de recorder moet starten."
+26620 DATA"Daarna start het wegschrijven.","Tijdens het op"
+26630 DATA"cassette wegschrijven van een Basicode programma"
+26640 DATA"zal het beeldscherm van kleur wisselen."
+26650 DATA"U kunt het schrijven afbreken door de recorder"
+26660 DATA"te stoppen.","<R1",">F2: Met de F2-toets leest u"
+26670 DATA"een Basicode-programma van cassette in."
+26680 DATA"De ingelezen regels worden nu op het scherm"
+26690 DATA"getoond.","Deze methode geeft een slechter"
+26700 DATA"inleesresultaat dan inlezen met de F3-toets."
+26710 DATA"Hierdoor is het wel geschikt om de leeskop van"
+26720 DATA"uw cassette af te stellen."
+26730 DATA"Bedenk echter dat dit eigenlijk het werk van een"
+26740 DATA"vakman is, dus weet waar u aan begint."
+26750 DATA"<R1U kunt deze methode ook gebruiken als u"
+26760 DATA"geen problemen met inlezen heeft.","Op het"
+26770 DATA"scherm is het inlezen van het programma dan goed"
+26780 DATA"te volgen.","<R1",">F3: Met de F3-toets leest u"
+26790 DATA"een programma in Basicode-formaat van cassette."
+26800 DATA"Voor inlezen van door u zelf opgeslagen Basicode"
+26810 DATA"programma's kunt u de LOAD opdracht gebruiken."
+26820 DATA"<R1Voor het inlezen van programma's kunt u"
+26830 DATA"het beste met een cassette recorder het begin"
+26840 DATA"van het programma opzoeken.","Zet nu de band"
+26850 DATA"stil net voor de eerste fluittoon.","Na"
+26860 DATA"intoetsen van F3 dient u de recorder te starten."
+26870 DATA"Vervolgens wordt het gehele scherm rood."
+26880 DATA"Zodra het leesprogramma een Basicode-aanlooptoon"
+26890 DATA"signaleert, wordt het scherm groen."
+26900 DATA"Als nu het eigenlijke programma wordt ingelezen,"
+26910 DATA"zal het scherm van kleur veranderen totdat het"
+26920 DATA"hele programma is ingelezen."
+26930 DATA"<R1Indien een leesfout is opgetreden, wordt"
+26940 DATA"dat gemeld met 'LOAD ERROR'."
+26950 DATA"Het programma is dan niet foutloos overgekomen."
+26960 DATA"Het kan wel worden geLIST; als er weinig fouten"
+26970 DATA"in zitten, kunnen deze met de hand worden"
+26980 DATA"verbeterd."
+26990 DATA"Zijn er te veel fouten opgetreden dan kunt u het"
+27000 DATA"inlezen beter nog een keer herhalen."
+27010 DATA"Als  bij het inlezen de kleurveranderingen"
+27020 DATA"uitblijven, is dat een teken dat er niet correct"
+27030 DATA"wordt ingelezen.","U kunt het inlezen afbreken"
+27040 DATA"door de recorder te stoppen."
+27050 DATA"<R1Als een programma goed ingelezen is zal"
+27060 DATA"er alleen READY verschijnen."
+27070 DATA"Nu kunt u dit programma naar wens RUNnen, SAVEen"
+27080 DATA"of veranderen.","<R1<M0De volgende functie's"
+27090 DATA"kunt u wel gebruiken, maar worden niet in het"
+27100 DATA"Basicode menu genoemd.","Dit is gedaan omdat"
+27110 DATA"veel opties op een scherm verwarrend werken."
+27120 DATA"<M0.4<R1F4: Met de F4-toets wordt het programma"
+27130 DATA"weggeschreven.","Dit gebeurt volgens de nog"
+27140 DATA"nauwlijks gebruikte Basicode-1 standaard."
+27150 DATA"Deze schrijft alle regels weg, dus ook regels"
+27160 DATA"met regelnummers onder 1000."
+27190 DATA"<R1",">F5: Hiermee kunt u een"
+27200 DATA"directory van een disk op het scherm krijgen,"
+27210 DATA"zonder dat uw basic programma gewist wordt."
+27220 DATA"Dit is geen Basicode functie, maar om het"
+27230 DATA"gebruikersgemak toegevoegd.","Hiermee hoort het"
+27240 DATA"intypen van LOAD '$',8 tot het verleden."
+27250 DATA"<R1",">F6: Met de F6-toets leest u een Basicode"
+27260 DATA"programma van band en zet dit achter het basic"
+27270 DATA"programma wat al in het geheugen staat."
+27280 DATA"Hiermee kunt u Basicode programma's samenvoegen."
+27290 DATA"De regelnummers van het toe te voegen programma"
+27300 DATA"moeten allemaal hoger zijn dan van het al"
+27310 DATA"aanwezige programma."
+27320 DATA"<R1<M0.4F7 & F8: Met behulp van F7 en F8 is een"
+27330 DATA"primitieve vorm van delete en append mogelijk."
+27340 DATA"Deze functie werkt nogal omslachtig en is alleen"
+27350 DATA"voor de ervaren gebruiker bedoeld."
+27360 DATA"Met F7 kunt u het begin van het basic programma"
+27370 DATA"('start of basic') op het opgegeven regel nummer"
+27380 DATA"laten beginnen.","Met F8 zal basic weer op de"
+27390 DATA"standaard 'start of basic' beginnen.","<R1Met"
+27400 DATA"deze delete kunt u geen regels midden in het"
+27410 DATA"programma wissen, alleen vooraan of achteraan."
+27420 DATA"Met deze append kunt u alleen een programma"
+27430 DATA"achter een aanwezige plakken.","De regelnummers"
+27440 DATA"van het toe te voegen programma moeten allemaal"
+27450 DATA"hoger zijn dan van de al aanwezige regels."
+27460 DATA"<R1<M4.7Voorbeeld :","<R1"
+27470 DATA">DELETE -3000  wordt : F1 F7 3000 <r> <s>"
+27480 DATA">DELETE 4000-   ''   : F1 F7 4000 <r> <s>"
+27490 DATA"NEW <r> F1 F8 <s>",">APPEND 'test'  ''   : F1"
+27500 DATA"F7 63000 <r> <s> LOAD 'test' <r> F1 F8 <s>"
+27510 DATA"<M4.4<R1><s> is de spatie toets , <r> is de"
+27520 DATA"return toets.","<R1Bedenk wel dat elke keer dat"
+27530 DATA"u F7 gebruikt, het basic geheugen kleiner wordt."
+27540 DATA"Na F8 heeft u het hele basic geheugen weer tot"
+27550 DATA"uw beschikking.","Vergeet dus niet na een F7,"
+27560 DATA"een keer F8 te geven, bijvoorbeeld als u met een"
+27570 DATA"nieuw programma begint."
+27580 DATA"<M0<SEXTRA MOGELIJKHEDEN"
+27590 DATA"<M0.2>- Het vertaalprogramma heeft een aantal"
+27600 DATA"extra mogelijkheden."
+27610 DATA"Een ervan is al genoemd, namelijk het wel of"
+27620 DATA"niet aanwezig zijn van regel 10.","Als regel 10"
+27630 DATA"aanwezig is worden altijd de Basicode"
+27640 DATA"subroutine's door machinetaal uitgevoerd."
+27650 DATA"Als regel 10 niet aanwezig is worden de Basicode"
+27660 DATA"subroutine's in basic gebruikt.","Als de"
+27670 DATA"aangeroepen subroutine in basic niet bestaat"
+27680 DATA"wordt alsnog de machinetaal routine genomen."
+27690 DATA"<R1",">- Met 'SYS 49155,regel' kunt u de"
+27700 DATA"Basicode routine's in machinetaal uitvoeren."
+27710 DATA"U kunt hiermee een subroutine in basic"
+27720 DATA"programeren en hierin een machinetaal"
+27730 DATA"subroutine aanroepen, bijvoorbeeld:","<M2.6"
+27740 DATA"<R1>20 SR$='.':GOSUB350:SYS 49155,20"
+27750 DATA">360 SYS 49155,360:O$=SR$: SR$='.':GOSUB"
+27760 DATA"350:SR$=O$:RETURN"
+27770 DATA"<M2.2<R1Hiermee wordt alle tekst op de printer"
+27780 DATA"een positie naar rechts geprint.","<M0.2<R1"
+27790 DATA"- Als regel 90 in een programma aanwezig"
+27800 DATA"is, zal de basic met zuivere ASCII gaan werken."
+27810 DATA"Ook bij vergelijken van strings wordt hiermee"
+27820 DATA"rekening gehouden."
+27830 DATA"Commodore heeft een afwijkende ASCII."
+27840 DATA"Hierdoor werken sommige programma's, die daar"
+27850 DATA"geen rekening mee houden, niet naar behoren."
+27860 DATA"Als u op regel 90 REM ASCII zet, zullen deze"
+27870 DATA"programma's wel werken.","<R1Bijvoorbeeld :"
+27880 DATA"<R1Met: 90 REM ASCII  Zonder regel 90"
+27890 DATA"<R1ASC('A') geeft 65  ASC('A') geeft 193"
+27900 DATA"<R0ASC('a')  ''   97  ASC('a')  ''    65"
+27910 DATA"<R0CHR$(65)  ''  'A'  CHR$(65)  ''   'a'"
+27920 DATA"<R0CHR$(97)  ''  'a'  CHR$(97)  ''   'A'"
+27930 DATA"<R0'a' > 'A' is waar  'A' > 'a' is waar."
+27940 DATA"<R1",">- U kunt het grafische scherm weer"
+27950 DATA"zichtbaar maken met SYS 49158:GOSUB 210."
+27960 DATA"Dit grafische scherm staat van adres $e000 tot"
+27970 DATA"$ffff in de RAM bank.","<R1",">- Met SYS 49161"
+27980 DATA"kunt u het Basicode vertaalprogramma"
+27990 DATA"uitschakelen.","De computer zal nu als een"
+28000 DATA"standaard Commodore 64 werken"
+28010 DATA"Het vertaalprogramma blijft wel van $b400"
+28020 DATA"tot $d000 staan.","<R1",">- Als u uw computer"
+28030 DATA"gereset heeft is het Basicode-3 vertaalprogramma"
+28040 DATA"weer op te starten met SYS 49152."
+28050 DATA"<R1",">- Indien onverhoopt iets naar de printer"
+28060 DATA"gestuurd wordt, terwijl deze niet aan staat,"
+28070 DATA"zal de vraag 'PRINTER J/N ?' verschijnen."
+28080 DATA"Als u nu de printer aanzet en de een J indrukt"
+28090 DATA"wordt de tekst alsnog afgedrukt.","Indien u een"
+28100 DATA"N intypt zullen alle print opdrachten genegeerd"
+28110 DATA"worden, zolang de printer afwezig is."
+28120 DATA"<M0<SBIJZONDERHEDEN COMMODORE 64 EN 128:"
+28130 DATA"Het grafisch scherm omvat 200 lijnen van 288"
+28140 DATA"beeldpunten.","Het grafische scherm is dus iets"
+28150 DATA"smaller dan wat maximaal mogelijk zou zijn."
+28160 DATA"Daardoor ontstaat de in Basicode-3"
+28170 DATA"voorgeschreven beeldschermverhouding van 3:4."
+28180 DATA"<R1De bestanden van subroutine's 500, 540, 560"
+28190 DATA"en 580 zijn als volgt:","<M0.5"
+28200 DATA"<R1NF=0 en 1 : Cassette in Basicode-formaat."
+28210 DATA">NF=2 en 3 : Cassette in Commodore-formaat."
+28220 DATA">NF=4, 5, 6 en 7 : Disk drive (Device 8)."
+28230 DATA"<M0<R1De in de meeste computers beschikbare"
+28240 DATA"accolades bevinden zich niet in de karakterset"
+28250 DATA"van de Commodore 64."
+28260 DATA"In plaats daarvan worden blokhaken gebruikt."
+28280 DATA"De kleurtoetsen mogen in"
+28290 DATA"Basicode niet gebruikt worden."
+28300 DATA"<SVERBETERING INLEES KWALITEIT"
+28310 DATA"Het inlezen van Basicode radio opname's geeft"
+28320 DATA"bij Commodore computers wel eens problemen."
+28330 DATA"Bij opname van FM zal dit veel minder zijn."
+28340 DATA"In deze versie van het vertaalprogramma is"
+28350 DATA"inleeskwaliteit geoptimaliseerd.","Desondanks"
+28360 DATA"kunnen er toch nog problemen optreden."
+28370 DATA"Dit komt doordat de Commodore cassette recorder"
+28380 DATA"niet optimaal is voor inlezen van Basicode."
+28390 DATA"Het is mogelijk de inleeskwaliteit met een"
+28400 DATA"kleine technische ingreep sterk te verbeteren."
+28410 DATA"Bedenk wel dat hiermee uw garantie van uw"
+28420 DATA"recorder kan vervallen."
+28430 DATA"<R1U heeft hiervoor het volgende nodig:"
+28440 DATA"<R1Kleine kruiskop schroevendraaier"
+28450 DATA">Soldeerbout",">Stukje draad",">Soldeertin"
+28460 DATA">Condensator van ongeveer 0.22 microfarad"
+28470 DATA">Inbouwschakelaartje","<R1Deze wijziging is"
+28480 DATA"eerder beschreven in de NOS Beeldkrant 'C-64"
+28490 DATA"BASICODE UTILITIES' door Arwin Vosselman."
+28500 DATA"Het is niet het schakelaartje zoals beschreven"
+28510 DATA"in Bulletin 11 van TROS BASICODE-3."
+28520 DATA"Dit laatste schakelaartje keert alleen de"
+28530 DATA"polariteit van het signaal om, terwijl deze"
+28540 DATA"wijziging de signaalvorm verbetert."
+28550 DATA"<R1Er zijn (ten minste) twee uitvoeringen van de"
+28560 DATA"Commodore cassette recorder in omloop."
+28570 DATA"De eerste en oudste, is het rechthoekige model"
+28580 DATA"welke vooral bij de VIC-20 geleverd werd."
+28590 DATA"Hierbij moet u parallel aan"
+28600 DATA"condensator C3, met een schakelaartje een"
+28610 DATA"condensator van 0.22 uF zetten."
+28620 DATA"<R1De tweede uitvoering is bij bijna alle"
+28630 DATA"Commodore 64 en latere typen in gebruik."
+28640 DATA"Dit is een vierkant model met sterk afgeronde"
+28650 DATA"hoeken.","Ga hierbij als volgt te werk:"
+28660 DATA"<M0.2<R1>- Haal de stekker van de cassette"
+28670 DATA"recorder uit de computer."
+28680 DATA">- Leg de cassette recorder op zijn kop."
+28690 DATA">- Draai de vier kruisschroeven uit de bodem los"
+28700 DATA"en haal de bodem er af.",">- U ziet nu een"
+28710 DATA"printplaat van 10 x 5 cm zitten. Deze is"
+28720 DATA"bevestigd met 2 schroeven, draai deze nu los."
+28730 DATA">- Haal nu het afscherm plaatje van de"
+28740 DATA"printplaat.","<S-<M0.2"
+28750 DATA">- De printplaat lijkt nu op een van deze"
+28760 DATA"twee afbeeldingen :"
+28770 DATA"<R1<A       !!!!!  <-computer->   !!!!!"
+28780 DATA" ******!!!!!    kabel *******!!!!!*"
+28790 DATA"*   ....    *         *      .....*"
+28800 DATA"* ::     ....**       * ::     .. **"
+28810 DATA"*  ... .  . .. *      *  ... .  . .*"
+28820 DATA"*   ... o .  . *      *   ... o .  *"
+28830 DATA"*        ::::: *      *     :::::: *"
+28840 DATA"*   : .    ::. *      * :.     ::  *"
+28850 DATA"*          ::. *      *        ::  *"
+28860 DATA"*          ::  *      *        ::  *"
+28870 DATA"*     .   .  . *      *            *"
+28880 DATA"*  :::::     . *  *****  ..   .  . *"
+28890 DATA"*  .  .     .  *  *  .......   ::  *"
+28900 DATA"*  .     :     *  * :   . .     .  *"
+28910 DATA"*         . :  *  *  o<-1 :::::    *"
+28920 DATA"*     1 2    : *  *  o<-2 ::::: .  *"
+28930 DATA"*  . .    *****   * : .......      *"
+28940 DATA" **!!!!!!*        *     . ...      *"
+28950 DATA"   !!!!!!          *!!!!!!**********"
+28960 DATA"                    !!!!!!"
+28970 DATA"<R1     S /"
+28980 DATA" 1 ---/ ---+"
+28990 DATA"           !"
+29000 DATA"          === C"
+29010 DATA"           !"
+29020 DATA" 2 --------+"
+29030 DATA"<A-<R1",">- Soldeer aan punten 1 en 2 een"
+29040 DATA"schakelaar met een 0.22 microfarad condensator"
+29050 DATA"volgens schema.","Plaats de schakelaar op een"
+29060 DATA"makkelijk berijkbare plaats."
+29070 DATA"Als de schakelaar gesloten is, zal Basicode"
+29080 DATA"beter ingelezen worden."
+29090 DATA"Als u in Commodore formaat wilt lezen, zet dan"
+29100 DATA"het schakelaartje open."
+29110 DATA">- Schroef het afschermplaatje vast, schroef ook"
+29120 DATA"de bodem vast en steek de stekker van de"
+29130 DATA"cassette recorder weer in de computer.","<R1"
+29140 DATA">De cassette recorder is nu klaar voor gebruikt."
+29210 DATA"<E"
+30000 REM NIEUWSBRIEF (BASICODE 2)
+30010 REM
+30020 REM MET UITLEG BASICODE 3 V2
+30030 REM
+30040 REM VERTAALPROGRAMMA C64
+30050 REM
+32000 REM DIT IS PUBLIC DOMAIN SOFTWARE
+32010 REM 1990 M.V.DEELEN DE GLIND
+32020 REM
+32030 REM TROS-RADIO dd 910724
+32040 REM DS-KULTUR
+32050 REM-spezial 911030

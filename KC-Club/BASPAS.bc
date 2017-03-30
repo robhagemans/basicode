@@ -1,0 +1,240 @@
+1000 A=500:GOTO20:REM --- BASICODE + PASCAL
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1410:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Ausdruck ueber"
+1060 PRINT:PRINT"   1  den Bildschirm,"
+1070 PRINT"   2  den Drucker"
+1080 PRINT:PRINT"Welche Nummer ?";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1220
+1100 PRINT:PRINT"Wieviel Leerzeichen"
+1110 INPUT"am Zeilenanfang    ";HL
+1120 PRINT:PRINT"Wieviel Text-Zeichen"
+1130 INPUT"auf jeder Zeile    ";I:HR=HL+I-1
+1140 PRINT:PRINT"Wieviel Text-Zeilen"
+1150 INPUT"auf jeder Seite    ";VR:VR=VR-3
+1160 PRINT"(E) Endlospapier oder  "
+1170 PRINT"(L) Lose Blaetter (E/L) ";
+1180 GOSUB210:IFIN=76 THENVL=-1:GOTO1220
+1190 IFIN<>69 THEN GOSUB250:GOTO1160
+1200 PRINT:PRINT"Wieviel Leerzeilen"
+1210 INPUT"am Seitenende      ";VL:VR=VR+VL
+1220 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1230 GOSUB1380:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1360
+1240 IFLEN(R$)>HR-HL THEN GOSUB1820
+1250 GOSUB1440:IFR$<>"" THENR$=R$+" "
+1260 R$=R$+D$:GOTO1240
+1270 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1290
+1280 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1290 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1300 IFSC=1 THEN1380
+1310 IFVL>=0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOTO1350
+1320 PRINT"Neues Blatt in Drucker einlegen"
+1330 PRINT"druecke dann       RETURN/ENTER"
+1340 GOSUB210:IFIN<>13 THEN1340
+1350 AL=VL
+1360 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1270
+1370 SR$="":GOSUB1270:AL=VL:RETURN
+1380 HO=3:VE=VT:GOSUB110
+1390 SR$="Weiter: druecke <RETURN/ENTER>":GOSUB150
+1400 GOSUB210:IFIN<>13 THEN1400
+1410 GOSUB100:AL=VL:SR$=T$
+1420 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1430 PRINT:PRINT:RETURN
+1440 READD$
+1450 IFD$="" THEN1440
+1460 IFLEFT$(D$,1)="." THEN1530
+1470 IFLEFT$(D$,1)<>">" THEN1490
+1480 D$=LEFT$(S$,23-LEN(R$))+MID$(D$,2):RETURN
+1490 IFLEFT$(D$,1)<>"!" THENRETURN
+1500 IFD$="!" THEND$="":GOTO1520
+1510 D$=MID$(D$,2)
+1520 GOSUB1760:GOTO1450
+1530 IFD$<>".E" THEN1580
+1540 J=1:GOSUB1760:T$="E N D E"
+1550 SR$="":GOSUB1270:GOSUB1270:SR$=T$:GOSUB1270:T$=""
+1560 SR$="":GOSUB1270:IFAL<>VL THEN1560
+1570 GOTO950
+1580 DD$=MID$(D$,2,1):D$=MID$(D$,3)
+1590 IFDD$<>"R" THEN1640
+1600 IFSC=2 THENRETURN
+1610 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1270:R$=""
+1620 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1630 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1440
+1640 IFDD$<>"M" THEN1670
+1650 I=VAL(D$):MM$="":IFI+HL=0 THEN1440
+1660 MM$=LEFT$(S$,I+HL):GOTO1440
+1670 IFDD$="P" THENJ=VAL(D$):GOSUB1760:GOSUB1780:GOTO1440
+1680 IFDD$="T" THENT$=D$:J=10:GOSUB1760:GOSUB1780:GOTO1600
+1690 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1440
+1700 IFDD$<>"F" THEN1730
+1710 J=VAL(D$):GOSUB1760
+1720 J=J-1:IFJ>-1 THENSR$="":GOSUB1270:GOTO1720
+1730 IFDD$<>"C" THEN1750
+1740 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1270
+1750 GOTO1440
+1760 GOSUB1820:SR$=R$:GOSUB1270:R$="":J=J-1
+1770 RETURN
+1780 IF(SC=1)OR(AL+J>VR)THEN1800
+1790 SR$="":GOSUB1270:GOSUB1270:RETURN
+1800 IFAL<>VL THENSR$="":GOSUB1270:GOTO1800
+1810 RETURN
+1820 K=HR-HL+1-LEN(M$)
+1830 IFLEN(R$)<=K THENRETURN
+1840 IFMID$(R$,K,1)=" " THEN1870
+1850 K=K-1:IFK>0 THEN1840
+1860 SR$="":GOTO1880
+1870 SR$=LEFT$(R$,K-1):R$=MID$(R$,K+1)
+1880 GOSUB1270:GOTO1820
+25000 DATA" - BASICODE + Pascal - "
+25010 DATA"Mit dem Programm 'SOURCE.V4' kann der Quelltext"
+25020 DATA"(Sourcecode) eines Pascal-Programmes"
+25030 DATA"aufgestellt, geaendert, erweitert und"
+25040 DATA"schliesslich als sequentielles File im"
+25050 DATA"BASICODE-3-Format gespeichert und uebertragen"
+25060 DATA"werden."
+25070 DATA"!!Das Programm kann dann auf dem Bildschirm"
+25080 DATA"angezeigt oder auch ausgedruckt werden."
+25090 DATA"!!Einleitend muss darauf hingwiesen werden,"
+25100 DATA"!! - dass Pascal-Programme nur nach einer"
+25110 DATA"Compilation ablaufen, die von dem Programm"
+25120 DATA"'SOURCE.V4' nicht durchgefuehrt wird, und"
+25130 DATA".P0"
+25140 DATA" - dass die Einhaltung der Syntaxregeln von"
+25150 DATA"Standard-Pascal und die Abweichungen, die"
+25160 DATA"einzelne Compiler bieten, nicht ueberwacht"
+25170 DATA"wird. Das uebertragene Programm ist u.U."
+25180 DATA"insoweit an den verwendeten Compiler"
+25190 DATA"anzupassen."
+25200 DATA".P0"
+25210 DATA"Voraussetzung fuer eine Nutzung der in den"
+25220 DATA"Sendungen 'Computermagazin' und/oder 'REM"
+25230 DATA"spezial' ueber DS/Kultur ausgestrahlten"
+25240 DATA"Programme ist der Besitz eines Pascal-Compilers"
+25250 DATA"und eines Disketten-Laufwerkes. Laeuft die"
+25260 DATA"Compilation ueber Cassette ab - sofern"
+25270 DATA"moeglich -, so ist dies recht zeitaufwendig."
+25280 DATA"!!Im folgenden soll dargestellt werden, wie"
+25290 DATA"Pascal-Programme, die im BASICODE-3-Format als"
+25300 DATA"sequentielle Files mit Hilfe des Programms"
+25310 DATA"'SOURCE.V4' uebertragen wurden, auf dem"
+25320 DATA".RCommodore C-64","und dem",".RC-128","als"
+25330 DATA"Quelltexte fuer eine Compilation"
+25340 DATA"verwendet werden koennen."
+25350 DATA".P0"
+25360 DATA".R1. Pascal-Compiler"
+25370 DATA"!!Es wurden folgende Compiler betrachtet:"
+25380 DATA"!!- Oxford-Pascal 64"
+25390 DATA"!  Limbic Systems UK Ltd., 1984"
+25400 DATA"!!- Oxford-Pascal 128"
+25410 DATA"!  Systems Software (Oxford) Ltd., 1986"
+25420 DATA"!!- Pascal 64 vers. 1.4"
+25430 DATA"!  Markt & Technik Verlag AG, 1986"
+25440 DATA"!!- Pascal 128 vers. 2.0"
+25450 DATA"!  Markt & Technik Verlag AG, 1987"
+25460 DATA"!!- TurboPascal 3.0 (CP/M-Version)"
+25470 DATA"!  Borland International, 1987"
+25480 DATA".P0"
+25490 DATA".R2. Oxford-Pascal"
+25500 DATA"!!Der als BASICODE-File uebertragene Quelltext"
+25510 DATA"ist mittels des Programms 'CON-1' zu"
+25520 DATA"konvertieren:"
+25530 DATA"!!  'bname' -> 'name.src'"
+25540 DATA"!!Mit GET kann dieses File als Quelltext"
+25550 DATA"eingelesen und compiliert werden."
+25560 DATA"!!Ein auf Diskette mit PUT gespeichertes"
+25570 DATA"Quellprogramm ist mit 'CON-2' in ein"
+25580 DATA"BASICODE-File zu wandeln:"
+25590 DATA"!!  'name'  -> 'bname'"
+25600 DATA"!!Dieses File kann dann mit 'SOURCE.V4' weiter"
+25610 DATA"behandelt werden."
+25620 DATA".P0"
+25630 DATA"Die unter 'bname' gespeicherten Files im"
+25640 DATA"BASICODE-3-Format koennen NICHT mit GET direkt"
+25650 DATA"als Quellprogramm eingelesen werden !"
+25660 DATA".P0"
+25670 DATA".R3. Markt & Technik Pascal       ","!"
+25680 DATA".R   fuer Commodore C-64 und C-128"
+25690 DATA"!!Fuer die weitere Bearbeitung gelten die"
+25700 DATA"Ausfuehrungen in:"
+25710 DATA"!!  Florian Matthes"
+25720 DATA"!!  a) 'Pascal mit dem C64', 1986"
+25730 DATA"!      p. 165-168"
+25740 DATA"!  b) 'Pascal mit dem C128', 1987"
+25750 DATA"!      p. 264-267"
+25760 DATA"!!  Markt & Technik Verlag AG"
+25770 DATA".P0"
+25780 DATA"Der BASICODE-3 File ist mit dem Programm"
+25790 DATA"'CON-1' in ein sequentielles File fuer den"
+25800 DATA"C64 bzw. C128 zu konvertieren:"
+25810 DATA"!!  'bname' -> 'name.src'"
+25820 DATA"!!Das Programm 'name.src' kann mit dem"
+25830 DATA"Befehl (primary command) INPUT bzw. IN"
+25840 DATA"als Sourcecode gelesen und anschliessend"
+25850 DATA"compiliert werden."
+25860 DATA"!!Mit dem Befehl OUTPUT bzw. OUT kann"
+25870 DATA"der Inhalt des Arbeitsspeichers, d.h. der"
+25880 DATA"Quelltext des Pascal-Programms als"
+25890 DATA"sequentielles File gepeichert werden."
+25900 DATA".P0"
+25910 DATA"Die fuer diese Schritte verlangten"
+25920 DATA"Parameter erhalten folgende Werte:"
+25930 DATA"!!Device number    : 8 oder 9"
+25940 DATA"!Secondary address: 4"
+25950 DATA"!!Name fuer  IN: name.src,S,R"
+25960 DATA"!         oder: 0:name.src,SEQ,READ"
+25970 DATA"!Name fuer OUT: name,S,W"
+25980 DATA"!         oder: @0:name,SEQ,WRITE"
+25990 DATA"!!Code of delimiter       : 13"
+26000 DATA"!Truncate trailing spaces: YES"
+26010 DATA"!!Das so gewonnene File kann dann mit 'CON-2'"
+26020 DATA"in ein BASICODE-3-File gewandelt werden:"
+26030 DATA"!!  'name.src' -> 'bname'"
+26040 DATA".P0"
+26050 DATA".R4. TurboPascal 3.0","!"
+26060 DATA"!!Auch hier ist der BASICODE-3-File zuerst"
+26070 DATA"mit 'CON-1' in ein sequentielles File zu"
+26080 DATA"wandeln:"
+26090 DATA"!!  'bname' -> 'name.pas'"
+26100 DATA"!!Anschliessend ist dieser neue File in das"
+26110 DATA"CP/M- oder MS-DOS-Format zu konvertieren."
+26120 DATA"Dafuer stehen folgende Programme zur"
+26130 DATA"Verfuegung:"
+26140 DATA"!! - BIG BLUE READER 128/64"
+26150 DATA"!   SOGWAP Software (1986, 1988)"
+26160 DATA"!! - 'BDOS',  '64er', 6/1989, p. 56 ff."
+26170 DATA"!! - 'Janus', '64er', 2/1990, p. 67 ff."
+26180 DATA".P0"
+26190 DATA"Trotz vieler Muehe und Sorgfalt sind"
+26200 DATA"Fehler nicht ausgeschlossen; der Verfasser"
+26210 DATA"ist fuer Hinweise dankbar !"
+26220 DATA"!!Vielleicht ist dieses Programmsystem"
+26230 DATA"fuer andere ein Anlass, Aehnliches fuer den"
+26240 DATA"von ihnen benutzten Computer zu entwickeln !"
+26250 DATA"!!(c) Friedrich Dormeier"
+26260 DATA"!    Bismarckstr. 11a"
+26270 DATA"!    D-1000 Berlin 39"
+26280 DATA"!    (030) 803 31 11"
+26290 DATA".P0"
+26300 DATA".RHinweis","von REM:"
+26310 DATA"!!Die listings von CON-1 und CON-2 sind"
+26320 DATA"nur beim Rundfunk zu erhalten, wenn Sie uns"
+26330 DATA"einen an sich selbst adressierten und "
+26340 DATA"ausreichend frankierten Briefumschlag"
+26350 DATA"zuschicken. Unsere Adresse:"
+26360 DATA"!!Funkhaus Berlin, Deutschlandsender Kultur"
+26370 DATA"!Computermagazin REM, Kennwort: C64-PASCAL"
+26380 DATA"!Nalepastr."
+26390 DATA"!O-1160 BERLIN",".E"
+32000 REM ---------------------------
+32010 REM (C) FRIEDRICH DORMEIER
+32020 REM     BISMARCKSTR. 11A
+32030 REM     W-1000 BERLIN 39
+32040 REM     (030) 8033111
+32050 REM
+32060 REM C-128 - 8/1990
+32070 REM ---------------------------
+32080 REM
+32090 REM Erstausstrahlung: Deutschlandsender Kultur
+32100 REM-spezial 901114

@@ -1,0 +1,234 @@
+1000 A=500:GOTO20:REM BASICODE-3 Journal 12
+1010 HT=HO:VT=VE:S$="":FORI=1 TOHT:S$=S$+" ":NEXTI
+1020 HL=0:HR=HT:VL=2:VR=VT-2:R$="":READT$
+1030 GOSUB1410:HO=(HT-LEN(SR$)-6)/2:VE=0:GOSUB110
+1040 GOSUB150:PRINT:PRINT:PRINT
+1050 PRINT"Ausdruck ueber"
+1060 PRINT:PRINT"   1  den Bildschirm,"
+1070 PRINT"   2  den Drucker"
+1080 PRINT:PRINT"Welche Nummer ?";:GOSUB210
+1090 SC=IN-48:PRINTSC:IFSC<>2 THENSC=1:GOTO1220
+1100 PRINT:PRINT"Wieviel Leerzeichen"
+1110 INPUT"am Zeilenanfang    ";HL
+1120 PRINT:PRINT"Wieviel Text-Zeichen"
+1130 INPUT"auf jeder Zeile    ";I:HR=HL+I-1
+1140 PRINT:PRINT"Wieviel Text-Zeilen"
+1150 INPUT"auf jeder Seite    ";VR:VR=VR-3
+1160 PRINT"(E) Endlospapier oder  "
+1170 PRINT"(L) Lose Blaetter (E/L) ";
+1180 GOSUB210:IFIN=76 THENVL=-1:GOTO1220
+1190 IFIN<>69 THEN GOSUB250:GOTO1160
+1200 PRINT:PRINT"Wieviel Leerzeilen"
+1210 INPUT"am Seitenende      ";VL:VR=VR+VL
+1220 MM$="":IFHL>0 THENMM$=LEFT$(S$,HL)
+1230 GOSUB1380:M$=MM$:AL=VL:IFSC=2 THEN GOSUB1360
+1240 IFLEN(R$)>HR-HL THEN GOSUB1820
+1250 GOSUB1440:IFR$<>"" THENR$=R$+" "
+1260 R$=R$+D$:GOTO1240
+1270 IFSC=2 THENSR$=M$+SR$:GOSUB350:GOSUB360:GOTO1290
+1280 GOSUB120:PRINTM$;SR$;:VE=VE+1:HO=0:GOSUB110:HL=0
+1290 M$=MM$:AL=AL+1:IFAL<=VR THENRETURN
+1300 IFSC=1 THEN1380
+1310 IFVL>=0 THENFORI=1 TOVL:GOSUB360:NEXTI:GOTO1350
+1320 PRINT"Neues Blatt in Drucker einlegen"
+1330 PRINT"druecke dann       RETURN/ENTER"
+1340 GOSUB210:IFIN<>13 THEN1340
+1350 AL=VL
+1360 SR$=LEFT$(S$,(HR-HL-LEN(T$))/2)+T$:GOSUB1270
+1370 SR$="":GOSUB1270:AL=VL:RETURN
+1380 HO=3:VE=VT:GOSUB110
+1390 SR$="Weiter: druecke <RETURN/ENTER>":GOSUB150
+1400 GOSUB210:IFIN<>13 THEN1400
+1410 GOSUB100:AL=VL:SR$=T$
+1420 PRINTLEFT$(S$,(HT-LEN(SR$))/2-3);:GOSUB150
+1430 PRINT:PRINT:RETURN
+1440 READD$
+1450 IFD$="" THEN1440
+1460 IFLEFT$(D$,1)="." THEN1530
+1470 IFLEFT$(D$,1)<>">" THEN1490
+1480 D$=LEFT$(S$,23-LEN(R$))+MID$(D$,2):RETURN
+1490 IFLEFT$(D$,1)<>"!" THENRETURN
+1500 IFD$="!" THEND$="":GOTO1520
+1510 D$=MID$(D$,2)
+1520 GOSUB1760:GOTO1450
+1530 IFD$<>".E" THEN1580
+1540 J=1:GOSUB1760:T$="E N D E"
+1550 SR$="":GOSUB1270:GOSUB1270:SR$=T$:GOSUB1270:T$=""
+1560 SR$="":GOSUB1270:IFAL<>VL THEN1560
+1570 GOTO950
+1580 DD$=MID$(D$,2,1):D$=MID$(D$,3)
+1590 IFDD$<>"R" THEN1640
+1600 IFSC=2 THENRETURN
+1610 IFLEN(R$)+6+LEN(D$)>=HR-HL THENSR$=R$:GOSUB1270:R$=""
+1620 PRINTM$;R$;:SR$=D$:GOSUB150:M$=""
+1630 HL=HL+LEN(R$)+LEN(D$)+6:R$="":GOTO1440
+1640 IFDD$<>"M" THEN1670
+1650 I=VAL(D$):MM$="":IFI+HL=0 THEN1440
+1660 MM$=LEFT$(S$,I+HL):GOTO1440
+1670 IFDD$="P" THENJ=VAL(D$):GOSUB1760:GOSUB1780:GOTO1440
+1680 IFDD$="T" THENT$=D$:J=10:GOSUB1760:GOSUB1780:GOTO1600
+1690 IFDD$="Q" THENR$=R$+CHR$(34)+D$:GOTO1440
+1700 IFDD$<>"F" THEN1730
+1710 J=VAL(D$):GOSUB1760
+1720 J=J-1:IFJ>-1 THENSR$="":GOSUB1270:GOTO1720
+1730 IFDD$<>"C" THEN1750
+1740 SR$=LEFT$(S$,(HR-HL-LEN(D$))/2)+D$:GOSUB1270
+1750 GOTO1440
+1760 GOSUB1820:SR$=R$:GOSUB1270:R$="":J=J-1
+1770 RETURN
+1780 IF(SC=1)OR(AL+J>VR)THEN1800
+1790 SR$="":GOSUB1270:GOSUB1270:RETURN
+1800 IFAL<>VL THENSR$="":GOSUB1270:GOTO1800
+1810 RETURN
+1820 K=HR-HL+1-LEN(M$)
+1830 IFLEN(R$)<=K THENRETURN
+1840 IFMID$(R$,K,1)=" " THEN1870
+1850 K=K-1:IFK>0 THEN1840
+1860 SR$="":GOTO1880
+1870 SR$=LEFT$(R$,K-1):R$=MID$(R$,K+1)
+1880 GOSUB1270:GOTO1820
+1890 REM
+1900 REM UEBERSETZTE VERSION
+1910 REM
+1920 REM COMPUTER-BULLETIN NO.40 (11/89)
+1930 REM STICHTING BASICODE, EINDHOVEN
+1940 REM
+25000 DATA"Programmieren in BASICODE (9)"
+25010 DATA"BASICODE-3 erlaubt es, Datenfiles auf externen"
+25020 DATA"Speichern (Cassette oder Diskette) anzulegen,"
+25030 DATA"zu schreiben und zu lesen. Das beschraenkt sich"
+25040 DATA"jedoch auf sequentielle Files. Relative Files"
+25050 DATA"werden von den einzelnen Computern in zu"
+25060 DATA"unterschiedlicher Form verwaltet."
+25070 DATA"!!Damit ist es moeglich, Datenfiles zwischen"
+25080 DATA"verschiedenen Computern  - im BASICODE-Format -"
+25090 DATA"auszutauschen."
+25100 DATA"!!Die File-Verwaltung sieht vor:"
+25110 DATA"!! - Eroeffnen eines Files,"
+25120 DATA"! - Schreiben bzw. Lesen,"
+25130 DATA"! - Schliessen des Files,"
+25140 DATA"! - Fehlerabfrage."
+25150 DATA".P0"
+25160 DATA".REroeffnen eines Files","!"
+25170 DATA".R   - Subroutine # 500"
+25180 DATA"!!Mit der Eroeffnung eines Files ist dessen Name"
+25190 DATA"in der Variablen NF$ und das angesprochene"
+25200 DATA"Speichermedium (Cassette, Diskette oder"
+25210 DATA"Microdrive) in NF festzulegen."
+25220 DATA"Der Filename (NF$) kann maximal sieben Zeichen"
+25230 DATA"umfassen. Die Variable NF enthaelt den Code, der"
+25240 DATA"das Speichermedium festlegt und bestimmt ob das"
+25250 DATA"File zum Schreiben oder Lesen eroeffnet wird."
+25260 DATA"!!Die Wirkung des der Variablen NF zuzuweisenden"
+25270 DATA"Codes wird im Einzelnen durch das"
+25280 DATA"Uebersetzungsprogramm bestimmt.",".P0"
+25290 DATA"Grundsaetzlich gilt fuer die Zuweisung an NF:"
+25300 DATA"!!Lesen Schreiben Speichermedium"
+25310 DATA"!-----------------------------------"
+25320 DATA"!  0       1     BASICODE-Cassette"
+25330 DATA"!  2       3     Computerspezifisch,"
+25340 DATA"!                Cassette / Diskette"
+25350 DATA"! 4,6     5,7    Diskette"
+25360 DATA"!!Um die Austauschbarkeit sicherzustellen,"
+25370 DATA"empfiehlt es sich, Datenbestaende im BASICODE-"
+25380 DATA"Format abzulegen."
+25390 DATA"!!Bei Verwendung der Codeziffern 2, 4, 6 bzw."
+25400 DATA"3, 5, 7 ist zu beachten, dass es"
+25410 DATA"computertypische Unterschiede gibt.",".P0"
+25420 DATA"Zuordnung fuer C64 und ZX Spectrum:"
+25430 DATA"!!  n     ZX Spectrum       CBM C64"
+25440 DATA"!--------------------------------------"
+25450 DATA"! 0,1            BASICODE-Cassette"
+25460 DATA"!! 2,3 )                  ! CBM-Cassette"
+25470 DATA"! 4,5 )( Microdrive/Disk ! Diskette"
+25480 DATA"! 6,7 )                  ! Diskette"
+25490 DATA".P0"
+25500 DATA"Mit der folgenden Programmzeile wird ein"
+25510 DATA"Datenfile (zum Schreiben oder Lesen) eroeffnet:"
+25520 DATA"!! nnnn NF=n:NF$='name':GOSUB 500"
+25530 DATA"!!Mit Abfrage der Variablen IN kann der Status,"
+25540 DATA"d.h. das Auftreten eines Fehlers (vergl. weiter"
+25550 DATA"unten) festgestellt werden.",".P0"
+25560 DATA".RSchliessen eines Files","!"
+25570 DATA".R    - Subroutine # 580"
+25580 DATA"!!Mit diesem Unterprogramm wird das mit NF=n"
+25590 DATA"geoeffnete File geschlossen. Es genuegt"
+25600 DATA"!! nnnn GOSUB 580"
+25610 DATA"!!ohne dass NF=n vorher explizit angegeben wird."
+25620 DATA"!!Sollen zur Anlage eines Files mehrere Speicher"
+25630 DATA"angesprochen werden (z.B. BASICODE-Cassette und"
+25640 DATA"Diskette), so ist das erste File zu schliessen"
+25650 DATA"bevor das zweite eroeffnet wird."
+25660 DATA"!(Zur Fehlerabfrage siehe w.u.)",".P0"
+25670 DATA".RSchreiben und Lesen eines Files","!"
+25680 DATA".R  - Subroutinen # 560 und # 540"
+25690 DATA"!!Zum Schreiben eines Datenfiles dient die"
+25700 DATA"Subroutine # 560. Der Inhalt von SR$ wird in das"
+25710 DATA"File - gekennzeichnet durch NF - geschrieben."
+25720 DATA"Numerische Werte sind"
+25730 DATA"ueber 'GOSUB 300' oder 'GOSUB 310' in die"
+25740 DATA"Stringvariable SR$ zu wandeln. Strings sind an"
+25750 DATA"SR$ zu uebergeben."
+25760 DATA"!!Die Schreibroutine hat folgende Form:"
+25770 DATA"!!      nnnn SR=A:GOSUB 300 (oder 310)"
+25780 DATA"!      nnnn GOSUB 560"
+25790 DATA"!! oder nnnn SR$=A$:GOSUB 560"
+25800 DATA".P0"
+25810 DATA"Das Lesen eines Files (gekennzeichnet durch NF)"
+25820 DATA"erfolgt ueber die Subroutine # 540. Der gelesene"
+25830 DATA"Wert wird der Variablen IN$ zugewiesen, auch"
+25840 DATA"hier ist bei numerischen Werten und"
+25850 DATA"anschliessenden arithmetischen Operationen eine"
+25860 DATA"Typwandlung ueber VAL(IN$) durchzufuehren."
+25870 DATA"!!So gilt fuer das Lesen eines Files:"
+25880 DATA"!!      nnnn GOSUB 540:A$=IN$"
+25890 DATA"!! oder nnnn GOSUB 540:A=VAL(IN$)"
+25900 DATA"!!Die Variablen A$ bzw. A koennen dann im"
+25910 DATA"Programm weiter verwendet werden. Auch hier ist"
+25920 DATA"die Fehlerabfrage sinnvoll."
+25930 DATA".P0"
+25940 DATA".RStatus- bzw. Fehlerabfrage"
+25950 DATA"!!Bei jedem Zugriff auf externe Speicher wird"
+25960 DATA"der Variablen IN ein Wert zugewiesen, der"
+25970 DATA"zeigt, ob er fehlerfrei ablief. Vom Inhalt der"
+25980 DATA"Variablen IN koennen dann weitere Handlungen"
+25990 DATA"abhaengig gemacht werden."
+26000 DATA"!!  IN  Bedeutung"
+26010 DATA"! -------------------------------------"
+26020 DATA"!   0  Operation fehlerfrei (o.k)"
+26030 DATA"!  -1  Operation nicht ausgefuehrt"
+26040 DATA"!      (Fehler !)"
+26050 DATA"!!   1  EOF (End of File),"
+26060 DATA"!      nach dem Lesen des letzten Daten-"
+26070 DATA"!      elements (IN$='leer')"
+26080 DATA".P0"
+26090 DATA"!!Anmerkungen:"
+26100 DATA"!!1. In Verbindung mit dem Ansprechen externer"
+26110 DATA"Speicher werden u.U. die untersten Zeilen des"
+26120 DATA"Bildschirms fuer Benutzerhinweise (prompts)"
+26130 DATA"benoetigt; diese sind deshalb freizuhalten."
+26140 DATA"!!2. Im grafischen Betrieb sollen die Routinen"
+26150 DATA"zur Fileverwaltung nicht angesprochen werden."
+26160 DATA"Der Computer ist ueber 'GOSUB 100' in den"
+26170 DATA"Textbetrieb zu setzen."
+26180 DATA".P10","Das war das","!!"
+26190 DATA".C****************************"
+26200 DATA".C*                          *"
+26210 DATA".C*   BASICODE-3   Journal   *"
+26220 DATA".C*         Nummer  12       *"
+26230 DATA".C*      25.  Juli   1990    *"
+26240 DATA".C*                          *"
+26250 DATA".C****************************",".E"
+30000 REM
+30010 REM Grundlagen von BASICODE
+30020 REM       -- Teil 9 --
+32000 REM ---------------------------
+32010 REM FRIEDRICH DORMEIER
+32020 REM
+32030 REM D-1000 BERLIN 39
+32040 REM
+32050 REM C64/C128 - 3/1990
+32060 REM ---------------------------
+32070 REM
+32080 REM Erstausstrahlung: DS-Kultur
+32090 REM-spezial 900725

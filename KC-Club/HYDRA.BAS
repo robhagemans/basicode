@@ -1,0 +1,24 @@
+1000 A=100:GOTO 20:REM ### Hydra ###
+1010 PRINT"Hydra-Problem":PRINT
+1020 INPUT"Eingabe einer Zahl:  0 fuer Ende";Z
+1030 IF Z=0 THEN 950:REM Ende
+1040 IF(Z<>INT(Z))OR(Z<2)THEN PRINT"Fehler":GOTO 1020
+1050 Y=Z/2:IF Y=INT(Y) THEN Z=Y:GOTO 1070
+1060 Z=Z+Z+Z+1
+1070 PRINT Z;:IF Z>1 THEN 1040
+1080 PRINT:GOTO 1020
+1090 REM ----Programm-Ende------
+30000 REM Das Hydra-Problem stammt von McCarthy.
+30010 REM Es wird vermutet, dass alle ganzzahligen
+30020 REM Eingaben zu 1 und damit zum Ende fuehren.
+30030 REM Ein Beweis steht bis heute aus.
+30040 REM Infolge der endlichen Arithmetik kann
+30050 REM ein Rechner-Programm nur fuer einige Zahlen
+30060 REM diese Hypothese unterstuetzen.
+30070 REM Beobachten Sie das Zu- und Abnehmen
+30080 REM der Zahlenwerte und versuchen Sie
+30090 REM das Programm zu verstehen.
+32000 REM -----------------------
+32010 REM H. Voelz; 9.5.89; 24.8.89 fuer Rundfunk
+32020 REM XT-compatibler Rechner
+

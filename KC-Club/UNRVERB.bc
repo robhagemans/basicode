@@ -1,0 +1,382 @@
+1000 A=10000:GOTO20:REM unregelm. Verben
+1010 VT=VE:VN=INT(VT*.5):HT=HO:AN=0:FS=0
+1020 DIMAX(5):GOTO6030
+1100 REM
+1110 REM -- Ausschrift Vorgabe --
+1120 REM
+1130 VE=ZN(0):HO=3:GOSUB110:PRINT"dt. : ";
+1140 IFAX(0)=0 THEN1160
+1150 PRINTV$(V,0)
+1160 VE=ZN(1):HO=1:GOSUB110:PRINT"pres. : ";
+1170 IFAX(1)=0 THEN1190
+1180 PRINTV$(V,1)
+1190 VE=ZN(2):GOSUB110:PRINT"pret. : ";
+1200 IFAX(2)=0 THEN1220
+1210 PRINTV$(V,2)
+1220 VE=ZN(3):GOSUB110:PRINT"p. p. : ";
+1230 IFAX(3)=0 THENRETURN
+1240 PRINTV$(V,3):RETURN
+1300 REM
+1310 REM -- Antwort richtig ? --
+1320 REM
+1330 R=1:IFA$(X)=V$(V,X)THENR=0
+1340 RETURN
+1400 REM
+1410 REM -- Ausschrift "FALSCH" --
+1420 REM
+1430 VE=ZN(X):HO=25:GOSUB110:SR$="FALSCH":GOSUB150:RETURN
+1500 REM
+1510 REM -- Ausschrift "RICHTIG" --
+1520 REM
+1530 VE=VN+7:HO=13:FORI=0 TO4:GOSUB110:SR$="RICHTIG"
+1540 GOSUB150:SD=2:GOSUB450:GOSUB110:PRINT"             "
+1550 SD=2:GOSUB450:NEXTI:RETURN
+1600 REM
+1610 REM -- "FALSCH" loeschen --
+1620 REM
+1630 HO=25:FORI=0 TO4:VE=VN+I:GOSUB110
+1640 PRINT"              ";:NEXTI:RETURN
+1700 REM
+1710 REM -- Fragen loeschen --
+1720 REM
+1730 HO=0:FORI=0 TO4:VE=VN+I:GOSUB110
+1740 PRINT"                                        ";
+1750 NEXTI:RETURN
+1800 REM
+1810 REM -- Leerzeichen am Ende weg --
+1820 REM
+1830 IFRIGHT$(A$,1)<>" " THENRETURN
+1840 A$=LEFT$(A$,LEN(A$)-1):GOTO1830
+1900 REM
+1910 REM -- "TASTE" --
+1920 REM
+1930 SR$="TASTE":HO=11:VE=VN+10:GOSUB110:GOSUB150
+1940 GOSUB210:GOSUB110:PRINT"           ":RETURN
+2000 REM
+2010 REM -- Eingaben und Auswertung --
+2020 REM
+2030 F1=0:HO=7:FORI=0 TO3:IFAX(I)=1 THEN2070
+2040 VE=ZN(I):GOSUB110:A$="":INPUTA$
+2050 IFLEFT$(A$,1)="0" THENF1=1:I=3:GOTO2070
+2060 GOSUB1830:A$(I)=A$
+2070 NEXTI:IFF1=1 THENRETURN
+2080 F=0:FORX=0 TO3:IFAX(X)=1 THEN2110
+2090 GOSUB1330:IFR=0 THEN2110
+2100 F=F+1:ZZ(F)=X:GOSUB250:GOSUB1430
+2110 NEXTX:IFF=0 THEN GOSUB250:GOSUB1530:GOTO2140
+2120 GOSUB1930:GOSUB1630:FORI=1 TOF:VE=ZN(ZZ(I))
+2130 GOSUB110:PRINTV$(V,ZZ(I));:NEXTI
+2140 FS=FS+F:GOSUB1930:GOSUB1730:AN=AN+1:RETURN
+3000 REM
+3010 REM -- deutsch -> englisch --
+3020 REM
+3030 GOSUB100:VE=VN-10:HO=0:GOSUB110
+3040 PRINT" Der Computer wuerfelt ein deutsches"
+3050 PRINT" Verb aus. Die englischen Vokabeln"
+3060 PRINT" sind einzugeben.":PRINT
+3070 PRINT" Mit";:SR$="0":GOSUB150
+3080 PRINT"kommt man ins Menue zurueck."
+3090 AX(0)=1:FORI=1 TO3:AX(I)=0:NEXTI
+3100 GOSUB260:V=INT(RV*AA):GOSUB1130
+3110 GOSUB2030:IFF1=1 THEN6150
+3120 GOTO3100
+4000 REM
+4010 REM -- englisch -> deutsch --
+4020 REM
+4030 GOSUB100:VE=VN-10:HO=0:GOSUB110
+4040 PRINT" Der Computer wuerfelt ein englisches"
+4050 PRINT" Verb aus. Die deutsche Vokabel sowie"
+4060 PRINT" die unregelmaessigen Zeiten sind"
+4070 PRINT" einzugeben."
+4080 PRINT" Mit";:SR$="0":GOSUB150
+4090 PRINT"kommt man ins Menue zurueck."
+4100 FORI=0 TO3:AX(I)=0:NEXTI:AX(1)=1
+4110 GOSUB260:V=INT(RV*AA):GOSUB1130
+4120 GOSUB2030:IFF1=1 THEN6150
+4130 GOTO4110
+5000 REM
+5010 REM -- Zufall --
+5020 REM
+5030 GOSUB100:VE=VN-10:HO=0:GOSUB110
+5040 PRINT" Der Computer wuerfelt irgendeine"
+5050 PRINT" Verbform aus. Die fehlenden Vokabeln"
+5060 PRINT" (deutsch oder englisch) und die"
+5070 PRINT" Zeiten sind zu ergaenzen."
+5080 PRINT" Mit";:SR$="0":GOSUB150
+5090 PRINT"kommt man ins Menue zurueck."
+5100 GOSUB260:V=INT(RV*AA):GOSUB260:V1=INT(RV*4)
+5110 FORI=0 TO3:AX(I)=0:NEXTI:AX(V1)=1:GOSUB1130
+5120 GOSUB2030:IFF1=1 THEN6150
+5130 GOTO5100
+6000 REM
+6010 REM -- Main --
+6020 REM
+6030 DIMV$(300,3):DIMA$(3):DIMZZ(3):DIMZN(3):AN=0
+6040 FORI=1 TO3:ZN(I)=VN+1+I:NEXTI:ZN(0)=VN
+6050 VE=VN:HO=2:GOSUB110
+6060 PRINT"Bitte Computer in Kleinschriftmodus":VE=VN+1
+6070 GOSUB110:PRINT"bringen!":VE=VN+3:GOSUB110
+6080 PRINT"Schriftprobe";:INPUTA$(0):GOSUB100
+6090 I=0:AA=0:VE=VN:HO=0:GOSUB110
+6100 PRINT"Etwas Geduld, ich muss mich vorbereiten"
+6110 FORJ=0 TO3:READV$(I,J)
+6120 IFV$(I,J)="0" THENAA=I:J=3
+6130 NEXTJ:IFAA<>0 THEN6150
+6140 I=I+1:GOTO6110
+6150 GOSUB100:VE=VN-6:HO=HT*.5-10:GOSUB110
+6160 SR$="===============":GOSUB150:VE=VE+1:GOSUB110
+6170 SR$=" A U S W A H L ":GOSUB150:VE=VE+1
+6180 GOSUB110:SR$="===============":GOSUB150:VE=VE+4
+6190 GOSUB110:SR$="1":GOSUB150:PRINT"Deutsch":VE=VE+2
+6200 GOSUB110:SR$="2":GOSUB150:PRINT"Englisch":VE=VE+2
+6210 GOSUB110:SR$="3":GOSUB150:PRINT"Zufall":VE=VE+2
+6220 GOSUB110:SR$="E":GOSUB150:PRINT"Ende"
+6230 GOSUB210:IFIN=49 THEN3030
+6240 IFIN=50 THEN4030
+6250 IFIN=51 THEN5030
+6260 IFIN=69 THEN7030
+6270 GOTO6230
+7000 REM
+7010 REM -- Ende --
+7020 REM
+7030 GOSUB100:VE=VN-4:HO=3:GOSUB110
+7040 PRINTAN;" Fragen wurden gestellt"
+7050 VE=VN:HO=4:GOSUB110:PRINT"Du hast dabei ";FS;
+7060 PRINT" Fehler gemacht!"
+7070 VE=VN+4:GOSUB110:PRINT"Findest Du das gut (j/n) ?"
+7080 GOSUB210:IFIN=74 THEN950
+7090 IFIN<>78 THEN7080
+7100 VE=VN+8:HO=6:GOSUB110
+7110 SR$="Na dann uebe weiter !":GOSUB150
+7120 SD=50:GOSUB450:AN=0:FS=0:GOTO6150
+25000 "schreiben","write","wrote","written"
+25010 DATA"erwachen","awake","awoke","awoken"
+25030 DATA"gewinnen","win","won","won"
+25040 DATA"tragen (an sich)","wear","wore","worn"
+25050 DATA"werden","become","became","become"
+25060 DATA"verstehen","understand","understood","undestood"
+25070 DATA"anfangen","begin","began","begun"
+25080 DATA"werfen","throw","threw","thrown"
+25090 DATA"erz{hlen","tell","told","told"
+25100 DATA"lehren","teach","taught","taught"
+25110 DATA"(an)stecken","stick","stuck","stuck"
+25120 DATA"stehlen","steal","stole","stolen"
+25130 DATA"stehen","stand","stood","stood"
+25140 DATA"binden","bind","bound","bound"
+25150 DATA"bei~en","bite","bit","bitten"
+25160 DATA"schlafen","sleep","slept","slept"
+25170 DATA"sitzen","sit","sat","sat"
+25180 DATA"schlie~en","shut","shut","shut"
+25190 DATA"brechen","break","broke","broken"
+25200 DATA"aufziehen","breed","bred","bred"
+25210 DATA"bringen","bring","brought","brought"
+25220 DATA"bauen","build","built","built"
+25230 DATA"brennen","burn","burnt","burnt"
+25240 DATA"bersten","burst","burst","burst"
+25250 DATA"kaufen","buy","bought","bought"
+25260 DATA"werfen","cast","cast","cast"
+25270 DATA"fangen","catch","cought","cought"
+25280 DATA"waehlen","choose","chose","chosen"
+25290 DATA"sich anklammern","cling","clung","clung"
+25300 DATA"kleiden","clothe","clad","clad"
+25310 DATA"kommen","come","came","come"
+25320 DATA"kosten","cost","cost","cost"
+25330 DATA"kriechen","creep","crept","crept"
+25340 DATA"kraehen","crow","crew","crowed"
+25350 DATA"schneiden","cut","cut","cut"
+25360 DATA"handeln","deal","dealt","dealt"
+25370 DATA"graben","dig","dug","dug"
+25380 DATA"machen","do","did","done"
+25390 DATA"ziehen","draw","drew","drawn"
+25400 DATA"traeumen","dream","dreamt","dreamt"
+25410 DATA"trinken","drink","drank","drunk"
+25420 DATA"fahren","drive","drove","driven"
+25430 DATA"wohnen","dwell","dwellt","dwellt"
+25440 DATA"essen","eat","ate","eaten"
+25450 DATA"fallen","fall","fell","fallen"
+25460 DATA"fuettern","feed","fed","fed"
+25470 DATA"fuehlen","feel","felt","felt"
+25480 DATA"kaempfen","fight","fought","fought"
+25490 DATA"finden","find","found","found"
+25500 DATA"fliehen","flee","fled","fled"
+25510 DATA"schleudern","fling","flung","flung"
+25520 DATA"fliegen","fly","flew","flown"
+25530 DATA"verbieten","forbid","forbade","forbidden"
+25540 DATA"vergessen","forget","forgot","forgotten"
+25550 DATA"verzeihen","forgive","forgave","forgiven"
+25560 DATA"verlassen","forsake","forsook","forsaken"
+25570 DATA"frieren","freeze","froze","frozen"
+25580 DATA"bekommen","get","got","got"
+25590 DATA"geben","give","gave","given"
+25600 DATA"gehen","go","went","gone"
+25610 DATA"mahlen","grind","ground","ground"
+25620 DATA"wachsen","grow","grew","grown"
+25630 DATA"haengen","hang","hung","hung"
+25640 DATA"haben","have","had","had"
+25650 DATA"hoeren","hear","heard","heard"
+25660 DATA"heben","heave","hove","hove"
+25670 DATA"verbergen","hide","hid","hidden"
+25680 DATA"treffen","hit","hit","hit"
+25690 DATA"festhalten","hold","held","held"
+25700 DATA"verletzen","hurt","hurt","hurt"
+25710 DATA"halten","keep","kept","kept"
+25720 DATA"knien","kneel","knelt","knelt"
+25730 DATA"stricken","knit","knit","knit"
+25740 DATA"wissen","know","knew","known"
+25750 DATA"legen","lay","laid","laid"
+25760 DATA"fuehren","lead","led","led"
+25770 DATA"sich anlehnen","lean","leant","leant"
+25780 DATA"springen","leap","leapt","leapt"
+25790 DATA"lernen","learn","learnt","learnt"
+25800 DATA"verlassen","leave","left","left"
+25810 DATA"leihen","lend","lent","lent"
+25820 DATA"lassen","let","let","let"
+25830 DATA"liegen","lie","lay","lain"
+25840 DATA"anzuenden","light","lit","lit"
+25850 DATA"verlieren","lose","lost","lost"
+25860 DATA"machen","make","made","made"
+25870 DATA"meinen","mean","meant","meant"
+25880 DATA"begegnen","meet","met","met"
+25890 DATA"zahlen","pay","paid","paid"
+25900 DATA"stellen","put","put","put"
+25910 DATA"lesen","read","read","read"
+25920 DATA"befreien","rid","rid","rid"
+25930 DATA"reiten","ride","rode","ridden"
+25940 DATA"laeuten","ring","rang","rung"
+25950 DATA"aufstehen","rise","rose","risen"
+25960 DATA"laufen","run","ran","run"
+25970 DATA"saegen","saw","sawed","sawn"
+25980 DATA"sagen","say","said","said"
+25990 DATA"sehen","see","saw","seen"
+26000 DATA"suchen","seek","sought","sought"
+26010 DATA"vekaufen","sell","sold","sold"
+26020 DATA"senden","send","sent","sent"
+26030 DATA"setzen","set","set","set"
+26040 DATA"naehen","sew","sewed","sewn"
+26050 DATA"schuetteln","shake","shook","shaken"
+26060 DATA"rasieren","shave","shaved","shaven"
+26070 DATA"scheren","shear","sheard","shorn"
+26080 DATA"ausgiessen","shed","shed","shed"
+26090 DATA"scheinen","shine","shone","shone"
+26100 DATA"scheissen","shit","shit","shit"
+26110 DATA"beschuhen","shoe","shod","shod"
+26120 DATA"schiessen","shoot","shot","shot"
+26130 DATA"zeigen","show","showed","shown"
+26140 DATA"schrumpfen","shrink","shrank","shrunk"
+26150 DATA"schliessen","shut","shut","shut"
+26160 DATA"singen","sing","sang","sung"
+26170 DATA"sinken","sink","sank","sunk"
+26180 DATA"sitzen","sit","sat","sat"
+26190 DATA"erschlagen","slay","slew","slain"
+26200 DATA"schlafen","sleep","slept","slept"
+26210 DATA"gleiten","slide","slid","slid"
+26220 DATA"schleudern","sling","slung","slung"
+26230 DATA"schleichen","slink","slunk","slunk"
+26240 DATA"schlitzen","slit","slit","slit"
+26250 DATA"riechen","smell","smelt","smelt"
+26260 DATA"saeen","sow","sowed","sown"
+26270 DATA"sprechen","speake","spoke","spoken"
+26280 DATA"eilen","speed","sped","sped"
+26290 DATA"buchstabieren","spell","spelt","spelt"
+26300 DATA"ausgeben","spend","spent","spent"
+26310 DATA"verschuetten","spill","spilt","spilt"
+26320 DATA"spinnen","spin","spun","spun"
+26330 DATA"spucken","spit","spat","spat"
+26340 DATA"spalten","split","split","split"
+26350 DATA"verderben","spoil","spoilt","spoilt"
+26360 DATA"verbreiten","spread","spread","spread"
+26370 DATA"springen","spring","sprang","sprung"
+26380 DATA"stehen","stand","stood","stood"
+26390 DATA"stehlen","steal","stole","stolen"
+26400 DATA"stecken","stick","stuck","stuck"
+26410 DATA"stechen","sting","stung","stung"
+26420 DATA"stinken","stank","stunk","stunk"
+26430 DATA"bestreuen","strew","strewed","strewn"
+26440 DATA"ueberschreiten","stride","strode","stridden"
+26450 DATA"stossen","strike","struck","struck"
+26460 DATA"spannen","string","strung","strung"
+26470 DATA"streben","strive","strove","striven"
+26480 DATA"schwoeren","swear","swore","sworn"
+26490 DATA"schwitzen","sweat","sweat","sweat"
+26500 DATA"fegen","sweep","swept","swept"
+26510 DATA"anschwellen","swell","swelled","swollen"
+26520 DATA"schwimmen","swim","swam","swum"
+26530 DATA"schwingen","swing","swung","swung"
+26540 DATA"nehmen","take","took","taken"
+26550 DATA"lehren","teach","taught","taught"
+26560 DATA"ziehen","tear","tore","torn"
+26570 DATA"sagen","tell","told","told"
+26580 DATA"denken","think","thought","thought"
+26590 DATA"gedeihen","thrive","throve","thriven"
+26600 DATA"werfen","throw","threw","thrown"
+26610 DATA"schieben","thrust","thrust","thrust"
+26620 DATA"treten","tread","trod","trodden"
+26630 DATA"wachen","wake","woke","woke"
+26640 DATA"weben","weave","wove","woven"
+26650 DATA"weinen","weep","wept","wept"
+26660 DATA"naessen","wet","wet","wet"
+26670 DATA"gewinnen","win","won","won"
+26680 DATA"winden","wind","wound","wound"
+26690 DATA"auswringen","wring","wrung","wrung"
+26700 DATA"schreiben","write","wrote","written"
+26710 DATA"sein","be","was/were","been"
+26720 DATA"schlagen","beat","beat","beaten"
+26730 DATA"werden","become","became","become"
+26740 DATA"beginnen","begin","began","begun"
+26750 DATA"binden","bind","bound","bound"
+26760 DATA"(zer)brechen","break","broke","broken"
+26770 DATA"br}ten","breed","bred","bred"
+26780 DATA"(her)bringen","bring","brought","brought"
+26790 DATA"bauen","build","built","built"
+26800 DATA"kaufen","buy","bought","bought"
+26810 DATA"fangen","catch","caught","caught"
+26820 DATA"(aus)w{hlen","choose","chose","chosen"
+26830 DATA"kommen","come","came","come"
+26840 DATA"kosten","cost","cost","cost"
+26850 DATA"graben","dig","dug","dug"
+26860 DATA"tun/machen","do","did","done"
+26870 DATA"fahren","drive","drove","driven"
+26880 DATA"essen","eat","ate","eaten"
+26890 DATA"fallen","fall","fell","fallen"
+26900 DATA"k{mpfen","fight","fought","fought"
+26910 DATA"finden","find","found","found"
+26920 DATA"geben","give","gave","given"
+26930 DATA"gehen","go","went","gone"
+26940 DATA"haben","have","had","had"
+26950 DATA"h|ren","hear","heard","heard"
+26960 DATA"(sich)verbergen","hide","hid","hidden"
+26970 DATA"schlagen","hit","hit","hit"
+26980 DATA"verkaufen","sell","sold","sold"
+26990 DATA"nehmen","take","took","taken"
+27000 DATA"wecken","wake","woke","woken"
+27010 DATA"gewinnen","win","won","won"
+27020 DATA"rennen","run","ran","run"
+27030 DATA"(er)schie~en","shoot","shot","shot"
+29990 DATA"0"
+30000 REM -----------------------------
+30010 REM  Das Vokabular kann durch Er-
+30020 REM  gaenzen oder weglassen von
+30030 REM  DATA-Zeilen veraendert wer-
+30040 REM  den. Der Abschluss erfolgt
+30050 REM  mit DATA"0". Werden mehr als
+30060 REM  200 Vokabeln eingegeben, ist
+30070 REM  in Zeile 6030 das Feld V$
+30080 REM  groesser zu dimensionieren.
+30090 REM -----------------------------
+31000 REM +++++++++++++++++++++++++++++
+31010 REM  Das Woerterverzeichnis ist
+31020 REM  Langenscheidts Schulwoerter-
+31030 REM  buch, 10. Auflage, 1990
+31040 REM  entnommen.
+31050 REM +++++++++++++++++++++++++++++
+32000 REM *****************************
+32010 REM
+32020 REM     Gert Lautenschlaeger
+32030 REM     Erlenhof 26
+32040 REM     O-1585 Potsdam
+32050 REM     KC 85/4       901117
+32060 REM
+32070 REM *****************************
+32080 REM
+32090 REM Erstausstrahlung: Deutschlandsender Kultur
+32100 REM Computermagazin 901218
