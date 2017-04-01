@@ -26,16 +26,16 @@ In Basicode-3 and -3C, programs should be explicitly terminated with ``GOTO 950`
 
 It is recommended to use line number ranges as follows:
 
-===========  ===========================================
-Range        Purpose
------------  -------------------------------------------
-       1000  Initialisation line
- 1010-19999  Main program
-20000-24999  Machine-specific subroutines
-25000-29999  ``DATA`` lines
-30000-31999  Comments: program description
-32000-32767  Comments: author's name and contact details
-===========  ===========================================
+===================  ===========================================
+Range                Purpose
+-------------------  -------------------------------------------
+           ``1000``  Initialisation line
+ ``1010``-``19999``  Main program
+``20000``-``24999``  Machine-specific subroutines
+``25000``-``29999``  ``DATA`` lines
+``30000``-``31999``  Comments: program description
+``32000``-``32767``  Comments: author's name and contact details
+===================  ===========================================
 
 
 -------------------
