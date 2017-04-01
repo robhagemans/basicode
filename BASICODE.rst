@@ -19,7 +19,23 @@ Programs must include a first line ``1000`` of the following form::
 
     1000 A = value: GOTO 20: REM program name
 
+The first line of the program proper should be ``1010``.
+
 In Basicode-3 and -3C, programs should be explicitly terminated with ``GOTO 950``.
+
+
+It is recommended to use line number ranges as follows:
+
+===========  ===========================================
+Range        Purpose
+-----------  -------------------------------------------
+       1000  Initialisation line
+ 1010-19999  Main program
+20000-24999  Machine-specific subroutines
+25000-29999  ``DATA`` lines
+30000-31999  Comments: program description
+32000-32767  Comments: author's name and contact details
+===========  ===========================================
 
 
 Variables
@@ -58,6 +74,112 @@ optionally followed by more digits.
 
 String literals consist of a double quote ``"``, followed by the characters of the string,
 followed by a double quote ``"``.
+
+
+Operators
+=========
+
+Boolean operators
+-----------------
+
+``x AND y`` returns the logical conjunction of its operands.
+
+``NOT x`` returns the logical negation of its operand.
+
+``x OR y`` returns the logical disjunction of its operands.
+
+``x = y`` returns the equality of its operands.
+
+``x < y`` returns ``x`` less than ``y``.
+
+``x > y`` returns ``x`` greater than ``y``.
+
+``x <> y`` returns the inequality of its operands.
+
+``x <= y`` returns ``x`` less than or equal to ``y``.
+
+``x >= y`` returns ``x`` greater than or equal to ``y``.
+
+Boolean expressions may only be used in an ``IF`` statement and must
+not be assigned to a variable. The numerical value of Boolean values is undefined.
+
+The order of precedence of Boolean operators is undefined and must be indicated with parentheses.
+
+
+String operators
+----------------
+
+``x$ + y$`` returns the concatenation of its operands.
+
+
+Numerical operators
+-------------------
+
+``+ x`` returns its operand.
+
+``- x`` returns the negative of its operand.
+
+``x + y`` returns the sum of its operands.
+
+``x - y`` returns the difference of its operands.
+
+``x * y`` returns the product of its operands.
+
+``x / y`` returns the quotient of its operands.
+
+``x ^ y`` returns ``x`` raised to the power of ``y``.
+
+
+Functions
+=========
+
+Note that the arguments to the functions below are numeric expressions, unless
+the argument is denoted with a dollar sign.
+
+
+``ABS(x)`` returns the absolute value of its argument.
+
+``ASC(x$)`` returns the ordinal value of the first character of its argument.
+Use with care as not all target platforms use ASCII.
+
+``ATN(x)`` returns the arctangent of its argument, in radians.
+
+``CHR$(x)`` returns the character with the ordinal value provided by its argument.
+Use with care as not all target platforms use ASCII.
+
+``COS(x)`` returns the cosine of its argument, which is interpreted as radians.
+
+``EXP(x)`` returns the exponential of its argument.
+
+``FNa(x)`` returns the value of the user-defined function ``a`` with argument ``x``. BASICODE-3 and -3C only.
+
+``INT(x)`` returns its argument as a whole number truncated towards negative infinity.
+
+``LEFT$(x$, n)`` returns the ``n`` leftmost characters of the string ``x$``.
+``n`` must be in the range ``1``-``255``.
+
+``LEN(x$)`` returns the length of its argument.
+
+``LOG(x)`` returns the natural logarithm of its argument. ``x`` must be greater than ``0``.
+
+``MID$(x$, s, n)`` returns ``n`` consecutive characters characters, starting with
+position ``s``, where the first position is ``1``. ``s`` and ``n`` must be in the
+range ``1``-``255``.
+
+``RIGHT$(x$, n)`` returns the ``n`` leftmost characters of the string ``x$``.
+``n`` must be in the range ``1``-``255``.
+
+``SGN(x)`` returns the sign of its argument: ``1`` for positive,
+``-1`` for negative, ``0`` for zero.
+
+``SIN(x)`` returns the sine of its argument, which is interpreted as radians.
+
+``SQR(x)`` returns the square root of its argument. ``x`` must be greater than or equal to ``0``.
+
+``TAN(x)`` returns the tangent of its argument, which is interpreted as radians.
+
+``VAL(x$)`` returns the numerical value of the string representation of a number
+given as its argument. ``x$`` must be string representing a valid numerical literal.
 
 
 Statements
@@ -231,112 +353,6 @@ STOP
 ``STOP``
 
 Terminates the program. BASICODE-2 only.
-
-
-Functions
-=========
-
-Note that the arguments to the functions below are expressions whose return value is numeric, unless
-the argument is denoted with a dollar sign.
-
-
-``ABS(x)`` returns the absolute value of its argument.
-
-``ASC(x$)`` returns the ordinal value of the first character of its argument.
-Use with care as not all target platforms use ASCII.
-
-``ATN(x)`` returns the arctangent of its argument, in radians.
-
-``CHR$(x)`` returns the character with the ordinal value provided by its argument.
-Use with care as not all target platforms use ASCII.
-
-``COS(x)`` returns the cosine of its argument, which is interpreted as radians.
-
-``EXP(x)`` returns the exponential of its argument.
-
-``FNa(x)`` returns the value of the user-defined function ``a`` with argument ``x``. BASICODE-3 and -3C only.
-
-``INT(x)`` returns its argument as a whole number truncated towards negative infinity.
-
-``LEFT$(x$, n)`` returns the ``n`` leftmost characters of the string ``x$``.
-``n`` must be in the range ``1``-``255``.
-
-``LEN(x$)`` returns the length of its argument.
-
-``LOG(x)`` returns the natural logarithm of its argument. ``x`` must be greater than ``0``.
-
-``MID$(x$, s, n)`` returns ``n`` consecutive characters characters, starting with
-position ``s``, where the first position is ``1``. ``s`` and ``n`` must be in the
-range ``1``-``255``.
-
-``RIGHT$(x$, n)`` returns the ``n`` leftmost characters of the string ``x$``.
-``n`` must be in the range ``1``-``255``.
-
-``SGN(x)`` returns the sign of its argument: ``1`` for positive,
-``-1`` for negative, ``0`` for zero.
-
-``SIN(x)`` returns the sine of its argument, which is interpreted as radians.
-
-``SQR(x)`` returns the square root of its argument. ``x`` must be greater than or equal to ``0``.
-
-``TAN(x)`` returns the tangent of its argument, which is interpreted as radians.
-
-``VAL(x$)`` returns the numerical value of the string representation of a number
-given as its argument. ``x$`` must be string representing a valid numerical literal.
-
-
-Operators
-=========
-
-Boolean operators
------------------
-
-``x AND y`` returns the logical conjunction of its operands.
-
-``NOT x`` returns the logical negation of its operand.
-
-``x OR y`` returns the logical disjunction of its operands.
-
-``x = y`` returns the equality of its operands.
-
-``x < y`` returns ``x`` less than ``y``.
-
-``x > y`` returns ``x`` greater than ``y``.
-
-``x <> y`` returns the inequality of its operands.
-
-``x <= y`` returns ``x`` less than or equal to ``y``.
-
-``x >= y`` returns ``x`` greater than or equal to ``y``.
-
-Boolean expressions may only be used in an ``IF`` statement and must
-not be assigned to a variable. The numerical value of Boolean values is undefined.
-
-The order of precedence of Boolean operators is undefined and must be indicated with parentheses.
-
-
-String operators
-----------------
-
-``x$ + y$`` returns the concatenation of its operands.
-
-
-Numerical operators
--------------------
-
-``+ x`` returns its operand.
-
-``- x`` returns the negative of its operand.
-
-``x + y`` returns the sum of its operands.
-
-``x - y`` returns the difference of its operands.
-
-``x * y`` returns the product of its operands.
-
-``x / y`` returns the quotient of its operands.
-
-``x ^ y`` returns ``x`` raised to the power of ``y``.
 
 
 Subroutines
@@ -610,23 +626,6 @@ GOTO 950
 Basicode-3 and -3C only.
 End the program.
 
-
-
-Recommended structure
-=====================
-
-It is recommended to use line number ranges as follows:
-
-===========  ===========================================
-Range        Purpose
------------  -------------------------------------------
-       1000  Initialisation line
- 1010-19999  Main program
-20000-24999  Machine-specific subroutines
-25000-29999  ``DATA`` lines
-30000-31999  Comments: program description
-32000-32767  Comments: author's name and contact details
-===========  ===========================================
 
 
 -----------------
