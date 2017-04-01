@@ -11,13 +11,15 @@ BASICODE consists of the following elements:
 - A standard set of subroutines to provide functionality for which no common BASIC syntax exists
 - An audio modulation format intended to be readable by data cassette players
 
+See the `summary of the BASICODE specification`_ for details.
+
 .. image:: http://robhagemans.github.io/basicode/zwart1.jpg
 
 BASICODE users would tape record the modulated program from the radio. They would need a native *translation program*
 for their platform, which would decode the common audio format and supplement the BASICODE program with the platform
 implementation of the standard subroutines. If everything went well, they would then be able to run and use the program.
 
-*NOS* started BASICODE transmissions in 1982 on medium wave Dutch radio. Other broadcasters followed suit:
+The *NOS* started BASICODE transmissions in 1982 on medium wave Dutch radio. Other broadcasters followed suit:
 Dutch broadcasters *NOS* and *TROS*, the British *BBC*, the West German *WDR* and
 the East German *Radio DDR* all at one time or another performed regular BASICODE transmissions.
 In re-unified Germany, *Deutschlandsender Kultur* continued to transmit BASICODE until around 1992.
@@ -28,6 +30,12 @@ or more platforms.
 
 While the authors and broadcasters retained copyrights on the programs, they encouraged them to be shared widely
 for non-commercial purposes.
+
+.. _summary of the BASICODE specification: BASICODE.rst
+
+
+Contents
+--------
 
 This repository contains BASICODE programs from a number of sources. I have decoded them from
 the original audio recordings, where available, and corrected transmission failures using context,
@@ -59,7 +67,10 @@ Title                               Medium      Year  Standard            Langua
 `BASICODE-3 Verzamelcassette 8`_    Tape        1990  BASICODE-3          Dutch and German
 `BASICODE-3 Verzamelcassette 9`_    Tape        1990  BASICODE-3          Dutch and German
 `BasiCode Sammelsurium`_            Diskette    1998  BASICODE-2, 3, 3C   German
+`Software-Archiv des KC-Clubs`_     Web         2002  BASICODE-2, 3, 3C   German
 ==================================  ==========  ===== ==================  ==================
+
+Also included are a few `BASICODE programs from various sources`_ such as radio recordings.
 
 .. _BASICODE-2A: Basicode-2a/
 .. _Chip Shop BASICODE 2: Chip_Shop_Basicode_2/
@@ -83,6 +94,8 @@ Title                               Medium      Year  Standard            Langua
 .. _BASICODE-3 Verzamelcassette 8: Verzamelcassette_8/
 .. _BASICODE-3 Verzamelcassette 9: Verzamelcassette_9/
 .. _`BasiCode Sammelsurium`: Sammelsurium/
+.. _`Software-Archiv des KC-Clubs`: KC-Club/
+.. _`BASICODE programs from various sources`: Various/
 
 
 Interpreter
@@ -95,7 +108,8 @@ The `source code for the interpreter <https://github.com/robhagemans/basicode-in
 Acknowledgements
 ----------------
 
-A big thank you to **Janny Looyenga**, **Jan Bredenbeek**, **André van der Leeden**, **Thomas Rademacher** and many others for history, BASICODE recordings and background information!
+A big thank you to **Janny Looyenga**, **Jan Bredenbeek**, **André van der Leeden**, **Thomas Rademacher**, **Victor Reijs**
+and many others for history, BASICODE recordings and background information!
 
 
 Publications
