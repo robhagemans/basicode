@@ -38,6 +38,8 @@ Range        Purpose
 ===========  ===========================================
 
 
+-------------------
+
 Variables
 =========
 
@@ -75,6 +77,8 @@ optionally followed by more digits.
 String literals consist of a double quote ``"``, followed by the characters of the string,
 followed by a double quote ``"``.
 
+
+----------------
 
 Operators
 =========
@@ -130,6 +134,8 @@ Numerical operators
 ``x ^ y`` returns ``x`` raised to the power of ``y``.
 
 
+--------------------
+
 Functions
 =========
 
@@ -182,20 +188,26 @@ range ``1``-``255``.
 given as its argument. ``x$`` must be string representing a valid numerical literal.
 
 
+-------------------
+
 Statements
 ==========
 
 DATA
 ----
 
-``DATA literal [, literal] ...``
+::
+
+    DATA literal [, literal] ...
 
 Declares data which can be read with ``READ``.
 
 DEF FN
 ------
 
-``DEF FNa(variable) = expression``
+::
+
+   DEF FNa(variable) = expression
 
 Defines the user-defined function ``a`` with parameter ``variable``.
 ``expression`` is a numeric expression that may refer to ``variable``. It must not recursively
@@ -205,7 +217,9 @@ call the newly defined function. BASICODE-3 and -3C only.
 DIM
 ---
 
-``DIM variable(max_index)``
+::
+
+    DIM variable(max_index)
 
 Allocates an array to be of length ``max_index+1``.
 
@@ -213,7 +227,9 @@ Allocates an array to be of length ``max_index+1``.
 END
 ---
 
-``END``
+::
+
+    END
 
 Terminates the program. BASICODE-2 only.
 
@@ -221,7 +237,9 @@ Terminates the program. BASICODE-2 only.
 FOR
 ---
 
-``FOR variable = start TO stop [STEP step]``
+::
+
+    FOR variable = start TO stop [STEP step]
 
 Initiates a loop. ``variable`` must be numeric. Statements between
 this statement and the matching ``NEXT`` statement will be executed at least once
@@ -234,7 +252,9 @@ program execution continues from the statement after ``NEXT``.
 GOSUB
 -----
 
-``GOSUB line_number``
+::
+
+    GOSUB line_number
 
 Jumps to a subroutine. If a subsequent ``RETURN`` statement is encountered,
 program execution continues at the statement after ``GOSUB``.
@@ -243,7 +263,9 @@ program execution continues at the statement after ``GOSUB``.
 GOTO
 ----
 
-``GOTO line_number``
+::
+
+    GOTO line_number
 
 Jumps to a line number in the program.
 
@@ -251,7 +273,9 @@ Jumps to a line number in the program.
 IF
 --
 
-``IF condition THEN {line_number | compound_statement}``
+::
+
+    IF condition THEN {line_number | compound_statement}
 
 Executes ``compound_statement`` or jumps to ``line_number``
 if ``condition`` evaluates to true. ``condition`` must be a Boolean expression. There is no ``ELSE`` clause.
@@ -259,7 +283,10 @@ if ``condition`` evaluates to true. ``condition`` must be a Boolean expression. 
 INPUT
 -----
 
-``INPUT variable``
+
+::
+
+    INPUT variable
 
 Waits for user input and assigns the value provided by the user to ``variable``.
 
@@ -267,7 +294,9 @@ Waits for user input and assigns the value provided by the user to ``variable``.
 LET
 ---
 
-``[LET] variable = expression``
+::
+
+    [LET] variable = expression
 
 Evaluates ``expression`` and assigns its value to ``variable``.
 The keyword ``LET`` may be omitted.
@@ -276,7 +305,9 @@ The keyword ``LET`` may be omitted.
 NEXT
 ----
 
-``NEXT variable``
+::
+
+    NEXT variable
 
 Iterates a loop. Loops may be nested but ``variable`` must match the initiating ``FOR``
 statement (and must not be omitted).
@@ -285,7 +316,10 @@ statement (and must not be omitted).
 ON
 --
 
-``ON expression {GOTO| GOSUB} line_number [, line_number] ...``
+
+::
+
+    ON expression {GOTO| GOSUB} line_number [, line_number] ...
 
 Evaluates ``expression`` and uses its
 value to choose from a list of jumps. ``expression`` is a numeric expression that must evaluate to a whole number. If the value is ``1``,
@@ -296,7 +330,9 @@ no jump is performed.
 PRINT
 -----
 
-``PRINT {expression | TAB(n)} [{ ; | , } {expression | TAB(n)}] ...``
+::
+
+    PRINT {expression | TAB(n)} [{ ; | , } {expression | TAB(n)}] ...
 
 Outputs the values of ``expression`` to the screen.
 If ``;`` is used, values are separated by a space.
@@ -308,7 +344,9 @@ where the first position is ``1`` or ``0`` and implementation-dependent. ``n`` m
 READ
 ----
 
-``READ variable``
+::
+
+    READ variable
 
 Reads the next ``DATA`` literal into ``variable`` and increments the data pointer.
 The types of the literal and the variable must match.
@@ -317,7 +355,9 @@ The types of the literal and the variable must match.
 REM
 ---
 
-``REM comment``
+::
+
+    REM comment
 
 Is a comment and ignored.
 ``REM`` must be the last statement on the line.
@@ -326,7 +366,9 @@ Is a comment and ignored.
 RESTORE
 -------
 
-``RESTORE``
+::
+
+    RESTORE
 
 Resets the data pointer to the start.
 
@@ -334,7 +376,9 @@ Resets the data pointer to the start.
 RETURN
 ------
 
-``RETURN``
+::
+
+    RETURN
 
 Exits a subroutine; execution continues at the statement following the
 ``GOSUB`` that called the subroutine.
@@ -342,7 +386,10 @@ Exits a subroutine; execution continues at the statement following the
 RUN
 ---
 
-``RUN``
+
+::
+
+    RUN
 
 Clears all variables and restarts the program. BASICODE-2 only.
 
@@ -350,10 +397,15 @@ Clears all variables and restarts the program. BASICODE-2 only.
 STOP
 ----
 
-``STOP``
+
+::
+
+    STOP
 
 Terminates the program. BASICODE-2 only.
 
+
+-------------------
 
 Subroutines
 ===========
