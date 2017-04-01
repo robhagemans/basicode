@@ -540,9 +540,7 @@ the header information does not include the number of blocks nor the length of
 the last block.
 
 Therefore, the end of the file needs to be indicated with an ``ETH`` (``04``) byte.
-According to Dr. Völz's description, all further bytes in the block should be
-``ETH``; however, the BASICODE-3 book leaves these bytes unspecified and states they could
-be anything. In practice, they often are values other than ``ETH``.
+All further bytes in the block after ``ETH`` are unspecified. 
 
 This means that, despite the 1024-byte block structure of the files, this protocol
 is not suited to transfer binary files, since it is not possible to transmit a ``04``
@@ -574,3 +572,10 @@ block's checksum but otherwise ignored.
 
 
 --------------
+
+Sources
+=======
+
+- Hans G. Janssen (ed.), *BASICODE Hobbyscoop 2*, Nederlandse Omroep Stichting, Hilversum, 1983.
+- Jacques Haubrich (ed.), *Het BASICODE-3 Boek*, Kluwer Technische Boeken, Deventer, 1986.
+- `BASICODE-3C Journal <Sammelsurium/JOURNALE/BASC3-C.ASC>`_
