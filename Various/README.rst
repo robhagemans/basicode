@@ -10,10 +10,13 @@ Title                               Author                    Medium            
 `Aftrekdelen`_                      J\. Kicken                Radio recording       1984-09-30   Dutch
 `Uitleg BASICODE-3`_                Stichting BASICODE        Radio recording       1986-07-12   Dutch
 `Seizoenen`_                        J\. Bosschieter           Radio recording       1988-07      Dutch
-`Othello`_ (colour version)         J\.P.M. Simons            [1] ``OTHELLOC.ASC``  1991-12-25   Dutch
+`Othello (in kleur)`_               J\.P.M. Simons            [1] ``OTHELLOC.ASC``  1991-12-25   Dutch
 `Widerstände`_                      Michael Paeke             [1] ``WIDERSTA.ASC``  1992-07-08   German
 `Tennis`_                           Abdon Pijpelink           [1] ``TENNIS.ASC``    1992-11-11   Dutch
-`Julia Sets`_                       Thomas Rademacher         [2]                   2005         English
+`Solitair-Dame`_                    Thomas Rademacher         [1] ``SOLIDAME.ASC``  2003-01      German
+`Acey Ducey`_                       Thomas Rademacher         [1] ``ACYDUCY.ASC``   2003-09      German
+`Rotation (ähnl. Schiebefix)`_      Thomas Rademacher         [1] ``ROTATION.ASC``  2003-09      German
+`Julia Sets`_                       Thomas Rademacher         [2] ``JULIA.B3C``     2005         English
 `Weer`_                             Victor Reijs              [1] ``WEERVR.ASC``    2005         Dutch
 `Boekhoudprogramma`_                Victor Reijs              [1] ``BOEKVR.ASC``    2005         Dutch
 ==================================  ========================  ====================  ===========  ==================
@@ -32,6 +35,9 @@ The files in this directory that were not extracted from audio sources were obta
 .. _Weer: Weer.bc3
 .. _Boekhoudprogramma: Boekhoudprogramma.bc3
 .. _Seizoenen: Seizoenen.bc2
-.. _Othello: OthelloColour.b3c
+.. _Othello (in kleur): OthelloColour.b3c
 .. _Widerstände: Widerstaende.b3c
 .. _Tennis: Tennis.b3c
+.. _Acey Ducey: AceyDucey.bc3
+.. _Rotation (ähnl. Schiebefix): Rotation.bc3
+.. _Solitair-Dame: SolitairDame.bc3
