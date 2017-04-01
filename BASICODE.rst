@@ -228,7 +228,7 @@ Numerical Operators
 
 ``x / y`` returns the quotient of its operands.
 
-``x ^ y`` returns `x`` raised to the power of ``y``.
+``x ^ y`` returns ``x`` raised to the power of ``y``.
 
 
 Subroutines
