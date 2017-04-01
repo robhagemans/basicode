@@ -48,6 +48,7 @@ The files in this directory that were not extracted from audio sources were obta
 .. _Rotation (ähnl. Schiebefix): Rotation.bc3
 .. _Solitair-Dame: SolitairDame.bc3
 .. _ASTRA-Info 3: AstraInfo3.bc3
+.. _TextAnzeiger Dokumentation: TextAnzeigerDokumentation.bc3
 .. _BASICODE-Hilfsprogramm: BasicodeHilfsprogramm.bc3
 .. _DataCopy + Print: DataCopyPrint.bc3
 .. _FileKopplung: FileKopplung.bc3
