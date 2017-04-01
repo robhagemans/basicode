@@ -63,69 +63,174 @@ followed by a double quote ``"``.
 Statements
 ==========
 
-``DATA literal [, literal] ...`` declares data which can be read with ``READ``.
+DATA
+----
 
-``DEF FNa(variable) = expression`` defines the user-defined function ``a`` with parameter ``variable``.
+``DATA literal [, literal] ...``
+
+Declares data which can be read with ``READ``.
+
+DEF FN
+------
+
+``DEF FNa(variable) = expression``
+
+Defines the user-defined function ``a`` with parameter ``variable``.
 ``expression`` is a numeric expression that may refer to ``variable``. It must not recursively
 call the newly defined function. BASICODE-3 and -3C only.
 
-``DIM variable(max_index)`` allocates an array to be of length ``max_index+1``.
 
-``END`` terminates the program. BASICODE-2 only.
+DIM
+---
 
-``FOR variable = start TO stop [STEP step]`` initiates a loop. ``variable`` must be numeric. Statements between
+``DIM variable(max_index)``
+
+Allocates an array to be of length ``max_index+1``.
+
+
+END
+---
+
+``END``
+
+Terminates the program. BASICODE-2 only.
+
+
+FOR
+---
+
+``FOR variable = start TO stop [STEP step]``
+
+Initiates a loop. ``variable`` must be numeric. Statements between
 this statement and the matching ``NEXT`` statement will be executed at least once
 and may be executed multiple times. In the first iteration, ``variable`` will have the value ``start``.
 Every next iteration it is incremented by ``step`` or by one if the ``STEP`` clause is omitted.
 If ``variable`` is greater than or equal to ``stop``, the loop exits at the ``NEXT`` statement and
 program execution continues from the statement after ``NEXT``.
 
-``GOSUB line_number`` jumps to a subroutine. If a subsequent ``RETURN`` statement is encountered,
+
+GOSUB
+-----
+
+``GOSUB line_number``
+
+Jumps to a subroutine. If a subsequent ``RETURN`` statement is encountered,
 program execution continues at the statement after ``GOSUB``.
 
-``GOTO line_number`` jumps to a line number in the program.
-``GOTO 20`` and ``GOTO 950`` (BASICODE-3 and -3C) have a special meaning which is
-discussed under `Subroutines`_.
 
-``IF condition THEN {line_number | compound_statement}`` executes ``compound_statement`` or jumps to ``line_number``
+GOTO
+----
+
+``GOTO line_number``
+
+Jumps to a line number in the program.
+
+
+IF
+--
+
+``IF condition THEN {line_number | compound_statement}``
+
+Executes ``compound_statement`` or jumps to ``line_number``
 if ``condition`` evaluates to true. ``condition`` must be a Boolean expression. There is no ``ELSE`` clause.
 
-``INPUT variable`` waits for user input and assigns the value provided by the user to ``variable``.
+INPUT
+-----
 
-``[LET] variable = expression`` evaluates ``expression`` and assigns its value to ``variable``.
+``INPUT variable``
+
+Waits for user input and assigns the value provided by the user to ``variable``.
+
+
+LET
+---
+
+``[LET] variable = expression``
+
+Evaluates ``expression`` and assigns its value to ``variable``.
 The keyword ``LET`` may be omitted.
 
-``NEXT variable`` iterates a loop. Loops may be nested but ``variable`` must match the initiating ``FOR``
+
+NEXT
+----
+
+``NEXT variable``
+
+Iterates a loop. Loops may be nested but ``variable`` must match the initiating ``FOR``
 statement (and must not be omitted).
 
-``ON expression {GOTO| GOSUB} line_number [, line_number] ...`` evaluates ``expression`` and uses its
+
+ON
+--
+
+``ON expression {GOTO| GOSUB} line_number [, line_number] ...``
+
+Evaluates ``expression`` and uses its
 value to choose from a list of jumps. ``expression`` is a numeric expression that must evaluate to a whole number. If the value is ``1``,
 the statement jumps to the first ``line_number``, etc. If the value is less than ``1`` or greater than the number of line numbers in the list,
 no jump is performed.
 
-``PRINT {expression | TAB(n)} [{ ; | , } {expression | TAB(n)}] ... ``
-outputs the values of ``expression``s to the screen.
+
+PRINT
+-----
+
+``PRINT {expression | TAB(n)} [{ ; | , } {expression | TAB(n)}] ...``
+
+Outputs the values of ``expression`` to the screen.
 If ``;`` is used, values are separated by a space.
 If ``,`` is used, values are aligned to tabulation stops (of undefined length).
 The pseudo-function ``TAB(n)`` may be used to move the next expression to position ``n``,
 where the first position is ``1`` or ``0`` and implementation-dependent. ``n`` must be greater than ``0``.
-Use of ``TAB`` and ``,`` is not recommended.
 
-``READ variable`` reads the next ``DATA`` literal into ``variable`` and increments the data pointer.
+
+READ
+----
+
+``READ variable``
+
+Reads the next ``DATA`` literal into ``variable`` and increments the data pointer.
 The types of the literal and the variable must match.
 
-``REM comment`` is a comment and ignored.
+
+REM
+---
+
+``REM comment``
+
+Is a comment and ignored.
 ``REM`` must be the last statement on the line.
 ``comment`` must not contain the colon character ``:``.
 
-``RESTORE`` resets the data pointer to the start.
+RESTORE
+-------
 
-``RETURN`` exits a subroutine; execution continues at the statement following the
+``RESTORE``
+
+Resets the data pointer to the start.
+
+
+RETURN
+------
+
+``RETURN``
+
+Exits a subroutine; execution continues at the statement following the
 ``GOSUB`` that called the subroutine.
 
-``RUN`` clears all variables and restarts the program. BASICODE-2 only.
+RUN
+---
 
-``STOP`` terminates the program. BASICODE-2 only.
+``RUN``
+
+Clears all variables and restarts the program. BASICODE-2 only.
+
+
+STOP
+----
+
+``STOP``
+
+Terminates the program. BASICODE-2 only.
 
 
 Functions
@@ -476,21 +581,27 @@ GOSUB 610
 
 Basicode-3 and -3C only.
 Plot a point at coordinate ``(HO,VE)``, where ``HO`` and ``VE`` are in the interval ``[0,1[``, ``(0, 0)`` is the top left pixel and ``(1, 1)`` is just outside the bottom right screen corner.
-If ``CN`` equals 0, plot in foreground color; if ``CN`` equals 1, plot in background color.
+If ``CN`` equals 0, plot in foreground colour; if ``CN`` equals 1, plot in background colour.
+
+In BASICODE-3C, the foreground colour is the current value of ``CC(0)`` while the background colour is the value ``CC(1)`` had at the time ``GOSUB 600`` was last called.
 
 
 GOSUB 630
 ---------
 
 Basicode-3 and -3C only.
-Draw a line to coordinate ``(HO,VE)``. If ``CN`` equals 0, draw in foreground color; if ``CN`` equals 1, draw in background color.
+Draw a line to coordinate ``(HO,VE)``. If ``CN`` equals 0, draw in foreground colour; if ``CN`` equals 1, draw in background colour.
 
+In BASICODE-3C, the foreground colour is the current value of ``CC(0)`` while the background colour is the value ``CC(1)`` had at the time ``GOSUB 600`` was last called.
 
 GOSUB 650
 ---------
 
+Basicode-3 and -3C only.
 Draw text on the graphical screen, where  coordinate ``(HO,VE)`` is the top left of the text box.
-If ``CN`` equals 0, draw in foreground color; if ``CN`` equals 1, draw in background color.
+If ``CN`` equals 0, draw in foreground colour; if ``CN`` equals 1, draw in background colour.
+
+In BASICODE-3C, the foreground colour is the current value of ``CC(0)`` while the background colour is the value ``CC(1)`` had at the time ``GOSUB 600`` was last called.
 
 
 GOTO 950
