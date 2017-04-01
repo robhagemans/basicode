@@ -10,8 +10,14 @@ Title                               Author                    Medium            
 `Aftrekdelen`_                      J\. Kicken                Radio recording       1984-09-30   Dutch
 `Uitleg BASICODE-3`_                Stichting BASICODE        Radio recording       1986-07-12   Dutch
 `Seizoenen`_                        J\. Bosschieter           Radio recording       1988-07      Dutch
+`BASICODE-Hilfsprogramm`_           Hannes Frank              [1] ``BCHILFE.ASC``   1990-01-25   German
+`Funktionsplotting`_                Hannes Frank              [1] ``FN3ECK.ASC``    1990-02-03   German
+`FileKopplung`_                     Andreas Garten            [1] ``FILEKOPP.ASC``  1991-03-20   German
 `Othello (in kleur)`_               J\.P.M. Simons            [1] ``OTHELLOC.ASC``  1991-12-25   Dutch
+`DataCopy + Print`_                 Andreas Garten            [1] ``DATACOPY.ASC``  1992-05-27   German
 `Widerstände`_                      Michael Paeke             [1] ``WIDERSTA.ASC``  1992-07-08   German
+`ASTRA-Info 3`_                     Michael Fiedler           [1] ``ASTR1192.ASC``  1992-11-11   German
+`TextAnzeiger Dokumentation`_       Michael Fiedler           [1] ``TEXTERDO.ASC``  1992-11-11   German
 `Tennis`_                           Abdon Pijpelink           [1] ``TENNIS.ASC``    1992-11-11   Dutch
 `Solitair-Dame`_                    Thomas Rademacher         [1] ``SOLIDAME.ASC``  2003-01      German
 `Acey Ducey`_                       Thomas Rademacher         [1] ``ACYDUCY.ASC``   2003-09      German
@@ -41,3 +47,8 @@ The files in this directory that were not extracted from audio sources were obta
 .. _Acey Ducey: AceyDucey.bc3
 .. _Rotation (ähnl. Schiebefix): Rotation.bc3
 .. _Solitair-Dame: SolitairDame.bc3
+.. _ASTRA-Info 3: AstraInfo3.bc3
+.. _BASICODE-Hilfsprogramm: BasicodeHilfsprogramm.bc3
+.. _DataCopy + Print: DataCopyPrint.bc3
+.. _FileKopplung: FileKopplung.bc3
+.. _Funktionsplotting: Funktionsplotting.bc3
