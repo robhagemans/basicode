@@ -15,7 +15,7 @@ Title                               Author                    Medium           D
 The files in this directory that were not extracted from audio sources were obtained from internet sources, in particular the following:
 
 1. Thomas Rademacher's `BasiCode - Software für Alle <http://www.joyce.de/basicode/>`_, in particular under *Neue Programme*.
-2. Victor Reijs' `BASICODE Yahoo Group <groups.yahoo.com/neo/groups/BASICODE>`_
+2. Victor Reijs' `BASICODE Yahoo Group <http://groups.yahoo.com/neo/groups/BASICODE>`_
 
 
 .. _Verkeersberichten: 19840401_Verkeersberichten.bc2
