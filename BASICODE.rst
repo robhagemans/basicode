@@ -180,8 +180,11 @@ range ``1``-``255``.
 given as its argument. ``x$`` must be string representing a valid numerical literal.
 
 
-Boolean Operators
-=================
+Operators
+=========
+
+Boolean operators
+-----------------
 
 ``x AND y`` returns the logical conjunction of its operands.
 
@@ -207,14 +210,14 @@ not be assigned to a variable. The numerical value of Boolean values is undefine
 The order of precedence of Boolean operators is undefined and must be indicated with parentheses.
 
 
-String Operators
-================
+String operators
+----------------
 
 ``x$ + y$`` returns the concatenation of its operands.
 
 
-Numerical Operators
-===================
+Numerical operators
+-------------------
 
 ``+ x`` returns its operand.
 
@@ -234,7 +237,8 @@ Numerical Operators
 Subroutines
 ===========
 
-``GOTO 20``
+GOTO 20
+-------
 
 Initialises the program. The variable ``A`` should contain the
 maximum total number of characters for all strings required by the program.
@@ -246,13 +250,16 @@ Additionally, in BASICODE-3 and -3C:
 - sets the variable ``HG`` to the number or horizontal pixels and ``VG`` to the number of vertical pixels on the graphical screen.
 - if called from elsewhere in the program, ``GOTO 20`` clears all variables and restarts.
 
+In BASICODE-3C only, sets ``SV`` to ``35``, as a version identifier.
 
-``GOSUB 100``
+GOSUB 100
+---------
 
 Clears the screen and places the cursor in the top left corner.
 
 
-``GOSUB 110``
+GOSUB 110
+---------
 
 Places the cursor on the row given in ``VE`` and the column given in ``HO``.
 The top left cell has position ``HO=0`` and ``VE=0``. ``HO`` and ``VE`` should be greater than or equal to zero.
@@ -260,18 +267,21 @@ The top left cell has position ``HO=0`` and ``VE=0``. ``HO`` and ``VE`` should b
 In BASICODE-2, additionally, ``HO`` should be less than ``40`` and ``VE`` should be less than ``24``.
 
 
-``GOSUB 120``
+GOSUB 120
+---------
 
 Returns the current cursor position in the variables ``HO``, ``VE``.
 
 
-``GOSUB 150``
+GOSUB 150
+---------
 
 Basicode-3 and -3C only. Prints the contents of variable ``SR$`` in an emphasised way, for example in reverse video.
 Three spaces are printed before and three spaces are printed after the string.
 
 
-``GOSUB 200``
+GOSUB 200
+---------
 
 Polls the keyboard; if a key was pressed, returns this in ``IN$``. If no key was pressed, returns the empty string in ``IN$``.
 
@@ -295,12 +305,14 @@ Up       undefined     31
 Additionally, in BASICODE-3C only, function keys return negative values: F1 returns -1, F2 returns -2, etc.
 
 
-``GOSUB 210``
+GOSUB 210
+---------
 
 Waits for a keypress and returns it in ``IN$``. See ``GOSUB 200`` for the values returned in ``IN$`` and, in BASICODE-3 and -3C, in ``IN``.
 
 
-``GOSUB 220``
+GOSUB 220
+---------
 
 Basicode-3 and -3C only.
 Sets ``IN`` to the ordinal value of the character shown on the screen
@@ -308,61 +320,74 @@ at the position given by ``HO``, ``VE``. As in ``GOSUB 200``, this returns the m
 If the position in those variables is outside the text screen, sets ``IN`` to ``0``.
 ``IN$`` is unaffected by this subroutine.
 
-In BASICODE-3C only, an offset value is returned in ``CN`` such that ``CHR$(IN+CN)`` reproduces the character case sensitively.
+In BASICODE-3C only, an offset value is returned in ``CN`` such that ``CHR$(IN+CN)`` reproduces the character on the screen.
+This is intended to make a screen dump possible on non-ASCII systems such as the Commodore 64.
+The specification notes the expectation that ``CN`` is set to zero on most systems,
+which suggests it is not the intention to use the offset to produce case sensitive results.
 
 
-``GOSUB 250``
+GOSUB 250
+---------
 
 Sound a beep. Pitch, volume and duration are implementation-dependent.
 
 
-``GOSUB 260``
+GOSUB 260
+---------
 
 Sets ``RV`` to a pseudorandom value greater than or equal to `0`` and less than ``1``.
 
 
-``GOSUB 270``
+GOSUB 270
+---------
 
 Runs a garbage-collection cycle and sets ``FR`` to the number of bytes of free memory.
 
 
-``GOSUB 280``
+GOSUB 280
+---------
 
 Basicode-3 and -3C only.
 If ``FR=1``, disable the Break key. If ``FR=0``, enable it.
 
 
-``GOSUB 300``
+GOSUB 300
+---------
 
 Set ``SR$`` to a string representation of the number stored in ``SR``.
 The representation has no leading or trailing spaces.
 
 
-``GOSUB 310``
+GOSUB 310
+---------
 
 Set ``SR$`` to a string representation of the number stored in ``SR``. The representation is always fixed-point
 with a total length of ``CT`` characters and ``CN`` digits after the radix point, rounding where necessary.
 If the representation does not fit, a string of length ``CN`` containing repeated `*` characters is returned.
 
 
-``GOSUB 330``
+GOSUB 330
+---------
 
 Basicode-3 and -3C only.
 Set ``SR$`` to its value, converted to uppercase.
 
 
-``GOSUB 350``
+GOSUB 350
+---------
 
 Prints the text contained in ``SR$`` on the line printer.
 No newline is printed (unless it is contained in the string).
 
 
-``GOSUB 360``
+GOSUB 360
+---------
 
 Prints a newline on the printer.
 
 
-``GOSUB 400``
+GOSUB 400
+---------
 
 Basicode-3 and -3C only.
 Plays a tone of pitch ``SP``, duration ``SD``, and volume ``SV``, where:
@@ -375,13 +400,15 @@ Plays a tone of pitch ``SP``, duration ``SD``, and volume ``SV``, where:
 - ``SV`` is the volume, where ``0`` represents silence, ``7`` is normal volume and ``15`` represents maximum volume.
 
 
-``GOSUB 450``
+GOSUB 450
+---------
 
 Basicode-3 and -3C only.
 Waits at most ``SD`` tenths of a second or until a key is pressed. Returns any pressed key in the same way as ``GOSUB 200``.
 
 
-``GOSUB 500``
+GOSUB 500
+---------
 
 Basicode-3 and -3C only.
 Opens the file with name ``NF$`` with source and mode determined by ``NF`` as follows:
@@ -403,7 +430,8 @@ Opens the file with name ``NF$`` with source and mode determined by ``NF`` as fo
 ======  =======  =========================================
 
 
-``GOSUB 540``
+GOSUB 540
+---------
 
 Basicode-3 and -3C only.
 Returns the next string from file open under ``NF`` into ``IN$``
@@ -421,45 +449,52 @@ A status code is returned in ``IN``:
 If a error or end-of-file occurs, ``IN$`` is set to the empty string.
 
 
-``GOSUB 560``
+GOSUB 560
+---------
 
 Basicode-3 and -3C only.
 Writes the string in ``SR$`` to the file open under ``NF``.
 See ``GOSUB 540`` for status codes.
 
 
-``GOSUB 580``
+GOSUB 580
+---------
 
 Basicode-3 and -3C only.
 Closes the file open under ``NF``.
 
 
-``GOSUB 600``
+GOSUB 600
+---------
 
 Basicode-3 and -3C only.
 Switch to graphics mode and clear screen.
 
 
-``GOSUB 610``
+GOSUB 610
+---------
 
 Basicode-3 and -3C only.
 Plot a point at coordinate ``(HO,VE)``, where ``HO`` and ``VE`` are in the interval ``[0,1[``, ``(0, 0)`` is the top left pixel and ``(1, 1)`` is just outside the bottom right screen corner.
 If ``CN`` equals 0, plot in foreground color; if ``CN`` equals 1, plot in background color.
 
 
-``GOSUB 630``
+GOSUB 630
+---------
 
 Basicode-3 and -3C only.
 Draw a line to coordinate ``(HO,VE)``. If ``CN`` equals 0, draw in foreground color; if ``CN`` equals 1, draw in background color.
 
 
-``GOSUB 650``
+GOSUB 650
+---------
 
 Draw text on the graphical screen, where  coordinate ``(HO,VE)`` is the top left of the text box.
 If ``CN`` equals 0, draw in foreground color; if ``CN`` equals 1, draw in background color.
 
 
-``GOTO 950``
+GOTO 950
+--------
 
 Basicode-3 and -3C only.
 End the program.
@@ -482,6 +517,8 @@ Range        Purpose
 32000-32767  Comments: author's name and contact details
 ===========  ===========================================
 
+
+-----------------
 
 File format
 ===========
@@ -540,7 +577,7 @@ the header information does not include the number of blocks nor the length of
 the last block.
 
 Therefore, the end of the file needs to be indicated with an ``ETH`` (``04``) byte.
-All further bytes in the block after ``ETH`` are unspecified. 
+All further bytes in the block after ``ETH`` are unspecified.
 
 This means that, despite the 1024-byte block structure of the files, this protocol
 is not suited to transfer binary files, since it is not possible to transmit a ``04``
@@ -578,4 +615,4 @@ Sources
 
 - Hans G. Janssen (ed.), *BASICODE Hobbyscoop 2*, Nederlandse Omroep Stichting, Hilversum, 1983.
 - Jacques Haubrich (ed.), *Het BASICODE-3 Boek*, Kluwer Technische Boeken, Deventer, 1986.
-- `BASICODE-3C Journal <Sammelsurium/JOURNALE/BASC3-C.ASC>`_
+- Jacques Haubrich, *Toelichting BASICODE-3C*, Stichting BASICODE, 1991.
