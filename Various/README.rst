@@ -9,6 +9,10 @@ Title                               Author                    Medium            
 `Verkeersberichten`_                J\. Haubrich              Radio recording       1984-04-01   Dutch
 `Aftrekdelen`_                      J\. Kicken                Radio recording       1984-09-30   Dutch
 `Uitleg BASICODE-3`_                Stichting BASICODE        Radio recording       1986-07-12   Dutch
+`Seizoenen`_                        J\. Bosschieter           Radio recording       1988-07      Dutch
+`Othello`_ (colour version)         J\.P.M. Simons            [1] ``OTHELLOC.ASC``  1991-12-25   Dutch
+`Widerstände`_                      Michael Paeke             [1] ``WIDERSTA.ASC``  1992-07-08   German
+`Tennis`_                           Abdon Pijpelink           [1] ``TENNIS.ASC``    1992-11-11   Dutch
 `Julia Sets`_                       Thomas Rademacher         [2]                   2005         English
 `Weer`_                             Victor Reijs              [1] ``WEERVR.ASC``    2005         Dutch
 `Boekhoudprogramma`_                Victor Reijs              [1] ``BOEKVR.ASC``    2005         Dutch
@@ -27,3 +31,7 @@ The files in this directory that were not extracted from audio sources were obta
 .. _Julia Sets: JuliaSets.b3c
 .. _Weer: Weer.bc3
 .. _Boekhoudprogramma: Boekhoudprogramma.bc3
+.. _Seizoenen: Seizoenen.bc2
+.. _Othello: OthelloColour.b3c
+.. _Widerstände: Widerstaende.b3c
+.. _Tennis: Tennis.b3c
