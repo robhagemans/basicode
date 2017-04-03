@@ -38,4 +38,3 @@
 32000 REM -----------------------
 32010 REM H. Voelz; 11.5.89; 24.8.89 fuer Rundfunk
 32020 REM XT-compatibler Rechner
-

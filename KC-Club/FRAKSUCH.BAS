@@ -22,4 +22,3 @@
 30060 REM Andere Formeln fuer Zeile 1090 in Zeitschrift
 30070 REM Spectrum 8/88 Erklaerungen in rfe 2/89
 32000 REM H.Voelz, 28.6.89, XT-Compatible
-

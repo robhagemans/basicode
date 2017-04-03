@@ -45,4 +45,3 @@
 1460 GOTO 950
 32001 REM fuer Rundfunk geschrieben zu Programm BASHILF
 32002 REM XT-compatibler Rechner
-

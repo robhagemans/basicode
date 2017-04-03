@@ -47,4 +47,3 @@
 32000 REM ----------Autorschaft-------------
 32010 REM H.Voelz; 11.7.89; 24.8.89; fuer Buch BASICODE
 32020 REM Auf IBM-compatiblem Rechner
-

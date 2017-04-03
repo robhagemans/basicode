@@ -24,4 +24,3 @@
 30070 REM andere Formeln fuer Zeile 1110 in Zeitschrift
 30080 REM Spectrum 8/88 Erklaerungen in rfe 2/89
 32000 REM H.Voelz, 28.6.89, XT-Compatible
-

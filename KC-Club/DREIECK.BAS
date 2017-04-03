@@ -240,4 +240,3 @@
 32150 REM Erstausstrahlung:
 32160 REM REM-Computernacht,15/16.9.89
 32170 REM   ACORN-Master
-
