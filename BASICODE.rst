@@ -439,19 +439,18 @@ In BASICODE-3C, additionally, sets the foreground colour to CC(0) and background
 
 The colour values for ``CC(0)`` and ``CC(1)`` are as follows:
 
-=====   =======
-Value   Colour
-----    -------
-   0    Black
-   1    Blue
-   2    Red
-   3    Magenta
-   4    Green
-   5    Cyan
-   6    Yellow
-   7    White
-====    =======
-
+=====  =======
+Value  Colour
+-----  -------
+   0   Black
+   1   Blue
+   2   Red
+   3   Magenta
+   4   Green
+   5   Cyan
+   6   Yellow
+   7   White
+=====  =======
 
 GOSUB 110
 ---------
