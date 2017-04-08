@@ -19,6 +19,8 @@ Programs must include a first line ``1000`` of the following form::
 
     1000 A = value: GOTO 20: REM program name
 
+where the value of A represents the approximate total of bytes required for string variables and arrays (not counting string literals).
+
 The first line of the program proper should be ``1010``.
 
 In Basicode-3 and -3C, programs should be explicitly terminated with ``GOTO 950``.
@@ -45,7 +47,8 @@ Variables
 
 There are two types of scalar variables: numerical and string.
 
-Numerical variable names consist of a letter and optionally another letter or a number.
+Numerical variable names consist of a letter and optionally another letter or a number. Their values are floating-point, and single-precision (i.e. no more than 6 digits guaranteed).
+
 String variable names consist of a letter and optionally another letter or a number,
 terminated by a dollar sign ``$``.
 
@@ -53,17 +56,19 @@ The following two-letter words are reserved words and must not be used as variab
 
 - All words starting with ``O``.
 - ``AS``, ``AT``, ``FN``, ``GR``, ``IF``, ``PI``, ``ST``, ``TI``, ``TI$``, ``TO``  (in BASICODE-2, -3 and -3C)
-- ``LN`` (in BASICODE-3 and -3C)
+- ``DI``, ``EI``, ``GO``, ``LN``, ``SQ`` (in BASICODE-3 and -3C)
 
 The following variable names have a special meaning for use with BASICODE subroutines:
 
 - ``A``, ``CN``, ``CT``, ``FR``, ``HO``, ``IN$``, ``RV``, ``SR``, ``SR$``, and ``VE`` (in BASICODE-2, -3 and -3C)
 - ``HG``,  ``IN``, ``NF``, ``NF$``, ``SD``, ``SP``, ``SV``, and ``VG`` (in BASICODE-3 and -3C)
-- ``CC`` (in BASICODE-3C)
+- ``CC()`` (array, in BASICODE-3C)
 
-Arrays are lists of values of the same type. Array names are variable names;
-the same name must not be used for a scalar and an array in the same program.
-Arrays are indexed by a whole number enclosed in parentheses ``()``. The first index is ``0``.
+Variables must be assigned a value before they may be used.
+
+Arrays are lists of values of the same type. They must be declared first using the DIM statement. The rules for array names are the same as for scalar variables, i.e. a letter optionally followed by another letter or number, and the dollar sign ``$`` for string arrays. Arrays have a separate name space from scalar variables so an array and a scalar variable with the same name may co-exist without confusion.
+
+Arrays are indexed by a whole number enclosed in parentheses ``()``. The first index is ``0``, the last index is the number specified in the DIM statement which declared the array. At most two dimensions are allowed.
 
 Strings must be no longer than 255 characters.
 
@@ -104,8 +109,7 @@ Boolean operators
 
 ``x >= y`` returns ``x`` greater than or equal to ``y``.
 
-Boolean expressions may only be used in an ``IF`` statement and must
-not be assigned to a variable. The numerical value of Boolean values is undefined.
+Boolean expressions may be used in an ``IF`` statement and assigned to a variable, but no assumptions should be made about the numerical value. When assigning a boolean value to a variable, that value may only be used in an ``IF`` statement.
 
 The order of precedence of Boolean operators is undefined and must be indicated with parentheses.
 
@@ -162,17 +166,17 @@ Use with care as not all target platforms use ASCII.
 ``INT(x)`` returns its argument as a whole number truncated towards negative infinity.
 
 ``LEFT$(x$, n)`` returns the ``n`` leftmost characters of the string ``x$``.
-``n`` must be in the range ``1``-``255``.
+``n`` must be in the range ``1``- ``LEN(x$)``.
 
 ``LEN(x$)`` returns the length of its argument.
 
 ``LOG(x)`` returns the natural logarithm of its argument. ``x`` must be greater than ``0``.
 
-``MID$(x$, s, n)`` returns ``n`` consecutive characters characters, starting with
+``MID$(x$, s, n)`` returns a substring of ``n`` consecutive characters, starting with
 position ``s``, where the first position is ``1``. ``s`` and ``n`` must be in the
-range ``1``-``255``.
+range ``1``-``LEN(x$)``. On most platforms, ``n`` may be omitted in which case the substring starting from position ``s`` to the end of ``x$`` is returned.
 
-``RIGHT$(x$, n)`` returns the ``n`` leftmost characters of the string ``x$``.
+``RIGHT$(x$, n)`` returns the ``n`` rightmost characters of the string ``x$``.
 ``n`` must be in the range ``1``-``255``.
 
 ``SGN(x)`` returns the sign of its argument: ``1`` for positive,
@@ -200,7 +204,7 @@ DATA
 
     DATA literal [, literal] ...
 
-Declares data which can be read with ``READ``.
+Declares data which can be read with ``READ``. No further statements are allowed on a line after a DATA statement.
 
 DEF FN
 ------
@@ -212,6 +216,7 @@ DEF FN
 Defines the user-defined function ``a`` with parameter ``variable``.
 ``expression`` is a numeric expression that may refer to ``variable``. It must not recursively
 call the newly defined function. BASICODE-3 and -3C only.
+Function names are restricted to numerical or Boolean values with one numerical parameter. The function must be defined before it may be used.
 
 
 DIM
@@ -219,9 +224,9 @@ DIM
 
 ::
 
-    DIM variable(max_index)
+    DIM variable(max_index,[max_index2])
 
-Allocates an array to be of length ``max_index+1``.
+Allocates an array (numerical or string) to be of length ``max_index+1``, with an optional second dimension ``max_index2+1``. Arrays must be declared by a ``DIM`` statement before they may be used, and re-dimensioning of the same array is not allowed.
 
 
 END
@@ -286,9 +291,10 @@ INPUT
 
 ::
 
-    INPUT variable
+    INPUT ["prompt string";] variable
 
 Waits for user input and assigns the value provided by the user to ``variable``.
+When in graphics mode (set by ``GOSUB 600``), ``INPUT`` is not allowed.
 
 
 LET
@@ -323,8 +329,7 @@ ON
 
 Evaluates ``expression`` and uses its
 value to choose from a list of jumps. ``expression`` is a numeric expression that must evaluate to a whole number. If the value is ``1``,
-the statement jumps to the first ``line_number``, etc. If the value is less than ``1`` or greater than the number of line numbers in the list,
-no jump is performed.
+the statement jumps to the first ``line_number``, etc. The expression may not evaluate to a number greater than the number of lines specified after GOTO or GOSUB.
 
 
 PRINT
@@ -332,13 +337,13 @@ PRINT
 
 ::
 
-    PRINT {expression | TAB(n)} [{ ; | , } {expression | TAB(n)}] ...
+    PRINT {expression | TAB(n)} [{ ; } {expression | TAB(n)}] ...
 
 Outputs the values of ``expression`` to the screen.
-If ``;`` is used, values are separated by a space.
-If ``,`` is used, values are aligned to tabulation stops (of undefined length).
+If ``;`` is used, values may be separated by a space (depending on the platform).
 The pseudo-function ``TAB(n)`` may be used to move the next expression to position ``n``,
 where the first position is ``1`` or ``0`` and implementation-dependent. ``n`` must be greater than ``0``.
+When in graphics mode (set by ``GOSUB 600``), ``PRINT`` is not allowed (use ``GOSUB 650``).
 
 
 READ
@@ -370,7 +375,7 @@ RESTORE
 
     RESTORE
 
-Resets the data pointer to the start.
+Resets the data pointer to the start. Line numbers in a RESTORE statement are not allowed.
 
 
 RETURN
@@ -391,7 +396,7 @@ RUN
 
     RUN
 
-Clears all variables and restarts the program. BASICODE-2 only.
+Clears all variables and restarts the program. BASICODE-2 only; in BASICODE-3 and -3C use ``GOTO 1000``.
 
 
 STOP
@@ -402,7 +407,7 @@ STOP
 
     STOP
 
-Terminates the program. BASICODE-2 only.
+Terminates the program. BASICODE-2 only; in BASICODE-3 and -3C use ``GOTO 950``.
 
 
 -------------------
@@ -423,12 +428,29 @@ Additionally, in BASICODE-3 and -3C:
 - sets the variable ``HG`` to the number or horizontal pixels and ``VG`` to the number of vertical pixels on the graphical screen.
 - if called from elsewhere in the program, ``GOTO 20`` clears all variables and restarts.
 
-In BASICODE-3C only, sets ``SV`` to ``35``, as a version identifier.
+In BASICODE-3C only, does a ``DIM CC(1)``, sets ``CC(0)`` to 7 (i.e. white), ``CC(1)`` to 0 (i.e. black), and ``SV`` to 35 as a version identifier.
 
 GOSUB 100
 ---------
 
-Clears the screen and places the cursor in the top left corner.
+Clears the screen, switches to text mode and places the cursor in the top left corner.
+
+In BASICODE-3C, additionally, sets the foreground colour to CC(0) and background colour to CC(1). The colour values are also saved internally for later use.
+
+The colour values for ``CC(0)`` and ``CC(1)`` are as follows:
+
+=====   =======
+Value   Colour
+----    -------
+   0    Black
+   1    Blue
+   2    Red
+   3    Magenta
+   4    Green
+   5    Cyan
+   6    Yellow
+   7    White
+====    =======
 
 
 GOSUB 110
@@ -436,6 +458,8 @@ GOSUB 110
 
 Places the cursor on the row given in ``VE`` and the column given in ``HO``.
 The top left cell has position ``HO=0`` and ``VE=0``. ``HO`` and ``VE`` should be greater than or equal to zero.
+
+The maximum values of ``HO`` and ``VE`` are machine-dependent. In BASICODE-3 and -3C, best practice is to save their values at the start of the program and adjust the screen output accordingly. As a minimum, a text screen of 24 lines and 40 columns may be assumed.
 
 In BASICODE-2, additionally, ``HO`` should be less than ``40`` and ``VE`` should be less than ``24``.
 
@@ -451,6 +475,7 @@ GOSUB 150
 
 Basicode-3 and -3C only. Prints the contents of variable ``SR$`` in an emphasised way, for example in reverse video.
 Three spaces are printed before and three spaces are printed after the string.
+In BASICODE-3C only, uses the foreground and background colours specified in ``CC(0)`` and ``CC(1)`` respectively, but ``SR$`` is actually printed with the colours in reverse video.
 
 
 GOSUB 200
@@ -641,7 +666,9 @@ GOSUB 600
 ---------
 
 Basicode-3 and -3C only.
-Switch to graphics mode and clear screen.
+Switch to graphics mode and clears the screen.
+
+In BASICODE-3C only, the screen is cleared using the background colour specified in ``CC(1)``, which is also kept internally for use by the other graphics subroutines.
 
 
 GOSUB 610
