@@ -3,13 +3,13 @@ BASICODE specification
 ######################
 
 
-Programs
-========
+Program structure
+=================
 
 Programs consist of lines of ASCII text, separated by carriage returns.
 All program text except string literals and comments is uppercase.
-Each line is no more than 60 characters long and
-consists of a line number, followed by a space and a compound statement.
+Each line is no more than 60 characters long and consists of a line number, followed by a space and a compound statement.
+No spaces are required around keywords, except when ambiguity may arise (e.g. ``IF B=A THEN`` .. requires a space before ``THEN`` to avoid being interpreted as ``IF B= ``AT`` ..).
 
 Line numbers are whole numbers in the range ``1000``-``32767``, inclusive.
 
@@ -224,7 +224,7 @@ DIM
 
 ::
 
-    DIM variable(max_index,[max_index2])
+    DIM variable(max_index[,max_index2])
 
 Allocates an array (numerical or string) to be of length ``max_index+1``, with an optional second dimension ``max_index2+1``. Arrays must be declared by a ``DIM`` statement before they may be used, and re-dimensioning of the same array is not allowed.
 
@@ -236,7 +236,7 @@ END
 
     END
 
-Terminates the program. BASICODE-2 only.
+Terminates the program. BASICODE-2 only; in BASICODE-3 and -3C use ``GOTO 950``.
 
 
 FOR
@@ -343,6 +343,7 @@ Outputs the values of ``expression`` to the screen.
 If ``;`` is used, values may be separated by a space (depending on the platform).
 The pseudo-function ``TAB(n)`` may be used to move the next expression to position ``n``,
 where the first position is ``1`` or ``0`` and implementation-dependent. ``n`` must be greater than ``0``.
+
 When in graphics mode (set by ``GOSUB 600``), ``PRINT`` is not allowed (use ``GOSUB 650``).
 
 
@@ -428,14 +429,14 @@ Additionally, in BASICODE-3 and -3C:
 - sets the variable ``HG`` to the number or horizontal pixels and ``VG`` to the number of vertical pixels on the graphical screen.
 - if called from elsewhere in the program, ``GOTO 20`` clears all variables and restarts.
 
-In BASICODE-3C only, does a ``DIM CC(1)``, sets ``CC(0)`` to 7 (i.e. white), ``CC(1)`` to 0 (i.e. black), and ``SV`` to 35 as a version identifier.
+In BASICODE-3C only, does a ``DIM CC(1)``, sets ``CC(0)`` to ``7`` (i.e. ``white``), ``CC(1)`` to ``0`` (i.e. ``black``), and ``SV`` to ``35`` as a version identifier.
 
 GOSUB 100
 ---------
 
 Clears the screen, switches to text mode and places the cursor in the top left corner.
 
-In BASICODE-3C, additionally, sets the foreground colour to CC(0) and background colour to CC(1). The colour values are also saved internally for later use.
+In BASICODE-3C, additionally, sets the foreground colour to CC(0) and background colour to CC(1). The colour values specified here will be used until the next ``GOSUB 100``.
 
 The colour values for ``CC(0)`` and ``CC(1)`` are as follows:
 
@@ -474,7 +475,8 @@ GOSUB 150
 
 Basicode-3 and -3C only. Prints the contents of variable ``SR$`` in an emphasised way, for example in reverse video.
 Three spaces are printed before and three spaces are printed after the string.
-In BASICODE-3C only, uses the foreground and background colours specified in ``CC(0)`` and ``CC(1)`` respectively, but ``SR$`` is actually printed with the colours in reverse video.
+
+In BASICODE-3C only, uses the foreground and background colours specified in ``CC(0)`` and ``CC(1)`` respectively, but ``SR$`` is actually printed with the colours in reverse video. The colours specified here will only be used during this call; any ``PRINT``-statements hereafter will revert to the colours specified in the last ``GOSUB 100``.
 
 
 GOSUB 200
