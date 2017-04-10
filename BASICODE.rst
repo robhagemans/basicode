@@ -56,7 +56,8 @@ The following two-letter words are reserved words and must not be used as variab
 
 - All words starting with ``O``.
 - ``AS``, ``AT``, ``FN``, ``GR``, ``IF``, ``PI``, ``ST``, ``TI``, ``TI$``, ``TO``  (in BASICODE-2, -3 and -3C)
-- ``DI``, ``EI``, ``GO``, ``LN``, ``SQ`` (in BASICODE-3 and -3C)
+- ``LN`` (in BASICODE-3 and -3C)
+- ``DI``, ``EI``, ``GO``,  ``SQ`` (in BASICODE-3, 2nd edition and -3C)
 
 The following variable names have a special meaning for use with BASICODE subroutines:
 
@@ -215,7 +216,7 @@ DEF FN
 
 Defines the user-defined function ``a`` with parameter ``variable``.
 ``expression`` is a numeric expression that may refer to ``variable``. It must not recursively
-call the newly defined function. BASICODE-3 and -3C only.
+call the newly defined function. BASICODE-3 (2nd edition) and -3C only.
 Function names are restricted to numerical or Boolean values with one numerical parameter. The function must be defined before it may be used.
 
 
@@ -291,10 +292,12 @@ INPUT
 
 ::
 
-    INPUT ["prompt string";] variable
+    INPUT [string_literal;] variable
 
+If ``string_literal`` is given, prints this as a prompt.
 Waits for user input and assigns the value provided by the user to ``variable``.
 When in graphics mode (set by ``GOSUB 600``), ``INPUT`` is not allowed.
+The optional ``string_literal;`` is only allowed in BASICODE-3 (2nd edition) and -3C.
 
 
 LET
@@ -803,4 +806,5 @@ Sources
 
 - Hans G. Janssen (ed.), *BASICODE Hobbyscoop 2*, Nederlandse Omroep Stichting, Hilversum, 1983.
 - Jacques Haubrich (ed.), *Het BASICODE-3 Boek*, Kluwer Technische Boeken, Deventer, 1986.
+- Jacques Haubrich (ed.), *Het BASICODE-3 Boek* (2e druk), Kluwer Technische Boeken, Deventer, 1988.
 - Jacques Haubrich, *Toelichting BASICODE-3C*, Stichting BASICODE, 1991.
