@@ -98,11 +98,11 @@ Also included are a few `BASICODE programs from various sources`_ such as radio 
 .. _`BASICODE programs from various sources`: Various/
 
 
-Interpreter
------------
+Running the programs
+--------------------
 
-To try these programs, you can use the `online BASICODE interpreter <http://robhagemans.github.io/basicode/>`_.
-The `source code for the interpreter <https://github.com/robhagemans/basicode-interpreter>`_ is also available.
+You can run these programs in the `online BASICODE interpreter <http://robhagemans.github.io/basicode/>`_,
+for which the `source code <https://github.com/robhagemans/basicode-interpreter>`_ is also available.
 
 
 Acknowledgements
