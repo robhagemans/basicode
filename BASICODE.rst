@@ -9,7 +9,7 @@ Program structure
 Programs consist of lines of ASCII text, separated by carriage returns.
 All program text except string literals and comments is uppercase.
 Each line is no more than 60 characters long and consists of a line number, followed by a space and a compound statement.
-No spaces are required around keywords, except when ambiguity may arise (e.g. ``IF B=A THEN`` .. requires a space before ``THEN`` to avoid being interpreted as ``IF B= ``AT`` ..).
+No spaces are required around keywords, except when ambiguity may arise (e.g. ``IF B=A THEN`` .. requires a space before ``THEN`` to avoid being interpreted as ``IF B= AT`` ..).
 
 Line numbers are whole numbers in the range ``1000``-``32767``, inclusive.
 
@@ -476,7 +476,7 @@ GOSUB 150
 Basicode-3 and -3C only. Prints the contents of variable ``SR$`` in an emphasised way, for example in reverse video.
 Three spaces are printed before and three spaces are printed after the string.
 
-In BASICODE-3C only, uses the foreground and background colours specified in ``CC(0)`` and ``CC(1)`` respectively, but ``SR$`` is actually printed with the colours in reverse video. The colours specified here will only be used during this call; any ``PRINT``-statements hereafter will revert to the colours specified in the last ``GOSUB 100``.
+In BASICODE-3C only, uses the foreground and background colours specified in ``CC(0)`` and ``CC(1)`` respectively, but ``SR$`` is actually printed with the colours in reverse video. The colours specified here will be used during this call only; any ``PRINT``-statements hereafter will revert to the colours specified in the last ``GOSUB 100``.
 
 
 GOSUB 200
@@ -667,7 +667,7 @@ GOSUB 600
 ---------
 
 Basicode-3 and -3C only.
-Switch to graphics mode and clears the screen.
+Switch to graphics mode and clear the screen.
 
 In BASICODE-3C only, the screen is cleared using the background colour specified in ``CC(1)``, which is also kept internally for use by the other graphics subroutines.
 
