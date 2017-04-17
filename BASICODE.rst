@@ -432,7 +432,7 @@ Additionally, in BASICODE-3 and -3C:
 - sets the variable ``HG`` to the number or horizontal pixels and ``VG`` to the number of vertical pixels on the graphical screen.
 - if called from elsewhere in the program, ``GOTO 20`` clears all variables and restarts.
 
-In BASICODE-3C only, does a ``DIM CC(1)``, sets ``CC(0)`` to ``7`` (i.e. ``white``), ``CC(1)`` to ``0`` (i.e. ``black``), and ``SV`` to ``35`` as a version identifier.
+In BASICODE-3C only, does a ``DIM CC(1)``, sets ``CC(0)`` to ``7`` (i.e. white), ``CC(1)`` to ``0`` (i.e. black), and ``SV`` to ``35`` as a version identifier.
 
 GOSUB 100
 ---------
