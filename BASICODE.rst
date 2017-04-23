@@ -30,7 +30,7 @@ It is recommended to use line number ranges as follows:
 
 ===================  ===========================================
 Range                Purpose
--------------------  -------------------------------------------
+===================  ===========================================
            ``1000``  Initialisation line
  ``1010``-``19999``  Main program
 ``20000``-``24999``  Machine-specific subroutines
@@ -445,15 +445,15 @@ The colour values for ``CC(0)`` and ``CC(1)`` are as follows:
 
 =====  =======
 Value  Colour
------  -------
-   0   Black
-   1   Blue
-   2   Red
-   3   Magenta
-   4   Green
-   5   Cyan
-   6   Yellow
-   7   White
+=====  =======
+``0``  Black
+``1``  Blue
+``2``  Red
+``3``  Magenta
+``4``  Green
+``5``  Cyan
+``6``  Yellow
+``7``  White
 =====  =======
 
 GOSUB 110
@@ -495,7 +495,7 @@ The following codes are returned for special keys:
 
 =======  ============  =========
 Key      ``IN$``       ``IN``
--------  ------------  ---------
+=======  ============  =========
 Return   ``CHR$(13)``  13
 Delete   undefined     127
 Left     undefined     28
@@ -617,7 +617,7 @@ Opens the file with name ``NF$`` with source and mode determined by ``NF`` as fo
 
 ======  =======  =========================================
 ``NF``  Mode     Medium
-------  -------  -----------------------------------------
+======  =======  =========================================
     0   input    BASICODE tape
     1   output
 ------  -------  -----------------------------------------
@@ -642,7 +642,7 @@ A status code is returned in ``IN``:
 
 ======  =====================
 ``IN``  Status
-------  ---------------------
+======  =====================
     0   OK
     1   End of file
     -1  Error
