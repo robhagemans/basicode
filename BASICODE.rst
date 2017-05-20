@@ -290,7 +290,7 @@ The space between ``DEF`` and ``FN`` is optional.
 The ``DEF FN`` statement must be the only statement on the program line; this
 program line must not contain a colon.
 
-After a``DEF FNa`` statement (and not before), the function ``FNa`` may be used like other
+After a ``DEF FNa`` statement (and not before), the function ``FNa`` may be used like other
 numerical functions. Its return value will be the evaluation value of ``expession``
 after substituting the parameter.
 
