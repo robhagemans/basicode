@@ -2,29 +2,54 @@
 BASICODE specification
 ######################
 
+BASICODE was a living standard that was updated and clarified with time in
+collaboration between listeners and broadcasters.
+Roughly, there have been 5 major versions, corresponding to books or
+other publications of the standard:
 
-Program structure
-=================
+- BASICODE-1 (1980) consisted of the audio modulated transmission format only.
+- BASICODE-2 (1983) added the language specification and standard subroutines for text and printing.
+- BASICODE-3 (1986) added monochrome graphics and sound subroutines.
+- BASICODE-3 second edition (1988) added user-defined functions.
+- BASICODE-3C (1991) added colour.
 
-Programs consist of lines of ASCII text, separated by carriage returns.
+The standard was not formally specified, but rather described as a limitation
+on existing 8-bit BASIC dialects, which were assumed to be known by the readers.
+Thus, many assumptions were never made explicit. This document aims to
+describe the BASICODE language in a more explicit way, so that it can be understood
+by those less familiar with classic BASIC dialects.
+
+
+Programs
+========
+
+BASICODE programs consist of lines of ASCII text, separated by carriage returns.
 All program text except string literals and comments is uppercase.
-Each line is no more than 60 characters long and consists of a line number, followed by a space and a compound statement.
-No spaces are required around keywords, except when ambiguity may arise (e.g. ``IF B=A THEN`` .. requires a space before ``THEN`` to avoid being interpreted as ``IF B= AT`` ..).
 
-Line numbers are whole numbers in the range ``1000``-``32767``, inclusive.
+Each line is no more than 60 characters long and consists of a line number,
+followed by a space and a compound statement.
+
+The first line number is ``1000`` and following line numbers are whole numbers
+in the range ``1010``-``32767``, inclusive.
 
 A compound statement consists of one or more statements, separated by colons ``:``.
 
-Programs must include a first line ``1000`` of the following form::
+
+Structure
+=========
+
+The first line of the program has line number ``1000`` and takes the following form::
 
     1000 A = value: GOTO 20: REM program name
 
-where the value of A represents the approximate total of bytes required for string variables and arrays (not counting string literals).
+Here, the value of ``A`` represents a number of bytes large enough
+to store all string variables in the program, including arrays but
+not counting string literals. ``GOTO 20`` initialises the program.
+By convention, the program name is given in a comment in line ``1000``.
 
-The first line of the program proper should be ``1010``.
+The second line of the program has number ``1010``. This is where the program proper starts.
 
 In Basicode-3 and -3C, programs should be explicitly terminated with ``GOTO 950``.
-
 
 It is recommended to use line number ranges as follows:
 
@@ -40,6 +65,25 @@ Range                Purpose
 ===================  ===========================================
 
 
+Keywords
+========
+
+Keywords are any of the following:
+
+- statement keywords;
+- function keywords;
+- operators;
+- reserved words.
+
+No spaces are required to separate keywords, except when ambiguity may arise.
+For example, ``IFB=A THEN2000`` requires no space between the keyword ``IF`` and the variable
+name ``B`` or between the keyword ``THEN`` and the numeric literal ``2000``.
+However, a space is required between the variable name ``A`` and the
+keyword ``THEN`` to avoid the statement being interpreted as the syntactically
+incorrect ``IF B= AT HEN 2000``.
+
+
+
 -------------------
 
 Variables
@@ -47,7 +91,8 @@ Variables
 
 There are two types of scalar variables: numerical and string.
 
-Numerical variable names consist of a letter and optionally another letter or a number. Their values are floating-point, and single-precision (i.e. no more than 6 digits guaranteed).
+Numerical variable names consist of a letter and optionally another letter or a
+number.
 
 String variable names consist of a letter and optionally another letter or a number,
 terminated by a dollar sign ``$``.
@@ -67,9 +112,18 @@ The following variable names have a special meaning for use with BASICODE subrou
 
 Variables must be assigned a value before they may be used.
 
-Arrays are lists of values of the same type. They must be declared first using the DIM statement. The rules for array names are the same as for scalar variables, i.e. a letter optionally followed by another letter or number, and the dollar sign ``$`` for string arrays. Arrays have a separate name space from scalar variables so an array and a scalar variable with the same name may co-exist without confusion.
+Arrays are lists of values of the same type. They must be declared first using
+the DIM statement. The rules for array names are the same as for scalar variables,
+i.e. a letter optionally followed by another letter or number, and the dollar sign
+``$`` for string arrays. Arrays have a separate name space from scalar variables so
+an array and a scalar variable with the same name may co-exist without confusion.
 
-Arrays are indexed by a whole number enclosed in parentheses ``()``. The first index is ``0``, the last index is the number specified in the DIM statement which declared the array. At most two dimensions are allowed.
+Arrays are indexed by a whole number enclosed in parentheses ``()``. The first
+index is ``0``, the last index is the number specified in the DIM statement
+which declared the array. At most two dimensions are allowed.
+
+Numerical values are floating-point and single-precision: a precision of no more
+than 6 significant figures is guaranteed.
 
 Strings must be no longer than 255 characters.
 
@@ -77,11 +131,12 @@ Strings must be no longer than 255 characters.
 Literals
 ========
 
-Numerical literals consist of an optional sign ``-`` or ``+``, followed by digits, optionally followed by a decimal point ``.``,
+Numerical literals consist of an optional sign ``-`` or ``+``, followed by
+digits, optionally followed by a decimal point ``.``,
 optionally followed by more digits.
 
-String literals consist of a double quote ``"``, followed by the characters of the string,
-followed by a double quote ``"``.
+String literals consist of a double quote ``"``, followed by the characters
+of the string, followed by a double quote ``"``.
 
 
 ----------------
@@ -110,9 +165,13 @@ Boolean operators
 
 ``x >= y`` returns ``x`` greater than or equal to ``y``.
 
-Boolean expressions may be used in an ``IF`` statement and assigned to a variable, but no assumptions should be made about the numerical value. When assigning a boolean value to a variable, that value may only be used in an ``IF`` statement.
+Boolean expressions may be used in an ``IF`` statement and assigned to a
+variable, but no assumptions should be made about the numerical value. When
+assigning a boolean value to a variable, that value may only be used in an
+``IF`` statement.
 
-The order of precedence of Boolean operators is undefined and must be indicated with parentheses.
+The order of precedence of Boolean operators is undefined and must be indicated
+with parentheses.
 
 
 String operators
@@ -173,9 +232,14 @@ Use with care as not all target platforms use ASCII.
 
 ``LOG(x)`` returns the natural logarithm of its argument. ``x`` must be greater than ``0``.
 
-``MID$(x$, s, n)`` returns a substring of ``n`` consecutive characters, starting with
+``MID$(x$, s [, n])`` returns a substring of ``n`` consecutive characters, starting with
 position ``s``, where the first position is ``1``. ``s`` and ``n`` must be in the
-range ``1``-``LEN(x$)``. On most platforms, ``n`` may be omitted in which case the substring starting from position ``s`` to the end of ``x$`` is returned.
+range ``1``-``LEN(x$)``.
+
+In BASICODE-3 (2nd edition) and BASICODE-3C, the third
+argument ``n`` is optional, while in earlier versions it is mandatory.
+If ``n`` is omitted, the substring starting from position ``s`` to the end of ``x$`` is returned.
+
 
 ``RIGHT$(x$, n)`` returns the ``n`` rightmost characters of the string ``x$``.
 ``n`` must be in the range ``1``-``255``.
@@ -212,22 +276,40 @@ DEF FN
 
 ::
 
-   DEF FNa(variable) = expression
+   DEF FNa(param) = expression
 
-Defines the user-defined function ``a`` with parameter ``variable``.
-``expression`` is a numeric expression that may refer to ``variable``. It must not recursively
-call the newly defined function. BASICODE-3 (2nd edition) and -3C only.
-Function names are restricted to numerical or Boolean values with one numerical parameter. The function must be defined before it may be used.
+Defines the user-defined function ``a`` with one numeric parameter ``param``.
+``param`` is a numeric variable name.
+``expression`` is a numeric or Boolean expression that may refer to ``param``.
+It must not recursively call the newly defined function ``FNa``.
 
+Function names follow the same rules as numerical variable names.
+
+The space between ``DEF`` and ``FN`` is optional.
+
+The ``DEF FN`` statement must be the only statement on the program line; this
+program line must not contain a colon.
+
+After a``DEF FNa`` statement (and not before), the function ``FNa`` may be used like other
+numerical functions. Its return value will be the evaluation value of ``expession``
+after substituting the parameter.
+
+BASICODE-3 (2nd edition) and -3C only.
 
 DIM
 ---
 
 ::
 
-    DIM variable(max_index[,max_index2])
+    DIM variable(max_index [, max_index_2])
 
-Allocates an array (numerical or string) to be of length ``max_index+1``, with an optional second dimension ``max_index2+1``. Arrays must be declared by a ``DIM`` statement before they may be used, and re-dimensioning of the same array is not allowed.
+Allocates an array (numerical or string) to be of length ``max_index+1``, with
+an optional second dimension of length ``max_index_2+1``. Arrays must be declared by a
+``DIM`` statement before they may be used, and re-dimensioning of the
+same array is not allowed.
+
+In BASICODE-3 (2nd edition) and -3C, ``DIM`` initialises array values to zero
+or the empty string. In earlier versions, they must be explicitly initialised.
 
 
 END
@@ -485,11 +567,14 @@ In BASICODE-3C only, uses the foreground and background colours specified in ``C
 GOSUB 200
 ---------
 
-Polls the keyboard; if a key was pressed, returns this in ``IN$``. If no key was pressed, returns the empty string in ``IN$``.
+Polls the keyboard; if a key was pressed, returns the corresponding character in
+``IN$``. If no key was pressed, returns the empty string in ``IN$``.
 
-Additionally, in BASICODE-3 and -3C, returns in ``IN`` the ordinal value of the main character on the key pressed, ignoring the shift state. For letter keys,
-the main value is the ordinal value of the uppercase character; for number keys, it is the ordinal value of the digit character. The value returned is always in the range ``32``-``95``.
-If no key is pressed, returns ``0`` in ``IN``.
+Additionally, in BASICODE-3 and -3C, returns in ``IN`` the ordinal value of the
+main character on the key pressed, ignoring the shift state. For letter keys,
+the main value is the ordinal value of the uppercase character; for number keys,
+it is the ordinal value of the digit character. The value returned is always
+in the range ``32``-``95``. If no key is pressed, returns ``0`` in ``IN``.
 
 The following codes are returned for special keys:
 
@@ -504,13 +589,20 @@ Down     undefined     30
 Up       undefined     31
 =======  ============  =========
 
-Additionally, in BASICODE-3C only, function keys return negative values: F1 returns -1, F2 returns -2, etc.
+Additionally, in BASICODE-3C only, function keys return negative values in ``IN``:
+F1 returns -1, F2 returns -2, etc. In BASICODE-3 (2nd edition), control keys and
+function keys return an undefined negative value in ``IN``.
+
+In BASICODE-3 (2nd edition) and BASICODE-3C, the delete key and the arrow keys
+return a single- or multiple-character string in ``IN$`` such that ``PRINT IN$``
+reproduces the cursor-moving and character-removing effects of the key.
 
 
 GOSUB 210
 ---------
 
-Waits for a keypress and returns it in ``IN$``. See ``GOSUB 200`` for the values returned in ``IN$`` and, in BASICODE-3 and -3C, in ``IN``.
+Waits for a keypress and returns it in ``IN$``. See ``GOSUB 200`` for the
+values returned in ``IN$`` and, in BASICODE-3 and -3C, in ``IN``.
 
 
 GOSUB 220
@@ -809,4 +901,5 @@ Sources
 - Hans G. Janssen (ed.), *BASICODE Hobbyscoop 2*, Nederlandse Omroep Stichting, Hilversum, 1983.
 - Jacques Haubrich (ed.), *Het BASICODE-3 Boek*, Kluwer Technische Boeken, Deventer, 1986.
 - Jacques Haubrich (ed.), *Het BASICODE-3 Boek* (2e druk), Kluwer Technische Boeken, Deventer, 1988.
+- *Speciaal bulletin BASICODE-3 Verzamelcassette 5*, Stichting BASICODE, 1989.
 - Jacques Haubrich, *Toelichting BASICODE-3C*, Stichting BASICODE, 1991.
