@@ -1,11 +1,8 @@
 BASICODE
 ========
 
-The purpose of BASICODE was to enable radio-transmission of software to owners of numerous
-mutually incompatible 8-bit platforms. It was developed in 1980 by Dutch broadcaster *NOS* for its
-hobby-electronics radio programme Hobbyscoop.
-
-BASICODE consists of the following elements:
+BASICODE is a standardised BASIC dialect and transmission format consisting
+of the following elements:
 
 - A subset of classic Microsoft BASIC common to the BASIC dialects of the target platforms
 - A standard set of subroutines to provide functionality for which no common BASIC syntax exists
@@ -14,13 +11,23 @@ BASICODE consists of the following elements:
 See the `summary of the BASICODE specification`_ for details.
 
 .. image:: http://robhagemans.github.io/basicode/zwart1.jpg
+.. _summary of the BASICODE specification: BASICODE.rst
+
+
+Background
+----------
+
+BASICODE was developed
+in 1980 by Dutch broadcaster *NOS* for its hobby-electronics radio programme Hobbyscoop.
+Its purpose was to enable radio transmission of software to owners of numerous
+mutually incompatible 8-bit platforms.
 
 BASICODE users would tape record the modulated program from the radio. They would need a native *translation program*
 for their platform, which would decode the common audio format and supplement the BASICODE program with the platform
 implementation of the standard subroutines. If everything went well, they would then be able to run and use the program.
 
 The *NOS* started BASICODE transmissions in 1982 on medium wave Dutch radio. Other broadcasters followed suit:
-Dutch broadcasters *NOS* and *TROS*, the British *BBC*, the West German *WDR* and
+the Dutch *TROS*, the British *BBC*, the West German *WDR* and
 the East German *Radio DDR* all at one time or another performed regular BASICODE transmissions.
 In re-unified Germany, *Deutschlandsender Kultur* continued to transmit BASICODE until around 1992.
 
@@ -30,8 +37,6 @@ or more platforms.
 
 While the authors and broadcasters retained copyrights on the programs, they encouraged them to be shared widely
 for non-commercial purposes.
-
-.. _summary of the BASICODE specification: BASICODE.rst
 
 
 Contents
