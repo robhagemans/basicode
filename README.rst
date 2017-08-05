@@ -143,4 +143,4 @@ Online resources
 .. _`BASICODE: an example of Dutch computer folklore`: https://lennartb.home.xs4all.nl/basicode.html
 .. _`Overview of BASICODE-3`: http://www.iol.ie/~geniet/eng/BASICODE3sub.htm
 .. _`BasiCode – Software für alle`: http://www.joyce.de/basicode/
-.. _`BASICODE wiki`: https://github.com/janbredenbeek/Basicode/wiki
+.. _`BASICODE wiki`: https://github.com/janbredenbeek/Basicode-wiki/wiki
