@@ -50,8 +50,6 @@ Alle rechten voorbehouden NOS-radio Hobbyscoop
 .. _`Utility no. 1`: A07_Utility-1.bc2
 .. _`Utility no. 2`: A08_Utility-2.bc2
 
-Kant B:
-
 .. _`Kasboek`: B01_Kasboek.bc2
 .. _`Bankrekening/Finplan`: B02_Bankrekening_Finplan.bc2
 .. _`Chequeboek`: B03_Chequeboek.bc2
