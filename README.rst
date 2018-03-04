@@ -8,10 +8,12 @@ It consisted of the following elements:
 - A standard set of subroutines to provide functionality for which no common BASIC syntax exists
 - An audio modulation format intended to be readable by data cassette players
 
-See the `summary of the BASICODE specification`_ for details. You can run these programs in the
-`online BASICODE interpreter`_, for which the `source code`_ is also available.
+See the `summary of the BASICODE specification`_ for details.
 
 .. image:: http://robhagemans.github.io/basicode/zwart1.jpg
+
+This repository is a collection of BASICODE programs. You can run these in the
+`online BASICODE interpreter`_, for which the `source code`_ is also available.
 
 .. _summary of the BASICODE specification: BASICODE.rst
 .. _online BASICODE interpreter: http://robhagemans.github.io/basicode
