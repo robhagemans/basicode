@@ -1,8 +1,8 @@
 BASICODE
 ========
 
-BASICODE is a standardised BASIC dialect and transmission format consisting
-of the following elements:
+BASICODE was a 1980s-era cross-platform BASIC standard designed to allow software transmission by radio.
+It consisted of the following elements:
 
 - A subset of classic Microsoft BASIC common to the BASIC dialects of the target platforms
 - A standard set of subroutines to provide functionality for which no common BASIC syntax exists
