@@ -63,7 +63,7 @@
 19190 HO=1:VE=17:GOSUB 110:PRINT SR$;
 19200 HO=3:VE=20:GOSUB 110:PRINT "noch";k;"Steine ";
 19210 RETURN
-30000 #####################################################
+30000 REM #####################################################
 30010 REM Spielregel bei erstem Start
 30020 GOSUB 100
 30030 sr$="SOLITAIR - DAME":ho=9:ve=0:GOSUB 110:GOSUB 150
