@@ -11,255 +11,255 @@
 1100 FORZ=1 TO5:PRINTZ3$:VE=VE+1:GOSUB110:NEXTZ:PRINTZ1$
 1110 VE=3:HO=7:GOSUB110:PRINT"EINEN MOMENT BITTE"
 1120 REM ar#QQbp*Sh*=R * *FRAGE "
-1130 VE´23:HO´0:Œ110
-1140 VE´11:HO´9:Œ110:ž"Ich sortiere !"
-1400 Ž ===============================
-1410 I1´1 ¦50
-1420 †NR(I1)
-1430 I2´1 ¦3
-1440 †A$(I1,I2)
-1450 ‚I2
-1460 ‚I1
-1470 I3´1 ¦50
-1480 †NR(I3)
-1490 I4´1 ¦3
-1500 †F$(I3,I4)
-1510 ‚I4
-1520 VE´11:HO´9:Œ110:ž"              "
-1530 ‚I3
-1540 VE´3:HO´5:Œ110:ž"                      "
-1550 P´1:Œ1780
-1560 Œ260:D1´·(RV®50)¬1
-1570 VE´1:U1´1 ¦3:HO´2:VE´VE¬1
-1580 Œ110:žA$(D1,U1)
-1590 ‚U1
-1600 VE´19:HO´1:Œ110:žD1
-1610 P´2:Œ1780
-1620 Œ260:D2´·(RV®50)¬1
-1630 VE´19:HO´6:Œ110:žD2
-1640 VE´9:U1´1 ¦3:HO´2:VE´VE¬1
-1650 Œ110:žF$(D2,U1)
-1660 ‚U1
-1670 P´3:Œ1780
-1680 VE´1:U1´1 ¦3:HO´2:VE´VE¬1
-1690 Œ110:žZ4$
-1700 ‚U1
-1710 VE´19:HO´1:Œ110:ž"   "
-1720 VE´19:HO´6:Œ110:ž"   "
-1730 VE´9:U1´1 ¦3:HO´2:VE´VE¬1
-1740 Œ110:žZ4$
-1750 ‚U1
-1760 ˆ1550
-1770 Ž ===============================
-1780 VE´18:HO´13:Œ110:ž"DRUECKE TASTE FUER"
-1790 Œ250:VE´VE¬1:Œ110
-1800 ŠP´1 ©ž"DIE NAECHSTE FRAGE."
-1810 ŠP´2 ©ž"EINE NEUE  ANTWORT."
-1820 ŠP´3 ©ž"BILDTEXT LOESCHEN !"
-1830 VE´VE¬2:HO´11:Œ110:SR$´"Taste  e = Ende":Œ150
-1840 U´U¬.1:P´0:Œ200:ŠU³100 ©1880
-1850 ŠIN$´"" ©1840
-1860 ŠIN$´"e" ©950
-1870 U´0:
-1880 Œ600:Œ200:ŠIN$´"" ©1880
-1890 Œ100:U´0
-1900 žZ1$:Z´1 ¦5:žZ2$:‚Z:žZ1$
-1910 VE´8:HO´0:Œ110:žZ1$:VE´VE¬1:Œ110
-1920 Z´1 ¦5:žZ2$:VE´VE¬1:Œ110:‚Z:žZ1$
-1930 VE´16:HO´0:Œ110:žZ1$:VE´VE¬1:Œ110
-1940 Z´1 ¦5:žZ3$:VE´VE¬1:Œ110:‚Z:žZ1$
-1950 SR$´"    FRAGE  &  ANTWORT      "
-1960 VE´23:HO´0:Œ110:Œ150:
-1970 Ž ===============================
-25000 Ž         DATA - ZEILEN
-25010 ƒ1,"Wuerden Sie nachts","mit mir durch den Wald"
-25020 ƒ"gehen ?",2,"Haben Sie Liebes-","kummer ?",""
-25030 ƒ3,"Haben Sie die unan-","genehme Eigenschaft,"
-25040 ƒ"sich Geld zu borgen ?"
-25050 ƒ4,"Waren Sie in Ihrer Ju-","gend auch so verliebt"
-25060 ƒ"wie jetzt ?",5,"Kommen Sie manch-"
-25070 ƒ"mal zu spaet an Ihren","Arbeitsplatz ?",6
-25080 ƒ"Was wuerden Sie denken,","wenn ich Ihnen ploetz-"
-25090 ƒ"lich einen Kuss gaebe ?",7,"Ziehen Sie etwa den"
-25100 ƒ"Ring ab, wenn Sie","verreisen ?"
-25110 ƒ8,"Kaemen Sie, unter uns","gesagt, ohne  Kur-"
-25120 ƒ"schatten  aus ?",9,"Gehen Sie gern"
-25130 ƒ"allein tanzen ?","",10,"Sind Sie auch poe-"
-25140 ƒ"tisch angehaucht ?","",11,"Sind Sie leicht ent-"
-25150 ƒ"flammt,wenn Ihnen ein jun-"
-25160 ƒ"ges Maedchen begegnet ?",12,"Sind Sie ein Mann"
-25170 ƒ"von raschen","Entschluessen ?",13
-25180 ƒ"Haben Sie schon mal","die Bekanntschaft mit dem"
-25190 ƒ"Pantoffel gemacht ?",14,"Geben Sie immer"
-25200 ƒ"noch so gross an ?","",15,"Werden Sie leicht"
-25210 ƒ"erregt, wenn Ihnen","jemand den Hof macht ?",16
-25220 ƒ"Sehen Sie sich gern","Kriminalfilme an ?","",17
-25230 ƒ"Sind Sie bei sich der","Herr im Hause ?","",18
-25240 ƒ"Synptsye mit g#|Ax","Gesellschaften ?","",19
-25250 ƒ"Sind Sie auch so einer","der nur selten"
-25260 ƒ"zu spaet kommt ?",20,"Schauen Sie gern auf"
-25270 ƒ"schoene Frauenbeine ?","",21,"Machen Sie gern"
-25280 ƒ"zweideutige Witze ?","",22,"Trinken und essen"
-25290 ƒ"Sie immer noch so viel ?","",23
-25300 ƒ"Haben Sie etwa engeren","Kontakt mit Ihrem"
-25310 ƒ"Arbeitskollegen (Kollegin) ?",24
-25320 ƒ"Sind Sie temperament-","voll oder phlegma-"
-25330 ƒ"tisch ?",25,"Haben Sie schon mal"
-25340 ƒ"eine ernsthafte Liebe","gehabt ?",26
-25350 ƒ"Koennen Sie sich leicht","vom Gelde trennen ?",""
-25360 ƒ27,"Essen Sie gern Ham-","melfleisch mit gruenen"
-25370 ƒ"Bohnen ?",28,"Regen Sie sich leicht"
-25380 ƒ"auf, wenn einmal","etwas quer geht ?",29,""
-25390 ƒ"Sind Sie streitsuechtig ?","",30
-25400 ƒ"Sind Sie auch so ein","fanatischer Fussball-"
-25410 ƒ"anhaenger ?",31,"Lesen Sie gern alte"
-25420 ƒ"Schmoeker ?","",32,"","Sind Sie egoistisch ?",""
-25430 ƒ33,"Koennen Sie verschwie-","gen sein ?","",34
-25440 ƒ"Sind Sie recht eitel","und von sich einge-"
-25450 ƒ"nommen ?",35,"Sind Sie etwa ruecksichts-"
-25460 ƒ"los im Getraenge, in der","Strassenbahn usw.?"
-25470 ƒ36,"Langen Sie uebermaessig"
-25480 ƒ"zu, wenn Sie zum Essen","eingeladen sind ?",37
-25490 ƒ"Legen Sie den Unter-","arm beim Essen auf"
-25500 ƒ"den Tisch ?",38,"Vergessen Sie oft,"
-25510 ƒ"zum Geburtstag zu","gratulieren ?",39
-25520 ƒ"Legen Sie auch bloss den","Zeigefinger an den"
-25530 ƒ"Hut, wenn Sie gruessen ?",40,"Koennen Sie "
-25540 ƒ"zaertlich sein ?","",41,"Treiben Sie bestimmte"
-25550 ƒ"Liebhabereien ?","",42,"Sind Sie schnell einge-"
-25560 ƒ"schnappt, wenn man","Sie neckt ?",43
-25570 ƒ"Machen Sie nach dem","Essen ein Mittag-"
-25580 ƒ"schlaefchen ?",44,"Vertragen Sie sich"
-25590 ƒ"gut mit Ihrer Schwie-","germutter ?",45,""
-25600 ƒ"Sind Sie ein starker","Biertrinker ?",46,""
-25610 ƒ"Koennen Sie treu sein ???","",47,""
-25620 ƒ"Suchen Sie gern","andere Umgebung ?",48
-25630 ƒ"Haben Sie schon mal","Krach mit Ihrer Ehe-"
-25640 ƒ"haelfte gehabt ?",49,"Haben Sie bei jeder"
-25650 ƒ"Gelegenheit etwas","auszusetzen ?",50
-25660 ƒ"Sind Sie konsequent","im Denken und Handeln ?",""
-25670 Ž *** DATA ZEILEN ANTWORTEN ***
-25680 ƒ1,"Auf keinen Fall! Das"
-25685 ƒ "waere zu gefaehrlich.",""
-25690 ƒ2,"Sind Sie aber neugierig!","Das werde ich Ihnen"
-25700 ƒ"gerade aufbinden.",3,"Nein, ich moechte des-"
-25710 ƒ"wegen keinem Sor-","gen bereiten.",4
-25720 ƒ"Seien Sie bloss still!","Das braucht gar-"
-25730 ƒ"niemand zu wissen.",5,"Na wenn schon! Man"
-25740 ƒ"kennt sich schon","in dieser Beziehung.",6
-25750 ƒ"Damit wuerde ein heiss","ersehnter Wunsch"
-25760 ƒ"in Erfuellung gehen.",7
-25770 ƒ"Was interessiert Sie das","schon! Das Kommt mir"
-25780 ƒ"recht verdaechtig vor.",8,"Das kaeme nur darauf"
-25790 ƒ"an, ob genuegend Klein-","geld vorhanden ist.",9
-25800 ƒ"Lieber nicht, denn wenn","ich dies tue, gaebe es"
-25810 ƒ"ohnehin Tanz zu Hause.",10
-25820 ƒ"Aber nein! Einmal hab ich's"
-25830 ƒ"versucht, aber da ist Schoe-"
-25840 ƒ"nes dabei herausgekommen.",11,"Sie wissen doch,"
-25850 ƒ"darueber bin ich laengst","hinaus !",12
-25860 ƒ"Das schon, doch meist erst","dann,wenn ich weder"
-25870 ƒ"ein noch aus weiss.",13,"Nicht dass ich wuesste!"
-25880 ƒ"Zumindest habe ich davon"
-25885 ƒ "noch nichts verspuert."
-25890 ƒ14,"Aber woher denn, wo","ich doch im Grunde"
-25900 ƒ"so zurueckhaltend bin.",15,"Ganz und gar nicht!"
-25910 ƒ"Das laesst mich ziemlich","kalt!",16
-25920 ƒ"Oh ja, vor allem muss","es von Anfang bis"
-25930 ƒ"Ende spannend sein.",17,"Das kommt darauf an!"
-25940 ƒ"Meist ver***sse ich um des","lieben Friedens."
-25950 ƒ18,"Daran lasse ich es","nicht fehlen!","",19
-25960 ƒ"Nanu! Das hat man","von mir noch nie","erwartet."
-25970 ƒ20,"Ich werde da gerade","aus der Schule plau-"
-25980 ƒ"dern.",21,"Nein, dazu bin ich"
-25990 ƒ"dann doch zu","anstaendig.",22
-26000 ƒ"Eine Leidenschaft wird","man wohl noch haben"
-26010 ƒ"duerfen!",23,"Nicht so, wie Sie sich das"
-26020 ƒ"denken! Jedenfalls bleibt es","im Rahmen.",24
-26030 ƒ"Zum Donnerwetter!!!","Das muessen Sie doch"
-26040 ƒ"merken !",25,"Wenn ich nur wuesste,"
-26050 ƒ"was Sie mit dieser","Frage bezwecken!",26,""
-26060 ƒ"Darin bin ich manch-","mal direkt geizig.",27
-26070 ƒ"Das stimmt! So etwas","habe ich noch nie"
-26080 ƒ"abgelehnt.",28,"","Nein, da kann ich"
-26090 ƒ"mich beherrschen.",29,"Im Gegenteil! Ich"
-26100 ƒ"moechte so etwas un-","bedingt vermeiden.",30
-26110 ƒ"Ich bin zwar dafuer,","doch nicht so verrueckt"
-26120 ƒ"darauf wie Sie.",31,"Im Gegenteil! Ich bin"
-26130 ƒ"da sehr waehlerisch.","",32,"Das ist nur bedingt"
-26140 ƒ"richtig, doch einmal muss man"
-26150 ƒ"auch mal an sich denken.",33,"Im allgemeinen ja,"
-26160 ƒ"wenn's auch schwer","faellt.",34
-26170 ƒ"Das glauben Sie doch selbst"
-26180 ƒ"nicht, dass das bei mir","zutreffen koennte.",35
-26190 ƒ"Dazu waere ich viel zu","vernuenftig, als dass"
-26200 ƒ"ich so etwas taete.",36,"dum}u fxaGs#piCx@wezter"
-26210 ƒ"mich doch nicht dadurch","unmoeglich machen.",37
-26220 ƒ"Aber nein, so unge-","schliffen bin ich denn"
-26230 ƒ"doch nicht. ",38,"Das kommt leider vor."
-26240 ƒ"Da muesst ihr schon mal","ein Auge zudruecken."
-26250 ƒ39,"Aber nicht doch! Ich"
-26260 ƒ"weiss, was sich gehoert.","",40,"Sie koennen"
-26270 ƒ"ja mal die Probe aufs Exempel","machen.",41
-26280 ƒ"Ja, ein Steckenpferd","hat ja schliesslich"
-26290 ƒ"ein jeder.",42,"So eine Frage kann"
-26300 ƒ"mich schon empoeren.","",43,"Warum nicht, wenn"
-26310 ƒ"sich Gelegenheit dazu bietet.","",44,""
-26320 ƒ"Warum nicht? An mir","soll's nicht liegen.",45
-26330 ƒ"Aber hoeren Sie mal!","Wo ich in allem so"
-26340 ƒ"maessig bin.",46,"Ich weiss nicht. Bis jetzt hat"
-26350 ƒ"sich noch keine Gelegen-","heit dazu geboten.",47
-26360 ƒ"Gegen eine kleine","Abwechslung haette"
-26370 ƒ"ich auch nichts.",48,"Das bliebe ganz unter uns!"
-26380 ƒ"Kein Mensch wuerde so","etwas wegkriegen.",49
-26390 ƒ"","Aber wann kaeme das","schon einmal vor.",50
-26400 ƒ"Das will ich meinen! Ich","kann sogar von vorn-"
-26410 ƒ"herein die Folgen absehen.",51,"","",""
-30000 Ž******************************
-30005 Ž*                            *
-30010 Ž * DIESES KLEINE SCHERZSPIEL *
-30020 Ž * STAMMT AUS DEN 60-ZIGER   *
-30030 Ž * JAHREN UND WAR ALS KARTEN-*
-30040 Ž * SPIEL WEIT VERBREITET.    *
-30050 Ž * ES WIRD WIE FOLGT GE-     *
-30060 Ž * spielt:                   *
-30070 Ž * ES WERDEN 2 SPIELER AUSGE-*
-30080 Ž * WAEHLT. EIN SPIELER STELLT*
-30090 Ž * DIE FRAGEN, DES OBEREN    *
-30100 Ž * FENSTERS.DURCH TASTENDRUCK*
-30110 Ž * DES 2. SPIELERS WIRD EINE *
-30120 Ž * ZUFAELLIGE ANTWORT AUF DAS*
-30130 Ž * MITTLERE BILDFENSTER      *
-30140 Ž * GEGEBEN.                  *
-30150 Ž * DIE FRAGEN UND ANTWORTEN  *
-30160 Ž * SIND NUMERIERT, DIE NUM-  *
-30170 Ž * MERN WERDEN UNTEN LINKS   *
-30180 Ž * DARGESTELLT.RECHTS UNTEN  *
-30190 Ž * SIND DIE SPIELANWEISUNGEN *
-30200 Ž * DARGESTELLT. Wird         *
-30210 Ž *                           *
-30220 Ž * GESPIELT, WIRD DER BILD-  *
-30230 Ž * SCHIRM DUNKEL GESCHALTET. *
-30240 Ž * MIT TASTENDRUCK WIRD ER   *
-30250 Ž * WIEDER AKTIVIERT.VIEL     *
-30260 Ž * SPASS BEI DER NAECHSTEN   *
-30270 Ž * PARTY!                    *
-30280 Ž *****************************
-32000 Ž #############################
-32010 Ž #                           #
-32020 Ž # AUTOR: BURKHARDT  PREUSS  #
-32040 Ž #        H.-BEIMLER-STR.20  #
-32050 Ž #        FRANKFURT  (ODER)  #
-32060 Ž #        1200               #
-32080 Ž # DIESES PROGRAMM WURDE AM  #
-32090 Ž # 18.JANUAR 1990 AUF EINEM  #
-32100 Ž # C64 GESCHRIEBEN.          #
-32110 Ž #                           #
-32120 Ž # DIE TEXTE SIND DEM SPIEL  #
-32130 Ž # 'SPASS MUSS SEIN' (1964)  #
-32140 Ž # ENTNOMMEN.                #
-32150 Ž #                           #
-32160 Ž #############################
-32170 Ž
-32180 Ž ERSTAUSSTRAHLUNG: RADIO DDR
-32190 Ž-SPEZIAL 900202
+1130 VE=23:HO=0:GOSUB110
+1140 VE=11:HO=9:GOSUB110:PRINT"Ich sortiere !"
+1400 REM ===============================
+1410 FORI1=1 TO50
+1420 READNR(I1)
+1430 FORI2=1 TO3
+1440 READA$(I1,I2)
+1450 NEXTI2
+1460 NEXTI1
+1470 FORI3=1 TO50
+1480 READNR(I3)
+1490 FORI4=1 TO3
+1500 READF$(I3,I4)
+1510 NEXTI4
+1520 VE=11:HO=9:GOSUB110:PRINT"              "
+1530 NEXTI3
+1540 VE=3:HO=5:GOSUB110:PRINT"                      "
+1550 P=1:GOSUB1780
+1560 GOSUB260:D1=INT(RV*50)+1
+1570 VE=1:FORU1=1 TO3:HO=2:VE=VE+1
+1580 GOSUB110:PRINTA$(D1,U1)
+1590 NEXTU1
+1600 VE=19:HO=1:GOSUB110:PRINTD1
+1610 P=2:GOSUB1780
+1620 GOSUB260:D2=INT(RV*50)+1
+1630 VE=19:HO=6:GOSUB110:PRINTD2
+1640 VE=9:FORU1=1 TO3:HO=2:VE=VE+1
+1650 GOSUB110:PRINTF$(D2,U1)
+1660 NEXTU1
+1670 P=3:GOSUB1780
+1680 VE=1:FORU1=1 TO3:HO=2:VE=VE+1
+1690 GOSUB110:PRINTZ4$
+1700 NEXTU1
+1710 VE=19:HO=1:GOSUB110:PRINT"   "
+1720 VE=19:HO=6:GOSUB110:PRINT"   "
+1730 VE=9:FORU1=1 TO3:HO=2:VE=VE+1
+1740 GOSUB110:PRINTZ4$
+1750 NEXTU1
+1760 GOTO1550
+1770 REM ===============================
+1780 VE=18:HO=13:GOSUB110:PRINT"DRUECKE TASTE FUER"
+1790 GOSUB250:VE=VE+1:GOSUB110
+1800 IFP=1 THENPRINT"DIE NAECHSTE FRAGE."
+1810 IFP=2 THENPRINT"EINE NEUE  ANTWORT."
+1820 IFP=3 THENPRINT"BILDTEXT LOESCHEN !"
+1830 VE=VE+2:HO=11:GOSUB110:SR$="Taste  e = Ende":GOSUB150
+1840 U=U+.1:P=0:GOSUB200:IFU>100 THEN1880
+1850 IFIN$="" THEN1840
+1860 IFIN$="e" THEN950
+1870 U=0:RETURN
+1880 GOSUB600:GOSUB200:IFIN$="" THEN1880
+1890 GOSUB100:U=0
+1900 PRINTZ1$:FORZ=1 TO5:PRINTZ2$:NEXTZ:PRINTZ1$
+1910 VE=8:HO=0:GOSUB110:PRINTZ1$:VE=VE+1:GOSUB110
+1920 FORZ=1 TO5:PRINTZ2$:VE=VE+1:GOSUB110:NEXTZ:PRINTZ1$
+1930 VE=16:HO=0:GOSUB110:PRINTZ1$:VE=VE+1:GOSUB110
+1940 FORZ=1 TO5:PRINTZ3$:VE=VE+1:GOSUB110:NEXTZ:PRINTZ1$
+1950 SR$="    FRAGE  &  ANTWORT      "
+1960 VE=23:HO=0:GOSUB110:GOSUB150:RETURN
+1970 REM ===============================
+25000 REM         DATA - ZEILEN
+25010 DATA1,"Wuerden Sie nachts","mit mir durch den Wald"
+25020 DATA"gehen ?",2,"Haben Sie Liebes-","kummer ?",""
+25030 DATA3,"Haben Sie die unan-","genehme Eigenschaft,"
+25040 DATA"sich Geld zu borgen ?"
+25050 DATA4,"Waren Sie in Ihrer Ju-","gend auch so verliebt"
+25060 DATA"wie jetzt ?",5,"Kommen Sie manch-"
+25070 DATA"mal zu spaet an Ihren","Arbeitsplatz ?",6
+25080 DATA"Was wuerden Sie denken,","wenn ich Ihnen ploetz-"
+25090 DATA"lich einen Kuss gaebe ?",7,"Ziehen Sie etwa den"
+25100 DATA"Ring ab, wenn Sie","verreisen ?"
+25110 DATA8,"Kaemen Sie, unter uns","gesagt, ohne  Kur-"
+25120 DATA"schatten  aus ?",9,"Gehen Sie gern"
+25130 DATA"allein tanzen ?","",10,"Sind Sie auch poe-"
+25140 DATA"tisch angehaucht ?","",11,"Sind Sie leicht ent-"
+25150 DATA"flammt,wenn Ihnen ein jun-"
+25160 DATA"ges Maedchen begegnet ?",12,"Sind Sie ein Mann"
+25170 DATA"von raschen","Entschluessen ?",13
+25180 DATA"Haben Sie schon mal","die Bekanntschaft mit dem"
+25190 DATA"Pantoffel gemacht ?",14,"Geben Sie immer"
+25200 DATA"noch so gross an ?","",15,"Werden Sie leicht"
+25210 DATA"erregt, wenn Ihnen","jemand den Hof macht ?",16
+25220 DATA"Sehen Sie sich gern","Kriminalfilme an ?","",17
+25230 DATA"Sind Sie bei sich der","Herr im Hause ?","",18
+25240 DATA"Synptsye mit g#|Ax","Gesellschaften ?","",19
+25250 DATA"Sind Sie auch so einer","der nur selten"
+25260 DATA"zu spaet kommt ?",20,"Schauen Sie gern auf"
+25270 DATA"schoene Frauenbeine ?","",21,"Machen Sie gern"
+25280 DATA"zweideutige Witze ?","",22,"Trinken und essen"
+25290 DATA"Sie immer noch so viel ?","",23
+25300 DATA"Haben Sie etwa engeren","Kontakt mit Ihrem"
+25310 DATA"Arbeitskollegen (Kollegin) ?",24
+25320 DATA"Sind Sie temperament-","voll oder phlegma-"
+25330 DATA"tisch ?",25,"Haben Sie schon mal"
+25340 DATA"eine ernsthafte Liebe","gehabt ?",26
+25350 DATA"Koennen Sie sich leicht","vom Gelde trennen ?",""
+25360 DATA27,"Essen Sie gern Ham-","melfleisch mit gruenen"
+25370 DATA"Bohnen ?",28,"Regen Sie sich leicht"
+25380 DATA"auf, wenn einmal","etwas quer geht ?",29,""
+25390 DATA"Sind Sie streitsuechtig ?","",30
+25400 DATA"Sind Sie auch so ein","fanatischer Fussball-"
+25410 DATA"anhaenger ?",31,"Lesen Sie gern alte"
+25420 DATA"Schmoeker ?","",32,"","Sind Sie egoistisch ?",""
+25430 DATA33,"Koennen Sie verschwie-","gen sein ?","",34
+25440 DATA"Sind Sie recht eitel","und von sich einge-"
+25450 DATA"nommen ?",35,"Sind Sie etwa ruecksichts-"
+25460 DATA"los im Getraenge, in der","Strassenbahn usw.?"
+25470 DATA36,"Langen Sie uebermaessig"
+25480 DATA"zu, wenn Sie zum Essen","eingeladen sind ?",37
+25490 DATA"Legen Sie den Unter-","arm beim Essen auf"
+25500 DATA"den Tisch ?",38,"Vergessen Sie oft,"
+25510 DATA"zum Geburtstag zu","gratulieren ?",39
+25520 DATA"Legen Sie auch bloss den","Zeigefinger an den"
+25530 DATA"Hut, wenn Sie gruessen ?",40,"Koennen Sie "
+25540 DATA"zaertlich sein ?","",41,"Treiben Sie bestimmte"
+25550 DATA"Liebhabereien ?","",42,"Sind Sie schnell einge-"
+25560 DATA"schnappt, wenn man","Sie neckt ?",43
+25570 DATA"Machen Sie nach dem","Essen ein Mittag-"
+25580 DATA"schlaefchen ?",44,"Vertragen Sie sich"
+25590 DATA"gut mit Ihrer Schwie-","germutter ?",45,""
+25600 DATA"Sind Sie ein starker","Biertrinker ?",46,""
+25610 DATA"Koennen Sie treu sein ???","",47,""
+25620 DATA"Suchen Sie gern","andere Umgebung ?",48
+25630 DATA"Haben Sie schon mal","Krach mit Ihrer Ehe-"
+25640 DATA"haelfte gehabt ?",49,"Haben Sie bei jeder"
+25650 DATA"Gelegenheit etwas","auszusetzen ?",50
+25660 DATA"Sind Sie konsequent","im Denken und Handeln ?",""
+25670 REM *** DATA ZEILEN ANTWORTEN ***
+25680 DATA1,"Auf keinen Fall! Das"
+25685 DATA "waere zu gefaehrlich.",""
+25690 DATA2,"Sind Sie aber neugierig!","Das werde ich Ihnen"
+25700 DATA"gerade aufbinden.",3,"Nein, ich moechte des-"
+25710 DATA"wegen keinem Sor-","gen bereiten.",4
+25720 DATA"Seien Sie bloss still!","Das braucht gar-"
+25730 DATA"niemand zu wissen.",5,"Na wenn schon! Man"
+25740 DATA"kennt sich schon","in dieser Beziehung.",6
+25750 DATA"Damit wuerde ein heiss","ersehnter Wunsch"
+25760 DATA"in Erfuellung gehen.",7
+25770 DATA"Was interessiert Sie das","schon! Das Kommt mir"
+25780 DATA"recht verdaechtig vor.",8,"Das kaeme nur darauf"
+25790 DATA"an, ob genuegend Klein-","geld vorhanden ist.",9
+25800 DATA"Lieber nicht, denn wenn","ich dies tue, gaebe es"
+25810 DATA"ohnehin Tanz zu Hause.",10
+25820 DATA"Aber nein! Einmal hab ich's"
+25830 DATA"versucht, aber da ist Schoe-"
+25840 DATA"nes dabei herausgekommen.",11,"Sie wissen doch,"
+25850 DATA"darueber bin ich laengst","hinaus !",12
+25860 DATA"Das schon, doch meist erst","dann,wenn ich weder"
+25870 DATA"ein noch aus weiss.",13,"Nicht dass ich wuesste!"
+25880 DATA"Zumindest habe ich davon"
+25885 DATA "noch nichts verspuert."
+25890 DATA14,"Aber woher denn, wo","ich doch im Grunde"
+25900 DATA"so zurueckhaltend bin.",15,"Ganz und gar nicht!"
+25910 DATA"Das laesst mich ziemlich","kalt!",16
+25920 DATA"Oh ja, vor allem muss","es von Anfang bis"
+25930 DATA"Ende spannend sein.",17,"Das kommt darauf an!"
+25940 DATA"Meist ver***sse ich um des","lieben Friedens."
+25950 DATA18,"Daran lasse ich es","nicht fehlen!","",19
+25960 DATA"Nanu! Das hat man","von mir noch nie","erwartet."
+25970 DATA20,"Ich werde da gerade","aus der Schule plau-"
+25980 DATA"dern.",21,"Nein, dazu bin ich"
+25990 DATA"dann doch zu","anstaendig.",22
+26000 DATA"Eine Leidenschaft wird","man wohl noch haben"
+26010 DATA"duerfen!",23,"Nicht so, wie Sie sich das"
+26020 DATA"denken! Jedenfalls bleibt es","im Rahmen.",24
+26030 DATA"Zum Donnerwetter!!!","Das muessen Sie doch"
+26040 DATA"merken !",25,"Wenn ich nur wuesste,"
+26050 DATA"was Sie mit dieser","Frage bezwecken!",26,""
+26060 DATA"Darin bin ich manch-","mal direkt geizig.",27
+26070 DATA"Das stimmt! So etwas","habe ich noch nie"
+26080 DATA"abgelehnt.",28,"","Nein, da kann ich"
+26090 DATA"mich beherrschen.",29,"Im Gegenteil! Ich"
+26100 DATA"moechte so etwas un-","bedingt vermeiden.",30
+26110 DATA"Ich bin zwar dafuer,","doch nicht so verrueckt"
+26120 DATA"darauf wie Sie.",31,"Im Gegenteil! Ich bin"
+26130 DATA"da sehr waehlerisch.","",32,"Das ist nur bedingt"
+26140 DATA"richtig, doch einmal muss man"
+26150 DATA"auch mal an sich denken.",33,"Im allgemeinen ja,"
+26160 DATA"wenn's auch schwer","faellt.",34
+26170 DATA"Das glauben Sie doch selbst"
+26180 DATA"nicht, dass das bei mir","zutreffen koennte.",35
+26190 DATA"Dazu waere ich viel zu","vernuenftig, als dass"
+26200 DATA"ich so etwas taete.",36,"dum}u fxaGs#piCx@wezter"
+26210 DATA"mich doch nicht dadurch","unmoeglich machen.",37
+26220 DATA"Aber nein, so unge-","schliffen bin ich denn"
+26230 DATA"doch nicht. ",38,"Das kommt leider vor."
+26240 DATA"Da muesst ihr schon mal","ein Auge zudruecken."
+26250 DATA39,"Aber nicht doch! Ich"
+26260 DATA"weiss, was sich gehoert.","",40,"Sie koennen"
+26270 DATA"ja mal die Probe aufs Exempel","machen.",41
+26280 DATA"Ja, ein Steckenpferd","hat ja schliesslich"
+26290 DATA"ein jeder.",42,"So eine Frage kann"
+26300 DATA"mich schon empoeren.","",43,"Warum nicht, wenn"
+26310 DATA"sich Gelegenheit dazu bietet.","",44,""
+26320 DATA"Warum nicht? An mir","soll's nicht liegen.",45
+26330 DATA"Aber hoeren Sie mal!","Wo ich in allem so"
+26340 DATA"maessig bin.",46,"Ich weiss nicht. Bis jetzt hat"
+26350 DATA"sich noch keine Gelegen-","heit dazu geboten.",47
+26360 DATA"Gegen eine kleine","Abwechslung haette"
+26370 DATA"ich auch nichts.",48,"Das bliebe ganz unter uns!"
+26380 DATA"Kein Mensch wuerde so","etwas wegkriegen.",49
+26390 DATA"","Aber wann kaeme das","schon einmal vor.",50
+26400 DATA"Das will ich meinen! Ich","kann sogar von vorn-"
+26410 DATA"herein die Folgen absehen.",51,"","",""
+30000 REM******************************
+30005 REM*                            *
+30010 REM * DIESES KLEINE SCHERZSPIEL *
+30020 REM * STAMMT AUS DEN 60-ZIGER   *
+30030 REM * JAHREN UND WAR ALS KARTEN-*
+30040 REM * SPIEL WEIT VERBREITET.    *
+30050 REM * ES WIRD WIE FOLGT GE-     *
+30060 REM * spielt:                   *
+30070 REM * ES WERDEN 2 SPIELER AUSGE-*
+30080 REM * WAEHLT. EIN SPIELER STELLT*
+30090 REM * DIE FRAGEN, DES OBEREN    *
+30100 REM * FENSTERS.DURCH TASTENDRUCK*
+30110 REM * DES 2. SPIELERS WIRD EINE *
+30120 REM * ZUFAELLIGE ANTWORT AUF DAS*
+30130 REM * MITTLERE BILDFENSTER      *
+30140 REM * GEGEBEN.                  *
+30150 REM * DIE FRAGEN UND ANTWORTEN  *
+30160 REM * SIND NUMERIERT, DIE NUM-  *
+30170 REM * MERN WERDEN UNTEN LINKS   *
+30180 REM * DARGESTELLT.RECHTS UNTEN  *
+30190 REM * SIND DIE SPIELANWEISUNGEN *
+30200 REM * DARGESTELLT. Wird         *
+30210 REM *                           *
+30220 REM * GESPIELT, WIRD DER BILD-  *
+30230 REM * SCHIRM DUNKEL GESCHALTET. *
+30240 REM * MIT TASTENDRUCK WIRD ER   *
+30250 REM * WIEDER AKTIVIERT.VIEL     *
+30260 REM * SPASS BEI DER NAECHSTEN   *
+30270 REM * PARTY!                    *
+30280 REM *****************************
+32000 REM #############################
+32010 REM #                           #
+32020 REM # AUTOR: BURKHARDT  PREUSS  #
+32040 REM #        H.-BEIMLER-STR.20  #
+32050 REM #        FRANKFURT  (ODER)  #
+32060 REM #        1200               #
+32080 REM # DIESES PROGRAMM WURDE AM  #
+32090 REM # 18.JANUAR 1990 AUF EINEM  #
+32100 REM # C64 GESCHRIEBEN.          #
+32110 REM #                           #
+32120 REM # DIE TEXTE SIND DEM SPIEL  #
+32130 REM # 'SPASS MUSS SEIN' (1964)  #
+32140 REM # ENTNOMMEN.                #
+32150 REM #                           #
+32160 REM #############################
+32170 REM
+32180 REM ERSTAUSSTRAHLUNG: RADIO DDR
+32190 REM-SPEZIAL 900202
