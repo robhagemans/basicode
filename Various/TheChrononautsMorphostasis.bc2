@@ -1,0 +1,437 @@
+1000 Let A=2000: Goto 20
+1010 Rem LOAD UP ARRAY
+1020 Rem FIX Restore 26000:N=1:ER$="ERROR - ":LO$="A":FF=0
+1021 Gosub 2600:N=1:ER$="ERROR - ":LO$="A":FF=0
+1030 Read A$:If A$="/"Then1050
+1040 N=N+1:Goto1030
+1050 Rem FIX TH=N-1:Dim TH$(TH):Restore 26000
+1051 TH=N-1:Dim TH$(TH):Gosub 2600
+1060 ForJ=1ToTH:Read TH$(J): Next J
+1070 Gosub 100
+1072 Print "THE CHRONONAUTS":Print
+1074 Print "This series of adventures features the"
+1076 Print "the concept of immortalism, where people"
+1078 Print "strive to reach a future age where"
+1080 Print "where death is abolished."
+1082 Print:Print"Any key to continue":Gosub 210:Gosub 100
+1084 Print "Episode B1 - Morphostasis":Print
+1086 Print "I am a Victorian scientist looking for"
+1088 Print "a way to survive. Can you help?":Print
+1090 Print "(Hold keys down until something happens)"
+1092 Print:Print"Any key to continue":Gosub 210
+1992 Rem
+2000 Rem MAIN LOOP
+2010 Rem MOVE AROUND
+2012 Rem
+2020 Gosub 100
+2030 Gosub 20020:AA$=A$:If FS=1Then 2100
+2040 Print"Press N S E W U D to move"
+2042 Print"L - look: ";
+2044 Print"T - take: ";
+2046 Print"w - wear"
+2048 Print"l - leave an item: ";
+2050 Print"r - remove clothing"
+2052 Print"b - burn: ";
+2054 Print"k - kill: ";
+2056 Print"d - destroy"
+2058 Print"s - suppress, ";
+2059 Print"R - re-instate instructions"
+2061 Print"f - fill: ";
+2062 Print"e - empty: ";
+2064 Print"m - make: ";
+2066 Print"c - climb"
+2090 Rem Specialist commands
+2092 Print"H - drill a hole"
+2100 B$="":Gosub 210:NM=NM+1:Gosub 15000
+2130 If IN$="L"Then 3020
+2132 If IN$="T"ThenB$="^":Goto3210
+2134 If IN$="w"ThenB$="~":Goto3210
+2136 If IN$="l"Then B$="^":Goto 3310
+2138 If IN$="r"Then B$="~":Goto 3310
+2140 If IN$="b"OrIN$="k"OrIN$="d"Then3510
+2142 If IN$="s"Then FS=1: Goto 2020
+2144 If IN$="R"Then FS=0: Goto 2020
+2146 If IN$="f" Then 3710
+2148 If IN$="e" Then 3910
+2150 If IN$="m"Then 4040
+2160 If IN$="c" Then 4320
+2220 Rem Specialist commands
+2222 If IN$="H" Then 10020
+2226 Rem
+2228 Rem THE MOVEMENT SECTION
+2229 Rem
+2230 A$=AA$:For N=1To 6
+2240 IfMid$(A$,Len(A$)-13+N*2,1)<>IN$Then2260
+2242 IfMid$(A$,Len(A$)-12+N*2,1)=" "Then2262
+2250 LO$=Mid$(A$,Len(A$)-12+N*2,1):Goto2020
+2260 Next N
+2262 Print"I can't go there":Goto2100
+2498 Rem FIX RESTORE STATEMENTS
+2500 Restore:Return
+2600 Restore:ForI=0To16:ReadI$:NextI:Return
+2700 Restore:ForI=0To44:ReadI$:NextI:Return
+2990 Rem
+3000 Rem Action routine section
+3002 Rem
+3010 Rem *** LOOK ***
+3012 Rem
+3020 Rem FIX Restore 27000
+3021 Gosub 2700
+3040 Gosub 20310
+3080 F2=0
+3090 Read A$
+3100 IfA$<>"/"Then3120
+3110 If F2=0ThenPrint"I see nothing unusual.":Goto2100
+3112 Print: Print "Press any key to continue": Gosub 210
+3118 Goto2100
+3120 IfLeft$(A$,1)<>IN$Then3090
+3130 If F2=0Then Gosub 100: F2=1
+3140 PrintRight$(A$,Len(A$)-2):Goto 3090
+3190 Rem
+3200 Rem *** TAKE AND WEAK ***
+3202 Rem
+3210 Gosub 20310
+3220 If B$="~"And Mid$(TH$(N),Len(TH$(N))-1,1)<>"W"Then 3280
+3222 IfMid$(TH$(N),Len(TH$(N))-1,1)="W"Then 3240
+3224 IfMid$(TH$(N),Len(TH$(N))-1,1)="-"Then 3240
+3226 Print "That is impossible!":Goto2100
+3240 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+B$
+3250 Gosub 100:If B$="^"ThenPrint "I have taken it"
+3260 If B$="~"Then Print "I am putting it on."
+3270 For D=1 To 500 : Next D: Goto 2020
+3280 Print "I can't wear THAT!":Goto 2100
+3290 Print "I can't take THAT!":Goto 2100
+3298 Rem
+3300 Rem *** LEAVE AND REMOVE CLOTHING ***
+3301 Rem
+3310 Gosub 20310
+3312 If B$="^"AndRight$(TH$(N),1)<>"^"Then 3390
+3314 If B$="^"AndRight$(TH$(N),1)<>"~"Then 3380
+3320 If B$="~"And Mid$(TH$(N),Len(TH$(N))-1,1)<>"W"Then 3382
+3340 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+LO$
+3350 Gosub 100:If B$="^"ThenPrint "I have left it"
+3360 If B$="~"Then Print "I am taking it off."
+3370 For D=1 To 500 : Next D: Goto 2020
+3380 If Mid$(TH$(N),Len(TH$(N))-1,1)="W"Then 3400
+3382 Print"I couldn't possibly be wearing THAT!":Goto2100
+3390 Print "I am not carrying it":Goto 2100
+3400 Print "I am not wearing it":Goto2100
+3490 Rem
+3500 Rem*** BURN KILL DESTROY ***
+3502 Rem
+3510 If IN$="b" Then Let I$="burn":Gosub 3610
+3520 If IN$="k" Then Let I$="kill"
+3530 If IN$="d" Then Let I$="destroy"
+3540 Gosub 20310:ForJ=2To4
+3550 If Mid$(TH$(N),Len(TH$(N))-J,1)=Left$(I$,1)Then3580
+3560 Next J
+3570 Print "I cannot ";I$;" THAT!":Goto2100
+3580 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+" "
+3590 Gosub 100: Print"I am now ";I$;"ing it."
+3600 For D=1 To 500: Next D:Goto 2020
+3610 N1=N:C$="J":Gosub 20310:Rem *** Insert matches etc ***
+3620 If C$="J" Then N=N1:Return 
+3630 Print "I can't yet": Goto 2100
+3690 Rem
+3700 Rem *** FILL ***
+3702 Rem
+3710 Print "What am I to fill":Gosub20310:N1=N:Gosub 3770
+3720 Print "With what am I to fill it?":Gosub 20310
+3722 If N=N1 Then Print "Don't be silly!":Goto2100
+3724 If Mid$(TH$(N),Len(TH$(N))-6,1)<>"u"ThenN1=N:Goto3722
+3730 D$=Left$(TH$(N1),Len(TH$(N1))-6)+IN$
+3740 TH$(N1)=D$+Right$(TH$(N1),5)
+3744 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+" "
+3750 Gosub100:Print"I am filling it up":ForD=1To500:NextD
+3760 Goto 2020
+3770 If Mid$(TH$(N),Len(TH$(N))-5,1)<>"-"Then3790
+3780 Print "I can't fill THAT!": Goto 2100
+3790 If Mid$(TH$(N),Len(TH$(N))-5,1)="f"ThenReturn
+3800 Print "It is full": Goto 2100
+3890 Rem
+3900 Rem *** EMPTY ***
+3902 Rem
+3910 Print "What am I to empty?":Gosub20310:Gosub 3970
+3920 C$=Mid$(TH$(N),Len(TH$(N))-5,1):B$=LO$:LO$=" "
+3930 D$=Left$(TH$(N),Len(TH$(N))-6)+"f"
+3940 TH$(N)=D$+Right$(TH$(N),5):Gosub20410:LO$=B$
+3942 If C$=""ThenPrint"Error - contents do not exist":Stop
+3944 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+LO$
+3950 Gosub100:Print"I am tipping it out":ForD=1To500:NextD
+3960 Goto 2020
+3970 If Mid$(TH$(N),Len(TH$(N))-5,1)<>"-"Then3990
+3980 Print "I can't empty THAT!": Goto 2100
+3990 If Mid$(TH$(N),Len(TH$(N))-5,1)<>"f"ThenReturn
+4000 Print "It is already empty": Goto 2100
+4010 Rem
+4020 Rem *** MAKE THINGS ***
+4030 Rem
+4040 F1=0:ForN=1ToTH
+4050 If Right$(TH$(N),1)<>" "Then4080
+4060 If F1=0Then Print "I might be able to make":F1=1
+4070 Print Left$(TH$(N),Len(TH$(N))-PO)
+4080 Next N
+4110 Print"Print £ if you don't want anything made."
+4112 Print"Press letter preceding the object to be made."
+4120 Gosub 210:If IN$="£"Then 2010
+4122 C$=IN$:B$=LO$:LO$=" ":Gosub 20410:LO$=B$:J3=N
+4124 Print "I'll see if I can."
+4126 If C$=""Then Print "I can't.":Goto 2100
+4130 J2=5:B$=Mid$(TH$(N),Len(TH$(N))-11,J2)
+4140 J1=0:ForJ=1ToJ2:Rem see if possible
+4150 C$=Mid$(B$,J2-J+1,1)
+4160 If C$="*"ThenJ1=J1+1:Goto 4190
+4170 Gosub 20410
+4180 If C$=""Then Print "I haven't all I need":Goto 2100
+4190 NextJ:IfJ1=J2 ThenPrint"I can't make that.":Goto2100
+4200 Gosub 100:Print "I am making it."
+4210 ForJ=1ToJ2:Rem delete exhaustable supplies
+4220 C$=Mid$(B$,J2-J+1,1)
+4230 If C$="*"Then4270
+4240 Gosub 20410
+4250 IfMid$(TH$(N),Len(TH$(N))-12,1)="i"Then4270
+4260 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+" "
+4270 Next J
+4280 TH$(J3)=Left$(TH$(J3),Len(TH$(J3))-1)+LO$
+4290 Goto 2010
+4300 Rem
+4305 Rem *** CLIMB INTO AN OBJECT ***
+4310 Rem
+4320 Print "What shall I climb into?":Gosub20310
+4330 B$=Mid$(TH$(N),Len(TH$(N))-1,1)
+4340 If B$="W"Then Print "I can WEAR that":Goto2100
+4350 IfB$="-"ThenPrint"I can't enter that.":Goto 2100
+4352 IfB$="*"ThenPrint"I can't enter that.":Goto 2100
+4360 LO$=B$:Goto 2010
+9999 Rem
+10000 Rem *** Specialist instruction Area ***
+10001 Rem
+10010 Rem Drill a hole
+10020 C$="B":Gosub20410
+10022 IfC$=""ThenPrint"I can't - yet.":Goto2100
+10030 Print"In what?":Gosub20310
+10040 IfC$<>"C"AndC$<>"E"AndC$<>"I"AndC$<>"A"Then10090
+10050 Print"I have made a small hole at the bottom"
+10060 If C$="C"Then HC=1
+10070 If C$="E"Then HD=1
+10080 Goto 2100
+10090 Print"I don't think that would be sensible.":Goto2100
+15000 Rem
+15010 Rem *** COMPUTER'S MOVE SUBROUTINE ***
+15020 Rem
+15030 Rem Torch blown out
+15040 Rem
+15050 C$="X":Gosub 20410:If C$=" "Then15130
+15060 Gosub 260:If RB>.1Then15130
+15068 Rem destory lit torch, replace with unlit
+15070 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+" ":B$=LO$
+15080 C$="V":LO$=" ":Gosub 20410
+15090 LO$=B$:TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+LO$
+15092 Gosub 100: Print "The torch has gone out!"
+15094 ForD=1 To 100: Next D:Goto 2010
+15100 Rem
+15110 Rem Died of heart attack
+15120 Rem
+15130 If NM>90 Then Let HE=.3
+15134 Gosub 260:If RV>HE+WF Then15150
+15140 Gosub100:Print "I died of a heart attack":Goto19110
+15150 Rem
+15160 Rem SET FLAG IF FRIEND MET
+15170 Rem
+15180 If LO$="P" And IN$="L"Then FF=1
+15190 Rem
+15200 Rem Die of cold if coat not worn
+15210 Rem
+15220 If LO$<>"E"Then 15240
+15230 IfRight$(TH$(9),1)<>"~"Then WF=.5
+15240 If WF=.5And LO$="A"Then WF=0
+19000 Rem
+19010 Rem End of game
+19020 Rem
+19030 If FF=0Then Return
+19040 Let C$="R":Gosub 2041:IfC$=""Then Return
+19050 Gosub100:Print"I have made a morphostic coffin."
+19060 Print"I also made other arrangements."
+19070 Rem Can't say exactly what or LIST cheating easy
+19080 Print "Possibly I will be revived in the future."
+19090 Print "You may follow what happens in a future"
+19100 Print "CHRONONAUTS adventure game!":Print
+19110 Print "Press £ for another go, or E to end."
+19112 Print "You took ";NM;" moves."
+19120 Gosub 210:If IN$="£"Then Run
+19130 If IN$="E"Or IN$="e"Then End
+19140 Goto 19120
+19990 Rem
+20000 Rem ***DESCRIBE CURRENT LOCATION***
+20002 Rem
+20010 Rem LO$=location
+20020 Rem FIX Restore 25000
+20021 Gosub 2500
+20030 Read A$:If Left$(A$,1)=LO$Then20060
+20040 If Left$(A$,1)="/"Then Print ER$;"LOCATION":Stop
+20050 Goto20030
+20060 If Mid$(A$,Len(A$)-12,1)="-"Then20068
+20062 Rem *** Insert in C$ the object to make LIGHT ***
+20064 C$="X":Gosub 20410:If C$<>""Then 20068
+20066 Print "I can see NOTHING!":Return
+20068 Print Mid$(A$,2,(Len(A$)-14))
+20070 Print "I can see exits "
+20080 For N=1 To 6
+20090 If Mid$(A$,Len(A$)-12+N*2,1)=" "Then 20120
+20100 Print Mid$(A$,Len(A$)-13+N*2,1);" ";
+20110 Print Mid$(A$,Len(A$)-12+N*2,1)
+20120 Next N
+20130 F1=0:For N=1 To TH
+20140 If Right$(TH$(N),1)<>LO$ Then 20172
+20150 PO=13:If F1=0ThenF1=1:Print"I can also see"
+20160 Print Left$(TH$(N),Len(TH$(N))-PO)
+20162 E$=Mid$(TH$(N),Len(TH$(N))-5,1)
+20164 If E$="f"Or E$="-"Then20172
+20166 Print "It is filled with ";:ForJ=1ToTH
+20168 If Left$(TH$(J),1)<>E$Then Next J:Goto20172
+20170 Print Mid$(TH$(J),3,Len(TH$(J))-PO-2)
+20172 Next N
+20180 F1=0:ForN=1ToTH
+20190 If Right$(TH$(N),1)<>"^"Then20220
+20200 If F1=0Then Print "I have with me":F1=1
+20210 Print Left$(Th$(N),Len(TH$(N))-PO)
+20220 Next N
+20240 F1=0:ForN=1ToTH
+20250 If Right$(TH$(N),1)<>"~"Then20280
+20260 If F1=0Then Print "I am wearing":F1=1
+20270 Print Left$(TH$(N),Len(TH$(N))-PO)
+20280 Next N:Return
+20290 Rem
+20300 Rem *** IS OBJECT AT CURRENT LOCATION? ***
+20302 Rem
+20310 Print"Press letter preceding the object":Gosub210
+20320 C$=IN$:Gosub20410:If C$<>""Then Return
+20340 Print "It is not here.":Goto 2100
+20392 Return
+20400 Rem *** Is another object here? ***
+20410 For N=1 To TH
+20420 IfRight$(TH$(N),1)="^"OrRight$(TH$(N),1)="~"Then 20440
+20430 If Right$(TH$(N),1)<>LO$ Then20450
+20440 If Left$(TH$(N),1)=C$ Then Return
+20450 Next N:C$="":Return
+24990 Rem
+25000 Rem LOCATION DATA
+25001 Rem
+25002 Rem a "-" if light or "*" if dark, and directions.
+25010 Data "A The main hall of my laboratory -NCSEEDWBU DF"
+25020 Data "B The library. -N S EAW U D "
+25030 Data "C The workshop. -N SAEHW U D "
+25040 Data "D The pharmacy. -N S E WAU D "
+25060 Data "F The cellar. *N S E W UAD "
+25070 Data "G A dried well. *N S E W UID "
+25080 Data "H A Store. *N S E WCU D "
+25090 Data "I A tunnel. *N S E W UFDG"
+25100 Data "J The garden lawn. -NESKEKWKU D "
+25110 Data "K A path through flowers. -NJSLEJWJU D "
+25120 Data "L A shrubbery. -NKSNELWLU D "
+25130 Data "M A shed. -NNS E W U D "
+25140 Data "N A rose garden. -NLSMEOW U D "
+25150 Data "O A front garden. -N S EPWNU D "
+25160 Data "P A house. -N S E WOU D "
+25990 Data "/"
+25998 Rem
+26000 Rem OBJECT DATA. Object letter, description, start loc.
+26001 Rem penultimate W indicates it can be worn
+26002 Rem A b before this indicates that it can be burned.
+26003 Rem A k before this, killed, and a d destroyed.
+26004 Rem An f before this means it can be filled
+26005 Rem any other letter means it can be emptied
+26006 Rem and the letter is the contents. u=used for fill
+26007 Rem The next five are the ingredients required
+26008 Rem to make this item. If<5, fill in with *
+26009 Rem If they are all *, then it can't be made
+26010 Rem The next letter is an i if object is not
+26011 Rem used up when making something.
+26012 Rem If instead of a W the penultimate letter is a
+26013 Rem letter, it meas the object can be entered,
+26014 Rem the location of its interior is the letter. If
+26015 Rem the letter is an "*" it simply means the object
+26016 Rem cannot be taken. It can only be taken if the
+26017 Rem if a W or a -. The location w cannot be used for
+26018 Rem for the inside of an object.
+26026 Data "A) A book. -*****u-bdk-B"
+26028 Data "B) A hand drill with bit. -*****u--d--C"
+26030 Data "C) A very large wooden crate. -*****ufb-d-N"
+26040 Data "D) A pile of sand. i*****u---d*N"
+26050 Data "E) A metal drum, 6ft by 3ft dia. -*****uf--d-M"
+26060 Data "F) Formaldehyde. i*****u-b-d*D"
+26070 Data "G) Chloroform. -*****u-b-d*D"
+26080 Data "H) Cement powder. i*****u-b-d-E"
+26090 Data "I) A coat. -*****u-b-dWA"
+26100 Data "J) A box of matches. i*****u-b-d-A"
+26110 Data "K) An experimental bantam. -*****u-bkd-A"
+26120 Data "L) Gas cylinders. i*****u---d-H"
+26130 Data "M) A length of rubber tubing. i*****u-b-d-H"
+26140 Data "N) Gas torches. i*****u---d-H"
+26150 Data "O) A welding set. iLNM**u-b-d- "
+26160 Data "P) A steel sheet. iLMN**u-b-d- "
+26170 Data "Q) A lid for the drum. -PO***u---d- "
+26180 Data "R) A morphostatic coffin -QEFCDu---d- "
+26190 Data "S) A wall -*****-----*F"
+26200 Data "T) A hole in the wall -SU***-----I "
+26210 Data "U) A pickaxe. i*****u---d-M"
+26220 Data "V) A dry wooden torch. -x****u---d-A"
+26230 Data "W) Tar oil. i*****u--bd*M"
+26240 Data "X) A flaming torch. -VMJ**u---d- "
+26250 Data "Y) A red bottle -*****uf--d-D"
+26260 Data "a) A blue bottle -*****uf--d-D"
+26270 Data "c) A coded message. -*****u-b-d-G"
+26990 Data "/"
+26998 Rem
+27000 Rem MESSAGES FOR LOOKS
+27002 Rem
+27010 Data "A It says that bodies can be preserved"
+27020 Data "A if they are submerged in formaldehyde."
+27050 Data "c It says This message can be converted**"
+27060 Data "c by a code to be given in a future****"
+27070 Data "c chrononauts to reveal more' - rfgde"
+27080 Data "b This person is a friend of mine. I ask"
+27090 Data "b that I may be placed in the morphostatic"
+27100 Data "b coffin when I die, and that it be buried"
+27110 Data "b in the well."
+27120 Data "E the drum is so +---------+"
+27130 Data "E solidly made   | |  |  | |"
+27140 Data "E that it must   | |  |  | |"
+27150 Data "E last for       | |  |  | |"
+27160 Data "E centuries!     +---------+"
+27170 Data "C          ...."
+27180 Data "C        ......."
+27190 Data "C       .... ... ."
+27200 Data "C     ............."
+27230 Data "U           |"
+27240 Data "U            |"
+27250 Data "U      --------"
+27260 Data "U            |"
+27270 Data "U           |"
+27280 Data "S--------------------"
+27290 Data "S |   |   |   |   |"
+27300 Data "S--------------------"
+27310 Data "S   |   |   |   |   |"
+27320 Data "S--------------------"
+27330 Data "S |   |   |   |   |"
+27340 Data "S--------------------"
+27350 Data "S   |   |   |   |   |"
+27360 Data "T--------------------"
+27370 Data "T |   |       |   |"
+27380 Data "T-------     --------"
+27390 Data "T   |           |"
+27400 Data "T-----         ------"
+27410 Data "T |   |           |"
+27420 Data "T---------     ------"
+27430 Data "T   |   |   |   |   |"
+27990 Data "/"
+32000 Rem *****************************
+32010 Rem * The Chrononauts           *
+32020 Rem * Episode B1: Morphostasis  *
+32030 Rem * by John de Rivaz          *
+32040 Rem * Micro Adventurer Magazine *
+32050 Rem * Issue 8: June 1984        *
+32060 Rem * Pages 26-31               *
+32070 Rem * See "Rem FIX" for fixes.  *
+32070 Rem *****************************
+
