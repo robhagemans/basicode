@@ -60,7 +60,7 @@
 2226 Rem
 2228 Rem THE MOVEMENT SECTION
 2229 Rem
-2230 A$=AA$:For N=1To 6
+2230 A$=AA$:For N=1To6
 2240 IfMid$(A$,Len(A$)-13+N*2,1)<>IN$Then2260
 2242 IfMid$(A$,Len(A$)-12+N*2,1)=" "Then2262
 2250 LO$=Mid$(A$,Len(A$)-12+N*2,1):Goto2020
@@ -68,8 +68,8 @@
 2262 Print"I can't go there":Goto2100
 2498 Rem FIX RESTORE STATEMENTS
 2500 Restore:Return
-2600 Restore:ForI=0To16:ReadI$:NextI:Return
-2700 Restore:ForI=0To44:ReadI$:NextI:Return
+2600 Restore:ForI=0To16:ReadII$:NextI:Return
+2700 Restore:ForI=0To44:ReadII$:NextI:Return
 2990 Rem
 3000 Rem Action routine section
 3002 Rem
@@ -83,12 +83,12 @@
 3100 IfA$<>"/"Then3120
 3110 If F2=0ThenPrint"I see nothing unusual.":Goto2100
 3112 Print: Print "Press any key to continue": Gosub 210
-3118 Goto2100
+3118 Goto2010
 3120 IfLeft$(A$,1)<>IN$Then3090
 3130 If F2=0Then Gosub 100: F2=1
 3140 PrintRight$(A$,Len(A$)-2):Goto 3090
 3190 Rem
-3200 Rem *** TAKE AND WEAK ***
+3200 Rem *** TAKE AND WEAR ***
 3202 Rem
 3210 Gosub 20310
 3220 If B$="~"And Mid$(TH$(N),Len(TH$(N))-1,1)<>"W"Then 3280
@@ -106,7 +106,7 @@
 3301 Rem
 3310 Gosub 20310
 3312 If B$="^"AndRight$(TH$(N),1)<>"^"Then 3390
-3314 If B$="^"AndRight$(TH$(N),1)<>"~"Then 3380
+3314 If B$="~"AndRight$(TH$(N),1)<>"~"Then 3380
 3320 If B$="~"And Mid$(TH$(N),Len(TH$(N))-1,1)<>"W"Then 3382
 3340 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+LO$
 3350 Gosub 100:If B$="^"ThenPrint "I have left it"
@@ -129,7 +129,7 @@
 3580 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+" "
 3590 Gosub 100: Print"I am now ";I$;"ing it."
 3600 For D=1 To 500: Next D:Goto 2020
-3610 N1=N:C$="J":Gosub 20310:Rem *** Insert matches etc ***
+3610 N1=N:C$="J":Gosub 20410:Rem *** Insert matches etc ***
 3620 If C$="J" Then N=N1:Return 
 3630 Print "I can't yet": Goto 2100
 3690 Rem
@@ -222,8 +222,8 @@
 15030 Rem Torch blown out
 15040 Rem
 15050 C$="X":Gosub 20410:If C$=" "Then15130
-15060 Gosub 260:If RB>.1Then15130
-15068 Rem destory lit torch, replace with unlit
+15060 Gosub 260:If RV>.1Then15130
+15068 Rem destroy lit torch, replace with unlit
 15070 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+" ":B$=LO$
 15080 C$="V":LO$=" ":Gosub 20410
 15090 LO$=B$:TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+LO$
@@ -322,6 +322,7 @@
 25020 Data "B The library. -N S EAW U D "
 25030 Data "C The workshop. -N SAEHW U D "
 25040 Data "D The pharmacy. -N S E WAU D "
+25050 Data "E The garden. -NASJE W U D "
 25060 Data "F The cellar. *N S E W UAD "
 25070 Data "G A dried well. *N S E W UID "
 25080 Data "H A Store. *N S E WCU D "
@@ -369,7 +370,7 @@
 26130 Data "M) A length of rubber tubing. i*****u-b-d-H"
 26140 Data "N) Gas torches. i*****u---d-H"
 26150 Data "O) A welding set. iLNM**u-b-d- "
-26160 Data "P) A steel sheet. iLMN**u-b-d- "
+26160 Data "P) A steel sheet. i*****u---d-G"
 26170 Data "Q) A lid for the drum. -PO***u---d- "
 26180 Data "R) A morphostatic coffin -QEFCDu---d- "
 26190 Data "S) A wall -*****-----*F"
@@ -380,7 +381,8 @@
 26240 Data "X) A flaming torch. -VMJ**u---d- "
 26250 Data "Y) A red bottle -*****uf--d-D"
 26260 Data "a) A blue bottle -*****uf--d-D"
-26270 Data "c) A coded message. -*****u-b-d-G"
+26270 Data "b) A person. -*****-bkd-P"
+26280 Data "c) A coded message. -*****u-b-d-G"
 26990 Data "/"
 26998 Rem
 27000 Rem MESSAGES FOR LOOKS
@@ -429,9 +431,10 @@
 32010 Rem * The Chrononauts           *
 32020 Rem * Episode B1: Morphostasis  *
 32030 Rem * by John de Rivaz          *
-32040 Rem * Micro Adventurer Magazine *
-32050 Rem * Issue 8: June 1984        *
-32060 Rem * Pages 26-31               *
-32070 Rem * See "Rem FIX" for fixes.  *
-32070 Rem *****************************
+32040 Rem * A listing from            *
+32050 Rem * Micro Adventurer Magazine *
+32060 Rem * Issue 8: June 1984        *
+32070 Rem * Pages 26-31               *
+32080 Rem * See "Rem FIX" for fixes.  *
+32090 Rem *****************************
 
