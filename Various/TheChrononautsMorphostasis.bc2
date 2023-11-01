@@ -1,11 +1,9 @@
 1000 Let A=2000: Goto 20
 1010 Rem LOAD UP ARRAY
-1020 Rem FIX Restore 26000:N=1:ER$="ERROR - ":LO$="A":FF=0
-1021 Gosub 2600:N=1:ER$="ERROR - ":LO$="A":FF=0
+1020 Gosub 2600:N=1:ER$="ERROR - ":LO$="A":FF=0
 1030 Read A$:If A$="/"Then1050
 1040 N=N+1:Goto1030
-1050 Rem FIX TH=N-1:Dim TH$(TH):Restore 26000
-1051 TH=N-1:Dim TH$(TH):Gosub 2600
+1050 TH=N-1:Dim TH$(TH):Gosub 2600
 1060 ForJ=1ToTH:Read TH$(J): Next J
 1070 Gosub 100
 1072 Print "THE CHRONONAUTS":Print
@@ -66,7 +64,7 @@
 2250 LO$=Mid$(A$,Len(A$)-12+N*2,1):Goto2020
 2260 Next N
 2262 Print"I can't go there":Goto2100
-2498 Rem FIX RESTORE STATEMENTS
+2498 Rem FIXED RESTORE N STATEMENTS
 2500 Restore:Return
 2600 Restore:ForI=0To16:ReadII$:NextI:Return
 2700 Restore:ForI=0To44:ReadII$:NextI:Return
@@ -75,8 +73,7 @@
 3002 Rem
 3010 Rem *** LOOK ***
 3012 Rem
-3020 Rem FIX Restore 27000
-3021 Gosub 2700
+3020 Gosub 2700
 3040 Gosub 20310
 3080 F2=0
 3090 Read A$
@@ -171,9 +168,9 @@
 4060 If F1=0Then Print "I might be able to make":F1=1
 4070 Print Left$(TH$(N),Len(TH$(N))-PO)
 4080 Next N
-4110 Print"Print £ if you don't want anything made."
+4110 Print"Print * if you don't want anything made."
 4112 Print"Press letter preceding the object to be made."
-4120 Gosub 210:If IN$="£"Then 2010
+4120 Gosub 210:If IN$="*"Then 2010
 4122 C$=IN$:B$=LO$:LO$=" ":Gosub 20410:LO$=B$:J3=N
 4124 Print "I'll see if I can."
 4126 If C$=""Then Print "I can't.":Goto 2100
@@ -256,17 +253,16 @@
 19080 Print "Possibly I will be revived in the future."
 19090 Print "You may follow what happens in a future"
 19100 Print "CHRONONAUTS adventure game!":Print
-19110 Print "Press £ for another go, or E to end."
+19110 Print "Press * for another go, or E to end."
 19112 Print "You took ";NM;" moves."
-19120 Gosub 210:If IN$="£"Then Run
+19120 Gosub 210:If IN$="*"Then Run
 19130 If IN$="E"Or IN$="e"Then End
 19140 Goto 19120
 19990 Rem
 20000 Rem ***DESCRIBE CURRENT LOCATION***
 20002 Rem
 20010 Rem LO$=location
-20020 Rem FIX Restore 25000
-20021 Gosub 2500
+20020 Gosub 2500
 20030 Read A$:If Left$(A$,1)=LO$Then20060
 20040 If Left$(A$,1)="/"Then Print ER$;"LOCATION":Stop
 20050 Goto20030
@@ -435,6 +431,8 @@
 32050 Rem * Micro Adventurer Magazine *
 32060 Rem * Issue 8: June 1984        *
 32070 Rem * Pages 26-31               *
-32080 Rem * See "Rem FIX" for fixes.  *
-32090 Rem *****************************
+32080 Rem * FIXES:                    *
+32090 Rem * Restore -> Gosub (2500,..)*
+32100 Rem * "£" key -> "*" key        *
+32110 Rem *****************************
 
