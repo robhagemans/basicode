@@ -65,9 +65,14 @@
 2260 Next N
 2262 Print"I can't go there":Goto2100
 2498 Rem FIXED RESTORE N STATEMENTS
-2500 Restore:Return
-2600 Restore:ForI=0To16:ReadII$:NextI:Return
-2700 Restore:ForI=0To44:ReadII$:NextI:Return
+2500 Rem Restore 25000
+2510 Restore:Return
+2600 Rem Restore 26000
+2610 Restore
+2620 ReadII$:IfII$<>"/"Then2620
+2630 Return
+2700 Rem Restore 27000
+2710 Gosub 2600:Goto2620
 2990 Rem
 3000 Rem Action routine section
 3002 Rem
