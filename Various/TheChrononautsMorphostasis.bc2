@@ -223,7 +223,7 @@
 15020 Rem
 15030 Rem Torch blown out
 15040 Rem
-15050 C$="X":Gosub 20410:If C$=" "Then15130
+15050 C$="X":Gosub 20410:If C$=""Then15130
 15060 Gosub 260:If RV>.1Then15130
 15068 Rem destroy lit torch, replace with unlit
 15070 TH$(N)=Left$(TH$(N),Len(TH$(N))-1)+" ":B$=LO$
@@ -350,7 +350,7 @@
 26010 Rem The next letter is an i if object is not
 26011 Rem used up when making something.
 26012 Rem If instead of a W the penultimate letter is a
-26013 Rem letter, it meas the object can be entered,
+26013 Rem letter, it means the object can be entered,
 26014 Rem the location of its interior is the letter. If
 26015 Rem the letter is an "*" it simply means the object
 26016 Rem cannot be taken. It can only be taken if the
