@@ -379,7 +379,7 @@
 26210 Data "U) A pickaxe. i*****u---d-M"
 26220 Data "V) A dry wooden torch. -x****u---d-A"
 26230 Data "W) Tar oil. i*****u--bd*M"
-26240 Data "X) A flaming torch. -VMJ**u---d- "
+26240 Data "X) A flaming torch. -VWJ**u---d- "
 26250 Data "Y) A red bottle -*****uf--d-D"
 26260 Data "a) A blue bottle -*****uf--d-D"
 26270 Data "b) A person. -*****-bkd-P"
@@ -434,10 +434,9 @@
 32030 Rem * by John de Rivaz          *
 32040 Rem * A listing from            *
 32050 Rem * Micro Adventurer Magazine *
-32060 Rem * Issue 8: June 1984        *
-32070 Rem * Pages 26-31               *
-32080 Rem * FIXES:                    *
-32090 Rem * Restore -> Gosub (2500,..)*
+32060 Rem * Issue 8 June 1984 p26-31  *
+32070 Rem *                           *
+32080 Rem * FIXES APPLIED             *
+32090 Rem * Restore -> Gosub 2500,... *
 32100 Rem * "£" key -> "*" key        *
 32110 Rem *****************************
-
