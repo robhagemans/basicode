@@ -251,7 +251,7 @@
 19010 Rem End of game
 19020 Rem
 19030 If FF=0Then Return
-19040 Let C$="R":Gosub 2041:IfC$=""Then Return
+19040 Let C$="R":Gosub 20410:IfC$=""Then Return
 19050 Gosub100:Print"I have made a morphostic coffin."
 19060 Print"I also made other arrangements."
 19070 Rem Can't say exactly what or LIST cheating easy
