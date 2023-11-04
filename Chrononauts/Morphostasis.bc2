@@ -435,8 +435,8 @@
 32040 Rem * A listing from            *
 32050 Rem * Micro Adventurer Magazine *
 32060 Rem * Issue 8 June 1984 p26-31  *
-32070 Rem *                           *
-32080 Rem * FIXES APPLIED             *
-32090 Rem * Restore -> Gosub 2500,... *
-32100 Rem * "£" key -> "*" key        *
-32110 Rem *****************************
+32070 Rem *****************************
+32080 Rem
+32090 Rem Fixes applied to original listing
+32100 Rem Restore 2n000 -> Gosub 2n00
+32110 Rem "£" key -> "*" key
