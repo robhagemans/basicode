@@ -7,6 +7,7 @@ Title                               Author                    Medium            
 ==================================  ========================  ====================  ===========  ==================
 `What Fun - Let's Get Digital`_     Han Voet & Jack Haubrich  Vinyl single          1984         English
 `Verkeersberichten`_                J\. Haubrich              Radio recording       1984-04-01   Dutch
+`Morphostasis`_                     John de Rivaz             [3] Magazine type-in  1984-06      English
 `Aftrekdelen`_                      J\. Kicken                Radio recording       1984-09-30   Dutch
 `Uitleg BASICODE-3`_                Stichting BASICODE        Radio recording       1986-07-12   Dutch
 `Seizoenen`_                        J\. Bosschieter           Radio recording       1988-07      Dutch
@@ -31,6 +32,7 @@ The files in this directory that were not extracted from audio sources were obta
 
 1. Thomas Rademacher's `BasiCode - Software für Alle <http://www.joyce.de/basicode/>`_, in particular under *Neue Programme*.
 2. Victor Reijs' `BASICODE Yahoo Group <http://groups.yahoo.com/neo/groups/BASICODE>`_
+3. `MicroAdventurer issue 8, June 1984 <https://archive.org/details/MicroAdventurer08-Jun84/page/n25/mode/2up>`_. Thanks to Malcolm Tyrrell for typing in and correcting.
 
 
 .. _Verkeersberichten: 19840401_Verkeersberichten.bc2
@@ -53,3 +55,4 @@ The files in this directory that were not extracted from audio sources were obta
 .. _DataCopy + Print: DataCopyPrint.bc3
 .. _FileKopplung: FileKopplung.bc3
 .. _Funktionsplotting: Funktionsplotting.bc3
+.. _Morphostasis: Morphostasis.bc2
