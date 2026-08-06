@@ -767,7 +767,7 @@ Switch to graphics mode and clear the screen.
 In BASICODE-3C only, the screen is cleared using the background colour specified in ``CC(1)``, which is also kept internally for use by the other graphics subroutines.
 
 
-GOSUB 610
+GOSUB 620
 ---------
 
 Basicode-3 and -3C only.
